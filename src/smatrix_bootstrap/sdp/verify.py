@@ -39,11 +39,16 @@ def unitarity_report(ops, c: np.ndarray) -> dict:
     active = mag > 1e-6
     rel_v = ((mag ** 2 - 2.0 * him)[active] / np.maximum(mag[active] ** 2, 1e-300)
              if active.any() else np.array([-1.0]))
+    # A disk with |h| below the active cut can still violate the constraint in
+    # absolute terms (Im h slightly negative), which the relative metric would
+    # divide away, so feasibility needs both tests.
+    abs_v = float((mag ** 2 - 2.0 * him).max())
     nw = len(ops.index)
     return {"max_relative_violation_active": float(rel_v.max()),
+            "max_absolute_violation_all": abs_v,
             "n_active_disks": int(active.sum()),
             "max_abs_h": float(mag.max()),
-            "feasible": bool(rel_v.max() <= 1e-6),
+            "feasible": bool(rel_v.max() <= 1e-6 and abs_v <= 1e-8),
             "max_eta_minus_1": float(eta.max() - 1.0),
             "max_eta_wave": _label(ops, int(np.argmax(eta)), nw),
             "n_rows_eta_above_1p1e_minus_8": int((eta > 1 + 1e-8).sum()),

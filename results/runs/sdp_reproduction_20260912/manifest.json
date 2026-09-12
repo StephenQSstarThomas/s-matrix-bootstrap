@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-12T09:57:40.691106+00:00",
+ "generated": "2026-09-12T09:58:28.939837+00:00",
  "root": "/playpen1/shiqiu/sdp-work/runs/sdp_reproduction_20260912",
  "entries": [
   {
@@ -309,6 +309,23 @@
    "solution_sha256": "6a0bf43766103119f6e586d229e8d2900a28d13e57b40412e0801b40347e5540"
   },
   {
+   "job": "dir008",
+   "report_json": "fig4/eps2e-03_chi-b/006/report.json",
+   "M": 30,
+   "L": 8,
+   "chiral": true,
+   "uv": false,
+   "chi_caliber": "chi-b",
+   "sr_caliber": "SR-b",
+   "eps_chi": 0.002,
+   "B": 377500.0,
+   "status": "optimal",
+   "objective": 0.05637607205744957,
+   "f00_3": -0.08000268053639702,
+   "f11_3": 0.005273516650273717,
+   "solution_sha256": "2b584a97d36235803a06d43a84e0fec71ef543c8bf0114f038c404fe498876c8"
+  },
+  {
    "job": "dir009",
    "report_json": "fig4/eps2e-03_chi-b/009/report.json",
    "M": 30,
@@ -343,6 +360,23 @@
    "solution_sha256": "195ce544d6d7eee3b152895cca3d7863c25a24f2783adf53f7d78c13fe8fbbcc"
   },
   {
+   "job": "dir003",
+   "report_json": "fig4/eps2e-03_chi-c/003/report.json",
+   "M": 30,
+   "L": 8,
+   "chiral": true,
+   "uv": false,
+   "chi_caliber": "chi-c",
+   "sr_caliber": "SR-b",
+   "eps_chi": 0.002,
+   "B": 377500.0,
+   "status": "optimal",
+   "objective": 0.05196648554154289,
+   "f00_3": 0.08582027893008529,
+   "f11_3": -0.005602180205816736,
+   "solution_sha256": "82eea46e96d653f54e35fd88410cf110633809bdba17cbaf60793cfeb124f2f7"
+  },
+  {
    "job": "dir006",
    "report_json": "fig4/eps2e-03_chi-c/006/report.json",
    "M": 30,
@@ -358,6 +392,23 @@
    "f00_3": -0.0676409840977666,
    "f11_3": 0.004671618777582327,
    "solution_sha256": "328c5c8aad988778628da4129f722a9f1555b8684c8bd78c0dc332eccfa70d64"
+  },
+  {
+   "job": "dir009",
+   "report_json": "fig4/eps2e-03_chi-c/009/report.json",
+   "M": 30,
+   "L": 8,
+   "chiral": true,
+   "uv": false,
+   "chi_caliber": "chi-c",
+   "sr_caliber": "SR-b",
+   "eps_chi": 0.002,
+   "B": 377500.0,
+   "status": "optimal",
+   "objective": 0.059987646902422156,
+   "f00_3": -0.06827799043972732,
+   "f11_3": 0.004713936033135798,
+   "solution_sha256": "b9b6ddd844de52c607a097d56dd2a008afad75be5d5f1413ad3345d4c08b6a90"
   },
   {
    "job": "dir000",
