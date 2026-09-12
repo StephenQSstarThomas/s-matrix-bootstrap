@@ -94,6 +94,9 @@ def main(argv=None) -> int:
     p.add_argument("--time-limit", type=float, default=7200.0)
     p.add_argument("--tag", default="")
     p.add_argument("--objective", default="plane", choices=["plane", "lambda"])
+    p.add_argument("--generate", action="store_true",
+                   help="constraint generation over the unitarity disks")
+    p.add_argument("--start-tol", type=float, default=1e-6)
     a = p.parse_args(argv)
 
     if a.command == "selfcheck":
@@ -117,8 +120,10 @@ def main(argv=None) -> int:
         kw = {"max_iter": a.max_iter, "time_limit": a.time_limit}
         if a.solver == "SCS":
             kw = {"eps": 1e-7, "max_iters": 200000}
+        if a.generate:
+            kw["start_tol"] = a.start_tol
         run_job(_spec(a), _jobs(a, a.x_tip), a.out, solver=a.solver,
-                objective=a.objective, **kw)
+                objective=a.objective, generate=a.generate, **kw)
         print("wrote", os.path.join(a.out, "report.json"))
         return 0
 

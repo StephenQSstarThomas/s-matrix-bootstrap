@@ -205,6 +205,31 @@ def render(root: str, verdicts: dict | None = None) -> str:
         except Exception as exc:
             A(f"(C1 表未能生成: {exc})")
     A(f"\n## 7. 能量轴口径\n\n- {ENERGY_AXIS_NOTE}\n")
+    st_path = os.path.join(root, "solver_study_M20.json")
+    if os.path.exists(st_path):
+        with open(st_path) as fh:
+            st = json.load(fh)
+        A("\n## 7b. 求解器行为研究 (scripts/sdp/solver_study.py, M=%d L=%d)\n"
+          % (st["M"], st["L"]))
+        A("| 配置 | 状态 | f00(3) | 事后可行 | 最大相对违反 | \\|\\|rho\\|\\|_4 | 迭代 | 秒 |")
+        A("|---|---|---|---|---|---|---|---|")
+        for r in st["rows"]:
+            f = r.get("f00_3")
+            A("| {t} | {s} | {f} | {ok} | {v} | {r4} | {it} | {sec} |".format(
+                t=r["tag"], s=r["status"],
+                f="—" if f is None else "%.6f" % f,
+                ok=r.get("feasible", "—"),
+                v="—" if r.get("max_rel_violation") is None else "%+.1e" % r["max_rel_violation"],
+                r4="—" if r.get("rho_l4") is None else "%.3e" % r["rho_l4"],
+                it=r.get("iterations", "—"),
+                sec="%.0f" % r["seconds"]))
+        A("")
+        A("- 目标值对 B 单调（可行集随 B 单调变大，极值必须非减）: **%s**"
+          % st["objective_is_monotone_in_B"])
+        b = st.get("best_verified_feasible")
+        if b:
+            A("- 已验证可行的最好点: %s, f00(3) = %.6f" % (b["tag"], b["f00_3"]))
+        A("")
     A("\n## 8. 方法、偏离与发现\n")
     for title, body in FINDINGS:
         A(f"**{title}.** {body}\n")

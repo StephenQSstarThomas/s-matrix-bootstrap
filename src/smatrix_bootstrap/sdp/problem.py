@@ -60,6 +60,7 @@ class ModelSpec:
     reduce_basis: bool = False          # exact projection onto span(all rows)
     basis_tol: float = 1e-12
     tag: str = ""
+    disk_mask: object = None             # bool array over (wave, node): which disks to impose
 
     def key(self) -> str:
         return hashlib.sha256(repr(sorted(self.__dict__.items())).encode()).hexdigest()[:16]
@@ -224,7 +225,8 @@ class Model:
         # the interior-point method with an exactly redundant pair at every node
         # of those two waves, so when the Gram blocks are on we drop the S0/P1
         # rows from the cone list rather than state the constraint twice.
-        keep = np.ones(len(self.ops.index) * M, dtype=bool)
+        keep = (np.ones(len(self.ops.index) * M, dtype=bool)
+                if spec.disk_mask is None else np.asarray(spec.disk_mask, dtype=bool).copy())
         if spec.uv and "gram" in spec.uv_parts:
             for ell, I in ((0, 0), (1, 1)):
                 a0 = self.ops.index.index((I, ell))

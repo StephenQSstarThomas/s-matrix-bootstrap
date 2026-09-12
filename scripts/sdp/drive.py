@@ -16,8 +16,11 @@ import subprocess
 import sys
 
 PY = sys.executable
+# The pre-registered density caliber: ||rho||_4 <= 100 * 3775 = 377500, the value
+# used both by the authors' 2403 code and by this repository's historical
+# Newton mainline (basis.py:233), which reproduced the Fig.3 tip to 0.1%.
 BASE = ["-m", "smatrix_bootstrap.sdp", "solve", "--cone-scaling", "rownorm",
-        "--B", "377500"]
+        "--B", "377500", "--B-norm", "l4", "--generate"]
 EPS_GRID = (6e-3, 4e-3, 2e-3, 1e-3, 6e-4, 2e-4)
 
 
