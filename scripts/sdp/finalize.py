@@ -75,13 +75,68 @@ def load_optional(root, name):
     return None
 
 
+def merge_eps_ladder(root, records) -> dict | None:
+    """Assemble the +x end per eps^chi from whatever certified source exists.
+
+    Preference order: the dedicated ladder (scripts/sdp/ladder.py --mode chiral
+    or the eps ladder job), then the +x direction of the Fig. 4 sweep, then the
+    chiral resolution ladder.  Only verified-feasible points are kept, and each
+    row records which source it came from.
+    """
+    from smatrix_bootstrap.sdp.claims import fig8_reference
+    fp = os.path.join(root, "eps_ladder.json")
+    rows = {}
+    cur = load_optional(root, "eps_ladder.json")
+    if cur:
+        for r in cur.get("rows", []):
+            if r.get("x_end") is not None and r.get("feasible"):
+                r.setdefault("source", "dedicated eps ladder")
+                rows[round(r["eps_chi"], 12)] = r
+    for rec in records:
+        sp = rec["spec"]
+        if rec["job"] != "dir000" or sp["chi_caliber"] != "chi-b" or sp["uv"]:
+            continue
+        if not rec.get("verification", {}).get("unitarity", {}).get("feasible"):
+            continue
+        e = round(sp["eps_chi"], 12)
+        if e in rows or rec["result"].get("f00_3") is None:
+            continue
+        rows[e] = {"eps_chi": e, "status": rec["result"]["status"],
+                   "rounds": len(rec.get("generation", [])),
+                   "certified": rec["result"].get("certified"),
+                   "seconds": rec.get("wall_seconds"), "x_end": rec["result"]["f00_3"],
+                   "feasible": True, "n_disks": rec["result"].get("n_disks_imposed"),
+                   "source": "fig4 sweep dir000"}
+    lc = load_optional(root, "ladder_chiral.json")
+    if lc and 0.002 not in rows:
+        for r in lc["rows"]:
+            if r.get("M") == 30 and r.get("objective") is not None:
+                rows[0.002] = {"eps_chi": 0.002, "status": r["status"],
+                               "rounds": r["rounds"], "certified": r["certified"],
+                               "seconds": r.get("seconds"), "x_end": r["objective"],
+                               "feasible": True,
+                               "n_disks": r.get("n_disks_imposed"),
+                               "source": "chiral resolution ladder M=30"}
+    if not rows:
+        return None
+    doc = {"M": 30, "L": 8, "caliber": "chi-b",
+           "paper_x_end_eps2e-3": fig8_reference()["chiral_x_end"],
+           "rows": [rows[k] for k in sorted(rows, reverse=True)],
+           "note": "dedicated +x-end solves where available, otherwise the +x "
+                   "direction of the Fig. 4 sweep or the chiral resolution "
+                   "ladder; verified-feasible points only"}
+    with open(fp, "w") as fh:
+        json.dump(doc, fh, indent=1, default=float)
+    return doc
+
+
 def verdicts(records, root=None) -> dict:
     from smatrix_bootstrap.sdp.constraints import EPS_CHI_MAIN
     main = representative_points(records, "chi-b", "SR-b", uv=True, eps=EPS_CHI_MAIN)
     chiral_only = representative_points(records, "chi-b", None, uv=False,
                                         eps=EPS_CHI_MAIN)
     ml = by_ml(records)
-    eps_ladder = load_optional(root, "eps_ladder.json") if root else None
+    eps_ladder = merge_eps_ladder(root, records) if root else None
     ladder_pure = load_optional(root, "ladder_pure.json") if root else None
     return {"C1": claims.c1(records, ladder_pure),
             "C2": claims.c2(records, eps_ladder),

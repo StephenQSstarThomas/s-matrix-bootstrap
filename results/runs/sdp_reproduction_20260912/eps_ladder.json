@@ -13,7 +13,42 @@
    "x_end": 0.16105416378273704,
    "f11": -0.01030134206391789,
    "feasible": true,
-   "n_disks": 709
+   "n_disks": 709,
+   "source": "dedicated eps ladder"
+  },
+  {
+   "eps_chi": 0.004,
+   "status": "optimal",
+   "rounds": 8,
+   "certified": true,
+   "seconds": 175.9391486644745,
+   "x_end": 0.12550363557019664,
+   "feasible": true,
+   "n_disks": 720,
+   "source": "fig4 sweep dir000"
+  },
+  {
+   "eps_chi": 0.002,
+   "status": "optimal",
+   "rounds": 7,
+   "certified": true,
+   "seconds": 74.0,
+   "x_end": 0.082598,
+   "feasible": true,
+   "n_disks": 717,
+   "source": "chiral resolution ladder M=30"
+  },
+  {
+   "eps_chi": 0.001,
+   "status": "optimal",
+   "rounds": 13,
+   "certified": true,
+   "seconds": 263.22740030288696,
+   "x_end": 0.055037797387031226,
+   "feasible": true,
+   "n_disks": 712,
+   "source": "fig4 sweep dir000"
   }
- ]
+ ],
+ "note": "dedicated +x-end solves where available, otherwise the +x direction of the Fig. 4 sweep or the chiral resolution ladder; verified-feasible points only"
 }
