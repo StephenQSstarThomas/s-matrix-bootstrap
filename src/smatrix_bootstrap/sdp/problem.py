@@ -6,29 +6,41 @@ Decision variables
     rho_hat    rescaled current spectral densities, >= 0     (3.69)
 
 Constraints
-    unitarity  1500 rotated second-order cones, |h|^2 <= 2 Im h with h = kappa f
-    Gram       100 realified 3x3 positive semidefinite blocks (3.68)
+    unitarity  3 L M rotated second-order cones, |h|^2 <= 2 Im h, h = kappa f
+    Gram       2 M realified 3x3 positive semidefinite blocks (3.68)
     FESR       4 linear boxes (3.73)-(3.74)
-    FF         14 second-order cones (3.75)
+    FF         2 x (nodes above s0) second-order cones (3.75)
     chiral     (3.64) in one of the pre-registered norms
-    B          optional ell-4 bound on the double spectral densities
+    B          optional bound on the double spectral densities
 
-Two reversible reparametrisations are applied purely for conditioning, both
-exact:
+Conditioning.  Three reparametrisations are available, all exact:
 
-  * unitarity.  For Lambda > 0, |h|^2 <= 2 Im h  <=>  |h/Lambda|^2 <=
-    2 (Im h)/Lambda^2 -- multiply through by Lambda^2.  We use
-    Lambda_ell(s) = ((sqrt(s)-2)/(sqrt(s)+2))^(ell/2), the centrifugal scale, so
-    the rows of the cone no longer span 40 orders of magnitude.
-  * Gram.  Congruence by V = diag(1,1,1/g) maps (3.68) to the same matrix with
-    cF -> cF/g and rho -> rho/g^2.  Congruence by an invertible matrix preserves
-    positive semidefiniteness, so the feasible set is untouched.
+  * unitarity cone.  For any Lambda > 0, |h|^2 <= 2 Im h is equivalent to
+    |h/Lambda|^2 <= 2 (Im h)/Lambda^2 -- multiply through by Lambda^2.  The raw
+    rows span 5e-85 .. 34 because of centrifugal suppression at the threshold
+    node.  ``cone_scaling`` selects Lambda: "centrifugal" is the analytic
+    ((sqrt(s)-2)/(sqrt(s)+2))^(ell/2), "rownorm" the measured row magnitude (the
+    one that works; see assembly.set_cone_scaling for why the analytic form
+    underflows), "none" leaves the cone alone.
+  * Gram congruence.  V_i = diag(1, 1, 1/g_i) with g_i = k_ell(s_i), the (2.33)
+    kinematic factor, turns (3.68) into [[1,S,F],[S*,1,F*],[F*,F,rho/k^2]] --
+    the (1,3) entry becomes the form factor itself.  Congruence by an invertible
+    matrix preserves positive semidefiniteness, so the feasible set is untouched.
+  * basis reduction.  Every constraint and the objective is a linear functional
+    of c, and they span a subspace of dimension about 1780 out of 3876; c = V a
+    is then exact.  Off by default -- it does not converge at M >= 30.
+
+The unitarity disks are normally imposed through the constraint generation of
+:func:`smatrix_bootstrap.sdp.runner.solve_generated` rather than all at once:
+imposing a subset is a relaxation, and a returned point that satisfies all of
+them is optimal for the full problem, which makes the answer certified.
+``ModelSpec.disk_mask`` is how the generator passes the current subset in.
 """
 from __future__ import annotations
 
 import hashlib
 import time
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 import cvxpy as cp
 import numpy as np
