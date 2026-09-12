@@ -230,15 +230,18 @@ def render(root: str, verdicts: dict | None = None) -> str:
         except Exception as exc:
             A(f"(C1 表未能生成: {exc})")
     A(f"\n## 7. 能量轴口径\n\n- {ENERGY_AXIS_NOTE}\n")
-    for lad, title in (("ladder_pure.json", "纯幺正 max f00(3)"),
-                       ("ladder_chiral.json", "手征 (eps=2e-3, chi-b) max f00(3)")):
+    for k_, (lad, title) in enumerate((("ladder_pure.json", "纯幺正 max f00(3)"),
+                                       ("ladder_chiral.json",
+                                        "手征 (eps=2e-3, chi-b) max f00(3)")), 1):
         lp = os.path.join(root, lad)
         if not os.path.exists(lp):
             continue
         with open(lp) as fh:
             L_ = json.load(fh)
-        A("\n## 6b. 分辨率阶梯 — %s（对照 %s = %s）\n"
-          % (title, L_["paper_reference"], L_["paper_value"]))
+        A("\n## 6b.%d 分辨率阶梯 — %s（对照 %s = %.6g）\n"
+          % (k_, title, L_["paper_reference"], L_["paper_value"]))
+        if L_.get("note"):
+            A("_%s_\n" % L_["note"])
         A("| M | L | 状态 | 认证 | 目标值 | 相对论文 | 施加圆盘 | 轮数 | \\|\\|c\\|\\|_inf | 秒 |")
         A("|---|---|---|---|---|---|---|---|---|---|")
         for r in L_["rows"]:
@@ -248,7 +251,7 @@ def render(root: str, verdicts: dict | None = None) -> str:
                 rel="—" if r.get("rel_to_paper") is None else "%+.2f%%" % (100 * r["rel_to_paper"]),
                 d=r.get("n_disks_imposed", "—"), n=r["rounds"],
                 cn="—" if r.get("c_norm_inf") is None else "%.2e" % r["c_norm_inf"],
-                s="%.0f" % r["seconds"]))
+                s="—" if r.get("seconds") is None else "%.0f" % r["seconds"]))
         A("")
     ff_path = os.path.join(root, "ff_tolerance.json")
     if os.path.exists(ff_path):
