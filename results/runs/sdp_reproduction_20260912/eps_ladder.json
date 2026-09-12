@@ -19,13 +19,14 @@
   {
    "eps_chi": 0.004,
    "status": "optimal",
-   "rounds": 8,
-   "certified": true,
-   "seconds": 175.9391486644745,
-   "x_end": 0.12550363557019664,
+   "rounds": 13,
+   "certified": false,
+   "seconds": 196.8026819229126,
+   "x_end": 0.1256373460881389,
+   "f11": -0.008088285624066258,
    "feasible": true,
-   "n_disks": 720,
-   "source": "fig4 sweep dir000"
+   "n_disks": 714,
+   "source": "dedicated eps ladder"
   },
   {
    "eps_chi": 0.002,

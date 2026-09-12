@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-12T10:02:23.164962+00:00",
+ "generated": "2026-09-12T10:02:56.276886+00:00",
  "root": "/playpen1/shiqiu/sdp-work/runs/sdp_reproduction_20260912",
  "entries": [
   {
@@ -256,6 +256,23 @@
    "f00_3": 0.08598228287913484,
    "f11_3": -0.00562342821973069,
    "solution_sha256": "8ba08e197a633dd36a633626e4027dbf511455952701ee887357fd66eced1cdf"
+  },
+  {
+   "job": "dir001",
+   "report_json": "fig4/eps2e-03_chi-c/000/report.json",
+   "M": 30,
+   "L": 8,
+   "chiral": true,
+   "uv": false,
+   "chi_caliber": "chi-c",
+   "sr_caliber": "SR-b",
+   "eps_chi": 0.002,
+   "B": 377500.0,
+   "status": "optimal",
+   "objective": 0.08081111410481223,
+   "f00_3": 0.08587143347248126,
+   "f11_3": -0.00561498097335148,
+   "solution_sha256": "d5538dcf0b2ba9c501c019ffc35a7a44a10f1e39df69e1e69698de180ad48d7c"
   },
   {
    "job": "dir003",
