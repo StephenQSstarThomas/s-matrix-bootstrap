@@ -147,15 +147,27 @@ def b_activity(recs) -> dict:
 
 
 def unitarity_worst(recs) -> dict:
-    worst, where = -1.0, None
-    for r in recs:
-        u = r.get("verification", {}).get("unitarity")
-        if not u:
-            continue
-        if u["max_eta_minus_1"] > worst:
-            worst, where = u["max_eta_minus_1"], {"job": r["job"], "file": r["_file"],
-                                                  "wave": u["max_eta_wave"]}
-    return {"max_eta_minus_1": worst, "at": where}
+    """Worst residual, split by whether the point passed the feasibility check.
+
+    Constraint generation returns the last good iterate when a later round fails;
+    such a point is marked uncertified and can violate disks that were never
+    imposed.  Those are reported separately -- they are diagnostics, and the
+    verified-feasible filter keeps them out of every claim.
+    """
+    out = {}
+    for key, sel in (("verified", True), ("unverified", False)):
+        worst, where, n = -1.0, None, 0
+        for r in recs:
+            u = r.get("verification", {}).get("unitarity")
+            if not u or bool(u.get("feasible")) != sel:
+                continue
+            n += 1
+            if u["max_eta_minus_1"] > worst:
+                worst = u["max_eta_minus_1"]
+                where = {"job": r["job"], "file": r["_file"], "wave": u["max_eta_wave"],
+                         "certified": r["result"].get("certified")}
+        out[key] = {"n": n, "max_eta_minus_1": None if n == 0 else worst, "at": where}
+    return out
 
 
 def manifest(root: str, data: dict) -> dict:
@@ -208,7 +220,14 @@ def render(root: str, verdicts: dict | None = None) -> str:
               f"| {r['rho_l4']:.3e} | {r['active']} |")
     A("\n## 4. 幺正性事后复验（未经任何重缩放的原式）\n")
     u = unitarity_worst(recs)
-    A(f"- 全部解中最大 `max eta - 1` = {u['max_eta_minus_1']:.3e}，位置: {u['at']}")
+    v, w = u["verified"], u["unverified"]
+    A(f"- 通过事后可行性检验的解: {v['n']} 个，其中最大 `max eta - 1` = "
+      + ("—" if v["max_eta_minus_1"] is None else f"{v['max_eta_minus_1']:.3e}")
+      + f"，位置: {v['at']}")
+    A(f"- 未通过的解: {w['n']} 个（约束生成中途失败时返回的最后一个可解迭代，"
+      "标记为未认证；所有 claim 判定都把它们过滤掉），其中最大 `max eta - 1` = "
+      + ("—" if w["max_eta_minus_1"] is None else f"{w['max_eta_minus_1']:.3e}")
+      + f"，位置: {w['at']}")
     A("\n## 5. FESR 目标值独立重算 (5a.9)\n")
     au = C.fesr_target_audit()
     A(f"- m_q 算术平均 = {au['m_q_mean_MeV']:.3f} MeV，均方根 = {au['m_q_rms_MeV']:.3f} MeV")
