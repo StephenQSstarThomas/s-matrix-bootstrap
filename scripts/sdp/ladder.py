@@ -32,12 +32,16 @@ def main() -> int:
     p.add_argument("--direction", nargs=2, type=float, default=[1.0, 0.0])
     p.add_argument("--eps-chi", type=float, default=2e-3)
     p.add_argument("--out", default=None)
+    p.add_argument("--grid", default=None,
+                   help="comma list of M:L, e.g. 20:6,30:8,40:10")
     p.add_argument("--time-limit", type=float, default=3600.0)
     a = p.parse_args()
 
     label, target = TARGETS.get(a.mode, (None, None))
+    grid = ([tuple(int(x) for x in g.split(":")) for g in a.grid.split(",")]
+            if a.grid else GRID)
     rows = []
-    for M, L in GRID:
+    for M, L in grid:
         t0 = time.time()
         sp = ModelSpec(M=M, L=L, cone_scaling="rownorm", B=3.775e5, B_norm="l4",
                        chiral=a.mode in ("chiral", "uv"), eps_chi=a.eps_chi,
@@ -60,6 +64,7 @@ def main() -> int:
         rows.append(row)
         print(json.dumps(row, default=float), flush=True)
     doc = {"mode": a.mode, "direction": a.direction, "eps_chi": a.eps_chi,
+           "grid": grid,
            "paper_reference": label, "paper_value": target, "rows": rows}
     if a.out:
         with open(a.out, "w") as fh:
