@@ -1,0 +1,197 @@
+{
+ "paper_eps_ff": 6e-05,
+ "rows": [
+  {
+   "M": 20,
+   "L": 6,
+   "frozen_at_s0": true,
+   "status": "failed",
+   "rounds": [
+    {
+     "n_disks": 170,
+     "status": "optimal_inaccurate",
+     "t": 0.4186198172001674,
+     "n_violated": 80
+    },
+    {
+     "n_disks": 250,
+     "status": "optimal_inaccurate",
+     "t": 1.1317070389519,
+     "n_violated": 33
+    },
+    {
+     "n_disks": 283,
+     "status": "optimal_inaccurate",
+     "t": 2.0894702200519455,
+     "n_violated": 39
+    },
+    {
+     "n_disks": 322,
+     "status": "optimal_inaccurate",
+     "t": 3.8152977761804903,
+     "n_violated": 20
+    },
+    {
+     "n_disks": 342,
+     "status": "optimal_inaccurate",
+     "t": 4.063510417654466,
+     "n_violated": 10
+    },
+    {
+     "n_disks": 352,
+     "status": "error: Solver 'CLARABEL' failed. Try another solver, or solve with "
+    }
+   ],
+   "seconds": 20.298761129379272
+  },
+  {
+   "M": 20,
+   "L": 6,
+   "frozen_at_s0": false,
+   "status": "failed",
+   "rounds": [
+    {
+     "n_disks": 170,
+     "status": "optimal_inaccurate",
+     "t": 0.4251219443630972,
+     "n_violated": 80
+    },
+    {
+     "n_disks": 250,
+     "status": "error: Solver 'CLARABEL' failed. Try another solver, or solve with "
+    }
+   ],
+   "seconds": 5.604966640472412
+  },
+  {
+   "M": 25,
+   "L": 8,
+   "frozen_at_s0": true,
+   "status": "failed",
+   "rounds": [
+    {
+     "n_disks": 227,
+     "status": "optimal_inaccurate",
+     "t": 0.6990818609337855,
+     "n_violated": 153
+    },
+    {
+     "n_disks": 380,
+     "status": "optimal_inaccurate",
+     "t": 0.8869301812093368,
+     "n_violated": 113
+    },
+    {
+     "n_disks": 493,
+     "status": "optimal_inaccurate",
+     "t": 3.1990789947382967,
+     "n_violated": 48
+    },
+    {
+     "n_disks": 541,
+     "status": "optimal_inaccurate",
+     "t": 5.283196234908336,
+     "n_violated": 30
+    },
+    {
+     "n_disks": 571,
+     "status": "error: Solver 'CLARABEL' failed. Try another solver, or solve with "
+    }
+   ],
+   "seconds": 39.551374197006226
+  },
+  {
+   "M": 25,
+   "L": 8,
+   "frozen_at_s0": false,
+   "status": "failed",
+   "rounds": [
+    {
+     "n_disks": 227,
+     "status": "optimal_inaccurate",
+     "t": 0.7109765956341655,
+     "n_violated": 151
+    },
+    {
+     "n_disks": 378,
+     "status": "optimal_inaccurate",
+     "t": 0.9020339024798885,
+     "n_violated": 108
+    },
+    {
+     "n_disks": 486,
+     "status": "optimal_inaccurate",
+     "t": 3.2268666302565134,
+     "n_violated": 51
+    },
+    {
+     "n_disks": 537,
+     "status": "error: Solver 'CLARABEL' failed. Try another solver, or solve with "
+    }
+   ],
+   "seconds": 41.92053484916687
+  },
+  {
+   "M": 30,
+   "L": 8,
+   "frozen_at_s0": true,
+   "status": "failed",
+   "rounds": [
+    {
+     "n_disks": 266,
+     "status": "optimal_inaccurate",
+     "t": 0.1183365251656262,
+     "n_violated": 194
+    },
+    {
+     "n_disks": 460,
+     "status": "optimal_inaccurate",
+     "t": 0.14447889255604604,
+     "n_violated": 91
+    },
+    {
+     "n_disks": 551,
+     "status": "optimal_inaccurate",
+     "t": 0.2198827221603813,
+     "n_violated": 75
+    },
+    {
+     "n_disks": 626,
+     "status": "error: Solver 'CLARABEL' failed. Try another solver, or solve with "
+    }
+   ],
+   "seconds": 88.08727216720581
+  },
+  {
+   "M": 30,
+   "L": 8,
+   "frozen_at_s0": false,
+   "status": "failed",
+   "rounds": [
+    {
+     "n_disks": 266,
+     "status": "optimal_inaccurate",
+     "t": 0.12653237185078095,
+     "n_violated": 190
+    },
+    {
+     "n_disks": 456,
+     "status": "optimal_inaccurate",
+     "t": 0.15978357543833513,
+     "n_violated": 89
+    },
+    {
+     "n_disks": 545,
+     "status": "optimal_inaccurate",
+     "t": 0.2126707712999875,
+     "n_violated": 74
+    },
+    {
+     "n_disks": 619,
+     "status": "error: Solver 'CLARABEL' failed. Try another solver, or solve with "
+    }
+   ],
+   "seconds": 97.81234049797058
+  }
+ ]
+}

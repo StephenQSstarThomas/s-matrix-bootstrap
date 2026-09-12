@@ -1,0 +1,44 @@
+{
+ "M": 30,
+ "L": 8,
+ "caliber": "chi-b",
+ "paper_x_end_eps2e-3": 0.08257284063278697,
+ "rows": [
+  {
+   "eps_chi": 0.006,
+   "status": "optimal",
+   "rounds": 7,
+   "certified": true,
+   "seconds": 117.75016450881958,
+   "x_end": 0.16092388260836243,
+   "f11": -0.010292797495336008,
+   "feasible": true,
+   "n_disks": 707,
+   "source": "fig4 sweep dir000"
+  },
+  {
+   "eps_chi": 0.004,
+   "status": "optimal",
+   "rounds": 8,
+   "certified": true,
+   "seconds": 175.9391486644745,
+   "x_end": 0.12550363557019664,
+   "f11": -0.008078923951974555,
+   "feasible": true,
+   "n_disks": 720,
+   "source": "fig4 sweep dir000"
+  },
+  {
+   "eps_chi": 0.002,
+   "status": "optimal",
+   "rounds": 7,
+   "certified": true,
+   "seconds": 74.0,
+   "x_end": 0.082598,
+   "feasible": true,
+   "n_disks": 717,
+   "source": "chiral resolution ladder M=30"
+  }
+ ],
+ "note": "assembled from the dedicated ladder where available, otherwise the +x direction of the Fig.4 sweep; only verified-feasible points are kept"
+}

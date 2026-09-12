@@ -1,0 +1,80 @@
+{
+ "mode": "chiral",
+ "direction": [
+  1.0,
+  0.0
+ ],
+ "eps_chi": 0.002,
+ "paper_reference": "Fig. 8 chiral-only +x end (digitised)",
+ "paper_value": 0.08257284063278697,
+ "rows": [
+  {
+   "M": 20,
+   "L": 6,
+   "status": "optimal",
+   "objective": 0.084161,
+   "f00_3": 0.084161,
+   "certified": true,
+   "rounds": 7,
+   "n_disks_imposed": 360,
+   "seconds": 18.0,
+   "rel_to_paper": 0.019233435050100667
+  },
+  {
+   "M": 25,
+   "L": 8,
+   "status": "optimal",
+   "objective": 0.082459,
+   "f00_3": 0.082459,
+   "certified": true,
+   "rounds": 8,
+   "n_disks_imposed": 598,
+   "seconds": 50.0,
+   "rel_to_paper": -0.0013786692078722185
+  },
+  {
+   "M": 30,
+   "L": 8,
+   "status": "optimal",
+   "objective": 0.082598,
+   "f00_3": 0.082598,
+   "certified": true,
+   "rounds": 7,
+   "n_disks_imposed": 717,
+   "seconds": 74.0,
+   "rel_to_paper": 0.00030469300826063694
+  },
+  {
+   "M": 35,
+   "L": 10,
+   "status": "optimal",
+   "objective": 0.082492,
+   "f00_3": 0.082492,
+   "certified": false,
+   "rounds": 8,
+   "n_disks_imposed": null,
+   "seconds": 209.0,
+   "rel_to_paper": -0.0009790220630350177
+  },
+  {
+   "M": 40,
+   "L": 10,
+   "status": "optimal",
+   "objective": 0.082521,
+   "f00_3": 0.082521,
+   "certified": false,
+   "rounds": 8,
+   "n_disks_imposed": null,
+   "seconds": 887.0,
+   "rel_to_paper": -0.0006278169963598312
+  },
+  {
+   "M": 50,
+   "L": 10,
+   "status": "SolverError",
+   "rounds": 1,
+   "seconds": null
+  }
+ ],
+ "note": "reconstructed from the ladder log of the same script; ||c||_inf and rho_l4 are not carried for these rows"
+}

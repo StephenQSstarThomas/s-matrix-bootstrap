@@ -1,0 +1,244 @@
+{
+ "M": 20,
+ "L": 6,
+ "rows": [
+  {
+   "tag": "cone_scaling=none, B=377500 l4",
+   "status": "SolverError",
+   "seconds": 3.1358859539031982,
+   "iterations": null,
+   "n_vars": null,
+   "B": 377500.0,
+   "B_norm": "l4",
+   "reduce_basis": false
+  },
+  {
+   "tag": "cone_scaling=centrifugal, B=377500 l4",
+   "status": "SolverError",
+   "seconds": 3.0244009494781494,
+   "iterations": null,
+   "n_vars": null,
+   "B": 377500.0,
+   "B_norm": "l4",
+   "reduce_basis": false
+  },
+  {
+   "tag": "cone_scaling=rownorm, B=377500 l4",
+   "status": "optimal",
+   "seconds": 7.400607585906982,
+   "iterations": 59,
+   "n_vars": 651,
+   "B": 377500.0,
+   "B_norm": "l4",
+   "reduce_basis": false,
+   "f00_3": 1.9280543152603054,
+   "feasible": true,
+   "max_rel_violation": -1.7923824876693102e-08,
+   "rho_l4": 2499.3631398454613,
+   "rho_l2": 7492.236801685534
+  },
+  {
+   "tag": "B=1.000e+04 l4",
+   "status": "optimal",
+   "seconds": 7.623269081115723,
+   "iterations": 62,
+   "n_vars": 651,
+   "B": 10000.0,
+   "B_norm": "l4",
+   "reduce_basis": false,
+   "f00_3": 1.9278094775942425,
+   "feasible": true,
+   "max_rel_violation": -9.270547847708443e-09,
+   "rho_l4": 2291.7751600781903,
+   "rho_l2": 6914.554891017473
+  },
+  {
+   "tag": "B=1.000e+05 l4",
+   "status": "optimal",
+   "seconds": 8.728112936019897,
+   "iterations": 67,
+   "n_vars": 651,
+   "B": 100000.0,
+   "B_norm": "l4",
+   "reduce_basis": false,
+   "f00_3": 1.9282184619527383,
+   "feasible": true,
+   "max_rel_violation": -4.382143180575158e-08,
+   "rho_l4": 2520.6264373968525,
+   "rho_l2": 7557.30792802778
+  },
+  {
+   "tag": "B=3.775e+05 l4",
+   "status": "optimal",
+   "seconds": 7.179899215698242,
+   "iterations": 59,
+   "n_vars": 651,
+   "B": 377500.0,
+   "B_norm": "l4",
+   "reduce_basis": false,
+   "f00_3": 1.9280543152603054,
+   "feasible": true,
+   "max_rel_violation": -1.7923824876693102e-08,
+   "rho_l4": 2499.3631398454613,
+   "rho_l2": 7492.236801685534
+  },
+  {
+   "tag": "B=1.000e+06 l4",
+   "status": "optimal",
+   "seconds": 6.899056911468506,
+   "iterations": 62,
+   "n_vars": 651,
+   "B": 1000000.0,
+   "B_norm": "l4",
+   "reduce_basis": false,
+   "f00_3": 1.9286587967757032,
+   "feasible": true,
+   "max_rel_violation": -1.8261387955198054e-08,
+   "rho_l4": 2613.272118653284,
+   "rho_l2": 7878.228562584114
+  },
+  {
+   "tag": "B=1.000e+07 l4",
+   "status": "optimal",
+   "seconds": 6.988598585128784,
+   "iterations": 60,
+   "n_vars": 651,
+   "B": 10000000.0,
+   "B_norm": "l4",
+   "reduce_basis": false,
+   "f00_3": 1.9276660352165593,
+   "feasible": true,
+   "max_rel_violation": -5.167150586607321e-09,
+   "rho_l4": 2941.451616041096,
+   "rho_l2": 8598.337999700358
+  },
+  {
+   "tag": "B=1.000e+09 l4",
+   "status": "optimal_inaccurate",
+   "seconds": 4.195345163345337,
+   "iterations": 44,
+   "n_vars": 651,
+   "B": 1000000000.0,
+   "B_norm": "l4",
+   "reduce_basis": false,
+   "f00_3": 1.913243386691136,
+   "feasible": true,
+   "max_rel_violation": 8.553545182465719e-09,
+   "rho_l4": 12712.845377114318,
+   "rho_l2": 34761.639613928885
+  },
+  {
+   "tag": "B=3.775e+05 l2",
+   "status": "optimal",
+   "seconds": 5.237092971801758,
+   "iterations": 53,
+   "n_vars": 651,
+   "B": 377500.0,
+   "B_norm": "l2",
+   "reduce_basis": false,
+   "f00_3": 1.927649579360577,
+   "feasible": true,
+   "max_rel_violation": -1.214990166720912e-07,
+   "rho_l4": 9957.9206545878,
+   "rho_l2": 34125.34458211907
+  },
+  {
+   "tag": "B=1.000e+07 l2",
+   "status": "optimal",
+   "seconds": 3.6920950412750244,
+   "iterations": 41,
+   "n_vars": 651,
+   "B": 10000000.0,
+   "B_norm": "l2",
+   "reduce_basis": false,
+   "f00_3": 1.924012757675691,
+   "feasible": true,
+   "max_rel_violation": -1.2938331420236842e-07,
+   "rho_l4": 57314.07485200781,
+   "rho_l2": 204149.14557222024
+  },
+  {
+   "tag": "B=1.000e+09 l2",
+   "status": "optimal",
+   "seconds": 4.173133611679077,
+   "iterations": 43,
+   "n_vars": 651,
+   "B": 1000000000.0,
+   "B_norm": "l2",
+   "reduce_basis": false,
+   "f00_3": 1.914265214209737,
+   "feasible": true,
+   "max_rel_violation": 3.098240555582446e-09,
+   "rho_l4": 88963.62593247919,
+   "rho_l2": 306242.4034096611
+  },
+  {
+   "tag": "no B, exact basis reduction",
+   "status": "optimal",
+   "seconds": 21.924419403076172,
+   "iterations": 55,
+   "n_vars": 551,
+   "B": null,
+   "B_norm": "l2",
+   "reduce_basis": true,
+   "f00_3": 2.0071063085119083,
+   "feasible": true,
+   "max_rel_violation": -5.379900209832767e-08,
+   "rho_l4": 518788073.5529032,
+   "rho_l2": 1733700472.23873
+  },
+  {
+   "tag": "no B, full space",
+   "status": "SolverError",
+   "seconds": 0.3611166477203369,
+   "iterations": null,
+   "n_vars": null,
+   "B": null,
+   "B_norm": "l2",
+   "reduce_basis": false
+  }
+ ],
+ "monotonicity_series": [
+  {
+   "B": 10000.0,
+   "f00_3": 1.9278094775942425
+  },
+  {
+   "B": 100000.0,
+   "f00_3": 1.9282184619527383
+  },
+  {
+   "B": 377500.0,
+   "f00_3": 1.9280543152603054
+  },
+  {
+   "B": 1000000.0,
+   "f00_3": 1.9286587967757032
+  },
+  {
+   "B": 10000000.0,
+   "f00_3": 1.9276660352165593
+  },
+  {
+   "B": 1000000000.0,
+   "f00_3": 1.913243386691136
+  }
+ ],
+ "best_verified_feasible": {
+  "tag": "no B, exact basis reduction",
+  "status": "optimal",
+  "seconds": 21.924419403076172,
+  "iterations": 55,
+  "n_vars": 551,
+  "B": null,
+  "B_norm": "l2",
+  "reduce_basis": true,
+  "f00_3": 2.0071063085119083,
+  "feasible": true,
+  "max_rel_violation": -5.379900209832767e-08,
+  "rho_l4": 518788073.5529032,
+  "rho_l2": 1733700472.23873
+ },
+ "objective_is_monotone_in_B": false,
+ "note": "the optimum must be non-decreasing in B; a decrease proves the solver returned a suboptimal point"
+}

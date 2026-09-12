@@ -113,7 +113,9 @@ def main() -> int:
     if a.repo_out:
         os.makedirs(a.repo_out, exist_ok=True)
         for name in ("manifest.json", "verdicts.json", "tables.json",
-                     "preregistration.json"):
+                     "preregistration.json", "ladder_pure.json",
+                     "ladder_chiral.json", "eps_ladder.json",
+                     "ff_tolerance.json", "solver_study_M20.json"):
             src = os.path.join(a.root, name)
             if os.path.exists(src):
                 shutil.copy2(src, a.repo_out)
