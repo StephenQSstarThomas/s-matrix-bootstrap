@@ -133,8 +133,8 @@ def _run_generated(spec, jobs, outdir, solver, objective, **kw):
 
 def solve_generated(spec: ModelSpec, direction, extra=None, ctx=None,
                     objective: str = "plane", solver: str = "CLARABEL",
-                    start_tol: float = 1e-6, max_rounds: int = 8,
-                    viol_tol: float = 1e-8, **kw) -> tuple:
+                    start_tol: float = 1e-6, max_rounds: int = 12,
+                    viol_tol: float = 1e-8, add_per_round: int = 40, **kw) -> tuple:
     """Constraint generation over the unitarity disks.
 
     Only about 100 of the 1500 disks of (3.61) carry an operator norm within a
@@ -154,6 +154,7 @@ def solve_generated(spec: ModelSpec, direction, extra=None, ctx=None,
     nu = ops.nu_measured
     mask = nu > start_tol * nu.max()
     rounds = []
+    best = None                      # last round that solved, with its model
     for _ in range(max_rounds):
         sp = replace(spec, disk_mask=mask.copy())
         model = Model(sp)
@@ -161,7 +162,17 @@ def solve_generated(spec: ModelSpec, direction, extra=None, ctx=None,
         res = model.solve(direction, solver=solver, **kw)
         if res.get("f00_3") is None:
             rounds.append({"n_disks": int(mask.sum()), "status": res["status"]})
-            return res, model, rounds
+            if best is None:
+                return res, model, rounds
+            # A round can fail after several have succeeded; keep the last good
+            # iterate and report it uncertified rather than losing the run.
+            b_res, b_model, b_bad, b_viol = best
+            b_res["certified"] = False
+            b_res["generation_rounds"] = len(rounds)
+            b_res["n_disks_violated_at_return"] = int(b_bad)
+            b_res["max_violation_at_return"] = float(b_viol)
+            b_res["stopped_because"] = f"solver failed at {int(mask.sum())} disks"
+            return b_res, b_model, rounds
         c = model.solution()["c"]
         hre, him = ops.h_re @ c, ops.h_im @ c
         mag2 = hre ** 2 + him ** 2
@@ -170,14 +181,23 @@ def solve_generated(spec: ModelSpec, direction, extra=None, ctx=None,
         rounds.append({"n_disks": int(mask.sum()), "status": res["status"],
                        "objective": res["objective"], "n_violated": int(bad.sum()),
                        "max_violation": float(viol.max())})
+        best = (res, model, bad.sum(), viol.max())
         if not bad.any():
             res["certified"] = True
             res["generation_rounds"] = len(rounds)
             res["n_disks_imposed"] = int(mask.sum())
             return res, model, rounds
-        mask |= bad
+        # add only the worst violators, so the cone count grows gently; adding
+        # every violated disk at once has been observed to destabilise the solve
+        new = np.flatnonzero(bad & ~mask)
+        if new.size > add_per_round:
+            new = new[np.argsort(viol[new])[::-1][:add_per_round]]
+        if new.size == 0:
+            break
+        mask[new] = True
     res["certified"] = False
     res["generation_rounds"] = len(rounds)
+    res["n_disks_imposed"] = int(mask.sum())
     return res, model, rounds
 
 

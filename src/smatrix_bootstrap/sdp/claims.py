@@ -43,10 +43,17 @@ def c1(records) -> dict:
     if len(pure) < 24:
         return {"verdict": "not run",
                 "evidence": f"{len(pure)}/24 verified-feasible directions"}
+    Ms = sorted({r["spec"]["M"] for r in pure})
+    Ls = sorted({r["spec"]["L"] for r in pure})
     t = c1_table(pure)
-    return {"verdict": _verdict(t["pass"]), "rows": t["rows"],
+    note = ""
+    if Ms != [50] or Ls != [10]:
+        note = (f"  NOTE: run at M={Ms}, L={Ls}, not the paper's M=50, L=10; the "
+                f"digitised Fig. 3 is at M=50 so the comparison carries a "
+                f"resolution offset -- see the resolution ladder.")
+    return {"verdict": _verdict(t["pass"]), "rows": t["rows"], "M": Ms, "L": Ls,
             "evidence": "; ".join(f"{r['quantity']} {r['ours']:.4f} vs {r['paper']:.4f} "
-                                  f"({r['rel_diff']*100:+.2f}%)" for r in t["rows"])}
+                                  f"({r['rel_diff']*100:+.2f}%)" for r in t["rows"]) + note}
 
 
 def _chiral_sets(records):
@@ -66,6 +73,7 @@ def c2(records) -> dict:
     pts = boundary_points(main)
     x_end = float(pts[:, 0].max())
     tgt = fig8_reference()["chiral_x_end"]
+    Ms = sorted({r["spec"]["M"] for r in main})
     rows = [{"quantity": "+x end at eps=2e-3", "ours": x_end, "paper": tgt,
              "rel_diff": x_end / tgt - 1.0, "pass": abs(x_end / tgt - 1) <= 0.05}]
     ends = {}
@@ -79,8 +87,9 @@ def c2(records) -> dict:
         rows.append({"quantity": "+x end monotone in eps", "ours": e, "paper": "decreasing",
                      "rel_diff": None, "pass": mono})
     return {"verdict": _verdict(all(r["pass"] for r in rows) if mono is not None else None),
-            "rows": rows, "eps_ends": ends,
-            "evidence": f"+x end {x_end:.5f} vs 0.0826; eps ladder {ends}"}
+            "rows": rows, "eps_ends": ends, "M": Ms,
+            "evidence": f"+x end {x_end:.6f} vs {tgt:.6f} ({100*(x_end/tgt-1):+.2f}%) at M={Ms}; "
+                        f"eps ladder { {k: round(v, 6) for k, v in ends.items()} }"}
 
 
 def c3(by_eps: dict) -> dict:
