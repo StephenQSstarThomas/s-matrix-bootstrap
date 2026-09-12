@@ -234,9 +234,20 @@ def c4(points: dict) -> dict:
         rows.append({"point": name, "delta00_0.9GeV": d00, "delta11_1.2GeV": d11,
                      "pass": (d00 is not None and 85 <= d00 <= 110
                               and d11 is not None and d11 <= 25)})
-    return {"verdict": _verdict(any(r["pass"] for r in rows)), "rows": rows,
-            "evidence": "; ".join(f"{r['point']}: d00(0.9)={r['delta00_0.9GeV']}, "
-                                  f"d11(1.2)={r['delta11_1.2GeV']}" for r in rows)}
+    # The paper's Fig. 7 is the magenta point "closest to the black dot", which
+    # is the `ref` point of task section 2 (max f11 on the f00 = x_ref section)
+    # and pairs with the digitised light_pink marker.  The others are reported
+    # but do not decide the claim.
+    decisive = [r for r in rows if r["point"] == "ref"]
+    return {"verdict": _verdict(decisive[0]["pass"] if decisive else None),
+            "rows": rows, "decisive_point": "ref",
+            "evidence": "; ".join("%s: d00(0.9)=%s, d11(1.2)=%s"
+                                  % (r["point"],
+                                     None if r["delta00_0.9GeV"] is None
+                                     else round(r["delta00_0.9GeV"], 1),
+                                     None if r["delta11_1.2GeV"] is None
+                                     else round(r["delta11_1.2GeV"], 1))
+                                  for r in rows)}
 
 
 def c7(points: dict) -> dict:
@@ -253,9 +264,16 @@ def c7(points: dict) -> dict:
                      "rms00_deg": cmp00.get("rms_deg"), "rms20_deg": cmp20.get("rms_deg"),
                      "pass": (d00 is not None and 85 <= d00 <= 110
                               and d20 is not None and -40 <= d20 <= -15)})
-    return {"verdict": _verdict(any(r["pass"] for r in rows)), "rows": rows,
-            "evidence": "; ".join(f"{r['point']}: d00={r['delta00_1.196']}, "
-                                  f"d20={r['delta20_1.196']}" for r in rows)}
+    # C7 is a statement about all three representative points at once
+    return {"verdict": _verdict(all(r["pass"] for r in rows) if len(rows) == 3 else None),
+            "rows": rows,
+            "evidence": "; ".join("%s: d00=%s, d20=%s"
+                                  % (r["point"],
+                                     None if r["delta00_1.196"] is None
+                                     else round(r["delta00_1.196"], 1),
+                                     None if r["delta20_1.196"] is None
+                                     else round(r["delta20_1.196"], 1))
+                                  for r in rows)}
 
 
 def c8(by_ml: dict) -> dict:
