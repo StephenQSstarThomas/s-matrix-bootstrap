@@ -52,7 +52,8 @@ class ModelSpec:
     sr_caliber: str = "SR-b"            # SR-a | SR-b | SR-c
     eps_ff: float = C.EPS_FF
     m_q: float = M_Q
-    B: float | None = None              # ell-4 bound on (rho1, rho2); None = absent
+    B: float | None = None              # bound on (rho1, rho2); None = absent
+    B_norm: str = "l2"                  # l2 (stronger, cheap) | l4 (pre-registered)
     cone_scaling: str = "none"          # none | centrifugal | rownorm (all exact)
     sparsify: float = 0.0               # zero entries below this fraction of their row scale
     reduce_basis: bool = True           # exact projection onto span(all rows)
@@ -224,7 +225,17 @@ class Model:
         # ---- density regularisation (only if requested)
         if spec.B is not None:
             rho_block = cp.hstack([self.a[self.ops.lay.r1], self.a[self.ops.lay.r2]])
-            cons.append(cp.pnorm(rho_block, 4) <= spec.B)
+            if spec.B_norm == "l4":
+                cons.append(cp.pnorm(rho_block, 4) <= spec.B)
+            elif spec.B_norm == "l2":
+                # ||rho||_4 <= ||rho||_2, so an ell-2 ball of the same radius is
+                # strictly STRONGER than the pre-registered ell-4 bound: if it
+                # comes out inactive, so is the ell-4 one, and the optimum is the
+                # unregularised one.  It costs one cone instead of the ~7500 that
+                # cvxpy's geometric-mean canonicalisation of pnorm(.,4) creates.
+                cons.append(cp.norm(rho_block, 2) <= spec.B)
+            else:
+                raise ValueError(spec.B_norm)
             self.rho_block = rho_block
 
         # ---- chiral symmetry breaking (3.64)

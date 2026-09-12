@@ -26,7 +26,7 @@ POINTS = ("tip", "ref", "mid")
 
 def _spec(a) -> ModelSpec:
     return ModelSpec(M=a.M, L=a.L, chiral=a.chiral, chi_caliber=a.chi, eps_chi=a.eps_chi,
-                     uv=a.uv, sr_caliber=a.sr, eps_ff=a.eps_ff, B=a.B,
+                     uv=a.uv, sr_caliber=a.sr, eps_ff=a.eps_ff, B=a.B, B_norm=a.B_norm,
                      cone_scaling=a.cone_scaling, sparsify=a.sparsify,
                      reduce_basis=a.reduce_basis, tag=a.tag)
 
@@ -36,14 +36,21 @@ def _jobs(a, x_tip: float | None):
     if a.points:
         x_ref, _ = C.chiral_reference_point()
         out = []
-        for p in a.points:
+        for p in sorted(a.points, key=lambda q: {"tip": 0, "ref": 1, "mid": 2}[q]):
             if p == "tip":
                 out.append(("tip", (1.0, 0.0), None))
+            elif p == "ref":
+                out.append(("ref", (0.0, 1.0), _fix_f00(lambda ctx: x_ref)))
             else:
-                if x_tip is None:
-                    raise SystemExit("--x-tip is required for the ref/mid points")
-                x = x_ref if p == "ref" else 0.5 * (x_tip + x_ref)
-                out.append((p, (0.0, 1.0), _fix_f00(x)))
+                # the mid section needs the tip of *this* feasible set; take it
+                # from the tip solve in this process, else from --x-tip
+                def _mid(ctx, _xt=x_tip, _xr=x_ref):
+                    xt = ctx["tip"]["f00_3"] if "tip" in ctx and ctx["tip"].get("f00_3") \
+                        is not None else _xt
+                    if xt is None:
+                        raise SystemExit("mid needs either a tip solve or --x-tip")
+                    return 0.5 * (xt + _xr)
+                out.append(("mid", (0.0, 1.0), _fix_f00(_mid)))
         return out
     dirs = sweep_directions(a.ndir, half=a.half)
     lo, hi = (a.slice or "0:%d" % len(dirs)).split(":")
@@ -51,9 +58,11 @@ def _jobs(a, x_tip: float | None):
     return [("dir%03d" % i, dirs[i], None) for i in sel]
 
 
-def _fix_f00(x: float):
-    def extra(model):
-        return [model.f00 == x]
+def _fix_f00(x):
+    """``x`` may be a number or a callable of the accumulated results."""
+    def extra(model, ctx):
+        v = x(ctx) if callable(x) else x
+        return [model.f00 == v]
     return extra
 
 
@@ -70,6 +79,7 @@ def main(argv=None) -> int:
     p.add_argument("--sr", default="SR-b", choices=["SR-a", "SR-b", "SR-c"])
     p.add_argument("--eps-ff", type=float, default=C.EPS_FF)
     p.add_argument("--B", type=float, default=None)
+    p.add_argument("--B-norm", default="l2", choices=["l2", "l4"])
     p.add_argument("--cone-scaling", default="rownorm",
                    choices=["none", "centrifugal", "rownorm"])
     p.add_argument("--sparsify", type=float, default=0.0)

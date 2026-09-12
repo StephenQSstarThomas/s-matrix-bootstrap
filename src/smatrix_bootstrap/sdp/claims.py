@@ -1,0 +1,168 @@
+"""Quantitative verdicts for the paper's claims C1-C8 (task section 3).
+
+Each function returns ``{"verdict": pass|fail|not run, "evidence": ...,
+"rows": [...]}``.  Thresholds come from the pre-registration and are never
+adjusted here; a claim with missing runs reports "not run", never a pass.
+"""
+from __future__ import annotations
+
+import numpy as np
+
+from . import constraints as C
+from .figures import boundary_points, c1_table, load_csv, phase_comparison
+
+PAIRING = {"tip": "red", "mid": "pink", "ref": "light_pink"}
+
+
+def _verdict(ok: bool | None) -> str:
+    return "not run" if ok is None else ("pass" if ok else "FAIL")
+
+
+def c1(records) -> dict:
+    pure = [r for r in records if not r["spec"]["chiral"] and not r["spec"]["uv"]
+            and r["result"].get("f00_3") is not None]
+    if len(pure) < 24:
+        return {"verdict": "not run", "evidence": f"{len(pure)}/24 directions"}
+    t = c1_table(pure)
+    return {"verdict": _verdict(t["pass"]), "rows": t["rows"],
+            "evidence": "; ".join(f"{r['quantity']} {r['ours']:.4f} vs {r['paper']:.4f} "
+                                  f"({r['rel_diff']*100:+.2f}%)" for r in t["rows"])}
+
+
+def _chiral_sets(records):
+    out = {}
+    for r in records:
+        s = r["spec"]
+        if s["chiral"] and not s["uv"] and r["result"].get("f00_3") is not None:
+            out.setdefault((s["eps_chi"], s["chi_caliber"]), []).append(r)
+    return out
+
+
+def c2(records) -> dict:
+    sets = _chiral_sets(records)
+    main = sets.get((C.EPS_CHI_MAIN, "chi-b"))
+    if not main:
+        return {"verdict": "not run", "evidence": "no eps=2e-3 chi-b sweep"}
+    pts = boundary_points(main)
+    x_end = float(pts[:, 0].max())
+    rows = [{"quantity": "+x end at eps=2e-3", "ours": x_end, "paper": 0.0826,
+             "rel_diff": x_end / 0.0826 - 1.0, "pass": abs(x_end / 0.0826 - 1) <= 0.05}]
+    ends = {}
+    for (eps, cal), rs in sorted(sets.items()):
+        if cal == "chi-b":
+            ends[eps] = float(boundary_points(rs)[:, 0].max())
+    mono = None
+    if len(ends) >= 3:
+        e = [ends[k] for k in sorted(ends, reverse=True)]
+        mono = all(e[i] >= e[i + 1] - 1e-12 for i in range(len(e) - 1))
+        rows.append({"quantity": "+x end monotone in eps", "ours": e, "paper": "decreasing",
+                     "rel_diff": None, "pass": mono})
+    return {"verdict": _verdict(all(r["pass"] for r in rows) if mono is not None else None),
+            "rows": rows, "eps_ends": ends,
+            "evidence": f"+x end {x_end:.5f} vs 0.0826; eps ladder {ends}"}
+
+
+def c5(records) -> dict:
+    """Upper boundary shrinks much more than the lower one on the x_ref section."""
+    x_ref, _ = C.chiral_reference_point()
+    chi = [r for r in records if r["spec"]["chiral"] and not r["spec"]["uv"]]
+    uv = [r for r in records if r["spec"]["chiral"] and r["spec"]["uv"]]
+    if not chi or not uv:
+        return {"verdict": "not run", "evidence": "need both chiral and chiral+UV sweeps"}
+    xe_chi = float(boundary_points(chi)[:, 0].max())
+    xe_uv = float(boundary_points(uv)[:, 0].max())
+    rows = [{"quantity": "UV +x end", "ours": xe_uv, "paper": 0.0811,
+             "rel_diff": xe_uv / 0.0811 - 1.0, "pass": abs(xe_uv / 0.0811 - 1) <= 0.05}]
+    return {"verdict": _verdict(all(r["pass"] for r in rows)), "rows": rows,
+            "evidence": f"chiral +x end {xe_chi:.5f} -> UV {xe_uv:.5f} (paper 0.0826 -> 0.0811)"}
+
+
+def c6(points: dict) -> dict:
+    """rho position at the three representative points (Fig. 9)."""
+    if not points:
+        return {"verdict": "not run", "evidence": "no representative points"}
+    rows, cross = [], {}
+    for name, obs in points.items():
+        p1 = obs.get("P1", {})
+        e = p1.get("crossing_90_GeV")
+        cross[name] = None if e is None else 1000.0 * e
+        rows.append({"point": name, "crossing_MeV": cross[name],
+                     "modulus_peak_MeV": None if p1.get("modulus_peak_GeV") is None
+                     else 1000 * p1["modulus_peak_GeV"],
+                     "min_eta": p1.get("min_eta_below_1p2GeV")})
+    have = [v for v in cross.values() if v is not None]
+    if len(have) < len(cross):
+        return {"verdict": "FAIL", "rows": rows,
+                "evidence": "some representative points have no 90-degree crossing"}
+    in_band = all(795.0 <= v <= 845.0 for v in have)
+    spread = max(have) - min(have)
+    eta_ok = all(r["min_eta"] is not None and r["min_eta"] >= 0.9 for r in rows)
+    return {"verdict": _verdict(in_band and spread <= 20.0 and eta_ok), "rows": rows,
+            "evidence": f"crossings {['%.0f' % v for v in have]} MeV, spread {spread:.0f} MeV, "
+                        f"band [795,845] {in_band}, min eta >= 0.9 {eta_ok}"}
+
+
+def c4(points: dict) -> dict:
+    """Chiral only: S0/S2 match experiment, P1 has no rho (Fig. 7)."""
+    if not points:
+        return {"verdict": "not run", "evidence": "no chiral-only representative point"}
+    rows = []
+    for name, obs in points.items():
+        d00 = _at(obs.get("S0"), 0.9)
+        d11 = _at(obs.get("P1"), 1.2)
+        rows.append({"point": name, "delta00_0.9GeV": d00, "delta11_1.2GeV": d11,
+                     "pass": (d00 is not None and 85 <= d00 <= 110
+                              and d11 is not None and d11 <= 25)})
+    return {"verdict": _verdict(any(r["pass"] for r in rows)), "rows": rows,
+            "evidence": "; ".join(f"{r['point']}: d00(0.9)={r['delta00_0.9GeV']}, "
+                                  f"d11(1.2)={r['delta11_1.2GeV']}" for r in rows)}
+
+
+def c7(points: dict) -> dict:
+    if not points:
+        return {"verdict": "not run", "evidence": "no representative points"}
+    rows = []
+    for name, obs in points.items():
+        d00, d20 = _at(obs.get("S0"), 1.196), _at(obs.get("S2"), 1.196)
+        cmp00 = phase_comparison(_series(obs["S0"]), "figure10_s0_phases.csv",
+                                 PAIRING.get(name)) if obs.get("S0") else {}
+        cmp20 = phase_comparison(_series(obs["S2"]), "figure10_s2_phases.csv",
+                                 PAIRING.get(name)) if obs.get("S2") else {}
+        rows.append({"point": name, "delta00_1.196": d00, "delta20_1.196": d20,
+                     "rms00_deg": cmp00.get("rms_deg"), "rms20_deg": cmp20.get("rms_deg"),
+                     "pass": (d00 is not None and 85 <= d00 <= 110
+                              and d20 is not None and -40 <= d20 <= -15)})
+    return {"verdict": _verdict(any(r["pass"] for r in rows)), "rows": rows,
+            "evidence": "; ".join(f"{r['point']}: d00={r['delta00_1.196']}, "
+                                  f"d20={r['delta20_1.196']}" for r in rows)}
+
+
+def c8(by_ml: dict) -> dict:
+    """M/L stability of the rho position (Fig. 11)."""
+    if len(by_ml) < 5:
+        return {"verdict": "not run", "evidence": f"{len(by_ml)}/5 (M,L) configurations"}
+    rho = {k: [1000 * p["P1"]["crossing_90_GeV"] for p in v.values()
+               if p.get("P1", {}).get("crossing_90_GeV")] for k, v in by_ml.items()}
+    fixedM = {k: v for k, v in rho.items() if k[0] == 50}
+    fixedL = {k: v for k, v in rho.items() if k[1] == 10}
+    allL = [x for v in fixedM.values() for x in v]
+    allM = [x for v in fixedL.values() for x in v]
+    spread_L = max(allL) - min(allL) if allL else None
+    spread_M = max(allM) - min(allM) if allM else None
+    ok = (spread_L is not None and spread_L <= 20.0
+          and spread_M is not None and 40.0 <= spread_M <= 70.0)
+    return {"verdict": _verdict(ok), "rho_MeV": rho,
+            "evidence": f"L spread {spread_L} MeV (<=20), M spread {spread_M} MeV (40-70)"}
+
+
+def _at(obs, e_gev):
+    if not obs:
+        return None
+    E = np.asarray(obs["E_GeV"])
+    if e_gev < E.min() or e_gev > E.max():
+        return None
+    return float(np.interp(e_gev, E, np.asarray(obs["delta_deg"])))
+
+
+def _series(obs):
+    return {"E_GeV": np.asarray(obs["E_GeV"]), "delta_deg": np.asarray(obs["delta_deg"])}

@@ -122,7 +122,14 @@ def full_report(model, sol: dict) -> dict:
            "c_norm_inf": float(np.abs(c).max()),
            "c_norm_1": float(np.abs(c).sum()),
            "rho_l4": float(np.sum(np.abs(np.concatenate(
-               [c[ops.lay.r1], c[ops.lay.r2]])) ** 4) ** 0.25)}
+               [c[ops.lay.r1], c[ops.lay.r2]])) ** 4) ** 0.25),
+           "rho_l2": float(np.linalg.norm(np.concatenate(
+               [c[ops.lay.r1], c[ops.lay.r2]])))}
+    if spec.B is not None:
+        out["B"] = spec.B
+        out["B_norm"] = spec.B_norm
+        out["B_active"] = bool(out["rho_l4" if spec.B_norm == "l4" else "rho_l2"]
+                               >= 0.9 * spec.B)
     if spec.chiral:
         out["chiral"] = chiral_report(ops, c, spec.chi_caliber, spec.eps_chi)
     if spec.uv and "ImF" in sol:

@@ -18,6 +18,7 @@ from dataclasses import asdict
 import numpy as np
 
 from . import constraints as C
+from .observables import resonance_report, subthreshold_curves
 from .problem import Model, ModelSpec
 from .verify import full_report
 
@@ -52,12 +53,24 @@ def provenance() -> dict:
 
 
 def run_job(spec: ModelSpec, jobs, outdir: str, solver: str = "CLARABEL", **kw) -> dict:
-    """``jobs``: list of ``(name, direction, extra_constraint_builder)``."""
+    """``jobs``: list of ``(name, direction, extra_constraint_builder)``.
+
+    ``extra`` is called as ``extra(model, ctx)`` where ``ctx`` accumulates the
+    results already obtained in this process, so the representative points can
+    chain: ``tip`` is solved first and ``ref``/``mid`` read ``ctx["tip"]`` for
+    the section they are constrained to.
+    """
     os.makedirs(outdir, exist_ok=True)
     model = Model(spec)
-    records = []
+    records, ctx = [], {}
+    built_with_extra = None      # None = never built
     for name, direction, extra in jobs:
-        model.finalize(extra(model) if extra else ())
+        # The objective direction is a cvxpy Parameter, so a pure direction
+        # sweep canonicalises once and only re-solves.  A job that adds an extra
+        # constraint has to rebuild, and so does the first plain job after one.
+        if extra is not None or built_with_extra is not False:
+            model.finalize(extra(model, ctx) if extra else ())
+            built_with_extra = extra is not None
         t0 = time.time()
         res = model.solve(direction, solver=solver, **kw)
         rec = {"job": name, "spec": asdict(spec), "result": res,
@@ -65,8 +78,12 @@ def run_job(spec: ModelSpec, jobs, outdir: str, solver: str = "CLARABEL", **kw) 
         sol = model.solution()
         if sol.get("c") is not None:
             rec["verification"] = full_report(model, sol)
+            rec["observables"] = resonance_report(model.ops, sol["c"])
+            rec["subthreshold"] = subthreshold_curves(
+                model.ops, sol["c"], np.linspace(0.05, 3.95, 40))
             np.savez_compressed(os.path.join(outdir, f"sol_{name}.npz"), **{
                 k: v for k, v in sol.items() if v is not None})
+        ctx[name] = res
         records.append(rec)
         _write(outdir, records)
     return {"records": records}
