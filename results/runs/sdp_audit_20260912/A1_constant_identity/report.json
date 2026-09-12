@@ -1,0 +1,76 @@
+{
+  "audit_item": "A1",
+  "provenance": {
+    "argv": [
+      "/home/shiqiu/s-matrix-bootstrap/src/smatrix_bootstrap/run.py",
+      "sdp",
+      "audit-a1",
+      "--out",
+      "results/runs/sdp_audit_20260912/A1_constant_identity"
+    ],
+    "git_rev": "332fa08565298c205bf88b1ffe93e05c47c04edd",
+    "python": "3.13.12",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "cvxpy": "1.9.2",
+    "clarabel": "0.11.1",
+    "host": "maxwell.cs.unc.edu",
+    "utc": "2026-09-12T15:01:54Z",
+    "code_sha256": {
+      "grid.py": "d4c1281d9f97d5e5",
+      "legendreq.py": "3c8ccf081ee64381",
+      "hilbert.py": "5637ea28816f45f4",
+      "projector.py": "ae610cd7211c7d67",
+      "formfactor.py": "a4af1ed723e8180c",
+      "constraints.py": "5b10b870839c9cb2",
+      "problem.py": "30c5c7b609c20ab9",
+      "verify.py": "1214ca1394033fb5",
+      "runner.py": "a5c2d3abd0ea580b",
+      "observables.py": "3977f1021249e59f"
+    }
+  },
+  "rows": [
+    {
+      "M": 20,
+      "constant_row_max_difference": 3.774758283725532e-15,
+      "stable_tan_max_difference": 2.6645352591003757e-15,
+      "sine_mode_max_error": 4.884981308350689e-15,
+      "oncut_matrix_max_difference": 3.9968028886505635e-15,
+      "exact_f00_supremum_difference": "0 (operator identity)"
+    },
+    {
+      "M": 30,
+      "constant_row_max_difference": 3.3306690738754696e-14,
+      "stable_tan_max_difference": 1.5987211554602254e-14,
+      "sine_mode_max_error": 2.042810365310288e-14,
+      "oncut_matrix_max_difference": 3.3306690738754696e-14,
+      "exact_f00_supremum_difference": "0 (operator identity)"
+    },
+    {
+      "M": 50,
+      "constant_row_max_difference": 1.0969003483296547e-13,
+      "stable_tan_max_difference": 3.552713678800501e-15,
+      "sine_mode_max_error": 1.6542323066914832e-14,
+      "oncut_matrix_max_difference": 1.0969003483296547e-13,
+      "exact_f00_supremum_difference": "0 (operator identity)"
+    },
+    {
+      "M": 100,
+      "constant_row_max_difference": 1.1146639167236572e-13,
+      "stable_tan_max_difference": 8.604228440844963e-15,
+      "sine_mode_max_error": 3.3084646133829665e-14,
+      "oncut_matrix_max_difference": 1.1146639167236572e-13,
+      "exact_f00_supremum_difference": "0 (operator identity)"
+    }
+  ],
+  "conclusion": "Exactly identical constants, including the Nyquist mode.",
+  "optimization_needed": false,
+  "scope": "Only a0 is replaced; all offcut/crossed rows remain unchanged.",
+  "asymptotic_order": "Identically zero for every M; no nonzero convergence order.",
+  "fourth_caliber_needed": false,
+  "audit_code_sha256": {
+    "audit.py": "49a40380d08b567876b848e3640cd17545538996c7eba39d485339a6122f1aa7",
+    "hilbert.py": "5637ea28816f45f4f5ea58f347f4f4173cc84a72953bda54675c930c3231d1ea",
+    "grid.py": "d4c1281d9f97d5e5087b8c4907eb04f0f350ff63c6f8070b9090bd8bdc47add6"
+  }
+}

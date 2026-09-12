@@ -86,6 +86,22 @@ def test_disk_series_reproduces_conjugate():
     assert np.abs(re_series - hilbert.hilbert_kernel(M) @ sig).max() < 1e-9
 
 
+def test_infinity_constant_includes_nyquist_and_equals_midpoint():
+    """A missing half weight at n=M changes G(-1) and the on-cut operator."""
+    for M in (3, 20, 30, 50, 100):
+        p = grid.phi_nodes(M)
+        n = np.arange(1, M + 1)
+        sine = np.sin(np.outer(p, n))
+        a0 = hilbert.infinity_constant_row(M)
+        # G(z)=(-1)^(n+1)+z^n vanishes at infinity z=-1.
+        np.testing.assert_allclose(a0 @ sine, (-1.) ** (n + 1), atol=2e-13)
+        np.testing.assert_allclose(a0, hilbert.cauchy_offcut_row(M, 0),
+                                   rtol=2e-12, atol=2e-14)
+        expected = (-1.) ** (n + 1) + np.cos(np.outer(p, n))
+        np.testing.assert_allclose(hilbert.cauchy_oncut_real(M, "infinity") @ sine,
+                                   expected, atol=3e-13)
+
+
 def test_cot_kernel_beats_punctured_midpoint_pv():
     """Both discretise the same principal value, but only the (3.67) kernel is
     spectrally accurate: the punctured midpoint rule decays merely like 1/M.

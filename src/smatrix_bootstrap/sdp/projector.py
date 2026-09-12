@@ -168,10 +168,11 @@ class PartialWaveOperator:
 
         and T_{33,33} = A(s,t,u) + A(t,s,u) + A(u,t,s) collapses to
         3 A(4/3,4/3,4/3) there.  The Weinberg amplitude (2.12) gives
-        lambda = m_pi^2 / (32 pi f_pi^2) = 0.023, and the largest value allowed
-        by analyticity, crossing and unitarity is quoted as 2.661 -- an
-        independently published number for exactly this setup, which is what we
-        use to validate the "assemble constraints + call the solver" chain.
+        lambda = m_pi^2 / (32 pi f_pi^2) = 0.023.  The quoted 2.661 is the
+        single-scalar benchmark of Paulos et al., not a proved attainable
+        maximum for the full O(3) problem.  The neutral S=(S0+2*S2)/3 lies in
+        the unit disk whenever both isospin amplitudes do; the converse need
+        not hold.  This gives an upper-bound comparison, not an equality gate.
 
         A(nu1,nu2,nu3) is bilinear in the densities, so the row is assembled
         from the same Cauchy weights used everywhere else.

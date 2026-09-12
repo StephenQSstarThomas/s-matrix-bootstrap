@@ -78,7 +78,7 @@ def _fix_f00(x):
 
 def main(argv=None) -> int:
     p = argparse.ArgumentParser("smatrix_bootstrap.sdp")
-    p.add_argument("command", choices=["selfcheck", "prereg", "solve", "figures"])
+    p.add_argument("command", choices=["selfcheck", "prereg", "solve", "figures", "audit-a1"])
     p.add_argument("--out", default=None)
     p.add_argument("--M", type=int, default=50)
     p.add_argument("--L", type=int, default=10)
@@ -112,6 +112,13 @@ def main(argv=None) -> int:
     p.add_argument("--arb-audit", action="store_true",
                    help="re-verify each solution in Arb ball arithmetic")
     a = p.parse_args(argv)
+
+    if a.command == "audit-a1":
+        if not a.out:
+            raise SystemExit("--out is required")
+        from .audit import constant_identity
+        print(json.dumps(constant_identity(a.out), indent=2))
+        return 0
 
     if a.command == "selfcheck":
         import subprocess

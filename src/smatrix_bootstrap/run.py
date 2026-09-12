@@ -1,4 +1,11 @@
 """Single finite-problem calculation entry and worker supervision."""
+import sys
+
+# Route SDP before importing the historical optimization implementation.
+if __name__ == '__main__' and sys.argv[1:2] == ['sdp']:
+    from .sdp.__main__ import main as sdp_main
+    raise SystemExit(sdp_main(sys.argv[2:]))
+
 from math import isfinite
 from pathlib import Path
 import argparse

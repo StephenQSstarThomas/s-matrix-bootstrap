@@ -81,13 +81,34 @@ def cauchy_offcut_row(M: int, nu: float) -> np.ndarray:
     return (w / (s - nu)) / M
 
 
-def cauchy_oncut_real(M: int) -> np.ndarray:
+def infinity_constant_row(M: int) -> np.ndarray:
+    """A1 alternative: enforce G(-1)=0 on the sine interpolant.
+
+    DST orthogonality gives a_n=2/M sum_j sigma_j sin(n phi_j) for n<M,
+    but a_M=1/M sum_j sigma_j sin(M phi_j).  Thus a0=-sum_n (-1)^n a_n.
+    At the staggered nodes the finite sine sum equals tan(phi_j/2)/M,
+    exactly the midpoint Cauchy weight at nu=0.  These are two evaluations
+    of one prescription, not distinct numerical models.
+    """
+    n = np.arange(1, M + 1)
+    inverse = (2.0 / M) * np.sin(np.outer(n, phi_nodes(M)))
+    inverse[-1] *= 0.5                 # Nyquist mode has twice the norm
+    return (-(-1.0) ** n) @ inverse
+
+
+def cauchy_oncut_real(M: int, constant: str = "midpoint") -> np.ndarray:
     """Matrix ``A`` with ``Re g(s_k + i0) = (A sigma)_k``.
 
     ``A = K + 1 c(0)^T``: the conjugate-function part (3.67) plus the constant
     ``G(0) = g(nu=0)`` evaluated with the same midpoint rule.
     """
-    return hilbert_kernel(M) + cauchy_offcut_row(M, 0.0)[None, :]
+    if constant == "midpoint":
+        a0 = cauchy_offcut_row(M, 0.0)
+    elif constant == "infinity":
+        a0 = infinity_constant_row(M)
+    else:
+        raise ValueError(f"Unknown constant evaluation: {constant}")
+    return hilbert_kernel(M) + a0[None, :]
 
 
 def cauchy_oncut_pv_midpoint(M: int) -> np.ndarray:
