@@ -109,6 +109,8 @@ def main(argv=None) -> int:
     p.add_argument("--generate", action="store_true",
                    help="constraint generation over the unitarity disks")
     p.add_argument("--start-tol", type=float, default=1e-6)
+    p.add_argument("--arb-audit", action="store_true",
+                   help="re-verify each solution in Arb ball arithmetic")
     a = p.parse_args(argv)
 
     if a.command == "selfcheck":
@@ -135,7 +137,8 @@ def main(argv=None) -> int:
         if a.generate:
             kw["start_tol"] = a.start_tol
         run_job(_spec(a), _jobs(a, a.x_tip), a.out, solver=a.solver,
-                objective=a.objective, generate=a.generate, **kw)
+                objective=a.objective, generate=a.generate,
+                arb_audit=a.arb_audit, **kw)
         print("wrote", os.path.join(a.out, "report.json"))
         return 0
 

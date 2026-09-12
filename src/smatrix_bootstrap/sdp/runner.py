@@ -53,7 +53,8 @@ def provenance() -> dict:
 
 
 def run_job(spec: ModelSpec, jobs, outdir: str, solver: str = "CLARABEL",
-            objective: str = "plane", generate: bool = False, **kw) -> dict:
+            objective: str = "plane", generate: bool = False,
+            arb_audit: bool = False, **kw) -> dict:
     """``jobs``: list of ``(name, direction, extra_constraint_builder)``.
 
     ``extra`` is called as ``extra(model, ctx)`` where ``ctx`` accumulates the
@@ -63,7 +64,7 @@ def run_job(spec: ModelSpec, jobs, outdir: str, solver: str = "CLARABEL",
     """
     os.makedirs(outdir, exist_ok=True)
     if generate:
-        return _run_generated(spec, jobs, outdir, solver, objective, **kw)
+        return _run_generated(spec, jobs, outdir, solver, objective, arb_audit, **kw)
     model = Model(spec)
     records, ctx = [], {}
     built_with_extra = None      # None = never built
@@ -99,7 +100,23 @@ def _write(outdir, records):
         json.dump(doc, fh, indent=1, default=float)
 
 
-def _run_generated(spec, jobs, outdir, solver, objective, **kw):
+def _arb(spec, sol) -> dict:
+    """Independent ball-arithmetic re-verification of one solution."""
+    from .arbaudit import ArbAudit
+    t0 = time.time()
+    try:
+        aa = ArbAudit(spec.M, spec.L, bits=384)
+        out = aa.audit(sol["c"], sol.get("ImF"), sol.get("rho_hat"),
+                       chi_caliber=spec.chi_caliber if spec.chiral else None,
+                       eps_chi=spec.eps_chi, sr_caliber=spec.sr_caliber,
+                       eps_ff=spec.eps_ff, m_q=spec.m_q)
+    except Exception as exc:
+        out = {"error": f"{exc!s:.200}"}
+    out["seconds"] = time.time() - t0
+    return out
+
+
+def _run_generated(spec, jobs, outdir, solver, objective, arb_audit=False, **kw):
     """One report.json per job, each solved by constraint generation."""
     records, ctx = [], {}
     for name, direction, extra in jobs:
@@ -123,6 +140,8 @@ def _run_generated(spec, jobs, outdir, solver, objective, **kw):
             rec["observables"] = resonance_report(model.ops, sol["c"])
             rec["subthreshold"] = subthreshold_curves(
                 model.ops, sol["c"], np.linspace(0.05, 3.95, 40))
+            if arb_audit:
+                rec["arb_audit"] = _arb(spec, sol)
             np.savez_compressed(os.path.join(outdir, f"sol_{name}.npz"),
                                 **{k: v for k, v in sol.items() if v is not None})
         ctx[name] = res
