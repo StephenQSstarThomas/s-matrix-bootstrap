@@ -185,3 +185,38 @@ def _plots(root: str, recs) -> None:
         fig.tight_layout()
         fig.savefig(os.path.join(fig_dir, "fig3_region.pdf"))
         plt.close(fig)
+
+    # ---- chiral region(s) against the digitised Fig. 8 boundaries
+    chi = [r for r in recs if r["spec"]["chiral"] and not r["spec"]["uv"]
+           and r["spec"]["chi_caliber"] == "chi-b"]
+    if chi:
+        by_eps = {}
+        for r in chi:
+            by_eps.setdefault(round(r["spec"]["eps_chi"], 10), []).append(r)
+        ref = load_csv("figure8_boundary.csv")
+        pts = load_csv("figure8_selected_points.csv")
+        fig, ax = plt.subplots(figsize=(7, 4.4))
+        m = ref["group"] == "chiral_only_green"
+        ax.plot(ref["f00_s3"][m], ref["f11_s3"][m], ".", ms=2.5, color="0.55",
+                label=r"digitised Fig. 8, chiral only ($\epsilon^\chi=2\times10^{-3}$)")
+        for k, (eps, rs) in enumerate(sorted(by_eps.items(), reverse=True)):
+            q = boundary_points(rs, want="dir")
+            if not len(q):
+                continue
+            o = np.argsort(np.arctan2(q[:, 1] - q[:, 1].mean(),
+                                      q[:, 0] - q[:, 0].mean()))
+            ax.plot(q[o, 0], q[o, 1], "o-", ms=3, lw=1, color=f"C{k}",
+                    label=r"this work, $\epsilon^\chi=%.0e$" % eps)
+        for g, mk in (("chiral_reference_black", "k*"), ("red", "r^"),
+                      ("pink", "v"), ("light_pink", "s")):
+            mm = pts["group"] == g
+            if mm.sum():
+                ax.plot(pts["f00_s3"][mm], pts["f11_s3"][mm], mk, ms=6,
+                        label=g.replace("_", " "))
+        ax.set_xlabel(r"$f^0_0(s=3)$")
+        ax.set_ylabel(r"$f^1_1(s=3)$")
+        ax.legend(frameon=False, fontsize=7)
+        ax.set_title("Chiral-constrained region", fontsize=10)
+        fig.tight_layout()
+        fig.savefig(os.path.join(fig_dir, "fig4_chiral_region.pdf"))
+        plt.close(fig)
