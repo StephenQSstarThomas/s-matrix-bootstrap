@@ -38,6 +38,7 @@ def _verdict(ok: bool | None) -> str:
 
 def c1(records) -> dict:
     pure = [r for r in records if not r["spec"]["chiral"] and not r["spec"]["uv"]
+            and r["job"].startswith("dir")
             and r["result"].get("f00_3") is not None
             and r.get("verification", {}).get("unitarity", {}).get("feasible", False)]
     if len(pure) < 24:
@@ -70,7 +71,10 @@ def c2(records) -> dict:
     main = sets.get((C.EPS_CHI_MAIN, "chi-b"))
     if not main:
         return {"verdict": "not run", "evidence": "no eps=2e-3 chi-b sweep"}
-    pts = boundary_points(main)
+    pts = boundary_points(main, want="dir")      # sweep directions only
+    if len(pts) == 0:
+        return {"verdict": "not run",
+                "evidence": "no verified-feasible eps=2e-3 chi-b sweep directions"}
     x_end = float(pts[:, 0].max())
     tgt = fig8_reference()["chiral_x_end"]
     Ms = sorted({r["spec"]["M"] for r in main})
@@ -78,8 +82,11 @@ def c2(records) -> dict:
              "rel_diff": x_end / tgt - 1.0, "pass": abs(x_end / tgt - 1) <= 0.05}]
     ends = {}
     for (eps, cal), rs in sorted(sets.items()):
-        if cal == "chi-b":
-            ends[eps] = float(boundary_points(rs)[:, 0].max())
+        if cal != "chi-b":
+            continue
+        q = boundary_points(rs, want="dir")
+        if len(q):
+            ends[eps] = float(q[:, 0].max())
     w = section_width(records, chiral=True, uv=False, eps=C.EPS_CHI_MAIN)
     if w:
         rows.append({"quantity": "x_ref section width", "ours": w["width"],
@@ -170,8 +177,12 @@ def c5(records) -> dict:
     if not chi or not uv:
         return {"verdict": "not run", "evidence": "need both chiral and chiral+UV sweeps"}
     ref = fig8_reference()
-    xe_chi = float(boundary_points(chi)[:, 0].max())
-    xe_uv = float(boundary_points(uv)[:, 0].max())
+    pc, pu = boundary_points(chi, want="dir"), boundary_points(uv, want="dir")
+    if len(pc) == 0 or len(pu) == 0:
+        return {"verdict": "not run",
+                "evidence": "need verified-feasible chiral and chiral+UV sweeps"}
+    xe_chi = float(pc[:, 0].max())
+    xe_uv = float(pu[:, 0].max())
     rows = [{"quantity": "UV +x end", "ours": xe_uv, "paper": ref["uv_x_end"],
              "rel_diff": xe_uv / ref["uv_x_end"] - 1.0,
              "pass": abs(xe_uv / ref["uv_x_end"] - 1) <= 0.05},
