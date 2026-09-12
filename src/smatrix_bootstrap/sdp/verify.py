@@ -31,8 +31,20 @@ def unitarity_report(ops, c: np.ndarray) -> dict:
     eta = np.sqrt(hre ** 2 + (him - 1.0) ** 2)
     scale = np.maximum(np.maximum(hre ** 2 + him ** 2, 2.0 * np.abs(him)), 1e-300)
     rel = margin / scale
+    # The discriminating metric: relative violation restricted to the disks that
+    # actually carry amplitude.  `max eta - 1` is blind here because the
+    # centrifugally suppressed disks have h ~ 0, hence eta == 1 exactly, and they
+    # dominate the maximum; `min margin` is blind for the mirror reason.
+    mag = np.sqrt(hre ** 2 + him ** 2)
+    active = mag > 1e-6
+    rel_v = ((mag ** 2 - 2.0 * him)[active] / np.maximum(mag[active] ** 2, 1e-300)
+             if active.any() else np.array([-1.0]))
     nw = len(ops.index)
-    return {"max_eta_minus_1": float(eta.max() - 1.0),
+    return {"max_relative_violation_active": float(rel_v.max()),
+            "n_active_disks": int(active.sum()),
+            "max_abs_h": float(mag.max()),
+            "feasible": bool(rel_v.max() <= 1e-6),
+            "max_eta_minus_1": float(eta.max() - 1.0),
             "max_eta_wave": _label(ops, int(np.argmax(eta)), nw),
             "n_rows_eta_above_1p1e_minus_8": int((eta > 1 + 1e-8).sum()),
             "min_margin": float(margin.min()),
@@ -58,7 +70,7 @@ def gram_report(ops, c, ImF, rho_hat) -> dict:
         kin = FFM.kinematic_factor(ell, ops.s)
         ReF = 1.0 + K @ ImF[ell]
         cF = kin * (ReF + 1j * ImF[ell])
-        rho = rho_hat[ell] * FFM.GRAM_SCALE[ell] ** 2
+        rho = rho_hat[ell] * FFM.gram_scale(ell, ops.s) ** 2
         hre, him = ops.gram_rows[ell][0] @ c, ops.gram_rows[ell][1] @ c
         S = (1.0 - him) + 1j * hre
         for i in range(M):
@@ -73,7 +85,7 @@ def fesr_report(ops, rho_hat, caliber: str) -> dict:
     tgt, tol = C.printed_targets(), C.sr_tolerances(caliber)
     rows = []
     for ell, wave in ((0, "S0"), (1, "P1")):
-        rho = rho_hat[ell] * FFM.GRAM_SCALE[ell] ** 2
+        rho = rho_hat[ell] * FFM.gram_scale(ell, ops.s) ** 2
         for n in C.MOMENTS[ell]:
             m = float(C.moment_row(M, n) @ rho)
             rows.append({"wave": wave, "n": n, "moment": m, "target": tgt[(wave, n)],

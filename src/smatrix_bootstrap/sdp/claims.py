@@ -20,9 +20,11 @@ def _verdict(ok: bool | None) -> str:
 
 def c1(records) -> dict:
     pure = [r for r in records if not r["spec"]["chiral"] and not r["spec"]["uv"]
-            and r["result"].get("f00_3") is not None]
+            and r["result"].get("f00_3") is not None
+            and r.get("verification", {}).get("unitarity", {}).get("feasible", False)]
     if len(pure) < 24:
-        return {"verdict": "not run", "evidence": f"{len(pure)}/24 directions"}
+        return {"verdict": "not run",
+                "evidence": f"{len(pure)}/24 verified-feasible directions"}
     t = c1_table(pure)
     return {"verdict": _verdict(t["pass"]), "rows": t["rows"],
             "evidence": "; ".join(f"{r['quantity']} {r['ours']:.4f} vs {r['paper']:.4f} "
@@ -60,6 +62,51 @@ def c2(records) -> dict:
     return {"verdict": _verdict(all(r["pass"] for r in rows) if mono is not None else None),
             "rows": rows, "eps_ends": ends,
             "evidence": f"+x end {x_end:.5f} vs 0.0826; eps ladder {ends}"}
+
+
+def c3(by_eps: dict) -> dict:
+    """Subthreshold partial waves and the S0 chiral zero (Fig. 5).
+
+    ``by_eps``: {eps: record["subthreshold"]} for the chiral-only representative
+    point at that tolerance.  The paper's colours map to
+    eps = 2e-3 (green) / 4e-3 (orange) / 6e-3 (blue); the acceptance is a
+    pointwise rms below 8% of f00(3), plus the S0 zero at ~0.425 / ~0.305 / none.
+    """
+    if not by_eps:
+        return {"verdict": "not run", "evidence": "no chiral-only subthreshold curves"}
+    ref = load_csv("figure5_subthreshold.csv")
+    expect_zero = {0.002: 0.425, 0.004: 0.305, 0.006: None}
+    rows = []
+    for eps, cur in sorted(by_eps.items()):
+        s_ours = np.asarray(cur["s"])
+        scale = abs(float(np.interp(3.0, s_ours, np.asarray(cur["S0"]))))
+        for wave in ("S0", "S2", "P1"):
+            m = (ref["epsilon"] == eps) & (ref["wave"] == wave)
+            if m.sum() == 0:
+                continue
+            xs, ys = ref["s"][m], ref["f"][m]
+            o = np.argsort(xs)
+            pred = np.interp(xs[o], s_ours, np.asarray(cur[wave]))
+            d = pred - ys[o]
+            rms = float(np.sqrt((d ** 2).mean()))
+            rows.append({"eps": eps, "wave": wave, "rms": rms,
+                         "rms_over_f00_3": rms / max(scale, 1e-12),
+                         "pass": rms <= 0.08 * max(scale, 1e-12)})
+        z = _first_zero(s_ours, np.asarray(cur["S0"]))
+        tgt = expect_zero.get(eps, "n/a")
+        ok = (z is None) if tgt is None else (z is not None and abs(z - tgt) <= 0.15)
+        rows.append({"eps": eps, "wave": "S0 zero", "ours": z, "paper": tgt, "pass": ok})
+    return {"verdict": _verdict(all(r["pass"] for r in rows)), "rows": rows,
+            "evidence": "; ".join(f"eps={r['eps']}: S0 zero {r.get('ours')}"
+                                  for r in rows if r["wave"] == "S0 zero")}
+
+
+def _first_zero(s, f):
+    for i in range(len(s) - 1):
+        if f[i] * f[i + 1] < 0:
+            t = -f[i] / (f[i + 1] - f[i])
+            return float(s[i] + t * (s[i + 1] - s[i]))
+    return None
 
 
 def c5(records) -> dict:

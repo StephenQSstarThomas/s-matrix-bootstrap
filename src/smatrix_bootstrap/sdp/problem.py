@@ -49,6 +49,7 @@ class ModelSpec:
     chi_caliber: str = "chi-b"          # chi-a | chi-b | chi-c
     eps_chi: float = C.EPS_CHI_MAIN
     uv: bool = False                    # Gram + FESR + form-factor asymptotics
+    uv_parts: tuple = ("gram", "fesr", "ff")   # for diagnosing infeasibility
     sr_caliber: str = "SR-b"            # SR-a | SR-b | SR-c
     eps_ff: float = C.EPS_FF
     m_q: float = M_Q
@@ -56,7 +57,7 @@ class ModelSpec:
     B_norm: str = "l2"                  # l2 (stronger, cheap) | l4 (pre-registered)
     cone_scaling: str = "none"          # none | centrifugal | rownorm (all exact)
     sparsify: float = 0.0               # zero entries below this fraction of their row scale
-    reduce_basis: bool = True           # exact projection onto span(all rows)
+    reduce_basis: bool = False          # exact projection onto span(all rows)
     basis_tol: float = 1e-12
     tag: str = ""
 
@@ -197,7 +198,7 @@ class Model:
         self.ops = Operators(spec.M, spec.L)
         self.ops.set_cone_scaling(spec.cone_scaling, spec.sparsify)
         M = spec.M
-        if spec.reduce_basis and spec.B is None:
+        if spec.reduce_basis:
             V = self.ops.build_basis(spec.basis_tol)
             self.a = cp.Variable(V.shape[1], name="a")
             self.c = V @ self.a
@@ -217,14 +218,32 @@ class Model:
         cons = []
 
         # ---- unitarity: ||(p_re, p_im)||^2 <= 2 r,  i.e. ||(2p,2r-1)|| <= 2r+1
-        p_re = P_re @ self.a
-        p_im = P_im @ self.a
-        r = R_im @ self.a
+        #
+        # The 2x2 block of the Gram matrix (3.68) is [[1,S],[S*,1]] >= 0, which
+        # is |S| <= 1 -- the same constraint.  Imposing both for S0 and P1 leaves
+        # the interior-point method with an exactly redundant pair at every node
+        # of those two waves, so when the Gram blocks are on we drop the S0/P1
+        # rows from the cone list rather than state the constraint twice.
+        keep = np.ones(len(self.ops.index) * M, dtype=bool)
+        if spec.uv and "gram" in spec.uv_parts:
+            for ell, I in ((0, 0), (1, 1)):
+                a0 = self.ops.index.index((I, ell))
+                keep[a0 * M:(a0 + 1) * M] = False
+        self.n_unitarity_cones = int(keep.sum())
+        p_re = P_re[keep] @ self.a
+        p_im = P_im[keep] @ self.a
+        r = R_im[keep] @ self.a
         cons.append(cp.SOC(2 * r + 1, cp.vstack([2 * p_re, 2 * p_im, 2 * r - 1]), axis=0))
 
         # ---- density regularisation (only if requested)
         if spec.B is not None:
-            rho_block = cp.hstack([self.a[self.ops.lay.r1], self.a[self.ops.lay.r2]])
+            # rho is a linear function of the decision variable in either
+            # parametrisation: c = V a in the reduced one, c = a in the full one.
+            if self.basis is not None:
+                Vr = np.vstack([self.basis[self.ops.lay.r1], self.basis[self.ops.lay.r2]])
+                rho_block = Vr @ self.a
+            else:
+                rho_block = cp.hstack([self.a[self.ops.lay.r1], self.a[self.ops.lay.r2]])
             if spec.B_norm == "l4":
                 cons.append(cp.pnorm(rho_block, 4) <= spec.B)
             elif spec.B_norm == "l2":
@@ -261,27 +280,29 @@ class Model:
             tgt = C.printed_targets()
             tol = C.sr_tolerances(spec.sr_caliber)
             for ell in (0, 1):
-                g = FFM.GRAM_SCALE[ell]
+                g = FFM.gram_scale(ell, self.ops.s)   # per-node congruence
                 kin = FFM.kinematic_factor(ell, self.ops.s)
                 ReF = 1.0 + K @ self.ImF[ell]
-                cF_re = cp.multiply(kin / g, ReF)              # congruence: /g
+                cF_re = cp.multiply(kin / g, ReF)
                 cF_im = cp.multiply(kin / g, self.ImF[ell])
                 S_re = 1.0 - gram[ell][1] @ self.a
                 S_im = gram[ell][0] @ self.a
                 rh = self.rho_hat[ell]
-                for i in range(M):
-                    cons.append(_gram_psd(S_re[i], S_im[i], cF_re[i], cF_im[i], rh[i]))
+                if "gram" in spec.uv_parts:
+                    for i in range(M):
+                        cons.append(_gram_psd(S_re[i], S_im[i], cF_re[i], cF_im[i], rh[i]))
                 # FESR (3.73): moments of the unrescaled rho = g^2 rho_hat
                 wave = "S0" if ell == 0 else "P1"
-                for n in C.MOMENTS[ell]:
-                    mom = (C.moment_row(M, n) * g ** 2) @ rh
-                    cons += [mom - tgt[(wave, n)] <= tol[(wave, n)],
-                             tgt[(wave, n)] - mom <= tol[(wave, n)]]
+                if "fesr" in spec.uv_parts:
+                    for n in C.MOMENTS[ell]:
+                        mom = (C.moment_row(M, n) * g ** 2) @ rh
+                        cons += [mom - tgt[(wave, n)] <= tol[(wave, n)],
+                                 tgt[(wave, n)] - mom <= tol[(wave, n)]]
                 # (3.75) on the nodes above s0
-                bnd = ffb[ell] / g
-                for i in idx_hi:
-                    cons.append(cp.SOC(cp.Constant(bnd),
-                                       cp.hstack([cF_re[i], cF_im[i]])))
+                if "ff" in spec.uv_parts:
+                    for i in idx_hi:
+                        cons.append(cp.SOC(cp.Constant(ffb[ell] / g[i]),
+                                           cp.hstack([cF_re[i], cF_im[i]])))
         self.constraints = cons
         self.direction = cp.Parameter(2, name="d")
         self.f00 = f00r @ self.a

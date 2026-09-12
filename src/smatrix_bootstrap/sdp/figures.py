@@ -51,7 +51,15 @@ def load_reports(root: str) -> list[dict]:
     return out
 
 
-def boundary_points(records, want=None) -> np.ndarray:
+def boundary_points(records, want=None, verified_only: bool = True) -> np.ndarray:
+    """Points in the projection plane.
+
+    Only points that pass the a posteriori feasibility check on the unmodified
+    operators are kept by default: the solver's own "optimal" status is not
+    trusted on this problem (see the report), so a returned point counts as
+    evidence only if it is verifiably inside the allowed region -- which makes
+    every number an inner bound on the support function.
+    """
     pts = []
     for r in records:
         if want and not r["job"].startswith(want):
@@ -59,8 +67,27 @@ def boundary_points(records, want=None) -> np.ndarray:
         res = r.get("result", {})
         if res.get("f00_3") is None:
             continue
+        if verified_only:
+            u = r.get("verification", {}).get("unitarity", {})
+            if not u.get("feasible", False):
+                continue
         pts.append((res["f00_3"], res["f11_3"]))
     return np.array(pts) if pts else np.zeros((0, 2))
+
+
+def best_support(records) -> dict:
+    """Best verified-feasible objective per direction, over all configurations."""
+    out = {}
+    for r in records:
+        res = r.get("result", {})
+        u = r.get("verification", {}).get("unitarity", {})
+        if res.get("objective") is None or not u.get("feasible", False):
+            continue
+        d = tuple(np.round(res.get("direction", [np.nan, np.nan]), 9))
+        if d not in out or res["objective"] > out[d]["objective"]:
+            out[d] = {"objective": res["objective"], "f00_3": res["f00_3"],
+                      "f11_3": res["f11_3"], "file": r.get("_file"), "job": r["job"]}
+    return out
 
 
 def support_values(records) -> dict:

@@ -52,7 +52,8 @@ def provenance() -> dict:
             "code_sha256": code_hash()}
 
 
-def run_job(spec: ModelSpec, jobs, outdir: str, solver: str = "CLARABEL", **kw) -> dict:
+def run_job(spec: ModelSpec, jobs, outdir: str, solver: str = "CLARABEL",
+            objective: str = "plane", **kw) -> dict:
     """``jobs``: list of ``(name, direction, extra_constraint_builder)``.
 
     ``extra`` is called as ``extra(model, ctx)`` where ``ctx`` accumulates the
@@ -69,7 +70,7 @@ def run_job(spec: ModelSpec, jobs, outdir: str, solver: str = "CLARABEL", **kw) 
         # sweep canonicalises once and only re-solves.  A job that adds an extra
         # constraint has to rebuild, and so does the first plain job after one.
         if extra is not None or built_with_extra is not False:
-            model.finalize(extra(model, ctx) if extra else ())
+            model.finalize(extra(model, ctx) if extra else (), objective=objective)
             built_with_extra = extra is not None
         t0 = time.time()
         res = model.solve(direction, solver=solver, **kw)

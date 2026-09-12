@@ -171,13 +171,14 @@ class ArbAudit:
         idx_hi, bnd = C.ff_asymptotic_bounds(M, m_q, eps_ff)
         tgt, tol = C.printed_targets(), C.sr_tolerances(sr_caliber)
         for ell in (0, 1):
-            g = FFM.GRAM_SCALE[ell]
             ImFa = [arb(float(t)) for t in ImF[ell]]
             ReFa = [1 + sum((self.K[i][j] * ImFa[j] for j in range(M)), arb(0))
                     for i in range(M)]
             kin = FFM.kinematic_factor(ell, np.array([float(x.str(30, radius=False))
                                                       for x in self.x]))
-            rho = [arb(float(rho_hat[ell][i])) * arb(g) ** 2 for i in range(M)]
+            # per-node congruence g_i = k_ell(s_i), so rho = k^2 rho_hat
+            rho = [arb(float(rho_hat[ell][i])) * arb(float(kin[i])) ** 2
+                   for i in range(M)]
             for i in range(M):
                 cF = acb(arb(float(kin[i])) * ReFa[i], arb(float(kin[i])) * ImFa[i])
                 S = S_store[(ell, i)]

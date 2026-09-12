@@ -28,13 +28,23 @@ import numpy as np
 
 from .hilbert import hilbert_kernel
 
-# Congruence scales used only for conditioning: the (3,3) entry of the Gram
-# matrix is ~1e-5..1e-3 in paper units, so a diagonal congruence
-# V = diag(1, 1, 1/g) is applied, i.e. cF -> cF/g and rho -> rho/g^2.  Congruence
-# by an invertible matrix preserves positive semidefiniteness exactly, so the
-# feasible set is unchanged.  The values below are the square roots of the mean
-# spectral density implied by the FESR targets over [4, s0].
-GRAM_SCALE = {0: 6.0e-3, 1: 4.6e-2}
+def gram_scale(ell, s):
+    """Per-node congruence scale for (3.68):  V_i = diag(1, 1, 1/g_i).
+
+    Congruence by an invertible matrix preserves positive semidefiniteness
+    exactly, so the feasible set is untouched; only the conditioning changes.
+    Taking ``g_i = k_ell(s_i)``, the (2.33) kinematic factor itself, turns the
+    block into
+
+        [[1, S, F], [S*, 1, F*], [F*, F, rho / k^2]]
+
+    i.e. the (1,3) entry is the *form factor* rather than the rescaled current.
+    F is O(1) at low s and decays at high s, whereas cF_1 = k_1 F_1 grows like
+    sqrt(s) and spans four decades across the grid -- which is what makes a
+    single constant scale fail.  (The repository's historical
+    ``model.current_gram(S, F, rho, k_squared)`` uses the same form.)
+    """
+    return kinematic_factor(ell, s)
 
 
 def kinematic_factor(ell: int, s: np.ndarray) -> np.ndarray:
