@@ -195,3 +195,37 @@ def test_lambda_row_is_crossing_symmetric_by_construction():
     op, lay = PartialWaveOperator(M), Layout(M)
     row = op.lambda_row()
     assert np.allclose(row[lay.s2], 2.0 * row[lay.s1])
+
+
+# --------------------------------------------------------------- Arb audit
+def test_arb_det3_matches_numpy():
+    """arbaudit._det3 is the determinant of the Hermitian (3.68) block."""
+    from flint import acb, arb, ctx
+
+    from smatrix_bootstrap.sdp.arbaudit import _det3
+    ctx.prec = 256
+    rng = np.random.default_rng(5)
+    worst = 0.0
+    for _ in range(200):
+        S = complex(rng.normal(), rng.normal()) * 0.6
+        F = complex(rng.normal(), rng.normal()) * 0.5
+        rho = float(rng.uniform(0.0, 2.0))
+        ref = np.linalg.det(FF.gram_block(S, F, rho)).real
+        got = float(_det3(acb(S.real, S.imag), acb(F.real, F.imag),
+                          arb(rho)).str(25, radius=False))
+        worst = max(worst, abs(got - ref) / max(abs(ref), 1e-12))
+    assert worst < 1e-10
+
+
+def test_arb_legendre_q_matches_the_float_implementation():
+    """The Arb Q_ell used by the audit agrees with the float64 one."""
+    from flint import arb, ctx
+
+    from smatrix_bootstrap.sdp.arbaudit import _legendre_q
+    from smatrix_bootstrap.sdp.legendreq import q_table
+    ctx.prec = 384
+    for z in (1.5, 3.0, 40.0, 1e4, -2.5, -700.0):
+        col = q_table(np.array([z]), 12)[:, 0]
+        for ell in (0, 1, 2, 5, 9, 12):
+            got = float(_legendre_q(ell, arb(z)).str(25, radius=False))
+            assert abs(got - col[ell]) <= 1e-11 * max(abs(col[ell]), 1e-300)

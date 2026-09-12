@@ -214,12 +214,20 @@ class ArbAudit:
 
 
 def _det3(S: acb, F: acb, rho: arb) -> arb:
-    """det of [[1,S,F],[S*,1,F*],[F*,F,rho]] (real for a Hermitian matrix)."""
-    a = rho - (F * F.conjugate()).real
-    b = S * rho - F * F
-    cc = S * F.conjugate() - F.conjugate()
-    det = a - (S.conjugate() * b).real + (F.conjugate() * cc).real
-    return det.real if hasattr(det, "real") else det
+    """det of [[1,S,F],[S*,1,F*],[F*,F,rho]] (real, the matrix is Hermitian).
+
+    Cofactor expansion along the first row,
+
+        det = (rho - |F|^2) - S (S* rho - (F*)^2) + F (S* F - F*),
+
+    collapses to the closed form used here:
+
+        det = rho (1 - |S|^2) - 2 |F|^2 + 2 Re(S (F*)^2).
+    """
+    mod_S2 = (S * S.conjugate()).real
+    mod_F2 = (F * F.conjugate()).real
+    cross = (S * F.conjugate() * F.conjugate()).real
+    return rho * (1 - mod_S2) - 2 * mod_F2 + 2 * cross
 
 
 def _chiral_rows_float(self):
