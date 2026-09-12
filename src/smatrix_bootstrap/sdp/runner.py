@@ -104,8 +104,16 @@ def _run_generated(spec, jobs, outdir, solver, objective, **kw):
     records, ctx = [], {}
     for name, direction, extra in jobs:
         t0 = time.time()
-        res, model, rounds = solve_generated(spec, direction, extra=extra, ctx=ctx,
-                                             objective=objective, solver=solver, **kw)
+        try:
+            res, model, rounds = solve_generated(spec, direction, extra=extra, ctx=ctx,
+                                                 objective=objective, solver=solver, **kw)
+        except Exception as exc:            # a chained job whose predecessor failed
+            records.append({"job": name, "spec": asdict(spec),
+                            "result": {"status": "Skipped", "message": str(exc)},
+                            "wall_seconds": time.time() - t0})
+            records[-1]["spec"].pop("disk_mask", None)
+            _write(outdir, records)
+            continue
         rec = {"job": name, "spec": asdict(spec), "result": res,
                "generation": rounds, "wall_seconds": time.time() - t0}
         rec["spec"].pop("disk_mask", None)

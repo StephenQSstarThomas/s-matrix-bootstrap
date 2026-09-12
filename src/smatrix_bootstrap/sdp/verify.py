@@ -95,14 +95,14 @@ def fesr_report(ops, rho_hat, caliber: str) -> dict:
             "max_violation": max(r["violation"] for r in rows)}
 
 
-def ff_report(ops, ImF, m_q, eps_ff) -> dict:
+def ff_report(ops, ImF, m_q, eps_ff, frozen_at_s0=True) -> dict:
     M = ops.M
     K = FFM.hilbert_kernel(M)
-    idx, bnd = C.ff_asymptotic_bounds(M, m_q, eps_ff)
+    idx, bnd, kuse = C.ff_asymptotic_bounds(M, m_q, eps_ff, frozen_at_s0)
     worst, where = 0.0, None
     for ell in (0, 1):
-        kin = FFM.kinematic_factor(ell, ops.s)
-        cF = kin * ((1.0 + K @ ImF[ell]) + 1j * ImF[ell])
+        F = (1.0 + K @ ImF[ell]) + 1j * ImF[ell]
+        cF = {i: kuse[ell][n] * F[i] for n, i in enumerate(idx)}
         for i in idx:
             v = abs(cF[i]) - bnd[ell]
             if v > worst:
@@ -147,5 +147,6 @@ def full_report(model, sol: dict) -> dict:
     if spec.uv and "ImF" in sol:
         out["gram"] = gram_report(ops, c, sol["ImF"], sol["rho_hat"])
         out["fesr"] = fesr_report(ops, sol["rho_hat"], spec.sr_caliber)
-        out["form_factor"] = ff_report(ops, sol["ImF"], spec.m_q, spec.eps_ff)
+        out["form_factor"] = ff_report(ops, sol["ImF"], spec.m_q, spec.eps_ff,
+                                       spec.ff_frozen_at_s0)
     return out

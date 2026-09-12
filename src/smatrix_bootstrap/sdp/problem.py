@@ -52,6 +52,7 @@ class ModelSpec:
     uv_parts: tuple = ("gram", "fesr", "ff")   # for diagnosing infeasibility
     sr_caliber: str = "SR-b"            # SR-a | SR-b | SR-c
     eps_ff: float = C.EPS_FF
+    ff_frozen_at_s0: bool = True        # (3.75) factor taken at s0, per the paper text
     m_q: float = M_Q
     B: float | None = None              # bound on (rho1, rho2); None = absent
     B_norm: str = "l2"                  # l2 (stronger, cheap) | l4 (pre-registered)
@@ -278,7 +279,8 @@ class Model:
             K = FFM.hilbert_kernel(M)
             self.ImF = cp.Variable((2, M), name="ImF")
             self.rho_hat = cp.Variable((2, M), name="rho_hat", nonneg=True)
-            idx_hi, ffb = C.ff_asymptotic_bounds(M, spec.m_q, spec.eps_ff)
+            idx_hi, ffb, ffk = C.ff_asymptotic_bounds(M, spec.m_q, spec.eps_ff,
+                                                     spec.ff_frozen_at_s0)
             tgt = C.printed_targets()
             tol = C.sr_tolerances(spec.sr_caliber)
             for ell in (0, 1):
@@ -302,8 +304,10 @@ class Model:
                                  tgt[(wave, n)] - mom <= tol[(wave, n)]]
                 # (3.75) on the nodes above s0
                 if "ff" in spec.uv_parts:
-                    for i in idx_hi:
-                        cons.append(cp.SOC(cp.Constant(ffb[ell] / g[i]),
+                    # |k_used * F(s_i)| <= bound; cF_re/cF_im carry F itself
+                    # because the Gram congruence divided by k(s_i)
+                    for n, i in enumerate(idx_hi):
+                        cons.append(cp.SOC(cp.Constant(ffb[ell] / ffk[ell][n]),
                                            cp.hstack([cF_re[i], cF_im[i]])))
         self.constraints = cons
         self.direction = cp.Parameter(2, name="d")

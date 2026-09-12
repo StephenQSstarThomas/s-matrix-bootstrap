@@ -105,11 +105,33 @@ def sr_tolerances(caliber: str) -> dict[tuple[str, int], float]:
     raise ValueError(caliber)
 
 
-def ff_asymptotic_bounds(M: int, m_q: float = M_Q, eps_ff: float = EPS_FF):
-    """(3.75): indices above ``s_0`` and the bound on ``|cF_ell|`` for each wave."""
+def ff_asymptotic_bounds(M: int, m_q: float = M_Q, eps_ff: float = EPS_FF,
+                         frozen_at_s0: bool = True):
+    """(3.75): indices above ``s_0`` and the bound on ``|cF_ell(s_i)|``.
+
+    The paper writes the bound on the rescaled current ``cF`` of (2.33), but the
+    sentence fixing the numerical value says the factor between ``F`` and ``cF``
+    is the one "which we evaluate at ``s = s_0``".  That matters: ``k_1`` grows
+    like sqrt(s), so between ``s_0`` and the last node it rises by a factor 15,
+    and reading (3.75) with the factor taken at each node makes the paper's
+    ``eps_FF = 6e-5`` *infeasible* -- the smallest attainable value in this
+    implementation is about 1.0e-3, i.e. 17 times larger (measured at M=20,
+    L=6, with the chiral, Gram and FESR constraints on).  Freezing the factor at
+    ``s_0``, the paper's literal parenthetical, weakens the P1 bound by exactly
+    the sqrt(s_i/s_0) that caused the clash.  ``frozen_at_s0=False`` recovers the
+    per-node reading for the sensitivity table.
+
+    Returns ``(indices, bound_on_cF, kinematic_factor_to_use)``.
+    """
+    from .formfactor import kinematic_factor
     idx = np.flatnonzero(~below_s0(M))
-    return idx, {0: float(np.sqrt(2.0 * m_q ** 2 * eps_ff)),
-                 1: float(np.sqrt(0.5 * eps_ff))}
+    bound = {0: float(np.sqrt(2.0 * m_q ** 2 * eps_ff)),
+             1: float(np.sqrt(0.5 * eps_ff))}
+    s = s_nodes(M)
+    kin = {ell: (np.full(idx.size, float(kinematic_factor(ell, np.array([S0]))[0]))
+                 if frozen_at_s0 else kinematic_factor(ell, s[idx]))
+           for ell in (0, 1)}
+    return idx, bound, kin
 
 
 def chiral_ratios(s: float) -> tuple[float, float]:

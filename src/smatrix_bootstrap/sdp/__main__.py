@@ -47,8 +47,8 @@ def _jobs(a, x_tip: float | None):
                 def _mid(ctx, _xt=x_tip, _xr=x_ref):
                     xt = ctx["tip"]["f00_3"] if "tip" in ctx and ctx["tip"].get("f00_3") \
                         is not None else _xt
-                    if xt is None:
-                        raise SystemExit("mid needs either a tip solve or --x-tip")
+                    if xt is None:                       # tip solve failed
+                        raise _SkipJob("mid needs a tip solve or --x-tip")
                     return 0.5 * (xt + _xr)
                 out.append(("mid", (0.0, 1.0), _fix_f00(_mid)))
         return out
@@ -56,6 +56,10 @@ def _jobs(a, x_tip: float | None):
     lo, hi = (a.slice or "0:%d" % len(dirs)).split(":")
     sel = list(range(len(dirs)))[int(lo):int(hi)]
     return [("dir%03d" % i, dirs[i], None) for i in sel]
+
+
+class _SkipJob(Exception):
+    """Raised when a chained job cannot be set up (e.g. its tip solve failed)."""
 
 
 def _fix_f00(x):
