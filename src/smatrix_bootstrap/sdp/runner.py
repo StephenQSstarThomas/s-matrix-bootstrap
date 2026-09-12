@@ -81,5 +81,5 @@ def _write(outdir, records):
 
 def sweep_directions(n: int, half: bool = False):
     """``n`` unit directions; ``half`` keeps only the upper half plane."""
-    ang = np.linspace(0.0, np.pi if half else 2 * np.pi, n, endpoint=not half)
+    ang = np.linspace(0.0, np.pi if half else 2 * np.pi, n, endpoint=half)
     return [(float(np.cos(a)), float(np.sin(a))) for a in ang]

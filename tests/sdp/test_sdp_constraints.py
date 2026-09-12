@@ -153,3 +153,32 @@ def test_chiral_reference_point():
     x, y = C.chiral_reference_point()
     assert x == pytest.approx(0.073321, abs=1e-6)
     assert y == pytest.approx(-x / 15.0)
+
+
+# --------------------------------------------------------------- P1 functional
+def test_lambda_row_reproduces_the_weinberg_value():
+    """Below (2.14): lambda = (pi/4) T_{33,33}(4/3,4/3,4/3) = 3 pi/4 A(4/3,4/3,4/3).
+
+    On a configuration where the amplitude is the constant T0, the row must give
+    (3 pi/4) T0; and the Weinberg amplitude (2.12) must give the paper's
+    lambda = m_pi^2 / (32 pi f_pi^2) = 0.023.
+    """
+    from smatrix_bootstrap.sdp.projector import Layout, PartialWaveOperator
+    op = PartialWaveOperator(M)
+    c = np.zeros(Layout(M).n)
+    c[0] = 1.0
+    assert op.lambda_row() @ c == pytest.approx(0.75 * np.pi)
+    # Weinberg: A = (s-1)/(8 pi^2 f_pi^2), so A(4/3) = (1/3)/(8 pi^2 f_pi^2)
+    a_weinberg = (4.0 / 3.0 - 1.0) / (8 * np.pi ** 2 * grid.F_PI ** 2)
+    assert 0.75 * np.pi * a_weinberg == pytest.approx(
+        1.0 / (32 * np.pi * grid.F_PI ** 2))
+    assert 0.75 * np.pi * a_weinberg == pytest.approx(0.023, abs=5e-4)
+
+
+def test_lambda_row_is_crossing_symmetric_by_construction():
+    """All three Mandelstam slots sit at 4/3, so sigma2 carries twice the weight
+    of sigma1 and rho1 twice that of rho2's folded diagonal."""
+    from smatrix_bootstrap.sdp.projector import Layout, PartialWaveOperator
+    op, lay = PartialWaveOperator(M), Layout(M)
+    row = op.lambda_row()
+    assert np.allclose(row[lay.s2], 2.0 * row[lay.s1])

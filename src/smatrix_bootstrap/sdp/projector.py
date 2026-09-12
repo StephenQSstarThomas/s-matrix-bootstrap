@@ -159,6 +159,34 @@ class PartialWaveOperator:
             raise ValueError(isospin)
         return 0.25 * T
 
+    def lambda_row(self) -> np.ndarray:
+        """Coefficients of the quartic coupling at the crossing-symmetric point.
+
+        Below (2.14) the paper defines
+
+            lambda = (pi/4) T_{33,33}(4/3, 4/3, 4/3),
+
+        and T_{33,33} = A(s,t,u) + A(t,s,u) + A(u,t,s) collapses to
+        3 A(4/3,4/3,4/3) there.  The Weinberg amplitude (2.12) gives
+        lambda = m_pi^2 / (32 pi f_pi^2) = 0.023, and the largest value allowed
+        by analyticity, crossing and unitarity is quoted as 2.661 -- an
+        independently published number for exactly this setup, which is what we
+        use to validate the "assemble constraints + call the solver" chain.
+
+        A(nu1,nu2,nu3) is bilinear in the densities, so the row is assembled
+        from the same Cauchy weights used everywhere else.
+        """
+        M, lay, w = self.M, self.lay, self.omega
+        nu = 4.0 / 3.0
+        cw = w / (self.s - nu)                      # C[f](nu) = cw . f
+        row = np.zeros(lay.n)
+        row[lay.i_T0] = 1.0
+        row[lay.s1] = cw
+        row[lay.s2] = 2.0 * cw
+        row[lay.r1] = (2.0 * np.outer(cw, cw)).ravel()
+        row[lay.r2] = lay.fold_sym(np.outer(cw, cw))
+        return 0.75 * np.pi * row                   # lambda = (3 pi / 4) A
+
     def parity_residual(self, ell: int, s: float, node: int | None = None) -> float:
         """Size of the projection that the selection rule of (2.9) forbids,
         relative to the size that survives.  Must be ~1e-16."""

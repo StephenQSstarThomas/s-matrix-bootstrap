@@ -275,13 +275,19 @@ class Model:
         self.direction = cp.Parameter(2, name="d")
         self.f00 = f00r @ self.a
         self.f11 = f11r @ self.a
+        lam_row = self.ops.op.lambda_row()
+        self.lam = (lam_row @ V if self.basis is not None else lam_row) @ self.a
         self.extra = []
         self.problem = None
 
     # ------------------------------------------------------------------
-    def finalize(self, extra=()):
+    def finalize(self, extra=(), objective="plane"):
         self.extra = list(extra)
-        obj = cp.Maximize(self.direction[0] * self.f00 + self.direction[1] * self.f11)
+        if objective == "lambda":
+            obj = cp.Maximize(self.lam)
+        else:
+            obj = cp.Maximize(self.direction[0] * self.f00
+                              + self.direction[1] * self.f11)
         self.problem = cp.Problem(obj, self.constraints + self.extra)
         return self.problem
 
@@ -301,6 +307,7 @@ class Model:
         out = {"status": self.problem.status, "seconds": time.time() - t0,
                "objective": _f(self.problem.value),
                "f00_3": _f(self.f00.value), "f11_3": _f(self.f11.value),
+               "lambda": _f(self.lam.value),
                "cone_scaling": self.spec.cone_scaling,
                "solver": solver, "direction": list(map(float, d))}
         st = self.problem.solver_stats
