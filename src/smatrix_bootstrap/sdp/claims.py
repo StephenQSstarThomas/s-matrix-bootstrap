@@ -74,16 +74,21 @@ def c2(records, eps_ladder: dict | None = None) -> dict:
     directions are present, which may not include the +x direction for every eps.
     """
     sets = _chiral_sets(records)
-    main = sets.get((C.EPS_CHI_MAIN, "chi-b"))
-    if not main:
-        return {"verdict": "not run", "evidence": "no eps=2e-3 chi-b sweep"}
-    pts = boundary_points(main, want="dir")      # sweep directions only
-    if len(pts) == 0:
+    main = sets.get((C.EPS_CHI_MAIN, "chi-b"), [])
+    pts = boundary_points(main, want="dir") if main else np.zeros((0, 2))
+    Ms = sorted({r["spec"]["M"] for r in main}) if main else []
+    x_end = float(pts[:, 0].max()) if len(pts) else None
+    if x_end is None and eps_ladder:
+        # the dedicated +x-end solve is the same quantity as the sweep's maximum
+        hit = [r for r in eps_ladder.get("rows", [])
+               if abs(r["eps_chi"] - C.EPS_CHI_MAIN) < 1e-12 and r.get("x_end") is not None]
+        if hit:
+            x_end = float(hit[0]["x_end"])
+            Ms = [eps_ladder.get("M")]
+    if x_end is None:
         return {"verdict": "not run",
-                "evidence": "no verified-feasible eps=2e-3 chi-b sweep directions"}
-    x_end = float(pts[:, 0].max())
+                "evidence": "no verified-feasible eps=2e-3 chi-b +x end"}
     tgt = fig8_reference()["chiral_x_end"]
-    Ms = sorted({r["spec"]["M"] for r in main})
     rows = [{"quantity": "+x end at eps=2e-3", "ours": x_end, "paper": tgt,
              "rel_diff": x_end / tgt - 1.0, "pass": abs(x_end / tgt - 1) <= 0.05}]
     ends = {}

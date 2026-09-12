@@ -1,0 +1,76 @@
+{
+ "written_before": "P3",
+ "paper": "arXiv:2309.12402v3",
+ "calibers": {
+  "chiral_norm": {
+   "source": "(3.64) says 'with some norm'",
+   "chi-a": "literal L-infinity box: 8 separate |r| <= eps_chi",
+   "chi-b": "single 8-dimensional L2 ball (the authors' 2403 code caliber)",
+   "chi-c": "two separate 4-dimensional L2 balls"
+  },
+  "fesr_tolerance": {
+   "source": "(3.74) and (2.56) do not close dimensionally",
+   "SR-a": "raw absolute: |M_n - T_n| <= 2e-3 per moment",
+   "SR-b": "relative 10%: |M_n - T_n| <= 0.10 |T_n|",
+   "SR-c": "relative 20%"
+  },
+  "density_regularisation_B": {
+   "source": "absent from the paper; present in the authors' 2403 code as norm(rho/Mrho,4) <= 1e2, i.e. ||rho||_4 <= 377500",
+   "default": "absent",
+   "grid_if_needed": [
+    10000.0,
+    100000.0,
+    377500.0,
+    1000000.0
+   ],
+   "must_report": "whether B is active (||rho||_4 >= 0.9 B)"
+  }
+ },
+ "primary_caliber": {
+  "chiral_norm": "chi-b",
+  "fesr_tolerance": "SR-b"
+ },
+ "grid": "3 x 3 calibers on the x_ref section and the three representative points",
+ "fixed_inputs": {
+  "M": 50,
+  "L": 10,
+  "s0": 73.46938775510205,
+  "alpha_s": 0.4,
+  "m_q_mean": 0.040357142857142855,
+  "m_q_rms": 0.04204285956992372,
+  "eps_chi_main": 0.002,
+  "eps_chi_grid": [
+   0.006,
+   0.004,
+   0.002,
+   0.001,
+   0.0006,
+   0.0002
+  ],
+  "eps_sr": 0.002,
+  "eps_ff": 6e-05,
+  "projection_plane": "(f00(3), f11(3))",
+  "chiral_points": [
+   0.5,
+   1.0,
+   1.5,
+   2.0
+  ]
+ },
+ "representative_points": {
+  "tip": "argmax f00(3)",
+  "ref": "max f11(3) on the section f00(3) = x_ref = 0.0733214",
+  "mid": "max f11(3) on the section f00(3) = (x_tip + x_ref)/2"
+ },
+ "acceptance": {
+  "C1": "f00 extrema in [-2.902, 2.233] +-2%; f11 in [-0.734, 0.079] +-2%",
+  "C2": "eps=2e-3 +x end 0.0826 +-5%; x_ref section width 0.00076 +-20%; monotone in eps",
+  "C3": "subthreshold rms <= 8% of f00(3); S0 zero near 0.425 / 0.305 / none",
+  "C4": "delta00(0.9 GeV) in [85,110] deg; delta11(1.2 GeV) <= 25 deg",
+  "C5": "x_ref section: upper shrinks 2.3e-4 +-25%, lower rises <= 1.0e-4, ratio >= 4; UV +x end 0.0811 +-5%",
+  "C6": "90 deg crossing in [795, 845] MeV for all three points, spread <= 20 MeV, min eta(P1) >= 0.9",
+  "C7": "delta00(1.196 GeV) in [85,110] deg; delta20 in [-40,-15] deg; node rms <= 10 deg",
+  "C8": "L in {8,10,12}: rho spread <= 20 MeV; M in {45,50,60}: spread 40-70 MeV with M60 < M45 < M50; five delta00(1.0 GeV) in [85,105]"
+ },
+ "prediction": "under SR-b/c the ref/mid rho lands at 822 +- 40 MeV, min eta(P1) >= 0.9, and the S0 spectrum returns to ~950 MeV"
+}

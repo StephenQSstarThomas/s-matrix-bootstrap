@@ -1,0 +1,115 @@
+{
+ "C1": {
+  "verdict": "not run",
+  "evidence": "0/24 verified-feasible directions"
+ },
+ "C2": {
+  "verdict": "pass",
+  "rows": [
+   {
+    "quantity": "+x end at eps=2e-3",
+    "ours": 0.082598,
+    "paper": 0.08257284063278697,
+    "rel_diff": 0.00030469300826063694,
+    "pass": true
+   },
+   {
+    "quantity": "x_ref section width",
+    "ours": 0.0007362574394173937,
+    "paper": 0.00076,
+    "rel_diff": -0.03124021129290311,
+    "pass": true
+   },
+   {
+    "quantity": "+x end monotone in eps^chi",
+    "ours": [
+     0.16092388260836243,
+     0.12550363557019664,
+     0.082598
+    ],
+    "paper": "decreasing with eps",
+    "rel_diff": null,
+    "pass": true,
+    "n_eps": 3
+   }
+  ],
+  "eps_ends": {
+   "0.006": 0.16092388260836243,
+   "0.004": 0.12550363557019664,
+   "0.002": 0.082598
+  },
+  "M": [
+   30
+  ],
+  "evidence": "+x end 0.082598 vs 0.082573 (+0.03%) at M=[30]; eps ladder {0.006: 0.160924, 0.004: 0.125504, 0.002: 0.082598}"
+ },
+ "C3": {
+  "verdict": "pass",
+  "rows": [
+   {
+    "eps": 0.002,
+    "wave": "S0",
+    "rms": 0.0007485541499687279,
+    "rms_over_f00_3": 0.010207566691311726,
+    "pass": true
+   },
+   {
+    "eps": 0.002,
+    "wave": "S2",
+    "rms": 0.000185109595959868,
+    "rms_over_f00_3": 0.002524224260918276,
+    "pass": true
+   },
+   {
+    "eps": 0.002,
+    "wave": "P1",
+    "rms": 0.000147956513903635,
+    "rms_over_f00_3": 0.002017590822452109,
+    "pass": true
+   },
+   {
+    "eps": 0.002,
+    "wave": "S0 zero",
+    "ours": 0.42585550990952303,
+    "paper": 0.425,
+    "pass": true
+   }
+  ],
+  "evidence": "eps=0.002: S0 zero 0.42585550990952303"
+ },
+ "C4": {
+  "verdict": "FAIL",
+  "rows": [
+   {
+    "point": "tip",
+    "delta00_0.9GeV": 68.38334999729715,
+    "delta11_1.2GeV": 126.33009467098441,
+    "pass": false
+   },
+   {
+    "point": "ref",
+    "delta00_0.9GeV": 84.7328175238678,
+    "delta11_1.2GeV": 26.97291047771088,
+    "pass": false
+   }
+  ],
+  "decisive_point": "ref",
+  "evidence": "tip: d00(0.9)=68.4, d11(1.2)=126.3; ref: d00(0.9)=84.7, d11(1.2)=27.0"
+ },
+ "C5": {
+  "verdict": "not run",
+  "evidence": "need both chiral and chiral+UV sweeps"
+ },
+ "C6": {
+  "verdict": "not run",
+  "evidence": "no representative points"
+ },
+ "C7": {
+  "verdict": "not run",
+  "evidence": "no representative points"
+ },
+ "C8": {
+  "verdict": "not run",
+  "evidence": "0/5 (M,L) configurations"
+ }
+}

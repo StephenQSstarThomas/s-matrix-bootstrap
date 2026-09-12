@@ -1,0 +1,172 @@
+{
+ "provenance": {
+  "argv": [
+   "/home/shiqiu/s-matrix-bootstrap/src/smatrix_bootstrap/sdp/__main__.py",
+   "solve",
+   "--cone-scaling",
+   "rownorm",
+   "--B",
+   "377500",
+   "--B-norm",
+   "l4",
+   "--generate",
+   "--chiral",
+   "--chi",
+   "chi-b",
+   "--eps-chi",
+   "0.002",
+   "--points",
+   "tip",
+   "ref",
+   "mid",
+   "--out",
+   "/playpen1/shiqiu/sdp-work/runs/sdp_reproduction_20260912/chiral_points/eps0.002",
+   "--time-limit",
+   "3600"
+  ],
+  "git_rev": "2c66e79c95568786aa2b9e116752f101f255ba52",
+  "python": "3.13.12",
+  "numpy": "2.4.4",
+  "scipy": "1.15.3",
+  "cvxpy": "1.9.2",
+  "clarabel": "0.11.1",
+  "host": "maxwell.cs.unc.edu",
+  "utc": "2026-09-12T09:09:06Z",
+  "code_sha256": {
+   "grid.py": "d4c1281d9f97d5e5",
+   "legendreq.py": "3c8ccf081ee64381",
+   "hilbert.py": "53900ee14220a27e",
+   "projector.py": "ae610cd7211c7d67",
+   "formfactor.py": "a4af1ed723e8180c",
+   "constraints.py": "4de10132ab51799b",
+   "problem.py": "4677e35b89e7eabb",
+   "verify.py": "88be7c957b13f7f9",
+   "runner.py": "5ae9d91669951acd",
+   "observables.py": "3977f1021249e59f"
+  }
+ },
+ "records": [
+  {
+   "job": "tip",
+   "spec": {
+    "M": 50,
+    "L": 10,
+    "chiral": true,
+    "chi_caliber": "chi-b",
+    "eps_chi": 0.002,
+    "uv": false,
+    "uv_parts": [
+     "gram",
+     "fesr",
+     "ff"
+    ],
+    "sr_caliber": "SR-b",
+    "eps_ff": 6e-05,
+    "m_q": 0.040357142857142855,
+    "B": 377500.0,
+    "B_norm": "l4",
+    "cone_scaling": "rownorm",
+    "sparsify": 0.0,
+    "reduce_basis": false,
+    "basis_tol": 1e-12,
+    "tag": ""
+   },
+   "result": {
+    "status": "SolverError",
+    "message": "Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.",
+    "seconds": 24.13916540145874
+   },
+   "generation": [
+    {
+     "n_disks": 441,
+     "status": "SolverError"
+    }
+   ],
+   "wall_seconds": 26.462647199630737
+  },
+  {
+   "job": "ref",
+   "spec": {
+    "M": 50,
+    "L": 10,
+    "chiral": true,
+    "chi_caliber": "chi-b",
+    "eps_chi": 0.002,
+    "uv": false,
+    "uv_parts": [
+     "gram",
+     "fesr",
+     "ff"
+    ],
+    "sr_caliber": "SR-b",
+    "eps_ff": 6e-05,
+    "m_q": 0.040357142857142855,
+    "B": 377500.0,
+    "B_norm": "l4",
+    "cone_scaling": "rownorm",
+    "sparsify": 0.0,
+    "reduce_basis": false,
+    "basis_tol": 1e-12,
+    "tag": ""
+   },
+   "result": {
+    "status": "SolverError",
+    "message": "Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.",
+    "seconds": 16.80192470550537
+   },
+   "generation": [
+    {
+     "n_disks": 441,
+     "status": "SolverError"
+    }
+   ],
+   "wall_seconds": 17.019495725631714
+  }
+ ],
+ "fesr_target_audit": {
+  "m_q_mean": 0.040357142857142855,
+  "m_q_mean_MeV": 5.6499999999999995,
+  "m_q_rms": 0.04204285956992372,
+  "m_q_rms_MeV": 5.886000339789321,
+  "condensate_alphaG2_over_pi": 59.870887130362355,
+  "condensate_jS": -0.260308204914619,
+  "rows": [
+   {
+    "wave": "S0",
+    "n": 0,
+    "printed_raw": 0.0023851042065805915,
+    "recomputed_mq_mean": 0.002182753360435632,
+    "ratio_mean": 1.0927044025279038,
+    "recomputed_mq_rms": 0.0023689087688085982,
+    "ratio_rms": 1.006836665888209
+   },
+   {
+    "wave": "S0",
+    "n": 1,
+    "printed_raw": 0.11183813873471089,
+    "recomputed_mq_mean": 0.10234789112479344,
+    "ratio_mean": 1.0927253850140004,
+    "recomputed_mq_rms": 0.11107659763547557,
+    "ratio_rms": 1.006855999512467
+   },
+   {
+    "wave": "P1",
+    "n": -1,
+    "printed_raw": 0.0042280457142857145,
+    "recomputed_mq_mean": 0.0042288844504267285,
+    "ratio_mean": 0.9998016649187638,
+    "recomputed_mq_rms": 0.0042288844504267285,
+    "ratio_rms": 0.9998016649187638
+   },
+   {
+    "wave": "P1",
+    "n": 0,
+    "printed_raw": 0.14571120699708456,
+    "recomputed_mq_mean": 0.1458145678683859,
+    "ratio_mean": 0.999291148526431,
+    "recomputed_mq_rms": 0.1458145678683859,
+    "ratio_rms": 0.999291148526431
+   }
+  ]
+ }
+}
