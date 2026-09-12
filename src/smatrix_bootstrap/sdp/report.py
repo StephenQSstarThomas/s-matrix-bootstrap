@@ -246,6 +246,30 @@ def render(root: str, verdicts: dict | None = None) -> str:
                 cn="—" if r.get("c_norm_inf") is None else "%.2e" % r["c_norm_inf"],
                 s="%.0f" % r["seconds"]))
         A("")
+    ff_path = os.path.join(root, "ff_tolerance.json")
+    if os.path.exists(ff_path):
+        with open(ff_path) as fh:
+            ff = json.load(fh)
+        A("\n## 6c. (3.75) 最小可行 eps^FF（scripts/sdp/ff_tolerance.py）\n")
+        A("论文取 eps^FF = %.1e。下表是在手征 (3.64) + Gram (3.68) + FESR (3.73) 下，"
+          "使 (3.75) 可行的最小倍数 t 及 eps^FF_min = %.1e·t^2。\n" % (ff["paper_eps_ff"],
+                                                                    ff["paper_eps_ff"]))
+        A("| M | L | (2.33) 因子取法 | 状态 | 最后一轮圆盘 | t | eps^FF_min | 相对论文 |")
+        A("|---|---|---|---|---|---|---|---|")
+        for r in ff["rows"]:
+            # the final round may be the one that failed; report the last round
+            # that actually produced a t, together with its disk count
+            got = [q for q in r.get("rounds", []) if q.get("t") is not None]
+            last = got[-1] if got else {}
+            tv = last.get("t", r.get("t"))
+            A("| {M} | {L} | {fz} | {st} | {d} | {t} | {e} | {rel} |".format(
+                M=r["M"], L=r["L"],
+                fz="s0" if r["frozen_at_s0"] else "逐节点",
+                st=r["status"], d=last.get("n_disks", "—"),
+                t="—" if tv is None else "%.3f" % tv,
+                e="—" if tv is None else "%.1e" % (ff["paper_eps_ff"] * tv ** 2),
+                rel="—" if tv is None else "%.2fx" % (tv ** 2)))
+        A("")
     st_path = os.path.join(root, "solver_study_M20.json")
     if os.path.exists(st_path):
         with open(st_path) as fh:
