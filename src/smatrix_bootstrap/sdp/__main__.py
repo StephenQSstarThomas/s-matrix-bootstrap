@@ -78,8 +78,9 @@ def _fix_f00(x):
 
 def main(argv=None) -> int:
     p = argparse.ArgumentParser("smatrix_bootstrap.sdp")
-    p.add_argument("command", choices=["selfcheck", "prereg", "solve", "figures", "audit-a1"])
+    p.add_argument("command", choices=["selfcheck", "prereg", "solve", "figures", "audit-a1", "audit-phases", "audit-uv"])
     p.add_argument("--out", default=None)
+    p.add_argument("--source-report", default=None)
     p.add_argument("--M", type=int, default=50)
     p.add_argument("--L", type=int, default=10)
     p.add_argument("--chiral", action="store_true")
@@ -113,6 +114,20 @@ def main(argv=None) -> int:
                    help="re-verify each solution in Arb ball arithmetic")
     a = p.parse_args(argv)
 
+    if a.command == "audit-uv":
+        if not a.out:
+            raise SystemExit("--out is required")
+        from .audit import current_witness
+        print(json.dumps(current_witness(a.M, a.out, solver=a.solver), indent=2))
+        return 0
+
+    if a.command == "audit-phases":
+        if not a.out or not a.source_report:
+            raise SystemExit("--out and --source-report are required")
+        from .audit import phase_replay
+        print(json.dumps(phase_replay(a.source_report, a.out), indent=2))
+        return 0
+
     if a.command == "audit-a1":
         if not a.out:
             raise SystemExit("--out is required")
@@ -140,7 +155,7 @@ def main(argv=None) -> int:
             raise SystemExit("--out is required")
         kw = {"max_iter": a.max_iter, "time_limit": a.time_limit}
         if a.solver == "SCS":
-            kw = {"eps": 1e-7, "max_iters": 200000}
+            kw = {"eps": 1e-7, "max_iters": 200000, "time_limit": a.time_limit}
         if a.generate:
             kw["start_tol"] = a.start_tol
         run_job(_spec(a), _jobs(a, a.x_tip), a.out, solver=a.solver,

@@ -1,0 +1,13 @@
+{
+  "package": "MOSEK Optimization Suite",
+  "version": "11.2.4",
+  "source": "https://download.mosek.com/stable/11.2.4/mosektoolslinux64x86.tar.bz2",
+  "archive_sha256": "5ff703472ab60f0b3fd43b112eae540bec9ba7dca06e28cbe419aa50a3c63cd4",
+  "vendor_sha256_matched": true,
+  "bytes": 57147183,
+  "matlab_mex": [
+    "/playpen1/shiqiu/sdp-work/tools/mosek-11.2.4/mosek/11.2/toolbox/r2019bom/mosekopt.mexa64",
+    "/playpen1/shiqiu/sdp-work/tools/mosek-11.2.4/mosek/11.2/toolbox/r2019b/mosekopt.mexa64"
+  ],
+  "status": "files staged; MATLAB mosekdiag pending"
+}

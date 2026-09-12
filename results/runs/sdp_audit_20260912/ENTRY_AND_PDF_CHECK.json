@@ -1,0 +1,6 @@
+{
+  "pdf_export_open_passed": true,
+  "legacy_solver_modules_loaded_by_sdp_cli": [],
+  "entrypoint": "python -m smatrix_bootstrap.run sdp",
+  "python": "/home/shiqiu/miniconda3/bin/python"
+}

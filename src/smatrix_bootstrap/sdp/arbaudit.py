@@ -1,20 +1,11 @@
-"""Independent ball-arithmetic re-verification of a solution (task section 5).
+"""Independent Arb audit of the declared finite collocation model.
 
-The float64 model is never trusted at the end.  This module rebuilds the
-*same* operators of section 5a from scratch in Arb at ``bits`` precision and
-replays every constraint of the original (unrescaled, unreduced, unsparsified)
-problem on the returned solution:
-
-    1500 unitarity disks   |S^I_ell(s_i)| <= 1
-    100 Gram blocks        leading principal minors of (3.68) >= 0
-    8 chiral residuals     (3.64) in the caliber used
-    4 FESR moments         (3.73)
-    14 form-factor bounds  (3.75)
-
-Everything is an Arb ball, so a reported violation is an enclosure, not a
-rounding artefact.  The historical ``certificates`` module is not used: its
-signature assumes the Newton mainline's variable layout, and the task requires
-the audit input to be the operators implemented here.
+UV checks rebuild all seven principal minors per current Gram block, four raw
+FESR moments and the high-node squared FF bounds from the paper. Each UV slack
+has a certified pass/fail/inconclusive verdict and exact rational endpoints.
+These are finite-node checks, not continuum or optimization certificates.
+The older scattering summary and float chiral rows remain outside this A4
+repair; their absence-of-violation flags are not rigorous feasibility claims.
 """
 from __future__ import annotations
 
@@ -22,8 +13,6 @@ import numpy as np
 from flint import acb, arb, ctx
 
 from . import constraints as C
-from . import formfactor as FFM
-from .grid import M_PI_MEV, S0
 from .projector import Layout, ells_for
 
 
@@ -117,7 +106,7 @@ class ArbAudit:
     # ------------------------------------------------------------------
     def audit(self, c: np.ndarray, ImF=None, rho_hat=None, *, chi_caliber="chi-b",
               eps_chi=C.EPS_CHI_MAIN, sr_caliber="SR-b", eps_ff=C.EPS_FF,
-              m_q=None) -> dict:
+              m_q=None, ff_frozen_at_s0=True) -> dict:
         ctx.prec = self.bits
         M = self.M
         v = self.lay.unpack(c)
@@ -161,56 +150,118 @@ class ArbAudit:
             out["chiral"] = _chiral_summary(r, chi_caliber, eps_chi)
         if ImF is not None:
             out.update(self._uv_audit(S_store, ImF, rho_hat, sr_caliber, eps_ff,
-                                      C.M_Q if m_q is None else m_q))
+                                      C.M_Q if m_q is None else m_q,
+                                      frozen_at_s0=ff_frozen_at_s0))
         return out
 
-    def _uv_audit(self, S_store, ImF, rho_hat, sr_caliber, eps_ff, m_q):
-        M = self.M
-        worst_minor, where = arb(1), None
-        fesr_rows, ff_worst, ff_at = [], arb(-1e300), None
-        idx_hi, bnd = C.ff_asymptotic_bounds(M, m_q, eps_ff)
-        tgt, tol = C.printed_targets(), C.sr_tolerances(sr_caliber)
+    def _uv_audit(self, S_store, ImF, rho_hat, sr_caliber, eps_ff, m_q,
+                  frozen_at_s0=True):
+        """Replay the original UV inequalities without float operator exports."""
+        ctx.prec = self.bits
+        M, s0, pi = self.M, arb(3600) / 49, arb.pi()
+        if sr_caliber not in ("SR-a", "SR-b", "SR-c"):
+            raise ValueError(sr_caliber)
+        idx_lo, idx_hi = [], []
+        for i, x in enumerate(self.x):
+            if x <= s0:
+                idx_lo.append(i)
+            elif x > s0:
+                idx_hi.append(i)
+            else:
+                raise ValueError("Arb precision cannot resolve the hard cutoff")
+        mq_default = m_q is None or m_q == C.M_Q
+        mq = arb(113) / 2800 if mq_default else arb(str(m_q))
+        eps = arb(str(eps_ff))
+        gram, fesr, ff, gram_values, ff_values = [], [], [], [], []
         for ell in (0, 1):
-            ImFa = [arb(float(t)) for t in ImF[ell]]
+            ImFa = [arb(t) if isinstance(t, arb) else arb(float(t)) for t in ImF[ell]]
             ReFa = [1 + sum((self.K[i][j] * ImFa[j] for j in range(M)), arb(0))
                     for i in range(M)]
-            kin = FFM.kinematic_factor(ell, np.array([float(x.str(30, radius=False))
-                                                      for x in self.x]))
-            # per-node congruence g_i = k_ell(s_i), so rho = k^2 rho_hat
-            rho = [arb(float(rho_hat[ell][i])) * arb(float(kin[i])) ** 2
-                   for i in range(M)]
+            rhat = [arb(t) if isinstance(t, arb) else arb(float(t)) for t in rho_hat[ell]]
+            k2 = [_kinematic_square(ell, x) for x in self.x]
+            rho = [k2[i] * rhat[i] for i in range(M)]
+            cap = 2 * mq * mq * eps if ell == 0 else eps / 2
             for i in range(M):
-                cF = acb(arb(float(kin[i])) * ReFa[i], arb(float(kin[i])) * ImFa[i])
-                S = S_store[(ell, i)]
-                # all principal minors of the Hermitian 3x3 (3.68)
-                m2 = 1 - (S * S.conjugate()).real                     # rows {1,2}
-                m13 = rho[i] - (cF * cF.conjugate()).real             # rows {1,3}={2,3}
-                m3 = _det3(S, cF, rho[i])                             # full
-                for val in (m2, m13, m3, rho[i]):
-                    if val < worst_minor:
-                        worst_minor, where = val, {"ell": ell, "node": i}
+                F, S = acb(ReFa[i], ImFa[i]), S_store[(ell, i)]
+                modF2 = ReFa[i] ** 2 + ImFa[i] ** 2
+                m12 = 1 - S.real ** 2 - S.imag ** 2
+                m13 = k2[i] * (rhat[i] - modF2)
+                # Positive k² congruence gives original (unscaled) minors.
+                minors = (arb(1), arb(1), rho[i], m12, m13, m13,
+                          k2[i] * _det3(S, F, rhat[i]))
+                for label, value in zip(("1", "2", "3", "12", "13", "23", "123"), minors):
+                    gram.append(_constraint_row(value, ell=ell, node=i, minor=label))
+                    gram_values.append(value)
                 if i in idx_hi:
-                    excess = (cF * cF.conjugate()).real.sqrt() - arb(bnd[ell])
-                    if excess > ff_worst:
-                        ff_worst, ff_at = excess, {"ell": ell, "node": int(i)}
+                    ffk2 = _kinematic_square(ell, s0) if frozen_at_s0 else k2[i]
+                    used = ffk2 * modF2
+                    ff.append(_constraint_row(cap - used, ell=ell, node=i,
+                                               used_squared=_enclosure(used), cap=_enclosure(cap)))
+                    ff_values.append(cap - used)
             wave = "S0" if ell == 0 else "P1"
-            for n in C.MOMENTS[ell]:
-                row = C.moment_row(M, n)
-                mom = sum((arb(float(row[i])) * rho[i] for i in range(M)), arb(0))
-                res = mom - arb(tgt[(wave, n)])
-                fesr_rows.append({"wave": wave, "n": n,
-                                  "moment": float(mom.str(20, radius=False)),
-                                  "violation": float((res.abs_lower()
-                                                      - arb(tol[(wave, n)])).str(20, radius=False))})
-        return {"gram_min_minor": float(worst_minor.str(20, radius=False)),
-                "gram_min_minor_at": where,
-                "gram_ok": bool(worst_minor >= 0),
-                "fesr": fesr_rows,
-                "fesr_ok": all(r["violation"] <= 0 for r in fesr_rows),
-                "form_factor_max_excess": float(ff_worst.str(20, radius=False)),
-                "form_factor_at": ff_at,
-                "form_factor_ok": bool(ff_worst <= 0),
-                "n_gram_blocks": 2 * M, "n_ff_bounds": 2 * len(idx_hi)}
+            for n in ((0, 1) if ell == 0 else (-1, 0)):
+                target = _printed_target(ell, n, s0)
+                tol = (arb(".002") if sr_caliber == "SR-a" else
+                       arb(".1" if sr_caliber == "SR-b" else ".2") * abs(target))
+                mom = pi * sum((self.w[i] * self.x[i] ** n * rho[i] for i in idx_lo), arb(0))
+                residual = mom - target
+                slack = tol - abs(residual)
+                fesr.append(_constraint_row(slack, wave=wave, n=n, moment=float(mom.mid()),
+                            moment_interval=_enclosure(mom), target=_enclosure(target),
+                            tolerance=_enclosure(tol), residual=_enclosure(residual),
+                            violation=float((-slack).mid())))
+        out = {"gram": gram, "fesr": fesr, "form_factor": ff,
+               "n_gram_blocks": 2 * M, "n_gram_minors": 14 * M,
+               "n_ff_bounds": len(ff), "bits": self.bits,
+               "uv_scope": "Current constraints at native nodes; no scattering, chiral, or support certificate.",
+               "uv_contract": {"cutoff": "3600/49", "cutoff_rule": "hard-midpoint",
+                   "moment_units": "m_pi=1, raw integral rho(s) s^n ds",
+                   "sr_caliber": sr_caliber, "ff_frozen_at_s0": bool(frozen_at_s0),
+                   "eps_ff": _enclosure(eps), "m_q": _enclosure(mq),
+                   "m_q_exact": "113/2800" if mq_default else str(m_q),
+                   "parameters": "Exact printed decimals; nondefault parameters use their supplied decimal representation.",
+                   "current_inputs": "Stored binary64 values are exact dyadics; supplied Arb balls retain uncertainty.",
+                   "normalization": "F(0)=1; ReF=1+K ImF; rho=k(s)^2 rho_hat"}}
+        for family, rows in (("gram", gram), ("fesr", fesr), ("form_factor", ff)):
+            counts = {v: sum(r["verdict"] == v for r in rows) for v in
+                      ("certified_pass", "certified_fail", "inconclusive")}
+            verdict = ("certified_fail" if counts["certified_fail"] else
+                       "inconclusive" if counts["inconclusive"] else "certified_pass")
+            out.update({family + "_counts": counts, family + "_verdict": verdict,
+                        family + "_ok": verdict == "certified_pass"})
+        gi = min(range(len(gram)), key=lambda j: gram_values[j].lower())
+        out.update(gram_min_minor=float(gram_values[gi].mid()), gram_min_minor_at=gram[gi])
+        if ff:
+            fi = min(range(len(ff)), key=lambda j: ff_values[j].lower())
+            out.update(form_factor_max_excess=float((-ff_values[fi]).mid()), form_factor_at=ff[fi])
+        out["form_factor_excess_kind"] = "squared-current excess (display only); verdict uses full slack ball"
+        out["uv_ok"] = all(out[f + "_ok"] for f in ("gram", "fesr", "form_factor"))
+        return out
+
+
+def _kinematic_square(ell, s):
+    beta = (1 - 4 / s).sqrt()
+    return (3 * beta / (256 * arb.pi() ** 5) if ell == 0 else
+            (s - 4) * beta / (384 * arb.pi() ** 5))
+
+
+def _printed_target(ell, n, s0):
+    if ell == 0:
+        value = arb("3.09e-8") * (arb("27.38") / (n + 2) + (arb(".61") if n == 0 else 0))
+    else:
+        value = -arb("4.34e-6") * (-arb("13.26") / (n + 2) + (arb(".41") if n == 0 else 0))
+    return value * s0 ** (n + 2)
+
+
+def _enclosure(value):
+    """Exact dyadic endpoint strings avoid both underflow and inward rounding."""
+    return {"ball": value.str(40), "lower": str(value.lower().fmpq()),
+            "upper": str(value.upper().fmpq())}
+
+
+def _constraint_row(slack, **metadata):
+    verdict = "certified_pass" if slack >= 0 else "certified_fail" if slack < 0 else "inconclusive"
+    return {**metadata, "slack": _enclosure(slack), "verdict": verdict}
 
 
 def _det3(S: acb, F: acb, rho: arb) -> arb:

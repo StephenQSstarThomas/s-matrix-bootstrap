@@ -217,11 +217,7 @@ class Model:
     def solve(self, d, solver="CLARABEL", **kw):
         self.direction.value = np.asarray(d, dtype=float)
         t0 = time.time()
-        opts = dict(max_iter=500, tol_gap_abs=1e-8, tol_gap_rel=1e-8,
-                    tol_feas=1e-8, time_limit=7200.0)
-        opts.update(kw)
-        if solver == "SCS":
-            opts = {"eps": kw.get("eps", 1e-7), "max_iters": kw.get("max_iters", 100000)}
+        opts = solver_options(solver, **kw)
         try:
             self.problem.solve(solver=solver, **opts)
         except cp.error.SolverError as exc:
@@ -232,7 +228,7 @@ class Model:
                "f00_3": _f(self.f00.value), "f11_3": _f(self.f11.value),
                "lambda": _f(self.lam.value),
                "cone_scaling": self.spec.cone_scaling,
-               "solver": solver, "direction": list(map(float, d))}
+               "solver": solver, "solver_options": opts, "direction": list(map(float, d))}
         st = self.problem.solver_stats
         if st is not None:
             out["iterations"] = st.num_iters
@@ -257,10 +253,38 @@ def _f(x):
     return None if x is None else float(x)
 
 
+def solver_options(solver, **kw):
+    """Translate common limits to each package's supported API, without changing cones."""
+    if solver == "MOSEK":
+        params = {"MSK_IPAR_NUM_THREADS": 4,
+                  "MSK_IPAR_INTPNT_MAX_ITERATIONS": kw.get("max_iter", 500),
+                  "MSK_DPAR_OPTIMIZER_MAX_TIME": kw.get("time_limit", 7200.0),
+                  "MSK_DPAR_INTPNT_CO_TOL_PFEAS": kw.get("tol_feas", 1e-8),
+                  "MSK_DPAR_INTPNT_CO_TOL_DFEAS": kw.get("tol_feas", 1e-8),
+                  "MSK_DPAR_INTPNT_CO_TOL_REL_GAP": kw.get("tol_gap_rel", 1e-8)}
+        params.update(kw.get("mosek_params", {}))
+        # MOSEK uses its conic relative-gap criterion, not Clarabel's absolute-gap option.
+        return {"mosek_params": params}
+    if solver == "SCS":
+        return {"eps": kw.get("eps", 1e-7), "max_iters": kw.get("max_iters", 100000),
+                "time_limit_secs": kw.get("time_limit", 7200.0)}
+    if solver != "CLARABEL":
+        raise ValueError(f"Unsupported SDP solver: {solver}")
+    opts = dict(max_iter=500, tol_gap_abs=1e-8, tol_gap_rel=1e-8,
+                tol_feas=1e-8, time_limit=7200.0)
+    opts.update(kw)
+    return opts
+
+
 def _gram_psd(S_re, S_im, F_re, F_im, rho):
-    """Realified (3.68):  [[1,S,cF],[S*,1,cF*],[cF*,cF,rho]] >= 0  as a 6x6."""
-    one = cp.Constant(1.0)
-    zero = cp.Constant(0.0)
-    Re = cp.bmat([[one, S_re, F_re], [S_re, one, F_re], [F_re, F_re, rho]])
-    Im = cp.bmat([[zero, S_im, F_im], [-S_im, zero, -F_im], [-F_im, F_im, zero]])
-    return cp.bmat([[Re, -Im], [Im, Re]]) >> 0
+    """Exactly real 3x3 form of (3.68), preserving every eigenvalue.
+
+    U has columns (1,1,0)/sqrt(2), (i,-i,0)/sqrt(2), (0,0,1).
+    U* G U is real because G has the displayed conjugate-pair structure.
+    This unitary change leaves PSD unchanged, including at Watson saturation;
+    it imposes no saturation equality and removes no feasible amplitudes.
+    """
+    rt = np.sqrt(2.0)
+    return cp.bmat([[1 + S_re, S_im, rt * F_re],
+                    [S_im, 1 - S_re, rt * F_im],
+                    [rt * F_re, rt * F_im, rho]]) >> 0

@@ -1,0 +1,13 @@
+{
+  "purpose": "Package/license preflight only, not a scientific result",
+  "mosek_version": [
+    11,
+    2,
+    4
+  ],
+  "cvxpy_version": "1.9.2",
+  "mosek_import_path": "/playpen1/shiqiu/sdp-work/deps/mosek/mosek/__init__.py",
+  "status": "unavailable",
+  "error_type": "Error",
+  "message": "rescode.err_missing_license_file(1008): License cannot be located. The default search path is ':/home/shiqiu/mosek/mosek.lic:'.\n"
+}

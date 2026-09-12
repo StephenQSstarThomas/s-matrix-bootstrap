@@ -25,20 +25,32 @@ def energy_gev(s, m_pi_mev: float = M_PI_MEV) -> np.ndarray:
 
 def wave_values(ops, c: np.ndarray, wave: str) -> np.ndarray:
     """Complex ``f^I_ell(s_i)`` on the node ladder."""
+    return _wave_h(ops, c, wave) / kappa(ops.s)
+
+
+def _wave_h(ops, c, wave):
+    """Native kappa*f directly, preserving exact zeros of 1+i*h."""
     I, ell = WAVES[wave]
     a = ops.index.index((I, ell))
     lo, hi = a * ops.M, (a + 1) * ops.M
-    return (ops.h_re[lo:hi] @ c + 1j * (ops.h_im[lo:hi] @ c)) / kappa(ops.s)
+    return ops.h_re[lo:hi] @ c + 1j * (ops.h_im[lo:hi] @ c)
 
 
 def phase_shift(ops, c: np.ndarray, wave: str) -> dict:
-    f = wave_values(ops, c, wave)
-    S = 1.0 + 1j * kappa(ops.s) * f
-    delta = 0.5 * np.unwrap(np.angle(S))
-    if delta[0] < -np.pi / 4:                 # fix the branch at threshold
-        delta = delta + np.pi / 2
+    h = _wave_h(ops, c, wave)
+    f, S = h / kappa(ops.s), 1.0 + 1j * h
+    # The threshold convention is S(4)=1, delta(4)=0 when f stays finite.
+    # Only delta -> delta + k*pi preserves S.  A pi/2 shift changes S's sign.
+    # This is a nearest-node lift, not a claim about winding between PV nodes.
+    delta = 0.5 * np.unwrap(np.angle(np.r_[1.0 + 0j, S]))[1:]
+    zeros = np.flatnonzero(S == 0)
+    first_zero = int(zeros[0]) if zeros.size else None
+    if first_zero is not None:
+        delta[first_zero:] = np.nan          # phase cannot be anchored through a zero
     return {"s": ops.s.copy(), "E_GeV": energy_gev(ops.s), "f": f, "S": S,
-            "eta": np.abs(S), "delta_deg": np.degrees(delta)}
+            "eta": np.abs(S), "delta_deg": np.degrees(delta),
+            "first_zero_node": first_zero,
+            "phase_convention": "nearest-node lift from S(4)=1; no off-node winding certificate"}
 
 
 def crossing_energy(ph: dict, target_deg: float = 90.0) -> float | None:
@@ -61,6 +73,8 @@ def resonance_report(ops, c: np.ndarray) -> dict:
     for w in WAVES:
         ph = phase_shift(ops, c, w)
         out[w] = {"delta_deg": [float(x) for x in ph["delta_deg"]],
+                  "first_zero_node": ph["first_zero_node"],
+                  "phase_convention": ph["phase_convention"],
                   "eta": [float(x) for x in ph["eta"]],
                   "E_GeV": [float(x) for x in ph["E_GeV"]],
                   "crossing_90_GeV": crossing_energy(ph, 90.0),

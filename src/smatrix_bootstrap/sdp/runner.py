@@ -7,6 +7,7 @@ status/iterations/residuals, the objective, the a posteriori verification of the
 from __future__ import annotations
 
 import hashlib
+import gzip
 import json
 import os
 import platform
@@ -22,9 +23,10 @@ from .observables import resonance_report, subthreshold_curves
 from .problem import Model, ModelSpec, Operators
 from .verify import full_report
 
-CODE_FILES = ("grid.py", "legendreq.py", "hilbert.py", "projector.py",
-              "formfactor.py", "constraints.py", "problem.py", "verify.py",
-              "runner.py", "observables.py")
+CODE_FILES = ("grid.py", "legendreq.py", "hilbert.py", "projector.py", "assembly.py",
+              "formfactor.py", "constraints.py", "problem.py", "verify.py", "arbaudit.py",
+              "runner.py", "observables.py", "audit.py", "__main__.py",
+              "__init__.py", "../run.py", "../__init__.py")
 
 
 def code_hash() -> dict:
@@ -33,8 +35,22 @@ def code_hash() -> dict:
     for f in CODE_FILES:
         p = os.path.join(here, f)
         if os.path.exists(p):
-            out[f] = hashlib.sha256(open(p, "rb").read()).hexdigest()[:16]
+            out[f] = hashlib.sha256(open(p, "rb").read()).hexdigest()
     return out
+
+
+def save_producer(outdir):
+    """Authenticate the exact implementation, including uncommitted audit code."""
+    here = os.path.dirname(__file__)
+    files = {f: open(os.path.join(here, f), encoding="utf-8").read() for f in CODE_FILES}
+    payload = json.dumps({"format": "non-executable source evidence", "files": files},
+                         sort_keys=True).encode()
+    packed = gzip.compress(payload, mtime=0)
+    sha = hashlib.sha256(packed).hexdigest()
+    name = f"producer_{sha[:16]}.json.gz"
+    with open(os.path.join(outdir, name), "wb") as stream:
+        stream.write(packed)
+    return {"path": name, "sha256": sha, "code_sha256": code_hash()}
 
 
 def provenance() -> dict:
@@ -95,7 +111,7 @@ def run_job(spec: ModelSpec, jobs, outdir: str, solver: str = "CLARABEL",
 
 def _write(outdir, records):
     doc = {"provenance": provenance(), "records": records,
-           "fesr_target_audit": C.fesr_target_audit()}
+           "fesr_target_audit": C.fesr_target_audit(), "producer": save_producer(outdir)}
     with open(os.path.join(outdir, "report.json"), "w") as fh:
         json.dump(doc, fh, indent=1, default=float)
 
@@ -109,7 +125,8 @@ def _arb(spec, sol) -> dict:
         out = aa.audit(sol["c"], sol.get("ImF"), sol.get("rho_hat"),
                        chi_caliber=spec.chi_caliber if spec.chiral else None,
                        eps_chi=spec.eps_chi, sr_caliber=spec.sr_caliber,
-                       eps_ff=spec.eps_ff, m_q=spec.m_q)
+                       eps_ff=spec.eps_ff, m_q=spec.m_q,
+                       ff_frozen_at_s0=spec.ff_frozen_at_s0)
     except Exception as exc:
         out = {"error": f"{exc!s:.200}"}
     out["seconds"] = time.time() - t0

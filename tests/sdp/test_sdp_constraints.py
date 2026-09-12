@@ -229,3 +229,53 @@ def test_arb_legendre_q_matches_the_float_implementation():
         for ell in (0, 1, 2, 5, 9, 12):
             got = float(_legendre_q(ell, arb(z)).str(25, radius=False))
             assert abs(got - col[ell]) <= 1e-11 * max(abs(col[ell]), 1e-300)
+def test_phase_reconstructs_s_and_stops_at_zero():
+    """A pi/2 patch changes S's sign; a zero has no threshold-connected phase."""
+    from types import SimpleNamespace
+    from smatrix_bootstrap.sdp.observables import phase_shift
+    for S in (np.exp(1j * np.deg2rad([-170., -150., -120.])),
+              np.exp(1j * np.deg2rad([0., 140., 220.])),
+              np.array([1., 1e-15 * np.exp(0.7j), np.exp(1.1j)]),
+              np.array([1., 0., -1.])):
+        ops = SimpleNamespace(M=3, s=np.array([4.01, 4.024775834628433, 16.]), index=[(0, 0)],
+                              h_re=S.imag[:, None], h_im=(1-S.real)[:, None])
+        ph = phase_shift(ops, np.ones(1), "S0")
+        if np.any(S == 0):
+            assert np.isnan(ph["delta_deg"][1:]).all()
+            assert ph["first_zero_node"] == 1
+        else:
+            recovered = ph["eta"] * np.exp(2j * np.deg2rad(ph["delta_deg"]))
+            np.testing.assert_allclose(recovered, S, atol=5e-15)
+            if S[0].imag < 0:
+                assert abs(ph["delta_deg"][0] + 85.) < 1e-12
+
+
+def test_compiled_gram_is_the_unitarily_equivalent_real_three_by_three():
+    """The conjugate-paired form permits a real 3x3 cone, without doubling it."""
+    from smatrix_bootstrap.sdp.problem import _gram_psd
+    U = np.array([[1, 1j, 0], [1, -1j, 0], [0, 0, np.sqrt(2)]]) / np.sqrt(2)
+    rng = np.random.default_rng(941)
+    for _ in range(16):
+        S, F = rng.normal(size=2) + 1j * rng.normal(size=2)
+        rho = float(rng.normal())
+        cone = _gram_psd(S.real, S.imag, F.real, F.imag, rho)
+        assert cone.shape == (3, 3)
+        expected = U.conj().T @ FF.gram_block(S, F, rho) @ U
+        np.testing.assert_allclose(cone.args[0].value, expected, atol=2e-15)
+
+
+def test_mosek_accepts_the_shared_cli_solver_options():
+    """Exercise the real MOSEK adapter; Clarabel option names must not leak."""
+    mosek = pytest.importorskip("mosek")
+    from smatrix_bootstrap.sdp.problem import Model, ModelSpec
+    model = Model(ModelSpec(M=3, L=1))
+    model.finalize([model.c == np.zeros(model.ops.lay.n)])
+    try:
+        result = model.solve((0, 0), solver="MOSEK", max_iter=30, time_limit=60)
+    except mosek.Error as exc:
+        if exc.errno == mosek.rescode.err_missing_license_file:
+            pytest.skip("MOSEK license unavailable in this environment")
+        raise
+    assert result["status"] == "optimal"
+    assert abs(result["objective"]) < 1e-12
+    assert np.max(abs(model.solution()["c"])) < 1e-8
