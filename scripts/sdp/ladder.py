@@ -63,13 +63,19 @@ def main() -> int:
                 row["rel_to_paper"] = res["objective"] / target - 1.0
         rows.append(row)
         print(json.dumps(row, default=float), flush=True)
-    doc = {"mode": a.mode, "direction": a.direction, "eps_chi": a.eps_chi,
-           "grid": grid,
-           "paper_reference": label, "paper_value": target, "rows": rows}
+        if a.out:                      # write after every M so a long ladder is
+            _dump(a, grid, label, target, rows)   # usable while it is still running
     if a.out:
-        with open(a.out, "w") as fh:
-            json.dump(doc, fh, indent=1, default=float)
+        _dump(a, grid, label, target, rows)
     return 0
+
+
+def _dump(a, grid, label, target, rows):
+    doc = {"mode": a.mode, "direction": a.direction, "eps_chi": a.eps_chi,
+           "grid": grid, "paper_reference": label, "paper_value": target,
+           "rows": rows}
+    with open(a.out, "w") as fh:
+        json.dump(doc, fh, indent=1, default=float)
 
 
 if __name__ == "__main__":
