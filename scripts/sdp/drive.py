@@ -14,6 +14,7 @@ import argparse
 import os
 import subprocess
 import sys
+import time
 
 PY = sys.executable
 # The pre-registered density caliber: ||rho||_4 <= 100 * 3775 = 377500, the value
@@ -109,6 +110,8 @@ def main() -> int:
     for name, cmd in jobs:
         while len(running) >= a.jobs:
             running = [q for q in running if q[1].poll() is None]
+            if len(running) >= a.jobs:
+                time.sleep(2.0)          # don't busy-spin a core on poll()
         log = open(f"{a.root}/logs/{name}.log", "w")
         running.append((name, subprocess.Popen([PY] + cmd, env=env,
                                                stdout=log, stderr=subprocess.STDOUT)))
