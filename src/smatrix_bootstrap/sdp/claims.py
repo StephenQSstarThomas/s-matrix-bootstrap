@@ -14,6 +14,24 @@ from .figures import boundary_points, c1_table, load_csv, phase_comparison
 PAIRING = {"tip": "red", "mid": "pink", "ref": "light_pink"}
 
 
+def fig8_reference() -> dict:
+    """The Fig. 8 reference numbers, read off the digitised file rather than
+    hard-coded: the chiral-only (green) and chiral+UV (cyan) boundaries and the
+    four highlighted points."""
+    b = load_csv("figure8_boundary.csv")
+    p = load_csv("figure8_selected_points.csv")
+    out = {}
+    for g, key in (("chiral_only_green", "chiral"), ("gauge_cyan", "uv")):
+        m = b["group"] == g
+        out[key + "_x_end"] = float(b["f00_s3"][m].max())
+        out[key + "_f11_min"] = float(b["f11_s3"][m].min())
+    for g in ("chiral_reference_black", "red", "pink", "light_pink"):
+        m = p["group"] == g
+        if m.sum():
+            out[g] = (float(p["f00_s3"][m][0]), float(p["f11_s3"][m][0]))
+    return out
+
+
 def _verdict(ok: bool | None) -> str:
     return "not run" if ok is None else ("pass" if ok else "FAIL")
 
@@ -47,8 +65,9 @@ def c2(records) -> dict:
         return {"verdict": "not run", "evidence": "no eps=2e-3 chi-b sweep"}
     pts = boundary_points(main)
     x_end = float(pts[:, 0].max())
-    rows = [{"quantity": "+x end at eps=2e-3", "ours": x_end, "paper": 0.0826,
-             "rel_diff": x_end / 0.0826 - 1.0, "pass": abs(x_end / 0.0826 - 1) <= 0.05}]
+    tgt = fig8_reference()["chiral_x_end"]
+    rows = [{"quantity": "+x end at eps=2e-3", "ours": x_end, "paper": tgt,
+             "rel_diff": x_end / tgt - 1.0, "pass": abs(x_end / tgt - 1) <= 0.05}]
     ends = {}
     for (eps, cal), rs in sorted(sets.items()):
         if cal == "chi-b":
@@ -116,12 +135,22 @@ def c5(records) -> dict:
     uv = [r for r in records if r["spec"]["chiral"] and r["spec"]["uv"]]
     if not chi or not uv:
         return {"verdict": "not run", "evidence": "need both chiral and chiral+UV sweeps"}
+    ref = fig8_reference()
     xe_chi = float(boundary_points(chi)[:, 0].max())
     xe_uv = float(boundary_points(uv)[:, 0].max())
-    rows = [{"quantity": "UV +x end", "ours": xe_uv, "paper": 0.0811,
-             "rel_diff": xe_uv / 0.0811 - 1.0, "pass": abs(xe_uv / 0.0811 - 1) <= 0.05}]
+    rows = [{"quantity": "UV +x end", "ours": xe_uv, "paper": ref["uv_x_end"],
+             "rel_diff": xe_uv / ref["uv_x_end"] - 1.0,
+             "pass": abs(xe_uv / ref["uv_x_end"] - 1) <= 0.05},
+            {"quantity": "chiral +x end", "ours": xe_chi, "paper": ref["chiral_x_end"],
+             "rel_diff": xe_chi / ref["chiral_x_end"] - 1.0,
+             "pass": abs(xe_chi / ref["chiral_x_end"] - 1) <= 0.05},
+            {"quantity": "UV/chiral shrink ratio", "ours": xe_uv / xe_chi,
+             "paper": ref["uv_x_end"] / ref["chiral_x_end"],
+             "rel_diff": (xe_uv / xe_chi) / (ref["uv_x_end"] / ref["chiral_x_end"]) - 1.0,
+             "pass": abs((xe_uv / xe_chi) / (ref["uv_x_end"] / ref["chiral_x_end"]) - 1) <= 0.02}]
     return {"verdict": _verdict(all(r["pass"] for r in rows)), "rows": rows,
-            "evidence": f"chiral +x end {xe_chi:.5f} -> UV {xe_uv:.5f} (paper 0.0826 -> 0.0811)"}
+            "evidence": "chiral +x end %.5f -> UV %.5f (paper %.5f -> %.5f)"
+                        % (xe_chi, xe_uv, ref["chiral_x_end"], ref["uv_x_end"])}
 
 
 def c6(points: dict) -> dict:
