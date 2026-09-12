@@ -110,7 +110,34 @@
    "rho_l4": 2100.3130078150657,
    "B_active": false,
    "rel_to_paper": -0.0532629120136926
+  },
+  {
+   "M": 40,
+   "L": 10,
+   "status": "optimal",
+   "seconds": 1573.3629443645477,
+   "rounds": 8,
+   "relaxation_upper_bounds": [
+    4.079603812652622,
+    2.4440337593883106,
+    2.1599369709080887,
+    2.157577475370008,
+    2.1545184753195685,
+    2.153161916505295,
+    2.1531347134288334,
+    2.153421739012918
+   ],
+   "objective": 2.153421739012918,
+   "f00_3": 2.153421739012918,
+   "f11_3": 0.029738694981394125,
+   "certified": false,
+   "n_disks_imposed": null,
+   "feasible": false,
+   "c_norm_inf": 990.8441227966506,
+   "rho_l4": 1876.2501362490984,
+   "B_active": false,
+   "rel_to_paper": -0.03558923164444805
   }
  ],
- "note": "reconstructed from the ladder log while the run was still in progress"
+ "note": "reconstructed from the ladder log; the M=35 and M=40 rows were produced before the constraint-generation fix and are marked uncertified"
 }

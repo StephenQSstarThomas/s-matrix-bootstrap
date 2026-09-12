@@ -270,11 +270,15 @@ def render(root: str, verdicts: dict | None = None) -> str:
           % (k_, title, L_["paper_reference"], L_["paper_value"]))
         if L_.get("note"):
             A("_%s_\n" % L_["note"])
-        A("| M | L | 状态 | 认证 | 目标值 | 相对论文 | 施加圆盘 | 轮数 | \\|\\|c\\|\\|_inf | 秒 |")
-        A("|---|---|---|---|---|---|---|---|---|---|")
+        A("三种状态：**认证** = 松弛极值且返回点满足全部圆盘，即完整问题的最优值；"
+          "**仅可行** = 通过事后检验但未证明最优，只能作为支撑函数的下界；"
+          "**否** = 未通过事后检验，仅作诊断。\n")
+        A("| M | L | 状态 | 认证 | 事后可行 | 目标值 | 相对论文 | 施加圆盘 | 轮数 | \\|\\|c\\|\\|_inf | 秒 |")
+        A("|---|---|---|---|---|---|---|---|---|---|---|")
         for r in L_["rows"]:
-            A("| {M} | {L} | {st} | {c} | {o} | {rel} | {d} | {n} | {cn} | {s} |".format(
+            A("| {M} | {L} | {st} | {c} | {fe} | {o} | {rel} | {d} | {n} | {cn} | {s} |".format(
                 M=r["M"], L=r["L"], st=r["status"], c=r.get("certified", "—"),
+                fe=r.get("feasible", "—"),
                 o="—" if r.get("objective") is None else "%.6f" % r["objective"],
                 rel="—" if r.get("rel_to_paper") is None else "%+.2f%%" % (100 * r["rel_to_paper"]),
                 d=r.get("n_disks_imposed", "—"), n=r["rounds"],

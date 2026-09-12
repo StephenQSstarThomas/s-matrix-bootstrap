@@ -1,6 +1,6 @@
 # REPORT_SDP_ZH — He–Kruczenski 2309.12402v3, SDP 直解路线
 
-生成时间 (UTC): 2026-09-12T10:01:03.876288+00:00
+生成时间 (UTC): 2026-09-12T10:02:23.175799+00:00
 
 结果根目录: `/playpen1/shiqiu/sdp-work/runs/sdp_reproduction_20260912`
 
@@ -15,7 +15,7 @@
 
 | # | claim | 判定 | 依据 |
 |---|---|---|---|
-| C1 | Pure-unitarity region shape (Fig. 3) | not run | 0/24 verified-feasible directions; the +x tip alone, from the resolution ladder: M=20 1.9279 (-13.7%), M=25 2.0061 (-10.2%), M=30 2.0661 (-7.5%), M=35 2.1140 (-5.3%) |
+| C1 | Pure-unitarity region shape (Fig. 3) | not run | 0/24 verified-feasible directions; the +x tip alone, from the resolution ladder: M=20 1.9279 (-13.7%), M=25 2.0061 (-10.2%), M=30 2.0661 (-7.5%), M=35 2.1140 (-5.3%), M=40 2.1534 (-3.6%) |
 | C2 | Chiral constraints collapse the region onto f11 = -f00/15 (Fig. 4) | pass | +x end 0.082598 vs 0.082573 (+0.03%) at M=[30]; eps ladder {0.006: 0.161054, 0.004: 0.125504, 0.002: 0.082598, 0.001: 0.055038} |
 | C3 | Subthreshold partial waves near-linear, S0 chiral zero moves (Fig. 5) | pass | eps=0.002: S0 zero 0.42585550990952303 |
 | C4 | Chiral only: S0/S2 agree with experiment, P1 has no rho (Fig. 7) | FAIL | tip: d00(0.9)=68.4, d11(1.2)=126.3; ref: d00(0.9)=84.7, d11(1.2)=27.0; mid: d00(0.9)=32.8, d11(1.2)=131.0 |
@@ -26,14 +26,14 @@
 
 ## 2. 求解器统计
 
-- 求解次数: 55
-- 状态分布: {'optimal': 51, 'SolverError': 4}
-- 迭代中位数: 59.0, 单次秒数中位数: 36.98802971839905
-- 机器时间合计: 2115 s
+- 求解次数: 47
+- 状态分布: {'optimal': 43, 'SolverError': 4}
+- 迭代中位数: 56.0, 单次秒数中位数: 27.657386779785156
+- 机器时间合计: 1525 s
 
 ## 3. 密度正则化 B 的活跃性
 
-- 带 B 的求解: 51；**任一活跃: False**
+- 带 B 的求解: 43；**任一活跃: False**
 
 | job | B | 范数 | \|\|rho\|\|_2 | \|\|rho\|\|_4 | 活跃 |
 |---|---|---|---|---|---|
@@ -41,27 +41,27 @@
 | ref | 3.775e+05 | l4 | 9.792e+02 | 2.618e+02 | False |
 | mid | 3.775e+05 | l4 | 8.221e+03 | 2.285e+03 | False |
 | dir000 | 3.775e+05 | l4 | 2.798e+03 | 8.514e+02 | False |
+| dir003 | 3.775e+05 | l4 | 1.983e+03 | 5.903e+02 | False |
+| dir006 | 3.775e+05 | l4 | 7.950e+02 | 2.340e+02 | False |
 | dir000 | 3.775e+05 | l4 | 4.517e+04 | 1.468e+04 | False |
 | dir003 | 3.775e+05 | l4 | 7.220e+03 | 2.208e+03 | False |
 | dir006 | 3.775e+05 | l4 | 2.012e+03 | 4.692e+02 | False |
 | dir009 | 3.775e+05 | l4 | 1.110e+04 | 3.473e+03 | False |
-| dir000 | 3.775e+05 | l4 | 2.850e+04 | 9.813e+03 | False |
-| dir001 | 3.775e+05 | l4 | 3.001e+04 | 1.032e+04 | False |
-| dir002 | 3.775e+05 | l4 | 2.790e+04 | 8.919e+03 | False |
-| dir003 | 3.775e+05 | l4 | 6.929e+04 | 1.968e+04 | False |
-| dir004 | 3.775e+05 | l4 | 4.223e+03 | 1.314e+03 | False |
-| dir005 | 3.775e+05 | l4 | 8.727e+02 | 2.327e+02 | False |
-| dir006 | 3.775e+05 | l4 | 2.358e+03 | 6.385e+02 | False |
-| dir007 | 3.775e+05 | l4 | 3.369e+03 | 8.287e+02 | False |
-| dir008 | 3.775e+05 | l4 | 1.189e+04 | 4.028e+03 | False |
-| dir009 | 3.775e+05 | l4 | 4.804e+03 | 1.172e+03 | False |
-| dir010 | 3.775e+05 | l4 | 2.810e+04 | 9.297e+03 | False |
-| dir011 | 3.775e+05 | l4 | 3.602e+03 | 9.280e+02 | False |
+| dir000 | 3.775e+05 | l4 | 2.033e+03 | 6.699e+02 | False |
+| dir003 | 3.775e+05 | l4 | 1.642e+03 | 5.415e+02 | False |
+| dir004 | 3.775e+05 | l4 | 9.817e+02 | 3.140e+02 | False |
+| dir006 | 3.775e+05 | l4 | 1.046e+03 | 2.741e+02 | False |
+| dir007 | 3.775e+05 | l4 | 1.300e+03 | 3.561e+02 | False |
+| dir009 | 3.775e+05 | l4 | 1.707e+03 | 4.944e+02 | False |
+| dir010 | 3.775e+05 | l4 | 1.787e+03 | 5.166e+02 | False |
+| dir000 | 3.775e+05 | l4 | 1.847e+03 | 6.443e+02 | False |
+| dir001 | 3.775e+05 | l4 | 1.837e+03 | 6.372e+02 | False |
+| dir002 | 3.775e+05 | l4 | 1.631e+03 | 5.585e+02 | False |
 
 ## 4. 幺正性事后复验（未经任何重缩放的原式）
 
-- 通过事后可行性检验的解: 28 个，其中最大 `max eta - 1` = 1.015e-09，位置: {'job': 'dir002', 'file': 'fig4/eps6e-03_chi-b/000/report.json', 'wave': {'isospin': 2, 'ell': 0, 'node': 18, 's': 12.468205094073321}, 'certified': True}
-- 未通过的解: 23 个（约束生成中途失败时返回的最后一个可解迭代，标记为未认证；所有 claim 判定都把它们过滤掉），其中最大 `max eta - 1` = 3.208e-02，位置: {'job': 'dir003', 'file': 'fig4/eps2e-03_chi-b/003/report.json', 'wave': {'isospin': 0, 'ell': 2, 'node': 4, 's': 4.230551242245793}, 'certified': False}
+- 通过事后可行性检验的解: 31 个，其中最大 `max eta - 1` = 1.015e-09，位置: {'job': 'dir002', 'file': 'fig4/eps6e-03_chi-b/000/report.json', 'wave': {'isospin': 2, 'ell': 0, 'node': 18, 's': 12.468205094073321}, 'certified': True}
+- 未通过的解: 12 个（约束生成中途失败时返回的最后一个可解迭代，标记为未认证；所有 claim 判定都把它们过滤掉），其中最大 `max eta - 1` = 2.273e-02，位置: {'job': 'dir000', 'file': 'fig4/eps2e-03_chi-a/000/report.json', 'wave': {'isospin': 0, 'ell': 2, 'node': 4, 's': 4.230551242245793}, 'certified': False}
 
 ## 5. FESR 目标值独立重算 (5a.9)
 
@@ -79,28 +79,33 @@
 
 ## 7.1 分辨率阶梯 — 纯幺正 max f00(3)（对照 Fig. 3 +x tip = 2.23289）
 
-_reconstructed from the ladder log while the run was still in progress_
+_reconstructed from the ladder log; the M=35 and M=40 rows were produced before the constraint-generation fix and are marked uncertified_
 
-| M | L | 状态 | 认证 | 目标值 | 相对论文 | 施加圆盘 | 轮数 | \|\|c\|\|_inf | 秒 |
-|---|---|---|---|---|---|---|---|---|---|
-| 20 | 6 | optimal | True | 1.927921 | -13.66% | 348 | 6 | 1.78e+03 | 16 |
-| 25 | 8 | optimal | True | 2.006054 | -10.16% | 580 | 7 | 1.71e+03 | 50 |
-| 30 | 8 | optimal | True | 2.066089 | -7.47% | 690 | 6 | 1.11e+03 | 73 |
-| 35 | 10 | optimal | False | 2.113958 | -5.33% | None | 8 | 1.28e+03 | 869 |
+三种状态：**认证** = 松弛极值且返回点满足全部圆盘，即完整问题的最优值；**仅可行** = 通过事后检验但未证明最优，只能作为支撑函数的下界；**否** = 未通过事后检验，仅作诊断。
+
+| M | L | 状态 | 认证 | 事后可行 | 目标值 | 相对论文 | 施加圆盘 | 轮数 | \|\|c\|\|_inf | 秒 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 20 | 6 | optimal | True | True | 1.927921 | -13.66% | 348 | 6 | 1.78e+03 | 16 |
+| 25 | 8 | optimal | True | True | 2.006054 | -10.16% | 580 | 7 | 1.71e+03 | 50 |
+| 30 | 8 | optimal | True | True | 2.066089 | -7.47% | 690 | 6 | 1.11e+03 | 73 |
+| 35 | 10 | optimal | False | True | 2.113958 | -5.33% | None | 8 | 1.28e+03 | 869 |
+| 40 | 10 | optimal | False | False | 2.153422 | -3.56% | None | 8 | 9.91e+02 | 1573 |
 
 
 ## 7.2 分辨率阶梯 — 手征 (eps=2e-3, chi-b) max f00(3)（对照 Fig. 8 chiral-only +x end (digitised) = 0.0825728）
 
 _reconstructed from the ladder log of the same script; ||c||_inf and rho_l4 are not carried for these rows_
 
-| M | L | 状态 | 认证 | 目标值 | 相对论文 | 施加圆盘 | 轮数 | \|\|c\|\|_inf | 秒 |
-|---|---|---|---|---|---|---|---|---|---|
-| 20 | 6 | optimal | True | 0.084161 | +1.92% | 360 | 7 | — | 18 |
-| 25 | 8 | optimal | True | 0.082459 | -0.14% | 598 | 8 | — | 50 |
-| 30 | 8 | optimal | True | 0.082598 | +0.03% | 717 | 7 | — | 74 |
-| 35 | 10 | optimal | False | 0.082492 | -0.10% | None | 8 | — | 209 |
-| 40 | 10 | optimal | False | 0.082521 | -0.06% | None | 8 | — | 887 |
-| 50 | 10 | SolverError | — | — | — | — | 1 | — | — |
+三种状态：**认证** = 松弛极值且返回点满足全部圆盘，即完整问题的最优值；**仅可行** = 通过事后检验但未证明最优，只能作为支撑函数的下界；**否** = 未通过事后检验，仅作诊断。
+
+| M | L | 状态 | 认证 | 事后可行 | 目标值 | 相对论文 | 施加圆盘 | 轮数 | \|\|c\|\|_inf | 秒 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 20 | 6 | optimal | True | — | 0.084161 | +1.92% | 360 | 7 | — | 18 |
+| 25 | 8 | optimal | True | — | 0.082459 | -0.14% | 598 | 8 | — | 50 |
+| 30 | 8 | optimal | True | — | 0.082598 | +0.03% | 717 | 7 | — | 74 |
+| 35 | 10 | optimal | False | — | 0.082492 | -0.10% | None | 8 | — | 209 |
+| 40 | 10 | optimal | False | — | 0.082521 | -0.06% | None | 8 | — | 887 |
+| 50 | 10 | SolverError | — | — | — | — | — | 1 | — | — |
 
 
 ## 7.3 手征容差阶梯 — 六个 eps^chi 的 +x 端（M=30, L=8, chi-b）

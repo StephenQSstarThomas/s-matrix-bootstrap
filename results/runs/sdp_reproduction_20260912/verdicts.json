@@ -1,7 +1,7 @@
 {
  "C1": {
   "verdict": "not run",
-  "evidence": "0/24 verified-feasible directions; the +x tip alone, from the resolution ladder: M=20 1.9279 (-13.7%), M=25 2.0061 (-10.2%), M=30 2.0661 (-7.5%), M=35 2.1140 (-5.3%)"
+  "evidence": "0/24 verified-feasible directions; the +x tip alone, from the resolution ladder: M=20 1.9279 (-13.7%), M=25 2.0061 (-10.2%), M=30 2.0661 (-7.5%), M=35 2.1140 (-5.3%), M=40 2.1534 (-3.6%)"
  },
  "C2": {
   "verdict": "pass",
