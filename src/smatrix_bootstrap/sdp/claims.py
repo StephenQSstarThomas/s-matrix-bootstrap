@@ -80,6 +80,11 @@ def c2(records) -> dict:
     for (eps, cal), rs in sorted(sets.items()):
         if cal == "chi-b":
             ends[eps] = float(boundary_points(rs)[:, 0].max())
+    w = section_width(records, chiral=True, uv=False, eps=C.EPS_CHI_MAIN)
+    if w:
+        rows.append({"quantity": "x_ref section width", "ours": w["width"],
+                     "paper": 7.6e-4, "rel_diff": w["width"] / 7.6e-4 - 1.0,
+                     "pass": abs(w["width"] / 7.6e-4 - 1) <= 0.20})
     mono = None
     if len(ends) >= 3:
         e = [ends[k] for k in sorted(ends, reverse=True)]
@@ -90,6 +95,26 @@ def c2(records) -> dict:
             "rows": rows, "eps_ends": ends, "M": Ms,
             "evidence": f"+x end {x_end:.6f} vs {tgt:.6f} ({100*(x_end/tgt-1):+.2f}%) at M={Ms}; "
                         f"eps ladder { {k: round(v, 6) for k, v in ends.items()} }"}
+
+
+def section_width(records, chiral: bool, uv: bool, eps=None) -> dict | None:
+    """(hi, lo, width) of the x_ref section, from the section_hi/section_lo jobs."""
+    hi = lo = None
+    for r in records:
+        s = r["spec"]
+        if s["chiral"] != chiral or s["uv"] != uv:
+            continue
+        if eps is not None and abs(s["eps_chi"] - eps) > 1e-12:
+            continue
+        if r["result"].get("f11_3") is None:
+            continue
+        if r["job"] == "section_hi":
+            hi = r["result"]["f11_3"]
+        elif r["job"] == "section_lo":
+            lo = r["result"]["f11_3"]
+    if hi is None or lo is None:
+        return None
+    return {"hi": hi, "lo": lo, "width": hi - lo}
 
 
 def c3(by_eps: dict) -> dict:

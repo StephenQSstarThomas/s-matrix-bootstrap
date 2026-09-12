@@ -52,6 +52,12 @@ def _jobs(a, x_tip: float | None):
                     return 0.5 * (xt + _xr)
                 out.append(("mid", (0.0, 1.0), _fix_f00(_mid)))
         return out
+    if a.section is not None:
+        # the width of the allowed region on the vertical section f00(3) = x:
+        # max f11 (direction +y) and min f11 (direction -y)
+        x = C.chiral_reference_point()[0] if a.section == "xref" else float(a.section)
+        return [("section_hi", (0.0, 1.0), _fix_f00(lambda ctx, _x=x: _x)),
+                ("section_lo", (0.0, -1.0), _fix_f00(lambda ctx, _x=x: _x))]
     dirs = sweep_directions(a.ndir, half=a.half)
     lo, hi = (a.slice or "0:%d" % len(dirs)).split(":")
     sel = list(range(len(dirs)))[int(lo):int(hi)]
@@ -93,6 +99,8 @@ def main(argv=None) -> int:
     p.add_argument("--slice", default=None)
     p.add_argument("--points", nargs="*", choices=list(POINTS))
     p.add_argument("--x-tip", type=float, default=None)
+    p.add_argument("--section", default=None,
+                   help="'xref' or a number: solve max/min f11 on f00(3) = x")
     p.add_argument("--solver", default="CLARABEL")
     p.add_argument("--max-iter", type=int, default=500)
     p.add_argument("--time-limit", type=float, default=7200.0)

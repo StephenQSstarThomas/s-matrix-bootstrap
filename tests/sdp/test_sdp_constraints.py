@@ -143,10 +143,23 @@ def test_fesr_targets_recomputed_from_svz():
 
 
 def test_ff_asymptotic_bound_counts():
-    idx, bounds = C.ff_asymptotic_bounds(M)
+    idx, bounds, kin = C.ff_asymptotic_bounds(M)
     assert idx.size == 7                    # 50 - 43 nodes above s0
     assert bounds[0] == pytest.approx(np.sqrt(2 * grid.M_Q ** 2 * C.EPS_FF))
     assert bounds[1] == pytest.approx(np.sqrt(0.5 * C.EPS_FF))
+
+
+def test_ff_factor_reading_matters_only_for_P1():
+    """(3.75) with the (2.33) factor frozen at s0 -- the paper's literal text --
+    against the per-node reading.  k_0 is flat across the nodes above s0, k_1
+    rises by a factor 15, so the two readings differ only for P1."""
+    _, _, frozen = C.ff_asymptotic_bounds(M, frozen_at_s0=True)
+    _, _, pernode = C.ff_asymptotic_bounds(M, frozen_at_s0=False)
+    r0 = pernode[0] / frozen[0]
+    r1 = pernode[1] / frozen[1]
+    assert np.allclose(frozen[0], frozen[0][0]) and np.allclose(frozen[1], frozen[1][0])
+    assert r0.max() < 1.02                  # S0: the factor is flat
+    assert r1.max() > 10.0                  # P1: it is not
 
 
 def test_chiral_reference_point():
