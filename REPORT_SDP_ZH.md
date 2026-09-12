@@ -1,6 +1,6 @@
 # REPORT_SDP_ZH — He–Kruczenski 2309.12402v3, SDP 直解路线
 
-生成时间 (UTC): 2026-09-12T09:55:46.579006+00:00
+生成时间 (UTC): 2026-09-12T09:57:00.294970+00:00
 
 结果根目录: `/playpen1/shiqiu/sdp-work/runs/sdp_reproduction_20260912`
 
@@ -9,10 +9,10 @@
 
 | # | claim | 判定 | 依据 |
 |---|---|---|---|
-| C1 | Pure-unitarity region shape (Fig. 3) | not run | 0/24 verified-feasible directions |
+| C1 | Pure-unitarity region shape (Fig. 3) | not run | 0/24 verified-feasible directions; the +x tip alone, from the resolution ladder: M=20 1.9279 (-13.7%), M=25 2.0061 (-10.2%), M=30 2.0661 (-7.5%), M=35 2.1140 (-5.3%) |
 | C2 | Chiral constraints collapse the region onto f11 = -f00/15 (Fig. 4) | pass | +x end 0.082598 vs 0.082573 (+0.03%) at M=[30]; eps ladder {0.006: 0.160924, 0.004: 0.125504, 0.002: 0.082598} |
 | C3 | Subthreshold partial waves near-linear, S0 chiral zero moves (Fig. 5) | pass | eps=0.002: S0 zero 0.42585550990952303 |
-| C4 | Chiral only: S0/S2 agree with experiment, P1 has no rho (Fig. 7) | FAIL | tip: d00(0.9)=68.4, d11(1.2)=126.3; ref: d00(0.9)=84.7, d11(1.2)=27.0 |
+| C4 | Chiral only: S0/S2 agree with experiment, P1 has no rho (Fig. 7) | FAIL | tip: d00(0.9)=68.4, d11(1.2)=126.3; ref: d00(0.9)=84.7, d11(1.2)=27.0; mid: d00(0.9)=32.8, d11(1.2)=131.0 |
 | C5 | FESR+FF shrink the upper boundary, not the lower (Fig. 8) | not run | need both chiral and chiral+UV sweeps |
 | C6 | rho appears in P1 at all three representative points (Fig. 9) | not run | no representative points |
 | C7 | S0/S2 coincide at low energy and spread at high energy (Fig. 10) | not run | no representative points |
@@ -20,19 +20,20 @@
 
 ## 2. 求解器统计
 
-- 求解次数: 44
-- 状态分布: {'optimal': 40, 'SolverError': 4}
-- 迭代中位数: 61.0, 单次秒数中位数: 45.32340061664581
-- 机器时间合计: 1864 s
+- 求解次数: 46
+- 状态分布: {'optimal': 42, 'SolverError': 4}
+- 迭代中位数: 60.5, 单次秒数中位数: 44.55045127868652
+- 机器时间合计: 1932 s
 
 ## 3. 密度正则化 B 的活跃性
 
-- 带 B 的求解: 40；**任一活跃: False**
+- 带 B 的求解: 42；**任一活跃: False**
 
 | job | B | 范数 | \|\|rho\|\|_2 | \|\|rho\|\|_4 | 活跃 |
 |---|---|---|---|---|---|
 | tip | 3.775e+05 | l4 | 2.850e+04 | 9.813e+03 | False |
 | ref | 3.775e+05 | l4 | 9.792e+02 | 2.618e+02 | False |
+| mid | 3.775e+05 | l4 | 8.221e+03 | 2.285e+03 | False |
 | dir000 | 3.775e+05 | l4 | 4.517e+04 | 1.468e+04 | False |
 | dir003 | 3.775e+05 | l4 | 7.220e+03 | 2.208e+03 | False |
 | dir006 | 3.775e+05 | l4 | 2.012e+03 | 4.692e+02 | False |
@@ -41,6 +42,7 @@
 | dir001 | 3.775e+05 | l4 | 3.001e+04 | 1.032e+04 | False |
 | dir003 | 3.775e+05 | l4 | 6.929e+04 | 1.968e+04 | False |
 | dir004 | 3.775e+05 | l4 | 4.223e+03 | 1.314e+03 | False |
+| dir005 | 3.775e+05 | l4 | 8.727e+02 | 2.327e+02 | False |
 | dir006 | 3.775e+05 | l4 | 2.358e+03 | 6.385e+02 | False |
 | dir007 | 3.775e+05 | l4 | 3.369e+03 | 8.287e+02 | False |
 | dir009 | 3.775e+05 | l4 | 4.804e+03 | 1.172e+03 | False |
@@ -49,13 +51,11 @@
 | dir001 | 3.775e+05 | l4 | 1.837e+03 | 6.372e+02 | False |
 | dir002 | 3.775e+05 | l4 | 1.631e+03 | 5.585e+02 | False |
 | dir003 | 3.775e+05 | l4 | 1.455e+03 | 4.784e+02 | False |
-| dir004 | 3.775e+05 | l4 | 1.323e+03 | 4.275e+02 | False |
-| dir005 | 3.775e+05 | l4 | 9.059e+02 | 2.586e+02 | False |
 
 ## 4. 幺正性事后复验（未经任何重缩放的原式）
 
 - 通过事后可行性检验的解: 24 个，其中最大 `max eta - 1` = 2.839e-07，位置: {'job': 'dir011', 'file': 'fig4/eps4e-03_chi-b/009/report.json', 'wave': {'isospin': 2, 'ell': 4, 'node': 27, 's': 234.78192216392355}, 'certified': False}
-- 未通过的解: 16 个（约束生成中途失败时返回的最后一个可解迭代，标记为未认证；所有 claim 判定都把它们过滤掉），其中最大 `max eta - 1` = 3.208e-02，位置: {'job': 'dir003', 'file': 'fig4/eps2e-03_chi-b/003/report.json', 'wave': {'isospin': 0, 'ell': 2, 'node': 4, 's': 4.230551242245793}, 'certified': False}
+- 未通过的解: 18 个（约束生成中途失败时返回的最后一个可解迭代，标记为未认证；所有 claim 判定都把它们过滤掉），其中最大 `max eta - 1` = 3.208e-02，位置: {'job': 'dir003', 'file': 'fig4/eps2e-03_chi-b/003/report.json', 'wave': {'isospin': 0, 'ell': 2, 'node': 4, 's': 4.230551242245793}, 'certified': False}
 
 ## 5. FESR 目标值独立重算 (5a.9)
 

@@ -1,7 +1,7 @@
 {
  "C1": {
   "verdict": "not run",
-  "evidence": "0/24 verified-feasible directions"
+  "evidence": "0/24 verified-feasible directions; the +x tip alone, from the resolution ladder: M=20 1.9279 (-13.7%), M=25 2.0061 (-10.2%), M=30 2.0661 (-7.5%), M=35 2.1140 (-5.3%)"
  },
  "C2": {
   "verdict": "pass",
@@ -91,10 +91,16 @@
     "delta00_0.9GeV": 84.7328175238678,
     "delta11_1.2GeV": 26.97291047771088,
     "pass": false
+   },
+   {
+    "point": "mid",
+    "delta00_0.9GeV": 32.828728224960095,
+    "delta11_1.2GeV": 131.03582319297365,
+    "pass": false
    }
   ],
   "decisive_point": "ref",
-  "evidence": "tip: d00(0.9)=68.4, d11(1.2)=126.3; ref: d00(0.9)=84.7, d11(1.2)=27.0"
+  "evidence": "tip: d00(0.9)=68.4, d11(1.2)=126.3; ref: d00(0.9)=84.7, d11(1.2)=27.0; mid: d00(0.9)=32.8, d11(1.2)=131.0"
  },
  "C5": {
   "verdict": "not run",

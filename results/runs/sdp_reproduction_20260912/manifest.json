@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-12T09:55:46.529208+00:00",
+ "generated": "2026-09-12T09:57:00.275945+00:00",
  "root": "/playpen1/shiqiu/sdp-work/runs/sdp_reproduction_20260912",
  "entries": [
   {
@@ -35,6 +35,23 @@
    "f00_3": 0.07332139064179259,
    "f11_3": -0.004384222930852593,
    "solution_sha256": "a16d7d2b4ee885a55dc2001375716449c5b7845471334e526f09edda4479bea9"
+  },
+  {
+   "job": "mid",
+   "report_json": "chiral_points/M30_eps0.002/report.json",
+   "M": 30,
+   "L": 8,
+   "chiral": true,
+   "uv": false,
+   "chi_caliber": "chi-b",
+   "sr_caliber": "SR-b",
+   "eps_chi": 0.002,
+   "B": 377500.0,
+   "status": "optimal",
+   "objective": -0.0028728637808858137,
+   "f00_3": 0.0844161529575779,
+   "f11_3": -0.0028728637808858137,
+   "solution_sha256": "a7ab76aeaba90eb1f6e4752e3b6bfc4966c7d638baabf54fd8e79151331a1a5d"
   },
   {
    "job": "tip",
@@ -239,6 +256,23 @@
    "f00_3": 0.08436304435961796,
    "f11_3": -0.005453044761709717,
    "solution_sha256": "a3008b0f0a652fa923b45cb40df00eca17f617c013dcd79909bde97e4de2f94f"
+  },
+  {
+   "job": "dir005",
+   "report_json": "fig4/eps2e-03_chi-b/003/report.json",
+   "M": 30,
+   "L": 8,
+   "chiral": true,
+   "uv": false,
+   "chi_caliber": "chi-b",
+   "sr_caliber": "SR-b",
+   "eps_chi": 0.002,
+   "B": 377500.0,
+   "status": "optimal",
+   "objective": 0.006478697806759544,
+   "f00_3": 0.08152156548773228,
+   "f11_3": -0.00517571188564771,
+   "solution_sha256": "1c99dddc5f087c564d847b2f00b6814c1438b340ee7a9452dbd9472c1eaf7e65"
   },
   {
    "job": "dir006",

@@ -36,14 +36,21 @@ def _verdict(ok: bool | None) -> str:
     return "not run" if ok is None else ("pass" if ok else "FAIL")
 
 
-def c1(records) -> dict:
+def c1(records, ladder: dict | None = None) -> dict:
     pure = [r for r in records if not r["spec"]["chiral"] and not r["spec"]["uv"]
             and r["job"].startswith("dir")
             and r["result"].get("f00_3") is not None
             and r.get("verification", {}).get("unitarity", {}).get("feasible", False)]
     if len(pure) < 24:
-        return {"verdict": "not run",
-                "evidence": f"{len(pure)}/24 verified-feasible directions"}
+        ev = f"{len(pure)}/24 verified-feasible directions"
+        if ladder:
+            ok = [r for r in ladder.get("rows", []) if r.get("objective") is not None]
+            if ok:
+                ev += ("; the +x tip alone, from the resolution ladder: "
+                       + ", ".join("M=%d %.4f (%+.1f%%)"
+                                   % (r["M"], r["objective"], 100 * r["rel_to_paper"])
+                                   for r in ok))
+        return {"verdict": "not run", "evidence": ev}
     Ms = sorted({r["spec"]["M"] for r in pure})
     Ls = sorted({r["spec"]["L"] for r in pure})
     t = c1_table(pure)

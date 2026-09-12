@@ -82,7 +82,8 @@ def verdicts(records, root=None) -> dict:
                                         eps=EPS_CHI_MAIN)
     ml = by_ml(records)
     eps_ladder = load_optional(root, "eps_ladder.json") if root else None
-    return {"C1": claims.c1(records),
+    ladder_pure = load_optional(root, "ladder_pure.json") if root else None
+    return {"C1": claims.c1(records, ladder_pure),
             "C2": claims.c2(records, eps_ladder),
             "C3": claims.c3({k: v[1] for k, v in subthreshold_by_eps(records).items()}),
             "C4": claims.c4(chiral_only), "C5": claims.c5(records),
