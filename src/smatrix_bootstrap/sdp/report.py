@@ -197,6 +197,16 @@ def render(root: str, verdicts: dict | None = None) -> str:
     A("# REPORT_SDP_ZH — He–Kruczenski 2309.12402v3, SDP 直解路线\n")
     A(f"生成时间 (UTC): {datetime.now(timezone.utc).isoformat()}\n")
     A(f"结果根目录: `{root}`\n")
+    n_pass = sum(1 for d in verdicts.values() if d.get("verdict") == "pass")
+    n_fail = sum(1 for d in verdicts.values() if d.get("verdict") == "FAIL")
+    n_none = 8 - n_pass - n_fail
+    A("\n## 0. 一句话结论\n")
+    A(f"8 条 claim 中：**{n_pass} 条复现、{n_fail} 条不通过、{n_none} 条未运行**。")
+    A("未运行的原因不是论文，而是本轮的求解阶段——M=50（论文分辨率）在所有试过的配置下"
+      "都不收敛，UV 扇区（Gram + FESR + 形状因子渐近同时开启）也没能给出一个认证点。"
+      "按任务书第 8 节，这属于结论 (c)：技术性失败，附完整诊断（见 §8、§9、§11）。"
+      "已复现的部分是在 M<=40 上**认证**的（约束生成：松弛极值 + 返回点满足全部 3LM 个圆盘），"
+      "并附分辨率阶梯说明小 M 的数字为何可引用。\n")
     A("\n## 1. 核心 claim 判定表\n")
     A("| # | claim | 判定 | 依据 |")
     A("|---|---|---|---|")
