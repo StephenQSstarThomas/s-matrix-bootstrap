@@ -18,22 +18,30 @@ from smatrix_bootstrap.sdp import claims, report
 from smatrix_bootstrap.sdp.figures import build_all
 
 
-def representative_points(records, chi=None, sr=None, uv=True):
-    """{'tip'|'ref'|'mid': observables} for one caliber."""
-    out = {}
+def representative_points(records, chi=None, sr=None, uv=True, eps=None, M=None):
+    """{'tip'|'ref'|'mid': observables} for one caliber and one resolution.
+
+    Mixing eps^chi values or resolutions would silently compare curves from
+    different problems, so both are pinned; when M is not given, the largest
+    resolution that produced points is used.
+    """
+    cand = []
     for r in records:
-        s = r["spec"]
-        if r["job"] not in ("tip", "ref", "mid"):
+        sp = r["spec"]
+        if r["job"] not in ("tip", "ref", "mid") or sp["uv"] != uv:
             continue
-        if s["uv"] != uv:
+        if chi and sp["chi_caliber"] != chi:
             continue
-        if chi and s["chi_caliber"] != chi:
+        if sr and sp["sr_caliber"] != sr:
             continue
-        if sr and s["sr_caliber"] != sr:
+        if eps is not None and abs(sp["eps_chi"] - eps) > 1e-12:
             continue
         if "observables" in r:
-            out[r["job"]] = r["observables"]
-    return out
+            cand.append(r)
+    if not cand:
+        return {}
+    use_M = M if M is not None else max(r["spec"]["M"] for r in cand)
+    return {r["job"]: r["observables"] for r in cand if r["spec"]["M"] == use_M}
 
 
 def by_ml(records):
@@ -52,16 +60,21 @@ def subthreshold_by_eps(records):
         s = r["spec"]
         if (r["job"] == "ref" and s["chiral"] and not s["uv"]
                 and s["chi_caliber"] == "chi-b" and "subthreshold" in r):
-            out[round(s["eps_chi"], 12)] = r["subthreshold"]
+            k = round(s["eps_chi"], 12)
+            # keep the highest resolution available for each tolerance
+            if k not in out or s["M"] >= out[k][0]:
+                out[k] = (s["M"], r["subthreshold"])
     return out
 
 
 def verdicts(records) -> dict:
-    main = representative_points(records, "chi-b", "SR-b", uv=True)
-    chiral_only = representative_points(records, "chi-b", None, uv=False)
+    from smatrix_bootstrap.sdp.constraints import EPS_CHI_MAIN
+    main = representative_points(records, "chi-b", "SR-b", uv=True, eps=EPS_CHI_MAIN)
+    chiral_only = representative_points(records, "chi-b", None, uv=False,
+                                        eps=EPS_CHI_MAIN)
     ml = by_ml(records)
     return {"C1": claims.c1(records), "C2": claims.c2(records),
-            "C3": claims.c3(subthreshold_by_eps(records)),
+            "C3": claims.c3({k: v[1] for k, v in subthreshold_by_eps(records).items()}),
             "C4": claims.c4(chiral_only), "C5": claims.c5(records),
             "C6": claims.c6(main), "C7": claims.c7(main), "C8": claims.c8(ml)}
 
