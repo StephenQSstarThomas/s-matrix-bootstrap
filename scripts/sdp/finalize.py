@@ -67,13 +67,23 @@ def subthreshold_by_eps(records):
     return out
 
 
-def verdicts(records) -> dict:
+def load_optional(root, name):
+    fp = os.path.join(root, name)
+    if os.path.exists(fp):
+        with open(fp) as fh:
+            return json.load(fh)
+    return None
+
+
+def verdicts(records, root=None) -> dict:
     from smatrix_bootstrap.sdp.constraints import EPS_CHI_MAIN
     main = representative_points(records, "chi-b", "SR-b", uv=True, eps=EPS_CHI_MAIN)
     chiral_only = representative_points(records, "chi-b", None, uv=False,
                                         eps=EPS_CHI_MAIN)
     ml = by_ml(records)
-    return {"C1": claims.c1(records), "C2": claims.c2(records),
+    eps_ladder = load_optional(root, "eps_ladder.json") if root else None
+    return {"C1": claims.c1(records),
+            "C2": claims.c2(records, eps_ladder),
             "C3": claims.c3({k: v[1] for k, v in subthreshold_by_eps(records).items()}),
             "C4": claims.c4(chiral_only), "C5": claims.c5(records),
             "C6": claims.c6(main), "C7": claims.c7(main), "C8": claims.c8(ml)}
@@ -87,7 +97,7 @@ def main() -> int:
     a = p.parse_args()
 
     data = report.collect(a.root)
-    v = verdicts(data["records"])
+    v = verdicts(data["records"], a.root)
     with open(os.path.join(a.root, "verdicts.json"), "w") as fh:
         json.dump(v, fh, indent=1, default=float)
     try:

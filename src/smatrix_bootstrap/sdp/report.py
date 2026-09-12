@@ -272,6 +272,22 @@ def render(root: str, verdicts: dict | None = None) -> str:
                 cn="—" if r.get("c_norm_inf") is None else "%.2e" % r["c_norm_inf"],
                 s="—" if r.get("seconds") is None else "%.0f" % r["seconds"]))
         A("")
+    el_path = os.path.join(root, "eps_ladder.json")
+    if os.path.exists(el_path):
+        with open(el_path) as fh:
+            el = json.load(fh)
+        A("\n## 6b.3 手征容差阶梯 — 六个 eps^chi 的 +x 端（M=%d, L=%d, %s）\n"
+          % (el["M"], el["L"], el["caliber"]))
+        A("| eps^chi | 状态 | 认证 | 事后可行 | +x 端 | 施加圆盘 | 轮数 | 秒 |")
+        A("|---|---|---|---|---|---|---|---|")
+        for r_ in el["rows"]:
+            A("| {e:.1e} | {st} | {c} | {f} | {x} | {d} | {n} | {s} |".format(
+                e=r_["eps_chi"], st=r_["status"], c=r_.get("certified", "—"),
+                f=r_.get("feasible", "—"),
+                x="—" if r_.get("x_end") is None else "%.6f" % r_["x_end"],
+                d=r_.get("n_disks", "—"), n=r_["rounds"], s="%.0f" % r_["seconds"]))
+        A("\n论文 Fig.8 手征边界（eps=2e-3）的 +x 端数字化值 = %.6f\n"
+          % el["paper_x_end_eps2e-3"])
     ff_path = os.path.join(root, "ff_tolerance.json")
     if os.path.exists(ff_path):
         with open(ff_path) as fh:

@@ -66,7 +66,13 @@ def _chiral_sets(records):
     return out
 
 
-def c2(records) -> dict:
+def c2(records, eps_ladder: dict | None = None) -> dict:
+    """C2 at the main tolerance, plus the monotonicity of the +x end in eps^chi.
+
+    ``eps_ladder`` (eps_ladder.json) supplies the dedicated +x-end solves for the
+    six tolerances of Fig. 4; without it the ladder is taken from whatever sweep
+    directions are present, which may not include the +x direction for every eps.
+    """
     sets = _chiral_sets(records)
     main = sets.get((C.EPS_CHI_MAIN, "chi-b"))
     if not main:
@@ -92,12 +98,16 @@ def c2(records) -> dict:
         rows.append({"quantity": "x_ref section width", "ours": w["width"],
                      "paper": 7.6e-4, "rel_diff": w["width"] / 7.6e-4 - 1.0,
                      "pass": abs(w["width"] / 7.6e-4 - 1) <= 0.20})
+    if eps_ladder:
+        ends = {r["eps_chi"]: r["x_end"] for r in eps_ladder.get("rows", [])
+                if r.get("x_end") is not None and r.get("feasible")}
     mono = None
     if len(ends) >= 3:
         e = [ends[k] for k in sorted(ends, reverse=True)]
         mono = all(e[i] >= e[i + 1] - 1e-12 for i in range(len(e) - 1))
-        rows.append({"quantity": "+x end monotone in eps", "ours": e, "paper": "decreasing",
-                     "rel_diff": None, "pass": mono})
+        rows.append({"quantity": "+x end monotone in eps^chi", "ours": e,
+                     "paper": "decreasing with eps", "rel_diff": None, "pass": mono,
+                     "n_eps": len(e)})
     return {"verdict": _verdict(all(r["pass"] for r in rows) if mono is not None else None),
             "rows": rows, "eps_ends": ends, "M": Ms,
             "evidence": f"+x end {x_end:.6f} vs {tgt:.6f} ({100*(x_end/tgt-1):+.2f}%) at M={Ms}; "
