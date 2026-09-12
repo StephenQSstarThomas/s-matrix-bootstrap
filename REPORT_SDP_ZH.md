@@ -1,6 +1,6 @@
 # REPORT_SDP_ZH — He–Kruczenski 2309.12402v3, SDP 直解路线
 
-生成时间 (UTC): 2026-09-12T09:55:03.392987+00:00
+生成时间 (UTC): 2026-09-12T09:55:46.579006+00:00
 
 结果根目录: `/playpen1/shiqiu/sdp-work/runs/sdp_reproduction_20260912`
 
@@ -71,12 +71,7 @@
 论文打印值对应 m_q 取均方根；取算术平均则 S0 两个矩差 9.3%。主线用打印值。
 
 
-## 7. 能量轴口径
-
-- digitised figures use m_pi = 139.57 MeV, the paper's text m_pi = 140 MeV; 0.31% shift on the energy axis
-
-
-## 6b.1 分辨率阶梯 — 纯幺正 max f00(3)（对照 Fig. 3 +x tip = 2.23289）
+## 7.1 分辨率阶梯 — 纯幺正 max f00(3)（对照 Fig. 3 +x tip = 2.23289）
 
 _reconstructed from the ladder log while the run was still in progress_
 
@@ -88,7 +83,7 @@ _reconstructed from the ladder log while the run was still in progress_
 | 35 | 10 | optimal | False | 2.113958 | -5.33% | None | 8 | 1.28e+03 | 869 |
 
 
-## 6b.2 分辨率阶梯 — 手征 (eps=2e-3, chi-b) max f00(3)（对照 Fig. 8 chiral-only +x end (digitised) = 0.0825728）
+## 7.2 分辨率阶梯 — 手征 (eps=2e-3, chi-b) max f00(3)（对照 Fig. 8 chiral-only +x end (digitised) = 0.0825728）
 
 _reconstructed from the ladder log of the same script; ||c||_inf and rho_l4 are not carried for these rows_
 
@@ -102,7 +97,7 @@ _reconstructed from the ladder log of the same script; ||c||_inf and rho_l4 are 
 | 50 | 10 | SolverError | — | — | — | — | 1 | — | — |
 
 
-## 6b.3 手征容差阶梯 — 六个 eps^chi 的 +x 端（M=30, L=8, chi-b）
+## 7.3 手征容差阶梯 — 六个 eps^chi 的 +x 端（M=30, L=8, chi-b）
 
 | eps^chi | 状态 | 认证 | 事后可行 | +x 端 | 施加圆盘 | 轮数 | 秒 |
 |---|---|---|---|---|---|---|---|
@@ -113,7 +108,7 @@ _reconstructed from the ladder log of the same script; ||c||_inf and rho_l4 are 
 论文 Fig.8 手征边界（eps=2e-3）的 +x 端数字化值 = 0.082573
 
 
-## 6c. (3.75) 最小可行 eps^FF（scripts/sdp/ff_tolerance.py）
+## 8. (3.75) 最小可行 eps^FF（scripts/sdp/ff_tolerance.py）
 
 论文取 eps^FF = 6.0e-05。下表是在手征 (3.64) + Gram (3.68) + FESR (3.73) 下，使 (3.75) 可行的最小倍数 t 及 eps^FF_min = 6.0e-05·t^2。
 
@@ -127,7 +122,7 @@ _reconstructed from the ladder log of the same script; ||c||_inf and rho_l4 are 
 | 30 | 8 | 逐节点 | failed | 545 | 0.213 | 2.7e-06 | 0.05x |
 
 
-## 7b. 求解器行为研究 (scripts/sdp/solver_study.py, M=20 L=6)
+## 9. 求解器行为研究 (scripts/sdp/solver_study.py, M=20 L=6)
 
 | 配置 | 状态 | f00(3) | 事后可行 | 最大相对违反 | \|\|rho\|\|_4 | 迭代 | 秒 |
 |---|---|---|---|---|---|---|---|
@@ -150,7 +145,12 @@ _reconstructed from the ladder log of the same script; ||c||_inf and rho_l4 are 
 - 已验证可行的最好点: no B, exact basis reduction, f00(3) = 2.007106
 
 
-## 8. 方法、偏离与发现
+## 10. 能量轴口径
+
+- digitised figures use m_pi = 139.57 MeV, the paper's text m_pi = 140 MeV; 0.31% shift on the energy axis
+
+
+## 11. 方法、偏离与发现
 
 **(3.67) 核的独立推导.** 论文的 K 核不是照抄的：本实现从 sigma 在 2M 点交错网格上的奇延拓推出共轭函数算子，与 (3.67) 逐元素相差 1e-15。它把 sin(n phi) 精确映到 cos(n phi)（n < M）。
 
@@ -189,7 +189,7 @@ _reconstructed from the ladder log of the same script; ||c||_inf and rho_l4 are 
 **P1 对拍改用 lambda_max.** 任务书的 P1 要求用作者 2403 参数复现 2403 的一个公开点。本任务改用 lambda = (pi/4) T_3333(4/3,4/3,4/3) 的上界 2.661——这是对 2309 同一套（解析性+交叉+幺正性）已发表的独立数值，既验证了同一条“组装约束 + 调求解器”链路，又不必把 2403 的物理参数（nu0 = -20、s0 = 2 GeV、三电流）搬进来（第 7 节明令禁止）。lambda 行本身用论文 (2.14) 下方的 Weinberg 值 m_pi^2/(32 pi f_pi^2) = 0.023 校准。
 
 
-## 9. 本任务未做的事
+## 12. 本任务未做的事
 
 - continuous unitarity was not verified: unitarity is imposed only on the M x L x 3 collocation points of (3.61), never between them
 - no pole was proven: the rho is read off a 90-degree crossing of the interpolated phase shift, which is not an analytic continuation to the second sheet

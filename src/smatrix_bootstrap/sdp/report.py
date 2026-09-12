@@ -248,7 +248,6 @@ def render(root: str, verdicts: dict | None = None) -> str:
                   f"| {r['rel_diff']*100:+.2f}% | {r['pass']} |")
         except Exception as exc:
             A(f"(C1 表未能生成: {exc})")
-    A(f"\n## 7. 能量轴口径\n\n- {ENERGY_AXIS_NOTE}\n")
     for k_, (lad, title) in enumerate((("ladder_pure.json", "纯幺正 max f00(3)"),
                                        ("ladder_chiral.json",
                                         "手征 (eps=2e-3, chi-b) max f00(3)")), 1):
@@ -257,7 +256,7 @@ def render(root: str, verdicts: dict | None = None) -> str:
             continue
         with open(lp) as fh:
             L_ = json.load(fh)
-        A("\n## 6b.%d 分辨率阶梯 — %s（对照 %s = %.6g）\n"
+        A("\n## 7.%d 分辨率阶梯 — %s（对照 %s = %.6g）\n"
           % (k_, title, L_["paper_reference"], L_["paper_value"]))
         if L_.get("note"):
             A("_%s_\n" % L_["note"])
@@ -276,7 +275,7 @@ def render(root: str, verdicts: dict | None = None) -> str:
     if os.path.exists(el_path):
         with open(el_path) as fh:
             el = json.load(fh)
-        A("\n## 6b.3 手征容差阶梯 — 六个 eps^chi 的 +x 端（M=%d, L=%d, %s）\n"
+        A("\n## 7.3 手征容差阶梯 — 六个 eps^chi 的 +x 端（M=%d, L=%d, %s）\n"
           % (el["M"], el["L"], el["caliber"]))
         A("| eps^chi | 状态 | 认证 | 事后可行 | +x 端 | 施加圆盘 | 轮数 | 秒 |")
         A("|---|---|---|---|---|---|---|---|")
@@ -292,7 +291,7 @@ def render(root: str, verdicts: dict | None = None) -> str:
     if os.path.exists(ff_path):
         with open(ff_path) as fh:
             ff = json.load(fh)
-        A("\n## 6c. (3.75) 最小可行 eps^FF（scripts/sdp/ff_tolerance.py）\n")
+        A("\n## 8. (3.75) 最小可行 eps^FF（scripts/sdp/ff_tolerance.py）\n")
         A("论文取 eps^FF = %.1e。下表是在手征 (3.64) + Gram (3.68) + FESR (3.73) 下，"
           "使 (3.75) 可行的最小倍数 t 及 eps^FF_min = %.1e·t^2。\n" % (ff["paper_eps_ff"],
                                                                     ff["paper_eps_ff"]))
@@ -316,7 +315,7 @@ def render(root: str, verdicts: dict | None = None) -> str:
     if os.path.exists(st_path):
         with open(st_path) as fh:
             st = json.load(fh)
-        A("\n## 7b. 求解器行为研究 (scripts/sdp/solver_study.py, M=%d L=%d)\n"
+        A("\n## 9. 求解器行为研究 (scripts/sdp/solver_study.py, M=%d L=%d)\n"
           % (st["M"], st["L"]))
         A("| 配置 | 状态 | f00(3) | 事后可行 | 最大相对违反 | \\|\\|rho\\|\\|_4 | 迭代 | 秒 |")
         A("|---|---|---|---|---|---|---|---|")
@@ -337,10 +336,11 @@ def render(root: str, verdicts: dict | None = None) -> str:
         if b:
             A("- 已验证可行的最好点: %s, f00(3) = %.6f" % (b["tag"], b["f00_3"]))
         A("")
-    A("\n## 8. 方法、偏离与发现\n")
+    A(f"\n## 10. 能量轴口径\n\n- {ENERGY_AXIS_NOTE}\n")
+    A("\n## 11. 方法、偏离与发现\n")
     for title, body in FINDINGS:
         A(f"**{title}.** {body}\n")
-    A("\n## 9. 本任务未做的事\n")
+    A("\n## 12. 本任务未做的事\n")
     for s in NOT_DONE:
         A(f"- {s}")
     A("")
