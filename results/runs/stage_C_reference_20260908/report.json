@@ -1,0 +1,511 @@
+{
+  "status": "reference_import_complete",
+  "date": "2026-09-08",
+  "source_figure": "He–Kruczenski 2309.12402v3, Fig. 7 (PDF page 31)",
+  "source_caption": "references/2309.12402v3-source/prd_submission_2.tex:1114",
+  "csv": "results/runs/stage_C_reference_20260908/phase_reference.csv",
+  "columns": [
+    "wave",
+    "role",
+    "energy_gev",
+    "delta_deg"
+  ],
+  "provenance": "PDF vector readout; not the original experimental tables, author numerical data, or a new bootstrap calculation.",
+  "roles": {
+    "phenomenology": "Vertices of the unique long grey polyline in each source panel, identified with the grey phenomenological curve in the Fig. 7 caption (ref. 54).",
+    "experiment": "Centres of grey filled circular markers. The source caption groups refs. 38 and 39; individual markers are not assigned to either experiment.",
+    "paper_bootstrap": "Centres of magenta filled circular markers; the paper bootstrap with chiral constraints only."
+  },
+  "extraction": {
+    "method": "Read original PDF vector objects with PyMuPDF; use exact major tick stroke positions and their printed tick values for an affine axis calibration. Circle centres are PDF bounding-box centres. Curve vertices retain the original polyline sampling.",
+    "coordinates": "Energy in GeV and phase shift in degrees, directly from the displayed axes; no model mass rescaling, interpolation or extrapolation.",
+    "formatting": "CSV stores energy to 7 decimals and phase to 4 decimals for reproducible plotting; these digits are not physical precision or measurement uncertainties.",
+    "line_style": "The caption calls the phenomenological line dashed. Each local source PDF encodes its long grey polyline with the solid dash pattern [] 0; identification uses the curve, colour and caption, not an assumed dash pattern."
+  },
+  "limitations": [
+    "Experimental error bars, uncertainties and covariance are not imported; the CSV contains marker centres only.",
+    "This is a graphical reference for overlaying Fig. 7, not a fit target or a replacement for original experimental data.",
+    "The phenomenological curves end near 0.9 GeV (S0) and 1.0 GeV (S2/P1); they are not extended to the 1.2 GeV plot boundary.",
+    "All original source PDFs are retained at the paths recorded below."
+  ],
+  "waves": {
+    "S0": {
+      "source_pdf": "references/2309.12402v3-source/chiS0plot.pdf",
+      "source_page": 1,
+      "pdf_page_size_points": [
+        720.0,
+        399.0
+      ],
+      "axis_calibration": {
+        "formula": "pdf_x = x_slope * energy_gev + x_intercept; pdf_y = y_slope * delta_deg + y_intercept",
+        "x_slope": 594.8629760742188,
+        "x_intercept": -135.0583877563475,
+        "y_slope": -1.464156005859376,
+        "y_intercept": 377.0437988281251,
+        "energy_ticks": [
+          0.4,
+          0.6,
+          0.8,
+          1.0,
+          1.2
+        ],
+        "pdf_x_ticks": [
+          102.88700103759766,
+          221.85899353027344,
+          340.8320007324219,
+          459.80499267578125,
+          578.7769775390625
+        ],
+        "phase_ticks": [
+          200,
+          150,
+          100,
+          50,
+          0
+        ],
+        "pdf_y_ticks": [
+          84.21099853515625,
+          157.4219970703125,
+          230.62899780273438,
+          303.83599853515625,
+          377.0429992675781
+        ],
+        "maximum_tick_fit_residual_pdf_points": {
+          "x": 0.00040435791029835855,
+          "y": 0.001599121093818212
+        },
+        "calibration_scope": "Tick-fit residual checks coordinate conversion only; it is not an uncertainty certificate."
+      },
+      "groups": {
+        "phenomenology": {
+          "count": 94,
+          "energy_gev_range": [
+            0.27914056684453,
+            0.8999961651858382
+          ],
+          "delta_deg_range": [
+            0.003276538334810279,
+            98.32954488799156
+          ],
+          "drawing_indices": [
+            182
+          ]
+        },
+        "experiment": {
+          "count": 26,
+          "energy_gev_range": [
+            0.5499978966236704,
+            1.1499982429112368
+          ],
+          "delta_deg_range": [
+            43.0007450998244,
+            215.0001746132308
+          ],
+          "drawing_indices": [
+            156,
+            157,
+            158,
+            159,
+            160,
+            161,
+            162,
+            163,
+            164,
+            165,
+            166,
+            167,
+            168,
+            169,
+            170,
+            171,
+            172,
+            173,
+            174,
+            175,
+            176,
+            177,
+            178,
+            179,
+            180,
+            181
+          ]
+        },
+        "paper_bootstrap": {
+          "count": 43,
+          "energy_gev_range": [
+            0.2791733455277856,
+            1.19574242002168
+          ],
+          "delta_deg_range": [
+            0.17026118762765313,
+            83.12112328404852
+          ],
+          "drawing_indices": [
+            183,
+            184,
+            185,
+            186,
+            187,
+            188,
+            189,
+            190,
+            191,
+            192,
+            193,
+            194,
+            195,
+            196,
+            197,
+            198,
+            199,
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225
+          ]
+        }
+      },
+      "omitted_grey_error_bar_strokes": 156,
+      "other_omitted_objects": [],
+      "phenomenology_pdf_dash_pattern": "[] 0"
+    },
+    "S2": {
+      "source_pdf": "references/2309.12402v3-source/chiS2plot.pdf",
+      "source_page": 1,
+      "pdf_page_size_points": [
+        720.0,
+        384.0
+      ],
+      "axis_calibration": {
+        "formula": "pdf_x = x_slope * energy_gev + x_intercept; pdf_y = y_slope * delta_deg + y_intercept",
+        "x_slope": 593.2890243530275,
+        "x_intercept": -133.13901214599596,
+        "y_slope": -6.331019962855749,
+        "y_intercept": 112.33620024181558,
+        "energy_ticks": [
+          0.4,
+          0.6,
+          0.8,
+          1.0,
+          1.2
+        ],
+        "pdf_x_ticks": [
+          104.1760025024414,
+          222.83599853515625,
+          341.49200439453125,
+          460.14801025390625,
+          578.8090209960938
+        ],
+        "phase_ticks": [
+          10,
+          0,
+          -10,
+          -20,
+          -30,
+          -40
+        ],
+        "pdf_y_ticks": [
+          49.027000427246094,
+          112.33599853515625,
+          175.64500427246094,
+          238.95700073242188,
+          302.2659912109375,
+          365.5780029296875
+        ],
+        "maximum_tick_fit_residual_pdf_points": {
+          "x": 0.0020019531252728484,
+          "y": 0.0013955979121362816
+        },
+        "calibration_scope": "Tick-fit residual checks coordinate conversion only; it is not an uncertainty certificate."
+      },
+      "groups": {
+        "phenomenology": {
+          "count": 98,
+          "energy_gev_range": [
+            0.2791422138633817,
+            0.9999966256697106
+          ],
+          "delta_deg_range": [
+            -22.40267758716498,
+            -0.0012322703529174782
+          ],
+          "drawing_indices": [
+            63
+          ]
+        },
+        "experiment": {
+          "count": 9,
+          "energy_gev_range": [
+            0.5099984994260612,
+            1.1900001233225128
+          ],
+          "delta_deg_range": [
+            -31.399805833379308,
+            -7.2000729462180795
+          ],
+          "drawing_indices": [
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62
+          ]
+        },
+        "paper_bootstrap": {
+          "count": 43,
+          "energy_gev_range": [
+            0.2791742388168628,
+            1.1957384908943036
+          ],
+          "delta_deg_range": [
+            -36.48421546882885,
+            -0.0336122055861264
+          ],
+          "drawing_indices": [
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106
+          ]
+        }
+      },
+      "omitted_grey_error_bar_strokes": 54,
+      "other_omitted_objects": [],
+      "phenomenology_pdf_dash_pattern": "[] 0"
+    },
+    "P1": {
+      "source_pdf": "references/2309.12402v3-source/chiP1plot.pdf",
+      "source_page": 1,
+      "pdf_page_size_points": [
+        720.0,
+        398.0
+      ],
+      "axis_calibration": {
+        "formula": "pdf_x = x_slope * energy_gev + x_intercept; pdf_y = y_slope * delta_deg + y_intercept",
+        "x_slope": 594.8629760742188,
+        "x_intercept": -135.0583877563475,
+        "y_slope": -1.9292380523681616,
+        "y_intercept": 375.60410308837885,
+        "energy_ticks": [
+          0.4,
+          0.6,
+          0.8,
+          1.0,
+          1.2
+        ],
+        "pdf_x_ticks": [
+          102.88700103759766,
+          221.85899353027344,
+          340.8320007324219,
+          459.80499267578125,
+          578.7769775390625
+        ],
+        "phase_ticks": [
+          150,
+          100,
+          50,
+          0
+        ],
+        "pdf_y_ticks": [
+          86.21900177001953,
+          182.67999267578125,
+          279.1409912109375,
+          375.6050109863281
+        ],
+        "maximum_tick_fit_residual_pdf_points": {
+          "x": 0.00040435791029835855,
+          "y": 0.0012092590332599684
+        },
+        "calibration_scope": "Tick-fit residual checks coordinate conversion only; it is not an uncertainty certificate."
+      },
+      "groups": {
+        "phenomenology": {
+          "count": 186,
+          "energy_gev_range": [
+            0.27914056684453,
+            1.0000006797496672
+          ],
+          "delta_deg_range": [
+            -0.00047059923380691067,
+            154.21948566351088
+          ],
+          "drawing_indices": [
+            182
+          ]
+        },
+        "experiment": {
+          "count": 26,
+          "energy_gev_range": [
+            0.5499978966236704,
+            1.1499982429112368
+          ],
+          "delta_deg_range": [
+            9.999597024689715,
+            164.00003258603115
+          ],
+          "drawing_indices": [
+            156,
+            157,
+            158,
+            159,
+            160,
+            161,
+            162,
+            163,
+            164,
+            165,
+            166,
+            167,
+            168,
+            169,
+            170,
+            171,
+            172,
+            173,
+            174,
+            175,
+            176,
+            177,
+            178,
+            179,
+            180,
+            181
+          ]
+        },
+        "paper_bootstrap": {
+          "count": 43,
+          "energy_gev_range": [
+            0.2791733455277856,
+            1.19574242002168
+          ],
+          "delta_deg_range": [
+            0.000312414617352202,
+            20.568014066092456
+          ],
+          "drawing_indices": [
+            183,
+            184,
+            185,
+            186,
+            187,
+            188,
+            189,
+            190,
+            191,
+            192,
+            193,
+            194,
+            195,
+            196,
+            197,
+            198,
+            199,
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225
+          ]
+        }
+      },
+      "omitted_grey_error_bar_strokes": 156,
+      "other_omitted_objects": [],
+      "phenomenology_pdf_dash_pattern": "[] 0"
+    }
+  },
+  "total_rows": 568,
+  "validation": {
+    "all_nine_wave_role_groups_present": true,
+    "expected_vector_counts_matched": true,
+    "all_values_finite": true,
+    "source_curves_connected": true,
+    "optimizations_run": 0,
+    "core_files_changed": false
+  }
+}

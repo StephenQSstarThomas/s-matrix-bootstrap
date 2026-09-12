@@ -1,0 +1,295 @@
+"""Joint scientific solve orchestration for declared amplitude providers."""
+from pathlib import Path
+import json
+import numpy as np
+from . import read_json, write_json
+
+def gauge_support(args,progress):
+    from .run import support_data, source_contract
+    from . import watson_lineage
+    from . import read_cflat, zero_joint_duals, joint_result
+    from .kernels import joint_audit
+    norm=getattr(args,'chiral_norm','separate-l2');objective_kind=getattr(args,'objective','projection');objective=None;witness=None;functional=None
+    if objective_kind=='watson' and (args.fixed_x is not None or args.ray or args.joint_feasibility):raise ValueError('Watsonian releases projection equalities')
+    if args.current_preparation is None or args.coefficients is None:raise ValueError('Require current preparation and amplitude')
+    H,kap,ss,ww,M,L,_,_=support_data(args,progress);kind,coords=source_contract(args)
+    if kind not in ('pv-midpoint','analytic-cardinal') or args.unitarity_scope!='sampled':raise ValueError('Require declared sampled model')
+    from . import current_data
+    current=current_data(args.current_preparation,args.preparation);meta=current['metadata'];a=current['arrays']
+    from .endpoints import validate_endpoint_model
+    validate_endpoint_model(args,current)
+    if meta['M']!=M:raise ValueError('Current resolution mismatch')
+    cfg=meta['uv']['config']
+    for field,key in [('moment_source','moment_source'),('sr_error','sr_error'),('fesr_cutoff','cutoff'),('mq_rule','mq_rule')]:
+        if getattr(args,field)!=cfg[key]:raise ValueError('Current preparation disagrees with '+field)
+    p=H.shape[1];total=p+4*M;n=len(kap);free=1+2*M;nd=p-free;bound=args.density_limit or 100*nd;epsilon=args.chiral_tolerance
+    reference,record=read_cflat(args.coefficients,M)
+    if record['prescription']!=kind:raise ValueError('Joint reference must use the same PV coordinates')
+    if objective_kind=='watson':
+        with np.load(args.coefficients.parent/'joint.npz') as saved:seed=saved['point']
+        if args.command=='dual' or getattr(args,'resume_objective',False):
+            with np.load(args.coefficients.parent/'objective.npz') as saved:
+                objective=saved['coefficients'];functional=json.loads(str(saved['metadata']));witness={k:saved[k] for k in ('kR','kI','y','moment','ff','gram','gram_congruence','asymptotic_kR','asymptotic_kI') if k in saved}
+        else:
+            prior=args.coefficients.parent/'report.json'
+            if prior.is_file():
+                r=read_json(prior)
+                if r.get('objective_kind')=='watson' and not r.get('support_optimality_certified'):raise ValueError('Resume unfinished Watsonian objective first')
+            from .imaginary import watsonian_objective
+            objective,witness,functional=watsonian_objective(H,kap,current,seed,M,L);functional['source_coefficients']=str(args.coefficients)
+        np.savez_compressed(args.output/'objective.npz',coefficients=objective,metadata=json.dumps(functional),**witness)
+        if getattr(args,'resume_objective',False):
+            with np.load(args.coefficients.parent/'joint.npz') as saved:witness={k:saved[k] for k in list(witness)+['asymptotic_kR','asymptotic_kI'] if k in saved}
+    if getattr(args,'fixed_x',None) is not None and not args.joint_feasibility and any(args.direction) and not args.direction[1]:raise ValueError('Fixed-x objective requires y or zero')
+    audit_cache=None
+    if args.command=='dual':
+        donor=args.interior_coefficients or args.coefficients
+        point_source=donor if args.fixed_amplitude else args.coefficients
+        with np.load(point_source.parent/'joint.npz') as saved:point=saved['point'].copy()
+        if args.fixed_amplitude:point[:p]=reference
+        with np.load(donor.parent/'joint.npz') as saved:duals={k:saved[k] for k in ('kR','kI','y','moment','ff','gram','gram_congruence')}
+        with np.load(donor.parent/'joint.npz') as saved:duals.update({k:saved[k] for k in ('asymptotic_kR','asymptotic_kI') if k in saved})
+        point_report=read_json(args.coefficients.parent/'report.json');previous=read_json(donor.parent/'report.json')
+        if any(Path(previous['parameters'][k]).resolve()!=getattr(args,k).resolve() for k in ('preparation','current_preparation')):raise ValueError('Saved covectors require the same operators')
+        solver=dict(solver='saved joint dual audit',optimization_performed=False,dual_source=str(donor),candidate_source=str(args.coefficients),donor_support_direction=previous.get('support_direction',previous['parameters']['direction']),support_direction=[0,0] if args.fixed_amplitude else previous.get('support_direction',previous['parameters']['direction']) or [0,0],all_amplitude_directions_retained=point_report.get('solver',{}).get('all_amplitude_directions_retained',False))
+    elif args.joint_feasibility:
+        from .quotient import joint_hull_candidate
+        point,solver=joint_hull_candidate(args,H,current,M,L,bound,progress);duals=zero_joint_duals(M,n,len(a['high_energy_indices']))
+        if args.fixed_amplitude:
+            with np.load(args.output/'fiber_duals.npz') as saved:duals={k:saved[k] for k in saved.files}
+    elif args.solver in ('barrier','centered'):
+        from .linear import center_joint_support
+        from shutil import copyfile
+        for name in ('coefficients.json','joint.npz'):copyfile(args.coefficients.parent/name,args.output/name)
+        with np.load(args.coefficients.parent/'joint.npz') as saved:seed=saved['point']
+        incumbent=seed.copy()
+        if objective is not None and args.interior_coefficients is not None:
+            with np.load(args.interior_coefficients.parent/'joint.npz') as saved:seed=saved['point']
+        point,duals,solver,audit_cache=center_joint_support(H,kap,current,seed,M,L,bound,epsilon,args.direction if objective is None else [0,0],args,progress,objective,witness,incumbent)
+    else:raise ValueError('Use centered/barrier support; Clarabel initializes D')
+    direction=solver.get('support_direction',args.direction)
+    np.savez_compressed(args.output/'joint_candidate.npz',point=point,**duals)
+    if audit_cache is None:point,audit=joint_audit(H,kap,current,point,M,L,bound,epsilon,direction,duals,max(384,args.bits),chiral_norm=norm,objective=objective,fixed_amplitude=args.fixed_amplitude)
+    else:audit=audit_cache
+    if audit['primal_feasible'] and audit['upper']<audit['lower']:raise ArithmeticError('Joint bounds contradict primal')
+    result=joint_result(args,H,kap,current,point,duals,audit,M,L,bound,solver,objective,functional);target=np.asarray(result['targets'])
+    if args.fixed_amplitude:result.update(status='fixed_amplitude_infeasible_certified' if audit['upper']<0 else 'fixed_amplitude_lifted' if audit['primal_feasible'] else 'fixed_amplitude_inconclusive',fixed_amplitude=True,support_optimality_certified=False,infeasibility_scope='This fixed amplitude only; not full-problem infeasibility')
+    if functional is not None and audit['primal_feasible']:
+        from .model import joint_observable_change
+        with np.load(Path(functional['source_coefficients']).parent/'joint.npz') as old:previous_point=old['point']
+        write_json(args.output/'watson_update.json',joint_observable_change(H,kap,current,previous_point,point,M,L))
+        watson_lineage(args,target,functional,write_json,read_json,result)
+    return result
+
+
+def initialize(args,progress):
+    from . import current_data, resolution_report, read_cflat, digest
+    from .run import support_data
+    if args.solver not in ('barrier','centered','clarabel','scs'):raise ValueError('Full joint feasibility requires Newton or a conic solver')
+    H,kap,_,_,M,L,_,_=support_data(args,progress);p=H.shape[1];bound=args.density_limit or 100*(p-1-2*M)
+    from .linear import center_joint_support
+    current=current_data(args.current_preparation,args.preparation)
+    from .endpoints import validate_endpoint_model
+    endpoints=validate_endpoint_model(args,current)
+    if current['metadata']['M']!=M:raise ValueError('Current resolution mismatch')
+    cfg=current['metadata']['uv']['config']
+    for field,key in [('moment_source','moment_source'),('sr_error','sr_error'),('fesr_cutoff','cutoff'),('mq_rule','mq_rule')]:
+        if getattr(args,field)!=cfg[key]:raise ValueError('Current preparation disagrees with '+field)
+    source_c,source_meta=read_cflat(args.coefficients,M)
+    with np.load(args.coefficients.parent/'joint.npz') as data:seed=data['point'].copy()
+    if len(seed)!=p+4*M:raise ValueError('Phase I starts from an explicit same-resolution numerical transfer')
+    if not np.array_equal(seed[:p],source_c):raise ValueError('Joint seed NPZ and coefficient JSON disagree')
+    if args.solver in ('clarabel','scs'):
+        from .conic import initialize_conic
+        return initialize_conic(args,H,kap,current,seed,M,L,bound,progress)
+    v=np.sin(np.pi*(np.arange(M)+.5)/M);c=np.r_[0.,v/8,v/8,np.outer(v,v).ravel(),[v[i]*v[j]/(2 if i==j else 1) for i in range(M) for j in range(i,M)]]
+    values=np.asarray(H,np.longdouble)@c;n=len(kap);re,im=values[:n]*kap,values[n:2*n]*kap
+    from .model import chiral_slices
+    chi=max(np.linalg.norm(values[2*n:2*n+8][g]) for g in chiral_slices(args.chiral_norm))
+    scale=min(.01,np.min(im/(re*re+im*im)),args.chiral_tolerance/(4*chi))
+    if scale<=0:raise ArithmeticError('The common analytic scattering seed must be strictly feasible')
+    c*=2.**np.floor(np.log2(scale));warm=seed[:p].copy();fraction=.5
+    if args.interior_coefficients is not None:
+        warm=np.asarray(read_json(args.interior_coefficients)['coefficients']);fraction=.995
+    elif read_json(args.coefficients.parent/'report.json').get('outer',{}).get('amplitude_primal_feasible'):fraction=.995
+    if endpoints:warm[0]=0.
+    for _ in range(70):
+        candidate=(1-fraction)*c+fraction*warm;values=np.asarray(H,np.longdouble)@candidate;re,im=values[:n]*kap,values[n:2*n]*kap
+        if current['metadata'].get('asymptotic_unitarity'):
+            from .endpoints import asymptotic_margins
+            if not all(v>0 for v in asymptotic_margins(candidate,M)):fraction*=.5;continue
+        if np.all(2*im>re*re+im*im) and max(np.linalg.norm(values[2*n:2*n+8][g]) for g in chiral_slices(args.chiral_norm))<args.chiral_tolerance:
+            from .imaginary import density_fourth_power
+            if density_fourth_power(candidate,M)<bound**4:c=candidate;break
+        fraction*=.5
+    seed[:p]=c
+    from .imaginary import support_outer
+    ir=support_outer(H,kap,np.zeros(len(kap)),np.zeros(len(kap)),np.zeros(8),
+        [0,0],bound,args.chiral_tolerance,args.bits,coefficients=c,
+        waves_per_isospin=L,chiral_norm=args.chiral_norm)
+    if not ir['primal_feasible']:raise ArithmeticError('New-model IR seed failed its original-matrix audit')
+    write_json(args.output/'initial_scattering.json',dict(coefficients=c,certificate=ir,
+        prescription=args.resolved_prescription,source_of_current_seed=str(args.coefficients),
+        source_prescription=source_meta['prescription'],previous_joint_feasibility_transferred=False))
+    from .operators import positive_spectral_reference
+    seed,replaced=positive_spectral_reference(seed,current['arrays']['k_squared']);progress(stage='phase_I_spectral_reference',replaced_indices=replaced,rule='Nonpositive R initialized at native k²; no physical bound added')
+    point,duals,solver,audit=center_joint_support(H,kap,current,seed,M,L,bound,args.chiral_tolerance,[0,0],args,progress)
+    result=resolution_report(args,H,kap,current,point,duals,audit,M,L,bound,solver)
+    result.setdefault('inputs',{}).update({str(f.resolve()):dict(sha256=digest(f)) for f in
+        (args.coefficients,args.coefficients.parent/'joint.npz')})
+    result.update(support_optimality_certified=False,resolution_initializer=True)
+    return result
+
+
+def transfer(args,progress):
+    from . import current_data, read_json, resolution_report, zero_joint_duals,digest
+    from .operators import project_coefficients
+    from .kernels import cardinal_projection
+    from .run import support_data
+    from .kernels import joint_audit
+    H,kap,ss,ww,M,L,_,_=support_data(args,progress);current=current_data(args.current_preparation,args.preparation);old=read_json(args.coefficients.parent/'report.json')
+    from .endpoints import validate_endpoint_model
+    validate_endpoint_model(args,current)
+    if old.get('objective_kind','projection')!='projection':raise ValueError('Fig.11 mainline uses the projection-only UV representative')
+    m,l=old['M'],old['L'];p=H.shape[1];bound=args.density_limit or 100*(p-1-2*M)
+    with np.load(args.coefficients.parent/'joint.npz') as d:
+        source=d['point'];oldp=len(source)-4*m;c=project_coefficients(source[:oldp],M);E=cardinal_projection(m,M)
+        im=source[oldp:oldp+2*m].reshape(2,m)@E.T;rho=source[oldp+2*m:].reshape(2,m)
+        if m!=M:rho=np.asarray([np.interp((np.arange(M)+.5)/M,(np.arange(m)+.5)/m,row) for row in rho])
+        point=np.r_[c,im.ravel(),rho.ravel()];duals=zero_joint_duals(M,len(kap),len(current['arrays']['high_energy_indices']))
+        if m==M:
+            from .sampling import prepared_sampling
+            with np.load(Path(old['parameters']['preparation'])/'amplitude.npz') as old_rows:old_s,old_w=prepared_sampling(old_rows,m,l)
+            lookup={(float(s),int(I),int(ell)):j for j,(s,(I,ell)) in enumerate(zip(old_s,old_w))}
+            for key in ('kR','kI'):
+                duals[key]=np.array([d[key][lookup[k]] if k in lookup else 0. for k in ((float(s),int(I),int(ell)) for s,(I,ell) in zip(ss,ww))])
+            for key in ('y','moment','ff','gram','gram_congruence'):duals[key]=d[key]
+            if current['metadata'].get('asymptotic_unitarity'):duals.update({k:d[k] for k in ('asymptotic_kR','asymptotic_kI') if k in d})
+    np.savez_compressed(args.output/'transferred_candidate.npz',point=point,**duals)
+    point,audit=joint_audit(H,kap,current,point,M,L,bound,args.chiral_tolerance,[1,0],duals,args.bits,chiral_norm=args.chiral_norm)
+    method=dict(solver='Original-operator resolution audit',optimization_performed=False,all_amplitude_directions_retained=True,original_variables=p+4*M,
+        source_coefficients=str(args.coefficients),source_M=m,source_L=l,dual_weights_reused=m==M,old_feasibility_or_bound_transferred=False,
+        density_transfer='identity' if m==M else 'sine Galerkin projection of nodal densities; numerical initializer only',current_spectrum_transfer='identity' if m==M else 'positive piecewise linear nodal initializer in phi')
+    method.update(preserve_resolution_center(args,old,source,point,current,audit,M,L,bound,len(kap)))
+    result=resolution_report(args,H,kap,current,point,duals,audit,M,L,bound,method)
+    result.setdefault('inputs',{}).update({str(f.resolve()):dict(sha256=digest(f)) for f in (args.coefficients,args.coefficients.parent/'report.json',args.coefficients.parent/'joint.npz')})
+    return result
+
+
+def _center_delta(old,new,M,current):
+    p=1+2*M+M*M+M*(M+1)//2
+    if old.shape!=(p+4*M,) or new.shape!=old.shape or not np.isfinite(old).all() or not np.isfinite(new).all():raise ValueError('Complete finite center vectors required')
+    if not np.array_equal(old[:p+2*M],new[:p+2*M]):raise ValueError('Amplitude or ImF changed')
+    changed=np.flatnonzero(old[p+2*M:]!=new[p+2*M:]);W=current['matrices']['moment_linear'][:,p+2*M:].toarray()
+    free=np.tile(np.isin(np.arange(M),current['arrays']['high_energy_indices']),2)&~np.any(W!=0,axis=0)
+    if any(not free[j] or new[p+2*M+j]<old[p+2*M+j] for j in changed):raise ValueError('Only free high-rho increases preserve this center')
+    return [dict(spectral_index=int(j),before=float(old[p+2*M+j]),after=float(new[p+2*M+j])) for j in changed]
+
+def center_acceptance(raw,accepted,M,current):
+    """Newton convergence belongs to the active point, not a recovered seed."""
+    try:return dict(eligible=True,free_high_rho_increases=_center_delta(raw,accepted,M,current))
+    except ValueError as error:return dict(eligible=False,reason=str(error))
+
+
+def verified_center_origin(path,signature):
+    """Validate a converged +x source and every identity-only replay in its chain."""
+    from . import current_data,digest,read_cflat
+    from .run import _signature,_path
+    path=_path(path);seen=set();chain=[];initial=None
+    current=current_data(Path(signature['current_preparation']),Path(signature['preparation']));M=signature['M']
+    if current['metadata']['uv']['config']!=signature['uv_config']:raise ValueError('Prepared UV inputs differ from center signature')
+    while True:
+        if path in seen:raise ValueError('Cyclic center provenance')
+        seen.add(path);chain.append(str(path));r=read_json(path);method=r.get('solver',{});outer=r.get('outer',{})
+        if r.get('status') in ('running','inconclusive') or r.get('timeout') or r.get('exit_code',0)!=0 or r.get('source_changes') or r.get('input_changes'):
+            raise ValueError('Center source did not finish unchanged')
+        if r.get('mode')!='gauge' or not r.get('all_original_constraints_checked') or method.get('representative_center_converged') is not True or not method.get('all_amplitude_directions_retained') or not r.get('support_optimality_certified') or not r.get('joint_feasible') or not outer.get('primal_feasible') or not outer.get('joint_primal_feasible'):
+            raise ValueError('Verified converged joint support center required')
+        if not np.isfinite([outer['lower'],outer['upper']]).all() or outer['lower']>outer['upper']:raise ValueError('Finite ordered source bounds required')
+        if _signature(r)!=signature or r.get('objective_kind','projection')!='projection' or r.get('support_direction')!=[1.,0.] or r['parameters'].get('fixed_x') is not None or r['parameters'].get('ray',False):
+            raise ValueError('Center source model or +x objective differs')
+        with np.load(path.parent/'joint.npz') as data:point=data['point'].copy()
+        c,_=read_cflat(path.parent/'coefficients.json',M,prescription=signature['prescription'])
+        if not np.array_equal(c,point[:len(c)]):raise ValueError('Center source C/NPZ mismatch')
+        _center_delta(point,point,M,current)
+        if initial is None:initial=point.copy()
+        origin=method.get('representative_center_source')
+        if origin is None:
+            source=method.get('source_support_report')
+            if source:
+                source=_path(source)
+                with np.load(source.parent/'joint.npz') as data:previous=data['point'].copy()
+                expected=r.get('inputs',{}).get(str((source.parent/'joint.npz').resolve()),{}).get('sha256')
+                if expected is None or digest(source.parent/'joint.npz')!=expected:raise ValueError('Analytic replay lacks its authenticated source point')
+                _center_delta(previous,point,M,current);path=source;continue
+            if r.get('command')!='boundary' or method.get('iterations',0)<1 or not any(h.get('central_converged') for h in method.get('history',[])):
+                raise ValueError('Actual converged Newton support source required')
+            return initial,dict(origin_report=str(path),validated_report_chain=chain)
+        source=_path(origin['report']);read_json(source,origin['report_sha256'])
+        if digest(source.parent/'joint.npz')!=origin['joint_sha256']:raise ValueError('Center source point hash changed')
+        with np.load(source.parent/'joint.npz') as data:previous=data['point'].copy()
+        if _center_delta(previous,point,M,current)!=origin['free_high_rho_increases']:raise ValueError('Unrecorded center-point change')
+        path=source
+
+
+def preserve_resolution_center(args,old,source,point,current,audit,M,L,bound,n):
+    from . import digest
+    from .run import _signature
+    result=dict(require_center=getattr(args,'require_center',False),representative_center_converged=False,representative_center_preserved=False)
+    try:
+        if args.direction!=[1.,0.] or getattr(args,'fixed_x',None) is not None or getattr(args,'ray',False):raise ValueError('Resolution center requires +x without a section')
+        if not audit.get('primal_feasible') or not audit.get('joint_primal_feasible'):raise ValueError('Fresh target-H primal audit failed')
+        target=dict(old,M=M,L=L,density_limit=bound,scattering_samples=n,prescription=args.resolved_prescription,
+            infinity=args.infinity,unitarity_scope=args.unitarity_scope,chiral_tolerance=args.chiral_tolerance,chiral_norm=args.chiral_norm,current_model=current['metadata'],parameters=vars(args))
+        report=args.coefficients.parent/'report.json';verified,origin=verified_center_origin(report,_signature(target))
+        if not np.array_equal(source,verified):raise ValueError('Loaded source point differs from its center report')
+        lifts=_center_delta(source,point,M,current)
+        result.update(representative_center_converged=True,representative_center_preserved=True,
+            representative_center_source=dict(report=str(report.resolve()),report_sha256=digest(report),joint_sha256=digest(report.parent/'joint.npz'),
+                free_high_rho_increases=lifts,amplitude_and_ImF_unchanged=True,old_bounds_transferred=False),center_origin=origin)
+    except (OSError,ValueError,KeyError,TypeError) as error:result['center_not_preserved_reason']=str(error)
+    return result
+
+
+def resolution_profile_center(proof_path,selection,coefficients):
+    from . import read_cflat
+    sig=selection['model_signature'];point,origin=verified_center_origin(proof_path,sig);M=sig['M']
+    path=Path(coefficients);c,_=read_cflat(path,M,prescription=sig['prescription']);p=len(c)
+    im=np.asarray(read_json(path.parent/'current.json')['ImF'],float).ravel()
+    if not np.array_equal(c,point[:p]) or not np.array_equal(im,point[p:p+2*M]):raise ValueError('Profile differs from its audited center amplitude/ImF')
+    return origin
+
+
+def resolve_start_mu(args):
+    """Continue a matching joint problem at its actual checkpoint mu."""
+    from . import digest
+    if args.start_mu is not None:
+        args.start_mu_provenance=dict(kind='explicit');return
+    args.start_mu=.001 if args.objective=='watson' else .01
+    args.start_mu_provenance=dict(kind='new_problem_default')
+    if args.coefficients is None or args.interior_coefficients is not None:return
+    folder=Path(args.coefficients).parent;phase=args.command=='resolution' and args.joint_feasibility
+    watson=args.objective=='watson' and args.resume_objective
+    projection=args.command=='boundary' and args.mode=='gauge' and not args.joint_feasibility and args.objective=='projection'
+    if not (phase or watson or projection):return
+    record=folder/'report.json';checkpoint=folder/('phase_I_state.npz' if phase else 'barrier_state.npz')
+    if not record.is_file() or not checkpoint.is_file():return
+    old=read_json(record);p=old.get('parameters',{});method=old.get('solver',{})
+    if bool(method.get('phase_I'))!=phase:return
+    if old.get('objective_kind','projection')!=args.objective:return
+    if phase and method.get('phase_I_model')!='current-only-diagonal-v2':return
+    same=lambda key:p.get(key)==getattr(args,key,None)
+    if not all(same(k) for k in ('chiral_norm','chiral_tolerance','infinity','unitarity_scope','fixed_x','ray')):return
+    if not all(p.get(k) is not None and getattr(args,k,None) is not None and Path(p[k]).resolve()==Path(getattr(args,k)).resolve() for k in ('preparation','current_preparation')):return
+    if not watson and p.get('direction')!=args.direction:return
+    M=old.get('M');B=args.density_limit
+    if B is None:
+        if M is None:return
+        B=100*(M*M+M*(M+1)//2)
+    if old.get('density_limit')!=B:return
+    if args.chiral_barrier_weight is not None and p.get('chiral_barrier_weight')!=args.chiral_barrier_weight:return
+    with np.load(checkpoint) as data:mu=float(data['mu'])
+    if not np.isfinite(mu) or mu<=0:raise ValueError('Finite positive checkpoint mu required')
+    args.start_mu=mu
+    args.start_mu_provenance=dict(kind='matching_joint_checkpoint',checkpoint=str(checkpoint.resolve()),sha256=digest(checkpoint),
+        report=str(record.resolve()),report_sha256=digest(record),mu=mu)

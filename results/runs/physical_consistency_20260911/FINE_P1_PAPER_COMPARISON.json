@@ -1,0 +1,19 @@
+{
+  "scope": "Descriptive comparison after representatives were frozen; author exact representative coordinates are not recovered",
+  "paper_native_marker_90_mev": {
+    "red": 826.6218651918982,
+    "pink": 824.3047545738127,
+    "light_pink": 812.5316869957846
+  },
+  "reproduction_native_90_mev": {
+    "tip": 752.3630555906154,
+    "mid": 681.5964991272756,
+    "ref": 677.8902491247093
+  },
+  "paper_span_mev": 14.090178196113584,
+  "reproduction_span_mev": 74.47280646590616,
+  "inputs": {
+    "references/figure9_p1_phases.csv": "66d946d57787f26ec7db4c850eedd9b801eedfd935f4c65d55c090bc43c2be90",
+    "results/runs/physical_consistency_20260911/fine_native_phases/phases.json": "0889d3cfff6bcb282322757f0dd96d1fcc6279e62a758bd5ae41761ae9dac65c"
+  }
+}

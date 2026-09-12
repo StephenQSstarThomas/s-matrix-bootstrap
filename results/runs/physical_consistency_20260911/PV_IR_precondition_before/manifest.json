@@ -1,0 +1,14 @@
+[
+  {
+    "path": "results/runs/physical_consistency_20260911/PV_IR_precondition_before/ir.py.txt",
+    "sha256": "89beab1b11ad83be9f43db7ec664362cf756107e32b19f354bfe997789499423"
+  },
+  {
+    "path": "results/runs/physical_consistency_20260911/PV_IR_precondition_before/test_mainline.py.txt",
+    "sha256": "031af4cbc56ef682174ef19dbacdeda2b31f448ffd910365b394639020a29005"
+  },
+  {
+    "path": "results/runs/physical_consistency_20260911/PV_IR_precondition_before/scattering.py.txt",
+    "sha256": "17d1e2d03fb467a5e58e6d87a6921dfd14da8c9f0eec2d6c28e64334dcfc7211"
+  }
+]

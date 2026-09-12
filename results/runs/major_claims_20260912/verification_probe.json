@@ -1,0 +1,150 @@
+{
+  "tests_passed": 107,
+  "test_files": 3,
+  "core_modules": 22,
+  "core_limits_passed": true,
+  "sources": [
+    {
+      "path": "src/smatrix_bootstrap/ir.py",
+      "lines": 234,
+      "bytes": 18307,
+      "sha256": "bd6fb3d54b523cbf266da65f677e9364c1393aaae0f29f114bd315e60c6e5c17"
+    },
+    {
+      "path": "src/smatrix_bootstrap/endpoints.py",
+      "lines": 169,
+      "bytes": 8980,
+      "sha256": "6b4dacd438e750ca61f285744cc0a152d16e3090581e22c77962f23b867005db"
+    },
+    {
+      "path": "src/smatrix_bootstrap/probes.py",
+      "lines": 149,
+      "bytes": 11750,
+      "sha256": "142e2a13109cbea04356be175cd7125412c2c13c73d698379739ab78ff4510a7"
+    },
+    {
+      "path": "src/smatrix_bootstrap/analysis.py",
+      "lines": 312,
+      "bytes": 23926,
+      "sha256": "91e1d1bf0013a8ac4030112a3191a32daed7641b391180a97c10a16e1b57c606"
+    },
+    {
+      "path": "src/smatrix_bootstrap/model.py",
+      "lines": 291,
+      "bytes": 19783,
+      "sha256": "d22b29d80da5300ab2c4305c514c00f57f62bbcff8c3b802df565429872f5c39"
+    },
+    {
+      "path": "src/smatrix_bootstrap/io.py",
+      "lines": 299,
+      "bytes": 23829,
+      "sha256": "d8979a98b7e22474c108e0d5dbc52a0378aeaaac94f9e93b89dab6195fe7682e"
+    },
+    {
+      "path": "src/smatrix_bootstrap/operators.py",
+      "lines": 336,
+      "bytes": 23251,
+      "sha256": "ced094909dcad6d0dcd083ca54990bdecabf3e85e11c06e3f01b8dd6143a17a8"
+    },
+    {
+      "path": "src/smatrix_bootstrap/basis.py",
+      "lines": 350,
+      "bytes": 23483,
+      "sha256": "5eda7c08a5cea679958b47980c9972ada51358f6352698d8db10db91bd5abec3"
+    },
+    {
+      "path": "src/smatrix_bootstrap/scattering.py",
+      "lines": 311,
+      "bytes": 23686,
+      "sha256": "23f5b856a9e14d19b1f085f52aac4508e0bdb5bd3ce166ee2621a3bc779621b7"
+    },
+    {
+      "path": "src/smatrix_bootstrap/__init__.py",
+      "lines": 337,
+      "bytes": 23059,
+      "sha256": "eab9d89f9c5aec186369fb48cef62f20db87a20a16512f8c8a6e7349a2a4473a"
+    },
+    {
+      "path": "src/smatrix_bootstrap/quadrature.py",
+      "lines": 137,
+      "bytes": 6896,
+      "sha256": "7ec2a6b9336cd6035db06fdf8a028368ccd22e4d106cc5e16900c878b8d40fad"
+    },
+    {
+      "path": "src/smatrix_bootstrap/gauge.py",
+      "lines": 295,
+      "bytes": 24208,
+      "sha256": "ad822bb6461cbe93f459d8df85cc209d962904a6a9a926c30bad4f8bbbdc628e"
+    },
+    {
+      "path": "src/smatrix_bootstrap/quotient.py",
+      "lines": 335,
+      "bytes": 24549,
+      "sha256": "32b669bec9e0b9af1c21bf464f2806411cdca87fffa6ff0593d7bb77dd3428e9"
+    },
+    {
+      "path": "src/smatrix_bootstrap/certificates.py",
+      "lines": 316,
+      "bytes": 24112,
+      "sha256": "72314f97c4039bf52c42cba9fc5d4164973595f7d57f37737080a8ab3b56ffe6"
+    },
+    {
+      "path": "src/smatrix_bootstrap/analytic.py",
+      "lines": 320,
+      "bytes": 19176,
+      "sha256": "f7b6ffb9bd6b520f00dec8653ff0864da6fe46eaa0ed5814bef7bd3c5c22a727"
+    },
+    {
+      "path": "src/smatrix_bootstrap/conic.py",
+      "lines": 168,
+      "bytes": 12139,
+      "sha256": "750741dbe9b45584c24176cbdeb2cfafc585361d5b23cff5d79a501a247abf01"
+    },
+    {
+      "path": "src/smatrix_bootstrap/kernels.py",
+      "lines": 278,
+      "bytes": 18365,
+      "sha256": "790ebcdba291c80f17c4909a31ddf77ad6373748c2af41c7ce1a0c28b309172a"
+    },
+    {
+      "path": "src/smatrix_bootstrap/imaginary.py",
+      "lines": 222,
+      "bytes": 14147,
+      "sha256": "9ad338b253d2941310401d245a24cba4ab546926e5c9c630f80c7bd647c1828c"
+    },
+    {
+      "path": "src/smatrix_bootstrap/run.py",
+      "lines": 336,
+      "bytes": 23801,
+      "sha256": "d4e3a7a8d9e7512cf6b8dc95860d027f781171576320a1010d781fd741c64b60"
+    },
+    {
+      "path": "src/smatrix_bootstrap/spectra.py",
+      "lines": 270,
+      "bytes": 22007,
+      "sha256": "10b7bc464cb216b00674c95fa4d1218543a7f8737a0707b20ea7e2b55d53de95"
+    },
+    {
+      "path": "src/smatrix_bootstrap/linear.py",
+      "lines": 227,
+      "bytes": 17599,
+      "sha256": "0930793ae7afd139ee2c41c535c183c5b876e1f494a2202d9dbc1cd5ff1d031b"
+    },
+    {
+      "path": "src/smatrix_bootstrap/sampling.py",
+      "lines": 206,
+      "bytes": 16503,
+      "sha256": "1721242b79f55cc44cfd6667cd21f49e6a51c888263e4ca623b97383a340f4c9"
+    }
+  ],
+  "red_log": "probe_RED.log",
+  "initial_upper_endpoint_test_failure": "probe_GREEN.log",
+  "first_full_suite": "probe_full_pytest.log",
+  "corrected_upper_endpoint_test_pass": "probe_full_pytest_final.log",
+  "reviewed_suite": "probe_reviewed_pytest.log",
+  "test_correction": "An outward upper endpoint need not contain the exact optimum; independent disk cap now checks it is >= exact optimum and within1e-60.",
+  "ordinary_constraints_changed": false,
+  "ordinary_cache_default_changed": false,
+  "new_command": "support-probe",
+  "proof": "Lagrange upper bound on unchanged physical set; exact native observable plus saved-H anchor geometry"
+}

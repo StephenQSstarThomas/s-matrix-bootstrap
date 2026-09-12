@@ -1,0 +1,19 @@
+{
+  "E1": "in_progress",
+  "E2": "geometric_rule_fixed; awaiting joint supports",
+  "E3": "pending",
+  "primary_claims": [
+    "UV changes upper boundary more than lower",
+    "Fixed three joint amplitudes",
+    "P1 rho resonance and linked S0/S2"
+  ],
+  "current_attempt": "E1_tip_005",
+  "scientific_concurrency": 1,
+  "model_source": "../stage_D_mainline_20260908/manifest.json",
+  "input_parameters_changed": false,
+  "active_core_responsibilities": [
+    "gauge: full-space feasible optimization",
+    "duality: original support bounds",
+    "figures: Fig8-10 delivery"
+  ]
+}

@@ -1,0 +1,591 @@
+{
+  "task_date": "2026-09-11",
+  "repository_root": "/home/shiqiu/s-matrix-bootstrap",
+  "scope": "Bounded read-only inspection of named F_paper reports, their directly referenced preparations, file hashes and NPZ headers; no optimization, operator generation, producer recovery or phase/curve inspection. Only this inventory and its companion Markdown were written.",
+  "model_identity": "Repository mixed-PV finite implementation of the paper's constraints; does not establish recovery of the authors' complete discretization conventions.",
+  "target": {
+    "prescription": "pv-midpoint",
+    "chiral_norm": "separate-l2",
+    "chiral_tolerance": 0.002,
+    "density_rule": "B(M)=100*(M*M+M*(M+1)/2)",
+    "infinity": "free",
+    "angular_order": 24,
+    "unitarity_scope": "sampled",
+    "additional_constraints": null,
+    "asymptotic_necessary_conditions": false
+  },
+  "common_current": {
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "tolerances_raw": [
+      0.002,
+      0.002,
+      0.002,
+      0.002
+    ],
+    "error_grouping": "four independent absolute scalar residuals",
+    "targets_raw": [
+      0.0023851042065805906,
+      0.11183813873471082,
+      0.004228045714285714,
+      0.1457112069970845
+    ],
+    "mq_rule": "arithmetic-mean",
+    "pion_mass_gev": 0.14,
+    "matching_energy_gev": 1.2,
+    "up_mass_gev": 0.004,
+    "down_mass_gev": 0.0073,
+    "alpha_s": 0.4,
+    "gluon_condensate_gev4": 0.023,
+    "scalar_condensate_gev4": -0.0001,
+    "sr_tolerance": 0.002,
+    "ff_tolerance": 0.00006,
+    "rescaled_ff_caps_squared": [
+      1.954438775510204e-7,
+      0.00003
+    ]
+  },
+  "reuse_rule": "Prepared H/current may be reused unchanged with explicit separate-l2 at new audit/optimization. Every inventoried joint point was produced/audited under combined-l2 epsilon=.002 and is only a numerical initializer for the target separate-l2 problem. No old support, center, optimality or selected-point status transfers. L12 is an uncertified full candidate, not a feasible witness or an infeasibility certificate.",
+  "pairing_rule": "Keep each L-specific H and its named current preparation together. M50 L8/L12 have equal SHA for the three sparse current matrices but different current_data.npz SHA; do not interchange the preparation directories.",
+  "groups": [
+    {
+      "pair": "M50_L8",
+      "preparation": "results/runs/stage_F_mainline_20260909/M50_L8_prepare",
+      "current_preparation": "results/runs/mainline_alignment_20260909/F_paper/M50_L8_current_hard",
+      "initial_point": "results/runs/mainline_alignment_20260909/F_paper/M50_L8_tip_03",
+      "files": {
+        "results/runs/stage_F_mainline_20260909/M50_L8_prepare/report.json": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_F_mainline_20260909/M50_L8_prepare/report.json",
+          "sha256": "a7e64cb7a3bc7e9539a5f76b510391ebbaaf08911e2136b3a06ea33e40abac40",
+          "bytes": 21749
+        },
+        "results/runs/stage_F_mainline_20260909/M50_L8_prepare/amplitude.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_F_mainline_20260909/M50_L8_prepare/amplitude.npz",
+          "sha256": "5732b5385dd6929780e6c2b708c0b84a27efb24dd79b3005f0b6df9d7df07aea",
+          "bytes": 36953024,
+          "rows_shape": [
+            2411,
+            3876
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M50_L8_current_hard/report.json": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L8_current_hard/report.json",
+          "sha256": "36f305baefa62727fe6fcbd709b54087eb5a69dad3d27917073f345abb59070a",
+          "bytes": 24236
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M50_L8_current_hard/current_data.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L8_current_hard/current_data.npz",
+          "sha256": "b5abb929ae1f64e117e48f2364295f4ff96df278b307accdc51c0c348ed77374",
+          "bytes": 9458
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M50_L8_current_hard/gram_linear.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L8_current_hard/gram_linear.npz",
+          "sha256": "5c27a2e40e4cbb45f7ad8e01d8b448dc754229654fe2f3ce0245120e377ac724",
+          "bytes": 3150990,
+          "matrix_shape": [
+            600,
+            4076
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M50_L8_current_hard/moment_linear.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L8_current_hard/moment_linear.npz",
+          "sha256": "04e022b5aed199efc485438b3fb1b52000d9a26f14ef3c4b942383391cbaa0a4",
+          "bytes": 2196,
+          "matrix_shape": [
+            4,
+            4076
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M50_L8_current_hard/ff_cap_linear.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L8_current_hard/ff_cap_linear.npz",
+          "sha256": "79b38a0cda214c9b0a4aa6645e1271556cef9f13cc1113a9bc49bd42480a2920",
+          "bytes": 4524,
+          "matrix_shape": [
+            42,
+            4076
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M50_L8_tip_03/report.json": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L8_tip_03/report.json",
+          "sha256": "c8eefa207a0ee4391f1408a67f97d2a72006eb01b2ceb33cf80c41b255860b6e",
+          "bytes": 110514
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M50_L8_tip_03/coefficients.json": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L8_tip_03/coefficients.json",
+          "sha256": "881060a66973074bc0c09ce3a1076a9971e00918d9df8d231e1d016e6171c0e9",
+          "bytes": 92684,
+          "shape": [
+            3876
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M50_L8_tip_03/current.json": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L8_tip_03/current.json",
+          "sha256": "6ae4f37fa6f2601048a6ed9a2b9c41473ffeac95bd264b0ddaf55fc015f637b5",
+          "bytes": 25711,
+          "ImF_shape": [
+            2,
+            50
+          ],
+          "rho_shape": [
+            2,
+            50
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M50_L8_tip_03/joint.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L8_tip_03/joint.npz",
+          "sha256": "385fc531495424cffe4332497b0cc7f64e3cb162715882c654cecee0dd9088cb",
+          "bytes": 58261,
+          "point_shape": [
+            4076
+          ]
+        }
+      },
+      "preparation_absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_F_mainline_20260909/M50_L8_prepare",
+      "current_preparation_absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L8_current_hard",
+      "initial_point_absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L8_tip_03",
+      "M": 50,
+      "L": 8,
+      "density_limit": 377500,
+      "scattering_samples": 1200,
+      "amplitude_coefficients": 3876,
+      "joint_variables": 4076,
+      "current_ImF_shape": [
+        2,
+        50
+      ],
+      "current_rho_shape": [
+        2,
+        50
+      ],
+      "high_energy_nodes": 7,
+      "operators_match_target_declared_inputs": true,
+      "preparation_restrictions": {
+        "chiral_norm": "two separate l2 four-vectors",
+        "chiral_tolerance": 0.002,
+        "infinity": "free",
+        "asymptotic_necessary_conditions": false
+      },
+      "initial_point_model": {
+        "chiral_norm": "combined-l2",
+        "chiral_tolerance": 0.002,
+        "printed_raw_tolerances_match": true,
+        "hard_midpoint": true,
+        "density_limit_matches": true
+      },
+      "historical_report": {
+        "status": "joint_feasible",
+        "joint_feasible": true,
+        "support_optimality_certified": true
+      },
+      "reuse_as_target_initializer_only": true,
+      "new_separate_l2_audit_performed": false,
+      "new_center_validation_performed": false,
+      "notes": "Historical combined-L2 feasible point with a reported support certificate; reuse point data only and re-audit under the target norm."
+    },
+    {
+      "pair": "M50_L12",
+      "preparation": "results/runs/stage_F_mainline_20260909/M50_L12_prepare",
+      "current_preparation": "results/runs/mainline_alignment_20260909/F_paper/M50_L12_current_hard",
+      "initial_point": "results/runs/mainline_alignment_20260909/F_paper/M50_L12_phase_I_08",
+      "files": {
+        "results/runs/stage_F_mainline_20260909/M50_L12_prepare/report.json": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_F_mainline_20260909/M50_L12_prepare/report.json",
+          "sha256": "2097186d3b673ce58abe8e6804e1b11855502d5eae99605d613659cb7d4c8bc5",
+          "bytes": 21752
+        },
+        "results/runs/stage_F_mainline_20260909/M50_L12_prepare/amplitude.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_F_mainline_20260909/M50_L12_prepare/amplitude.npz",
+          "sha256": "e02b89bce4d9efcc94f3bf0498912968bbdfb9fd050828e88df428aee8f97a43",
+          "bytes": 55363755,
+          "rows_shape": [
+            3611,
+            3876
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M50_L12_current_hard/report.json": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L12_current_hard/report.json",
+          "sha256": "aac861a7032c459fc3c881be87f8a7b5a7ae01beaa6e9311bf9e8b487cdc12a0",
+          "bytes": 24239
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M50_L12_current_hard/current_data.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L12_current_hard/current_data.npz",
+          "sha256": "20a21fbe4c5e0b75bee88da7cab4f61c627541310b6bbf5f137691b77fc9732e",
+          "bytes": 9495
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M50_L12_current_hard/gram_linear.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L12_current_hard/gram_linear.npz",
+          "sha256": "5c27a2e40e4cbb45f7ad8e01d8b448dc754229654fe2f3ce0245120e377ac724",
+          "bytes": 3150990,
+          "matrix_shape": [
+            600,
+            4076
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M50_L12_current_hard/moment_linear.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L12_current_hard/moment_linear.npz",
+          "sha256": "04e022b5aed199efc485438b3fb1b52000d9a26f14ef3c4b942383391cbaa0a4",
+          "bytes": 2196,
+          "matrix_shape": [
+            4,
+            4076
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M50_L12_current_hard/ff_cap_linear.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L12_current_hard/ff_cap_linear.npz",
+          "sha256": "79b38a0cda214c9b0a4aa6645e1271556cef9f13cc1113a9bc49bd42480a2920",
+          "bytes": 4524,
+          "matrix_shape": [
+            42,
+            4076
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M50_L12_phase_I_08/report.json": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L12_phase_I_08/report.json",
+          "sha256": "348ea15c3bd0122fcfb8d38dd7611e0c57318f7733f050509532a89ed01eb55f",
+          "bytes": 94358
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M50_L12_phase_I_08/coefficients.json": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L12_phase_I_08/coefficients.json",
+          "sha256": "c4b2d7b7135b2de68bfee982dbb00c7f9efec2999d82342fa25c0bcf86d2cecc",
+          "bytes": 92649,
+          "shape": [
+            3876
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M50_L12_phase_I_08/current.json": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L12_phase_I_08/current.json",
+          "sha256": "fe030c758d6ec579249e189daf944e843ab1e463f8809dd2f489ed1df7c67e88",
+          "bytes": 25723,
+          "ImF_shape": [
+            2,
+            50
+          ],
+          "rho_shape": [
+            2,
+            50
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M50_L12_phase_I_08/joint.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L12_phase_I_08/joint.npz",
+          "sha256": "e084ffedd49c183b03de6507d1652701d673df2e1cb9e9667d343b812c36423b",
+          "bytes": 33028,
+          "point_shape": [
+            4076
+          ]
+        }
+      },
+      "preparation_absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_F_mainline_20260909/M50_L12_prepare",
+      "current_preparation_absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L12_current_hard",
+      "initial_point_absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L12_phase_I_08",
+      "M": 50,
+      "L": 12,
+      "density_limit": 377500,
+      "scattering_samples": 1800,
+      "amplitude_coefficients": 3876,
+      "joint_variables": 4076,
+      "current_ImF_shape": [
+        2,
+        50
+      ],
+      "current_rho_shape": [
+        2,
+        50
+      ],
+      "high_energy_nodes": 7,
+      "operators_match_target_declared_inputs": true,
+      "preparation_restrictions": {
+        "chiral_norm": "two separate l2 four-vectors",
+        "chiral_tolerance": 0.002,
+        "infinity": "free",
+        "asymptotic_necessary_conditions": false
+      },
+      "initial_point_model": {
+        "chiral_norm": "combined-l2",
+        "chiral_tolerance": 0.002,
+        "printed_raw_tolerances_match": true,
+        "hard_midpoint": true,
+        "density_limit_matches": true
+      },
+      "historical_report": {
+        "status": "joint_candidate",
+        "joint_feasible": false,
+        "support_optimality_certified": false,
+        "phase_I_tau": 0.05803372692755798,
+        "infeasibility_certified": false
+      },
+      "reuse_as_target_initializer_only": true,
+      "new_separate_l2_audit_performed": false,
+      "new_center_validation_performed": false,
+      "notes": "Complete C/ImF/rho and dual arrays exist, but Phase I ended at positive tau and original joint constraints did not pass. Requires feasibility recovery; no impossibility claim."
+    },
+    {
+      "pair": "M45_L10",
+      "preparation": "results/runs/stage_F_mainline_20260909/M45_L10_prepare",
+      "current_preparation": "results/runs/mainline_alignment_20260909/F_paper/M45_L10_current_hard",
+      "initial_point": "results/runs/mainline_alignment_20260909/F_paper/M45_L10_selected",
+      "files": {
+        "results/runs/stage_F_mainline_20260909/M45_L10_prepare/report.json": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_F_mainline_20260909/M45_L10_prepare/report.json",
+          "sha256": "6d3b3c840ff61441af086322d3e8047253e1a95e6e665dad5547315531b5097c",
+          "bytes": 20207
+        },
+        "results/runs/stage_F_mainline_20260909/M45_L10_prepare/amplitude.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_F_mainline_20260909/M45_L10_prepare/amplitude.npz",
+          "sha256": "751e2380555f31c2dbd6b59be2e4d8053e9e005cc098fb8af36e899df979170e",
+          "bytes": 33866946,
+          "rows_shape": [
+            2711,
+            3151
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M45_L10_current_hard/report.json": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M45_L10_current_hard/report.json",
+          "sha256": "3e3aeb82c55a20dd7caa42d7c2f90c25771b7e957c51bb299057398779e2572b",
+          "bytes": 22480
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M45_L10_current_hard/current_data.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M45_L10_current_hard/current_data.npz",
+          "sha256": "20ef66dddd07453ed340ff18630417d7f387ec564c38c7fa4efea53cc076e919",
+          "bytes": 8434
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M45_L10_current_hard/gram_linear.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M45_L10_current_hard/gram_linear.npz",
+          "sha256": "fc2d504d9b9541fad96b18acaae3ba1a3679436fe8c4075712fddb0d0d9fd4af",
+          "bytes": 2317372,
+          "matrix_shape": [
+            540,
+            3331
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M45_L10_current_hard/moment_linear.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M45_L10_current_hard/moment_linear.npz",
+          "sha256": "7468c9cddbcc4e2a833af54d6ad624934fda1d67cae68ef638a79c8f6d82ded4",
+          "bytes": 2063,
+          "matrix_shape": [
+            4,
+            3331
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M45_L10_current_hard/ff_cap_linear.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M45_L10_current_hard/ff_cap_linear.npz",
+          "sha256": "b8c63a1f57b8e31bd62453190a407922fd84ec2373852d42e07b6906f95d2b04",
+          "bytes": 4189,
+          "matrix_shape": [
+            42,
+            3331
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M45_L10_selected/report.json": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M45_L10_selected/report.json",
+          "sha256": "f9a65e0f6c119dc5865c5698aa4e4f1de1634fe324e678a3be57f461dce5ec36",
+          "bytes": 98961
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M45_L10_selected/coefficients.json": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M45_L10_selected/coefficients.json",
+          "sha256": "ac001bcefc271351ec67cb49956ea9eff0be557780efcc892ea9ae527530051d",
+          "bytes": 75384,
+          "shape": [
+            3151
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M45_L10_selected/current.json": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M45_L10_selected/current.json",
+          "sha256": "546963002261cd03bc9d1fb57271857dca4ad051e861fc77808e39a018287fa1",
+          "bytes": 23414,
+          "ImF_shape": [
+            2,
+            45
+          ],
+          "rho_shape": [
+            2,
+            45
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M45_L10_selected/joint.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M45_L10_selected/joint.npz",
+          "sha256": "2bdddab1f5e2da2633a9290d76e5ecd2db59af306b1ac6abed0a27a4e6ef70e7",
+          "bytes": 54145,
+          "point_shape": [
+            3331
+          ]
+        }
+      },
+      "preparation_absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_F_mainline_20260909/M45_L10_prepare",
+      "current_preparation_absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M45_L10_current_hard",
+      "initial_point_absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M45_L10_selected",
+      "M": 45,
+      "L": 10,
+      "density_limit": 306000,
+      "scattering_samples": 1350,
+      "amplitude_coefficients": 3151,
+      "joint_variables": 3331,
+      "current_ImF_shape": [
+        2,
+        45
+      ],
+      "current_rho_shape": [
+        2,
+        45
+      ],
+      "high_energy_nodes": 7,
+      "operators_match_target_declared_inputs": true,
+      "preparation_restrictions": {
+        "chiral_norm": "two separate l2 four-vectors",
+        "chiral_tolerance": 0.002,
+        "infinity": "free",
+        "asymptotic_necessary_conditions": false
+      },
+      "initial_point_model": {
+        "chiral_norm": "combined-l2",
+        "chiral_tolerance": 0.002,
+        "printed_raw_tolerances_match": true,
+        "hard_midpoint": true,
+        "density_limit_matches": true
+      },
+      "historical_report": {
+        "status": "joint_feasible",
+        "joint_feasible": true,
+        "support_optimality_certified": true
+      },
+      "reuse_as_target_initializer_only": true,
+      "new_separate_l2_audit_performed": false,
+      "new_center_validation_performed": false,
+      "notes": "Historical combined-L2 feasible point with a reported support certificate; reuse point data only and re-audit under the target norm."
+    },
+    {
+      "pair": "M60_L10",
+      "preparation": "results/runs/stage_F_mainline_20260909/M60_L10_prepare",
+      "current_preparation": "results/runs/mainline_alignment_20260909/F_paper/M60_L10_current_hard",
+      "initial_point": "results/runs/mainline_alignment_20260909/F_paper/M60_L10_selected",
+      "files": {
+        "results/runs/stage_F_mainline_20260909/M60_L10_prepare/report.json": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_F_mainline_20260909/M60_L10_prepare/report.json",
+          "sha256": "7e18d0b2a07ccfa91e92ab29026cb98432907196d8c63577463a9cc6073bc50c",
+          "bytes": 24521
+        },
+        "results/runs/stage_F_mainline_20260909/M60_L10_prepare/amplitude.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_F_mainline_20260909/M60_L10_prepare/amplitude.npz",
+          "sha256": "bc1d3c9254eaf7c30864fb026be0a7d1e19c4bf7a49fd8357cced539242774fb",
+          "bytes": 78891907,
+          "rows_shape": [
+            3611,
+            5551
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M60_L10_current_hard/report.json": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M60_L10_current_hard/report.json",
+          "sha256": "24a1745203744f3eca6c4f623b53de9e9a0a46adb51dd109eed8a84ddb09abe4",
+          "bytes": 27432
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M60_L10_current_hard/current_data.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M60_L10_current_hard/current_data.npz",
+          "sha256": "d1288e58be69fdea7ada657d732f48db47e3395a3d99a1a395b069e689e11dd2",
+          "bytes": 11732
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M60_L10_current_hard/gram_linear.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M60_L10_current_hard/gram_linear.npz",
+          "sha256": "d31639a470aa75fe4631dec25fdfe36c73351a4d8e8dbc0d670889ed2adba5e0",
+          "bytes": 5411748,
+          "matrix_shape": [
+            720,
+            5791
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M60_L10_current_hard/moment_linear.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M60_L10_current_hard/moment_linear.npz",
+          "sha256": "d0a00e2b739686018cf374bd2fea46c06f448361b3f9edab673c1673327200a7",
+          "bytes": 2372,
+          "matrix_shape": [
+            4,
+            5791
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M60_L10_current_hard/ff_cap_linear.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M60_L10_current_hard/ff_cap_linear.npz",
+          "sha256": "da9cef5e9fd72989cad001a53fabb6e666111a60b24b63321b2253d9091f7190",
+          "bytes": 6384,
+          "matrix_shape": [
+            54,
+            5791
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M60_L10_selected/report.json": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M60_L10_selected/report.json",
+          "sha256": "a7f7039edbacbe289599bec36ab33e36895d6cf30a12317e8a42e44ce07b4207",
+          "bytes": 128473
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M60_L10_selected/coefficients.json": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M60_L10_selected/coefficients.json",
+          "sha256": "10885b7e9419de00a19f6e18dae3d534d942fa0d4daac48d33d45662b0a3b71e",
+          "bytes": 132807,
+          "shape": [
+            5551
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M60_L10_selected/current.json": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M60_L10_selected/current.json",
+          "sha256": "56e6c85b310d495a904ae7f22a4087c3c893cf5f9ec06a9abebcc1a371215cec",
+          "bytes": 30057,
+          "ImF_shape": [
+            2,
+            60
+          ],
+          "rho_shape": [
+            2,
+            60
+          ]
+        },
+        "results/runs/mainline_alignment_20260909/F_paper/M60_L10_selected/joint.npz": {
+          "absolute_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M60_L10_selected/joint.npz",
+          "sha256": "f35d4323b08b5b0544e2b132ab888204c4c4f267e4a99d81b76756edf1feb09d",
+          "bytes": 82093,
+          "point_shape": [
+            5791
+          ]
+        }
+      },
+      "preparation_absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_F_mainline_20260909/M60_L10_prepare",
+      "current_preparation_absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M60_L10_current_hard",
+      "initial_point_absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M60_L10_selected",
+      "M": 60,
+      "L": 10,
+      "density_limit": 543000,
+      "scattering_samples": 1800,
+      "amplitude_coefficients": 5551,
+      "joint_variables": 5791,
+      "current_ImF_shape": [
+        2,
+        60
+      ],
+      "current_rho_shape": [
+        2,
+        60
+      ],
+      "high_energy_nodes": 9,
+      "operators_match_target_declared_inputs": true,
+      "preparation_restrictions": {
+        "chiral_norm": "two separate l2 four-vectors",
+        "chiral_tolerance": 0.002,
+        "infinity": "free",
+        "asymptotic_necessary_conditions": false
+      },
+      "initial_point_model": {
+        "chiral_norm": "combined-l2",
+        "chiral_tolerance": 0.002,
+        "printed_raw_tolerances_match": true,
+        "hard_midpoint": true,
+        "density_limit_matches": true
+      },
+      "historical_report": {
+        "status": "joint_feasible",
+        "joint_feasible": true,
+        "support_optimality_certified": true
+      },
+      "reuse_as_target_initializer_only": true,
+      "new_separate_l2_audit_performed": false,
+      "new_center_validation_performed": false,
+      "notes": "Historical combined-L2 feasible point with a reported support certificate; reuse point data only and re-audit under the target norm."
+    }
+  ]
+}

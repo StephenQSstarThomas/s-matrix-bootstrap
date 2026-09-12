@@ -1,0 +1,16 @@
+{
+  "scope": "CLI invocation corrections before worker launch; neither produced a numerical candidate or physical infeasibility claim",
+  "attempts": [
+    {
+      "command": "dual --fixed-amplitude without --joint-feasibility",
+      "exit_code": 2,
+      "correction": "Supply --joint-feasibility as required by the fixed-C dual interface"
+    },
+    {
+      "command": "source-audit --fixed-amplitude --joint-feasibility",
+      "exit_code": 2,
+      "correction": "Source audit reads fixed-C scope from the donor run report; omit these solve-only flags"
+    }
+  ],
+  "production_code_changed": false
+}

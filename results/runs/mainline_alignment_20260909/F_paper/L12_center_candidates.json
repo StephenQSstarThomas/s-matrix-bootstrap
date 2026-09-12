@@ -1,0 +1,129 @@
+{
+  "source": "results/runs/mainline_alignment_20260909/paper_tip_path_01/center_path.npz",
+  "candidates": [
+    {
+      "mu": 7.8125e-06,
+      "combined_chi": 0.0018258919295819668,
+      "new_L12_disk_violations": 40,
+      "all_disk_violations": 40,
+      "minimum_new_disk_margin": -1.3300213431507955,
+      "worst_new_disk_rows": [
+        {
+          "index": 1703,
+          "s": 649.790555190354,
+          "I": 0,
+          "ell": 22,
+          "margin": -1.3300213431507955
+        },
+        {
+          "index": 1751,
+          "s": 1802.5994126932899,
+          "I": 1,
+          "ell": 23,
+          "margin": -1.1862672851179648
+        },
+        {
+          "index": 1727,
+          "s": 649.790555190354,
+          "I": 2,
+          "ell": 22,
+          "margin": -0.7990567582260827
+        }
+      ],
+      "diagnostic_scope": "Saved H longdouble contraction only; CLI original audit is acceptance"
+    },
+    {
+      "mu": 3.90625e-06,
+      "combined_chi": 0.0019019596985102374,
+      "new_L12_disk_violations": 48,
+      "all_disk_violations": 48,
+      "minimum_new_disk_margin": -1.425165169714749,
+      "worst_new_disk_rows": [
+        {
+          "index": 1703,
+          "s": 649.790555190354,
+          "I": 0,
+          "ell": 22,
+          "margin": -1.425165169714749
+        },
+        {
+          "index": 1751,
+          "s": 1802.5994126932899,
+          "I": 1,
+          "ell": 23,
+          "margin": -1.3480442366325447
+        },
+        {
+          "index": 1727,
+          "s": 649.790555190354,
+          "I": 2,
+          "ell": 22,
+          "margin": -0.8381465240622546
+        }
+      ],
+      "diagnostic_scope": "Saved H longdouble contraction only; CLI original audit is acceptance"
+    },
+    {
+      "mu": 1.953125e-06,
+      "combined_chi": 0.0019477901520337192,
+      "new_L12_disk_violations": 57,
+      "all_disk_violations": 57,
+      "minimum_new_disk_margin": -1.5528221921072576,
+      "worst_new_disk_rows": [
+        {
+          "index": 1703,
+          "s": 649.790555190354,
+          "I": 0,
+          "ell": 22,
+          "margin": -1.5528221921072576
+        },
+        {
+          "index": 1751,
+          "s": 1802.5994126932899,
+          "I": 1,
+          "ell": 23,
+          "margin": -1.4703568845954567
+        },
+        {
+          "index": 1727,
+          "s": 649.790555190354,
+          "I": 2,
+          "ell": 22,
+          "margin": -0.8909984554255423
+        }
+      ],
+      "diagnostic_scope": "Saved H longdouble contraction only; CLI original audit is acceptance"
+    },
+    {
+      "mu": 9.765625e-07,
+      "combined_chi": 0.0019729411128361477,
+      "new_L12_disk_violations": 79,
+      "all_disk_violations": 79,
+      "minimum_new_disk_margin": -1.6431339877629576,
+      "worst_new_disk_rows": [
+        {
+          "index": 1703,
+          "s": 649.790555190354,
+          "I": 0,
+          "ell": 22,
+          "margin": -1.6431339877629576
+        },
+        {
+          "index": 1751,
+          "s": 1802.5994126932899,
+          "I": 1,
+          "ell": 23,
+          "margin": -1.5408353700230466
+        },
+        {
+          "index": 1727,
+          "s": 649.790555190354,
+          "I": 2,
+          "ell": 22,
+          "margin": -0.9360101440085452
+        }
+      ],
+      "diagnostic_scope": "Saved H longdouble contraction only; CLI original audit is acceptance"
+    }
+  ]
+}

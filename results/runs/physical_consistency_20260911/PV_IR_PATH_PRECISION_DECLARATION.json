@@ -1,0 +1,11 @@
+{
+  "source_failure": "PV_IR_ref_03",
+  "linear_residual": 1.2202065373664994e-06,
+  "decrement": 4792.46880225942,
+  "curvature": 4792.46880596084,
+  "source_sha256": "29d6d8355d1f84632656df7d7de9968e7bb5458748c3d3646805861214fa54eb",
+  "reason": "Direction is far from a center; squared decrement and curvature agree to about 8e-10 relative. A center-level linear tolerance should not alone forbid a verified descent step.",
+  "center_linear_tolerance_unchanged": 1e-06,
+  "large_error_limit_unchanged": 0.1,
+  "physical_constraints_changed": false
+}

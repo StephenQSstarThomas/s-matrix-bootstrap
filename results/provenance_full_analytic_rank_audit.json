@@ -1,0 +1,38 @@
+{
+  "schema": "smatrix-full-analytic-rank-provenance-v1",
+  "timestamp_utc": "2026-09-06T11:42:04.152182+00:00",
+  "previous_checkpoint": "results/verification_complete_source_operators.json",
+  "previous_immutable_artifacts_checked": 515,
+  "previous_immutable_artifact_mismatches": [],
+  "artifact_files_checked": 718,
+  "embedded_source_hash_checks": 105,
+  "explicit_immutable_reference_checks": 545,
+  "missing_references": [],
+  "reference_hash_mismatches": [],
+  "historical_source_versions_preserved": [
+    {
+      "path": "/home/shiqiu/s-matrix-bootstrap/src/smatrix_bootstrap/imaginary_rank_residual.py",
+      "expected": "bfd4bee96d37f28871acc67460c6215fcfb53d75ec6e48149c0efb4b2fba73bc",
+      "current": "eb5368c8aa086ac97e57584116ee86a5c40a3a13e803ba4050620ccb1df38174",
+      "embedded_version_preserved": true
+    },
+    {
+      "path": "/home/shiqiu/s-matrix-bootstrap/src/smatrix_bootstrap/universal_partial_wave_masters.py",
+      "expected": "e14c2d28e15c9f3e5ace272037d630a07cd9c768c90f09c3a5e9feb304d24310",
+      "current": "d767bcfec56f43ab60b5816896599712904c24b4e375b1a4441a88c350cf3fc7",
+      "embedded_version_preserved": true
+    }
+  ],
+  "reference_check_scope": "Explicit path/sha256 pairs and inputs/input_hashes/local_input_files ledgers in retained noncompressed JSON; all compressed/binary artifact bytes are separately hashed.",
+  "local_file_links": {
+    "checked": 715,
+    "missing": []
+  },
+  "source_snapshot": "results/source_snapshot_20260906T114204Z.tar.gz",
+  "source_snapshot_sha256": "bff32dc1b7b21dc8b3b1d3336b1011b9c66d1febd2a9d9c3e514a640f2a49ed8",
+  "source_files": 429,
+  "source_snapshot_members_and_bytes_verified": true,
+  "source_files_changed_during_snapshot": [],
+  "audit_script_path": "/home/shiqiu/s-matrix-bootstrap/scripts/freeze_full_analytic_rank_checkpoint.py",
+  "audit_script_sha256": "1fa1d0bb396e09910beca0951bf53b8c2c0fb5d584ae1ef558ae3f286f042768"
+}

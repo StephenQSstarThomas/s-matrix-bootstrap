@@ -1,0 +1,125 @@
+{
+  "scope": "In-memory Eq2.7 direct amplitude contraction; deterministic dense real coefficients, not an optimization; same panels, Gauss order32, basis and all36 waves",
+  "records": [
+    {
+      "M": 3,
+      "L": 12,
+      "bits": 640,
+      "energy": 0.5,
+      "old_seconds": 0.20204253494739532,
+      "direct_seconds": 0.012229593005031347,
+      "speedup": 16.5207897649802,
+      "max_absolute_difference": 8.21610628768265e-188,
+      "max_relative_difference": 1.0206506219824565e-174,
+      "all_balls_overlap": true
+    },
+    {
+      "M": 3,
+      "L": 12,
+      "bits": 640,
+      "energy": 3.0,
+      "old_seconds": 0.07325246697291732,
+      "direct_seconds": 0.005055328132584691,
+      "speedup": 14.490150797682197,
+      "max_absolute_difference": 8.831328236824775e-188,
+      "max_relative_difference": 6.221656907055457e-156,
+      "all_balls_overlap": true
+    },
+    {
+      "M": 3,
+      "L": 12,
+      "bits": 640,
+      "energy": 4.0,
+      "old_seconds": 0.0021071049850434065,
+      "direct_seconds": 0.0001817189622670412,
+      "speedup": 11.595405117639597,
+      "max_absolute_difference": 3.434078350754314e-193,
+      "max_relative_difference": 2.1419396644922434e-191,
+      "all_balls_overlap": true
+    },
+    {
+      "M": 3,
+      "L": 12,
+      "bits": 640,
+      "energy": 4.000109664275457,
+      "old_seconds": 0.012598951114341617,
+      "direct_seconds": 0.005257955985143781,
+      "speedup": 2.396168996077493,
+      "max_absolute_difference": 1.1513545849865376e-187,
+      "max_relative_difference": 3.2899726890546357e-63,
+      "all_balls_overlap": true
+    },
+    {
+      "M": 3,
+      "L": 12,
+      "bits": 640,
+      "energy": 100.0,
+      "old_seconds": 0.032738148933276534,
+      "direct_seconds": 0.020620758878067136,
+      "speedup": 1.5876306554409993,
+      "max_absolute_difference": 3.725132248755056e-188,
+      "max_relative_difference": 1.4828079580342977e-178,
+      "all_balls_overlap": true
+    },
+    {
+      "M": 3,
+      "L": 12,
+      "bits": 640,
+      "energy": 1000000.0,
+      "old_seconds": 0.12320285104215145,
+      "direct_seconds": 0.07255026884377003,
+      "speedup": 1.6981722191472075,
+      "max_absolute_difference": 5.480809053852159e-189,
+      "max_relative_difference": 6.924661991229229e-182,
+      "all_balls_overlap": true
+    },
+    {
+      "M": 50,
+      "L": 12,
+      "bits": 640,
+      "energy": 3.0,
+      "old_seconds": 2.2022680421359837,
+      "direct_seconds": 0.037903771037235856,
+      "speedup": 58.10155511894905,
+      "max_absolute_difference": 2.4040235819191003e-187,
+      "max_relative_difference": 7.960114226649824e-155,
+      "all_balls_overlap": true
+    },
+    {
+      "M": 50,
+      "L": 12,
+      "bits": 640,
+      "energy": 4.000109664275457,
+      "old_seconds": 0.8223200337961316,
+      "direct_seconds": 0.03884720406495035,
+      "speedup": 21.16806224770407,
+      "max_absolute_difference": 3.198247867643987e-187,
+      "max_relative_difference": 2.35461020156062e-62,
+      "all_balls_overlap": true
+    },
+    {
+      "M": 50,
+      "L": 12,
+      "bits": 640,
+      "energy": 100.0,
+      "old_seconds": 1.5843563820235431,
+      "direct_seconds": 0.1909198670182377,
+      "speedup": 8.298541198293401,
+      "max_absolute_difference": 7.82032582510525e-187,
+      "max_relative_difference": 1.257017233744939e-176,
+      "all_balls_overlap": true
+    },
+    {
+      "M": 50,
+      "L": 12,
+      "bits": 640,
+      "energy": 1000000.0,
+      "old_seconds": 3.787254862021655,
+      "direct_seconds": 0.44932262087240815,
+      "speedup": 8.428809692840064,
+      "max_absolute_difference": 2.3102288884567427e-188,
+      "max_relative_difference": 3.593676763799182e-181,
+      "all_balls_overlap": true
+    }
+  ]
+}

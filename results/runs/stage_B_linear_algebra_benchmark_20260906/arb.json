@@ -1,0 +1,109 @@
+{
+  "records": [
+    {
+      "bits": 128,
+      "n": 100,
+      "threads": 4,
+      "build_seconds": 0.005242308136075735,
+      "multiply_seconds": 0.001465566921979189,
+      "solve_seconds": {
+        "lu": 0.008486678125336766,
+        "precond": 0.040341815911233425,
+        "approx": 0.008286230964586139
+      },
+      "approx_residual_max": 2.3509887027393394e-38
+    },
+    {
+      "bits": 128,
+      "n": 200,
+      "threads": 4,
+      "build_seconds": 0.019142643082886934,
+      "multiply_seconds": 0.005397337954491377,
+      "solve_seconds": {
+        "lu": 0.045428206911310554,
+        "precond": 0.2236099150031805,
+        "approx": 0.05066730105318129
+      },
+      "approx_residual_max": 2.938735878150483e-38
+    },
+    {
+      "bits": 128,
+      "n": 300,
+      "threads": 4,
+      "build_seconds": 0.03974915319122374,
+      "multiply_seconds": 0.013066144892945886,
+      "solve_seconds": {
+        "lu": 0.13051640312187374,
+        "precond": 0.5674883120227605,
+        "approx": 0.12759613897651434
+      },
+      "approx_residual_max": 1.7632415273281957e-38
+    },
+    {
+      "bits": 128,
+      "n": 500,
+      "threads": 4,
+      "build_seconds": 0.13100160495378077,
+      "multiply_seconds": 0.048307185992598534,
+      "solve_seconds": {
+        "lu": 0.4130885328631848,
+        "precond": 1.6357628549449146,
+        "approx": 0.40386408008635044
+      },
+      "approx_residual_max": 1.7632415273281957e-38
+    },
+    {
+      "bits": 192,
+      "n": 100,
+      "threads": 4,
+      "build_seconds": 0.005983329843729734,
+      "multiply_seconds": 0.00744589907117188,
+      "solve_seconds": {
+        "lu": 0.013944001169875264,
+        "precond": 0.07108648796565831,
+        "approx": 0.017857348080724478
+      },
+      "approx_residual_max": 1.5930919117259253e-57
+    },
+    {
+      "bits": 192,
+      "n": 200,
+      "threads": 4,
+      "build_seconds": 0.016716681886464357,
+      "multiply_seconds": 0.005259478930383921,
+      "solve_seconds": {
+        "lu": 0.07872409978881478,
+        "precond": 0.3618743778206408,
+        "approx": 0.09408484189771116
+      },
+      "approx_residual_max": 1.9117102939524157e-57
+    },
+    {
+      "bits": 192,
+      "n": 300,
+      "threads": 4,
+      "build_seconds": 0.03601178294047713,
+      "multiply_seconds": 0.013442836003378034,
+      "solve_seconds": {
+        "lu": 0.20188763714395463,
+        "precond": 0.8588174639735371,
+        "approx": 0.23230665898881853
+      },
+      "approx_residual_max": 1.2744735294994348e-57
+    },
+    {
+      "bits": 192,
+      "n": 500,
+      "threads": 4,
+      "build_seconds": 0.13416982698254287,
+      "multiply_seconds": 0.055496701039373875,
+      "solve_seconds": {
+        "lu": 0.7039437491912395,
+        "precond": 2.8428386128507555,
+        "approx": 0.7378307071048766
+      },
+      "approx_residual_max": 9.558551472729444e-58
+    }
+  ],
+  "scope": "Dense well-conditioned exact test systems, not the physical Hessian; cubic extrapolation is an estimate."
+}

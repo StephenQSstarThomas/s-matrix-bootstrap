@@ -1,0 +1,329 @@
+{
+  "scope": "M3 numerical equilibration controls; unchanged physical constraints and convergence tolerances; no M50 runs",
+  "active_setting": {
+    "enabled": true,
+    "minimum": 0.0001,
+    "maximum": 10000.0,
+    "iterations": 10
+  },
+  "decision": "Restore original range: with the same historical warm, subtracted+SOC closes the original-coordinate gap under default scaling and fails under the widened scaling.",
+  "tested_wide": {
+    "enabled": true,
+    "minimum": 1e-12,
+    "maximum": 1000000000000.0,
+    "iterations": 20
+  },
+  "reporting_change": "Report free_coordinate_unit separately; absorptive free variables use unit1 while rho uses the dyadic amplitude_unit.",
+  "runs": [
+    {
+      "directory": "results/runs/stage_B_wide_equil_M3_absorptive_soc_20260907",
+      "setting": "wide",
+      "warm": "balanced",
+      "warm_path": "results/runs/stage_B_native_balanced_M3_20260907/coefficients.json",
+      "coordinates": "absorptive",
+      "density_cone": "soc",
+      "equilibration": {
+        "enabled": true,
+        "minimum": 1e-12,
+        "maximum": 1000000000000.0,
+        "iterations": 20
+      },
+      "largest_matrix_entry": 17537487.05941707,
+      "native_status": "InsufficientProgress",
+      "native_primal_residual": 0.7752461342554889,
+      "native_dual_residual": 733.9824793514914,
+      "targets": [
+        0.04300707250838661,
+        -0.0027145255640037545
+      ],
+      "primal_feasible": true,
+      "tail_passed": true,
+      "FG": "nonnegative_certified",
+      "lower": 0.043007072508386604,
+      "upper": 0.06424421501620155,
+      "gap": 0.021237142507814943,
+      "support_certified": false,
+      "source_changes": [],
+      "seconds": 0.6670559118501842
+    },
+    {
+      "directory": "results/runs/stage_B_wide_equil_M3_absorptive_power_20260907",
+      "setting": "wide",
+      "warm": "balanced",
+      "warm_path": "results/runs/stage_B_native_balanced_M3_20260907/coefficients.json",
+      "coordinates": "absorptive",
+      "density_cone": "power",
+      "equilibration": {
+        "enabled": true,
+        "minimum": 1e-12,
+        "maximum": 1000000000000.0,
+        "iterations": 20
+      },
+      "largest_matrix_entry": 17537487.05941707,
+      "native_status": "AlmostSolved",
+      "native_primal_residual": 3.0434772158799076e-09,
+      "native_dual_residual": 6.4181744518595085e-06,
+      "targets": [
+        0.04300707250838661,
+        -0.0027145255640037545
+      ],
+      "primal_feasible": true,
+      "tail_passed": true,
+      "FG": "nonnegative_certified",
+      "lower": 0.043007072508386604,
+      "upper": 0.06424421501620155,
+      "gap": 0.021237142507814943,
+      "support_certified": false,
+      "source_changes": [],
+      "seconds": 0.6672718171030283
+    },
+    {
+      "directory": "results/runs/stage_B_wide_equil_M3_subtracted_soc_20260907",
+      "setting": "wide",
+      "warm": "balanced",
+      "warm_path": "results/runs/stage_B_native_balanced_M3_20260907/coefficients.json",
+      "coordinates": "subtracted",
+      "density_cone": "soc",
+      "equilibration": {
+        "enabled": true,
+        "minimum": 1e-12,
+        "maximum": 1000000000000.0,
+        "iterations": 20
+      },
+      "largest_matrix_entry": 17537487.05941707,
+      "native_status": "InsufficientProgress",
+      "native_primal_residual": 0.8062454939703643,
+      "native_dual_residual": 734.2188233673863,
+      "targets": [
+        0.04300707250838661,
+        -0.0027145255640037545
+      ],
+      "primal_feasible": true,
+      "tail_passed": true,
+      "FG": "nonnegative_certified",
+      "lower": 0.043007072508386604,
+      "upper": 0.06424421501620155,
+      "gap": 0.021237142507814943,
+      "support_certified": false,
+      "source_changes": [],
+      "seconds": 0.5163479279726744
+    },
+    {
+      "directory": "results/runs/stage_B_wide_equil_M3_subtracted_power_20260907",
+      "setting": "wide",
+      "warm": "balanced",
+      "warm_path": "results/runs/stage_B_native_balanced_M3_20260907/coefficients.json",
+      "coordinates": "subtracted",
+      "density_cone": "power",
+      "equilibration": {
+        "enabled": true,
+        "minimum": 1e-12,
+        "maximum": 1000000000000.0,
+        "iterations": 20
+      },
+      "largest_matrix_entry": 17537487.05941707,
+      "native_status": "AlmostSolved",
+      "native_primal_residual": 7.488536603027325e-07,
+      "native_dual_residual": 1.2430799192256188e-05,
+      "targets": [
+        0.04300707250838661,
+        -0.0027145255640037545
+      ],
+      "primal_feasible": true,
+      "tail_passed": true,
+      "FG": "nonnegative_certified",
+      "lower": 0.043007072508386604,
+      "upper": 0.06424421501620155,
+      "gap": 0.021237142507814943,
+      "support_certified": false,
+      "source_changes": [],
+      "seconds": 0.6674143550917506
+    },
+    {
+      "directory": "results/runs/stage_B_wide_equil_oldwarm_M3_subtracted_soc_20260907",
+      "setting": "wide",
+      "warm": "historical",
+      "warm_path": "results/runs/stage_B_native_cli_M3_recovery_20260907/coefficients.json",
+      "coordinates": "subtracted",
+      "density_cone": "soc",
+      "equilibration": {
+        "enabled": true,
+        "minimum": 1e-12,
+        "maximum": 1000000000000.0,
+        "iterations": 20
+      },
+      "largest_matrix_entry": 8768743.529708534,
+      "native_status": "InsufficientProgress",
+      "native_primal_residual": 0.5507974725371793,
+      "native_dual_residual": 731.4015732917238,
+      "targets": [
+        0.040225033594506264,
+        -0.002538926894854979
+      ],
+      "primal_feasible": true,
+      "tail_passed": true,
+      "FG": "nonnegative_certified",
+      "lower": 0.04022503359450626,
+      "upper": 0.06477264493853954,
+      "gap": 0.024547611344033285,
+      "support_certified": false,
+      "source_changes": [],
+      "seconds": 0.5175944620277733
+    },
+    {
+      "directory": "results/runs/stage_B_wide_equil_oldwarm_M3_absorptive_soc_20260907",
+      "setting": "wide",
+      "warm": "historical",
+      "warm_path": "results/runs/stage_B_native_cli_M3_recovery_20260907/coefficients.json",
+      "coordinates": "absorptive",
+      "density_cone": "soc",
+      "equilibration": {
+        "enabled": true,
+        "minimum": 1e-12,
+        "maximum": 1000000000000.0,
+        "iterations": 20
+      },
+      "largest_matrix_entry": 8768743.529708534,
+      "native_status": "InsufficientProgress",
+      "native_primal_residual": 0.6887604764885304,
+      "native_dual_residual": 733.5428785706827,
+      "targets": [
+        0.040225033594506264,
+        -0.002538926894854979
+      ],
+      "primal_feasible": true,
+      "tail_passed": true,
+      "FG": "nonnegative_certified",
+      "lower": 0.04022503359450626,
+      "upper": 0.06477264493853954,
+      "gap": 0.024547611344033285,
+      "support_certified": false,
+      "source_changes": [],
+      "seconds": 0.618625164963305
+    },
+    {
+      "directory": "results/runs/stage_B_wide_equil_oldwarm_M3_absorptive_power_20260907",
+      "setting": "wide",
+      "warm": "historical",
+      "warm_path": "results/runs/stage_B_native_cli_M3_recovery_20260907/coefficients.json",
+      "coordinates": "absorptive",
+      "density_cone": "power",
+      "equilibration": {
+        "enabled": true,
+        "minimum": 1e-12,
+        "maximum": 1000000000000.0,
+        "iterations": 20
+      },
+      "largest_matrix_entry": 8768743.529708534,
+      "native_status": "AlmostSolved",
+      "native_primal_residual": 2.041441731938726e-06,
+      "native_dual_residual": 6.492599892080033e-06,
+      "targets": [
+        0.042989986905253956,
+        -0.002712743270345566
+      ],
+      "primal_feasible": true,
+      "tail_passed": true,
+      "FG": "nonnegative_certified",
+      "lower": 0.04298998690525395,
+      "upper": 0.06425334291828437,
+      "gap": 0.02126335601303042,
+      "support_certified": false,
+      "source_changes": [],
+      "seconds": 0.4664288798812777
+    },
+    {
+      "directory": "results/runs/stage_B_default_equil_oldwarm_M3_subtracted_soc_20260907",
+      "setting": "default",
+      "warm": "historical",
+      "warm_path": "results/runs/stage_B_native_cli_M3_recovery_20260907/coefficients.json",
+      "coordinates": "subtracted",
+      "density_cone": "soc",
+      "equilibration": {
+        "enabled": true,
+        "minimum": 0.0001,
+        "maximum": 10000.0,
+        "iterations": 10
+      },
+      "largest_matrix_entry": 8768743.529708534,
+      "native_status": "Solved",
+      "native_primal_residual": 6.034209607060121e-12,
+      "native_dual_residual": 2.4678566170387065e-12,
+      "targets": [
+        0.04300707252069796,
+        -0.0027145256747233494
+      ],
+      "primal_feasible": true,
+      "tail_passed": true,
+      "FG": "nonnegative_certified",
+      "lower": 0.04300707252069795,
+      "upper": 0.04300723295405056,
+      "gap": 1.6043335260979008e-07,
+      "support_certified": true,
+      "source_changes": [],
+      "seconds": 0.36787123791873455
+    },
+    {
+      "directory": "results/runs/stage_B_default_equil_oldwarm_M3_absorptive_soc_20260907",
+      "setting": "default",
+      "warm": "historical",
+      "warm_path": "results/runs/stage_B_native_cli_M3_recovery_20260907/coefficients.json",
+      "coordinates": "absorptive",
+      "density_cone": "soc",
+      "equilibration": {
+        "enabled": true,
+        "minimum": 0.0001,
+        "maximum": 10000.0,
+        "iterations": 10
+      },
+      "largest_matrix_entry": 8768743.529708534,
+      "native_status": "InsufficientProgress",
+      "native_primal_residual": 0.7716836146369387,
+      "native_dual_residual": 1189742.2699412473,
+      "targets": [
+        0.040225033594506264,
+        -0.002538926894854979
+      ],
+      "primal_feasible": true,
+      "tail_passed": true,
+      "FG": "nonnegative_certified",
+      "lower": 0.04022503359450626,
+      "upper": 0.06477264493853954,
+      "gap": 0.024547611344033285,
+      "support_certified": false,
+      "source_changes": [],
+      "seconds": 0.6184828889090568
+    },
+    {
+      "directory": "results/runs/stage_B_default_equil_oldwarm_M3_absorptive_power_20260907",
+      "setting": "default",
+      "warm": "historical",
+      "warm_path": "results/runs/stage_B_native_cli_M3_recovery_20260907/coefficients.json",
+      "coordinates": "absorptive",
+      "density_cone": "power",
+      "equilibration": {
+        "enabled": true,
+        "minimum": 0.0001,
+        "maximum": 10000.0,
+        "iterations": 10
+      },
+      "largest_matrix_entry": 8768743.529708534,
+      "native_status": "InsufficientProgress",
+      "native_primal_residual": 1.005244002856445,
+      "native_dual_residual": 834862.8523820743,
+      "targets": [
+        0.040225033594506264,
+        -0.002538926894854979
+      ],
+      "primal_feasible": true,
+      "tail_passed": true,
+      "FG": "nonnegative_certified",
+      "lower": 0.04022503359450626,
+      "upper": 0.06477264493853954,
+      "gap": 0.024547611344033285,
+      "support_certified": false,
+      "source_changes": [],
+      "seconds": 0.6179570429958403
+    }
+  ]
+}

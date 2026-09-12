@@ -1,0 +1,483 @@
+{
+  "source": {
+    "paper": "He and Kruczenski, Bootstrapping gauge theories, arXiv:2309.12402v3",
+    "figure": 3,
+    "figure_asset": "purSplot.pdf",
+    "source_url": "https://arxiv.org/src/2309.12402v3",
+    "paper_url": "https://arxiv.org/html/2309.12402v3#S4.F3",
+    "sha256": "b7c10d5cb5bb19b0cd78125fefe3dc6a8d3aeb0a2ff09a791979158c8fc828ac",
+    "page": 0,
+    "page_size_pt": [
+      1000.0,
+      592.0
+    ],
+    "paper_reported_discretization": {
+      "M": 50,
+      "allowed_partial_waves_per_isospin": 10
+    }
+  },
+  "extraction": {
+    "method": "PyMuPDF vector paths; bounding-box center of each eight-arc blue marker; affine calibration to black major tick coordinates",
+    "pymupdf_version": "1.27.2.3",
+    "script_sha256": "adfb9851d965647f3cec82058fa58e3f90a85613e08981135f0ab617cc7724d3",
+    "marker_count": 498,
+    "unique_center_count": 498,
+    "path_count": 545,
+    "order": "Original PDF drawing order, retained without smoothing or convexification",
+    "rasterization_used_for_data": false,
+    "axis_lines_pt": [
+      [
+        [
+          10.395000457763672,
+          110.7699966430664
+        ],
+        [
+          912.8400268554688,
+          110.7699966430664
+        ]
+      ],
+      [
+        [
+          518.0590209960938,
+          591.6409912109375
+        ],
+        [
+          518.0590209960938,
+          33.89799880981445
+        ]
+      ]
+    ],
+    "x_axis": {
+      "offset_pt": 518.0595036097936,
+      "scale_pt_per_amplitude_unit": 168.71934138706752,
+      "tick_values": [
+        -3.0,
+        -2.0,
+        -1.0,
+        0.0,
+        1.0,
+        2.0
+      ],
+      "tick_positions_pt": [
+        11.902000427246094,
+        180.62100219726562,
+        349.3399963378906,
+        518.0590209960938,
+        686.7769775390625,
+        855.5
+      ],
+      "tick_fit_residuals_pt": [
+        0.0005209786550040008,
+        0.00018136160701942572,
+        -0.00016588483549639932,
+        -0.00048261369988722436,
+        -0.0018674577986530494,
+        0.0018136160713311256
+      ],
+      "max_abs_tick_fit_residual_pt": 0.0018674577986530494
+    },
+    "y_axis": {
+      "offset_pt": 110.76880111694332,
+      "scale_pt_per_amplitude_unit": -617.4939842224122,
+      "tick_values": [
+        0.0,
+        -0.2,
+        -0.4,
+        -0.6
+      ],
+      "tick_positions_pt": [
+        110.7699966430664,
+        234.26600646972656,
+        357.7659912109375,
+        481.2659912109375
+      ],
+      "tick_fit_residuals_pt": [
+        0.0011955261230838232,
+        -0.0015914916992301187,
+        -0.00040359497074859974,
+        0.0007995605468522626
+      ],
+      "max_abs_tick_fit_residual_pt": 0.0015914916992301187
+    },
+    "max_bbox_vs_endpoint_center_difference_pt": [
+      0.001743316650390625,
+      0.0017547607421875
+    ],
+    "csv_sha256": "c36db250b7e02141849d18e63f3202426728b0b959b03aee110158db8f3c7892",
+    "columns": [
+      "marker_index",
+      "f00_s3",
+      "f11_s3",
+      "pdf_path_index",
+      "pdf_x_pt",
+      "pdf_y_pt",
+      "pdf_radius_x_pt",
+      "pdf_radius_y_pt"
+    ]
+  },
+  "uncertainty_and_scope": {
+    "status": "Coordinates of the published graphical markers; not the authors' original optimization data",
+    "working_resolution_pt": 0.01,
+    "working_resolution_amplitude_coordinates": [
+      5.927002747751663e-05,
+      1.6194489752953037e-05
+    ],
+    "resolution_interpretation": "Practical coordinate extraction tolerance, not a statistical confidence interval or certified error bound on solver outputs",
+    "median_marker_radius_amplitude_coordinates": [
+      0.013371298664128655,
+      0.003653477728434436
+    ],
+    "marker_radius_interpretation": "Graphical footprint only; distinct from precision of the extracted center",
+    "unknown_errors": [
+      "Source numerical solver tolerances and feasibility residuals",
+      "Amplitude parameterization, energy-grid, and spin truncation error",
+      "Any rounding or preprocessing before PDF export",
+      "Boundary extrema between sampled directions"
+    ],
+    "support_interpretation": "Maxima over the 498 extracted centers, equivalently their convex hull; not certified support values for the continuum allowed region"
+  },
+  "coordinate_extrema": {
+    "f00_s3_min": -2.901955401315943,
+    "f00_s3_max": 2.2328885260009974,
+    "f11_s3_min": -0.733589674426347,
+    "f11_s3_max": 0.07932352965324031
+  },
+  "sampled_support_values": [
+    {
+      "angle_deg": 0,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "support_over_extracted_markers": 2.2328885260009974,
+      "marker_index": 8,
+      "point": [
+        2.2328885260009974,
+        -0.02366694846691636
+      ],
+      "coordinate_working_resolution_propagated": 5.927002747751663e-05
+    },
+    {
+      "angle_deg": 15,
+      "direction": [
+        0.9659258262890683,
+        0.25881904510252074
+      ],
+      "support_over_extracted_markers": 2.157862443916927,
+      "marker_index": 9,
+      "point": [
+        2.232044007695661,
+        0.007238615184559293
+      ],
+      "coordinate_working_resolution_propagated": 6.144189263917789e-05
+    },
+    {
+      "angle_deg": 30,
+      "direction": [
+        0.8660254037844387,
+        0.49999999999999994
+      ],
+      "support_over_extracted_markers": 1.9366261206215514,
+      "marker_index": 9,
+      "point": [
+        2.232044007695661,
+        0.007238615184559293
+      ],
+      "coordinate_working_resolution_propagated": 5.942659435500763e-05
+    },
+    {
+      "angle_deg": 45,
+      "direction": [
+        0.7071067811865476,
+        0.7071067811865475
+      ],
+      "support_over_extracted_markers": 1.5834119276318024,
+      "marker_index": 9,
+      "point": [
+        2.232044007695661,
+        0.007238615184559293
+      ],
+      "coordinate_working_resolution_propagated": 5.336147187263416e-05
+    },
+    {
+      "angle_deg": 60,
+      "direction": [
+        0.5000000000000001,
+        0.8660254037844386
+      ],
+      "support_over_extracted_markers": 1.131921853983972,
+      "marker_index": 10,
+      "point": [
+        2.2041573584759386,
+        0.0344599299461551
+      ],
+      "coordinate_working_resolution_propagated": 4.365985326614243e-05
+    },
+    {
+      "angle_deg": 75,
+      "direction": [
+        0.25881904510252074,
+        0.9659258262890683
+      ],
+      "support_over_extracted_markers": 0.6037636390835402,
+      "marker_index": 10,
+      "point": [
+        2.2041573584759386,
+        0.0344599299461551
+      ],
+      "coordinate_working_resolution_propagated": 3.098288781088203e-05
+    },
+    {
+      "angle_deg": 90,
+      "direction": [
+        6.123233995736766e-17,
+        1.0
+      ],
+      "support_over_extracted_markers": 0.07932352965324024,
+      "marker_index": 217,
+      "point": [
+        -1.091905068271714,
+        0.07932352965324031
+      ],
+      "coordinate_working_resolution_propagated": 1.619448975295304e-05
+    },
+    {
+      "angle_deg": 105,
+      "direction": [
+        -0.25881904510252085,
+        0.9659258262890683
+      ],
+      "support_over_extracted_markers": 0.6860640229557476,
+      "marker_index": 238,
+      "point": [
+        -2.5501670359043014,
+        0.026950543367374312
+      ],
+      "coordinate_working_resolution_propagated": 3.098288781088204e-05
+    },
+    {
+      "angle_deg": 120,
+      "direction": [
+        -0.4999999999999998,
+        0.8660254037844387
+      ],
+      "support_over_extracted_markers": 1.2997723226579214,
+      "marker_index": 239,
+      "point": [
+        -2.595093727584925,
+        0.0025697385500869055
+      ],
+      "coordinate_working_resolution_propagated": 4.365985326614241e-05
+    },
+    {
+      "angle_deg": 135,
+      "direction": [
+        -0.7071067811865475,
+        0.7071067811865476
+      ],
+      "support_over_extracted_markers": 1.8596321465160932,
+      "marker_index": 243,
+      "point": [
+        -2.7381774940450425,
+        -0.10826049141699275
+      ],
+      "coordinate_working_resolution_propagated": 5.3361471872634153e-05
+    },
+    {
+      "angle_deg": 150,
+      "direction": [
+        -0.8660254037844387,
+        0.49999999999999994
+      ],
+      "support_over_extracted_markers": 2.342615477377577,
+      "marker_index": 247,
+      "point": [
+        -2.8399085778895854,
+        -0.2336349910002847
+      ],
+      "coordinate_working_resolution_propagated": 5.942659435500763e-05
+    },
+    {
+      "angle_deg": 165,
+      "direction": [
+        -0.9659258262890682,
+        0.258819045102521
+      ],
+      "support_over_extracted_markers": 2.6973066634041247,
+      "marker_index": 250,
+      "point": [
+        -2.8818717512390424,
+        -0.33369912610704594
+      ],
+      "coordinate_working_resolution_propagated": 6.144189263917789e-05
+    },
+    {
+      "angle_deg": 180,
+      "direction": [
+        -1.0,
+        1.2246467991473532e-16
+      ],
+      "support_over_extracted_markers": 2.901955401315943,
+      "marker_index": 253,
+      "point": [
+        -2.901955401315943,
+        -0.435926842672562
+      ],
+      "coordinate_working_resolution_propagated": 5.927002747751663e-05
+    },
+    {
+      "angle_deg": 195,
+      "direction": [
+        -0.9659258262890683,
+        -0.2588190451025208
+      ],
+      "support_over_extracted_markers": 2.922740188882408,
+      "marker_index": 254,
+      "point": [
+        -2.8999431813507925,
+        -0.46986563603394554
+      ],
+      "coordinate_working_resolution_propagated": 6.144189263917789e-05
+    },
+    {
+      "angle_deg": 210,
+      "direction": [
+        -0.8660254037844386,
+        -0.5000000000000001
+      ],
+      "support_over_extracted_markers": 2.7483552118388705,
+      "marker_index": 255,
+      "point": [
+        -2.8832942305419196,
+        -0.5026983232089252
+      ],
+      "coordinate_working_resolution_propagated": 5.9426594355007624e-05
+    },
+    {
+      "angle_deg": 225,
+      "direction": [
+        -0.7071067811865477,
+        -0.7071067811865475
+      ],
+      "support_over_extracted_markers": 2.394258295804378,
+      "marker_index": 255,
+      "point": [
+        -2.8832942305419196,
+        -0.5026983232089252
+      ],
+      "coordinate_working_resolution_propagated": 5.336147187263417e-05
+    },
+    {
+      "angle_deg": 240,
+      "direction": [
+        -0.5000000000000004,
+        -0.8660254037844384
+      ],
+      "support_over_extracted_markers": 1.8861147508976464,
+      "marker_index": 256,
+      "point": [
+        -2.8481056192530483,
+        -0.5335431723503254
+      ],
+      "coordinate_working_resolution_propagated": 4.3659853266142445e-05
+    },
+    {
+      "angle_deg": 255,
+      "direction": [
+        -0.25881904510252063,
+        -0.9659258262890683
+      ],
+      "support_over_extracted_markers": 1.2773659555538555,
+      "marker_index": 259,
+      "point": [
+        -2.6572353931391826,
+        -0.610422469760631
+      ],
+      "coordinate_working_resolution_propagated": 3.0982887810882024e-05
+    },
+    {
+      "angle_deg": 270,
+      "direction": [
+        -1.8369701987210297e-16,
+        -1.0
+      ],
+      "support_over_extracted_markers": 0.733589674426347,
+      "marker_index": 386,
+      "point": [
+        -0.12292015742727734,
+        -0.733589674426347
+      ],
+      "coordinate_working_resolution_propagated": 1.6194489752953047e-05
+    },
+    {
+      "angle_deg": 285,
+      "direction": [
+        0.2588190451025203,
+        -0.9659258262890684
+      ],
+      "support_over_extracted_markers": 0.9889934271425749,
+      "marker_index": 484,
+      "point": [
+        1.5964530918511404,
+        -0.5961130209871613
+      ],
+      "coordinate_working_resolution_propagated": 3.0982887810882003e-05
+    },
+    {
+      "angle_deg": 300,
+      "direction": [
+        0.5000000000000001,
+        -0.8660254037844386
+      ],
+      "support_over_extracted_markers": 1.3768549146338336,
+      "marker_index": 491,
+      "point": [
+        1.952467389375766,
+        -0.46259753835774153
+      ],
+      "coordinate_working_resolution_propagated": 4.365985326614243e-05
+    },
+    {
+      "angle_deg": 315,
+      "direction": [
+        0.7071067811865474,
+        -0.7071067811865477
+      ],
+      "support_over_extracted_markers": 1.7292579634395278,
+      "marker_index": 495,
+      "point": [
+        2.0880237013650245,
+        -0.3575163633728338
+      ],
+      "coordinate_working_resolution_propagated": 5.3361471872634153e-05
+    },
+    {
+      "angle_deg": 330,
+      "direction": [
+        0.8660254037844384,
+        -0.5000000000000004
+      ],
+      "support_over_extracted_markers": 2.003898845532829,
+      "marker_index": 1,
+      "point": [
+        2.175171515051563,
+        -0.24029011181978133
+      ],
+      "coordinate_working_resolution_propagated": 5.942659435500762e-05
+    },
+    {
+      "angle_deg": 345,
+      "direction": [
+        0.9659258262890683,
+        -0.2588190451025207
+      ],
+      "support_over_extracted_markers": 2.176631327126108,
+      "marker_index": 4,
+      "point": [
+        2.2137207278997404,
+        -0.14813942243363962
+      ],
+      "coordinate_working_resolution_propagated": 6.144189263917789e-05
+    }
+  ]
+}

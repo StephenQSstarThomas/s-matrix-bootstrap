@@ -1,0 +1,37 @@
+{
+  "M": 50,
+  "L": 10,
+  "mode": "gauge",
+  "prescription": "analytic-cardinal",
+  "infinity": "zero",
+  "chiral_norm": "separate-l2",
+  "chiral_tolerance": 0.002,
+  "density_limit": 377500.0,
+  "objective_kind": "watson",
+  "functional": {
+    "source": "2403.10772 Eq.(2.29), GTB_numerics.m 117-120,177-180",
+    "channels": [
+      "S0",
+      "P1",
+      "S2"
+    ],
+    "nodes": 43,
+    "normalization": 129,
+    "weights": "Lambda_l(s)^-2; Lambda_0=1, Lambda_1=sqrt(s-4)/(sqrt(s)+2)",
+    "ideal_disk_ceiling": 0.5020311843991461,
+    "initial_value": 0.25959917301602026,
+    "projection_constraints_released": true,
+    "source_coefficients": "results/runs/physical_consistency_20260911/fine_UV_selected/tip/coefficients.json"
+  },
+  "status": "deliberately_invalid_negative_control",
+  "joint_feasible": false,
+  "support_optimality_certified": false,
+  "support_direction": null,
+  "solver": {
+    "representative_center_converged": false
+  },
+  "parameters": {
+    "preparation": "results/runs/physical_consistency_20260911/fine_prepare",
+    "current_preparation": "results/runs/physical_consistency_20260911/fine_current"
+  }
+}

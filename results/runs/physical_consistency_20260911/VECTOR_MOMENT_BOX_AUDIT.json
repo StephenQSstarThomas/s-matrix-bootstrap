@@ -1,0 +1,17 @@
+{
+  "vector_inverse_target": "[0.004228045714285714285714286 +/- 2.86e-28]",
+  "vector_zero_target": "[0.1457112069970845481049563 +/- 3.18e-26]",
+  "independent_raw_error": "[0.002000000000000000000000000 +/- 3e-32]",
+  "inverse_relative_error": "[0.4730317823296950431675289 +/- 3.61e-26]",
+  "zero_relative_error": "[0.01372578020055805900981021 +/- 1.28e-27]",
+  "weighted_rms_energy_gev_interval": [
+    "[0.6725080051810760988771565 +/- 1.52e-26]",
+    "[1.139915635097247463339502 +/- 4.65e-25]"
+  ],
+  "scope": "Moment-box consequence only; neither a peak/pole range nor a full joint attainability claim",
+  "formula": "m_pi sqrt(J_0/J_-1); independent raw absolute errors, all weights positive",
+  "optimization_performed": false,
+  "inputs_changed": false,
+  "phase_data_used": false,
+  "paper_sha256": "be8214741f8fb3f330473be94172c5e1dde15befb515f745ab4e35839c8982e2"
+}

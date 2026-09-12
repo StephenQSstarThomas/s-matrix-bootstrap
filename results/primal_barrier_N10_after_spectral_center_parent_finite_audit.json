@@ -1,0 +1,41 @@
+{
+  "candidate": "results/primal_barrier_N10_after_spectral_center_physical_candidate.json",
+  "candidate_sha256": "393a2290cca17a2b68bab04126a93fd9346a025480216dd7b9ec40f8f9904045",
+  "stage": null,
+  "repaired": false,
+  "passes_parent_finite_numerical_audit": true,
+  "values": {
+    "min_training_unitarity_circle_margin": 1.8771814245267308e-89,
+    "min_training_unitarity_relative_margin": 0.0007734377357501704,
+    "added_scattering_sample_count": 28,
+    "min_added_scattering_circle_margin": 9.537202040542674e-07,
+    "min_current_gram_eigenvalue": 4.4076382596442974e-10,
+    "min_conditioned_current_gram_eigenvalue": 3.171603676251262e-07,
+    "chiral_residual": 0.0019999415333403227,
+    "chiral_tolerance": 0.002,
+    "selected_moment_residual_norm": 0.0019999999958540972,
+    "moment_tolerance": 0.002,
+    "max_current_high_FF_ratio": 0.9984800437375229,
+    "amplitude_at_infinity": 1.880440247958859e-15,
+    "vector_F_at_infinity": -1.3140530330524314e-16,
+    "max_extra_high_FF_ratio": 0.9998909137626799,
+    "vector_endpoint_parameterization": "Exact affine elimination; full stored coefficient array is its rounded reconstruction.",
+    "scalar_FF_endpoint_ratio": 0.8697115750328221,
+    "vector_FF_endpoint_derivative_ratio": 0.968651260399127,
+    "fixed_f00_target": 0.075329811,
+    "fixed_f00_residual": 4.49869362682126e-16,
+    "fixed_spin_endpoint_margins": {
+      "s0_leading_imaginary": 0.17136461188447938,
+      "s2_leading_imaginary": 2.1993236383891217,
+      "i0_d_wave_margin": 102.0888982404149,
+      "i2_d_wave_margin": 3.8404649770181094,
+      "i1_p_wave_margin": 62.2372908788931
+    },
+    "min_sampled_normalized_impact_profile": 0.043254408992110034,
+    "min_small_b_leading_coefficient": 3.86866091400039
+  },
+  "scope": "Finite scattering/current/chi/moment/FF, configured additional scattering/fixed-spin/impact samples, FF endpoints and fixed-f00 equality; numerical eigenvalues and double-generated quadrature. Global edge/FF/impact certificates audited separately.",
+  "angular_points": 160,
+  "summation": "numpy clongdouble/longdouble; eigvalsh float64",
+  "script_sha256": "a8fa63e9359d079d2882082ca6a39221e936f9143648d5b4e6390471903248b0"
+}

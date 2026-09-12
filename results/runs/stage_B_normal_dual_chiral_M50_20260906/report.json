@@ -1,0 +1,159 @@
+{
+  "command": "dual",
+  "status": "candidate",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "dual",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_normal_dual_chiral_M50_20260906",
+    "control": null,
+    "matrix": null,
+    "matrix_sha256": null,
+    "rank_report": null,
+    "density_limit": null,
+    "preparation": "results/runs/stage_B_unitarity_resolved_20260906",
+    "solver_seconds": 300.0,
+    "dual_seconds": 300.0,
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 50,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": "results/runs/stage_B_radial_chiral_M50_20260906/coefficients.json",
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "seconds": 600.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3"
+  },
+  "scope": "Coherent finite-sine-cardinal conditional model; published regions and phases remain unverified.",
+  "solver": {
+    "solver": "normal dual only",
+    "tail_weights": {
+      "kR": [
+        3.219949527795957e-05,
+        -8.938990016670384e-05,
+        2.155460551732929e-06,
+        0.0,
+        0.0
+      ],
+      "kI": [
+        -5.695551679476446e-05,
+        -0.00031655148669078596,
+        -3.801123138603674e-05,
+        -0.006203774207586549,
+        -2.0908205159629042e-05
+      ]
+    }
+  },
+  "normal_dual": {
+    "status": "inconclusive",
+    "error": "No finite normal-cone LP candidate: Time limit reached. (HiGHS Status 13: model_status is Time limit reached; primal_status is Infeasible)"
+  },
+  "outer": {
+    "upper": 70681667.98648731,
+    "enclosure": "[70681667.98648729798267545 +/- 2.37e-18]",
+    "disk": 152.13433490377415,
+    "chiral": 0.006138223374576072,
+    "density_residual": 70681515.84599239,
+    "tail_support": 2.1784274729799806e-05,
+    "scope": "exact saved float64 operator and supplied tail maps; angular quadrature error excluded",
+    "primal_feasible": true,
+    "lower": 0.07572925503876993,
+    "minimum_margin_enclosure": "[4.7110229494975515696e-132 +/- 8.79e-153]",
+    "density_norm": 103394.37687412128,
+    "targets": [
+      "[0.07572925503876993403152015 +/- 3.52e-27]",
+      "[-0.004923969738897064697052426 +/- 2.70e-28]"
+    ],
+    "tail_margin_enclosures": [
+      "[0.035115118609765060698 +/- 2.15e-22]",
+      "[0.0063180908673560472919 +/- 2.39e-23]",
+      "[0.052616021455607038224 +/- 6.36e-23]",
+      "[0.00032238438703010814034 +/- 4.62e-24]",
+      "[0.095656225138747108922 +/- 1.06e-23]"
+    ]
+  },
+  "M": 50,
+  "L": 12,
+  "sampling_nodes": 167,
+  "scattering_samples": 6012,
+  "infinity": "zero",
+  "mode": "chiral",
+  "chiral_tolerance": 0.002,
+  "density_limit": 377500,
+  "targets": [
+    0.0757292550387812,
+    -0.004923969738897134
+  ],
+  "objective": 0.0757292550387812,
+  "minimum_scattering_margin": 4.711022948816467e-132,
+  "chiral_norms": [
+    0.0019996741314899074,
+    0.0007680510048222775
+  ],
+  "density_norm": 103394.3768741213,
+  "radial_shrink": 1.0,
+  "sampled_feasible": true,
+  "support_optimality_certified": false,
+  "physical_unitarity_accepted": false,
+  "unitarity_coverage": "listed energies and waves only; off-grid and tails unverified",
+  "analytic_tail_conditions_passed": true,
+  "analytic_tail_margins": [
+    "[0.03511512779894408795002745 +/- 1.86e-28]",
+    "[0.006318090516118305403618985 +/- 1.84e-28]",
+    "[0.05261602451016181500848552 +/- 4.66e-27]",
+    "[0.0003223843977189533442995207 +/- 2.85e-29]",
+    "[0.09565622514154279741172872 +/- 3.25e-28]"
+  ],
+  "tail_conditions_applied": true,
+  "operator_scope": "float64 quadrature and tail maps; analytic tail checked separately; no continuum certificate",
+  "elapsed_seconds": 324.9924098229967,
+  "core_sources": {
+    "__init__.py": "b5018f24ee45f9fc6aca4cdd99f0c5ae872f223d755256049aee9481edd7d972",
+    "analysis.py": "c13d35526d540e7daf2fbf4afd001b91eebdc333d11ddce3783e56f3ba6ceb5b",
+    "imaginary.py": "ae791c12fb1e8ca5eb8eabbf0ced36419545b9eae9b08b0f99c7f7656276c284",
+    "io.py": "fafbc8e90cfe36ce6ece68fd7737e3cc9eb95ef646e582bdc899ab1bd228b53f",
+    "kernels.py": "e4d66568f0d0d7c5b2176138d5e075a7fa193bb06ac1f0e1d6742d80ce6acebd",
+    "linear.py": "5105746e8347498f7a37d91b003c1a4a66fbd12e4c1b50ceb6a0bab5fa13c258",
+    "model.py": "87d66fe19722e88b8f18f0c38c858d064777565cb0fcc06255075252f86c37a4",
+    "operators.py": "5daa9fe65a66acf8e529bec0a3f771903ae4a42a89defbe68d304c0d888d31d9",
+    "quotient.py": "d9e119b2a77677594ae572dae559004e94bcaef34207d224e4d038c5b799f2bd",
+    "run.py": "c31237ab8eddc0f502f5f18b5e6b796cf78e2120a61d60b0c1fffbcb17e5f711"
+  },
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 600.0,
+  "supervisor_seconds": 325.33442607312463
+}

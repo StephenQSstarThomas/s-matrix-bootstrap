@@ -1,0 +1,6 @@
+{
+  "source": "results/runs/stage_B_working_warm_trial_pure_M3_20260907/cg_state.npz",
+  "test_input": "Saved raw C_flat deliberately supplied as working candidate to exercise projection onto newly added FG cuts",
+  "feasibility_claimed": false,
+  "physical_model_changed": false
+}

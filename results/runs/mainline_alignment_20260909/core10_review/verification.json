@@ -1,0 +1,62 @@
+{
+  "core_files": {
+    "analysis.py": {
+      "lines": 319,
+      "bytes": 24412
+    },
+    "model.py": {
+      "lines": 350,
+      "bytes": 24549
+    },
+    "io.py": {
+      "lines": 290,
+      "bytes": 24313
+    },
+    "operators.py": {
+      "lines": 346,
+      "bytes": 24505
+    },
+    "__init__.py": {
+      "lines": 348,
+      "bytes": 22883
+    },
+    "quotient.py": {
+      "lines": 330,
+      "bytes": 24236
+    },
+    "kernels.py": {
+      "lines": 350,
+      "bytes": 24412
+    },
+    "imaginary.py": {
+      "lines": 314,
+      "bytes": 23839
+    },
+    "run.py": {
+      "lines": 342,
+      "bytes": 24198
+    },
+    "linear.py": {
+      "lines": 328,
+      "bytes": 24147
+    }
+  },
+  "exactly_ten": true,
+  "all_file_limits_pass": true,
+  "active_tests": {
+    "test_mainline.py": 219,
+    "test_kernels.py": 229,
+    "test_linear.py": 254
+  },
+  "pytest": {
+    "passed": 79,
+    "seconds": 12.55
+  },
+  "joint_audit": "results/runs/mainline_alignment_20260909/core10_joint_audit/report.json",
+  "fresh_all_native": "results/runs/mainline_alignment_20260909/core10_fresh_native/evaluation.json",
+  "fresh_native_samples": 1500,
+  "fresh_native_status": "sampled_passed",
+  "F_partial": "results/runs/mainline_alignment_20260909/F_paper/fig11_partial/resolution_partial.json",
+  "F_complete": false,
+  "all_paper_claims_verified": false
+}

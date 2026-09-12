@@ -1,0 +1,350 @@
+{
+  "energies": [
+    0.4,
+    0.45
+  ],
+  "waves": [
+    [
+      0,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  "f": [
+    [
+      [
+        -0.000899465849473401,
+        0.0
+      ],
+      [
+        0.02287811764357996,
+        0.0
+      ],
+      [
+        -0.01730401146855164,
+        0.0
+      ]
+    ],
+    [
+      [
+        0.00020606609859700597,
+        0.0
+      ],
+      [
+        0.022108991912777636,
+        0.0
+      ],
+      [
+        -0.01699507190708799,
+        0.0
+      ]
+    ]
+  ],
+  "f_enclosures": [
+    [
+      [
+        [
+          [
+            "-0x75e510d0911ca9c32f1b2f42d21e7d3af7226a42fff47962a8baca9ce7",
+            -241
+          ],
+          [
+            "0x108912a7",
+            -254
+          ]
+        ],
+        null
+      ],
+      [
+        [
+          [
+            "0x2edab8f895f28aa5d5eba2bae3c69e9ee9c546707e49b30e913ad41d858f",
+            -243
+          ],
+          [
+            "0xd694fa5",
+            -255
+          ]
+        ],
+        null
+      ],
+      [
+        [
+          [
+            "-0x11b8248d635dfc942c15f6c1b77b1cb62b60e0f3b854dcd4c0264e44b79a46f7",
+            -258
+          ],
+          [
+            "0x887716d",
+            -258
+          ]
+        ],
+        null
+      ]
+    ],
+    [
+      [
+        [
+          [
+            "0xd8137277f72b02e3d7faac1ed2a8e70d18738b8992e80e16f76b61823f",
+            -244
+          ],
+          [
+            "0x1065b0b7",
+            -254
+          ]
+        ],
+        null
+      ],
+      [
+        [
+          [
+            "0x16a3bd54da04aac23cbde709eea4f48634c6af975b57468ecce0d5bd42755",
+            -246
+          ],
+          [
+            "0x3565e411",
+            -257
+          ]
+        ],
+        null
+      ],
+      [
+        [
+          [
+            "-0x8b393fc117708322b36b9e5e603e0e342305cd08b3c880d6df567b05502480cd",
+            -261
+          ],
+          [
+            "0x420e52b",
+            -257
+          ]
+        ],
+        null
+      ]
+    ]
+  ],
+  "amplitude_model": {
+    "prescription": "pv-midpoint",
+    "M": 50,
+    "L": 10,
+    "bits": 256,
+    "coordinate_system": "unsubtracted PV-midpoint C_flat",
+    "coefficient_count": 3876,
+    "physical_samples": 1500,
+    "nu0": 0,
+    "nyquist_retained": null,
+    "infinity_equality_imposed": false,
+    "density_limit_imposed": false,
+    "quadrature_order_per_panel": null,
+    "arithmetic": "Arb",
+    "integral_enclosures": false,
+    "authors_implementation_recovered": false,
+    "analytic_function_family_defined": false,
+    "angular_projection": "analytic exterior Legendre Q",
+    "spectral_quadrature": "midpoint in phi; native PV cot map and nodal jump",
+    "physical_evaluation": "native nodes only; no off-grid continuation specified",
+    "analyticity_status": "Mixed collocation approximation; native jumps and rational off-cut rows are not one exact analytic family",
+    "residue_identity": "Res[f_offcut,s_i] = -w_i Im[f_PV(s_i)]",
+    "infinity_row_meaning": "unsubtracted constant coordinate; not a certified high-energy limit"
+  },
+  "constraints_checked": [
+    "unitarity at supplied physical energy/wave pairs"
+  ],
+  "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/C_select_002/coefficients.json",
+  "selection": {
+    "rule": "Upper feasible-hull edge at fixed Weinberg f00(3), before evaluating phases",
+    "reference": [
+      0.07332139057293466,
+      -0.00488809270486231
+    ],
+    "target": [
+      0.07332139056580267,
+      -0.004128922666413147
+    ],
+    "epsilon": 0.002,
+    "source_coefficients": [
+      "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_078/coefficients.json",
+      "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_070/coefficients.json"
+    ],
+    "weights": [
+      0.8568124948468576,
+      0.1431875051531424
+    ],
+    "source_reports": [
+      "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_078/report.json",
+      "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_070/report.json"
+    ],
+    "vertices": [
+      [
+        -0.0803661086031152,
+        0.005648377433647707
+      ],
+      [
+        -0.049307035410357206,
+        0.0026660177857699644
+      ],
+      [
+        -0.02117301628389862,
+        0.0005126330486404846
+      ],
+      [
+        -0.007152102660426174,
+        -0.0004796965849627923
+      ],
+      [
+        0.008088093093333732,
+        -0.0015130994321447832
+      ],
+      [
+        0.024969190073950383,
+        -0.002617409652345541
+      ],
+      [
+        0.040417222441683796,
+        -0.0035850302673628705
+      ],
+      [
+        0.05323209008549835,
+        -0.004342759549937369
+      ],
+      [
+        0.06540961880224935,
+        -0.005016891287796322
+      ],
+      [
+        0.07894659612776544,
+        -0.005695606479143987
+      ],
+      [
+        0.10084542477112678,
+        -0.006708993168618989
+      ],
+      [
+        0.10046040365837147,
+        -0.006349289221230599
+      ],
+      [
+        0.09814831476046604,
+        -0.006053220368523262
+      ],
+      [
+        0.09288182816103582,
+        -0.005579067323287421
+      ],
+      [
+        0.08500765151497165,
+        -0.00496516625369634
+      ],
+      [
+        0.07515914263942212,
+        -0.004256188944648252
+      ],
+      [
+        0.062324558612541096,
+        -0.003367380398961866
+      ],
+      [
+        0.041417199099007894,
+        -0.0019512370624219853
+      ],
+      [
+        0.020325775506164108,
+        -0.0005394014416402301
+      ],
+      [
+        0.005288932818805263,
+        0.00045526994050794996
+      ],
+      [
+        -0.010702742262063926,
+        0.0014960351979357957
+      ],
+      [
+        -0.04242511299184029,
+        0.0035023488722615037
+      ]
+    ],
+    "boundary_approximation": true,
+    "region_metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)",
+    "regional_distance_upper": 0.0737258341646967,
+    "exact_extremizer_claimed": false,
+    "original_H_feasibility": {
+      "upper": 5e-324,
+      "enclosure": "0",
+      "disk": 0.0,
+      "chiral": 0.0,
+      "density_residual": 0.0,
+      "tail_support": 0.0,
+      "chiral_norm": "combined-l2",
+      "objective_kind": "target_plane",
+      "scope": "exact saved float64 operator and supplied tail maps; angular quadrature error excluded",
+      "primal_feasible": true,
+      "lower": -5e-324,
+      "minimum_margin_enclosure": "[5.3476917121970957016e-85 +/- 1.50e-105]",
+      "density_norm": 371454.9381150035,
+      "targets": [
+        "[0.07332139056579841135025748 +/- 3.68e-27]",
+        "[-0.004128922666412635915331340 +/- 4.86e-28]"
+      ],
+      "tail_margin_enclosures": []
+    },
+    "model_signature": {
+      "chiral_norm": "combined-l2",
+      "M": 50,
+      "L": 10,
+      "density_limit": 377500.0,
+      "infinity": "free",
+      "unitarity_scope": "sampled",
+      "global_high_spin_enforced": false,
+      "tail_conditions_applied": false,
+      "prescription": "pv-midpoint",
+      "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+      "additional_constraints": null,
+      "sampling_nodes": 50,
+      "scattering_samples": 1500
+    },
+    "regional_geometry_ready": false,
+    "local_upper_boundary_ready": true,
+    "local_upper_boundary": {
+      "distance_upper": 1.396703940637508e-05,
+      "scaled_distance_upper": 0.00698351970318754,
+      "budget": 0.01,
+      "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_078/report.json",
+      "scope": "Arb vertical distance to the true upper boundary at the actual saved x; scaled by epsilon; global region may remain unfinished"
+    }
+  },
+  "eta": [
+    null,
+    null
+  ],
+  "maximum_eta": null,
+  "unitarity": {
+    "criterion": "Eq.(2.12): 1-|S|^2 = kappa*(2 Im f-kappa*|f|^2) >= 0",
+    "samples_checked": 0,
+    "status": "unresolved",
+    "margin_intervals": [
+      null,
+      null
+    ],
+    "minimum_margin": null,
+    "scope": "Declared sampled pairs; source discretization errors excluded",
+    "continuum_certified": false,
+    "omitted_spins_checked": false,
+    "high_energy_tail_certified": false,
+    "analytic_tail": {
+      "status": "not_applicable"
+    },
+    "high_spin_necessary": {
+      "status": "not_applicable",
+      "violations": []
+    }
+  }
+}

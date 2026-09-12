@@ -1,0 +1,39 @@
+[
+  [
+    "/tmp/he_report_pandoc/pandoc",
+    "document_ast.json",
+    "--from",
+    "json",
+    "--standalone",
+    "--to",
+    "latex",
+    "--toc-depth=1",
+    "--shift-heading-level-by=-1",
+    "--include-in-header",
+    "header.tex",
+    "-V",
+    "mainfont=DejaVu Serif",
+    "-V",
+    "sansfont=DejaVu Sans",
+    "-V",
+    "monofont=DejaVu Sans Mono",
+    "-V",
+    "papersize=a4",
+    "-V",
+    "fontsize=10pt",
+    "-V",
+    "geometry:margin=18mm",
+    "-V",
+    "colorlinks=true",
+    "-o",
+    "REPORT_ZH.tex"
+  ],
+  [
+    "/home/shiqiu/.local/bin/tectonic",
+    "--keep-logs",
+    "--keep-intermediates",
+    "--reruns",
+    "2",
+    "REPORT_ZH.tex"
+  ]
+]

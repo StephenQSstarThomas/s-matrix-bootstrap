@@ -1,0 +1,209 @@
+"""IR-only orchestration and the declared zero-constant analytic slice."""
+from pathlib import Path
+from types import SimpleNamespace
+import numpy as np
+from scipy import sparse
+from flint import ctx
+
+
+def zero_constant_coordinates(H,kap,c,M,L,bound,asymptotic=False,bits=384):
+    """Keep every density direction; free native kappa Im f coordinates lie in [0,2]."""
+    from .kernels import density_labels
+    from .quotient import absorptive_change
+    from .endpoints import asymptotic_rows
+    labels=density_labels(M);p=len(labels);free=1+2*M
+    if np.asarray(c).shape!=(p,) or c[0]!=0:raise ValueError('Exact zero T0 seed required')
+    ds=np.array([2. if f=='rho2' and i!=j else 1. for f,i,j in labels],np.longdouble)
+    A,z,inverse=absorptive_change(np.asarray(H,np.longdouble)*ds,np.asarray(c,np.longdouble)/ds,M,L)
+    ids=np.r_[np.arange(M)*3*L,np.arange(M)*3*L+2*L]
+    scale=np.r_[np.longdouble(1),np.asarray(kap,np.longdouble)[ids],np.ones(p-free,np.longdouble)]
+    T=(inverse@sparse.diags(1/scale,format='csc'))[:,1:]
+    P=SimpleNamespace(A=A[:,1:]/scale[1:],initial=z[1:]*scale[1:],p=p-1,M=M,free=free-1)
+    P.raw=lambda values:np.asarray(ds*(T@np.asarray(values,np.longdouble)),float)
+    if asymptotic:
+        R,I=asymptotic_rows(M,max(256,bits))
+        convert=lambda B:np.array([[np.longdouble(B[i,j].mid().str(40,radius=False)) for j in range(p)] for i in range(5)])
+        R,I=convert(R)*ds,convert(I)*ds
+        w=np.maximum(1.,bound*np.linalg.norm(I[:,free:],ord=4/3,axis=1))
+        P.asymptotic_R=np.asarray(T.T@R.T).T/np.sqrt(w[:,None]);P.asymptotic_I=np.asarray(T.T@I.T).T/w[:,None];P.asymptotic_scale=w
+    return P
+
+
+def audit_ir(H,kap,c,M,L,bound,epsilon,direction,duals=None,*,zero=False,asymptotic=False,bits=384,chiral_norm='separate-l2'):
+    from .imaginary import support_outer
+    from .endpoints import asymptotic_audit
+    if asymptotic and not zero:raise ValueError('Leading high-energy IR conditions require T0=0')
+    d={} if duals is None else duals;n=len(kap);extra=None;margins=[]
+    with ctx.workprec(bits):
+        if asymptotic:
+            residual,constant,margins=asymptotic_audit(c,M,d);extra=(residual,constant)
+        result=support_outer(H,kap,d.get('kR',np.zeros(n)),d.get('kI',np.zeros(n)),d.get('y',np.zeros(8)),direction,bound,epsilon,
+            bits=bits,coefficients=c,waves_per_isospin=L,chiral_norm=chiral_norm,infinity_zero=zero,joint=extra)
+        result['primal_feasible']=bool(result['primal_feasible'] and all(v>=0 for v in margins))
+        if not result['primal_feasible']:result['lower']=None
+        result.update(asymptotic_margin_enclosures=[v.str(25) for v in margins],endpoint_equalities=int(zero),asymptotic_inequalities=len(margins))
+        return result
+
+
+def coherent_boundary(args,progress=lambda **kw:None):
+    from .basis import scattering_input,candidate_weights
+    from .model import chiral_bound, chiral_slices
+    if getattr(args,'objective','projection')!='projection' and args.mode!='gauge':raise ValueError('Watsonian objective requires gauge mode')
+    if args.mode=='gauge':
+        from .run import gauge_support
+        return gauge_support(args,progress)
+    from .scattering import barrier_support
+    from .kernels import density_labels
+    from . import write_json,digest
+    from .run import support_data, source_contract
+    from .quotient import subtraction_rows, subtract_amplitude_coordinates, normal_dual
+    zero=args.infinity=='zero';tail=bool(getattr(args,'asymptotic_unitarity',False))
+    prep_inputs={str(p.resolve()):dict(sha256=digest(p)) for p in (args.preparation/'report.json',args.preparation/'amplitude.npz')}
+    H,kap,energies,waves,M,L,_,_=support_data(args,progress);prescription,coordinates=source_contract(args)
+    if zero and (prescription!='analytic-cardinal' or args.native_coordinates!='unsubtracted'):raise ValueError('Zero T0 requires the analytic unsubtracted input model')
+    n,free=len(kap),2*M+1;bits=max(384,args.bits);input_prescription=prescription
+    if args.solver!='barrier':raise ValueError('Scattering support uses the full barrier solver')
+    bound=args.density_limit or 100*(M*M+M*(M+1)//2);epsilon=chiral_bound(args.mode,args.chiral_tolerance)
+    norm_kind=getattr(args,'chiral_norm','combined-l2');groups=chiral_slices(norm_kind)
+    chi_size=lambda v:max(np.linalg.norm(v[2*n:2*n+8][g]) for g in groups)
+    density_scales=np.array([2. if f=='rho2' and i!=j else 1. for f,i,j in density_labels(M)[free:]])
+    A=H.copy();A[:,free:]*=density_scales;input_record=None;dual_record=None;extra_duals={}
+    tail_margins=lambda point:[]
+    if tail:
+        from .endpoints import asymptotic_rows
+        R,I=asymptotic_rows(M,bits)
+        R,I=[np.array([[np.longdouble(B[i,j].mid().str(40,radius=False)) for j in range(len(H[0]))] for i in range(5)]) for B in (R,I)]
+        tail_margins=lambda point:2*(I@point)-(R@point)**2
+    if args.coefficients is not None:
+        input_c,input_record=scattering_input(args,M,prescription);input_prescription=input_record['prescription']
+        if zero and input_c[0]!=0:raise ValueError('Zero T0 input must satisfy the exact equality')
+    if args.command=='dual':
+        if input_record is None:raise ValueError('Dual requires complete input coefficients')
+        c=input_c.copy()
+        kr,ki,y=np.zeros(n),np.zeros(n),np.zeros(8);solver=dict(solver='normal dual only',tail_weights=dict(kR=[],kI=[]))
+        saved=args.coefficients.parent/'candidate.npz'
+        if saved.exists():
+            kr,ki,y,dual_record=candidate_weights(saved,n,input_record,input_c)
+            if tail:
+                with np.load(saved) as data:extra_duals={k:data[k].copy() for k in ('asymptotic_kR','asymptotic_kI') if k in data}
+        if epsilon is not None:
+            size=chi_size(np.asarray(H,np.longdouble)@c);factor=min(1.,epsilon/size) if size else 1.
+            if factor<1:c*=factor*(1-1e-8);solver['chiral_radial_transfer']=factor*(1-1e-8)
+    else:
+        v=np.sin(np.pi*(np.arange(M)+.5)/M)
+        c=np.r_[0.,v/8,v/8,np.outer(v,v).ravel(),[v[i]*v[j]/(2 if i==j else 1) for i in range(M) for j in range(i,M)]]
+        values=H@c;re,im=values[:n]*kap,values[n:2*n]*kap;scale=min(.01,float(np.min(im/(re*re+im*im))))
+        if epsilon is not None:scale=min(scale,epsilon/(4*chi_size(values)))
+        if not np.isfinite(scale) or scale<=0:raise ArithmeticError('Stored data lost the positive analytic seed')
+        c*=2.**np.floor(np.log2(scale))
+        if args.coefficients is not None:
+            warm=input_c
+            warm=np.asarray(warm,np.longdouble);factor=1.;seed=c.copy();seed_values=H@seed;warm_values=H@warm
+            for _ in range(70):
+                trial=(1-factor)*seed+factor*warm;tv=(1-factor)*seed_values+factor*warm_values;tr,ti=tv[:n]*kap,tv[n:2*n]*kap
+                if np.all(np.asarray(tail_margins(trial))>0) and np.all(2*ti>tr*tr+ti*ti) and np.linalg.norm(trial[free:]/density_scales,ord=4)<bound and (epsilon is None or chi_size(tv)<epsilon):c=trial;break
+                factor*=.5
+            else:factor=0.
+            progress(stage='feasible_warm_mixture',warm_fraction=float(factor),source_prescription=input_prescription,target_prescription=prescription,identity_or_feasibility_transferred=False)
+        if getattr(args,'fixed_x',None) is not None:
+            scale=np.longdouble(args.fixed_x)/(np.asarray(H[-2],np.longdouble)@c)
+            if not scale>0:raise ValueError('Section seed must have matching sign')
+            c=np.asarray(scale*c,float)
+        c_start=np.asarray(c,float).copy();z=c.copy();z[free:]/=density_scales;P=None
+        if zero:
+            P=zero_constant_coordinates(H,kap,c_start,M,L,bound,tail,bits);A,z=P.A,P.initial
+        changed=getattr(args,'native_coordinates','unsubtracted')!='unsubtracted'
+        if changed:
+            if args.native_coordinates!='subtracted':raise ValueError('Scattering barrier coordinates are unsubtracted or subtracted')
+            A=subtraction_rows(np.asarray(A,np.longdouble),M);z=subtract_amplitude_coordinates(z,M,True)
+        from .scattering import center_capture
+        capture=center_capture(args.output,M,coordinates,prescription,changed,density_scales,raw_map=None if P is None else P.raw)
+        z,kr,ki,y,solver=barrier_support(A,kap,M,L,bound,args.direction,epsilon,z,progress,seconds=args.solver_seconds,start_mu=args.start_mu,gap=args.gap,raw=not zero,keep_extended=changed or zero,capture=capture,asymptotic=P,chiral_norm=norm_kind,fixed_x=getattr(args,'fixed_x',None),require_center=getattr(args,'require_center',False),chiral_weight=(n/2 if epsilon else 1.) if args.chiral_barrier_weight is None else args.chiral_barrier_weight)
+        args.direction=solver['support_direction']
+        if changed:z=np.asarray(subtract_amplitude_coordinates(z,M,False),float);solver['numerical_coordinates']='subtracted'
+        if P is None:c=z.copy();c[free:]*=density_scales
+        else:c=P.raw(z);solver['numerical_coordinates']='absorptive-zero-T0'
+        extra_duals=solver.get('asymptotic_duals',{})
+    def checkpoint(name,point=False):
+        payload=dict(kR=kr,kI=ki,y=y,**extra_duals,tail_kR=[],tail_kI=[],polynomial_dual=np.zeros((3,M)),polynomial_dual_present=False,global_high_spin_enforced=False,prescription=prescription,coordinates=coordinates)
+        if point:
+            v=np.asarray(H,np.longdouble)@np.asarray(c,np.longdouble);gr,gi=v[:n]*kap,v[n:2*n]*kap
+            payload.update(coefficients=np.asarray(c,float),values=np.asarray(v,float),margins=np.asarray(2*gi-gr*gr-gi*gi,float))
+        np.savez_compressed(args.output/(name+'.npz'),**payload)
+    def certify(point):return audit_ir(H,kap,point,M,L,bound,epsilon,args.direction,dict(kR=kr,kI=ki,y=y,**extra_duals),zero=zero,asymptotic=tail,bits=bits,chiral_norm=norm_kind)
+    outer=None
+    if args.command!='dual':
+        checkpoint('native_candidate',True)
+        c,outer,recovery=recover_ir(H,kap,c,c_start,M,bound,epsilon,norm_kind,tail_margins,certify,zero=zero)
+        if recovery['repaired']:solver['representative_center_converged']=False
+        solver['primal_recovery']=recovery;progress(stage='primal_recovery',**recovery)
+    c=np.asarray(c,float);values=np.asarray(H,np.longdouble)@np.asarray(c,np.longdouble);re,im=values[:n]*kap,values[n:2*n]*kap;margins=2*im-re*re-im*im
+    checkpoint('candidate',True);write_json(args.output/'coefficients.json',dict(coordinates=coordinates,prescription=prescription,coefficients=c.tolist()))
+    if outer is None:outer=certify(c)
+    try:
+        if args.dual_seconds<=0 or zero:lp=dict(status='not_requested',reason='Zero T0 uses its transformed barrier covectors; free-T0 LP fallback is inapplicable' if zero else 'disabled')
+        elif outer['primal_feasible'] and outer['upper']-outer['lower']<=args.gap:lp=dict(status='not_needed',reason='Support gap meets tolerance')
+        else:
+            lr,li,ly,lt,lp=normal_dual(H,kap,M,L,bound,args.direction,epsilon,c,None,progress,args.dual_seconds,infinity_zero=zero,method=getattr(args,'dual_method','highs-ds'),chiral_norm=norm_kind)
+            lp['outer']=audit_ir(H,kap,c,M,L,bound,epsilon,args.direction,dict(kR=lr,kI=li,y=ly),zero=zero,asymptotic=tail,bits=bits,chiral_norm=norm_kind)
+            np.savez_compressed(args.output/'normal_dual.npz',kR=lr,kI=li,y=ly,tail_kR=[],tail_kI=[],polynomial_dual=np.zeros((3,M)),polynomial_dual_present=False,global_high_spin_enforced=False,prescription=prescription,coordinates=coordinates)
+            if lp['outer']['upper']<outer['upper']:checkpoint('barrier_dual');kr,ki,y,outer=lr,li,ly,lp['outer'];extra_duals={};solver['tail_weights']=lt;checkpoint('candidate',True)
+    except ArithmeticError as error:lp=dict(status='inconclusive',error=str(error))
+    high_spin=dict(status='not_applicable',violations=[]);inputs=prep_inputs
+    for item in (input_record,dual_record):
+        if item is not None:inputs[str(Path(item['path']).resolve())]=dict(sha256=item['sha256'])
+    solver.update(coefficient_input=input_record,candidate_covectors=dual_record)
+    for name in ('violations','constraints'):write_json(args.output/(name+'.json'),dict(violations=[],high_spin=[],scope='Native sampled constraints'))
+    return dict(status='candidate',solver=solver,inputs=inputs,support_direction=list(args.direction),fixed_x=getattr(args,'fixed_x',None),normal_dual=lp,outer=outer,M=M,L=L,sampling_nodes=len(np.unique(energies)),scattering_samples=n,infinity=args.infinity,mode=args.mode,chiral_tolerance=epsilon,chiral_norm=norm_kind,density_limit=bound,
+        targets=list(map(float,values[-2:])),objective=float(np.asarray(args.direction)@values[-2:]),minimum_scattering_margin=float(min(margins)),chiral_norms=[float(np.linalg.norm(values[2*n:2*n+8][g])) for g in groups],
+        density_norm=float(np.linalg.norm(c[free:]/density_scales,ord=4)),radial_shrink=1.,sampled_feasible=outer['primal_feasible'],support_optimality_certified=bool(outer['primal_feasible'] and outer['upper']-outer['lower']<=args.gap),
+        unitarity_scope='sampled',global_high_spin_enforced=False,support_scope='Exactly declared constraints',prescription=prescription,coefficient_input_prescription=input_prescription,physical_unitarity_accepted=False,
+        unitarity_coverage='All declared rows; no continuum certificate',analytic_tail_conditions_passed=all(v>=0 for v in tail_margins(c)) if tail else None,analytic_tail_status='leading necessary conditions' if tail else 'not_applicable',analytic_tail_margins=outer['asymptotic_margin_enclosures'],high_spin_necessary=high_spin,high_spin_cut_count=0,tail_conditions_applied=tail,operator_scope='Saved float64 operator')
+
+
+def recover_ir(H,kap,c,seed,M,bound,epsilon,chiral_norm,tail_margins,certify,*,zero=False):
+    """Preserve an accepted center bitwise; convex recovery is never a center."""
+    from .kernels import density_labels
+    from .model import chiral_slices
+    c,seed=np.asarray(c,float),np.asarray(seed,float);n=len(kap);free=1+2*M
+    if zero and (c[0]!=0 or seed[0]!=0):raise ValueError('Recovery must stay in zero T0 slice')
+    outer=certify(c)
+    if outer['primal_feasible']:return c,outer,dict(repaired=False,candidate_fraction=1.,primal_certified=True)
+    baseline=certify(seed)
+    if not baseline['primal_feasible']:raise ArithmeticError('No certified IR segment interior')
+    V=np.asarray(H,np.longdouble)@np.asarray([seed,c],np.longdouble).T
+    ds=np.array([2. if f=='rho2' and i!=j else 1. for f,i,j in density_labels(M)[free:]])
+    groups=chiral_slices(chiral_norm)
+    def point(a):return np.asarray((1-np.longdouble(a))*seed+np.longdouble(a)*c,float)
+    def feasible(a):
+        q=point(a);v=(1-a)*V[:,0]+a*V[:,1];x,y=kap*v[:n],kap*v[n:2*n]
+        return (np.all(2*y-x*x-y*y>=0) and np.all(np.asarray(tail_margins(q))>=0) and np.linalg.norm(q[free:]/ds,ord=4)<=bound
+            and (epsilon is None or all(np.linalg.norm(v[2*n:2*n+8][g])<=epsilon for g in groups)))
+    lo,hi=0.,1.
+    for _ in range(50):
+        a=(lo+hi)/2
+        if feasible(a):lo=a
+        else:hi=a
+    a=lo*(1-1e-8)
+    for _ in range(12):
+        q=point(a);outer=certify(q)
+        if outer['primal_feasible']:return q,outer,dict(repaired=True,candidate_fraction=a,primal_certified=True)
+        a*=.5
+    return seed,baseline,dict(repaired=True,candidate_fraction=0.,primal_certified=True)
+
+
+def center_identity(folder,c,M,density_scales):
+    """Require the delivered full C to be an actually saved Newton center."""
+    from . import digest
+    from .quotient import subtract_amplitude_coordinates
+    for name in ('center_converged.npz','center_best.npz','center_last.npz','center_first.npz'):
+        path=Path(folder)/name
+        if not path.exists():continue
+        with np.load(path) as data:
+            if not bool(data['has_newton_gradient']):continue
+            if 'coefficients' in data:q=data['coefficients']
+            elif str(data['numerical_coordinates']) in ('subtracted','unsubtracted'):
+                q=np.asarray(subtract_amplitude_coordinates(data['z'],M,False) if str(data['numerical_coordinates'])=='subtracted' else data['z'],float).copy();q[1+2*M:]*=density_scales
+            else:continue
+            if np.array_equal(q,c):return dict(path=str(path.resolve()),sha256=digest(path),mu=float(data['mu']),full_C_identical=True)
+    raise ValueError('Delivered IR C differs from every saved converged Newton center')

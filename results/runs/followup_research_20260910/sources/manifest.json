@@ -1,0 +1,51 @@
+[
+  {
+    "key": "2403v4",
+    "url": "https://arxiv.org/html/2403.10772v4",
+    "path": "results/runs/followup_research_20260910/sources/2403v4.html",
+    "sha256": "c7bcb8b250fc8b482a5d41fe937506faf6ba2f1173263c7c96c43a32f2665704",
+    "bytes": 1431346
+  },
+  {
+    "key": "2505v3",
+    "url": "https://arxiv.org/html/2505.19332v3",
+    "path": "results/runs/followup_research_20260910/sources/2505v3.html",
+    "sha256": "4138fefddc67357f0146a3f0930db266b589ea16f436efd48356d46ea01fb2e0",
+    "bytes": 534786
+  },
+  {
+    "key": "2511v1",
+    "url": "https://arxiv.org/html/2511.11513v1",
+    "path": "results/runs/followup_research_20260910/sources/2511v1.html",
+    "sha256": "f16b472207855551e6d9015364727ab232361080c3ebbf6065d3511743cc2d15",
+    "bytes": 398330
+  },
+  {
+    "key": "2506v2",
+    "url": "https://arxiv.org/html/2506.22546v2",
+    "path": "results/runs/followup_research_20260910/sources/2506v2.html",
+    "sha256": "05f1b920f9f8d93e9dcc295feb4b10a4486fdf9043ef39629953ee134afa0aa7",
+    "bytes": 759734
+  },
+  {
+    "key": "official_readme",
+    "url": "https://raw.githubusercontent.com/hyfysics/gauge-theory-bootstrap/main/README.md",
+    "path": "results/runs/followup_research_20260910/sources/official_readme.txt",
+    "sha256": "ffef51c0aeaa91b84a27926e2a07a7dec1433e3d1aef70d3ac47a16fad064ecb",
+    "bytes": 3580
+  },
+  {
+    "key": "official_iteration",
+    "url": "https://raw.githubusercontent.com/hyfysics/gauge-theory-bootstrap/main/theories/qcd/src/matlab/gtb_qcd_02_optimize.m",
+    "path": "results/runs/followup_research_20260910/sources/official_iteration.txt",
+    "sha256": "dcb0ee7c2c555393e8e4bcd424fe0fb7aac82dfca3432810b890ae4a7c4b588c",
+    "bytes": 6186
+  },
+  {
+    "key": "official_constraints",
+    "url": "https://raw.githubusercontent.com/hyfysics/gauge-theory-bootstrap/main/theories/qcd/src/matlab/optimize_core.m",
+    "path": "results/runs/followup_research_20260910/sources/official_constraints.txt",
+    "sha256": "0e7c883cf7d79c8fd118d9875640414cac4fd110a47ee5da06267348a19a78fb",
+    "bytes": 5424
+  }
+]

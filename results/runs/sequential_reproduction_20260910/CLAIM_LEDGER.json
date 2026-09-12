@@ -1,0 +1,153 @@
+{
+  "target": "He–Kruczenski 2309.12402v3 Fig.3–11",
+  "updated": "2026-09-11",
+  "prescription": "analytic-cardinal",
+  "status": "ongoing",
+  "no_phase_fitting": true,
+  "claims": [
+    {
+      "step": "A1",
+      "claim": "交叉、同位旋、共同解析振幅及完整变量",
+      "status": "implemented_and_derived",
+      "scope": "finite_family",
+      "evidence": "DERIVATION_ZH.md",
+      "limitation": "明确的cardinal解析完成；不是恢复作者未公开插值"
+    },
+    {
+      "step": "A2",
+      "claim": "IR/UV输入、单位、密度正则与有限可行性",
+      "status": "declared_and_checked",
+      "scope": "conditional_finite_theorems",
+      "evidence": "DERIVATION_ZH.md",
+      "limitation": "χ范数、B(M)、共同mq及FESR打包等数值选择未由原文唯一确定"
+    },
+    {
+      "step": "A3",
+      "claim": "同一完整函数的投影与求值",
+      "status": "implemented_and_independently_checked",
+      "scope": "analytic_integral_enclosures",
+      "evidence": "A1_source_audit/source_audit.json",
+      "limitation": "共同函数通过；新增物理能量的严格幺正违例单列"
+    },
+    {
+      "step": "B1",
+      "claim": "有限支持与数值中心",
+      "status": "repaired_and_checked",
+      "scope": "finite_H_dual_and_numerical_center",
+      "evidence": "E1_tip_center/report.json",
+      "limitation": "支持gap不界定全振幅误差；解析primal与有限H对偶分开；旧三色IR交付经1e−8收缩，不继承保存中心身份，新通路已修正"
+    },
+    {
+      "step": "B2",
+      "claim": "Fig3纯散射区域及手征收缩对照",
+      "status": "directional_witness_complete_full_region_incomplete",
+      "scope": "certified_witness",
+      "evidence": "B2_WITNESS_SCOPE_ZH.md",
+      "limitation": "x≈1.60657纯点新验回；不是pure极值或完整区域"
+    },
+    {
+      "step": "B3",
+      "claim": "Fig4手征允许区域",
+      "status": "major_extent_difference_full_region_incomplete",
+      "scope": "finite_support_and_figure_comparison",
+      "evidence": "B3_IR_tip_replay/report.json",
+      "limitation": "IR x支持≈[.10588,.10593]；原绿图max≈.082573不作为严格排除证书"
+    },
+    {
+      "step": "C1",
+      "claim": "Fig5阈下线性改善及S0零点",
+      "status": "delivered_with_limited_zero_claims",
+      "scope": "analytic_signs_and_sampled_comparison",
+      "evidence": "C1_fig5/profiles.json",
+      "limitation": "橙/绿存在零点；唯一性和蓝色全区间不存在均未证"
+    },
+    {
+      "step": "C2",
+      "claim": "Fig6几何规则选出同一完整振幅",
+      "status": "delivered_with_coarse_hull",
+      "scope": "frozen_full_coefficients",
+      "evidence": "C2_fig6/profiles.json",
+      "limitation": "图中hull只是可行内包；不冒称全区域精确；旧完整C是收缩后代表而非逐位原中心"
+    },
+    {
+      "step": "C3",
+      "claim": "Fig7仅IR输入的相移",
+      "status": "IR_control_reproduced",
+      "scope": "native_phase_comparison",
+      "evidence": "C3_fig7/profiles.json",
+      "limitation": "该代表无ρ式上穿；不证明整个IR集合都无ρ"
+    },
+    {
+      "step": "D1",
+      "claim": "同一S的电流Gram和FF归一化",
+      "status": "implemented_and_derived",
+      "scope": "exact_Gram_Schur_identity",
+      "evidence": "D1_M50_L10/report.json",
+      "limitation": "高能FF单独不足以排除严格IR点，见推导§12"
+    },
+    {
+      "step": "D2",
+      "claim": "四FESR与高能FF上界",
+      "status": "implemented_with_declared_inputs",
+      "scope": "printed_raw_hard_constraints",
+      "evidence": "D1_M50_L10/report.json",
+      "limitation": "矩比是R/s加权平均能标，不是峰位或极点定理"
+    },
+    {
+      "step": "D3",
+      "claim": "完整联合原约束可行性",
+      "status": "certified_at_M50_L10",
+      "scope": "analytic_primal",
+      "evidence": "D3_analytic_primal_lifted/source_audit.json",
+      "limitation": "全部4076原变量核验；自由高能R导致全联合集不紧"
+    },
+    {
+      "step": "E1",
+      "claim": "Fig8 UV区域收缩及不对称",
+      "status": "shrink_certified_strong_asymmetry_not_reproduced",
+      "scope": "finite_H_same_section_bounds",
+      "evidence": "E6_regions/regions.json",
+      "limitation": "上/下收缩比[1.01499,1.07453]，只有轻微不对称"
+    },
+    {
+      "step": "E2",
+      "claim": "预先选定三个完整边界代表",
+      "status": "numerically_centered_and_certified",
+      "scope": "center_support_and_analytic_primal",
+      "evidence": "E4_selection/selection.json",
+      "limitation": "不从相移反选；每个有限μ约化中心唯一，不证明极值幅度唯一"
+    },
+    {
+      "step": "E3",
+      "claim": "Fig9–10 正确且稳健的ρ与相移",
+      "status": "finite_mechanism_yes_full_physics_no_major",
+      "scope": "certificates_plus_counterexamples",
+      "evidence": "E5_direct_profiles_final/direct_profiles.json",
+      "limitation": "原生ρ式结构存在；ref/mid偏低、较强非弹性；三点严格离节点违例及∞障碍"
+    },
+    {
+      "step": "F1",
+      "claim": "Fig11五组M/L全部计算",
+      "status": "all_five_original_finite_chains_complete",
+      "scope": "fresh_model_witness_support_center_required",
+      "evidence": "F_five_configs_verified_comparison/resolution.json",
+      "limitation": "作者精确选点未公开；全部使用预声明+x，且均有非零T0/F1∞"
+    },
+    {
+      "step": "F2",
+      "claim": "分辨率稳定性",
+      "status": "measured_M_spread_comparable_L_spread_larger",
+      "scope": "same_rule_same_physical_inputs",
+      "evidence": "F_five_configs_verified_comparison/resolution.json",
+      "limitation": "L跨度46.47MeV vs原图12.54；M跨度54.06 vs54.35同量级；S0仍系统偏高"
+    },
+    {
+      "step": "F3",
+      "claim": "逐图数据、来源及物理结论",
+      "status": "five_config_delivery_complete_other_figure_gaps_remain",
+      "scope": "reproducible_artifacts",
+      "evidence": "F_five_configs_verified_comparison/resolution.json",
+      "limitation": "完整Fig3/4新区域及修补模型代表仍待完成"
+    }
+  ]
+}

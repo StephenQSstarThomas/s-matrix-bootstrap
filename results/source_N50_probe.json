@@ -1,0 +1,47 @@
+{
+  "scope": "Full source-truncation numerical probe, no reproduction claim.",
+  "source_sha256": {
+    "src/smatrix_bootstrap/__init__.py": "917f23620fc4ae3e62557bb42621de3ae4238bacbd56e4a3eea10d11b1faab0f",
+    "src/smatrix_bootstrap/amplitudes.py": "e56a90e92c00daeb5f8906471745a35bf7d2963b222faf24dede5dd11d4635eb",
+    "src/smatrix_bootstrap/asymptotics.py": "d3cf8c482015d408e6fe45789f398ae9e180d57d01194779e632fffe4b59c7a4",
+    "src/smatrix_bootstrap/coupled_gauge.py": "8ecf05eec803b590cc1148f489e45bb8f614609fdd32de3c8ebbbcf9d825dd89",
+    "src/smatrix_bootstrap/gauge_inputs.py": "3aed562380695d2ce015f6dfd95f0d4084a57e599586017722b815b2daa77883",
+    "src/smatrix_bootstrap/optimization.py": "d4698806b908ecf499c4d47cdfc3dc3f77787ebfdd6b517eab944acdee3e54c0",
+    "src/smatrix_bootstrap/validation.py": "23d8c36e3ba287d37f6ec834189495c52e91daba93cd7602e48c45b038455909"
+  },
+  "config": {
+    "degree": 50,
+    "energy_points": 50,
+    "waves_per_isospin": 10,
+    "angular_points": 80,
+    "chiral_tolerance": null,
+    "chiral_norm": "combined_l2",
+    "enforce_infinite_energy": false,
+    "fixed_f00": null,
+    "enforce_asymptotic": false,
+    "cone_scale_floor": 0,
+    "preconditioner_scale_floor": 1e-10,
+    "angular_quadrature": "threshold_series_72_log_s_wave_crossed_cut_legendre_q",
+    "unitarity_cone": "scaled_rotated_soc"
+  },
+  "preconditioner_info": {
+    "rows": 3010,
+    "columns": 3876,
+    "relative_scale_floor": 1e-10,
+    "numerical_rank": 841,
+    "scaled_floor_directions": 3035,
+    "discarded_directions": 0
+  },
+  "build_seconds": 29.53257025394123,
+  "exception": "Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.",
+  "solver_terminal_status": "NumericalError",
+  "solver_info": {
+    "cost_primal": 0.0,
+    "cost_dual": -1500.0,
+    "res_primal": 0.9766317892798411,
+    "res_dual": 0.9997902391419711,
+    "gap_abs": 1500.0,
+    "gap_rel": 1500.0
+  },
+  "elapsed_seconds": 346.63109483604785
+}

@@ -1,0 +1,392 @@
+{
+  "command": "source-audit",
+  "status": "analytic_source_verified",
+  "artifacts": {},
+  "inputs": {
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/universal_source_stage/universal_source_N50_j0.rows.json.gz": {
+      "sha256": "44c1e87211cbcdb1afc7f7069c60943d401ad6a782560e2490c1371d1b4518bf"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j25/operator.rows.json.gz": {
+      "sha256": "83d46ff7663b4c0b3435a14d9dca2934fa90345ad5500a03e775f15ffbce1965"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/universal_source_stage/universal_source_N50_j49.rows.json.gz": {
+      "sha256": "2bd000a08ed9671147de2d1cda5b1ce1b171fe55dd01cffabc09953acafbd7ee"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/analytic_source_registry_stage/registry.json": {
+      "sha256": "18e01da602be9c98c614a56ae43f0fe9ac6d4c6ad63e45edbc21f3e8193671e2"
+    },
+    "results/runs/mainline_alignment_20260909/paper_tip_path_02/coefficients.json": {
+      "sha256": "5e828d1c881760d198dd73d042f04d4161e2d5088411ef052d4457594582b2ae"
+    }
+  },
+  "parameters": {
+    "command": "source-audit",
+    "comparison_manifest": null,
+    "region_summary": "results/runs/stage_B_delivery_20260907/regions/regions.json",
+    "primary_waves": false,
+    "profile_runs": [],
+    "profile_kind": "subthreshold",
+    "phase_reference": null,
+    "baseline_profile": null,
+    "selection_reference": null,
+    "support_runs": [],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/A1_source_audit",
+    "density_limit": null,
+    "preparation": "results/runs/stage_A_M50_L10_20260906",
+    "prescription": "analytic-cardinal",
+    "source_registry": null,
+    "solver": "barrier",
+    "unitarity_scope": "sampled",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "current_preparation": null,
+    "joint_feasibility": false,
+    "fixed_amplitude": false,
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "free",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": "results/runs/mainline_alignment_20260909/paper_tip_path_02/coefficients.json",
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "chiral_norm": "separate-l2",
+    "chiral_barrier_weight": null,
+    "objective": "projection",
+    "resume_objective": false,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "fixed_x": null,
+    "ray": false,
+    "seconds": 180.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "2"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Finite model; regions/phases require verification.",
+  "amplitude_model": {
+    "prescription": "analytic-cardinal",
+    "M": 50,
+    "L": 10,
+    "bits": 384,
+    "coordinate_system": "unsubtracted analytic-cardinal C_flat",
+    "coefficient_count": 3876,
+    "physical_samples": 1500,
+    "nu0": 0,
+    "nyquist_retained": true,
+    "infinity_equality_imposed": false,
+    "density_limit_imposed": false,
+    "quadrature_order_per_panel": null,
+    "arithmetic": "Arb",
+    "integral_enclosures": true,
+    "authors_implementation_recovered": false,
+    "analytic_function_family_defined": true,
+    "angular_projection": "Authenticated analytic coefficient enclosures; independent integral cross-check required",
+    "spectral_quadrature": "Exact Cauchy transform of finite sine density",
+    "physical_evaluation": "One analytic family; authenticated row registry covers retained native nodes",
+    "analyticity_status": "One conformal polynomial from all M sine-cardinal density modes",
+    "infinity_row_meaning": "Unsubtracted constant; recorded but no endpoint equality imposed",
+    "source_registry": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/analytic_source_registry_stage/registry.json",
+    "source_registry_sha256": "18e01da602be9c98c614a56ae43f0fe9ac6d4c6ad63e45edbc21f3e8193671e2"
+  },
+  "checks": [
+    {
+      "node": 0,
+      "isospin": 0,
+      "ell": 0,
+      "source": {
+        "real": "[0.156311458657726304438045421485 +/- 1.46e-31]",
+        "imaginary": "[0.000626904305335475152725098356570 +/- 5.01e-34]",
+        "midpoint": [
+          0.1563114586577263,
+          0.0006269043053354752
+        ],
+        "radius_upper": 1.159345441198059e-19,
+        "arithmetic_radius_upper": 1.10450860656893e-106
+      },
+      "independent": {
+        "real": "[0.156311458657726304438045421485 +/- 1.51e-31]",
+        "imaginary": "[0.00062690430533547515272509835657 +/- 5.17e-33]",
+        "midpoint": [
+          0.1563114586577263,
+          0.0006269043053354752
+        ],
+        "radius_upper": 1.1593454411981056e-19,
+        "arithmetic_radius_upper": 4.663416281122854e-33
+      },
+      "match": true
+    },
+    {
+      "node": 0,
+      "isospin": 2,
+      "ell": 0,
+      "source": {
+        "real": "[-0.0327143771854875411940636856873 +/- 5.32e-33]",
+        "imaginary": "[2.73864060312452410100974678949e-5 +/- 3.19e-35]",
+        "midpoint": [
+          -0.03271437718548754,
+          2.7386406031245242e-05
+        ],
+        "radius_upper": 3.3249951106956903e-18,
+        "arithmetic_radius_upper": 5.830219914564173e-107
+      },
+      "independent": {
+        "real": "[-0.0327143771854875411940636856873 +/- 6.23e-33]",
+        "imaginary": "[2.738640603124524101009746789e-5 +/- 5.77e-33]",
+        "midpoint": [
+          -0.03271437718548754,
+          2.7386406031245242e-05
+        ],
+        "radius_upper": 3.324995110695691e-18,
+        "arithmetic_radius_upper": 9.011721413383157e-34
+      },
+      "match": true
+    },
+    {
+      "node": 0,
+      "isospin": 1,
+      "ell": 1,
+      "source": {
+        "real": "[6.19675840262518707455753186532e-6 +/- 1.22e-36]",
+        "imaginary": "[3.89077307648132302581685808787e-9 +/- 6.70e-40]",
+        "midpoint": [
+          6.196758402625187e-06,
+          3.890773076481323e-09
+        ],
+        "radius_upper": 3.2507929942561836e-22,
+        "arithmetic_radius_upper": 9.529255886045521e-113
+      },
+      "independent": {
+        "real": "[6.1967584026251870745575319e-6 +/- 4.28e-32]",
+        "imaginary": "[3.8907730764813230258169e-9 +/- 5.01e-32]",
+        "midpoint": [
+          6.196758402625187e-06,
+          3.890773076481323e-09
+        ],
+        "radius_upper": 3.2507929943371564e-22,
+        "arithmetic_radius_upper": 8.097259524937219e-33
+      },
+      "match": true
+    },
+    {
+      "node": 25,
+      "isospin": 0,
+      "ell": 0,
+      "source": {
+        "real": "[0.349163448196535540517786516362 +/- 9.46e-32]",
+        "imaginary": "[0.170224205616717472635439005166 +/- 2.97e-31]",
+        "midpoint": [
+          0.34916344819653555,
+          0.17022420561671747
+        ],
+        "radius_upper": 1.2463103799304237e-17,
+        "arithmetic_radius_upper": 9.543406580003254e-107
+      },
+      "independent": {
+        "real": "[0.3491634481965355405177865164 +/- 6.64e-29]",
+        "imaginary": "[0.1702242056167174726354390052 +/- 6.22e-29]",
+        "midpoint": [
+          0.34916344819653555,
+          0.17022420561671747
+        ],
+        "radius_upper": 1.2463103799332719e-17,
+        "arithmetic_radius_upper": 2.8482302411667004e-29
+      },
+      "match": true
+    },
+    {
+      "node": 25,
+      "isospin": 2,
+      "ell": 0,
+      "source": {
+        "real": "[-0.0850940284276037653705605824336 +/- 2.36e-32]",
+        "imaginary": "[0.00824498617319785411619953352473 +/- 3.15e-33]",
+        "midpoint": [
+          -0.08509402842760376,
+          0.008244986173197855
+        ],
+        "radius_upper": 5.303083670079301e-18,
+        "arithmetic_radius_upper": 3.968633059458506e-107
+      },
+      "independent": {
+        "real": "[-0.0850940284276037653705605824 +/- 4.34e-29]",
+        "imaginary": "[0.0082449861731978541161995335 +/- 3.45e-29]",
+        "midpoint": [
+          -0.08509402842760376,
+          0.008244986173197855
+        ],
+        "radius_upper": 5.303083670089023e-18,
+        "arithmetic_radius_upper": 9.72215876460225e-30
+      },
+      "match": true
+    },
+    {
+      "node": 25,
+      "isospin": 1,
+      "ell": 1,
+      "source": {
+        "real": "[0.0289136932525720688261228378216 +/- 3.05e-32]",
+        "imaginary": "[0.000945040749034555963613506508174 +/- 3.31e-34]",
+        "midpoint": [
+          0.028913693252572068,
+          0.0009450407490345559
+        ],
+        "radius_upper": 6.71962503746899e-19,
+        "arithmetic_radius_upper": 2.962641535925952e-109
+      },
+      "independent": {
+        "real": "[0.0289136932525720688261228378 +/- 4.72e-29]",
+        "imaginary": "[0.0009450407490345559636135065 +/- 3.37e-29]",
+        "midpoint": [
+          0.028913693252572068,
+          0.0009450407490345559
+        ],
+        "radius_upper": 6.719625037723841e-19,
+        "arithmetic_radius_upper": 2.5485069562875383e-29
+      },
+      "match": true
+    },
+    {
+      "node": 49,
+      "isospin": 0,
+      "ell": 0,
+      "source": {
+        "real": "[26.5651775249978711328145773600 +/- 4.60e-30]",
+        "imaginary": "[-54.4558976402452807590668815281 +/- 1.02e-29]",
+        "midpoint": [
+          26.56517752499787,
+          -54.45589764024528
+        ],
+        "radius_upper": 2.0278969170432884e-15,
+        "arithmetic_radius_upper": 2.6197765211621554e-106
+      },
+      "independent": {
+        "real": "[26.565177524997871133 +/- 7.74e-19]",
+        "imaginary": "[-54.455897640245280759 +/- 6.55e-19]",
+        "midpoint": [
+          26.56517752499787,
+          -54.45589764024528
+        ],
+        "radius_upper": 2.0284849714788007e-15,
+        "arithmetic_radius_upper": 5.880544355122688e-19
+      },
+      "match": true
+    },
+    {
+      "node": 49,
+      "isospin": 2,
+      "ell": 0,
+      "source": {
+        "real": "[11.9436546577880822029590095683 +/- 2.05e-30]",
+        "imaginary": "[-24.1135702501857675713609622274 +/- 1.70e-29]",
+        "midpoint": [
+          11.943654657788082,
+          -24.113570250185766
+        ],
+        "radius_upper": 1.0743634318881314e-15,
+        "arithmetic_radius_upper": 9.950812606995578e-107
+      },
+      "independent": {
+        "real": "[11.943654657788082203 +/- 2.64e-19]",
+        "imaginary": "[-24.113570250185767571 +/- 5.84e-19]",
+        "midpoint": [
+          11.943654657788082,
+          -24.113570250185766
+        ],
+        "radius_upper": 1.0745857812776535e-15,
+        "arithmetic_radius_upper": 2.2234938992594126e-19
+      },
+      "match": true
+    },
+    {
+      "node": 49,
+      "isospin": 1,
+      "ell": 1,
+      "source": {
+        "real": "[-1.43745270018437294369771560978 +/- 1.09e-30]",
+        "imaginary": "[-1.21868269687291779207683378024 +/- 3.38e-30]",
+        "midpoint": [
+          -1.4374527001843729,
+          -1.2186826968729179
+        ],
+        "radius_upper": 6.677780090706114e-17,
+        "arithmetic_radius_upper": 1.354447377222216e-107
+      },
+      "independent": {
+        "real": "[-1.43745270018437294369772 +/- 5.19e-24]",
+        "imaginary": "[-1.21868269687291779207683 +/- 4.58e-24]",
+        "midpoint": [
+          -1.4374527001843729,
+          -1.2186826968729179
+        ],
+        "radius_upper": 6.677780170634443e-17,
+        "arithmetic_radius_upper": 7.99283297752565e-25
+      },
+      "match": true
+    }
+  ],
+  "source_basis": "z^n; symmetrized tu products divided by two",
+  "old_feasibility_transferred": false,
+  "optimization_performed": false,
+  "elapsed_seconds": 11.447288061026484,
+  "prescription": "analytic-cardinal",
+  "core_sources": {
+    "__init__.py": "4946ac53876b5999dae32b78566fccf41fef88ef3de4fe5e0d5a9524d8d08302",
+    "analysis.py": "ebb3d746d0be314661c988f4cf226dea33ccca33b086d78f6e5375e0e0401e86",
+    "analytic.py": "0c2d3f24e88b7f9e2c0152baf80abe57ed16d610e6a02589c234d232f26975d5",
+    "basis.py": "7419f381e31f6d7a1aeeaafd211299b081d10bcdfd46762e069b829cc48d9a7c",
+    "certificates.py": "0f190cf9fb76e1098283bbf10c4bdeffeffba4e64df83515549b88c07b500474",
+    "gauge.py": "2adb08495cee33e6df5df8bcbc628873962e409061ba0b81b17fddcba3a772b0",
+    "imaginary.py": "75747ee09285819d1d8d4e7f8fda9f599b69e48a7822a91d9780a5a339ef41be",
+    "io.py": "312908eba7b405eb0297e3a18952fca91ffa81fa581494a047a2bc8b11babdb5",
+    "kernels.py": "d370f501f537303f5199f264fc3c12b6dfbb6835accd6c2f91878901c870bf17",
+    "linear.py": "8eb6b2f51541a5fabd762da1fe1a563daf856923fd8952892b79fcbfb4326682",
+    "model.py": "3d49e6bd122254cc3fbd741bfa5f32f1a70dbd6e20a5ca602571bf1970231715",
+    "operators.py": "9cc96d81c49587010a307579fc0e78328d014b0289fd9b14494785cfd66e63be",
+    "quotient.py": "259c14778c9a70868948b9e5e81282211c1b87350ba725bf43412bf7e0e15caf",
+    "run.py": "c777c84f3ecce7c21dbc584ab97fde737f7977570c395c00ce1dff55e76c28a0",
+    "spectra.py": "4b2570364d0710d6943bcddc2747513420fabffafa52ca2fdd4780ffc3a46a4a"
+  },
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 180.0,
+  "supervisor_seconds": 12.4970841598697
+}

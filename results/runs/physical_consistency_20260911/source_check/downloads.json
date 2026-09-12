@@ -1,0 +1,64 @@
+[
+  {
+    "file": "2403_GTB_numerics.m.txt",
+    "url": "https://raw.githubusercontent.com/hyfysics/gauge-theory-bootstrap/801684d9ece3de2918a20145178f569459081098/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.m",
+    "bytes": 9398,
+    "sha256": "b12bf411407fc4cb8ae56aea41c88aa336e0f73aa7ae44ebef2b1bca3fc08ad2"
+  },
+  {
+    "file": "2403_GTB_numerics.nb.txt",
+    "url": "https://raw.githubusercontent.com/hyfysics/gauge-theory-bootstrap/801684d9ece3de2918a20145178f569459081098/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb",
+    "bytes": 224480,
+    "sha256": "9a3a81d7e99ef35355aa5a2bbf10ce9a21e6af929e0cb8371c4afaff133922bd"
+  },
+  {
+    "file": "main_optimize.m.txt",
+    "url": "https://raw.githubusercontent.com/hyfysics/gauge-theory-bootstrap/801684d9ece3de2918a20145178f569459081098/theories/qcd/src/matlab/gtb_qcd_02_optimize.m",
+    "bytes": 6186,
+    "sha256": "dcb0ee7c2c555393e8e4bcd424fe0fb7aac82dfca3432810b890ae4a7c4b588c"
+  },
+  {
+    "file": "main_optimize_core.m.txt",
+    "url": "https://raw.githubusercontent.com/hyfysics/gauge-theory-bootstrap/801684d9ece3de2918a20145178f569459081098/theories/qcd/src/matlab/optimize_core.m",
+    "bytes": 5424,
+    "sha256": "0e7c883cf7d79c8fd118d9875640414cac4fd110a47ee5da06267348a19a78fb"
+  },
+  {
+    "file": "main_generate_matrices.nb.txt",
+    "url": "https://raw.githubusercontent.com/hyfysics/gauge-theory-bootstrap/801684d9ece3de2918a20145178f569459081098/theories/qcd/src/mathematica/gtb_qcd_01_generate_matrices.nb",
+    "bytes": 194513,
+    "sha256": "224df1f384db69b4143e3b782a70cbfb7f474040b97689b4caf84af2cfaa8845"
+  },
+  {
+    "file": "2403.10772v4.pdf",
+    "url": "https://arxiv.org/pdf/2403.10772v4",
+    "bytes": 5383318,
+    "sha256": "2639c31f4c0732d3107533b3a5ac8152bb4ab7adfa4a0e7204878b17a49c2568"
+  },
+  {
+    "file": "2505.19332v3.pdf",
+    "url": "https://arxiv.org/pdf/2505.19332v3",
+    "bytes": 2689938,
+    "sha256": "64b691751ac6e5fb6948509ee8f4ea0a518a7f37af75370db7d84774d492eeeb"
+  },
+  {
+    "file": "2505_frozen_generate_matrices.nb.txt",
+    "url": "https://raw.githubusercontent.com/hyfysics/gauge-theory-bootstrap/801684d9ece3de2918a20145178f569459081098/theories/qcd/papers/arxiv-2505.19332/src/mathematica/gtb_qcd_01_generate_matrices.nb",
+    "bytes": 194849,
+    "sha256": "1a3a018683797cd85ee67e4fe8e37d7b44d89e5776cd5a95c01ce63ccc8f97e8"
+  },
+  {
+    "file": "ptep_published.html",
+    "url": "https://oup.silverchair-cdn.com/article-minimal/8686484",
+    "bytes": 343502,
+    "sha256": "480e174e6282b603077c74e2997497a54eeee051e2aabc603a2b0eacceb02ef1",
+    "note": "HTML original"
+  },
+  {
+    "file": "ptep_published.txt",
+    "url": "https://academic.oup.com/ptep/article/2026/6/063B05/8686484",
+    "bytes": 82603,
+    "sha256": "d28f9288e8d8d8a2d8f78e07d0793fe4cdab87aeecf0884aaa405904729cb736",
+    "note": "Text extraction from saved HTML"
+  }
+]

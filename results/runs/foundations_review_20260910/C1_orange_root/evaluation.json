@@ -1,0 +1,368 @@
+{
+  "energies": [
+    0.3,
+    0.35
+  ],
+  "waves": [
+    [
+      0,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  "f": [
+    [
+      [
+        -0.00029061416924339265,
+        0.0
+      ],
+      [
+        0.0239445356068088,
+        0.0
+      ],
+      [
+        -0.017793699541216033,
+        0.0
+      ]
+    ],
+    [
+      [
+        0.0004015211795151233,
+        0.0
+      ],
+      [
+        0.023108922679400304,
+        0.0
+      ],
+      [
+        -0.017400295065314108,
+        0.0
+      ]
+    ]
+  ],
+  "f_enclosures": [
+    [
+      [
+        [
+          [
+            "-0x4c2ec9691e4849cb03fb662abc4e0f9799a4da02979d09d2a0aee909c6d",
+            -246
+          ],
+          [
+            "0x21cda49",
+            -251
+          ]
+        ],
+        null
+      ],
+      [
+        [
+          [
+            "0x3109d52acb0fd86b0c3414d00fe4df4e3e1dbdf636e740483efdeb811172f",
+            -247
+          ],
+          [
+            "0x368ff785",
+            -257
+          ]
+        ],
+        null
+      ],
+      [
+        [
+          [
+            "-0x91c417b357062e1f36cc011e8d9c701d96111f654ab877f37838dec1085669d5",
+            -261
+          ],
+          [
+            "0x277e768f",
+            -260
+          ]
+        ],
+        null
+      ]
+    ],
+    [
+      [
+        [
+          [
+            "0x34a0d0ab59b57c573883a40f5df01cbe21a445a3b697bac8720db0b6d3",
+            -241
+          ],
+          [
+            "0x866d4a9",
+            -253
+          ]
+        ],
+        null
+      ],
+      [
+        [
+          [
+            "0x2f53bb193b04680f700c5886c682ed11eafa4271b390f32e201459b2834d5",
+            -247
+          ],
+          [
+            "0x365263ff",
+            -257
+          ]
+        ],
+        null
+      ],
+      [
+        [
+          [
+            "-0x8e8b1047e17a959961a74cb436441f71e18e1215ba69bd47b30b0b85b69e4745",
+            -261
+          ],
+          [
+            "0x11e8162b",
+            -259
+          ]
+        ],
+        null
+      ]
+    ]
+  ],
+  "amplitude_model": {
+    "prescription": "pv-midpoint",
+    "M": 50,
+    "L": 10,
+    "bits": 256,
+    "coordinate_system": "unsubtracted PV-midpoint C_flat",
+    "coefficient_count": 3876,
+    "physical_samples": 1500,
+    "nu0": 0,
+    "nyquist_retained": null,
+    "infinity_equality_imposed": false,
+    "density_limit_imposed": false,
+    "quadrature_order_per_panel": null,
+    "arithmetic": "Arb",
+    "integral_enclosures": false,
+    "authors_implementation_recovered": false,
+    "analytic_function_family_defined": false,
+    "angular_projection": "analytic exterior Legendre Q",
+    "spectral_quadrature": "midpoint in phi; native PV cot map and nodal jump",
+    "physical_evaluation": "native nodes only; no off-grid continuation specified",
+    "infinity_row_meaning": "unsubtracted constant coordinate; not a certified high-energy limit"
+  },
+  "constraints_checked": [
+    "unitarity at supplied physical energy/wave pairs"
+  ],
+  "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/C_local_004_after_008/coefficients.json",
+  "selection": {
+    "rule": "Upper feasible-hull edge at fixed Weinberg f00(3), before evaluating phases",
+    "reference": [
+      0.07332139057293466,
+      -0.00488809270486231
+    ],
+    "target": [
+      0.07332139055524428,
+      -0.0033832161737433644
+    ],
+    "epsilon": 0.004,
+    "source_coefficients": [
+      "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_045/coefficients.json",
+      "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/adaptive_008/coefficients.json"
+    ],
+    "weights": [
+      0.21116936584870682,
+      0.7888306341512932
+    ],
+    "source_reports": [
+      "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_045/report.json",
+      "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/adaptive_008/report.json"
+    ],
+    "vertices": [
+      [
+        0.1390639300969292,
+        -0.008982522781711626
+      ],
+      [
+        0.13967614671364662,
+        -0.008876350526996132
+      ],
+      [
+        0.13943138461875274,
+        -0.00871287230273013
+      ],
+      [
+        0.13827774178591176,
+        -0.008492805991772694
+      ],
+      [
+        0.13622627775191729,
+        -0.008221624405133413
+      ],
+      [
+        0.1292145218812586,
+        -0.007511366906738708
+      ],
+      [
+        0.11886458647617627,
+        -0.006638856046165838
+      ],
+      [
+        0.10661361891334244,
+        -0.005710323847506926
+      ],
+      [
+        0.09019750788627402,
+        -0.004542687615408908
+      ],
+      [
+        0.06880366669564067,
+        -0.003072826543204179
+      ],
+      [
+        0.041149180967108435,
+        -0.0012167616019792492
+      ],
+      [
+        -0.002354284728213295,
+        0.001618864212151031
+      ],
+      [
+        -0.04504921656196269,
+        0.0042668863200809246
+      ],
+      [
+        -0.10896473984775287,
+        0.007780269946339616
+      ],
+      [
+        -0.0650249497991588,
+        0.003192791837478417
+      ],
+      [
+        -0.02913541795818243,
+        0.00028341054367101565
+      ],
+      [
+        -0.008887422437945176,
+        -0.001194311166770228
+      ],
+      [
+        0.0127050460777845,
+        -0.002676812905361984
+      ],
+      [
+        0.0367600753909853,
+        -0.00423070177296314
+      ],
+      [
+        0.056751160315038546,
+        -0.00543852685102185
+      ],
+      [
+        0.07447548459507632,
+        -0.006430841764544928
+      ],
+      [
+        0.09171014593304663,
+        -0.007313025367454472
+      ],
+      [
+        0.10999826443039136,
+        -0.008141792656461594
+      ],
+      [
+        0.1264024862317275,
+        -0.008780471297561017
+      ],
+      [
+        0.13102338233333327,
+        -0.008938950892501135
+      ],
+      [
+        0.1346073735112464,
+        -0.009021481181042061
+      ],
+      [
+        0.13731330354096344,
+        -0.009037856296662101
+      ]
+    ],
+    "boundary_approximation": true,
+    "region_metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)",
+    "regional_distance_upper": 0.11679600729383446,
+    "exact_extremizer_claimed": false,
+    "original_H_feasibility": {
+      "upper": 5e-324,
+      "enclosure": "0",
+      "disk": 0.0,
+      "chiral": 0.0,
+      "density_residual": 0.0,
+      "tail_support": 0.0,
+      "chiral_norm": "combined-l2",
+      "objective_kind": "target_plane",
+      "scope": "exact saved float64 operator and supplied tail maps; angular quadrature error excluded",
+      "primal_feasible": true,
+      "lower": -5e-324,
+      "minimum_margin_enclosure": "[9.2334411888868755108e-84 +/- 1.47e-104]",
+      "density_norm": 372215.3082064196,
+      "targets": [
+        "[0.07332139055516494573176959 +/- 2.25e-27]",
+        "[-0.003383216173743064289183138 +/- 7.34e-29]"
+      ],
+      "tail_margin_enclosures": []
+    },
+    "model_signature": {
+      "chiral_norm": "combined-l2",
+      "M": 50,
+      "L": 10,
+      "density_limit": 377500.0,
+      "infinity": "free",
+      "unitarity_scope": "sampled",
+      "global_high_spin_enforced": false,
+      "tail_conditions_applied": false,
+      "prescription": "pv-midpoint",
+      "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+      "additional_constraints": null,
+      "sampling_nodes": 50,
+      "scattering_samples": 1500
+    },
+    "regional_geometry_ready": false,
+    "local_upper_boundary_ready": true,
+    "local_upper_boundary": {
+      "distance_upper": 5.759552747083909e-06,
+      "scaled_distance_upper": 0.0014398881867709772,
+      "budget": 0.01,
+      "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/adaptive_008/report.json",
+      "scope": "Arb vertical distance to the true upper boundary at the actual saved x; scaled by epsilon; global region may remain unfinished"
+    }
+  },
+  "eta": [
+    null,
+    null
+  ],
+  "maximum_eta": null,
+  "unitarity": {
+    "criterion": "Eq.(2.12): 1-|S|^2 = kappa*(2 Im f-kappa*|f|^2) >= 0",
+    "samples_checked": 0,
+    "status": "unresolved",
+    "margin_intervals": [
+      null,
+      null
+    ],
+    "minimum_margin": null,
+    "scope": "Declared sampled pairs; source discretization errors excluded",
+    "continuum_certified": false,
+    "omitted_spins_checked": false,
+    "high_energy_tail_certified": false,
+    "analytic_tail": {
+      "status": "not_applicable"
+    },
+    "high_spin_necessary": {
+      "status": "not_applicable",
+      "violations": []
+    }
+  }
+}

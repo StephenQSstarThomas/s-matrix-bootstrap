@@ -1,0 +1,168 @@
+{
+  "method": "Read-only longdouble decomposition of saved legal dual and saved final primal; best dual at mu1e-9, final primal at mu1e-11; not a rerun or interval proof",
+  "results": {
+    "center": {
+      "density_cost": 1.4121296604004279,
+      "density_pairing": 0.09708700182149355,
+      "density_gap": 1.3150426585789343,
+      "holder_alignment": 0.06875218653361,
+      "physical_disk_gap": 2.3849151545148325e-06,
+      "chiral_gap": 2.170929759757697e-08,
+      "sum_gap": 1.3150450652033863,
+      "published_gap": 1.3150450652134542,
+      "residual_max": 4.693153468903172e-07,
+      "density_norm": 377499.84091204597,
+      "rho_normal_l2_cosine": 0.06628165125134683
+    },
+    "precision": {
+      "density_cost": 1.4204921340832324,
+      "density_pairing": 0.09708700344221123,
+      "density_gap": 1.3234051306410213,
+      "holder_alignment": 0.06834744178634256,
+      "physical_disk_gap": 2.396982959835094e-06,
+      "chiral_gap": 2.814330893563489e-08,
+      "sum_gap": 1.32340755576729,
+      "published_gap": 1.3234075558122926,
+      "residual_max": 4.721077660057642e-07,
+      "density_norm": 377499.8437755592,
+      "rho_normal_l2_cosine": 0.06589531267626862
+    }
+  },
+  "arb_gap_decomposition_precision_run": {
+    "seconds": 4.810673499014229,
+    "density_pairing": "[0.09708700344487866115822778 +/- 2.08e-27]",
+    "density_cost_lower": "[1.420492134199442202296745 +/- 3.99e-25]",
+    "density_cost_upper": "[1.420492134199442202296745 +/- 3.99e-25]",
+    "density_gap_lower": "[1.323405130754563541138517 +/- 1.81e-25]",
+    "density_gap_upper": "[1.323405130754563541138517 +/- 1.81e-25]",
+    "physical_disk_gap": "[2.396982921190828792e-6 +/- 2.88e-25]",
+    "chiral_gap": "[2.807480757446077515823251e-8 +/- 1.66e-33]"
+  },
+  "factor_vs_original_operator_control": {
+    "seconds": 3.946082233916968,
+    "scope": "Synthetic cached state inferred from best saved dual atmu1e-9; final savedrho used only to cancel identical density terms. Not the unavailable historical cached state, not a Newton solve.",
+    "factor_vs_original_gradient_max": 4.440892098500626e-16,
+    "factor_vs_original_free_gradient_max": 4.440892098500626e-16,
+    "factor_vs_original_density_gradient_max": 4.424693209892438e-16,
+    "lifted_gradient_difference_density_bound": 8.517833377695278e-10,
+    "factor_gradient_max": 5.287598553080884e-07,
+    "direct_gradient_max": 5.287598553076546e-07,
+    "direct_lifted_density_residual_bound": 9.238358774253202,
+    "recovered_dual_relative_error_max": 8.146320627301194e-18
+  },
+  "matched_center_first_longdouble": {
+    "seconds": 0.7501528940629214,
+    "mu": 1e-06,
+    "iteration": 1,
+    "mu_gradient_max": 0.00030491964564984664,
+    "original_mu_gradient_max": 0.00030491964564957174,
+    "gradient_difference_max": 4.193163019395121e-16,
+    "gradient_difference_lift_Bnorm": 1.1440559216563865e-09,
+    "captured_gradient_lift_Bnorm": 3.5872504904330884,
+    "original_gradient_lift_Bnorm": 3.587250490067524,
+    "free_residual_before_correction_max": 0.00023948825543196328,
+    "density_raw_stationarity_Bnorm": 377.8008497602281,
+    "density_after_free_correction_stationarity_Bnorm": 3.587250490067524,
+    "density_correction_Bnorm": 376.9569105840744,
+    "density_expected_Bnorm": 0.10131421024756596,
+    "density_actual_Bnorm": 3.592285256377598,
+    "density_gradient_fresh_difference": 0.0,
+    "cache_x_max_abs": 9.70852528415795e-13,
+    "cache_y_max_abs": 3.822586467739694e-13,
+    "cache_chi_max_abs": 6.070354379178813e-14,
+    "cache_dual_weighted_signed": -1.149574793609232e-10,
+    "cache_dual_weighted_absolute": 1.891996336094713e-10,
+    "cached_slack_identity_max": 4.828087799349512e-20,
+    "cached_chiral_slack_identity_max": 3.2311742677852644e-27,
+    "rho_norm": 368748.18275711057
+  },
+  "matched_center_first_arb": {
+    "seconds": 4.0991833040025085,
+    "point": "Exact dyadic values ofsavedlongdouble z; yy rebuilt with original LD formula due acknowledged saved y field collision.",
+    "original_mu_gradient_max": "[0.0003049196456496088170946489 +/- 9.61e-31]",
+    "original_free_residual_max": "[0.0002394882554318822881769359 +/- 3.12e-29]",
+    "gradient_difference_max": "[3.979611032556659019253850e-16 +/- 3.87e-41]",
+    "gradient_difference_projected_density_bound": "[7.312188624239229365875290e-10 +/- 3.01e-35]",
+    "original_stationarity_projected_density_bound": "[3.587250490260957240091909 +/- 1.90e-25]",
+    "captured_stationarity_projected_density_bound": "[3.587250490433087366584179 +/- 3.73e-25]",
+    "cache_weighted_signed": "[-5.197978090590469259020985e-11 +/- 2.78e-36]",
+    "cache_weighted_absolute_upper": "[1.450027210843932952826780e-10 +/- 2.33e-35]",
+    "minimum_physical_margin": "[3.906837342733598354868433e-84 +/- 1.6e-112]",
+    "chiral_slacks": [
+      "[2.290438412904058046342376e-13 +/- 3.89e-38]",
+      "[2.859993302995349197058661e-13 +/- 8.06e-39]"
+    ]
+  },
+  "saved_full_newton_step_evaluation": {
+    "seconds": 3.1973521090112627,
+    "method": "Read-only evaluation of already computed saved newton_step; no QR, CG or optimization rerun; ordinary polynomial slack update, no radial reoptimization.",
+    "before": {
+      "strict_cached_feasible": true,
+      "stationarity_projected_Bnorm": 3.587250490067524,
+      "mu_gradient_max": 0.00030491964564957174,
+      "upper": 4.276176440877868,
+      "objective": 0.7811192494425541,
+      "gap": 3.4950571914353143,
+      "minimum_original_margin_LD": 3.906837342733598e-84,
+      "original_chiral_norms_LD": [
+        0.00019999942743082895,
+        0.00019999928499390946
+      ],
+      "density_norm": 368748.18275711057
+    },
+    "full_step_cached_polynomial": {
+      "strict_cached_feasible": true,
+      "stationarity_projected_Bnorm": 5.36158023673923e-05,
+      "mu_gradient_max": 4.5028091577546175e-09,
+      "upper": 0.7852060190884407,
+      "objective": 0.7811192494569639,
+      "gap": 0.0040867696314768045,
+      "minimum_original_margin_LD": 3.906837335887622e-84,
+      "original_chiral_norms_LD": [
+        0.00019999942740305058,
+        0.0001999992850073811
+      ],
+      "density_norm": 368748.1827664519
+    },
+    "full_step_fresh_LD_affine": {
+      "strict_cached_feasible": true,
+      "stationarity_projected_Bnorm": 3516.973675640521,
+      "mu_gradient_max": 0.2969127256445578,
+      "upper": 3517.701352893759,
+      "objective": 0.7811192494569639,
+      "gap": 3516.9202336443022,
+      "minimum_original_margin_LD": 3.906837335887622e-84,
+      "original_chiral_norms_LD": [
+        0.00019999942740305058,
+        0.0001999992850073811
+      ],
+      "density_norm": 368748.1827664519
+    },
+    "linear_newton_residual_max": 1.0000834905635575e-08,
+    "linear_newton_residual_projected_Bnorm": 0.00011806270477572915,
+    "saved_step_max": 0.016176837999870842,
+    "saved_decrement": 7.1906078698948216e-12
+  },
+  "saved_full_newton_step_arb_export_verification": {
+    "seconds": 4.009627555962652,
+    "scope": "Already computed full Newton step evaluated via existing original-H Arb support_outer; same float64 export as production; no optimization or new Newton solve.",
+    "outer": {
+      "upper": 0.7852060189863017,
+      "enclosure": "[0.7852060189863015914078265 +/- 3.96e-26]",
+      "disk": 0.05491209155859499,
+      "chiral": 0.6289795155173714,
+      "density_residual": 0.10131441191033523,
+      "tail_support": 0.0,
+      "scope": "exact saved float64 operator and supplied tail maps; angular quadrature error excluded",
+      "primal_feasible": true,
+      "lower": 0.7811192482688103,
+      "minimum_margin_enclosure": "[3.9068373358874549175e-84 +/- 4.55e-104]",
+      "density_norm": 368748.1827664519,
+      "targets": [
+        "[0.007344627250450068727253727 +/- 3.45e-28]",
+        "[-0.0003334179670429091468221507 +/- 2.55e-29]"
+      ],
+      "tail_margin_enclosures": []
+    }
+  }
+}

@@ -1,0 +1,477 @@
+{
+  "energies": [
+    4.000001,
+    4.00000001
+  ],
+  "waves": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      2,
+      2
+    ]
+  ],
+  "f": [
+    [
+      [
+        0.011718747249603962,
+        4.699705719322937e-06
+      ],
+      [
+        3.115334774431706e-18,
+        1.1444086257644036e-21
+      ],
+      [
+        1.0172522228392428e-11,
+        5.086261114551688e-15
+      ],
+      [
+        8.514944148230338e-27,
+        4.257472074412719e-30
+      ],
+      [
+        0.0043945302963259185,
+        1.5869136201061394e-06
+      ],
+      [
+        1.2079869800210934e-18,
+        3.8146954192146783e-22
+      ]
+    ],
+    [
+      [
+        0.011718749972496032,
+        4.699707003846275e-07
+      ],
+      [
+        3.115336049126687e-22,
+        1.1444091567564844e-26
+      ],
+      [
+        1.0172525941696462e-13,
+        5.086262955392423e-18
+      ],
+      [
+        8.514949047289468e-33,
+        4.257474510707395e-37
+      ],
+      [
+        0.004394531240463257,
+        1.586914053252739e-07
+      ],
+      [
+        1.2079874478872525e-22,
+        3.814697189188281e-27
+      ]
+    ]
+  ],
+  "f_enclosures": [
+    [
+      [
+        [
+          [
+            "0x5ffffe85fd0ada8f7d2126afe3eb6969250f6f508b0470e369f866325d0d5e3f9c23b725fa611c7417a1d93fe64f1b6abd0cd2adf58e7a27bb1eba91a7f98e3",
+            -513
+          ],
+          [
+            "0x2744d85b",
+            -541
+          ]
+        ],
+        [
+          [
+            "0x9db22a2bc96691ba521f680322ecd94575ddd320368af9ee3dbaa47eef4d242064e985ca2db1615f3fd461c9c1ad4e084ae69bd916970b2dad48f2dad29c37ad",
+            -529
+          ],
+          [
+            "0x38683ccd",
+            -552
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "0x72ef814a860749408cc3d9a6818f33ade2a5d42a9fc1f29e0fd7ef16963b9615aeffd626f0d9d48cc7dcf615d4e7301a8b60fff52d5235579397e93ef83e78fd",
+            -569
+          ],
+          [
+            "0x159f65ff",
+            -547
+          ]
+        ],
+        [
+          [
+            "0x567815095b4abebb22ddf6449d8ab987b57a4358e3de52ec89150d79595c202983fc1e19674e0cb07b5451bb2b69e32ab312b8417c2f47c35a42a297cf67f",
+            -568
+          ],
+          [
+            "0x2c3831e1",
+            -558
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "0xb2f4f7a219b5970ca6a73748d8c1a3b419c893c6229dc8015e772b57661d00a2b6a4261a85d67471473bdcae74304c55ffdde54718b900c4a2641b7b720eaec5",
+            -548
+          ],
+          [
+            "0x15593809",
+            -548
+          ]
+        ],
+        [
+          [
+            "0xb7407a81577a2c4b73b521461d30428a7dd99aae359d13570021c9bfc54ec6596752c6668e9b707c4169e36d2402201ce49627ea3442629d6805fd23066e71db",
+            -559
+          ],
+          [
+            "0x9929767",
+            -557
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "0x1514fcae02fb4ed095482dd7179a9b2634ae7d4444124fbf328471fabf1f1076c81b01d1cd54b72151ef145f5982793b207b57f656c64c32d32b57349f0effff",
+            -595
+          ],
+          [
+            "0x3785e263",
+            -550
+          ]
+        ],
+        [
+          [
+            "0x2b2d07894a5cd40b22e5b47f26175902dd238a275dc8d5c6db3ca8db490e9721b7f7b0dd0abd86bf7cab4532e261322549d0cc1a641e1015e143e49fbdf",
+            -587
+          ],
+          [
+            "0x31caf29d",
+            -560
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "0x8ffffdf3b64e1a43d0b17342bde0740a807dd0b61d826e45b41887cb7a08a44141a1d94fa1d7d80a7a02757bbe102090fe41082c6df8ecabd27c1d0813f4359f",
+            -519
+          ],
+          [
+            "0x38c31d61",
+            -543
+          ]
+        ],
+        [
+          [
+            "0x353f7bf485bbcb21aaa47ced59773a27d5374cf9fd976e5d2645c9dc0eb053037d5cc494910955453cf2b292520bf98034abb4ec0a0859e4a2787a25170f8feb",
+            -529
+          ],
+          [
+            "0x22a38d6b",
+            -553
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "0xb244753301d0090cee369adf705326732550eeb23a32fe8afe75766d084cf0f738239d8524984b5220ad16f11b0c3fedda0e7804812cb56936da75a129f9bb29",
+            -571
+          ],
+          [
+            "0x20df4ae9",
+            -549
+          ]
+        ],
+        [
+          [
+            "0x1cd2b1adc918ea3e60f4a76c3483932d3c7e1672f69f70f98307047dc8740ab881540a0877c4aee57e717093b9234bb8e65b92c07eba6d411e1636329a7c7",
+            -568
+          ],
+          [
+            "0x1d7acbeb",
+            -559
+          ]
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          [
+            "0x5ffffffc384a49dac45764e6a11d87b7cfede5e578df4c5e2375f53f59a385ca71ad530913eb4e7f17cf7fca9f48011b59b4974c386ec0f84ab02c0564dacff7",
+            -517
+          ],
+          [
+            "0x9e4b61b",
+            -539
+          ]
+        ],
+        [
+          [
+            "0xfc5047fe4128260fb429595277e474ef5705ecddaf373b969ee7d99311f0a3cda60239cd236507c926e98c8955a93711b2c57cc6148d54a048779adec3218ba5",
+            -533
+          ],
+          [
+            "0x1445d12b",
+            -554
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "0xbc4f7d8a120a3a19e470c856b0113bd6721d0b1ac62040c4361b53923ffa8f77e13a311cb77897edf52027f294694af795500cbd5adba696f6df3e10b1bffff9",
+            -583
+          ],
+          [
+            "0x2b3ecc8d",
+            -548
+          ]
+        ],
+        [
+          [
+            "0x1c558e058f7757bf02b6f4433f96fb771823401387783f388b68648d0c37c49ed1431e23c97997bcbaec594993207a4d3a7b89f92488f974bb5f1cde93",
+            -571
+          ],
+          [
+            "0x11b01415",
+            -560
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "0x72884f4e20a8b13341218edfbed2eff231a2875e6f25b12646dfc70016141e6e2aa9b9c00da524b4db49f4195950c85054c16c7a1dbd45a438e3f5ebbb184325",
+            -554
+          ],
+          [
+            "0xaac9c0d",
+            -547
+          ]
+        ],
+        [
+          [
+            "0xbba66539683a0aadda946c4a682cc4b5e04c0593117dd4aa7d325392ed912197032cc83368b2fba53b903cc7b381d1edc485a7ad25d498fe7290cbd1f2ccc5bb",
+            -569
+          ],
+          [
+            "0x3d43ca1d",
+            -563
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "0x586c9e083425a39bfdccd9d5a8b78e2be4f1247bc508e15d267d288f2cc0dad29bb5a498e21ee64143009ec6667714ef41bdfc17e551995c25d209647ffffffb",
+            -617
+          ],
+          [
+            "0x3785e11b",
+            -550
+          ]
+        ],
+        [
+          [
+            "0x2437f55b375608cbe1685da5b099614bf6677152dc1f26801650ec2758485ec36d5506b10384d8d9f334890d948c8b8ecce03543ec0fe0a0732adf3f",
+            -598
+          ],
+          [
+            "0x9f56387",
+            -561
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "0x8ffffffac1d29e878b5d71a0a13dbad745cad4724b8ed551b2c46783907d150e6a8afe27fe12e5884c40b352a1f4e99f746bdf822559e0ba87e8df6e6e841b05",
+            -519
+          ],
+          [
+            "0xe00475b",
+            -541
+          ]
+        ],
+        [
+          [
+            "0xaa64c2e78f28c3e8f833581e24bbaaf903b273f6b1ddb112bc542ad6e3a9116eccfbb9ca212295a7b9ce3ec47d54ba626de27653afbc7a6f0da613a4080cd3c9",
+            -534
+          ],
+          [
+            "0x358979c9",
+            -557
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "0x4904b34ab4b9689cc48469d29e6e56b5fbf0a7b983cfc6a6da4c092487b17adc9df1b9c49b2118d48e2258af8aca4bc37c31c14fba2bd05cea0127b68d863d5",
+            -579
+          ],
+          [
+            "0x41be961",
+            -546
+          ]
+        ],
+        [
+          [
+            "0x971da01da7d1d3fab92516bbfdcfe7d080bc006827d6a682e7821845967ec34f06bb4b6987ddd3ee8f97318866028c468d3d8a86182fdd193ca5ef4d5",
+            -571
+          ],
+          [
+            "0x1795701b",
+            -562
+          ]
+        ]
+      ]
+    ]
+  ],
+  "amplitude_model": {
+    "prescription": "analytic-cardinal",
+    "M": 3,
+    "L": 2,
+    "bits": 512,
+    "coordinate_system": "unsubtracted analytic-cardinal C_flat",
+    "coefficient_count": 22,
+    "physical_samples": 18,
+    "nu0": 0,
+    "nyquist_retained": true,
+    "infinity_equality_imposed": false,
+    "density_limit_imposed": false,
+    "quadrature_order_per_panel": null,
+    "arithmetic": "Arb",
+    "integral_enclosures": true,
+    "authors_implementation_recovered": false,
+    "analytic_function_family_defined": true,
+    "angular_projection": "Authenticated rows where available; otherwise Arb Gauss-Legendre with ellipse remainder",
+    "spectral_quadrature": "Exact Cauchy transform of finite sine density",
+    "physical_evaluation": "One analytic family at positive real energies",
+    "analyticity_status": "One conformal polynomial from all M sine-cardinal density modes",
+    "infinity_row_meaning": "Unsubtracted constant; recorded but no endpoint equality imposed",
+    "angular_order": 64,
+    "source_registry": null,
+    "source_registry_sha256": null,
+    "evaluation_source": "Prepared analytic coefficient enclosures"
+  },
+  "constraints_checked": [
+    "unitarity at supplied physical energy/wave pairs"
+  ],
+  "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/tail_limit_control_input/coefficients.json",
+  "eta": [
+    [
+      0.9999999927871434,
+      1.0,
+      1.0,
+      1.0,
+      0.9999999975311074,
+      1.0
+    ],
+    [
+      0.9999999999278714,
+      1.0,
+      1.0,
+      1.0,
+      0.9999999999753111,
+      1.0
+    ]
+  ],
+  "maximum_eta": 1.0,
+  "unitarity": {
+    "criterion": "Eq.(2.12): 1-|S|^2 = kappa*(2 Im f-kappa*|f|^2) >= 0",
+    "samples_checked": 12,
+    "status": "sampled_passed",
+    "margin_intervals": [
+      [
+        [
+          1.4425713330246869e-08,
+          1.4425713330246872e-08
+        ],
+        [
+          3.595265282249377e-24,
+          3.595265282249379e-24
+        ],
+        [
+          1.5978958555206742e-17,
+          1.5978958555206748e-17
+        ],
+        [
+          1.3375241320868414e-32,
+          1.337524132086842e-32
+        ],
+        [
+          4.937785358933361e-09,
+          4.937785358933362e-09
+        ],
+        [
+          1.1984217607497926e-24,
+          1.198421760749793e-24
+        ]
+      ],
+      [
+        [
+          1.4425718961643921e-10,
+          1.4425718961643927e-10
+        ],
+        [
+          3.59526738414791e-30,
+          3.595267384147911e-30
+        ],
+        [
+          1.5978966266354634e-21,
+          1.5978966266354637e-21
+        ],
+        [
+          1.3375250588321238e-40,
+          1.3375250588321242e-40
+        ],
+        [
+          4.9377872953329353e-11,
+          4.9377872953329366e-11
+        ],
+        [
+          1.1984224613826367e-30,
+          1.198422461382637e-30
+        ]
+      ]
+    ],
+    "minimum_margin": 1.337525058832124e-40,
+    "scope": "Declared sampled pairs; analytic source enclosures included",
+    "continuum_certified": false,
+    "omitted_spins_checked": false,
+    "high_energy_tail_certified": false,
+    "analytic_tail": {
+      "status": "not_applicable"
+    },
+    "high_spin_necessary": {
+      "status": "not_applicable",
+      "violations": []
+    }
+  }
+}

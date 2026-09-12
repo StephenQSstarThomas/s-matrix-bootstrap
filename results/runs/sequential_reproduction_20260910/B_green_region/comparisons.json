@@ -1,0 +1,63 @@
+{
+  "regions": [
+    {
+      "mode": "chiral",
+      "epsilon": 0.002,
+      "feasible_points": 5,
+      "outer_closed": true,
+      "max_support_gap": 93184.34208281686,
+      "direction_coverage": {
+        "unique_normals": 4,
+        "angles_degrees": [
+          0.0,
+          85.98962438721922,
+          180.0,
+          266.99978378896543
+        ],
+        "largest_gap_degrees": 94.01037561278078,
+        "positive_span": true,
+        "domain_half_planes": 1
+      },
+      "computed_min": [
+        0.0,
+        -0.006854261420382254
+      ],
+      "computed_max": [
+        0.10588080580475161,
+        0.0
+      ],
+      "paper_min": [
+        0.0014493069079627669,
+        -0.005435966800058552
+      ],
+      "paper_max": [
+        0.08257301276510262,
+        0.000582030231882398
+      ]
+    }
+  ],
+  "nesting": {
+    "six_chiral_present": false,
+    "contradictions": [],
+    "status": "no_observed_contradiction"
+  },
+  "status": "incomplete",
+  "reference_semantics": "PDF marker centers; finite plotted samples",
+  "reference_points": {
+    "pdf": {
+      "drawing_index": 699,
+      "epsilon": "",
+      "color": "black",
+      "role": "reference_marker",
+      "x": 0.07131334281385134,
+      "y": -0.004754181940087461,
+      "pdf_x": 431.29100036621094,
+      "pdf_y": 313.5449981689453,
+      "pdf_marker_radius": 4.3220062255859375
+    },
+    "formula": {
+      "x": 0.07332139057293466,
+      "y": -0.00488809270486231
+    }
+  }
+}

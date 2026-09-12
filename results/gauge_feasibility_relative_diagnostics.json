@@ -1,0 +1,158 @@
+{
+  "scope": "Two degree cases, N10/F50 and N12/F50, relative four-moment combined L2 tolerance .002; chi .002 combined L2; M64/L10, clipped50currents; nonnegative free f00; no added edge, FF-grid or endpoint refinements.",
+  "source_convention_status": "Explicit alternative unresolved moment convention; no source-code identification claimed.",
+  "analytical_mean_bound": "For epsilon<1 and ||delta||_2<=epsilon, y=(1+delta_0)/(1+delta_-1) lies in [(1-epsilon*sqrt(2-epsilon^2))/(1-epsilon^2),(1+epsilon*sqrt(2-epsilon^2))/(1-epsilon^2)]. Numerically evaluated here, without outward rounding.",
+  "neither_returned_candidate_finite_feasible": true,
+  "conditional_boundary_support_performed": false,
+  "boundary_reason": "The prerequisite relative-moment finite-feasible amplitude was not obtained. No feasibility near f00=.07098 has been established.",
+  "exclusion_caveat": "Negative floating-point phase-I optima and KKT diagnostics are not rigorous infeasibility certificates; large coefficients amplify projection and coordinate errors.",
+  "records": [
+    {
+      "candidate": "results/gauge_feasibility_N10_F50_relative_positive_f00.json",
+      "candidate_sha256": "a7ccd953d4ac651c2bb45aa016856122f7df7e028b0d2295e0c461eceaad1801",
+      "degree": 10,
+      "terminal_status": "Solved",
+      "signed_margin": -0.028833977100889228,
+      "point": [
+        0.2120399900987566,
+        -0.01119891143053648
+      ],
+      "original_finite_audit": {
+        "min_scaled_unitarity_soc_margin": -0.02883397444181666,
+        "minimum_stable_unitarity_determinant": -0.06205488254894349,
+        "selected_chiral_norm": "combined_l2",
+        "selected_chiral_ratio": 1.0288339601803422,
+        "selected_moment_ratio": 1.0288336618259362,
+        "minimum_conditioned_gram_eigenvalue": -0.02883396809001861,
+        "minimum_stable_unconditioned_gram_eigenvalue": -0.028833946472671526,
+        "max_high_energy_FF_relative_excess": 0.058499295769801396,
+        "maximum_equality_absolute_residual": 6.984919309616089e-10,
+        "independent_training_angular_points": 160,
+        "training_quadrature_coefficient_amplified_change": 1.3857033255834702e-09,
+        "training_quadrature_l1_error_envelope": 8.988490657597746e-07,
+        "extended_accumulation_change": 4.812157792799805e-10,
+        "numerical_tolerance": 1e-08,
+        "tolerance_convention": "absolute in exact-equality coordinates and conditioned Gram; dimensionless in normalized SOC, chiral, FESR, squared FF excess",
+        "max_original_cvxpy_constraint_violation_in_solver_coordinates": 0.02883397444181668,
+        "f00_nonnegative_margin": 0.2120399900987566,
+        "passes_with_1e_minus_8_absolute_and_normalized_tolerance": false
+      },
+      "coefficient_norms": {
+        "scattering_linf": 1428474.1796144634,
+        "scattering_l1": 13475546.934014723,
+        "scattering_l2": 3031380.907141842,
+        "form_linf": 1.5489467610314505,
+        "form_l1_by_channel": [
+          3.517812644019372,
+          4.103005592258898
+        ]
+      },
+      "solver_info": {
+        "cost_primal": 0.028833977100889228,
+        "cost_dual": 0.028833976600471316,
+        "res_primal": 2.0208545784273902e-11,
+        "res_dual": 3.440833095773862e-11,
+        "gap_abs": 5.004179119694196e-10,
+        "gap_rel": 5.004179119694196e-10,
+        "res_primal_inf": 4.096532098336153,
+        "res_dual_inf": 0.28232079595664333,
+        "ktratio": 1.6994591634102476e-10
+      },
+      "margin_dual_weight_groups": {
+        "scattering": 0.7287007688455371,
+        "chiral": 0.01655945810504245,
+        "scalar_grams": 0.21215249573862868,
+        "vector_grams": 0.0010454997676195641,
+        "scalar_FF": 0.0406822934027256,
+        "vector_FF": 6.811790382118654e-05,
+        "moments": 0.0007913668150350429
+      },
+      "margin_dual_weight_sum": 1.0000000005784098,
+      "vector_spectral_mean_target_mass_GeV": 0.8218729300336957,
+      "necessary_relative_ball_mean_mass_interval_GeV": [
+        0.8207114457406866,
+        0.823036058078318
+      ],
+      "relative_ball_ratio_factors": [
+        0.9971755644059399,
+        1.0028324356260603
+      ],
+      "mean_mass_interpretation": "sqrt(m_pi^2 M_P1,0/M_P1,-1); a positive spectral-measure mean, not a resonance mass or phase crossing.",
+      "phase_i_candidate_mean_mass_GeV": 0.8218727301560923
+    },
+    {
+      "candidate": "results/gauge_feasibility_N12_F50_relative_positive_f00.json",
+      "candidate_sha256": "50ef5175cb664b5e95455c0fd2b845a8b55b34ffe8d67f8bc834ce80139fc381",
+      "degree": 12,
+      "terminal_status": "AlmostSolved",
+      "signed_margin": -0.01417754177236888,
+      "point": [
+        0.19763433558262297,
+        -0.009503908853749223
+      ],
+      "original_finite_audit": {
+        "min_scaled_unitarity_soc_margin": -0.014177543584755774,
+        "minimum_stable_unitarity_determinant": -0.04436203826416678,
+        "selected_chiral_norm": "combined_l2",
+        "selected_chiral_ratio": 1.0141775392051033,
+        "selected_moment_ratio": 1.014177489124761,
+        "minimum_conditioned_gram_eigenvalue": -0.014177540447009258,
+        "minimum_stable_unconditioned_gram_eigenvalue": -0.014177535546517126,
+        "max_high_energy_FF_relative_excess": 0.028556075703042083,
+        "maximum_equality_absolute_residual": 1.955777406692505e-08,
+        "independent_training_angular_points": 160,
+        "training_quadrature_coefficient_amplified_change": 6.816578666047877e-08,
+        "training_quadrature_l1_error_envelope": 2.633947295393787e-05,
+        "extended_accumulation_change": 9.273978331602079e-09,
+        "numerical_tolerance": 1e-08,
+        "tolerance_convention": "absolute in exact-equality coordinates and conditioned Gram; dimensionless in normalized SOC, chiral, FESR, squared FF excess",
+        "max_original_cvxpy_constraint_violation_in_solver_coordinates": 0.014177543584737995,
+        "f00_nonnegative_margin": 0.19763433558262297,
+        "passes_with_1e_minus_8_absolute_and_normalized_tolerance": false
+      },
+      "coefficient_norms": {
+        "scattering_linf": 35913198.610978566,
+        "scattering_l1": 394881429.5178472,
+        "scattering_l2": 67871664.97859298,
+        "form_linf": 1.5685958791503316,
+        "form_l1_by_channel": [
+          3.556884358483525,
+          4.50686101039645
+        ]
+      },
+      "solver_info": {
+        "cost_primal": 0.01417754177236888,
+        "cost_dual": 0.014177541731987235,
+        "res_primal": 3.0980491667752707e-06,
+        "res_dual": 6.783024182131176e-11,
+        "gap_abs": 4.038164594377669e-11,
+        "gap_rel": 4.038164594377669e-11,
+        "res_primal_inf": 3.8592967712348103,
+        "res_dual_inf": 0.4434378556056214,
+        "ktratio": 1.576769462793363e-11
+      },
+      "margin_dual_weight_groups": {
+        "scattering": 0.8302644652630358,
+        "chiral": 0.009080877060225012,
+        "scalar_grams": 0.12072580621055536,
+        "vector_grams": 0.01633168541136842,
+        "scalar_FF": 0.022881673814518697,
+        "vector_FF": 0.0002703998073458676,
+        "moments": 0.00044507410503480654
+      },
+      "margin_dual_weight_sum": 0.9999999816720839,
+      "vector_spectral_mean_target_mass_GeV": 0.8218729300336957,
+      "necessary_relative_ball_mean_mass_interval_GeV": [
+        0.8207114457406866,
+        0.823036058078318
+      ],
+      "relative_ball_ratio_factors": [
+        0.9971755644059399,
+        1.0028324356260603
+      ],
+      "mean_mass_interpretation": "sqrt(m_pi^2 M_P1,0/M_P1,-1); a positive spectral-measure mean, not a resonance mass or phase crossing.",
+      "phase_i_candidate_mean_mass_GeV": 0.8218708937560166
+    }
+  ],
+  "script_source_utf8": "\"\"\"Analyze the bounded relative-moment phase-I probes, without new solves.\"\"\"\nimport hashlib,json\nfrom pathlib import Path\nimport numpy as np\n\nrecords=[]\nfor degree in [10,12]:\n p=Path(f'results/gauge_feasibility_N{degree}_F50_relative_positive_f00.json')\n d=json.loads(p.read_text());r=d['solution'];cfg=d['config'];b=np.asarray(r['moments']['raw_targets']);epsilon=cfg['moment_tolerance'];mass=cfg['inputs_GeV']['pion_mass_GeV'];n=cfg['actual_gauge_points']\n factors=(1+np.array([-1,1])*epsilon*np.sqrt(2-epsilon**2))/(1-epsilon**2)\n scale=mass*np.sqrt(b[3]/b[2])\n weights=r['numerical_margin_dual_weights']['by_original_constraint_index']\n groups=dict(scattering=weights[0],chiral=weights[2],scalar_grams=sum(weights[3:3+n]),vector_grams=sum(weights[3+n:3+2*n]),scalar_FF=weights[3+2*n],vector_FF=weights[4+2*n],moments=weights[5+2*n])\n records.append(dict(candidate=str(p),candidate_sha256=hashlib.sha256(p.read_bytes()).hexdigest(),\n   degree=degree,terminal_status=r['solver_terminal_status'],signed_margin=r['signed_margin'],point=r['point'],\n   original_finite_audit=r['original_constraint_audit'],coefficient_norms=r['coefficient_norms'],solver_info=r['solver_info'],\n   margin_dual_weight_groups=groups,margin_dual_weight_sum=float(sum(groups.values())),\n   vector_spectral_mean_target_mass_GeV=float(scale),\n   necessary_relative_ball_mean_mass_interval_GeV=(scale*np.sqrt(factors)).tolist(),\n   relative_ball_ratio_factors=factors.tolist(),\n   mean_mass_interpretation='sqrt(m_pi^2 M_P1,0/M_P1,-1); a positive spectral-measure mean, not a resonance mass or phase crossing.',\n   phase_i_candidate_mean_mass_GeV=float(mass*np.sqrt(r['moments']['raw_values'][3]/r['moments']['raw_values'][2]))))\nreport=dict(scope='Two degree cases, N10/F50 and N12/F50, relative four-moment combined L2 tolerance .002; chi .002 combined L2; M64/L10, clipped50currents; nonnegative free f00; no added edge, FF-grid or endpoint refinements.',\n   source_convention_status='Explicit alternative unresolved moment convention; no source-code identification claimed.',\n   analytical_mean_bound='For epsilon<1 and ||delta||_2<=epsilon, y=(1+delta_0)/(1+delta_-1) lies in [(1-epsilon*sqrt(2-epsilon^2))/(1-epsilon^2),(1+epsilon*sqrt(2-epsilon^2))/(1-epsilon^2)]. Numerically evaluated here, without outward rounding.',\n   neither_returned_candidate_finite_feasible=True,conditional_boundary_support_performed=False,\n   boundary_reason='The prerequisite relative-moment finite-feasible amplitude was not obtained. No feasibility near f00=.07098 has been established.',\n   exclusion_caveat='Negative floating-point phase-I optima and KKT diagnostics are not rigorous infeasibility certificates; large coefficients amplify projection and coordinate errors.',\n   records=records,script_source_utf8=Path(__file__).read_text())\nPath('results/gauge_feasibility_relative_diagnostics.json').write_text(json.dumps(report,indent=2)+'\\n')\nprint('mass scale and interval',records[0]['vector_spectral_mean_target_mass_GeV'],records[0]['necessary_relative_ball_mean_mass_interval_GeV'])\n"
+}

@@ -1,0 +1,4 @@
+{
+  "reason": "Workspace core changed during this read-only audit; stop only this audit and rerun against a frozen package. Main CG optimization untouched.",
+  "worker_pid": 3582437
+}

@@ -1,0 +1,23 @@
+\usepackage{xeCJK}
+\setCJKmainfont[AutoFakeBold=1.4,AutoFakeSlant=0.2]{Droid Sans Fallback}
+\setCJKsansfont[AutoFakeBold=1.4,AutoFakeSlant=0.2]{Droid Sans Fallback}
+\setCJKmonofont{Droid Sans Fallback}
+\emergencystretch=3em
+\setlength{\parindent}{0pt}
+\xeCJKDeclareCharClass{Default}{"2013,"00B7}
+\usepackage{newunicodechar}
+\newunicodechar{ℱ}{\ensuremath{\mathcal{F}}}
+\renewcommand{\contentsname}{目录}
+
+\usepackage{xurl}
+
+\usepackage{float}
+\floatplacement{figure}{H}
+\renewcommand{\figurename}{图}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 工作稿 · Watson 固定目标计算进行中}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\setlength{\headheight}{14pt}

@@ -1,0 +1,47 @@
+{
+  "status": "audit_and_delivery_complete; quantitative paper reproduction remains unsuccessful",
+  "mainline_scientific_run_active": false,
+  "PDF": "results/runs/physical_consistency_20260911/PV_mainline_report_final/REPORT_ZH.pdf",
+  "PDF_sha256": "1a0361352682665879605ea42bacf2d83e68407c94a201bab90eea6a6f9e98c4",
+  "PDF_pages": 18,
+  "mainline_audit_sha256": "4ba7d903c94155799bc4e29f208aee1d5548ed08cd3cb2fc9a77b7ff92c487f8",
+  "technical_verification_sha256": "2f66378bd3a5c658b8315e5a1874a542bdd50ba2028b50627c74a88af86de0c5",
+  "report_QA_sha256": "83ed01e597d7b63ddb10d2acd3c858db565655393fd0d28513470c8d03860271",
+  "progress_sha256": "af9bac433a9a1bc56e6a4d7cb623207d042bc46b357cc83c879f92eb5c5024ed",
+  "root_visual_QA_pages": [
+    1,
+    8,
+    9,
+    16
+  ],
+  "typesetter_all_pages_QA": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "root_verified_frozen_science_unchanged": true,
+  "all_scientific_and_historical_failures_preserved": true,
+  "remaining_major_claims": [
+    "quantitatively robust rho and near-elastic behavior",
+    "S0 phase agreement",
+    "fixed-M L stability",
+    "strong Fig8 asymmetry",
+    "full source-identified Fig3–11 closure"
+  ],
+  "paper_false_or_all_original_implementations_impossible_proved": false
+}

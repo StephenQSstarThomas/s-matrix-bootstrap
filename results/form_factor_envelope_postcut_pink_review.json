@@ -1,0 +1,30 @@
+{
+  "candidate": "results/gauge_boundary_N6_F21_pink_FFcuts_round1.json",
+  "candidate_sha256": "463a3418053deff32736874b23f6f65eda2e2095f28a476481662ea2539bb8d0",
+  "reviewed_audit": "results/gauge_boundary_N6_F21_pink_FFcuts_round1_global_audit.json",
+  "reviewed_audit_sha256": "4912698f3d1a249c826c3519012c868a62f9ac7e19cfc40d1575ee2bcac726ec",
+  "auditor_module_sha256": "1f81af4a9c718edca2f0cf88747f81ab0619446e89dfc2f1276f6529a2421fce",
+  "review_scope": "Reuse existing exact root certificate; independently verify candidate hash, exact serialized coefficients, authoritative endpoint metadata and exact binary64 cut identities. No duplicate root isolation or optimizer run.",
+  "channels": {
+    "S0": {
+      "coefficients_and_endpoint_match": true,
+      "global_max_ratio_squared_decimal": [
+        "1.0002200889135449463",
+        "1.0002200889135449464"
+      ],
+      "verified_cut_energies": [
+        156.813746185926
+      ]
+    },
+    "P1": {
+      "coefficients_and_endpoint_match": true,
+      "global_max_ratio_squared_decimal": [
+        "1.0000602241482535115",
+        "1.0000602241482535116"
+      ],
+      "verified_cut_energies": [
+        179.40554928213606
+      ]
+    }
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "scope": "Comparison only; exact first-harmonic formula versus separately generated complete amplitude projection; not a QCD witness",
+  "inputs": {
+    "results/runs/physical_consistency_20260911/threshold_limit_control_evaluate/evaluation.json": "2883fc49f12fa7180a7223fd657c0e3185e4c4fd684baee5a0e88eab107b55a4",
+    "results/runs/physical_consistency_20260911/threshold_limit_control_evaluate/report.json": "3923d2be1d0f9b4af99a39bfef61c0249dd993c5cfa7afc1b466d73cec1e91c5"
+  },
+  "rows": [
+    {
+      "s": 4.000001,
+      "I": 0,
+      "l": 0,
+      "expected_scaled_im": 0.00469970703125,
+      "measured_scaled_im": 0.00469970571899448,
+      "im_relative_error": -2.7922070711117186e-07,
+      "expected_scaled_margin": 0.014425719107104572,
+      "measured_scaled_margin": 0.014425713328230474,
+      "margin_relative_error": -4.0059521855262403e-07
+    },
+    {
+      "s": 4.000001,
+      "I": 0,
+      "l": 2,
+      "expected_scaled_im": 1.1444091796875e-06,
+      "measured_scaled_im": 1.1444086253644957e-06,
+      "im_relative_error": -4.843748321325947e-07,
+      "expected_scaled_margin": 3.5952674716069715e-06,
+      "measured_scaled_margin": 3.595265280741761e-06,
+      "margin_relative_error": -6.093747482172063e-07
+    },
+    {
+      "s": 4.000001,
+      "I": 1,
+      "l": 1,
+      "expected_scaled_im": 5.086263020833333e-06,
+      "measured_scaled_im": 5.086261113485267e-06,
+      "im_relative_error": -3.7499988869704737e-07,
+      "expected_scaled_margin": 1.5978966540475428e-05,
+      "measured_scaled_margin": 1.5978958550739734e-05,
+      "margin_relative_error": -5.000157972112618e-07
+    },
+    {
+      "s": 4.000001,
+      "I": 1,
+      "l": 3,
+      "expected_scaled_im": 4.257474626813616e-09,
+      "measured_scaled_im": 4.257472072329866e-09,
+      "im_relative_error": -5.999997589878348e-07,
+      "expected_scaled_margin": 1.3375251010442602e-08,
+      "measured_scaled_margin": 1.3375241313390161e-08,
+      "margin_relative_error": -7.249996604175024e-07
+    },
+    {
+      "s": 4.000001,
+      "I": 2,
+      "l": 0,
+      "expected_scaled_im": 0.0015869140625,
+      "measured_scaled_im": 0.0015869136199952317,
+      "im_relative_error": -2.7884608166939273e-07,
+      "expected_scaled_margin": 0.0049377873452118885,
+      "measured_scaled_margin": 0.004937785358243168,
+      "margin_relative_error": -4.0240062637586504e-07
+    },
+    {
+      "s": 4.000001,
+      "I": 2,
+      "l": 2,
+      "expected_scaled_im": 3.814697265625e-07,
+      "measured_scaled_im": 3.8146954178816523e-07,
+      "im_relative_error": -4.843748321325947e-07,
+      "expected_scaled_margin": 1.1984224905356572e-06,
+      "measured_scaled_margin": 1.1984217602472538e-06,
+      "margin_relative_error": -6.093747482172063e-07
+    },
+    {
+      "s": 4.00000001,
+      "I": 0,
+      "l": 0,
+      "expected_scaled_im": 0.00469970703125,
+      "measured_scaled_im": 0.004699707018127441,
+      "im_relative_error": -2.7922077983077997e-09,
+      "expected_scaled_margin": 0.014425719107104572,
+      "measured_scaled_margin": 0.014425719049315812,
+      "margin_relative_error": -4.0059534578418265e-09
+    },
+    {
+      "s": 4.00000001,
+      "I": 0,
+      "l": 2,
+      "expected_scaled_im": 1.1444091796875e-06,
+      "measured_scaled_im": 1.1444091741442682e-06,
+      "im_relative_error": -4.84374984566216e-09,
+      "expected_scaled_margin": 3.5952674716069715e-06,
+      "measured_scaled_margin": 3.5952674496983106e-06,
+      "margin_relative_error": -6.0937499490876235e-09
+    },
+    {
+      "s": 4.00000001,
+      "I": 1,
+      "l": 1,
+      "expected_scaled_im": 5.086263020833333e-06,
+      "measured_scaled_im": 5.086263001759847e-06,
+      "im_relative_error": -3.749999977209484e-09,
+      "expected_scaled_margin": 1.5978966540475428e-05,
+      "measured_scaled_margin": 1.5978966460578045e-05,
+      "margin_relative_error": -5.000159508661284e-09
+    },
+    {
+      "s": 4.00000001,
+      "I": 1,
+      "l": 3,
+      "expected_scaled_im": 4.257474626813616e-09,
+      "measured_scaled_im": 4.257474601268768e-09,
+      "im_relative_error": -6.000000052353016e-09,
+      "expected_scaled_margin": 1.3375251010442602e-08,
+      "measured_scaled_margin": 1.3375250913472032e-08,
+      "margin_relative_error": -7.2500000447561774e-09
+    },
+    {
+      "s": 4.00000001,
+      "I": 2,
+      "l": 0,
+      "expected_scaled_im": 0.0015869140625,
+      "measured_scaled_im": 0.0015869140580749511,
+      "im_relative_error": -2.788461572755807e-09,
+      "expected_scaled_margin": 0.0049377873452118885,
+      "measured_scaled_margin": 0.004937787325342195,
+      "margin_relative_error": -4.0240075716013735e-09
+    },
+    {
+      "s": 4.00000001,
+      "I": 2,
+      "l": 2,
+      "expected_scaled_im": 3.814697265625e-07,
+      "measured_scaled_im": 3.81469724714756e-07,
+      "im_relative_error": -4.843750067706765e-09,
+      "expected_scaled_margin": 1.1984224905356572e-06,
+      "measured_scaled_margin": 1.1984224832327703e-06,
+      "margin_relative_error": -6.093749838065321e-09
+    }
+  ]
+}

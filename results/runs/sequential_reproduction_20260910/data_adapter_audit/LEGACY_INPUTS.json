@@ -1,0 +1,70 @@
+[
+  {
+    "directory": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_prototype_reused_chiral_M50_20260907",
+    "coefficients": {
+      "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_prototype_reused_chiral_M50_20260907/coefficients.json",
+      "key": "coefficients",
+      "format": "declared_JSON_C_flat",
+      "coordinates": "unsubtracted sine-cardinal C_flat",
+      "prescription": "finite-sine-cardinal",
+      "sha256": "02cab4015d0ad72abb3dfe0fb1efb7bb646410e2e96dd98d363726b8b44db49c",
+      "legacy_data_only": true,
+      "target_prescription": "analytic-cardinal",
+      "coordinate_transform": "identity",
+      "explicit_legacy_replay": true,
+      "old_feasibility_or_bound_transferred": false,
+      "purpose": "Numerical C only; recompute feasibility and support on the prepared target H"
+    },
+    "candidate": {
+      "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_prototype_reused_chiral_M50_20260907/candidate.npz",
+      "sha256": "3039d52adf08bc2d0c5c50304af49bec1cd3410613ce60be9e9478321bba0163",
+      "input_prescription": "finite-sine-cardinal",
+      "target_prescription": "analytic-cardinal",
+      "scattering_rows": 1500,
+      "identity_source": "legacy C_flat JSON",
+      "old_feasibility_or_bound_transferred": false,
+      "old_values_and_margins_used": false,
+      "purpose": "Arbitrary candidate covectors; fresh target-H residual and support calculation"
+    },
+    "shape": [
+      3876,
+      1500,
+      1500,
+      8
+    ]
+  },
+  {
+    "directory": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_prototype_pure_M50_blas8_20260907",
+    "coefficients": {
+      "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_prototype_pure_M50_blas8_20260907/coefficients.json",
+      "key": "coefficients",
+      "format": "declared_JSON_C_flat",
+      "coordinates": "unsubtracted sine-cardinal C_flat",
+      "prescription": "finite-sine-cardinal",
+      "sha256": "b70e7b1b53f7973f4e6f8880184303e56d170410bdb6d8435ed03eb3a18263be",
+      "legacy_data_only": true,
+      "target_prescription": "analytic-cardinal",
+      "coordinate_transform": "identity",
+      "explicit_legacy_replay": true,
+      "old_feasibility_or_bound_transferred": false,
+      "purpose": "Numerical C only; recompute feasibility and support on the prepared target H"
+    },
+    "candidate": {
+      "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_prototype_pure_M50_blas8_20260907/candidate.npz",
+      "sha256": "a527e15972990edff25dcdf9fdddcef540f56c4aebabbc8b3c875af98e9cb7f0",
+      "input_prescription": "finite-sine-cardinal",
+      "target_prescription": "analytic-cardinal",
+      "scattering_rows": 1500,
+      "identity_source": "legacy C_flat JSON",
+      "old_feasibility_or_bound_transferred": false,
+      "old_values_and_margins_used": false,
+      "purpose": "Arbitrary candidate covectors; fresh target-H residual and support calculation"
+    },
+    "shape": [
+      3876,
+      1500,
+      1500,
+      8
+    ]
+  }
+]

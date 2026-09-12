@@ -1,0 +1,23 @@
+{
+  "checks": [
+    {
+      "run": "tip_S0_certificate",
+      "raw_high_Gram_duals_zero": true,
+      "repaired_high_Gram_duals_zero": true,
+      "strict_negative": true,
+      "upper": -0.8810300567868612,
+      "complete_original_primal": true,
+      "auxiliary_support_optimality": false
+    },
+    {
+      "run": "ref_P1_probe_01",
+      "raw_high_Gram_duals_zero": true,
+      "repaired_high_Gram_duals_zero": true,
+      "strict_negative": true,
+      "upper": -0.5055205235805824,
+      "complete_original_primal": true,
+      "auxiliary_support_optimality": false
+    }
+  ],
+  "inference": "The conditional phase upper bounds do not use high-energy current Gram inequalities; current ImF bounds there follow from FF caps, and high R has zero residual. This does not prove a continuous high-energy completion."
+}

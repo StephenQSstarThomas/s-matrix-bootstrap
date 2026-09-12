@@ -1,0 +1,599 @@
+{
+  "command": "regions",
+  "status": "incomplete",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "regions",
+    "comparison_manifest": null,
+    "region_summary": "results/runs/stage_B_delivery_20260907/regions/regions.json",
+    "primary_waves": false,
+    "profile_runs": [],
+    "profile_kind": "subthreshold",
+    "phase_reference": null,
+    "baseline_profile": null,
+    "selection_reference": null,
+    "support_runs": [
+      "results/runs/sequential_reproduction_20260910/B_origin",
+      "results/runs/sequential_reproduction_20260910/B3_IR_tip_replay",
+      "results/runs/sequential_reproduction_20260910/C1_green_balanced",
+      "results/runs/sequential_reproduction_20260910/E6_IR_lower"
+    ],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/B_green_region",
+    "density_limit": null,
+    "preparation": "results/runs/stage_A_M50_L10_20260906",
+    "prescription": "auto",
+    "source_registry": null,
+    "solver": "barrier",
+    "unitarity_scope": "sampled",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "current_preparation": null,
+    "joint_feasibility": false,
+    "fixed_amplitude": false,
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "free",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": null,
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "chiral_norm": "separate-l2",
+    "chiral_barrier_weight": null,
+    "objective": "projection",
+    "resume_objective": false,
+    "require_center": false,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "fixed_x": null,
+    "ray": false,
+    "seconds": 120.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "2"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Finite model only; separate physical diagnostics; no continuum certificate.",
+  "requested_nodes": 50,
+  "model_signature": {
+    "chiral_norm": "separate-l2",
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "free",
+    "unitarity_scope": "sampled",
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": false,
+    "prescription": "analytic-cardinal",
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/A2_M50_L10",
+    "additional_constraints": null,
+    "sampling_nodes": 50,
+    "scattering_samples": 1500
+  },
+  "regions": [
+    {
+      "mode": "chiral",
+      "epsilon": 0.002,
+      "chiral_norm": "separate-l2",
+      "points": [
+        {
+          "target": [
+            0.0,
+            0.0
+          ],
+          "target_enclosures": [
+            null,
+            null
+          ],
+          "direction": [
+            1.0,
+            0.0
+          ],
+          "lower": -1e-323,
+          "upper": 93184.34208281686,
+          "gap": 93184.34208281687,
+          "pointwise_tolerance_met": false,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/B_origin/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/B_origin/coefficients.json"
+        },
+        {
+          "target": [
+            0.10588080580475161,
+            -0.006854261420382254
+          ],
+          "target_enclosures": [
+            [
+              [
+                "0x3636024c693be533710e772bf3cb",
+                -113
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0xe099b651c36bdcd9c57be006f69d3",
+                -123
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            1.0,
+            0.0
+          ],
+          "lower": 0.10588080580475158,
+          "upper": 0.10592808800420313,
+          "gap": 4.728219945154822e-05,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/B3_IR_tip_replay/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/B3_IR_tip_replay/coefficients.json"
+        },
+        {
+          "target": [
+            0.07332138984903147,
+            -0.004116720289331665
+          ],
+          "target_enclosures": [
+            [
+              [
+                "0x4b14c32dfed440a32d3012653af3",
+                -114
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x21b963604d7d4b71f16b0eafcf467",
+                -121
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            35.054394167217474,
+            500.0
+          ],
+          "lower": 0.5118767559903346,
+          "upper": 0.5124208903362777,
+          "gap": 0.000544134345943137,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/C1_green_balanced/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/C1_green_balanced/coefficients.json"
+        },
+        {
+          "target": [
+            0.07332138984165087,
+            -0.005525090196529315
+          ],
+          "target_enclosures": [
+            [
+              [
+                "0x258a6196ef2f38de54b84a732a1",
+                -109
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x2d42f436730b9cda28f2bcd9d28d",
+                -117
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            -26.205781621341263,
+            -500.0
+          ],
+          "lower": 0.841100767901125,
+          "upper": 0.8416813077631567,
+          "gap": 0.0005805398620317704,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/E6_IR_lower/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/E6_IR_lower/coefficients.json"
+        }
+      ],
+      "published_positive_x": true,
+      "geometry": {
+        "geometry_ready": false,
+        "outer_closed": true,
+        "max_distance_upper": 0.801986339161854,
+        "published_positive_x": true,
+        "inner_vertices": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.10588080580475161,
+            -0.006854261420382254
+          ],
+          [
+            0.07332138984903147,
+            -0.004116720289331665
+          ],
+          [
+            0.07332138984165087,
+            -0.005525090196529315
+          ]
+        ],
+        "inner_vertex_enclosures": [
+          [
+            null,
+            null
+          ],
+          [
+            null,
+            null
+          ],
+          [
+            [
+              [
+                "0x3636024c693be533710e772bf3cb",
+                -113
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0xe099b651c36bdcd9c57be006f69d3",
+                -123
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "0x4b14c32dfed440a32d3012653af3",
+                -114
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x21b963604d7d4b71f16b0eafcf467",
+                -121
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "0x258a6196ef2f38de54b84a732a1",
+                -109
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x2d42f436730b9cda28f2bcd9d28d",
+                -117
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ]
+        ],
+        "inner_mixtures": [
+          {
+            "zero_amplitude": true
+          },
+          {
+            "source_point": 0
+          },
+          {
+            "source_point": 1
+          },
+          {
+            "source_point": 2
+          },
+          {
+            "source_point": 3
+          }
+        ],
+        "metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)",
+        "epsilon": 0.002,
+        "budgets": {
+          "distance": 0.01,
+          "metric_support": 0.0025
+        },
+        "distance_witnesses": [
+          {
+            "endpoints": [
+              2,
+              3
+            ],
+            "alpha": 0.23170832022074817,
+            "distance_upper": 0.1924321473954283
+          },
+          {
+            "endpoints": [
+              4,
+              2
+            ],
+            "alpha": 0.7883771597466104,
+            "distance_upper": 0.13757255767523843
+          },
+          {
+            "endpoints": [
+              3,
+              0
+            ],
+            "alpha": 0.8279582139723476,
+            "distance_upper": 0.47809405080887085
+          },
+          {
+            "endpoints": [
+              0,
+              4
+            ],
+            "alpha": 0.2433851225043301,
+            "distance_upper": 0.801986339161854
+          }
+        ],
+        "next_support": {
+          "action": "add_direction",
+          "direction": [
+            -35.900291607654125,
+            -476.41924072972716
+          ],
+          "gap": 0.0024999999999999996,
+          "normal_units": "unit normal in declared region metric"
+        },
+        "metric_support_gap_upper": 1270902.5477377444,
+        "raw_support_gap_upper": 93184.34208281687,
+        "outer_vertices": [
+          [
+            0.10592808800420313,
+            -0.006401648119885519
+          ],
+          [
+            0.10592808800420313,
+            -0.007235219299135046
+          ],
+          [
+            0.0,
+            0.0010248417806725553
+          ],
+          [
+            0.0,
+            -0.0016833626155263134
+          ]
+        ],
+        "outer_vertex_enclosures": [
+          [
+            [
+              [
+                "0x1b1e1a69b4b365",
+                -56
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0xd1c4eaa85f4bb0f35afe7d11bbe76c8b4395810624dd2f1a9fbe76c8b4395810624dd2f1a9fbe76c8b4395810624dd2f",
+                -391
+              ],
+              [
+                "0x1",
+                -391
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "0x1b1e1a69b4b365",
+                -56
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x3b455ac89d10d4018bc6c94c284189374bc6a7ef9db22d0e5604189374bc6a7ef9db22d0e5604189374bc6a7ef9db22d",
+                -389
+              ],
+              [
+                "0x1",
+                -391
+              ]
+            ]
+          ],
+          [
+            null,
+            [
+              [
+                "0x8653fbdcf5d45a1cac083126e978d4fdf3b645a1cac083126e978d4fdf3b645a1cac083126e978d4fdf3b645a1cac083",
+                -393
+              ],
+              [
+                "0x1",
+                -393
+              ]
+            ]
+          ],
+          [
+            null,
+            [
+              [
+                "-0xdca446c311b753f7ced916872b020c49ba5e353f7ced916872b020c49ba5e353f7ced916872b020c49ba5e353f7ced91",
+                -393
+              ],
+              [
+                "0x1",
+                -393
+              ]
+            ]
+          ]
+        ],
+        "direction_coverage": {
+          "unique_normals": 4,
+          "angles_degrees": [
+            0.0,
+            85.98962438721922,
+            180.0,
+            266.99978378896543
+          ],
+          "largest_gap_degrees": 94.01037561278078,
+          "positive_span": true,
+          "domain_half_planes": 1
+        },
+        "geometry_scope": "Arb bounds; float hull only selects segments. Finite H, excluding quadrature/continuum errors."
+      },
+      "direction_coverage": {
+        "unique_normals": 4,
+        "angles_degrees": [
+          0.0,
+          85.98962438721922,
+          180.0,
+          266.99978378896543
+        ],
+        "largest_gap_degrees": 94.01037561278078,
+        "positive_span": true,
+        "domain_half_planes": 1
+      },
+      "outer_closed": true
+    }
+  ],
+  "rejected": [],
+  "qualified_support_points": 4,
+  "nesting": {
+    "six_chiral_present": false,
+    "contradictions": [],
+    "status": "no_observed_contradiction"
+  },
+  "B2_geometry_ready": false,
+  "B3_geometry_ready": false,
+  "plots_created": true,
+  "completion_claimed": false,
+  "finite_only": true,
+  "comparison_policy": "Same prescription, scope, constraints and input paths.",
+  "elapsed_seconds": 1.7736947310622782,
+  "prescription": "analytic-cardinal",
+  "core_sources": {},
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 120.0,
+  "supervisor_seconds": 2.6213405409362167
+}

@@ -1,0 +1,5 @@
+{
+  "frozen_source": "/tmp/smatrix_E_solver_9gb7hqzj",
+  "change": "QR refresh based on actual Krylov cost; same full constraints",
+  "excludes_unrelated_plot_module": true
+}

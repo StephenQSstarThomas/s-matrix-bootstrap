@@ -1,0 +1,13 @@
+{
+  "scope": "Negative control for audit failure metadata; not a physics solution",
+  "changed": "Only first low scalar current spectrum is replaced by exactly -1",
+  "C_and_ImF_unchanged": true,
+  "source": "results/runs/physical_consistency_20260911/fine_watson_goal_00",
+  "inputs": {
+    "results/runs/physical_consistency_20260911/fine_watson_goal_00/coefficients.json": "e6f45ed1f5c7805b00a9b37c428956fa731a7de9f610bc989a4b13ceef25a7be",
+    "results/runs/physical_consistency_20260911/fine_watson_goal_00/joint.npz": "65ff8adc7f2a7bd245f0f11d177a9b12b2c6b1d3df8582c39ba985c120ab6c55",
+    "results/runs/physical_consistency_20260911/fine_watson_goal_00/objective.npz": "06055bdd032e963291673d3f410d626ac5c799380960055350298b99ff0bb08d",
+    "results/runs/physical_consistency_20260911/fine_watson_goal_00/report.json": "64e95fe07239f1e7702b081759d9c229550605d4d8a0f567587f7f3b0589af91",
+    "results/runs/physical_consistency_20260911/fine_watson_goal_00/current.json": "23d31e6788e9c6764df28a63de7a6aa6d0ac721fa3dfd430be63115effb4cfdb"
+  }
+}

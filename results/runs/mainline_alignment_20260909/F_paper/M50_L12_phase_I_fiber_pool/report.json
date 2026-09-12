@@ -1,0 +1,276 @@
+{
+  "command": "regions",
+  "status": "incomplete",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "regions",
+    "comparison_manifest": null,
+    "region_summary": "results/runs/stage_B_delivery_20260907/regions/regions.json",
+    "primary_waves": false,
+    "profile_runs": [],
+    "profile_kind": "subthreshold",
+    "phase_reference": null,
+    "selection_reference": null,
+    "support_runs": [
+      "results/runs/mainline_alignment_20260909/F_paper/M50_L12_phase_I_fiber_audit"
+    ],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L12_phase_I_fiber_pool",
+    "density_limit": null,
+    "preparation": "results/runs/stage_A_M50_L10_20260906",
+    "prescription": "auto",
+    "solver": "barrier",
+    "unitarity_scope": "strengthened",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "current_preparation": null,
+    "joint_feasibility": false,
+    "density_cone": "soc",
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": null,
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "chiral_norm": "combined-l2",
+    "chiral_barrier_weight": null,
+    "objective": "projection",
+    "resume_objective": false,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "fixed_x": null,
+    "ray": false,
+    "seconds": 60.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "2"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Finite model only; separate physical diagnostics; no continuum certificate.",
+  "requested_nodes": 50,
+  "model_signature": {
+    "chiral_norm": "combined-l2",
+    "M": 50,
+    "L": 12,
+    "density_limit": 377500.0,
+    "infinity": "free",
+    "unitarity_scope": "sampled",
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": false,
+    "prescription": "pv-midpoint",
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_F_mainline_20260909/M50_L12_prepare",
+    "additional_constraints": null,
+    "sampling_nodes": 50,
+    "scattering_samples": 1800
+  },
+  "regions": [
+    {
+      "mode": "chiral",
+      "epsilon": 0.002,
+      "chiral_norm": "combined-l2",
+      "points": [
+        {
+          "target": [
+            0.02118662075189674,
+            -0.0013477242990189927
+          ],
+          "target_enclosures": [
+            [
+              [
+                "0xad8f9067bfb458ac8748478df8ad",
+                -117
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x1614c3f273b06542e5734d0d97e85d",
+                -126
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            1.0,
+            0.0
+          ],
+          "lower": 0.021186620751896732,
+          "upper": 94139.67941570003,
+          "gap": 94139.65822907929,
+          "pointwise_tolerance_met": false,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L12_phase_I_fiber_audit/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M50_L12_phase_I_fiber_audit/coefficients.json"
+        }
+      ],
+      "published_positive_x": true,
+      "geometry": {
+        "geometry_ready": false,
+        "outer_closed": false,
+        "max_distance_upper": null,
+        "published_positive_x": true,
+        "inner_vertices": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.02118662075189674,
+            -0.0013477242990189927
+          ]
+        ],
+        "inner_vertex_enclosures": [
+          [
+            null,
+            null
+          ],
+          [
+            [
+              [
+                "0xad8f9067bfb458ac8748478df8ad",
+                -117
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x1614c3f273b06542e5734d0d97e85d",
+                -126
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ]
+        ],
+        "inner_mixtures": [
+          {
+            "zero_amplitude": true
+          },
+          {
+            "source_point": 0
+          }
+        ],
+        "metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)",
+        "epsilon": 0.002,
+        "budgets": {
+          "distance": 0.01,
+          "metric_support": 0.0025
+        },
+        "distance_witnesses": [],
+        "next_support": {
+          "action": "add_direction",
+          "direction": [
+            1.1593904991781e-14,
+            189.3428374589821
+          ],
+          "gap": 0.0024999999999999996,
+          "normal_units": "unit normal in declared region metric"
+        },
+        "metric_support_gap_upper": 1283931.707970489,
+        "raw_support_gap_upper": 94139.65822907929,
+        "outer_vertices": [],
+        "outer_vertex_enclosures": [],
+        "direction_coverage": {
+          "unique_normals": 2,
+          "angles_degrees": [
+            0.0,
+            180.0
+          ],
+          "largest_gap_degrees": 180.0,
+          "positive_span": false,
+          "domain_half_planes": 1
+        },
+        "geometry_scope": "Arb vertex/mixture bounds; float hull selects segments only. Finite H; no continuum or quadrature certificate."
+      },
+      "direction_coverage": {
+        "unique_normals": 2,
+        "angles_degrees": [
+          0.0,
+          180.0
+        ],
+        "largest_gap_degrees": 180.0,
+        "positive_span": false,
+        "domain_half_planes": 1
+      },
+      "outer_closed": false
+    }
+  ],
+  "rejected": [],
+  "qualified_support_points": 1,
+  "nesting": {
+    "six_chiral_present": false,
+    "contradictions": [],
+    "status": "no_observed_contradiction"
+  },
+  "B2_geometry_ready": false,
+  "B3_geometry_ready": false,
+  "plots_created": true,
+  "completion_claimed": false,
+  "finite_only": true,
+  "comparison_policy": "Same prescription, scope, constraints and input paths.",
+  "elapsed_seconds": 1.6042097948957235,
+  "prescription": "pv-midpoint",
+  "core_sources": {},
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 60.0,
+  "supervisor_seconds": 2.219537961995229
+}

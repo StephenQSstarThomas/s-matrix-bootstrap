@@ -1,0 +1,63 @@
+{
+  "scope": "Static numerical linear algebra at saved full M50/K150 embedded warm start; not a new optimization",
+  "feature_shape": [
+    17286,
+    3875
+  ],
+  "feature_dtype": "float64",
+  "column_norm_range": [
+    36.173170867114464,
+    751814.9572951026
+  ],
+  "raw_slack_range": [
+    2.0536454396246402e-08,
+    0.09917009838664324
+  ],
+  "t_range": [
+    6.170294979358457e-98,
+    1.0
+  ],
+  "submatrices": [
+    {
+      "label": "first_100",
+      "columns": 100,
+      "condition_2": 72835.21522176647,
+      "singular_max": 7.540991160066224,
+      "singular_min": 0.00010353496089914255,
+      "double_gram_eigen_min": 1.071948825091175e-08,
+      "double_gram_eigen_max": 56.8665476761969,
+      "svd_seconds": 0.035516519797965884
+    },
+    {
+      "label": "first_300",
+      "columns": 300,
+      "condition_2": 18739337114.727177,
+      "singular_max": 8.083336784439323,
+      "singular_min": 4.3135660215465453e-10,
+      "double_gram_eigen_min": -4.093113760691943e-15,
+      "double_gram_eigen_max": 65.34033357066993,
+      "svd_seconds": 0.15155035094358027
+    },
+    {
+      "label": "first_500",
+      "columns": 500,
+      "condition_2": 24924978571.109333,
+      "singular_max": 9.067640345348718,
+      "singular_min": 3.6379731759765944e-10,
+      "double_gram_eigen_min": -9.360529921201632e-15,
+      "double_gram_eigen_max": 82.22210143259588,
+      "svd_seconds": 0.28671822301112115
+    },
+    {
+      "label": "spread_500",
+      "columns": 500,
+      "condition_2": 27797472.67801334,
+      "singular_max": 12.970139891754197,
+      "singular_min": 4.6659421314992587e-07,
+      "double_gram_eigen_min": 2.1701500097963048e-13,
+      "double_gram_eigen_max": 168.22452881167362,
+      "svd_seconds": 0.290561790112406
+    }
+  ],
+  "elapsed_seconds": 3.899447296978906
+}

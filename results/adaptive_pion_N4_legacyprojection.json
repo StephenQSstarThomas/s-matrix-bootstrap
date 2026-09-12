@@ -1,0 +1,1024 @@
+{
+  "scope": "Adaptive finite primal problem; not a continuum certificate.",
+  "arguments": {
+    "degree": 4,
+    "energy_points": 64,
+    "waves": 4,
+    "audit_waves": 6,
+    "oracle_points": 513,
+    "final_points": 1031,
+    "angular_points": 80,
+    "angle": 0.0,
+    "rounds": 6,
+    "cuts_per_round": 40,
+    "violation_tolerance": 1e-06,
+    "solver_tolerance": 1e-09,
+    "static_regularization": 1e-10,
+    "cone_scale_floor": 1e-12,
+    "chiral_tolerance": null,
+    "output": "results/adaptive_pion_N4_legacyprojection.json"
+  },
+  "config": {
+    "degree": 4,
+    "energy_points": 64,
+    "waves_per_isospin": 4,
+    "angular_points": 80,
+    "chiral_tolerance": null,
+    "chiral_norm": "combined_l2",
+    "enforce_infinite_energy": true,
+    "fixed_f00": null,
+    "enforce_asymptotic": true,
+    "cone_scale_floor": 1e-12,
+    "preconditioner_scale_floor": 1e-12,
+    "angular_quadrature": "threshold_series_72_and_log_sqrt_crossed_energy",
+    "unitarity_cone": "scaled_rotated_soc"
+  },
+  "python": "3.13.12",
+  "source_sha256": {
+    "src/smatrix_bootstrap/__init__.py": "917f23620fc4ae3e62557bb42621de3ae4238bacbd56e4a3eea10d11b1faab0f",
+    "src/smatrix_bootstrap/amplitudes.py": "e65d143fbb45e59b2f57aa72b8a2dce23543a4b13118eee1b5734d23feafaabc",
+    "src/smatrix_bootstrap/asymptotics.py": "d3cf8c482015d408e6fe45789f398ae9e180d57d01194779e632fffe4b59c7a4",
+    "src/smatrix_bootstrap/coupled_gauge.py": "26cb73f9ea3ccb20499e4c38a59b8dcc228070e0d3b4666a227364210a326393",
+    "src/smatrix_bootstrap/gauge_inputs.py": "3aed562380695d2ce015f6dfd95f0d4084a57e599586017722b815b2daa77883",
+    "src/smatrix_bootstrap/optimization.py": "5310defe60cbd02d67f13c3045965ff9b6f71af7a77b3cdd4ba46f3065b0bd37"
+  },
+  "rounds": [
+    {
+      "iteration": 0,
+      "solution": {
+        "angle": 0.0,
+        "status": "optimal_inaccurate",
+        "objective": 1.0556021763309884,
+        "point": [
+          1.0556021763309882,
+          0.014350860769649178
+        ],
+        "coefficients": [
+          0.0006746202856548574,
+          -0.7065845335490863,
+          1.2713385960833328,
+          -0.3672237192152606,
+          -0.11412796833898897,
+          1.8028055246406998,
+          -0.9101627100761523,
+          1.306817532060311,
+          -0.15311665788245146,
+          5.521379873897155,
+          0.11022522588610029,
+          4.847281820199739,
+          2.6971496041590406,
+          10.269057171805523,
+          -3.583811510736317,
+          -3.9628974693153354,
+          -1.1643719939839454,
+          5.838127907986274,
+          -0.14489040509044857,
+          -4.265958162170265,
+          -6.465049401940596,
+          2.4578614777838803,
+          6.600927221906452,
+          6.3088265053833705,
+          -0.811801989486896,
+          3.025006842225748,
+          0.0031433803064710958,
+          8.292241157938449,
+          4.847264443087433,
+          -8.902519701054954,
+          -9.36416814398854,
+          1.9778989298555876,
+          -3.1949086275082355,
+          8.159150066414798,
+          5.138801575007124
+        ],
+        "elapsed_seconds": 0.8317365249386057,
+        "solver_iterations": 47,
+        "solver_tolerance": 1e-09,
+        "solver_options": {
+          "max_iter": 400,
+          "tol_gap_abs": 1e-09,
+          "tol_gap_rel": 1e-09,
+          "tol_feas": 1e-09,
+          "static_regularization_constant": 1e-10
+        },
+        "number_of_training_samples": 768,
+        "preconditioner_info": {
+          "rows": 1546,
+          "columns": 35,
+          "relative_scale_floor": 1e-12,
+          "numerical_rank": 35,
+          "scaled_floor_directions": 0,
+          "discarded_directions": 0
+        },
+        "preconditioning_condition_number": 46616.967180502295,
+        "amplitude_at_infinity": -5.329070518200751e-15,
+        "solver_info": {
+          "cost_primal": -1.0556021763309884,
+          "cost_dual": -1.0556021761854224,
+          "res_primal": 2.0961064906121624e-09,
+          "res_dual": 1.809025378490227e-09,
+          "gap_abs": 1.455660036953077e-10,
+          "gap_rel": 1.3789854452681445e-10
+        },
+        "max_scaled_cone_violation": 1.9543889573370166e-07,
+        "endpoint_necessary_conditions": {
+          "amplitude_infinity": -3.552713678800501e-15,
+          "s0_leading_imaginary": 1.5735078733314367e-06,
+          "s2_leading_imaginary": 0.4306648957161201,
+          "i0_d_wave_margin": 2.3609961001710107,
+          "i2_d_wave_margin": 0.9556871795343389,
+          "i1_p_wave_margin": 6.868386117717118e-05
+        },
+        "warnings": [
+          "Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information."
+        ],
+        "max_training_unitarity_excess": 1.914690628268545e-12,
+        "chiral_residual_l2": 2.9233347094534152,
+        "chiral_residual_linf": 1.4481349190042543
+      },
+      "oracle_max_unitarity_excess": 0.0032725285419967776,
+      "oracle_worst_s": 16.4338419963008,
+      "oracle_worst_wave": [
+        0,
+        0
+      ],
+      "oracle_violations": 231,
+      "selected_cuts": [
+        [
+          16.4338419963008,
+          0,
+          0
+        ],
+        [
+          134.98800102119415,
+          0,
+          8
+        ],
+        [
+          168.63059276684834,
+          0,
+          10
+        ],
+        [
+          8.86747576979842,
+          2,
+          0
+        ],
+        [
+          6.259823920025236,
+          0,
+          0
+        ],
+        [
+          35.68167844651805,
+          0,
+          2
+        ],
+        [
+          405.2493636435804,
+          0,
+          0
+        ],
+        [
+          21.81960073626464,
+          1,
+          1
+        ],
+        [
+          7.626513594885335,
+          0,
+          2
+        ],
+        [
+          103.89376965212453,
+          0,
+          6
+        ],
+        [
+          7.287124735016939,
+          1,
+          1
+        ],
+        [
+          405.2493636435804,
+          1,
+          9
+        ],
+        [
+          4728.57470302303,
+          0,
+          2
+        ],
+        [
+          274.77644426566815,
+          1,
+          7
+        ],
+        [
+          565.4787148271249,
+          1,
+          11
+        ],
+        [
+          6.202823507714123,
+          2,
+          2
+        ],
+        [
+          16.980818318798182,
+          1,
+          9
+        ]
+      ]
+    },
+    {
+      "iteration": 1,
+      "solution": {
+        "angle": 0.0,
+        "status": "optimal_inaccurate",
+        "objective": 1.0528161659671362,
+        "point": [
+          1.0528161659671362,
+          0.015544854215863328
+        ],
+        "coefficients": [
+          0.0029940214386672353,
+          -0.6547951717882169,
+          1.1870369848519748,
+          -0.3677771279389767,
+          -0.09049493205319757,
+          1.7925181382895856,
+          -0.8780540223926366,
+          1.265894900549954,
+          -0.13415243987884473,
+          5.362227537550621,
+          0.006537546633815779,
+          4.5114062617983315,
+          2.676421599493228,
+          9.345057695225984,
+          -4.334162049468238,
+          -4.654125440818172,
+          -0.9672491184959195,
+          5.521252548210763,
+          0.987004225746487,
+          -2.852049947219891,
+          -5.00286440961643,
+          2.0821927037559242,
+          5.550869195279793,
+          4.653413174851896,
+          -1.0878248939182193,
+          3.0353332537079796,
+          0.5222282084533344,
+          8.105074653949295,
+          4.876254229747058,
+          -7.419232945903504,
+          -8.331055576872906,
+          2.526768439806455,
+          -4.522728340324162,
+          5.808397703946739,
+          3.9480752553665504
+        ],
+        "elapsed_seconds": 0.6893682639347389,
+        "solver_iterations": 39,
+        "solver_tolerance": 1e-09,
+        "solver_options": {
+          "max_iter": 400,
+          "tol_gap_abs": 1e-09,
+          "tol_gap_rel": 1e-09,
+          "tol_feas": 1e-09,
+          "static_regularization_constant": 1e-10
+        },
+        "number_of_training_samples": 785,
+        "preconditioner_info": {
+          "rows": 1546,
+          "columns": 35,
+          "relative_scale_floor": 1e-12,
+          "numerical_rank": 35,
+          "scaled_floor_directions": 0,
+          "discarded_directions": 0
+        },
+        "preconditioning_condition_number": 46616.967180502295,
+        "amplitude_at_infinity": -8.881784197001252e-16,
+        "solver_info": {
+          "cost_primal": -1.0528161659671362,
+          "cost_dual": -1.0528161651966839,
+          "res_primal": 4.691232240707328e-09,
+          "res_dual": 1.1409950831134164e-08,
+          "gap_abs": 7.70452368570318e-10,
+          "gap_rel": 7.318014236857623e-10
+        },
+        "max_scaled_cone_violation": 1.236766067336248e-08,
+        "endpoint_necessary_conditions": {
+          "amplitude_infinity": 2.6645352591003757e-15,
+          "s0_leading_imaginary": 0.04340575689322179,
+          "s2_leading_imaginary": 0.7158887883761622,
+          "i0_d_wave_margin": 0.5688863586902506,
+          "i2_d_wave_margin": 0.2630612082318685,
+          "i1_p_wave_margin": 0.00014345668785868682
+        },
+        "warnings": [
+          "Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information."
+        ],
+        "max_training_unitarity_excess": 1.3704859469498842e-10,
+        "chiral_residual_l2": 2.926877369416103,
+        "chiral_residual_linf": 1.4489351931490124
+      },
+      "oracle_max_unitarity_excess": 0.0018362649391594488,
+      "oracle_worst_s": 35.07489710292251,
+      "oracle_worst_wave": [
+        2,
+        0
+      ],
+      "oracle_violations": 54,
+      "selected_cuts": [
+        [
+          35.07489710292251,
+          2,
+          0
+        ],
+        [
+          16.795181787744063,
+          0,
+          0
+        ],
+        [
+          47.17116704161202,
+          0,
+          2
+        ],
+        [
+          7585.929265048053,
+          0,
+          0
+        ],
+        [
+          8.988847075571446,
+          2,
+          0
+        ],
+        [
+          21.267078473699947,
+          1,
+          1
+        ],
+        [
+          381.49521114278974,
+          0,
+          0
+        ],
+        [
+          7.538625900301774,
+          0,
+          2
+        ],
+        [
+          7.36898988477428,
+          1,
+          1
+        ],
+        [
+          190.42863915501582,
+          0,
+          10
+        ],
+        [
+          6.288796643575417,
+          0,
+          0
+        ],
+        [
+          3871.0253391612887,
+          0,
+          2
+        ],
+        [
+          6.147057073738842,
+          2,
+          2
+        ],
+        [
+          608.8587837010977,
+          1,
+          11
+        ]
+      ]
+    },
+    {
+      "iteration": 2,
+      "solution": {
+        "angle": 0.0,
+        "status": "optimal_inaccurate",
+        "objective": 1.0527553198040767,
+        "point": [
+          1.0527553198040769,
+          0.014650110642654942
+        ],
+        "coefficients": [
+          -0.0015113971776394683,
+          -0.6722821433830353,
+          1.2283587939284404,
+          -0.38026859435019944,
+          -0.0979237753166316,
+          1.8014085861321025,
+          -0.8996421982951528,
+          1.3002651326889205,
+          -0.15151538511369722,
+          5.521334553571102,
+          0.07073573001829223,
+          4.775914823446203,
+          2.7704490187525224,
+          9.659150770154254,
+          -4.461644022006198,
+          -4.707607398778771,
+          -1.0513606559822513,
+          5.667025362911254,
+          0.8968061130175708,
+          -3.0105361690116745,
+          -5.441246194268995,
+          2.1340364337151243,
+          5.8124047808648305,
+          5.022949770818908,
+          -1.1582377008012101,
+          2.9863447158505734,
+          0.4658832469673999,
+          8.278766034776336,
+          4.861201039015667,
+          -7.685087468343589,
+          -8.750687798544869,
+          2.106315170222273,
+          -4.202403246933712,
+          6.637026227868523,
+          4.474422295900883
+        ],
+        "elapsed_seconds": 0.6296672150492668,
+        "solver_iterations": 39,
+        "solver_tolerance": 1e-09,
+        "solver_options": {
+          "max_iter": 400,
+          "tol_gap_abs": 1e-09,
+          "tol_gap_rel": 1e-09,
+          "tol_feas": 1e-09,
+          "static_regularization_constant": 1e-10
+        },
+        "number_of_training_samples": 799,
+        "preconditioner_info": {
+          "rows": 1546,
+          "columns": 35,
+          "relative_scale_floor": 1e-12,
+          "numerical_rank": 35,
+          "scaled_floor_directions": 0,
+          "discarded_directions": 0
+        },
+        "preconditioning_condition_number": 46616.967180502295,
+        "amplitude_at_infinity": 0.0,
+        "solver_info": {
+          "cost_primal": -1.0527553198040769,
+          "cost_dual": -1.0527553203865034,
+          "res_primal": 5.38065656020851e-09,
+          "res_dual": 1.973463122576984e-09,
+          "gap_abs": 5.824265514320359e-10,
+          "gap_rel": 5.532401883663039e-10
+        },
+        "max_scaled_cone_violation": 7.334749829723819e-08,
+        "endpoint_necessary_conditions": {
+          "amplitude_infinity": 2.6645352591003757e-15,
+          "s0_leading_imaginary": 1.2124187676931797e-05,
+          "s2_leading_imaginary": 0.6904328874114611,
+          "i0_d_wave_margin": 1.0649963142665402,
+          "i2_d_wave_margin": 0.4550563713060653,
+          "i1_p_wave_margin": 0.00010520131311579639
+        },
+        "warnings": [
+          "Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information."
+        ],
+        "max_training_unitarity_excess": 2.4487989414012645e-10,
+        "chiral_residual_l2": 2.9200659690823882,
+        "chiral_residual_linf": 1.4464361737521583
+      },
+      "oracle_max_unitarity_excess": 0.0005709779950315852,
+      "oracle_worst_s": 36.30502935939994,
+      "oracle_worst_wave": [
+        2,
+        0
+      ],
+      "oracle_violations": 16,
+      "selected_cuts": [
+        [
+          36.30502935939994,
+          2,
+          0
+        ],
+        [
+          359.7765692454065,
+          0,
+          0
+        ],
+        [
+          8.927768350369746,
+          2,
+          0
+        ],
+        [
+          16.612882620673766,
+          0,
+          0
+        ],
+        [
+          20.999240008519866,
+          1,
+          1
+        ],
+        [
+          44.451661429512576,
+          0,
+          2
+        ],
+        [
+          7.582307653063588,
+          0,
+          2
+        ],
+        [
+          7.327817126110721,
+          1,
+          1
+        ],
+        [
+          182.7117563749687,
+          0,
+          10
+        ],
+        [
+          6.1747879659800065,
+          2,
+          2
+        ],
+        [
+          3227.2959570360485,
+          0,
+          2
+        ]
+      ]
+    },
+    {
+      "iteration": 3,
+      "solution": {
+        "angle": 0.0,
+        "status": "optimal_inaccurate",
+        "objective": 1.052737819575657,
+        "point": [
+          1.0527378195756565,
+          0.015020956968657363
+        ],
+        "coefficients": [
+          -0.000767873582218592,
+          -0.6733015887280815,
+          1.2266434486912974,
+          -0.3769123209238015,
+          -0.0994759314114061,
+          1.7997413487532066,
+          -0.8969214944104771,
+          1.297142869571801,
+          -0.14981974796889716,
+          5.497229953053015,
+          0.058056563198884185,
+          4.731936943007515,
+          2.7331659949536466,
+          9.650840593340469,
+          -4.465961917269549,
+          -4.6909019142914,
+          -1.0852645036537716,
+          5.670572074177169,
+          0.8332131156641238,
+          -2.9311068842987127,
+          -5.295971778941527,
+          2.1348657418665447,
+          5.745796836485226,
+          5.01363560676422,
+          -1.0708063380845985,
+          3.034308447039287,
+          0.4969455286925006,
+          8.34179860223337,
+          4.908718709096226,
+          -7.704750348772507,
+          -8.613231923997885,
+          2.273290428498552,
+          -4.316828525527839,
+          6.278498578324119,
+          4.242765174980652
+        ],
+        "elapsed_seconds": 0.7941391989588737,
+        "solver_iterations": 45,
+        "solver_tolerance": 1e-09,
+        "solver_options": {
+          "max_iter": 400,
+          "tol_gap_abs": 1e-09,
+          "tol_gap_rel": 1e-09,
+          "tol_feas": 1e-09,
+          "static_regularization_constant": 1e-10
+        },
+        "number_of_training_samples": 810,
+        "preconditioner_info": {
+          "rows": 1546,
+          "columns": 35,
+          "relative_scale_floor": 1e-12,
+          "numerical_rank": 35,
+          "scaled_floor_directions": 0,
+          "discarded_directions": 0
+        },
+        "preconditioning_condition_number": 46616.967180502295,
+        "amplitude_at_infinity": 1.0658141036401503e-14,
+        "solver_info": {
+          "cost_primal": -1.052737819575657,
+          "cost_dual": -1.0527378182718736,
+          "res_primal": 3.207084798665272e-08,
+          "res_dual": 1.791710751641522e-08,
+          "gap_abs": 1.303783303541195e-09,
+          "gap_rel": 1.2384691429452265e-09
+        },
+        "max_scaled_cone_violation": 2.411229615972843e-08,
+        "endpoint_necessary_conditions": {
+          "amplitude_infinity": 1.1546319456101628e-14,
+          "s0_leading_imaginary": 2.5361873923657186e-05,
+          "s2_leading_imaginary": 0.6954632594156891,
+          "i0_d_wave_margin": 0.9836124222704654,
+          "i2_d_wave_margin": 0.42289458195074325,
+          "i1_p_wave_margin": 0.000164194104950513
+        },
+        "warnings": [
+          "Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information."
+        ],
+        "max_training_unitarity_excess": 0.0,
+        "chiral_residual_l2": 2.9230117400898568,
+        "chiral_residual_linf": 1.4475644357302386
+      },
+      "oracle_max_unitarity_excess": 2.1056732789848098e-05,
+      "oracle_worst_s": 35.68167844651805,
+      "oracle_worst_wave": [
+        2,
+        0
+      ],
+      "oracle_violations": 3,
+      "selected_cuts": [
+        [
+          35.68167844651805,
+          2,
+          0
+        ],
+        [
+          10099.168072050774,
+          0,
+          0
+        ],
+        [
+          7.410649977141225,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "iteration": 4,
+      "solution": {
+        "angle": 0.0,
+        "status": "optimal_inaccurate",
+        "objective": 1.052737789925968,
+        "point": [
+          1.0527377899259673,
+          0.01453762844444939
+        ],
+        "coefficients": [
+          -0.0019518750854994687,
+          -0.6757323030496487,
+          1.233598043976767,
+          -0.37863194535564154,
+          -0.10089353116245714,
+          1.80343301304484,
+          -0.9024325763642467,
+          1.3015765474957064,
+          -0.15156641733378737,
+          5.536158132453491,
+          0.06557769416288327,
+          4.773287646199604,
+          2.753596851802214,
+          9.724231967316747,
+          -4.449230970710109,
+          -4.67519483261209,
+          -1.0834924091737594,
+          5.707707118029055,
+          0.8250617428207208,
+          -3.0308388123661176,
+          -5.442311442066844,
+          2.154607141663223,
+          5.81921605225193,
+          5.067013811626011,
+          -1.1194277515716735,
+          2.986967341018693,
+          0.35604342456119775,
+          8.273985482745436,
+          4.825942614975333,
+          -7.848823940958005,
+          -8.62737068003519,
+          2.019061014586996,
+          -3.886248629147466,
+          6.586301499551065,
+          4.367283672350699
+        ],
+        "elapsed_seconds": 0.7351274780230597,
+        "solver_iterations": 41,
+        "solver_tolerance": 1e-09,
+        "solver_options": {
+          "max_iter": 400,
+          "tol_gap_abs": 1e-09,
+          "tol_gap_rel": 1e-09,
+          "tol_feas": 1e-09,
+          "static_regularization_constant": 1e-10
+        },
+        "number_of_training_samples": 813,
+        "preconditioner_info": {
+          "rows": 1546,
+          "columns": 35,
+          "relative_scale_floor": 1e-12,
+          "numerical_rank": 35,
+          "scaled_floor_directions": 0,
+          "discarded_directions": 0
+        },
+        "preconditioning_condition_number": 46616.967180502295,
+        "amplitude_at_infinity": -8.881784197001252e-16,
+        "solver_info": {
+          "cost_primal": -1.0527377899259676,
+          "cost_dual": -1.0527377899099513,
+          "res_primal": 5.923840711910459e-09,
+          "res_dual": 1.2983385987757357e-08,
+          "gap_abs": 1.6016299397847433e-11,
+          "gap_rel": 1.5213949334161768e-11
+        },
+        "max_scaled_cone_violation": 7.22962223420609e-08,
+        "endpoint_necessary_conditions": {
+          "amplitude_infinity": -6.217248937900877e-15,
+          "s0_leading_imaginary": 2.958839914413147e-06,
+          "s2_leading_imaginary": 0.7127868669882247,
+          "i0_d_wave_margin": 1.0436770487004867,
+          "i2_d_wave_margin": 0.4484982825879675,
+          "i1_p_wave_margin": 1.4605474230475202e-05
+        },
+        "warnings": [
+          "Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information."
+        ],
+        "max_training_unitarity_excess": 7.113887257048646e-11,
+        "chiral_residual_l2": 2.9193273713519066,
+        "chiral_residual_linf": 1.4461499693026298,
+        "validation": {
+          "energy_points": 1031,
+          "angular_points": 160,
+          "waves_per_isospin": 8,
+          "max_unitarity_excess": 0.00025649820681694635,
+          "worst_s": 260.7687421097617,
+          "worst_wave": [
+            0,
+            14
+          ],
+          "max_excess_below_1p2_GeV": 4.2009728673741975e-05,
+          "violations_above_1e_minus_6": 148,
+          "max_training_partial_wave_quadrature_change": 4.659208225848756e-14,
+          "support_dominance_deficit": 0.0
+        }
+      },
+      "oracle_max_unitarity_excess": 6.564226557870256e-07,
+      "oracle_worst_s": 14.957191651739699,
+      "oracle_worst_wave": [
+        1,
+        9
+      ],
+      "oracle_violations": 0,
+      "selected_cuts": []
+    }
+  ],
+  "all_added_samples": [
+    [
+      6.202823507714123,
+      2,
+      2
+    ],
+    [
+      6.259823920025236,
+      0,
+      0
+    ],
+    [
+      7.287124735016939,
+      1,
+      1
+    ],
+    [
+      7.626513594885335,
+      0,
+      2
+    ],
+    [
+      8.86747576979842,
+      2,
+      0
+    ],
+    [
+      16.4338419963008,
+      0,
+      0
+    ],
+    [
+      16.980818318798182,
+      1,
+      9
+    ],
+    [
+      21.81960073626464,
+      1,
+      1
+    ],
+    [
+      35.68167844651805,
+      0,
+      2
+    ],
+    [
+      103.89376965212453,
+      0,
+      6
+    ],
+    [
+      134.98800102119415,
+      0,
+      8
+    ],
+    [
+      168.63059276684834,
+      0,
+      10
+    ],
+    [
+      274.77644426566815,
+      1,
+      7
+    ],
+    [
+      405.2493636435804,
+      0,
+      0
+    ],
+    [
+      405.2493636435804,
+      1,
+      9
+    ],
+    [
+      565.4787148271249,
+      1,
+      11
+    ],
+    [
+      4728.57470302303,
+      0,
+      2
+    ],
+    [
+      6.147057073738842,
+      2,
+      2
+    ],
+    [
+      6.288796643575417,
+      0,
+      0
+    ],
+    [
+      7.36898988477428,
+      1,
+      1
+    ],
+    [
+      7.538625900301774,
+      0,
+      2
+    ],
+    [
+      8.988847075571446,
+      2,
+      0
+    ],
+    [
+      16.795181787744063,
+      0,
+      0
+    ],
+    [
+      21.267078473699947,
+      1,
+      1
+    ],
+    [
+      35.07489710292251,
+      2,
+      0
+    ],
+    [
+      47.17116704161202,
+      0,
+      2
+    ],
+    [
+      190.42863915501582,
+      0,
+      10
+    ],
+    [
+      381.49521114278974,
+      0,
+      0
+    ],
+    [
+      608.8587837010977,
+      1,
+      11
+    ],
+    [
+      3871.0253391612887,
+      0,
+      2
+    ],
+    [
+      7585.929265048053,
+      0,
+      0
+    ],
+    [
+      6.1747879659800065,
+      2,
+      2
+    ],
+    [
+      7.327817126110721,
+      1,
+      1
+    ],
+    [
+      7.582307653063588,
+      0,
+      2
+    ],
+    [
+      8.927768350369746,
+      2,
+      0
+    ],
+    [
+      16.612882620673766,
+      0,
+      0
+    ],
+    [
+      20.999240008519866,
+      1,
+      1
+    ],
+    [
+      36.30502935939994,
+      2,
+      0
+    ],
+    [
+      44.451661429512576,
+      0,
+      2
+    ],
+    [
+      182.7117563749687,
+      0,
+      10
+    ],
+    [
+      359.7765692454065,
+      0,
+      0
+    ],
+    [
+      3227.2959570360485,
+      0,
+      2
+    ],
+    [
+      7.410649977141225,
+      1,
+      1
+    ],
+    [
+      35.68167844651805,
+      2,
+      0
+    ],
+    [
+      10099.168072050774,
+      0,
+      0
+    ]
+  ],
+  "stopping_reason": "oracle_tolerance_met"
+}

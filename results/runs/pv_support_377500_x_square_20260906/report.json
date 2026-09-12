@@ -1,0 +1,25 @@
+{
+  "status": "inconclusive",
+  "core_sources": {
+    "__init__.py": "e86fdb5ae317a9b5a4f8fb0ef02a378b4bdba281c6915ca4009ce49b05cfc387",
+    "analysis.py": "f68086145d61450d25362a9c5166d60338c8d114f207009db25ca0ccd62e7820",
+    "imaginary.py": "01241b411accdd983238079ba7b6768ea9a9ed4887416056a8d8fa37669d7046",
+    "io.py": "9eacffdc963136388fc0c537b313ca5e68db17551f47242719ea8a5987da27c8",
+    "kernels.py": "19632abe1c455db13026e61c08c2ddc7cf3e8a62a89684a0a8e2f227b220df31",
+    "linear.py": "1110f814555890b6366ead243f83cfd73e3557f3eaa177f54599d72d2e859f13",
+    "model.py": "1d0792beeaa00bc48a2ff9cdace3f742ab7c311050abe4b22d4cd9ad4bb04b18",
+    "operators.py": "85ced18b95a8a71dd93bdc0a34edc9fa58570872a97a1c35b501d304c2bfca4f",
+    "quotient.py": "36267bd59d4ff7a4111b69a9be9e189eaa74152596fdd62fabe132f225521cdc",
+    "run.py": "f086a9b1c866e108cb59722909cbee965f75553e04128ff1f363f386f7dc9533"
+  },
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": -15,
+  "timeout": false,
+  "cap_seconds": 1500.0,
+  "supervisor_seconds": 566.610259226989,
+  "passed": false,
+  "remaining_rank": null,
+  "interruption_reason": "Stopped by user request on2026-09-06: write explanatory document, then wait for explicit approval before resuming calculations.",
+  "termination_classification": "user_requested_stop; not a solver infeasibility or optimality result"
+}

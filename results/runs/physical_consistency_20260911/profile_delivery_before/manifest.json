@@ -1,0 +1,14 @@
+[
+  {
+    "path": "src/smatrix_bootstrap/__init__.py",
+    "sha256": "453f182db710c6bf96dc18ffa46ce0ae8d6b8a4ce3e8e7983d0d2cb50f860eec"
+  },
+  {
+    "path": "src/smatrix_bootstrap/spectra.py",
+    "sha256": "985ef9346ac8b3fef2c3af3813d1a00cfc81a68a85eaab972640da59c6687fcf"
+  },
+  {
+    "path": "tests/test_kernels.py",
+    "sha256": "08c116a23a5f15b16346a203a5ae0843737fc33a3753bfdebf0e5c9cf3ec6917"
+  }
+]

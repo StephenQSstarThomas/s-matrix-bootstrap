@@ -1,0 +1,7 @@
+Typesetting only. No active build.py.
+Working directory: /home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/final_report
+Environment: {"OPENBLAS_NUM_THREADS": "1", "OMP_NUM_THREADS": "1", "MKL_NUM_THREADS": "1", "RAYON_NUM_THREADS": "1"}
+Priority: nice19.
+
+/tmp/he_report_pandoc/pandoc PLAN_ast.json --from json --standalone --to latex --toc-depth=2 --shift-heading-level-by=-1 --include-in-header PLAN_header.tex -V 'mainfont=DejaVu Serif' -V 'sansfont=DejaVu Sans' -V 'monofont=DejaVu Sans Mono' -V papersize=a4 -V fontsize=10pt -V geometry:margin=18mm -V colorlinks=true -o PLAN_ZH.tex
+/home/shiqiu/.local/bin/tectonic --keep-logs --keep-intermediates --reruns 2 PLAN_ZH.tex

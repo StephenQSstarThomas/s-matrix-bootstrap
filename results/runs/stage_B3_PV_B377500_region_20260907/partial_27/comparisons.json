@@ -1,0 +1,255 @@
+{
+  "regions": [
+    {
+      "mode": "chiral",
+      "epsilon": 0.006,
+      "feasible_points": 13,
+      "outer_closed": true,
+      "max_support_gap": 512907.2820747515,
+      "direction_coverage": {
+        "unique_normals": 7,
+        "angles_degrees": [
+          0.0,
+          86.18592516570965,
+          88.28108928465326,
+          180.0,
+          266.18592516570965,
+          267.2944884367803,
+          267.3672342284106
+        ],
+        "largest_gap_degrees": 92.63276577158939,
+        "positive_span": true,
+        "domain_half_planes": 1
+      },
+      "computed_min": [
+        0.0,
+        -0.011757752421207147
+      ],
+      "computed_max": [
+        0.1825201798903248,
+        0.0017944251844982577
+      ],
+      "paper_min": [
+        0.002744424854487674,
+        -0.010621989283668578
+      ],
+      "paper_max": [
+        0.1618803574738662,
+        0.001759011304530197
+      ]
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.004,
+      "feasible_points": 13,
+      "outer_closed": true,
+      "max_support_gap": 894897.9857175685,
+      "direction_coverage": {
+        "unique_normals": 8,
+        "angles_degrees": [
+          0.0,
+          85.5199828492353,
+          86.18592516570965,
+          88.3062847230176,
+          180.0,
+          266.18592516570965,
+          267.12974275864747,
+          267.15664220387254
+        ],
+        "largest_gap_degrees": 92.84335779612748,
+        "positive_span": true,
+        "domain_half_planes": 1
+      },
+      "computed_min": [
+        0.0,
+        -0.009526834695232142
+      ],
+      "computed_max": [
+        0.14749075580901577,
+        0.0012756316486932295
+      ],
+      "paper_min": [
+        0.0021652405225254636,
+        -0.008271992511563542
+      ],
+      "paper_max": [
+        0.1255951855637415,
+        0.0011780013237101834
+      ]
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.002,
+      "feasible_points": 8,
+      "outer_closed": true,
+      "max_support_gap": 1502291.6013801491,
+      "direction_coverage": {
+        "unique_normals": 7,
+        "angles_degrees": [
+          0.0,
+          85.76190831703157,
+          86.18592516570965,
+          180.0,
+          266.18592516570965,
+          266.90605929979927,
+          266.92503360039365
+        ],
+        "largest_gap_degrees": 93.81407483429035,
+        "positive_span": true,
+        "domain_half_planes": 1
+      },
+      "computed_min": [
+        0.0,
+        -0.006854817981383333
+      ],
+      "computed_max": [
+        0.10588509849925654,
+        0.0
+      ],
+      "paper_min": [
+        0.0014493069079627669,
+        -0.005435966800058552
+      ],
+      "paper_max": [
+        0.08257301276510262,
+        0.000582030231882398
+      ]
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.001,
+      "feasible_points": 8,
+      "outer_closed": true,
+      "max_support_gap": 7040851.115361325,
+      "direction_coverage": {
+        "unique_normals": 7,
+        "angles_degrees": [
+          0.0,
+          85.9011246586871,
+          86.18592516570965,
+          180.0,
+          266.18592516570965,
+          266.7361540166088,
+          266.7491333225989
+        ],
+        "largest_gap_degrees": 93.81407483429035,
+        "positive_span": true,
+        "domain_half_planes": 1
+      },
+      "computed_min": [
+        0.0,
+        -0.005216993976238207
+      ],
+      "computed_max": [
+        0.08027466037399904,
+        0.0
+      ],
+      "paper_min": [
+        0.0010146743880986356,
+        -0.003599037138713174
+      ],
+      "paper_max": [
+        0.054782094917098303,
+        0.00027704049979893454
+      ]
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.0006,
+      "feasible_points": 8,
+      "outer_closed": true,
+      "max_support_gap": 4700420.549948629,
+      "direction_coverage": {
+        "unique_normals": 7,
+        "angles_degrees": [
+          0.0,
+          85.96753359654605,
+          86.18592516570965,
+          180.0,
+          266.18592516570965,
+          266.62385680615847,
+          266.6626841326464
+        ],
+        "largest_gap_degrees": 93.81407483429035,
+        "positive_span": true,
+        "domain_half_planes": 1
+      },
+      "computed_min": [
+        0.0,
+        -0.004450210014175769
+      ],
+      "computed_max": [
+        0.06827327440306558,
+        0.0
+      ],
+      "paper_min": [
+        0.0006831401843227223,
+        -0.002726016144914012
+      ],
+      "paper_max": [
+        0.04100124573777742,
+        0.00016296558922422106
+      ]
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.0002,
+      "feasible_points": 8,
+      "outer_closed": true,
+      "max_support_gap": 1.3234075558122933,
+      "direction_coverage": {
+        "unique_normals": 5,
+        "angles_degrees": [
+          0.0,
+          86.18592516570965,
+          180.0,
+          266.18592516570965,
+          266.5083028532604
+        ],
+        "largest_gap_degrees": 93.81407483429035,
+        "positive_span": true,
+        "domain_half_planes": 1
+      },
+      "computed_min": [
+        0.0,
+        -0.0035686733478122244
+      ],
+      "computed_max": [
+        0.054467489459640896,
+        0.0
+      ],
+      "paper_min": [
+        0.00037345455146233766,
+        -0.0014869761174045664
+      ],
+      "paper_max": [
+        0.022362576668828744,
+        4.3972272098490995e-05
+      ]
+    }
+  ],
+  "nesting": {
+    "six_chiral_present": true,
+    "contradictions": [],
+    "status": "no_observed_contradiction"
+  },
+  "status": "incomplete",
+  "reference_semantics": "PDF marker centers; finite plotted samples",
+  "reference_points": {
+    "pdf": {
+      "drawing_index": 699,
+      "epsilon": "",
+      "color": "black",
+      "role": "reference_marker",
+      "x": 0.07131334281385134,
+      "y": -0.004754181940087461,
+      "pdf_x": 431.29100036621094,
+      "pdf_y": 313.5449981689453,
+      "pdf_marker_radius": 4.3220062255859375
+    },
+    "formula": {
+      "x": 0.07332139057293466,
+      "y": -0.00488809270486231
+    }
+  }
+}

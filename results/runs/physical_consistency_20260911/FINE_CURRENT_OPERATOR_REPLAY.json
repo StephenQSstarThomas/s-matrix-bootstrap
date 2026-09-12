@@ -1,0 +1,62 @@
+{
+  "scope": "Read-only comparison of current operators in the 3123 and 3582 disk models",
+  "checks": {
+    "current_data.npz": {
+      "same_keys": true,
+      "array_identity": {
+        "gram_constant": true,
+        "ff_cap_constant": true,
+        "hilbert_kernel": true,
+        "nodes": true,
+        "k_squared": true,
+        "k": true,
+        "native_scattering_indices": true,
+        "high_energy_indices": true,
+        "moment_targets_raw": true,
+        "moment_errors_raw": true,
+        "form_factors_at_zero": true,
+        "ff_caps_squared": true
+      }
+    },
+    "gram_linear.npz": {
+      "same_keys": true,
+      "array_identity": {
+        "indices": true,
+        "indptr": true,
+        "format": true,
+        "shape": true,
+        "data": true
+      }
+    },
+    "moment_linear.npz": {
+      "same_keys": true,
+      "array_identity": {
+        "indices": true,
+        "indptr": true,
+        "format": true,
+        "shape": true,
+        "data": true
+      }
+    },
+    "ff_cap_linear.npz": {
+      "same_keys": true,
+      "array_identity": {
+        "indices": true,
+        "indptr": true,
+        "format": true,
+        "shape": true,
+        "data": true
+      }
+    }
+  },
+  "inputs": {
+    "results/runs/physical_consistency_20260911/interlaced_current/current_data.npz": "ff8d5809c68515899780eb4793c4d2bb42dbf95d62fdb805d3b60044d071eac9",
+    "results/runs/physical_consistency_20260911/fine_current/current_data.npz": "ff8d5809c68515899780eb4793c4d2bb42dbf95d62fdb805d3b60044d071eac9",
+    "results/runs/physical_consistency_20260911/interlaced_current/gram_linear.npz": "89fb3448d57581621c1c4e4f82f19f219096d4bec8e0a4169241b9ba6ffece0f",
+    "results/runs/physical_consistency_20260911/fine_current/gram_linear.npz": "89fb3448d57581621c1c4e4f82f19f219096d4bec8e0a4169241b9ba6ffece0f",
+    "results/runs/physical_consistency_20260911/interlaced_current/moment_linear.npz": "04e022b5aed199efc485438b3fb1b52000d9a26f14ef3c4b942383391cbaa0a4",
+    "results/runs/physical_consistency_20260911/fine_current/moment_linear.npz": "04e022b5aed199efc485438b3fb1b52000d9a26f14ef3c4b942383391cbaa0a4",
+    "results/runs/physical_consistency_20260911/interlaced_current/ff_cap_linear.npz": "79b38a0cda214c9b0a4aa6645e1271556cef9f13cc1113a9bc49bd42480a2920",
+    "results/runs/physical_consistency_20260911/fine_current/ff_cap_linear.npz": "79b38a0cda214c9b0a4aa6645e1271556cef9f13cc1113a9bc49bd42480a2920"
+  }
+}

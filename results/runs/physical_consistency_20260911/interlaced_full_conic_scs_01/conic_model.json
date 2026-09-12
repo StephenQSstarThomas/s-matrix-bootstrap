@@ -1,0 +1,60 @@
+{
+  "shape": [
+    28268,
+    7846
+  ],
+  "nonzeros": 47195253,
+  "blocks": {
+    "scattering": [
+      0,
+      12492
+    ],
+    "chiral_0": [
+      12492,
+      12497
+    ],
+    "chiral_1": [
+      12497,
+      12502
+    ],
+    "density_squares": [
+      12502,
+      23827
+    ],
+    "density_norm": [
+      23827,
+      27603
+    ],
+    "gram": [
+      27603,
+      28203
+    ],
+    "ff": [
+      28203,
+      28245
+    ],
+    "moment": [
+      28245,
+      28253
+    ],
+    "asymptotic": [
+      28253,
+      28268
+    ]
+  },
+  "original_variables": 4076,
+  "active_joint_variables": 4076,
+  "auxiliary_density_variables": 3775,
+  "fixed_endpoint_coordinates": [
+    100,
+    3925,
+    3924,
+    3975,
+    3974
+  ],
+  "density_column_scale": 48160.1373654099,
+  "all_amplitude_directions_retained": true,
+  "eliminated_high_spectra": false,
+  "all_current_Gram_blocks_retained": true,
+  "scope": "Algebraically equivalent cones; assembled floating coefficients still require original and analytic audits"
+}

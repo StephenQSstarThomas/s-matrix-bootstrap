@@ -1,0 +1,1190 @@
+{
+  "schema": "smatrix-region-scan-plan/2",
+  "created": "2026-09-07",
+  "status": "planned_not_executed",
+  "purpose": "Declared sampled finite prototype for the paper Fig.3/4 evidence chain; no optimization is executed by this manifest.",
+  "execution": {
+    "cwd": "/home/shiqiu/s-matrix-bootstrap",
+    "source_snapshot": null,
+    "source_snapshot_owner": "root",
+    "environment_overlay": {
+      "SMATRIX_WORKSPACE": "/home/shiqiu/s-matrix-bootstrap",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "/tmp/collocation_arb:<ROOT_FROZEN_SOURCE_PACKAGE>",
+      "OPENBLAS_NUM_THREADS": "8",
+      "OMP_NUM_THREADS": "8",
+      "MKL_NUM_THREADS": "8"
+    },
+    "argv_rule": "Root fills source_snapshot and replaces ROOT_FROZEN_SOURCE_PACKAGE; subprocess.run(base_argv + job.argv, cwd=cwd, env=os.environ | environment_overlay, check=True), shell=False.",
+    "max_simultaneous_M50_jobs": 1,
+    "threads": "CLI supervisor fixes OPENBLAS_NUM_THREADS, OMP_NUM_THREADS and MKL_NUM_THREADS to8.",
+    "preconditions": [
+      "A finite B1 support on this same M50/L10,1500-disk,B377500,infinity-free,sampled problem has passed its original-coordinate primal/dual checks. No stronger-profile upper may be imported.",
+      "Source snapshot and conditional sine interpolation, density bound and two separate four-vector L2 chiral balls are declared before execution.",
+      "Reuse only results with the identical common finite input profile and matching objective/epsilon; recheck any warm point for the current epsilon.",
+      "ROI/off-grid/high-spin/tail diagnostics and existing violations remain separately recorded. A continuum proof or success of un-imposed constraints is not an execution gate.",
+      "Do not overwrite an existing output directory."
+    ]
+  },
+  "base_argv": [
+    "python",
+    "-m",
+    "smatrix_bootstrap.run",
+    "boundary",
+    "--preparation",
+    "results/runs/stage_A_M50_L10_20260906",
+    "--nodes",
+    "50",
+    "--waves",
+    "10",
+    "--density-limit",
+    "377500",
+    "--infinity",
+    "free",
+    "--unitarity-scope",
+    "sampled",
+    "--solver",
+    "barrier",
+    "--bits",
+    "832",
+    "--angular-order",
+    "40",
+    "--start-mu",
+    "1e-5",
+    "--solver-seconds",
+    "600",
+    "--dual-seconds",
+    "60",
+    "--dual-method",
+    "highs-primal",
+    "--seconds",
+    "900"
+  ],
+  "model": {
+    "M": 50,
+    "base_L_per_isospin": 10,
+    "base_physical_rows": 1500,
+    "full_physical_rows": 1500,
+    "distinct_full_energies": 50,
+    "amplitude_variables": 3876,
+    "preparation": "results/runs/stage_A_M50_L10_20260906",
+    "additional_constraints": null,
+    "infinity": "free",
+    "unitarity_scope": "sampled",
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": false,
+    "density_family": "All finite sine-cardinal modes including Nyquist; one analytic crossed amplitude; a declared conditional interpolation, not uniquely specified by v3.",
+    "coordinates": "Original unsubtracted C_flat, including free T0; all3876 amplitude directions retained.",
+    "density_norm": "Combined ordinary L4 of actual rho1 and upper-triangle rho2; C_flat off-diagonal rho2 entries divided by2.",
+    "density_bound": 377500,
+    "density_bound_source": "Declared conditional B(M)=100*[M^2+M(M+1)/2]; not an explicit bound specified by v3.",
+    "chiral_norm": "Two separate L2 four-vector balls at s=.5,1,1.5,2; declared conditional choice because v3 says some norm.",
+    "chiral_epsilons": [
+      0.006,
+      0.004,
+      0.002,
+      0.001,
+      0.0006,
+      0.0002
+    ],
+    "extra_necessary_conditions_enforced": [],
+    "stored_operator_scope": "The existing stage_A float64 operator is reused unchanged; CLI bits/order do not rebuild its cached rows. Angular integral error and continuum unitarity are not certified.",
+    "optimization_domain": "Complete projected finite set; no x>=0 optimization restriction."
+  },
+  "metrics": {
+    "pure": {
+      "map": "q=(x,y)",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    "chiral": {
+      "map": "q=(x/x_ref,(y+x/15)/epsilon)",
+      "x_ref_formula": "5/(16*pi^2*(92/140)^2)",
+      "x_ref": 0.07332139057293466,
+      "reason": "Known mass and decay-constant units plus the declared epsilon, independent of digitized figure coordinates."
+    },
+    "shared_chiral_nesting": {
+      "map": "q=(x/x_ref,(y+x/15)/0.002)",
+      "epsilon_ref": 0.002
+    },
+    "normal_conversion": "For unit metric normal n choose raw d=A^T n/||A^T n||. Pass this raw unit d to --direction. Metric support gap is ||A^T n||*(upper-lower)."
+  },
+  "accuracy": {
+    "hausdorff_metric_upper_max": 0.01,
+    "support_metric_gap_max": 0.0025,
+    "additional_raw_support_gap_max": 0.0001,
+    "raw_gap_rule": "min(0.0001,0.0025/||A^T n||)",
+    "policy": "Targets declared before the scan; numerical resolution in physical/reference units, not a claim about the accuracy of the paper figure.",
+    "rounding": "Use the stored outward upper bounds and actual stored raw normals. Propagate target-coordinate enclosures and directed geometric rounding into the 0.01 total bound."
+  },
+  "initial_scan": {
+    "direction_count": 28,
+    "directions_per_region": 4,
+    "order_note": "Start with epsilon=.002 after same-profile finite B1 is accepted. Other epsilons and pure follow; four directions initialize geometry only.",
+    "jobs": [
+      {
+        "id": "chiral_002_plus_x",
+        "region": "chiral_002",
+        "status": "planned",
+        "metric_normal": [
+          1.0,
+          0.0
+        ],
+        "raw_normal": [
+          1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_002_plus_x",
+          "--chiral-tolerance",
+          "0.002"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_002_plus_transverse",
+        "region": "chiral_002",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          1.0
+        ],
+        "raw_normal": [
+          0.06651901052377393,
+          0.9977851578566089
+        ],
+        "metric_objective_scale": 501.10987927909696,
+        "raw_gap_target": 4.988925789283045e-06,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "0.06651901052377393",
+          "0.99778515785660893",
+          "--gap",
+          "4.9889257892830446e-06",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_002_plus_transverse",
+          "--chiral-tolerance",
+          "0.002"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_002_minus_x",
+        "region": "chiral_002",
+        "status": "planned",
+        "metric_normal": [
+          -1.0,
+          0.0
+        ],
+        "raw_normal": [
+          -1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_002_minus_x",
+          "--chiral-tolerance",
+          "0.002"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_002_minus_transverse",
+        "region": "chiral_002",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          -1.0
+        ],
+        "raw_normal": [
+          -0.06651901052377393,
+          -0.9977851578566089
+        ],
+        "metric_objective_scale": 501.10987927909696,
+        "raw_gap_target": 4.988925789283045e-06,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-0.06651901052377393",
+          "-0.99778515785660893",
+          "--gap",
+          "4.9889257892830446e-06",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_002_minus_transverse",
+          "--chiral-tolerance",
+          "0.002"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_001_plus_x",
+        "region": "chiral_001",
+        "status": "planned",
+        "metric_normal": [
+          1.0,
+          0.0
+        ],
+        "raw_normal": [
+          1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_001_plus_x",
+          "--chiral-tolerance",
+          "0.001"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_001_plus_transverse",
+        "region": "chiral_001",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          1.0
+        ],
+        "raw_normal": [
+          0.06651901052377393,
+          0.9977851578566089
+        ],
+        "metric_objective_scale": 1002.2197585581939,
+        "raw_gap_target": 2.4944628946415223e-06,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "0.06651901052377393",
+          "0.99778515785660893",
+          "--gap",
+          "2.4944628946415223e-06",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_001_plus_transverse",
+          "--chiral-tolerance",
+          "0.001"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_001_minus_x",
+        "region": "chiral_001",
+        "status": "planned",
+        "metric_normal": [
+          -1.0,
+          0.0
+        ],
+        "raw_normal": [
+          -1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_001_minus_x",
+          "--chiral-tolerance",
+          "0.001"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_001_minus_transverse",
+        "region": "chiral_001",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          -1.0
+        ],
+        "raw_normal": [
+          -0.06651901052377393,
+          -0.9977851578566089
+        ],
+        "metric_objective_scale": 1002.2197585581939,
+        "raw_gap_target": 2.4944628946415223e-06,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-0.06651901052377393",
+          "-0.99778515785660893",
+          "--gap",
+          "2.4944628946415223e-06",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_001_minus_transverse",
+          "--chiral-tolerance",
+          "0.001"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_004_plus_x",
+        "region": "chiral_004",
+        "status": "planned",
+        "metric_normal": [
+          1.0,
+          0.0
+        ],
+        "raw_normal": [
+          1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_004_plus_x",
+          "--chiral-tolerance",
+          "0.0040000000000000001"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_004_plus_transverse",
+        "region": "chiral_004",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          1.0
+        ],
+        "raw_normal": [
+          0.06651901052377393,
+          0.9977851578566089
+        ],
+        "metric_objective_scale": 250.55493963954848,
+        "raw_gap_target": 9.97785157856609e-06,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "0.06651901052377393",
+          "0.99778515785660893",
+          "--gap",
+          "9.9778515785660892e-06",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_004_plus_transverse",
+          "--chiral-tolerance",
+          "0.0040000000000000001"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_004_minus_x",
+        "region": "chiral_004",
+        "status": "planned",
+        "metric_normal": [
+          -1.0,
+          0.0
+        ],
+        "raw_normal": [
+          -1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_004_minus_x",
+          "--chiral-tolerance",
+          "0.0040000000000000001"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_004_minus_transverse",
+        "region": "chiral_004",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          -1.0
+        ],
+        "raw_normal": [
+          -0.06651901052377393,
+          -0.9977851578566089
+        ],
+        "metric_objective_scale": 250.55493963954848,
+        "raw_gap_target": 9.97785157856609e-06,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-0.06651901052377393",
+          "-0.99778515785660893",
+          "--gap",
+          "9.9778515785660892e-06",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_004_minus_transverse",
+          "--chiral-tolerance",
+          "0.0040000000000000001"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_0006_plus_x",
+        "region": "chiral_0006",
+        "status": "planned",
+        "metric_normal": [
+          1.0,
+          0.0
+        ],
+        "raw_normal": [
+          1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_0006_plus_x",
+          "--chiral-tolerance",
+          "0.00059999999999999995"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_0006_plus_transverse",
+        "region": "chiral_0006",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          1.0
+        ],
+        "raw_normal": [
+          0.06651901052377393,
+          0.9977851578566089
+        ],
+        "metric_objective_scale": 1670.3662642636566,
+        "raw_gap_target": 1.4966777367849134e-06,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "0.06651901052377393",
+          "0.99778515785660893",
+          "--gap",
+          "1.4966777367849134e-06",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_0006_plus_transverse",
+          "--chiral-tolerance",
+          "0.00059999999999999995"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_0006_minus_x",
+        "region": "chiral_0006",
+        "status": "planned",
+        "metric_normal": [
+          -1.0,
+          0.0
+        ],
+        "raw_normal": [
+          -1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_0006_minus_x",
+          "--chiral-tolerance",
+          "0.00059999999999999995"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_0006_minus_transverse",
+        "region": "chiral_0006",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          -1.0
+        ],
+        "raw_normal": [
+          -0.06651901052377393,
+          -0.9977851578566089
+        ],
+        "metric_objective_scale": 1670.3662642636566,
+        "raw_gap_target": 1.4966777367849134e-06,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-0.06651901052377393",
+          "-0.99778515785660893",
+          "--gap",
+          "1.4966777367849134e-06",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_0006_minus_transverse",
+          "--chiral-tolerance",
+          "0.00059999999999999995"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_006_plus_x",
+        "region": "chiral_006",
+        "status": "planned",
+        "metric_normal": [
+          1.0,
+          0.0
+        ],
+        "raw_normal": [
+          1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_006_plus_x",
+          "--chiral-tolerance",
+          "0.0060000000000000001"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_006_plus_transverse",
+        "region": "chiral_006",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          1.0
+        ],
+        "raw_normal": [
+          0.06651901052377393,
+          0.9977851578566089
+        ],
+        "metric_objective_scale": 167.03662642636564,
+        "raw_gap_target": 1.4966777367849135e-05,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "0.06651901052377393",
+          "0.99778515785660893",
+          "--gap",
+          "1.4966777367849135e-05",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_006_plus_transverse",
+          "--chiral-tolerance",
+          "0.0060000000000000001"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_006_minus_x",
+        "region": "chiral_006",
+        "status": "planned",
+        "metric_normal": [
+          -1.0,
+          0.0
+        ],
+        "raw_normal": [
+          -1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_006_minus_x",
+          "--chiral-tolerance",
+          "0.0060000000000000001"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_006_minus_transverse",
+        "region": "chiral_006",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          -1.0
+        ],
+        "raw_normal": [
+          -0.06651901052377393,
+          -0.9977851578566089
+        ],
+        "metric_objective_scale": 167.03662642636564,
+        "raw_gap_target": 1.4966777367849135e-05,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-0.06651901052377393",
+          "-0.99778515785660893",
+          "--gap",
+          "1.4966777367849135e-05",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_006_minus_transverse",
+          "--chiral-tolerance",
+          "0.0060000000000000001"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_0002_plus_x",
+        "region": "chiral_0002",
+        "status": "planned",
+        "metric_normal": [
+          1.0,
+          0.0
+        ],
+        "raw_normal": [
+          1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_0002_plus_x",
+          "--chiral-tolerance",
+          "0.00020000000000000001"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_0002_plus_transverse",
+        "region": "chiral_0002",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          1.0
+        ],
+        "raw_normal": [
+          0.06651901052377393,
+          0.997785157856609
+        ],
+        "metric_objective_scale": 5011.098792790969,
+        "raw_gap_target": 4.988925789283046e-07,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "0.06651901052377393",
+          "0.99778515785660904",
+          "--gap",
+          "4.9889257892830456e-07",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_0002_plus_transverse",
+          "--chiral-tolerance",
+          "0.00020000000000000001"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_0002_minus_x",
+        "region": "chiral_0002",
+        "status": "planned",
+        "metric_normal": [
+          -1.0,
+          0.0
+        ],
+        "raw_normal": [
+          -1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_0002_minus_x",
+          "--chiral-tolerance",
+          "0.00020000000000000001"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "chiral_0002_minus_transverse",
+        "region": "chiral_0002",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          -1.0
+        ],
+        "raw_normal": [
+          -0.06651901052377393,
+          -0.997785157856609
+        ],
+        "metric_objective_scale": 5011.098792790969,
+        "raw_gap_target": 4.988925789283046e-07,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-0.06651901052377393",
+          "-0.99778515785660904",
+          "--gap",
+          "4.9889257892830456e-07",
+          "--coefficients",
+          "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/chiral_0002_minus_transverse",
+          "--chiral-tolerance",
+          "0.00020000000000000001"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "pure_plus_x",
+        "region": "pure",
+        "status": "planned",
+        "metric_normal": [
+          1.0,
+          0.0
+        ],
+        "raw_normal": [
+          1.0,
+          0.0
+        ],
+        "metric_objective_scale": 1.0,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "pure",
+          "--direction",
+          "1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_recover_pure_M50_raw_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/pure_plus_x"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "pure_plus_transverse",
+        "region": "pure",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          1.0
+        ],
+        "raw_normal": [
+          0.0,
+          1.0
+        ],
+        "metric_objective_scale": 1.0,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "pure",
+          "--direction",
+          "0",
+          "1",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_recover_pure_M50_raw_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/pure_plus_transverse"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "pure_minus_x",
+        "region": "pure",
+        "status": "planned",
+        "metric_normal": [
+          -1.0,
+          0.0
+        ],
+        "raw_normal": [
+          -1.0,
+          0.0
+        ],
+        "metric_objective_scale": 1.0,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "pure",
+          "--direction",
+          "-1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_recover_pure_M50_raw_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/pure_minus_x"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      },
+      {
+        "id": "pure_minus_transverse",
+        "region": "pure",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          -1.0
+        ],
+        "raw_normal": [
+          0.0,
+          -1.0
+        ],
+        "metric_objective_scale": 1.0,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "pure",
+          "--direction",
+          "0",
+          "-1",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_recover_pure_M50_raw_20260907/coefficients.json",
+          "--output",
+          "results/runs/stage_B_prototype_settings_20260907/supports/pure_minus_transverse"
+        ],
+        "unitarity_scope": "sampled",
+        "infinity": "free"
+      }
+    ]
+  },
+  "adaptive": {
+    "implemented_by_existing_CLI": true,
+    "meaning": "run regions now reports conservative Arb geometry, gap budgets, nesting contradictions and next directions; executing suggested support jobs remains explicit.",
+    "inner": "convex hull of projections of accepted feasible amplitudes",
+    "outer": "intersection of all accepted support upper halfspaces",
+    "distance": "max over vertices v of P_out of dist(A v,A P_in), including coordinate/geometry enclosures",
+    "choose_next": "At the worst outer vertex v, let z be its closest point in the metric inner hull. Take n=(A v-A z)/||A v-A z|| and append a new job with d=A^T n/||A^T n|| and the raw_gap_rule.",
+    "already_present_direction": "First tighten that direction if its support interval accounts for the gap; otherwise keep the distinct worst-vertex normal.",
+    "stop": "Closed nonempty finite outer polygon, valid finite primal/dual supports, per-direction metric gap<=.0025 and raw gap<=1e-4, conservative metric distance<=.01, and no same-profile nesting contradiction. This is finite-prototype geometry readiness, not continuum or physical acceptance.",
+    "max_directions_per_region": 128,
+    "budget_semantics": "An operation guard only: reaching the direction or time limit with an unresolved gap is incomplete, never completion.",
+    "argv_template_rule": "Copy a job of the same region and replace direction,gap,output. Preserve this sampled/free1500-row profile and the root-filled frozen source.",
+    "warm_start_rule": "Reuse full coefficients only after current epsilon/direction checks. Do not import old strengthened CG pools or duals; current finite warm points remain numerical initializers.",
+    "automated_optimization_execution": false
+  },
+  "nesting": {
+    "order": [
+      "chiral_0002",
+      "chiral_0006",
+      "chiral_001",
+      "chiral_002",
+      "chiral_004",
+      "chiral_006",
+      "pure"
+    ],
+    "mathematical_basis": "Identical M50/L10 finite disks,free T0 and density ball; only the nested chiral L2 radii differ, and pure omits those two balls.",
+    "contradiction_test": "At any common raw d, L_small(d)>U_large(d), beyond directed rounding, is an error. Every feasible small-region point must satisfy all larger-region support halfspaces.",
+    "valid_bound_propagation": "Pool feasible smaller-region points into each larger inner hull, and intersect each smaller outer hull with the larger outer hulls. Preserve the independent records and flag contradictions before propagation.",
+    "not_required": "Do not require U_small<=L_large or P_out_small subset P_in_large: neighboring true regions can touch.",
+    "display": "Render the full computed sets and their bounds; Fig.4 comparison can then clip the display to x>0.",
+    "diagnostic_rule": "Off-grid/tail/FG violations are independent diagnostics and do not silently change this declared finite set."
+  },
+  "existing_evidence": {
+    "same_profile_finite_B1_status": "Await root-confirmed first accepted support; none is asserted by writing this plan.",
+    "warm_starts": {
+      "pure": {
+        "coefficients": "results/runs/stage_B_recover_pure_M50_raw_20260907/coefficients.json",
+        "initialization_only": true
+      },
+      "chiral": {
+        "coefficients": "results/runs/stage_B_FG_repaired_M50_v2_20260907/coefficients.json",
+        "initialization_only": true
+      }
+    },
+    "prior_audits": {
+      "pure": "results/runs/stage_B_recover_pure_M50_raw_audit_20260907/report.json",
+      "chiral": "results/runs/stage_B_FG_repaired_M50_audit_20260907/report.json"
+    },
+    "prior_stronger_profile_results": "Preserved separately; their feasible warm vectors may be rechecked, but their support uppers are not valid uppers of this relaxed sampled/free model.",
+    "known_violation_record": "results/runs/stage_B_chiral_round3_recovered_support_audit_frozen_20260907/violations.json",
+    "known_violation_scope": "This file concerns another saved strengthened candidate, not the new sampled runs. Keep candidate/source identities; do not transfer its pass/fail status.",
+    "old_strengthened_plan_preserved": "results/runs/stage_B23_region_scan_plan_20260907/scan_plan.json"
+  },
+  "conditional_completion": {
+    "B2": "Finite pure region with full coefficients, valid same-profile support intervals and the declared conservative geometric resolution.",
+    "B3": "All six finite chiral regions, same common profile, correct nested constraints, reference annotations and geometric resolution.",
+    "physical_status": "ROI energy scans,off-grid/tail/FG diagnostics and source-gated physical acceptance remain separate. Their results must be displayed, not relabeled as imposed finite constraints.",
+    "completion_claimed_by_manifest": false,
+    "not_claimed": [
+      "Author-v3 interpolation or unspecified norm uniquely recovered",
+      "Continuum unitarity or every numerical violation eliminated",
+      "Certified angular quadrature or unique QCD amplitude",
+      "Fig.5–11 outputs obtained merely by region generation"
+    ],
+    "reference_policy": "Paper markers are comparisons only. Do not select the density bound, interpolation,metric or stopping accuracy by fitting the plotted curves."
+  },
+  "source_anchors": [
+    {
+      "path": "references/2309.12402v3-source/prd_submission_2.tex",
+      "lines": [
+        929,
+        932
+      ],
+      "pdf_page": 22,
+      "claim": "Convex projection and example radial maximization"
+    },
+    {
+      "path": "references/2309.12402v3-source/prd_submission_2.tex",
+      "lines": [
+        938,
+        953
+      ],
+      "claim": "Two chiral constraints, four sample points, unspecified norm"
+    },
+    {
+      "path": "references/2309.12402v3-source/prd_submission_2.tex",
+      "lines": [
+        1059,
+        1069
+      ],
+      "pdf_page": 26,
+      "claim": "Fig.3 M50, ten partial waves per isospin; baseline not used later"
+    },
+    {
+      "path": "references/2309.12402v3-source/prd_submission_2.tex",
+      "lines": [
+        1074,
+        1083
+      ],
+      "pdf_page": 28,
+      "claim": "Fig.4 six epsilons, x>0 display, Weinberg reference"
+    }
+  ],
+  "aggregate": {
+    "argv": [
+      "python",
+      "-m",
+      "smatrix_bootstrap.run",
+      "regions",
+      "--nodes",
+      "50",
+      "--support-runs",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_002_plus_x",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_002_plus_transverse",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_002_minus_x",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_002_minus_transverse",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_001_plus_x",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_001_plus_transverse",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_001_minus_x",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_001_minus_transverse",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_004_plus_x",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_004_plus_transverse",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_004_minus_x",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_004_minus_transverse",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_0006_plus_x",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_0006_plus_transverse",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_0006_minus_x",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_0006_minus_transverse",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_006_plus_x",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_006_plus_transverse",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_006_minus_x",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_006_minus_transverse",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_0002_plus_x",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_0002_plus_transverse",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_0002_minus_x",
+      "results/runs/stage_B_prototype_settings_20260907/supports/chiral_0002_minus_transverse",
+      "results/runs/stage_B_prototype_settings_20260907/supports/pure_plus_x",
+      "results/runs/stage_B_prototype_settings_20260907/supports/pure_plus_transverse",
+      "results/runs/stage_B_prototype_settings_20260907/supports/pure_minus_x",
+      "results/runs/stage_B_prototype_settings_20260907/supports/pure_minus_transverse",
+      "--reference-directory",
+      "results/runs/stage_B_reference_20260906",
+      "--output",
+      "results/runs/stage_B_prototype_settings_20260907/initial_aggregate"
+    ],
+    "when": "After accepted same-profile supports exist; append compatible adaptive support directories. Rejected or missing records remain explicit.",
+    "current_behavior": "Collector separates sampled/strengthened profiles and actual FG/tail enforcement, keeps diagnostic failures, and computes conservative finite-set geometry/nesting. Incomplete geometry remains incomplete and completion_claimed remains false."
+  },
+  "supersedes_for_prototype": "results/runs/stage_B23_region_scan_plan_20260907/scan_plan.json",
+  "numerical_comparison": {
+    "primary": "barrier",
+    "alternate": "clarabel",
+    "alternate_argv_replacements": {
+      "--solver": "clarabel"
+    },
+    "alternate_extra_argv": [
+      "--native-backend",
+      "faer",
+      "--native-coordinates",
+      "subtracted",
+      "--density-cone",
+      "soc"
+    ],
+    "same_problem_rule": "Compare native and barrier on identical coefficients,1500 physical disks,B377500,infinity-free,sampled scope,epsilon and direction. Coordinate/cone representation changes do not alter constraints.",
+    "warm_start_rule": "Both backends recheck the saved full vector against the current finite problem; no old stronger-model optimality or dual certificate transfers.",
+    "comparison_only": true
+  }
+}

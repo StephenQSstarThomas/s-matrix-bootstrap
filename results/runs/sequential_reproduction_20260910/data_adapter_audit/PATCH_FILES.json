@@ -1,0 +1,27 @@
+{
+  "src/smatrix_bootstrap/__init__.py": {
+    "base_sha256": "4946ac53876b5999dae32b78566fccf41fef88ef3de4fe5e0d5a9524d8d08302",
+    "lines": 342,
+    "bytes": 23908
+  },
+  "src/smatrix_bootstrap/basis.py": {
+    "base_sha256": "a61e82e4fb0afc87d403e03f8c57df5bac2d361403b9fa37e3c8ce35c505946f",
+    "lines": 316,
+    "bytes": 20957
+  },
+  "src/smatrix_bootstrap/imaginary.py": {
+    "base_sha256": "8456b0e8e0c98e792bc86664ed79d58667429b88b0745d00009016ed9d51b8fd",
+    "lines": 314,
+    "bytes": 23254
+  },
+  "src/smatrix_bootstrap/scattering.py": {
+    "base_sha256": "bba3fd084b0701297acfe0e35a6dead978d8e97cfb68762dabc5f8305c898afd",
+    "lines": 260,
+    "bytes": 18929
+  },
+  "tests/test_mainline.py": {
+    "base_sha256": "a63fa541ce279330aa72099b9b4dbb89c0c3e6c22e1b05f56b01e1d3da78098d",
+    "lines": 319,
+    "bytes": 24514
+  }
+}

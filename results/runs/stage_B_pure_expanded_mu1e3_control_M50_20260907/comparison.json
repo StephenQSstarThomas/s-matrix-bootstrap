@@ -1,0 +1,111 @@
+{
+  "purpose": "Same-model M50 starting-mu control; no parameter selected from paper curves",
+  "baseline": "results/runs/stage_B_barrier_CG_pure_M50_expanded_20260907/worker.json",
+  "control_report": "report.json",
+  "frozen_package": "/tmp/smatrix_B_expanded_warm_gbcctne_",
+  "changed_parameters": {
+    "start_mu": [
+      1e-05,
+      0.001
+    ],
+    "solver_seconds": [
+      7200,
+      600
+    ],
+    "dual_seconds": [
+      60,
+      30
+    ],
+    "total_cap_seconds": [
+      7800,
+      900
+    ]
+  },
+  "comparisons": [
+    {
+      "elapsed_seconds": 200.0,
+      "baseline_mu1e5": {
+        "observed_elapsed_seconds": 194.31207401119173,
+        "mu": 1e-05,
+        "Newton_steps": 12,
+        "working_objective": 1.245444714601726,
+        "decrement": 60853.60702260624,
+        "best_verified_upper": 2.218540783075617
+      },
+      "control_mu1e3": {
+        "observed_elapsed_seconds": 196.59277695789933,
+        "mu": 0.001,
+        "Newton_steps": 3,
+        "working_objective": 1.1246260534022554,
+        "decrement": 5131.478717445763,
+        "best_verified_upper": 2.218540783075617
+      }
+    },
+    {
+      "elapsed_seconds": 400.0,
+      "baseline_mu1e5": {
+        "observed_elapsed_seconds": 397.7014896781184,
+        "mu": 1e-05,
+        "Newton_steps": 31,
+        "working_objective": 1.342144026808878,
+        "decrement": 28984.29689239496,
+        "best_verified_upper": 2.218540783075617
+      },
+      "control_mu1e3": {
+        "observed_elapsed_seconds": 393.99252017284743,
+        "mu": 0.001,
+        "Newton_steps": 16,
+        "working_objective": 0.8693865448737167,
+        "decrement": 3537.7776940197023,
+        "best_verified_upper": 2.218540783075617
+      }
+    },
+    {
+      "elapsed_seconds": 600.0,
+      "baseline_mu1e5": {
+        "observed_elapsed_seconds": 599.9069075400475,
+        "mu": 1e-05,
+        "Newton_steps": 46,
+        "working_objective": 1.394446440112748,
+        "decrement": 24915.85066613266,
+        "best_verified_upper": 2.218540783075617
+      },
+      "control_mu1e3": {
+        "observed_elapsed_seconds": 573.7840800799895,
+        "mu": 0.001,
+        "Newton_steps": 22,
+        "working_objective": 0.4355166555871775,
+        "decrement": 1500.3733036192032,
+        "best_verified_upper": 2.218540783075617
+      }
+    }
+  ],
+  "control": {
+    "mu_stages_visited": [
+      0.001
+    ],
+    "Newton_steps": 23,
+    "last_Newton": {
+      "elapsed_seconds": 635.6513934100512,
+      "mu": 0.001,
+      "objective": 0.397918344087757,
+      "decrement": 1251.171152139769,
+      "krylov_iterations": 64
+    },
+    "new_verified_working_upper": 241127418.61929286,
+    "best_verified_upper": 2.218540783075617,
+    "final_primal_recovery_event": {
+      "elapsed_seconds": 833.0071460779291,
+      "primal_certified": true,
+      "objective_after": 0.8313100533269592,
+      "incumbent_retained": true,
+      "scope": "Coefficient mixture; finite H plus analytic tail/FG checks; no continuum claim"
+    },
+    "report_status": "inconclusive",
+    "timeout": true,
+    "supervisor_seconds": 900.1055804840289,
+    "certificate_limitation": "900s cap interrupted final normal-dual verification; no completed final outer report. Earlier original-dual and working-upper Arb checks above completed."
+  },
+  "conclusion": "No improvement within the fixed budget; retain the existing starting-mu route and do not add a mu sweep.",
+  "timing_scope": "Both full runs shared machine resources; elapsed comparisons are operational observations, not isolated performance benchmarks."
+}

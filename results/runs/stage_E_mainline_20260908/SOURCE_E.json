@@ -1,0 +1,147 @@
+{
+  "source": "references/2309.12402v3-source/prd_submission_2.tex",
+  "lines": {
+    "same_chiral_and_UV_inputs": 1141,
+    "Fig8_caption": 1145,
+    "three_point_selection": 1148,
+    "rho_and_no_fit": 1149,
+    "Fig9_caption": 1153,
+    "Fig10_caption": 1169,
+    "three_curve_spread": 1172
+  },
+  "pdf_figures": {
+    "Fig8": "references/2309.12402v3-source/chiSRplot.pdf",
+    "Fig9": "references/2309.12402v3-source/P1ps.pdf",
+    "Fig10": [
+      "references/2309.12402v3-source/S0ps.pdf",
+      "references/2309.12402v3-source/S2ps.pdf"
+    ]
+  },
+  "core_claims": [
+    "Same chiral setting plus current Gram, FESR and asymptotic FF constraints shrinks the upper boundary more than the lower.",
+    "One tip and two nearby upper-boundary amplitudes give the linked S0/S2/P1 curves.",
+    "QCD information supplies resonant P1 behavior absent in the selected chiral-only example.",
+    "S0/S2 curves largely coincide at low energy and spread high; P1 curves spread in the middle and agree more at both ends."
+  ],
+  "xref_declared_140_92": 0.07332139057293466,
+  "suggested_geometric_selection": {
+    "status": "Proposal for root to freeze before phase evaluation, not an author-specified algorithm.",
+    "red": "Full-space support maximizing x, with the same complete joint amplitude.",
+    "light_pink": "Upper boundary at x=xref; if reusing discrete E1 supports, closest upper-support x with error reported.",
+    "pink": "Upper boundary at x=(xref+x_tip)/2; reuse closest distinct upper-support x if appropriate.",
+    "outside_case": "If xref is outside the joint projected x interval, record the physical-point mismatch; do not silently replace xref.",
+    "mixing": "Prefer actual full-space support amplitudes; do not create the three phase curves by convex interpolation without explicitly reporting its additional inelasticity."
+  },
+  "Fig8_display_marker_centers": {
+    "red": [
+      0.08112496823924646,
+      -0.0052529894876262246
+    ],
+    "pink": [
+      0.07532981092440863,
+      -0.004759013631183128
+    ],
+    "light_pink": [
+      0.07098396828664738,
+      -0.0044200170073467725
+    ],
+    "black": [
+      0.07131303678639014,
+      -0.004754213758762102
+    ]
+  },
+  "Fig9_graphical_P1": {
+    "red": {
+      "count": 43,
+      "energy_range_gev": [
+        0.2791759198065636,
+        1.1957420651097113
+      ],
+      "crossing_bracket_samples": [
+        [
+          0.7897017238547974,
+          67.24975980902711
+        ],
+        [
+          0.8617623032909927,
+          111.6535846889363
+        ]
+      ],
+      "linear_in_energy_crossing_gev": 0.8266218651918983,
+      "relative_to_770mev": 0.07353488985960821,
+      "scope": "Graphical readout; linear interpolation is descriptive, not the author numerical mass or a certified pole."
+    },
+    "pink": {
+      "count": 43,
+      "energy_range_gev": [
+        0.2791759198065636,
+        1.1957420651097113
+      ],
+      "crossing_bracket_samples": [
+        [
+          0.7897017238547974,
+          68.36085782581405
+        ],
+        [
+          0.8617623032909927,
+          113.42422629882904
+        ]
+      ],
+      "linear_in_energy_crossing_gev": 0.8243047545738129,
+      "relative_to_770mev": 0.07052565529066612,
+      "scope": "Graphical readout; linear interpolation is descriptive, not the author numerical mass or a certified pole."
+    },
+    "light_pink": {
+      "count": 43,
+      "energy_range_gev": [
+        0.2791759198065636,
+        1.1957420651097113
+      ],
+      "crossing_bracket_samples": [
+        [
+          0.7897017238547974,
+          74.61982801190362
+        ],
+        [
+          0.8617623032909927,
+          123.16585931498503
+        ]
+      ],
+      "linear_in_energy_crossing_gev": 0.8125316869957847,
+      "relative_to_770mev": 0.05523595713738261,
+      "scope": "Graphical readout; linear interpolation is descriptive, not the author numerical mass or a certified pole."
+    }
+  },
+  "energy_plot_window_gev": [
+    0.28,
+    1.2
+  ],
+  "reference_reuse": {
+    "path": "results/runs/stage_C_reference_20260908/phase_reference.csv",
+    "reuse_roles": [
+      "experiment",
+      "phenomenology"
+    ],
+    "do_not_relabel": "paper_bootstrap rows belong to Fig7 chiral-only and are not Fig9 QCD curves."
+  },
+  "graphical_scope": "Source marker readout uses PDF vector centers and printed-axis affine calibration, not original author arrays or an optimization target. Source plot coordinates are retained without pion-mass rescaling.",
+  "figure8_display_sections": [
+    {
+      "x": 0.07332139057293466,
+      "IR_lower": -0.00513403433,
+      "IR_upper": -0.00436778637,
+      "UV_lower": -0.00509072361,
+      "UV_upper": -0.00459956002,
+      "upper_drop": 0.00023177365,
+      "lower_rise": 4.33107195e-05,
+      "ratio": 5.35
+    },
+    {
+      "x": 0.071313,
+      "upper_drop": 0.000236872082,
+      "lower_rise": 4.33850598e-05,
+      "ratio": 5.46
+    }
+  ],
+  "figure8_display_section_scope": "Convex hull and linear section through saved PDF marker centers; descriptive readout, not author support bounds."
+}

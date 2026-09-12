@@ -1,0 +1,55 @@
+{
+  "checked_utc": "2026-09-12T02:28:42.548781+00:00",
+  "status": "passed",
+  "source_snapshot_checks": [
+    {
+      "file": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/GTB_numerics.m.txt",
+      "sha256_verified": true,
+      "read_only_nonexecutable": true
+    },
+    {
+      "file": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/GTB_numerics.nb.txt",
+      "sha256_verified": true,
+      "read_only_nonexecutable": true
+    },
+    {
+      "file": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/author_README.md.txt",
+      "sha256_verified": true,
+      "read_only_nonexecutable": true
+    },
+    {
+      "file": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/repository_tree_fixed.json",
+      "sha256_verified": true,
+      "read_only_nonexecutable": true
+    },
+    {
+      "file": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/repository_branches.json",
+      "sha256_verified": true,
+      "read_only_nonexecutable": true
+    },
+    {
+      "file": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/repository_tags.json",
+      "sha256_verified": true,
+      "read_only_nonexecutable": true
+    },
+    {
+      "file": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/repository_releases.json",
+      "sha256_verified": true,
+      "read_only_nonexecutable": true
+    },
+    {
+      "file": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/2309.12402v3_source.tar.gz",
+      "sha256_verified": true,
+      "read_only_nonexecutable": true
+    }
+  ],
+  "document_sha256_verified": true,
+  "local_links_valid": [
+    "source_manifest.json",
+    "manifest.json",
+    "sources/GTB_numerics.m.txt",
+    "sources/GTB_numerics.nb.txt"
+  ],
+  "author_programs_executed": false,
+  "physical_inputs_modified": false
+}

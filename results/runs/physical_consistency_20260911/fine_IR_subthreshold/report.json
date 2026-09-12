@@ -1,0 +1,230 @@
+{
+  "command": "evaluate",
+  "status": "evaluated",
+  "artifacts": {},
+  "inputs": {
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_selected/coefficients.json": {
+      "sha256": "aaa4e5ae75e98111754d2aa0d796ddbd9372573775a6e71d193b3fc959f5854d"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare/report.json": {
+      "sha256": "c4486fd4d593d58fe55574abadda04dc21734408fecec307a278820f8105a2f0"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/analytic_source_registry_stage/registry.json": {
+      "sha256": "18e01da602be9c98c614a56ae43f0fe9ac6d4c6ad63e45edbc21f3e8193671e2"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare/amplitude.npz": {
+      "sha256": "507ef1937e8d65403c3fd7cd58e89740e997758a6055607805a143b360ea6592"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_subthreshold_stage/node_0.rows.json.gz": {
+      "sha256": "879e8edebbf239c2dae8ef3ddde58dbf2a7c1777be6d5fa876306955a69ec5d2"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_subthreshold_stage/node_1.rows.json.gz": {
+      "sha256": "ed1e6c32963eab77004fc60b69451b1af529421cfbaa3a242eb85fac45c5dc4c"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_subthreshold_stage/node_2.rows.json.gz": {
+      "sha256": "13c5eca29266b8b80b9aa08454de67e9e33e0bab3da91ab1a2f7f5077d7470ee"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_subthreshold_stage/node_3.rows.json.gz": {
+      "sha256": "91fc4df8d9645db85946cede9ee4ad6dda735760ce4c8fcc03bd85ce70860d31"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_subthreshold_stage/node_4.rows.json.gz": {
+      "sha256": "f0a96da5ea408e35b1eee37088f6f95056cde73ce0c9920a45580797f1043c20"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_selected/selection.json": {
+      "sha256": "5ec14298b83b9d846d4024393ae9ef79864a0139426356d2860ac51db497b31b"
+    }
+  },
+  "parameters": {
+    "command": "evaluate",
+    "comparison_manifest": null,
+    "region_summary": "results/runs/stage_B_delivery_20260907/regions/regions.json",
+    "primary_waves": true,
+    "profile_runs": [],
+    "profile_kind": "subthreshold",
+    "phase_reference": null,
+    "baseline_profile": null,
+    "selection_reference": null,
+    "support_runs": [],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_subthreshold",
+    "density_limit": null,
+    "preparation": "results/runs/physical_consistency_20260911/fine_prepare",
+    "prescription": "analytic-cardinal",
+    "source_registry": null,
+    "solver": "barrier",
+    "unitarity_scope": "sampled",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "current_preparation": null,
+    "joint_feasibility": false,
+    "fixed_amplitude": false,
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "unit_newton_step": false,
+    "gap": 0.0001,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 512,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "asymptotic_zeros": true,
+    "asymptotic_unitarity": true,
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": "results/runs/physical_consistency_20260911/fine_IR_selected/coefficients.json",
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0,
+      2.25,
+      2.5,
+      2.75,
+      3.0,
+      3.25,
+      3.5,
+      3.75
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "chiral_norm": "separate-l2",
+    "chiral_barrier_weight": null,
+    "objective": "projection",
+    "resume_objective": false,
+    "require_center": false,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "fixed_x": null,
+    "ray": false,
+    "seconds": 180.0,
+    "start_mu_provenance": {
+      "kind": "new_problem_default"
+    }
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "1"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Finite model; regions/phases require verification.",
+  "amplitude_model": {
+    "prescription": "analytic-cardinal",
+    "M": 50,
+    "L": 10,
+    "bits": 512,
+    "coordinate_system": "unsubtracted analytic-cardinal C_flat",
+    "coefficient_count": 3876,
+    "physical_samples": 1500,
+    "nu0": 0,
+    "nyquist_retained": true,
+    "infinity_equality_imposed": false,
+    "density_limit_imposed": false,
+    "quadrature_order_per_panel": null,
+    "arithmetic": "Arb",
+    "integral_enclosures": true,
+    "authors_implementation_recovered": false,
+    "analytic_function_family_defined": true,
+    "angular_projection": "Authenticated rows where available; otherwise Arb Gauss-Legendre with ellipse remainder",
+    "spectral_quadrature": "Exact Cauchy transform of finite sine density",
+    "physical_evaluation": "One analytic family at positive real energies",
+    "analyticity_status": "One conformal polynomial from all M sine-cardinal density modes",
+    "infinity_row_meaning": "Unsubtracted constant; recorded but no endpoint equality imposed",
+    "angular_order": 64,
+    "source_registry": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/analytic_source_registry_stage/registry.json",
+    "source_registry_sha256": "18e01da602be9c98c614a56ae43f0fe9ac6d4c6ad63e45edbc21f3e8193671e2",
+    "evaluation_source": "Prepared analytic coefficient enclosures"
+  },
+  "unitarity": {
+    "criterion": "Eq.(2.12): 1-|S|^2 = kappa*(2 Im f-kappa*|f|^2) >= 0",
+    "samples_checked": 0,
+    "status": "unresolved",
+    "margin_intervals": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "minimum_margin": null,
+    "scope": "Declared sampled pairs; analytic source enclosures included",
+    "continuum_certified": false,
+    "omitted_spins_checked": false,
+    "high_energy_tail_certified": false,
+    "analytic_tail": {
+      "status": "not_applicable"
+    },
+    "high_spin_necessary": {
+      "status": "not_applicable",
+      "violations": []
+    }
+  },
+  "elapsed_seconds": 11.156803020974621,
+  "prescription": "analytic-cardinal",
+  "core_sources": {
+    "__init__.py": "eb90c095e0415af900073b308a5aa229af7525815996fb9ed22c40bf8d0e07ea",
+    "analysis.py": "7c858a1c763d7543dc7dbd167c495bcb8a156e69b7cf5e08de4e80c8153395ec",
+    "analytic.py": "f7b6ffb9bd6b520f00dec8653ff0864da6fe46eaa0ed5814bef7bd3c5c22a727",
+    "basis.py": "5eda7c08a5cea679958b47980c9972ada51358f6352698d8db10db91bd5abec3",
+    "certificates.py": "aedcd1b65d0e1908c84e129e570a119214994c2b38d4e325b543beb9b27a9ad3",
+    "conic.py": "750741dbe9b45584c24176cbdeb2cfafc585361d5b23cff5d79a501a247abf01",
+    "endpoints.py": "6b4dacd438e750ca61f285744cc0a152d16e3090581e22c77962f23b867005db",
+    "gauge.py": "4c497030f4925383636cc856ada76278b15b0ac77be4152b27dc69fa08aa3b79",
+    "imaginary.py": "9ad338b253d2941310401d245a24cba4ab546926e5c9c630f80c7bd647c1828c",
+    "io.py": "f368531ec06a54b1e65a76d39de402cbeb205873ae7964246c7cebc643a3d779",
+    "ir.py": "9fe83590027ee9bd611c954c1c7c9b7f333c469ab7cd242cd39ba97160fd419b",
+    "kernels.py": "790ebcdba291c80f17c4909a31ddf77ad6373748c2af41c7ce1a0c28b309172a",
+    "linear.py": "48d6330a638c28310c87860ecb5b70ce4396dce01878eff8c5855d96d643d0e2",
+    "model.py": "be73b782a40652cf099e4f5ed480f56cb4d00e0f86aaddfe9698ccf83ea3b975",
+    "operators.py": "74cb905a1e9e881e3f3e5f7843d44e7e096e8c57e672f8f7abdbae336b78fc4e",
+    "quadrature.py": "7ec2a6b9336cd6035db06fdf8a028368ccd22e4d106cc5e16900c878b8d40fad",
+    "quotient.py": "32b669bec9e0b9af1c21bf464f2806411cdca87fffa6ff0593d7bb77dd3428e9",
+    "run.py": "4eaad0cf5744aa2cdc2b5056b6fdb38e94ab692f3d148a6e9ce6228e28d037cf",
+    "sampling.py": "0d7ea723d58a18971b4a768a5f29cbd40646113bd06fe46e7c5ce920492744e3",
+    "scattering.py": "17d1e2d03fb467a5e58e6d87a6921dfd14da8c9f0eec2d6c28e64334dcfc7211",
+    "spectra.py": "c6352a5e1a8be6cd00cd724c9f3bae961bf5d72356e3d65ea27213952cebe996"
+  },
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 180.0,
+  "supervisor_seconds": 12.306189293041825
+}

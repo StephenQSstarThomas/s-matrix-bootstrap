@@ -1,0 +1,38 @@
+{
+  "uv_config": {
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "pion_mass_gev": 0.14,
+    "matching_energy_gev": 1.2,
+    "up_mass_gev": 0.004,
+    "down_mass_gev": 0.0073,
+    "alpha_s": 0.4,
+    "gluon_condensate_gev4": 0.023,
+    "scalar_condensate_gev4": -0.0001,
+    "sr_tolerance": 0.002,
+    "ff_tolerance": 6e-05
+  },
+  "scattering_preparation": "results/runs/stage_B_pv_M50_L10_prepare_20260907",
+  "chiral_norm": "combined-l2",
+  "chiral_tolerance": 0.002,
+  "density_limit": 377500,
+  "changed_item": "Source-identified combined eight-component chiral L2 ball and uniform pi/M weights with native s<=s0 mask",
+  "source": "v3 Eq3.72; see CUTOFF_DECISION_ZH.md",
+  "old_clipped_results_retained": true,
+  "old_current_certificates_transferred": false,
+  "representative_rule": "Fig8 two near-black x coordinates divided by original black x, then multiplied by the declared 140/92 XREF; tip is +x support",
+  "reference_csv": "references/figure8_selected_points.csv",
+  "physical_xref": 0.07332139057293466,
+  "preselected_x": {
+    "ref": 0.07298305468121799,
+    "mid": 0.07745128711688606
+  },
+  "selection_uses_phase_data": false,
+  "chiral_source": "CHIRAL_SOURCE_RESIDUALS_ZH.md: three original Fig5 joint-L2 residual fingerprints and explicit author follow-up stack8",
+  "previous_diagnostic_contract": "HARD_MAINLINE.json",
+  "parameter_selection_uses_reproduction_phases": false,
+  "pure_region_unchanged": true,
+  "current_preparation_unchanged": "D1_hard_M50: current operators do not impose chi norm"
+}

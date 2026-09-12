@@ -1,0 +1,26 @@
+[
+  {
+    "n": 500,
+    "substitution_seconds": 0.0016765210311859846,
+    "transpose_seconds": 0.0017100069671869278,
+    "residual_max": 2.0599841277224584e-18,
+    "mantissa_bits": 64,
+    "scipy_output_dtype": "float64"
+  },
+  {
+    "n": 1000,
+    "substitution_seconds": 0.0046179150231182575,
+    "transpose_seconds": 0.004760510055348277,
+    "residual_max": 1.951563910473908e-18,
+    "mantissa_bits": 64,
+    "scipy_output_dtype": "float64"
+  },
+  {
+    "n": 3875,
+    "substitution_seconds": 0.046281150076538324,
+    "transpose_seconds": 0.08022952079772949,
+    "residual_max": 5.5294310796760726e-18,
+    "mantissa_bits": 64,
+    "scipy_output_dtype": "float64"
+  }
+]

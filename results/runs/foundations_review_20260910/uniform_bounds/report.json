@@ -1,0 +1,1341 @@
+{
+  "command": "analytic-audit",
+  "status": "analytic_reconstruction_audited",
+  "artifacts": {},
+  "inputs": {
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/C2_fig6/coefficients.json": {
+      "sha256": "19b1c389fe4dd731d5ba1993416f324bd90e6d49206bab84c57154f7cf18d988"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_tip_path_02/coefficients.json": {
+      "sha256": "5e828d1c881760d198dd73d042f04d4161e2d5088411ef052d4457594582b2ae"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_tip_path_02/current.json": {
+      "sha256": "e2991fc07f18162699dbdd45ae79699e3aa123a2d11870d62002dec58de3c6aa"
+    }
+  },
+  "parameters": {
+    "command": "analytic-audit",
+    "comparison_manifest": "results/runs/foundations_review_20260910/analytic_comparison/analytic_audit.json",
+    "region_summary": "results/runs/stage_B_delivery_20260907/regions/regions.json",
+    "primary_waves": false,
+    "profile_runs": [],
+    "profile_kind": "subthreshold",
+    "phase_reference": null,
+    "baseline_profile": null,
+    "selection_reference": null,
+    "support_runs": [],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/foundations_review_20260910/uniform_bounds",
+    "density_limit": null,
+    "preparation": "results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    "prescription": "auto",
+    "solver": "barrier",
+    "unitarity_scope": "sampled",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "current_preparation": null,
+    "joint_feasibility": false,
+    "fixed_amplitude": false,
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 256,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "free",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": null,
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "chiral_norm": "combined-l2",
+    "chiral_barrier_weight": null,
+    "objective": "projection",
+    "resume_objective": false,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "fixed_x": null,
+    "ray": false,
+    "seconds": 60.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "2"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Independent analytic reconstruction compared with the native PV approximation; no new optimization",
+  "M": 50,
+  "L": 10,
+  "identities": [
+    {
+      "M": 50,
+      "s": 3.0,
+      "folded_identity_enclosed": true,
+      "maximum_identity_error_upper": 8.622902687913922e-78,
+      "polynomial_difference_upper": 5.567701289662023e-26
+    },
+    {
+      "M": 50,
+      "s": -4.0,
+      "folded_identity_enclosed": true,
+      "maximum_identity_error_upper": 5.425568424027295e-78,
+      "polynomial_difference_upper": 1.4923453058968732e-40
+    },
+    {
+      "M": 50,
+      "s": -100.0,
+      "folded_identity_enclosed": true,
+      "maximum_identity_error_upper": 6.9936436759092e-77,
+      "polynomial_difference_upper": 2.3814656260030846e-10
+    }
+  ],
+  "native_node_rule": "first, phi midpoint, last below s0, last",
+  "native_nodes": [
+    0,
+    25,
+    42,
+    49
+  ],
+  "profiles": [
+    {
+      "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/C2_fig6/coefficients.json",
+      "T0": "[271.939238660651142254209844396 +/- 4.82e-28]",
+      "samples": [
+        {
+          "node": 0,
+          "energy_gev": 0.28003454716713333,
+          "isospin": 0,
+          "ell": 0,
+          "PV": {
+            "real": "[0.124825708190083406298157646630 +/- 2.67e-31]",
+            "imaginary": "[0.000453645565677614807172589424494 +/- 2.26e-34]",
+            "midpoint": [
+              0.1248257081900834,
+              0.0004536455656776148
+            ],
+            "radius_upper": 1.6715693824930433e-66
+          },
+          "PV_integral": {
+            "real": "[0.124825708190083406298157646630 +/- 2.72e-31]",
+            "imaginary": "[0.00045364556567761480717258942449 +/- 8.83e-33]",
+            "midpoint": [
+              0.1248257081900834,
+              0.0004536455656776148
+            ],
+            "radius_upper": 5.053082470420086e-33
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[0.124825708190083406298157646630 +/- 2.72e-31]",
+            "imaginary": "[0.00045364556567761480717258942449 +/- 8.83e-33]",
+            "midpoint": [
+              0.1248257081900834,
+              0.0004536455656776148
+            ],
+            "radius_upper": 5.053082395803746e-33
+          },
+          "difference": {
+            "real": "[+/- 5.06e-33]",
+            "imaginary": "[+/- 5.06e-33]",
+            "midpoint": [
+              3.655112575073007e-50,
+              2.7710830471891274e-50
+            ],
+            "radius_upper": 5.053082401543464e-33
+          },
+          "delta_S_absolute_upper": 3.5263326072700706e-34,
+          "analytic_eta": "[0.999996585288676953011418503295401 +/- 4.57e-34]",
+          "analytic_unitarity_defect": "[6.829410985840557417678197618e-6 +/- 8.73e-34]",
+          "analytic_disk": "passed"
+        },
+        {
+          "node": 0,
+          "energy_gev": 0.28003454716713333,
+          "isospin": 2,
+          "ell": 0,
+          "PV": {
+            "real": "[-0.0250924978041969774778236033382 +/- 1.28e-32]",
+            "imaginary": "[1.74917281433247943370356203655e-5 +/- 8.64e-36]",
+            "midpoint": [
+              -0.025092497804196978,
+              1.7491728143324796e-05
+            ],
+            "radius_upper": 6.293058485770607e-67
+          },
+          "PV_integral": {
+            "real": "[-0.0250924978041969774778236033382 +/- 1.46e-32]",
+            "imaginary": "[1.749172814332479433703562037e-5 +/- 6.35e-33]",
+            "midpoint": [
+              -0.025092497804196978,
+              1.7491728143324796e-05
+            ],
+            "radius_upper": 1.8392814318466182e-33
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[-0.0250924978041969774778236033382 +/- 1.46e-32]",
+            "imaginary": "[1.749172814332479433703562037e-5 +/- 6.35e-33]",
+            "midpoint": [
+              -0.025092497804196978,
+              1.7491728143324796e-05
+            ],
+            "radius_upper": 1.839281408887744e-33
+          },
+          "difference": {
+            "real": "[+/- 1.84e-33]",
+            "imaginary": "[+/- 1.84e-33]",
+            "midpoint": [
+              1.5405863863030017e-50,
+              1.227064684004027e-50
+            ],
+            "radius_upper": 1.8392814117576034e-33
+          },
+          "delta_S_absolute_upper": 1.2835567468788455e-34,
+          "analytic_eta": "[0.999999903440897451443734957085363 +/- 3.53e-34]",
+          "analytic_unitarity_defect": "[1.93118195773452245103224276e-7 +/- 6.08e-34]",
+          "analytic_disk": "passed"
+        },
+        {
+          "node": 0,
+          "energy_gev": 0.28003454716713333,
+          "isospin": 1,
+          "ell": 1,
+          "PV": {
+            "real": "[3.89998138839681471397901964017e-6 +/- 1.79e-36]",
+            "imaginary": "[3.26855006329897574049071210251e-10 +/- 4.11e-41]",
+            "midpoint": [
+              3.899981388396814e-06,
+              3.268550063298976e-10
+            ],
+            "radius_upper": 5.85003876689012e-72
+          },
+          "PV_integral": {
+            "real": "[3.89998138839681471397901964e-6 +/- 5.79e-33]",
+            "imaginary": "[3.2685500632989757404907e-10 +/- 6.83e-33]",
+            "midpoint": [
+              3.899981388396814e-06,
+              3.268550063298976e-10
+            ],
+            "radius_upper": 5.6139103717596374e-33
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[3.89998138839681471397901964e-6 +/- 5.79e-33]",
+            "imaginary": "[3.2685500632989757404907e-10 +/- 6.83e-33]",
+            "midpoint": [
+              3.899981388396814e-06,
+              3.268550063298976e-10
+            ],
+            "radius_upper": 5.613910297143297e-33
+          },
+          "difference": {
+            "real": "[+/- 5.62e-33]",
+            "imaginary": "[+/- 5.62e-33]",
+            "midpoint": [
+              -1.9930694078179961e-47,
+              -5.68113960625676e-48
+            ],
+            "radius_upper": 5.613910302883015e-33
+          },
+          "delta_S_absolute_upper": 3.9177106963114665e-34,
+          "analytic_eta": "[0.999999999983889533455583115433327 +/- 3.08e-34]",
+          "analytic_unitarity_defect": "[3.2220933088574222001067e-11 +/- 7.18e-34]",
+          "analytic_disk": "passed"
+        },
+        {
+          "node": 25,
+          "energy_gev": 0.40234926181998637,
+          "isospin": 0,
+          "ell": 0,
+          "PV": {
+            "real": "[0.361700138567844783504545111330 +/- 3.62e-31]",
+            "imaginary": "[0.190772050530432230655661693822 +/- 2.79e-31]",
+            "midpoint": [
+              0.3617001385678448,
+              0.19077205053043222
+            ],
+            "radius_upper": 1.941775914753426e-68
+          },
+          "PV_integral": {
+            "real": "[0.36170013856784478350 +/- 5.40e-21]",
+            "imaginary": "[0.19077205053043223066 +/- 5.19e-21]",
+            "midpoint": [
+              0.3617001385678448,
+              0.19077205053043222
+            ],
+            "radius_upper": 8.483225502408849e-22
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[0.3617001385678447835045451113 +/- 5.68e-29]",
+            "imaginary": "[0.1907720505304322306556616938 +/- 4.95e-29]",
+            "midpoint": [
+              0.3617001385678448,
+              0.19077205053043222
+            ],
+            "radius_upper": 2.714209929704026e-29
+          },
+          "difference": {
+            "real": "[+/- 2.72e-29]",
+            "imaginary": "[+/- 2.72e-29]",
+            "midpoint": [
+              9.66646069352614e-36,
+              1.3235115418792565e-35
+            ],
+            "radius_upper": 2.7142099344060035e-29
+          },
+          "delta_S_absolute_upper": 8.659829191456927e-29,
+          "analytic_eta": "[0.995156330595270859483794742 +/- 3.46e-28]",
+          "analytic_unitarity_defect": "[0.009663877676155971885974865 +/- 7.52e-28]",
+          "analytic_disk": "passed"
+        },
+        {
+          "node": 25,
+          "energy_gev": 0.40234926181998637,
+          "isospin": 2,
+          "ell": 0,
+          "PV": {
+            "real": "[-0.0654219520364746210550591105346 +/- 3.93e-33]",
+            "imaginary": "[0.00493397381935303906324874851046 +/- 2.00e-33]",
+            "midpoint": [
+              -0.06542195203647462,
+              0.004933973819353039
+            ],
+            "radius_upper": 1.158903652951398e-68
+          },
+          "PV_integral": {
+            "real": "[-0.065421952036474621055 +/- 4.04e-22]",
+            "imaginary": "[0.004933973819353039063 +/- 5.94e-22]",
+            "midpoint": [
+              -0.06542195203647462,
+              0.004933973819353039
+            ],
+            "radius_upper": 3.44652210491866e-22
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[-0.0654219520364746210550591105 +/- 4.53e-29]",
+            "imaginary": "[0.0049339738193530390632487485 +/- 2.12e-29]",
+            "midpoint": [
+              -0.06542195203647462,
+              0.004933973819353039
+            ],
+            "radius_upper": 1.0672644582973045e-29
+          },
+          "difference": {
+            "real": "[+/- 1.07e-29]",
+            "imaginary": "[+/- 1.07e-29]",
+            "midpoint": [
+              1.9346813432714755e-36,
+              5.286115040191132e-36
+            ],
+            "radius_upper": 1.0672644594727989e-29
+          },
+          "delta_S_absolute_upper": 3.405162960645614e-29,
+          "analytic_eta": "[0.9998228654899882707154746325 +/- 5.47e-29]",
+          "analytic_unitarity_defect": "[0.0003542376433888214736286007 +/- 6.06e-29]",
+          "analytic_disk": "passed"
+        },
+        {
+          "node": 25,
+          "energy_gev": 0.40234926181998637,
+          "isospin": 1,
+          "ell": 1,
+          "PV": {
+            "real": "[0.0146296444196462608218240092350 +/- 3.81e-32]",
+            "imaginary": "[0.000246486997296437626700652228629 +/- 9.01e-35]",
+            "midpoint": [
+              0.014629644419646261,
+              0.0002464869972964376
+            ],
+            "radius_upper": 9.818130830336765e-71
+          },
+          "PV_integral": {
+            "real": "[0.014629644419646260822 +/- 2.95e-22]",
+            "imaginary": "[0.000246486997296437627 +/- 4.19e-22]",
+            "midpoint": [
+              0.014629644419646261,
+              0.0002464869972964376
+            ],
+            "radius_upper": 1.1884519419063584e-22
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[0.0146296444196462608218240092 +/- 5.10e-29]",
+            "imaginary": "[0.0002464869972964376267006522 +/- 4.46e-29]",
+            "midpoint": [
+              0.014629644419646261,
+              0.0002464869972964376
+            ],
+            "radius_upper": 1.596121499079004e-29
+          },
+          "difference": {
+            "real": "[+/- 1.60e-29]",
+            "imaginary": "[+/- 1.60e-29]",
+            "midpoint": [
+              -4.2677475667741155e-36,
+              1.5823506342534853e-36
+            ],
+            "radius_upper": 1.5961215014299928e-29
+          },
+          "delta_S_absolute_upper": 5.0925081957086e-29,
+          "analytic_eta": "[0.9999887419193229110674013290 +/- 6.10e-29]",
+          "analytic_unitarity_defect": "[2.2516034609797333354143e-5 +/- 9.73e-29]",
+          "analytic_disk": "passed"
+        },
+        {
+          "node": 42,
+          "energy_gev": 1.1994241195247317,
+          "isospin": 0,
+          "ell": 0,
+          "PV": {
+            "real": "[0.0529547312310016757069719045469 +/- 4.09e-33]",
+            "imaginary": "[0.635269988619428385439878080291 +/- 2.28e-31]",
+            "midpoint": [
+              0.052954731231001674,
+              0.6352699886194284
+            ],
+            "radius_upper": 1.0314100867048843e-68
+          },
+          "PV_integral": {
+            "real": "[0.0529547312310016757 +/- 2.82e-20]",
+            "imaginary": "[0.6352699886194283854 +/- 6.11e-20]",
+            "midpoint": [
+              0.052954731231001674,
+              0.6352699886194284
+            ],
+            "radius_upper": 2.1197255126264416e-20
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[0.052954689600377798523293780 +/- 6.94e-28]",
+            "imaginary": "[0.635269954015426801933596378 +/- 5.62e-28]",
+            "midpoint": [
+              0.052954689600377795,
+              0.6352699540154269
+            ],
+            "radius_upper": 2.5530930591000957e-28
+          },
+          "difference": {
+            "real": "[-4.1630623877183678124e-8 +/- 3.65e-28]",
+            "imaginary": "[-3.4604001583506281702e-8 +/- 2.72e-28]",
+            "midpoint": [
+              -4.163062387718368e-08,
+              -3.460400158350628e-08
+            ],
+            "radius_upper": 2.5530930628616776e-28
+          },
+          "delta_S_absolute_upper": 1.6536958739401033e-07,
+          "analytic_eta": "[0.95442513200109723919214807 +/- 5.79e-27]",
+          "analytic_unitarity_defect": "[0.08907266740468811067839582 +/- 9.60e-27]",
+          "analytic_disk": "passed"
+        },
+        {
+          "node": 42,
+          "energy_gev": 1.1994241195247317,
+          "isospin": 2,
+          "ell": 0,
+          "PV": {
+            "real": "[-0.301075359678740715265584780066 +/- 1.89e-31]",
+            "imaginary": "[0.212477856210098427624803990663 +/- 2.74e-31]",
+            "midpoint": [
+              -0.3010753596787407,
+              0.21247785621009843
+            ],
+            "radius_upper": 4.760466570995746e-69
+          },
+          "PV_integral": {
+            "real": "[-0.30107535967874071527 +/- 9.01e-21]",
+            "imaginary": "[0.21247785621009842762 +/- 9.40e-21]",
+            "midpoint": [
+              -0.3010753596787407,
+              0.21247785621009843
+            ],
+            "radius_upper": 4.591904569722913e-21
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[-0.301075356572143807875078244 +/- 2.43e-28]",
+            "imaginary": "[0.212477860647548674332623462 +/- 5.45e-28]",
+            "midpoint": [
+              -0.3010753565721438,
+              0.21247786064754867
+            ],
+            "radius_upper": 1.3784213925753611e-28
+          },
+          "difference": {
+            "real": "[3.106596907390506536e-9 +/- 1.78e-28]",
+            "imaginary": "[4.437450246707819472e-9 +/- 3.95e-28]",
+            "midpoint": [
+              3.1065969073905067e-09,
+              4.437450246707819e-09
+            ],
+            "radius_upper": 1.378421394456152e-28
+          },
+          "delta_S_absolute_upper": 1.654724021895751e-08,
+          "analytic_eta": "[0.984396668466217216131098028 +/- 7.58e-28]",
+          "analytic_unitarity_defect": "[0.03096319911261242753526401 +/- 4.25e-27]",
+          "analytic_disk": "passed"
+        },
+        {
+          "node": 42,
+          "energy_gev": 1.1994241195247317,
+          "isospin": 1,
+          "ell": 1,
+          "PV": {
+            "real": "[0.0970546982530989094694881862855 +/- 5.37e-33]",
+            "imaginary": "[0.0152238688127297749740823264568 +/- 2.09e-32]",
+            "midpoint": [
+              0.09705469825309891,
+              0.015223868812729776
+            ],
+            "radius_upper": 2.9323732226568634e-70
+          },
+          "PV_integral": {
+            "real": "[0.09705469825309890947 +/- 4.51e-21]",
+            "imaginary": "[0.01522386881272977497 +/- 8.09e-21]",
+            "midpoint": [
+              0.09705469825309891,
+              0.015223868812729776
+            ],
+            "radius_upper": 3.997703688293609e-21
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[0.097054693170148512293738100 +/- 2.47e-28]",
+            "imaginary": "[0.015223900024041353892052775 +/- 6.68e-28]",
+            "midpoint": [
+              0.09705469317014852,
+              0.015223900024041354
+            ],
+            "radius_upper": 2.0172565925506431e-28
+          },
+          "difference": {
+            "real": "[-5.082950397175750086e-9 +/- 5.32e-28]",
+            "imaginary": "[3.1211311578917970449e-8 +/- 2.11e-28]",
+            "midpoint": [
+              -5.0829503971757504e-09,
+              3.121131157891797e-08
+            ],
+            "radius_upper": 2.017256594431434e-28
+          },
+          "delta_S_absolute_upper": 9.66000957567897e-08,
+          "analytic_eta": "[0.998525194323772900233336598 +/- 9.49e-28]",
+          "analytic_unitarity_defect": "[0.00294743630067156786030097 +/- 6.51e-27]",
+          "analytic_disk": "passed"
+        },
+        {
+          "node": 49,
+          "energy_gev": 17.82608668568016,
+          "isospin": 0,
+          "ell": 0,
+          "PV": {
+            "real": "[-0.266352284589174870547879212845 +/- 1.23e-31]",
+            "imaginary": "[0.357427158518300296653888044415 +/- 1.63e-31]",
+            "midpoint": [
+              -0.26635228458917487,
+              0.3574271585183003
+            ],
+            "radius_upper": 7.546105800536916e-70
+          },
+          "PV_integral": {
+            "real": "[-0.2663522845891748705 +/- 9.53e-20]",
+            "imaginary": "[0.3574271585183002967 +/- 9.35e-20]",
+            "midpoint": [
+              -0.26635228458917487,
+              0.3574271585183003
+            ],
+            "radius_upper": 4.7321006887228985e-20
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[-24.496687949458022580 +/- 2.82e-19]",
+            "imaginary": "[-54.780140566256833680 +/- 6.77e-19]",
+            "midpoint": [
+              -24.49668794945802,
+              -54.78014056625683
+            ],
+            "radius_upper": 2.735794547815945e-19
+          },
+          "difference": {
+            "real": "[-24.230335664868847709 +/- 7.19e-19]",
+            "imaginary": "[-55.137567724775133977 +/- 3.31e-19]",
+            "midpoint": [
+              -24.230335664868846,
+              -55.13756772477513
+            ],
+            "radius_upper": 2.7357945518549127e-19
+          },
+          "delta_S_absolute_upper": 189.18455043259286,
+          "analytic_eta": "[189.41053264573846860 +/- 1.22e-18]",
+          "analytic_unitarity_defect": "[-35875.349877142358158 +/- 7.00e-16]",
+          "analytic_disk": "violated"
+        },
+        {
+          "node": 49,
+          "energy_gev": 17.82608668568016,
+          "isospin": 2,
+          "ell": 0,
+          "PV": {
+            "real": "[0.209137308818851638882941834579 +/- 2.96e-31]",
+            "imaginary": "[0.172607378386829408547896724797 +/- 1.97e-31]",
+            "midpoint": [
+              0.20913730881885165,
+              0.1726073783868294
+            ],
+            "radius_upper": 2.7490435894338812e-70
+          },
+          "PV_integral": {
+            "real": "[0.2091373088188516389 +/- 5.29e-20]",
+            "imaginary": "[0.1726073783868294085 +/- 8.37e-20]",
+            "midpoint": [
+              0.20913730881885165,
+              0.1726073783868294
+            ],
+            "radius_upper": 3.5770815554251344e-20
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[-5.500048676134569171 +/- 5.51e-19]",
+            "imaginary": "[-23.715071930482157404 +/- 1.97e-19]",
+            "midpoint": [
+              -5.500048676134569,
+              -23.715071930482157
+            ],
+            "radius_upper": 1.6573699552398267e-19
+          },
+          "difference": {
+            "real": "[-5.709185984953420809 +/- 6.64e-19]",
+            "imaginary": "[-23.887679308868986813 +/- 5.87e-19]",
+            "midpoint": [
+              -5.709185984953421,
+              -23.887679308868986
+            ],
+            "radius_upper": 1.6573699572593106e-19
+          },
+          "delta_S_absolute_upper": 77.14943104955687,
+          "analytic_eta": "[77.445572969731777949 +/- 8.31e-19]",
+          "analytic_unitarity_defect": "[-5996.816772610049400 +/- 1.83e-16]",
+          "analytic_disk": "violated"
+        },
+        {
+          "node": 49,
+          "energy_gev": 17.82608668568016,
+          "isospin": 1,
+          "ell": 1,
+          "PV": {
+            "real": "[0.0982130612042256490997481217782 +/- 3.08e-32]",
+            "imaginary": "[0.186732860765299503131768524019 +/- 1.42e-31]",
+            "midpoint": [
+              0.09821306120422565,
+              0.1867328607652995
+            ],
+            "radius_upper": 7.46379775708356e-71
+          },
+          "PV_integral": {
+            "real": "[0.0982130612042256491 +/- 4.31e-20]",
+            "imaginary": "[0.1867328607652995031 +/- 7.46e-20]",
+            "midpoint": [
+              0.09821306120422565,
+              0.1867328607652995
+            ],
+            "radius_upper": 4.2829216938977596e-20
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[1.38011990919282922706243 +/- 3.81e-24]",
+            "imaginary": "[-0.51882542344044471213551 +/- 1.23e-24]",
+            "midpoint": [
+              1.3801199091928291,
+              -0.5188254234404447
+            ],
+            "radius_upper": 1.0798372467444297e-24
+          },
+          "difference": {
+            "real": "[1.28190684798860357796268 +/- 1.94e-24]",
+            "imaginary": "[-0.70555828420574421526728 +/- 2.71e-24]",
+            "midpoint": [
+              1.2819068479886035,
+              -0.7055582842057442
+            ],
+            "radius_upper": 1.0798372482851737e-24
+          },
+          "delta_S_absolute_upper": 4.596365221683808,
+          "analytic_eta": "[5.07048518607698866367204 +/- 8.33e-24]",
+          "analytic_unitarity_defect": "[-24.7098200222261943532839 +/- 6.77e-23]",
+          "analytic_disk": "violated"
+        }
+      ],
+      "analytic_limit_unitarity_defect": {
+        "S0": "[-4561666.35550149991310316976029 +/- 2.23e-24]",
+        "S2": "[-729866.616880239986096507161647 +/- 2.44e-25]"
+      },
+      "uniform_below_matching": {
+        "0": {
+          "f_difference_bound": "[8.08130701920314451427852016341e-6 +/- 6.22e-37]",
+          "S_difference_bound": "[2.53881747629322289584213665446e-5 +/- 2.21e-35]"
+        },
+        "2": {
+          "f_difference_bound": "[3.46041877405610337432954461300e-6 +/- 7.49e-37]",
+          "S_difference_bound": "[1.08712261989188529657896856090e-5 +/- 3.60e-35]"
+        },
+        "1": {
+          "f_difference_bound": "[2.41942152978776882554833465271e-6 +/- 2.77e-36]",
+          "S_difference_bound": "[7.60083690391823365086485783187e-6 +/- 3.77e-36]"
+        }
+      }
+    },
+    {
+      "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_tip_path_02/coefficients.json",
+      "T0": "[301.059832221637293514504563063 +/- 3.84e-28]",
+      "samples": [
+        {
+          "node": 0,
+          "energy_gev": 0.28003454716713333,
+          "isospin": 0,
+          "ell": 0,
+          "PV": {
+            "real": "[0.156311458657726304438045421485 +/- 1.46e-31]",
+            "imaginary": "[0.000626904305335475152725098356570 +/- 5.01e-34]",
+            "midpoint": [
+              0.1563114586577263,
+              0.0006269043053354752
+            ],
+            "radius_upper": 1.5981361269398673e-66
+          },
+          "PV_integral": {
+            "real": "[0.156311458657726304438045421485 +/- 1.51e-31]",
+            "imaginary": "[0.00062690430533547515272509835657 +/- 5.17e-33]",
+            "midpoint": [
+              0.1563114586577263,
+              0.0006269043053354752
+            ],
+            "radius_upper": 4.663416338520038e-33
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[0.156311458657726304438045421485 +/- 1.51e-31]",
+            "imaginary": "[0.00062690430533547515272509835657 +/- 5.17e-33]",
+            "midpoint": [
+              0.1563114586577263,
+              0.0006269043053354752
+            ],
+            "radius_upper": 4.663416281122853e-33
+          },
+          "difference": {
+            "real": "[+/- 4.67e-33]",
+            "imaginary": "[+/- 4.67e-33]",
+            "midpoint": [
+              4.731465070375381e-50,
+              6.178070019938327e-50
+            ],
+            "radius_upper": 4.6634162868625716e-33
+          },
+          "delta_S_absolute_upper": 3.2544011024699722e-34,
+          "analytic_eta": "[0.999998813101085841375833723748336 +/- 4.87e-34]",
+          "analytic_unitarity_defect": "[2.373796419588215901631405928e-6 +/- 9.35e-34]",
+          "analytic_disk": "passed"
+        },
+        {
+          "node": 0,
+          "energy_gev": 0.28003454716713333,
+          "isospin": 2,
+          "ell": 0,
+          "PV": {
+            "real": "[-0.0327143771854875411940636856873 +/- 5.32e-33]",
+            "imaginary": "[2.73864060312452410100974678949e-5 +/- 3.19e-35]",
+            "midpoint": [
+              -0.03271437718548754,
+              2.7386406031245242e-05
+            ],
+            "radius_upper": 6.027174230267613e-67
+          },
+          "PV_integral": {
+            "real": "[-0.0327143771854875411940636856873 +/- 6.23e-33]",
+            "imaginary": "[2.738640603124524101009746789e-5 +/- 5.77e-33]",
+            "midpoint": [
+              -0.03271437718548754,
+              2.7386406031245242e-05
+            ],
+            "radius_upper": 9.01172151382823e-34
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[-0.0327143771854875411940636856873 +/- 6.23e-33]",
+            "imaginary": "[2.738640603124524101009746789e-5 +/- 5.77e-33]",
+            "midpoint": [
+              -0.03271437718548754,
+              2.7386406031245242e-05
+            ],
+            "radius_upper": 9.011721413383155e-34
+          },
+          "difference": {
+            "real": "[+/- 9.02e-34]",
+            "imaginary": "[+/- 9.02e-34]",
+            "midpoint": [
+              -2.3524949432620037e-52,
+              -6.1659465453785055e-52
+            ],
+            "radius_upper": 9.011721427732452e-34
+          },
+          "delta_S_absolute_upper": 6.288899440420527e-35,
+          "analytic_eta": "[0.9999999516115678321373356104437919 +/- 5.60e-35]",
+          "analytic_unitarity_defect": "[9.67768619942849611152661457e-8 +/- 9.56e-35]",
+          "analytic_disk": "passed"
+        },
+        {
+          "node": 0,
+          "energy_gev": 0.28003454716713333,
+          "isospin": 1,
+          "ell": 1,
+          "PV": {
+            "real": "[6.19675840262518707455753186532e-6 +/- 1.22e-36]",
+            "imaginary": "[3.89077307648132302581685808787e-9 +/- 6.70e-40]",
+            "midpoint": [
+              6.196758402625187e-06,
+              3.890773076481323e-09
+            ],
+            "radius_upper": 5.532307496814129e-72
+          },
+          "PV_integral": {
+            "real": "[6.1967584026251870745575319e-6 +/- 4.28e-32]",
+            "imaginary": "[3.8907730764813230258169e-9 +/- 5.01e-32]",
+            "midpoint": [
+              6.196758402625187e-06,
+              3.890773076481323e-09
+            ],
+            "radius_upper": 8.097259674169898e-33
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[6.1967584026251870745575319e-6 +/- 4.28e-32]",
+            "imaginary": "[3.8907730764813230258169e-9 +/- 5.01e-32]",
+            "midpoint": [
+              6.196758402625187e-06,
+              3.890773076481323e-09
+            ],
+            "radius_upper": 8.097259524937217e-33
+          },
+          "difference": {
+            "real": "[+/- 8.10e-33]",
+            "imaginary": "[+/- 8.10e-33]",
+            "midpoint": [
+              8.38040348487198e-49,
+              5.125481379638159e-48
+            ],
+            "radius_upper": 8.097259536416654e-33
+          },
+          "delta_S_absolute_upper": 5.650735165939794e-34,
+          "analytic_eta": "[0.999999999808052692562793965739523 +/- 7.67e-34]",
+          "analytic_unitarity_defect": "[3.8389461483756829968856e-10 +/- 2.25e-33]",
+          "analytic_disk": "passed"
+        },
+        {
+          "node": 25,
+          "energy_gev": 0.40234926181998637,
+          "isospin": 0,
+          "ell": 0,
+          "PV": {
+            "real": "[0.349163448196535540517786516362 +/- 9.46e-32]",
+            "imaginary": "[0.170224205616717472635439005166 +/- 2.97e-31]",
+            "midpoint": [
+              0.34916344819653555,
+              0.17022420561671747
+            ],
+            "radius_upper": 1.6945157315355453e-68
+          },
+          "PV_integral": {
+            "real": "[0.34916344819653554052 +/- 2.99e-21]",
+            "imaginary": "[0.17022420561671747264 +/- 5.34e-21]",
+            "midpoint": [
+              0.34916344819653555,
+              0.17022420561671747
+            ],
+            "radius_upper": 7.695439309730674e-22
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[0.3491634481965355405177865164 +/- 6.64e-29]",
+            "imaginary": "[0.1702242056167174726354390052 +/- 6.22e-29]",
+            "midpoint": [
+              0.34916344819653555,
+              0.17022420561671747
+            ],
+            "radius_upper": 2.8482301565311066e-29
+          },
+          "difference": {
+            "real": "[+/- 2.85e-29]",
+            "imaginary": "[+/- 2.85e-29]",
+            "midpoint": [
+              -3.215468731763639e-37,
+              4.445319079439297e-36
+            ],
+            "radius_upper": 2.848230161233084e-29
+          },
+          "delta_S_absolute_upper": 9.087424674927296e-29,
+          "analytic_eta": "[0.999968044644429478792372751 +/- 2.78e-28]",
+          "analytic_unitarity_defect": "[6.3909689996292776813723e-5 +/- 6.44e-28]",
+          "analytic_disk": "passed"
+        },
+        {
+          "node": 25,
+          "energy_gev": 0.40234926181998637,
+          "isospin": 2,
+          "ell": 0,
+          "PV": {
+            "real": "[-0.0850940284276037653705605824336 +/- 2.36e-32]",
+            "imaginary": "[0.00824498617319785411619953352473 +/- 3.14e-33]",
+            "midpoint": [
+              -0.08509402842760376,
+              0.008244986173197855
+            ],
+            "radius_upper": 8.070495896181134e-69
+          },
+          "PV_integral": {
+            "real": "[-0.085094028427603765371 +/- 7.61e-22]",
+            "imaginary": "[0.008244986173197854116 +/- 5.21e-22]",
+            "midpoint": [
+              -0.08509402842760376,
+              0.008244986173197855
+            ],
+            "radius_upper": 3.212757043831127e-22
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[-0.0850940284276037653705605824 +/- 4.34e-29]",
+            "imaginary": "[0.0082449861731978541161995335 +/- 3.45e-29]",
+            "midpoint": [
+              -0.08509402842760376,
+              0.008244986173197855
+            ],
+            "radius_upper": 9.722158458973717e-30
+          },
+          "difference": {
+            "real": "[+/- 9.73e-30]",
+            "imaginary": "[+/- 9.73e-30]",
+            "midpoint": [
+              -1.8070307655417994e-36,
+              1.9316729036178185e-36
+            ],
+            "radius_upper": 9.72215847072866e-30
+          },
+          "delta_S_absolute_upper": 3.101904950147597e-29,
+          "analytic_eta": "[0.9999994501365976215647695103 +/- 7.10e-29]",
+          "analytic_unitarity_defect": "[1.0997265024071091857903e-6 +/- 9.21e-29]",
+          "analytic_disk": "passed"
+        },
+        {
+          "node": 25,
+          "energy_gev": 0.40234926181998637,
+          "isospin": 1,
+          "ell": 1,
+          "PV": {
+            "real": "[0.0289136932525720688261228378216 +/- 3.05e-32]",
+            "imaginary": "[0.000945040749034555963613506508174 +/- 3.29e-34]",
+            "midpoint": [
+              0.028913693252572068,
+              0.0009450407490345559
+            ],
+            "radius_upper": 8.967505079810468e-71
+          },
+          "PV_integral": {
+            "real": "[0.028913693252572068826 +/- 2.29e-22]",
+            "imaginary": "[0.000945040749034555964 +/- 4.93e-22]",
+            "midpoint": [
+              0.028913693252572068,
+              0.0009450407490345559
+            ],
+            "radius_upper": 1.0571306496117556e-22
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[0.0289136932525720688261228378 +/- 4.72e-29]",
+            "imaginary": "[0.0009450407490345559636135065 +/- 3.37e-29]",
+            "midpoint": [
+              0.028913693252572068,
+              0.0009450407490345559
+            ],
+            "radius_upper": 2.5485068810558993e-29
+          },
+          "difference": {
+            "real": "[+/- 2.55e-29]",
+            "imaginary": "[+/- 2.55e-29]",
+            "midpoint": [
+              -2.0966755638663734e-38,
+              1.747109802776892e-36
+            ],
+            "radius_upper": 2.5485068857578767e-29
+          },
+          "delta_S_absolute_upper": 8.131141786264995e-29,
+          "analytic_eta": "[0.999997747936411267885974361 +/- 4.29e-28]",
+          "analytic_unitarity_defect": "[4.504122105673820358309e-6 +/- 2.81e-28]",
+          "analytic_disk": "passed"
+        },
+        {
+          "node": 42,
+          "energy_gev": 1.1994241195247317,
+          "isospin": 0,
+          "ell": 0,
+          "PV": {
+            "real": "[-0.0171707651302927312590867619879 +/- 1.33e-33]",
+            "imaginary": "[0.000484574995889397875776279032349 +/- 6.80e-35]",
+            "midpoint": [
+              -0.017170765130292732,
+              0.0004845749958893979
+            ],
+            "radius_upper": 1.1698263490382427e-68
+          },
+          "PV_integral": {
+            "real": "[-0.01717076513029273126 +/- 6.60e-21]",
+            "imaginary": "[0.0004845749958893979 +/- 3.00e-20]",
+            "midpoint": [
+              -0.017170765130292732,
+              0.0004845749958893979
+            ],
+            "radius_upper": 5.6846971103098795e-21
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[-0.017170821462119553711079956 +/- 4.63e-28]",
+            "imaginary": "[0.000484580834412727376174121 +/- 4.53e-28]",
+            "midpoint": [
+              -0.017170821462119554,
+              0.00048458083441272736
+            ],
+            "radius_upper": 3.492984890269559e-28
+          },
+          "difference": {
+            "real": "[-5.6331826822451993194e-8 +/- 4.51e-28]",
+            "imaginary": "[5.838523329500397842e-9 +/- 4.85e-28]",
+            "midpoint": [
+              -5.6331826822451993e-08,
+              5.838523329500398e-09
+            ],
+            "radius_upper": 3.4929848940311408e-28
+          },
+          "delta_S_absolute_upper": 1.7300372354249314e-07,
+          "analytic_eta": "[0.99989646958108026403486274 +/- 4.92e-27]",
+          "analytic_unitarity_defect": "[0.00020705011929183023425183 +/- 6.34e-27]",
+          "analytic_disk": "passed"
+        },
+        {
+          "node": 42,
+          "energy_gev": 1.1994241195247317,
+          "isospin": 2,
+          "ell": 0,
+          "PV": {
+            "real": "[-0.317874176262234424957558273699 +/- 4.78e-31]",
+            "imaginary": "[0.249200919265764345554767033584 +/- 4.57e-31]",
+            "midpoint": [
+              -0.3178741762622344,
+              0.24920091926576435
+            ],
+            "radius_upper": 3.977718871243638e-69
+          },
+          "PV_integral": {
+            "real": "[-0.31787417626223442496 +/- 6.97e-21]",
+            "imaginary": "[0.24920091926576434555 +/- 9.29e-21]",
+            "midpoint": [
+              -0.3178741762622344,
+              0.24920091926576435
+            ],
+            "radius_upper": 4.518300653956848e-21
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[-0.317874184488259709869576667 +/- 3.82e-28]",
+            "imaginary": "[0.249200918573715556485436458 +/- 4.14e-28]",
+            "midpoint": [
+              -0.3178741844882597,
+              0.24920091857371557
+            ],
+            "radius_upper": 1.6868746442373457e-28
+          },
+          "difference": {
+            "real": "[-8.226025284912018393e-9 +/- 2.57e-28]",
+            "imaginary": "[-6.92048789069330576e-10 +/- 3.40e-28]",
+            "midpoint": [
+              -8.226025284912019e-09,
+              -6.920487890693306e-10
+            ],
+            "radius_upper": 1.6868746461181367e-28
+          },
+          "delta_S_absolute_upper": 2.5217551849696198e-08,
+          "analytic_eta": "[0.99995753741692160690429107 +/- 3.96e-27]",
+          "analytic_unitarity_defect": "[8.492336308582450198219e-5 +/- 7.00e-27]",
+          "analytic_disk": "passed"
+        },
+        {
+          "node": 42,
+          "energy_gev": 1.1994241195247317,
+          "isospin": 1,
+          "ell": 1,
+          "PV": {
+            "real": "[0.0295040095489657079476312425228 +/- 4.82e-32]",
+            "imaginary": "[0.00136080557778278293235625264736 +/- 1.38e-33]",
+            "midpoint": [
+              0.029504009548965707,
+              0.0013608055777827829
+            ],
+            "radius_upper": 2.753471353052078e-70
+          },
+          "PV_integral": {
+            "real": "[0.02950400954896570795 +/- 5.07e-21]",
+            "imaginary": "[0.00136080557778278293 +/- 5.06e-21]",
+            "midpoint": [
+              0.029504009548965707,
+              0.0013608055777827829
+            ],
+            "radius_upper": 2.6962217817627688e-21
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[0.029503989591718291684126641 +/- 2.49e-28]",
+            "imaginary": "[0.001360842072193101835892178 +/- 7.13e-28]",
+            "midpoint": [
+              0.02950398959171829,
+              0.0013608420721931019
+            ],
+            "radius_upper": 2.1315824591302616e-28
+          },
+          "difference": {
+            "real": "[-1.9957247416263504601e-8 +/- 7.01e-28]",
+            "imaginary": "[3.6494410318903535926e-8 +/- 3.61e-28]",
+            "midpoint": [
+              -1.9957247416263503e-08,
+              3.649441031890354e-08
+            ],
+            "radius_upper": 2.1315824628918435e-28
+          },
+          "delta_S_absolute_upper": 1.2706361949408557e-07,
+          "analytic_eta": "[0.99991312298442786809652728 +/- 5.00e-27]",
+          "analytic_unitarity_defect": "[0.00017374648352842908649618 +/- 5.56e-27]",
+          "analytic_disk": "passed"
+        },
+        {
+          "node": 49,
+          "energy_gev": 17.82608668568016,
+          "isospin": 0,
+          "ell": 0,
+          "PV": {
+            "real": "[-0.203635035586139928051573484157 +/- 4.28e-31]",
+            "imaginary": "[0.242140545274762851513844036327 +/- 1.21e-31]",
+            "midpoint": [
+              -0.20363503558613993,
+              0.24214054527476286
+            ],
+            "radius_upper": 7.330067456166684e-70
+          },
+          "PV_integral": {
+            "real": "[-0.2036350355861399281 +/- 7.20e-20]",
+            "imaginary": "[0.2421405452747628515 +/- 3.75e-20]",
+            "midpoint": [
+              -0.20363503558613993,
+              0.24214054527476286
+            ],
+            "radius_upper": 2.356816085017516e-20
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[26.565177524997871133 +/- 7.74e-19]",
+            "imaginary": "[-54.455897640245280759 +/- 6.55e-19]",
+            "midpoint": [
+              26.56517752499787,
+              -54.45589764024528
+            ],
+            "radius_upper": 5.880544355122687e-19
+          },
+          "difference": {
+            "real": "[26.768812560584011061 +/- 7.22e-19]",
+            "imaginary": "[-54.69803818552004361 +/- 1.17e-18]",
+            "midpoint": [
+              26.76881256058401,
+              -54.69803818552004
+            ],
+            "radius_upper": 5.880544363200622e-19
+          },
+          "delta_S_absolute_upper": 191.28996847950486,
+          "analytic_eta": "[191.22501698911354627 +/- 5.67e-18]",
+          "analytic_unitarity_defect": "[-36566.00712248676440 +/- 1.23e-15]",
+          "analytic_disk": "violated"
+        },
+        {
+          "node": 49,
+          "energy_gev": 17.82608668568016,
+          "isospin": 2,
+          "ell": 0,
+          "PV": {
+            "real": "[-0.0110805005739772678823371667557 +/- 4.15e-32]",
+            "imaginary": "[0.0308428675076508314371033573634 +/- 2.09e-32]",
+            "midpoint": [
+              -0.011080500573977269,
+              0.03084286750765083
+            ],
+            "radius_upper": 2.344578412918119e-70
+          },
+          "PV_integral": {
+            "real": "[-0.0110805005739772679 +/- 4.97e-20]",
+            "imaginary": "[0.0308428675076508314 +/- 6.91e-20]",
+            "midpoint": [
+              -0.011080500573977269,
+              0.03084286750765083
+            ],
+            "radius_upper": 3.196555926112804e-20
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[11.943654657788082203 +/- 2.64e-19]",
+            "imaginary": "[-24.113570250185767571 +/- 5.84e-19]",
+            "midpoint": [
+              11.943654657788082,
+              -24.113570250185766
+            ],
+            "radius_upper": 2.223493899259412e-19
+          },
+          "difference": {
+            "real": "[11.954735158362059471 +/- 3.82e-19]",
+            "imaginary": "[-24.144413117693418403 +/- 4.25e-19]",
+            "midpoint": [
+              11.954735158362059,
+              -24.144413117693418
+            ],
+            "radius_upper": 2.22349390329838e-19
+          },
+          "delta_S_absolute_upper": 84.63017324888712,
+          "analytic_eta": "[85.42516161723786194 +/- 1.54e-18]",
+          "analytic_unitarity_defect": "[-7296.458237331208844 +/- 2.86e-16]",
+          "analytic_disk": "violated"
+        },
+        {
+          "node": 49,
+          "energy_gev": 17.82608668568016,
+          "isospin": 1,
+          "ell": 1,
+          "PV": {
+            "real": "[-0.180041259661958598032309759643 +/- 3.77e-31]",
+            "imaginary": "[0.516307746610123628188238993532 +/- 3.96e-31]",
+            "midpoint": [
+              -0.1800412596619586,
+              0.5163077466101236
+            ],
+            "radius_upper": 7.390496765142698e-71
+          },
+          "PV_integral": {
+            "real": "[-0.180041259661958598 +/- 1.29e-19]",
+            "imaginary": "[0.516307746610123628 +/- 2.85e-19]",
+            "midpoint": [
+              -0.1800412596619586,
+              0.5163077466101236
+            ],
+            "radius_upper": 9.611868424474606e-20
+          },
+          "PV_integral_matches_closed_projection": true,
+          "analytic_cardinal": {
+            "real": "[-1.43745270018437294369772 +/- 5.19e-24]",
+            "imaginary": "[-1.21868269687291779207683 +/- 4.58e-24]",
+            "midpoint": [
+              -1.4374527001843729,
+              -1.2186826968729179
+            ],
+            "radius_upper": 7.99283293900705e-25
+          },
+          "difference": {
+            "real": "[-1.257411440522414345665406 +/- 9.50e-25]",
+            "imaginary": "[-1.73499044348304142026507 +/- 3.58e-24]",
+            "midpoint": [
+              -1.2574114405224144,
+              -1.7349904434830414
+            ],
+            "radius_upper": 7.99283294671077e-25
+          },
+          "delta_S_absolute_upper": 6.730742285683168,
+          "analytic_eta": "[6.61052948057452379561102 +/- 4.33e-24]",
+          "analytic_unitarity_defect": "[-42.6991000135448833760264 +/- 7.44e-23]",
+          "analytic_disk": "violated"
+        }
+      ],
+      "analytic_limit_unitarity_defect": {
+        "S0": "[-5590947.23081723093564445398326 +/- 2.73e-24]",
+        "S2": "[-894551.556930756949703112637322 +/- 3.67e-26]"
+      },
+      "form_factor_limits": [
+        "[0.0681255124370346746589384290370 +/- 3.27e-32]",
+        "[0.0185755396071349402267354306786 +/- 4.88e-32]"
+      ],
+      "uniform_below_matching": {
+        "0": {
+          "f_difference_bound": "[9.96150304256490100687724583518e-6 +/- 3.09e-36]",
+          "S_difference_bound": "[3.12949847772342664183076862488e-5 +/- 4.30e-35]"
+        },
+        "2": {
+          "f_difference_bound": "[3.59179386724712838636785570956e-6 +/- 1.84e-36]",
+          "S_difference_bound": "[1.12839532265524516108149465165e-5 +/- 6.97e-36]"
+        },
+        "1": {
+          "f_difference_bound": "[2.88070316619068851398889551899e-6 +/- 3.81e-36]",
+          "S_difference_bound": "[9.04999590407752428199619844920e-6 +/- 9.24e-37]"
+        }
+      }
+    }
+  ],
+  "angular_integrals": "Validated Arb integrals of rational circle parametrization",
+  "original_model_changed": false,
+  "old_feasibility_transferred": false,
+  "coefficients_refitted": false,
+  "paper_curve_inputs": false,
+  "continuum_unitarity_certified": false,
+  "angular_integrals_reused_from": "results/runs/foundations_review_20260910/analytic_comparison/analytic_audit.json",
+  "uniform_bound_scope": "Same direct boundary modes; crossed-kernel error for 4<s<=s0, all ell; no unitarity transfer",
+  "elapsed_seconds": 1.8592961831018329,
+  "prescription": "pv-midpoint",
+  "core_sources": {
+    "__init__.py": "5e30794fc13676c6295e69fc2ece20f1e839fdbf6c3ab73092592056b2b2d362",
+    "analysis.py": "9adc7faeaf5d006f9ab032146664cc264ed3c1c7669ff91f0c5b4bd857c5df2f",
+    "analytic.py": "8af6944a901c41646050e5b957d6ef74024ccfec9684b667592d0b13bd6b217c",
+    "certificates.py": "0f190cf9fb76e1098283bbf10c4bdeffeffba4e64df83515549b88c07b500474",
+    "imaginary.py": "75747ee09285819d1d8d4e7f8fda9f599b69e48a7822a91d9780a5a339ef41be",
+    "io.py": "8ac1e9c32df9436952f6412ec4b30c9c9f54e8fbdcd4bcf61a6434d9859636bc",
+    "kernels.py": "e73e9fef608c3f95adf8241801d4831bda6b0aa06e8d47144767f40559ecd181",
+    "linear.py": "8eb6b2f51541a5fabd762da1fe1a563daf856923fd8952892b79fcbfb4326682",
+    "model.py": "9d70cf46e323c3ab7ccc9f6f0c92d0bff34e05b995f9c519a5b55fc93e776b6d",
+    "operators.py": "96503ecc411866f4bac174545ba23abefb9b275cb8002691b818f92b36f51c1c",
+    "quotient.py": "9f49910882d405cb61b500a55a301cc51fc3dbd8e42f33fc46f0707374fe1426",
+    "run.py": "ea3305e788af875d2d73bae3644ef8f1ef726dfeebe519c2eadb69334b300847",
+    "spectra.py": "6c75e72fed394633caaecb0def49e348fd10812d03ee46236f72f2f20a287828"
+  },
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 60.0,
+  "supervisor_seconds": 2.72143966704607
+}

@@ -1,0 +1,40 @@
+{
+  "candidate": "results/adaptive_pion_N6_resolvedpeaks.json",
+  "candidate_sha256": "e0606553d7ee5eff845f8093e4ec50c422c3b3a77e1c40340bab6857670bcf9b",
+  "arithmetic": "Exact rational operations on stored decimal coefficients and Chebyshev-U recurrence.",
+  "mathematical_input": "Positive fixed-energy large-spin prefactor proved in docs/10_large_spin_edge.md; sin(phi)>0 at each interior x.",
+  "all_spin_unitarity_disproved": true,
+  "witnesses": [
+    {
+      "isospin": 0,
+      "x": "99/100",
+      "s": "800/199",
+      "numerator": "-4048276211878638228921016523",
+      "denominator": "15625000000000000000000000",
+      "approximate_value": -259.0896775602329,
+      "strictly_negative": true,
+      "consequence": "Im f_l becomes negative at sufficiently large allowed spin"
+    },
+    {
+      "isospin": 1,
+      "x": "-99/100",
+      "s": "800",
+      "numerator": "-99319539713291106209496683157",
+      "denominator": "15625000000000000000000000",
+      "approximate_value": -6356.450541650631,
+      "strictly_negative": true,
+      "consequence": "Im f_l becomes negative at sufficiently large allowed spin"
+    },
+    {
+      "isospin": 2,
+      "x": "-39/100",
+      "s": "800/61",
+      "numerator": "-14021497891191884498723404607",
+      "denominator": "15625000000000000000000000",
+      "approximate_value": -897.3758650362806,
+      "strictly_negative": true,
+      "consequence": "Im f_l becomes negative at sufficiently large allowed spin"
+    }
+  ],
+  "script_sha256": "ce82755b3718036073429355a9e1d155d8a2272a84dc4049e8d7157c5a9f9531"
+}

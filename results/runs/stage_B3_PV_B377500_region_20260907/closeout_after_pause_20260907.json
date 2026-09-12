@@ -1,0 +1,126 @@
+{
+  "recorded_at": "2026-09-07T21:58:16.679068+00:00",
+  "status": "paused_incomplete",
+  "new_queries_started_after_pause": 0,
+  "running_queries": 0,
+  "region_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_15",
+  "regions": [
+    {
+      "epsilon": 0.006,
+      "distance_upper": 0.3418109941937596,
+      "geometry_ready": false,
+      "outer_closed": true,
+      "distinct_physical_normals": 5,
+      "metric_gap_0025_normals": 3,
+      "retained_points": 5,
+      "next_support": {
+        "action": "add_direction",
+        "direction": [
+          4.56455787697327,
+          152.10297560698686
+        ],
+        "gap": 0.0024999999999999996,
+        "normal_units": "unit normal in declared region metric"
+      }
+    },
+    {
+      "epsilon": 0.004,
+      "distance_upper": 0.3193762995463138,
+      "geometry_ready": false,
+      "outer_closed": true,
+      "distinct_physical_normals": 5,
+      "metric_gap_0025_normals": 4,
+      "retained_points": 5,
+      "next_support": {
+        "action": "add_direction",
+        "direction": [
+          6.112945172013477,
+          206.73128303891585
+        ],
+        "gap": 0.0024999999999999996,
+        "normal_units": "unit normal in declared region metric"
+      }
+    },
+    {
+      "epsilon": 0.002,
+      "distance_upper": 0.3080280606942505,
+      "geometry_ready": false,
+      "outer_closed": true,
+      "distinct_physical_normals": 5,
+      "metric_gap_0025_normals": 3,
+      "retained_points": 5,
+      "next_support": {
+        "action": "add_direction",
+        "direction": [
+          35.74088726790956,
+          482.5738277215898
+        ],
+        "gap": 0.0024999999999999996,
+        "normal_units": "unit normal in declared region metric"
+      }
+    },
+    {
+      "epsilon": 0.001,
+      "distance_upper": 0.33220521873681175,
+      "geometry_ready": false,
+      "outer_closed": true,
+      "distinct_physical_normals": 5,
+      "metric_gap_0025_normals": 2,
+      "retained_points": 5,
+      "next_support": {
+        "action": "add_direction",
+        "direction": [
+          67.32071586066715,
+          940.0313792451625
+        ],
+        "gap": 0.0024999999999999996,
+        "normal_units": "unit normal in declared region metric"
+      }
+    },
+    {
+      "epsilon": 0.0006,
+      "distance_upper": 0.3514619609581274,
+      "geometry_ready": false,
+      "outer_closed": true,
+      "distinct_physical_normals": 5,
+      "metric_gap_0025_normals": 3,
+      "retained_points": 5,
+      "next_support": {
+        "action": "add_direction",
+        "direction": [
+          106.41707019026184,
+          1509.5422626547274
+        ],
+        "gap": 0.0024999999999999996,
+        "normal_units": "unit normal in declared region metric"
+      }
+    },
+    {
+      "epsilon": 0.0002,
+      "distance_upper": 0.6173265743368944,
+      "geometry_ready": false,
+      "outer_closed": true,
+      "distinct_physical_normals": 3,
+      "metric_gap_0025_normals": 2,
+      "retained_points": 5,
+      "next_support": {
+        "action": "add_direction",
+        "direction": [
+          -132.6504687215749,
+          -2173.986023539844
+        ],
+        "gap": 0.0024999999999999996,
+        "normal_units": "unit normal in declared region metric"
+      }
+    }
+  ],
+  "nesting": {
+    "six_chiral_present": true,
+    "contradictions": [],
+    "status": "no_observed_contradiction"
+  },
+  "conditional_geometries_ready": 0,
+  "completion_time_estimate": null,
+  "scope": "Same PV M50/L10 sampled/free B377500 and two4-L2 balls; regulator not accepted",
+  "note": "Last five previously started cold queries finished normally. Four met metric support gap .0025; the fifth has valid gap .0035359239954442. No new queries were dispatched. No stable whole-region completion ETA established."
+}

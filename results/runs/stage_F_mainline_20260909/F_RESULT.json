@@ -1,0 +1,216 @@
+{
+  "status": "completed_with_claim_differences",
+  "F1": "completed",
+  "F2": "completed",
+  "F3": "completed",
+  "finite_calculation_accepted": true,
+  "all_paper_claims_reproduced": false,
+  "continuum_certified": false,
+  "physical_inputs": {
+    "chiral_tolerance": 0.002,
+    "chiral_norm": "separate-l2",
+    "prescription": "pv-midpoint",
+    "infinity": "free",
+    "unitarity_scope": "sampled",
+    "uv_config": {
+      "moment_source": "printed",
+      "sr_error": "raw-absolute",
+      "cutoff": "clipped-phi",
+      "mq_rule": "arithmetic-mean",
+      "pion_mass_gev": 0.14,
+      "matching_energy_gev": 1.2,
+      "up_mass_gev": 0.004,
+      "down_mass_gev": 0.0073,
+      "alpha_s": 0.4,
+      "gluon_condensate_gev4": 0.023,
+      "scalar_condensate_gev4": -0.0001,
+      "sr_tolerance": 0.002,
+      "ff_tolerance": 6e-05
+    }
+  },
+  "regulator_recipe": "B(M)=100*(M^2+M*(M+1)/2)",
+  "representative_rule": "Same +f00(3) projection-only UV representative; no phase ranking or Watsonian step",
+  "original_constraint_totals": {
+    "scattering_disks": 7650,
+    "current_grams": 510,
+    "chiral_balls": 10,
+    "density_bounds": 5,
+    "FESR": 20,
+    "FF_caps": 74,
+    "fresh_primary_samples": 669
+  },
+  "results": [
+    {
+      "M": 50,
+      "L": 8,
+      "support": {
+        "lower": 0.12009404740406278,
+        "upper": 0.12014927334032777,
+        "gap": 5.5225936264988174e-05
+      },
+      "P1_90": {
+        "bracket_gev": [
+          0.7921355788896206,
+          0.8644178555063566
+        ],
+        "linear_gev": 0.8405946852432085
+      },
+      "paper_P1_90": {
+        "bracket_gev": [
+          0.789702995958,
+          0.861764139334
+        ],
+        "linear_gev": 0.8201167335810174
+      },
+      "minimum_eta": [
+        0.7904195461051136,
+        0.9999513903360624,
+        0.7439325523615757
+      ],
+      "evaluation": "results/runs/stage_F_mainline_20260909/M50_L8_evaluate/evaluation.json",
+      "joint_audit": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_F_mainline_20260909/M50_L8_selected/joint_audit.json"
+    },
+    {
+      "M": 50,
+      "L": 10,
+      "support": {
+        "lower": 0.09924805847073383,
+        "upper": 0.09925920163675225,
+        "gap": 1.1143166018426354e-05
+      },
+      "P1_90": {
+        "bracket_gev": [
+          0.7921355788896206,
+          0.8644178555063566
+        ],
+        "linear_gev": 0.8123623627807323
+      },
+      "paper_P1_90": {
+        "bracket_gev": [
+          0.789702995958,
+          0.861764139334
+        ],
+        "linear_gev": 0.8326553310045602
+      },
+      "minimum_eta": [
+        0.8214805342182461,
+        0.999996938979844,
+        0.8182085787717801
+      ],
+      "evaluation": "results/runs/stage_F_mainline_20260909/M50_L10_evaluate/evaluation.json",
+      "joint_audit": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_F_mainline_20260909/M50_L10_transfer/joint_audit.json"
+    },
+    {
+      "M": 50,
+      "L": 12,
+      "support": {
+        "lower": 0.09057073286250072,
+        "upper": 0.09064762160996437,
+        "gap": 7.688874746364371e-05
+      },
+      "P1_90": {
+        "bracket_gev": [
+          0.7921355788896206,
+          0.8644178555063566
+        ],
+        "linear_gev": 0.7983407880310747
+      },
+      "paper_P1_90": {
+        "bracket_gev": [
+          0.789702995958,
+          0.861764139334
+        ],
+        "linear_gev": 0.8316371463578618
+      },
+      "minimum_eta": [
+        0.82713016157441,
+        0.9999761014121381,
+        0.6722873370035247
+      ],
+      "evaluation": "results/runs/stage_F_mainline_20260909/M50_L12_evaluate/evaluation.json",
+      "joint_audit": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_F_mainline_20260909/M50_L12_selected/joint_audit.json"
+    },
+    {
+      "M": 45,
+      "L": 10,
+      "support": {
+        "lower": 0.09583273939963556,
+        "upper": 0.09589325869318695,
+        "gap": 6.051929355138652e-05
+      },
+      "P1_90": {
+        "bracket_gev": [
+          0.7166053062692866,
+          0.7813198706950941
+        ],
+        "linear_gev": 0.7521160730605567
+      },
+      "paper_P1_90": {
+        "bracket_gev": [
+          0.778919176647,
+          0.857392481359
+        ],
+        "linear_gev": 0.7865511662967725
+      },
+      "minimum_eta": [
+        0.6932694105082287,
+        0.9999848781700996,
+        0.4808356151873191
+      ],
+      "evaluation": "results/runs/stage_F_mainline_20260909/M45_L10_evaluate/evaluation.json",
+      "joint_audit": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_F_mainline_20260909/M45_L10_selected/joint_audit.json"
+    },
+    {
+      "M": 60,
+      "L": 10,
+      "support": {
+        "lower": 0.10276505809464387,
+        "upper": 0.10285528946251819,
+        "gap": 9.02313678743244e-05
+      },
+      "P1_90": {
+        "bracket_gev": [
+          0.7556183513185256,
+          0.8089748663768113
+        ],
+        "linear_gev": 0.7737898492190874
+      },
+      "paper_P1_90": {
+        "bracket_gev": [
+          0.75329840264,
+          0.806486266442
+        ],
+        "linear_gev": 0.7783064479747199
+      },
+      "minimum_eta": [
+        0.7938906904364383,
+        0.9999701028790391,
+        0.7013939060026244
+      ],
+      "evaluation": "results/runs/stage_F_mainline_20260909/M60_L10_evaluate/evaluation.json",
+      "joint_audit": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_F_mainline_20260909/M60_L10_selected/joint_audit.json"
+    }
+  ],
+  "P1_spans_mev": {
+    "fixed_M50": 42.25389721213378,
+    "fixed_L10": 60.24628972017558,
+    "paper_fixed_M50": 12.538597423542797,
+    "paper_fixed_L10": 54.348883029840295
+  },
+  "claims": {
+    "all_five_P1_90_crossings": "reproduced",
+    "S2_resolution_stability": "supported",
+    "low_energy_S0_stability": "supported",
+    "published_L_dependence_strength": "not_fully_reproduced",
+    "mid_high_energy_S0_absolute_phases": "not_reproduced",
+    "unique_author_setting_identity": "unresolved"
+  },
+  "report": "F_RESULT_ZH.md",
+  "data": "fig11/resolution.json",
+  "phase_plot": "fig11/fig11.pdf",
+  "eta_plot": "fig11/fig11_eta.pdf",
+  "atlas": "FIGURE_ATLAS_ZH.md",
+  "replay": "REPLAY_ZH.md",
+  "core_module": "src/smatrix_bootstrap/resolution.py",
+  "verification": "verification.json"
+}

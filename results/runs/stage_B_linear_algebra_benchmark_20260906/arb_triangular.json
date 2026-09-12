@@ -1,0 +1,54 @@
+[
+  {
+    "bits": 128,
+    "n": 500,
+    "upper": true,
+    "exact_zero_lower_triangle": true,
+    "solve_seconds": {
+      "lu": 0.0771864668931812,
+      "precond": 0.5187477148137987,
+      "approx": 0.05890150601044297
+    },
+    "lu_cubic_extrapolation_to_3875_seconds": 35.929094300230645,
+    "lu_quadratic_extrapolation_to_3875_seconds": 4.636012167771696
+  },
+  {
+    "bits": 128,
+    "n": 1000,
+    "upper": true,
+    "exact_zero_lower_triangle": true,
+    "solve_seconds": {
+      "lu": 0.3136855559423566,
+      "precond": 3.5417104919906706,
+      "approx": 0.4281423231586814
+    },
+    "lu_cubic_extrapolation_to_3875_seconds": 18.251965619294424,
+    "lu_quadratic_extrapolation_to_3875_seconds": 4.710184675946948
+  },
+  {
+    "bits": 192,
+    "n": 500,
+    "upper": true,
+    "exact_zero_lower_triangle": true,
+    "solve_seconds": {
+      "lu": 0.0807519571390003,
+      "precond": 0.738620650023222,
+      "approx": 0.06345157301984727
+    },
+    "lu_cubic_extrapolation_to_3875_seconds": 37.58877429887434,
+    "lu_quadratic_extrapolation_to_3875_seconds": 4.850164425661205
+  },
+  {
+    "bits": 192,
+    "n": 1000,
+    "upper": true,
+    "exact_zero_lower_triangle": true,
+    "solve_seconds": {
+      "lu": 0.37520723999477923,
+      "precond": 3.694880875060335,
+      "approx": 0.24789823312312365
+    },
+    "lu_cubic_extrapolation_to_3875_seconds": 21.8316384505556,
+    "lu_quadratic_extrapolation_to_3875_seconds": 5.633971213046607
+  }
+]

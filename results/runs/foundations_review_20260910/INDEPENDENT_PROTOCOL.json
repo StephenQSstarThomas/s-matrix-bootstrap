@@ -1,0 +1,19 @@
+{
+  "status": "requirements for new independent calculations; not a new completed reproduction",
+  "published_output_inputs_allowed": false,
+  "experimental_phase_fitting_allowed": false,
+  "physical_inputs": "Use stated theory/IR inputs and explicitly record their approximation level; do not silently enforce GMOR by retuning an estimate.",
+  "amplitude_requirement": "Choose one analytic family and derive every direct/crossed operator from it, or explicitly label a mixed finite approximation.",
+  "available_comparison_family": "Minimal-degree real conformal polynomial, equivalent to a finite sine-cardinal density choice; different tails are different models.",
+  "chiral_norm": "Explicit choice required. Two Euclidean balls are a literal reading of Eq3.64; combined L2 is a distinct stricter choice, not uniquely derived.",
+  "FESR": "Declare printed versus Eq2.50 inputs, common scalar-current mass, four error units and grouping, cutoff rule and OPE error assumptions.",
+  "regulator": "Declare actual-density norm and B(M); no phase-based choice or claimed continuum independence.",
+  "selection": {
+    "tip": "maximize f00(3)",
+    "ref": "maximize f11(3) at xref=5/(16*pi^2*(92/140)^2)",
+    "mid": "maximize f11(3) at (xref+x_tip)/2",
+    "historical_outputs": "Retain, but do not relabel as independent results."
+  },
+  "next_calculation": "Construct the chosen consistent M50/L10 operator and obtain a complete joint witness before new support/phase comparisons.",
+  "acceptance": "Original constraints and support error, then fixed full-vector observables, then all five declared M/L comparisons. Global claims additionally require their actual global hypotheses."
+}

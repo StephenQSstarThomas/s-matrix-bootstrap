@@ -1,0 +1,121 @@
+{
+  "violations": [],
+  "high_spin": [
+    {
+      "isospin": 0,
+      "cosine": -1.0
+    },
+    {
+      "isospin": 0,
+      "cosine": -0.8660254037844387
+    },
+    {
+      "isospin": 0,
+      "cosine": -0.4999999999999998
+    },
+    {
+      "isospin": 0,
+      "cosine": 6.123233995736766e-17
+    },
+    {
+      "isospin": 0,
+      "cosine": 0.5000000000000001
+    },
+    {
+      "isospin": 0,
+      "cosine": 0.8660254037844387
+    },
+    {
+      "isospin": 0,
+      "cosine": 1.0
+    },
+    {
+      "isospin": 1,
+      "cosine": -1.0
+    },
+    {
+      "isospin": 1,
+      "cosine": -0.8660254037844387
+    },
+    {
+      "isospin": 1,
+      "cosine": -0.4999999999999998
+    },
+    {
+      "isospin": 1,
+      "cosine": 6.123233995736766e-17
+    },
+    {
+      "isospin": 1,
+      "cosine": 0.5000000000000001
+    },
+    {
+      "isospin": 1,
+      "cosine": 0.8660254037844387
+    },
+    {
+      "isospin": 1,
+      "cosine": 1.0
+    },
+    {
+      "isospin": 2,
+      "cosine": -1.0
+    },
+    {
+      "isospin": 2,
+      "cosine": -0.8660254037844387
+    },
+    {
+      "isospin": 2,
+      "cosine": -0.4999999999999998
+    },
+    {
+      "isospin": 2,
+      "cosine": 6.123233995736766e-17
+    },
+    {
+      "isospin": 2,
+      "cosine": 0.5000000000000001
+    },
+    {
+      "isospin": 2,
+      "cosine": 0.8660254037844387
+    },
+    {
+      "isospin": 2,
+      "cosine": 1.0
+    },
+    {
+      "isospin": 0,
+      "cosine": 0.05680233679279543
+    },
+    {
+      "isospin": 1,
+      "cosine": 0.6813810098530355
+    },
+    {
+      "isospin": 2,
+      "cosine": 0.2499508211938779
+    },
+    {
+      "isospin": 0,
+      "cosine": -0.24968410434995356
+    },
+    {
+      "isospin": 2,
+      "cosine": 0.16402386028404328
+    },
+    {
+      "isospin": 0,
+      "cosine": -0.39438988460827284
+    },
+    {
+      "isospin": 0,
+      "cosine": -0.6489291426081116
+    },
+    {
+      "isospin": 0,
+      "cosine": -0.5591085061868564
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "scope": "Support-value comparison for the two nested saved-float64-H finite programs, not a bound on phase shifts or exact-source support",
+  "old": "interlaced_tip_support_02",
+  "new": "fine_tip_support_02",
+  "old_interval": [
+    "0.0931837802857628794139799310869420878589153289794921875",
+    "0.09323857670464445746016934890576521866023540496826171875"
+  ],
+  "new_interval": [
+    "0.09317173379309758030064614331422490067780017852783203125",
+    "0.09323137414914960119372011604355066083371639251708984375"
+  ],
+  "old_minus_new_lower": "0",
+  "old_minus_new_upper": "0.00006684291154687715952320559154031798243522644042968750",
+  "constraint_identity_evidence": [
+    "FINE_OPERATOR_PREFIX_REPLAY.json",
+    "FINE_CURRENT_OPERATOR_REPLAY.json"
+  ],
+  "unchanged_conditions": [
+    "same density bound",
+    "same chiral norm and tolerance",
+    "same endpoint equalities",
+    "same high-energy necessary inequalities",
+    "same currents and FESR/FF data"
+  ],
+  "proof": "The new set is a subset. Combine this with the old upper and new attained lower for the same +x functional.",
+  "inputs": {
+    "results/runs/physical_consistency_20260911/interlaced_tip_support_02/report.json": "4df4e7437aebe428ec9cece429982589428c900a9eb04e7c4a35c88757f045b3",
+    "results/runs/physical_consistency_20260911/fine_tip_support_02/report.json": "3212303efc9b4ff3192734e2fdc8ac54872d0247ff4bfb78f20a3821bcecf5a7"
+  },
+  "arithmetic": "Exact binary64 input values converted to Decimal; 100 digits, sufficient for these finite decimal differences"
+}

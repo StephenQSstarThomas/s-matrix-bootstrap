@@ -1,0 +1,151 @@
+{
+  "status": "verified",
+  "tests": {
+    "files": 3,
+    "result": "........................................................................ [ 83%]\n..............                                                           [100%]\n86 passed in 11.43s",
+    "new_test_cases": 7,
+    "command": "PYTHONPATH=/tmp/collocation_arb:src SMATRIX_BLAS_THREADS=2 /home/shiqiu/miniconda3/bin/python -m pytest -q"
+  },
+  "modules": 12,
+  "module_count_is_not_a_new_hard_limit": true,
+  "source_sizes": {
+    "src/smatrix_bootstrap/analysis.py": {
+      "lines": 321,
+      "bytes": 24194,
+      "sha256": "6855724c11a26093c5e5c9db0bdf5963b54d65060c224c3a3c181e7b378df9b9"
+    },
+    "src/smatrix_bootstrap/model.py": {
+      "lines": 274,
+      "bytes": 18482,
+      "sha256": "9d70cf46e323c3ab7ccc9f6f0c92d0bff34e05b995f9c519a5b55fc93e776b6d"
+    },
+    "src/smatrix_bootstrap/io.py": {
+      "lines": 290,
+      "bytes": 24313,
+      "sha256": "8ac1e9c32df9436952f6412ec4b30c9c9f54e8fbdcd4bcf61a6434d9859636bc"
+    },
+    "src/smatrix_bootstrap/operators.py": {
+      "lines": 346,
+      "bytes": 24505,
+      "sha256": "96503ecc411866f4bac174545ba23abefb9b275cb8002691b818f92b36f51c1c"
+    },
+    "src/smatrix_bootstrap/__init__.py": {
+      "lines": 349,
+      "bytes": 24530,
+      "sha256": "5e30794fc13676c6295e69fc2ece20f1e839fdbf6c3ab73092592056b2b2d362"
+    },
+    "src/smatrix_bootstrap/quotient.py": {
+      "lines": 334,
+      "bytes": 24547,
+      "sha256": "9f49910882d405cb61b500a55a301cc51fc3dbd8e42f33fc46f0707374fe1426"
+    },
+    "src/smatrix_bootstrap/certificates.py": {
+      "lines": 108,
+      "bytes": 7758,
+      "sha256": "9c2a606171cced944b7fd40241e72c0b3def4ec4196edb3eff77889091416a00"
+    },
+    "src/smatrix_bootstrap/kernels.py": {
+      "lines": 273,
+      "bytes": 17969,
+      "sha256": "e73e9fef608c3f95adf8241801d4831bda6b0aa06e8d47144767f40559ecd181"
+    },
+    "src/smatrix_bootstrap/imaginary.py": {
+      "lines": 314,
+      "bytes": 23839,
+      "sha256": "47837806922eb6edb2a0b74dc6382167a994ad2e8210e0e14eece7b803a373e5"
+    },
+    "src/smatrix_bootstrap/run.py": {
+      "lines": 338,
+      "bytes": 24566,
+      "sha256": "65ef1056a80cd227816da71d8d081985858532fc32caf89a2956eec793b61286"
+    },
+    "src/smatrix_bootstrap/spectra.py": {
+      "lines": 123,
+      "bytes": 9113,
+      "sha256": "6c75e72fed394633caaecb0def49e348fd10812d03ee46236f72f2f20a287828"
+    },
+    "src/smatrix_bootstrap/linear.py": {
+      "lines": 343,
+      "bytes": 24574,
+      "sha256": "8eb6b2f51541a5fabd762da1fe1a563daf856923fd8952892b79fcbfb4326682"
+    },
+    "tests/test_mainline.py": {
+      "lines": 294,
+      "bytes": 22931,
+      "sha256": "801c887f1506a638f553c4a854e520d53b3ac0a14cdce98c0e20f19f5674e03a"
+    },
+    "tests/test_kernels.py": {
+      "lines": 229,
+      "bytes": 13869,
+      "sha256": "da60bfc7009ff5d1da822ef8fd3e68b92281d4d7f3bbc1caf22133abc85a6787"
+    },
+    "tests/test_linear.py": {
+      "lines": 254,
+      "bytes": 21787,
+      "sha256": "67dc76684348056de9c949ed67042f1b5fffb2deb5f262a33d4e16558c9156d9"
+    }
+  },
+  "original_input_hashes_unchanged": {
+    "references/2309.12402v3.pdf": true,
+    "results/reports/expert_review_20260910/He_Kruczenski_2309v3_Expert_Review_ZH.pdf": true,
+    "results/runs/mainline_alignment_20260909/PAPER_MAINLINE.json": true,
+    "results/runs/mainline_alignment_20260909/C3_evaluate/evaluation.json": true,
+    "results/runs/mainline_alignment_20260909/E3_paper_tip_evaluate/evaluation.json": true,
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_tip_path_02/coefficients.json": true,
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_tip_path_02/current.json": true,
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_tip_path_02/joint.npz": true,
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_tip_path_02/selection.json": true,
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_tip_path_02/report.json": true,
+    "results/runs/mainline_alignment_20260909/E3_paper_mid_evaluate/evaluation.json": true,
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_mid_path_03/coefficients.json": true,
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_mid_path_03/current.json": true,
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_mid_path_03/joint.npz": true,
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_mid_path_03/selection.json": true,
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_mid_path_03/report.json": true,
+    "results/runs/mainline_alignment_20260909/E3_paper_ref_evaluate/evaluation.json": true,
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_ref_path_02/coefficients.json": true,
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_ref_path_02/current.json": true,
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_ref_path_02/joint.npz": true,
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_ref_path_02/selection.json": true,
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_ref_path_02/report.json": true,
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/C2_fig6/coefficients.json": true,
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/C2_fig6/selection.json": true
+  },
+  "frozen_C_coefficients_identical": true,
+  "spectral_json_identical_after_module_separation": true,
+  "certificate_AST_unchanged_except_imports": true,
+  "fixed_C_certificate": {
+    "report": "results/runs/expert_response_20260910/C_fixed_current_final/report.json",
+    "bits": 768,
+    "upper": -9.09881296114616,
+    "enclosure": "[-9.098812961146162701972143 +/- 3.52e-25]",
+    "scope": "This fixed amplitude only; not full-problem infeasibility"
+  },
+  "positive_joint_control": {
+    "report": "results/runs/expert_response_20260910/E_tip_original_audit/report.json",
+    "lower": 0.09622922291089535,
+    "upper": 0.09632622091601184,
+    "gap": 9.699800511649148e-05
+  },
+  "source_archive": {
+    "path": "results/evidence/expert_response_sources_20260910.json.gz",
+    "sha256": "2971ec30fd9d92249eb84c363c8af3500013f161fe8ebf3b865fe834e0b4c413"
+  },
+  "report": {
+    "pdf": "results/runs/expert_response_20260910/RHO_MECHANISM_AUDIT_ZH.pdf",
+    "sha256": "3331c3adf090a709c85801038db8f817ef994f6c6cc355cabce7b5e1e536ece6",
+    "tools": [
+      "pandoc 3.9 (temporary pypandoc_binary 1.17 wheel)",
+      "tectonic 0.15.0"
+    ],
+    "project_dependencies_changed": false
+  },
+  "no_amplitude_optimization_or_reselection": true,
+  "experimental_phase_fitting": false,
+  "continuum_certified": false,
+  "remaining": [
+    "B3 global region accuracy",
+    "E three-point quantitative robustness",
+    "F L12 joint witness/support"
+  ]
+}

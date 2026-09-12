@@ -1,0 +1,143 @@
+{
+  "status": "dispatch_paused",
+  "new_completed_runs": 11,
+  "currently_running": 0,
+  "reused_supports": 1,
+  "qualified_support_records": 12,
+  "distinct_normals": 10,
+  "geometry_distance_upper": 0.11635252326621315,
+  "geometry_target": 0.01,
+  "geometry_ready": false,
+  "source_profile": {
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "free",
+    "unitarity_scope": "sampled",
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": false,
+    "prescription": "pv-midpoint",
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    "additional_constraints": null,
+    "sampling_nodes": 50,
+    "scattering_samples": 1500
+  },
+  "batch_elapsed_minutes": 89.83071449597676,
+  "new_run_total_wall_seconds": 8594.430215309374,
+  "completion_eta": null,
+  "eta_reason": "Adaptive geometry is not a fixed remaining run count; remaining directions and numerical costs are not predictable reliably.",
+  "scope": "Conditional later-code B377500 pure finite region, not final common regulator or literal paper completion.",
+  "details": [
+    {
+      "run": "support_001_minus_x",
+      "direction": [
+        -1,
+        0
+      ],
+      "lower": 0.5303702845458691,
+      "upper": 12478.643305110296,
+      "seconds": 975.4346207210328
+    },
+    {
+      "run": "support_002_plus_y",
+      "direction": [
+        0,
+        1
+      ],
+      "lower": 0.07725460230777559,
+      "upper": 0.09423059470046932,
+      "seconds": 979.9159770410042
+    },
+    {
+      "run": "support_003_minus_y",
+      "direction": [
+        0,
+        -1
+      ],
+      "lower": 0.7341874510146441,
+      "upper": 0.7346134547155556,
+      "seconds": 791.864961941028
+    },
+    {
+      "run": "support_004_minus_x_cold",
+      "direction": [
+        -1,
+        0
+      ],
+      "lower": 2.9025173125294823,
+      "upper": 2.9184668302023073,
+      "seconds": 980.3183282020036
+    },
+    {
+      "run": "support_005_plus_y_refine",
+      "direction": [
+        0,
+        1
+      ],
+      "lower": 0.0794645831716725,
+      "upper": 0.07986974165685158,
+      "seconds": 191.0977893548552
+    },
+    {
+      "run": "support_006_adaptive",
+      "direction": [
+        0.29021320288767954,
+        -0.9569620143295524
+      ],
+      "lower": 1.0365324225013939,
+      "upper": 1.036945663369303,
+      "seconds": 813.1334057019558
+    },
+    {
+      "run": "support_007_adaptive",
+      "direction": [
+        -0.2788148209138379,
+        0.9603448836948029
+      ],
+      "lower": 0.7359898912404047,
+      "upper": 0.7515359978219087,
+      "seconds": 977.9286329608876
+    },
+    {
+      "run": "support_008_adaptive",
+      "direction": [
+        -0.1023877327794028,
+        -0.9947445662964406
+      ],
+      "lower": 0.8993042561569768,
+      "upper": 0.8997685798413848,
+      "seconds": 770.461994710844
+    },
+    {
+      "run": "support_009_adaptive",
+      "direction": [
+        0.7160614807703349,
+        -0.6980372165987967
+      ],
+      "lower": 1.7461093205938825,
+      "upper": 1.746541114085865,
+      "seconds": 699.7058324879035
+    },
+    {
+      "run": "support_010_adaptive",
+      "direction": [
+        -0.787907592340341,
+        0.6157934929279839
+      ],
+      "lower": 2.100741042290325,
+      "upper": 2.1012298723064076,
+      "seconds": 766.2870171570685
+    },
+    {
+      "run": "support_011_adaptive",
+      "direction": [
+        -0.3390645029413561,
+        -0.9407631279153809
+      ],
+      "lower": 1.48112877561749,
+      "upper": 1.481610518377062,
+      "seconds": 648.2816550307907
+    }
+  ],
+  "aggregate": "results/runs/stage_B2_PV_B377500_region_20260907/progress_audit_geometry"
+}

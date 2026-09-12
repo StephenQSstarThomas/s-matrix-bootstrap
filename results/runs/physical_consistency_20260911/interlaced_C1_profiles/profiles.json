@@ -1,0 +1,224 @@
+{
+  "status": "profiles_completed",
+  "kind": "subthreshold",
+  "profiles": [
+    {
+      "epsilon": 0.002,
+      "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_IR_selected/coefficients.json",
+      "selection": {
+        "rule": "Converged upper IR support at preregistered Weinberg x before phase evaluation",
+        "reference": [
+          0.07332139057293466,
+          -0.00488809270486231
+        ],
+        "target": [
+          0.07332139056634385,
+          -0.004134888038548687
+        ],
+        "center_identity": {
+          "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_IR_ref_02/center_converged.npz",
+          "sha256": "f2a1168e46f904152466d7e80d5191c1b4d26b7bc18a6b4fa8ef64ac3b71ae0f",
+          "mu": 1.953125e-07,
+          "full_C_identical": true
+        },
+        "coefficient_sha256": "0d5576b74ece16e1e3883ca73abeb92a61da99a61381a34e00266fa8f526821e",
+        "epsilon": 0.002,
+        "model_signature": {
+          "M": 50,
+          "L": 10,
+          "density_limit": 377500.0,
+          "infinity": "zero",
+          "unitarity_scope": "sampled",
+          "prescription": "analytic-cardinal",
+          "chiral_norm": "separate-l2",
+          "scattering_samples": 3123,
+          "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_prepare",
+          "global_high_spin_enforced": false,
+          "tail_conditions_applied": true,
+          "additional_constraints": {
+            "kind": "explicit-analytic-samples",
+            "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_prepare"
+          },
+          "sampling_nodes": 132
+        },
+        "source_reports": [
+          "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_IR_ref_02/report.json"
+        ],
+        "coefficients_mixed": false,
+        "selection_uses_phase_data": false,
+        "representative_center_converged": true,
+        "exact_extremizer_claimed": false,
+        "regional_geometry_ready": false,
+        "local_upper_boundary_ready": true,
+        "local_upper_boundary": {
+          "distance_upper": 3.0937877310213135e-06,
+          "scaled_distance_upper": 0.0015468938655106568,
+          "budget": 0.01
+        },
+        "original_H_feasibility": {
+          "upper": 0.5177345027146033,
+          "enclosure": "[0.5177345027146032118507379 +/- 2.54e-26]",
+          "disk": 0.07532226748139817,
+          "chiral": 0.39351818829985064,
+          "density_residual": 0.04889353540464518,
+          "tail_support": 0.0,
+          "chiral_norm": "separate-l2",
+          "objective_kind": "target_plane",
+          "scope": "Exact saved float64 H; angular quadrature error excluded",
+          "primal_feasible": true,
+          "lower": 0.5161876088490926,
+          "minimum_margin_enclosure": "[7.2179983549558367748e-97 +/- 1.86e-117]",
+          "density_norm": 373626.05704638053,
+          "targets": [
+            "[0.07332139056635589833668690 +/- 1.08e-27]",
+            "[-0.004134888038549147048030401 +/- 1.06e-28]"
+          ],
+          "tail_margin_enclosures": [],
+          "asymptotic_margin_enclosures": [
+            "[101.1459447650250538228968 +/- 3.66e-23]",
+            "[125.8303940798083561844350 +/- 4.58e-23]",
+            "[70856.41825705396096085242 +/- 4.98e-22]",
+            "[48511.10985492481431897800 +/- 2.74e-21]",
+            "[27784.80872768648000068470 +/- 1.71e-21]"
+          ],
+          "endpoint_equalities": 1,
+          "asymptotic_inequalities": 5
+        }
+      },
+      "energies": [
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.75,
+        1.0,
+        1.25,
+        1.5,
+        1.75,
+        2.0,
+        2.25,
+        2.5,
+        2.75,
+        3.0,
+        3.25,
+        3.5,
+        3.75
+      ],
+      "f_real": [
+        [
+          -0.007171456927120825,
+          0.027647882627852546,
+          -0.019211714570643953
+        ],
+        [
+          -0.005115623393472118,
+          0.026028954647022852,
+          -0.01854641802007118
+        ],
+        [
+          -0.003002243510754585,
+          0.02444324272783796,
+          -0.017902579030293082
+        ],
+        [
+          -0.0008393611206986503,
+          0.02288336923815052,
+          -0.017276143064781584
+        ],
+        [
+          0.001368442060261993,
+          0.021344677915578935,
+          -0.0166647289306539
+        ],
+        [
+          0.0070697818306703795,
+          0.017571416844333203,
+          -0.015192106040122964
+        ],
+        [
+          0.013023937443590459,
+          0.013881160978747403,
+          -0.013787064278841741
+        ],
+        [
+          0.019241431637220696,
+          0.010258985044108966,
+          -0.012439079795932579
+        ],
+        [
+          0.025746924760957707,
+          0.006698353510107451,
+          -0.011140691732574867
+        ],
+        [
+          0.03257452211925607,
+          0.0031974001652172405,
+          -0.009886188170446229
+        ],
+        [
+          0.03976591642646095,
+          -0.00024305734791988255,
+          -0.008670983183091436
+        ],
+        [
+          0.04737037535590052,
+          -0.003620639698140979,
+          -0.007491273335437584
+        ],
+        [
+          0.05544643305098724,
+          -0.006932023810797992,
+          -0.006343828116059204
+        ],
+        [
+          0.06406582527728812,
+          -0.01017321255706908,
+          -0.005225852059701295
+        ],
+        [
+          0.07332139055836126,
+          -0.013339486441445938,
+          -0.004134888038569226
+        ],
+        [
+          0.08334385481536373,
+          -0.016424899736230184,
+          -0.0030687447275431863
+        ],
+        [
+          0.09434420675531287,
+          -0.019420688001243077,
+          -0.0020254366571330912
+        ],
+        [
+          0.10676565481820735,
+          -0.02230924401398504,
+          -0.0010031237698121327
+        ]
+      ],
+      "max_absolute_deviation": [
+        0.011447847073392303,
+        0.0033532426865420864,
+        0.0011120204154939691
+      ],
+      "S0_zero_brackets": [
+        [
+          0.4,
+          0.5
+        ]
+      ],
+      "S0_certified_zero_brackets": [
+        [
+          0.4,
+          0.5
+        ]
+      ],
+      "S0_zero_existence_certified": true,
+      "zero_proof_scope": "Opposite rigorous real signs and continuity on the positive subthreshold interval; no uniqueness or absence theorem"
+    }
+  ],
+  "reference": null,
+  "selection_uses_phase_data": false,
+  "continuum_certified": false
+}

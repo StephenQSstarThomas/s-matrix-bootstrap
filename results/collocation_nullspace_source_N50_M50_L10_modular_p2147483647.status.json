@@ -1,0 +1,15 @@
+{
+  "rank_report": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.json",
+  "rank_report_sha256": "00f1c9fa2439bb59983273bdc01b7dfb81403d61fca5cda9bf28e7a68d993511",
+  "external_timeout_seconds": 180,
+  "process_exit_code": 0,
+  "terminal": true,
+  "rank_call_count": 1,
+  "prime_count": 1,
+  "all_rows_and_columns_used": true,
+  "elapsed_rank_program_seconds": 10.383966602035798,
+  "conclusion": "Exact ranks3000 and3002 for the newly archived unpreconditioned Float64 dyadic map; pure sampled target projection is R\u00b2",
+  "pivot_minor_definition": "B=[A;D][:,pivot_columns], a3002\u00d73002 rational matrix whose reduction modulo p has rank3002.",
+  "witness_definition": "For k=0,1, set v_k outside pivot_columns to0 and v_k[pivot_columns]=B^-1 e_(3000+k). Then A v_k=0 and D v_k=e_k exactly. The inverse is an exact mathematical definition; no rounded coefficient witness is asserted.",
+  "scope": "Newly archived unpreconditioned Float64 program map, reconstructed with matching historical source hashes. The old cache contains grid/convergence summaries, not historical operator bits. Not an exact analytic physical matrix or a separately rounded CVXPY preconditioned graph."
+}

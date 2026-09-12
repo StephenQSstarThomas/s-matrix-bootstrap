@@ -1,0 +1,176 @@
+{
+  "interpretation": "Published graphical target and finite-truncation diagnostics; no continuum reproduction claimed.",
+  "source_sha256": {
+    "/home/shiqiu/s-matrix-bootstrap/scripts/plot_progress.py": "d81433ba5a7de0a2d755f777e5b212319fa1a638c74b9b6a40bd05ab8f30e2c8",
+    "references/figure3_boundary.csv": "c36db250b7e02141849d18e63f3202426728b0b959b03aee110158db8f3c7892",
+    "references/figure3_boundary.metadata.json": "3c8151bd148cb38424e5aa497c51b9527f3f28c5e358413c96cdc25e2a5bd38f",
+    "results/gauge_input_audit.json": "cab6d4a9ddfffc046355e5014883eb1ec5dcd69303242eea2987357970d67465",
+    "results/pure_threshold_N4.json": "5180cb1b5fd5fa862299fd34080ebba00a2b501d49c6908cada36e44dc730f3a",
+    "results/pure_threshold_N6.json": "df18e4f38f80e9a2bf1e9645244f5db71ea3764ce86e14b8ed644a96f4aa5b0d",
+    "results/pure_threshold_N8.json": "8993c79e72e8c2dd6e0859879f113d9876b834c948e548dbd163d23737bbfbaf"
+  },
+  "input_results": [
+    {
+      "path": "results/pure_threshold_N4.json",
+      "degree": 4,
+      "config": {
+        "degree": 4,
+        "energy_points": 128,
+        "waves_per_isospin": 6,
+        "angular_points": 60,
+        "chiral_tolerance": null,
+        "chiral_norm": "combined_l2",
+        "enforce_infinite_energy": true,
+        "fixed_f00": null,
+        "enforce_asymptotic": false,
+        "angular_quadrature": "threshold_series_72_and_log_sqrt_crossed_energy",
+        "unitarity_cone": "scaled_rotated_soc"
+      },
+      "solver_status_counts": {
+        "optimal": 14,
+        "optimal_inaccurate": 2
+      },
+      "unplotted_solver_statuses": [],
+      "max_independently_sampled_unitarity_excess": 0.0063378659007518046
+    },
+    {
+      "path": "results/pure_threshold_N6.json",
+      "degree": 6,
+      "config": {
+        "degree": 6,
+        "energy_points": 128,
+        "waves_per_isospin": 6,
+        "angular_points": 60,
+        "chiral_tolerance": null,
+        "chiral_norm": "combined_l2",
+        "enforce_infinite_energy": true,
+        "fixed_f00": null,
+        "enforce_asymptotic": false,
+        "angular_quadrature": "threshold_series_72_and_log_sqrt_crossed_energy",
+        "unitarity_cone": "scaled_rotated_soc"
+      },
+      "solver_status_counts": {
+        "optimal": 1,
+        "optimal_inaccurate": 3
+      },
+      "unplotted_solver_statuses": [],
+      "max_independently_sampled_unitarity_excess": 0.0281102395353392
+    },
+    {
+      "path": "results/pure_threshold_N8.json",
+      "degree": 8,
+      "config": {
+        "degree": 8,
+        "energy_points": 128,
+        "waves_per_isospin": 6,
+        "angular_points": 60,
+        "chiral_tolerance": null,
+        "chiral_norm": "combined_l2",
+        "enforce_infinite_energy": true,
+        "fixed_f00": null,
+        "angular_quadrature": "threshold_series_72_and_log_sqrt_crossed_energy",
+        "unitarity_cone": "scaled_rotated_soc"
+      },
+      "solver_status_counts": {
+        "optimal": 0,
+        "optimal_inaccurate": 4
+      },
+      "unplotted_solver_statuses": [],
+      "max_independently_sampled_unitarity_excess": 0.04443514656284098
+    }
+  ],
+  "omitted_optional_results": [],
+  "plotting_rules": {
+    "left_coordinates": "Unmodified partial-wave coordinates; no jitter, smoothing, joining, or convex hull.",
+    "left_solver_status": "Filled=optimal; hollow=optimal_inaccurate.",
+    "right_coordinates": "Categorical x offsets only; y is 100*(normalized_OPE/printed_target-1).",
+    "right_uncertainty": "Input-convention comparisons, not statistical error bars."
+  },
+  "published_marker_count": 498,
+  "published_source": {
+    "paper": "He and Kruczenski, Bootstrapping gauge theories, arXiv:2309.12402v3",
+    "figure": 3,
+    "figure_asset": "purSplot.pdf",
+    "source_url": "https://arxiv.org/src/2309.12402v3",
+    "paper_url": "https://arxiv.org/html/2309.12402v3#S4.F3",
+    "sha256": "b7c10d5cb5bb19b0cd78125fefe3dc6a8d3aeb0a2ff09a791979158c8fc828ac",
+    "page": 0,
+    "page_size_pt": [
+      1000.0,
+      592.0
+    ],
+    "paper_reported_discretization": {
+      "M": 50,
+      "allowed_partial_waves_per_isospin": 10
+    }
+  },
+  "reference_coordinate_uncertainty": {
+    "status": "Coordinates of the published graphical markers; not the authors' original optimization data",
+    "working_resolution_pt": 0.01,
+    "working_resolution_amplitude_coordinates": [
+      5.927002747751663e-05,
+      1.6194489752953037e-05
+    ],
+    "resolution_interpretation": "Practical coordinate extraction tolerance, not a statistical confidence interval or certified error bound on solver outputs",
+    "median_marker_radius_amplitude_coordinates": [
+      0.013371298664128655,
+      0.003653477728434436
+    ],
+    "marker_radius_interpretation": "Graphical footprint only; distinct from precision of the extracted center",
+    "unknown_errors": [
+      "Source numerical solver tolerances and feasibility residuals",
+      "Amplitude parameterization, energy-grid, and spin truncation error",
+      "Any rounding or preprocessing before PDF export",
+      "Boundary extrema between sampled directions"
+    ],
+    "support_interpretation": "Maxima over the 498 extracted centers, equivalently their convex hull; not certified support values for the continuum allowed region"
+  },
+  "moment_comparisons": [
+    {
+      "label": "139.57 MeV; sum of mass squares",
+      "percent_differences": [
+        -0.06608732095821912,
+        -0.06800624950338285,
+        0.019837442584380582,
+        0.07093543004101921
+      ]
+    },
+    {
+      "label": "140 MeV; sum of mass squares",
+      "percent_differences": [
+        -0.6790243263716023,
+        -0.6809314853153836,
+        0.019837442584380582,
+        0.07093543004101921
+      ]
+    },
+    {
+      "label": "139.57 MeV; twice mean-mass squared",
+      "percent_differences": [
+        -7.919170803962716,
+        -7.920938937791067,
+        0.019837442584380582,
+        0.07093543004101921
+      ]
+    },
+    {
+      "label": "140 MeV; twice mean-mass squared",
+      "percent_differences": [
+        -8.483941522834382,
+        -8.485698811949216,
+        0.019837442584380582,
+        0.07093543004101921
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "path": "results/figures/reproduction_progress.pdf",
+      "sha256": "f14c1549773d5b72c7c53fc3dc722c09ca06551854bbcd077610ff86214c25b0"
+    },
+    {
+      "path": "results/figures/reproduction_progress.png",
+      "sha256": "5fb021f87ca0236739fd3a9e6c887efbf0cdd732cbb97bb9313acf2a5dbdec8b"
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "schema": "smatrix-mainline-reorganization-v1",
+  "status": "completed",
+  "created_utc": "2026-09-06T18:04:02.025503+00:00",
+  "task_scope": "Review, correct and restructure around HK v3; specify remaining reproduction plan; no published reproduction claimed",
+  "target": {
+    "paper": "2309.12402v3",
+    "pdf_sha256": "be8214741f8fb3f330473be94172c5e1dde15befb515f745ab4e35839c8982e2",
+    "tex_sha256": "39ec9e10da96f9c09c8db9e7d3ac63f342b1214df592896281adda727fb6be84",
+    "figures": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "remaining": {
+    "stages": 6,
+    "steps": 18,
+    "step_ids": [
+      "A1",
+      "A2",
+      "A3",
+      "B1",
+      "B2",
+      "B3",
+      "C1",
+      "C2",
+      "C3",
+      "D1",
+      "D2",
+      "D3",
+      "E1",
+      "E2",
+      "E3",
+      "F1",
+      "F2",
+      "F3"
+    ],
+    "accepted_scientific_steps_this_turn": [],
+    "published_regions_reproduced": false,
+    "published_phases_reproduced": false,
+    "source_prescription_resolved": false
+  },
+  "changes": [
+    "Single HK v3 target and per-figure A1-F3 acceptance/dependency map",
+    "Distinguish source facts and finite prescription/density/infinity/chiral-norm/FESR assumptions",
+    "Explicit pure/chiral and consistent tolerance in solver and Arb repair",
+    "Persist failure parameters and solver metadata before optimization",
+    "Missing SOC duals do not block primal verification",
+    "Authenticate old producer from existing tar bytes without legacy tree",
+    "Enforce calculation outputs under results/runs",
+    "Delete redundant legacy and deduplicate identical data; preserve unique evidence"
+  ],
+  "limits": {
+    "core_files": 10,
+    "core_max_lines": 329,
+    "core_max_bytes": 23203,
+    "test_files": 3,
+    "test_max_lines": 328
+  },
+  "verification": {
+    "tests": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=/tmp/collocation_arb:src python -m pytest -q -p no:cacheprovider",
+      "passed": 47,
+      "seconds": 8.16
+    },
+    "M50_control": {
+      "path": "results/runs/repo_reorganization_20260906/control/report.json",
+      "sha256": "cbc5273c0003e465a05cc9ae12d36d961f00978885bb9dfdff0844e954b67723",
+      "passed": true,
+      "seconds": 6.25447520497255,
+      "checks": {
+        "raw_row_checks": 3876,
+        "alpha_checks": 450,
+        "quotient_zero_checks": 2376,
+        "weight_checks": 1500,
+        "constant_preserved": true
+      }
+    },
+    "historical_source_sha256": "eb5368c8aa086ac97e57584116ee86a5c40a3a13e803ba4050620ccb1df38174",
+    "new_boundary_optimization_run": false,
+    "full_rank_rerun": false,
+    "local_links": {
+      "checked": 93,
+      "broken": []
+    }
+  },
+  "cleanup": {
+    "path": "results/runs/repo_reorganization_20260906/cleanup.json",
+    "sha256": "417aa5fa7c2f6b43fe5e51e56d2d93086b2665af425738c542a489dabf3c53c5",
+    "deleted_regular_files": 441,
+    "deduplicated_paths": 33,
+    "recovery_records_verified": 449,
+    "cleanup_operation_net_bytes_released": 8317743,
+    "unique_numerical_and_failure_artifacts_deleted": false
+  },
+  "documents": {
+    "STATUS.md": {
+      "sha256": "94dc93a6e960ae9389c9f9899591da8c0e5cb322c754e03c6d65b6bb07f5207f",
+      "lines": 56,
+      "bytes": 8296
+    },
+    "SCIENCE.md": {
+      "sha256": "9723a560f15f85141cb7f7ed542429d8767d7427bbaadc7bce6c29481cc264d2",
+      "lines": 159,
+      "bytes": 14457
+    },
+    "REPRODUCTION_GUIDE_ZH.md": {
+      "sha256": "fd9f8941ca87bc14d3e8357adbd8d444e59cc9311db9539f25a139523d812196",
+      "lines": 112,
+      "bytes": 13233
+    },
+    "README.md": {
+      "sha256": "1c884873600582ef7bbd6603a9f54d66d3f831aaee59e75b12132212b7766c70",
+      "lines": 43,
+      "bytes": 3015
+    },
+    "AGENTS.md": {
+      "sha256": "3f35f183fd96ffb092da39313077ffcd54a0b3000589d70a82f6081647ec1a4f",
+      "lines": 32,
+      "bytes": 2029
+    }
+  },
+  "artifacts": {
+    "source.json": {
+      "sha256": "8fbd4a436528d614915373059796c558ce1757ad5c45b2b36d3173e4ff0681da",
+      "bytes": 113692
+    },
+    "source_after.json": {
+      "sha256": "38cedce5a9dc1587a0a605988ce7a262ce2c6f1a63ef16a5b01d1f7c2d7051b5",
+      "bytes": 116974
+    },
+    "documents_before.json": {
+      "sha256": "1ee389e53c02eb889a7e377c2cee7c3e6028383411a17e890c2f302a63e9b003",
+      "bytes": 50739
+    },
+    "changes.patch": {
+      "sha256": "b4c2b7f00b40df5d789fee85a55c2644e055b08c2bf5391ad4e7f7e37779f560",
+      "bytes": 89077
+    },
+    "cleanup.json": {
+      "sha256": "417aa5fa7c2f6b43fe5e51e56d2d93086b2665af425738c542a489dabf3c53c5",
+      "bytes": 132720
+    },
+    "recovery.json": {
+      "sha256": "5f033d2de32a02d60d8e21aafeab8747a6aaa491c828217b605730c4e2f4040e",
+      "bytes": 204732
+    }
+  }
+}

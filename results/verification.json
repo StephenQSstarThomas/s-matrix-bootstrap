@@ -1,0 +1,31 @@
+{
+  "test_command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m pytest -q",
+  "test_result": "57 passed in 24.55s",
+  "scope": "Ingredient verification; not full published-result or continuum verification.",
+  "files": {
+    "README.md": "54ae7232d9a18a81dabc96aaa8bef8266a21afd549d9e98c040f5493e9a0e00e",
+    "STATUS.md": "eb3857c820b2e9b42fad63039873392a1c0bd35c858257f2c57cc1b56de9eac4",
+    "pyproject.toml": "e4dd579dd0733a1ffa46ec308a6c640c582502d62f427dd214cca5c6e727c7e6",
+    "requirements-reproduced.txt": "774a72b71af9ba405040effc0f578e6f7281d1aa6fd66ee64f82bda77efa1c8a",
+    "src/smatrix_bootstrap/__init__.py": "917f23620fc4ae3e62557bb42621de3ae4238bacbd56e4a3eea10d11b1faab0f",
+    "src/smatrix_bootstrap/amplitudes.py": "e65d143fbb45e59b2f57aa72b8a2dce23543a4b13118eee1b5734d23feafaabc",
+    "src/smatrix_bootstrap/asymptotics.py": "d3cf8c482015d408e6fe45789f398ae9e180d57d01194779e632fffe4b59c7a4",
+    "src/smatrix_bootstrap/gauge_inputs.py": "3aed562380695d2ce015f6dfd95f0d4084a57e599586017722b815b2daa77883",
+    "src/smatrix_bootstrap/optimization.py": "ffa44900686b031c37022a9bb5d6fde184ca94c9e5f23239bc07bbe58cfe6619",
+    "scripts/audit_gauge_inputs.py": "6ce30e0dfbc0014a5e20203bf06d58c3f90055099f74b033c39940b065fcb024",
+    "scripts/extract_figure3.py": "adfb9851d965647f3cec82058fa58e3f90a85613e08981135f0ab617cc7724d3",
+    "scripts/fetch_references.py": "494e30f4e09e68f56f029c6711b37da92fc0bff3e20a6ca0d70ab903fc6586a9",
+    "scripts/plot_progress.py": "d81433ba5a7de0a2d755f777e5b212319fa1a638c74b9b6a40bd05ab8f30e2c8",
+    "scripts/run_pion_boundary.py": "5e11b2ab3235bc649e73ba0484a04eb989688709a2aceff776ae7ef796a16d8d",
+    "scripts/summarize_progress.py": "91b00f3cffcf98ac9de7f71ac6cb12a9a78d085faff455c9347785ac5117b37a",
+    "tests/test_amplitudes.py": "37ef9505d7ca4d22a672eff26985dad8a8c0c21f0307e4364ebd122bf41fa492",
+    "tests/test_asymptotics.py": "d87ee056e6960be88f603c566cfbf4681c68c05bc3945670f35f7fad3d885113",
+    "tests/test_gauge_inputs.py": "98a2fcda9b04bf122def8420127b14e5d93ede21161276788aca2b9a79089693",
+    "tests/test_threshold_projection.py": "46f5e9b6bbce177242b740b1854f2be650bb6ca9df7f47b0345321c120775074",
+    "docs/00_reproduction_plan.md": "305ad4f58f355709bb2b805a05da699332d7cd765951ce649cfd5b20bf2b0bbd",
+    "docs/01_foundations.md": "0d6d2c31a6941b9dc2525eb3246ace5073bf4476a6bc2b868ee38be3e12b5512",
+    "docs/02_gauge_constraints.md": "fc1bfc40127ea736253cb6cea0b9f311ef0cbca552a63c55bde28c662d6af623",
+    "docs/03_discretization.md": "24adbd39ceb2ac59f01c748ee4011e1bfa6809d30398d9437b94a78ede1544c4",
+    "docs/04_numerical_investigation.md": "c24d98ef8562de563edf8a8325d53e43100da6475df941da9a9dbc8a15252f27"
+  }
+}

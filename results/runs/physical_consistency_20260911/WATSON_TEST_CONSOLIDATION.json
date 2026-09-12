@@ -1,0 +1,6 @@
+{
+  "original_file": "tests/test_kernels.py",
+  "original_file_sha256": "18f3f7ce416ab1586f3191aa5ced625527ab4ecb2b276ded6a56c41b19a525e4",
+  "old_check_preserved_as_nonexecuting_text": "def test_audit_preserves_an_existing_larger_unbounded_spectrum():\n    import numpy as np\n    from smatrix_bootstrap import UVConfig\n    from smatrix_bootstrap.kernels import PVSourceRows\n    from smatrix_bootstrap.model import current_operators\n    from smatrix_bootstrap.certificates import joint_audit\n    source=PVSourceRows(1,1,256);H=np.empty(source.shape)\n    for j,_,row in source.iter_rows():H[j]=list(map(float,row))\n    kap=np.full(3,np.pi/np.sqrt(2));uv=UVConfig(moment_source='eq250',matching_energy_gev=.3)\n    current=current_operators(H,kap,np.full(3,8.),np.asarray(source.waves),1,uv)\n    point=np.r_[[0.,.01,.01,.001,.0005],[0.,0.],[1e6,2e6]]\n    restored,_=joint_audit(H,kap,current,point,1,1,1.,.02,[0,0])\n    np.testing.assert_array_equal(restored[-2:],point[-2:])\n",
+  "replacement": "The existing complete-joint audit test will also assert preservation of already-large free high spectra; independent moment/PSD/coordinate checks remain."
+}

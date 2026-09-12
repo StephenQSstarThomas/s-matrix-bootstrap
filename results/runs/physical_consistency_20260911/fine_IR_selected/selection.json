@@ -1,0 +1,80 @@
+{
+  "rule": "Converged upper IR support at preregistered Weinberg x before phase evaluation",
+  "reference": [
+    0.07332139057293466,
+    -0.00488809270486231
+  ],
+  "target": [
+    0.07332139057362191,
+    -0.004134178458138212
+  ],
+  "center_identity": {
+    "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_ref_02/center_converged.npz",
+    "sha256": "4c6ead4f274185c58b9235cee865c2f7c9a4ab9dad37d891edb159f17f989acb",
+    "mu": 1.220703125e-07,
+    "full_C_identical": true
+  },
+  "coefficient_sha256": "aaa4e5ae75e98111754d2aa0d796ddbd9372573775a6e71d193b3fc959f5854d",
+  "epsilon": 0.002,
+  "model_signature": {
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "zero",
+    "unitarity_scope": "sampled",
+    "prescription": "analytic-cardinal",
+    "chiral_norm": "separate-l2",
+    "scattering_samples": 3582,
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare",
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": true,
+    "additional_constraints": {
+      "kind": "explicit-analytic-samples",
+      "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare"
+    },
+    "sampling_nodes": 285
+  },
+  "source_reports": [
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_ref_02/report.json"
+  ],
+  "coefficients_mixed": false,
+  "selection_uses_phase_data": false,
+  "representative_center_converged": true,
+  "exact_extremizer_claimed": false,
+  "regional_geometry_ready": false,
+  "local_upper_boundary_ready": true,
+  "local_upper_boundary": {
+    "distance_upper": 2.1384678448030937e-06,
+    "scaled_distance_upper": 0.0010692339224015468,
+    "budget": 0.01
+  },
+  "original_H_feasibility": {
+    "upper": 0.517255595032318,
+    "enclosure": "[0.5172555950323179200524250 +/- 2.91e-26]",
+    "disk": 0.0751898398471554,
+    "chiral": 0.39335946698911944,
+    "density_residual": 0.04870582583218517,
+    "tail_support": 0.0,
+    "chiral_norm": "separate-l2",
+    "objective_kind": "target_plane",
+    "scope": "Exact saved float64 H; angular quadrature error excluded",
+    "primal_feasible": true,
+    "lower": 0.5161863611099164,
+    "minimum_margin_enclosure": "[4.2344591624715826154e-97 +/- 1.03e-117]",
+    "density_norm": 374980.47071468533,
+    "targets": [
+      "[0.07332139057367160144522080 +/- 1.08e-27]",
+      "[-0.004134178458137782116994437 +/- 4.09e-28]"
+    ],
+    "tail_margin_enclosures": [],
+    "asymptotic_margin_enclosures": [
+      "[76.40615559604565894182848 +/- 4.19e-24]",
+      "[138.2118461121107317472216 +/- 2.09e-23]",
+      "[53866.43668977767172094565 +/- 5.08e-22]",
+      "[49932.34676077256805180419 +/- 4.38e-22]",
+      "[21401.46271153087866560225 +/- 4.27e-21]"
+    ],
+    "endpoint_equalities": 1,
+    "asymptotic_inequalities": 5
+  }
+}

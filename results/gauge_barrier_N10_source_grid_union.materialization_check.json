@@ -1,0 +1,268 @@
+{
+  "schema": "smatrix-source-grid-materialization-check-v1",
+  "files": {
+    "candidate": {
+      "path": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "sha256": "42b2f6abaa2a2ddfdd974dedf0e8fe29314b368cb4cf20859a85cd5cbfb602f3"
+    },
+    "primal": {
+      "path": "results/gauge_barrier_N10_source_grid_union.original_primal.json",
+      "sha256": "3db99037919124d1eef36b738229037f18dc5eb81e56ca417b2b3db970701040"
+    },
+    "seed": {
+      "path": "results/gauge_barrier_N10_source_grid_union.seed.json",
+      "sha256": "6127f8dde8345067d1f80a788d43e55a3e8f18e3ad3f9fa1cfc9c3194b5e6dd9"
+    },
+    "wrapper": {
+      "path": "results/gauge_barrier_N10_source_grid_union.primal_start.json",
+      "sha256": "1309ba0594cd1456ba315313c96e349d921e59f86f1600786f7b3f9ba3003e6b"
+    },
+    "original": {
+      "path": "results/gauge_barrier_N10_source_grid_union.original.conic.json",
+      "sha256": "a460d45a87246fa266e9413ec6a2b4f651295968c33d36acd88bfef778dc3e32"
+    },
+    "reduced": {
+      "path": "results/gauge_barrier_N10_source_grid_union.conic.json",
+      "sha256": "5f3948845e87d9e47ecd154d6442b5cf7febb0ad1394f6b80e200067cd776b01"
+    },
+    "operators": {
+      "path": "results/gauge_barrier_N10_source_grid_union.operators.json",
+      "sha256": "d1ba47bc60508ce33620d48e951774c715e81ec115371bb2f316b47a3e67f7d4"
+    },
+    "finite": {
+      "path": "results/gauge_barrier_N10_source_grid_union.parent_finite_audit.json",
+      "sha256": "9e6fa78577fc7db6427479c3f464f465e51fb7e7e1c4eb0c2c077cdbd893a0b8"
+    },
+    "edge": {
+      "path": "results/gauge_barrier_N10_source_grid_union.edge_certificate.json",
+      "sha256": "5e8ca4073b15661ad4ed4a8ffca4fa09decc4eeb848e0084881464c11b2277dc"
+    },
+    "rational_scattering": {
+      "path": "results/gauge_barrier_N10_source_grid_union.untrained_scattering_certificate.json",
+      "sha256": "82be5a399a5d77f91bbe15c0eae35a4cedceea896cacc5560efb2afda68c4c00"
+    },
+    "rounded_scattering_transfer": {
+      "path": "results/gauge_barrier_N10_source_grid_union.rounded_scattering_transfer.json",
+      "sha256": "d5102cfa853104929a1e507e9ce53e6a58dcf0c03f8b1cc5316a35ea2d083a7c"
+    }
+  },
+  "checks": {
+    "recovery_barrier_hash": true,
+    "recovery_seed_hash": true,
+    "recovery_scaled_conic_hash": true,
+    "recovery_original_conic_hash": true,
+    "candidate_primal_hash": true,
+    "candidate_seed_hash": true,
+    "seed_original_hash": true,
+    "seed_reduced_hash": true,
+    "seed_operator_hash": true,
+    "finite_candidate_hash": true,
+    "edge_candidate_hash": true,
+    "objective_recomputed_exactly": true,
+    "wrapper_coordinates_unchanged": true,
+    "exact_vector_endpoint_zero": true,
+    "physical_rounding_once": true,
+    "rational_scattering_candidate_hash": true,
+    "rounded_scattering_transfer_candidate_hash": true
+  },
+  "source_snapshot_hash_checks": {
+    "candidate": {
+      "/home/shiqiu/s-matrix-bootstrap/scripts/materialize_barrier_candidate.py": true,
+      "src/smatrix_bootstrap/__init__.py": true,
+      "src/smatrix_bootstrap/amplitudes.py": true,
+      "src/smatrix_bootstrap/asymptotics.py": true,
+      "src/smatrix_bootstrap/barrier_decrement.py": true,
+      "src/smatrix_bootstrap/canonical_seed.py": true,
+      "src/smatrix_bootstrap/conditional_spectral_center.py": true,
+      "src/smatrix_bootstrap/conic_residuals.py": true,
+      "src/smatrix_bootstrap/coupled_gauge.py": true,
+      "src/smatrix_bootstrap/degree_promotion.py": true,
+      "src/smatrix_bootstrap/dyadic_conic_scaling.py": true,
+      "src/smatrix_bootstrap/dyadic_modular_rank.py": true,
+      "src/smatrix_bootstrap/exact_interval_audit.py": true,
+      "src/smatrix_bootstrap/feasibility.py": true,
+      "src/smatrix_bootstrap/finite_spectral_projection.py": true,
+      "src/smatrix_bootstrap/form_factor_envelope.py": true,
+      "src/smatrix_bootstrap/full_barrier_newton.py": true,
+      "src/smatrix_bootstrap/gauge_boundary.py": true,
+      "src/smatrix_bootstrap/gauge_ff_exchange.py": true,
+      "src/smatrix_bootstrap/gauge_inputs.py": true,
+      "src/smatrix_bootstrap/gauge_joint_exchange.py": true,
+      "src/smatrix_bootstrap/impact_closed_form.py": true,
+      "src/smatrix_bootstrap/impact_constraints.py": true,
+      "src/smatrix_bootstrap/impact_global.py": true,
+      "src/smatrix_bootstrap/impact_parameter.py": true,
+      "src/smatrix_bootstrap/interval_positivity.py": true,
+      "src/smatrix_bootstrap/julia_bridge.py": true,
+      "src/smatrix_bootstrap/large_spin.py": true,
+      "src/smatrix_bootstrap/optimization.py": true,
+      "src/smatrix_bootstrap/phase_capacity.py": true,
+      "src/smatrix_bootstrap/primal_barrier.py": true,
+      "src/smatrix_bootstrap/rational_partial_wave.py": true,
+      "src/smatrix_bootstrap/scalar_bootstrap.py": true,
+      "src/smatrix_bootstrap/scattering_cut_extension.py": true,
+      "src/smatrix_bootstrap/source_gauge_fiber.py": true,
+      "src/smatrix_bootstrap/source_grid_union.py": true,
+      "src/smatrix_bootstrap/spectral_face_reduction.py": true,
+      "src/smatrix_bootstrap/validated_partial_wave.py": true,
+      "src/smatrix_bootstrap/validation.py": true
+    },
+    "primal": {
+      "/home/shiqiu/s-matrix-bootstrap/scripts/recover_barrier_primal.py": true,
+      "src/smatrix_bootstrap/canonical_seed.py": true,
+      "src/smatrix_bootstrap/conic_residuals.py": true,
+      "src/smatrix_bootstrap/julia_bridge.py": true
+    }
+  },
+  "current_source_snapshot_checks": {
+    "candidate": {
+      "/home/shiqiu/s-matrix-bootstrap/scripts/materialize_barrier_candidate.py": true,
+      "src/smatrix_bootstrap/__init__.py": true,
+      "src/smatrix_bootstrap/amplitudes.py": true,
+      "src/smatrix_bootstrap/asymptotics.py": true,
+      "src/smatrix_bootstrap/barrier_decrement.py": true,
+      "src/smatrix_bootstrap/canonical_seed.py": true,
+      "src/smatrix_bootstrap/conditional_spectral_center.py": true,
+      "src/smatrix_bootstrap/conic_residuals.py": true,
+      "src/smatrix_bootstrap/coupled_gauge.py": true,
+      "src/smatrix_bootstrap/degree_promotion.py": true,
+      "src/smatrix_bootstrap/dyadic_conic_scaling.py": true,
+      "src/smatrix_bootstrap/dyadic_modular_rank.py": true,
+      "src/smatrix_bootstrap/exact_interval_audit.py": true,
+      "src/smatrix_bootstrap/feasibility.py": true,
+      "src/smatrix_bootstrap/finite_spectral_projection.py": true,
+      "src/smatrix_bootstrap/form_factor_envelope.py": true,
+      "src/smatrix_bootstrap/full_barrier_newton.py": true,
+      "src/smatrix_bootstrap/gauge_boundary.py": true,
+      "src/smatrix_bootstrap/gauge_ff_exchange.py": true,
+      "src/smatrix_bootstrap/gauge_inputs.py": true,
+      "src/smatrix_bootstrap/gauge_joint_exchange.py": true,
+      "src/smatrix_bootstrap/impact_closed_form.py": true,
+      "src/smatrix_bootstrap/impact_constraints.py": true,
+      "src/smatrix_bootstrap/impact_global.py": true,
+      "src/smatrix_bootstrap/impact_parameter.py": true,
+      "src/smatrix_bootstrap/interval_positivity.py": true,
+      "src/smatrix_bootstrap/julia_bridge.py": true,
+      "src/smatrix_bootstrap/large_spin.py": true,
+      "src/smatrix_bootstrap/optimization.py": true,
+      "src/smatrix_bootstrap/phase_capacity.py": true,
+      "src/smatrix_bootstrap/primal_barrier.py": true,
+      "src/smatrix_bootstrap/rational_partial_wave.py": true,
+      "src/smatrix_bootstrap/scalar_bootstrap.py": true,
+      "src/smatrix_bootstrap/scattering_cut_extension.py": true,
+      "src/smatrix_bootstrap/source_gauge_fiber.py": true,
+      "src/smatrix_bootstrap/source_grid_union.py": true,
+      "src/smatrix_bootstrap/spectral_face_reduction.py": true,
+      "src/smatrix_bootstrap/validated_partial_wave.py": true,
+      "src/smatrix_bootstrap/validation.py": true
+    },
+    "primal": {
+      "/home/shiqiu/s-matrix-bootstrap/scripts/recover_barrier_primal.py": true,
+      "src/smatrix_bootstrap/canonical_seed.py": true,
+      "src/smatrix_bootstrap/conic_residuals.py": true,
+      "src/smatrix_bootstrap/julia_bridge.py": true
+    }
+  },
+  "canonical_graph_reconstructed_identically": true,
+  "original_conic_shape": [
+    17500,
+    2535
+  ],
+  "reduced_conic_shape": [
+    15331,
+    399
+  ],
+  "original_primal_feasible": true,
+  "original_exact_equality_count": 32,
+  "objective_rational": "9276355256724579577982882682798368751835254938876611739465609743625764564031326617319979397/2000516312350023463557715726649572675051388196739262141128519090039926614997396957563138867200",
+  "scaled_objective_rational": "9276355256724579577982882682798368751835254938876611739465609743625764564031326617319979397/125032269521876466472357232915598292190711762296203883820532443127495413437337309847696179200",
+  "parent_finite_pass": true,
+  "global_FF_pass": true,
+  "global_H_pass": true,
+  "edge_pass": true,
+  "point": [
+    0.07532981100000045,
+    -0.004636980563196424
+  ],
+  "P1_anchors": {
+    "energies_GeV": [
+      0.7897,
+      0.8265,
+      0.86176
+    ],
+    "phase_degrees": [
+      -14.838502846799123,
+      -15.98105100672825,
+      -16.076219106411973
+    ],
+    "inelasticity": [
+      0.5766187694982519,
+      0.6551856329718788,
+      0.7236648516409794
+    ],
+    "phase_range_degrees": [
+      -16.120654458311797,
+      9.8602193389319
+    ],
+    "ninety_degree_crossing_brackets": []
+  },
+  "ordinary_scattering": {
+    "energy_count": 702,
+    "midpoint_energy_points": 401,
+    "physical_linear_energy_points": 201,
+    "high_energy_geometric_points": 101,
+    "maximum_s": 100000000.0,
+    "waves_per_isospin": 20,
+    "angular_points": 160,
+    "max_unitarity_excess": 6.924967492404367e-05,
+    "worst_s": 13719.249399119915,
+    "worst_wave": [
+      0,
+      2
+    ],
+    "max_excess_below_1p2_GeV": 1.5229230362516138e-10,
+    "max_excess_on_untrained_rows": 6.924967492404367e-05,
+    "rows_coinciding_with_training": 15,
+    "violations_above_cut_tolerance": 3,
+    "cut_tolerance": 1e-08,
+    "selection": "worst untrained point per wave over full cut and below1.2GeV, ranked by excess",
+    "new_samples": [
+      [
+        13719.249399119915,
+        0,
+        2
+      ]
+    ],
+    "new_sample_excesses": [
+      6.924967492404367e-05
+    ],
+    "numerical_only": true,
+    "scope": "Independent finite scattering grid; all-spin/all-energy unitarity is not certified."
+  },
+  "source_files_changed_during_materialization": [],
+  "no_optimization": true,
+  "scope": "Authenticated reconstruction and exact original canonical primal feasibility; fresh numerical finite/ordinary scattering checks and separate exact-decimal FF/edge/all-b H certificates. Untrained numerical scattering violation remains; no continuum-unitarity or optimality assertion.",
+  "rational_scattering_certificate": {
+    "status": "enclosed_accuracy_met",
+    "s_rational": "942779639918203/68719476736",
+    "isospin": 0,
+    "ell": 2,
+    "rigorously_violates_unitarity": true,
+    "one_minus_abs_S_squared": {
+      "ball": "[-0.00013850414536590182 +/- 2.75e-21]",
+      "lower_rational": "-1780540643808361328847792003099821131096842177067534895707/12855504354071922204335696738729300820177623950262342682411008",
+      "upper_rational": "-1780540643808361278637415565566877280699885213246309124699/12855504354071922204335696738729300820177623950262342682411008"
+    },
+    "abs_S_minus_one": {
+      "ball": "[6.924967492421236e-5 +/- 5.09e-21]",
+      "lower_rational": "21946097995821889522847247/316912650057057350374175801344",
+      "upper_rational": "21946097995821890119690641/316912650057057350374175801344"
+    },
+    "source_hashes_checked": true
+  },
+  "rounded_scattering_transfer": {
+    "uniform_S_difference_upper": "15008143586981223453577514562783898192706735831732635509853388165923761703197/31828687130226345097944463881396533766429193651030253916189694521162207808802136034115584",
+    "rounded_coefficient_abs_S_minus_one_lower": "32844040125973407083691550749173656750132915313069519032753968976243652285199/474284397516047136454946754595585670566993857190463750305618264096412179005177856",
+    "rounded_coefficient_violation_certified": true
+  }
+}

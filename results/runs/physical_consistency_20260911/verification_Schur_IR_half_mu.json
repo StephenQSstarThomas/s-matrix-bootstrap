@@ -1,0 +1,38 @@
+{
+  "tests_passed": 106,
+  "test_seconds": 21.61,
+  "core_files": 21,
+  "test_files": 3,
+  "changes": [
+    "Strict Schur criterion also used at bounded low-energy current nodes; no low-R lift",
+    "Zero-T0 IR continuation halves mu from a converged center"
+  ],
+  "source_hashes": {
+    "src/smatrix_bootstrap/ir.py": "9fe83590027ee9bd611c954c1c7c9b7f333c469ab7cd242cd39ba97160fd419b",
+    "src/smatrix_bootstrap/endpoints.py": "6b4dacd438e750ca61f285744cc0a152d16e3090581e22c77962f23b867005db",
+    "src/smatrix_bootstrap/analysis.py": "7c858a1c763d7543dc7dbd167c495bcb8a156e69b7cf5e08de4e80c8153395ec",
+    "src/smatrix_bootstrap/model.py": "be73b782a40652cf099e4f5ed480f56cb4d00e0f86aaddfe9698ccf83ea3b975",
+    "src/smatrix_bootstrap/io.py": "f368531ec06a54b1e65a76d39de402cbeb205873ae7964246c7cebc643a3d779",
+    "src/smatrix_bootstrap/operators.py": "74cb905a1e9e881e3f3e5f7843d44e7e096e8c57e672f8f7abdbae336b78fc4e",
+    "src/smatrix_bootstrap/basis.py": "5eda7c08a5cea679958b47980c9972ada51358f6352698d8db10db91bd5abec3",
+    "src/smatrix_bootstrap/scattering.py": "17d1e2d03fb467a5e58e6d87a6921dfd14da8c9f0eec2d6c28e64334dcfc7211",
+    "src/smatrix_bootstrap/__init__.py": "eb90c095e0415af900073b308a5aa229af7525815996fb9ed22c40bf8d0e07ea",
+    "src/smatrix_bootstrap/quadrature.py": "7ec2a6b9336cd6035db06fdf8a028368ccd22e4d106cc5e16900c878b8d40fad",
+    "src/smatrix_bootstrap/gauge.py": "4fbfb5b647cafd1e3feea523a89c31d4051c469a833eba0a20d0b4b819f97829",
+    "src/smatrix_bootstrap/quotient.py": "32b669bec9e0b9af1c21bf464f2806411cdca87fffa6ff0593d7bb77dd3428e9",
+    "src/smatrix_bootstrap/certificates.py": "aedcd1b65d0e1908c84e129e570a119214994c2b38d4e325b543beb9b27a9ad3",
+    "src/smatrix_bootstrap/analytic.py": "f7b6ffb9bd6b520f00dec8653ff0864da6fe46eaa0ed5814bef7bd3c5c22a727",
+    "src/smatrix_bootstrap/conic.py": "750741dbe9b45584c24176cbdeb2cfafc585361d5b23cff5d79a501a247abf01",
+    "src/smatrix_bootstrap/kernels.py": "790ebcdba291c80f17c4909a31ddf77ad6373748c2af41c7ce1a0c28b309172a",
+    "src/smatrix_bootstrap/imaginary.py": "9ad338b253d2941310401d245a24cba4ab546926e5c9c630f80c7bd647c1828c",
+    "src/smatrix_bootstrap/run.py": "50cff7cedc05707edf0de22ed741204be95eda912337c248bc96c65c99fd601c",
+    "src/smatrix_bootstrap/spectra.py": "07489253c120fe925489a5c4560980a30128012ab61972c04aa1ee3adfd528a4",
+    "src/smatrix_bootstrap/linear.py": "48d6330a638c28310c87860ecb5b70ce4396dce01878eff8c5855d96d643d0e2",
+    "src/smatrix_bootstrap/sampling.py": "0d7ea723d58a18971b4a768a5f29cbd40646113bd06fe46e7c5ce920492744e3",
+    "tests/test_mainline.py": "295a16626c2c5fd5a2a2ef8202aa6909f3f93621ae7a9184bf55f46570e54686",
+    "tests/test_kernels.py": "18f3f7ce416ab1586f3191aa5ced625527ab4ecb2b276ded6a56c41b19a525e4",
+    "tests/test_linear.py": "247c9a47b0bd20837c7d7d8ec9449264f9e35e96f9bcd6ddd709d8c56841f9b0"
+  },
+  "real_audit": "interlaced_tip_schur_analytic/source_audit.json",
+  "previous_failure_preserved": "interlaced_tip_analytic/source_audit.json"
+}

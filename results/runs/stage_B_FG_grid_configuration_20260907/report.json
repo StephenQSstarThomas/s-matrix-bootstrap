@@ -1,0 +1,14 @@
+{
+  "purpose": "Input constraint configuration, not a calculation or feasibility result",
+  "finite_points": 2209,
+  "FG_points": 2546,
+  "uniform_FG_grid": {
+    "cosine_nodes_per_channel": 801,
+    "rule": "cos(pi*j/800), j=0..800"
+  },
+  "sources": [
+    "results/runs/stage_B_FG_initializer_M10_near3_audit_20260907/constraints.json",
+    "results/runs/stage_B_FG_chiral_M50_round1_audit_20260907/constraints.json"
+  ],
+  "cached_original_finite_count": 505
+}

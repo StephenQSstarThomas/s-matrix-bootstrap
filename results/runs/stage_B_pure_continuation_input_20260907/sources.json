@@ -1,0 +1,6 @@
+{
+  "constraint_pool": "results/runs/stage_B_barrier_CG_pure_M50_strong_20260907/cg_state.npz",
+  "dual": "results/runs/stage_B_reused_relaxation_dual_M50_20260907/candidate.npz",
+  "initializer": "results/runs/stage_B_recover_pure_M50_raw_20260907/coefficients.json",
+  "scope": "Input assembly only; the next boundary run rechecks the dual on its full original H."
+}

@@ -1,0 +1,177 @@
+{
+  "command": "boundary",
+  "status": "candidate",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "boundary",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_small_qr_20260906",
+    "control": null,
+    "matrix": null,
+    "matrix_sha256": null,
+    "rank_report": null,
+    "density_limit": null,
+    "preparation": "results/runs/stage_A_small_20260906",
+    "margin": 0.0,
+    "solver_seconds": 60.0,
+    "conditioning": "qr",
+    "nodes": 50,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "subtracted": false,
+    "infinity": "free",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "seconds": 120.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3"
+  },
+  "scope": "Coherent finite-sine-cardinal conditional model; published regions and phases remain unverified.",
+  "solver_attempt": {
+    "elapsed_seconds": 0.5613765548914671,
+    "stage": "conic_optimization",
+    "finite_problem": {
+      "variables": 22,
+      "scattering_rows": 18,
+      "coordinate_order": "u0[M], u2[M], optional bounded real anchor, actual rho1, actual rho2 upper",
+      "density_norm": "ordinary vector l4; rho2 upper entries counted once",
+      "density_cones": "t_i >= abs(rho_i/B)^4, sum(t)<=1",
+      "density_limit": 1500.0,
+      "mode": "chiral",
+      "chiral_tolerance": 0.002,
+      "chiral_constraints_applied": true,
+      "chiral_grouping": "two separate Euclidean four-vectors",
+      "supplementary_assumptions": [
+        "ordinary vector l4 bound on actual double densities"
+      ],
+      "published_region_reproduced": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "scattering_scales": [
+        1.0,
+        0.11239138723132265,
+        1.0,
+        0.0004765241927413388,
+        1.0,
+        0.0449093583126868,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "scattering_margin": 0.0,
+      "variable_scales": null,
+      "variable_scaling": "full invertible QR coordinates; actual density norm retained",
+      "scattering_scaling": "t=1 for S waves; min(1, density_limit*dual_l4_norm(Im G row)) otherwise",
+      "scattering_constraint": "2 Im G - |G|^2 >= margin*t; all rows retained",
+      "inner_approximation": false,
+      "outer_support_optimality_claimed": false
+    },
+    "solver": "CLARABEL"
+  },
+  "solver_status": "optimal_inaccurate",
+  "solver_error": null,
+  "solver_seconds": 0.015572617063298821,
+  "M": 3,
+  "L": 2,
+  "finite_problem": {
+    "variables": 22,
+    "scattering_rows": 18,
+    "coordinate_order": "u0[M], u2[M], optional bounded real anchor, actual rho1, actual rho2 upper",
+    "density_norm": "ordinary vector l4; rho2 upper entries counted once",
+    "density_cones": "t_i >= abs(rho_i/B)^4, sum(t)<=1",
+    "density_limit": 1500.0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "chiral_constraints_applied": true,
+    "chiral_grouping": "two separate Euclidean four-vectors",
+    "supplementary_assumptions": [
+      "ordinary vector l4 bound on actual double densities"
+    ],
+    "published_region_reproduced": false,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "scattering_scales": [
+      1.0,
+      0.11239138723132265,
+      1.0,
+      0.0004765241927413388,
+      1.0,
+      0.0449093583126868,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "scattering_margin": 0.0,
+    "variable_scales": null,
+    "variable_scaling": "full invertible QR coordinates; actual density norm retained",
+    "scattering_scaling": "t=1 for S waves; min(1, density_limit*dual_l4_norm(Im G row)) otherwise",
+    "scattering_constraint": "2 Im G - |G|^2 >= margin*t; all rows retained",
+    "inner_approximation": false,
+    "outer_support_optimality_claimed": false
+  },
+  "direction": [
+    1.0,
+    0.0
+  ],
+  "operator_scope": "saved A-stage float64 quadrature operator",
+  "targets": [
+    0.16845494778920075,
+    -0.010839858604704756
+  ],
+  "objective": 0.16845494778920075,
+  "minimum_scattering_margin": 4.870936163101742e-13,
+  "minimum_scaled_margin": 3.817410909243728e-10,
+  "chiral_norms": [
+    0.0019999993702620065,
+    0.0005320781019189405
+  ],
+  "density_norm": 26.303084133439413,
+  "support_optimality_certified": false,
+  "elapsed_seconds": 0.580475470982492
+}

@@ -1,0 +1,712 @@
+{
+  "source_regions": "results/runs/mainline_alignment_20260909/B_combined/regions_008/regions.json",
+  "scope": "Read-only certified target-plane geometry; no optimization or full H reconstruction",
+  "references": {
+    "formula": [
+      "[0.0733213905729346467502081417958 +/- 8.23e-33]",
+      "[-0.00488809270486230978334720945305 +/- 2.79e-33]"
+    ],
+    "pdf": [
+      "[0.0713133428138513353333749478224 +/- 4.91e-32]",
+      "[-0.00475418194008746068657256245160 +/- 1.70e-33]"
+    ]
+  },
+  "groups": [
+    {
+      "epsilon": 0.006,
+      "geometry_distance_upper": 0.14207359232567957,
+      "geometry_ready": false,
+      "reference_membership": {
+        "formula": {
+          "status": "included",
+          "inner_witness": {
+            "reports": [
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_014/report.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_007/report.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_013/report.json"
+            ],
+            "weight_enclosures": [
+              [
+                [
+                  "0xac975d786a6830282b6cda0f96dbb2a9c36fd2b67eb402bd84f2a64b59e74e051aeb0db75305eefff0e33487a399d041",
+                  -384
+                ],
+                [
+                  "0x68f564b",
+                  -404
+                ]
+              ],
+              [
+                [
+                  "0x81e6e30b2305056c238b9a7342447bcc17977dc1ac5ff9d0625825c86a7a1134ee19f892761fecf3d576da8b29130739",
+                  -385
+                ],
+                [
+                  "0x2dc89e3f",
+                  -408
+                ]
+              ],
+              [
+                [
+                  "0x93a9881020aa690e166ac5b640107b818623734558e002d24f0a368386dd4b03703faffb8f50d431230af1963ee5610d",
+                  -387
+                ],
+                [
+                  "0x392cc671",
+                  -408
+                ]
+              ]
+            ],
+            "weights": [
+              "[0.6741846484168554387144209 +/- 2.16e-26]",
+              "[0.2537146521658631236230226 +/- 2.64e-27]",
+              "[0.07210069941728143766255652 +/- 4.22e-27]"
+            ]
+          },
+          "uses_nested_inner_points": false,
+          "outer_witness": null
+        },
+        "pdf": {
+          "status": "included",
+          "inner_witness": {
+            "reports": [
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_014/report.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_007/report.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_013/report.json"
+            ],
+            "weight_enclosures": [
+              [
+                [
+                  "0xaac1ccad98dc82ee7f4be074b7e5f40cd31dc13aafd2ec0477a917f6d4d5da16fe0124bdda8dcfafdbd79bb5286de345",
+                  -384
+                ],
+                [
+                  "0x2a000001",
+                  -412
+                ]
+              ],
+              [
+                [
+                  "0x84490e43c318c6c600c991b29900eef4b2ab351dd9e0b7a5d8eade3be16c98d19bc10727438a021d394419f97ea493d3",
+                  -385
+                ],
+                [
+                  "0x1",
+                  -385
+                ]
+              ],
+              [
+                [
+                  "0x4c66b0c2165c66ba013d5ac7ee6651e34e3290d98cf2e0a26f85e3ace9cf6600d0795eba0eb4bd061e195d3860ff4b43",
+                  -386
+                ],
+                [
+                  "0x1",
+                  -387
+                ]
+              ]
+            ],
+            "weights": [
+              "[0.6670196460553246405271439 +/- 3.15e-26]",
+              "[0.2583698709218409853938908 +/- 2.80e-26]",
+              "[0.07461048302283437407896530 +/- 3.53e-27]"
+            ]
+          },
+          "uses_nested_inner_points": false,
+          "outer_witness": null
+        }
+      },
+      "right_interval": [
+        0.1728709904067211,
+        0.1825677499072884
+      ],
+      "right_enclosures": [
+        "[0.172870990406721127879975026059 +/- 2.55e-31]",
+        "[0.182567749907288384703107908535 +/- 4.58e-31]"
+      ],
+      "right_primal_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_023/report.json",
+      "right_plus_x_upper_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_001/report.json",
+      "paper_display_x_max": 0.1618803574738662,
+      "known_inner_minus_paper_display_x_max": "[0.01099063293285492909912091 +/- 3.78e-27]",
+      "computed_display_range": [
+        [
+          0.0,
+          -0.011227306335920966
+        ],
+        [
+          0.17287099040672113,
+          0.002094867921391125
+        ]
+      ],
+      "paper_display_range": [
+        [
+          0.002744424854487674,
+          -0.010621989283668578
+        ],
+        [
+          0.1618803574738662,
+          0.001759011304530197
+        ]
+      ]
+    },
+    {
+      "epsilon": 0.004,
+      "geometry_distance_upper": 0.11679600729383446,
+      "geometry_ready": false,
+      "reference_membership": {
+        "formula": {
+          "status": "included",
+          "inner_witness": {
+            "reports": [
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_030/report.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_035/report.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_041/report.json"
+            ],
+            "weight_enclosures": [
+              [
+                [
+                  "0xb25e81766c10707c3fe1f1ae960729e128fd3b66d0289dda52db05ecaff9eeaf015cad4da6dd4f052d734fe08d069de1",
+                  -384
+                ],
+                [
+                  "0x4685e5d",
+                  -403
+                ]
+              ],
+              [
+                [
+                  "0x59cdfe901678fadfdec14336ef97e7ab01454ff4396c2e2d2b346ca16d8c0cbff1ba40dbc18cee05538368e388ded5eb",
+                  -386
+                ],
+                [
+                  "0x1da21661",
+                  -407
+                ]
+              ],
+              [
+                [
+                  "0xdcb7fb963945432f21b6f60eb84b70d05ac5c27085f15a69895f7babd28c388408d309eda2fdd5e5f6af579a4306b28f",
+                  -386
+                ],
+                [
+                  "0x13f1e7b7",
+                  -406
+                ]
+              ]
+            ],
+            "weights": [
+              "[0.6967545427433508088053939 +/- 2.13e-26]",
+              "[0.08769986872140920650985335 +/- 3.08e-27]",
+              "[0.2155455885352399846847528 +/- 3.19e-26]"
+            ]
+          },
+          "uses_nested_inner_points": false,
+          "outer_witness": null
+        },
+        "pdf": {
+          "status": "included",
+          "inner_witness": {
+            "reports": [
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_030/report.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_035/report.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_041/report.json"
+            ],
+            "weight_enclosures": [
+              [
+                [
+                  "0xb03eff5a4a8ee9b6a0c475dbf666456ca56cf035a676ea256ef5f9e1a15be60141a16eae178064c7f4571f82c458ce17",
+                  -384
+                ],
+                [
+                  "0x26000001",
+                  -412
+                ]
+              ],
+              [
+                [
+                  "0xc2504f15ef5f572f6d0ebeab4a14065876e7c637e52ffd0270f13bae1e9624d3e0fe0d8e9b1e34b1dd89134cf637d4a7",
+                  -387
+                ],
+                [
+                  "0x1",
+                  -387
+                ]
+              ],
+              [
+                [
+                  "0xdddbdb0bde14ad8dc666c93a815ce7212ed85c0d738c58e90baf7aa26b45559108fb3e80546f52873fdef84e7380dd4d",
+                  -386
+                ],
+                [
+                  "0x1",
+                  -386
+                ]
+              ]
+            ],
+            "weights": [
+              "[0.6884612651288609901560708 +/- 2.13e-26]",
+              "[0.09487973962488609050654517 +/- 3.37e-27]",
+              "[0.2166589952462529193373841 +/- 4.55e-26]"
+            ]
+          },
+          "uses_nested_inner_points": false,
+          "outer_witness": null
+        }
+      },
+      "right_interval": [
+        0.1396761467136466,
+        0.14753913145543315
+      ],
+      "right_enclosures": [
+        "[0.139676146713646620575679491860 +/- 4.22e-31]",
+        "[0.147539131455433125683640582793 +/- 4.23e-31]"
+      ],
+      "right_primal_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_054/report.json",
+      "right_plus_x_upper_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_030/report.json",
+      "paper_display_x_max": 0.1255951855637415,
+      "known_inner_minus_paper_display_x_max": "[0.01408096114990512457138203 +/- 1.99e-27]",
+      "computed_display_range": [
+        [
+          0.0,
+          -0.009037856296662101
+        ],
+        [
+          0.13967614671364662,
+          0.0014654081496872024
+        ]
+      ],
+      "paper_display_range": [
+        [
+          0.0021652405225254636,
+          -0.008271992511563542
+        ],
+        [
+          0.1255951855637415,
+          0.0011780013237101834
+        ]
+      ]
+    },
+    {
+      "epsilon": 0.002,
+      "geometry_distance_upper": 0.0737258341646967,
+      "geometry_ready": false,
+      "reference_membership": {
+        "formula": {
+          "status": "included",
+          "inner_witness": {
+            "reports": [
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_064/report.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_073/report.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/adaptive_004/report.json"
+            ],
+            "weight_enclosures": [
+              [
+                [
+                  "0x8d1569dd5e051308902f218d350205342769f0f385b533ee8a751b1e25c00d4f8709784a1df8e930a78167e00e402f5",
+                  -382
+                ],
+                [
+                  "0x4387831",
+                  -401
+                ]
+              ],
+              [
+                [
+                  "0x779412978ea1800759d858627a7ae31c9b5a4550e63acab504a7c1d8a5d85773cfa47371653a54fd3634be0d71b2bf19",
+                  -386
+                ],
+                [
+                  "0x1194b903",
+                  -404
+                ]
+              ],
+              [
+                [
+                  "0xbed5a0e2c4d65b3c057e21841420c5ebcf4ef26ee50400571c38c8c24d19e6cf2a5485111f33307488927684a0034465",
+                  -384
+                ],
+                [
+                  "0x101f0885",
+                  -404
+                ]
+              ]
+            ],
+            "weights": [
+              "[0.1377769986497741732995109 +/- 8.66e-27]",
+              "[0.1167757897380012900187356 +/- 3.62e-26]",
+              "[0.7454472116122245366817535 +/- 2.75e-26]"
+            ]
+          },
+          "uses_nested_inner_points": false,
+          "outer_witness": null
+        },
+        "pdf": {
+          "status": "included",
+          "inner_witness": {
+            "reports": [
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_064/report.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_073/report.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/adaptive_004/report.json"
+            ],
+            "weight_enclosures": [
+              [
+                [
+                  "0x25e9abebbb7a5f3e9af3aea7c30f55e8106beef43d6dfff4d06839678f7a13773aee375df7edb0323dd8c5073e4dbf5f",
+                  -384
+                ],
+                [
+                  "0x24000001",
+                  -413
+                ]
+              ],
+              [
+                [
+                  "0x1f81f3a91dad1b3be14b1167cf28cfae0cf63b4f7473760b9e946dd18dd53d265ffef9319b2906e41fbefe96898af345",
+                  -384
+                ],
+                [
+                  "0x1",
+                  -387
+                ]
+              ],
+              [
+                [
+                  "0x2ea5181ac9b6216160f04ffc1b71f69a78a7756f1387a27fe440d631b8ac2bd89944b3dc1b3a523a689a0f188e09d357",
+                  -382
+                ],
+                [
+                  "0x1",
+                  -384
+                ]
+              ]
+            ],
+            "weights": [
+              "[0.1480967951315306125402698 +/- 4.94e-26]",
+              "[0.1230766570931120411900646 +/- 8.61e-27]",
+              "[0.7288265477753573462696655 +/- 4.21e-26]"
+            ]
+          },
+          "uses_nested_inner_points": false,
+          "outer_witness": null
+        }
+      },
+      "right_interval": [
+        0.10084542477112676,
+        0.10594016798332521
+      ],
+      "right_enclosures": [
+        "[0.100845424771126771245058677217 +/- 2.21e-31]",
+        "[0.105940167983325200795619025484 +/- 4.85e-31]"
+      ],
+      "right_primal_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/adaptive_004/report.json",
+      "right_plus_x_upper_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_057/report.json",
+      "paper_display_x_max": 0.08257301276510262,
+      "known_inner_minus_paper_display_x_max": "[0.01827241200602414990971400 +/- 2.00e-27]",
+      "computed_display_range": [
+        [
+          0.0,
+          -0.006708993168618989
+        ],
+        [
+          0.10084542477112678,
+          0.000799482632352065
+        ]
+      ],
+      "paper_display_range": [
+        [
+          0.0014493069079627669,
+          -0.005435966800058552
+        ],
+        [
+          0.08257301276510262,
+          0.000582030231882398
+        ]
+      ]
+    },
+    {
+      "epsilon": 0.001,
+      "geometry_distance_upper": 0.07443163243375917,
+      "geometry_ready": false,
+      "reference_membership": {
+        "formula": {
+          "status": "unresolved",
+          "inner_witness": null,
+          "uses_nested_inner_points": false,
+          "outer_witness": null
+        },
+        "pdf": {
+          "status": "included",
+          "inner_witness": {
+            "reports": [
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_093/report.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_092/report.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_100/report.json"
+            ],
+            "weight_enclosures": [
+              [
+                [
+                  "0x228186d55b49729c97788f7bc9bec4e02217535997d8cacf05dbf38b7d7234e5699a9c9cbabc0c8a00b1978a0656d8b",
+                  -384
+                ],
+                [
+                  "0x30000001",
+                  -413
+                ]
+              ],
+              [
+                [
+                  "0x43673c61374103d55bc1dd1b6c30f5fbaa949b8f8845a6a011a97609f9f4c00dbc080673b4e4486a66cb4e26758a4417",
+                  -384
+                ],
+                [
+                  "0x1",
+                  -385
+                ]
+              ],
+              [
+                [
+                  "0x5d385598b98532806d634cf66b998edb29a4f79d6f1e66597efc655ea71a0e51f6af27e13fb7fb667c94cc307508272f",
+                  -383
+                ],
+                [
+                  "0x1",
+                  -384
+                ]
+              ]
+            ],
+            "weights": [
+              "[0.008424307530463403570908257 +/- 4.09e-28]",
+              "[0.2632940041869496460490340 +/- 9.82e-27]",
+              "[0.7282816882825869503800577 +/- 3.28e-26]"
+            ]
+          },
+          "uses_nested_inner_points": false,
+          "outer_witness": null
+        }
+      },
+      "right_interval": [
+        0.07652356460062315,
+        0.08032183333750052
+      ],
+      "right_enclosures": [
+        "[0.0765235646006231631405905616333 +/- 3.71e-32]",
+        "[0.0803218333375005089092013577101 +/- 1.71e-32]"
+      ],
+      "right_primal_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_101/report.json",
+      "right_plus_x_upper_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_085/report.json",
+      "paper_display_x_max": 0.054782094917098303,
+      "known_inner_minus_paper_display_x_max": "[0.02174146968352485966353622 +/- 2.43e-27]",
+      "computed_display_range": [
+        [
+          0.0,
+          -0.0049531517627323645
+        ],
+        [
+          0.07652356460062316,
+          0.0004426145473354384
+        ]
+      ],
+      "paper_display_range": [
+        [
+          0.0010146743880986356,
+          -0.003599037138713174
+        ],
+        [
+          0.054782094917098303,
+          0.00027704049979893454
+        ]
+      ]
+    },
+    {
+      "epsilon": 0.0006,
+      "geometry_distance_upper": 0.08859216178218618,
+      "geometry_ready": false,
+      "reference_membership": {
+        "formula": {
+          "status": "excluded",
+          "inner_witness": null,
+          "uses_nested_inner_points": false,
+          "outer_witness": {
+            "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_131/report.json",
+            "direction": [
+              -13.440144689269344,
+              -400.1957531352421
+            ],
+            "excess_enclosure": "[0.0922031651526168515375759697896 +/- 2.91e-32]"
+          }
+        },
+        "pdf": {
+          "status": "excluded",
+          "inner_witness": null,
+          "uses_nested_inner_points": false,
+          "outer_witness": {
+            "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_131/report.json",
+            "direction": [
+              -13.440144689269344,
+              -400.1957531352421
+            ],
+            "excess_enclosure": "[0.0656010982156726417350435387715 +/- 2.30e-32]"
+          }
+        }
+      },
+      "right_interval": [
+        0.06528726383347061,
+        0.06832085951749015
+      ],
+      "right_enclosures": [
+        "[0.0652872638334706297156692639645 +/- 1.11e-33]",
+        "[0.0683208595174901317514937204578 +/- 1.84e-33]"
+      ],
+      "right_primal_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_134/report.json",
+      "right_plus_x_upper_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_112/report.json",
+      "paper_display_x_max": 0.04100124573777742,
+      "known_inner_minus_paper_display_x_max": "[0.02428601809569320856367652 +/- 3.44e-27]",
+      "computed_display_range": [
+        [
+          0.0,
+          -0.004235237428673763
+        ],
+        [
+          0.06528726383347062,
+          0.0002808261749696279
+        ]
+      ],
+      "paper_display_range": [
+        [
+          0.0006831401843227223,
+          -0.002726016144914012
+        ],
+        [
+          0.04100124573777742,
+          0.00016296558922422106
+        ]
+      ]
+    },
+    {
+      "epsilon": 0.0002,
+      "geometry_distance_upper": 0.22661592643202044,
+      "geometry_ready": false,
+      "reference_membership": {
+        "formula": {
+          "status": "excluded",
+          "inner_witness": null,
+          "uses_nested_inner_points": false,
+          "outer_witness": {
+            "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_156/report.json",
+            "direction": [
+              -35.22573516777124,
+              -730.7680134242739
+            ],
+            "excess_enclosure": "[0.283796589402939701638446882150 +/- 4.89e-31]"
+          }
+        },
+        "pdf": {
+          "status": "excluded",
+          "inner_witness": null,
+          "uses_nested_inner_points": false,
+          "outer_witness": {
+            "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_156/report.json",
+            "direction": [
+              -35.22573516777124,
+              -730.7680134242739
+            ],
+            "excess_enclosure": "[0.256673844418003223000383847316 +/- 4.82e-31]"
+          }
+        }
+      },
+      "right_interval": [
+        0.04998082939795758,
+        0.054520308576833744
+      ],
+      "right_enclosures": [
+        "[0.0499808293979575875092739903571 +/- 2.11e-32]",
+        "[0.0545203085768337369909630751863 +/- 5.59e-34]"
+      ],
+      "right_primal_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_137/report.json",
+      "right_plus_x_upper_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_137/report.json",
+      "paper_display_x_max": 0.022362576668828744,
+      "known_inner_minus_paper_display_x_max": "[0.02761825272912884305647461 +/- 3.78e-27]",
+      "computed_display_range": [
+        [
+          0.0,
+          -0.003274710391778918
+        ],
+        [
+          0.04998082939795759,
+          0.00010968788895068923
+        ]
+      ],
+      "paper_display_range": [
+        [
+          0.00037345455146233766,
+          -0.0014869761174045664
+        ],
+        [
+          0.022362576668828744,
+          4.3972272098490995e-05
+        ]
+      ]
+    }
+  ],
+  "nesting": {
+    "six_chiral_present": true,
+    "contradictions": [],
+    "status": "no_observed_contradiction"
+  },
+  "strict_adjacent_right_contractions": [
+    {
+      "larger_epsilon": 0.006,
+      "smaller_epsilon": 0.004,
+      "margin_enclosure": "[0.02533185895128800219633444 +/- 3.27e-27]",
+      "proved": true
+    },
+    {
+      "larger_epsilon": 0.004,
+      "smaller_epsilon": 0.002,
+      "margin_enclosure": "[0.03373597873032141978006047 +/- 3.63e-27]",
+      "proved": true
+    },
+    {
+      "larger_epsilon": 0.002,
+      "smaller_epsilon": 0.001,
+      "margin_enclosure": "[0.02052359143362626233585732 +/- 4.94e-28]",
+      "proved": true
+    },
+    {
+      "larger_epsilon": 0.001,
+      "smaller_epsilon": 0.0006,
+      "margin_enclosure": "[0.008202705083133031389096841 +/- 1.76e-28]",
+      "proved": true
+    },
+    {
+      "larger_epsilon": 0.0006,
+      "smaller_epsilon": 0.0002,
+      "margin_enclosure": "[0.01076695525663689272470619 +/- 1.23e-27]",
+      "proved": true
+    }
+  ],
+  "deferred_reference_query": {
+    "epsilon": 0.001,
+    "direction": [
+      -23.46478718333337,
+      -525.9670629253735
+    ],
+    "gap": 0.0025,
+    "formula_reference_functional": "[0.8505049375033965515968868 +/- 1.19e-28]",
+    "current_inner_functional": "[0.8411282852207420512052191 +/- 4.07e-26]",
+    "warm_coefficients": "results/runs/mainline_alignment_20260909/B_combined/retarget_100/coefficients.json",
+    "warm_candidate": "results/runs/mainline_alignment_20260909/B_combined/retarget_100/candidate.npz",
+    "same_problem_combined_center_available": false,
+    "priority": "Deferred until the already-authorized epsilon=.002 IR lower query closes or bounds the E1 comparison"
+  },
+  "final_status_after_E1": {
+    "regions": "results/runs/mainline_alignment_20260909/B_combined/regions_IR_lower_003/regions.json",
+    "qualified_records": 212,
+    "B2_geometry_ready": true,
+    "B3_geometry_ready": false,
+    "nesting_contradictions": 0,
+    "earlier_reference_and_right_certificates_remain_valid": true,
+    "E1_report": "results/runs/mainline_alignment_20260909/E1_PAPER_RESULT_ZH.md",
+    "new_optimization_stopped": true
+  }
+}

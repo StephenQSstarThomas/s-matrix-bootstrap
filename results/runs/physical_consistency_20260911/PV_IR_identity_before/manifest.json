@@ -1,0 +1,12 @@
+[
+  {
+    "source": "src/smatrix_bootstrap/ir.py",
+    "snapshot": "results/runs/physical_consistency_20260911/PV_IR_identity_before/ir.py.txt",
+    "sha256": "9fe83590027ee9bd611c954c1c7c9b7f333c469ab7cd242cd39ba97160fd419b"
+  },
+  {
+    "source": "tests/test_linear.py",
+    "snapshot": "results/runs/physical_consistency_20260911/PV_IR_identity_before/test_linear.py.txt",
+    "sha256": "f3f9dd717384300f02c8cbd323147b7e68850fa3dd4891988206f24ef4f89d90"
+  }
+]

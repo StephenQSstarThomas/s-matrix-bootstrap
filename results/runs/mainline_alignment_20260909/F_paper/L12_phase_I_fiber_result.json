@@ -1,0 +1,29 @@
+{
+  "source_report": "results/runs/mainline_alignment_20260909/F_paper/M50_L12_phase_I_fiber_current/report.json",
+  "scope": "Audit of solver-returned current candidate for one fixed complete amplitude; no complete-problem infeasibility proof",
+  "amplitude_passed": true,
+  "joint_passed": false,
+  "native_status": "PrimalInfeasible",
+  "moment_margins": [
+    "[-0.00038510421435485783951 +/- 9.23e-25]",
+    "[-0.10983813935758595079 +/- 1.41e-21]",
+    "[-0.0022280457108077767892 +/- 4.99e-23]",
+    "[-0.14371120695495090201 +/- 7.71e-22]"
+  ],
+  "worst_moment": {
+    "index": 3,
+    "enclosure": "[-0.14371120695495090201 +/- 7.71e-22]"
+  },
+  "worst_ff": {
+    "index": 13,
+    "enclosure": "[-0.13788599121818426290 +/- 1.02e-21]"
+  },
+  "negative_gram_principal_minors": 184,
+  "worst_gram_minor": {
+    "block": 92,
+    "minor_index": 4,
+    "enclosure": "[-0.0011485064576485983274 +/- 2.13e-23]"
+  },
+  "selection_uses_phase_data": false,
+  "new_optimization_or_points_after_failure": false
+}

@@ -1,0 +1,49 @@
+{
+  "scope": "Norm-implied outer intervals for sqrt(I_0/I_-1), not rho masses or full-bootstrap feasible intervals.",
+  "inputs_mpi_GeV": 0.13957,
+  "tolerance": 0.002,
+  "vector_raw_targets": {
+    "I_minus1": 0.004254138145026437,
+    "I_0": 0.14751520406927487
+  },
+  "central_spectral_mean_energy_GeV": 0.8218729300336957,
+  "intervals": {
+    "raw_absolute": {
+      "mean_s_interval": [
+        23.58003788013172,
+        65.44873154206755
+      ],
+      "energy_interval_GeV": [
+        0.6777418873279251,
+        1.1291267477202553
+      ]
+    },
+    "relative": {
+      "mean_s_interval": [
+        34.57775743559509,
+        34.77391338633807
+      ],
+      "energy_interval_GeV": [
+        0.8207114457406866,
+        0.8230360580783178
+      ]
+    },
+    "normalized_absolute": {
+      "mean_s_interval": [
+        4,
+        73.92278751496892
+      ],
+      "energy_interval_GeV": [
+        0.27914,
+        1.2
+      ]
+    }
+  },
+  "derivation": {
+    "raw": "Tangency to (A-a)^2+(B-b)^2<=eps^2 gives ratio endpoints (ab +/- eps sqrt(a\u00b2+b\u00b2-eps\u00b2))/(a\u00b2-eps\u00b2).",
+    "relative": "Apply the same geometry to (A/a,B/b) centered at (1,1).",
+    "normalized": "Normalized-target disk contains the origin; arbitrarily small positive moments realize every support-compatible ratio as an outer possibility.",
+    "support": "For the positive measure rho(s)ds/s on [4,s0], 4<=I0/I-1<=s0.",
+    "resonance": "Identifying the spectral mean with a rho mass needs narrow-resonance dominance, not used in this audit."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "rule": "tip +x; ref upper at physical Weinberg xref; mid upper at arithmetic x midpoint; IR upper at same xref",
+  "tip_source": "interlaced_tip_support_02/report.json",
+  "tip_x": 0.09318378028569241,
+  "xref": 0.07332139057293466,
+  "mid_x": 0.08325258542931353,
+  "all_C_directions_retained": true,
+  "selection_uses_phase_data": false,
+  "phase_evaluations_started": false,
+  "IR_UV_scattering_model": "same interlaced preparation, zero T0, five leading asymptotic inequalities, separate-L2 .002, B377500",
+  "current_constraints_in_IR": false,
+  "post_selection_scattering_validation": {
+    "energy_gev_start": 0.28,
+    "energy_gev_end": 1.2,
+    "step_gev": 0.005,
+    "primary_waves": [
+      "S0",
+      "S2",
+      "P1"
+    ],
+    "same_complete_C": true,
+    "selection_uses_validation_data": false,
+    "scope": "Uniform additional samples, not continuum certification"
+  }
+}

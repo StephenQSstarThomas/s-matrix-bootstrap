@@ -1,0 +1,181 @@
+"""Conditional observable bounds near an authenticated physical support.
+
+Optimize on the unchanged joint feasible set. The anchor enters only a
+Lagrange bound, never a new physical constraint or a phase-selection rule.
+"""
+from pathlib import Path
+import hashlib
+import json
+import numpy as np
+from flint import arb, ctx
+from . import read_json, write_json, digest, encode_real_ball, read_cflat
+
+
+def anchored_upper(composite_upper, multiplier, anchor_lower, constant=0):
+    """If n.p>=L and gamma>=0, O<=h_D(a+gamma*n)+c-gamma*L."""
+    u,g,l,c=map(arb,(composite_upper,multiplier,anchor_lower,constant))
+    if not all(v.is_finite() for v in (u,g,l,c)) or not g>=0:
+        raise ValueError('Finite bounds and nonnegative Lagrange multiplier required')
+    return (u+c-g*l).upper()
+
+
+def native_observable(M,L,node,wave,component,sign,bits):
+    from .kernels import PVSourceRows
+    if wave not in ('S0','S2','P1') or component not in ('real','imag') or sign not in (-1,1):
+        raise ValueError('A signed real or imaginary primary-wave component is required')
+    source=PVSourceRows(M,L,bits);I,ell={'S0':(0,0),'S2':(2,0),'P1':(1,1)}[wave]
+    row=source.physical_row(node,ell,I);s=source.x[node];k=arb.pi()*(1-4/s).sqrt()
+    values=[sign*(-k*v.imag if component=='real' else k*v.real) for v in row]
+    return values,sign if component=='real' else 0,s
+
+
+def _duals(path):
+    with np.load(path,allow_pickle=False) as saved:
+        return {k:saved[k].copy() for k in ('kR','kI','y','moment','ff','gram','gram_congruence')}
+
+
+def _validate_model(args,r,current,M,L,bound):
+    p=r['parameters'];cfg=current['metadata']['uv']['config']
+    expected=dict(M=M,L=L,density_limit=bound,chiral_tolerance=args.chiral_tolerance,
+        chiral_norm=args.chiral_norm,infinity='free',prescription='pv-midpoint',unitarity_scope='sampled')
+    if any(r.get(k)!=v for k,v in expected.items()):raise ValueError('Probe source physical model differs')
+    if any(Path(p[k]).resolve()!=getattr(args,k).resolve() for k in ('preparation','current_preparation')):
+        raise ValueError('Probe source operators differ')
+    if r['current_model']['uv']['config']!=cfg:raise ValueError('Probe source current inputs differ')
+    for field,key in [('moment_source','moment_source'),('sr_error','sr_error'),('fesr_cutoff','cutoff'),('mq_rule','mq_rule')]:
+        if getattr(args,field)!=cfg[key]:raise ValueError('Probe CLI/current mismatch: '+field)
+
+
+def support_probe(args,progress):
+    from .run import support_data
+    from . import current_data, joint_result
+    from .certificates import joint_audit, model_signature
+    from .linear import center_joint_support
+    if (args.mode!='gauge' or args.prescription!='pv-midpoint' or args.fixed_x is not None or args.ray
+        or args.fixed_amplitude or args.joint_feasibility or args.asymptotic_zeros or args.asymptotic_unitarity
+        or args.interior_coefficients is not None or args.objective!='projection' or args.resume_objective
+        or args.require_center or args.probe_anchor is None or args.coefficients is None
+        or args.probe_node is None or args.probe_wave is None or args.probe_component is None
+        or args.chiral_barrier_weight is None or args.start_mu_provenance['kind']!='explicit'):
+        raise ValueError('Probe needs an explicit PV joint model, anchor, observable, weight and mu; no projection slice or phase selection')
+    if not np.isfinite(args.probe_budget) or args.probe_budget<=0 or args.solver not in ('barrier','centered'):
+        raise ValueError('Positive probe budget and complete Newton solver required')
+    if (args.support_runs or args.probe_xref is not None) and not (args.probe_audit_only and len(args.support_runs)==2 and args.probe_xref is not None and np.isfinite(args.probe_xref)):
+        raise ValueError('Section replay requires xref and two complete support parents')
+    H,kap,_,_,M,L,_,_=support_data(args,progress);p=H.shape[1]
+    if (M,L)!=(args.nodes,args.waves) or len(kap)!=3*M*L:raise ValueError('Probe requires the declared native PV M/L grid')
+    current=current_data(args.current_preparation,args.preparation)
+    if current['metadata'].get('ff_endpoint_order') or current['metadata'].get('asymptotic_unitarity'):
+        raise ValueError('This probe keeps the original PV current model')
+    bound=args.density_limit or 100*(p-1-2*M);anchor=args.probe_anchor.resolve()
+    if anchor.is_dir():anchor=anchor/'report.json'
+    r=read_json(anchor);_validate_model(args,r,current,M,L,bound)
+    if not r.get('joint_feasible') or not r.get('support_optimality_certified') or r.get('objective_kind')!='projection':
+        raise ValueError('A complete certified projection anchor is required')
+    normal=np.asarray(r['support_direction'],float)
+    if normal.shape!=(2,) or not np.isfinite(normal).all() or not np.any(normal):raise ValueError('Nonzero global anchor direction required')
+    for path,item in r.get('inputs',{}).items():
+        if item.get('sha256') and digest(path)!=item['sha256']:raise ValueError('Anchor input hash changed: '+path)
+    with np.load(anchor.parent/'joint.npz',allow_pickle=False) as saved:ap=saved['point'].copy()
+    ac,_=read_cflat(anchor.parent/'coefficients.json',M,prescription='pv-midpoint')
+    if not np.array_equal(ap[:p],ac):raise ValueError('Anchor full point differs from C')
+    _,aa=joint_audit(H,kap,current,ap,M,L,bound,args.chiral_tolerance,normal,_duals(anchor.parent/'joint.npz'),args.bits,chiral_norm=args.chiral_norm)
+    if not aa['primal_feasible']:raise ValueError('Anchor failed fresh original constraints')
+    gap=aa['upper']-aa['lower']
+    if not np.isfinite(gap) or gap<=0:raise ValueError('A positive certified anchor gap is required')
+    gamma=float(args.probe_budget/gap)
+    if not np.isfinite(gamma) or gamma<=0:raise ValueError('Finite positive probe multiplier required')
+    with ctx.workprec(args.bits):
+        a,constant,energy=native_observable(M,L,args.probe_node,args.probe_wave,args.probe_component,args.probe_sign,args.bits)
+        g=arb(gamma);n=list(map(arb,normal));floor=arb(aa['lower'])
+        geometry=[n[0]*arb(float(x))+n[1]*arb(float(y)) for x,y in zip(H[-2],H[-1])]
+        exact=[v+g*w for v,w in zip(a,geometry)];encoded=list(map(encode_real_ball,exact))
+        floating=np.array([float(v.mid()) for v in exact]);goal_sha=hashlib.sha256(json.dumps(encoded,sort_keys=True).encode()).hexdigest()
+        identity=dict(anchor=str(anchor),anchor_sha256=digest(anchor),model_signature=model_signature(r),
+            anchor_lower=aa['lower'],anchor_upper=aa['upper'],normal=normal.tolist(),multiplier=gamma,
+            source_bits=args.bits,node=args.probe_node,wave=args.probe_wave,component=args.probe_component,sign=args.probe_sign,
+            constant=constant,source_energy=encode_real_ball(energy),exact_goal_sha256=goal_sha,
+            chiral_barrier_weight=args.chiral_barrier_weight,
+            source_kernel_sha256=digest(Path(__file__).with_name('kernels.py')),
+            operator_hashes={str(q.resolve()):digest(q) for q in [args.preparation/'amplitude.npz']+
+                [args.current_preparation/name for name in ('current_data.npz','gram_linear.npz','moment_linear.npz','ff_cap_linear.npz')]})
+        seed_record=read_json(args.coefficients.parent/'report.json');recovered=args.coefficients.name=='joint_path_candidate.npz'
+        if recovered:
+            if not args.probe_audit_only or seed_record['parameters']['command']!='support-probe':raise ValueError('Stopped path data is allowed only for explicit probe replay')
+        else:_validate_model(args,seed_record,current,M,L,bound)
+        resume=recovered or seed_record.get('objective_kind')=='support-probe'
+        point_path=args.coefficients if recovered else args.coefficients.parent/'joint.npz'
+        with np.load(point_path,allow_pickle=False) as saved:seed=saved['point'].copy()
+        c=seed[:p] if recovered else read_cflat(args.coefficients,M,prescription='pv-midpoint')[0]
+        if seed.shape!=(p+4*M,) or not np.array_equal(c,seed[:p]):raise ValueError('Complete same-model probe seed required')
+        source_coefficients=str(args.coefficients.resolve())
+        if resume:
+            prior=read_json(args.coefficients.parent/'probe_goal.json')
+            if prior['identity']!=identity or prior['exact_goal']!=encoded:raise ValueError('Probe continuation identity changed')
+            with np.load(args.coefficients.parent/'objective.npz',allow_pickle=False) as old:
+                if not np.array_equal(old['coefficients'],floating):raise ValueError('Probe floating goal changed')
+                prior_meta=json.loads(str(old['metadata']))
+                if prior_meta.get('kind')!='support-probe' or prior_meta.get('identity')!=identity:raise ValueError('Probe objective metadata changed')
+                source_coefficients=prior_meta['source_coefficients']
+            cache=args.coefficients.parent/'barrier_state.npz'
+            if not args.probe_audit_only:
+                with np.load(cache,allow_pickle=False) as old:
+                    if float(old['mu'])!=args.start_mu:raise ValueError('Resume the actual probe cache mu')
+        if args.probe_audit_only and not resume:raise ValueError('Only an authenticated saved probe can be replayed')
+        metadata=dict(source_coefficients=source_coefficients,identity=identity,kind='support-probe')
+        write_json(args.output/'probe_goal.json',dict(identity=identity,exact_goal=encoded,
+            observable_goal=list(map(encode_real_ball,a)),scope='Observable uses exact native PV row; anchor geometry uses saved H rows'))
+        np.savez_compressed(args.output/'objective.npz',coefficients=floating,metadata=json.dumps(metadata))
+        seed,seed_audit=joint_audit(H,kap,current,seed,M,L,bound,args.chiral_tolerance,[0,0],None,args.bits,chiral_norm=args.chiral_norm)
+        write_json(args.output/'initial_audit.json',seed_audit)
+        if not seed_audit['primal_feasible']:raise ValueError('Probe seed failed original joint constraints')
+        if args.probe_audit_only:
+            point=seed;duals=_duals(point_path);method=dict(solver='Exact saved probe dual replay',optimization_performed=False,support_direction=[0.,0.],
+                stopped_path_data_recovered=recovered,old_primal_or_center_status_transferred=False)
+        else:
+            point,duals,method,_=center_joint_support(H,kap,current,seed,M,L,bound,args.chiral_tolerance,[0,0],args,progress,
+                objective=floating,allow_cache=resume,audit_objective=exact,
+                certificate_stop=lambda audit:bool(anchored_upper(arb(audit['enclosure']),g,floor,constant)<0))
+        point,audit=joint_audit(H,kap,current,point,M,L,bound,args.chiral_tolerance,[0,0],duals,args.bits,chiral_norm=args.chiral_norm,objective=exact)
+        result=joint_result(args,H,kap,current,point,duals,audit,M,L,bound,method,floating,metadata)
+        result.update(objective_kind='support-probe',support_direction=None,model_signature=model_signature(r),
+            objective_scope='Float numerical goal readout; outer and probe use the exact-source combination')
+        upper=anchored_upper(arb(audit['enclosure']),g,floor,constant)
+        obs=arb(constant)+sum((v*arb(float(z)) for v,z in zip(a,point[:p])),arb(0))
+        native_anchor=sum((v*arb(float(z)) for v,z in zip(geometry,point[:p])),arb(0))
+        exact_value=sum((v*arb(float(z)) for v,z in zip(exact,point[:p])),arb(0))
+        loss=(-upper/g).lower() if upper<0 else None
+        proof=dict(identity=identity,composite_upper=audit['enclosure'],composite_exact_gap=audit['upper']-audit['lower'] if audit['primal_feasible'] else None,
+            observable_upper_enclosure=upper.str(30),observable_upper=float(np.nextafter(float(upper),np.inf)),strict_negative=bool(upper<0),
+            required_anchor_loss_lower=None if loss is None else float(np.nextafter(float(loss),-np.inf)),
+            candidate_observable=obs.str(30),candidate_exact_composite=exact_value.str(30),candidate_anchor=native_anchor.str(30),candidate_in_anchor_layer=bool(native_anchor>=floor),
+            candidate_physical_feasible=bool(audit['primal_feasible']),
+            proof='For q in D and n.p(q)>=L: O(q)<=h_D(a+gamma*n)+c-gamma*L; gamma>=0',
+            scope='All complete feasible amplitudes in this declared finite near-support set; no new physical constraints, pole or continuum claim',
+            positive_upper_does_not_prove_existence=True,phase_representative=False,
+            anchor_cache_ignored=bool(args.probe_audit_only or not resume),cache_used=bool(resume and not args.probe_audit_only))
+        if args.support_runs:
+            if not n[1]>0:raise ValueError('Upper-section proof needs a positive y normal')
+            xy=[];parents=[]
+            for i,path in enumerate(args.support_runs):
+                path=Path(path);path=path.parent if path.is_file() else path;rparent=read_json(path/'report.json')
+                _validate_model(args,rparent,current,M,L,bound)
+                with np.load(path/'joint.npz',allow_pickle=False) as saved:parent=saved['point'].copy()
+                cparent,_=read_cflat(path/'coefficients.json',M,prescription='pv-midpoint')
+                if not np.array_equal(parent[:p],cparent):raise ValueError('Section parent C/point mismatch')
+                parent,check=joint_audit(H,kap,current,parent,M,L,bound,args.chiral_tolerance,[0,0],None,args.bits,chiral_norm=args.chiral_norm)
+                if not check['primal_feasible']:raise ValueError('Section parent failed complete original constraints')
+                np.savez_compressed(args.output/f'section_parent_{i}.npz',point=parent);write_json(args.output/f'section_parent_{i}_audit.json',check)
+                xy.append(list(map(arb,check['targets'])));parents.append(str(path.resolve()))
+            xx=arb(float(args.probe_xref));den=xy[1][0]-xy[0][0]
+            if den.contains(0):raise ValueError('Distinct parent x required')
+            alpha=(xx-xy[0][0])/den
+            if not (alpha>=0 and alpha<=1):raise ValueError('Parents do not bracket exact xref')
+            ylo=((1-alpha)*xy[0][1]+alpha*xy[1][1]).lower();section_floor=n[0]*xx+n[1]*ylo
+            section_upper=anchored_upper(arb(audit['enclosure']),g,section_floor,constant)
+            proof['fixed_section']=dict(xref=args.probe_xref,parent_supports=parents,second_weight=alpha.str(30),
+                feasible_y_lower=ylo.str(30),anchor_functional_lower=section_floor.str(30),observable_upper=section_upper.str(30),
+                strict_negative=bool(section_upper<0),full_parent_primals_passed=True,phase_representative_created=False,
+                scope='For every original feasible amplitude with x=xref and y>=the certified feasible inner bound; includes upper-section maximizers if attained')
+        write_json(args.output/'probe.json',proof);result['probe']=proof
+        return result

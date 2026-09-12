@@ -1,0 +1,305 @@
+{
+  "command": "select",
+  "status": "selected",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "select",
+    "comparison_manifest": null,
+    "region_summary": "results/runs/mainline_alignment_20260909/B_combined/regions_005/regions.json",
+    "primary_waves": false,
+    "profile_runs": [],
+    "profile_kind": "subthreshold",
+    "phase_reference": null,
+    "selection_reference": null,
+    "support_runs": [],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/C_select_006",
+    "density_limit": null,
+    "preparation": "results/runs/stage_A_M50_L10_20260906",
+    "prescription": "auto",
+    "solver": "barrier",
+    "unitarity_scope": "strengthened",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "current_preparation": null,
+    "joint_feasibility": false,
+    "density_cone": "soc",
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": null,
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.006,
+    "chiral_norm": "combined-l2",
+    "chiral_barrier_weight": null,
+    "objective": "projection",
+    "resume_objective": false,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "fixed_x": null,
+    "ray": false,
+    "seconds": null
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "2"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Declared finite prescription; published regions/phases unverified.",
+  "model_signature": {
+    "chiral_norm": "combined-l2",
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "free",
+    "unitarity_scope": "sampled",
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": false,
+    "prescription": "pv-midpoint",
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    "additional_constraints": null,
+    "sampling_nodes": 50,
+    "scattering_samples": 1500
+  },
+  "selection": {
+    "rule": "Upper feasible-hull edge at fixed Weinberg f00(3), before evaluating phases",
+    "reference": [
+      0.07332139057293466,
+      -0.00488809270486231
+    ],
+    "target": [
+      0.07332139057901005,
+      -0.0026819039837691966
+    ],
+    "epsilon": 0.006,
+    "source_coefficients": [
+      "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_016/coefficients.json",
+      "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_003/coefficients.json"
+    ],
+    "weights": [
+      0.22963338019402868,
+      0.7703666198059713
+    ],
+    "source_reports": [
+      "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_016/report.json",
+      "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_003/report.json"
+    ],
+    "vertices": [
+      [
+        0.1668784417057173,
+        -0.011227306335920966
+      ],
+      [
+        0.17005724718225484,
+        -0.011198816349995658
+      ],
+      [
+        0.17209752387249433,
+        -0.011086336202815182
+      ],
+      [
+        0.17287099040672113,
+        -0.010921496869945273
+      ],
+      [
+        0.17259146659816918,
+        -0.010690812020397681
+      ],
+      [
+        0.17122383739538113,
+        -0.010393162033678599
+      ],
+      [
+        0.16876120786645588,
+        -0.010034036314098748
+      ],
+      [
+        0.16040555168849147,
+        -0.009124751374131974
+      ],
+      [
+        0.14769835640414114,
+        -0.007994033582674778
+      ],
+      [
+        0.13344259456229704,
+        -0.006868471121957878
+      ],
+      [
+        0.1155143569185353,
+        -0.005563603191274371
+      ],
+      [
+        0.0607443743403343,
+        -0.0018229177391288665
+      ],
+      [
+        0.0073573197878069665,
+        0.0016445252072825557
+      ],
+      [
+        -0.04551767612691639,
+        0.004881012114944046
+      ],
+      [
+        -0.13208876684267706,
+        0.009544825580664698
+      ],
+      [
+        -0.078676593821222,
+        0.003599448685022322
+      ],
+      [
+        -0.034541133543834236,
+        -9.780206638158275e-05
+      ],
+      [
+        -0.0077519785327423135,
+        -0.0020979028351144086
+      ],
+      [
+        0.01733873169274778,
+        -0.003834079548465867
+      ],
+      [
+        0.04604809122959332,
+        -0.005673990334456905
+      ],
+      [
+        0.07286645680777823,
+        -0.007251748269170383
+      ],
+      [
+        0.09521743290457553,
+        -0.008443558583677879
+      ],
+      [
+        0.11784396412414305,
+        -0.009524680541597127
+      ],
+      [
+        0.1395005531423773,
+        -0.01040960022378881
+      ],
+      [
+        0.15762522270258758,
+        -0.011035747110786268
+      ],
+      [
+        0.16283779486414401,
+        -0.011175705597543564
+      ]
+    ],
+    "boundary_approximation": true,
+    "region_metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)",
+    "regional_distance_upper": 0.14207359232567957,
+    "exact_extremizer_claimed": false,
+    "original_H_feasibility": {
+      "upper": 5e-324,
+      "enclosure": "0",
+      "disk": 0.0,
+      "chiral": 0.0,
+      "density_residual": 0.0,
+      "tail_support": 0.0,
+      "chiral_norm": "combined-l2",
+      "objective_kind": "target_plane",
+      "scope": "exact saved float64 operator and supplied tail maps; angular quadrature error excluded",
+      "primal_feasible": true,
+      "lower": -5e-324,
+      "minimum_margin_enclosure": "[1.9663114863314332184e-83 +/- 3.27e-103]",
+      "density_norm": 368228.81742676866,
+      "targets": [
+        "[0.07332139057903043468245285 +/- 4.27e-27]",
+        "[-0.002681903983769253943981862 +/- 1.57e-28]"
+      ],
+      "tail_margin_enclosures": []
+    },
+    "model_signature": {
+      "chiral_norm": "combined-l2",
+      "M": 50,
+      "L": 10,
+      "density_limit": 377500.0,
+      "infinity": "free",
+      "unitarity_scope": "sampled",
+      "global_high_spin_enforced": false,
+      "tail_conditions_applied": false,
+      "prescription": "pv-midpoint",
+      "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+      "additional_constraints": null,
+      "sampling_nodes": 50,
+      "scattering_samples": 1500
+    },
+    "regional_geometry_ready": false,
+    "local_upper_boundary_ready": true,
+    "local_upper_boundary": {
+      "distance_upper": 4.1045227801446486e-05,
+      "scaled_distance_upper": 0.00684087130024108,
+      "budget": 0.01,
+      "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_003/report.json",
+      "scope": "Arb vertical distance to the true upper boundary at the actual saved x; scaled by epsilon; global region may remain unfinished"
+    }
+  },
+  "sampled_feasible": true,
+  "optimization_performed": false,
+  "elapsed_seconds": 4.134411633014679,
+  "prescription": "pv-midpoint",
+  "core_sources": {
+    "__init__.py": "5cb4ff026b180a96fc6867b64b503dead1f35f7a1105bb0a7e47b2f48a1251a4",
+    "analysis.py": "60cf25236f489d42f9bb373ef2da81f06186559726f22e496b869b12122c9711",
+    "figures.py": "2f4da33ad29117c8f6794fe46d989abe786d16e9f1b82ead3d4592abcfd820a7",
+    "gauge.py": "788041f37e7dcafa6bb29c66efbabf1afc1a8c919322f3b43a34418a7d9e2e18",
+    "imaginary.py": "9b35ee496c81a11819b4bdb2c19556a6652bca7573aef69010831be7b2fb1d47",
+    "io.py": "3eda45da6c1fb501bb8295573bf85211b094ba507a7aec5a13766943c0846378",
+    "joint.py": "0920e47ba29a16f5cbf483910bc1ec09b5f00e1c7ab6b873ad81811517dbbf50",
+    "kernels.py": "0d723328b51c696c62ad35fdce459ab59c8f3944a37929ca56461c411f375e67",
+    "linear.py": "d26934ab23b22afe9fc0fbfc142336a357f2db6b53294040e08bec5547bf56cf",
+    "model.py": "fcaa4d246fb328c186bd9a2b14445bb960509d43fb560537c36450a63d1cb992",
+    "operators.py": "7292e7bdbad026fa92e95e41c92f88949c150328a0928daee20ac876e7915e99",
+    "quotient.py": "4344c64a00dc9594fbf08a56b4446aa14a2b8136e2d5fc4f6b9f611709d924fb",
+    "resolution.py": "e0a5d199d2cb0ef6dabe55632ccfcff00fcb74a460924c5651fdecf88d9135e9",
+    "run.py": "a04981771a5382a4dd3ab73c8887445f4ab768fc3070020164ab400e4653eda7",
+    "selection.py": "b8e6a80921e3cdc727e9a6a47c21ed348b85becadc409d8e0802f4aa7e6e76ed"
+  },
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 120,
+  "supervisor_seconds": 4.577238613041118
+}

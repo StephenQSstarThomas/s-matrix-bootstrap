@@ -1,0 +1,163 @@
+{
+  "created_utc": "2026-09-12T05:03:34.136640+00:00",
+  "status": "frozen_texts_copied_ready_for_typesetting",
+  "scientific_inputs_pending": [
+    "MAJOR_CLAIMS_ZH.md",
+    "LOCAL_DESCENT_PROOF_ZH.md"
+  ],
+  "scientific_text_copied": true,
+  "scientific_computations_performed": false,
+  "production_source_modified": false,
+  "active_build_py_created": false,
+  "style": "Plain academic Chinese layout; no red frame, decorative cover or warning design",
+  "figures": [
+    {
+      "source": "results/runs/major_claims_20260912/refined_regions/regions.pdf",
+      "snapshot": "results/runs/major_claims_20260912/final_report/figures/fig8_regions.pdf",
+      "sha256": "e1c20450fe2e1123e9d4393e111b9df9955b039d8ebfd97766b554cd0ef10b95",
+      "bytes": 23107,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          864.0,
+          345.6000061035156
+        ]
+      ],
+      "mode": "0444",
+      "role": "current-run figure"
+    },
+    {
+      "source": "results/runs/major_claims_20260912/refined_phases/fig9.pdf",
+      "snapshot": "results/runs/major_claims_20260912/final_report/figures/fig9.pdf",
+      "sha256": "33b783deee6d0b3447e8124afdfbef65cd977547d6c03b6374d7685e7ebbc4d4",
+      "bytes": 22490,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          504.0,
+          345.6000061035156
+        ]
+      ],
+      "mode": "0444",
+      "role": "current-run figure"
+    },
+    {
+      "source": "results/runs/major_claims_20260912/refined_phases/fig10.pdf",
+      "snapshot": "results/runs/major_claims_20260912/final_report/figures/fig10.pdf",
+      "sha256": "9fb38bb9077cd30c11730a2d697def2ff6d9f62ca0483cf95de72caf52c9755e",
+      "bytes": 28511,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1008.0,
+          345.6000061035156
+        ]
+      ],
+      "mode": "0444",
+      "role": "current-run figure"
+    },
+    {
+      "source": "results/runs/major_claims_20260912/refined_phases/inelasticities.pdf",
+      "snapshot": "results/runs/major_claims_20260912/final_report/figures/inelasticities.pdf",
+      "sha256": "cbd31e6228d0a73213351194b64eb4cc91d844c575846461697b8a683e20604f",
+      "bytes": 23988,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1008.0,
+          302.3999938964844
+        ]
+      ],
+      "mode": "0444",
+      "role": "current-run figure"
+    },
+    {
+      "source": "results/runs/major_claims_20260912/refined_phases/rho_mechanism.pdf",
+      "snapshot": "results/runs/major_claims_20260912/final_report/figures/rho_mechanism.pdf",
+      "sha256": "2a38950c858a94f11c25e6f99fc1b5031155001853ebd6320f028b3cee7e06ac",
+      "bytes": 30755,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1080.0,
+          309.6000061035156
+        ]
+      ],
+      "mode": "0444",
+      "role": "current-run figure"
+    },
+    {
+      "source": "results/runs/major_claims_20260912/F_refined/fig11.pdf",
+      "snapshot": "results/runs/major_claims_20260912/final_report/figures/fig11.pdf",
+      "sha256": "234a7d3de2b77201252fe540223a4e430de11cce4dc349a5908d6792ebab9e1a",
+      "bytes": 55187,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          864.0,
+          936.0
+        ]
+      ],
+      "mode": "0444",
+      "role": "current-run figure"
+    },
+    {
+      "source": "results/runs/major_claims_20260912/F_refined/fig11_eta.pdf",
+      "snapshot": "results/runs/major_claims_20260912/final_report/figures/fig11_eta.pdf",
+      "sha256": "d878d115992caed8516a47bc599eabff425b83c5d54c8b22fe942ce90323b23e",
+      "bytes": 28342,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1008.0,
+          302.3999938964844
+        ]
+      ],
+      "mode": "0444",
+      "role": "current-run figure"
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_C3_fig7/profiles.pdf",
+      "snapshot": "results/runs/major_claims_20260912/final_report/figures/fig7_IR.pdf",
+      "sha256": "32a5796817e91eca07ee770d0995fc5fccc9bd1b470d62fce46e8b73523ae185",
+      "bytes": 32878,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1008.0,
+          288.0
+        ]
+      ],
+      "mode": "0444",
+      "role": "unchanged previous IR control"
+    }
+  ],
+  "header_sha256": "cdc397f00c1796f9fd9c19e33350dac97fac682b0df8d446f56ca12abc83ed0e",
+  "layout_recipe": {
+    "paper": "A4",
+    "font_size": "10pt",
+    "margins_mm": 18,
+    "mainfont": "DejaVu Serif",
+    "CJKfont": "Droid Sans Fallback",
+    "wide_figures": "landscape pages",
+    "commands": "inline Pandoc/TeX only, single-thread environment, nice19",
+    "PDF_filename": "REPORT_ZH.pdf"
+  },
+  "sources": [
+    {
+      "source": "results/runs/major_claims_20260912/MAJOR_CLAIMS_ZH.md",
+      "snapshot": "results/runs/major_claims_20260912/final_report/sources/MAJOR_CLAIMS_ZH.md",
+      "sha256": "edb1d5cf0910358a61247aca14000b44107b5b20c11f23f2157c6660401879ef",
+      "bytes": 21723,
+      "mode": "0444"
+    },
+    {
+      "source": "results/runs/major_claims_20260912/LOCAL_DESCENT_PROOF_ZH.md",
+      "snapshot": "results/runs/major_claims_20260912/final_report/sources/LOCAL_DESCENT_PROOF_ZH.md",
+      "sha256": "cb4f61bbec57c94ae296d5810d19896bd04f9f3ed84281d1ab89e20024309e06",
+      "bytes": 4518,
+      "mode": "0444"
+    }
+  ],
+  "frozen_utc": "2026-09-12T05:22:20.171813+00:00"
+}

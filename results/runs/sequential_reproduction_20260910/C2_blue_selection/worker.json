@@ -1,0 +1,177 @@
+{
+  "command": "select",
+  "status": "selected",
+  "artifacts": {},
+  "inputs": {
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/C1_blue/report.json": {
+      "sha256": "5f27a666c54aacdfe2f2d6ce3bdb78a7eca30a74b5622cfe2cae80330b588adb"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/C1_blue/coefficients.json": {
+      "sha256": "a0abe00d61d0d325a5e54ce5328065039e5f7a5c175d3e789d9da6b2c306e887"
+    }
+  },
+  "parameters": {
+    "command": "select",
+    "comparison_manifest": null,
+    "region_summary": "results/runs/stage_B_delivery_20260907/regions/regions.json",
+    "primary_waves": false,
+    "profile_runs": [],
+    "profile_kind": "subthreshold",
+    "phase_reference": null,
+    "baseline_profile": null,
+    "selection_reference": null,
+    "support_runs": [
+      "results/runs/sequential_reproduction_20260910/C1_blue"
+    ],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/C2_blue_selection",
+    "density_limit": null,
+    "preparation": "results/runs/stage_A_M50_L10_20260906",
+    "prescription": "auto",
+    "source_registry": null,
+    "solver": "barrier",
+    "unitarity_scope": "sampled",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "current_preparation": null,
+    "joint_feasibility": false,
+    "fixed_amplitude": false,
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 512,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "free",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": null,
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.006,
+    "chiral_norm": "separate-l2",
+    "chiral_barrier_weight": null,
+    "objective": "projection",
+    "resume_objective": false,
+    "require_center": true,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "fixed_x": null,
+    "ray": false,
+    "seconds": 180.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "2"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Finite model; regions/phases require verification.",
+  "selection": {
+    "rule": "Converged upper IR support at preregistered Weinberg x before phase evaluation",
+    "reference": [
+      0.07332139057293466,
+      -0.00488809270486231
+    ],
+    "target": [
+      0.07332138984133818,
+      -0.0026533408254826346
+    ],
+    "epsilon": 0.006,
+    "model_signature": {
+      "M": 50,
+      "L": 10,
+      "density_limit": 377500.0,
+      "infinity": "free",
+      "unitarity_scope": "sampled",
+      "prescription": "analytic-cardinal",
+      "chiral_norm": "separate-l2",
+      "scattering_samples": 1500,
+      "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/A2_M50_L10",
+      "global_high_spin_enforced": false,
+      "tail_conditions_applied": false,
+      "additional_constraints": null,
+      "sampling_nodes": 50
+    },
+    "source_reports": [
+      "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/C1_blue/report.json"
+    ],
+    "coefficients_mixed": false,
+    "selection_uses_phase_data": false,
+    "representative_center_converged": true,
+    "exact_extremizer_claimed": false,
+    "regional_geometry_ready": false,
+    "local_upper_boundary_ready": true,
+    "local_upper_boundary": {
+      "distance_upper": 9.746400006495737e-06,
+      "scaled_distance_upper": 0.0016244000010826227,
+      "budget": 0.01
+    },
+    "original_H_feasibility": {
+      "upper": 5e-324,
+      "enclosure": "0",
+      "disk": 0.0,
+      "chiral": 0.0,
+      "density_residual": 0.0,
+      "tail_support": 0.0,
+      "chiral_norm": "separate-l2",
+      "objective_kind": "target_plane",
+      "scope": "Exact saved float64 H; angular quadrature error excluded",
+      "primal_feasible": true,
+      "lower": -5e-324,
+      "minimum_margin_enclosure": "[4.1627255469618735176e-83 +/- 4.33e-103]",
+      "density_norm": 358817.4179870941,
+      "targets": [
+        "[0.07332138984129439353940845 +/- 1.98e-27]",
+        "[-0.002653340825482429672290493 +/- 2.95e-29]"
+      ],
+      "tail_margin_enclosures": []
+    }
+  },
+  "model_signature": {
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "free",
+    "unitarity_scope": "sampled",
+    "prescription": "analytic-cardinal",
+    "chiral_norm": "separate-l2",
+    "scattering_samples": 1500,
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/A2_M50_L10",
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": false,
+    "additional_constraints": null,
+    "sampling_nodes": 50
+  },
+  "sampled_feasible": true,
+  "optimization_performed": false,
+  "elapsed_seconds": 3.776111359009519,
+  "prescription": "analytic-cardinal"
+}

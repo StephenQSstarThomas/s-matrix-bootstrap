@@ -1,0 +1,241 @@
+{
+  "command": "boundary",
+  "status": "candidate",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "boundary",
+    "comparison_manifest": null,
+    "region_summary": "results/runs/stage_B_delivery_20260907/regions/regions.json",
+    "primary_waves": false,
+    "profile_runs": [],
+    "profile_kind": "subthreshold",
+    "phase_reference": null,
+    "baseline_profile": null,
+    "selection_reference": null,
+    "support_runs": [],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/IR_slice_control_gradient",
+    "density_limit": 1500.0,
+    "preparation": "results/runs/physical_consistency_20260911/tail_limit_control_prepare",
+    "prescription": "analytic-cardinal",
+    "source_registry": null,
+    "solver": "barrier",
+    "unitarity_scope": "sampled",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "current_preparation": null,
+    "joint_feasibility": false,
+    "fixed_amplitude": false,
+    "solver_seconds": 30.0,
+    "dual_seconds": 0.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 1e-06,
+    "unit_newton_step": false,
+    "gap": 1e-05,
+    "nodes": 3,
+    "processes": 1,
+    "waves": 2,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "asymptotic_zeros": true,
+    "asymptotic_unitarity": true,
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": null,
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "chiral_norm": "separate-l2",
+    "chiral_barrier_weight": null,
+    "objective": "projection",
+    "resume_objective": false,
+    "require_center": true,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "fixed_x": null,
+    "ray": false,
+    "seconds": 60.0,
+    "start_mu_provenance": {
+      "kind": "explicit"
+    }
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "1"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Finite model; regions/phases require verification.",
+  "solver": {
+    "solver": "analytic density barrier with feasible Newton steps",
+    "iterations": 1554,
+    "seconds": 21.55227741296403,
+    "chiral_barrier_weight": 9.0,
+    "support_direction": [
+      1.0,
+      0.0
+    ],
+    "fixed_x": null,
+    "require_center": true,
+    "representative_center_converged": true,
+    "fixed_x_deviation": null,
+    "qr_factorizations": 1549,
+    "pcg_steps": 1601,
+    "qr_reuse": 6,
+    "raw_coordinates": false,
+    "matrix_threads": 1,
+    "krylov_storage": "longdouble CSR exact nonzeros; dense QR",
+    "tail_weights": {
+      "kR": [],
+      "kI": []
+    },
+    "tail_constraints_applied": false,
+    "asymptotic_duals": {
+      "asymptotic_kR": [
+        0.0,
+        0.0,
+        6.590804738151513e-09,
+        -3.7290652951304716e-05,
+        1.5908596819812815e-09
+      ],
+      "asymptotic_kI": [
+        -0.0004426722394147281,
+        -1.6818053467202598e-07,
+        -2.0974856559559686e-09,
+        -1.8387202676036912e-05,
+        -5.061088863751226e-09
+      ]
+    },
+    "history": [
+      {
+        "mu": 1e-06,
+        "objective": 0.14468854333615536,
+        "outer_estimate": 0.14472338828652923,
+        "gap_estimate": 3.4844950373874426e-05
+      },
+      {
+        "mu": 1e-07,
+        "objective": 0.14470924401655533,
+        "outer_estimate": 0.14471311040118431,
+        "gap_estimate": 3.866384629002401e-06
+      }
+    ],
+    "feasible_path": true,
+    "all_density_directions_retained": true,
+    "numerical_coordinates": "absorptive-zero-T0",
+    "primal_recovery": {
+      "repaired": false,
+      "candidate_fraction": 1.0,
+      "primal_certified": true
+    },
+    "coefficient_input": null,
+    "candidate_covectors": null
+  },
+  "support_direction": [
+    1.0,
+    0.0
+  ],
+  "fixed_x": null,
+  "normal_dual": {
+    "status": "not_requested"
+  },
+  "outer": {
+    "upper": 0.14471311032956666,
+    "enclosure": "[0.1447131103295666419606952 +/- 3.34e-26]",
+    "disk": 0.09892850260019366,
+    "chiral": 0.04574635233742128,
+    "density_residual": 4.3063922207599636e-07,
+    "tail_support": 0.0,
+    "chiral_norm": "separate-l2",
+    "objective_kind": "target_plane",
+    "scope": "Exact saved float64 H; angular quadrature error excluded",
+    "primal_feasible": true,
+    "lower": 0.1447092440165545,
+    "minimum_margin_enclosure": "[9.7993317332703325585e-12 +/- 6.23e-33]",
+    "density_norm": 17.118112982598415,
+    "targets": [
+      "[0.1447092440165545216919250 +/- 1.40e-27]",
+      "[-0.009138515216298059172497752 +/- 2.59e-28]"
+    ],
+    "tail_margin_enclosures": [],
+    "asymptotic_margin_enclosures": [
+      "[0.0004518015411687250979643485 +/- 1.35e-29]",
+      "[1.189198264769618976485050 +/- 2.09e-25]",
+      "[95.35226113803678338066842 +/- 3.36e-25]",
+      "[0.01087713033481135389441635 +/- 4.97e-27]",
+      "[39.51718797756141947590924 +/- 3.87e-25]"
+    ],
+    "endpoint_equalities": 1,
+    "asymptotic_inequalities": 5
+  },
+  "M": 3,
+  "L": 2,
+  "sampling_nodes": 3,
+  "scattering_samples": 18,
+  "infinity": "zero",
+  "mode": "chiral",
+  "chiral_tolerance": 0.002,
+  "chiral_norm": "separate-l2",
+  "density_limit": 1500.0,
+  "targets": [
+    0.14470924401655452,
+    -0.00913851521629806
+  ],
+  "objective": 0.14470924401655452,
+  "minimum_scattering_margin": 9.799331733270372e-12,
+  "chiral_norms": [
+    0.0019999606527122565,
+    0.000345014314558998
+  ],
+  "density_norm": 17.118112982598415,
+  "radial_shrink": 1.0,
+  "sampled_feasible": true,
+  "support_optimality_certified": true,
+  "global_high_spin_enforced": false,
+  "support_scope": "Exactly declared constraints",
+  "prescription": "analytic-cardinal",
+  "coefficient_input_prescription": "analytic-cardinal",
+  "unitarity_coverage": "All declared rows; no continuum certificate",
+  "analytic_tail_conditions_passed": true,
+  "analytic_tail_status": "leading necessary conditions",
+  "analytic_tail_margins": [
+    "[0.0004518015411687250979643485 +/- 1.35e-29]",
+    "[1.189198264769618976485050 +/- 2.09e-25]",
+    "[95.35226113803678338066842 +/- 3.36e-25]",
+    "[0.01087713033481135389441635 +/- 4.97e-27]",
+    "[39.51718797756141947590924 +/- 3.87e-25]"
+  ],
+  "high_spin_necessary": {
+    "status": "not_applicable",
+    "violations": []
+  },
+  "high_spin_cut_count": 0,
+  "tail_conditions_applied": true,
+  "operator_scope": "Saved float64 operator",
+  "elapsed_seconds": 21.568541896063834
+}

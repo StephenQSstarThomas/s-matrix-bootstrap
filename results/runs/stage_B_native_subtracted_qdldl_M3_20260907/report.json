@@ -1,0 +1,474 @@
+{
+  "command": "boundary",
+  "status": "candidate",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "boundary",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_native_subtracted_qdldl_M3_20260907",
+    "density_limit": null,
+    "preparation": "results/runs/stage_B_tail_control_prepare_20260906",
+    "solver": "clarabel",
+    "native_backend": "qdldl",
+    "native_coordinates": "subtracted",
+    "solver_seconds": 30.0,
+    "dual_seconds": 1.0,
+    "dual_method": "highs-primal",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 1e-05,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": "results/runs/stage_B_native_cli_M3_recovery_20260907/coefficients.json",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "seconds": 120.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3"
+  },
+  "scope": "Coherent finite-sine-cardinal conditional model; published regions and phases remain unverified.",
+  "solver_attempt": {
+    "elapsed_seconds": 0.18626874801702797,
+    "stage": "native_conic",
+    "amplitude_variables": 22,
+    "auxiliary_density_variables": 15,
+    "Gram_variables": 12,
+    "PSD_sizes": [
+      2,
+      1,
+      2,
+      1,
+      2,
+      1
+    ],
+    "disks": 60,
+    "total_rows": 344,
+    "nonzeros": 4351,
+    "amplitude_unit": 1.0,
+    "largest_matrix_entry": 8768743.529708534
+  },
+  "solver": {
+    "solver": "Clarabel SOC and exact global polynomial PSD cone",
+    "native_status": "Solved",
+    "iterations": 39,
+    "seconds": 0.019765339,
+    "native_objective": 0.04300707338188787,
+    "native_dual_objective": 0.04300707338188664,
+    "native_primal_residual": 3.2797843723981968e-12,
+    "native_dual_residual": 1.655960438581724e-12,
+    "all_density_directions_retained": true,
+    "tail_weights": {
+      "kR": [
+        2.544445591101343e-06,
+        -1.0226063871068303e-14,
+        2.9237086775958774e-07,
+        0.0,
+        0.0
+      ],
+      "kI": [
+        -5.203451858717307e-06,
+        -4.1804152840700514e-14,
+        -5.979011976680112e-06,
+        -0.0018218318032419746,
+        -3.548584832411509e-14
+      ]
+    },
+    "numerical_coordinates": "subtracted",
+    "original_variables": 21,
+    "infinity_projection": 2.2420387482606674e-16,
+    "polynomial_dual": [
+      [
+        1.3089973858090995,
+        -0.7160993650875143,
+        -0.5254995633668726
+      ],
+      [
+        1.6680378839524492,
+        -1.6680378839313947,
+        1.6680378838898615
+      ],
+      [
+        0.21557246745931838,
+        0.11042909039962208,
+        -0.10243571899734429
+      ]
+    ],
+    "moment_dual_certificate": {
+      "passed": true,
+      "diagonal_shifts": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "attempts_per_channel": [
+        0,
+        0,
+        0
+      ],
+      "certificate": {
+        "passed": true,
+        "channels": [
+          {
+            "isospin": 0,
+            "passed": true,
+            "positive_definite": true,
+            "status": "positive_definite",
+            "failed_pivot": null,
+            "minimum_pivot_lower": "[9.95407886626696972890281233936e-12 +/- 2.38e-42]",
+            "zero_pivots": 0
+          },
+          {
+            "isospin": 1,
+            "passed": true,
+            "positive_definite": true,
+            "status": "positive_definite",
+            "failed_pivot": null,
+            "minimum_pivot_lower": "[3.21496264204923665755470070109e-11 +/- 4.05e-42]",
+            "zero_pivots": 0
+          },
+          {
+            "isospin": 2,
+            "passed": true,
+            "positive_definite": true,
+            "status": "positive_definite",
+            "failed_pivot": null,
+            "minimum_pivot_lower": "[1.23357017982663729653585072492e-10 +/- 3.02e-40]",
+            "zero_pivots": 0
+          }
+        ],
+        "bits": 256,
+        "arithmetic": "Arb LDL on exact float64 moments",
+        "basis": "Chebyshev T_0,...,T_(M-1)",
+        "pairing": "sum nu_k * p_T,k; no factor two",
+        "scope": "Positive functional on degree <= M-1 polynomials nonnegative on [-1,1]"
+      },
+      "correction": "Only nu[:,0] increased; all higher moments retained exactly",
+      "support_change": "Use corrected moments with the exact original polynomial coefficient map"
+    },
+    "Gram_block_sizes": [
+      2,
+      1,
+      2,
+      1,
+      2,
+      1
+    ],
+    "Gram_coordinates": [
+      0.19769734516070459,
+      0.3613816165300502,
+      0.660588905027927,
+      2.388601725732013e-12,
+      0.20266439414089749,
+      0.20266435675787184,
+      0.2026643193761197,
+      0.09904851993946324,
+      0.16107602509753488,
+      -0.3144421910393906,
+      0.6138336940611282,
+      7.089478230867807e-11
+    ],
+    "polynomial_matching_residual": 6.694644838489694e-14,
+    "density_scaling": "all amplitude coordinates divided by one dyadic unit; rho/B in the L4 cone",
+    "amplitude_unit": 1.0,
+    "polynomial_scaling": "p/1; exported dual converted to p/B",
+    "scattering_scaling": "positive dyadic Imf(reference)/kappa; density-norm fallback",
+    "scattering_scale_range": [
+      2.842170943040401e-14,
+      0.0625
+    ],
+    "scattering_scale_fallbacks": 0,
+    "tail_cone_scales": [
+      0.0625,
+      0.03125,
+      0.0078125,
+      2.384185791015625e-07,
+      0.03125
+    ],
+    "tail_scaling": "positive dyadic Q(reference), with density-norm fallback",
+    "unitarity_cone": "(1+Imf/(kappa*t), sqrt(2/t)*Ref, sqrt(2/t)*Imf, 1-Imf/(kappa*t)) in SOC",
+    "support_certified": false,
+    "primal_recovery": {
+      "candidate_fraction": 1.0,
+      "interior_fraction": 0.0,
+      "radial_scale": 0.9999999899723809,
+      "candidate_weight": 0.999999979972381,
+      "zero_weight": 2.0027619007656483e-08,
+      "objective_before": 0.0430070733818873,
+      "objective_after": 0.04300707252055788,
+      "objective_loss": 8.613294141043144e-10,
+      "repaired": true,
+      "coarse_feasible_fraction": 1.0,
+      "primal_certified": true,
+      "scope": "True coefficient segment; saved H and analytic tail/FG audits; no continuum or repair-optimality claim",
+      "incumbent_retained": false,
+      "incumbent_objective": 0.040024606103471784,
+      "final_contraction": 0.99999999
+    }
+  },
+  "normal_dual": {
+    "status": "not_needed",
+    "reason": "Independent initial support gap meets tolerance"
+  },
+  "outer": {
+    "upper": 0.04300718407285877,
+    "enclosure": "[0.04300718407285876301607201 +/- 4.85e-27]",
+    "disk": 0.0031010638421963372,
+    "chiral": 0.039905380284650835,
+    "density_residual": 1.1069102325574762e-07,
+    "tail_support": 6.292549883373415e-07,
+    "scope": "stored finite H and supplied tail maps plus analytic global high-spin cone; angular quadrature error excluded",
+    "polynomial_dual_verification": {
+      "passed": true,
+      "channels": [
+        {
+          "isospin": 0,
+          "passed": true,
+          "positive_definite": true,
+          "status": "positive_definite",
+          "failed_pivot": null,
+          "minimum_pivot_lower": "[9.95407886626696972890281233936e-12 +/- 2.38e-42]",
+          "zero_pivots": 0
+        },
+        {
+          "isospin": 1,
+          "passed": true,
+          "positive_definite": true,
+          "status": "positive_definite",
+          "failed_pivot": null,
+          "minimum_pivot_lower": "[3.21496264204923665755470070109e-11 +/- 4.05e-42]",
+          "zero_pivots": 0
+        },
+        {
+          "isospin": 2,
+          "passed": true,
+          "positive_definite": true,
+          "status": "positive_definite",
+          "failed_pivot": null,
+          "minimum_pivot_lower": "[1.23357017982663729653585072492e-10 +/- 3.02e-40]",
+          "zero_pivots": 0
+        }
+      ],
+      "bits": 384,
+      "arithmetic": "Arb LDL on exact float64 moments",
+      "basis": "Chebyshev T_0,...,T_(M-1)",
+      "pairing": "sum nu_k * p_T,k; no factor two",
+      "scope": "Positive functional on degree <= M-1 polynomials nonnegative on [-1,1]"
+    },
+    "high_spin_necessary": {
+      "status": "nonnegative_certified",
+      "channels": [
+        {
+          "isospin": 0,
+          "coefficients": [
+            "[0.362844564152531179944013638237 +/- 4.34e-31]",
+            "[0.361381609292436698611961031071 +/- 4.98e-31]",
+            "[0.165147222948912377608898229418 +/- 4.17e-31]"
+          ],
+          "coefficient_basis": "U_0,...,U_(M-1)",
+          "global_lower": "[2.80593899141261135390609043193e-12 +/- 2.29e-42]",
+          "global_nonnegative_certified": true,
+          "roots_certified": true,
+          "root_error": null,
+          "candidate_minimum": {
+            "cosine": -0.5470597731519661,
+            "polynomial_value": "[2.80593899141261135390631289632e-12 +/- 4.08e-42]"
+          }
+        },
+        {
+          "isospin": 1,
+          "coefficients": [
+            "[0.327616857378154943714408084536 +/- 3.79e-31]",
+            "[0.202664352698987195855752855008 +/- 3.72e-31]",
+            "[0.0259039493403537966604252673247 +/- 4.71e-32]"
+          ],
+          "coefficient_basis": "U_0,...,U_(M-1)",
+          "global_lower": "[1.24194198417817649311904360602e-12 +/- 3.13e-42]",
+          "global_nonnegative_certified": true,
+          "roots_certified": true,
+          "root_error": null,
+          "candidate_minimum": {
+            "cosine": -1.0,
+            "polynomial_value": "[1.24194198417817649311904360602e-12 +/- 3.13e-42]"
+          }
+        },
+        {
+          "isospin": 2,
+          "coefficients": [
+            "[0.314534442366611994462944465876 +/- 3.06e-31]",
+            "[-0.314442184741862059085465403971 +/- 9.11e-33]",
+            "[0.153458420424151457487174913201 +/- 6.26e-32]"
+          ],
+          "coefficient_basis": "U_0,...,U_(M-1)",
+          "global_lower": "[5.98672082249771197111961441449e-11 +/- 2.22e-41]",
+          "global_nonnegative_certified": true,
+          "roots_certified": true,
+          "root_error": null,
+          "candidate_minimum": {
+            "cosine": 0.5122595812480661,
+            "polynomial_value": "[5.98672082249771197111980175244e-11 +/- 4.88e-41]"
+          }
+        }
+      ],
+      "violations": [],
+      "scope": "Leading large-spin necessary polynomials on [-1,1]; positivity is not full partial-wave unitarity."
+    },
+    "primal_feasible": true,
+    "lower": 0.043007072520557875,
+    "minimum_margin_enclosure": "[4.0510135571358504251e-21 +/- 2.60e-41]",
+    "density_norm": 0.42859870926732985,
+    "targets": [
+      "[0.04300707252055788413144229 +/- 3.66e-27]",
+      "[-0.002714525674492112163259259 +/- 3.21e-29]"
+    ],
+    "tail_margin_enclosures": [
+      "[5.0449980338234677571e-9 +/- 2.73e-29]",
+      "[0.033475686708594917300 +/- 1.99e-22]",
+      "[2.5933230191540574081e-10 +/- 1.67e-30]",
+      "[1.5978204507460819191e-12 +/- 4.23e-32]",
+      "[0.082765060431368534779 +/- 4.46e-22]"
+    ]
+  },
+  "M": 3,
+  "L": 2,
+  "sampling_nodes": 10,
+  "scattering_samples": 60,
+  "infinity": "zero",
+  "mode": "chiral",
+  "chiral_tolerance": 0.002,
+  "density_limit": 1500,
+  "targets": [
+    0.04300707252055788,
+    -0.002714525674492112
+  ],
+  "objective": 0.04300707252055788,
+  "minimum_scattering_margin": 4.051013709273711e-21,
+  "chiral_norms": [
+    0.0019999999599445714,
+    0.0007128803569788265
+  ],
+  "density_norm": 0.42859870926732985,
+  "radial_shrink": 1.0,
+  "sampled_feasible": true,
+  "support_optimality_certified": true,
+  "physical_unitarity_accepted": false,
+  "unitarity_coverage": "listed energies and waves only; off-grid and tails unverified",
+  "analytic_tail_conditions_passed": true,
+  "analytic_tail_margins": [
+    "[5.045008928157961925956300e-9 +/- 4.92e-34]",
+    "[0.03347568670860043891667585 +/- 1.41e-27]",
+    "[2.593328456025904295543788e-10 +/- 2.01e-35]",
+    "[1.597749985715329641232030e-12 +/- 3.33e-37]",
+    "[0.08276506043136855592641306 +/- 3.12e-27]"
+  ],
+  "high_spin_necessary": {
+    "status": "nonnegative_certified",
+    "channels": [
+      {
+        "isospin": 0,
+        "coefficients": [
+          "[0.362844564152531179944013638237 +/- 4.34e-31]",
+          "[0.361381609292436698611961031071 +/- 4.98e-31]",
+          "[0.165147222948912377608898229418 +/- 4.17e-31]"
+        ],
+        "coefficient_basis": "U_0,...,U_(M-1)",
+        "global_lower": "[2.80593899141261135390609043193e-12 +/- 2.29e-42]",
+        "global_nonnegative_certified": true,
+        "roots_certified": true,
+        "root_error": null,
+        "candidate_minimum": {
+          "cosine": -0.5470597731519661,
+          "polynomial_value": "[2.80593899141261135390631289632e-12 +/- 4.08e-42]"
+        }
+      },
+      {
+        "isospin": 1,
+        "coefficients": [
+          "[0.327616857378154943714408084536 +/- 3.79e-31]",
+          "[0.202664352698987195855752855008 +/- 3.72e-31]",
+          "[0.0259039493403537966604252673247 +/- 4.71e-32]"
+        ],
+        "coefficient_basis": "U_0,...,U_(M-1)",
+        "global_lower": "[1.24194198417817649311904360602e-12 +/- 3.13e-42]",
+        "global_nonnegative_certified": true,
+        "roots_certified": true,
+        "root_error": null,
+        "candidate_minimum": {
+          "cosine": -1.0,
+          "polynomial_value": "[1.24194198417817649311904360602e-12 +/- 3.13e-42]"
+        }
+      },
+      {
+        "isospin": 2,
+        "coefficients": [
+          "[0.314534442366611994462944465876 +/- 3.06e-31]",
+          "[-0.314442184741862059085465403971 +/- 9.11e-33]",
+          "[0.153458420424151457487174913201 +/- 6.26e-32]"
+        ],
+        "coefficient_basis": "U_0,...,U_(M-1)",
+        "global_lower": "[5.98672082249771197111961441449e-11 +/- 2.22e-41]",
+        "global_nonnegative_certified": true,
+        "roots_certified": true,
+        "root_error": null,
+        "candidate_minimum": {
+          "cosine": 0.5122595812480661,
+          "polynomial_value": "[5.98672082249771197111980175244e-11 +/- 4.88e-41]"
+        }
+      }
+    ],
+    "violations": [],
+    "scope": "Leading large-spin necessary polynomials on [-1,1]; positivity is not full partial-wave unitarity."
+  },
+  "high_spin_cut_count": 0,
+  "tail_conditions_applied": true,
+  "operator_scope": "float64 quadrature and tail maps; analytic tail checked separately; no continuum certificate",
+  "elapsed_seconds": 0.2258936099242419,
+  "core_sources": {
+    "__init__.py": "0073245017bf6a6521c07bc175e26e24031dd9cc712a27fe84fa21273436eb7f",
+    "analysis.py": "bbef71955b5c32e4399dff6f99ccf12c866cad65cc228c2f26d1fcaee0a064d7",
+    "imaginary.py": "0b295df22034610625b33b43dfe70d0a377e6e05f266deb18994c113d34b109b",
+    "io.py": "60548f740de3487af58b5c8759a9dbdbae5ee48e182393edee0a252fe7274066",
+    "kernels.py": "52864ab8be4e5c1c16de6524abfb8311b03ddfa20783c0983ac1bd424a8b70a9",
+    "linear.py": "9adb25b3c1f82d4930387a3fd36428c8bdfacf141acf5dee37fe37f1f76eb779",
+    "model.py": "a9d812c787bf41174461e8eb00a6e3b2ed3896faa770de1ce01ba5ba84818be6",
+    "operators.py": "35365cbed84673df7b4a229337b6b9f4341e984c9593035a5ed03b3bcd2e4126",
+    "quotient.py": "4f930fe75ffa5b6893ca5f0e01d5dce776f1d70018a7d70bd6cf698e89b423d5",
+    "run.py": "1e0de75c177c139f3540d8c3c922536d88806909e1e2f65934bea00df70d3515"
+  },
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 120.0,
+  "supervisor_seconds": 0.5183692218270153
+}

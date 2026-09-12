@@ -1,0 +1,81 @@
+{
+  "start_archive": "results/gauge_fixed_spin_refinement_N6.json",
+  "start_sha256": "5d090d541300a86961f1917e7fe8f32c467ece002f584f3bdf7268a09e990e39",
+  "fixed_f00": 0.075329811,
+  "max_new_graphs": 4,
+  "physical_tolerances_unchanged": true,
+  "all_constraint_families_retained": true,
+  "rounds": [
+    {
+      "file": "results/gauge_joint_exchange_N6_round01.json",
+      "status": "accepted finite support witness, globally re-audited",
+      "point": [
+        0.07532981100000005,
+        -0.0047899512234732475
+      ],
+      "global_FF": false,
+      "all_b_H": false,
+      "scattering_max": 0.0028146870073331057,
+      "scattering_below_1p2": 1.7601466570567443e-06,
+      "FF_count": 71,
+      "impact_b_count": 89,
+      "added_scattering_count": 10,
+      "repair_fraction": 0.0007186510838198434,
+      "objective_loss": 5.355422672687071e-08
+    },
+    {
+      "file": "results/gauge_joint_exchange_N6_round02.json",
+      "status": "accepted finite support witness, globally re-audited",
+      "point": [
+        0.07532981099999997,
+        -0.004790112690094892
+      ],
+      "global_FF": false,
+      "all_b_H": false,
+      "scattering_max": 1.1811053090229676e-05,
+      "scattering_below_1p2": 6.697486280301621e-07,
+      "FF_count": 75,
+      "impact_b_count": 93,
+      "added_scattering_count": 20,
+      "repair_fraction": 0.0013652549517187617,
+      "objective_loss": 1.0161675243879759e-07
+    },
+    {
+      "file": "results/gauge_joint_exchange_N6_round03.json",
+      "status": "accepted finite support witness, globally re-audited",
+      "point": [
+        0.07532981099999973,
+        -0.004790574486762378
+      ],
+      "global_FF": true,
+      "all_b_H": true,
+      "scattering_max": 2.8665132588352517e-07,
+      "scattering_below_1p2": 2.8665132588352517e-07,
+      "FF_count": 79,
+      "impact_b_count": 98,
+      "added_scattering_count": 25,
+      "repair_fraction": 0.0022438408474609772,
+      "objective_loss": 1.6547593122227117e-07
+    },
+    {
+      "file": "results/gauge_joint_exchange_N6_round04.json",
+      "status": "support failed; only the strict seed is finite feasible",
+      "point": [
+        0.07532981099999994,
+        -0.00486419009508058
+      ],
+      "global_FF": true,
+      "all_b_H": true,
+      "scattering_max": 0.00017111492428206288,
+      "scattering_below_1p2": 2.3853213618243937e-05,
+      "FF_count": 79,
+      "impact_b_count": 98,
+      "added_scattering_count": 26,
+      "repair_fraction": null,
+      "objective_loss": null
+    }
+  ],
+  "finished": true,
+  "scope": "Joint finite refinement with exact fixed-candidate FF/H audits and independent sampled scattering; no fitted phase data or full continuum/optimality claim.",
+  "initial_audit_file": "results/gauge_joint_exchange_N6_initial_audit.json"
+}

@@ -1,0 +1,197 @@
+{
+  "command": "prepare",
+  "status": "prepared",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "prepare",
+    "comparison_manifest": null,
+    "region_summary": "results/runs/stage_B_delivery_20260907/regions/regions.json",
+    "primary_waves": false,
+    "profile_runs": [],
+    "profile_kind": "subthreshold",
+    "phase_reference": null,
+    "baseline_profile": null,
+    "selection_reference": null,
+    "support_runs": [],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/CLI_generation_control",
+    "density_limit": null,
+    "preparation": null,
+    "prescription": "analytic-cardinal",
+    "source_registry": null,
+    "solver": "barrier",
+    "unitarity_scope": "sampled",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "current_preparation": null,
+    "joint_feasibility": false,
+    "fixed_amplitude": false,
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 3,
+    "processes": 1,
+    "waves": 1,
+    "bits": 256,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "free",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": null,
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "chiral_norm": "separate-l2",
+    "chiral_barrier_weight": null,
+    "objective": "projection",
+    "resume_objective": false,
+    "require_center": false,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "fixed_x": null,
+    "ray": false,
+    "seconds": 120.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "1"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Finite model; regions/phases require verification.",
+  "amplitude_model": {
+    "prescription": "analytic-cardinal",
+    "M": 3,
+    "L": 1,
+    "bits": 256,
+    "coordinate_system": "unsubtracted analytic-cardinal C_flat",
+    "coefficient_count": 22,
+    "physical_samples": 9,
+    "nu0": 0,
+    "nyquist_retained": true,
+    "infinity_equality_imposed": false,
+    "density_limit_imposed": false,
+    "quadrature_order_per_panel": null,
+    "arithmetic": "Arb",
+    "integral_enclosures": true,
+    "authors_implementation_recovered": false,
+    "analytic_function_family_defined": true,
+    "angular_projection": "Authenticated rows where available; otherwise Arb Gauss-Legendre with ellipse remainder",
+    "spectral_quadrature": "Exact Cauchy transform of finite sine density",
+    "physical_evaluation": "One analytic family at positive real energies",
+    "analyticity_status": "One conformal polynomial from all M sine-cardinal density modes",
+    "infinity_row_meaning": "Unsubtracted constant; recorded but no endpoint equality imposed",
+    "angular_order": 64,
+    "source_registry": null,
+    "source_registry_sha256": null
+  },
+  "restrictions": {
+    "infinity": "free",
+    "density_limit": 1500,
+    "density_rule": "declared 100*double_density_count",
+    "density_norm": "actual-rho L4"
+  },
+  "operator": {
+    "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/CLI_generation_control/amplitude.npz",
+    "shape": [
+      29,
+      22
+    ],
+    "storage": "Float64 midpoints plus outward bounds around exact analytic coefficient enclosures"
+  },
+  "optimization_performed": false,
+  "old_feasibility_transferred": false,
+  "source_registry": null,
+  "quadrature_accuracy": {
+    "0": {
+      "0": {
+        "order": 64,
+        "panels": 2,
+        "error_bound": "[7.629105170974162274686904e-226 +/- 2.66e-251]"
+      },
+      "1": {
+        "order": 64,
+        "panels": 2,
+        "error_bound": "[2.280329054714704242245278e-224 +/- 5.04e-250]"
+      }
+    },
+    "1": {
+      "0": {
+        "order": 64,
+        "panels": 2,
+        "error_bound": "[2.467176608701503693511381e-98 +/- 2.36e-123]"
+      },
+      "1": {
+        "order": 64,
+        "panels": 2,
+        "error_bound": "[1.045112782695696879608152e-97 +/- 3.93e-122]"
+      }
+    },
+    "2": {
+      "0": {
+        "order": 64,
+        "panels": 6,
+        "error_bound": "[1.218782162586583622501963e-73 +/- 3.21e-98]"
+      },
+      "1": {
+        "order": 64,
+        "panels": 6,
+        "error_bound": "[2.853657334741714688040544e-73 +/- 3.53e-98]"
+      }
+    }
+  },
+  "maximum_operator_radius_upper": 7.065715703446611e-16,
+  "elapsed_seconds": 0.06341533409431577,
+  "prescription": "analytic-cardinal",
+  "core_sources": {
+    "__init__.py": "d6eec852784031277dcb50020ec718e56ad7e54ba6399669ef3dd8098374f5f9",
+    "analysis.py": "accca416d41e7de5f1f306c9b3200c2787ce73f00ceb9e73cee1cf90aa9f0ef8",
+    "analytic.py": "f7b6ffb9bd6b520f00dec8653ff0864da6fe46eaa0ed5814bef7bd3c5c22a727",
+    "basis.py": "69699b90d81cc6aa33fe2238265f8b0c73a2e78b012dc5ecb5c43c319312f11b",
+    "certificates.py": "a764219ab84d01c1e5ce778a97e0d1b735cedab9e214c304b59bcadc1efa36ff",
+    "gauge.py": "45fe02226d14e154e0a304d1d261bbdd087bdfa9d342b94defe4b5ecc0ed178d",
+    "imaginary.py": "761b6388c6b8c3382b59a18461e82bd2a8dfb726eeb7719d01eb436986e7f9f9",
+    "io.py": "f368531ec06a54b1e65a76d39de402cbeb205873ae7964246c7cebc643a3d779",
+    "kernels.py": "790ebcdba291c80f17c4909a31ddf77ad6373748c2af41c7ce1a0c28b309172a",
+    "linear.py": "fc627b8659049bd0b5f1ff85f94bafbd1e5b69906ad565fdbc19f26e003d149d",
+    "model.py": "749d522b66404da47357cff2ab93f923f3d8d1024cbdfb210f5c84a74023b8a1",
+    "operators.py": "b5820b455f9e0b93cda8f0c97d9d932f805485a75197a2c985e46fb22f72aea9",
+    "quadrature.py": "7ec2a6b9336cd6035db06fdf8a028368ccd22e4d106cc5e16900c878b8d40fad",
+    "quotient.py": "3ec58dc689af80cf12b564c74e40cd91af2189cda1789686694cc9691ef8c16d",
+    "run.py": "9ff09cd6d1ab7732a2aa4bf109a41d0f63b2962c0d9d4a65ef8847d56892836f",
+    "scattering.py": "a7663475183e507a4b8b904a832803fa643703ce7e0d98422c3ff0278e93d7f5",
+    "spectra.py": "f6c29c353cfe21216b606808272196a5122bf4e167d3436a342a76edf805454c"
+  },
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 120.0,
+  "supervisor_seconds": 0.8703753661829978
+}

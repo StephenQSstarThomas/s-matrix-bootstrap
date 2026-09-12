@@ -1,0 +1,357 @@
+{
+  "created_utc": "2026-09-11T11:50:57.224107+00:00",
+  "scope": "Independent read-only coefficient identity audit; no source changes, optimization, Hessian recomputation or phase inspection; old evidence remains untouched",
+  "runs": [
+    {
+      "role": "blue",
+      "source_run": "results/runs/sequential_reproduction_20260910/C1_blue",
+      "M": 50,
+      "L": 10,
+      "epsilon": 0.006,
+      "replayed_source_helpers_match_archived_producer": {
+        "quotient.py": {
+          "subtract_amplitude_coordinates": true,
+          "convert_subtraction": true
+        },
+        "kernels.py": {
+          "coefficient_blocks": true,
+          "density_labels": true
+        },
+        "operators.py": {
+          "midpoint_grid": true
+        }
+      },
+      "center_best": {
+        "mu": 1.0000000000000002e-06,
+        "iteration": 100,
+        "has_newton_gradient": true,
+        "decrement": 5.524076526175844e-15,
+        "linear_residual": 8.290562077042845e-08,
+        "matches_run_last_iteration": true,
+        "mu_matches_last_history": true,
+        "converted_C_equals_native_candidate": true
+      },
+      "center_first": {
+        "mu": 0.0001,
+        "iteration": 39,
+        "replayed_C_equals_first_coefficients": true,
+        "equals_best_C": false
+      },
+      "actual_change": {
+        "changed_C_count": 3876,
+        "coefficient_count": 3876,
+        "max_abs_C_change": 0.0031976181780919433,
+        "l2_C_change": 0.027716357420850015,
+        "relative_l2_change": 1.0000000047606726e-08,
+        "exact_saved_contraction_identity": true,
+        "factor": 0.99999999,
+        "maximum_scaling_roundoff": 2.509636942704674e-11
+      },
+      "targets": {
+        "native": [
+          0.07332139057108528,
+          -0.002653340851984935
+        ],
+        "delivered": [
+          0.07332138984133818,
+          -0.0026533408254826346
+        ],
+        "difference": [
+          -7.2974709608431e-10,
+          2.6502300354280806e-11
+        ],
+        "declared_fixed_x": 0.07332139057293466,
+        "native_x_deviation": -1.84938175884497e-12,
+        "delivered_x_deviation": -7.31596477843155e-10
+      },
+      "saved_recovery": {
+        "candidate_fraction": 1.0,
+        "interior_fraction": 0.0,
+        "radial_scale": 1.0,
+        "candidate_weight": 0.99999999,
+        "zero_weight": 1.0000000050247593e-08,
+        "objective_before": 1.1410735753696581,
+        "objective_after": 1.141073564055235,
+        "objective_loss": 1.1311965612213704e-08,
+        "repaired": true,
+        "coarse_feasible_fraction": 1.0,
+        "primal_certified": true,
+        "global_high_spin_enforced": false,
+        "scope": "Coefficient mixture on declared constraints; no continuum claim",
+        "incumbent_retained": false,
+        "incumbent_objective": 0.7805060111731468,
+        "final_contraction": 0.99999999
+      },
+      "labels": {
+        "run_representative_center_converged": true,
+        "selection_representative_center_converged": true,
+        "selection_coefficients_mixed": false,
+        "figure5_uses_selected_coefficients": true
+      },
+      "identity_chain": {
+        "candidate_equals_coefficients_json": true,
+        "selection_equals_delivered": true
+      },
+      "preserved_feasibility_evidence": {
+        "finite_primal": true,
+        "finite_support": true,
+        "analytic_primal": true,
+        "analytic_input_coefficients": "results/runs/sequential_reproduction_20260910/C1_blue/coefficients.json",
+        "scope": "Archived evidence read only; not newly re-audited or a center certificate",
+        "analytic_saved_coefficient_hash_matches": true
+      },
+      "archived_coherent_boundary_has_explicit_center_flag_access": false
+    },
+    {
+      "role": "orange",
+      "source_run": "results/runs/sequential_reproduction_20260910/C1_orange",
+      "M": 50,
+      "L": 10,
+      "epsilon": 0.004,
+      "replayed_source_helpers_match_archived_producer": {
+        "quotient.py": {
+          "subtract_amplitude_coordinates": true,
+          "convert_subtraction": true
+        },
+        "kernels.py": {
+          "coefficient_blocks": true,
+          "density_labels": true
+        },
+        "operators.py": {
+          "midpoint_grid": true
+        }
+      },
+      "center_best": {
+        "mu": 1.0000000000000002e-06,
+        "iteration": 99,
+        "has_newton_gradient": true,
+        "decrement": 2.07770122375602e-19,
+        "linear_residual": 2.2317209477940446e-08,
+        "matches_run_last_iteration": true,
+        "mu_matches_last_history": true,
+        "converted_C_equals_native_candidate": true
+      },
+      "center_first": {
+        "mu": 0.0001,
+        "iteration": 49,
+        "replayed_C_equals_first_coefficients": true,
+        "equals_best_C": false
+      },
+      "actual_change": {
+        "changed_C_count": 3876,
+        "coefficient_count": 3876,
+        "max_abs_C_change": 0.003182942105922848,
+        "l2_C_change": 0.027776060511070528,
+        "relative_l2_change": 1.0000000051385714e-08,
+        "exact_saved_contraction_identity": true,
+        "factor": 0.99999999,
+        "maximum_scaling_roundoff": 2.177102942368947e-11
+      },
+      "targets": {
+        "native": [
+          0.07332139057900344,
+          -0.0033744759813171547
+        ],
+        "delivered": [
+          0.0733213898451725,
+          -0.0033744759475789494
+        ],
+        "difference": [
+          -7.338309404580912e-10,
+          3.373820537180827e-11
+        ],
+        "declared_fixed_x": 0.07332139057293466,
+        "native_x_deviation": 6.0687843639328776e-12,
+        "delivered_x_deviation": -7.277621560941583e-10
+      },
+      "saved_recovery": {
+        "candidate_fraction": 1.0,
+        "interior_fraction": 0.0,
+        "radial_scale": 1.0,
+        "candidate_weight": 0.99999999,
+        "zero_weight": 1.0000000050247593e-08,
+        "objective_before": 0.8129687801098857,
+        "objective_after": 0.8129687719582837,
+        "objective_loss": 8.150706228494705e-09,
+        "repaired": true,
+        "coarse_feasible_fraction": 1.0,
+        "primal_certified": true,
+        "global_high_spin_enforced": false,
+        "scope": "Coefficient mixture on declared constraints; no continuum claim",
+        "incumbent_retained": false,
+        "incumbent_objective": 0.44184660548431864,
+        "final_contraction": 0.99999999
+      },
+      "labels": {
+        "run_representative_center_converged": true,
+        "selection_representative_center_converged": true,
+        "selection_coefficients_mixed": false,
+        "figure5_uses_selected_coefficients": true
+      },
+      "identity_chain": {
+        "candidate_equals_coefficients_json": true,
+        "selection_equals_delivered": true
+      },
+      "preserved_feasibility_evidence": {
+        "finite_primal": true,
+        "finite_support": true,
+        "analytic_primal": true,
+        "analytic_input_coefficients": "results/runs/sequential_reproduction_20260910/C1_orange/coefficients.json",
+        "scope": "Archived evidence read only; not newly re-audited or a center certificate",
+        "analytic_saved_coefficient_hash_matches": true
+      },
+      "archived_coherent_boundary_has_explicit_center_flag_access": false
+    },
+    {
+      "role": "green",
+      "source_run": "results/runs/sequential_reproduction_20260910/C1_green_balanced",
+      "M": 50,
+      "L": 10,
+      "epsilon": 0.002,
+      "replayed_source_helpers_match_archived_producer": {
+        "quotient.py": {
+          "subtract_amplitude_coordinates": true,
+          "convert_subtraction": true
+        },
+        "kernels.py": {
+          "coefficient_blocks": true,
+          "density_labels": true
+        },
+        "operators.py": {
+          "midpoint_grid": true
+        }
+      },
+      "center_best": {
+        "mu": 1.0000000000000001e-07,
+        "iteration": 111,
+        "has_newton_gradient": true,
+        "decrement": 1.394473813992865e-14,
+        "linear_residual": 4.835118791018202e-09,
+        "matches_run_last_iteration": true,
+        "mu_matches_last_history": true,
+        "converted_C_equals_native_candidate": true
+      },
+      "center_first": {
+        "mu": 0.001,
+        "iteration": 17,
+        "replayed_C_equals_first_coefficients": true,
+        "equals_best_C": false
+      },
+      "actual_change": {
+        "changed_C_count": 3876,
+        "coefficient_count": 3876,
+        "max_abs_C_change": 0.003340187424328178,
+        "l2_C_change": 0.030182438784743523,
+        "relative_l2_change": 1.0000000053705835e-08,
+        "exact_saved_contraction_identity": true,
+        "factor": 0.99999999,
+        "maximum_scaling_roundoff": 2.5494273359072395e-11
+      },
+      "targets": {
+        "native": [
+          0.07332139057290571,
+          -0.004116720330474041
+        ],
+        "delivered": [
+          0.07332138984905495,
+          -0.004116720289331671
+        ],
+        "difference": [
+          -7.23850757111677e-10,
+          4.114236989288811e-11
+        ],
+        "declared_fixed_x": 0.07332139057293466,
+        "native_x_deviation": -2.8949065367100957e-14,
+        "delivered_x_deviation": -7.238797061770441e-10
+      },
+      "saved_recovery": {
+        "candidate_fraction": 1.0,
+        "interior_fraction": 0.0,
+        "radial_scale": 1.0,
+        "candidate_weight": 0.99999999,
+        "zero_weight": 1.0000000050247593e-08,
+        "objective_before": 0.511876760795344,
+        "objective_after": 0.5118767559879718,
+        "objective_loss": 4.805694064706592e-09,
+        "repaired": true,
+        "coarse_feasible_fraction": 1.0,
+        "primal_certified": true,
+        "global_high_spin_enforced": false,
+        "scope": "Coefficient mixture on declared constraints; no continuum claim",
+        "incumbent_retained": false,
+        "incumbent_objective": 0.2599004811522061,
+        "final_contraction": 0.99999999
+      },
+      "labels": {
+        "run_representative_center_converged": true,
+        "selection_representative_center_converged": true,
+        "selection_coefficients_mixed": false,
+        "figure5_uses_selected_coefficients": true
+      },
+      "identity_chain": {
+        "candidate_equals_coefficients_json": true,
+        "selection_equals_delivered": true
+      },
+      "preserved_feasibility_evidence": {
+        "finite_primal": true,
+        "finite_support": true,
+        "analytic_primal": true,
+        "analytic_input_coefficients": "results/runs/sequential_reproduction_20260910/C1_green_balanced/coefficients.json",
+        "scope": "Archived evidence read only; not newly re-audited or a center certificate",
+        "analytic_saved_coefficient_hash_matches": true
+      },
+      "archived_coherent_boundary_has_explicit_center_flag_access": false
+    }
+  ],
+  "input_sha256": {
+    "src/smatrix_bootstrap/quotient.py": "32b669bec9e0b9af1c21bf464f2806411cdca87fffa6ff0593d7bb77dd3428e9",
+    "src/smatrix_bootstrap/kernels.py": "790ebcdba291c80f17c4909a31ddf77ad6373748c2af41c7ce1a0c28b309172a",
+    "src/smatrix_bootstrap/operators.py": "74cb905a1e9e881e3f3e5f7843d44e7e096e8c57e672f8f7abdbae336b78fc4e",
+    "results/runs/sequential_reproduction_20260910/C1_blue/report.json": "5f27a666c54aacdfe2f2d6ce3bdb78a7eca30a74b5622cfe2cae80330b588adb",
+    "results/runs/sequential_reproduction_20260910/C1_blue/source.json": "ab8a05d9391719f347655cee9619b51b07181cd6a1a3d67db6f405257d6a1e9f",
+    "results/runs/sequential_reproduction_20260910/C1_blue/native_candidate.npz": "550b642fd3232c88affa6901614be8746921761be4bbab334529d95d131e2c26",
+    "results/runs/sequential_reproduction_20260910/C1_blue/candidate.npz": "94eb3be2454debbda1f39d9e30500e0e41e4f209f470d533824c7788c822b26e",
+    "results/runs/sequential_reproduction_20260910/C1_blue/center_best.npz": "e86833a7c5d98bf9f96b148bb04f5fc69b453ce164eb71259f3fc84acc4c79c9",
+    "results/runs/sequential_reproduction_20260910/C1_blue/center_first.npz": "9d7557bd086fedecd960da6b54299725eec0433c426030fe16ff329c87e8a4a7",
+    "results/runs/sequential_reproduction_20260910/C1_blue/center_first_coefficients.json": "d89e6aa340391de7a4ed2976c8b6b15858b2cd21507771c1e5a728cf704c70f8",
+    "results/runs/sequential_reproduction_20260910/C1_blue/coefficients.json": "a0abe00d61d0d325a5e54ce5328065039e5f7a5c175d3e789d9da6b2c306e887",
+    "results/runs/sequential_reproduction_20260910/C1_blue/progress.jsonl": "e0465ca052f31f175a2d56c4514a6fb5ad1748266cd3b5dff2b9ac05c1d6c446",
+    "results/runs/sequential_reproduction_20260910/C2_blue_selection/coefficients.json": "a0abe00d61d0d325a5e54ce5328065039e5f7a5c175d3e789d9da6b2c306e887",
+    "results/runs/sequential_reproduction_20260910/C2_blue_selection/selection.json": "27aa497364a1cdd05086e99c08b92235e9fa878abc160ca8d3d17e6e5e5b0a12",
+    "results/runs/sequential_reproduction_20260910/C1_blue_analytic/report.json": "91ddee8220190c11d0c2061f65b069623454a873948de95c58170ecda25265f9",
+    "results/runs/sequential_reproduction_20260910/C1_orange/report.json": "4f067d4a20214187cc193482805b4ad8c4a669fddf7d226840b4a8bb00a2a2ab",
+    "results/runs/sequential_reproduction_20260910/C1_orange/source.json": "f7759800974f55ed86645be51a88c60abd6a0a124201fcb4e96bf5da65fb2252",
+    "results/runs/sequential_reproduction_20260910/C1_orange/native_candidate.npz": "0ce657195658aada1e2f6b810a1d3c2ea08256f5cf00f12a72ffb5b0dc7c7c87",
+    "results/runs/sequential_reproduction_20260910/C1_orange/candidate.npz": "4ec38812d345e965fda7fec52bdf11dc884088e09bdbc69c7f70f3dcdf006026",
+    "results/runs/sequential_reproduction_20260910/C1_orange/center_best.npz": "61be92a39e91cf02f71c45a72dfedf37cd2bb2b2af8859d08bec8b0837c7b712",
+    "results/runs/sequential_reproduction_20260910/C1_orange/center_first.npz": "de098bd87d8b1c25974997d8fd2e97a75d0b52d5b40eea575ab9ceefc7d0e155",
+    "results/runs/sequential_reproduction_20260910/C1_orange/center_first_coefficients.json": "6e5057ec318808c87c6bdd13adcd0e1325e3564edb6bc5aa5d62113fe0820465",
+    "results/runs/sequential_reproduction_20260910/C1_orange/coefficients.json": "ded38d4430c2c97f36508a20abdc348207e21dfe91f233c86362a78b8ed91c02",
+    "results/runs/sequential_reproduction_20260910/C1_orange/progress.jsonl": "2adce5d1fc1e2439d9fa8b3da85b5d764130d6c3dbdd5b9c45da87b7595c514e",
+    "results/runs/sequential_reproduction_20260910/C2_orange_selection/coefficients.json": "ded38d4430c2c97f36508a20abdc348207e21dfe91f233c86362a78b8ed91c02",
+    "results/runs/sequential_reproduction_20260910/C2_orange_selection/selection.json": "44922238ab6d8da8705e170fd50d9aef2e5d9e67acc11eeef75099331e9fdecd",
+    "results/runs/sequential_reproduction_20260910/C1_orange_analytic/report.json": "c9a31b4e744db01795aacba5964ddb42adb5778f62b1b6ce3deae60bf4467f85",
+    "results/runs/sequential_reproduction_20260910/C1_green_balanced/report.json": "38d8ecc07a6dab00192a52b1eba706cf0ec4f20a7225157db69b228c19385b4e",
+    "results/runs/sequential_reproduction_20260910/C1_green_balanced/source.json": "a2d87ec2eaea9e40ea713e40132abf3709c83ac5391e1b52daf65303dacdff50",
+    "results/runs/sequential_reproduction_20260910/C1_green_balanced/native_candidate.npz": "41d786389e346104e7fefd8d2075646fef4350cfdcf2229284d56cc9ba9c179f",
+    "results/runs/sequential_reproduction_20260910/C1_green_balanced/candidate.npz": "8158b68a8dee049625abd53fb3bf8b0685b5b8da41d79634a760e2fec1823134",
+    "results/runs/sequential_reproduction_20260910/C1_green_balanced/center_best.npz": "5976056ba480a5cef379889cbcc487590471f844703f35005aaf2995cfc9ccb4",
+    "results/runs/sequential_reproduction_20260910/C1_green_balanced/center_first.npz": "6470c8b945de4fb76b207a4a6703f06b535d00cc6e96b906be5cbf39861779e5",
+    "results/runs/sequential_reproduction_20260910/C1_green_balanced/center_first_coefficients.json": "f1d246d44719db17749616ad39d1f00dacf0e0e182b9eb2bfeb59d5c7ab4c8b2",
+    "results/runs/sequential_reproduction_20260910/C1_green_balanced/coefficients.json": "d2de43c36f82ef74ff17b506d60111e6ecef36e0172bfa12e2c25a6759245cc2",
+    "results/runs/sequential_reproduction_20260910/C1_green_balanced/progress.jsonl": "814f84ac697f7c8c14fa1991a2166dd908f4df308e6fc6dcef6354ac3fe2159e",
+    "results/runs/sequential_reproduction_20260910/C2_green_selection/coefficients.json": "d2de43c36f82ef74ff17b506d60111e6ecef36e0172bfa12e2c25a6759245cc2",
+    "results/runs/sequential_reproduction_20260910/C2_green_selection/selection.json": "ca3ec7b8b1c07fde9981a78bfb14124e334b62b0716ee37b5ca9a07daf739692",
+    "results/runs/sequential_reproduction_20260910/C1_green_analytic/report.json": "b460247c3435a2204aa3b34de302d4ce7d3f8203e4b678da7fac2fc51eda8023",
+    "results/runs/sequential_reproduction_20260910/C1_fig5/profiles.json": "ae996983f07f66d3ee67b8f615135b9594c467ab58d1b37fb579c8207a72dfa9",
+    "results/runs/sequential_reproduction_20260910/SEQUENCE.json": "01e1b9739e8f045db1adc9f54a55cdd3d67906f8e72b343876e4df3f0552d7ba"
+  },
+  "conclusion": {
+    "all_three_delivered_amplitudes_changed_after_numerical_center": true,
+    "uniform_saved_contraction": 0.99999999,
+    "center_label_supported_only_before_final_contraction": true,
+    "delivered_center_proof_found": false,
+    "small_change_not_a_center_proof": true,
+    "existing_finite_and_analytic_feasibility_evidence_preserved": true
+  }
+}

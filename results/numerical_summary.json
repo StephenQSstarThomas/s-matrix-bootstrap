@@ -1,0 +1,176 @@
+{
+  "scope": "Diagnostic computations, not a completed published-result reproduction.",
+  "runs": {
+    "pure_threshold_N4.json": {
+      "config": {
+        "degree": 4,
+        "energy_points": 128,
+        "waves_per_isospin": 6,
+        "angular_points": 60,
+        "chiral_tolerance": null,
+        "chiral_norm": "combined_l2",
+        "enforce_infinite_energy": true,
+        "fixed_f00": null,
+        "enforce_asymptotic": false,
+        "angular_quadrature": "threshold_series_72_and_log_sqrt_crossed_energy",
+        "unitarity_cone": "scaled_rotated_soc"
+      },
+      "sha256": "5180cb1b5fd5fa862299fd34080ebba00a2b501d49c6908cada36e44dc730f3a",
+      "number_of_candidates": 16,
+      "status_counts": {
+        "optimal": 14,
+        "optimal_inaccurate": 2
+      },
+      "candidate_coordinate_min": [
+        -1.3292204074196081,
+        -0.22644939447238494
+      ],
+      "candidate_coordinate_max": [
+        1.052467540367696,
+        0.03248745521236483
+      ],
+      "max_training_unitarity_excess": 1.578119857015281e-10,
+      "max_validation_unitarity_excess": 0.0063378659007518046,
+      "max_validation_excess_below_1p2_GeV": 0.002010090241821638,
+      "max_angular_quadrature_change": 5.618777674248437e-13,
+      "max_support_dominance_deficit": 1.9984014443252818e-15,
+      "failed_endpoint_necessary_conditions": 16
+    },
+    "pure_threshold_N6.json": {
+      "config": {
+        "degree": 6,
+        "energy_points": 128,
+        "waves_per_isospin": 6,
+        "angular_points": 60,
+        "chiral_tolerance": null,
+        "chiral_norm": "combined_l2",
+        "enforce_infinite_energy": true,
+        "fixed_f00": null,
+        "enforce_asymptotic": false,
+        "angular_quadrature": "threshold_series_72_and_log_sqrt_crossed_energy",
+        "unitarity_cone": "scaled_rotated_soc"
+      },
+      "sha256": "df18e4f38f80e9a2bf1e9645244f5db71ea3764ce86e14b8ed644a96f4aa5b0d",
+      "number_of_candidates": 4,
+      "status_counts": {
+        "optimal": 1,
+        "optimal_inaccurate": 3
+      },
+      "candidate_coordinate_min": [
+        -1.897770657702193,
+        -0.36304121520394583
+      ],
+      "candidate_coordinate_max": [
+        1.2587395043872043,
+        0.042529906502765266
+      ],
+      "max_training_unitarity_excess": 2.4646951146678475e-10,
+      "max_validation_unitarity_excess": 0.0281102395353392,
+      "max_validation_excess_below_1p2_GeV": 0.0020421061844937416,
+      "max_angular_quadrature_change": 5.644929209160018e-12,
+      "max_support_dominance_deficit": 6.661338147750939e-16,
+      "failed_endpoint_necessary_conditions": 4
+    },
+    "pure_threshold_N8.json": {
+      "config": {
+        "degree": 8,
+        "energy_points": 128,
+        "waves_per_isospin": 6,
+        "angular_points": 60,
+        "chiral_tolerance": null,
+        "chiral_norm": "combined_l2",
+        "enforce_infinite_energy": true,
+        "fixed_f00": null,
+        "angular_quadrature": "threshold_series_72_and_log_sqrt_crossed_energy",
+        "unitarity_cone": "scaled_rotated_soc"
+      },
+      "sha256": "8993c79e72e8c2dd6e0859879f113d9876b834c948e548dbd163d23737bbfbaf",
+      "number_of_candidates": 4,
+      "status_counts": {
+        "optimal_inaccurate": 4
+      },
+      "candidate_coordinate_min": [
+        -2.27717651426635,
+        -0.45159689409312187
+      ],
+      "candidate_coordinate_max": [
+        1.418231772309142,
+        0.05387772930860678
+      ],
+      "max_training_unitarity_excess": 4.69904981592606e-09,
+      "max_validation_unitarity_excess": 0.04443514656284098,
+      "max_validation_excess_below_1p2_GeV": 0.0078159964635931,
+      "max_angular_quadrature_change": 6.405590447903464e-11,
+      "max_support_dominance_deficit": 2.7755575615628914e-16,
+      "failed_endpoint_necessary_conditions": 4
+    },
+    "chiral_threshold_N6.json": {
+      "config": {
+        "degree": 6,
+        "energy_points": 128,
+        "waves_per_isospin": 6,
+        "angular_points": 60,
+        "chiral_tolerance": 0.002,
+        "chiral_norm": "combined_l2",
+        "enforce_infinite_energy": true,
+        "fixed_f00": null,
+        "angular_quadrature": "threshold_series_72_and_log_sqrt_crossed_energy",
+        "unitarity_cone": "scaled_rotated_soc"
+      },
+      "sha256": "578d32b79a98a906806eb67b9a3dd74d9ba122d4045578842449a70ea573e9f2",
+      "number_of_candidates": 6,
+      "status_counts": {
+        "optimal": 3,
+        "optimal_inaccurate": 3
+      },
+      "candidate_coordinate_min": [
+        -0.043476008961067694,
+        -0.004563834434787595
+      ],
+      "candidate_coordinate_max": [
+        0.06927643681884565,
+        0.002877421369890665
+      ],
+      "max_training_unitarity_excess": 6.281101638805353e-09,
+      "max_validation_unitarity_excess": 0.0027924213915866414,
+      "max_validation_excess_below_1p2_GeV": 3.778339172999523e-05,
+      "max_angular_quadrature_change": 3.3909586889310625e-14,
+      "max_support_dominance_deficit": 1.457167719820518e-16,
+      "failed_endpoint_necessary_conditions": 6
+    },
+    "pure_asymptotic_N6_M256_L8.json": {
+      "config": {
+        "degree": 6,
+        "energy_points": 256,
+        "waves_per_isospin": 8,
+        "angular_points": 80,
+        "chiral_tolerance": null,
+        "chiral_norm": "combined_l2",
+        "enforce_infinite_energy": true,
+        "fixed_f00": null,
+        "enforce_asymptotic": true,
+        "angular_quadrature": "threshold_series_72_and_log_sqrt_crossed_energy",
+        "unitarity_cone": "scaled_rotated_soc"
+      },
+      "sha256": "bf1a3abe3b710020c30986ba494aca0888fec9d0f900635a8526642f28ef1624",
+      "number_of_candidates": 4,
+      "status_counts": {
+        "optimal_inaccurate": 4
+      },
+      "candidate_coordinate_min": [
+        -1.8523078994284177,
+        -0.35941492052354573
+      ],
+      "candidate_coordinate_max": [
+        1.2548610153373816,
+        0.042399404523012864
+      ],
+      "max_training_unitarity_excess": 2.3330559706380427e-10,
+      "max_validation_unitarity_excess": 0.0018672759132276617,
+      "max_validation_excess_below_1p2_GeV": 0.0005077770894199585,
+      "max_angular_quadrature_change": 6.277656054588665e-12,
+      "max_support_dominance_deficit": 8.881784197001252e-16,
+      "failed_endpoint_necessary_conditions": 0
+    }
+  }
+}

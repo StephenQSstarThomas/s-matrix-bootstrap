@@ -1,0 +1,73 @@
+{
+  "test_command": "PYTHONPATH=/tmp/collocation_arb:src OPENBLAS_NUM_THREADS=8 OMP_NUM_THREADS=8 /home/shiqiu/miniconda3/bin/python -m pytest -q -p no:cacheprovider",
+  "passed": 101,
+  "failed": 0,
+  "seconds": 11.65,
+  "core_files": [
+    {
+      "file": "src/smatrix_bootstrap/__init__.py",
+      "lines": 345,
+      "bytes": 24464
+    },
+    {
+      "file": "src/smatrix_bootstrap/analysis.py",
+      "lines": 290,
+      "bytes": 23806
+    },
+    {
+      "file": "src/smatrix_bootstrap/imaginary.py",
+      "lines": 330,
+      "bytes": 24520
+    },
+    {
+      "file": "src/smatrix_bootstrap/io.py",
+      "lines": 345,
+      "bytes": 24550
+    },
+    {
+      "file": "src/smatrix_bootstrap/kernels.py",
+      "lines": 350,
+      "bytes": 20204
+    },
+    {
+      "file": "src/smatrix_bootstrap/linear.py",
+      "lines": 275,
+      "bytes": 23943
+    },
+    {
+      "file": "src/smatrix_bootstrap/model.py",
+      "lines": 347,
+      "bytes": 18942
+    },
+    {
+      "file": "src/smatrix_bootstrap/operators.py",
+      "lines": 350,
+      "bytes": 23213
+    },
+    {
+      "file": "src/smatrix_bootstrap/quotient.py",
+      "lines": 349,
+      "bytes": 21993
+    },
+    {
+      "file": "src/smatrix_bootstrap/run.py",
+      "lines": 323,
+      "bytes": 23845
+    }
+  ],
+  "test_files": [
+    {
+      "file": "tests/test_kernels.py",
+      "lines": 350
+    },
+    {
+      "file": "tests/test_linear.py",
+      "lines": 350
+    },
+    {
+      "file": "tests/test_mainline.py",
+      "lines": 350
+    }
+  ],
+  "structure_passed": true
+}

@@ -1,0 +1,70 @@
+{
+  "source_sha256": {
+    "results/evidence/ANALYTIC_CARDINAL_FINITE_PROOFS_20260911.md": "cd1c787776b6d26457140ffd47295731d1593d6b883bb648e37ee1c7d0a2321c",
+    "results/evidence/ANALYTIC_TAIL_UNITARITY_20260911.md": "0745345b072e0c460ab2d7886ca5506c926deb5dd3f7d23d724e5409ef553b68",
+    "results/evidence/ANALYTIC_THRESHOLD_UNITARITY_20260911.md": "bdf9e0c2f3553325132941daa1bdc769eafca5e1124f8c172028a2caeb0909ba",
+    "results/evidence/IR_ZERO_CONSTANT_SUPPORT_PROOF_20260911.md": "02816e2c44aee0e9f8d399056c7cc71f2abafd040fea1cc66d9481335167a08a",
+    "results/evidence/FINITE_CURRENT_MOMENT_PROJECTION_20260911.md": "17a31ef610d6749846135b761359d3efb6c589462e099ec6c8ea87b318f69b96",
+    "results/evidence/GLOBAL_IR_SEED_AND_UV_OBSTRUCTION_20260911.md": "07bdba929faaaa3de96af1d3fdcef2915545b6e1d288dc48337d05e087f2957f",
+    "results/evidence/UV_FORCED_P_WAVE_ABSORPTION_20260911.md": "f60e7dd68d65aaa26abc5b4e60502502f789b9fd3c2b5c0ed53d3787d6f75b8c",
+    "results/evidence/REGULARIZATION_VALUE_PROOF_20260911.md": "b0076171303dc1e436b19944039f5fcd98b84719f0710a572365f27e26da9ceb",
+    "results/evidence/RHO_SIGNAL_PEAK_EXISTENCE_20260911.md": "d37718f7a44ce1713bc5d1086bd3591073877f38baa6551797df178430d77119",
+    "results/evidence/SAME_MODEL_IR_UV_EXCLUSION_20260911.md": "6614ae339d4de6e896cdd8b00593fd55db414306168ba3f4fe5d4348b0f7fc05",
+    "results/evidence/GRAM_DISK_AND_INELASTICITY_20260911.md": "5da24365115a662b724d147cfa4546e506271f168a4a47bf99affca212de8c42",
+    "results/evidence/FINITE_FAMILY_INELASTIC_THRESHOLD_SCOPE_20260911.md": "504a1775de73add61ceab3479a2ba731edc566f27f124a496047fb09fb1fbe43"
+  },
+  "commands": [
+    [
+      "/tmp/he_report_pandoc/pandoc",
+      "PROOFS_ZH.md",
+      "--from",
+      "markdown+tex_math_single_backslash",
+      "--standalone",
+      "--to",
+      "latex",
+      "--toc",
+      "--toc-depth=2",
+      "--include-in-header",
+      "header.tex",
+      "-V",
+      "mainfont=DejaVu Serif",
+      "-V",
+      "sansfont=DejaVu Sans",
+      "-V",
+      "monofont=DejaVu Sans Mono",
+      "-V",
+      "papersize=a4",
+      "-V",
+      "fontsize=10pt",
+      "-V",
+      "geometry:margin=18mm",
+      "-V",
+      "colorlinks=true",
+      "-o",
+      "PROOFS_ZH.tex"
+    ],
+    [
+      "/home/shiqiu/.local/bin/tectonic",
+      "--keep-logs",
+      "--keep-intermediates",
+      "PROOFS_ZH.tex"
+    ]
+  ],
+  "scope": "Proof companion; physical reproduction status is separate",
+  "formatting_adjustments": [
+    "wrap one bare inline widetilde expression",
+    "allow paths and SHA256 strings to break across lines",
+    "typeset the long regulator formula as inline math"
+  ],
+  "assembled_markdown_sha256": "2118c5b1bf4017a5b62f71f60fcf323ce6b381bd1fbaa32ece68ec3053cb8772",
+  "pdf_sha256": "b458ca0092a5960d9d0295dda4fc884f600e5fbff817a568ffe2be578f849b09",
+  "pages": 28,
+  "compile_exit": 0,
+  "no_missing_glyph_or_overfull_warning": true,
+  "visual_QA_pages": [
+    1,
+    26,
+    28
+  ],
+  "visual_QA": "Chinese and mathematical layout checked; no clipping observed on inspected pages"
+}

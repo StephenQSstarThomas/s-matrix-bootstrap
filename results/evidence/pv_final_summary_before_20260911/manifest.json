@@ -1,0 +1,27 @@
+[
+  {
+    "source": "results/runs/physical_consistency_20260911/PV_CORE_CLAIM_AUDIT_ZH.md",
+    "snapshot": "results/evidence/pv_final_summary_before_20260911/PV_CORE_CLAIM_AUDIT_ZH.md.txt",
+    "sha256": "03098a0c8493c69fa9c7ce89caf0f38a62b4c2f2d4f1c898173870e323b8ca11"
+  },
+  {
+    "source": "STATUS.md",
+    "snapshot": "results/evidence/pv_final_summary_before_20260911/STATUS.md.txt",
+    "sha256": "81829f9d3dd640947dce5bc4cab3c070b2cb441c869a74bec8b57e92d7d6aeca"
+  },
+  {
+    "source": "SCIENCE.md",
+    "snapshot": "results/evidence/pv_final_summary_before_20260911/SCIENCE.md.txt",
+    "sha256": "5d45f6d54f4900754c3a7efeea99f4862fb4845377b6994e52ae9c3d16225d07"
+  },
+  {
+    "source": "REPRODUCTION_GUIDE_ZH.md",
+    "snapshot": "results/evidence/pv_final_summary_before_20260911/REPRODUCTION_GUIDE_ZH.md.txt",
+    "sha256": "ab4ea445fad31ac6bd716110b0df9cea90475a8fc944b0ff43be31f543dc564d"
+  },
+  {
+    "source": "results/runs/physical_consistency_20260911/PROGRESS.json",
+    "snapshot": "results/evidence/pv_final_summary_before_20260911/PROGRESS.json.txt",
+    "sha256": "8ad5bf1b99a9a76fbfd061005b7b59dc37aa5d635105017fadd4bcca249eec99"
+  }
+]

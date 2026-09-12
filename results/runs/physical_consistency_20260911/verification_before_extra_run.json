@@ -1,0 +1,10 @@
+{
+  "tests_passed": 101,
+  "core_modules": 18,
+  "test_files": 3,
+  "new_checks": [
+    "independent_extra_row_integrals_and_native_current_mapping",
+    "center_activity_preservation"
+  ],
+  "scope": "Implementation checks, not physical reproduction success"
+}

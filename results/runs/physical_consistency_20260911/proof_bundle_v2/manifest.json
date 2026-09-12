@@ -1,0 +1,330 @@
+{
+  "created_utc": "2026-09-11T19:09:26.898370+00:00",
+  "title": "He–Kruczenski 有限原型：证明与适用范围伴册（v2）",
+  "scope": "Proof and scope companion; not a complete physical reproduction success report; formal Watson results unfinished",
+  "source_count": 15,
+  "source_sha256": {
+    "results/evidence/ANALYTIC_CARDINAL_FINITE_PROOFS_20260911.md": "cd1c787776b6d26457140ffd47295731d1593d6b883bb648e37ee1c7d0a2321c",
+    "results/evidence/ANALYTIC_TAIL_UNITARITY_20260911.md": "0745345b072e0c460ab2d7886ca5506c926deb5dd3f7d23d724e5409ef553b68",
+    "results/evidence/ANALYTIC_THRESHOLD_UNITARITY_20260911.md": "bdf9e0c2f3553325132941daa1bdc769eafca5e1124f8c172028a2caeb0909ba",
+    "results/evidence/IR_ZERO_CONSTANT_SUPPORT_PROOF_20260911.md": "02816e2c44aee0e9f8d399056c7cc71f2abafd040fea1cc66d9481335167a08a",
+    "results/evidence/FINITE_CURRENT_MOMENT_PROJECTION_20260911.md": "17a31ef610d6749846135b761359d3efb6c589462e099ec6c8ea87b318f69b96",
+    "results/evidence/GLOBAL_IR_SEED_AND_UV_OBSTRUCTION_20260911.md": "07bdba929faaaa3de96af1d3fdcef2915545b6e1d288dc48337d05e087f2957f",
+    "results/evidence/UV_FORCED_P_WAVE_ABSORPTION_20260911.md": "f60e7dd68d65aaa26abc5b4e60502502f789b9fd3c2b5c0ed53d3787d6f75b8c",
+    "results/evidence/REGULARIZATION_VALUE_PROOF_20260911.md": "b0076171303dc1e436b19944039f5fcd98b84719f0710a572365f27e26da9ceb",
+    "results/evidence/RHO_SIGNAL_PEAK_EXISTENCE_20260911.md": "d37718f7a44ce1713bc5d1086bd3591073877f38baa6551797df178430d77119",
+    "results/evidence/SAME_MODEL_IR_UV_EXCLUSION_20260911.md": "6614ae339d4de6e896cdd8b00593fd55db414306168ba3f4fe5d4348b0f7fc05",
+    "results/evidence/GRAM_DISK_AND_INELASTICITY_20260911.md": "5da24365115a662b724d147cfa4546e506271f168a4a47bf99affca212de8c42",
+    "results/evidence/FINITE_FAMILY_INELASTIC_THRESHOLD_SCOPE_20260911.md": "504a1775de73add61ceab3479a2ba731edc566f27f124a496047fb09fb1fbe43",
+    "results/evidence/WATSONIAN_DIAGNOSTIC_SCOPE_20260911.md": "5633af95512d781edbbc6d18980d6f575bb0ecd05215b48c78eb2efc048682be",
+    "results/evidence/INEXACT_NEWTON_AND_SAVED_CENTER_20260911.md": "a32e1a90e86cf0b3ed25d59898158b5aac2c7965ef1105064ac7342dd865c58f",
+    "results/runs/physical_consistency_20260911/FINE_SIGNAL_PEAK_PROOF_ZH.md": "4aea051b55349f275a6b9037c338b76839f1d0de9c924bdec7f69c89f823f06a"
+  },
+  "source_order": [
+    "results/evidence/ANALYTIC_CARDINAL_FINITE_PROOFS_20260911.md",
+    "results/evidence/ANALYTIC_TAIL_UNITARITY_20260911.md",
+    "results/evidence/ANALYTIC_THRESHOLD_UNITARITY_20260911.md",
+    "results/evidence/IR_ZERO_CONSTANT_SUPPORT_PROOF_20260911.md",
+    "results/evidence/FINITE_CURRENT_MOMENT_PROJECTION_20260911.md",
+    "results/evidence/GLOBAL_IR_SEED_AND_UV_OBSTRUCTION_20260911.md",
+    "results/evidence/UV_FORCED_P_WAVE_ABSORPTION_20260911.md",
+    "results/evidence/REGULARIZATION_VALUE_PROOF_20260911.md",
+    "results/evidence/RHO_SIGNAL_PEAK_EXISTENCE_20260911.md",
+    "results/evidence/SAME_MODEL_IR_UV_EXCLUSION_20260911.md",
+    "results/evidence/GRAM_DISK_AND_INELASTICITY_20260911.md",
+    "results/evidence/FINITE_FAMILY_INELASTIC_THRESHOLD_SCOPE_20260911.md",
+    "results/evidence/WATSONIAN_DIAGNOSTIC_SCOPE_20260911.md",
+    "results/evidence/INEXACT_NEWTON_AND_SAVED_CENTER_20260911.md",
+    "results/runs/physical_consistency_20260911/FINE_SIGNAL_PEAK_PROOF_ZH.md"
+  ],
+  "old_bundle": {
+    "path": "results/runs/physical_consistency_20260911/proof_bundle/PROOFS_ZH.pdf",
+    "sha256_before": "b458ca0092a5960d9d0295dda4fc884f600e5fbff817a568ffe2be578f849b09",
+    "pages": 28,
+    "manifest_sha256": "5ba031a0d709545b0ed091b088edbe2e29fcd5a3abef81e9dec77801cec9912b",
+    "assembled_markdown_sha256": "2118c5b1bf4017a5b62f71f60fcf323ce6b381bd1fbaa32ece68ec3053cb8772"
+  },
+  "assembly": "Reuse the twelve existing formatted source chunks after confirming their original bytes match; append the three current original texts. Scientific source files are not edited.",
+  "formatting_adjustments": [
+    "wrap one bare inline widetilde expression",
+    "allow paths and SHA256 strings to break across lines",
+    "typeset the long regulator formula as inline math",
+    "New companion title and editorial scope note; new page before each source",
+    "Rebase local Markdown link destinations for the new bundle location; visible text unchanged",
+    "Retain legacy bundle-relative link bases for the twelve reused chunks; add synthetic Chinese slant for italic spans"
+  ],
+  "rebased_links": [
+    {
+      "source": "results/evidence/ANALYTIC_CARDINAL_FINITE_PROOFS_20260911.md",
+      "from": "../../sequential_reproduction_20260910/PROOF_SCOPE_REVIEW_ZH.md",
+      "to": "../../sequential_reproduction_20260910/PROOF_SCOPE_REVIEW_ZH.md",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/ANALYTIC_CARDINAL_FINITE_PROOFS_20260911.md",
+      "from": "../../sequential_reproduction_20260910/HELD_INTER_NODE_ISSUE_ZH.md",
+      "to": "../../sequential_reproduction_20260910/HELD_INTER_NODE_ISSUE_ZH.md",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/IR_ZERO_CONSTANT_SUPPORT_PROOF_20260911.md",
+      "from": "../IR_CENTER_IDENTITY_REVIEW_ZH.md",
+      "to": "../IR_CENTER_IDENTITY_REVIEW_ZH.md",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/IR_ZERO_CONSTANT_SUPPORT_PROOF_20260911.md",
+      "from": "../verification_IR_slice.json",
+      "to": "../verification_IR_slice.json",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/GLOBAL_IR_SEED_AND_UV_OBSTRUCTION_20260911.md",
+      "from": "../GLOBAL_IR_UV_EXCLUSION.json",
+      "to": "../GLOBAL_IR_UV_EXCLUSION.json",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/UV_FORCED_P_WAVE_ABSORPTION_20260911.md",
+      "from": "../../../evidence/GLOBAL_IR_SEED_AND_UV_OBSTRUCTION_20260911.md",
+      "to": "../../../evidence/GLOBAL_IR_SEED_AND_UV_OBSTRUCTION_20260911.md",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/UV_FORCED_P_WAVE_ABSORPTION_20260911.md",
+      "from": "../GLOBAL_IR_UV_EXCLUSION.json",
+      "to": "../GLOBAL_IR_UV_EXCLUSION.json",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/REGULARIZATION_VALUE_PROOF_20260911.md",
+      "from": "../regularizer_half_bound_replay/report.json",
+      "to": "../regularizer_half_bound_replay/report.json",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/REGULARIZATION_VALUE_PROOF_20260911.md",
+      "from": "../regularizer_half_analytic/source_audit.json",
+      "to": "../regularizer_half_analytic/source_audit.json",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/REGULARIZATION_VALUE_PROOF_20260911.md",
+      "from": "../../sequential_reproduction_20260910/E1_tip_center/report.json",
+      "to": "../../sequential_reproduction_20260910/E1_tip_center/report.json",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/REGULARIZATION_VALUE_PROOF_20260911.md",
+      "from": "../REGULARIZATION_VALUE_PROOF.json",
+      "to": "../REGULARIZATION_VALUE_PROOF.json",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/RHO_SIGNAL_PEAK_EXISTENCE_20260911.md",
+      "from": "../RHO_SIGNAL_PEAK_EXISTENCE.json",
+      "to": "../RHO_SIGNAL_PEAK_EXISTENCE.json",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/RHO_SIGNAL_PEAK_EXISTENCE_20260911.md",
+      "from": "../../sequential_reproduction_20260910/CE_native_comparison/rho_mechanism.pdf",
+      "to": "../../sequential_reproduction_20260910/CE_native_comparison/rho_mechanism.pdf",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/SAME_MODEL_IR_UV_EXCLUSION_20260911.md",
+      "from": "../interlaced_IR_ref_02/report.json",
+      "to": "../interlaced_IR_ref_02/report.json",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/SAME_MODEL_IR_UV_EXCLUSION_20260911.md",
+      "from": "../interlaced_IR_ref_analytic/source_audit.json",
+      "to": "../interlaced_IR_ref_analytic/source_audit.json",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/SAME_MODEL_IR_UV_EXCLUSION_20260911.md",
+      "from": "../interlaced_IR_selected/selection.json",
+      "to": "../interlaced_IR_selected/selection.json",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/SAME_MODEL_IR_UV_EXCLUSION_20260911.md",
+      "from": "../interlaced_UV_ref_support_01/report.json",
+      "to": "../interlaced_UV_ref_support_01/report.json",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/SAME_MODEL_IR_UV_EXCLUSION_20260911.md",
+      "from": "../interlaced_fixed_IR_analytic/report.json",
+      "to": "../interlaced_fixed_IR_analytic/report.json",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/SAME_MODEL_IR_UV_EXCLUSION_20260911.md",
+      "from": "../fixed_IR_dual_before_fix/report.json",
+      "to": "../fixed_IR_dual_before_fix/report.json",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/SAME_MODEL_IR_UV_EXCLUSION_20260911.md",
+      "from": "../interlaced_fixed_IR_dual/report.json",
+      "to": "../interlaced_fixed_IR_dual/report.json",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/SAME_MODEL_IR_UV_EXCLUSION_20260911.md",
+      "from": "../ORIGINAL_NATIVE_PREFIX_REPLAY.json",
+      "to": "../ORIGINAL_NATIVE_PREFIX_REPLAY.json",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/SAME_MODEL_IR_UV_EXCLUSION_20260911.md",
+      "from": "../original_UV_fixed_new_IR_analytic/report.json",
+      "to": "../original_UV_fixed_new_IR_analytic/report.json",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/evidence/GRAM_DISK_AND_INELASTICITY_20260911.md",
+      "from": "../GRAM_DISK_DIAGNOSTIC.json",
+      "to": "../GRAM_DISK_DIAGNOSTIC.json",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/FINE_SIGNAL_PEAK_PROOF_ZH.md",
+      "from": "FINE_SIGNAL_PEAK_EXISTENCE.json",
+      "to": "../FINE_SIGNAL_PEAK_EXISTENCE.json",
+      "resolved_exists": true
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/FINE_SIGNAL_PEAK_PROOF_ZH.md",
+      "from": "fine_grid_profiles/direct_profiles.json",
+      "to": "../fine_grid_profiles/direct_profiles.json",
+      "resolved_exists": true
+    }
+  ],
+  "unresolved_original_links": [],
+  "header_sha256": "6221c8e055561f2d568c0daf18b73aa78617cbe7cc0527a9b4e2ebbe7b8d9237",
+  "assembled_markdown_sha256": "7d22e90b4763be13258f8461c801c5e6f60239c12a132ad7a14605f7b756961a",
+  "commands": [
+    [
+      "/tmp/he_report_pandoc/pandoc",
+      "PROOFS_ZH.md",
+      "--from",
+      "markdown+tex_math_single_backslash",
+      "--standalone",
+      "--to",
+      "latex",
+      "--toc",
+      "--toc-depth=2",
+      "--include-in-header",
+      "header.tex",
+      "-V",
+      "mainfont=DejaVu Serif",
+      "-V",
+      "sansfont=DejaVu Sans",
+      "-V",
+      "monofont=DejaVu Sans Mono",
+      "-V",
+      "papersize=a4",
+      "-V",
+      "fontsize=10pt",
+      "-V",
+      "geometry:margin=18mm",
+      "-V",
+      "colorlinks=true",
+      "-o",
+      "PROOFS_ZH.tex"
+    ],
+    [
+      "/home/shiqiu/.local/bin/tectonic",
+      "--keep-logs",
+      "--keep-intermediates",
+      "PROOFS_ZH.tex"
+    ]
+  ],
+  "environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "RAYON_NUM_THREADS": "1"
+  },
+  "process_nice": 19,
+  "pandoc_binary_sha256": "decd3dd11a3fe0c16ce56443343ec53adde6fbed6f97d7f56f06b1c424248e7b",
+  "tectonic_binary_sha256": "4df19452c202c5bef9f7c7e4a01a3f2b9d5199f0a1f73b70b4fe1bffbc9837f6",
+  "pandoc_exit": 0,
+  "compile_exit": 0,
+  "initial_attempt_note": "First compilation succeeded; local-link QA detected double rebasing of already bundle-relative legacy links. Corrected only target paths for the final build; attempt1.tex and original logs retained.",
+  "pandoc2_exit": 0,
+  "compile2_exit": 0,
+  "final_compile_log": "compile5.log",
+  "final_pandoc_log": "pandoc5.log",
+  "pdf_sha256": "6280627f6191a7ff33cdaa93d097bb0dd8356fc1737b39cbbe145918bf51e503",
+  "pages": 33,
+  "no_missing_glyph_or_overfull_warning": true,
+  "qa": "qa.json",
+  "visual_QA_pages": [
+    1,
+    2,
+    29,
+    30,
+    31,
+    32,
+    33
+  ],
+  "visual_QA": "Cover/TOC and all three added sources visually inspected, including corrected Gram PSD terminology, actual SOC/density Schur barrier and peak table; no missing glyph, clipped formula or overlap observed.",
+  "build_logs": [
+    "pandoc.log",
+    "compile.log",
+    "pandoc2.log",
+    "compile2.log",
+    "compile3.log",
+    "compile4.log",
+    "PROOFS_ZH.log",
+    "pandoc5.log",
+    "compile5.log"
+  ],
+  "final_compile_command": [
+    "/home/shiqiu/.local/bin/tectonic",
+    "--keep-logs",
+    "--keep-intermediates",
+    "--reruns",
+    "2",
+    "PROOFS_ZH.tex"
+  ],
+  "tool_versions": {
+    "pandoc": "pandoc 3.9",
+    "tectonic": "tectonic 0.15.0Tectonic 0.15.0"
+  },
+  "source_files_modified": true,
+  "watson_formal_results_added": false,
+  "authorized_source_corrections": [
+    {
+      "source": "results/evidence/WATSONIAN_DIAGNOSTIC_SCOPE_20260911.md",
+      "before_sha256": "4c47819cc252474c490f454a4fd821eb8bf6c510ab4c27736901e7ad23e3824c",
+      "authorized_changes": [
+        "Section 3 title: Gram 正定 -> Gram 半正定",
+        "Rank-two example: 满足原 Gram 正定 -> 满足原 Gram 半正定"
+      ],
+      "scope": "Explicit terminology correction requested by root; no model, equation or conclusion changed",
+      "after_sha256": "5633af95512d781edbbc6d18980d6f575bb0ecd05215b48c78eb2efc048682be"
+    }
+  ],
+  "scientific_equations_or_conclusions_modified": false,
+  "pandoc5_exit": 0,
+  "compile5_exit": 0,
+  "generated_tex_sha256": "402209d3909abcedab82548cab396df067ccd0bcceae38b2ace55369fbb0a73e",
+  "build_log_sha256": {
+    "pandoc.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "compile.log": "5ef7557472a987f0f0aa69b62de62bf1a523048b94b34686ab4db6e497e4ae3e",
+    "pandoc2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "compile2.log": "5ce7548e39e2fa7f4e6f6581b5eebe6b0ea68d67a99ba11b3b26b96207f3aab9",
+    "compile3.log": "cd535d346e8c80191ac62b1520de9c2504fd44e617ffc2ba301474e972df56fe",
+    "compile4.log": "d104d1f5b9e5fc174a1bf130a25ba9a08cfcb2a40b0b4f3f2b9186e57c5f137a",
+    "PROOFS_ZH.log": "d49a2f6913d21547035163433196c77468530c2531716505977dd6e174fb40f1",
+    "pandoc5.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "compile5.log": "30943e740ac1ffd34f907956ddf4ce8d5a6109161c74b9c4c9f068364c57ca6e"
+  }
+}

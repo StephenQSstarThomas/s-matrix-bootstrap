@@ -1,0 +1,252 @@
+{
+  "status": "passed",
+  "completed_utc": "2026-09-12T05:56:01.829054+00:00",
+  "PDF": "PLAN_ZH.pdf",
+  "PDF_sha256": "d6f4ba875354399806e8503361f6b8d2e02855ef60fe050add3796ca1becdd2a",
+  "pages": 4,
+  "source_SHA_verified": "c0b917803fc0562f08a906b0dc8ee735988a292baab7c03e9f4828f052f23dae",
+  "ledger_SHA_verified": "077b7aa6b67cbf0fbb5d586a1955844dbefc2a1ab082f1cb05afc55557abe68c",
+  "source_original_unchanged": true,
+  "full_source_body_preserved_after_recorded_formatting": true,
+  "all_18_claim_steps_present": [
+    "A1",
+    "A2",
+    "A3",
+    "B1",
+    "B2",
+    "B3",
+    "C1",
+    "C2",
+    "C3",
+    "D1",
+    "D2",
+    "D3",
+    "E1",
+    "E2",
+    "E3",
+    "F1",
+    "F2",
+    "F3"
+  ],
+  "all_P0_P5_stages_present": true,
+  "six_unclosed_work_items_preserved": true,
+  "historical_separate_geometry_ready_and_combined_distinction_preserved": true,
+  "visual_QA_pages": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "visual_QA": "All four pages inspected: complete claims, ledger table, P0-P5 order/acceptance/stop rules; no clipping, overlap or missing glyphs.",
+  "missing_glyph_warnings": 0,
+  "overfull_warnings": 0,
+  "underfull_warnings": 0,
+  "links": [
+    {
+      "page": 1,
+      "kind": 3,
+      "target": "../MAJOR_CLAIMS_ZH.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/MAJOR_CLAIMS_ZH.md",
+      "exists": true
+    },
+    {
+      "page": 1,
+      "kind": 3,
+      "target": "../FINAL_VERIFICATION.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/FINAL_VERIFICATION.json",
+      "exists": true
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 2
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 2
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 2
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 2
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 2
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 2
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 2
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 3
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 3
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 3
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 3
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 4
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 4
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 4
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 4
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 4
+    },
+    {
+      "page": 2,
+      "kind": 3,
+      "target": "../../stage_B_delivery_20260907/regions/regions.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_delivery_20260907/regions/regions.json",
+      "exists": true
+    },
+    {
+      "page": 2,
+      "kind": 3,
+      "target": "../../mainline_alignment_20260909/B_combined/FIG4_CORE_CLAIMS_ZH.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/FIG4_CORE_CLAIMS_ZH.md",
+      "exists": true
+    },
+    {
+      "page": 2,
+      "kind": 3,
+      "target": "../../mainline_alignment_20260909/C_RESULT_ZH.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/C_RESULT_ZH.md",
+      "exists": true
+    }
+  ],
+  "local_file_link_count": 5,
+  "bookmarks": [
+    [
+      1,
+      "一、六项尚未完整闭合的核心工作",
+      2
+    ],
+    [
+      2,
+      "1. 三代表共同、合理的ρ：major，未通过",
+      2
+    ],
+    [
+      2,
+      "2. S0/S2的定量合理性及IR形状保留：S0 major；S2仅有比较差异",
+      2
+    ],
+    [
+      2,
+      "3. Fig.11的稳健性：五组计算完成，L比较未通过",
+      2
+    ],
+    [
+      2,
+      "4. Fig.8的明显不对称及完整区域：定性收缩已通过，量化尚未对齐",
+      2
+    ],
+    [
+      2,
+      "5. Fig.3–6的原文对齐与同合同衔接：已有大量证据，不能一概说没做",
+      2
+    ],
+    [
+      2,
+      "6. 作者数值合同及整个原型身份：source-critical，尚未唯一恢复",
+      2
+    ],
+    [
+      1,
+      "二、A1–F3逐项台账",
+      3
+    ],
+    [
+      1,
+      "三、下一阶段顺序计划",
+      3
+    ],
+    [
+      2,
+      "P0：锁定验收与来源，先于任何新优化",
+      3
+    ],
+    [
+      2,
+      "P1：最小算子/完整幅度核对",
+      3
+    ],
+    [
+      2,
+      "P2：有来源依据后修补模型并完成名义M50/L10",
+      4
+    ],
+    [
+      2,
+      "P3：同一幅度完成C→D→E的物理验收",
+      4
+    ],
+    [
+      2,
+      "P4：按最终合同交付区域和五组稳定性",
+      4
+    ],
+    [
+      2,
+      "P5：最后的独立审计与停止规则",
+      4
+    ],
+    [
+      1,
+      "四、暂不加入主线的更强目标",
+      4
+    ]
+  ],
+  "protected_existing_artifacts_unchanged": {
+    "REPORT_ZH.pdf": true,
+    "manifest.json": true,
+    "verification.json": true,
+    "header.tex": true
+  },
+  "scientific_calculations_performed": false,
+  "active_build_script_created": false
+}

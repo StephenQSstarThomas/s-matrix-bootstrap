@@ -1,0 +1,22 @@
+{
+  "serial_parallel_bitwise_equal": true,
+  "shape": [
+    227,
+    22
+  ],
+  "original_native_and_special_rows_unchanged": true,
+  "native_imaginary_single_density_identities_exact": true,
+  "sparse_groups_restore_original_order": true,
+  "none_cache_recomputes_correctly": true,
+  "embed_saved_float_FG_certified": true,
+  "repair_weight": 0.6666669845581055,
+  "constraints_merged_and_deduplicated": true,
+  "process_group_timeout": {
+    "timeout_reported": true,
+    "worker_exit_code": -9,
+    "process_group": 1412212,
+    "live_group_members_after_timeout": [],
+    "remaining_zombies": 0,
+    "seconds": 6.008508790982887
+  }
+}

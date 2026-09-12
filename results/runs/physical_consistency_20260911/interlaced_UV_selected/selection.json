@@ -1,0 +1,293 @@
+{
+  "status": "gauge_representatives_fixed",
+  "model_signature": {
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "zero",
+    "unitarity_scope": "sampled",
+    "prescription": "analytic-cardinal",
+    "chiral_norm": "separate-l2",
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_prepare",
+    "current_preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_current",
+    "chiral_tolerance": 0.002,
+    "uv_config": {
+      "moment_source": "printed",
+      "sr_error": "raw-absolute",
+      "cutoff": "hard-midpoint",
+      "mq_rule": "arithmetic-mean",
+      "pion_mass_gev": 0.14,
+      "matching_energy_gev": 1.2,
+      "up_mass_gev": 0.004,
+      "down_mass_gev": 0.0073,
+      "alpha_s": 0.4,
+      "gluon_condensate_gev4": 0.023,
+      "scalar_condensate_gev4": -0.0001,
+      "sr_tolerance": 0.002,
+      "ff_tolerance": 6e-05
+    },
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": true,
+    "additional_constraints": {
+      "kind": "explicit-analytic-samples",
+      "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_prepare"
+    },
+    "sampling_nodes": 132,
+    "scattering_samples": 3123,
+    "ff_endpoint_order": 2
+  },
+  "selections": [
+    {
+      "directory": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_selected/tip",
+      "reused_frozen_selection": false,
+      "role": "tip",
+      "color": "red",
+      "rule": "Tip +x; nearest audited upper points to xref and (xref+x_tip)/2; no phase ranking/mixing",
+      "selection_template": null,
+      "reference": [
+        0.07332139057293466,
+        -0.00488809270486231
+      ],
+      "target": [
+        0.09318378028569241,
+        -0.005959986408374964
+      ],
+      "target_x": 0.09318378028569241,
+      "x_deviation": 0.0,
+      "epsilon": 0.002,
+      "source_reports": [
+        "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_tip_schur_analytic/report.json"
+      ],
+      "source_coefficients": [
+        "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_tip_schur_analytic/coefficients.json"
+      ],
+      "source_joint": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_tip_schur_analytic/joint.npz",
+      "model_signature": {
+        "M": 50,
+        "L": 10,
+        "density_limit": 377500.0,
+        "infinity": "zero",
+        "unitarity_scope": "sampled",
+        "prescription": "analytic-cardinal",
+        "chiral_norm": "separate-l2",
+        "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_prepare",
+        "current_preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_current",
+        "chiral_tolerance": 0.002,
+        "uv_config": {
+          "moment_source": "printed",
+          "sr_error": "raw-absolute",
+          "cutoff": "hard-midpoint",
+          "mq_rule": "arithmetic-mean",
+          "pion_mass_gev": 0.14,
+          "matching_energy_gev": 1.2,
+          "up_mass_gev": 0.004,
+          "down_mass_gev": 0.0073,
+          "alpha_s": 0.4,
+          "gluon_condensate_gev4": 0.023,
+          "scalar_condensate_gev4": -0.0001,
+          "sr_tolerance": 0.002,
+          "ff_tolerance": 6e-05
+        },
+        "global_high_spin_enforced": false,
+        "tail_conditions_applied": true,
+        "additional_constraints": {
+          "kind": "explicit-analytic-samples",
+          "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_prepare"
+        },
+        "sampling_nodes": 132,
+        "scattering_samples": 3123,
+        "ff_endpoint_order": 2
+      },
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "support_lower": 0.09318378028576288,
+      "support_upper": 0.09323857670464446,
+      "support_gap": 5.4796418881578046e-05,
+      "support_optimality_certified": true,
+      "representative_center_converged": true,
+      "boundary_y_distance_upper": null,
+      "exact_extremizer_claimed": false,
+      "joint_feasible": true,
+      "selection_uses_phase_data": false,
+      "selection_uses_paper_marker_coordinates": false,
+      "coefficients_mixed": false,
+      "finite_only": true
+    },
+    {
+      "directory": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_selected/mid",
+      "reused_frozen_selection": false,
+      "role": "mid",
+      "color": "#ff5555",
+      "rule": "Tip +x; nearest audited upper points to xref and (xref+x_tip)/2; no phase ranking/mixing",
+      "selection_template": null,
+      "reference": [
+        0.07332139057293466,
+        -0.00488809270486231
+      ],
+      "target": [
+        0.0832525854389973,
+        -0.0051013933129494945
+      ],
+      "target_x": 0.08325258542931353,
+      "x_deviation": 9.683767676627042e-12,
+      "epsilon": 0.002,
+      "source_reports": [
+        "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_mid_analytic/report.json"
+      ],
+      "source_coefficients": [
+        "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_mid_analytic/coefficients.json"
+      ],
+      "source_joint": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_mid_analytic/joint.npz",
+      "model_signature": {
+        "M": 50,
+        "L": 10,
+        "density_limit": 377500.0,
+        "infinity": "zero",
+        "unitarity_scope": "sampled",
+        "prescription": "analytic-cardinal",
+        "chiral_norm": "separate-l2",
+        "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_prepare",
+        "current_preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_current",
+        "chiral_tolerance": 0.002,
+        "uv_config": {
+          "moment_source": "printed",
+          "sr_error": "raw-absolute",
+          "cutoff": "hard-midpoint",
+          "mq_rule": "arithmetic-mean",
+          "pion_mass_gev": 0.14,
+          "matching_energy_gev": 1.2,
+          "up_mass_gev": 0.004,
+          "down_mass_gev": 0.0073,
+          "alpha_s": 0.4,
+          "gluon_condensate_gev4": 0.023,
+          "scalar_condensate_gev4": -0.0001,
+          "sr_tolerance": 0.002,
+          "ff_tolerance": 6e-05
+        },
+        "global_high_spin_enforced": false,
+        "tail_conditions_applied": true,
+        "additional_constraints": {
+          "kind": "explicit-analytic-samples",
+          "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_prepare"
+        },
+        "sampling_nodes": 132,
+        "scattering_samples": 3123,
+        "ff_endpoint_order": 2
+      },
+      "direction": [
+        37.63484025920467,
+        500.0
+      ],
+      "support_lower": 0.5825010976851198,
+      "support_upper": 0.5842257113049795,
+      "support_gap": 0.0017246136198596496,
+      "support_optimality_certified": true,
+      "representative_center_converged": true,
+      "boundary_y_distance_upper": 3.4492272397192993e-06,
+      "exact_extremizer_claimed": false,
+      "joint_feasible": true,
+      "selection_uses_phase_data": false,
+      "selection_uses_paper_marker_coordinates": false,
+      "coefficients_mixed": false,
+      "finite_only": true
+    },
+    {
+      "directory": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_selected/ref",
+      "reused_frozen_selection": false,
+      "role": "ref",
+      "color": "#ff9999",
+      "rule": "Tip +x; nearest audited upper points to xref and (xref+x_tip)/2; no phase ranking/mixing",
+      "selection_template": null,
+      "reference": [
+        0.07332139057293466,
+        -0.00488809270486231
+      ],
+      "target": [
+        0.07332139057321677,
+        -0.004374734608540238
+      ],
+      "target_x": 0.07332139057293466,
+      "x_deviation": 2.821076705572523e-13,
+      "epsilon": 0.002,
+      "source_reports": [
+        "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_ref_analytic/report.json"
+      ],
+      "source_coefficients": [
+        "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_ref_analytic/coefficients.json"
+      ],
+      "source_joint": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_ref_analytic/joint.npz",
+      "model_signature": {
+        "M": 50,
+        "L": 10,
+        "density_limit": 377500.0,
+        "infinity": "zero",
+        "unitarity_scope": "sampled",
+        "prescription": "analytic-cardinal",
+        "chiral_norm": "separate-l2",
+        "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_prepare",
+        "current_preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_current",
+        "chiral_tolerance": 0.002,
+        "uv_config": {
+          "moment_source": "printed",
+          "sr_error": "raw-absolute",
+          "cutoff": "hard-midpoint",
+          "mq_rule": "arithmetic-mean",
+          "pion_mass_gev": 0.14,
+          "matching_energy_gev": 1.2,
+          "up_mass_gev": 0.004,
+          "down_mass_gev": 0.0073,
+          "alpha_s": 0.4,
+          "gluon_condensate_gev4": 0.023,
+          "scalar_condensate_gev4": -0.0001,
+          "sr_tolerance": 0.002,
+          "ff_tolerance": 6e-05
+        },
+        "global_high_spin_enforced": false,
+        "tail_conditions_applied": true,
+        "additional_constraints": {
+          "kind": "explicit-analytic-samples",
+          "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_prepare"
+        },
+        "sampling_nodes": 132,
+        "scattering_samples": 3123,
+        "ff_endpoint_order": 2
+      },
+      "direction": [
+        35.7707638550655,
+        500.0
+      ],
+      "support_lower": 0.4353948434484178,
+      "support_upper": 0.43704370951158567,
+      "support_gap": 0.0016488660631678864,
+      "support_optimality_certified": true,
+      "representative_center_converged": true,
+      "boundary_y_distance_upper": 3.297732126335773e-06,
+      "exact_extremizer_claimed": false,
+      "joint_feasible": true,
+      "selection_uses_phase_data": false,
+      "selection_uses_paper_marker_coordinates": false,
+      "coefficients_mixed": false,
+      "finite_only": true
+    }
+  ],
+  "source_regions": null,
+  "reference_x_in_inner_projection": null,
+  "reference_x_in_outer_projection": null,
+  "selection_uses_phase_data": false,
+  "coefficients_mixed": false,
+  "frozen_tip_reused": false,
+  "ref_mid_rule": "Tip +x; nearest audited upper points to xref and (xref+x_tip)/2; no phase ranking/mixing",
+  "selection_template": null,
+  "source_support_reports": [
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_tip_schur_analytic/report.json",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_ref_analytic/report.json",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_mid_analytic/report.json"
+  ],
+  "rejected": [],
+  "representative_center_required": true,
+  "direct_support_selection": true,
+  "complete_region_claimed": false,
+  "plots_created": false
+}

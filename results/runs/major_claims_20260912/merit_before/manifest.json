@@ -1,0 +1,17 @@
+[
+  {
+    "source": "src/smatrix_bootstrap/linear.py",
+    "snapshot": "results/runs/major_claims_20260912/merit_before/linear.py.txt",
+    "sha256": "4a59060310fd274ddb932eec52bdcd95a1439504d19f3b7c6f4b30ba7348004a"
+  },
+  {
+    "source": "src/smatrix_bootstrap/probes.py",
+    "snapshot": "results/runs/major_claims_20260912/merit_before/probes.py.txt",
+    "sha256": "aae7034af8f35b12abbad3d334bf812bf0a36fa434e51e0f8789db9ec88249a3"
+  },
+  {
+    "source": "tests/test_mainline.py",
+    "snapshot": "results/runs/major_claims_20260912/merit_before/test_mainline.py.txt",
+    "sha256": "eb25e34104d1e777533f7f5387206e2b28c531d4f254a3106adc2a631e287398"
+  }
+]

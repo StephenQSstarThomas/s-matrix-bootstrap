@@ -1,0 +1,261 @@
+{
+  "initialization_only": true,
+  "stage_B_reproduction_credit": false,
+  "actual_valid_initializer": "results/runs/stage_B_FG_initializer_M10_round6_20260906/coefficients.json",
+  "near_candidate": "results/runs/stage_B_FG_initializer_M10_near3_20260907/coefficients.json",
+  "accepted_near_initializer": null,
+  "continuation_constraints": "results/runs/stage_B_FG_initializer_M10_near3_audit_20260907/constraints.json",
+  "stop_reason": "Requested three near-boundary rounds completed. Remaining finite-wave and global-FG violations require actual convex repair and independent validation through the calculation CLI; no repair was executed outside that entry.",
+  "runs": [
+    {
+      "round": 1,
+      "directory": "results/runs/stage_B_FG_initializer_M10_near1_20260907",
+      "targets": [
+        0.08114536585115878,
+        -0.00531692646867914
+      ],
+      "sampled_feasible": true,
+      "analytic_tail_conditions_passed": true,
+      "global_FG_status": "violated",
+      "FG_lowers": [
+        "[-2.91670482591913689832524427100 +/- 8.78e-31]",
+        "[-0.604360605973155208769626543158 +/- 3.41e-32]",
+        "[-0.889474273317401097330930076383 +/- 4.10e-31]"
+      ],
+      "global_FG_violations": [
+        {
+          "isospin": 0,
+          "cosine": -0.7973002087503838,
+          "polynomial_value": "[-2.91670482591913689832524427100 +/- 1.62e-30]"
+        },
+        {
+          "isospin": 1,
+          "cosine": -0.5432328009908033,
+          "polynomial_value": "[-0.604360605973155208769626543158 +/- 3.27e-32]"
+        },
+        {
+          "isospin": 1,
+          "cosine": 0.2063768621370954,
+          "polynomial_value": "[-0.0248033969245605130983751439943 +/- 2.51e-32]"
+        },
+        {
+          "isospin": 1,
+          "cosine": 0.7921796611344477,
+          "polynomial_value": "[-0.0470807345282190367265038852039 +/- 3.75e-32]"
+        },
+        {
+          "isospin": 2,
+          "cosine": -0.44071717723558695,
+          "polynomial_value": "[-0.889474273317401097330930076383 +/- 4.00e-31]"
+        },
+        {
+          "isospin": 2,
+          "cosine": 0.4563533109393476,
+          "polynomial_value": "[-0.0141720027863932394676695524835 +/- 1.52e-32]"
+        }
+      ],
+      "independent_audit": {
+        "directory": "results/runs/stage_B_FG_initializer_M10_near1_audit_20260907",
+        "samples": 29694,
+        "finite_violations": 375,
+        "minimum_margin": -0.0043132085047279615,
+        "retained_finite": 880,
+        "retained_FG": 64
+      },
+      "finite_support_bounds": {
+        "lower": 0.08114536585116627,
+        "upper": 0.08115387252440312,
+        "scope": "Only the saved finite problem; failed physical/global FG audit prevents boundary acceptance"
+      },
+      "estimated_FG_only_repair": {
+        "interior_weight": 0.2099492245454766,
+        "objective_loss": 0.008240921334837432,
+        "resulting_x": 0.07290444451632135,
+        "executed": false,
+        "physical_audit_still_required": true
+      },
+      "optimization_seconds": 162.54952574707568,
+      "audit_seconds": 21.686059918953106,
+      "source_changes": []
+    },
+    {
+      "round": 2,
+      "directory": "results/runs/stage_B_FG_initializer_M10_near2_20260907",
+      "targets": [
+        0.08110973451551415,
+        -0.0053139640939959135
+      ],
+      "sampled_feasible": true,
+      "analytic_tail_conditions_passed": true,
+      "global_FG_status": "violated",
+      "FG_lowers": [
+        "[-1.06207294483413843402995821187 +/- 4.33e-30]",
+        "[-0.508812269168401026598035547753 +/- 3.48e-31]",
+        "[-0.122474452451746267698442392240 +/- 4.81e-31]"
+      ],
+      "global_FG_violations": [
+        {
+          "isospin": 0,
+          "cosine": -0.7590707058999324,
+          "polynomial_value": "[-1.06207294483413843402995821187 +/- 2.52e-30]"
+        },
+        {
+          "isospin": 0,
+          "cosine": 0.1709867887444178,
+          "polynomial_value": "[-0.465471493312327956856265560310 +/- 3.65e-31]"
+        },
+        {
+          "isospin": 0,
+          "cosine": 0.5940236185503079,
+          "polynomial_value": "[-0.000488992205389371983677454589539 +/- 4.32e-34]"
+        },
+        {
+          "isospin": 1,
+          "cosine": -0.8194386421080043,
+          "polynomial_value": "[-0.119176970354566702038354611592 +/- 3.62e-31]"
+        },
+        {
+          "isospin": 1,
+          "cosine": 0.1963984694550052,
+          "polynomial_value": "[-0.00242078192592376372870067528711 +/- 3.63e-33]"
+        },
+        {
+          "isospin": 1,
+          "cosine": 0.8520859608627134,
+          "polynomial_value": "[-0.508812269168401026598035547753 +/- 3.62e-31]"
+        },
+        {
+          "isospin": 2,
+          "cosine": -0.694545039759269,
+          "polynomial_value": "[-0.122474452451746267698442392240 +/- 4.80e-31]"
+        },
+        {
+          "isospin": 2,
+          "cosine": -0.3929184920108182,
+          "polynomial_value": "[-0.108284945040692228566103179827 +/- 4.06e-32]"
+        },
+        {
+          "isospin": 2,
+          "cosine": 0.579052080711157,
+          "polynomial_value": "[-0.0704039260664355555621861138804 +/- 8.76e-33]"
+        }
+      ],
+      "independent_audit": {
+        "directory": "results/runs/stage_B_FG_initializer_M10_near2_audit_20260907",
+        "samples": 29694,
+        "finite_violations": 130,
+        "minimum_margin": -3.755230627849478e-05,
+        "retained_finite": 1010,
+        "retained_FG": 73
+      },
+      "finite_support_bounds": {
+        "lower": 0.08110973451544026,
+        "upper": 0.08111036731630449,
+        "scope": "Only the saved finite problem; failed physical/global FG audit prevents boundary acceptance"
+      },
+      "estimated_FG_only_repair": {
+        "interior_weight": 0.060083098284825415,
+        "objective_loss": 0.0023562393224979433,
+        "resulting_x": 0.0787534951930162,
+        "executed": false,
+        "physical_audit_still_required": true
+      },
+      "optimization_seconds": 271.36045688809827,
+      "audit_seconds": 22.396467857062817,
+      "source_changes": []
+    },
+    {
+      "round": 3,
+      "directory": "results/runs/stage_B_FG_initializer_M10_near3_20260907",
+      "targets": [
+        0.08110874290181687,
+        -0.00531379766504149
+      ],
+      "sampled_feasible": true,
+      "analytic_tail_conditions_passed": true,
+      "global_FG_status": "violated",
+      "FG_lowers": [
+        "[-0.136579748342755521592032822639 +/- 1.78e-31]",
+        "[-0.114906800828333612121894951416 +/- 2.68e-31]",
+        "[-0.0317780763538054917721708568038 +/- 1.85e-32]"
+      ],
+      "global_FG_violations": [
+        {
+          "isospin": 0,
+          "cosine": -0.7781299061628085,
+          "polynomial_value": "[-0.136579748342755521592032822639 +/- 9.79e-32]"
+        },
+        {
+          "isospin": 0,
+          "cosine": 0.3329759392710977,
+          "polynomial_value": "[-0.106694413983898058980778710976 +/- 3.65e-31]"
+        },
+        {
+          "isospin": 0,
+          "cosine": 0.6607984340818138,
+          "polynomial_value": "[-0.0706967524166451939802466643514 +/- 4.34e-32]"
+        },
+        {
+          "isospin": 1,
+          "cosine": -0.8376674411416353,
+          "polynomial_value": "[-0.0486252937937801813319960277358 +/- 8.76e-33]"
+        },
+        {
+          "isospin": 1,
+          "cosine": -0.49181034247820127,
+          "polynomial_value": "[-0.101665039363169949692845281196 +/- 2.88e-31]"
+        },
+        {
+          "isospin": 1,
+          "cosine": 0.16500389718905958,
+          "polynomial_value": "[-0.000695389062578836439299458744637 +/- 2.26e-34]"
+        },
+        {
+          "isospin": 1,
+          "cosine": 0.8313806899749693,
+          "polynomial_value": "[-0.114906800828333612121894951416 +/- 2.72e-31]"
+        },
+        {
+          "isospin": 2,
+          "cosine": -0.7066367175593872,
+          "polynomial_value": "[-0.0239771433857991392923721068704 +/- 5.17e-33]"
+        },
+        {
+          "isospin": 2,
+          "cosine": -0.4161988011250979,
+          "polynomial_value": "[-0.0317780763538054917721708568038 +/- 1.21e-32]"
+        },
+        {
+          "isospin": 2,
+          "cosine": 0.5524464090206685,
+          "polynomial_value": "[-0.0126660952988452801602355366315 +/- 3.82e-32]"
+        }
+      ],
+      "independent_audit": {
+        "directory": "results/runs/stage_B_FG_initializer_M10_near3_audit_20260907",
+        "samples": 29694,
+        "finite_violations": 51,
+        "minimum_margin": -1.083563711777413e-05,
+        "retained_finite": 1061,
+        "retained_FG": 83
+      },
+      "finite_support_bounds": {
+        "lower": 0.08110874290181305,
+        "upper": 0.0811088657831461,
+        "scope": "Only the saved finite problem; failed physical/global FG audit prevents boundary acceptance"
+      },
+      "estimated_FG_only_repair": {
+        "interior_weight": 0.014230701429352155,
+        "objective_loss": 0.000558061940838666,
+        "resulting_x": 0.0805506809609782,
+        "executed": false,
+        "physical_audit_still_required": true
+      },
+      "optimization_seconds": 283.6638585580513,
+      "audit_seconds": 20.004192327847704,
+      "source_changes": []
+    }
+  ],
+  "total_supervisor_seconds": 781.6605612970889,
+  "scope": "Unchanged M10/L12 finite sine model; density limit15500, infinity0, chi.002. Same physical audit at707 energies/L14/order40/768bits; all cuts retained. Small-model supports and feasibility are not transferred to M50."
+}

@@ -1,0 +1,10 @@
+{
+  "source_state": "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+  "physical_cache": "results/runs/stage_B_chiral_expanded_recover_M50_20260907/additional_scattering.npz",
+  "source_physical_rows": 8221,
+  "target_physical_rows": 10062,
+  "source_active_count": 4492,
+  "active_count": 6333,
+  "new_rows_added_to_working_set": 1841,
+  "rule": "Preserve all previous ordered physical rows and active indices; include every new independently observed chiral unitarity violation; pad old dual by zero. CLI must recompute the upper bound on the expanded original operator. The old working candidate is a Newton-start input, not an inherited feasible point."
+}

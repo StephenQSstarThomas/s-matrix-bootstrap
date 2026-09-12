@@ -1,0 +1,11 @@
+{
+  "violations": [],
+  "high_spin": [
+    {
+      "isospin": 0,
+      "cosine": -0.14063348704047285,
+      "polynomial_value": "[-0.572493055161727665524536424767 +/- 3.35e-31]"
+    }
+  ],
+  "scope": "Global high-spin necessary polynomial separation; finite-wave independent audit remains required"
+}

@@ -1,0 +1,141 @@
+{
+  "status": "conditional_finite_B_complete",
+  "B1_calculator_ready": true,
+  "B2_geometry_ready": true,
+  "B3_geometry_ready": true,
+  "model_signature": {
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "free",
+    "unitarity_scope": "sampled",
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": false,
+    "prescription": "pv-midpoint",
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    "additional_constraints": null,
+    "sampling_nodes": 50,
+    "scattering_samples": 1500
+  },
+  "chiral_norm": "two separate four-component L2 balls",
+  "regions": [
+    {
+      "mode": "pure",
+      "epsilon": null,
+      "valid_supports": 38,
+      "distance_upper": 0.009675773346601383,
+      "geometry_ready": true,
+      "metric": "q=(x,y)"
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.006,
+      "valid_supports": 29,
+      "distance_upper": 0.009812577971420494,
+      "geometry_ready": true,
+      "metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)"
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.004,
+      "valid_supports": 27,
+      "distance_upper": 0.009729681547872668,
+      "geometry_ready": true,
+      "metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)"
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.002,
+      "valid_supports": 28,
+      "distance_upper": 0.009849593699275495,
+      "geometry_ready": true,
+      "metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)"
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.001,
+      "valid_supports": 27,
+      "distance_upper": 0.00956684158009916,
+      "geometry_ready": true,
+      "metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)"
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.0006,
+      "valid_supports": 25,
+      "distance_upper": 0.009587225269165866,
+      "geometry_ready": true,
+      "metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)"
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.0002,
+      "valid_supports": 30,
+      "distance_upper": 0.00907372619064893,
+      "geometry_ready": true,
+      "metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)"
+    }
+  ],
+  "qualified_support_records": 204,
+  "rejected_records": 0,
+  "nesting": {
+    "six_chiral_present": true,
+    "contradictions": [],
+    "status": "no_observed_contradiction"
+  },
+  "all_accepted_supports_sampled_feasible": true,
+  "operator_scope": "Exact saved float64 finite operator; not an enclosure of discretization or kernel-rounding changes",
+  "literal_v3_setting_identity_recovered": false,
+  "paper_fig4_quantitative_agreement_established": false,
+  "continuum_unitarity_certified": false,
+  "regulator_platform_passed": false,
+  "regulator_study_role": "Retained failed sensitivity study, not a prerequisite for conditional B geometry",
+  "tests": [
+    {
+      "scope": "Full suite after central-stopping fix, before geometry-order fix",
+      "passed": 97
+    },
+    {
+      "scope": "Affected regions tests including near-parallel-order regression after geometry fix",
+      "passed": 2
+    }
+  ],
+  "optimization_source": "/tmp/smatrix_B_central_fix_rekhgjje",
+  "final_geometry_source": "/tmp/smatrix_B_geometry_order_qcumh0ai",
+  "remaining_mainline": {
+    "stages": [
+      "C",
+      "D",
+      "E",
+      "F"
+    ],
+    "planned_steps": 12,
+    "source_clarification_remains": true
+  },
+  "artifacts": {
+    "regions": "regions/regions.json",
+    "plot_pdf": "regions/regions.pdf",
+    "plot_png": "regions/regions.png",
+    "supports": "support_index.csv",
+    "replay": "REPLAY_ZH.md",
+    "claims": "B_CLAIMS_ZH.md",
+    "reference_points": "REFERENCE_POINTS_ZH.md",
+    "display_comparison": "DISPLAY_HULL_COMPARISON_ZH.md"
+  },
+  "active_calculations": 0,
+  "pending_queries": 0,
+  "reference_point_membership": {
+    "both_inside": [
+      "pure",
+      0.006,
+      0.004,
+      0.002,
+      0.001
+    ],
+    "both_excluded_by_valid_upper": [
+      0.0006,
+      0.0002
+    ],
+    "unresolved": []
+  }
+}

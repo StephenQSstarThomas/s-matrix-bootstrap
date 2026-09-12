@@ -1,0 +1,203 @@
+{
+  "task_date": "2026-09-12",
+  "completed_utc": "2026-09-12T03:25:27.984302+00:00",
+  "status": "bounded_source_audit_complete_with_nonunique_producer_norm",
+  "document": "AUDIT_ZH.md",
+  "source_manifest": "source_manifest.json",
+  "source_manifest_sha256": "09452ff2335d99928563934d814970fc9ea418835704f0922aa24ca00b2cd583",
+  "scope": {
+    "question": "Only original 2309 FESR error norm/packing/normalization in h43; earliest 2403 retrospective and code declarations",
+    "original_papers_checked": [
+      "2309.12402v1",
+      "2309.12402v2",
+      "2309.12402v3",
+      "PhysRevD.110.096001",
+      "PhysRevLett.133.191601"
+    ],
+    "followup_checked": "2403.10772v1 text and original anc/GTB_numerics.m/.nb, FESR-relevant portions only",
+    "prior_GitHub_snapshot_reused": "c8409331d5df911f592e53e5a43628418a39b213",
+    "broad_web_search_performed": false,
+    "output_curves_used_for_inference": false,
+    "author_programs_executed": false,
+    "optimization_performed": false,
+    "physical_inputs_modified": false,
+    "production_source_modified": false,
+    "full_normalization_recomputed": false,
+    "final_evidence_copies_PDFs": false,
+    "additional_bounded_question": "2403v1 sections 2.5 and 8.5: whether extra unitarization was an omitted 2309 step; same saved text only"
+  },
+  "2309_versions": [
+    {
+      "version": "2309.12402v1",
+      "source_snapshot": "sources/2309.12402v1__arxiv_submission_2.tex.txt",
+      "source_url": "https://arxiv.org/src/2309.12402v1",
+      "source_sha256": "bb163f5aea159c7c273255546e89b7e7e1472388ec45548a7b54e8d8724ed640",
+      "label": "h43",
+      "begin_line": 1002,
+      "formula": "||\\frac{\\pi}{M}\\sum_{i}\\big(ds/d\\phi\\big)_i s_i^n\\rho_{i}-\\text{QCD value}||\\le \\epsilon^{\\text{SR}}",
+      "formula_trimmed_sha256": "0588f277d2e22edc04192f8974747df7cc5c275297a322de8614a0ed4bcdf3c9",
+      "numeric_2e_minus_3_declaration_lines": [],
+      "SVZ_results_paragraph_lines": [
+        1113
+      ]
+    },
+    {
+      "version": "2309.12402v2",
+      "source_snapshot": "sources/2309.12402v2__arxiv_submission_2.tex.txt",
+      "source_url": "https://arxiv.org/src/2309.12402v2",
+      "source_sha256": "b38c4c9f940d5268be738414eb1e06b06c83ef7078419ba18754e5cf4ba2d60a",
+      "label": "h43",
+      "begin_line": 1026,
+      "formula": "||\\frac{\\pi}{M}\\sum_{i}\\big(ds/d\\phi\\big)_i s_i^n\\rho_{i}-\\text{QCD value}||\\le \\epsilon^{\\text{SR}}",
+      "formula_trimmed_sha256": "0588f277d2e22edc04192f8974747df7cc5c275297a322de8614a0ed4bcdf3c9",
+      "numeric_2e_minus_3_declaration_lines": [
+        1137
+      ],
+      "SVZ_results_paragraph_lines": [
+        1137
+      ]
+    },
+    {
+      "version": "2309.12402v3",
+      "source_snapshot": "sources/2309.12402v3__prd_submission_2.tex.txt",
+      "source_url": "https://arxiv.org/src/2309.12402v3",
+      "source_sha256": "39ec9e10da96f9c09c8db9e7d3ac63f342b1214df592896281adda727fb6be84",
+      "label": "h43",
+      "begin_line": 1030,
+      "formula": "||\\frac{\\pi}{M}\\sum_{i}\\big(ds/d\\phi\\big)_i s_i^n\\rho_{i}-\\text{QCD value}||\\le \\epsilon^{\\text{SR}}",
+      "formula_trimmed_sha256": "0588f277d2e22edc04192f8974747df7cc5c275297a322de8614a0ed4bcdf3c9",
+      "numeric_2e_minus_3_declaration_lines": [
+        1141
+      ],
+      "SVZ_results_paragraph_lines": [
+        1141
+      ]
+    }
+  ],
+  "published_PRD": {
+    "doi": "10.1103/PhysRevD.110.096001",
+    "publication_date": "2024-11-04",
+    "official_PDF": "https://harvest.aps.org/v2/journals/articles/10.1103/PhysRevD.110.096001/fulltext",
+    "download_sha256": "92f4807fb4fc9f56833909f8acbff7c708a751789cea6950d4adadea1767be30",
+    "formula_number": "3.17",
+    "formula_PDF_page": 11,
+    "formula_visually_checked": true,
+    "epsilon_2e_minus_3_PDF_page": 14,
+    "displayed_normalization_factor": null,
+    "explicit_residual_stack": false,
+    "explicit_p_norm_subscript": false,
+    "matches_h43_structure": true
+  },
+  "published_PRL": {
+    "doi": "10.1103/PhysRevLett.133.191601",
+    "publication_date": "2024-11-04",
+    "official_PDF": "https://harvest.aps.org/v2/journals/articles/10.1103/PhysRevLett.133.191601/fulltext",
+    "download_sha256": "3ec04345a1c466118e1fedbb08466b18be634dbe41c7dff7aa9adf8033ddfd53",
+    "FESR_and_companion_reference_PDF_page": 3,
+    "specific_FESR_error_norm_found": false,
+    "specific_epsilon_SR_value_found": false
+  },
+  "errata_scope": {
+    "pages_checked": [
+      "https://journals.aps.org/prd/abstract/10.1103/PhysRevD.110.096001",
+      "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.133.191601"
+    ],
+    "linked_Erratum_found": false,
+    "FESR_packing_correction_found_in_checked_versions": false,
+    "universal_absence_claim": false
+  },
+  "2403_earliest_public_ancillary": {
+    "paper": "2403.10772v1",
+    "submission_date": "2024-03-16",
+    "official_record": "https://arxiv.org/abs/2403.10772v1",
+    "official_source": "https://arxiv.org/src/2403.10772v1",
+    "m_sha256": "9448095e76a98acd818c6e4b3219950044c4b6c3d59ea246342dedfe4b481169",
+    "nb_sha256": "e3f498b5409e166f727ccd3f027931810ed86a3fc96a890b1c785f7849eeef29",
+    "text_sha256": "b44b40328bd4962f71fc1dbf1a3a9b3d8a401802f1ba7acf7def96eb6d6000e7",
+    "m_versus_GitHub_byte_identical": false,
+    "m_FESR_grouping": "Three moments per channel S0/P1/D0; one Euclidean L2 ball per group",
+    "m_error_radii": {
+      "S0": "1e-7",
+      "P1": "6e-6",
+      "D0": "5e-6"
+    },
+    "m_lines": {
+      "echi": 41,
+      "FESR_tolerances": 43,
+      "spectral_variable": 58,
+      "moments_and_residuals": [
+        92,
+        97
+      ],
+      "FESR_norms": 124
+    },
+    "NB_moment_normalization_lines": [
+      4777,
+      4825
+    ],
+    "NB_direct_exports_lines": [
+      5121,
+      5145
+    ],
+    "same_FESR_grouping_and_error_radii_as_GitHub": true,
+    "same_entire_variable_model_as_GitHub_claimed": false,
+    "normalization_identity": "ints0[n,nl] explicitly divides the moment row by vx[[n0]]^(n+nl), with nl=2 for S0/P1 and 3 for D0",
+    "retrospective_text_lines": {
+      "code_for_this_paper": 1930,
+      "old_1p2_current_2GeV": 693,
+      "previous_paper_chiral_discussion": 2029,
+      "current_FESR_definitions": [
+        2033,
+        2064
+      ]
+    },
+    "direct_statement_of_original_2309_FESR_packing_found": false,
+    "text_code_radius_discrepancy": {
+      "v1_text_P1": "5e-6",
+      "v1_text_D0": "6e-6",
+      "v1_code_P1": "6e-6",
+      "v1_code_D0": "5e-6"
+    },
+    "chronology_correction": "The 2025 first GitHub release is not the first public program: arXiv v1 already supplied code in March 2024."
+  },
+  "evidence_vs_inference": {
+    "direct_source_facts": [
+      "h43 scalar-looking fixed-n raw residual is identical in all three 2309 versions",
+      "epsilon_SR=2e-3 first found explicitly in v2, retained in v3 and PRD",
+      "No residual vector or L2/weight normalization is specified there",
+      "Earliest 2403 v1 explicitly supplies its own per-channel three-moment L2 prescription"
+    ],
+    "conditional_literal_reading": "Apply h43 independently for each stated n/channel, taking the scalar norm as the usual unweighted absolute value: four independent raw bounds. This is not a recovered-producer claim.",
+    "QCD_target_inference": "If the left side is read literally as raw, the srnumbers target must be restored by s0^(n+2) for zero-error moment consistency. This does not prove the authors omitted any hidden implementation scaling.",
+    "not_uniquely_determined": [
+      "whether code stacked two moments per channel",
+      "whether code stacked all four moments",
+      "whether an unreported s0/target/weight normalization was used",
+      "whether the scalar displayed inequalities were the complete error domain"
+    ],
+    "norm_set_relation_under_same_raw_scaling": "B_2^4(eps) is a subset of B_2^2(eps) x B_2^2(eps), which is a subset of the four-dimensional raw box",
+    "original_2309_producer_norm_uniquely_recovered": false,
+    "rho_root_cause_identified": false,
+    "input_change_authorized_or_performed_by_this_audit": false
+  },
+  "bounded_negative_conclusion": "No new direct evidence found that uniquely selects the original 2309 producer packing. The literal four-raw-bound implementation has direct formula-level support; no checked source explicitly specifies the alternative two-moment/channel or four-moment global L2 grouping.",
+  "prior_audit": "../PV_PRIMARY_SOURCE_AUDIT_20260911/AUDIT_ZH.md",
+  "document_sha256": "1fad1570026a40dfaa90bea43a9913e7924051f08cc3f66c457d76a4cf9d4b05",
+  "iteration_scope_addendum": {
+    "document": "ITERATION_SCOPE_ADDENDUM_ZH.md",
+    "source_snapshot": "sources/2403.10772v1__QCDsumrule2_30.tex.txt",
+    "section_2_5_title_line": 782,
+    "section_2_5_description_line": 784,
+    "section_8_5_title_line": 2093,
+    "explicit_previous_work_comparison_line": 2095,
+    "linearization_prior_reference_line": 2097,
+    "historical_reference_for_technique": "He:2018uxa (2D), not He:2023lyy",
+    "explicit_author_statement": "Extra step used in this paper; not necessary in the previous 1.2 GeV work, where unitarity was already close to saturation",
+    "says_2309_used_omitted_Watsonian_iteration": false,
+    "proves_no_2309_run_ever_used_any_similar_step": false,
+    "text_uses_literal_Watsonian_term": false,
+    "universal_boundary_elasticity_theorem_established": false,
+    "new_downloads_or_physical_calculations_for_addendum": false,
+    "sha256": "8b7509e0ec9be6dd8ca05b2a3a584bb7580b5f9a2a4641196d4290d8c6262bbf"
+  }
+}

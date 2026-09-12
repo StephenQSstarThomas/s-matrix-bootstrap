@@ -1,0 +1,165 @@
+{
+  "command": "boundary",
+  "status": "candidate",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "boundary",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_line_control_20260906",
+    "control": null,
+    "matrix": null,
+    "matrix_sha256": null,
+    "rank_report": null,
+    "density_limit": null,
+    "preparation": "results/runs/stage_A_small_20260906",
+    "margin": 1e-08,
+    "solver_seconds": 60.0,
+    "conditioning": "qr",
+    "linear_solver": "qdldl",
+    "start_mu": 0.01,
+    "gap": 1e-05,
+    "optimizer": "barrier",
+    "nodes": 50,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "subtracted": false,
+    "infinity": "zero",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "seconds": 120.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3"
+  },
+  "scope": "Coherent finite-sine-cardinal conditional model; published regions and phases remain unverified.",
+  "solver": {
+    "solver": "analytic density barrier with QR and preconditioned CG",
+    "iterations": 43,
+    "seconds": 0.2100792929995805,
+    "qr_factorizations": 29,
+    "pcg_steps": 14,
+    "qr_reuse": 6,
+    "raw_coordinates": true,
+    "history": [
+      {
+        "mu": 0.01,
+        "objective": 0.07228368535456765,
+        "outer_estimate": 0.2559289077395947,
+        "gap_estimate": 0.1836452223850271
+      },
+      {
+        "mu": 0.001,
+        "objective": 0.14698007507903546,
+        "outer_estimate": 0.16632453720812865,
+        "gap_estimate": 0.01934446212909319
+      },
+      {
+        "mu": 0.0001,
+        "objective": 0.15944979017546146,
+        "outer_estimate": 0.16139388290438128,
+        "gap_estimate": 0.0019440927289198196
+      },
+      {
+        "mu": 1e-05,
+        "objective": 0.16076403209618434,
+        "outer_estimate": 0.16095831467536778,
+        "gap_estimate": 0.00019428257918344648
+      },
+      {
+        "mu": 1.0000000000000002e-06,
+        "objective": 0.16089585251178629,
+        "outer_estimate": 0.16091527953145154,
+        "gap_estimate": 1.9427019665239613e-05
+      },
+      {
+        "mu": 1.0000000000000001e-07,
+        "objective": 0.16090922963060483,
+        "outer_estimate": 0.16091676745244776,
+        "gap_estimate": 7.537821842934085e-06
+      }
+    ],
+    "feasible_path": true,
+    "all_density_directions_retained": true
+  },
+  "outer": {
+    "upper": 0.1609152795304368,
+    "enclosure": "[0.1609152795304367780284299 +/- 3.78e-27]",
+    "disk": 0.11901671565995285,
+    "chiral": 0.04189829295678592,
+    "density_residual": 2.7091369800289527e-07,
+    "scope": "exact saved float64 operator; angular quadrature error excluded",
+    "primal_feasible": true,
+    "lower": 0.16090922802151025,
+    "minimum_margin_enclosure": "[8.3804997161742182001e-12 +/- 2.63e-32]",
+    "density_norm": 17.67159597309621,
+    "targets": [
+      "[0.1609092280215102936999825 +/- 1.79e-26]",
+      "[-0.01014981666253709821708318 +/- 3.06e-28]"
+    ]
+  },
+  "M": 3,
+  "L": 2,
+  "sampling_nodes": 3,
+  "infinity": "zero",
+  "mode": "chiral",
+  "chiral_tolerance": 0.002,
+  "density_limit": 1500,
+  "targets": [
+    0.1609092280215099,
+    -0.010149816662537114
+  ],
+  "objective": 0.1609092280215099,
+  "minimum_scattering_margin": 8.380499715925345e-12,
+  "chiral_norms": [
+    0.0019999952052826954,
+    0.0003394948645520191
+  ],
+  "density_norm": 17.67159597309621,
+  "radial_shrink": 0.99999999,
+  "sampled_feasible": true,
+  "support_optimality_certified": true,
+  "operator_scope": "A-stage float64 quadrature; no continuum certificate",
+  "elapsed_seconds": 0.3696318110451102,
+  "core_sources": {
+    "__init__.py": "49dd11423d525645991e1d52dd9bf2976113fff38e5635a647f47ebd34c9f3fa",
+    "analysis.py": "7a861728cf44ed3297da98a14bebe698af89b9a968f871438e0f2a54e1056190",
+    "imaginary.py": "49b430ee01ac59813a6d2279e5d2440ee9b9db57558e7e98a5f93c2ebf876e81",
+    "io.py": "03650f40f181b3fb6d650ea7a2bc0aa261781fbf1d77f9d6f2b53d1b38300fc4",
+    "kernels.py": "03b21ed2505c2be0a202aed8533bdd6d8e4a6e2f0a08df8315f55d08ff5f474d",
+    "linear.py": "eaae07454e569bddba5a28ccaeb94f5703656b436228e4b63ca7d315f69fadbd",
+    "model.py": "e46300b9b5d77a217033471f78da4b9ff1a392d4c863756331f84c9c1960b843",
+    "operators.py": "b946848d3371fb3b4a0eb0c73f9d8f433edfe4e24b693bbec55f10f93a0f101d",
+    "quotient.py": "d9e119b2a77677594ae572dae559004e94bcaef34207d224e4d038c5b799f2bd",
+    "run.py": "eb49beb3ec2284e694059837d66aa4c0b3675068566a8cd92ff93cc184b1a352"
+  },
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 120.0,
+  "supervisor_seconds": 0.6661809701472521
+}

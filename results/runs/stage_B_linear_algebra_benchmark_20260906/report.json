@@ -1,0 +1,47 @@
+{
+  "physical_feature_shape": [
+    17286,
+    3875
+  ],
+  "source_feature_matrix": "Saved full-model feasible initialization, epsilon=.002, K150/L10, density bound377500, infinity=0",
+  "observed_diagnosis": [
+    "Current barrier feature construction explicitly rounds scalar weights and rows to float64.",
+    "Column-scaled physical first-300 and first-500 feature submatrices have condition2 about1.87e10 and2.49e10. Their double-precision Gram matrices already have spurious negative eigenvalues near\u22121e\u221214.",
+    "Full QR condition reported independently by the main task is about1.2e17; this figure is not from the submatrix benchmark.",
+    "SciPy solve_triangular and BLAS trsv coerce longdouble to float64 on this environment. NumPy longdouble dot products retain64 significand bits."
+  ],
+  "recommended_integration": [
+    "Preserve longdouble feature weights, feature rows, gradient, preconditioner vectors and Krylov matvecs; do not cast an already rounded feature matrix and expect lost precision to return.",
+    "Use row-wise NumPy longdouble dot products for upper/lower triangular substitution. Observed3875-dimensional times were0.0463s/0.0802s, allowing direct integration without a new native extension.",
+    "Validate the resulting Newton step with actual gradient directional derivative and true curvature. Keep the existing backtracking/physical candidate checks; QR-reported decrement alone is unreliable at this conditioning.",
+    "If64-bit significand arithmetic is insufficient, use128-bit Arb matrix-vector residual/correction with the double QR used only as preconditioner. Avoid materializing an arbitrary-precision full Hessian at every barrier step."
+  ],
+  "high_precision_extrapolations": [
+    {
+      "bits": 128,
+      "classical_gram_seconds": 467.4345015086884,
+      "classical_solve_seconds": 293.3493940376029,
+      "one_forward_transpose_feature_pair_seconds": 0.5875235861636117
+    },
+    {
+      "bits": 192,
+      "classical_gram_seconds": 732.2437658397047,
+      "classical_solve_seconds": 408.8271934938675,
+      "one_forward_transpose_feature_pair_seconds": 1.0500416832018875
+    }
+  ],
+  "julia": {
+    "version": "1.12.6",
+    "clarabel_installed_source": "/home/shiqiu/.julia/packages/Clarabel/ChSpM",
+    "clarabel_version": "0.11.1",
+    "bigfloat_source_support": true,
+    "evidence": [
+      "README.md arbitrary precision claim",
+      "test/run_solver_tests.jl includes Float64 and BigFloat",
+      "Project.toml declares GenericLinearAlgebra"
+    ],
+    "default_active_environment_registers_clarabel": false,
+    "runtime_bigfloat_solver_test_performed": false
+  },
+  "limits": "Timing depends on matrix structure, allocation and machine load. No full3875 arbitrary-precision Hessian was formed or solved. No optimization or conic run was performed."
+}

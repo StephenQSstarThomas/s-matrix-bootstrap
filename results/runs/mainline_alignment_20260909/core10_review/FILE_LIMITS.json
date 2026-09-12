@@ -1,0 +1,68 @@
+{
+  "module_count": 10,
+  "files": [
+    {
+      "file": "__init__.py",
+      "lines": 348,
+      "bytes": 22883,
+      "passed": true
+    },
+    {
+      "file": "analysis.py",
+      "lines": 319,
+      "bytes": 24412,
+      "passed": true
+    },
+    {
+      "file": "imaginary.py",
+      "lines": 314,
+      "bytes": 23839,
+      "passed": true
+    },
+    {
+      "file": "io.py",
+      "lines": 290,
+      "bytes": 24313,
+      "passed": true
+    },
+    {
+      "file": "kernels.py",
+      "lines": 350,
+      "bytes": 24412,
+      "passed": true
+    },
+    {
+      "file": "linear.py",
+      "lines": 328,
+      "bytes": 24147,
+      "passed": true
+    },
+    {
+      "file": "model.py",
+      "lines": 350,
+      "bytes": 24549,
+      "passed": true
+    },
+    {
+      "file": "operators.py",
+      "lines": 346,
+      "bytes": 24505,
+      "passed": true
+    },
+    {
+      "file": "quotient.py",
+      "lines": 330,
+      "bytes": 24236,
+      "passed": true
+    },
+    {
+      "file": "run.py",
+      "lines": 342,
+      "bytes": 24198,
+      "passed": true
+    }
+  ],
+  "total_lines": 3317,
+  "total_bytes": 241494,
+  "all_limits_passed": true
+}

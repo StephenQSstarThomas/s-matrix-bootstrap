@@ -1,0 +1,162 @@
+{
+  "rule": "Upper feasible-hull edge at fixed Weinberg f00(3), before evaluating phases",
+  "reference": [
+    0.07332139057293466,
+    -0.00488809270486231
+  ],
+  "target": [
+    0.07332139056580267,
+    -0.004128922666413147
+  ],
+  "epsilon": 0.002,
+  "source_coefficients": [
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_078/coefficients.json",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_070/coefficients.json"
+  ],
+  "weights": [
+    0.8568124948468576,
+    0.1431875051531424
+  ],
+  "source_reports": [
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_078/report.json",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_070/report.json"
+  ],
+  "vertices": [
+    [
+      -0.0803661086031152,
+      0.005648377433647707
+    ],
+    [
+      -0.049307035410357206,
+      0.0026660177857699644
+    ],
+    [
+      -0.02117301628389862,
+      0.0005126330486404846
+    ],
+    [
+      -0.007152102660426174,
+      -0.0004796965849627923
+    ],
+    [
+      0.008088093093333732,
+      -0.0015130994321447832
+    ],
+    [
+      0.024969190073950383,
+      -0.002617409652345541
+    ],
+    [
+      0.040417222441683796,
+      -0.0035850302673628705
+    ],
+    [
+      0.05323209008549835,
+      -0.004342759549937369
+    ],
+    [
+      0.06540961880224935,
+      -0.005016891287796322
+    ],
+    [
+      0.07894659612776544,
+      -0.005695606479143987
+    ],
+    [
+      0.10084542477112678,
+      -0.006708993168618989
+    ],
+    [
+      0.10046040365837147,
+      -0.006349289221230599
+    ],
+    [
+      0.09814831476046604,
+      -0.006053220368523262
+    ],
+    [
+      0.09288182816103582,
+      -0.005579067323287421
+    ],
+    [
+      0.08500765151497165,
+      -0.00496516625369634
+    ],
+    [
+      0.07515914263942212,
+      -0.004256188944648252
+    ],
+    [
+      0.062324558612541096,
+      -0.003367380398961866
+    ],
+    [
+      0.041417199099007894,
+      -0.0019512370624219853
+    ],
+    [
+      0.020325775506164108,
+      -0.0005394014416402301
+    ],
+    [
+      0.005288932818805263,
+      0.00045526994050794996
+    ],
+    [
+      -0.010702742262063926,
+      0.0014960351979357957
+    ],
+    [
+      -0.04242511299184029,
+      0.0035023488722615037
+    ]
+  ],
+  "boundary_approximation": true,
+  "region_metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)",
+  "regional_distance_upper": 0.0737258341646967,
+  "exact_extremizer_claimed": false,
+  "original_H_feasibility": {
+    "upper": 5e-324,
+    "enclosure": "0",
+    "disk": 0.0,
+    "chiral": 0.0,
+    "density_residual": 0.0,
+    "tail_support": 0.0,
+    "chiral_norm": "combined-l2",
+    "objective_kind": "target_plane",
+    "scope": "exact saved float64 operator and supplied tail maps; angular quadrature error excluded",
+    "primal_feasible": true,
+    "lower": -5e-324,
+    "minimum_margin_enclosure": "[5.3476917121970957016e-85 +/- 1.50e-105]",
+    "density_norm": 371454.9381150035,
+    "targets": [
+      "[0.07332139056579841135025748 +/- 3.68e-27]",
+      "[-0.004128922666412635915331340 +/- 4.86e-28]"
+    ],
+    "tail_margin_enclosures": []
+  },
+  "model_signature": {
+    "chiral_norm": "combined-l2",
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "free",
+    "unitarity_scope": "sampled",
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": false,
+    "prescription": "pv-midpoint",
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    "additional_constraints": null,
+    "sampling_nodes": 50,
+    "scattering_samples": 1500
+  },
+  "regional_geometry_ready": false,
+  "local_upper_boundary_ready": true,
+  "local_upper_boundary": {
+    "distance_upper": 1.396703940637508e-05,
+    "scaled_distance_upper": 0.00698351970318754,
+    "budget": 0.01,
+    "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_078/report.json",
+    "scope": "Arb vertical distance to the true upper boundary at the actual saved x; scaled by epsilon; global region may remain unfinished"
+  }
+}

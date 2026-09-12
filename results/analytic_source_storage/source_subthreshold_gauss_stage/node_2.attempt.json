@@ -1,0 +1,6 @@
+{
+  "kind": "node",
+  "node": 2,
+  "hard_cap_seconds": 180,
+  "retries": 0
+}

@@ -1,0 +1,273 @@
+%%%%%%%%%%%%%%%%%%%
+% numerical setup %
+%%%%%%%%%%%%%%%%%%%
+
+M = 50; % number of interpolation points on the physical line 
+l = 10; % number of partial waves per isospin
+Mrho = M^2+M*(M+1)/2; Msigma = 2*M+1; % number of amplitude parameters
+nu0 = -20; % nu_0 maps to the center of the disk
+vnu = nu0+(8-2*nu0)./(1+cos(([1:M]-1/2)*pi/M)); % list of interlation points s>4
+s0 = (2000/139.57)^2; %s0~2GeV
+ns0 = sum(double(vnu<=s0)); % number of points below s0
+nhigh = M-ns0; %number of high energy points >s0
+vnuhigh = vnu(ns0+1:M); %the list high energy points
+
+%unphysical region s=1/2,1,3/2,2 for imposting chiSB condition
+Munphys=4; vsunphys=1/2+([1:Munphys]-1)/2;
+
+%for computing physical region partial waves from spectral densities
+B1 = importdata('B1.mat'); A1 = importdata('A1.mat');
+B2 = importdata('B2.mat'); A2 = importdata('A2.mat');
+Bhat1 = importdata('Bhat1.mat'); Bhat2 = importdata('Bhat2.mat'); 
+
+%for evaluating unphysical region partial waves: functional
+fsigmaF = importdata('fsigmaF.mat'); frhoF = importdata('frhoF.mat');
+%for evaluating unphysical region partial waves: chiralSB constraints
+fsigmachi = importdata('fsigmachi.mat'); frhochi = importdata('frhochi.mat');
+
+%form factor part
+Lambda3pw = importdata('Lambda3pw.mat'); %rescaling factor for S0,P1,D0 pw
+KFF = importdata('KFF3.mat'); %dispersion relation for three form factors F
+FFfactor = importdata('FF3factor.mat'); %rescale factor of form factor
+
+%spectral density part
+intS00 = importdata('intS00.mat'); intS01 = importdata('intS01.mat'); intS02 = importdata('intS02.mat');
+intP1m1 = importdata('intP1m1.mat'); intP10 = importdata('intP10.mat'); intP11 = importdata('intP11.mat');
+intD0m2 = importdata('intD0m2.mat'); intD0m1 = importdata('intD0m1.mat'); intD00 = importdata('intD00.mat');
+qcdfesr = importdata('SVZSR.mat');
+%SVZ SR ordered as (rhoS0_0,rhoS0_1,rhoS0_2,rhoP1_m1,rhoP1_0,rhoP1_1,rhoD0_m2,rhoD0_m1,rhoD0_0)
+
+%chiral constraints tolerance
+echi=2*10^(-3);
+%sum rule errors
+esrS0=1*10^(-7); esrD0=5*10^(-6); esrP1=6*10^(-6);
+%form factor asympotics
+effS0=3*10^(-8); effP1=2*10^(-6); effD0=4*10^(-2);
+    
+maxF0 = 0.1776;
+F0red =(maxF0)*50/60; % the red point (blue point: F0red =(maxF0)*49/60)
+
+%%%%%%%%%%%%%%%%
+% optimization %
+%%%%%%%%%%%%%%%%
+
+cvx_begin sdp
+cvx_solver mosek
+variable rho(Mrho)
+variable sig(Msigma)
+variable spec(3*M) %3 spectral density S0,P1,D0
+variable ImFF(3*M) %3 form factors S0,P1,D0
+variable Bmat(3,3,3*M) hermitian %positive semidefinite matrices
+
+% quadratic cone of unitarity for all partial waves at all energy
+Imht = B2*rho+B1*sig;
+Reht = A2*rho+A1*sig; %Rehtilde, Imhtilde
+Imhh = Bhat2*rho+Bhat1*sig; %Imhhat
+norms([Reht,Imht],2,2)<=sqrt(2*Imhh);
+
+%6 waves (S0,D0,S2,D2,P1,F1) up to s0
+Imht6 = [Imht(1:ns0);Imht(M+1:M+ns0);Imht(l*M+1:l*M+ns0);Imht(l*M+M+1:l*M+M+ns0);Imht(2*l*M+1:2*l*M+ns0);Imht(2*l*M+M+1:2*l*M+M+ns0)];
+Reht6 = [Reht(1:ns0);Reht(M+1:M+ns0);Reht(l*M+1:l*M+ns0);Reht(l*M+M+1:l*M+M+ns0);Reht(2*l*M+1:2*l*M+ns0);Reht(2*l*M+M+1:2*l*M+M+ns0)];
+Imhh6 = [Imhh(1:ns0);Imhh(M+1:M+ns0);Imhh(l*M+1:l*M+ns0);Imhh(l*M+M+1:l*M+M+ns0);Imhh(2*l*M+1:2*l*M+ns0);Imhh(2*l*M+M+1:2*l*M+M+ns0)];
+
+% regularization
+norm(rho/Mrho,4) <= 10^(2);
+
+%partial waves rescaled back for FF bootstrap
+Imh3 = Lambda3pw.*[Imht(1:M);Imht(2*l*M+1:2*l*M+M);Imht(M+1:2*M)];
+Reh3 = Lambda3pw.*[Reht(1:M);Reht(2*l*M+1:2*l*M+M);Reht(M+1:2*M)];
+%ordered as S0,P1,D0 waves
+
+% form factor bootstrap
+ReFF = KFF*ImFF+1; %computing real part of FF
+ReFFcur = FFfactor.*ReFF; ImFFcur = FFfactor.*ImFF;%rescaled FF
+for i=[1:ns0,M+1:M+ns0,2*M+1:2*M+ns0]
+    Bmat(:,:,i) == [1,1-1i*(Reh3(i)-1i*Imh3(i)),ReFFcur(i)-1i*ImFFcur(i);...
+                   1+1i*(Reh3(i)+1i*Imh3(i)),1,ReFFcur(i)+1i*ImFFcur(i);...
+                   ReFFcur(i)+1i*ImFFcur(i),ReFFcur(i)-1i*ImFFcur(i),spec(i)];
+    Bmat(:,:,i)>=0;
+end
+
+% QCD sum rule
+fesr=[intS00'*spec(1:ns0),intS01'*spec(1:ns0),intS02'*spec(1:ns0),...
+     intP1m1'*spec(M+1:M+ns0),intP10'*spec(M+1:M+ns0),intP11'*spec(M+1:M+ns0),...
+     intD0m2'*spec(2*M+1:2*M+ns0),intD0m1'*spec(2*M+1:2*M+ns0),intD00'*spec(2*M+1:2*M+ns0)]; 
+%moments of spectral densities: S0: 0,1,2, P1:-1,0,1, D0:-2,-1,0
+w=fesr'-qcdfesr; %the error in SVZ SR
+wS0=w(1:3); wP1=w(4:6); wD0=w(7:9); %SR errors for S0,P1,D0 waves
+    
+% form factor asymptotics
+FFcur2=ReFFcur.^2+ImFFcur.^2; %square of rescaled FF%
+FFcur2high=[FFcur2(ns0+1:M);FFcur2(M+ns0+1:2*M);FFcur2(2*M+ns0+1:3*M)];
+FFasymp=FFcur2high; %high energy points, i.e., asymptotic FF
+    
+% functional for mapping
+f3 = fsigmaF*sig + frhoF*rho; %evaluating partial waves at s*=3
+f3S0 = f3(1); f3S2 = f3(l+1); f3P1 = f3(2*l+1);
+f3D0 = f3(2); f3D2 = f3(l+2); f3F1 = f3(2*l+2);
+F0 = 2*(f3S0+5*f3D0); F1 = 2*(3*f3P1+7*f3F1); %two functionals to project
+    
+% chiSB constraints
+% partial waves at the 4 points 1/2,1,3/2,2
+fchi = fsigmachi*sig + frhochi*rho;
+fchiS0 = fchi(1:Munphys);fchiD0 = fchi(Munphys+1:2*Munphys);
+fchiS2 = fchi(l*Munphys+1:l*Munphys+Munphys);fchiD2 = fchi(l*Munphys+Munphys+1:l*Munphys+2*Munphys);
+fchiP1 = fchi(2*l*Munphys+1:2*l*Munphys+Munphys);fchiF1 = fchi(2*l*Munphys+Munphys+1:2*l*Munphys+2*Munphys);
+%tree level ratio
+R01tree = 3*(2*vsunphys-1)./(vsunphys-4); R21tree = 3*(2-vsunphys)./(vsunphys-4); 
+chi01 = fchiS0-R01tree'.*fchiP1;
+chi21 = fchiS2-R21tree'.*fchiP1; %difference compared with chiSB
+
+%low energy and high energy control
+norm([chi01;chi21]) <= echi; %chiral ratio tolerance
+norm([fchiD0;fchiD2;fchiF1]) <= echi;
+norm(wS0) <= esrS0; norm(wP1) <= esrP1; norm(wD0) <= esrD0;
+FFasymp(1:nhigh) <= effS0; FFasymp(nhigh+1:2*nhigh) <= effP1; FFasymp(2*nhigh+1:3*nhigh) <= effD0;
+    
+F0 == F0red;
+
+maximize(F1);
+
+cvx_end
+
+% generating pointing functional
+Imht6fnl = Imht6; Reht6fnl = Reht6; %the previous results for the 6 partial waves up to s0
+    
+%%%%%%%%%%%%%%%%%
+% unitarization %
+%%%%%%%%%%%%%%%%%
+
+cvx_begin sdp
+cvx_solver mosek
+variable rho(Mrho)
+variable sig(Msigma)
+variable spec(3*M) %3 spectral density S0,P1,D0
+variable ImFF(3*M) %3 form factors S0,P1,D0
+variable Bmat(3,3,3*M) hermitian %positive semidefinite matrices
+
+% quadratic cone of unitarity for all partial waves at all energy
+Imht = B2*rho+B1*sig;
+Reht = A2*rho+A1*sig; %Rehtilde, Imhtilde
+Imhh = Bhat2*rho+Bhat1*sig; %Imhhat
+norms([Reht,Imht],2,2)<=sqrt(2*Imhh);
+
+%6 waves (S0,D0,S2,D2,P1,F1) up to s0
+Imht6 = [Imht(1:ns0);Imht(M+1:M+ns0);Imht(l*M+1:l*M+ns0);Imht(l*M+M+1:l*M+M+ns0);Imht(2*l*M+1:2*l*M+ns0);Imht(2*l*M+M+1:2*l*M+M+ns0)];
+Reht6 = [Reht(1:ns0);Reht(M+1:M+ns0);Reht(l*M+1:l*M+ns0);Reht(l*M+M+1:l*M+M+ns0);Reht(2*l*M+1:2*l*M+ns0);Reht(2*l*M+M+1:2*l*M+M+ns0)];
+Imhh6 = [Imhh(1:ns0);Imhh(M+1:M+ns0);Imhh(l*M+1:l*M+ns0);Imhh(l*M+M+1:l*M+M+ns0);Imhh(2*l*M+1:2*l*M+ns0);Imhh(2*l*M+M+1:2*l*M+M+ns0)];
+
+% regularization
+norm(rho/Mrho,4) <= 10^(2);
+
+%partial waves rescaled back for FF bootstrap
+Imh3 = Lambda3pw.*[Imht(1:M);Imht(2*l*M+1:2*l*M+M);Imht(M+1:2*M)];
+Reh3 = Lambda3pw.*[Reht(1:M);Reht(2*l*M+1:2*l*M+M);Reht(M+1:2*M)];
+%ordered as S0,P1,D0 waves
+
+% form factor bootstrap
+ReFF = KFF*ImFF+1; %computing real part of FF
+ReFFcur = FFfactor.*ReFF; ImFFcur = FFfactor.*ImFF;%rescaled FF
+for i=[1:ns0,M+1:M+ns0,2*M+1:2*M+ns0]
+    Bmat(:,:,i) == [1,1-1i*(Reh3(i)-1i*Imh3(i)),ReFFcur(i)-1i*ImFFcur(i);...
+                   1+1i*(Reh3(i)+1i*Imh3(i)),1,ReFFcur(i)+1i*ImFFcur(i);...
+                   ReFFcur(i)+1i*ImFFcur(i),ReFFcur(i)-1i*ImFFcur(i),spec(i)];
+    Bmat(:,:,i)>=0;
+end
+
+% QCD sum rule
+fesr=[intS00'*spec(1:ns0),intS01'*spec(1:ns0),intS02'*spec(1:ns0),...
+     intP1m1'*spec(M+1:M+ns0),intP10'*spec(M+1:M+ns0),intP11'*spec(M+1:M+ns0),...
+     intD0m2'*spec(2*M+1:2*M+ns0),intD0m1'*spec(2*M+1:2*M+ns0),intD00'*spec(2*M+1:2*M+ns0)]; 
+%moments of spectral densities: S0: 0,1,2, P1:-1,0,1, D0:-2,-1,0
+w=fesr'-qcdfesr; %the error in SVZ SR
+wS0=w(1:3); wP1=w(4:6); wD0=w(7:9); %SR errors for S0,P1,D0 waves
+    
+% form factor asymptotics
+FFcur2=ReFFcur.^2+ImFFcur.^2; %square of rescaled FF%
+FFcur2high=[FFcur2(ns0+1:M);FFcur2(M+ns0+1:2*M);FFcur2(2*M+ns0+1:3*M)];
+FFasymp=FFcur2high; %high energy points, i.e., asymptotic FF
+    
+% functional for mapping
+f3 = fsigmaF*sig + frhoF*rho; %evaluating partial waves at s*=3
+f3S0 = f3(1); f3S2 = f3(l+1); f3P1 = f3(2*l+1);
+f3D0 = f3(2); f3D2 = f3(l+2); f3F1 = f3(2*l+2);
+F0 = 2*(f3S0+5*f3D0); F1 = 2*(3*f3P1+7*f3F1); %two functionals to project
+    
+% chiSB constraints
+% partial waves at the 4 points 1/2,1,3/2,2
+fchi = fsigmachi*sig + frhochi*rho;
+fchiS0 = fchi(1:Munphys);fchiD0 = fchi(Munphys+1:2*Munphys);
+fchiS2 = fchi(l*Munphys+1:l*Munphys+Munphys);fchiD2 = fchi(l*Munphys+Munphys+1:l*Munphys+2*Munphys);
+fchiP1 = fchi(2*l*Munphys+1:2*l*Munphys+Munphys);fchiF1 = fchi(2*l*Munphys+Munphys+1:2*l*Munphys+2*Munphys);
+%tree level ratio
+R01tree = 3*(2*vsunphys-1)./(vsunphys-4); R21tree = 3*(2-vsunphys)./(vsunphys-4); 
+chi01 = fchiS0-R01tree'.*fchiP1;
+chi21 = fchiS2-R21tree'.*fchiP1; %difference compared with chiSB
+
+%low energy and high energy control
+norm([chi01;chi21]) <= echi; %chiral ratio tolerance
+norm([fchiD0;fchiD2;fchiF1]) <= echi;
+norm(wS0) <= esrS0; norm(wP1) <= esrP1; norm(wD0) <= esrD0;
+FFasymp(1:nhigh) <= effS0; FFasymp(nhigh+1:2*nhigh) <= effP1; FFasymp(2*nhigh+1:3*nhigh) <= effD0;
+    
+V1 = Imht6fnl'*Imht6+Reht6fnl'*Reht6-sum(Imhh6); % the iteration functional of pure unitarity for 6 partial waves
+maximize(V1);
+
+cvx_end
+
+%%%%%%%%%%%%%%%%%%%%
+% phase shift plot %
+%%%%%%%%%%%%%%%%%%%%
+
+mpi=139.57/1000; %mpi in GeV
+deg=180/pi; %phase shift in unit of degree
+
+%phase shift of the 6 partial waves
+deltaS0=angle(Reht6(1:ns0)+1i*Imht6(1:ns0))*deg;
+deltaD0=angle(Reht6(ns0+1:2*ns0)+1i*Imht6(ns0+1:2*ns0))*deg;
+deltaS2=angle(Reht6(2*ns0+1:3*ns0)+1i*Imht6(2*ns0+1:3*ns0))*deg;
+deltaD2=1/2*angle(1+1i*(Reht6(3*ns0+1:4*ns0)+1i*Imht6(3*ns0+1:4*ns0)))*deg;
+deltaP1=angle(Reht6(4*ns0+1:5*ns0)+1i*Imht6(4*ns0+1:5*ns0))*deg;
+deltaF1=1/2*angle(1+1i*(Reht6(5*ns0+1:6*ns0)+1i*Imht6(5*ns0+1:6*ns0)))*deg;
+%use different def for D2 and F1(very small) for plots
+
+%plot S0,D0,S2,D2,P1,F1 phase shifts
+figure
+subplot(3,2,1)
+plot(sqrt(vnu(1:ns0))*mpi,deltaS0,'ro','MarkerSize',2);
+xlabel('energy (GeV)');
+ylabel('S0 phase shift');
+subplot(3,2,2)
+plot(sqrt(vnu(1:ns0))*mpi,deltaD0,'ro','MarkerSize',2);
+xlabel('energy (GeV)');
+ylabel('D0 phase shift');
+subplot(3,2,3)
+plot(sqrt(vnu(1:ns0))*mpi,deltaS2,'ro','MarkerSize',2);
+xlabel('energy (GeV)');
+ylabel('S2 phase shift');
+subplot(3,2,4)
+plot(sqrt(vnu(1:ns0))*mpi,deltaD2,'ro','MarkerSize',2);
+xlabel('energy (GeV)');
+ylabel('D2 phase shift');
+subplot(3,2,5)
+plot(sqrt(vnu(1:ns0))*mpi,deltaP1,'ro','MarkerSize',2);
+xlabel('energy (GeV)');
+ylabel('P1 phase shift');
+subplot(3,2,6)
+plot(sqrt(vnu(1:ns0))*mpi,deltaF1,'ro','MarkerSize',2);
+xlabel('energy (GeV)');
+ylabel('F1 phase shift');
+
+% %exporting bootstrap parameters
+% sigmarho = [sig',rho']';
+% fid=fopen('GTB.txt','w');
+% for j=1:Mrho+Msigma
+%     fprintf(fid,'%4.20f\n',sigmarho(j));
+% end
+% for j=1:3*M
+%     fprintf(fid,'%4.20f\n',spec(j));
+% end
+% for j=1:3*M
+%     fprintf(fid,'%4.20f\n',ImFF(j));
+% end
+% fclose(fid);

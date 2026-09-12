@@ -1,0 +1,889 @@
+{
+  "status": "ok",
+  "message-type": "work",
+  "message-version": "1.0.0",
+  "message": {
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          7,
+          30
+        ]
+      ],
+      "date-time": "2026-07-30T17:09:48Z",
+      "timestamp": 1785431388578,
+      "version": "3.56.0"
+    },
+    "reference-count": 72,
+    "publisher": "Oxford University Press (OUP)",
+    "issue": "6",
+    "license": [
+      {
+        "start": {
+          "date-parts": [
+            [
+              2026,
+              5,
+              18
+            ]
+          ],
+          "date-time": "2026-05-18T00:00:00Z",
+          "timestamp": 1779062400000
+        },
+        "content-version": "vor",
+        "delay-in-days": 0,
+        "URL": "https://creativecommons.org/licenses/by/4.0/"
+      }
+    ],
+    "funder": [
+      {
+        "name": "SCOAP"
+      }
+    ],
+    "content-domain": {
+      "domain": [],
+      "crossmark-restriction": false
+    },
+    "short-container-title": [],
+    "published-print": {
+      "date-parts": [
+        [
+          2026,
+          6,
+          4
+        ]
+      ]
+    },
+    "abstract": "<jats:title>Abstract</jats:title>\n                  <jats:p>The gauge theory bootstrap computes the strongly coupled pion dynamics by considering the most general scattering matrix, form factors, and spectral densities and matching them with perturbative QCD at high energy and with weakly coupled pions at low energy. In this work, we show that further constraints on the spectral densities significantly reduce the possible solutions to a small set of qualitatively similar ones. Quantitatively, the precise solution is controlled by the asymptotic value of the form factors and Shifman\u2013Vainshtein\u2013Zakharov sum rules. We also introduce an iterative procedure that, starting from a generic feasible point, converges to a unique solution parameterized by the UV input. For the converged solution we compute the masses and widths of resonances that appear, scattering lengths and effective ranges of partial waves, and low-energy coefficients in the effective action. Additionally, we use these results to discuss the thermodynamics of a pion gas including pair correlations of pions with the same and opposite charge.</jats:p>",
+    "DOI": "10.1093/ptep/ptag087",
+    "type": "journal-article",
+    "created": {
+      "date-parts": [
+        [
+          2026,
+          5,
+          15
+        ]
+      ],
+      "date-time": "2026-05-15T11:43:33Z",
+      "timestamp": 1778845413000
+    },
+    "source": "Crossref",
+    "is-referenced-by-count": 0,
+    "title": [
+      "The Gauge Theory Bootstrap: Predicting Pion Dynamics from QCD"
+    ],
+    "prefix": "10.1093",
+    "volume": "2026",
+    "author": [
+      {
+        "ORCID": "https://orcid.org/0000-0002-1366-6157",
+        "authenticated-orcid": false,
+        "given": "Yifei",
+        "family": "He",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "id": [
+              {
+                "id": "https://ror.org/02feahw73",
+                "id-type": "ROR",
+                "asserted-by": "publisher"
+              }
+            ],
+            "name": "CNRS Laboratoire de Physique de l\u2019\u00c9cole Normale Sup\u00e9rieure, ENS, Universit\u00e9 PSL, , Sorbonne Universit\u00e9, Universit\u00e9 Paris Cit\u00e9, F-75005 Paris ,",
+            "place": [
+              "France"
+            ]
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0001-9108-3638",
+        "authenticated-orcid": false,
+        "given": "Martin",
+        "family": "Kruczenski",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "id": [
+              {
+                "id": "https://ror.org/02dqehb95",
+                "id-type": "ROR",
+                "asserted-by": "publisher"
+              }
+            ],
+            "name": "PQSEI (Purdue Quantum Science and Engineering Institute), Purdue University Department of Physics and Astronomy and , West Lafayette, IN 47907 ,",
+            "place": [
+              "USA"
+            ]
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "member": "286",
+    "published-online": {
+      "date-parts": [
+        [
+          2026,
+          5,
+          18
+        ]
+      ]
+    },
+    "reference": [
+      {
+        "key": "2026063006461440500_bib1",
+        "doi-asserted-by": "publisher",
+        "first-page": "125",
+        "DOI": "10.1016/S0550-3213(01)00147-X",
+        "volume": "603",
+        "author": "Colangelo",
+        "year": "2001",
+        "journal-title": "Nucl. Phys. B"
+      },
+      {
+        "key": "2026063006461440500_bib2",
+        "doi-asserted-by": "publisher",
+        "first-page": "074016",
+        "DOI": "10.1103/PhysRevD.71.074016",
+        "volume": "71",
+        "author": "Pelaez",
+        "year": "2005",
+        "journal-title": "Phys. Rev. D"
+      },
+      {
+        "key": "2026063006461440500_bib3",
+        "doi-asserted-by": "publisher",
+        "first-page": "427",
+        "DOI": "10.1016/0550-3213(94)90634-3",
+        "volume": "427",
+        "author": "Bijnens",
+        "year": "1994",
+        "journal-title": "Nucl. Phys. B"
+      },
+      {
+        "key": "2026063006461440500_bib4",
+        "doi-asserted-by": "publisher",
+        "first-page": "263",
+        "DOI": "10.1016/S0550-3213(97)80013-2",
+        "volume": "508",
+        "author": "Bijnens",
+        "year": "1997",
+        "journal-title": "Nucl. Phys. B"
+      },
+      {
+        "key": "2026063006461440500_bib5",
+        "first-page": "014",
+        "volume": "9805",
+        "author": "Bijnens",
+        "year": "1998",
+        "journal-title": "J. High Energy Phys."
+      },
+      {
+        "key": "2026063006461440500_bib6",
+        "doi-asserted-by": "publisher",
+        "first-page": "218",
+        "DOI": "10.1016/j.physletb.2004.10.005",
+        "volume": "602",
+        "author": "Ananthanarayan",
+        "year": "2004",
+        "journal-title": "Phys. Lett. B"
+      },
+      {
+        "key": "2026063006461440500_bib7",
+        "first-page": "034",
+        "volume-title": "SciPost Phys.",
+        "author": "Guerrieri",
+        "year": "2026"
+      },
+      {
+        "key": "2026063006461440500_bib8",
+        "doi-asserted-by": "publisher",
+        "first-page": "074003",
+        "DOI": "10.1103/PhysRevD.111.074003",
+        "volume": "111",
+        "author": "Pel\u00e1ez",
+        "year": "2025",
+        "journal-title": "Phys. Rev. D"
+      },
+      {
+        "key": "2026063006461440500_bib9",
+        "first-page": "014508",
+        "volume-title": "Phys. Rev. D",
+        "author": "Aoki",
+        "year": "2026"
+      },
+      {
+        "key": "2026063006461440500_bib10",
+        "doi-asserted-by": "publisher",
+        "first-page": "191601",
+        "DOI": "10.1103/PhysRevLett.133.191601",
+        "volume": "133",
+        "author": "He",
+        "year": "2024",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "2026063006461440500_bib11",
+        "doi-asserted-by": "publisher",
+        "first-page": "096001",
+        "DOI": "10.1103/PhysRevD.110.096001",
+        "volume": "110",
+        "author": "He",
+        "year": "2024",
+        "journal-title": "Phys. Rev. D"
+      },
+      {
+        "key": "2026063006461440500_bib12",
+        "author": "He"
+      },
+      {
+        "key": "2026063006461440500_bib13",
+        "volume-title": "The Analytic S-Matrix",
+        "author": "Eden",
+        "year": "1966"
+      },
+      {
+        "key": "2026063006461440500_bib14",
+        "volume-title": "The Analytic S Matrix: A Basis for Nuclear Democracy",
+        "author": "Chew",
+        "year": "1966"
+      },
+      {
+        "key": "2026063006461440500_bib15",
+        "doi-asserted-by": "publisher",
+        "first-page": "112",
+        "DOI": "10.1103/PhysRevLett.7.112",
+        "volume": "7",
+        "author": "Zachariasen",
+        "year": "1961",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "2026063006461440500_bib16",
+        "doi-asserted-by": "publisher",
+        "first-page": "1163",
+        "DOI": "10.1103/PhysRev.142.1163",
+        "volume": "142",
+        "author": "Collins",
+        "year": "1966",
+        "journal-title": "Phys. Rev."
+      },
+      {
+        "key": "2026063006461440500_bib17",
+        "doi-asserted-by": "publisher",
+        "first-page": "133",
+        "DOI": "10.1007/JHEP11(2017)133",
+        "volume": "1711",
+        "author": "Paulos",
+        "year": "2017",
+        "journal-title": "J. High Energy Phys."
+      },
+      {
+        "key": "2026063006461440500_bib18",
+        "doi-asserted-by": "publisher",
+        "first-page": "143",
+        "DOI": "10.1007/JHEP11(2017)143",
+        "volume": "1711",
+        "author": "Paulos",
+        "year": "2017",
+        "journal-title": "J. High Energy Phys."
+      },
+      {
+        "key": "2026063006461440500_bib19",
+        "doi-asserted-by": "publisher",
+        "first-page": "040",
+        "DOI": "10.1007/JHEP12(2019)040",
+        "volume": "1912",
+        "author": "Paulos",
+        "year": "2019",
+        "journal-title": "J. High Energy Phys."
+      },
+      {
+        "key": "2026063006461440500_bib20",
+        "author": "Kruczenski"
+      },
+      {
+        "key": "2026063006461440500_bib21",
+        "doi-asserted-by": "publisher",
+        "first-page": "241604",
+        "DOI": "10.1103/PhysRevLett.122.241604",
+        "volume": "122",
+        "author": "Guerrieri",
+        "year": "2019",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "2026063006461440500_bib22",
+        "first-page": "122",
+        "volume-title": "SciPost Phys.",
+        "author": "Bose",
+        "year": "2021"
+      },
+      {
+        "key": "2026063006461440500_bib23",
+        "doi-asserted-by": "publisher",
+        "first-page": "081",
+        "DOI": "10.21468/SciPostPhys.9.5.081",
+        "volume": "9",
+        "author": "Bose",
+        "year": "2020",
+        "journal-title": "SciPost Phys."
+      },
+      {
+        "key": "2026063006461440500_bib24",
+        "first-page": "88",
+        "volume-title": "J. High Energy Phys.",
+        "author": "Guerrieri",
+        "year": "2021"
+      },
+      {
+        "key": "2026063006461440500_bib25",
+        "doi-asserted-by": "publisher",
+        "first-page": "151",
+        "DOI": "10.1007/JHEP08(2022)151",
+        "volume": "2208",
+        "author": "Albert",
+        "year": "2022",
+        "journal-title": "J. High Energy Phys."
+      },
+      {
+        "key": "2026063006461440500_bib26",
+        "doi-asserted-by": "publisher",
+        "first-page": "094",
+        "DOI": "10.1007/JHEP06(2023)094",
+        "volume": "2306",
+        "author": "Fernandez",
+        "year": "2023",
+        "journal-title": "J. High Energy Phys."
+      },
+      {
+        "key": "2026063006461440500_bib27",
+        "first-page": "172",
+        "volume-title": "J. High Energy Phys.",
+        "author": "Albert",
+        "year": "2024"
+      },
+      {
+        "key": "2026063006461440500_bib28",
+        "first-page": "39",
+        "volume-title": "J. High Energy Phys.",
+        "author": "Albert",
+        "year": "2024"
+      },
+      {
+        "key": "2026063006461440500_bib29",
+        "doi-asserted-by": "publisher",
+        "first-page": "176",
+        "DOI": "10.1007/JHEP11(2023)176",
+        "volume": "2311",
+        "author": "Ma",
+        "year": "2023",
+        "journal-title": "J. High Energy Phys."
+      },
+      {
+        "key": "2026063006461440500_bib30",
+        "doi-asserted-by": "publisher",
+        "first-page": "157",
+        "DOI": "10.1007/JHEP03(2024)157",
+        "volume": "2403",
+        "author": "Bhat",
+        "year": "2024",
+        "journal-title": "J. High Energy Phys."
+      },
+      {
+        "key": "2026063006461440500_bib31",
+        "doi-asserted-by": "publisher",
+        "first-page": "035",
+        "DOI": "10.1007/JHEP07(2020)035",
+        "volume": "2007",
+        "author": "Karateev",
+        "year": "2020",
+        "journal-title": "J. High Energy Phys."
+      },
+      {
+        "key": "2026063006461440500_bib32",
+        "doi-asserted-by": "publisher",
+        "first-page": "186",
+        "DOI": "10.1007/JHEP02(2022)186",
+        "volume": "2202",
+        "author": "Karateev",
+        "year": "2022",
+        "journal-title": "J. High Energy Phys."
+      },
+      {
+        "key": "2026063006461440500_bib33",
+        "first-page": "146",
+        "volume": "2202",
+        "author": "Chen",
+        "year": "2022",
+        "journal-title": "J. High Energy Phys."
+      },
+      {
+        "key": "2026063006461440500_bib34",
+        "doi-asserted-by": "publisher",
+        "first-page": "108",
+        "DOI": "10.1007/JHEP08(2023)108",
+        "volume": "2308",
+        "author": "Correia",
+        "year": "2023",
+        "journal-title": "J. High Energy Phys."
+      },
+      {
+        "key": "2026063006461440500_bib35",
+        "doi-asserted-by": "publisher",
+        "first-page": "093",
+        "DOI": "10.1007/JHEP01(2024)093",
+        "volume": "2401",
+        "author": "Cordova",
+        "year": "2024",
+        "journal-title": "J. High Energy Phys."
+      },
+      {
+        "key": "2026063006461440500_bib36",
+        "first-page": "034031",
+        "volume-title": "Phys. Rev. D",
+        "author": "Zahed",
+        "year": "2025"
+      },
+      {
+        "key": "2026063006461440500_bib37",
+        "doi-asserted-by": "crossref",
+        "first-page": "359",
+        "DOI": "10.1016/0370-2693(79)90554-9",
+        "volume": "87",
+        "author": "Lepage",
+        "year": "1979",
+        "journal-title": "Phys. Lett. B"
+      },
+      {
+        "key": "2026063006461440500_bib38",
+        "doi-asserted-by": "publisher",
+        "first-page": "385",
+        "DOI": "10.1016/0550-3213(79)90022-1",
+        "volume": "147",
+        "author": "Shifman",
+        "year": "1979",
+        "journal-title": "Nucl. Phys. B"
+      },
+      {
+        "key": "2026063006461440500_bib39",
+        "doi-asserted-by": "publisher",
+        "first-page": "448",
+        "DOI": "10.1016/0550-3213(79)90023-3",
+        "volume": "147",
+        "author": "Shifman",
+        "year": "1979",
+        "journal-title": "Nucl. Phys. B"
+      },
+      {
+        "key": "2026063006461440500_bib40",
+        "doi-asserted-by": "publisher",
+        "first-page": "519",
+        "DOI": "10.1016/0550-3213(79)90024-5",
+        "volume": "147",
+        "author": "Shifman",
+        "year": "1979",
+        "journal-title": "Nucl. Phys. B"
+      },
+      {
+        "key": "2026063006461440500_bib41",
+        "doi-asserted-by": "publisher",
+        "first-page": "65",
+        "DOI": "10.1016/0550-3213(87)90307-5",
+        "volume": "279",
+        "author": "Gasser",
+        "year": "1987",
+        "journal-title": "Nucl. Phys. B"
+      },
+      {
+        "key": "2026063006461440500_bib42",
+        "doi-asserted-by": "publisher",
+        "first-page": "093",
+        "DOI": "10.1007/JHEP11(2018)093",
+        "volume": "1811",
+        "author": "He",
+        "year": "2018",
+        "journal-title": "J. High Energy Phys."
+      },
+      {
+        "key": "2026063006461440500_bib43",
+        "doi-asserted-by": "publisher",
+        "first-page": "237",
+        "DOI": "10.1016/0370-1573(81)90030-2",
+        "volume": "73",
+        "author": "Mueller",
+        "year": "1981",
+        "journal-title": "Phys. Rep."
+      },
+      {
+        "key": "2026063006461440500_bib44",
+        "doi-asserted-by": "publisher",
+        "first-page": "136751",
+        "DOI": "10.1016/j.physletb.2021.136751",
+        "volume": "823",
+        "author": "Tong",
+        "year": "2021",
+        "journal-title": "Phys. Lett. B"
+      },
+      {
+        "key": "2026063006461440500_bib45",
+        "doi-asserted-by": "crossref",
+        "first-page": "46",
+        "DOI": "10.1007/JHEP10(2022)046",
+        "volume": "2022",
+        "author": "Tong",
+        "year": "2022",
+        "journal-title": "J. High Energy Phys."
+      },
+      {
+        "key": "2026063006461440500_bib46",
+        "doi-asserted-by": "publisher",
+        "first-page": "141802",
+        "DOI": "10.1103/PhysRevLett.111.141802",
+        "volume": "111",
+        "author": "Chang",
+        "year": "2013",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "2026063006461440500_bib47",
+        "doi-asserted-by": "publisher",
+        "first-page": "426",
+        "DOI": "10.1016/0550-3213(77)90237-1",
+        "volume": "118",
+        "author": "Lopez",
+        "year": "1977",
+        "journal-title": "Nucl. Phys. B"
+      },
+      {
+        "key": "2026063006461440500_bib48",
+        "doi-asserted-by": "publisher",
+        "first-page": "125",
+        "DOI": "10.1007/JHEP08(2021)125",
+        "volume": "2108",
+        "author": "He",
+        "year": "2021",
+        "journal-title": "J. High Energy Phys."
+      },
+      {
+        "key": "2026063006461440500_bib49",
+        "doi-asserted-by": "publisher",
+        "first-page": "251601",
+        "DOI": "10.1103/PhysRevLett.127.251601",
+        "volume": "127",
+        "author": "Guerrieri",
+        "year": "2021",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "2026063006461440500_bib50",
+        "doi-asserted-by": "publisher",
+        "first-page": "092",
+        "DOI": "10.1007/JHEP12(2022)092",
+        "volume": "2212",
+        "author": "Chen",
+        "year": "2022",
+        "journal-title": "J. High Energy Phys."
+      },
+      {
+        "key": "2026063006461440500_bib51",
+        "doi-asserted-by": "publisher",
+        "first-page": "001",
+        "DOI": "10.1007/JHEP05(2023)001",
+        "volume": "2305",
+        "author": "Miro",
+        "year": "2023",
+        "journal-title": "J. High Energy Phys."
+      },
+      {
+        "key": "2026063006461440500_bib52",
+        "doi-asserted-by": "publisher",
+        "first-page": "142",
+        "DOI": "10.1016/0003-4916(84)90242-2",
+        "volume": "158",
+        "author": "Gasser",
+        "year": "1984",
+        "journal-title": "Ann. Phys."
+      },
+      {
+        "key": "2026063006461440500_bib53",
+        "doi-asserted-by": "publisher",
+        "first-page": "083C01",
+        "DOI": "10.1093/ptep/ptac097",
+        "volume": "2022",
+        "author": "Workman",
+        "year": "2022",
+        "journal-title": "Prog. Theor. Exp. Phys."
+      },
+      {
+        "key": "2026063006461440500_bib54",
+        "doi-asserted-by": "publisher",
+        "first-page": "616",
+        "DOI": "10.1103/PhysRevLett.17.616",
+        "volume": "17",
+        "author": "Weinberg",
+        "year": "1966",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "2026063006461440500_bib55",
+        "doi-asserted-by": "publisher",
+        "first-page": "1",
+        "DOI": "10.1016/j.physrep.2016.09.001",
+        "volume": "658",
+        "author": "Pelaez",
+        "year": "2016",
+        "journal-title": "Phys. Rept."
+      },
+      {
+        "key": "2026063006461440500_bib56",
+        "first-page": "567",
+        "volume-title": "Exclusive reactions in QCD, in Les Houches Summer School on Theoretical Physics, Session 66: Trends in Nuclear Physics, 100 Years Later",
+        "author": "Pire",
+        "year": "1996"
+      },
+      {
+        "key": "2026063006461440500_bib57",
+        "volume-title": "Statistical Mechanics",
+        "author": "Huang",
+        "year": "1987"
+      },
+      {
+        "key": "2026063006461440500_bib58",
+        "doi-asserted-by": "publisher",
+        "first-page": "345",
+        "DOI": "10.1103/PhysRev.187.345",
+        "volume": "187",
+        "author": "Dashen",
+        "year": "1969",
+        "journal-title": "Phys. Rev."
+      },
+      {
+        "key": "2026063006461440500_bib59",
+        "doi-asserted-by": "publisher",
+        "first-page": "718",
+        "DOI": "10.1016/0375-9474(92)90005-5",
+        "volume": "546",
+        "author": "Venugopalan",
+        "year": "1992",
+        "journal-title": "Nucl. Phys. A"
+      },
+      {
+        "key": "2026063006461440500_bib60",
+        "first-page": "001",
+        "volume-title": "J. High Energy Phys.",
+        "author": "Baratella",
+        "year": "2024"
+      },
+      {
+        "key": "2026063006461440500_bib61",
+        "doi-asserted-by": "publisher",
+        "first-page": "034908",
+        "DOI": "10.1103/PhysRevC.106.034908",
+        "volume": "106",
+        "author": "Abdallah",
+        "year": "2022",
+        "journal-title": "Phys. Rev. C"
+      },
+      {
+        "key": "2026063006461440500_bib62",
+        "author": "Cordoba"
+      },
+      {
+        "key": "2026063006461440500_bib63",
+        "doi-asserted-by": "publisher",
+        "first-page": "228",
+        "DOI": "10.1007/JHEP07(2021)228",
+        "volume": "2107",
+        "author": "Tourkine",
+        "year": "2021",
+        "journal-title": "J. High Energy Phys."
+      },
+      {
+        "key": "2026063006461440500_bib64",
+        "doi-asserted-by": "publisher",
+        "first-page": "005",
+        "DOI": "10.1007/JHEP11(2023)005",
+        "volume": "2311",
+        "author": "Tourkine",
+        "year": "2023",
+        "journal-title": "J. High Energy Phys."
+      },
+      {
+        "key": "2026063006461440500_bib65",
+        "doi-asserted-by": "crossref",
+        "DOI": "10.1017/CBO9780511535000",
+        "volume-title": "QCD as a Theory of Hadrons: From Partons to Confinement",
+        "author": "Narison",
+        "year": "2004"
+      },
+      {
+        "key": "2026063006461440500_bib66",
+        "author": "Cherry"
+      },
+      {
+        "key": "2026063006461440500_bib67",
+        "volume-title": "The MOSEK optimization toolbox for MATLAB manual",
+        "author": "MOSEK ApS",
+        "year": "2024"
+      },
+      {
+        "key": "2026063006461440500_bib68",
+        "volume-title": "CVX: Matlab software for disciplined convex programming",
+        "author": "Grant",
+        "year": "2014"
+      },
+      {
+        "key": "2026063006461440500_bib69",
+        "doi-asserted-by": "crossref",
+        "first-page": "95",
+        "DOI": "10.1007/978-1-84800-155-8_7",
+        "article-title": "Graph implementations for nonsmooth convex programs",
+        "volume-title": "Recent Advances in Learning and Control",
+        "author": "Grant",
+        "year": "2008"
+      },
+      {
+        "key": "2026063006461440500_bib70",
+        "doi-asserted-by": "publisher",
+        "first-page": "1279",
+        "DOI": "10.1103/PhysRevD.7.1279",
+        "volume": "7",
+        "author": "Protopopescu",
+        "year": "1973",
+        "journal-title": "Phys. Rev. D"
+      },
+      {
+        "key": "2026063006461440500_bib71",
+        "doi-asserted-by": "publisher",
+        "first-page": "185",
+        "DOI": "10.1016/0550-3213(74)90131-X",
+        "volume": "69",
+        "author": "Losty",
+        "year": "1974",
+        "journal-title": "Nucl. Phys. B"
+      },
+      {
+        "key": "2026063006461440500_bib72",
+        "doi-asserted-by": "publisher",
+        "first-page": "205",
+        "DOI": "10.1016/0550-3213(75)90616-1",
+        "volume": "100",
+        "author": "Hyams",
+        "year": "1975",
+        "journal-title": "Nucl. Phys. B"
+      }
+    ],
+    "container-title": [
+      "Progress of Theoretical and Experimental Physics"
+    ],
+    "original-title": [],
+    "language": "en",
+    "link": [
+      {
+        "URL": "https://academic.oup.com/ptep/advance-article-pdf/doi/10.1093/ptep/ptag087/68329225/ptag087.pdf",
+        "content-type": "application/pdf",
+        "content-version": "am",
+        "intended-application": "syndication"
+      },
+      {
+        "URL": "https://academic.oup.com/ptep/article-pdf/2026/6/063B05/68329225/ptag087.pdf",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "syndication"
+      },
+      {
+        "URL": "https://academic.oup.com/ptep/article-pdf/2026/6/063B05/68329225/ptag087.pdf",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "deposited": {
+      "date-parts": [
+        [
+          2026,
+          6,
+          30
+        ]
+      ],
+      "date-time": "2026-06-30T11:25:18Z",
+      "timestamp": 1782818718000
+    },
+    "score": 1,
+    "resource": {
+      "primary": {
+        "URL": "https://academic.oup.com/ptep/article/doi/10.1093/ptep/ptag087/8686484"
+      }
+    },
+    "subtitle": [],
+    "short-title": [],
+    "issued": {
+      "date-parts": [
+        [
+          2026,
+          5,
+          18
+        ]
+      ]
+    },
+    "references-count": 72,
+    "journal-issue": {
+      "issue": "6",
+      "published-print": {
+        "date-parts": [
+          [
+            2026,
+            6,
+            4
+          ]
+        ]
+      }
+    },
+    "URL": "https://doi.org/10.1093/ptep/ptag087",
+    "relation": {},
+    "ISSN": [
+      "2050-3911"
+    ],
+    "issn-type": [
+      {
+        "value": "2050-3911",
+        "type": "electronic"
+      }
+    ],
+    "subject": [],
+    "published-other": {
+      "date-parts": [
+        [
+          2026,
+          6
+        ]
+      ]
+    },
+    "published": {
+      "date-parts": [
+        [
+          2026,
+          5,
+          18
+        ]
+      ]
+    },
+    "article-number": "063B05"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "bits": 384,
+  "arithmetic": "exact float64 entries of saved finite operators and transformed point; selected Gram determinant evaluated directly in the original Hermitian formula",
+  "combined_norm": "[0.001999999980015402231542757135 +/- 9.73e-32]",
+  "chiral_margin": "[1.998459781009060628854059385e-11 +/- 4.76e-39]",
+  "moment_changes": [
+    "[7.392984263438184134467698003e-22 +/- 4.76e-50]",
+    "[-2.356197546887154589120175875e-19 +/- 4.40e-47]",
+    "[-2.578036710452044808939999758e-21 +/- 3.11e-49]",
+    "[-1.081678353763022370556485520e-19 +/- 3.17e-47]"
+  ],
+  "moment_margins": [
+    "[9.240432442451114918346839742e-6 +/- 3.59e-35]",
+    "[8.446709714030779408345567709e-5 +/- 2.16e-33]",
+    "[2.363038303398317100608474457e-5 +/- 6.12e-34]",
+    "[0.0002176937184682481931244815229 +/- 2.09e-32]"
+  ],
+  "worst_gram_channel": "P1",
+  "worst_gram_node": 37,
+  "worst_gram_s": 27.31370849898476,
+  "worst_gram_determinant": "[-0.0004110189324803032029802681444 +/- 1.93e-33]",
+  "gram_strictly_negative": true,
+  "endpoint_adjusted_node": 42,
+  "worst_node_current_spectrum_unchanged": true,
+  "original_joint_feasible": false,
+  "optimization_performed": false,
+  "other_candidates_examined": false
+}

@@ -1,0 +1,1011 @@
+{
+  "status": "incomplete",
+  "requested_nodes": 50,
+  "model_signature": null,
+  "regions": [],
+  "rejected": [
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_x_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_strip_minus_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_strip_plus_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_001_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_002_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_strip_minus_fixed_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_003_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_004_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_005_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_006_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_007_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_008_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_009_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_010_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_011_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_012_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_parallel_001_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_013_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_014_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_parallel_002_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_015_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_016_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_parallel_003_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_017_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_parallel_004_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_parallel_005_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_018_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_parallel_006_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_parallel_007_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_x_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_strip_plus_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_strip_minus_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_001_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_002_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_003_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_004_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_005_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_006_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_007_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_008_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_009_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_010_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_011_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_parallel_001_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_012_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_013_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_parallel_002_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_014_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_parallel_003_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_015_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_016_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_parallel_004_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_parallel_005_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_017_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_parallel_006_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_018_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_chiral_M50_barrier_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_strip_plus_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_strip_minus_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_001_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_002_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_strip_plus_fixed_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_003_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_004_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_005_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_006_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_007_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_008_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_009_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_010_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_parallel_001_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_011_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_012_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_parallel_002_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_013_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_014_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_015_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_parallel_003_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_016_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_parallel_004_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_parallel_005_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_017_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_parallel_006_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_parallel_007_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_x_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_strip_plus_reverified_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_strip_minus_reverified_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_001_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_002_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_strip_plus_fixed_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_003_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_004_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_005_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_006_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_007_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_008_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_009_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_010_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_011_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_012_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_013_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_parallel_001_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_014_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_parallel_002_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_015_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_parallel_003_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_016_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_parallel_004_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_017_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_parallel_005_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_018_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_x_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_strip_plus_reverified_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_strip_minus_reverified_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_adaptive_001_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_adaptive_002_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_strip_minus_fixed_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_adaptive_003_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_adaptive_004_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_adaptive_005_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_adaptive_006_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_adaptive_007_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_adaptive_008_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_adaptive_009_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_parallel_001_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_adaptive_010_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_adaptive_011_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_parallel_002_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_adaptive_012_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_adaptive_013_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_adaptive_014_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_parallel_003_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_parallel_004_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_adaptive_015_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_parallel_005_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_adaptive_016_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_x_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_strip_plus_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_strip_minus_reverified_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_strip_plus_center_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_strip_plus_precision_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_central_fixed_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_adaptive_001_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_adaptive_002_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_adaptive_003_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_adaptive_004_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_adaptive_005_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_adaptive_006_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_adaptive_007_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_adaptive_008_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_parallel_001_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_adaptive_009_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_parallel_002_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_adaptive_010_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_parallel_003_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_adaptive_011_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_parallel_004_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_adaptive_012_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_adaptive_013_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_parallel_005_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_parallel_006_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_adaptive_014_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_adaptive_015_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_parallel_007_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_parallel_008_20260907/report.json",
+      "reasons": [
+        "invalid_record: [Errno 2] No such file or directory: '/tmp/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz'"
+      ]
+    }
+  ],
+  "qualified_support_points": 0,
+  "nesting": {
+    "six_chiral_present": false,
+    "contradictions": [],
+    "status": "no_observed_contradiction"
+  },
+  "B2_geometry_ready": false,
+  "B3_geometry_ready": false,
+  "plots_created": false,
+  "completion_claimed": false,
+  "finite_only": true,
+  "comparison_policy": "Same prescription, scope, constraints and input paths.",
+  "scope": "Finite model only; separate physical diagnostics; no continuum certificate."
+}

@@ -1,0 +1,144 @@
+{
+  "created_utc": "2026-09-12T02:39:59.176051+00:00",
+  "status": "scientific_text_frozen_layout_in_progress",
+  "title_contract": "有限链已完成；论文定量核心仍有major差异",
+  "scientific_text_copied": true,
+  "scientific_calculation_performed": false,
+  "author_programs_executed": false,
+  "active_python_build_entry_created": false,
+  "figure8_pending": false,
+  "figures": [
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_C3_fig7/profiles.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/fig7_IR.pdf",
+      "sha256": "32a5796817e91eca07ee770d0995fc5fccc9bd1b470d62fce46e8b73523ae185",
+      "bytes": 32878,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1008.0,
+          288.0
+        ]
+      ],
+      "snapshot_mode": "0444"
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_native_phases/fig9.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/fig9.pdf",
+      "sha256": "1776ebe29179f46584cfacaf42fbd7a492409d294e97a35bd4f1429fdb4eaad3",
+      "bytes": 24286,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          504.0,
+          345.6000061035156
+        ]
+      ],
+      "snapshot_mode": "0444"
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_native_phases/fig10.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/fig10.pdf",
+      "sha256": "d5f343c66d128cdf19169b3f205aee46747205b3cf18496d0269fdfbc2920a6f",
+      "bytes": 32708,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1008.0,
+          345.6000061035156
+        ]
+      ],
+      "snapshot_mode": "0444"
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_native_phases/rho_mechanism.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/rho_mechanism.pdf",
+      "sha256": "0b24cc05319addc871dfc9fc104c30fbc1fd532689866efd18f03db7f9f014f5",
+      "bytes": 30977,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1080.0,
+          309.6000061035156
+        ]
+      ],
+      "snapshot_mode": "0444"
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_native_phases/inelasticities.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/inelasticities.pdf",
+      "sha256": "a99e5a863b005f4266abc7cfe1fb27ce8c4a94a67a285637d93b65cde77cb046",
+      "bytes": 25061,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1008.0,
+          302.3999938964844
+        ]
+      ],
+      "snapshot_mode": "0444"
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_F_five_complete/fig11.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/fig11.pdf",
+      "sha256": "ed703aa48a91ffb04f44020e528a60208660c31d9a62963a6cc37788af89f26b",
+      "bytes": 55201,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          864.0,
+          936.0
+        ]
+      ],
+      "snapshot_mode": "0444"
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_F_five_complete/fig11_eta.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/fig11_eta.pdf",
+      "sha256": "14d9bafaa82391733cf141148e1abaa10d3db5538c02a1369842c008ac7cf96c",
+      "bytes": 29519,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1008.0,
+          302.3999938964844
+        ]
+      ],
+      "snapshot_mode": "0444"
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_E1_regions_complete/regions.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/fig8_regions.pdf",
+      "sha256": "1c266f676a08fbcfe66a475f753bbbc1de9ed989a08d4dce38850005506acd4d",
+      "bytes": 23106,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          864.0,
+          345.6000061035156
+        ]
+      ],
+      "snapshot_mode": "0444"
+    }
+  ],
+  "header_sha256": "6bb5d842f11471cedeb3e4e0aa274d4af552688073ea513c612b5e907094c8f6",
+  "layout_recipe": {
+    "mainfont": "DejaVu Serif",
+    "sansfont": "DejaVu Sans",
+    "monofont": "DejaVu Sans Mono",
+    "CJKfont": "Droid Sans Fallback",
+    "paper": "A4",
+    "margins_mm": 18,
+    "font_size_pt": 10,
+    "wide_figures": "landscape pages",
+    "build_policy": "Explicit inline Pandoc/TeX commands only; single-thread environment; nice19"
+  },
+  "source": {
+    "path": "results/runs/physical_consistency_20260911/PV_CORE_CLAIM_AUDIT_ZH.md",
+    "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/sources/PV_CORE_CLAIM_AUDIT_ZH.md",
+    "sha256": "4ba7d903c94155799bc4e29f208aee1d5548ed08cd3cb2fc9a77b7ff92c487f8",
+    "bytes": 32597,
+    "frozen_by_parent": true,
+    "snapshot_utc": "2026-09-12T02:42:00.825362+00:00"
+  }
+}

@@ -1,0 +1,17 @@
+\usepackage{xeCJK}
+\setCJKmainfont[AutoFakeBold=1.4,AutoFakeSlant=0.2]{Droid Sans Fallback}
+\setCJKsansfont[AutoFakeBold=1.4,AutoFakeSlant=0.2]{Droid Sans Fallback}
+\setCJKmonofont{Droid Sans Fallback}
+\emergencystretch=3em
+\setlength{\parindent}{0pt}
+\xeCJKDeclareCharClass{Default}{"2013,"00B7}
+\usepackage{newunicodechar}
+\newunicodechar{ℱ}{\ensuremath{\mathcal{F}}}
+\newunicodechar{𝓕}{\ensuremath{\mathcal{F}}}
+\newunicodechar{ℓ}{\ensuremath{\ell}}
+\newunicodechar{≻}{\ensuremath{\succ}}
+\renewcommand{\contentsname}{目录}
+\usepackage{xurl}
+\usepackage{graphicx}
+\usepackage{pdflscape}
+\AtBeginDocument{\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue,filecolor=blue,citecolor=black}}

@@ -1,0 +1,329 @@
+"""Complete joint operators and resolution initialization."""
+from flint import arb
+from math import isqrt
+from scipy import sparse
+import numpy as np
+from . import zero_joint_duals
+from .endpoints import augment_asymptotic,asymptotic_slope,asymptotic_duals
+
+class JointProblem:
+    """Actual amplitude densities and all moment-bounded current spectra."""
+    def __init__(self,H,kap,current,M,L,bound,epsilon,point,direction,absorptive=False,chiral_norm='separate-l2',objective=None,retain_free_spectra=False):
+        from .kernels import density_labels; from .imaginary import symmetric; from .model import chiral_slices
+        self.H,self.kap,self.current=H,kap,current
+        self.fixed_x=None;self.chiral_weight=1.
+        self.chiral_norm=chiral_norm;self.groups=chiral_slices(chiral_norm)
+        self.M,self.L,self.bound,self.epsilon=M,L,bound,epsilon
+        self.n=len(kap);self.p=H.shape[1];self.free=1+2*M;p=self.p;n=self.n
+        a=current['arrays'];self.a=a;W=current['matrices']['moment_linear'].toarray()
+        self.bounded=np.any(W[:,p+2*M:]>0,axis=0)
+        self.retained_spectra=np.ones(2*M,dtype=bool) if retain_free_spectra else self.bounded
+        self.active=np.r_[np.arange(p+2*M),p+2*M+np.flatnonzero(self.retained_spectra)]
+        self.ds=np.array([2 if f=='rho2' and i!=j else 1 for f,i,j in density_labels(M)],np.longdouble)
+        z=np.asarray(point,np.longdouble)[self.active].copy();z[:p]/=self.ds;self.initial=z;self.seed=np.asarray(point,float)
+        self.A=np.asarray(H,np.longdouble)*self.ds;self.inverse=None;self.target_slot=None
+        if absorptive:
+            from .quotient import absorptive_change
+            self.A,z[:p],self.inverse=absorptive_change(self.A,z[:p],M,L)
+            row=self.A[-2].copy();v=-row/row[0];v[0]=1/row[0];V=sparse.eye(p,format='lil',dtype=np.longdouble);V[0,:]=v
+            z[0]=row@z[:p];self.A+=np.outer(self.A[:,0].copy(),v-np.eye(1,p,0).ravel());self.inverse=self.inverse@V.tocsc()
+            self.A[-2]=0;self.A[-2,0]=1
+            row=self.A[-1]+self.A[-2]/15;j=1+int(np.argmax(abs(row[1:self.free])));self.target_slot=j
+            v=-row/row[j];v[j]=1/row[j];V=sparse.eye(p,format='lil',dtype=np.longdouble);V[j,:]=v
+            z[j]=row@z[:p];self.A+=np.outer(self.A[:,j].copy(),v-np.eye(1,p,j).ravel());self.inverse=self.inverse@V.tocsc()
+            self.A[-1]=0;self.A[-1,j]=1;self.A[-1,0]=-np.longdouble(1)/15
+        A=self.A;self.k=np.asarray(kap,np.longdouble)
+        re,im=A[:n]*self.k[:,None],A[n:2*n]*self.k[:,None]
+        self.t=np.minimum(1,bound*np.linalg.norm(im[:,self.free:],ord=4/3,axis=1));self.t[self.t<=0]=1
+        self.t[np.arange(M)*3*L]=1;self.t[np.arange(M)*3*L+2*L]=1
+        self.R=re/np.sqrt(self.t[:,None]);self.I=im/self.t[:,None];self.C=A[2*n:2*n+8]
+        self.direction=np.asarray(direction,float);self.cost=np.r_[self.direction@A[-2:],np.zeros(len(z)-p)]
+        if objective is not None:
+            cost=self.ds*np.asarray(objective,np.longdouble)
+            self.cost[:p]=cost if self.inverse is None else self.inverse.T@cost
+        indices=a['native_scattering_indices'].ravel();keep=np.flatnonzero(self.retained_spectra);nv=len(z);root=np.sqrt(np.longdouble(2))
+        J=np.zeros((len(keep),6,p+4*M),np.longdouble);g=np.zeros((len(keep),6),np.longdouble)
+        for row,q in enumerate(keep):
+            ch,j=divmod(int(q),M);index=indices[q];k=np.longdouble(a['k'].ravel()[q]);v=kap[index]
+            J[row,0,:p]=-v*A[n+index];J[row,1,:p]=root*v*A[index];J[row,2,:p]=v*A[n+index]
+            J[row,3,p+ch*M:p+(ch+1)*M]=2*k*a['hilbert_kernel'][j];J[row,4,p+q]=2*k;J[row,5,p+2*M+q]=1
+            g[row,0]=2;g[row,3]=2*k
+        self.J=J[:,:,self.active];self.g=g
+        native=symmetric(g+np.einsum('bij,j->bi',self.J,z));diagonal=np.diagonal(native,axis1=1,axis2=2)
+        if np.any(diagonal<=0):raise ValueError('A complete strict joint reference is required')
+        D=1/np.sqrt(diagonal)
+        self.congruence=np.ones((2*M,3),np.longdouble);self.congruence[keep]=D
+        scale=np.stack((D[:,0]**2,D[:,0]*D[:,1],D[:,1]**2,D[:,0]*D[:,2],D[:,1]*D[:,2],D[:,2]**2),axis=1)
+        self.J*=scale[:,:,None];self.g*=scale;self.keep=keep
+        self.errors=np.asarray(a['moment_errors_raw'],np.longdouble)
+        self.W=np.asarray(W[:,self.active],np.longdouble)/self.errors[:,None];self.target=a['moment_targets_raw']/self.errors
+        count=2*len(a['high_energy_indices']);rows=(3*np.arange(count)[:,None]+[1,2]).ravel()
+        self.ffscale=np.repeat(np.sqrt(np.asarray(a['ff_caps_squared'],np.longdouble)),count//2)
+        B=current['matrices']['ff_cap_linear'].toarray()[rows][:,self.active]
+        self.F=np.asarray(B,np.longdouble).reshape(count,2,nv)/self.ffscale[:,None,None]
+        self.fc=np.asarray(a['ff_cap_constant'][rows],np.longdouble).reshape(count,2)/self.ffscale[:,None]
+        self.basis=symmetric(np.eye(6,dtype=np.longdouble))
+
+    def values(self,z):
+        return dict(x=self.R@z[:self.p],y=self.I@z[:self.p],chi=self.C@z[:self.p],
+            gram=self.g+np.einsum('bij,j->bi',self.J,z),ff=self.fc+np.einsum('bij,j->bi',self.F,z),moment=self.W@z-self.target)
+
+    def state(self,z,values=None,hessian=False):
+        from .imaginary import inverse_cholesky, symmetric; from .quotient import barrier_terms
+        v=self.values(z) if values is None else values
+        amp=dict(x=v['x'],y=v['y'],chi=v['chi'],slack=v.get('slack',2*v['y']-v['x']**2-self.t*v['y']**2),
+                 chiral_slack=v.get('chiral_slack',np.asarray([self.epsilon**2-np.sum(v['chi'][g]**2) for g in self.groups])))
+        amp=barrier_terms(z[:self.p],self.R,self.I,self.t,self.C,self.epsilon,self.bound,self.free,hessian,amp,chiral_norm=self.chiral_norm)
+        factor=inverse_cholesky(symmetric(v['gram']));ffslack=1-np.sum(v['ff']**2,axis=1);ms=1-v['moment']**2
+        if amp is None or factor is None or np.any(ffslack<=0) or np.any(ms<=0):return None
+        amp['value']-=(self.chiral_weight-1)*np.log(amp['chiral_slack']).sum()
+        if hessian:
+            start=self.n+int(np.sum(np.any(self.R!=0,axis=1)))+int(np.sum(self.t>0));root=np.sqrt(self.chiral_weight)
+            count=8+len(self.groups);amp['features'][start:start+count]*=root;amp['rhs'][start:start+count]*=root
+        U,logdet=factor;inverse=np.einsum('bji,bjk->bik',U,U)
+        v=dict(v,slack=amp['slack'],chiral_slack=amp['chiral_slack'])
+        result=dict(z=z,values=v,amplitude=amp,U=U,inverse=inverse,ffslack=ffslack,
+                    value=amp['value']-logdet-np.log(ffslack).sum()-np.log(ms).sum())
+        if hessian:
+            fc,bc=self.current_features(result)
+            F=np.vstack((np.pad(amp['features'],((0,0),(0,len(z)-self.p))),fc));b=np.r_[amp['rhs'],bc]
+            result.update(features=F,rhs=b)
+        return augment_asymptotic(self,result,z,hessian)
+
+    def advance(self,z,state,dz,d,a):
+        v=state['values'];q=state['amplitude'];new={k:v[k]+a*d[k] for k in d}
+        first=2*(1-self.t*v['y'])*d['y']-2*v['x']*d['x'];second=d['x']**2+self.t*d['y']**2
+        new['slack']=q['slack']+a*first-a*a*second
+        chi=v['chi'];dc=d['chi']
+        new['chiral_slack']=q['chiral_slack']-np.asarray([2*a*np.sum(chi[g]*dc[g])+a*a*np.sum(dc[g]**2) for g in self.groups])
+        return self.state(z+a*dz,new)
+
+    def current_features(self,s,columns=slice(None)):
+        from .imaginary import svec
+        v=s['values'];U=s['U'];J=self.J[:,:,columns];B=self.F[:,:,columns];W=self.W[:,columns];width=W.shape[1];fs=s['ffslack']
+        T=svec(np.einsum('bik,akl,bjl->baij',U,self.basis,U)).transpose(0,2,1)
+        fg=np.einsum('bra,bap->brp',T,J).reshape(-1,width)
+        ffgrad=2*np.einsum('bi,bij->bj',v['ff'],B)/fs[:,None];ffquad=(np.sqrt(2/fs)[:,None,None]*B).reshape(-1,width);r=v['moment']
+        return np.vstack((fg,ffgrad,ffquad,W/(1-r[:,None]),W/(1+r[:,None]))),np.r_[np.tile([1,0,1,0,0,1],len(self.keep)),-np.ones(len(fs)),np.zeros(2*len(fs)),-np.ones(4),np.ones(4)]
+
+    def delta(self,dz):
+        return dict(x=self.R@dz[:self.p],y=self.I@dz[:self.p],chi=self.C@dz[:self.p],
+                    gram=np.einsum('bij,j->bi',self.J,dz),ff=np.einsum('bij,j->bi',self.F,dz),moment=self.W@dz)
+
+    def slope(self,s,d,dz):
+        from .imaginary import svec
+        v=s['values'];amp=s['amplitude'];r=v['moment']
+        derivative=-np.sum((2*(1-self.t*v['y'])*d['y']-2*v['x']*d['x'])/amp['slack'])
+        derivative+=self.chiral_weight*sum(2*np.sum(v['chi'][g]*d['chi'][g])/slack for g,slack in zip(self.groups,amp['chiral_slack']))
+        derivative+=amp['density_gradient']@(dz[self.free:self.p]/self.bound)
+        derivative-=np.sum(svec(s['inverse'])*d['gram'])
+        derivative+=np.sum(2*np.sum(v['ff']*d['ff'],axis=1)/s['ffslack'])+np.sum(2*r*d['moment']/(1-r*r))
+        return derivative+asymptotic_slope(self,s,dz)
+
+    def raw(self,z):
+        from .endpoints import completed_raw_point
+        return completed_raw_point(self,z)
+
+    def duals(self,s,mu):
+        v=s['values'];amp=s['amplitude'];r=v['moment'];Z=np.zeros((2*self.M,3,3),np.longdouble);Z[self.keep]=mu*s['inverse']
+        return dict(kR=np.asarray(2*mu*v['x']/(np.sqrt(self.t)*amp['slack']),float),
+            kI=np.asarray(2*mu*(self.t*v['y']-1)/(self.t*amp['slack']),float),
+            y=np.asarray(np.concatenate([2*mu*self.chiral_weight*v['chi'][g]/slack for g,slack in zip(self.groups,amp['chiral_slack'])]),float),
+            gram=np.asarray(Z.reshape(2,self.M,3,3),float),gram_congruence=np.asarray(self.congruence.reshape(2,self.M,3),float),
+            moment=np.asarray(2*mu*r/(self.errors*(1-r*r)),float),
+            ff=np.asarray(2*mu*v['ff']/(s['ffslack']*self.ffscale)[:,None],float).reshape(2,-1,2),**asymptotic_duals(self,s,mu))
+
+class PhaseOneProblem(JointProblem):
+    """UV epigraph Phase I: all B scattering/chiral/density constraints stay hard."""
+    def __init__(self,*args,**kwargs):
+        from .imaginary import symmetric
+        super().__init__(*args,**kwargs)
+        v=super().values(self.initial);eigen=np.linalg.eigvalsh(np.asarray(symmetric(v['gram']),float))
+        tau=max(0,float(-eigen.min()),float(np.max(np.sum(v['ff']**2,axis=1)-1)),float(np.max(abs(v['moment'])-1)))+1
+        self.initial=np.r_[self.initial,np.longdouble(tau)];self.cost=np.r_[np.zeros_like(self.cost),np.longdouble(-1)]
+
+    def values(self,z):return super().values(z[:-1])
+
+    def state(self,z,values=None,hessian=False):
+        from .imaginary import inverse_cholesky, svec, symmetric; from .quotient import barrier_terms
+        v=self.values(z) if values is None else values;tau=z[-1]
+        q=v.get('slack',2*v['y']-v['x']**2-self.t*v['y']**2)
+        cs=v.get('chiral_slack',np.asarray([self.epsilon**2-np.sum(v['chi'][g]**2) for g in self.groups]))
+        av=dict(x=v['x'],y=v['y'],chi=v['chi'],slack=q,chiral_slack=cs)
+        amp=barrier_terms(z[:self.p],self.R,self.I,self.t,self.C,self.epsilon,self.bound,self.free,hessian,av,chiral_norm=self.chiral_norm)
+        factor=inverse_cholesky(symmetric(v['gram'])+tau*np.eye(3));fs=1+tau-np.sum(v['ff']**2,axis=1);ms=1+tau+np.array([-v['moment'],v['moment']])
+        if amp is None or factor is None or np.any(fs<=0) or np.any(ms<=0):return None
+        U,ld=factor;inv=np.einsum('bji,bjk->bik',U,U);v=dict(v,slack=q,chiral_slack=cs)
+        amp['value']-=(self.chiral_weight-1)*np.log(cs).sum()
+        result=dict(z=z,values=v,amplitude=amp,U=U,inverse=inv,ffslack=fs,moment_slack=ms,value=amp['value']-ld-np.log(fs).sum()-np.log(ms).sum())
+        if hessian:
+            F=np.pad(amp['features'],((0,0),(0,len(z)-self.p)));b=amp['rhs'].copy()
+            at=self.n+int(np.sum(np.any(self.R!=0,axis=1)))+int(np.sum(self.t>0))
+            for g,s in enumerate(self.groups):
+                count=1+s.stop-s.start;F[at:at+count]*=np.sqrt(self.chiral_weight);b[at:at+count]*=np.sqrt(self.chiral_weight);at+=count
+            J=np.pad(self.J,((0,0),(0,0),(0,1)));J[:,[0,2,5],-1]=1
+            T=svec(np.einsum('bik,akl,bjl->baij',U,self.basis,U)).transpose(0,2,1);fg=np.einsum('bra,bap->brp',T,J).reshape(-1,len(z))
+            B=np.pad(self.F,((0,0),(0,0),(0,1)));ff=2*np.einsum('bi,bij->bj',v['ff'],B)/fs[:,None];ff[:,-1]=-1/fs
+            fq=(np.sqrt(2/fs)[:,None,None]*B).reshape(-1,len(z));W=np.pad(self.W,((0,0),(0,1)))
+            wminus=W/ms[0,:,None];wminus[:,-1]=-1/ms[0];wplus=W/ms[1,:,None];wplus[:,-1]=1/ms[1]
+            result.update(features=np.vstack((F,fg,ff,fq,wminus,wplus)),rhs=np.r_[b,np.tile([1,0,1,0,0,1],len(self.keep)),-np.ones(len(fs)),np.zeros(2*len(fs)),-np.ones(4),np.ones(4)])
+        return augment_asymptotic(self,result,z,hessian)
+
+    def delta(self,dz):return dict(super().delta(dz[:-1]),tau=dz[-1])
+
+    def advance(self,z,state,dz,d,a):
+        v=state['values'];new={k:v[k]+a*d[k] for k in ('x','y','chi','gram','ff','moment')}
+        first=2*(1-self.t*v['y'])*d['y']-2*v['x']*d['x']
+        new['slack']=v['slack']+a*first-a*a*(d['x']**2+self.t*d['y']**2)
+        new['chiral_slack']=v['chiral_slack']-np.asarray([2*a*np.sum(v['chi'][g]*d['chi'][g])+a*a*np.sum(d['chi'][g]**2) for g in self.groups])
+        return self.state(z+a*dz,new)
+
+    def slope(self,s,d,dz):
+        from .imaginary import svec
+        v=s['values'];a=s['amplitude'];dt=d['tau']
+        out=-np.sum((2*(1-self.t*v['y'])*d['y']-2*v['x']*d['x'])/a['slack'])
+        out+=self.chiral_weight*sum(2*np.sum(v['chi'][g]*d['chi'][g])/q for g,q in zip(self.groups,a['chiral_slack']))
+        out+=a['density_gradient']@(dz[self.free:self.p]/self.bound)-np.sum(svec(s['inverse'])*d['gram'])-dt*np.trace(s['inverse'],axis1=1,axis2=2).sum()
+        out+=np.sum((2*np.sum(v['ff']*d['ff'],axis=1)-dt)/s['ffslack'])
+        return out+np.sum((d['moment']-dt)/s['moment_slack'][0]+(-d['moment']-dt)/s['moment_slack'][1])+asymptotic_slope(self,s,dz)
+
+    def raw(self,z):return super().raw(z[:-1])
+
+    def duals(self,s,mu):
+        return zero_joint_duals(self.M,self.n,len(self.a['high_energy_indices']))
+
+    def original_duals(self,s,mu):
+        d=super().duals(dict(s,values=dict(s['values'],moment=np.zeros(4))),mu)
+        d['moment']=np.asarray(mu*(1/s['moment_slack'][0]-1/s['moment_slack'][1])/self.errors,float)
+        return d
+
+def midpoint_grid(M):
+    from .kernels import density_labels
+    density_labels(M);nodes=[];weights=[]
+    for j in range(M):
+        angle=arb(2*j+1)/(4*M);cosine=angle.cos_pi();sine=angle.sin_pi()
+        x=4/(cosine*cosine);w=x*sine/(M*cosine)
+        nodes.append(x);weights.append(w)
+    return nodes,weights
+
+def angular_kernels(s,nodes,weights,ell,*,subtracted=True):
+    """PV rational crossed projections; f=(1/4)integral P_l, no pi*beta factor."""
+    from .kernels import exterior_legendre_q
+    s=arb(s);nodes=[arb(x) for x in nodes];weights=[arb(w) for w in weights]
+    M=len(nodes)
+    if M<1 or len(weights)!=M or not s>0 or any(not x>4 for x in nodes) or any(not w>0 for w in weights):
+        raise ValueError('Positive s, source nodes x>4 and matching positive weights required')
+    if type(ell) is not int or ell<0:raise ValueError('Nonnegative integer spin required')
+    epsilon=(-1)**ell;c=arb(1)/2 if ell==0 else arb(0);d=s-4
+    b=[w/x for w,x in zip(weights,nodes)]
+    if s==4:A=[c*wi/xi for wi,xi in zip(weights,nodes)]
+    elif s>4 or s<4:A=[wi*exterior_legendre_q(ell,1+2*xi/d)/d for wi,xi in zip(weights,nodes)]
+    else:raise ValueError('An s interval crossing threshold needs a separate limit treatment')
+    J=[a-c*bi for a,bi in zip(A,b)] if subtracted else list(A)
+    W=[[weights[i]*(1/(nodes[i]+nodes[j]+d)-1/nodes[i]) for j in range(M)] for i in range(M)]
+    W00=[[b[i]*b[j] for j in range(M)] for i in range(M)]
+    U=[[arb(0) for _ in range(M)] for _ in range(M)]
+    for i in range(M):
+        for j in range(i,M):
+            if ell%2 and i==j:value=arb(0)
+            elif s==4 and subtracted:value=arb(0)
+            elif subtracted:value=A[i]*W[j][i]+epsilon*A[j]*W[i][j]+c*W00[i][j]
+            else:value=(weights[j]*A[i]+epsilon*weights[i]*A[j])/(nodes[i]+nodes[j]+d)
+            U[i][j]=value;U[j][i]=epsilon*value
+    if s==4 and subtracted:J=[arb(0) for _ in range(M)]
+    return dict(s=s,nodes=nodes,weights=weights,ell=ell,epsilon=epsilon,c=c,A=A,J=J,U=U,b=b,W=W,W00=W00,
+        subtracted=subtracted,normalization='f=(1/4)integral P_l T; w=xprime/M includes1/pi')
+
+def assemble_density_row(direct,blocks,isospin):
+    from .kernels import density_labels
+    M=len(direct);ell=blocks['ell'];epsilon=blocks['epsilon'];c=blocks['c'];J=blocks['J'];U=blocks['U']
+    if isospin not in (0,1,2):raise ValueError('Isospin must be0,1,2')
+    if len(J)!=M or len(U)!=M or any(len(row)!=M for row in U):raise ValueError('Angular and direct blocks disagree')
+    zero=direct[0]*0
+    if ell%2!=int(isospin==1):return [zero for _ in density_labels(M)]
+    def combine(a,b):
+        return 3*a+(1+epsilon)*b if isospin==0 else (1-epsilon)*b if isospin==1 else (1+epsilon)*b
+    row=[combine(c,c)]
+    row.extend(combine(c*direct[i],J[i]) for i in range(M))
+    row.extend(combine((1+epsilon)*J[i],c*direct[i]+epsilon*J[i]) for i in range(M))
+    row.extend(combine((1+epsilon)*direct[i]*J[j],direct[j]*J[i]+U[i][j]) for i in range(M) for j in range(M))
+    for i in range(M):
+        for j in range(i,M):
+            a=U[i][i] if i==j else (1+epsilon)*U[i][j]
+            b=epsilon*direct[i]*J[i] if i==j else epsilon*(direct[i]*J[j]+direct[j]*J[i])
+            row.append(combine(a,b))
+    return [zero+value for value in row]
+
+def prepare_amplitude(args, progress=lambda **kw: None):
+    if getattr(args,'prescription','auto')=='analytic-cardinal':
+        from .basis import prepare_cardinal
+        return prepare_cardinal(args,progress)
+    from .analysis import energy_rows
+    from .kernels import source_rows
+    from .run import encode_real_ball
+    from contextlib import nullcontext
+    from concurrent.futures import ProcessPoolExecutor
+    from multiprocessing import get_context
+    from . import UVConfig; from .model import fesr_data
+    prescription='pv-midpoint';pv=True
+    if getattr(args,'prescription','auto') not in ('auto',prescription):raise ValueError('Only the PV-midpoint amplitude model is active')
+    if args.sampling_factor!=1 or args.unitarity_energies:raise ValueError('PV preparation requires native physical nodes only')
+    bits=args.bits
+    source=source_rows(args.nodes,args.waves,bits,args.angular_order,args.subtracted,prescription=prescription)
+    density_count = args.nodes**2+args.nodes*(args.nodes+1)//2
+    bound = args.density_limit if args.density_limit is not None else 100*density_count
+    if not np.isfinite(bound) or bound <= 0:
+        raise ValueError('Positive actual-density bound required')
+    uv = UVConfig(moment_source=args.moment_source, sr_error=args.sr_error,
+        cutoff=args.fesr_cutoff, mq_rule=args.mq_rule)
+    sampling=list(source.x);width=3*source.L;n=width*len(sampling);H=np.empty((2*n+11,source.coefficient_count))
+    config=(source.M,source.L,source.working_bits,source.order,source.subtracted)
+    jobs=[(*config,j if j<source.M else None,encode_real_ball(s),None,prescription) for j,s in enumerate(sampling)]
+    with (ProcessPoolExecutor(max_workers=args.processes,mp_context=get_context('spawn')) if args.processes>1 else nullcontext()) as pool:
+        for j,(real,imag) in enumerate(pool.map(energy_rows,jobs) if pool else map(energy_rows,jobs)):
+            H[j*width:(j+1)*width]=real;H[n+j*width:n+(j+1)*width]=imag
+            progress(stage='amplitude_nodes',completed=j+1,total=len(sampling),processes=args.processes)
+    base=2*source.physical_count
+    for index,_,row in source.iter_rows(range(base,base+11)):H[2*n+index-base]=[float(v.mid()) for v in row]
+    source.metadata.update(sampling_nodes=len(sampling),physical_samples=3*source.L*len(sampling))
+    if not np.isfinite(H).all():
+        raise ArithmeticError('Nonfinite amplitude operator')
+    path = args.output/'amplitude.npz'
+    np.savez_compressed(path, rows=H, energies=[float(x.mid()) for x in sampling],
+        waves=source.waves, coefficient_labels=np.asarray(source.coefficient_labels, dtype=str))
+    restrictions = dict(infinity=args.infinity, density_limit=bound,
+        asymptotic_necessary_conditions=False,
+        density_rule='fixed' if args.density_limit is not None else '100*number_of_double_densities',
+        density_norm='ordinary l4 of actual rho1 matrix and rho2 upper triangle; off C_flat/2',
+        chiral_norm='not imposed by prepare; eight residual rows; solver selects grouping', chiral_tolerance=args.chiral_tolerance)
+    comparison=[]
+    return dict(status='prepared',prescription=prescription,amplitude_model=source.metadata,restrictions=restrictions,
+        operator=dict(path=str(path), shape=list(H.shape), storage='float64 Arb PV-midpoint discrete rows' if pv else 'float64 Arb quadrature approximation',
+            rows='Re f, Im f, chi01[4], chi21[4], '+('T0_unsub diagnostic' if pv else 'A_infinity')+', f00(3), f11(3)'),
+        uv=fesr_data(args.nodes, uv), quadrature_comparison=comparison,
+        quadrature_comparison_is_certificate=False,angular_order_comparison_applicable=not pv,optimization_performed=False,
+        stage_A_scope='Declared conditional model')
+
+def project_coefficients(coefficients,M):
+    from .kernels import cardinal_projection
+    c=np.asarray(coefficients);old=(isqrt(1+24*len(c))-5)//6
+    if len(c)!=1+2*old+old*old+old*(old+1)//2:raise ValueError('Complete C_flat required')
+    if M==old:return c.copy()
+    c=c.astype(np.longdouble);E=cardinal_projection(old,M).astype(np.longdouble);start=1+2*old;R1=c[start:start+old*old].reshape(old,old)
+    i,j=np.triu_indices(old);R2=np.zeros((old,old),np.longdouble);R2[i,j]=c[start+old*old:]/np.where(i==j,1,2);R2[j,i]=R2[i,j]
+    b=np.tan((np.arange(old,dtype=np.longdouble)+.5)*np.pi/(2*old))/old;s=c[1:start].reshape(2,old).copy()
+    constant=c[0]+b@s[0]+2*b@s[1]+2*b@R1@b+b@R2@b;s[0]+=2*R1@b;s[1]+=R1.T@b+R2@b
+    s=s@E.T;A=E@R1@E.T;B=E@R2@E.T;b=np.tan((np.arange(M,dtype=np.longdouble)+.5)*np.pi/(2*M))/M
+    constant-=b@s[0]+2*b@s[1]-2*b@A@b-b@B@b;s[0]-=2*A@b;s[1]-=A.T@b+B@b;i,j=np.triu_indices(M)
+    return np.asarray(np.r_[constant,s.ravel(),A.ravel(),B[i,j]*np.where(i==j,1,2)],float)
+
+def transfer(args,progress):
+    from .gauge import transfer as run
+    return run(args,progress)
+
+def resolution_run(args,progress):
+    from .analysis import initialize
+    from .model import resolution_compare
+    if args.profile_runs:return resolution_compare(args)
+    if args.unitarity_scope!='sampled' or args.current_preparation is None:raise ValueError('Require declared samples and rebuilt current operators')
+    return initialize(args,progress) if args.joint_feasibility else transfer(args,progress)

@@ -1,0 +1,6 @@
+{
+  "reason": "Prioritize the source-audited finite B prototype; terminate oversubscribed computation before a controlled-BLAS rerun. Existing inputs, progress, failures and any completed CG states retained.",
+  "requested_blas_threads_next": 8,
+  "signal": "SIGTERM",
+  "pid": 3963138
+}

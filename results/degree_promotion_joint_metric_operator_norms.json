@@ -1,0 +1,33 @@
+{
+  "scope": "Read-only coordinate-metric comparison on the same amplitude operators; no optimization or physical constraints added",
+  "prepared_source": "results/degree_promotion_N6_to_N10_prepared.json",
+  "prepared_source_sha256": "b97c3144acc3c0056819640f11f4af9869f5a7e4db5cb20ff8f64ea4cb5fd421",
+  "records": {
+    "svd": {
+      "raw_metric_condition": 53410946450.64986,
+      "max_included_operator_row_norms": {
+        "sampling_targets_chiral": 0.9692282684680454,
+        "infinity_fixed_spin_derivatives": 2435.477315592552,
+        "edge_chebyshev_T_coefficients": 8414752878.952254,
+        "impact_sine_coefficients": 84009584.24302532
+      },
+      "discarded_directions": 0,
+      "amplitude_variables": 176
+    },
+    "joint_svd": {
+      "raw_metric_condition": 2073864922.5995355,
+      "max_included_operator_row_norms": {
+        "sampling_targets_chiral": 0.8911818610824076,
+        "infinity_fixed_spin_derivatives": 0.9960487949960896,
+        "edge_chebyshev_T_coefficients": 0.9934248089352663,
+        "impact_sine_coefficients": 0.9970394775961212
+      },
+      "discarded_directions": 0,
+      "amplitude_variables": 176
+    }
+  },
+  "source_sha256": {
+    "src/smatrix_bootstrap/optimization.py": "5768808dfc810642171063429fdfc922848e6446d58f1090c25b0d0781a8f383",
+    "src/smatrix_bootstrap/amplitudes.py": "e56a90e92c00daeb5f8906471745a35bf7d2963b222faf24dede5dd11d4635eb"
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "command": "source-audit",
+  "status": "analytic_IR_primal_certified",
+  "artifacts": {},
+  "inputs": {
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/tail_limit_control_prepare/report.json": {
+      "sha256": "5e028edd89a9be5cc585e90f3ad8fdf9bbef01c6f885df2937a0c1ed68f7ef9d"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/tail_limit_control_prepare/amplitude.npz": {
+      "sha256": "65712e032beb7c7ab15121ed19c055aad5a821b925aefe3dcdf3be4dc972af97"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/IR_slice_control_gradient/coefficients.json": {
+      "sha256": "f30f3ede7f41d74cb5b13e67d4fd86c74a402e79b2d3f82b46d953e88afa2164"
+    }
+  },
+  "parameters": {
+    "command": "source-audit",
+    "comparison_manifest": null,
+    "region_summary": "results/runs/stage_B_delivery_20260907/regions/regions.json",
+    "primary_waves": false,
+    "profile_runs": [],
+    "profile_kind": "subthreshold",
+    "phase_reference": null,
+    "baseline_profile": null,
+    "selection_reference": null,
+    "support_runs": [],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/IR_slice_control_analytic",
+    "density_limit": 1500.0,
+    "preparation": "results/runs/physical_consistency_20260911/tail_limit_control_prepare",
+    "prescription": "analytic-cardinal",
+    "source_registry": null,
+    "solver": "barrier",
+    "unitarity_scope": "sampled",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "current_preparation": null,
+    "joint_feasibility": false,
+    "fixed_amplitude": false,
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "unit_newton_step": false,
+    "gap": 0.0001,
+    "nodes": 3,
+    "processes": 1,
+    "waves": 2,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "asymptotic_zeros": true,
+    "asymptotic_unitarity": true,
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": "results/runs/physical_consistency_20260911/IR_slice_control_gradient/coefficients.json",
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "chiral_norm": "separate-l2",
+    "chiral_barrier_weight": null,
+    "objective": "projection",
+    "resume_objective": false,
+    "require_center": false,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "fixed_x": null,
+    "ray": false,
+    "seconds": 60.0,
+    "start_mu_provenance": {
+      "kind": "new_problem_default"
+    }
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "1"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Analytic coefficient enclosures and exact native kinematics; retained constraints only",
+  "analytic_primal_feasible": true,
+  "counts": {
+    "scattering": 18,
+    "chiral": 2,
+    "density": 1,
+    "endpoint_equalities": 1,
+    "asymptotic_inequalities": 5
+  },
+  "asymptotic_margin_enclosures": [
+    "[0.0004518015411687250979643485 +/- 1.35e-29]",
+    "[1.189198264769618976485050 +/- 2.09e-25]",
+    "[95.35226113803678338066842 +/- 3.36e-25]",
+    "[0.01087713033481135389441635 +/- 4.97e-27]",
+    "[39.51718797756141947590924 +/- 3.87e-25]"
+  ],
+  "minimum_scattering_margin": "[9.799331733e-12 +/- 4.02e-22]",
+  "chiral_margins": [
+    "[1.573876e-10 +/- 2.54e-17]",
+    "[3.88096512275e-6 +/- 2.09e-18]"
+  ],
+  "chiral_margin_lower": [
+    "[1.573875801895381960518703e-10 +/- 3.33e-35]",
+    "[3.880965122747915727091300e-6 +/- 2.43e-31]"
+  ],
+  "density_margin": "[5062499914133.540950619124 +/- 1.81e-13]",
+  "targets": [
+    "[0.14470924401655 +/- 8.81e-15]",
+    "[-0.0091385152162981 +/- 7.54e-17]"
+  ],
+  "unresolved_scattering": [],
+  "amplitude_model": {
+    "prescription": "analytic-cardinal",
+    "M": 3,
+    "L": 2,
+    "bits": 512,
+    "coordinate_system": "unsubtracted analytic-cardinal C_flat",
+    "coefficient_count": 22,
+    "physical_samples": 18,
+    "nu0": 0,
+    "nyquist_retained": true,
+    "infinity_equality_imposed": false,
+    "density_limit_imposed": false,
+    "quadrature_order_per_panel": null,
+    "arithmetic": "Arb",
+    "integral_enclosures": true,
+    "authors_implementation_recovered": false,
+    "analytic_function_family_defined": true,
+    "angular_projection": "Authenticated rows where available; otherwise Arb Gauss-Legendre with ellipse remainder",
+    "spectral_quadrature": "Exact Cauchy transform of finite sine density",
+    "physical_evaluation": "One analytic family at positive real energies",
+    "analyticity_status": "One conformal polynomial from all M sine-cardinal density modes",
+    "infinity_row_meaning": "Unsubtracted constant; recorded but no endpoint equality imposed",
+    "angular_order": 64,
+    "source_registry": null,
+    "source_registry_sha256": null
+  },
+  "coefficients_modified": false,
+  "optimization_performed": false,
+  "support_scope": "Original support bound remains a separate saved-float64-H statement",
+  "elapsed_seconds": 0.006887390045449138,
+  "prescription": "analytic-cardinal"
+}

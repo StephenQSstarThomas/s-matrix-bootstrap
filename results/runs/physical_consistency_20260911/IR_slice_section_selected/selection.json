@@ -1,0 +1,77 @@
+{
+  "rule": "Converged upper IR support at preregistered Weinberg x before phase evaluation",
+  "reference": [
+    0.07332139057293466,
+    -0.00488809270486231
+  ],
+  "target": [
+    0.07332139057293649,
+    -0.0037848228664237264
+  ],
+  "center_identity": {
+    "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/IR_slice_section_recenter/center_converged.npz",
+    "sha256": "193ac05ad8ab760a5d1120f6c1f5df8889041877e146c390c9ec83330aa8ce7b",
+    "mu": 1e-06,
+    "full_C_identical": true
+  },
+  "coefficient_sha256": "fc206468bbcc350aaba641d0a86716e8466bd5e762582c50d2d5dff44432a9d7",
+  "epsilon": 0.002,
+  "model_signature": {
+    "M": 3,
+    "L": 2,
+    "density_limit": 1500.0,
+    "infinity": "zero",
+    "unitarity_scope": "sampled",
+    "prescription": "analytic-cardinal",
+    "chiral_norm": "separate-l2",
+    "scattering_samples": 18,
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/tail_limit_control_prepare",
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": true,
+    "additional_constraints": null,
+    "sampling_nodes": 3
+  },
+  "source_reports": [
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/IR_slice_section_recenter/report.json"
+  ],
+  "coefficients_mixed": false,
+  "selection_uses_phase_data": false,
+  "representative_center_converged": true,
+  "exact_extremizer_claimed": false,
+  "regional_geometry_ready": false,
+  "local_upper_boundary_ready": true,
+  "local_upper_boundary": {
+    "distance_upper": 7.254029040604238e-08,
+    "scaled_distance_upper": 3.627014520302119e-05,
+    "budget": 0.01
+  },
+  "original_H_feasibility": {
+    "upper": 0.580819060661194,
+    "enclosure": "[0.5808190606611938840126409 +/- 4.44e-26]",
+    "disk": 0.17726659597933053,
+    "chiral": 0.40209048381175355,
+    "density_residual": 2.0184409950900077e-07,
+    "tail_support": 0.0,
+    "chiral_norm": "separate-l2",
+    "objective_kind": "target_plane",
+    "scope": "Exact saved float64 H; angular quadrature error excluded",
+    "primal_feasible": true,
+    "lower": 0.580782790515991,
+    "minimum_margin_enclosure": "[3.8018400447080020187e-11 +/- 6.40e-32]",
+    "density_norm": 22.511540697974826,
+    "targets": [
+      "[0.07332139057293649376468323 +/- 3.25e-27]",
+      "[-0.003784822866423726163898221 +/- 3.17e-28]"
+    ],
+    "tail_margin_enclosures": [],
+    "asymptotic_margin_enclosures": [
+      "[0.005128628622025215791217907 +/- 3.55e-28]",
+      "[2.584499727958555135385283 +/- 1.62e-25]",
+      "[78.65817951827466775030719 +/- 4.82e-24]",
+      "[0.01328716983617691567208252 +/- 2.24e-27]",
+      "[37.99867715408635173017559 +/- 4.25e-24]"
+    ],
+    "endpoint_equalities": 1,
+    "asymptotic_inequalities": 5
+  }
+}

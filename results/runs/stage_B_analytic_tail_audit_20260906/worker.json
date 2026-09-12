@@ -1,0 +1,111 @@
+{
+  "command": "evaluate",
+  "status": "evaluated",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "evaluate",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_analytic_tail_audit_20260906",
+    "control": null,
+    "matrix": null,
+    "matrix_sha256": null,
+    "rank_report": null,
+    "density_limit": null,
+    "preparation": "results/runs/stage_A_M50_L10_20260906",
+    "solver_seconds": 300.0,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 50,
+    "waves": 1,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": "results/runs/stage_B_line_M50_20260906/coefficients.json",
+    "energies": [
+      4.0
+    ],
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "seconds": 120.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3"
+  },
+  "scope": "Coherent finite-sine-cardinal conditional model; published regions and phases remain unverified.",
+  "amplitude_model": {
+    "prescription": "finite-sine-cardinal",
+    "M": 50,
+    "L": 1,
+    "bits": 384,
+    "coordinate_system": "unsubtracted sine-cardinal C_flat",
+    "coefficient_count": 3876,
+    "physical_samples": 150,
+    "nyquist_retained": true,
+    "infinity_equality_imposed": false,
+    "density_limit_imposed": false,
+    "quadrature_order_per_panel": 24,
+    "arithmetic": "Arb",
+    "integral_enclosures": false,
+    "authors_implementation_recovered": false,
+    "analytic_function_family_defined": true
+  },
+  "unitarity": {
+    "criterion": "Eq.(2.12): 1-|S|^2 = kappa*(2 Im f-kappa*|f|^2) >= 0",
+    "status": "violated",
+    "margin_intervals": [
+      [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    ],
+    "minimum_margin": 0.0,
+    "scope": "listed energy/wave pairs; Arb rounding bounds exclude angular quadrature error",
+    "continuum_certified": false,
+    "omitted_spins_checked": false,
+    "high_energy_tail_certified": false,
+    "analytic_tail": {
+      "status": "violated",
+      "constant": "0",
+      "order": [
+        "S0 nonzero-spin cone",
+        "P1 cone",
+        "S2 nonzero-spin cone",
+        "S0 absorptive leading",
+        "S2 absorptive leading"
+      ],
+      "margins": [
+        "[-39163459.97130023384613802 +/- 3.59e-18]",
+        "[-981747.6445317457539224837 +/- 4.09e-20]",
+        "[-4687433.430295670334437100 +/- 3.86e-19]",
+        "[1548.936039527570922676352 +/- 8.20e-23]",
+        "[876.4579509123792494136366 +/- 2.27e-23]"
+      ],
+      "scope": "analytic fixed-spin necessary limits; no quadrature; not sufficient for full unitarity"
+    }
+  },
+  "elapsed_seconds": 0.0903421868570149
+}

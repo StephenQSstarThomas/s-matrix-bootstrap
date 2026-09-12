@@ -1,0 +1,875 @@
+{
+  "status": "Original mixed-PV prototype mainline active",
+  "next": "Complete original PV IR/UV independent representatives and native rho evidence; no ancillary branch advancement",
+  "scientific_inputs_unchanged": true,
+  "center_lineage_runs": 6,
+  "center_activity_changes": 0,
+  "latent_center_guard_fixed": true,
+  "tests_passed": 107,
+  "active_modules": 21,
+  "additional_scattering_rows": 2082,
+  "total_scattering_rows": 3582,
+  "full_joint_variables": 4076,
+  "preparation": "fine_prepare/report.json",
+  "current": "fine_current/report.json",
+  "solver": "fine_IR_ref_01",
+  "root_cause": "Finite native constraints omit the strictly violating energies; source derivatives and full coefficient map now shared",
+  "window_full_witness": true,
+  "window_analytic_primal": true,
+  "witness_tau": -0.004470503773274519,
+  "current_calculation": "PV_IR_ref_04",
+  "endpoint_equalities": 5,
+  "window_support": {
+    "run": "window_support_01",
+    "center": true,
+    "lower": 0.09883846699248722,
+    "upper": 0.09912995213035879,
+    "tolerance_met": false
+  },
+  "endpoint_phase_I_01_tau": 0.04757164364922977,
+  "endpoint_status": "Completed exact finite endpoint witness; higher-wave limits required five additional inequalities",
+  "review_fixes": [
+    "strict endpoint-order/model identity",
+    "early full scattering metadata guard",
+    "fixed-C analytic replay uses expanded sample offsets"
+  ],
+  "leading_tail_diagnostic": "All five necessary inequalities strictly passed by tail_witness_analytic; additional interlaced energies still reject that witness",
+  "endpoint_full_joint_witness": true,
+  "endpoint_witness_tau": -0.0016238392073806398,
+  "endpoint_analytic_primal": true,
+  "endpoint_higher_wave_tail_conditions": false,
+  "asymptotic_inequalities": 5,
+  "asymptotic_proof": "results/evidence/ANALYTIC_TAIL_UNITARITY_20260911.md",
+  "identity_flags_fixed": true,
+  "all_tail_covectors_preserved_on_replay": true,
+  "additional_sampling_in_model_signature": true,
+  "baseline_fixed_IR_certificate_replayed": true,
+  "baseline_five_configurations_completed": 5,
+  "baseline_missing_configurations": [],
+  "interlaced_samples": 3123,
+  "interlaced_added_samples": 1530,
+  "interlaced_previous_tip_strict_violations": 668,
+  "interlaced_previous_tip_low_energy_violations": 564,
+  "interlaced_previous_tip_primary_low_energy_violations": 56,
+  "interlaced_first_phase_I": {
+    "tau": 730.9480141485828,
+    "mu": 3.1510670784516135,
+    "iterations": 63,
+    "feasible": false,
+    "infeasibility_certified": false
+  },
+  "numerical_continuation": "Properly resumed standard Newton Phase I reached a strictly feasible 3123-disk full joint point; next solve the preregistered +x support and same-model IR control",
+  "interlaced_phase_I_02": {
+    "tau": 3.390023509987084,
+    "mu": 0.01,
+    "iterations": 63,
+    "feasible": false,
+    "infeasibility_certified": false
+  },
+  "interlaced_state_audit_pending": false,
+  "interlaced_state_audit_result": "No material cache drift; density-gradient curvature checked in two directions to 2.3e-11; actual Newton direction audit pending",
+  "interlaced_state_audit": "INTERLACED_STATE_AUDIT.json",
+  "explicit_phase_I_mu": 1e-05,
+  "interlaced_phase_I_03": {
+    "tau": 1.1002095435196322,
+    "mu": 1e-05,
+    "iterations": 63,
+    "feasible": false,
+    "infeasibility_certified": false
+  },
+  "actual_newton_audit": "INTERLACED_NEWTON_DIRECTION_AUDIT.json",
+  "interlaced_phase_I_04": {
+    "tau": 1.3643783854710954,
+    "mu": 0.01,
+    "iterations": 62,
+    "feasible": false,
+    "infeasibility_certified": false
+  },
+  "unit_step_trial": "Cap the scalar search at one Newton step, from the actual .01 checkpoint; unchanged physical feasible set and original acceptance",
+  "expanded_hull_regression_fixed": true,
+  "baseline_M60_first_phase_I": {
+    "tau": 792.3777069915693,
+    "mu": 2.8884270113825194,
+    "iterations": 52,
+    "feasible": false,
+    "infeasibility_certified": false
+  },
+  "interlaced_phase_I_05_unit": {
+    "tau": 1.9351841563107173,
+    "initial_mu": 0.01,
+    "iterations": 64,
+    "seconds": 623.4275763891637,
+    "infeasibility_certified": false
+  },
+  "full_conic_scope": "All 4076 raw joint variables, all 100 Grams, exact SOC L4 lift, five affine endpoint eliminations; zero-objective feasibility; original audit required",
+  "conic_01_status": "Bounded stop after >600 native seconds before a first iterate; not an infeasibility conclusion",
+  "conic_01_scope": "Reduced high-spectrum closed relaxation; all returned points would still need full Gram audit",
+  "conic_full_spectra": true,
+  "conic_variables_with_density_auxiliaries": 7846,
+  "conic_scs_01_status": "Stopped without a returned candidate after exceeding the native budget; warm coordinates took .61 s, exact internal native substage not identified",
+  "native_failures_are_not_infeasibility_certificates": true,
+  "original_F_next": "All five centered supports and original/analytic checks completed; preserved baseline comparison delivered",
+  "interlaced_joint_feasible": true,
+  "interlaced_phase_I_tau": -0.0010980976553564856,
+  "interlaced_witness": "interlaced_phase_I_07",
+  "interlaced_analytic_audit": "interlaced_witness_analytic/source_audit.json",
+  "original_F_complete": true,
+  "original_F_comparison": "../sequential_reproduction_20260910/F_five_configs_verified_comparison/resolution.json",
+  "regularizer_half_bound": "regularizer_half_bound_replay/report.json",
+  "regularizer_value_increase_lower": 0.005493128927715155,
+  "auxiliary_proofs": [
+    "../../evidence/FINITE_CURRENT_MOMENT_PROJECTION_20260911.md",
+    "../../evidence/GLOBAL_IR_SEED_AND_UV_OBSTRUCTION_20260911.md",
+    "../../evidence/REGULARIZATION_VALUE_PROOF_20260911.md",
+    "../../evidence/RHO_SIGNAL_PEAK_EXISTENCE_20260911.md"
+  ],
+  "IR_slice_implemented": true,
+  "IR_slice_verification": "verification_IR_slice.json",
+  "IR_center_identity_review": "IR_CENTER_IDENTITY_REVIEW_ZH.md",
+  "IR_slice_code_review": "IR_SLICE_CODE_REVIEW_ZH.md",
+  "repaired_tip_support_interval": [
+    0.09318378028576288,
+    0.09323857670464446
+  ],
+  "repaired_tip_source": "interlaced_tip_support_02/report.json",
+  "repaired_tip_center": true,
+  "repaired_tip_support_tolerance_met": true,
+  "repaired_tip_analytic": "interlaced_tip_schur_analytic/source_audit.json",
+  "IR_last_center_mu": 0.0001,
+  "IR_continuation_mu": 5e-05,
+  "IR_mu_reduction": 0.5,
+  "IR_final_support": "interlaced_IR_ref_02/report.json",
+  "IR_center_complete": true,
+  "IR_full_C_recovery_changed": false,
+  "IR_vertical_gap_upper": 3.0937877310213135e-06,
+  "UV_ref_seed": "interlaced_UV_ref_seed/report.json",
+  "UV_mid_seed": "interlaced_UV_mid_seed/report.json",
+  "IR_analytic_primal_certified": true,
+  "IR_analytic": "interlaced_IR_ref_analytic/source_audit.json",
+  "IR_selected": "interlaced_IR_selected/selection.json",
+  "IR_native_evaluation": "interlaced_IR_evaluate/evaluation.json",
+  "IR_subthreshold_evaluation": "interlaced_IR_subthreshold/evaluation.json",
+  "all_repaired_phase_curves_inspected": true,
+  "UV_ref_support": "interlaced_UV_ref_support_01/report.json",
+  "UV_ref_center_complete": true,
+  "UV_ref_vertical_gap_upper": 3.297732126335773e-06,
+  "same_model_fixed_IR_exclusion": "interlaced_fixed_IR_analytic/report.json",
+  "same_model_fixed_IR_exclusion_upper": -0.18503890326560488,
+  "original_UV_also_excludes_new_IR": true,
+  "original_UV_exclusion": "original_UV_fixed_new_IR_analytic/report.json",
+  "original_UV_exclusion_upper": -0.1484359517403425,
+  "UV_ref_analytic": "interlaced_UV_ref_analytic/source_audit.json",
+  "UV_ref_analytic_primal_certified": true,
+  "UV_mid_partial_support": "interlaced_UV_mid_support_01/report.json",
+  "UV_mid_remaining_vertical_gap": 6.5891415753081e-06,
+  "UV_mid_support": "interlaced_UV_mid_support_02/report.json",
+  "UV_mid_center_complete": true,
+  "UV_mid_vertical_gap_upper": 3.4492272397192993e-06,
+  "all_three_repaired_UV_centers_and_supports_complete": true,
+  "UV_mid_analytic": "interlaced_UV_mid_analytic/source_audit.json",
+  "UV_mid_analytic_primal_certified": true,
+  "all_three_repaired_UV_primal_analytic_certificates": true,
+  "repaired_native_phases": "interlaced_native_phases/phases.json",
+  "repaired_rho_native_90_mev": {
+    "tip": 751.93169165,
+    "mid": 680.22837614,
+    "ref": 678.59906355
+  },
+  "repaired_P1_min_eta": {
+    "tip": 0.30410464,
+    "mid": 0.21475867,
+    "ref": 0.19605186
+  },
+  "repaired_rho_quantitative_claim": "not_reproduced; major mass spread and strong inelasticity",
+  "all_three_repaired_UV_analytic_certificates_complete": true,
+  "fine_scattering_samples": 3582,
+  "new_primary_rows": 459,
+  "fine_validation_previous": "interlaced_fine_profiles/direct_profiles.json",
+  "fine_validation_violations": {
+    "tip": 98,
+    "mid": 57,
+    "ref": 59
+  },
+  "fine_validation_max_eta": {
+    "tip": 1.0066645999916266,
+    "mid": 1.0047289018405137,
+    "ref": 1.0044671291572853
+  },
+  "Gram_inner_edge_diagnostic": "GRAM_DISK_DIAGNOSTIC.json",
+  "fine_phase_I_tau": -0.00020731616263059094,
+  "fine_phase_I_resume_mu": 7.8125e-05,
+  "fine_joint_witness_yet": true,
+  "fine_joint_witness": "fine_phase_I_02/report.json",
+  "fine_analytic_joint_witness": "fine_witness_analytic/source_audit.json",
+  "fine_tip_partial_interval": [
+    0.08860557831742337,
+    0.09536692493757255
+  ],
+  "proof_companion": "proof_bundle/PROOFS_ZH.pdf",
+  "fine_tip_support_complete": true,
+  "fine_tip_support": "fine_tip_support_02/report.json",
+  "fine_tip_support_gap": 5.964035605202089e-05,
+  "fine_mid_x": 0.08324656218297921,
+  "fine_tip_analytic": "fine_tip_analytic/source_audit.json",
+  "fine_tip_analytic_passed": true,
+  "fine_UV_ref_seed": "fine_UV_ref_seed/report.json",
+  "fine_UV_mid_seed": "fine_UV_mid_seed/report.json",
+  "fine_phases_inspected": false,
+  "fine_IR_ref_01": {
+    "center": true,
+    "feasible": true,
+    "mu": 9.765625e-07,
+    "support_gap": 0.0080970146323093,
+    "continuation_mu": 4.8828125e-07
+  },
+  "fine_IR_center_complete": true,
+  "fine_IR_support_complete": true,
+  "fine_IR_full_C_recovery_changed": false,
+  "fine_IR_targets": [
+    0.07332139057362191,
+    -0.004134178458138212
+  ],
+  "fine_IR_support_gap": 0.0010692339224015468,
+  "fine_IR_vertical_gap_upper": 2.1384678448030937e-06,
+  "fine_IR_support": "fine_IR_ref_02/report.json",
+  "fine_IR_analytic": "fine_IR_ref_analytic/source_audit.json",
+  "fine_IR_analytic_primal_certified": true,
+  "fine_IR_selected": "fine_IR_selected/selection.json",
+  "fine_IR_native": "fine_IR_evaluate/evaluation.json",
+  "fine_IR_subthreshold": "fine_IR_subthreshold/evaluation.json",
+  "fine_IR_zero_brackets": [
+    [
+      0.4,
+      0.5
+    ]
+  ],
+  "fine_IR_phases_evaluated": true,
+  "fine_UV_phases_evaluated": true,
+  "fine_operator_prefix_identity": "FINE_OPERATOR_PREFIX_REPLAY.json",
+  "fine_current_operator_identity": "FINE_CURRENT_OPERATOR_REPLAY.json",
+  "fine_IR_last_phase_degrees": [
+    78.35415616884787,
+    -34.13470879556038,
+    8.078551636896947
+  ],
+  "fine_C3": "fine_C3_profiles/profiles.json",
+  "fine_tip_value_change_bound": "FINE_TIP_SUPPORT_NESTING.json",
+  "fine_UV_ref_partial": {
+    "run": "fine_UV_ref_support_01",
+    "center": true,
+    "joint_feasible": true,
+    "gap": 0.006950257062834864,
+    "targets": [
+      0.07332139056567352,
+      -0.0043824942148901775
+    ],
+    "mu": 7.8125e-07
+  },
+  "fine_UV_ref_center_complete": true,
+  "fine_UV_ref_support_complete": true,
+  "fine_UV_ref_support": "fine_UV_ref_support_02/report.json",
+  "fine_UV_ref_targets": [
+    0.07332139058543452,
+    -0.0043749776725924075
+  ],
+  "fine_UV_ref_gap": 0.0017952968024259053,
+  "fine_UV_ref_vertical_gap_upper": 3.5905936048518107e-06,
+  "fine_UV_ref_analytic": "fine_UV_ref_analytic/source_audit.json",
+  "fine_UV_ref_analytic_primal_certified": true,
+  "fine_mid_seed_ref": "fine_UV_mid_seed_ref/report.json",
+  "fine_mid_start_mu": "FINE_MID_START_MU.json",
+  "fine_IR_original_UV_exclusion": "FINE_IR_UV_EXCLUSION.json",
+  "fine_IR_original_UV_exclusion_upper": -0.1484093366072121,
+  "fine_UV_mid_partial": "fine_UV_mid_support_01/report.json",
+  "fine_UV_mid_partial_gap": 0.0035958903529610398,
+  "fine_UV_mid_support": "fine_UV_mid_support_02/report.json",
+  "fine_UV_mid_center_complete": true,
+  "fine_UV_mid_support_complete": true,
+  "fine_UV_mid_targets": [
+    0.08324656217423829,
+    -0.005101209916640211
+  ],
+  "fine_UV_mid_gap": 0.0018235088702497348,
+  "fine_UV_mid_vertical_gap_upper": 3.64701774049947e-06,
+  "all_fine_geometric_supports_complete": true,
+  "fine_UV_mid_analytic": "fine_UV_mid_analytic/source_audit.json",
+  "fine_UV_mid_analytic_primal_certified": true,
+  "all_fine_UV_analytic_primal_certificates_complete": true,
+  "fine_UV_selected": "fine_UV_selected/selection.json",
+  "fine_UV_selection_before_phases": true,
+  "fine_native_phases": "fine_native_phases/phases.json",
+  "fine_rho_results": [
+    {
+      "role": "tip",
+      "native_90_mev": 752.3630555906154,
+      "minimum_eta_P1": 0.31194731850942,
+      "last_S0_degrees": 190.1446539797672
+    },
+    {
+      "role": "mid",
+      "native_90_mev": 681.5964991272756,
+      "minimum_eta_P1": 0.2153442482493867,
+      "last_S0_degrees": 201.44980101166985
+    },
+    {
+      "role": "ref",
+      "native_90_mev": 677.8902491247093,
+      "minimum_eta_P1": 0.20037756648779695,
+      "last_S0_degrees": 211.3098623030674
+    }
+  ],
+  "fine_quantitative_rho_claim": "not_reproduced_major_mass_spread_and_strong_inelasticity",
+  "fine_grid_validation_pending": false,
+  "fine_grid_results": [
+    {
+      "role": "tip",
+      "status": "sampled_passed",
+      "maximum_eta": 1.0,
+      "checked": null,
+      "strict_violations": 0
+    },
+    {
+      "role": "mid",
+      "status": "sampled_passed",
+      "maximum_eta": 1.0,
+      "checked": null,
+      "strict_violations": 0
+    },
+    {
+      "role": "ref",
+      "status": "sampled_passed",
+      "maximum_eta": 1.0,
+      "checked": null,
+      "strict_violations": 0
+    }
+  ],
+  "fine_known_grid_violations_repaired": true,
+  "watson_adapter_work_pending": false,
+  "watson_adapter_verification": "verification_Watson_adapter_final.json",
+  "watson_adapter_actual_replays": "WATSON_ADAPTER_REAL_REPLAY.json",
+  "watson_first_goal_in_progress": true,
+  "watson_goal_completed": false,
+  "watson_first_run_failed": "fine_watson_01_support_01/report.json",
+  "watson_failure_kind": "fresh-QR linear residual 1.08257e-5; no center or infeasibility certificate",
+  "watson_resume_mu": 3.125e-05,
+  "watson_goal_00_actual_iterations": 1,
+  "watson_goal_00_budget": 0,
+  "old_joint_center_scope": "Old joint center flags used a small step-before Newton criterion for the delivered step-after point; new code saves the actually checked point. Original primal/support evidence remains.",
+  "inexact_descent_verification": "verification_checked_point_descent.json",
+  "new_joint_center_saved_before_further_update": true,
+  "watson_boundary_seed_attempt": {
+    "run": "fine_watson_01_support_02",
+    "iterations": 76,
+    "center": false,
+    "support_complete": false,
+    "joint_feasible": true,
+    "objective": 0.25959917301602026
+  },
+  "watson_new_initializer": "fine_witness_analytic",
+  "watson_old_goal_and_mu_preserved": true,
+  "watson_interior_first": {
+    "run": "fine_watson_01_interior_01",
+    "center": true,
+    "support_complete": false,
+    "joint_feasible": true,
+    "objective": 0.2540195433677633,
+    "checked_centers": [
+      3.125e-05,
+      1.5625e-05
+    ]
+  },
+  "watson_unit_step_trial": "Same fixed objective and checkpoint, cap Newton line step at one; no physical or center tolerance change",
+  "watson_last_delivered_center": {
+    "run": "fine_watson_01_polish_03",
+    "mu": 7.62939453125e-09,
+    "objective": 0.2832356347833006,
+    "upper": 0.28331337278013297,
+    "gap": 7.773800565352706e-05,
+    "support_complete": true
+  },
+  "watson_continuation_mu": 3.0517578125e-08,
+  "watson_unit_step_conclusion": "No clear speed improvement; resume original line expansion, unchanged fixed goal",
+  "old_joint_centers_rechecked": "CENTER_RECHECK_RESULTS.json",
+  "old_joint_centers_all_eight_unchanged": true,
+  "profile_delivery_verification": "verification_profile_delivery.json",
+  "proof_companion_v2": "proof_bundle_v2/PROOFS_ZH.pdf",
+  "mainline_review_working": "MAINLINE_REVIEW_ZH.md",
+  "A2_source_recheck": "MAINLINE_SOURCE_REVIEW.md",
+  "A2_conditional_scalar_boxes_disjoint": true,
+  "A2_not_current_model_infeasibility": true,
+  "center_polish_verification": "verification_center_polish.json",
+  "ordinary_joint_center_tolerance": 1e-14,
+  "PV_same_input_chain_complete": false,
+  "PV_preparation": "results/runs/stage_B_pv_M50_L10_prepare_20260907",
+  "PV_current": "results/runs/mainline_alignment_20260909/D1_hard_M50",
+  "PV_existing_witness": "results/runs/mainline_alignment_20260909/D3_hard_hull",
+  "PV_old_ref_output_assisted": true,
+  "watson_last_failure": {
+    "run": "fine_watson_01_polish_02",
+    "error": "Joint direction failed actual barrier descent",
+    "mu": 3.0517578125e-08,
+    "iterations": 23,
+    "not_infeasibility": true
+  },
+  "stable_local_merit_verification": "verification_center_merit.json",
+  "watson_goal_numerical_support_complete": true,
+  "watson_support": "fine_watson_01_polish_03",
+  "watson_next": "Analytic audit then same-C native/grid delivery; after W1 return to original PV geometry",
+  "PV_tip_replay_passed": true,
+  "PV_tip_replay_bounds": [
+    0.09710708005043221,
+    0.10032306820038618
+  ],
+  "PV_old_cache_reused": false,
+  "PV_rule": "PV_REPRESENTATIVE_RULE.json",
+  "PV_tip_support_complete": true,
+  "PV_tip_support": "PV_tip_support_01",
+  "PV_tip_support_gap": 9.229230675049382e-05,
+  "PV_fixed_coordinates": "PV_FIXED_COORDINATES.json",
+  "PV_IR_first_failure": "fresh scattering linear residual exceeds 1e-6; no infeasibility certificate",
+  "PV_IR_precondition_verification": "verification_PV_IR_precondition.json",
+  "PV_IR_second_failure": "Fresh linear residual still >1e-6; failed C/state preserved",
+  "PV_IR_numerical_coordinates": "absorptive-free-T0",
+  "PV_IR_original_domain_unchanged": true,
+  "PV_IR_bounded_verification": "verification_PV_bounded_coordinates.json",
+  "PV_IR_third_failure": "Relative linear error 1.2202e-6 at decrement4792; no infeasibility",
+  "PV_IR_path_precision": "verification_PV_IR_path_precision.json",
+  "PV_IR_fourth_run": {
+    "run": "PV_IR_ref_04",
+    "iterations": 167,
+    "center": false,
+    "sampled_feasible": true,
+    "support_complete": false,
+    "last_decrement": 10.0469050743
+  },
+  "PV_IR_seed_replay": {
+    "run": "PV_IR_seed_replay_05",
+    "sampled_feasible": true,
+    "targets": [
+      0.07591083375219798,
+      -0.004298756479816646
+    ]
+  },
+  "PV_IR_support_complete": true,
+  "PV_IR_center_complete": true,
+  "PV_IR_support": "PV_IR_ref_05",
+  "PV_IR_targets": [
+    0.07332139057772113,
+    -0.004118513648512641
+  ],
+  "PV_IR_support_gap": 0.001590364564230895,
+  "PV_IR_continuation_or_failure_not_infeasibility": true,
+  "PV_IR_selected": "PV_IR_selected",
+  "PV_IR_full_C_identity_preserved": true,
+  "PV_native_peak_verification": "verification_PV_peak_bounds.json",
+  "PV_UV_ref_seed": "PV_UV_ref_seed",
+  "PV_UV_ref_seed_joint_feasible": true,
+  "PV_UV_ref_active_run": "PV_UV_ref_support_01",
+  "PV_UV_ref_latest_center": {
+    "mu": 1.25e-05,
+    "gap": 0.05698672760048423,
+    "center_and_primal_passed": true
+  },
+  "PV_F_reuse_inventory": "PV_F_REUSE_INVENTORY.json",
+  "PV_peak_scope_review_pending": false,
+  "PV_UV_ref_partial": {
+    "run": "PV_UV_ref_support_01",
+    "center": true,
+    "joint_feasible": true,
+    "gap": 0.008145606437825637,
+    "delivered_mu": 1.5625e-06,
+    "checkpoint_mu": 7.8125e-07
+  },
+  "PV_UV_ref_center_complete": true,
+  "PV_UV_ref_support_complete": true,
+  "PV_UV_ref_support": "PV_UV_ref_support_02",
+  "PV_UV_ref_support_gap": 0.0011064189112248157,
+  "PV_UV_ref_targets": [
+    0.07332139056199188,
+    -0.004316269975649035
+  ],
+  "PV_native_delivery_verification": "verification_PV_peak_bounds.json",
+  "PV_UV_mid_seed": "PV_UV_mid_seed",
+  "PV_UV_mid_seed_joint_feasible": true,
+  "PV_UV_mid_active_run": "PV_UV_mid_support_02",
+  "PV_UV_mid_partial": {
+    "center_mu": 3.90625e-07,
+    "gap": 0.002205123850300028,
+    "support_complete": false
+  },
+  "PV_F_rule": "PV_F_REPRESENTATIVE_RULE.json",
+  "PV_native_energies": "PV_NATIVE_ENERGIES.json",
+  "PV_UV_mid_center_complete": true,
+  "PV_UV_mid_support_complete": true,
+  "PV_UV_mid_support": "PV_UV_mid_support_02",
+  "PV_UV_mid_targets": [
+    0.08617070396224558,
+    -0.005249671817127042
+  ],
+  "PV_UV_mid_support_gap": 0.0011314997989007036,
+  "PV_all_three_supports_complete": true,
+  "PV_UV_selected": "PV_UV_selected",
+  "PV_UV_selection_before_phases": true,
+  "PV_new_phase_evaluations_started": true,
+  "PV_native_phases": "PV_native_phases/phases.json",
+  "PV_IR_native": "PV_IR_native",
+  "PV_all_primary_checks_passed": true,
+  "PV_primary_checks": 528,
+  "PV_IR_P1_last_degree": 8.563892578511856,
+  "PV_IR_excluded_by_UV": {
+    "excluded": true,
+    "planes": [
+      {
+        "role": "tip",
+        "margin_enclosure": "[-0.02579091904897976356860907 +/- 4.29e-27]",
+        "strictly_separated": false,
+        "source_reports": [
+          "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_tip_support_01/report.json"
+        ]
+      },
+      {
+        "role": "mid",
+        "margin_enclosure": "[0.083285395590099724643287 +/- 4.31e-25]",
+        "strictly_separated": true,
+        "source_reports": [
+          "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_UV_mid_support_02/report.json"
+        ]
+      },
+      {
+        "role": "ref",
+        "margin_enclosure": "[0.097771745214852700600520 +/- 5.17e-25]",
+        "strictly_separated": true,
+        "source_reports": [
+          "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_UV_ref_support_02/report.json"
+        ]
+      }
+    ],
+    "statement": "n dot (x_IR,y_IR) > U_UV excludes this projection and hence its full frozen amplitude; not all IR or nonresonant amplitudes.",
+    "inputs": "Saved original-H coordinate balls and outward-rounded certified global UV upper bounds; same-model identity checked by caller"
+  },
+  "PV_rho_results": [
+    {
+      "role": "tip",
+      "native_90_mev": 803.3864642707761,
+      "min_eta_P1": 0.7759845596711741,
+      "native_intensity_peak_gev": 0.7921355788896206,
+      "strict_intensity_peaks": [
+        {
+          "index": 39,
+          "energy_gev": 0.7921355788896205,
+          "bracket_gev": [
+            0.7316752603307709,
+            0.8644178555063566
+          ],
+          "left_excess": "[0.3240891577566806942431247 +/- 1.46e-26]",
+          "right_excess": "[0.2374082934242257585389658 +/- 4.71e-26]"
+        }
+      ]
+    },
+    {
+      "role": "mid",
+      "native_90_mev": 701.1141802426249,
+      "min_eta_P1": 0.4347276964614485,
+      "native_intensity_peak_gev": 0.6804136821594831,
+      "strict_intensity_peaks": [
+        {
+          "index": 37,
+          "energy_gev": 0.6804136821594831,
+          "bracket_gev": [
+            0.6364516260093481,
+            0.7316752603307709
+          ],
+          "left_excess": "[0.2239761996997898726279898 +/- 1.02e-26]",
+          "right_excess": "[0.07906070944431919467703501 +/- 3.57e-27]"
+        },
+        {
+          "index": 42,
+          "energy_gev": 1.0611163210367387,
+          "bracket_gev": [
+            0.9522503411013047,
+            1.1994241195247317
+          ],
+          "left_excess": "[0.005159018529082124658159524 +/- 1.33e-28]",
+          "right_excess": "[0.009243476688445477981303719 +/- 2.22e-28]"
+        }
+      ]
+    },
+    {
+      "role": "ref",
+      "native_90_mev": 696.5611972084859,
+      "min_eta_P1": 0.24320609963215903,
+      "native_intensity_peak_gev": 0.6804136821594831,
+      "strict_intensity_peaks": [
+        {
+          "index": 37,
+          "energy_gev": 0.6804136821594831,
+          "bracket_gev": [
+            0.6364516260093481,
+            0.7316752603307709
+          ],
+          "left_excess": "[0.1859326571495487863350805 +/- 3.26e-26]",
+          "right_excess": "[0.08834982890920148322841605 +/- 2.24e-27]"
+        },
+        {
+          "index": 42,
+          "energy_gev": 1.0611163210367387,
+          "bracket_gev": [
+            0.9522503411013047,
+            1.1994241195247317
+          ],
+          "left_excess": "[0.01467046151063302384082251 +/- 3.05e-27]",
+          "right_excess": "[0.01652845172646602636642207 +/- 4.41e-28]"
+        }
+      ]
+    }
+  ],
+  "PV_UV_generates_resonance_signal": true,
+  "PV_quantitative_robust_rho_claim": "not_reproduced_yet; major mass spread and strong inelasticity",
+  "PV_F_complete": true,
+  "PV_F_M50_L8_complete": true,
+  "PV_F_M50_L8_support": "PV_F_M50_L8_support_01",
+  "PV_F_M50_L8_gap": 8.722028031231399e-05,
+  "PV_F_M50_L8_selected": "PV_F_M50_L8_selected",
+  "PV_F_M50_L8_native": "PV_F_M50_L8_native",
+  "PV_F_M50_L12_replay": {
+    "run": "PV_F_M50_L12_audit",
+    "amplitude_feasible": true,
+    "joint_feasible": false,
+    "not_an_infeasibility_certificate": true
+  },
+  "PV_F_M50_L12_active": "PV_F_M50_L12_support_02",
+  "PV_F_M50_L12_first_failure": "Initialization rejected 10 nonpositive current R before epigraph Newton; no infeasibility evidence",
+  "PV_phase_I_seed_fix": "verification_PV_phase_I_seed.json",
+  "PV_F_M50_L12_joint_witness": true,
+  "PV_F_M50_L12_witness": "PV_F_M50_L12_phase_I_02",
+  "PV_F_M50_L12_tau": -0.01319656824100681,
+  "PV_F_L12_first_support": {
+    "run": "PV_F_M50_L12_support_01",
+    "center": false,
+    "joint_feasible": true,
+    "support_complete": false,
+    "iteration_status": "decrement plateau near10"
+  },
+  "PV_F_L12_recenter": "PV_F_L12_RECENTER_DECLARATION.json",
+  "PV_F_L12_recenter_start_mu": 0.0001,
+  "PV_F_M50_L8_support_complete": true,
+  "PV_F_M50_L8_native_passed": true,
+  "PV_fixed_M50_comparison_pending": true,
+  "PV_M45_M60_pending": true,
+  "PV_F_L12_recenter_success": true,
+  "PV_F_L12_latest_center": {
+    "mu": 5e-05,
+    "gap": 0.21549018909498224,
+    "primal": true,
+    "center": true
+  },
+  "PV_E1_first_section": {
+    "x": 0.07332139057293466,
+    "IR_lower": [
+      -0.005529000613147199,
+      -0.00551886182893384
+    ],
+    "IR_upper": [
+      -0.004118513648184869,
+      -0.0041153329190532556
+    ],
+    "UV_lower": [
+      -0.005529000613147199,
+      -0.005267576585774827
+    ],
+    "UV_upper": [
+      -0.004316269976448883,
+      -0.004314057138607678
+    ],
+    "upper_shrink": [
+      0.00019554349042281036,
+      0.00020093705739562543
+    ],
+    "lower_rise": [
+      -1.0138784213357987e-05,
+      0.00026142402737237136
+    ],
+    "upper_minus_lower": [
+      -6.588053694956093e-05,
+      0.00021107584160898343
+    ],
+    "upper_to_lower_ratio": null,
+    "upper_change_larger": null,
+    "sources": {
+      "IR": {
+        "inner": [
+          {
+            "coefficients": [
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_012_20260907/coefficients.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_002_20260907/coefficients.json"
+            ],
+            "second_weight": "[0.7269662464971080212454821 +/- 1.07e-26]"
+          },
+          {
+            "coefficients": [
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_IR_ref_05/coefficients.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_010_20260907/coefficients.json"
+            ],
+            "second_weight": "[4.633164912528465423284854e-10 +/- 2.05e-35]"
+          }
+        ],
+        "outer": [
+          "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_002_20260907/report.json",
+          "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_IR_ref_05/report.json"
+        ]
+      },
+      "UV": {
+        "inner": [
+          {
+            "coefficients": [
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_UV_lower_replay/coefficients.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_tip_support_01/coefficients.json"
+            ],
+            "second_weight": "[0.012994446025584023290236 +/- 4.95e-25]"
+          },
+          {
+            "coefficients": [
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_UV_mid_support_02/coefficients.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_UV_ref_support_02/coefficients.json"
+            ],
+            "second_weight": "[0.99999999914240007072423 +/- 5.81e-24]"
+          }
+        ],
+        "outer": [
+          "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_002_20260907/report.json",
+          "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_UV_ref_support_02/report.json"
+        ]
+      }
+    },
+    "scope": "Arb at saved x: feasible segments and global supports; no dense-region or continuum claim"
+  },
+  "PV_E1_lower_refinement_needed": true,
+  "PV_F_M50_L12_support_complete": true,
+  "PV_F_M50_L12_center_complete": true,
+  "PV_F_M50_L12_support": "PV_F_M50_L12_support_03",
+  "PV_F_M50_L12_gap": 7.919342473680646e-05,
+  "PV_F_M50_L12_native": "PV_F_M50_L12_native",
+  "PV_F_M50_L12_complete": true,
+  "PV_F_fixed_M50": "PV_F_fixed_M50/resolution_partial.json",
+  "PV_F_fixed_M50_complete": true,
+  "PV_F_L_results": [
+    {
+      "M": 50,
+      "L": 8,
+      "native_90_gev": 0.8354946028132311,
+      "min_eta_P1": 0.9828001212019394
+    },
+    {
+      "M": 50,
+      "L": 10,
+      "native_90_gev": 0.8033864642707761,
+      "min_eta_P1": 0.7759845596711741
+    },
+    {
+      "M": 50,
+      "L": 12,
+      "native_90_gev": 0.7892366605032144,
+      "min_eta_P1": 0.6289942970182503
+    }
+  ],
+  "PV_F_L_stability": "material discrepancy relative to printed L comparison under declared +x rule",
+  "PV_F_M45_first_support": {
+    "run": "PV_F_M45_L10_support_01",
+    "joint_feasible": true,
+    "center": false,
+    "support_complete": false
+  },
+  "PV_F_M45_initialization": "PV_F_M45_INTERIOR_DECLARATION.json",
+  "PV_F_M45_support_complete": true,
+  "PV_F_M45_center_complete": true,
+  "PV_F_M45_support": "PV_F_M45_L10_support_02",
+  "PV_F_M45_gap": 6.38856153968026e-05,
+  "PV_F_M45_complete": true,
+  "PV_F_M45_native": "PV_F_M45_L10_native",
+  "PV_F_M60_initializer": "Historical M60 clipped Phase-I point; fresh hard-current audit first, no feasibility transfer",
+  "PV_F_M60_hard_joint_witness": true,
+  "PV_F_M60_witness": "PV_F_M60_L10_current_seed",
+  "PV_F_M60_initialization": "PV_F_M60_INITIALIZATION.json",
+  "PV_F_M60_active": "PV_F_M60_L10_support_02",
+  "PV_F_M60_latest_center": {
+    "mu": 3.125e-06,
+    "gap": 0.01755898075262813,
+    "center": true,
+    "joint_feasible": true
+  },
+  "PV_F_M60_support_complete": true,
+  "PV_F_M60_center_complete": true,
+  "PV_F_M60_support": "PV_F_M60_L10_support_03",
+  "PV_F_M60_gap": 9.625669484417121e-05,
+  "PV_all_five_supports_complete": true,
+  "PV_F_five": "PV_F_five_complete/resolution.json",
+  "PV_F_counts": {
+    "scattering_disks": 7650,
+    "current_grams": 510,
+    "chiral_balls": 10,
+    "density_bounds": 5,
+    "FESR": 20,
+    "FF_caps": 74,
+    "fresh_primary_samples": 669
+  },
+  "PV_F_results": [
+    {
+      "M": 50,
+      "L": 8,
+      "native_90_mev": 835.494602813231,
+      "min_eta_P1": 0.9828001212019394,
+      "support_bounds": {
+        "lower": 0.11993136745970169,
+        "upper": 0.120018587740014,
+        "gap": 8.722028031231399e-05
+      }
+    },
+    {
+      "M": 50,
+      "L": 10,
+      "native_90_mev": 803.3864642707761,
+      "min_eta_P1": 0.7759845596711741,
+      "support_bounds": {
+        "lower": 0.09902001731987253,
+        "upper": 0.09911230962662303,
+        "gap": 9.229230675049382e-05
+      }
+    },
+    {
+      "M": 50,
+      "L": 12,
+      "native_90_mev": 789.2366605032144,
+      "min_eta_P1": 0.6289942970182503,
+      "support_bounds": {
+        "lower": 0.09038433089586395,
+        "upper": 0.09046352432060076,
+        "gap": 7.919342473680646e-05
+      }
+    },
+    {
+      "M": 45,
+      "L": 10,
+      "native_90_mev": 749.3265710970961,
+      "min_eta_P1": 0.5244700645726987,
+      "support_bounds": {
+        "lower": 0.09584885338968424,
+        "upper": 0.09591273900508104,
+        "gap": 6.38856153968026e-05
+      }
+    },
+    {
+      "M": 60,
+      "L": 10,
+      "native_90_mev": 773.5288564902776,
+      "min_eta_P1": 0.701938676217573,
+      "support_bounds": {
+        "lower": 0.10275032735015552,
+        "upper": 0.10284658404499969,
+        "gap": 9.625669484417121e-05
+      }
+    }
+  ],
+  "PV_remaining_mainline": "One fixed-x lower support for Fig.8; final evidence/report consolidation",
+  "PV_E1_lower_seed_audit": "PV_E1_lower_center_audit",
+  "PV_E1_lower_active": "PV_E1_lower_support"
+}

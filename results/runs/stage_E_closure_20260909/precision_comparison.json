@@ -1,0 +1,28 @@
+{
+  "status": "completed",
+  "same_frozen_linear_objective": true,
+  "source": "results/runs/stage_E_closure_20260909/literal_W_ref_path_02/report.json",
+  "refinement": "results/runs/stage_E_closure_20260909/E3_ref_precision/report.json",
+  "evaluation": "results/runs/stage_E_closure_20260909/E3_ref_precision_evaluate/evaluation.json",
+  "central_converged": true,
+  "support_interval": [
+    0.2891267662540481,
+    0.2897735732183624
+  ],
+  "support_gap": 0.0006468069643142949,
+  "primary_native_check": "sampled_passed",
+  "phase_change_max_degrees": {
+    "S0": 0.043471863733356986,
+    "S2": 0.004484142837503473,
+    "P1": 0.08270603343237026
+  },
+  "eta_change_max": {
+    "S0": 3.995690593838752e-06,
+    "S2": 1.0525325280230646e-06,
+    "P1": 0.002497397208275909
+  },
+  "refined_P1_eta_minimum": 0.8494887663703872,
+  "refined_P1_90_linear_gev": 0.6975666620714182,
+  "frozen_primary_representatives_replaced": false,
+  "scope": "One tighter same-M/same-objective center check; not M/L convergence or a phase uncertainty enclosure"
+}

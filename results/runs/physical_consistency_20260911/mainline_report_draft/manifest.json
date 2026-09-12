@@ -1,0 +1,292 @@
+{
+  "created_utc": "2026-09-11T19:48:21.254884+00:00",
+  "status": "draft",
+  "scope": "Frozen working draft; fixed Watson target still running; no final reproduction success claimed",
+  "source": "results/runs/physical_consistency_20260911/MAINLINE_REVIEW_ZH.md",
+  "source_sha256": "c890e9949c5624809c328b418bb00e20331959540dd8fc113ea721e23404212c",
+  "source_snapshot": "results/runs/physical_consistency_20260911/mainline_report_draft/sources/MAINLINE_REVIEW_ZH.md",
+  "image_assets": [
+    {
+      "source": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_native_phases/fig9.png",
+      "snapshot": "results/runs/physical_consistency_20260911/mainline_report_draft/images/fig9.png",
+      "sha256": "fe6eb605ebd2091c9a0e630a34fe04a835b57c98e71c1449737f928bf3c8a6e2"
+    }
+  ],
+  "links": [
+    {
+      "source_target": "proof_bundle_v2/PROOFS_ZH.pdf",
+      "rendered_target": "../proof_bundle_v2/PROOFS_ZH.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/proof_bundle_v2/PROOFS_ZH.pdf",
+      "exists": true,
+      "image": false
+    },
+    {
+      "source_target": "PROGRESS.json",
+      "rendered_target": "../PROGRESS.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PROGRESS.json",
+      "exists": true,
+      "image": false
+    },
+    {
+      "source_target": "../../reports/expert_review_20260910/He_Kruczenski_2309v3_Expert_Review_ZH.pdf",
+      "rendered_target": "../../../reports/expert_review_20260910/He_Kruczenski_2309v3_Expert_Review_ZH.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/reports/expert_review_20260910/He_Kruczenski_2309v3_Expert_Review_ZH.pdf",
+      "exists": true,
+      "image": false
+    },
+    {
+      "target": "https://arxiv.org/abs/2309.12402v3",
+      "external": true
+    },
+    {
+      "source_target": "../../evidence/ANALYTIC_CARDINAL_FINITE_PROOFS_20260911.md",
+      "rendered_target": "../../../evidence/ANALYTIC_CARDINAL_FINITE_PROOFS_20260911.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/evidence/ANALYTIC_CARDINAL_FINITE_PROOFS_20260911.md",
+      "exists": true,
+      "image": false
+    },
+    {
+      "source_target": "../../evidence/GRAM_DISK_AND_INELASTICITY_20260911.md",
+      "rendered_target": "../../../evidence/GRAM_DISK_AND_INELASTICITY_20260911.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/evidence/GRAM_DISK_AND_INELASTICITY_20260911.md",
+      "exists": true,
+      "image": false
+    },
+    {
+      "source_target": "FINE_SIGNAL_PEAK_PROOF_ZH.md",
+      "rendered_target": "../FINE_SIGNAL_PEAK_PROOF_ZH.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/FINE_SIGNAL_PEAK_PROOF_ZH.md",
+      "exists": true,
+      "image": false
+    },
+    {
+      "source_target": "FINE_IR_UV_EXCLUSION.json",
+      "rendered_target": "../FINE_IR_UV_EXCLUSION.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/FINE_IR_UV_EXCLUSION.json",
+      "exists": true,
+      "image": false
+    },
+    {
+      "source_target": "../../evidence/UV_FORCED_P_WAVE_ABSORPTION_20260911.md",
+      "rendered_target": "../../../evidence/UV_FORCED_P_WAVE_ABSORPTION_20260911.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/evidence/UV_FORCED_P_WAVE_ABSORPTION_20260911.md",
+      "exists": true,
+      "image": false
+    },
+    {
+      "source_target": "../../evidence/GLOBAL_IR_SEED_AND_UV_OBSTRUCTION_20260911.md",
+      "rendered_target": "../../../evidence/GLOBAL_IR_SEED_AND_UV_OBSTRUCTION_20260911.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/evidence/GLOBAL_IR_SEED_AND_UV_OBSTRUCTION_20260911.md",
+      "exists": true,
+      "image": false
+    },
+    {
+      "source_target": "../../evidence/FOUNDATIONS_PROOFS_20260910.md",
+      "rendered_target": "../../../evidence/FOUNDATIONS_PROOFS_20260910.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/evidence/FOUNDATIONS_PROOFS_20260910.md",
+      "exists": true,
+      "image": false
+    },
+    {
+      "source_target": "MAINLINE_SOURCE_REVIEW.md",
+      "rendered_target": "../MAINLINE_SOURCE_REVIEW.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/MAINLINE_SOURCE_REVIEW.md",
+      "exists": true,
+      "image": false
+    },
+    {
+      "source_target": "../../evidence/REGULARIZATION_VALUE_PROOF_20260911.md",
+      "rendered_target": "../../../evidence/REGULARIZATION_VALUE_PROOF_20260911.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/evidence/REGULARIZATION_VALUE_PROOF_20260911.md",
+      "exists": true,
+      "image": false
+    },
+    {
+      "source_target": "../../evidence/ANALYTIC_TAIL_UNITARITY_20260911.md",
+      "rendered_target": "../../../evidence/ANALYTIC_TAIL_UNITARITY_20260911.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/evidence/ANALYTIC_TAIL_UNITARITY_20260911.md",
+      "exists": true,
+      "image": false
+    },
+    {
+      "source_target": "ENDPOINT_DESIGN_ZH.md",
+      "rendered_target": "../ENDPOINT_DESIGN_ZH.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/ENDPOINT_DESIGN_ZH.md",
+      "exists": true,
+      "image": false
+    },
+    {
+      "source_target": "fine_native_phases/phases.json",
+      "rendered_target": "../fine_native_phases/phases.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_native_phases/phases.json",
+      "exists": true,
+      "image": false
+    },
+    {
+      "source_target": "fine_grid_profiles/direct_profiles.json",
+      "rendered_target": "../fine_grid_profiles/direct_profiles.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_grid_profiles/direct_profiles.json",
+      "exists": true,
+      "image": false
+    },
+    {
+      "source_target": "fine_native_phases/fig9.png",
+      "rendered_target": "images/fig9.png",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_native_phases/fig9.png",
+      "exists": true,
+      "image": true
+    },
+    {
+      "source_target": "FINE_P1_PAPER_COMPARISON.json",
+      "rendered_target": "../FINE_P1_PAPER_COMPARISON.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/FINE_P1_PAPER_COMPARISON.json",
+      "exists": true,
+      "image": false
+    },
+    {
+      "source_target": "../sequential_reproduction_20260910/F_five_configs_verified_comparison/resolution.json",
+      "rendered_target": "../../sequential_reproduction_20260910/F_five_configs_verified_comparison/resolution.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/F_five_configs_verified_comparison/resolution.json",
+      "exists": true,
+      "image": false
+    },
+    {
+      "source_target": "CENTER_RECHECK_RESULTS.md",
+      "rendered_target": "../CENTER_RECHECK_RESULTS.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/CENTER_RECHECK_RESULTS.md",
+      "exists": true,
+      "image": false
+    },
+    {
+      "source_target": "../../evidence/INEXACT_NEWTON_AND_SAVED_CENTER_20260911.md",
+      "rendered_target": "../../../evidence/INEXACT_NEWTON_AND_SAVED_CENTER_20260911.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/evidence/INEXACT_NEWTON_AND_SAVED_CENTER_20260911.md",
+      "exists": true,
+      "image": false
+    },
+    {
+      "source_target": "verification_checked_point_descent.json",
+      "rendered_target": "../verification_checked_point_descent.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/verification_checked_point_descent.json",
+      "exists": true,
+      "image": false
+    },
+    {
+      "source_target": "../../evidence/WATSONIAN_DIAGNOSTIC_SCOPE_20260911.md",
+      "rendered_target": "../../../evidence/WATSONIAN_DIAGNOSTIC_SCOPE_20260911.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/evidence/WATSONIAN_DIAGNOSTIC_SCOPE_20260911.md",
+      "exists": true,
+      "image": false
+    },
+    {
+      "target": "https://arxiv.org/html/2403.10772v4#S2.SS5",
+      "external": true
+    },
+    {
+      "source_target": "../../evidence/FINITE_FAMILY_INELASTIC_THRESHOLD_SCOPE_20260911.md",
+      "rendered_target": "../../../evidence/FINITE_FAMILY_INELASTIC_THRESHOLD_SCOPE_20260911.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/evidence/FINITE_FAMILY_INELASTIC_THRESHOLD_SCOPE_20260911.md",
+      "exists": true,
+      "image": false
+    },
+    {
+      "source_target": "FOLLOWUP_SOURCE_CHECK_ZH.md",
+      "rendered_target": "../FOLLOWUP_SOURCE_CHECK_ZH.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/FOLLOWUP_SOURCE_CHECK_ZH.md",
+      "exists": true,
+      "image": false
+    }
+  ],
+  "commands": [
+    [
+      "/tmp/he_report_pandoc/pandoc",
+      "REVIEW_ZH.md",
+      "--from",
+      "markdown+tex_math_single_backslash",
+      "--standalone",
+      "--to",
+      "latex",
+      "--toc",
+      "--toc-depth=2",
+      "--shift-heading-level-by=-1",
+      "--include-in-header",
+      "header.tex",
+      "-V",
+      "mainfont=DejaVu Serif",
+      "-V",
+      "sansfont=DejaVu Sans",
+      "-V",
+      "monofont=DejaVu Sans Mono",
+      "-V",
+      "papersize=a4",
+      "-V",
+      "fontsize=10pt",
+      "-V",
+      "geometry:margin=18mm",
+      "-V",
+      "colorlinks=true",
+      "-o",
+      "REVIEW_ZH.tex"
+    ],
+    [
+      "/home/shiqiu/.local/bin/tectonic",
+      "--keep-logs",
+      "--keep-intermediates",
+      "--reruns",
+      "2",
+      "REVIEW_ZH.tex"
+    ]
+  ],
+  "header_sha256": "398bc113987618853e8df1d03185e5235e3384386db4bf4829773c1f40857ef6",
+  "assembled_markdown_sha256": "f8c36f5ef5fa06ae00ba8f98ab3cb8d62a6c98e005edaa913b876c1bc4f07188",
+  "formatting_only": [
+    "Use original H1 as document title with explicit working-draft suffix; promote remaining headings one level",
+    "Add running draft header; preserve the source running-Watson paragraph",
+    "Rebase local links and embed a byte-identical fig9 PNG snapshot at 98% body width",
+    "Use existing A4/10pt/18mm CJK recipe; keep figure at its source position",
+    "Use a supported middle-dot separator in the draft header; add a title line break before the Chinese title"
+  ],
+  "source_modified": false,
+  "scientific_computation_performed": false,
+  "thread_environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "RAYON_NUM_THREADS": "1"
+  },
+  "nice": 19,
+  "pandoc_exit": 0,
+  "compile_exit": 0,
+  "pandoc2_exit": 0,
+  "compile2_exit": 0,
+  "final_compile_log": "compile2.log",
+  "final_pandoc_log": "pandoc2.log",
+  "pdf_sha256": "29152d8731b9ddfda394c7ab1ac9dc9dc29ee339ae5fc59567d28e49b2100a98",
+  "pages": 6,
+  "generated_tex_sha256": "3784a433b021aea863bb24955a8906cdbfc0a4bff22d520ca3372efa5791f153",
+  "qa": "qa.json",
+  "visual_QA_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "tool_versions": {
+    "pandoc": "pandoc 3.9",
+    "tectonic": "tectonic 0.15.0Tectonic 0.15.0"
+  },
+  "tool_binary_sha256": {
+    "/tmp/he_report_pandoc/pandoc": "decd3dd11a3fe0c16ce56443343ec53adde6fbed6f97d7f56f06b1c424248e7b",
+    "/home/shiqiu/.local/bin/tectonic": "4df19452c202c5bef9f7c7e4a01a3f2b9d5199f0a1f73b70b4fe1bffbc9837f6"
+  },
+  "font_sha256": {},
+  "build_log_sha256": {
+    "pandoc.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "compile.log": "5ffe169dc95e3b896aa016b1b6f2f7d0ed5560027dc332d8817d85bd17a5ba6a",
+    "pandoc2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "compile2.log": "e66f50ca08ddefb173ff4bb180bf812fe4fbce8fa2a134fac00aeb079cb406e7",
+    "REVIEW_ZH.log": "f393cf45241917b554287c641e7098e487de3b68595e64c5a47277e56c4754ba"
+  }
+}

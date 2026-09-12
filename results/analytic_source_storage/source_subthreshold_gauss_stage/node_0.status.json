@@ -1,0 +1,26 @@
+{
+  "kind": "node",
+  "node": 0,
+  "worker_exit_code": 0,
+  "hard_time_limit": false,
+  "elapsed_seconds": 2.9733429530169815,
+  "metadata_path": "/tmp/source_subthreshold_gauss_stage/node_0.json",
+  "metadata_sha256": "3911ca7259051fa16138a65de037c3ef0f0a7027176a973c0e2a1ba074762a8f",
+  "status": "completed",
+  "command_argv": [
+    "/home/shiqiu/miniconda3/bin/python",
+    "/home/shiqiu/s-matrix-bootstrap/scripts/certify_subthreshold_gauss_rows.py",
+    "--worker",
+    "node",
+    "--stage",
+    "/tmp/source_subthreshold_gauss_stage",
+    "--K-stage",
+    "/tmp/source_subthreshold_stage",
+    "--arb-path",
+    "/tmp/collocation_arb",
+    "--node",
+    "0"
+  ],
+  "scientific_partial_outputs_preserved": true,
+  "retries": 0
+}

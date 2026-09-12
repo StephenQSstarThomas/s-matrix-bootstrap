@@ -1,0 +1,39 @@
+{
+  "violations": [
+    {
+      "energy": 30.0,
+      "isospin": 1,
+      "ell": 25,
+      "margin": "[-3.595069422142346290729243e-13 +/- 3.98e-38]"
+    },
+    {
+      "energy": 30.0,
+      "isospin": 1,
+      "ell": 27,
+      "margin": "[-1.645024536382208715388120e-13 +/- 2.09e-38]"
+    }
+  ],
+  "high_spin": [
+    {
+      "isospin": 0,
+      "cosine": -1.0,
+      "polynomial_value": "[-1.42377148179038664795869125140 +/- 4.00e-30]"
+    },
+    {
+      "isospin": 1,
+      "cosine": 1.0,
+      "polynomial_value": "[-0.215276645426555920361330961621 +/- 1.75e-31]"
+    },
+    {
+      "isospin": 1,
+      "cosine": -1.0,
+      "polynomial_value": "[-1.22650640656584299216791918733 +/- 2.32e-30]"
+    },
+    {
+      "isospin": 2,
+      "cosine": 0.04661568193927138,
+      "polynomial_value": "[-0.142883502891913607876997747790 +/- 9.46e-33]"
+    }
+  ],
+  "scope": "Finite-wave margins exclude quadrature error; high-spin polynomial cuts are analytic necessary conditions"
+}

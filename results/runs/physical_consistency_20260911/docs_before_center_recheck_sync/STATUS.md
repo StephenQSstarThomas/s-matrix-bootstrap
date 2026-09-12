@@ -1,0 +1,177 @@
+# He–Kruczenski 2309.12402v3 复现状态
+
+更新：2026-09-11。**3582盘按几何规则预选的IR对照与UV三点交付链已完成，同一声明5MeV网格零严格违例；正确且稳健的ρ复现仍有Major差异。** 几何主线完成不等于全部区域、加强模型F或连续物理认证完成。正式Watsonian首轮因线性残差检查停止，非不可行结论；修补测试尚未结束，尚无已完成的 Watson 物理结果。
+
+## 当前3582盘几何主线及后续诊断
+
+[当前权威运行索引](results/runs/physical_consistency_20260911/PROGRESS.json)、[工作稿](results/runs/physical_consistency_20260911/AUDIT_WORKING_ZH.md)、[根因与范围](results/runs/physical_consistency_20260911/ROOT_CAUSE_ZH.md)。各模型与原run保留，谱、相位、物理参数及几何代表坐标没有为改善结果而修改。
+
+- [完整联合见证](results/runs/physical_consistency_20260911/fine_witness_analytic/report.json)通过3582盘、100Gram、2χ、4FESR、14FF、L4、5端点等式及5个领先高能条件。
+- [fine_IR_ref_02](results/runs/physical_consistency_20260911/fine_IR_ref_02/report.json)与[解析核验](results/runs/physical_consistency_20260911/fine_IR_ref_analytic/source_audit.json)、[冻结选择](results/runs/physical_consistency_20260911/fine_IR_selected/selection.json)及[fine_C1](results/runs/physical_consistency_20260911/fine_C1_profiles/profiles.json)/[fine_C3](results/runs/physical_consistency_20260911/fine_C3_profiles/profiles.json)已交付。IR的P1末端8.07855°，S0零点括区s∈(.4,.5)，不声称唯一。
+- UV [tip](results/runs/physical_consistency_20260911/fine_tip_support_02/report.json)、[ref](results/runs/physical_consistency_20260911/fine_UV_ref_support_02/report.json)、[mid](results/runs/physical_consistency_20260911/fine_UV_mid_support_02/report.json)全部中心、支持及解析通过，并在读取相位前完成[fine_UV_selected](results/runs/physical_consistency_20260911/fine_UV_selected/selection.json)。[原生相位](results/runs/physical_consistency_20260911/fine_native_phases/phases.json)和[同一5MeV网格结果](results/runs/physical_consistency_20260911/fine_grid_profiles/direct_profiles.json)使用这些冻结完整振幅。
+
+| 3582盘UV代表 | 原生P1 90°（MeV） | 5MeV网格读数（MeV） | 原生min ηP1 | 原生末端δS0（°） |
+|---|---:|---:|---:|---:|
+| tip | 752.363 | 747.621 | .311947 | 190.145 |
+| mid | 681.596 | 680.882 | .215344 | 201.450 |
+| ref | 677.890 | 679.351 | .200378 | 211.310 |
+
+[fine_tip_grid](results/runs/physical_consistency_20260911/fine_tip_grid/evaluation.json)、[fine_mid_grid](results/runs/physical_consistency_20260911/fine_mid_grid/evaluation.json)、[fine_ref_grid](results/runs/physical_consistency_20260911/fine_ref_grid/evaluation.json)在同一.28–1.2GeV的185能量×3波网格上均sampled_passed、0严格违例。max η=1包含阈值点，不表示各处弹性，也不是网格之间、全部能量或无限自旋的证书。原生与细网格90°值是同一C的两种描述性读数；质量分散、强非弹性及S0偏差仍是Major，不能只挑tip接近770MeV。
+
+[新fine IR在原UV条件下的独立排除](results/runs/physical_consistency_20260911/FINE_IR_UV_EXCLUSION.json)给解析upper=−.1484093366072121；没有借用新增FF端点或新增高能散射条件，只排除此完整IR C，不是联合域或所有无ρ振幅的不可行证书。
+
+[Fine身份审计](results/runs/physical_consistency_20260911/FINE_CENTER_IDENTITY_AUDIT.md)保留了tip与IR交付链的完整C身份。这里的“中心”按旧报告中的约化障碍收敛标记记录。旧联合实现以步前的小Newton decrement标记步后点，尚未按“保存刚通过检查的点”的新规则重验；本文不追称旧中心已通过新标准，其独立primal、support及完整C身份证据仍有效。允许的自由高R提升不保证原4076变量全Gram障碍唯一中心，更不唯一识别QCD振幅。[旧三色IR收缩标签](results/runs/physical_consistency_20260911/IR_CENTER_IDENTITY_REVIEW_ZH.md)与其仍有效的有限支持/解析证据继续分开记录。
+
+[此前Watson接口验证](results/runs/physical_consistency_20260911/verification_Watson_adapter_final.json)记录106测试、21核心模块、3测试文件；负R、partial及projection重放见[实际重放](results/runs/physical_consistency_20260911/WATSON_ADAPTER_REAL_REPLAY.json)和[代码审阅](results/runs/physical_consistency_20260911/WATSON_ADAPTER_CODE_REVIEW.md)。[预算控制更正](results/runs/physical_consistency_20260911/WATSON_BUDGET_CONTROL_CORRECTION.json)：goal_00是**零预算的一步控制，返回原可行点且不授予新中心资格**；solver_seconds=0但步后检查时间，实际iterations=1，中心和支持标记均False。这些是接口控制，不能当作正式Watson物理结果。
+
+[fine_watson_01_support_01](results/runs/physical_consistency_20260911/fine_watson_01_support_01/report.json)因linear residual约1.08257e−5停止，报告inconclusive，不是不可行证书。本次同步时，允许真实下降的不精确方向、保持原中心门槛及保存刚通过检查点的修补仍在106项测试中，尚未重启。[预声明范围](results/evidence/WATSONIAN_DIAGNOSTIC_SCOPE_20260911.md)仍为后续固定旧目标诊断，不写成原2309算法，不覆盖已冻结几何三点的差异。
+
+[原生五组F](results/runs/sequential_reproduction_20260910/F_five_configs_verified_comparison/resolution.json)仍只属于原基线：固定M50的L跨度46.47MeV对原图12.54MeV，固定L10的M跨度54.06MeV对54.35MeV同量级。它不是3582盘加强模型的F，也不证明M→∞收敛；完整区域和正确稳健ρ仍未闭合。
+
+## 历史中间模型：3123盘
+
+下面保留3123盘的冻结点与当时独立细网格违例；它们促成新增459行，不能移作3582盘的测量。
+
+**3123盘（C／D／E）已完成IR对照和UV tip/mid/ref的中心、支持、解析核验及相位前冻结。** [原生相位与谱](results/runs/physical_consistency_20260911/interlaced_native_phases/phases.json)中IR的P1末端为8.0989°；UV三点如下。独立[.28–1.2GeV、5MeV验证](results/runs/physical_consistency_20260911/interlaced_fine_profiles/direct_profiles.json)每点555项，全部保留严格违例。
+
+| 3123盘UV代表 | 原生P1 90°（MeV） | min ηP1 | 原生末端δS0（°） | 5MeV严格违例 | 5MeV max η |
+|---|---:|---:|---:|---:|---:|
+| tip | 751.9317 | .304105 | 190.22 | 98 | 1.0066646 |
+| mid | 680.2284 | .214759 | 202.06 | 57 | 1.0047289 |
+| ref | 678.5991 | .196052 | 209.74 | 59 | 1.0044671 |
+
+这些是已冻结3123盘振幅的结果，不是3582盘新tip的结果。质量分散、强非弹性、S0差异及离节点幺正违例没有因中心/支持通过而消失。
+
+## 保留的1500盘解析基线：交付与历史差异
+
+以下记录只属于原生有限基线；其中无穷远障碍、相位及分辨率数值不移用于新修补模型。更早的PV与来源审计另在后文标明历史身份。
+
+[顺序记录](results/runs/sequential_reproduction_20260910/SEQUENCE.json)、[推导及向量矩解释](results/runs/sequential_reproduction_20260910/DERIVATION_ZH.md)、[理论与暂缓问题v2 PDF](results/runs/sequential_reproduction_20260910/THEORY_AND_HELD_ISSUES_ZH_v2.pdf)。
+
+1. **A／D：共同函数族和完整联合见证已建立。** analytic-cardinal保留3876个振幅系数、4076个联合变量；M50/L10原生1500盘、两条separate-L2 χ球、实际双密度L4、100个电流Gram、FESR和FF条件均有新见证。解析行区间primal与有限H支持界分别核验。B(M)仍为具名正则化配方。原式Eq.(3.72–74)为raw绝对.002容差提供依据；原作者的范数打包和代码缩放尚未完全明示，不能将相对／绝对口径说成全无原文依据。
+2. **C1–C3：Fig.5–7与三色IR代表已交付。** [Fig.5](results/runs/sequential_reproduction_20260910/C1_fig5/profiles.pdf)、[Fig.6](results/runs/sequential_reproduction_20260910/C2_fig6/profiles.pdf)、[Fig.7](results/runs/sequential_reproduction_20260910/C3_fig7/profiles.pdf)使用已保存的完整振幅。蓝／橙／绿交付点均通过有限H支持、解析primal和当时选择检查；中心标签需按上述径向收缩审计更正；橙色S0在s∈[.3,.4]、绿色在[.4,.5]有零点，由[解析符号](results/runs/sequential_reproduction_20260910/C1_subthreshold_orange/evaluation.json)及[连续性](results/runs/sequential_reproduction_20260910/C1_subthreshold_green/evaluation.json)认证存在，未声称唯一；蓝色只报告采样未见零点。绿色全部C的[UV电流扩展排除](results/runs/sequential_reproduction_20260910/CD_fixed_current_analytic/source_audit.json)已计入解析误差，upper=−9.109617136909641，只排除此固定振幅。
+3. **B2／B3／E1：收缩见证与区域差异分开成立。** [新纯散射见证](results/runs/sequential_reproduction_20260910/B2_WITNESS_SCOPE_ZH.md)的x≈1.60656781，完整C在新H及解析源行上均通过原生核验，明显大于同一有限H手征上界.10592809；这支持+x方向的强收缩，尚非完整pure区域。[IR右端重验](results/runs/sequential_reproduction_20260910/B3_IR_tip_replay/report.json)及[解析primal](results/runs/sequential_reproduction_20260910/B3_IR_tip_analytic_signs/report.json)给出x区间 **[.1058808058047516,.1059280880042031]**，大于原图绿色max约.082573；旧界没有转移，印刷图也不是数学排除证书。[同xref的Fig.8截面证书](results/runs/sequential_reproduction_20260910/E6_regions/regions.json)严格给出上侧收缩／下侧上移比 **[1.0149888666,1.0745319267]**，只复现了轻微不对称，强不对称仍有major差异。
+4. **E2–E5：ρ指标存在，但连续物理解释失败。** tip／mid／ref均为独立几何规则选出的收敛中心，原生有限支持和解析primal通过。在不改C的[最终离节点诊断](results/runs/sequential_reproduction_20260910/E5_direct_profiles_final/direct_profiles.json)中，0.60–0.90 GeV每10 MeV加点的数值保持不变，并补录非零F1(∞)及9项输入哈希：
+
+| 振幅 | 最大η | 严格违例样本数 | 加点90°读数（MeV） | T0 | S0的η无穷远极限 |
+|---|---:|---:|---:|---:|---:|
+| tip | 1.0925161 | 42 | 802.0117 | 27.6169 | 216.90 |
+| mid | 1.1189324 | 40 | 697.1341 | −70.7100 | 555.36 |
+| ref | 1.1409410 | 40 | 688.3834 | −64.9345 | 510.00 |
+
+0.70／0.90 GeV的[18项独立角积分](results/runs/sequential_reproduction_20260910/E5_independent_integrals/report.json)全部匹配，11项严格违反幺正性；不是画线或积分误差。当前有限多项式族满足f00→5T0/2，因此全能量幺正性必需T0=0；三点均不满足。这个必要条件只针对当前族，并非充分条件。[暂缓问题与修补提案](results/runs/sequential_reproduction_20260910/HELD_INTER_NODE_ISSUE_ZH.md)已汇总端点关系与加密方案，依用户要求未改原基线。向量谱矩给出的加权均方根能标约808／700／689 MeV，与偏低读数的关系见推导§11；它解释允许的谱预算，不把矩比当作峰位或极点公式。
+
+5. **F：原基线五组完整链条已交付。** Fig.11的+x是我们预先声明的规则，Appendix没有明示作者选点。[五组比较](results/runs/sequential_reproduction_20260910/F_five_configs_verified_comparison/resolution.json)逐点要求完整中心、原式支持、解析primal及同C求值：
+
+| M,L | x支持区间 | 原生P1 90°读数（MeV） |
+|---|---|---:|
+| 50,8 | [.119959409536529,.120028034254141] | 835.5474 |
+| 50,10 | [.09903980867035,.09911418047407] | 803.4866 |
+| 50,12 | [.0903781904146754,.0904573848468524] | 789.0804 |
+| 45,10 | [.0958411272569067,.0959050027722802] | 749.4307 |
+| 60,10 | [.1027509399112325,.1028471720961483] | 773.6138 |
+
+固定M50的L跨度46.47MeV，原图读数约12.54MeV，L稳定性仍有major差异；固定L10的M跨度54.06MeV与原图54.35MeV同量级，不能笼统称M稳定性完全失败。S0在中高能系统性偏高仍是major差异。五点均有非零T0与F1(∞)，所以M60的质量读数接近770MeV不能消除无穷远障碍。[五组诊断](results/runs/physical_consistency_20260911/FIVE_CONFIG_SUMMARY.json)保留这些限制。
+
+6. **正则化和ρ信号的可证明范围。** 在原输入不变时，B/2已有严格联合见证及支持上界，严格推出V(B)−V(B/2)≥.00549313；这是[正则化的非平凡影响](results/evidence/REGULARIZATION_VALUE_PROOF_20260911.md)，不是ρ质量误差归因。原先冻结三点的解析P1强度与FF平方存在内部峰已由连续性和区间比较证明，但不证明峰唯一、极点或全能量幺正性。[峰存在证明](results/evidence/RHO_SIGNAL_PEAK_EXISTENCE_20260911.md)。
+
+以上为保留的原生1500盘基线结果；3582盘分支的当前进展与下一步见本页顶部，二者不作身份转移。
+
+**以下各节保留历史PV分支及此前审计的原始状态。** “当前”“尚缺解析算子”等措辞只适用于当时分支，不覆盖上述新证据；历史输入及输出辅助选点见[PAPER_MAINLINE](results/runs/mainline_alignment_20260909/PAPER_MAINLINE.json)。
+
+## 原文主线与验收范围
+
+- Fig.7没有ρ是原文的IR对照；Fig.9加UV后，当前已有ρ式峰与90°上穿。未充分对齐的四组是Fig.4区域范围、Fig.8强收缩不对称、Fig.9–10三点相移、Fig.11完整M/L比较。
+- Fig.4/8的已测差异不能只靠继续收紧当前支持误差消除；但印刷图不是作者的严格排除证书，不能据此反证论文。L12失败不是整体不可行。
+- 共同精确解析族尚缺完整优化算子。混合PV可继续作为声明过的有限配点近似；若改为精确解析族，须重建H并重新求见证。唯一极点、连续全能全自旋认证及迭代唯一性不作原Fig.3–11的新增前置条件。
+- 本轮只扩展解析误差诊断：冻结C/tip在整个保留能区的交叉核误差可用514/515积分节点界至绝对|ΔS|<1e−6；这是固定50模式的充分计算界，不是换模型后的可行性证书。91项检查通过，仍13模块、3测试文件。
+- [暂缓的局部反例与后续等式差异](results/runs/followup_research_20260910/HELD_ISSUES_ZH.md)单列，不改生产模型。下一物理决策是明确算子／输入身份后取得一个独立的完整UV见证，不展开参数扫描。
+
+## 当前优先问题：基础原型与独立性（2026-09-10）
+
+[逐部分复审](results/runs/foundations_review_20260910/REVIEW_ZH.md)、[完整条件证明与反例](results/evidence/FOUNDATIONS_PROOFS_20260910.md)、[A1–F3台账](results/runs/foundations_review_20260910/CLAIM_LEDGER.json)。
+
+- **A1出现明确结构障碍。** 原生K+iI与有理离切线核的精确差已推导；Res f_R(s_i)=−w_i Im f_PV(s_i)。C/tip的24项留数均严格非零，不能称为共同精确解析函数。此结论不等于所有可能插值完成均不存在。
+- **A3实测区分了低能求值与高能可行性。** 24项独立Arb角积分与旧PV投影全部一致；一致解析完成在1.199GeV差约1e−7，但17.826GeV的tip有η(S0/S2/P1)≈191/85/6.61。整个4<s≤s0的P1核差上界约9.05e−6；不能把低能接近转移为高能约束或最优性。
+- **A2输入不完全自洽/唯一。** GMOR中心值比约.6028；Eq2.50按共同平均质量的标量矩比打印值低8.48%。这些差异与OPE余项未被伪装为舍入误差。
+- **独立性修正。** 历史Fig.5反推范数、Fig.8标记选ref/mid属于输出辅助。新选择接口禁止标记输入，物理优化须显式声明χ范数。旧PAPER_MAINLINE与图保持历史条件模型身份。
+- **证明修正。** 证书先验证自由列消元前提；evaluate保留精确f球并向外舍入裕量区间；相位不在S=0时伪造，F=0仍计入谱矩。橙/绿零点存在已严格验证；蓝色仅保留采样未变号。
+
+现为13个科学模块、三个测试文件。新 `analytic` 是严格比较/已定义函数求值器，尚未交付该族的全套新B–F优化算子与结果。全步骤已审阅不等于全步骤已证明。精确解析族与历史有限PV近似应分别声明；后一条原文复现路线不等待连续认证，前一条不能搬用旧可行性。
+
+## 专家反馈主线审计（2026-09-10）
+
+[完整中文推导和结果](results/runs/expert_response_20260910/RHO_MECHANISM_AUDIT_ZH.md)集中回答 IR→UV→ρ。
+
+- **C3→D：固定 Fig.7 全部3876系数，原UV电流扩展不可行已获原式证书。** 零目标上界约−9.09881296，384/768-bit一致；只排除该C振幅，不是全联合问题不可行或所有无ρ振幅被排除。[证书](results/runs/expert_response_20260910/C_fixed_current_final/report.json)。
+- **E3：散射强度、FF及电流谱主峰已直接交付。** tip原生峰792.136MeV；mid/ref680.414MeV。原90°读数789/700/696MeV保持；未变更选点或系数。[IR/UV谱图](results/runs/expert_response_20260910/CE_spectra_final/rho_mechanism.pdf)。P1零阶矩的失配代价约占9.93%/25.13%/29.25%，不能把Gram近饱和当成两pion谱饱和。
+- **A1/A2：有限正则化的充分结论已推导。** 实际双谱L4加原生S0/S2盘控制单谱和T0，有限散射集紧；高能自由电流谱使联合投影的闭包/取得性需另论，不外推为连续证书。[数学证据](results/evidence/RHO_FINITE_MODEL_THEOREMS_20260910.md)。
+- **实现：** 修正旧IR路径被静默省略；新增固定振幅检验。固定部分用原H的Arb乘积并精确消去λ=1，避免其数值残差污染近弹性Gram。早期失败全部保留。用户已允许少量新增模块，现为12个科学模块、3个测试文件；86项检查通过。[验证与源码记录](results/runs/expert_response_20260910/verification.json)。
+
+B3全域、E三点定量稳健性、F/L12仍按下表保留未闭合，不由本轮谱图替代。
+
+## 本轮按研究依赖推进
+
+| 环节 | 已完成/正在执行 | 结论范围 |
+|---|---|---|
+| A2 / χ定义 | 原Fig.5三色合并L2/ε约1.000007/1.000020/1.000146，与作者后续代码一致 | 有明确源图指纹的执行推断；不是根据复现相位选范数 |
+| A2/D2 / 权重与单位 | hard统一权重；[双谱归一化](results/runs/mainline_alignment_20260909/NORMALIZATION_TRANSFER_ZH.md)确认B无需另乘π或2 | 不把clipped端点修正追认为原文规定，不改变质量/匹配能标/容差 |
+| B3 / 六ε | 166条旧查询按新球径向恢复primal、按新支持函数重验dual；然后补必要几何缺口 | [重验清单](results/runs/mainline_alignment_20260909/B_combined/manifest.json)；pure不受χ分组影响 |
+| C1–C3 | 三色局部上侧证书及C1→C2→C3已完成；132项新物理检查通过 | 阈下线性改善及IR的P1不足得到支持；[新C结果](results/runs/mainline_alignment_20260909/C_RESULT_ZH.md)，不替代B全区域 |
+| D1–D3 | [D3_paper_hull](results/runs/mainline_alignment_20260909/D3_paper_hull/report.json)完整4076变量通过新联合约束 | current算子不施加χ范数，D1_hard_M50保持；见[当前D](results/runs/mainline_alignment_20260909/D_RESULT_ZH.md) |
+| E / 支持 | combined-hard tip/ref/mid原式支持均完成，gap=9.70e−5/7.68e−4/7.71e−4 | 三点新相移与下侧支持均完成；Fig8两侧收缩已证；强非对称未复现，比值[.955397,1.180340] |
+| F | 新四组支持与537项主波求值完成；L12原式联合未通过且无不可行证明 | [F部分交付](results/runs/mainline_alignment_20260909/F_paper/F_RESULT_ZH.md)；固定L10的三M齐全，整体F未完成 |
+
+数值教训：两项步长/权重试探没有闭合旧mid，已恢复既有QR与线搜索策略。可行混合不是障碍中心；使用完整中心路径并保存中心间S/F变化。旧hard-separate ref已经原式达标、P1中心间变化约.157°，但它在新合并球下不能直接当作可行解。
+
+## 当前18步与论文主张
+
+| 步骤 | 论文对应 | 当前判定 |
+|---|---|---|
+| A1 | 交叉、同位旋、色散及有限参数化 | 交叉/归一化正确；共同精确解析重建有非零留数障碍 |
+| A2 | 手征关系、QCD单位与输入 | 单位已核对；历史χ选择输出辅助，GMOR/标量矩不一致及理论误差仍需声明 |
+| A3 | 一致投影与求值 | 独立严格PV积分与核差界已交；解析完成的高能幺正性未通过 |
+| B1 | 有效有限支持 | 原式primal/dual齐备，实际线性残差与停止错误已修正 |
+| B2 | Fig.3 pure区域 | 沿用同一模型的38份合法支持；整体几何误差.00967577 |
+| B3 | Fig.4六ε区域 | 已按合并球重验，局部支持新增；全区域.01标准尚未全部达到 |
+| C1 | Fig.5阈下线性与零点 | 采样线性改善；橙/绿括区内有零点已证，蓝色全区间无零点未证 |
+| C2 | Fig.6保存代表振幅 | 原样锁定C1绿色3876系数，选点先于相位 |
+| C3 | Fig.7仅IR相移 | 新132项检查通过；S0/S2低能及P1不足的比较得到支持 |
+| D1 | FF归一化与同一S电流Gram | 新hard/M50算子及独立复Gram检查完成 |
+| D2 | 四FESR与高能FF | 打印矩、raw四误差.002、FF平方界6e−5、hard均明确固定 |
+| D3 | 完整联合可行性 | 新4076变量见证通过全部原约束，不作为极值替代 |
+| E1 | Fig.8加入UV后的区域收缩 | 四条UV支持及必要IR局部界完成；两侧均严格收缩，比值[.955397,1.180340]，上下排序未决 |
+| E2 | 三个边界代表振幅 | 旧有限支持达标；ref/mid曾用输出标记坐标，不再称独立选点 |
+| E3 | Fig.9–10与弹性程度 | 三点P1均上穿，789/700/696MeV；曲线接近程度及部分η/S0差异未闭合 |
+| F1 | Fig.11五组M/L | 新(50,8)/(50,10)/(45,10)/(60,10)支持完成；(50,12)尚无联合见证，已停止同类续算 |
+| F2 | 分辨率与原约束 | 四组ρ保留；M三组跨度44.28MeV，L8/L10相差39.39MeV，中高能S0差异仍在 |
+| F3 | 逐图数据、来源及结论 | Fig.3–10及F四组数据/来源已归档；F图明确partial，缺L12 |
+
+支持gap证明的是投影目标的数值范围，不保证完整幅度唯一，更不自动界定相移误差。物理η≤1是始终保留的基本约束；η=1和谱完全饱和没有被加入。当前新C/E主波528项物理原生检查通过；新tip另以768-bit重新生成全部1500原生分波，全部幺正盘通过（最小裕量约3.61e−85）。仍是有限节点结论。
+
+## 当前证据
+
+- [PAPER_MAINLINE](results/runs/mainline_alignment_20260909/PAPER_MAINLINE.json)：当前输入及相位前固定的选点。
+- [χ源图指纹](results/runs/mainline_alignment_20260909/CHIRAL_SOURCE_RESIDUALS_ZH.md)、[截止规则](results/runs/mainline_alignment_20260909/CUTOFF_DECISION_ZH.md)、[ρ归一化](results/runs/mainline_alignment_20260909/NORMALIZATION_TRANSFER_ZH.md)。
+- [C结果及Fig.5–7](results/runs/mainline_alignment_20260909/C_RESULT_ZH.md)、[原图比较](results/runs/mainline_alignment_20260909/C_comparison/comparison.json)。
+- [Fig.4核心判定](results/runs/mainline_alignment_20260909/B_combined/FIG4_CORE_CLAIMS_ZH.md)、[Fig.8收缩比较](results/runs/mainline_alignment_20260909/E1_PAPER_RESULT_ZH.md)。
+- [D结果](results/runs/mainline_alignment_20260909/D_RESULT_ZH.md)、[新E三相位](results/runs/mainline_alignment_20260909/E3_paper_phases/phases.json)、[E原图比较](results/runs/mainline_alignment_20260909/E3_paper_comparison/comparison.json)。
+- [求解器选择](results/runs/mainline_alignment_20260909/SOLVER_DECISION_ZH.md)、[B线性残差修复](results/runs/mainline_alignment_20260909/B_SOLVER_FIX_ZH.md)。十模块整理后79项独立数学/实现测试通过；测试通过不等于全论文主张通过。
+
+## 历史有限交付的剩余项（新计算先服从前述原型修正）
+
+1. B3关键包含/排除和E1必要收缩比较已经分项交付；全区域精度与原图数值身份分开保留，不再为弱上下排序扩展扫描。
+2. F已交四组固定+x的相位/比较，L12缺新联合见证；不继续盲加同类迭代，也不把该失败当完整问题不可行。
+3. 汇总核心支持与真实差异。若三点稳健性/弹性或分辨率仍不支持原文，明确留下未闭合项，不通过放宽判据或盲跑改成“完成”。
+
+## 历史设置与失败保留
+
+[整理前完整STATUS](results/runs/mainline_alignment_20260909/STATUS_BEFORE_CONSOLIDATION.md)保存历轮18步骤、原式界、已知违例及全部交付链接；[整理前SCIENCE](results/runs/mainline_alignment_20260909/SCIENCE_BEFORE_CONSOLIDATION.md)保存详细sine/高spin/rank推导。旧separate/clipped的B–F结果作为条件变体保留，不能转移到当前设置。
+
+此前PV和finite-sine秩证明、失败的原生求解/高能违例、regulator实验及生产源码快照均仍在原位置；不默认扫描。2309未给出的共同1%/两decade平台与连续幺正认证不作为有限原型的新增前置条件。
+
+## 活跃实现收束
+
+2026-09-10整理时为十模块；本轮按用户补充拆出 spectra 与 certificates，现12模块，逐个≤350行/24KiB，仍为三个测试文件。必要联合/分辨率功能已经归并，5个额外模块容器已删除；非主线sine/FG/旧conic等执行分支退休。原Newton数学循环、φ/梯度/Hessian、原式审计及全部PV变量保留。[源码审查与退休清单](results/runs/mainline_alignment_20260909/core10_review/REVIEW_ZH.md)、[原源码和独立测试证据](results/evidence/core_before_ten_modules_20260910.json.gz)可复查。
+
+当前全部生产计算已收尾。不能把C/D、E支持或四组F成功推广为A–F全部核心claims通过。

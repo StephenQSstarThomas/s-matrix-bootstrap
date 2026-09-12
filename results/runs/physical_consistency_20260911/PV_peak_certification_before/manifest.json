@@ -1,0 +1,17 @@
+[
+  {
+    "source": "src/smatrix_bootstrap/certificates.py",
+    "snapshot": "results/runs/physical_consistency_20260911/PV_peak_certification_before/certificates.py.txt",
+    "sha256": "aedcd1b65d0e1908c84e129e570a119214994c2b38d4e325b543beb9b27a9ad3"
+  },
+  {
+    "source": "src/smatrix_bootstrap/analysis.py",
+    "snapshot": "results/runs/physical_consistency_20260911/PV_peak_certification_before/analysis.py.txt",
+    "sha256": "7c858a1c763d7543dc7dbd167c495bcb8a156e69b7cf5e08de4e80c8153395ec"
+  },
+  {
+    "source": "tests/test_mainline.py",
+    "snapshot": "results/runs/physical_consistency_20260911/PV_peak_certification_before/test_mainline.py.txt",
+    "sha256": "6f98eadb5676137d00e39a9bf54b6e56703f4c9345b147655dcc0354b370ba34"
+  }
+]

@@ -1,0 +1,186 @@
+{
+  "all_paper_core_claims_completed": false,
+  "finite_computational_chain_delivered": true,
+  "steps": [
+    {
+      "step": "A1",
+      "paper_claim": "Eq.2.1–2.12，交叉振幅、谱表示和分波幺正",
+      "implementation_evidence": "全T0/σ/ρ；S=1+iκf；原生abs(S)≤1作为硬约束",
+      "assessment": "定义/原生有限约束得到支持；PV离节点物理延拓未定义，不能声称完整连续振幅已交付。历史sine结论不转移"
+    },
+    {
+      "step": "A2",
+      "paper_claim": "IR比值、UV电流和FESR单位",
+      "implementation_evidence": "χ残差、κ、F归一化、s0平方、π及能量幂审计",
+      "assessment": "未发现需改物理公式的重大错误；范数、regulator、mq与FESR数值处方仍有明确来源缺口"
+    },
+    {
+      "step": "A3",
+      "paper_claim": "§3同一有限变量的算子与求值",
+      "implementation_evidence": "M50全3876系数，PV/Legendre-Q节点、阈下、阈值；独立Eq.2.7代表行",
+      "assessment": "在声明范围内实现完成；有限节点处方身份不等同于找回v3全部插值实现"
+    },
+    {
+      "step": "B1",
+      "paper_claim": "§3.1有限支持/边界优化",
+      "implementation_evidence": "有效原H下界/外界，原约束回代",
+      "assessment": "条件有限计算器完成；Newton是实现选择，原文未指定求解器"
+    },
+    {
+      "step": "B2",
+      "paper_claim": "Fig.3纯S允许域",
+      "implementation_evidence": "38支持、36法向、完整几何内外包",
+      "assessment": "定性形状与区域计算得到支持；与原显示包Hausdorff约.016，内部几何误差约.00968，两者不同"
+    },
+    {
+      "step": "B3",
+      "paper_claim": "Fig.4六ε窄条带及参考点",
+      "implementation_evidence": "六域166支持、统一B；ε=.002/.001包含参考，.0006/.0002排除",
+      "assessment": "手征压缩和参考点筛选趋势得到支持；.002右端约.1059而原图.0826，.0002约.0545而原图.0224，不能说原域数值已吻合"
+    },
+    {
+      "step": "C1",
+      "paper_claim": "Fig.5四点χ不能保证全区间线性；宽ε会破坏S0零点",
+      "implementation_evidence": "完整阈下三波、三ε；此次补入270个原图标记比较",
+      "assessment": "核心趋势得到支持；新直接误差表保留每波/每ε差异，未根据零点重选向量"
+    },
+    {
+      "step": "C2",
+      "paper_claim": "Fig.6选附近上边界代表幅度，同一解用于Fig.7",
+      "implementation_evidence": "固定xref的可行凸段，原样复用C1绿色全向量",
+      "assessment": "完整向量链完成；不是作者唯一“最近”度量或精确极值，凸混合可能增加非弹性"
+    },
+    {
+      "step": "C3",
+      "paper_claim": "Fig.7 S0/S2较好，P1仍不合理",
+      "implementation_evidence": "与原magenta同s节点RMS约6.16°/.585°/2.78°，两方P1均无90°上穿",
+      "assessment": "IR-only对照得到支持；S0并非所有能区都精密吻合；单个IR点无rho不能排除整个IR可行域的rho"
+    },
+    {
+      "step": "D1",
+      "paper_claim": "Eq.3.65–3.71，F(0)=1，S/FF/ρ共用Gram",
+      "implementation_evidence": "两FF全M自由度，100个原3×3 Gram",
+      "assessment": "有限实现与代数对应完成；PSD不自动保证η≈1或二π谱主导"
+    },
+    {
+      "step": "D2",
+      "paper_claim": "四FESR及高能mathcal F平方界",
+      "implementation_evidence": "原raw积分/打印矩、clipped-phi、.002、6e−5；独立单位检查",
+      "assessment": "明文公式对齐；误差分组/归一化和截止执行未唯一恢复，不能把raw .002称为0.2%相对精度"
+    },
+    {
+      "step": "D3",
+      "paper_claim": "同一个幅度同时满足IR与UV约束",
+      "implementation_evidence": "4076变量完整联合见证，1500盘及全部电流/UV约束验回",
+      "assessment": "联合存在性完成；可行见证不能替代后续边界和相位claims"
+    },
+    {
+      "step": "E1",
+      "paper_claim": "Fig.8 UV明显收缩，上侧远强于下侧",
+      "implementation_evidence": "+x严格小于IR；xref上/下变化比界[1.026389,1.167740]",
+      "assessment": "UV收缩得到支持；原图约5.35的强非对称未复现，UV轮廓仍为稀疏内外包"
+    },
+    {
+      "step": "E2",
+      "paper_claim": "Fig.8 tip及两个near-black边界点",
+      "implementation_evidence": "原三全向量；选点先于相位；各有几何界",
+      "assessment": "部分：我方两个非tip点x间距约为原图3倍；原mid自己的支持未完成，借界合法但不等于充分中心化，精度补算单列"
+    },
+    {
+      "step": "E3",
+      "paper_claim": "Fig.9–10三点rho、S0/S2合理及曲线接近模式",
+      "implementation_evidence": "原tip有ρ形态；后续Watsonian三点完成一次固定目标",
+      "assessment": "部分：原mid无90°上穿，ref偏低；后续三点跨约110MeV，且中高能S0偏差显著。后续方法不替代原三点claim"
+    },
+    {
+      "step": "F1",
+      "paper_claim": "Fig.11指定五组M/L实际复算",
+      "implementation_evidence": "五个完整UV+x支持，原约束全部验回",
+      "assessment": "指定五组计算完成；同一预选+x规则/B(M)是本地约定，作者精确代表点与regulator缩放未公开"
+    },
+    {
+      "step": "F2",
+      "paper_claim": "固定M变L三波较好收敛；变M时S0/S2很稳，rho保留",
+      "implementation_evidence": "五组均有P1上穿、S2较稳；669项新主波原生检查",
+      "assessment": "部分：L方向P1跨度42.3MeV而原图12.5；M方向60.2而原图54.3；中高能S0稳定性/绝对形态未达到原文主张"
+    },
+    {
+      "step": "F3",
+      "paper_claim": "全部核心图、向量、输入、误差来源可审阅",
+      "implementation_evidence": "Fig.3–11已有数据和重放；此次补48组来源分明的曲线对照及本表",
+      "assessment": "证据整理完成；不把原型有输出文件或测试通过标为所有物理claim通过"
+    }
+  ],
+  "remaining_claim_groups": [
+    "E representative identity and fixed-x support precision",
+    "E three-point P1 and S0/S2 shapes, spectral/Watson mechanism, Fig.8 strong asymmetry",
+    "Resolution stability of the final declared E selection workflow"
+  ],
+  "new_curve_comparisons": 48,
+  "recognized_native_prefix_comparisons": 36,
+  "physical_parameters_changed": false,
+  "experimental_or_published_phase_fitting": false,
+  "source_defect_corrected": "prepare metadata no longer claims a chiral norm is imposed",
+  "scope": "18 scientific steps, not percentages; completed computation is distinct from supported physical claims",
+  "mid_precision_review": {
+    "physics_and_position_unchanged": true,
+    "requested_scaled_projection_gap": 0.001,
+    "own_support_tolerance_met": false,
+    "central_converged": false,
+    "newton_iterations": 45,
+    "solver_seconds": 369.84999963105656,
+    "supervisor_seconds": 372.492492667865,
+    "joint_feasible": true,
+    "all_original_constraints_checked": true,
+    "new_native_unitarity": "sampled_passed",
+    "new_native_checks": 132,
+    "original_target": [
+      0.0862847245195143,
+      -0.005265816456875685
+    ],
+    "new_target": [
+      0.08628472451496749,
+      -0.005265284854336221
+    ],
+    "old_borrowed_y_distance_upper": 3.324374368867478e-05,
+    "new_borrowed_y_distance_upper": 3.2712141471123554e-05,
+    "old_eta_min": [
+      0.4197267046675305,
+      0.9996717508642757,
+      0.17377060057375412
+    ],
+    "new_eta_min": [
+      0.5938715981579592,
+      0.9996703173094833,
+      0.1440821935290042
+    ],
+    "max_complex_S_change": [
+      0.1944815842765101,
+      0.01660458165076375,
+      0.12723847725905033
+    ],
+    "P1_90_crossing_observed": false,
+    "phase_changes": {
+      "S0": {
+        "rms": 1.313329603646027,
+        "max_abs": 4.974417109810588,
+        "modulo_180_max_abs": 4.974417109810588
+      },
+      "S2": {
+        "rms": 0.0855517476101339,
+        "max_abs": 0.47584822911186464,
+        "modulo_180_max_abs": 0.4758482291118611
+      },
+      "P1": {
+        "rms": 4.059840501162017,
+        "max_abs": 23.014629948636433,
+        "modulo_180_max_abs": 23.01462994863644
+      }
+    },
+    "producer": "results/runs/claims_alignment_20260909/mid_projection_precision_001/report.json",
+    "borrowed_support": "results/runs/claims_alignment_20260909/mid_borrowed_support/report.json",
+    "profile_comparison": "results/runs/claims_alignment_20260909/mid_comparison_final/comparison.json",
+    "original_representatives_replaced": false,
+    "conclusion": "Bounded precision diagnosis completed; original mid projection optimum and phase stability remain unresolved"
+  }
+}

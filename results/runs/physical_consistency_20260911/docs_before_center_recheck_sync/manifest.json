@@ -1,0 +1,22 @@
+[
+  {
+    "path": "STATUS.md",
+    "sha256_before": "0772c5bfaebd68b1b433dfd684a4d46c50bc8a6b863c96540d5bf0b1d4139039",
+    "sha256_after": "7616c9b2bd6cf282afc766942ea282014e37998935a373c744b35c148f6e1f08"
+  },
+  {
+    "path": "SCIENCE.md",
+    "sha256_before": "02499446a1cedf2d2ebd8707ac6aa3fc4a482b66d0829f787fb30ec17a79ad5a",
+    "sha256_after": "e600a1b2d2ddc6809607be514668ec0cbc5cc0176bd79f958ba964eff950f1f0"
+  },
+  {
+    "path": "results/runs/physical_consistency_20260911/AUDIT_WORKING_ZH.md",
+    "sha256_before": "f0d109f25ceafb3283c81b57622dfd1228fec075f9b3d67474908d9e96f692f2",
+    "sha256_after": "83745306f788717b23a95fcc617f64f6fc21ddae23aff69098e76f523df179d0"
+  },
+  {
+    "path": "results/runs/physical_consistency_20260911/ROOT_CAUSE_ZH.md",
+    "sha256_before": "d1bec1694f0612978c33ab1ff099e58a570832c19f06737f7d649a160a5b94ac",
+    "sha256_after": "26c7bcaa1943ec7e1791a5733b7be6bfc1b95bb3e1e294b369dffbe130935fa5"
+  }
+]

@@ -1,0 +1,258 @@
+{
+  "source": {
+    "paper": "He and Kruczenski, Bootstrapping gauge theories, arXiv:2309.12402v3",
+    "figure": "9",
+    "figure_asset": "P1ps.pdf",
+    "source_url": "https://arxiv.org/src/2309.12402v3",
+    "paper_url": "https://arxiv.org/html/2309.12402v3#S4.F9",
+    "sha256": "a368271727174828d53779921b9ac7efa8ed7dca7dad9debef5ab8090f49a58c",
+    "page": 0,
+    "page_size_pt": [
+      1000.0,
+      551.0
+    ]
+  },
+  "extraction": {
+    "method": "Eight-arc filled-marker bounding-box centers; exact inspected RGB discrimination; affine calibration with all black major ticks",
+    "pymupdf_version": "1.27.2.3",
+    "script_sha256": "c3f7fc23e935a3ba1212523b4623333ba62fc3dbf486ae1c863a5609ff339a9e",
+    "path_count": 721,
+    "target_path_counts_by_group": {
+      "light_pink": 43,
+      "pink": 43,
+      "red": 43
+    },
+    "excluded_path_counts": {
+      "non_axis_stroked_paths": 474,
+      "gray_filled_experimental_paths": 78
+    },
+    "rgb_by_group": {
+      "light_pink": [
+        0.9999849796295166,
+        0.5555419921875,
+        0.5555419921875
+      ],
+      "pink": [
+        0.9999849796295166,
+        0.3333280086517334,
+        0.3333280086517334
+      ],
+      "red": [
+        0.9999849796295166,
+        0.0,
+        0.0
+      ]
+    },
+    "axis_lines_pt": [
+      [
+        [
+          27.176000595092773,
+          520.1599731445312
+        ],
+        [
+          820.6090087890625,
+          520.1599731445312
+        ]
+      ],
+      [
+        [
+          43.042999267578125,
+          529.968994140625
+        ],
+        [
+          43.042999267578125,
+          39.60200119018555
+        ]
+      ]
+    ],
+    "x_axis": {
+      "coordinate_unit": "GeV",
+      "offset_pt": -187.85059204101574,
+      "scale_pt_per_unit": 827.1579895019534,
+      "tick_values": [
+        0.4,
+        0.6,
+        0.8,
+        1.0,
+        1.2
+      ],
+      "tick_positions_pt": [
+        143.01199340820312,
+        308.44500732421875,
+        473.875,
+        639.3090209960938,
+        804.7379760742188
+      ],
+      "tick_fit_residuals_pt": [
+        -0.0006103515625,
+        0.0008056640624545253,
+        -0.0007995605469659495,
+        0.0016235351561135758,
+        -0.001019287109556899
+      ],
+      "max_abs_tick_fit_residual_pt": 0.0016235351561135758,
+      "coordinate_working_resolution": 1.208958884145117e-05
+    },
+    "y_axis": {
+      "coordinate_unit": "degree",
+      "offset_pt": 520.159884643555,
+      "scale_pt_per_unit": -2.5843718872070323,
+      "tick_values": [
+        150,
+        100,
+        50,
+        0
+      ],
+      "tick_positions_pt": [
+        132.50399780273438,
+        261.7229919433594,
+        390.9410095214844,
+        520.1599731445312
+      ],
+      "tick_fit_residuals_pt": [
+        -0.00010375976575005552,
+        0.0002960205076192324,
+        -0.000280761718983058,
+        8.850097628965159e-05
+      ],
+      "max_abs_tick_fit_residual_pt": 0.0002960205076192324,
+      "coordinate_working_resolution": 0.0038694121575541295
+    },
+    "max_bbox_vs_endpoint_center_difference_pt": [
+      0.0017461776733398438,
+      0.00176239013671875
+    ],
+    "rasterization_used_for_data": false
+  },
+  "uncertainty_and_scope": {
+    "status": "Published graphical marker coordinates, not original optimization output",
+    "working_resolution_pt": 0.01,
+    "working_resolution_interpretation": "Practical extraction tolerance, not a statistical interval or a certified solver-error bound",
+    "marker_radius_interpretation": "Graphical footprint, not an error bar on the bootstrap result",
+    "unknown_errors": [
+      "Numerical optimization feasibility and residuals",
+      "Energy, spin and amplitude truncations",
+      "Preprocessing or rounding before figure export",
+      "Unplotted behavior between marker centers"
+    ],
+    "phase_convention": "S_l^I=eta_l^I exp(2i delta_l^I); figure delta values are degrees; E=m_pi sqrt(s); energy is recovered directly from the GeV ticks"
+  },
+  "figure8_selection_by_group": {
+    "light_pink": {
+      "f00_s3": 0.07098396845559402,
+      "f11_s3": -0.004420014278272275
+    },
+    "pink": {
+      "f00_s3": 0.07532981108510713,
+      "f11_s3": -0.004759010785569876
+    },
+    "red": {
+      "f00_s3": 0.08112496838894613,
+      "f11_s3": -0.005252986472196145
+    }
+  },
+  "order": "Original PDF order within exact RGB group; no smoothing or resampling",
+  "independent_energy_node_check": {
+    "formula": "E_i=m_pi sqrt(8/(1+cos(pi*(i-1/2)/50)))",
+    "node_indices": [
+      1,
+      43
+    ],
+    "max_abs_difference_gev": 2.3133420530840887e-06,
+    "inferred_plotting_m_pi_gev": 0.1395701203594928,
+    "max_abs_difference_using_m_pi_0_13957_gev": 2.56402215459417e-06,
+    "max_abs_difference_using_rounded_text_m_pi_0_140_gev": 0.003682054415021563,
+    "interpretation": "All 43 energies per color follow the M=50 midpoint pattern with a plotting conversion consistent with 139.57 MeV, not the literal rounded 140 MeV in the text",
+    "extraction_does_not_snap_to_nodes": true
+  },
+  "rho_phase_crossing": {
+    "phase_target_deg": 90,
+    "by_group": {
+      "light_pink": {
+        "lower_marker": {
+          "pdf_path_index": 222,
+          "energy_gev": 0.7897017238547974,
+          "phase_deg": 74.61982801190372
+        },
+        "upper_marker": {
+          "pdf_path_index": 223,
+          "energy_gev": 0.8617623032909927,
+          "phase_deg": 123.16585931498516
+        },
+        "continuous_curve_crossing_bracket_gev": [
+          0.789689634265956,
+          0.8617743928798342
+        ],
+        "linear_interpolation_crossing_gev": 0.8125316869957846,
+        "linear_interpolation_coordinate_resolution_interval_gev": [
+          0.812513853743153,
+          0.8125495202484162
+        ],
+        "shift_from_paper_reference_0_770_gev_percent": 5.523595713738261
+      },
+      "pink": {
+        "lower_marker": {
+          "pdf_path_index": 449,
+          "energy_gev": 0.7897017238547974,
+          "phase_deg": 68.36085782581414
+        },
+        "upper_marker": {
+          "pdf_path_index": 450,
+          "energy_gev": 0.8617623032909927,
+          "phase_deg": 113.42422629882915
+        },
+        "continuous_curve_crossing_bracket_gev": [
+          0.789689634265956,
+          0.8617743928798342
+        ],
+        "linear_interpolation_crossing_gev": 0.8243047545738127,
+        "linear_interpolation_coordinate_resolution_interval_gev": [
+          0.8242864774297218,
+          0.8243230317179036
+        ],
+        "shift_from_paper_reference_0_770_gev_percent": 7.05256552906659
+      },
+      "red": {
+        "lower_marker": {
+          "pdf_path_index": 676,
+          "energy_gev": 0.7897017238547974,
+          "phase_deg": 67.24975980902721
+        },
+        "upper_marker": {
+          "pdf_path_index": 677,
+          "energy_gev": 0.8617623032909927,
+          "phase_deg": 111.65358468893643
+        },
+        "continuous_curve_crossing_bracket_gev": [
+          0.789689634265956,
+          0.8617743928798342
+        ],
+        "linear_interpolation_crossing_gev": 0.8266218651918982,
+        "linear_interpolation_coordinate_resolution_interval_gev": [
+          0.8266034961421564,
+          0.8266402342416397
+        ],
+        "shift_from_paper_reference_0_770_gev_percent": 7.353488985960799
+      }
+    },
+    "bracket_interpretation": "Assuming a continuous phase passing through the shown samples, at least one crossing lies between these adjacent energies; uniqueness between samples is not proven",
+    "interpolation_interpretation": "A straight-line summary of two actual markers; coordinate interval propagates only the extraction working tolerance; it does not bound interpolation bias",
+    "physics_interpretation": "Real-axis phase pi/2 crossing, not a complex pole mass; no experimental data used for extraction or interpolation"
+  },
+  "dataset": {
+    "csv_file": "figure9_p1_phases.csv",
+    "csv_sha256": "66d946d57787f26ec7db4c850eedd9b801eedfd935f4c65d55c090bc43c2be90",
+    "row_count": 129,
+    "columns": [
+      "group",
+      "group_path_index",
+      "energy_gev",
+      "phase_deg",
+      "pdf_path_index",
+      "pdf_x_pt",
+      "pdf_y_pt",
+      "pdf_radius_x_pt",
+      "pdf_radius_y_pt"
+    ]
+  }
+}

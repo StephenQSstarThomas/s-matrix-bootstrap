@@ -1,0 +1,79 @@
+{
+  "schema": "smatrix-exact-analytic-finite-M50-target-plane-v1",
+  "status": "proved_for_declared_finite_analytic_completion",
+  "timestamp_utc": "2026-09-06T11:22:16.602869+00:00",
+  "goal_complete": false,
+  "model": {
+    "M": 50,
+    "N": 50,
+    "allowed_waves_per_isospin": 10,
+    "real_amplitude_coefficients": 3876,
+    "imaginary_FF_sample_variables": 100,
+    "current_density_sample_variables": 100,
+    "amplitude_representation": "Full individually degree<=50 tensor conformal/sine completion; unrestricted real coefficients",
+    "source_row_count_including_targets": 3011,
+    "source_rank_normalization": "rawf; S=1+i*pi*sqrt(1-4/s)*f",
+    "shared_analytic_current_and_scattering_rows": true,
+    "all8_raw_chiral_residuals_zero": true,
+    "additional_infinity_functional_zero": true,
+    "exact_current_sector_constants": {
+      "s0": "3600/49",
+      "pion_mass_GeV": "7/50",
+      "matching_energy_GeV": "6/5",
+      "targets": [
+        "3579147/1500625000",
+        "205588206/1838265625",
+        "184977/43750000",
+        "780921/5359375"
+      ],
+      "high_FF_squared_bounds": [
+        "20787/98000000000",
+        "3/100000"
+      ],
+      "raw_scalar_tolerance": "1/500",
+      "eta": "9/10"
+    },
+    "hard_mask_low_count": 43,
+    "hard_mask_high_count": 7,
+    "additional_amplitude_coefficient_bound": false,
+    "continuum_scattering_constraints_added": false
+  },
+  "proof_inputs": {
+    "results/analytic_full_source_rank3011_certificate.json": "4f4eb5c8e05ddf2b424baa972188ae74383b03721be3801fbac86acd0fc6484b",
+    "results/remaining_rank_exact_integer_audit.json": "9097f5aeb3ae75f80cfdbdb9d03f08eacd9defdbc81555780a07b9fe7c527f98",
+    "results/source_M50_exact_current_fiber_256_rank3011_recheck.json": "7ead46d2535daa92e0134378f56d2369f7a31cc64d470b2a0afd869333527ba4",
+    "results/full_analytic_rank_independent_review.json": "713a87b61c499e8d71c5fd5ca6270243a4192e7a9e0c5788481054b6ed175180",
+    "docs/69_full_analytic_rank_and_finite_target_plane.md": "ab5a4ff83e158795c1bfdcc9540c52f45d82e847e321fde1418750d67254fc29"
+  },
+  "linear_algebra": {
+    "scattering_rank": 3000,
+    "fixed_scattering_chiral_infinity_rank": 3009,
+    "amplitude_kernel_at_fixed_samples_chiral_infinity_dimension": 867,
+    "target_restriction_rank": 2,
+    "amplitude_fiber_dimension_at_fixed_targets_and_fixed_witness_samples": 865,
+    "raw_imaginary_right_inverse": "R_raw=R_G*D_kappa",
+    "kernel_basis_map": "Z=(exact scaled dual quotient map)^T; I_raw Z=0; C_remaining Z=Q",
+    "quotient_right_inverse": "AR4 ofdocs69 withtrueB_Q^-1 andrecordeddyadicscales",
+    "full_lift": "x=R_raw*g+Z*R_Q*(h-C_remaining*R_raw*g)"
+  },
+  "fixed_current_witness": {
+    "F": "(1+z)^3",
+    "F_at_zero_exact": 1,
+    "eta": "9/10",
+    "current_S": "eta*exp(3i*phi_j)",
+    "other28_retained_waves_per_node_S": 0,
+    "rational_spectra_unchanged": true,
+    "minimum_scattering_disk_margin": "19/100",
+    "current_arithmetic_recheck_identical_to_prior_except_runtime": true
+  },
+  "conclusions": {
+    "pure_finite_target_projection": "R^2",
+    "zero_chiral_residual_finite_target_projection": "R^2",
+    "declared_shared_node_exact_gauge_target_projection": "R^2",
+    "arbitrary_target_pair_at_fixed_scattering_FF_and_rho": true
+  },
+  "amplitude_coefficient_vector_materialized": false,
+  "new_optimization_run": false,
+  "rounded_operator_rank_transferred": false,
+  "scope": "Applies only to the explicitly defined analytic finite source completion and current prescription. It does not establish the authors unarchived implementation, continuum feasibility, published bounded contours or phase curves."
+}

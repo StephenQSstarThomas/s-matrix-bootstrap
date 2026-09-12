@@ -1,0 +1,77 @@
+{
+  "records": [
+    {
+      "role": "tip",
+      "source": "results/runs/mainline_alignment_20260909/paper_tip_path_02/center_observables.json",
+      "last_completed_center_change": {
+        "S0": {
+          "max_complex_S_change": 0.003713649820419909,
+          "max_phase_change_mod_pi_degrees": 0.10418350038033833,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.898520576750945
+        },
+        "S2": {
+          "max_complex_S_change": 0.0019492202375594905,
+          "max_phase_change_mod_pi_degrees": 0.055827723162012975,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.9999133558049368
+        },
+        "P1": {
+          "max_complex_S_change": 0.006622706978096321,
+          "max_phase_change_mod_pi_degrees": 0.22894864175582402,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.628700997899191
+        }
+      }
+    },
+    {
+      "role": "ref",
+      "source": "results/runs/mainline_alignment_20260909/paper_ref_path_02/center_observables.json",
+      "last_completed_center_change": {
+        "S0": {
+          "max_complex_S_change": 0.025413034348861004,
+          "max_phase_change_mod_pi_degrees": 0.3951083667315319,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.5580984522324892
+        },
+        "S2": {
+          "max_complex_S_change": 0.002648083611290584,
+          "max_phase_change_mod_pi_degrees": 0.07583798314240557,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.9998450993314686
+        },
+        "P1": {
+          "max_complex_S_change": 0.001685944013766288,
+          "max_phase_change_mod_pi_degrees": 0.1814990659825803,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.23815783326904924
+        }
+      }
+    },
+    {
+      "role": "mid",
+      "source": "results/runs/mainline_alignment_20260909/paper_mid_path_03/center_observables.json",
+      "last_completed_center_change": {
+        "S0": {
+          "max_complex_S_change": 0.034414987078741834,
+          "max_phase_change_mod_pi_degrees": 0.894880953031173,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.18661685574532338
+        },
+        "S2": {
+          "max_complex_S_change": 0.0033510872548814493,
+          "max_phase_change_mod_pi_degrees": 0.09593650520687691,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.9998559957714573
+        },
+        "P1": {
+          "max_complex_S_change": 0.001945964329258874,
+          "max_phase_change_mod_pi_degrees": 0.09404362041279908,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.38808330778114114
+        }
+      }
+    }
+  ],
+  "scope": "Last two saved converged original-audited centers, not a uniform observable error bound; final selected point may be a later audited Newton step"
+}

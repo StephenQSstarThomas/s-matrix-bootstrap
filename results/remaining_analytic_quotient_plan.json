@@ -1,0 +1,41 @@
+{
+  "schema": "smatrix-complete-remaining-quotient-plan-v1",
+  "status": "planned_not_launched",
+  "source_registry": "results/analytic_source_registry.json",
+  "input_shape": [
+    3011,
+    3876
+  ],
+  "canonical_row_selection": "0..1499, then3000..3010; all1500real+8chiral+infinity+2targets",
+  "output_shape": [
+    1511,
+    2376
+  ],
+  "exact_free_coordinates": {
+    "constant": 1,
+    "membership": 1205,
+    "symmetry": 1170
+  },
+  "coordinate_family_scales": [
+    1,
+    32,
+    64
+  ],
+  "working_bits": 2048,
+  "batch_size": 16,
+  "hard_worker_cap_seconds": 1200,
+  "prerequisites": [
+    "Retained actualsourcecontrols[0,2979,3010] pass",
+    "Knownspan2979 quotient encloseszero andknownweights areenclosed",
+    "Finite sourcequotients andRHS-specific fullinterval plusNeumanntail diagnostics reviewed"
+  ],
+  "method": "Certified true selectedinverse withp=0 Neumanntail; factorizedminimalquotient, no denseprojector",
+  "source_master_recomputation": false,
+  "new_inverse_candidate": false,
+  "rank_or_feasibility_claim": false,
+  "export": "All1511rows x2376 exactdyadicArb midpoint/radius pairs; everyexport decodedandcheckedforcontainment",
+  "proxy_scope": "Float64midpoints/radiusupperproxies areselection/diagnosticinputs only",
+  "source_and_input_hashes_rechecked_after_run": true,
+  "failed_or_partial_artifacts_retained": true,
+  "next_decision": "Inspect actualscaledrowenclosures before selecting1510columns ofconstant-pivot1510x2375matrix"
+}

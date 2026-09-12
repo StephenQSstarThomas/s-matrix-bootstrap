@@ -1,0 +1,16 @@
+[
+  {
+    "bits": 128,
+    "rows": 2000,
+    "columns": 500,
+    "forward_matvec_seconds": 0.004851038381457329,
+    "transpose_matvec_seconds": 0.003920163167640567
+  },
+  {
+    "bits": 192,
+    "rows": 2000,
+    "columns": 500,
+    "forward_matvec_seconds": 0.007272056164219975,
+    "transpose_matvec_seconds": 0.008404126809909939
+  }
+]

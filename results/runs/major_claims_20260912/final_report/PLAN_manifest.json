@@ -1,0 +1,181 @@
+{
+  "created_utc": "2026-09-12T05:53:40.410871+00:00",
+  "status": "PLAN_PDF_delivered",
+  "PDF": "PLAN_ZH.pdf",
+  "scientific_source": {
+    "source": "results/runs/major_claims_20260912/CORE_CLAIM_LEDGER_AND_PLAN_ZH.md",
+    "snapshot": "results/runs/major_claims_20260912/final_report/sources/CORE_CLAIM_LEDGER_AND_PLAN_ZH.md",
+    "sha256": "c0b917803fc0562f08a906b0dc8ee735988a292baab7c03e9f4828f052f23dae",
+    "bytes": 13759,
+    "mode": "0444"
+  },
+  "claim_ledger": {
+    "source": "results/runs/major_claims_20260912/CLAIM_LEDGER.json",
+    "snapshot": "results/runs/major_claims_20260912/final_report/sources/CLAIM_LEDGER.json",
+    "sha256": "077b7aa6b67cbf0fbb5d586a1955844dbefc2a1ab082f1cb05afc55557abe68c",
+    "step_count": 18,
+    "mode": "0444"
+  },
+  "protected_existing_artifacts": {
+    "REPORT_ZH.pdf": "9da5a65cb9a3e7b4a526948a1d35c7049301f0e722df7a7588be86bc9401bb4b",
+    "manifest.json": "5530ec7c9a6602d4e8bb2f294c475ca59397659f2d7a1c177692945555936d65",
+    "verification.json": "76c09bf14ef7e4f47cb99fcdbb9c5e7468bf682c8ec47824416f69dbd5154b1a",
+    "header.tex": "cdc397f00c1796f9fd9c19e33350dac97fac682b0df8d446f56ca12abc83ed0e"
+  },
+  "local_links": [
+    {
+      "source_target": "MAJOR_CLAIMS_ZH.md",
+      "rendered_target": "../MAJOR_CLAIMS_ZH.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/MAJOR_CLAIMS_ZH.md",
+      "exists": true
+    },
+    {
+      "source_target": "FINAL_VERIFICATION.json",
+      "rendered_target": "../FINAL_VERIFICATION.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/FINAL_VERIFICATION.json",
+      "exists": true
+    },
+    {
+      "source_target": "../stage_B_delivery_20260907/regions/regions.json",
+      "rendered_target": "../../stage_B_delivery_20260907/regions/regions.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_delivery_20260907/regions/regions.json",
+      "exists": true
+    },
+    {
+      "source_target": "../mainline_alignment_20260909/B_combined/FIG4_CORE_CLAIMS_ZH.md",
+      "rendered_target": "../../mainline_alignment_20260909/B_combined/FIG4_CORE_CLAIMS_ZH.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/FIG4_CORE_CLAIMS_ZH.md",
+      "exists": true
+    },
+    {
+      "source_target": "../mainline_alignment_20260909/C_RESULT_ZH.md",
+      "rendered_target": "../../mainline_alignment_20260909/C_RESULT_ZH.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/C_RESULT_ZH.md",
+      "exists": true
+    }
+  ],
+  "formatting_changes": [
+    {
+      "source": "αN(v)≤ε",
+      "typeset": "\\(\\alpha N(v)\\le\\epsilon\\)",
+      "occurrences": 1,
+      "kind": "equivalent math notation"
+    },
+    {
+      "source": "N(v)≤ε/α",
+      "typeset": "\\(N(v)\\le\\epsilon/\\alpha\\)",
+      "occurrences": 1,
+      "kind": "equivalent math notation"
+    }
+  ],
+  "layout_only": [
+    "Original H1 title and opening paragraphs",
+    "Compact contents with subsection entries",
+    "Three-column claim ledger widths 20/35/45 percent",
+    "Plain A4/10pt/CJK/18mm margins"
+  ],
+  "no_scientific_computation": true,
+  "no_active_build_script": true,
+  "commands": [
+    [
+      "/tmp/he_report_pandoc/pandoc",
+      "PLAN_ZH.md",
+      "--from",
+      "markdown+tex_math_single_backslash-smart",
+      "--to",
+      "json",
+      "-o",
+      "PLAN_ast.json"
+    ],
+    [
+      "/tmp/he_report_pandoc/pandoc",
+      "PLAN_ast.json",
+      "--from",
+      "json",
+      "--standalone",
+      "--to",
+      "latex",
+      "--toc-depth=2",
+      "--shift-heading-level-by=-1",
+      "--include-in-header",
+      "PLAN_header.tex",
+      "-V",
+      "mainfont=DejaVu Serif",
+      "-V",
+      "sansfont=DejaVu Sans",
+      "-V",
+      "monofont=DejaVu Sans Mono",
+      "-V",
+      "papersize=a4",
+      "-V",
+      "fontsize=10pt",
+      "-V",
+      "geometry:margin=18mm",
+      "-V",
+      "colorlinks=true",
+      "-o",
+      "PLAN_ZH.tex"
+    ],
+    [
+      "/home/shiqiu/.local/bin/tectonic",
+      "--keep-logs",
+      "--keep-intermediates",
+      "--reruns",
+      "2",
+      "PLAN_ZH.tex"
+    ]
+  ],
+  "build_attempts": [
+    {
+      "tag": 1,
+      "compile_exit": 0,
+      "log": "logs/PLAN_compile_1.log"
+    }
+  ],
+  "compile_exit": 0,
+  "thread_environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "RAYON_NUM_THREADS": "1"
+  },
+  "nice": 19,
+  "completed_utc": "2026-09-12T05:56:01.829054+00:00",
+  "PDF_sha256": "d6f4ba875354399806e8503361f6b8d2e02855ef60fe050add3796ca1becdd2a",
+  "pages": 4,
+  "verification": "PLAN_verification.json",
+  "font_sha256": {},
+  "final_compile_log": "logs/PLAN_compile_1.log",
+  "visual_QA_pages": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "protected_existing_artifacts_unchanged": {
+    "REPORT_ZH.pdf": true,
+    "manifest.json": true,
+    "verification.json": true,
+    "header.tex": true
+  },
+  "artifact_sha256": {
+    "PLAN_ZH.md": "01f39700e085bb842a818aec5865f53374af3bd5111564fdc63f95d2a2580cf2",
+    "PLAN_ZH.tex": "8650bc8eaf2e16a8c8b941a473f3f230a26ca2051f5f602bdb38ab865f1bf893",
+    "PLAN_header.tex": "cdc397f00c1796f9fd9c19e33350dac97fac682b0df8d446f56ca12abc83ed0e",
+    "PLAN_ast.json": "a4ed8fed7be8e2328e5e30df5b8f41ae757e7c9ac597788aeafb326b7c2c854e",
+    "PLAN_verification.json": "8d48d4b228c9cc75546cc0fb6581161a01dbcc2914179a4968ab4ce4ac7edb7a",
+    "PLAN_QA_ZH.md": "9d5359d94ac51ab2415aecafd61d2963457a2655c6779cc6924904a798957553"
+  },
+  "log_sha256": {
+    "logs/PLAN_pandoc_ast_1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/PLAN_BUILD_COMMANDS.txt": "ab39bee0eeb739c117514bcb36bbe473637791d0c1a0fafb01c14e99da5736c1",
+    "logs/PLAN_commands_1.json": "875eb1175c847c163f63d108587a0d9fac3941b32acf4fae93423486f0bdd58d",
+    "logs/PLAN_pandoc_1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/PLAN_compile_1.log": "cff807fcbfaa98d848f37c7431e1d184f56c2229a2f09328a0ef8f4782a25a6e",
+    "PLAN_ZH.log": "19d118f0e88e00f2bc9a7f6bacceaf9c8d67b2433cddc844e49e2e0689d61cb9"
+  },
+  "tool_binary_sha256": {
+    "/tmp/he_report_pandoc/pandoc": "decd3dd11a3fe0c16ce56443343ec53adde6fbed6f97d7f56f06b1c424248e7b",
+    "/home/shiqiu/.local/bin/tectonic": "4df19452c202c5bef9f7c7e4a01a3f2b9d5199f0a1f73b70b4fe1bffbc9837f6"
+  }
+}

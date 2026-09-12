@@ -1,0 +1,141 @@
+{
+  "command": "dual",
+  "status": "candidate",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "dual",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_normal_dual_pure_M50_20260906",
+    "control": null,
+    "matrix": null,
+    "matrix_sha256": null,
+    "rank_report": null,
+    "density_limit": null,
+    "preparation": "results/runs/stage_B_unitarity_resolved_20260906",
+    "solver_seconds": 300.0,
+    "dual_seconds": 300.0,
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 50,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": "results/runs/stage_B_radial_pure_M50_20260906/coefficients.json",
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "pure",
+    "chiral_tolerance": 0.002,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "seconds": 600.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3"
+  },
+  "scope": "Coherent finite-sine-cardinal conditional model; published regions and phases remain unverified.",
+  "solver": {
+    "solver": "normal dual only",
+    "tail_weights": {
+      "kR": [
+        3.680045984804398e-08,
+        -2.1921667194818216e-08,
+        2.2210125233450832e-07,
+        0.0,
+        0.0
+      ],
+      "kI": [
+        -1.8299082747990553e-10,
+        -5.003239898574498e-10,
+        -4.101348222234421e-09,
+        -3.1239382029310105e-06,
+        -7.236855801755485e-06
+      ]
+    }
+  },
+  "normal_dual": {
+    "status": "inconclusive",
+    "error": "No finite normal-cone LP candidate: Time limit reached. (HiGHS Status 13: model_status is Time limit reached; primal_status is Infeasible)"
+  },
+  "outer": {
+    "upper": 2.5599166019680384,
+    "enclosure": "[2.559916601968038152772358 +/- 4.67e-26]",
+    "disk": 2.4397386037969975,
+    "chiral": 0.0,
+    "density_residual": 0.12016780378543564,
+    "tail_support": 1.0194385605065622e-05,
+    "scope": "exact saved float64 operator and supplied tail maps; angular quadrature error excluded",
+    "primal_feasible": true,
+    "lower": 2.0458758930500696,
+    "minimum_margin_enclosure": "[8.4888335256392614556e-121 +/- 9.28e-142]",
+    "density_norm": 126555.81647862591,
+    "targets": [
+      "[2.045875893050069846944343 +/- 7.92e-27]",
+      "[-0.1689482685649125753720131 +/- 3.16e-26]"
+    ],
+    "tail_margin_enclosures": [
+      "[1092940.5345037372236 +/- 3.34e-14]",
+      "[399635.80618343766515 +/- 2.66e-15]",
+      "[48876.753494544642853 +/- 3.23e-16]",
+      "[63.649738416921834061 +/- 1.63e-19]",
+      "[27.703721943858301343 +/- 4.71e-19]"
+    ]
+  },
+  "M": 50,
+  "L": 12,
+  "sampling_nodes": 167,
+  "scattering_samples": 6012,
+  "infinity": "zero",
+  "mode": "pure",
+  "chiral_tolerance": null,
+  "density_limit": 377500,
+  "targets": [
+    2.0458758930500767,
+    -0.16894826856491252
+  ],
+  "objective": 2.0458758930500767,
+  "minimum_scattering_margin": 8.488833525639262e-121,
+  "chiral_norms": [
+    3.8723880778274773,
+    1.546910404469243
+  ],
+  "density_norm": 126555.81647862591,
+  "radial_shrink": 1.0,
+  "sampled_feasible": true,
+  "support_optimality_certified": false,
+  "physical_unitarity_accepted": false,
+  "unitarity_coverage": "listed energies and waves only; off-grid and tails unverified",
+  "analytic_tail_conditions_passed": true,
+  "analytic_tail_margins": [
+    "[1092940.534503717995282743 +/- 4.06e-19]",
+    "[399635.8061834371082184611 +/- 4.30e-20]",
+    "[48876.75349453309425996796 +/- 2.66e-21]",
+    "[63.64973841690270321353047 +/- 2.91e-24]",
+    "[27.70372194385779853863464 +/- 4.13e-24]"
+  ],
+  "tail_conditions_applied": true,
+  "operator_scope": "float64 quadrature and tail maps; analytic tail checked separately; no continuum certificate",
+  "elapsed_seconds": 325.3581905839965
+}

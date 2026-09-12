@@ -1,0 +1,21 @@
+{
+  "fixed_C_runs": [
+    "fine_IR_ref_02",
+    "fine_IR_selected",
+    "original_UV_fixed_fine_IR_dual"
+  ],
+  "full_C_identical": true,
+  "analytic_upper": -0.1484093366072121,
+  "analytic_enclosure": "[-0.1484093366072121293370784 +/- 3.07e-26]",
+  "scope": "Only this complete C; analytic row enclosures, exact K/kinematics and printed/raw/hard UV inputs",
+  "new_FF_endpoints_used": false,
+  "new_asymptotic_constraints_used": false,
+  "full_joint_infeasibility_claimed": false,
+  "source_audit": "original_UV_fixed_fine_IR_analytic/source_audit.json",
+  "general_proof": "../../evidence/SAME_MODEL_IR_UV_EXCLUSION_20260911.md",
+  "inputs": {
+    "results/runs/physical_consistency_20260911/fine_IR_ref_02/coefficients.json": "aaa4e5ae75e98111754d2aa0d796ddbd9372573775a6e71d193b3fc959f5854d",
+    "results/runs/physical_consistency_20260911/fine_IR_selected/coefficients.json": "aaa4e5ae75e98111754d2aa0d796ddbd9372573775a6e71d193b3fc959f5854d",
+    "results/runs/physical_consistency_20260911/original_UV_fixed_fine_IR_dual/coefficients.json": "aaa4e5ae75e98111754d2aa0d796ddbd9372573775a6e71d193b3fc959f5854d"
+  }
+}

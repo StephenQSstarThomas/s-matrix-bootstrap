@@ -1,0 +1,60 @@
+{
+  "status": "analytic_IR_primal_certified",
+  "analytic_primal_feasible": true,
+  "counts": {
+    "scattering": 1500,
+    "chiral": 2,
+    "density": 1
+  },
+  "minimum_scattering_margin": "[1.6228619566552e-83 +/- 6.66e-97]",
+  "chiral_margins": [
+    "[3.276e-8 +/- 4.48e-12]",
+    "[1.5740837e-5 +/- 1.75e-13]"
+  ],
+  "density_margin": "[3761708569849636184212.078 +/- 9.60e-5]",
+  "targets": [
+    "[0.073321390 +/- 3.00e-10]",
+    "[-0.003374475948 +/- 8.62e-13]"
+  ],
+  "unresolved_scattering": [],
+  "amplitude_model": {
+    "prescription": "analytic-cardinal",
+    "M": 50,
+    "L": 10,
+    "bits": 512,
+    "coordinate_system": "unsubtracted analytic-cardinal C_flat",
+    "coefficient_count": 3876,
+    "physical_samples": 1500,
+    "nu0": 0,
+    "nyquist_retained": true,
+    "infinity_equality_imposed": false,
+    "density_limit_imposed": false,
+    "quadrature_order_per_panel": null,
+    "arithmetic": "Arb",
+    "integral_enclosures": true,
+    "authors_implementation_recovered": false,
+    "analytic_function_family_defined": true,
+    "angular_projection": "Authenticated analytic coefficient enclosures; independent integral cross-check required",
+    "spectral_quadrature": "Exact Cauchy transform of finite sine density",
+    "physical_evaluation": "One analytic family; authenticated row registry covers retained native nodes",
+    "analyticity_status": "One conformal polynomial from all M sine-cardinal density modes",
+    "infinity_row_meaning": "Unsubtracted constant; recorded but no endpoint equality imposed",
+    "source_registry": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/analytic_source_registry_stage/registry.json",
+    "source_registry_sha256": "18e01da602be9c98c614a56ae43f0fe9ac6d4c6ad63e45edbc21f3e8193671e2"
+  },
+  "coefficients_modified": false,
+  "optimization_performed": false,
+  "scope": "Analytic coefficient enclosures and exact native kinematics; retained constraints only",
+  "support_scope": "Original support bound remains a separate saved-float64-H statement",
+  "inputs": {
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/A2_M50_L10/report.json": {
+      "sha256": "9d4eec9e2f69513b85254b266eed94d31dd0439705fb2d3b6f76f29918a0b1ac"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/A2_M50_L10/amplitude.npz": {
+      "sha256": "94defd8fe5eaedc5b3d8111365b7980c34e468100c604ebf691c04e503725a75"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/C1_orange/coefficients.json": {
+      "sha256": "ded38d4430c2c97f36508a20abdc348207e21dfe91f233c86362a78b8ed91c02"
+    }
+  }
+}

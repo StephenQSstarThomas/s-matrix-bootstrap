@@ -1,0 +1,18 @@
+{
+  "baseline_B": 377500.0,
+  "audit_B": 188750.0,
+  "original_lower": 0.09903980867034552,
+  "reduced_upper": 0.09354667974263037,
+  "strict_value_drop_enclosure": "[0.00549312892771515459688913551872 +/- 2.47e-33]",
+  "strict": true,
+  "reduced_full_joint_witness": true,
+  "reduced_analytic_primal": true,
+  "optimization_performed": false,
+  "phase_selection_performed": false,
+  "scope": "Strict finite-H value separation; analytic primal is a separate certificate",
+  "inputs": {
+    "results/runs/sequential_reproduction_20260910/E1_tip_center/report.json": "5cad3f14c3ffb1c43ccbb7f6959a4313c1df05977dcf6eb04553b28f04d1c378",
+    "results/runs/physical_consistency_20260911/regularizer_half_bound_replay/report.json": "110f28e2b62b1fa78062d0bc5db511dccf3d72a0f726ed7930c01014858521df",
+    "results/runs/physical_consistency_20260911/regularizer_half_analytic/source_audit.json": "1819b72b355cb70e53a30cf7a53637e5234c5e8feccc9ce03f81f129193d673a"
+  }
+}

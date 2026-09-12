@@ -1,0 +1,83 @@
+{
+  "records": [
+    {
+      "role": "tip",
+      "run": "PV_tip_support_01",
+      "mu_old": 3.0517578125e-08,
+      "mu_new": 1.52587890625e-08,
+      "partial_waves": {
+        "S0": {
+          "max_complex_S_change": 0.003182046442256971,
+          "max_phase_change_mod_pi_degrees": 0.0906022370095803,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.8948623029185444
+        },
+        "S2": {
+          "max_complex_S_change": 0.0012380284634725173,
+          "max_phase_change_mod_pi_degrees": 0.03546045898910528,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.9999534284156175
+        },
+        "P1": {
+          "max_complex_S_change": 0.0016646539034169423,
+          "max_phase_change_mod_pi_degrees": 0.046487549360845946,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.7759845596711772
+        }
+      }
+    },
+    {
+      "role": "mid",
+      "run": "PV_UV_mid_support_02",
+      "mu_old": 3.90625e-07,
+      "mu_new": 1.953125e-07,
+      "partial_waves": {
+        "S0": {
+          "max_complex_S_change": 0.01887443878766936,
+          "max_phase_change_mod_pi_degrees": 0.4576224750099966,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.790354683034759
+        },
+        "S2": {
+          "max_complex_S_change": 0.003089781125689777,
+          "max_phase_change_mod_pi_degrees": 0.088480386088833,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.999895283203295
+        },
+        "P1": {
+          "max_complex_S_change": 0.004895825490369177,
+          "max_phase_change_mod_pi_degrees": 0.2433181866209159,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.4347276964615652
+        }
+      }
+    },
+    {
+      "role": "ref",
+      "run": "PV_UV_ref_support_02",
+      "mu_old": 3.90625e-07,
+      "mu_new": 1.953125e-07,
+      "partial_waves": {
+        "S0": {
+          "max_complex_S_change": 0.02175714574795531,
+          "max_phase_change_mod_pi_degrees": 0.34472957109184305,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.5816911013155729
+        },
+        "S2": {
+          "max_complex_S_change": 0.0028808099276099353,
+          "max_phase_change_mod_pi_degrees": 0.08245747440467247,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.9998659870630539
+        },
+        "P1": {
+          "max_complex_S_change": 0.0009736278074248659,
+          "max_phase_change_mod_pi_degrees": 0.11198158997384625,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.24320609963224832
+        }
+      }
+    }
+  ],
+  "scope": "Measured changes of the last two saved, original-audited centers. Not a bound on the entire mu-to-zero limit; no point selection from these changes."
+}

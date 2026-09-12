@@ -1,0 +1,313 @@
+{
+  "comparisons": [
+    {
+      "id": "C1_0.006_S0",
+      "group": "C1",
+      "label": "0.006",
+      "wave": "S0",
+      "profiles_json": "results/runs/mainline_alignment_20260909/C1_fig5/profiles.json",
+      "profile_filter": {
+        "epsilon": 0.006
+      },
+      "profile_x": "energies",
+      "profile_y": "f_real",
+      "value_kind": "amplitude",
+      "reference_csv": "references/figure5_subthreshold.csv",
+      "reference_filter": {
+        "wave": "S0",
+        "epsilon": "0.006"
+      },
+      "reference_x": "s",
+      "reference_y": "f",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed"
+    },
+    {
+      "id": "C1_0.006_S2",
+      "group": "C1",
+      "label": "0.006",
+      "wave": "S2",
+      "profiles_json": "results/runs/mainline_alignment_20260909/C1_fig5/profiles.json",
+      "profile_filter": {
+        "epsilon": 0.006
+      },
+      "profile_x": "energies",
+      "profile_y": "f_real",
+      "value_kind": "amplitude",
+      "reference_csv": "references/figure5_subthreshold.csv",
+      "reference_filter": {
+        "wave": "S2",
+        "epsilon": "0.006"
+      },
+      "reference_x": "s",
+      "reference_y": "f",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed"
+    },
+    {
+      "id": "C1_0.006_P1",
+      "group": "C1",
+      "label": "0.006",
+      "wave": "P1",
+      "profiles_json": "results/runs/mainline_alignment_20260909/C1_fig5/profiles.json",
+      "profile_filter": {
+        "epsilon": 0.006
+      },
+      "profile_x": "energies",
+      "profile_y": "f_real",
+      "value_kind": "amplitude",
+      "reference_csv": "references/figure5_subthreshold.csv",
+      "reference_filter": {
+        "wave": "P1",
+        "epsilon": "0.006"
+      },
+      "reference_x": "s",
+      "reference_y": "f",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed"
+    },
+    {
+      "id": "C1_0.004_S0",
+      "group": "C1",
+      "label": "0.004",
+      "wave": "S0",
+      "profiles_json": "results/runs/mainline_alignment_20260909/C1_fig5/profiles.json",
+      "profile_filter": {
+        "epsilon": 0.004
+      },
+      "profile_x": "energies",
+      "profile_y": "f_real",
+      "value_kind": "amplitude",
+      "reference_csv": "references/figure5_subthreshold.csv",
+      "reference_filter": {
+        "wave": "S0",
+        "epsilon": "0.004"
+      },
+      "reference_x": "s",
+      "reference_y": "f",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed"
+    },
+    {
+      "id": "C1_0.004_S2",
+      "group": "C1",
+      "label": "0.004",
+      "wave": "S2",
+      "profiles_json": "results/runs/mainline_alignment_20260909/C1_fig5/profiles.json",
+      "profile_filter": {
+        "epsilon": 0.004
+      },
+      "profile_x": "energies",
+      "profile_y": "f_real",
+      "value_kind": "amplitude",
+      "reference_csv": "references/figure5_subthreshold.csv",
+      "reference_filter": {
+        "wave": "S2",
+        "epsilon": "0.004"
+      },
+      "reference_x": "s",
+      "reference_y": "f",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed"
+    },
+    {
+      "id": "C1_0.004_P1",
+      "group": "C1",
+      "label": "0.004",
+      "wave": "P1",
+      "profiles_json": "results/runs/mainline_alignment_20260909/C1_fig5/profiles.json",
+      "profile_filter": {
+        "epsilon": 0.004
+      },
+      "profile_x": "energies",
+      "profile_y": "f_real",
+      "value_kind": "amplitude",
+      "reference_csv": "references/figure5_subthreshold.csv",
+      "reference_filter": {
+        "wave": "P1",
+        "epsilon": "0.004"
+      },
+      "reference_x": "s",
+      "reference_y": "f",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed"
+    },
+    {
+      "id": "C1_0.002_S0",
+      "group": "C1",
+      "label": "0.002",
+      "wave": "S0",
+      "profiles_json": "results/runs/mainline_alignment_20260909/C1_fig5/profiles.json",
+      "profile_filter": {
+        "epsilon": 0.002
+      },
+      "profile_x": "energies",
+      "profile_y": "f_real",
+      "value_kind": "amplitude",
+      "reference_csv": "references/figure5_subthreshold.csv",
+      "reference_filter": {
+        "wave": "S0",
+        "epsilon": "0.002"
+      },
+      "reference_x": "s",
+      "reference_y": "f",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed"
+    },
+    {
+      "id": "C1_0.002_S2",
+      "group": "C1",
+      "label": "0.002",
+      "wave": "S2",
+      "profiles_json": "results/runs/mainline_alignment_20260909/C1_fig5/profiles.json",
+      "profile_filter": {
+        "epsilon": 0.002
+      },
+      "profile_x": "energies",
+      "profile_y": "f_real",
+      "value_kind": "amplitude",
+      "reference_csv": "references/figure5_subthreshold.csv",
+      "reference_filter": {
+        "wave": "S2",
+        "epsilon": "0.002"
+      },
+      "reference_x": "s",
+      "reference_y": "f",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed"
+    },
+    {
+      "id": "C1_0.002_P1",
+      "group": "C1",
+      "label": "0.002",
+      "wave": "P1",
+      "profiles_json": "results/runs/mainline_alignment_20260909/C1_fig5/profiles.json",
+      "profile_filter": {
+        "epsilon": 0.002
+      },
+      "profile_x": "energies",
+      "profile_y": "f_real",
+      "value_kind": "amplitude",
+      "reference_csv": "references/figure5_subthreshold.csv",
+      "reference_filter": {
+        "wave": "P1",
+        "epsilon": "0.002"
+      },
+      "reference_x": "s",
+      "reference_y": "f",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed"
+    },
+    {
+      "id": "C3_paper_bootstrap_S0",
+      "group": "C3",
+      "label": "paper_bootstrap",
+      "wave": "S0",
+      "profiles_json": "results/runs/mainline_alignment_20260909/C3_fig7/profiles.json",
+      "profile_filter": {},
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "results/runs/stage_C_reference_20260908/phase_reference.csv",
+      "reference_filter": {
+        "wave": "S0",
+        "role": "paper_bootstrap"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "delta_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "C3_paper_bootstrap_S2",
+      "group": "C3",
+      "label": "paper_bootstrap",
+      "wave": "S2",
+      "profiles_json": "results/runs/mainline_alignment_20260909/C3_fig7/profiles.json",
+      "profile_filter": {},
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "results/runs/stage_C_reference_20260908/phase_reference.csv",
+      "reference_filter": {
+        "wave": "S2",
+        "role": "paper_bootstrap"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "delta_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "C3_paper_bootstrap_P1",
+      "group": "C3",
+      "label": "paper_bootstrap",
+      "wave": "P1",
+      "profiles_json": "results/runs/mainline_alignment_20260909/C3_fig7/profiles.json",
+      "profile_filter": {},
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "results/runs/stage_C_reference_20260908/phase_reference.csv",
+      "reference_filter": {
+        "wave": "P1",
+        "role": "paper_bootstrap"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "delta_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "C3_phenomenology_S0",
+      "group": "C3",
+      "label": "phenomenology",
+      "wave": "S0",
+      "profiles_json": "results/runs/mainline_alignment_20260909/C3_fig7/profiles.json",
+      "profile_filter": {},
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "results/runs/stage_C_reference_20260908/phase_reference.csv",
+      "reference_filter": {
+        "wave": "S0",
+        "role": "phenomenology"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "delta_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed"
+    },
+    {
+      "id": "C3_phenomenology_S2",
+      "group": "C3",
+      "label": "phenomenology",
+      "wave": "S2",
+      "profiles_json": "results/runs/mainline_alignment_20260909/C3_fig7/profiles.json",
+      "profile_filter": {},
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "results/runs/stage_C_reference_20260908/phase_reference.csv",
+      "reference_filter": {
+        "wave": "S2",
+        "role": "phenomenology"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "delta_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed"
+    },
+    {
+      "id": "C3_phenomenology_P1",
+      "group": "C3",
+      "label": "phenomenology",
+      "wave": "P1",
+      "profiles_json": "results/runs/mainline_alignment_20260909/C3_fig7/profiles.json",
+      "profile_filter": {},
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "results/runs/stage_C_reference_20260908/phase_reference.csv",
+      "reference_filter": {
+        "wave": "P1",
+        "role": "phenomenology"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "delta_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed"
+    }
+  ]
+}

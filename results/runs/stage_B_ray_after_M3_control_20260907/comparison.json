@@ -1,0 +1,31 @@
+{
+  "before_source": "../stage_B_ray_before_M3_control_20260907/report.json",
+  "after_source": "report.json",
+  "change": "longdouble ray bracketing; width <= 8 longdouble eps; physical and solver tolerances unchanged",
+  "results": {
+    "before": {
+      "lower": 0.04300707234488896,
+      "upper": 0.04300746214154874,
+      "gap": 3.8979665978322586e-07,
+      "primal_feasible": true,
+      "FG": "nonnegative_certified",
+      "tail": true,
+      "support_optimality_certified": false,
+      "seconds": 2.4703483858611435,
+      "LP_status": 0,
+      "CG_rounds": 7
+    },
+    "after": {
+      "lower": 0.04300705199393063,
+      "upper": 0.043007143893265355,
+      "gap": 9.189933472542045e-08,
+      "primal_feasible": true,
+      "FG": "nonnegative_certified",
+      "tail": true,
+      "support_optimality_certified": true,
+      "seconds": 2.821294608991593,
+      "LP_status": "not_needed",
+      "CG_rounds": 7
+    }
+  }
+}

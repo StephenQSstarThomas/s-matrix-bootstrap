@@ -1,0 +1,228 @@
+{
+  "scope": "Only necessary original TeX and small numerical-code text snapshots copied. Official PDF/source archive bytes inspected in RAM staging; binary PDFs and archives not copied to the full home filesystem.",
+  "downloads": [
+    {
+      "paper": "2309.12402v1",
+      "url": "https://arxiv.org/src/2309.12402v1",
+      "retrieved_utc": "2026-09-12T03:11:39.939879+00:00",
+      "bytes": 1416718,
+      "sha256": "b5d46c1a7af34bdb47fa8a49a11395b56ffe1f2220b84115441fd5b68688e071",
+      "members": [
+        "arxiv_submission_2.bbl",
+        "arxiv_submission_2.tex",
+        "figures/chiP1plot.pdf",
+        "figures/chiplot.pdf",
+        "figures/chiplot2.pdf",
+        "figures/chiS0plot.pdf",
+        "figures/chiS2plot.pdf",
+        "figures/chiSRplot.pdf",
+        "figures/FESR2.png",
+        "figures/lin1.pdf",
+        "figures/lin2.pdf",
+        "figures/lin3.pdf",
+        "figures/method2.png",
+        "figures/P1ps.pdf",
+        "figures/purSplot.pdf",
+        "figures/S0ps.pdf",
+        "figures/S2ps.pdf"
+      ],
+      "text_files": [
+        {
+          "member": "arxiv_submission_2.tex",
+          "snapshot": "sources/2309.12402v1__arxiv_submission_2.tex.txt",
+          "sha256": "bb163f5aea159c7c273255546e89b7e7e1472388ec45548a7b54e8d8724ed640",
+          "bytes": 99853
+        }
+      ],
+      "downloaded_binary_saved_in_final_evidence": false,
+      "snapshot_not_copied": "sources/2309.12402v1.tar.gz"
+    },
+    {
+      "paper": "2309.12402v2",
+      "url": "https://arxiv.org/src/2309.12402v2",
+      "retrieved_utc": "2026-09-12T03:11:40.588542+00:00",
+      "bytes": 1441224,
+      "sha256": "29d44dd53e86936dc82b2f7d4d2627df9ef050ae49f82ae6963bb9a885da478d",
+      "members": [
+        "arxiv_submission_2.bbl",
+        "arxiv_submission_2.tex",
+        "figures/chiP1plot.pdf",
+        "figures/chiplot.pdf",
+        "figures/chiplot2.pdf",
+        "figures/chiS0plot.pdf",
+        "figures/chiS2plot.pdf",
+        "figures/chiSRplot.pdf",
+        "figures/FESR2.png",
+        "figures/lin1.pdf",
+        "figures/lin2.pdf",
+        "figures/lin3.pdf",
+        "figures/method2.png",
+        "figures/P1ps.pdf",
+        "figures/purSplot.pdf",
+        "figures/S0ps.pdf",
+        "figures/S2ps.pdf"
+      ],
+      "text_files": [
+        {
+          "member": "arxiv_submission_2.tex",
+          "snapshot": "sources/2309.12402v2__arxiv_submission_2.tex.txt",
+          "sha256": "b38c4c9f940d5268be738414eb1e06b06c83ef7078419ba18754e5cf4ba2d60a",
+          "bytes": 104006
+        }
+      ],
+      "downloaded_binary_saved_in_final_evidence": false,
+      "snapshot_not_copied": "sources/2309.12402v2.tar.gz"
+    },
+    {
+      "paper": "2403.10772v1",
+      "url": "https://arxiv.org/src/2403.10772v1",
+      "retrieved_utc": "2026-09-12T03:11:41.418400+00:00",
+      "bytes": 2959201,
+      "sha256": "fc6135d500760faf0ce4f0570dc1b41f976e5a44f55669bc47b296c40e8dbeab",
+      "members": [
+        "anc/GTB_numerics.m",
+        "anc/GTB_numerics.nb",
+        "figures/D0FF.pdf",
+        "figures/eehadron.pdf",
+        "figures/FFdiag1.png",
+        "figures/FFdiag2.png",
+        "figures/FFdiag3.png",
+        "figures/forwardIm.pdf",
+        "figures/forwardRe.pdf",
+        "figures/GTB_schematic.pdf",
+        "figures/jjdiag1.png",
+        "figures/jjdiag2.png",
+        "figures/jjdiag3.png",
+        "figures/P1FF.pdf",
+        "figures/psandeta.pdf",
+        "figures/rho1450.pdf",
+        "figures/rhopole.pdf",
+        "figures/S0ff.pdf",
+        "figures/shape.pdf",
+        "figures/UVIR.pdf",
+        "figures/Vertex0.png",
+        "figures/Vertex1.png",
+        "figures/Vertex2.png",
+        "QCDsumrule2_30.bbl",
+        "QCDsumrule2_30.tex"
+      ],
+      "text_files": [
+        {
+          "member": "anc/GTB_numerics.m",
+          "snapshot": "sources/2403.10772v1__anc__GTB_numerics.m.txt",
+          "sha256": "9448095e76a98acd818c6e4b3219950044c4b6c3d59ea246342dedfe4b481169",
+          "bytes": 10970
+        },
+        {
+          "member": "QCDsumrule2_30.tex",
+          "snapshot": "sources/2403.10772v1__QCDsumrule2_30.tex.txt",
+          "sha256": "b44b40328bd4962f71fc1dbf1a3a9b3d8a401802f1ba7acf7def96eb6d6000e7",
+          "bytes": 172415
+        }
+      ],
+      "downloaded_binary_saved_in_final_evidence": false,
+      "snapshot_not_copied": "sources/2403.10772v1.tar.gz"
+    },
+    {
+      "paper": "2309.12402v3",
+      "url": "https://arxiv.org/src/2309.12402v3",
+      "reused_verified_archive": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/2309.12402v3_source.tar.gz",
+      "bytes": 1648690,
+      "sha256": "f8fe776bc387766604c42c60557452abeb08696b6dc9b1ef4eb17bc553b9adfd",
+      "text_files": [
+        {
+          "member": "prd_submission_2.tex",
+          "snapshot": "sources/2309.12402v3__prd_submission_2.tex.txt",
+          "sha256": "39ec9e10da96f9c09c8db9e7d3ac63f342b1214df592896281adda727fb6be84",
+          "bytes": 105871
+        }
+      ],
+      "downloaded_binary_saved_in_final_evidence": false,
+      "snapshot_not_copied": "sources/2309.12402v3.tar.gz"
+    },
+    {
+      "doi": "10.1103/PhysRevD.110.096001",
+      "url": "https://harvest.aps.org/v2/journals/articles/10.1103/PhysRevD.110.096001/fulltext",
+      "sha256": "92f4807fb4fc9f56833909f8acbff7c708a751789cea6950d4adadea1767be30",
+      "bytes": 909518,
+      "downloaded_binary_saved_in_final_evidence": false,
+      "snapshot_not_copied": "sources/PhysRevD.110.096001.pdf"
+    },
+    {
+      "doi": "10.1103/PhysRevLett.133.191601",
+      "url": "https://harvest.aps.org/v2/journals/articles/10.1103/PhysRevLett.133.191601/fulltext",
+      "sha256": "3ec04345a1c466118e1fedbb08466b18be634dbe41c7dff7aa9adf8033ddfd53",
+      "bytes": 276938,
+      "downloaded_binary_saved_in_final_evidence": false,
+      "snapshot_not_copied": "sources/PhysRevLett.133.191601.pdf"
+    }
+  ],
+  "text_snapshots": [
+    {
+      "snapshot": "sources/2403.10772v1__anc__GTB_numerics.nb.txt",
+      "sha256": "e3f498b5409e166f727ccd3f027931810ed86a3fc96a890b1c785f7849eeef29",
+      "bytes": 226171,
+      "mode": "0444",
+      "source_url": "https://arxiv.org/src/2403.10772v1",
+      "archive_member": "anc/GTB_numerics.nb"
+    },
+    {
+      "snapshot": "sources/2309.12402v3__prd_submission_2.tex.txt",
+      "sha256": "39ec9e10da96f9c09c8db9e7d3ac63f342b1214df592896281adda727fb6be84",
+      "bytes": 105871,
+      "mode": "0444",
+      "source_url": "https://arxiv.org/src/2309.12402v3",
+      "archive_member": "prd_submission_2.tex"
+    },
+    {
+      "snapshot": "sources/2403.10772v1__QCDsumrule2_30.tex.txt",
+      "sha256": "b44b40328bd4962f71fc1dbf1a3a9b3d8a401802f1ba7acf7def96eb6d6000e7",
+      "bytes": 172415,
+      "mode": "0444",
+      "source_url": "https://arxiv.org/src/2403.10772v1",
+      "archive_member": "QCDsumrule2_30.tex"
+    },
+    {
+      "snapshot": "sources/2403.10772v1__anc__GTB_numerics.m.txt",
+      "sha256": "9448095e76a98acd818c6e4b3219950044c4b6c3d59ea246342dedfe4b481169",
+      "bytes": 10970,
+      "mode": "0444",
+      "source_url": "https://arxiv.org/src/2403.10772v1",
+      "archive_member": "anc/GTB_numerics.m"
+    },
+    {
+      "snapshot": "sources/2309.12402v2__arxiv_submission_2.tex.txt",
+      "sha256": "b38c4c9f940d5268be738414eb1e06b06c83ef7078419ba18754e5cf4ba2d60a",
+      "bytes": 104006,
+      "mode": "0444",
+      "source_url": "https://arxiv.org/src/2309.12402v2",
+      "archive_member": "arxiv_submission_2.tex"
+    },
+    {
+      "snapshot": "sources/2309.12402v1__arxiv_submission_2.tex.txt",
+      "sha256": "bb163f5aea159c7c273255546e89b7e7e1472388ec45548a7b54e8d8724ed640",
+      "bytes": 99853,
+      "mode": "0444",
+      "source_url": "https://arxiv.org/src/2309.12402v1",
+      "archive_member": "arxiv_submission_2.tex"
+    },
+    {
+      "snapshot": "sources/2403_GitHub_c840933_GTB_numerics.m.txt",
+      "sha256": "b12bf411407fc4cb8ae56aea41c88aa336e0f73aa7ae44ebef2b1bca3fc08ad2",
+      "bytes": 9398,
+      "mode": "0444",
+      "reused_verified_snapshot": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/GTB_numerics.m.txt",
+      "fixed_commit": "c8409331d5df911f592e53e5a43628418a39b213",
+      "source_url": "https://raw.githubusercontent.com/hyfysics/gauge-theory-bootstrap/c8409331d5df911f592e53e5a43628418a39b213/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.m"
+    }
+  ],
+  "RAM_staging": "/dev/shm/MAJOR_SOURCE_NORM_AUDIT_20260912_followup",
+  "initial_archive_failure": "ENOSPC before evidence directory creation; root restored space; no scientific input deleted or modified by this audit",
+  "total_text_snapshot_bytes": 728684,
+  "additional_NB_member": {
+    "paper": "2403.10772v1",
+    "archive_member": "anc/GTB_numerics.nb",
+    "snapshot": "sources/2403.10772v1__anc__GTB_numerics.nb.txt",
+    "sha256": "e3f498b5409e166f727ccd3f027931810ed86a3fc96a890b1c785f7849eeef29"
+  }
+}

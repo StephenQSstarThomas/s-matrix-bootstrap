@@ -1,0 +1,22 @@
+{
+  "initialization_only": true,
+  "M10_support_budget_seconds": 600,
+  "fullM50_optimization_performed": false,
+  "M50_embedding_and_audit_performed": false,
+  "stopped_reason": "The complete M10 recovered objective 0.856514707 improves its existing M3 warm 0.849270741 by only 0.007244; it does not justify another M50 initialization/audit cycle. The already independently audited M50 lower 0.831310062 is retained.",
+  "runs": [
+    {
+      "path": "results/runs/stage_B_strong_pure_M10_round1_20260907/report.json",
+      "objective": 0.8562025854127692,
+      "sampled_feasible": true,
+      "global_FG": "nonnegative_certified"
+    },
+    {
+      "path": "results/runs/stage_B_strong_pure_M10_recovered_20260907/report.json",
+      "objective": 0.8565147071360024,
+      "sampled_feasible": true,
+      "global_FG": "nonnegative_certified"
+    }
+  ],
+  "scope": "Small-model initialization experiment only; not a stage B support/region result."
+}

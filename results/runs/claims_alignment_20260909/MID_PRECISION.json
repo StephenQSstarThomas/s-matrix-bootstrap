@@ -1,0 +1,61 @@
+{
+  "physics_and_position_unchanged": true,
+  "requested_scaled_projection_gap": 0.001,
+  "own_support_tolerance_met": false,
+  "central_converged": false,
+  "newton_iterations": 45,
+  "solver_seconds": 369.84999963105656,
+  "supervisor_seconds": 372.492492667865,
+  "joint_feasible": true,
+  "all_original_constraints_checked": true,
+  "new_native_unitarity": "sampled_passed",
+  "new_native_checks": 132,
+  "original_target": [
+    0.0862847245195143,
+    -0.005265816456875685
+  ],
+  "new_target": [
+    0.08628472451496749,
+    -0.005265284854336221
+  ],
+  "old_borrowed_y_distance_upper": 3.324374368867478e-05,
+  "new_borrowed_y_distance_upper": 3.2712141471123554e-05,
+  "old_eta_min": [
+    0.4197267046675305,
+    0.9996717508642757,
+    0.17377060057375412
+  ],
+  "new_eta_min": [
+    0.5938715981579592,
+    0.9996703173094833,
+    0.1440821935290042
+  ],
+  "max_complex_S_change": [
+    0.1944815842765101,
+    0.01660458165076375,
+    0.12723847725905033
+  ],
+  "P1_90_crossing_observed": false,
+  "phase_changes": {
+    "S0": {
+      "rms": 1.313329603646027,
+      "max_abs": 4.974417109810588,
+      "modulo_180_max_abs": 4.974417109810588
+    },
+    "S2": {
+      "rms": 0.0855517476101339,
+      "max_abs": 0.47584822911186464,
+      "modulo_180_max_abs": 0.4758482291118611
+    },
+    "P1": {
+      "rms": 4.059840501162017,
+      "max_abs": 23.014629948636433,
+      "modulo_180_max_abs": 23.01462994863644
+    }
+  },
+  "producer": "results/runs/claims_alignment_20260909/mid_projection_precision_001/report.json",
+  "borrowed_support": "results/runs/claims_alignment_20260909/mid_borrowed_support/report.json",
+  "profile_comparison": "results/runs/claims_alignment_20260909/mid_comparison_final/comparison.json",
+  "original_representatives_replaced": false,
+  "conclusion": "Bounded precision diagnosis completed; original mid projection optimum and phase stability remain unresolved"
+}

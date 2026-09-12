@@ -1,0 +1,45 @@
+{
+  "status": "initialization_only",
+  "purpose": "Exact data extraction of earliest verified same-x upper center; no optimization or new support claim",
+  "M": 50,
+  "L": 10,
+  "density_limit": 377500,
+  "chiral_tolerance": 0.002,
+  "chiral_norm": "separate-l2",
+  "infinity": "free",
+  "unitarity_scope": "sampled",
+  "prescription": "pv-midpoint",
+  "support_direction": [
+    0,
+    0
+  ],
+  "parameters": {
+    "preparation": "results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    "current_preparation": "results/runs/mainline_alignment_20260909/D1_hard_M50",
+    "direction": [
+      0,
+      0
+    ]
+  },
+  "solver": {
+    "optimization_performed": false,
+    "representative_center_converged": false,
+    "all_amplitude_directions_retained": false
+  },
+  "source_center_index": 0,
+  "source_center_mu": 0.0001,
+  "source_inputs": {
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_UV_ref_support_01/report.json": {
+      "sha256": "bfa41d85133a05ceb7caa2fdb90f7a50a9aaf27828292ce12a35ad0889a88bff"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_UV_ref_support_01/center_path.npz": {
+      "sha256": "96e63162472f823ad54963f53da6d31c04b4ab814bf70ebc7a2d72734c482733"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_UV_ref_seed/joint.npz": {
+      "sha256": "dfa9422b6dab38a3a6f5303ffbbab6376c0ead34b74004d19c3bc7954dc6a5de"
+    }
+  },
+  "point_unchanged": true,
+  "fresh_original_audit_required": true,
+  "phase_based_selection": false
+}

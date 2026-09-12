@@ -1,0 +1,324 @@
+{
+  "schema": "smatrix-final-chain-checkpoint-audit-v1",
+  "candidate": "results/primal_barrier_N10_after_spectral_center_physical_candidate.json",
+  "candidate_sha256": "393a2290cca17a2b68bab04126a93fd9346a025480216dd7b9ec40f8f9904045",
+  "input_sha256": {
+    "results/primal_barrier_N10_after_spectral_center.json": "7c0aec663675d0034b55295c8cf4bac34126bbc535dc96de97bade110d961cbd",
+    "results/primal_barrier_N10_after_spectral_center_original_primal.json": "f75492c0dc57cdb2ce8dcae991a6f8a599b86f685bf8f9e8bb853d979458a2b1",
+    "results/primal_barrier_N10_after_spectral_center_physical_candidate.json": "393a2290cca17a2b68bab04126a93fd9346a025480216dd7b9ec40f8f9904045",
+    "results/primal_barrier_N10_after_spectral_center_parent_finite_audit.json": "275c4b7a9e538462bc2485684eeec790f6b42427edc4222ebd7db46a3fa5670c",
+    "results/primal_barrier_N10_after_spectral_center_parent_edge_certificate.json": "62f5e1d1f0f617ac9a11254b5e7a50165f1e200adb5408d6cb75fcc40d75ef6d",
+    "results/primal_barrier_N10_after_spectral_center_worst_scattering_certificate.json": "68bb9c7902b79e81fc185dcfae95ebf53633ec21415364cbdf0a26ecfa966108",
+    "results/gauge_barrier_N10_after_spectral_center.seed.json": "3080c9e4fdbc291432ed6086d5122f95875cf3ac53e244daf7cecc00587ec220",
+    "results/gauge_barrier_N10_two_scattering_cuts.conic.json": "0d3cf11278be691d83d3c627d1d325b4a871ef33f0e0935b0bb880da3ea2f6cf",
+    "results/gauge_barrier_N10_two_scattering_cuts.original.conic.json": "76bdeb1faef2cb971f1176cff8dba29acacd0508326abb0176885d57a13a477f"
+  },
+  "source_snapshot_hashes_verified": true,
+  "current_source_hashes": {
+    "/home/shiqiu/s-matrix-bootstrap/scripts/run_primal_barrier_control.py": "862bdcfe834f6f7328efdc8e325a5ba7e5d4e5a065a934386e75210f03bdb491",
+    "src/smatrix_bootstrap/primal_barrier.py": "2fb51f471daa32cdd51553293ec7472425f12d562d60796a0e6f8fafa3e8d789",
+    "/home/shiqiu/s-matrix-bootstrap/scripts/recover_barrier_primal.py": "f8dbb912c80f3b2c449c203e488823fd85460ce4f3325d7d8407bb6e1236059a",
+    "src/smatrix_bootstrap/canonical_seed.py": "6a71c56662c2a7845f921ef8959ab92a5e74157c866e303aae41cbddf583f7f6",
+    "src/smatrix_bootstrap/conic_residuals.py": "134f74cfb298f14a26519f77a38e2d8e85af22f8981a672573b7f8fa9f689580",
+    "src/smatrix_bootstrap/julia_bridge.py": "85631c190d93ab18797c8c971d41a1365c08306accf2dad5a5bfe9b19498767b",
+    "/home/shiqiu/s-matrix-bootstrap/scripts/materialize_barrier_candidate.py": "0257c03c6edee5841a1c4633ccd2dd2f7482912a52d05acd4e18f658f5f3c127",
+    "src/smatrix_bootstrap/__init__.py": "917f23620fc4ae3e62557bb42621de3ae4238bacbd56e4a3eea10d11b1faab0f",
+    "src/smatrix_bootstrap/amplitudes.py": "e56a90e92c00daeb5f8906471745a35bf7d2963b222faf24dede5dd11d4635eb",
+    "src/smatrix_bootstrap/asymptotics.py": "d3cf8c482015d408e6fe45789f398ae9e180d57d01194779e632fffe4b59c7a4",
+    "src/smatrix_bootstrap/barrier_decrement.py": "04f76bdefe02bbcf80aeef2c22587bf126c45460fa215be025a9d93b9ee26838",
+    "src/smatrix_bootstrap/conditional_spectral_center.py": "0b4ff7eddcf773e584feaaf6e91f245ca9c077b9460b3cc8aa814cf4cb1180f5",
+    "src/smatrix_bootstrap/coupled_gauge.py": "cdd5ad6be5d73937364bda36040bcc3bd551d7c0eb99e18e9317ab87c37be9c9",
+    "src/smatrix_bootstrap/degree_promotion.py": "86d1d83fcde6aa9c8520689c34ff0b02edb469c49ada69477e0946e35c01874f",
+    "src/smatrix_bootstrap/dyadic_conic_scaling.py": "f2de9efe7d9a0f5e1ba1eb24cd6b26a676cb86fa2b2ffa960e76ab7c13a8bafd",
+    "src/smatrix_bootstrap/exact_interval_audit.py": "8742fd409b7b7e8b5c0ee79122dd8e73090888bd00b411a06546738bf97188ed",
+    "src/smatrix_bootstrap/feasibility.py": "d9360d2f807301d8126a23d14b7707e06be1618a76dfe29f57de119dfdd6f62b",
+    "src/smatrix_bootstrap/finite_spectral_projection.py": "3e79d4f77dc2b21ee720996b398708148c20a598f95f244cca8c3541a7bfb115",
+    "src/smatrix_bootstrap/form_factor_envelope.py": "1f81af4a9c718edca2f0cf88747f81ab0619446e89dfc2f1276f6529a2421fce",
+    "src/smatrix_bootstrap/full_barrier_newton.py": "2812541a42e357ade7526b57d90b34953144dc1dd083c348d7521f1c7f00a89d",
+    "src/smatrix_bootstrap/gauge_boundary.py": "878480a199b8d9272a039ba578bd310de457330ba0774bd39c4a363117d12e5c",
+    "src/smatrix_bootstrap/gauge_ff_exchange.py": "2aeeca26c9f5bd61fb75ec39a4c639656e8f3178d36eff31ddd0385496f4c6ee",
+    "src/smatrix_bootstrap/gauge_inputs.py": "3aed562380695d2ce015f6dfd95f0d4084a57e599586017722b815b2daa77883",
+    "src/smatrix_bootstrap/gauge_joint_exchange.py": "22f8e7d341237aa8bc6105f33d480bdeb01558b52a793d319e5561eeb3848f0e",
+    "src/smatrix_bootstrap/impact_closed_form.py": "933fcc46194aac8a6250abb5322e1ed3bd299bca5ba2058429962ec955830a7b",
+    "src/smatrix_bootstrap/impact_constraints.py": "af0812e2380c264c9b7e9b49851d7efcefd5af869fdd60189919977519cb71d5",
+    "src/smatrix_bootstrap/impact_global.py": "d4c7e35c584a131cee1b7ccc071b13ac990db11a4c752656a48d345991ff8869",
+    "src/smatrix_bootstrap/impact_parameter.py": "e4a646d01644f484cf98458c305882d2e41af4b502ef83e780ef6956cceb9c58",
+    "src/smatrix_bootstrap/interval_positivity.py": "78849912bf7182491b261c1a422de64cc64291c5df6f874c7177f5c31af3ec60",
+    "src/smatrix_bootstrap/large_spin.py": "d0eabfa82aa8bbcf4cee82ee15b97fa9b538f193bed5b3e82769bb059f888756",
+    "src/smatrix_bootstrap/optimization.py": "5768808dfc810642171063429fdfc922848e6446d58f1090c25b0d0781a8f383",
+    "src/smatrix_bootstrap/phase_capacity.py": "6bf1885639863de8a2378f82079696131903014cf8bf48af39b9a1cdbe32d375",
+    "src/smatrix_bootstrap/rational_partial_wave.py": "f53201c82e0cb15443dec2c67f6c9c8fb8d7aa1647bc2824081ad1a81b1ea620",
+    "src/smatrix_bootstrap/scalar_bootstrap.py": "36f448b054bd1d274b459da65a44cd69f9ff81fdf1177270616b8df0ade547f5",
+    "src/smatrix_bootstrap/scattering_cut_extension.py": "8209ce6f7b22376d0090b4c151a0885877f3bd88dbcbf97cf54a09daf1e4438e",
+    "src/smatrix_bootstrap/spectral_face_reduction.py": "968156ebf2c9ff8b5125e1afd09a86504f2bee4b9dc5a893f3124efb23d1e9a2",
+    "src/smatrix_bootstrap/validated_partial_wave.py": "1f72e568cc1319e8a3cbddaaeab5db894641daf7d9393d0b93ab2d4026c68f2d",
+    "src/smatrix_bootstrap/validation.py": "23d8c36e3ba287d37f6ec834189495c52e91daba93cd7602e48c45b038455909",
+    "/home/shiqiu/s-matrix-bootstrap/scripts/certify_rational_partial_wave.py": "c36ec04dea4bd841618bb8f46286534ba3748f6f1e5add3080ac5af514af33ad",
+    "scripts/audit_finite_gauge_candidate.py": "a8fa63e9359d079d2882082ca6a39221e936f9143648d5b4e6390471903248b0",
+    "scripts/certify_archived_edges.py": "30cdb4dd73d662164c2e9ce3b68dc7a2417216d52845577cd17d6d0910dd86bd"
+  },
+  "archived_source_versions": {
+    "/home/shiqiu/s-matrix-bootstrap/scripts/run_primal_barrier_control.py": [
+      "862bdcfe834f6f7328efdc8e325a5ba7e5d4e5a065a934386e75210f03bdb491"
+    ],
+    "src/smatrix_bootstrap/primal_barrier.py": [
+      "2fb51f471daa32cdd51553293ec7472425f12d562d60796a0e6f8fafa3e8d789"
+    ],
+    "/home/shiqiu/s-matrix-bootstrap/scripts/recover_barrier_primal.py": [
+      "f8dbb912c80f3b2c449c203e488823fd85460ce4f3325d7d8407bb6e1236059a"
+    ],
+    "src/smatrix_bootstrap/canonical_seed.py": [
+      "6a71c56662c2a7845f921ef8959ab92a5e74157c866e303aae41cbddf583f7f6"
+    ],
+    "src/smatrix_bootstrap/conic_residuals.py": [
+      "134f74cfb298f14a26519f77a38e2d8e85af22f8981a672573b7f8fa9f689580"
+    ],
+    "src/smatrix_bootstrap/julia_bridge.py": [
+      "85631c190d93ab18797c8c971d41a1365c08306accf2dad5a5bfe9b19498767b"
+    ],
+    "/home/shiqiu/s-matrix-bootstrap/scripts/materialize_barrier_candidate.py": [
+      "0257c03c6edee5841a1c4633ccd2dd2f7482912a52d05acd4e18f658f5f3c127"
+    ],
+    "src/smatrix_bootstrap/__init__.py": [
+      "917f23620fc4ae3e62557bb42621de3ae4238bacbd56e4a3eea10d11b1faab0f"
+    ],
+    "src/smatrix_bootstrap/amplitudes.py": [
+      "e56a90e92c00daeb5f8906471745a35bf7d2963b222faf24dede5dd11d4635eb"
+    ],
+    "src/smatrix_bootstrap/asymptotics.py": [
+      "d3cf8c482015d408e6fe45789f398ae9e180d57d01194779e632fffe4b59c7a4"
+    ],
+    "src/smatrix_bootstrap/barrier_decrement.py": [
+      "04f76bdefe02bbcf80aeef2c22587bf126c45460fa215be025a9d93b9ee26838"
+    ],
+    "src/smatrix_bootstrap/conditional_spectral_center.py": [
+      "0b4ff7eddcf773e584feaaf6e91f245ca9c077b9460b3cc8aa814cf4cb1180f5"
+    ],
+    "src/smatrix_bootstrap/coupled_gauge.py": [
+      "cdd5ad6be5d73937364bda36040bcc3bd551d7c0eb99e18e9317ab87c37be9c9"
+    ],
+    "src/smatrix_bootstrap/degree_promotion.py": [
+      "86d1d83fcde6aa9c8520689c34ff0b02edb469c49ada69477e0946e35c01874f"
+    ],
+    "src/smatrix_bootstrap/dyadic_conic_scaling.py": [
+      "f2de9efe7d9a0f5e1ba1eb24cd6b26a676cb86fa2b2ffa960e76ab7c13a8bafd"
+    ],
+    "src/smatrix_bootstrap/exact_interval_audit.py": [
+      "8742fd409b7b7e8b5c0ee79122dd8e73090888bd00b411a06546738bf97188ed"
+    ],
+    "src/smatrix_bootstrap/feasibility.py": [
+      "d9360d2f807301d8126a23d14b7707e06be1618a76dfe29f57de119dfdd6f62b"
+    ],
+    "src/smatrix_bootstrap/finite_spectral_projection.py": [
+      "3e79d4f77dc2b21ee720996b398708148c20a598f95f244cca8c3541a7bfb115"
+    ],
+    "src/smatrix_bootstrap/form_factor_envelope.py": [
+      "1f81af4a9c718edca2f0cf88747f81ab0619446e89dfc2f1276f6529a2421fce"
+    ],
+    "src/smatrix_bootstrap/full_barrier_newton.py": [
+      "2812541a42e357ade7526b57d90b34953144dc1dd083c348d7521f1c7f00a89d"
+    ],
+    "src/smatrix_bootstrap/gauge_boundary.py": [
+      "878480a199b8d9272a039ba578bd310de457330ba0774bd39c4a363117d12e5c"
+    ],
+    "src/smatrix_bootstrap/gauge_ff_exchange.py": [
+      "2aeeca26c9f5bd61fb75ec39a4c639656e8f3178d36eff31ddd0385496f4c6ee"
+    ],
+    "src/smatrix_bootstrap/gauge_inputs.py": [
+      "3aed562380695d2ce015f6dfd95f0d4084a57e599586017722b815b2daa77883"
+    ],
+    "src/smatrix_bootstrap/gauge_joint_exchange.py": [
+      "22f8e7d341237aa8bc6105f33d480bdeb01558b52a793d319e5561eeb3848f0e"
+    ],
+    "src/smatrix_bootstrap/impact_closed_form.py": [
+      "933fcc46194aac8a6250abb5322e1ed3bd299bca5ba2058429962ec955830a7b"
+    ],
+    "src/smatrix_bootstrap/impact_constraints.py": [
+      "af0812e2380c264c9b7e9b49851d7efcefd5af869fdd60189919977519cb71d5"
+    ],
+    "src/smatrix_bootstrap/impact_global.py": [
+      "d4c7e35c584a131cee1b7ccc071b13ac990db11a4c752656a48d345991ff8869"
+    ],
+    "src/smatrix_bootstrap/impact_parameter.py": [
+      "e4a646d01644f484cf98458c305882d2e41af4b502ef83e780ef6956cceb9c58"
+    ],
+    "src/smatrix_bootstrap/interval_positivity.py": [
+      "78849912bf7182491b261c1a422de64cc64291c5df6f874c7177f5c31af3ec60"
+    ],
+    "src/smatrix_bootstrap/large_spin.py": [
+      "d0eabfa82aa8bbcf4cee82ee15b97fa9b538f193bed5b3e82769bb059f888756"
+    ],
+    "src/smatrix_bootstrap/optimization.py": [
+      "5768808dfc810642171063429fdfc922848e6446d58f1090c25b0d0781a8f383"
+    ],
+    "src/smatrix_bootstrap/phase_capacity.py": [
+      "6bf1885639863de8a2378f82079696131903014cf8bf48af39b9a1cdbe32d375"
+    ],
+    "src/smatrix_bootstrap/rational_partial_wave.py": [
+      "f53201c82e0cb15443dec2c67f6c9c8fb8d7aa1647bc2824081ad1a81b1ea620"
+    ],
+    "src/smatrix_bootstrap/scalar_bootstrap.py": [
+      "36f448b054bd1d274b459da65a44cd69f9ff81fdf1177270616b8df0ade547f5"
+    ],
+    "src/smatrix_bootstrap/scattering_cut_extension.py": [
+      "8209ce6f7b22376d0090b4c151a0885877f3bd88dbcbf97cf54a09daf1e4438e"
+    ],
+    "src/smatrix_bootstrap/spectral_face_reduction.py": [
+      "968156ebf2c9ff8b5125e1afd09a86504f2bee4b9dc5a893f3124efb23d1e9a2"
+    ],
+    "src/smatrix_bootstrap/validated_partial_wave.py": [
+      "1f72e568cc1319e8a3cbddaaeab5db894641daf7d9393d0b93ab2d4026c68f2d"
+    ],
+    "src/smatrix_bootstrap/validation.py": [
+      "23d8c36e3ba287d37f6ec834189495c52e91daba93cd7602e48c45b038455909"
+    ],
+    "/home/shiqiu/s-matrix-bootstrap/scripts/certify_rational_partial_wave.py": [
+      "c36ec04dea4bd841618bb8f46286534ba3748f6f1e5add3080ac5af514af33ad"
+    ]
+  },
+  "source_retention_issues": [],
+  "original_conic_feasibility_certified": true,
+  "original_objective_preserved_exactly": true,
+  "original_cone_counts": {
+    "equalities": 32,
+    "nonnegative": 2446,
+    "soc": 2124,
+    "psd": 108
+  },
+  "parent_finite_numerical_pass": true,
+  "exact_edge_all_three_positive": true,
+  "edge_uniform_lower_bounds": [
+    "9999998297601/500000000000000000",
+    "4999999885553/250000000000000000",
+    "624999974369/31250000000000000"
+  ],
+  "physical_point": [
+    0.0753298110000005,
+    -0.004588153582436146
+  ],
+  "P1_anchors": {
+    "energies_GeV": [
+      0.7897,
+      0.8265,
+      0.86176
+    ],
+    "phase_degrees": [
+      -16.400923435432613,
+      -17.172452277346,
+      -16.907305009542974
+    ],
+    "inelasticity": [
+      0.5905251620242948,
+      0.6815746308546881,
+      0.7588580497106316
+    ],
+    "phase_range_degrees": [
+      -17.179653625044573,
+      10.592696217204237
+    ],
+    "ninety_degree_crossing_brackets": []
+  },
+  "global_FF_pass": true,
+  "global_impact_all_b_pass": true,
+  "scattering_diagnostic": {
+    "energy_count": 702,
+    "midpoint_energy_points": 401,
+    "physical_linear_energy_points": 201,
+    "high_energy_geometric_points": 101,
+    "maximum_s": 100000000.0,
+    "waves_per_isospin": 20,
+    "angular_points": 160,
+    "max_unitarity_excess": 0.0007855579384252703,
+    "worst_s": 15799.47178834415,
+    "worst_wave": [
+      0,
+      2
+    ],
+    "max_excess_below_1p2_GeV": 0.0001107117617717272,
+    "max_excess_on_untrained_rows": 0.0007855579384252703,
+    "rows_coinciding_with_training": 15,
+    "violations_above_cut_tolerance": 61,
+    "cut_tolerance": 1e-08,
+    "selection": "worst untrained point per wave over full cut and below1.2GeV, ranked by excess",
+    "new_samples": [
+      [
+        15799.47178834415,
+        0,
+        2
+      ],
+      [
+        83.00700760534617,
+        1,
+        3
+      ],
+      [
+        9.933076609077052,
+        1,
+        1
+      ],
+      [
+        40.801243189423644,
+        2,
+        2
+      ],
+      [
+        103.56156236990802,
+        1,
+        5
+      ],
+      [
+        30.561442430590134,
+        1,
+        5
+      ],
+      [
+        26.697874932078946,
+        1,
+        3
+      ],
+      [
+        77.51978602853012,
+        0,
+        22
+      ]
+    ],
+    "new_sample_excesses": [
+      0.0007855579384252703,
+      0.0002218624685791527,
+      0.0001107117617717272,
+      9.103243485072782e-05,
+      5.010042503062407e-06,
+      3.993659180844801e-06,
+      1.488975390091954e-06,
+      1.0745227560402584e-08
+    ],
+    "numerical_only": true,
+    "scope": "Independent finite scattering grid; all-spin/all-energy unitarity is not certified."
+  },
+  "worst_scattering_certificate": {
+    "path": "results/primal_barrier_N10_after_spectral_center_worst_scattering_certificate.json",
+    "sha256": "68bb9c7902b79e81fc185dcfae95ebf53633ec21415364cbdf0a26ecfa966108",
+    "s_exact_binary": "8685851472001633/549755813888",
+    "isospin": 0,
+    "ell": 2,
+    "status": "enclosed_accuracy_met",
+    "one_minus_abs_S_squared": {
+      "ball": "[-0.00157173297812406129 +/- 6.56e-21]",
+      "lower_rational": "-5051355035928074812611144818031024662451201788266625560333/3213876088517980551083924184682325205044405987565585670602752",
+      "upper_rational": "-5051355035928074792618404552139196268816350779614500155149/3213876088517980551083924184682325205044405987565585670602752"
+    },
+    "abs_S_minus_one": {
+      "ball": "[0.00078555793842471960 +/- 2.56e-21]",
+      "lower_rational": "62238312009884141916622467/79228162514264337593543950336",
+      "upper_rational": "124476624019768284308230473/158456325028528675187087900672"
+    },
+    "accuracy_goal_met": true,
+    "evaluations": 558,
+    "coefficient_source": "exact_physical_coefficients, exact rationals",
+    "evaluations_requested": 1,
+    "retries": 0
+  },
+  "coefficient_scope": "Canonical recovery and worst rational projection use exact rational data. Fresh physical finite/edge/FF/H audits use the newly materialized rounded physical polynomial; no prior-candidate certificate is transferred.",
+  "no_optimization_or_steps_performed_by_this_audit_chain": true,
+  "scope": "Finite conic feasibility and several global necessary conditions pass. The newly certified finite-spin scattering violation still excludes continuum unitarity of the unrounded rational amplitude; no optimum or reproduced phase curve is claimed."
+}

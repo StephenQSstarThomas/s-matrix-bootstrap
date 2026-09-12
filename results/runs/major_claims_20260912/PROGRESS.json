@@ -1,0 +1,37 @@
+{
+  "status": "Round audit, feasible numerical repairs and sequential completion plan delivered; robust quantitative paper claims remain unfulfilled",
+  "current_calculation": null,
+  "physics_model": "unchanged declared PV/separate-L2/raw .002",
+  "completed": [
+    "three 100x support refinements",
+    "same-amplitude selection and native phases",
+    "new one-sided observable support proof/CLI",
+    "107 tests with3 files",
+    "primary-source norm and iteration audits"
+  ],
+  "source_norm_audit": "../../evidence/MAJOR_SOURCE_NORM_AUDIT_20260912/AUDIT_ZH.md",
+  "refinement": "REFINEMENT_SUMMARY.json",
+  "probe_design": "SUPPORT_PROBE_DESIGN_ZH.md",
+  "remaining": [
+    "six scoped core work packages in the claim ledger; no same-contract iteration is promised to remove certified exclusions"
+  ],
+  "quantitative_success_claimed": false,
+  "tip_S0_certificate": {
+    "run": "tip_S0_certificate",
+    "strict_negative": true,
+    "upper_on_negative_ReS0": -0.8810300567868612,
+    "required_x_loss_lower": 3.4507674847895265e-05,
+    "full_primal": true,
+    "probe_goal_optimization_completed": false,
+    "high_energy_Gram_duals_exactly_zero": true
+  },
+  "numerical_probe_stop": "tip_S0_probe_01 failed near-center merit subtraction; saved prior center/duals freshly replayed, sufficient strict certificate obtained without changing physics",
+  "scientific_calculations_finished": true,
+  "main_report": "final_report/REPORT_ZH.pdf",
+  "claim_ledger": "CLAIM_LEDGER.json",
+  "completion_plan": "CORE_CLAIM_LEDGER_AND_PLAN_ZH.md",
+  "next_decision": "P0/P1: identify source-defined changes to the numerical contract or representative region before further nominal optimization",
+  "verification": "FINAL_VERIFICATION.json",
+  "delivery_complete": true,
+  "plan_pdf": "final_report/PLAN_ZH.pdf"
+}

@@ -1,0 +1,113 @@
+{
+  "status": "requires_review",
+  "prescription": "pv-midpoint",
+  "unitarity_scope": "sampled",
+  "identity": [
+    50,
+    10,
+    "pv-midpoint",
+    "sampled",
+    "free",
+    "pure",
+    null,
+    "results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    [
+      1.0,
+      0.0
+    ],
+    null
+  ],
+  "rows": [
+    {
+      "B": 100.0,
+      "lower": 2.187806427225126,
+      "upper": 2.1895697675025008,
+      "report": "results/runs/stage_B_pv_pure_M50_reg100_barrier_20260907/report.json"
+    },
+    {
+      "B": 1000.0,
+      "lower": 2.216215368507176,
+      "upper": 2.2179802137156193,
+      "report": "results/runs/stage_B_pv_pure_M50_reg1000_barrier_20260907/report.json"
+    },
+    {
+      "B": 10000.0,
+      "lower": 2.2263697222565235,
+      "upper": 2.2320946365900056,
+      "report": "results/runs/stage_B_pv_pure_reg10000_reused_bound_20260907/report.json"
+    },
+    {
+      "B": 100000.0,
+      "lower": 2.2319670327652625,
+      "upper": 2.2320143935397634,
+      "report": "results/runs/stage_B_pv_pure_M50_reg100000_finish_20260907/report.json"
+    },
+    {
+      "B": 377500,
+      "lower": 2.2348893985478404,
+      "upper": 2.236231782346892,
+      "report": "results/runs/stage_B_pv_pure_M50_barrier_20260907/report.json"
+    }
+  ],
+  "windows": [
+    {
+      "B_interval": [
+        100.0,
+        10000.0
+      ],
+      "growth_interval": [
+        0.016806934083675285,
+        0.020243202878351484
+      ],
+      "status": "excluded"
+    },
+    {
+      "B_interval": [
+        100.0,
+        100000.0
+      ],
+      "growth_interval": [
+        0.01936328583451422,
+        0.02020652547890531
+      ],
+      "status": "excluded"
+    },
+    {
+      "B_interval": [
+        100.0,
+        377500
+      ],
+      "growth_interval": [
+        0.020697961635190453,
+        0.02213420461662385
+      ],
+      "status": "excluded"
+    },
+    {
+      "B_interval": [
+        1000.0,
+        100000.0
+      ],
+      "growth_interval": [
+        0.006306106322838733,
+        0.0071288310951609125
+      ],
+      "status": "resolved"
+    },
+    {
+      "B_interval": [
+        1000.0,
+        377500
+      ],
+      "growth_interval": [
+        0.007623686057998881,
+        0.009031799943341587
+      ],
+      "status": "resolved"
+    }
+  ],
+  "relative_budget": 0.01,
+  "minimum_decades": 2,
+  "regulator_selected": false,
+  "scope": "Supplied fixed finite problem only; no claim outside the supplied sequence or for other directions"
+}

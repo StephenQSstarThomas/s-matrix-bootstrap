@@ -1,0 +1,55 @@
+{
+  "schema": "smatrix-subthreshold-coverage-v1",
+  "plan_path": "/tmp/source_subthreshold_stage/plan.json",
+  "plan_sha256": "706dbeb0509f33ab16f1aefc0f97fea497541435e469baf0129d2c1555a3b3f2",
+  "nodes": [
+    {
+      "index": 0,
+      "exact_energy": "1/2",
+      "accepted": true,
+      "metadata_path": "/tmp/source_subthreshold_stage/node_0.json",
+      "metadata_sha256": "b1c4474390084bf4a2a329b4a0ad3e1e3cb0f515c06b07baa3d6cadbe9ebc2f3",
+      "status_path": "/tmp/source_subthreshold_stage/node_0.status.json",
+      "status_sha256": "7b9ad3de0f5561721c40ce6ae8f5ea67d0b7cb5c45d2db8ecd6ebad10ee82cb6"
+    },
+    {
+      "index": 1,
+      "exact_energy": "1",
+      "accepted": true,
+      "metadata_path": "/tmp/source_subthreshold_stage/node_1.json",
+      "metadata_sha256": "eaf8f5bf1f7f61c8b3a25fe494c130dd776b0fa42e661716f56bdf77d43d2142",
+      "status_path": "/tmp/source_subthreshold_stage/node_1.status.json",
+      "status_sha256": "891c9c63db65d1cf6327a189c622e561f6c226c8274b41d994c8772d5025f63f"
+    },
+    {
+      "index": 2,
+      "exact_energy": "3/2",
+      "accepted": true,
+      "metadata_path": "/tmp/source_subthreshold_stage/node_2.json",
+      "metadata_sha256": "8dca01c1910b74b012c0f9d71505eaa99bc61879fa456bdc76909678c8a4cc6a",
+      "status_path": "/tmp/source_subthreshold_stage/node_2.status.json",
+      "status_sha256": "0a4d096627cb8befcfa35b5e2a123bc75c1e0e0484e7b575b01ed12a004b0bb3"
+    },
+    {
+      "index": 3,
+      "exact_energy": "2",
+      "accepted": true,
+      "metadata_path": "/tmp/source_subthreshold_stage/node_3.json",
+      "metadata_sha256": "731694dbe9cf807fc1d48cc3399b4f0bc40edf312524d6ac4cfbecc6d91b0d27",
+      "status_path": "/tmp/source_subthreshold_stage/node_3.status.json",
+      "status_sha256": "e2d8dee82ffb7b70c7280c7972ed6d8661245217b77b545fa510c868887284ce"
+    },
+    {
+      "index": 4,
+      "exact_energy": "3",
+      "accepted": true,
+      "metadata_path": "/tmp/source_subthreshold_stage/node_4.json",
+      "metadata_sha256": "df9d231674d2ca6c4b04dfc902b0ef914029e68bff1fc90ccf240c3da6ddc485",
+      "status_path": "/tmp/source_subthreshold_stage/node_4.status.json",
+      "status_sha256": "735f1159f0f8f36fe5480c9b6bd74998621b1a7677b5fece8da146887d75fc1b"
+    }
+  ],
+  "all_five_complete_and_accepted": true,
+  "no_retries": true,
+  "full_physical_matrix_rank_claimed": false
+}

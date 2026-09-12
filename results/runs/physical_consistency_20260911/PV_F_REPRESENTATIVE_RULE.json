@@ -1,0 +1,46 @@
+{
+  "status": "preregistered_before_new_PV_F_phases",
+  "configurations": [
+    [
+      50,
+      8
+    ],
+    [
+      50,
+      10
+    ],
+    [
+      50,
+      12
+    ],
+    [
+      45,
+      10
+    ],
+    [
+      60,
+      10
+    ]
+  ],
+  "representative": "+f00(3) support; no phase ranking",
+  "direction": [
+    1,
+    0
+  ],
+  "gap": 0.0001,
+  "require_center": true,
+  "chiral_norm": "separate-l2",
+  "chiral_tolerance": 0.002,
+  "chiral_barrier_weight": "native scattering samples / 2; numerical only",
+  "density_limit": "100*(M*M+M*(M+1)/2)",
+  "UV": "printed, four raw absolute .002 boxes, hard-midpoint, arithmetic-mean, original FF bounds",
+  "infinity": "free",
+  "preparations": "PV_F_REUSE_INVENTORY.json",
+  "M50_L10_reference": "PV_tip_support_01",
+  "legacy_full_points": "Initializers only; no combined-norm feasibility/support/center transfer",
+  "L12": "Existing failed candidate is not an infeasibility proof; fresh joint feasibility required",
+  "new_physical_inputs": false,
+  "extra_analytic_constraints": false,
+  "phase_data_used": false,
+  "scope": "Same declared PV finite implementation; source discretization ambiguities remain explicit"
+}

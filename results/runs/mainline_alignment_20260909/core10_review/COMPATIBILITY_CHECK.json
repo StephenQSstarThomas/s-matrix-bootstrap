@@ -1,0 +1,67 @@
+{
+  "package": "/tmp/smatrix_core10_review/src/smatrix_bootstrap/__init__.py",
+  "workspace": "/home/shiqiu/s-matrix-bootstrap",
+  "records": [
+    {
+      "directory": "results/runs/mainline_alignment_20260909/paper_ref_path_02",
+      "M": 50,
+      "coefficient_shape": [
+        3876
+      ],
+      "joint_shape": [
+        4076
+      ],
+      "cache": "barrier_state.npz",
+      "cache_z_shape": [
+        4062
+      ],
+      "cache_fields": [
+        "z",
+        "mu",
+        "ray_rate",
+        "reference_point",
+        "x",
+        "y",
+        "chi",
+        "gram",
+        "ff",
+        "moment",
+        "slack",
+        "chiral_slack"
+      ],
+      "prescription": "pv-midpoint",
+      "norm": "combined-l2",
+      "selection_read": true
+    },
+    {
+      "directory": "results/runs/mainline_alignment_20260909/F_paper/M45_L10_phase_I_02",
+      "M": 45,
+      "coefficient_shape": [
+        3151
+      ],
+      "joint_shape": [
+        3331
+      ],
+      "cache": "phase_I_state.npz",
+      "cache_z_shape": [
+        3318
+      ],
+      "cache_fields": [
+        "z",
+        "mu",
+        "ray_rate",
+        "reference_point",
+        "x",
+        "y",
+        "chi",
+        "gram",
+        "ff",
+        "moment",
+        "slack",
+        "chiral_slack"
+      ],
+      "prescription": "pv-midpoint",
+      "norm": "combined-l2"
+    }
+  ]
+}

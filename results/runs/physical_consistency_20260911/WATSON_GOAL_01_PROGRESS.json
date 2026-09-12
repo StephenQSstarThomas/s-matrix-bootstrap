@@ -1,0 +1,166 @@
+{
+  "goal": 1,
+  "goal_changed": false,
+  "completed": false,
+  "runs": [
+    {
+      "run": "fine_watson_goal_00",
+      "status": "joint_feasible",
+      "objective": 0.25959917301602026,
+      "center": false,
+      "support_complete": false,
+      "bounds": {
+        "lower": 0.2595991730072402,
+        "upper": 0.5020311844705858
+      },
+      "iterations": 1,
+      "seconds": 73.75421144487336,
+      "checked_center_mu": [],
+      "continuation_mu": 0.0001,
+      "goal_coefficient_sha256": "ed3a924a24566a8a73bc589fb7c7e6cd785e2e1e492c3723c389321833d9329d",
+      "source_coefficients": "results/runs/physical_consistency_20260911/fine_UV_selected/tip/coefficients.json",
+      "report_sha256": "64e95fe07239f1e7702b081759d9c229550605d4d8a0f567587f7f3b0589af91"
+    },
+    {
+      "run": "fine_watson_01_support_01",
+      "status": "inconclusive",
+      "objective": null,
+      "center": false,
+      "support_complete": false,
+      "bounds": {
+        "lower": null,
+        "upper": null
+      },
+      "iterations": null,
+      "seconds": null,
+      "checked_center_mu": [],
+      "continuation_mu": 3.125e-05,
+      "goal_coefficient_sha256": "ed3a924a24566a8a73bc589fb7c7e6cd785e2e1e492c3723c389321833d9329d",
+      "source_coefficients": "results/runs/physical_consistency_20260911/fine_UV_selected/tip/coefficients.json",
+      "report_sha256": "7bcd05b3ab7266d9f485ec1b81fd1adbdd3709fac73fe71ea7da05a3ad22ef7c"
+    },
+    {
+      "run": "fine_watson_01_support_02",
+      "status": "joint_feasible",
+      "objective": 0.25959917301602026,
+      "center": false,
+      "support_complete": false,
+      "bounds": {
+        "lower": 0.2595991730072402,
+        "upper": 0.5020311844705858
+      },
+      "iterations": 76,
+      "seconds": 922.6821507650893,
+      "checked_center_mu": [],
+      "continuation_mu": 3.125e-05,
+      "goal_coefficient_sha256": "ed3a924a24566a8a73bc589fb7c7e6cd785e2e1e492c3723c389321833d9329d",
+      "source_coefficients": "results/runs/physical_consistency_20260911/fine_UV_selected/tip/coefficients.json",
+      "report_sha256": "9762494d2a552957fb7869416a6f11a8ffef8e2d006b88a82372862c9e56eab7"
+    },
+    {
+      "run": "fine_watson_01_interior_01",
+      "status": "joint_feasible",
+      "objective": 0.2540195433677633,
+      "center": true,
+      "support_complete": false,
+      "bounds": {
+        "lower": 0.25401954337420096,
+        "upper": 0.5020311844705858
+      },
+      "iterations": 81,
+      "seconds": 916.5753373729531,
+      "checked_center_mu": [
+        3.125e-05,
+        1.5625e-05
+      ],
+      "continuation_mu": 7.8125e-06,
+      "goal_coefficient_sha256": "ed3a924a24566a8a73bc589fb7c7e6cd785e2e1e492c3723c389321833d9329d",
+      "source_coefficients": "results/runs/physical_consistency_20260911/fine_UV_selected/tip/coefficients.json",
+      "report_sha256": "a3f8842687aeea4d84fd7baf3b555dc545438d8424d60843a440f92960c41da2"
+    },
+    {
+      "run": "fine_watson_01_interior_02",
+      "status": "joint_feasible",
+      "objective": 0.27601457806383717,
+      "center": true,
+      "support_complete": false,
+      "bounds": {
+        "lower": 0.2760145780428371,
+        "upper": 0.3033305429392087
+      },
+      "iterations": 79,
+      "seconds": 928.6861140800174,
+      "checked_center_mu": [
+        7.8125e-06,
+        3.90625e-06,
+        1.953125e-06
+      ],
+      "continuation_mu": 9.765625e-07,
+      "goal_coefficient_sha256": "ed3a924a24566a8a73bc589fb7c7e6cd785e2e1e492c3723c389321833d9329d",
+      "source_coefficients": "results/runs/physical_consistency_20260911/fine_UV_selected/tip/coefficients.json",
+      "report_sha256": "b4b847621f98b2fcb47cbe80b765f4d592cb84ec9630841ce8d3268b0c5dd28f"
+    },
+    {
+      "run": "fine_watson_01_unit_01",
+      "status": "joint_feasible",
+      "objective": 0.2790572684734422,
+      "center": true,
+      "support_complete": false,
+      "bounds": {
+        "lower": 0.279057268462273,
+        "upper": 0.3033305429392087
+      },
+      "iterations": 76,
+      "seconds": 925.4134489379358,
+      "checked_center_mu": [
+        9.765625e-07
+      ],
+      "continuation_mu": 4.8828125e-07,
+      "goal_coefficient_sha256": "ed3a924a24566a8a73bc589fb7c7e6cd785e2e1e492c3723c389321833d9329d",
+      "source_coefficients": "results/runs/physical_consistency_20260911/fine_UV_selected/tip/coefficients.json",
+      "report_sha256": "240b3119098dcf318a361d61402b3c5d159f4a7e0a681c34d7f664df5b197be9"
+    },
+    {
+      "run": "fine_watson_01_support_03",
+      "status": "joint_feasible",
+      "objective": 0.2808649753636432,
+      "center": true,
+      "support_complete": false,
+      "bounds": {
+        "lower": 0.28086497536911986,
+        "upper": 0.29295034806387027
+      },
+      "iterations": 50,
+      "seconds": 920.2996771519538,
+      "checked_center_mu": [
+        4.8828125e-07
+      ],
+      "continuation_mu": 2.44140625e-07,
+      "goal_coefficient_sha256": "ed3a924a24566a8a73bc589fb7c7e6cd785e2e1e492c3723c389321833d9329d",
+      "source_coefficients": "results/runs/physical_consistency_20260911/fine_UV_selected/tip/coefficients.json",
+      "report_sha256": "b8bbf2d7e0ea9b7ebe0149888849a65348b659a43daaa657945455ee6de651dd"
+    },
+    {
+      "run": "fine_watson_01_local_damped_01",
+      "status": "joint_feasible",
+      "objective": 0.28195858566973103,
+      "center": true,
+      "support_complete": false,
+      "bounds": {
+        "lower": 0.2819585856717069,
+        "upper": 0.2843976392599185
+      },
+      "iterations": 68,
+      "seconds": 938.2682380080223,
+      "checked_center_mu": [
+        2.44140625e-07
+      ],
+      "continuation_mu": 1.220703125e-07,
+      "goal_coefficient_sha256": "ed3a924a24566a8a73bc589fb7c7e6cd785e2e1e492c3723c389321833d9329d",
+      "source_coefficients": "results/runs/physical_consistency_20260911/fine_UV_selected/tip/coefficients.json",
+      "report_sha256": "ee48d53e59653eed044c536fb91e99ff696d0bc90c31ae97e2839009eb99b427"
+    }
+  ],
+  "active": "fine_watson_01_support_04",
+  "scope": "A sequence of bounded continuations of one frozen goal; these are not eight Watsonian updates"
+}

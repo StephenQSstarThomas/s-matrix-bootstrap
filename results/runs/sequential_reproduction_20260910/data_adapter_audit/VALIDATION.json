@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "control_checks": [
+    "test_legacy_covectors_are_reaudited_on_new_H_without_old_bounds",
+    "test_legacy_json_requires_explicit_replay",
+    "complex_candidate_rejected"
+  ],
+  "real_legacy_inputs_read": 2,
+  "optimization_performed": false,
+  "root_sources_modified": false,
+  "final_staging_recheck": true
+}

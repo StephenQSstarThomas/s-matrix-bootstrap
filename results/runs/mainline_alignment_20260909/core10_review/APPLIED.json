@@ -1,0 +1,25 @@
+{
+  "applied": true,
+  "date": "2026-09-10",
+  "removed_modules": [
+    "joint.py",
+    "resolution.py",
+    "gauge.py",
+    "selection.py",
+    "figures.py"
+  ],
+  "active_modules": [
+    "__init__",
+    "analysis",
+    "imaginary",
+    "io",
+    "kernels",
+    "linear",
+    "model",
+    "operators",
+    "quotient",
+    "run"
+  ],
+  "baseline_evidence": "results/evidence/core_before_ten_modules_20260910.json.gz",
+  "physics_or_solver_algorithm_changed": false
+}

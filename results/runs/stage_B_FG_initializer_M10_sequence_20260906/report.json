@@ -1,0 +1,379 @@
+{
+  "initialization_only": true,
+  "stage_B_reproduction_credit": false,
+  "accepted_initializer": "results/runs/stage_B_FG_initializer_M10_round6_20260906/coefficients.json",
+  "stop_reason": "Round6 passes all retained finite constraints, analytic fixed-spin tails, global leading high-spin polynomial nonnegativity, and an independent707-energy/L14 audit. No further rounds or convex mixture are needed.",
+  "model": {
+    "M": 10,
+    "L": 12,
+    "physical_energy_nodes": 167,
+    "same_energy_set_as_M50_resolved": true,
+    "angular_order": 32,
+    "infinity": "zero",
+    "chiral_tolerance": 0.002,
+    "density_limit": 15500
+  },
+  "preparation": "results/runs/stage_B_FG_initializer_M10_prepare_20260906",
+  "preparation_seconds": 21.258964604930952,
+  "runs": [
+    {
+      "round": 1,
+      "directory": "results/runs/stage_B_FG_initializer_M10_round1_20260906",
+      "targets": [
+        0.08138370062413605,
+        -0.005330033536862133
+      ],
+      "sampled_feasible": true,
+      "analytic_tail_conditions_passed": true,
+      "high_spin_status": "violated",
+      "global_polynomial_lowers": [
+        "[-6541.66007744397869393195812510 +/- 3.65e-27]",
+        "[-43.1406635738523485075072294961 +/- 3.46e-29]",
+        "[-3813.25586063222949687049780591 +/- 2.84e-27]"
+      ],
+      "violations": [
+        {
+          "isospin": 0,
+          "cosine": -0.7197754964398665,
+          "polynomial_value": "[-6541.66007744397869393195812510 +/- 3.15e-27]"
+        },
+        {
+          "isospin": 0,
+          "cosine": 0.42432469586723204,
+          "polynomial_value": "[-24.9898109842288328572039979169 +/- 3.97e-29]"
+        },
+        {
+          "isospin": 0,
+          "cosine": 0.8588710995830459,
+          "polynomial_value": "[-27.7943162874804614374820212057 +/- 1.14e-29]"
+        },
+        {
+          "isospin": 0,
+          "cosine": -0.04853439024156623,
+          "polynomial_value": "[-201.515556333916817297177583448 +/- 1.68e-28]"
+        },
+        {
+          "isospin": 1,
+          "cosine": -0.6648598297273154,
+          "polynomial_value": "[-23.7283476831556471526175602908 +/- 8.12e-30]"
+        },
+        {
+          "isospin": 1,
+          "cosine": 0.8090407615694731,
+          "polynomial_value": "[-7.01486229551642666300103250494 +/- 2.08e-31]"
+        },
+        {
+          "isospin": 1,
+          "cosine": 0.029723917161908593,
+          "polynomial_value": "[-43.1406635738523485075072294961 +/- 3.46e-29]"
+        },
+        {
+          "isospin": 2,
+          "cosine": -0.7173558833524665,
+          "polynomial_value": "[-3813.25586063222949687049780591 +/- 3.39e-27]"
+        },
+        {
+          "isospin": 2,
+          "cosine": 1.0,
+          "polynomial_value": "[-0.340169172080039800227118807783 +/- 1.99e-31]"
+        },
+        {
+          "isospin": 2,
+          "cosine": 0.5251658152365449,
+          "polynomial_value": "[-24.9266193290584143245656220612 +/- 3.11e-29]"
+        },
+        {
+          "isospin": 2,
+          "cosine": 0.9648209738218465,
+          "polynomial_value": "[-0.0201147539953702504671956720927 +/- 4.38e-32]"
+        },
+        {
+          "isospin": 2,
+          "cosine": -0.01651687973366404,
+          "polynomial_value": "[-77.2177737016957658298179561183 +/- 4.26e-29]"
+        }
+      ],
+      "constraints_retained": {
+        "finite": 458,
+        "high_spin": 41
+      },
+      "accepted_for_embedding": false,
+      "numerical_gap": 0.0001,
+      "density_norm": 892.0303394243559,
+      "chiral_norms": [
+        0.0019999999118354883,
+        0.0007741851474919091
+      ],
+      "seconds": 281.2788193980232,
+      "source_changes": []
+    },
+    {
+      "round": 2,
+      "directory": "results/runs/stage_B_FG_initializer_M10_round2_20260906",
+      "targets": [
+        0.08117963708033961,
+        -0.005318378186903384
+      ],
+      "sampled_feasible": true,
+      "analytic_tail_conditions_passed": true,
+      "high_spin_status": "violated",
+      "global_polynomial_lowers": [
+        "[-118.680063009968642631178443863 +/- 1.06e-28]",
+        "[-2.47599551097053230796136156068 +/- 1.23e-30]",
+        "[-131.503244411481533644436056745 +/- 3.52e-28]"
+      ],
+      "violations": [
+        {
+          "isospin": 0,
+          "cosine": -0.6138500037047283,
+          "polynomial_value": "[-118.680063009968642631178443863 +/- 8.73e-29]"
+        },
+        {
+          "isospin": 0,
+          "cosine": 0.08156084926463097,
+          "polynomial_value": "[-20.4494431786878180537269204509 +/- 2.61e-29]"
+        },
+        {
+          "isospin": 0,
+          "cosine": 0.5841822254562379,
+          "polynomial_value": "[-2.70722928056730932937368534283 +/- 3.53e-30]"
+        },
+        {
+          "isospin": 0,
+          "cosine": 0.8994357854636607,
+          "polynomial_value": "[-1.86295095556271472617519368918 +/- 2.98e-30]"
+        },
+        {
+          "isospin": 1,
+          "cosine": -0.6869963147357513,
+          "polynomial_value": "[-0.0588772533913799880627925300686 +/- 3.79e-32]"
+        },
+        {
+          "isospin": 1,
+          "cosine": 0.1686548063577456,
+          "polynomial_value": "[-2.47599551097053230796136156068 +/- 1.26e-30]"
+        },
+        {
+          "isospin": 1,
+          "cosine": 0.7660707048399434,
+          "polynomial_value": "[-0.483648469498588579844254781291 +/- 2.08e-32]"
+        },
+        {
+          "isospin": 2,
+          "cosine": -0.5824823271941251,
+          "polynomial_value": "[-131.503244411481533644436056745 +/- 3.53e-28]"
+        },
+        {
+          "isospin": 2,
+          "cosine": 0.16596191872616922,
+          "polynomial_value": "[-0.125738752252963236909237568039 +/- 3.59e-31]"
+        },
+        {
+          "isospin": 2,
+          "cosine": 0.627694451200572,
+          "polynomial_value": "[-2.09414947242412578777120130205 +/- 1.84e-30]"
+        }
+      ],
+      "constraints_retained": {
+        "finite": 458,
+        "high_spin": 51
+      },
+      "accepted_for_embedding": false,
+      "numerical_gap": 0.0001,
+      "density_norm": 387.5807476648855,
+      "chiral_norms": [
+        0.001999999979606018,
+        0.0007768834649102315
+      ],
+      "seconds": 251.3180320339743,
+      "source_changes": []
+    },
+    {
+      "round": 3,
+      "directory": "results/runs/stage_B_FG_initializer_M10_round3_20260906",
+      "targets": [
+        0.04215713439777586,
+        -0.002733138137920199
+      ],
+      "sampled_feasible": true,
+      "analytic_tail_conditions_passed": true,
+      "high_spin_status": "violated",
+      "global_polynomial_lowers": [
+        "[-3.79205318032615202772643460193 +/- 4.97e-30]",
+        "[-842.740078296663604920351966398 +/- 3.10e-29]",
+        "[-56.7464319560539477579133332971 +/- 4.45e-30]"
+      ],
+      "violations": [
+        {
+          "isospin": 0,
+          "cosine": -0.4250430402857088,
+          "polynomial_value": "[-3.79205318032615202772643460193 +/- 4.05e-30]"
+        },
+        {
+          "isospin": 1,
+          "cosine": -0.4421031332507523,
+          "polynomial_value": "[-842.740078296663604920351966398 +/- 3.15e-29]"
+        },
+        {
+          "isospin": 2,
+          "cosine": -0.6629272970687469,
+          "polynomial_value": "[-2.20188517222027562086332628573 +/- 1.16e-30]"
+        },
+        {
+          "isospin": 2,
+          "cosine": -0.17748201332833893,
+          "polynomial_value": "[-56.7464319560539477579133332971 +/- 4.47e-30]"
+        },
+        {
+          "isospin": 2,
+          "cosine": 0.904982763599138,
+          "polynomial_value": "[-31.5652472612643187853202222726 +/- 4.90e-29]"
+        }
+      ],
+      "constraints_retained": {
+        "finite": 458,
+        "high_spin": 56
+      },
+      "accepted_for_embedding": false,
+      "numerical_gap": 0.1,
+      "density_norm": 3096.3464398095216,
+      "chiral_norms": [
+        0.0019997723135087636,
+        0.0008775218614671705
+      ],
+      "seconds": 93.47228895802982,
+      "source_changes": []
+    },
+    {
+      "round": 4,
+      "directory": "results/runs/stage_B_FG_initializer_M10_round4_20260906",
+      "targets": [
+        0.042105998809525556,
+        -0.002730448713652809
+      ],
+      "sampled_feasible": true,
+      "analytic_tail_conditions_passed": true,
+      "high_spin_status": "violated",
+      "global_polynomial_lowers": [
+        "[22.2652240335865866274246400219 +/- 1.55e-29]",
+        "[-359.670468953523572768613043948 +/- 4.70e-28]",
+        "[2.89496652246069427179861583920 +/- 2.50e-30]"
+      ],
+      "violations": [
+        {
+          "isospin": 1,
+          "cosine": -0.8531335913936993,
+          "polynomial_value": "[-359.670468953523572768613043948 +/- 4.31e-28]"
+        },
+        {
+          "isospin": 1,
+          "cosine": -0.32715989295775116,
+          "polynomial_value": "[-39.5745577660067146368221923016 +/- 3.46e-29]"
+        }
+      ],
+      "constraints_retained": {
+        "finite": 458,
+        "high_spin": 58
+      },
+      "accepted_for_embedding": false,
+      "numerical_gap": 0.1,
+      "density_norm": 2983.339444350126,
+      "chiral_norms": [
+        0.0019997724030339885,
+        0.0008766730383691425
+      ],
+      "seconds": 94.7048200101126,
+      "source_changes": []
+    },
+    {
+      "round": 5,
+      "directory": "results/runs/stage_B_FG_initializer_M10_round5_20260906",
+      "targets": [
+        0.04209854458703974,
+        -0.002729943238719191
+      ],
+      "sampled_feasible": true,
+      "analytic_tail_conditions_passed": true,
+      "high_spin_status": "nonnegative_certified",
+      "global_polynomial_lowers": [
+        "[30.5444799005814065748838197856 +/- 4.10e-29]",
+        "[6.65265999870381000576082348478 +/- 6.73e-31]",
+        "[2.64206877492336940556392253955 +/- 3.02e-30]"
+      ],
+      "violations": [],
+      "constraints_retained": {
+        "finite": 458,
+        "high_spin": 58
+      },
+      "accepted_for_embedding": false,
+      "numerical_gap": 0.1,
+      "density_norm": 2967.184324878502,
+      "chiral_norms": [
+        0.001999772456958179,
+        0.0008767149124488952
+      ],
+      "seconds": 97.805421003839,
+      "source_changes": [],
+      "independent_audit": {
+        "directory": "results/runs/stage_B_FG_initializer_M10_round5_audit_20260906",
+        "status": "violated",
+        "nodes": 707,
+        "waves_per_isospin": 14,
+        "samples": 29694,
+        "finite_violations": 47,
+        "high_spin": "nonnegative_certified",
+        "tail": "necessary_conditions_passed",
+        "bits": 768,
+        "angular_order": 40,
+        "seconds": 20.639355459949
+      }
+    },
+    {
+      "round": 6,
+      "directory": "results/runs/stage_B_FG_initializer_M10_round6_20260906",
+      "targets": [
+        0.04189339265298016,
+        -0.002715840611384505
+      ],
+      "sampled_feasible": true,
+      "analytic_tail_conditions_passed": true,
+      "high_spin_status": "nonnegative_certified",
+      "global_polynomial_lowers": [
+        "[33.9037137346438059274974907463 +/- 2.90e-29]",
+        "[7.95966361994710221671475629785 +/- 3.79e-30]",
+        "[3.34714186681382481829793204870 +/- 2.50e-31]"
+      ],
+      "violations": [],
+      "constraints_retained": {
+        "finite": 505,
+        "high_spin": 58
+      },
+      "accepted_for_embedding": true,
+      "numerical_gap": 0.1,
+      "density_norm": 2555.503786937689,
+      "chiral_norms": [
+        0.0019997734429728093,
+        0.0008764287325554133
+      ],
+      "seconds": 102.42886011907831,
+      "source_changes": [],
+      "independent_audit": {
+        "directory": "results/runs/stage_B_FG_initializer_M10_round6_audit_20260906",
+        "status": "sampled_passed",
+        "nodes": 707,
+        "waves_per_isospin": 14,
+        "samples": 29694,
+        "finite_violations": 0,
+        "high_spin": "nonnegative_certified",
+        "tail": "necessary_conditions_passed",
+        "bits": 768,
+        "angular_order": 40,
+        "seconds": 20.783693034900352
+      }
+    }
+  ],
+  "total_supervisor_seconds": 983.6902546228375,
+  "continuation_constraints": "results/runs/stage_B_FG_initializer_M10_round6_audit_20260906/constraints.json",
+  "scope": "Initialization only, no Stage B reproduction credit. Fixed physical definitions. Rounds3\u20136 keep start_mu1e-5 and gap=.1 to select an interior point, not an accurate M10 boundary. Round6 adds the47 physical violations found by the independent round5 audit; all old cuts remain. Dense finite sampling and leading-tail polynomial bounds do not certify full continuum unitarity.",
+  "full_M50_validation_transferred": false
+}

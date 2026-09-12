@@ -1,0 +1,59 @@
+{
+  "tests": {
+    "command": "PYTHONPATH=/tmp/collocation_arb:src SMATRIX_BLAS_THREADS=2 /home/shiqiu/miniconda3/bin/python -m pytest -q",
+    "passed": 91,
+    "seconds": 10.6
+  },
+  "active_modules": 13,
+  "test_files": 3,
+  "all_files_within_limits": true,
+  "physical_model_modified": false,
+  "optimization_performed": false,
+  "diagnostic": "mainline_kernel_bound/analytic_audit.json",
+  "source_archive": "results/evidence/followup_mainline_sources_20260910.json.gz",
+  "fetched_out_of_scope_not_used": [
+    "2506v2"
+  ],
+  "source_hashes": {
+    "src/smatrix_bootstrap/analysis.py": "9de5452c0c744e4a4f1add58235e312d51da736dc65d3f3f5e054db080708490",
+    "src/smatrix_bootstrap/model.py": "3d49e6bd122254cc3fbd741bfa5f32f1a70dbd6e20a5ca602571bf1970231715",
+    "src/smatrix_bootstrap/io.py": "8ac1e9c32df9436952f6412ec4b30c9c9f54e8fbdcd4bcf61a6434d9859636bc",
+    "src/smatrix_bootstrap/operators.py": "96503ecc411866f4bac174545ba23abefb9b275cb8002691b818f92b36f51c1c",
+    "src/smatrix_bootstrap/__init__.py": "5e30794fc13676c6295e69fc2ece20f1e839fdbf6c3ab73092592056b2b2d362",
+    "src/smatrix_bootstrap/quotient.py": "9f49910882d405cb61b500a55a301cc51fc3dbd8e42f33fc46f0707374fe1426",
+    "src/smatrix_bootstrap/certificates.py": "0f190cf9fb76e1098283bbf10c4bdeffeffba4e64df83515549b88c07b500474",
+    "src/smatrix_bootstrap/analytic.py": "0c2d3f24e88b7f9e2c0152baf80abe57ed16d610e6a02589c234d232f26975d5",
+    "src/smatrix_bootstrap/kernels.py": "153fd835166f8e5bf8d72212cfb2b26800a352b6e497fe9d186e6420c1eb21de",
+    "src/smatrix_bootstrap/imaginary.py": "75747ee09285819d1d8d4e7f8fda9f599b69e48a7822a91d9780a5a339ef41be",
+    "src/smatrix_bootstrap/run.py": "a56d5a4eaa43595efec30517b3bce39c71100bae05b28747783a7d05833e48f9",
+    "src/smatrix_bootstrap/spectra.py": "4b2570364d0710d6943bcddc2747513420fabffafa52ca2fdd4780ffc3a46a4a",
+    "src/smatrix_bootstrap/linear.py": "8eb6b2f51541a5fabd762da1fe1a563daf856923fd8952892b79fcbfb4326682",
+    "tests/test_mainline.py": "ea5cbc59084529a3c24a730fc4356393e233791ac12c74876630a6ef247d8bba",
+    "tests/test_kernels.py": "82cf9816eb543120ffc95e9063c4474274bd2f0b2a0624cd038c2dd7555d448a",
+    "tests/test_linear.py": "67dc76684348056de9c949ed67042f1b5fffb2deb5f262a33d4e16558c9156d9"
+  },
+  "report_checks": {
+    "local_links_exist": true,
+    "no_missing_characters": true,
+    "no_overfull_boxes": true,
+    "pages": 5
+  },
+  "artifacts": {
+    "MAINLINE_ALIGNMENT_ZH.pdf": {
+      "sha256": "abf28da02868cdeee0675446496a687a13811db0042be869f5b6cf2c83e3edcb",
+      "bytes": 157155
+    },
+    "MAINLINE_ALIGNMENT_ZH.md": {
+      "sha256": "98d9c65ffd6af903457d3764e0913e4f1a6f5f18a8e0aea2ee96abb49a2a0b44",
+      "bytes": 15598
+    },
+    "HELD_ISSUES_ZH.md": {
+      "sha256": "0863e2c8a2f5fef8f48532f68dfe1f90ec754b0663a6054cf811b46216b1ca2b",
+      "bytes": 4088
+    },
+    "ORIGINAL_CLAIMS.json": {
+      "sha256": "659fd208a8d16e5a68709042ebdb1f5a26e45356f75038517897b5936086e805",
+      "bytes": 2581
+    }
+  }
+}

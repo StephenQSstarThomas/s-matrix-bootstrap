@@ -1,0 +1,12 @@
+{
+  "cut_energies": [
+    73.92278751565199,
+    164.13440932672674,
+    181.8095028160653,
+    1336.7805213614376,
+    1741.179589324146
+  ],
+  "source": "Certified global FF envelope of repaired pink same-slice witness",
+  "audit_file": "results/gauge_boundary_global_FF_audits.json",
+  "interpretation": "Each retained Float64 energy was independently certified to violate an original continuum FF bound. Adding both channel bounds at each point preserves necessary physical constraints."
+}

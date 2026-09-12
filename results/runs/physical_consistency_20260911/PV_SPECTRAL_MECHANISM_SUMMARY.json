@@ -1,0 +1,106 @@
+{
+  "source": "PV_native_phases/phases.json",
+  "records": [
+    {
+      "role": "tip",
+      "moments": [
+        {
+          "power": -1,
+          "covered": true,
+          "current": 0.004435847032338963,
+          "two_pion": 0.004216455727808712,
+          "phase_penalty": 0.00021574898471838966,
+          "unresolved_weighted_nodes": 0,
+          "target": 0.004228045714285714,
+          "error": 0.002
+        },
+        {
+          "power": 0,
+          "covered": true,
+          "current": 0.1477106217011564,
+          "two_pion": 0.14093707413589537,
+          "phase_penalty": 0.0067483763788326245,
+          "unresolved_weighted_nodes": 0,
+          "target": 0.1457112069970845,
+          "error": 0.002
+        }
+      ],
+      "current_peak": {
+        "index": 38,
+        "energy_gev": 0.7921355788896206,
+        "value": 0.009480776458154861,
+        "endpoint": false
+      },
+      "two_pion_fraction_at_current_peak": 0.8695837542496614,
+      "phase_mismatch_at_current_peak_degrees": -3.1679158413425124
+    },
+    {
+      "role": "mid",
+      "moments": [
+        {
+          "power": -1,
+          "covered": true,
+          "current": 0.005908997025833527,
+          "two_pion": 0.004456546729747864,
+          "phase_penalty": 0.0014512909886493543,
+          "unresolved_weighted_nodes": 0,
+          "target": 0.004228045714285714,
+          "error": 0.002
+        },
+        {
+          "power": 0,
+          "covered": true,
+          "current": 0.14771102066913963,
+          "two_pion": 0.1117489741719008,
+          "phase_penalty": 0.035954034640400076,
+          "unresolved_weighted_nodes": 0,
+          "target": 0.1457112069970845,
+          "error": 0.002
+        }
+      ],
+      "current_peak": {
+        "index": 36,
+        "energy_gev": 0.6804136821594831,
+        "value": 0.018804489776267686,
+        "endpoint": false
+      },
+      "two_pion_fraction_at_current_peak": 0.6257273187358059,
+      "phase_mismatch_at_current_peak_degrees": -17.97256533775995
+    },
+    {
+      "role": "ref",
+      "moments": [
+        {
+          "power": -1,
+          "covered": true,
+          "current": 0.006089993756441655,
+          "two_pion": 0.004271492272237263,
+          "phase_penalty": 0.0018173024005885138,
+          "unresolved_weighted_nodes": 0,
+          "target": 0.004228045714285714,
+          "error": 0.002
+        },
+        {
+          "power": 0,
+          "covered": true,
+          "current": 0.14771101424696634,
+          "two_pion": 0.10461587433212732,
+          "phase_penalty": 0.04308685287479775,
+          "unresolved_weighted_nodes": 0,
+          "target": 0.1457112069970845,
+          "error": 0.002
+        }
+      ],
+      "current_peak": {
+        "index": 36,
+        "energy_gev": 0.6804136821594831,
+        "value": 0.019622407544725634,
+        "endpoint": false
+      },
+      "two_pion_fraction_at_current_peak": 0.5820422897285402,
+      "phase_mismatch_at_current_peak_degrees": -18.97682547441759
+    }
+  ],
+  "new_optimization": false,
+  "scope": "Extracted saved Schur diagnostics; not a new physical input or a standalone continuum certificate"
+}

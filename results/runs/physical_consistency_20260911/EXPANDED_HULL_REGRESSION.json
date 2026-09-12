@@ -1,0 +1,23 @@
+{
+  "status": "fixed_and_verified",
+  "source_sha256": "3ec58dc689af80cf12b564c74e40cd91af2189cda1789686694cc9691ef8c16d",
+  "failures": [
+    "Expanded-grid convex hull takes scattering rows as chiral rows; original-audit rejects returned toy point",
+    "Expanded fixed-C feasible fiber emits native-sized scattering duals",
+    "Expanded fixed-C excluded fiber emits native-sized scattering duals"
+  ],
+  "selected_results": {
+    "failed": 3,
+    "passed": 3,
+    "deselected": 42
+  },
+  "existing_baseline_affected": false,
+  "current_full_variable_Newton_path_affected": false,
+  "fixes": [
+    "Read the eight chiral rows from the final eleven supplemental rows",
+    "Size fixed-fiber scattering covectors using the full physical count"
+  ],
+  "full_tests_passed": 106,
+  "source_after_sha256": "32b669bec9e0b9af1c21bf464f2806411cdca87fffa6ff0593d7bb77dd3428e9",
+  "toy_scope": "Additional toy scattering rows are halved so both frozen test amplitudes remain scattering-feasible; exclusion isolates the current fiber."
+}

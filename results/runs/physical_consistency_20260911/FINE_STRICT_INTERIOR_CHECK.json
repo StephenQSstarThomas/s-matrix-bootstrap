@@ -1,0 +1,14 @@
+{
+  "source": "results/runs/physical_consistency_20260911/fine_witness_analytic/source_audit.json",
+  "sha256": "49556bdad8f97ad38d1778fe69dbc6831aa09d2ecb999c02a13cff8b097963d5",
+  "strict_checks": {
+    "chiral_margins": true,
+    "FESR_margins": true,
+    "FF_margins": true,
+    "scattering": true,
+    "density": true,
+    "low_Gram_determinants": true,
+    "leading_tail": true
+  },
+  "scope": "Strict retained analytic inequalities; high unbounded current spectra are eliminated for the numerical barrier"
+}

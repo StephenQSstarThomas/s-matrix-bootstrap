@@ -1,0 +1,68 @@
+{
+  "role": "mid",
+  "color": "#ff5555",
+  "rule": "2403 Watsonian continuation from a prescribed initial role; projected coordinates released",
+  "reference": [
+    0.07332139057293466,
+    -0.00488809270486231
+  ],
+  "target": [
+    0.07633479657497233,
+    -0.004990735247309851
+  ],
+  "epsilon": 0.002,
+  "source_reports": [
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_closure_20260909/literal_W_mid_path_02/report.json"
+  ],
+  "source_coefficients": [
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_closure_20260909/literal_W_mid_path_02/coefficients.json"
+  ],
+  "source_joint": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_closure_20260909/literal_W_mid_path_02/joint.npz",
+  "model_signature": {
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "free",
+    "unitarity_scope": "sampled",
+    "prescription": "pv-midpoint",
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    "current_preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_D_mainline_20260908/D1_current_M50",
+    "chiral_tolerance": 0.002,
+    "uv_config": {
+      "moment_source": "printed",
+      "sr_error": "raw-absolute",
+      "cutoff": "clipped-phi",
+      "mq_rule": "arithmetic-mean",
+      "pion_mass_gev": 0.14,
+      "matching_energy_gev": 1.2,
+      "up_mass_gev": 0.004,
+      "down_mass_gev": 0.0073,
+      "alpha_s": 0.4,
+      "gluon_condensate_gev4": 0.023,
+      "scalar_condensate_gev4": -0.0001,
+      "sr_tolerance": 0.002,
+      "ff_tolerance": 6e-05
+    },
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": false,
+    "additional_constraints": null,
+    "sampling_nodes": 50,
+    "scattering_samples": 1500,
+    "chiral_norm": "separate-l2"
+  },
+  "exact_extremizer_claimed": false,
+  "joint_feasible": true,
+  "selection_uses_phase_data": true,
+  "coefficients_mixed": false,
+  "finite_only": true,
+  "initial_target": [
+    0.0862847245195143,
+    -0.005265816456875685
+  ],
+  "initial_selection": "results/runs/stage_E_mainline_20260908/E2_representatives/mid/selection.json",
+  "watson_iteration": 1,
+  "watson_reference": "results/runs/stage_E_mainline_20260908/E2_representatives/mid/coefficients.json",
+  "uses_previous_bootstrap_form_factor_phase": true,
+  "initial_selection_uses_phase_data": false,
+  "selection_uses_experimental_data": false
+}

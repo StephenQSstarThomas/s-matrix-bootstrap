@@ -1,0 +1,728 @@
+{
+  "created_utc": "2026-09-11T20:20:17.953774+00:00",
+  "scope": "Read-only inventory of already located STATUS/SCIENCE-linked historical PV entries. No new directory scan, no compressed source read/restoration, no physics calculation or optimization.",
+  "requested_configuration": {
+    "prescription": "pv-midpoint mixed collocation",
+    "M": 50,
+    "L": 10,
+    "coefficient_coordinates": "unsubtracted PV-midpoint C_flat",
+    "scattering_disks": 1500,
+    "chiral_norm": "separate-l2",
+    "chiral_tolerance": 0.002,
+    "density_limit": 377500,
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "raw_tolerances": [
+      0.002,
+      0.002,
+      0.002,
+      0.002
+    ],
+    "fesr_cutoff": "hard-midpoint",
+    "infinity": "free",
+    "new_endpoint_or_asymptotic_constraints": false
+  },
+  "H_preparation": {
+    "files": {
+      "report.json": {
+        "repository_relative": "results/runs/stage_B_pv_M50_L10_prepare_20260907/report.json",
+        "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907/report.json",
+        "exists": true,
+        "bytes": 20971,
+        "sha256": "05de7c34b29385da3fb3d8d355839daa582b893fc8218aeafffae7fa90ebf6a0"
+      },
+      "amplitude.npz": {
+        "repository_relative": "results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz",
+        "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz",
+        "exists": true,
+        "bytes": 46151351,
+        "sha256": "49ffd2d9e769bd56917ec6a74b752aa423e7563c2ed1d403ff6b94bf4707a0e5"
+      }
+    },
+    "amplitude_model": {
+      "prescription": "pv-midpoint",
+      "M": 50,
+      "L": 10,
+      "bits": 384,
+      "coordinate_system": "unsubtracted PV-midpoint C_flat",
+      "coefficient_count": 3876,
+      "physical_samples": 1500,
+      "nyquist_retained": null,
+      "infinity_equality_imposed": false,
+      "density_limit_imposed": false,
+      "quadrature_order_per_panel": null,
+      "arithmetic": "Arb",
+      "integral_enclosures": false,
+      "authors_implementation_recovered": false,
+      "analytic_function_family_defined": false,
+      "nu0": 0,
+      "angular_projection": "analytic exterior Legendre Q",
+      "spectral_quadrature": "midpoint in phi; native PV cot map and nodal jump",
+      "physical_evaluation": "native nodes only; no off-grid continuation specified",
+      "infinity_row_meaning": "unsubtracted constant coordinate; not a certified high-energy limit",
+      "sampling_nodes": 50
+    },
+    "restrictions": {
+      "infinity": "free",
+      "density_limit": 377500,
+      "asymptotic_necessary_conditions": false,
+      "density_rule": "100*number_of_double_densities",
+      "density_norm": "ordinary l4 of actual rho1 matrix and rho2 upper triangle; off C_flat/2",
+      "chiral_norm": "two separate l2 four-vectors",
+      "chiral_tolerance": 0.002
+    },
+    "operator": {
+      "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz",
+      "shape": [
+        3011,
+        3876
+      ],
+      "storage": "float64 Arb PV-midpoint discrete rows",
+      "rows": "Re f, Im f, chi01[4], chi21[4], T0_unsub diagnostic, f00(3), f11(3)"
+    }
+  },
+  "current_preparation": {
+    "files": {
+      "report.json": {
+        "repository_relative": "results/runs/mainline_alignment_20260909/D1_hard_M50/report.json",
+        "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/D1_hard_M50/report.json",
+        "exists": true,
+        "bytes": 24166,
+        "sha256": "00438c6833295939d894d9a0eb7f54803012a3789884dbe80680a2e9b0268dfa"
+      },
+      "current_data.npz": {
+        "repository_relative": "results/runs/mainline_alignment_20260909/D1_hard_M50/current_data.npz",
+        "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/D1_hard_M50/current_data.npz",
+        "exists": true,
+        "bytes": 9490,
+        "sha256": "ff8d5809c68515899780eb4793c4d2bb42dbf95d62fdb805d3b60044d071eac9"
+      },
+      "gram_linear.npz": {
+        "repository_relative": "results/runs/mainline_alignment_20260909/D1_hard_M50/gram_linear.npz",
+        "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/D1_hard_M50/gram_linear.npz",
+        "exists": true,
+        "bytes": 3150990,
+        "sha256": "5c27a2e40e4cbb45f7ad8e01d8b448dc754229654fe2f3ce0245120e377ac724"
+      },
+      "moment_linear.npz": {
+        "repository_relative": "results/runs/mainline_alignment_20260909/D1_hard_M50/moment_linear.npz",
+        "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/D1_hard_M50/moment_linear.npz",
+        "exists": true,
+        "bytes": 2196,
+        "sha256": "04e022b5aed199efc485438b3fb1b52000d9a26f14ef3c4b942383391cbaa0a4"
+      },
+      "ff_cap_linear.npz": {
+        "repository_relative": "results/runs/mainline_alignment_20260909/D1_hard_M50/ff_cap_linear.npz",
+        "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/D1_hard_M50/ff_cap_linear.npz",
+        "exists": true,
+        "bytes": 4524,
+        "sha256": "79b38a0cda214c9b0a4aa6645e1271556cef9f13cc1113a9bc49bd42480a2920"
+      }
+    },
+    "source_formula": "v3 Eq.(2.33),(2.35)-(2.41),(3.65)-(3.75); K is Eq.(3.67)",
+    "uv_config": {
+      "moment_source": "printed",
+      "sr_error": "raw-absolute",
+      "cutoff": "hard-midpoint",
+      "mq_rule": "arithmetic-mean",
+      "pion_mass_gev": 0.14,
+      "matching_energy_gev": 1.2,
+      "up_mass_gev": 0.004,
+      "down_mass_gev": 0.0073,
+      "alpha_s": 0.4,
+      "gluon_condensate_gev4": 0.023,
+      "scalar_condensate_gev4": -0.0001,
+      "sr_tolerance": 0.002,
+      "ff_tolerance": 6e-05
+    },
+    "raw_tolerances": [
+      0.002,
+      0.002,
+      0.002,
+      0.002
+    ],
+    "error_grouping": "four independent absolute scalar residuals",
+    "form_factor_normalization": [
+      1.0,
+      1.0
+    ],
+    "FF_caps_squared": [
+      1.954438775510204e-07,
+      3e-05
+    ]
+  },
+  "historical_contract": {
+    "repository_relative": "results/runs/mainline_alignment_20260909/HARD_MAINLINE.json",
+    "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/HARD_MAINLINE.json",
+    "exists": true,
+    "bytes": 1198,
+    "sha256": "3280a9ee6d00301c52ff86b720368aed9139539beb07be559ed14b5b97d991c3"
+  },
+  "producers": [
+    {
+      "producer": "D3_hard_hull",
+      "producer_report": {
+        "repository_relative": "results/runs/mainline_alignment_20260909/D3_hard_hull/report.json",
+        "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/D3_hard_hull/report.json",
+        "exists": true,
+        "bytes": 124282,
+        "sha256": "4a0748a7784a00123d60e32b9172c1a0de56f3824ada82bbc08dd7d083062b56"
+      },
+      "point_files": {
+        "coefficients.json": {
+          "repository_relative": "results/runs/mainline_alignment_20260909/D3_hard_hull/coefficients.json",
+          "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/D3_hard_hull/coefficients.json",
+          "exists": true,
+          "bytes": 92720,
+          "sha256": "7659ffcd117b4ff4a4b47a765ee8dbe8594889013a8f94977b5c8966ea78de56"
+        },
+        "current.json": {
+          "repository_relative": "results/runs/mainline_alignment_20260909/D3_hard_hull/current.json",
+          "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/D3_hard_hull/current.json",
+          "exists": true,
+          "bytes": 25702,
+          "sha256": "c429148cf15a9ae564b5addd0bd88b616c22a1f46f357a81b756292fbc929e06"
+        },
+        "joint.npz": {
+          "repository_relative": "results/runs/mainline_alignment_20260909/D3_hard_hull/joint.npz",
+          "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/D3_hard_hull/joint.npz",
+          "exists": true,
+          "bytes": 33008,
+          "sha256": "0ad48426654e3d9a35648b11805dcd5eac93691d9d05397ff6d999ab9f1c992f"
+        },
+        "joint_audit.json": {
+          "repository_relative": "results/runs/mainline_alignment_20260909/D3_hard_hull/joint_audit.json",
+          "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/D3_hard_hull/joint_audit.json",
+          "exists": true,
+          "bytes": 62628,
+          "sha256": "1fdf4d58235fe8e70249db9eca79502c273221122e8b4cced5898712299607bf"
+        }
+      },
+      "points_and_arrays": {
+        "C_length": 3876,
+        "joint_length": 4076,
+        "C_equals_joint_prefix": true,
+        "ImF_shape": [
+          2,
+          50
+        ],
+        "rho_shape": [
+          2,
+          50
+        ],
+        "ImF_equals_joint": true,
+        "rho_equals_joint": true
+      },
+      "targets_f00_3_f11_3": [
+        0.060683815494175064,
+        -0.0038092113023219737
+      ],
+      "stored_support_direction": [
+        0.0,
+        0.0
+      ],
+      "requested_direction": [
+        0.0,
+        0.0
+      ],
+      "fixed_x": null,
+      "status": "joint_feasible",
+      "joint_feasible": true,
+      "all_original_constraints_checked": true,
+      "support_optimality_certified": false,
+      "outer": {
+        "lower": -5e-324,
+        "upper": 5e-324,
+        "enclosure": "0",
+        "primal_feasible": true,
+        "joint_primal_feasible": true,
+        "amplitude_primal_feasible": true,
+        "scope": "Joint finite saved float64 H/K/k/FESR operator; all native current Grams, FF caps and original amplitude constraints; no continuum certificate"
+      },
+      "support_gap": 1e-323,
+      "requested_gap": 0.0001,
+      "matching_requested_configuration": {
+        "prescription": true,
+        "M50_L10": true,
+        "separate_L2_epsilon": true,
+        "B377500": true,
+        "1500_disks": true,
+        "printed_raw_hard": true,
+        "four_independent_raw_errors": true,
+        "free_infinity": true,
+        "no_additional_constraints": true,
+        "same_H": true,
+        "same_current_preparation": true
+      },
+      "solver": {
+        "name": "Clarabel current SDP over saved M50 feasible hull",
+        "iterations": 38,
+        "reported_start_mu": 0.01,
+        "all_amplitude_directions_retained": null,
+        "representative_center_converged_field": null,
+        "last_history": null,
+        "last_historical_converged_mu": null
+      },
+      "cache": {
+        "repository_relative": "results/runs/mainline_alignment_20260909/D3_hard_hull/barrier_state.npz",
+        "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/D3_hard_hull/barrier_state.npz",
+        "exists": false,
+        "mu": null,
+        "z_shape": null
+      },
+      "center_path": {
+        "repository_relative": "results/runs/mainline_alignment_20260909/D3_hard_hull/center_path.npz",
+        "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/D3_hard_hull/center_path.npz",
+        "exists": false
+      },
+      "center_observables": {
+        "repository_relative": "results/runs/mainline_alignment_20260909/D3_hard_hull/center_observables.json",
+        "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/D3_hard_hull/center_observables.json",
+        "exists": false
+      },
+      "new_endpoint_flags_in_producer": {
+        "asymptotic_zeros": null,
+        "asymptotic_unitarity": null
+      },
+      "current_endpoint_metadata": {
+        "ff_endpoint_order": null,
+        "asymptotic_unitarity": null
+      },
+      "dedicated_selection_exists": false,
+      "dedicated_evaluation_exists": false,
+      "input_coefficients_path": "results/runs/stage_C_mainline_20260908/C2_fig6/coefficients.json",
+      "selection_scope": {
+        "kind": "zero-objective joint feasibility witness over a saved amplitude hull",
+        "geometric_representative": false,
+        "output_assisted_representative_coordinate": "not applicable",
+        "phase_profile_claimed": false
+      }
+    },
+    {
+      "producer": "E_tip_path_03",
+      "producer_report": {
+        "repository_relative": "results/runs/mainline_alignment_20260909/E_tip_path_03/report.json",
+        "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/E_tip_path_03/report.json",
+        "exists": true,
+        "bytes": 110464,
+        "sha256": "5cf1b6170ec95cb97a2ed8b8f811f67877d38fd96ee173f84cd87b5e37455365"
+      },
+      "point_files": {
+        "coefficients.json": {
+          "repository_relative": "results/runs/mainline_alignment_20260909/E_tip_path_03/coefficients.json",
+          "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/E_tip_path_03/coefficients.json",
+          "exists": true,
+          "bytes": 92690,
+          "sha256": "b2aea571d8f34538c3bb1fdd1251da39ca02751ea1a80d43ac93a4eccc9a6a83"
+        },
+        "current.json": {
+          "repository_relative": "results/runs/mainline_alignment_20260909/E_tip_path_03/current.json",
+          "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/E_tip_path_03/current.json",
+          "exists": true,
+          "bytes": 25710,
+          "sha256": "f573b0e6f315dfc599971cb741db44086d337c53b0d148e4369169eb1ca545ea"
+        },
+        "joint.npz": {
+          "repository_relative": "results/runs/mainline_alignment_20260909/E_tip_path_03/joint.npz",
+          "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/E_tip_path_03/joint.npz",
+          "exists": true,
+          "bytes": 62902,
+          "sha256": "34502fdf48270d2c9a7da8ea0780c0d67b3e4335c376abbf5447763dcd9cf1a7"
+        },
+        "joint_audit.json": {
+          "repository_relative": "results/runs/mainline_alignment_20260909/E_tip_path_03/joint_audit.json",
+          "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/E_tip_path_03/joint_audit.json",
+          "exists": true,
+          "bytes": 77652,
+          "sha256": "29ec5bff2287020e3986b6699feec962766dd16233e1831d0fb65d6cb154c9bc"
+        }
+      },
+      "points_and_arrays": {
+        "C_length": 3876,
+        "joint_length": 4076,
+        "C_equals_joint_prefix": true,
+        "ImF_shape": [
+          2,
+          50
+        ],
+        "rho_shape": [
+          2,
+          50
+        ],
+        "ImF_equals_joint": true,
+        "rho_equals_joint": true
+      },
+      "targets_f00_3_f11_3": [
+        0.0971070800504441,
+        -0.006266874434231021
+      ],
+      "stored_support_direction": [
+        1.0,
+        0.0
+      ],
+      "requested_direction": [
+        1.0,
+        0.0
+      ],
+      "fixed_x": null,
+      "status": "joint_feasible",
+      "joint_feasible": true,
+      "all_original_constraints_checked": true,
+      "support_optimality_certified": false,
+      "outer": {
+        "lower": 0.09710708005043221,
+        "upper": 0.10032306820041371,
+        "enclosure": "[0.1003230682004137074262260 +/- 2.98e-26]",
+        "primal_feasible": true,
+        "joint_primal_feasible": true,
+        "amplitude_primal_feasible": true,
+        "scope": "Joint finite saved float64 H/K/k/FESR operator; all native current Grams, FF caps and original amplitude constraints; no continuum certificate"
+      },
+      "support_gap": 0.0032159881499815024,
+      "requested_gap": 0.0001,
+      "matching_requested_configuration": {
+        "prescription": true,
+        "M50_L10": true,
+        "separate_L2_epsilon": true,
+        "B377500": true,
+        "1500_disks": true,
+        "printed_raw_hard": true,
+        "four_independent_raw_errors": true,
+        "free_infinity": true,
+        "no_additional_constraints": true,
+        "same_H": true,
+        "same_current_preparation": true
+      },
+      "solver": {
+        "name": "Complete feasible Newton center continuation",
+        "iterations": 46,
+        "reported_start_mu": 1.5625e-05,
+        "all_amplitude_directions_retained": true,
+        "representative_center_converged_field": null,
+        "last_history": {
+          "mu": 4.8828125e-07,
+          "lower": 0.09710708005043221,
+          "upper": 34.026237908835824,
+          "gap": 33.92913082878539,
+          "central_converged": false,
+          "support_direction": [
+            1.0,
+            0.0
+          ]
+        },
+        "last_historical_converged_mu": 9.765625e-07
+      },
+      "cache": {
+        "repository_relative": "results/runs/mainline_alignment_20260909/E_tip_path_03/barrier_state.npz",
+        "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/E_tip_path_03/barrier_state.npz",
+        "exists": true,
+        "bytes": 135061,
+        "sha256": "6f015f3eca58de6342f02395022d7bde7745e934f699b6cb3505bb9964530b87",
+        "mu": 4.8828125e-07,
+        "z_shape": [
+          4062
+        ],
+        "mu_repr": "4.8828125e-07",
+        "mu_float_hex": "0x1.0624dd2f1a9fcp-21",
+        "fields": [
+          "z",
+          "mu",
+          "ray_rate",
+          "reference_point",
+          "x",
+          "y",
+          "chi",
+          "gram",
+          "ff",
+          "moment",
+          "slack",
+          "chiral_slack"
+        ]
+      },
+      "center_path": {
+        "repository_relative": "results/runs/mainline_alignment_20260909/E_tip_path_03/center_path.npz",
+        "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/E_tip_path_03/center_path.npz",
+        "exists": true,
+        "bytes": 157131,
+        "sha256": "68596cf90edef2242d92a2be6b75fddfd45d3206035f899cb3ef01eb2d2e487a"
+      },
+      "center_observables": {
+        "repository_relative": "results/runs/mainline_alignment_20260909/E_tip_path_03/center_observables.json",
+        "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/E_tip_path_03/center_observables.json",
+        "exists": true,
+        "bytes": 39179,
+        "sha256": "26103079769e18407c763930aefc489299b30189f7c4cafce6aab109fca1ba4f"
+      },
+      "new_endpoint_flags_in_producer": {
+        "asymptotic_zeros": null,
+        "asymptotic_unitarity": null
+      },
+      "current_endpoint_metadata": {
+        "ff_endpoint_order": null,
+        "asymptotic_unitarity": null
+      },
+      "dedicated_selection_exists": false,
+      "dedicated_evaluation_exists": false,
+      "input_coefficients_path": "results/runs/mainline_alignment_20260909/E_tip_path_02/coefficients.json",
+      "historical_centers": {
+        "saved_mu": [
+          1.5625e-05,
+          7.8125e-06,
+          3.90625e-06,
+          1.953125e-06,
+          9.765625e-07
+        ],
+        "points_shape": [
+          5,
+          4076
+        ],
+        "delivered_full_joint_equals_center_indices": [],
+        "delivered_C_ImF_equals_center_indices": []
+      },
+      "selection_scope": {
+        "kind": "full +f00(3) support direction",
+        "output_assisted_coordinate_for_this_role": false,
+        "support_completed": false,
+        "phase_profile_claimed": false
+      }
+    },
+    {
+      "producer": "E_ref_path_03",
+      "producer_report": {
+        "repository_relative": "results/runs/mainline_alignment_20260909/E_ref_path_03/report.json",
+        "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/E_ref_path_03/report.json",
+        "exists": true,
+        "bytes": 110445,
+        "sha256": "1666c6300ddae9d8dd1e7fba84dddea1861804fb94a93ec35d8ad1515832b826"
+      },
+      "point_files": {
+        "coefficients.json": {
+          "repository_relative": "results/runs/mainline_alignment_20260909/E_ref_path_03/coefficients.json",
+          "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/E_ref_path_03/coefficients.json",
+          "exists": true,
+          "bytes": 92658,
+          "sha256": "47a5d5da07777bbd8a572eecde07d4a7eecd35a0b1569dc4a608bc93426fd30c"
+        },
+        "current.json": {
+          "repository_relative": "results/runs/mainline_alignment_20260909/E_ref_path_03/current.json",
+          "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/E_ref_path_03/current.json",
+          "exists": true,
+          "bytes": 25716,
+          "sha256": "053fae60792c9a047b1ad7b529760112de3bb9717fce1de1cb7e27ed9d01d317"
+        },
+        "joint.npz": {
+          "repository_relative": "results/runs/mainline_alignment_20260909/E_ref_path_03/joint.npz",
+          "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/E_ref_path_03/joint.npz",
+          "exists": true,
+          "bytes": 62999,
+          "sha256": "c2008c164c6e7c8646c34417902551f6b1e47dc97b0178eb4369850d3c7dda8d"
+        },
+        "joint_audit.json": {
+          "repository_relative": "results/runs/mainline_alignment_20260909/E_ref_path_03/joint_audit.json",
+          "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/E_ref_path_03/joint_audit.json",
+          "exists": true,
+          "bytes": 77466,
+          "sha256": "520460bf301dcb10086d8624a790ad1197a8867855c1545decf76447195a7eb4"
+        }
+      },
+      "points_and_arrays": {
+        "C_length": 3876,
+        "joint_length": 4076,
+        "C_equals_joint_prefix": true,
+        "ImF_shape": [
+          2,
+          50
+        ],
+        "rho_shape": [
+          2,
+          50
+        ],
+        "ImF_equals_joint": true,
+        "rho_equals_joint": true
+      },
+      "targets_f00_3_f11_3": [
+        0.07298305467748878,
+        -0.004291624605377557
+      ],
+      "stored_support_direction": [
+        35.430585138789816,
+        500.0
+      ],
+      "requested_direction": [
+        0.0,
+        500.0
+      ],
+      "fixed_x": 0.07298305468121799,
+      "status": "joint_feasible",
+      "joint_feasible": true,
+      "all_original_constraints_checked": true,
+      "support_optimality_certified": true,
+      "outer": {
+        "lower": 0.4400200297491743,
+        "upper": 0.4408397133258436,
+        "enclosure": "[0.4408397133258435325754996 +/- 3.96e-26]",
+        "primal_feasible": true,
+        "joint_primal_feasible": true,
+        "amplitude_primal_feasible": true,
+        "scope": "Joint finite saved float64 H/K/k/FESR operator; all native current Grams, FF caps and original amplitude constraints; no continuum certificate"
+      },
+      "support_gap": 0.0008196835766692834,
+      "requested_gap": 0.001,
+      "matching_requested_configuration": {
+        "prescription": true,
+        "M50_L10": true,
+        "separate_L2_epsilon": true,
+        "B377500": true,
+        "1500_disks": true,
+        "printed_raw_hard": true,
+        "four_independent_raw_errors": true,
+        "free_infinity": true,
+        "no_additional_constraints": true,
+        "same_H": true,
+        "same_current_preparation": true
+      },
+      "solver": {
+        "name": "Complete feasible Newton center continuation",
+        "iterations": 45,
+        "reported_start_mu": 3.90625e-06,
+        "all_amplitude_directions_retained": true,
+        "representative_center_converged_field": null,
+        "last_history": {
+          "mu": 1.220703125e-07,
+          "lower": 0.42960792689532257,
+          "upper": 52244.391916198874,
+          "gap": 52243.96230827198,
+          "central_converged": false,
+          "support_direction": [
+            35.287920476425796,
+            500.0
+          ]
+        },
+        "last_historical_converged_mu": 2.44140625e-07
+      },
+      "cache": {
+        "repository_relative": "results/runs/mainline_alignment_20260909/E_ref_path_03/barrier_state.npz",
+        "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/E_ref_path_03/barrier_state.npz",
+        "exists": true,
+        "bytes": 130443,
+        "sha256": "65b164aeddb9bf2df2eb88547a1acacecc244c084fd6740091eccdda0a02fe21",
+        "mu": 1.220703125e-07,
+        "z_shape": [
+          4062
+        ],
+        "mu_repr": "1.220703125e-07",
+        "mu_float_hex": "0x1.0624dd2f1a9fcp-23",
+        "fields": [
+          "z",
+          "mu",
+          "ray_rate",
+          "reference_point",
+          "x",
+          "y",
+          "chi",
+          "gram",
+          "ff",
+          "moment",
+          "slack",
+          "chiral_slack"
+        ]
+      },
+      "center_path": {
+        "repository_relative": "results/runs/mainline_alignment_20260909/E_ref_path_03/center_path.npz",
+        "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/E_ref_path_03/center_path.npz",
+        "exists": true,
+        "bytes": 157253,
+        "sha256": "d2526dfa5eafab68ce93862a1545875267a30772b470acad0fdd675264a0df3c"
+      },
+      "center_observables": {
+        "repository_relative": "results/runs/mainline_alignment_20260909/E_ref_path_03/center_observables.json",
+        "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/E_ref_path_03/center_observables.json",
+        "exists": true,
+        "bytes": 39920,
+        "sha256": "578451de8e010159453df2b003023d789091cde22dbfb88d23c444e93090fcd8"
+      },
+      "new_endpoint_flags_in_producer": {
+        "asymptotic_zeros": null,
+        "asymptotic_unitarity": null
+      },
+      "current_endpoint_metadata": {
+        "ff_endpoint_order": null,
+        "asymptotic_unitarity": null
+      },
+      "dedicated_selection_exists": false,
+      "dedicated_evaluation_exists": false,
+      "input_coefficients_path": "results/runs/mainline_alignment_20260909/E_ref_path_02/coefficients.json",
+      "historical_centers": {
+        "saved_mu": [
+          3.90625e-06,
+          1.953125e-06,
+          9.765625e-07,
+          4.8828125e-07,
+          2.44140625e-07
+        ],
+        "points_shape": [
+          5,
+          4076
+        ],
+        "delivered_full_joint_equals_center_indices": [],
+        "delivered_C_ImF_equals_center_indices": []
+      },
+      "last_stored_P1_center_diagnostic": {
+        "mu_old": 4.8828125e-07,
+        "mu_new": 2.44140625e-07,
+        "max_complex_S_change": 0.001304599186852139,
+        "max_phase_change_mod_pi_degrees": 0.15678308190195234,
+        "phase_defined_nodes": 43,
+        "minimum_eta": 0.2326442055079171
+      },
+      "selection_scope": {
+        "kind": "fixed-x upper support",
+        "output_assisted_representative_coordinate": true,
+        "source": "HARD_MAINLINE.json: Fig.8 marker ratios rescaled by the physical black reference",
+        "reference_csv": "references/figure8_selected_points.csv",
+        "selection_uses_phase_data": false,
+        "legacy_coordinate_must_not_be_inherited": true,
+        "phase_profile_claimed": false
+      }
+    }
+  ],
+  "delivery_conclusion": {
+    "matching_full_joint_witness_exists": true,
+    "matching_ref_support_exists": true,
+    "complete_same_configuration_triple_phase_delivery_located": false,
+    "scope_of_absence_statement": "Only the explicitly linked historical mainline and the already located descendants; no claim of exhaustive global repository search",
+    "matching_ref_has_absolute_phase_profile": false,
+    "matching_ref_has_center_change_diagnostic": true
+  },
+  "different_setting_deliveries": [
+    {
+      "file": {
+        "repository_relative": "results/runs/mainline_alignment_20260909/E3_paper_phases/phases.json",
+        "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/E3_paper_phases/phases.json",
+        "exists": true,
+        "bytes": 167115,
+        "sha256": "e1649a0289e6c964733f7c5f402a2f31a204e097cf2b215b3674f1203db6dcc3"
+      },
+      "difference": "combined-l2, not requested separate-l2; hard-midpoint otherwise retained",
+      "output_assisted_selection": "ref/mid positions from Fig.8 marker ratios; combined norm historically identified using Fig.5 output fingerprints"
+    },
+    {
+      "file": {
+        "repository_relative": "results/runs/stage_E_mainline_20260908/E3_phases_final/phases.json",
+        "absolute": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E3_phases_final/phases.json",
+        "exists": true,
+        "bytes": 103803,
+        "sha256": "9416e2a85daafb3ee94d9a21a46146220e6f5be7205026af40e53ab981e9fad2"
+      },
+      "difference": "clipped-phi cutoff, not hard-midpoint; phase signature has no explicit chiral_norm field, accompanying audit describes two balls"
+    }
+  ],
+  "next_mainline_decision": "Finish the current fixed Watson goal 1, then reuse the unmodified original PV H/current to complete an independently chosen geometric three-representative chain. Do not proceed to Watson goal 2 first; do not inherit the legacy marker-assisted ref coordinate.",
+  "restrictions": [
+    "Preserve all historical H/current/C/current-spectrum/joint/cache files unchanged",
+    "A cache file and its mu are historical data, not a promise that the current solver can resume it without compatibility checks",
+    "Old center_path labels do not constitute a new checked-point center audit",
+    "Do not import analytic-cardinal endpoint constraints or continuum certification prerequisites into this PV finite task",
+    "No old feasibility or support status is transferred to another norm, cutoff, model or newly selected point"
+  ]
+}

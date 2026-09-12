@@ -1,0 +1,1589 @@
+SIAM J. OPTIM.                                            2006 Society for Industrial and Applied Mathematics
+                                                         c
+Vol. 16, No. 4, pp. 939–964
+
+
+
+
+      DISCRETE TRANSFORMS, SEMIDEFINITE PROGRAMMING,
+            AND SUM-OF-SQUARES REPRESENTATIONS
+                OF NONNEGATIVE POLYNOMIALS∗
+                              TAE ROH† AND LIEVEN VANDENBERGHE†
+
+    Abstract. We present a new semideﬁnite programming formulation of sum-of-squares repre-
+sentations of nonnegative polynomials, cosine polynomials, and trigonometric polynomials of one
+variable. The parametrization is based on discrete transforms (speciﬁcally, the discrete Fourier, co-
+sine, and polynomial transforms) and has a simple structure that can be exploited by straightforward
+modiﬁcations of standard interior-point algorithms.
+
+      Key words. semideﬁnite programming, interior-point methods, nonnegative polynomials
+
+      AMS subject classiﬁcations. 90C22, 90C25
+
+      DOI. 10.1137/040612646
+
+
+    1. Introduction. We discuss fast algorithms for semideﬁnite programs (SDPs)
+derived from weighted sum-of-squares representations of polynomials, cosine polyno-
+mials, and trigonometric polynomials of one variable.
+    Several well-known theorems state that a (generalized) polynomial f : R → R is
+nonnegative on an interval or a union of intervals I,
+
+(1)                                        f (t) ≥ 0,        t ∈ I,
+
+if and only if it can be expressed as a weighted sum of squares
+
+                                                
+                                                r
+(2)                                  f (t) =          wk (t)(ykT q(t))2 ,
+                                                k=1
+
+where wk (t) ≥ 0 on I. (For trigonometric polynomials, q and yk are complex-valued,
+and we replace (ykT q)2 with |ykH q|2 , where ykH denotes the complex conjugate transpose
+of yk .) The weight functions wk , the required number of terms r, and the vector of
+basis functions q depend on I and the class of functions f under consideration. Speciﬁc
+examples of sum-of-squares theorems are given in sections 3.1, 4.1, and 5.1.
+    It is also well known that the weighted sum-of-squares property (2) can be ex-
+pressed as a set of linear equations and linear matrix inequalities (LMIs) in the co-
+eﬃcients of f and a number of auxiliary matrix variables. In other words, (2) is
+equivalent to a convex constraint of the form
+
+                                   
+                                   s
+(3)                           x=         Hi (Xi ),    Xi  0,      i = 1, . . . , s,
+                                   i=1
+
+where x is the vector of coeﬃcients of f with respect to some basis, Hi is a linear map-
+ping, and s ≤ r [24, 25, 21]. Combining these results, we can cast the constraint (1),
+
+   ∗ Received by the editors July 30, 2004; accepted for publication (in revised form) April 4, 2005;
+
+published electronically January 26, 2006. This work was supported by NSF grant ECS-0200320.
+     http://www.siam.org/journals/siopt/16-4/61264.html
+   † Department of Electrical Engineering, University of California, Los Angeles, CA 90095-1594
+
+(roh@ee.ucla.edu, vandenbe@ee.ucla.edu).
+                                                      939
+940                      TAE ROH AND LIEVEN VANDENBERGHE
+
+
+which is an inﬁnite number of linear inequalities in the coeﬃcients x, as a ﬁnite num-
+ber of linear equations and linear matrix inequalities. Thus, we can solve a wide
+variety of optimization problems over polynomials, subject to piecewise-polynomial
+upper and lower bounds, as SDPs. Numerous applications of this idea can be found
+in signal processing and control [26, 23, 27, 11, 34, 4, 8, 9, 18].
+     In this paper we propose a speciﬁc choice for the mappings Hi in (3). We show
+that the weighted sum-of-squares property can be expressed in the following common
+form or its complex-valued counterpart:
+
+                        
+                        s
+                                              
+(4)               x=          Ai diag Ci Xi CiT ,         Xi  0,        i = 1, . . . , s,
+                        i=1
+
+
+where diag(Ci Xi CiT ) denotes the vector of diagonal elements of Ci Xi CiT , and the
+matrices Ai and Ci are deﬁned in terms of discrete orthogonal transforms and their
+inverses. This uniﬁed parametrization oﬀers several advantages. First, we will see
+that SDPs with constraints of the form (4), in which x and the matrices Xi are
+variables, can be solved very eﬃciently by taking advantage of some simple prop-
+erties of the diag operator. This allows one to develop a single solver that solves
+SDPs derived from weighted sum-of-squares representations much more quickly than
+general-purpose codes. Second, in many cases additional savings are possible by using
+fast discrete transform algorithms for the multiplications with Ai and Ci . Third, the
+matrices Ci can be chosen to be orthogonal, while Ai is generally a product of an
+orthogonal and a diagonal matrix. These orthogonality properties are attractive from
+a numerical stability viewpoint.
+     Our interest in numerical methods for SDPs derived from sum-of-squares represen-
+tations is motivated by several recent papers. Nesterov in [24] pointed out the connec-
+tions between sum-of-squares representations, semideﬁnite programming, and classical
+results in moment theory. He also described a straightforward method for convert-
+ing weighted sum-of-squares representations (2) into constraints of the form (3). We
+explain the method for the case with wi (t) = 1. Let q : R → Rm+1 . Suppose pi (t),
+i = 0, . . . , n, are basis functions whose span contains all products qk (t)ql (t), so there
+exist matrices Fi ∈ Sm+1 such that
+
+                                                   
+                                                   n
+                                     q(t)q(t)T =          pi (t)Fi .
+                                                    i=0
+                                                                             r       T      2
+A function f can be expressed as a sum of squares f (t) =                       k=1 (yk q(t)) for some r
+and yk if and only if
+
+                        
+                        r                                              
+                                                                       n
+              f (t) =         (ykT q(t))2 = tr(q(t)q(t)T X) =                tr(Fi X)pi (t),
+                        k=1                                            i=0
+
+                  r         T
+where X =           k=1 yk yk . We see that f is a sum of squares if and only if f (t) =
+x0 p0 (t) + · · · + xn pn (t), where
+
+(5)                            xi = tr(Fi X),      i = 0, . . . , n,     X  0,
+
+for some X ∈ Sm+1 . Therefore, (3) holds with H1 (X) = (tr(F0 X), . . . , tr(Fn X)),
+and s = 1.
+             DISCRETE TRANSFORMS, SDP, AND SOS REPRESENTATIONS                      941
+
+    As an example, it is well known that a nonnegative polynomial of even degree
+
+                             f (t) = x0 + x1 t + · · · + x2m t2m
+
+can be expressed as a sum of squares of two polynomials of degree m or less. To derive
+equivalent LMI conditions, we take q(t) = (1, t, . . . , tm ), and note that
+
+                                 
+                                 2m                             
+                                                                  1, k + l = i,
+                   q(t)q(t)T =         t i Fi ,       Fi,kl =
+                                                                  0, otherwise.
+                                 i=0
+
+For this choice of Fi , (5) reduces to
+                               
+(6)                     xi =       Xkl ,          i = 0, . . . , 2m,   X  0.
+                             k+l=i
+
+
+We can conclude that f (t) is nonnegative if and only if there exists an X ∈ Sm+1 such
+that (6) holds. We refer to Nesterov [24] and Faybusovich [12, 13] for more examples
+and extensions of Nesterov’s approach.
+     SDPs derived from sum-of-squares representations involve auxiliary matrix vari-
+ables and are often large scale and diﬃcult to solve using general-purpose solvers. This
+has spurred research into specialized implementations of interior-point methods. The
+most successful approaches have been based on dual barrier methods [14, 16, 4] and ex-
+ploit properties of the logarithmic barrier function for the dual constraints associated
+with (3). Genin et al. [14] consider problems involving matrix-valued polynomials
+that are nonnegative on the unit circle, the real axis, or the imaginary axis. They
+note that the dual variables have low displacement rank (for example, due to Toeplitz
+or Hankel structure) and use this property to reduce the cost of computing the gradi-
+ent and Hessian of the dual barrier function. This results in a substantial reduction of
+the complexity per iteration, as compared to a general-purpose solver. In [4] similar
+gains are achieved for a more speciﬁc class of problems, involving nonnegative scalar
+trigonometric polynomials. As in the method of [14], the basic idea is to evaluate
+the gradient and Hessian of the dual barrier function fast. In [4] this is accomplished
+by using the discrete Fourier transform (DFT) of triangular factors of the inverses of
+the dual variables. The techniques discussed in this paper can be interpreted as an
+extension of the DFT method of [4] to a much wider class of problems and to gen-
+eral interior-point methods (primal, dual, or primal-dual). Several of the key ideas
+in this paper also extend to SDPs derived from sum-of-squares characterizations of
+multivariate polynomials. In this context, our techniques are related to recent work
+by Löfberg and Parrilo on improving the eﬃciency of SDP solvers for sum-of-squares
+programming (see [22], which appeared after the ﬁrst submission of this paper).
+     Notation. The set of real symmetric n × n matrices is denoted Sn ; the set of
+Hermitian n × n matrices is denoted Hn . A  0 means A is positive semideﬁnite;
+A  0 means A is positive deﬁnite. tr(A) is the trace of A. For a square matrix
+A, diag(A) is the vector of diagonal elements of A. For an n-vector a, diag(a) is
+the diagonal matrix with the elements of a on its diagonal. AT is the transpose of
+the matrix A, Ā is the complex conjugate, and AH = (Ā)T is the complex conju-
+gate transpose. A ◦ B denotes the Hadamard product of two matrices A and B of
+the same dimensions, i.e., the matrix with elements (A ◦ B)ik = Aik Bik . The same
+notation is used for vectors: (x ◦ y)i = xi yi . For real matrices, sqr(A) = A ◦ A;
+for complex matrices, sqr(A) = A ◦ Ā. We use the notation (x0 , x1 , . . . , xn ) for
+the (column) vector [x0 x1 · · · xn ]T . 1 is the vector with all components one with
+942                    TAE ROH AND LIEVEN VANDENBERGHE
+
+
+dimension determined from
+                       √ the context. Throughout the paper the symbol j is re-
+served for the number −1. We use deg(f ) to denote the degree of a polynomial,
+cosine polynomial, or trigonometric polynomial f . For a trigonometric polynomial
+f (ω) = x0 + 2 (x1 e−jω + · · · + xn e−jnω ), we deﬁne deg(f ) = n if xn = 0.
+    2. A class of structured SDPs. Suppose the matrices Fi in the standard form
+SDP
+                     minimize tr(DX)
+(7)                  subject to tr(Fi X) = bi , i = 1, . . . , m,
+                                X0
+can be factored as
+(8)                      Fi = C T diag(ai )C,    i = 1, . . . , m,
+where C ∈ Rq×n and ai ∈ Rq . In other words, the matrices Fi can be written as
+diﬀerent linear combinations of q rank-one matrices ci cT          T
+                                                        i , where ci is the ith row of
+C. Substituting (8) in (7) we obtain
+                          minimize tr(DX)
+(9)                       subject to A diag(CXC T ) = b,
+                                     X  0,
+
+where A ∈ Rm×q has rows aT   i . In this section we will see that if q  mn, the SDP (9)
+can be solved very eﬃciently by taking advantage of the structure in the constraints.
+In sections 3–5 we will then show that this type of structure arises in SDPs derived
+from sum-of-squares representations of nonnegative polynomials.
+     Note that a factorization of the form (8) always exists. For example, one can use
+the eigenvalue decomposition to factor Fi as Fi =     Vi diag(λi )ViT with Vi ∈ Rn×ri ,
+λi ∈ R , where ri = rank(Fi ), and then take q = i ri ,
+       ri
+
+                ⎡ T⎤             ⎡ ⎤             ⎡ ⎤                   ⎡ ⎤
+                  V1              λ1              0                      0
+                ⎢V2T ⎥           ⎢0⎥             ⎢λ2 ⎥                 ⎢ 0 ⎥
+                ⎢ ⎥              ⎢ ⎥             ⎢ ⎥                   ⎢ ⎥
+(10)       C = ⎢ . ⎥ , a1 = ⎢ . ⎥ , a2 = ⎢ . ⎥ , . . . , am = ⎢ . ⎥ .
+                ⎣ . ⎦
+                   .             ⎣.⎦
+                                   .             ⎣.⎦
+                                                   .                   ⎣ .. ⎦
+                    T
+                  Vm               0              0                     λm
+For general dense matrices, with ri = n and q = mn, there is no advantage in
+expressing the SDP as (9). If the matrices Fi are all low rank (ri       n), then (10)
+provides a factorization (8) with q    mn. In this case our techniques are similar to
+known methods for exploiting low-rank structure [6]. Our focus in this paper, however,
+is on more general types of structure in which the matrices Fi are not low-rank.
+    2.1. Solution via interior-point methods. It will be convenient in later sec-
+tions to use the problem format
+                       minimize tr(DX) + cT y
+(11)                   subject to A diag(CXC T ) + By = b,
+                                  X  0,
+which includes a vector variable y ∈ Rp . The problem parameters are c ∈ Rp , D ∈ Sn ,
+b ∈ Rm , A ∈ Rm×q , B ∈ Rm×p , and C ∈ Rq×n . The corresponding dual SDP is
+                          maximize bT z
+(12)                      subject to C T diag(AT z)C         D,
+                                     BTz = c
+            DISCRETE TRANSFORMS, SDP, AND SOS REPRESENTATIONS                      943
+
+with variable z ∈ Rm .
+    Interior-point methods for solving the pair of SDPs (11) and (12) typically require
+the solution of one or two sets of linear equations of the form
+
+(13)                  −T −1 ΔXT −1 + C T diag(AT Δz)C = R,
+(14)                            A diag(CΔXC T ) + BΔy = r1 ,
+(15)                                               B T Δz = r2
+
+at each iteration. The variables are Δy, Δz, ΔX; the matrix T  0 and the right-
+hand sides R ∈ Sn , r1 ∈ Rm , and r2 ∈ Rp are given. We refer to these equations as
+Newton equations, because they can be obtained by linearizing nonlinear equations
+that characterize the central path. The matrices T and the right-hand sides R, r1 , r2
+change at each iteration and depend on the particular method used. In some methods
+(for example, dual barrier methods) the matrix T may have additional structure that
+can be exploited [5, 14, 4]. In this paper, however, we will make no assumption about
+T , other than positive deﬁniteness. The technique outlined below, therefore, applies
+to a wide variety of interior-point methods, including primal methods, dual methods,
+and primal-dual methods based on the Nesterov–Todd scaling [30]. Other primal-dual
+methods (in particular, the methods in [3, 17, 19]) involve Newton equations with a
+closely related structure.
+     It is well known that the number of iterations in an interior-point method is
+typically in the range 10–50, almost independent of the problem dimensions, and that
+the overall cost is dominated by the cost of solving the Newton equations. An eﬃcient
+method that takes advantage of the structure in the Newton equations (13)–(15) is
+as follows. We ﬁrst eliminate ΔX from the ﬁrst equation to get
+
+(16)              A diag(CT C T diag(AT Δz)CT C T ) + BΔy = r3 ,
+(17)                                                       B T Δz = r2 ,
+
+where r3 = r1 + A diag(CT RT C T ). The 1,1-block can be written in matrix-vector
+form by using the identity diag(P diag(u)QT ) = (P ◦ Q)u:
+                                                               
+       A diag CT C T diag(AT Δz)CT C T = A (CT C T ) ◦ (CT C T ) AT Δz
+                                             = A sqr(CT C T )AT Δz.
+
+Equations (16) and (17), therefore, reduce to m + p equations in m + p variables:
+                                                         
+                        A sqr(CT C T )AT B Δz           r3
+(18)                                                 =       .
+                               BT           0 Δy        r2
+
+From the solution Δz, Δy, we ﬁnd ΔX by solving (13).
+    To justify this approach, we can contrast it with the calculations used in common
+general-purpose implementations (such as Sedumi [28] or SDPT3 [31]). In a general-
+purpose code the Newton equations are also solved by eliminating ΔX and solving
+the reduced Newton equations (18). The diﬀerence lies in the way the 1, 1-block
+H = A sqr(CT C T )AT is assembled. In a general-purpose algorithm the linear map-
+ping C T diag(AT z)C is represented in the canonical form
+
+                                                 
+                                                 m
+                             C T diag(AT z)C =         zi Fi ,
+                                                 i=1
+944                   TAE ROH AND LIEVEN VANDENBERGHE
+
+
+where Fi = C T diag(ai )C and aT
+                               i is the ith row of A. The matrix H is computed as
+
+                       Hik = tr(T Fi T Fk ),      i, k = 1, . . . , m.
+These computations can be arranged in diﬀerent ways, for example, by ﬁrst computing
+the m matrices T Fi and then forming the m(m + 1)/2 inner products tr(T Fi T Fk ). If
+we assume that the matrices Fi are dense and full-rank and that the problem dimen-
+sions m, n, p are of the same order, this yields an O(n4 ) method for constructing the
+coeﬃcient matrix in (18), which can then be solved in O(n3 ) operations. The direct
+formula H = A sqr(CT C T )AT is faster, because it requires O(n3 ) operations (again
+assuming that all problem dimensions are of the same order). Moreover, in the appli-
+cations that we describe below, the matrices A and C represent discrete transforms
+or inverse discrete transforms, so fast methods often exist for multiplications with A
+and C.
+    2.2. Extension to complex data and variables. In applications involving
+trigonometric polynomials we will encounter SDPs in which some of the data and
+variables are complex numbers. It is, therefore, of interest to consider the complex
+counterpart of (11) and (12),
+                       minimize tr(DX) + cT y
+                       subject to A diag(CXC H ) + By = b,
+                                  X  0,
+(19)
+                       maximize    (bH z)       
+                       subject to C H diag (AH z) C              D,
+                                   (B H z) = c.
+The primal variables are X ∈ Hn and y ∈ Rp . The dual variable is z ∈ Cm . The
+problem parameters are D ∈ Hn , c ∈ Rp , A ∈ Cm×q , C ∈ Cq×n , B ∈ Cm×p , and
+b ∈ Cm .
+    The Newton equations for (19) can be written as
+                                                   
+                   −T −1 ΔXT −1 + C H diag (AH Δz) C = R,
+                                  A diag(CΔXC H ) + BΔy = r1 ,
+                                                      (B H Δz) = r2 .
+Eliminating ΔX from the ﬁrst equation gives
+                                               
+(20)          A diag CT C H diag( (AH Δz))CT C H + BΔy = r3 ,
+(21)                                                        (B H Δz) = r2 ,
+where r3 = r1 + A diag(CT RT C H ). Again using the identity diag(P diag(u)QT ) =
+(P ◦ Q)u, we can write the 1,1-block as
+                                                                 
+   A diag CT C H diag( (AH Δz))CT C H = A (CT C H ) ◦ (CT C H )T (AH Δz)
+                                               = A sqr(CT C H ) (AH Δz).
+Plugging this in (20) and (21) and expanding complex data and variables in their real
+and imaginary parts (A = Ar + jAi , etc.), we obtain
+          ⎡                                              ⎤⎡       ⎤ ⎡ ⎤
+           Ar sqr(CT C H )AT r   Ar sqr(CT C H )AT  i Br    Δzr        r3,r
+(22)      ⎣ Ai sqr(CT C H )ATr   A i sqr(CT  C H
+                                                 )A T
+                                                    i Bi
+                                                         ⎦ ⎣ Δz i ⎦ = ⎣ r3,i ⎦ .
+                    BrT                  BiT          0      Δy          r2
+             DISCRETE TRANSFORMS, SDP, AND SOS REPRESENTATIONS                         945
+
+The extension to the case where only some of the rows of A and B (and the corre-
+sponding elements of Δz) in (20) and (21) are complex is straightforward: in (22) we
+simply delete the equations and variables corresponding to the zero rows in Ai and
+Δzi .
+    3. Trigonometric polynomials. Let f be a trigonometric polynomial of degree
+n or less, i.e., a function of the form
+
+(23)         f (ω) = x̄n ejnω + · · · + x̄1 ejω + x0 + x1 e−jω + · · · + xn e−jnω
+                   = x0 + 2 (x1 e−jω + · · · + xn e−jnω ),
+
+where x = (x0 , . . . , xn ) ∈ R × Cn . In this section we show that f is nonnegative on
+a subinterval of [0, 2π] if and only if it satisﬁes an SDP constraint of the form
+                     
+                     r
+                                           
+                x=         Ak diag Ck Xk CkH ,      Xk  0,       k = 1, . . . , r,
+                     k=1
+
+with r = 1 or r = 2. This result follows by reformulating classical sum-of-squares
+characterizations of nonnegative trigonometric polynomials via the discrete Fourier
+transform.
+    3.1. Sum-of-squares characterizations. If the trigonometric polynomial (23)
+is nonnegative and of degree n (i.e., xn = 0), then it can be expressed as
+
+                                    f (ω) = |g(e−jω )|2 ,
+
+where g(s) = u0 + u1 s + · · · + un sn is a polynomial of degree n with (in general)
+complex coeﬃcients uk . This is known as the Riesz–Fejér theorem or the spectral fac-
+torization theorem [29, p. 3], [20, p. 60]. Several eﬃcient methods exist for computing
+g from x; see, for example, [32, Appendix D].
+     The following generalization of the Riesz–Fejér theorem can be found in [2, p. 133],
+[20, p. 294], [8, Theorem 2], [16, p. 44], [12, 13]. If f is nonnegative on [α − β, α + β],
+where 0 < β < π, then it can be expressed as
+
+                 f (ω) = |g(e−jω )|2 + (cos(ω − α) − cos β) |h(e−jω )|2 ,
+
+where g and h are polynomials with deg(g) ≤ n and deg(h) ≤ n − 1. In other words,
+f is the sum of two nonnegative trigonometric polynomials. The ﬁrst trigonometric
+polynomial |g(e−jω )|2 is nonnegative everywhere; the second term is the product of a
+nonnegative trigonometric polynomial |h(e−jω )|2 with the trigonometric polynomial
+cos(ω − α) − cos β, which is nonnegative on [α − β, α + β].
+    3.2. Discrete Fourier transform. The discrete Fourier transform (DFT) oﬀers
+a convenient way to map the coeﬃcients of a pseudopolynomial
+
+(24)           F (s) = x−n s−n + · · · + x−1 s−1 + x0 + x1 s + · · · + xn sn
+
+to its values at equidistant points on the unit circle, and vice versa. Let WDFT ∈
+CN ×N be the length-N DFT matrix with N ≥ 2n + 1:
+                                                         
+                           WDFT = w0 w1 · · · wN −1 ,
+
+where
+
+            wk = (1, e−jkωN , e−j2kωN , . . . , e−j(N −1)kωN ),        ωN = 2π/N.
+946                        TAE ROH AND LIEVEN VANDENBERGHE
+
+
+For the pseudopolynomial F given by (24), deﬁne
+
+                    x̃ = (x0 , x1 , . . . , xn , 0, . . . , 0, x−n , . . . , x−1 ) ∈ CN ,
+                                                                             
+                    y = F (1), F (e−jωN ), . . . , F e−j(N −1)ωN ∈ CN .
+
+Then it is easily veriﬁed that
+                                                               1 H
+                               y = WDFT x̃,             x̃ =    W    y.
+                                                               N DFT
+In other words, the DFT maps the coeﬃcients of F to the values of F at N equidistant
+points on the unit circle; the inverse DFT maps these sample values back to the
+coeﬃcients.
+    If x−k = x̄k , then F (e−jω ) is the trigonometric polynomial
+
+                   F (e−jω ) = f (ω) = x0 + 2 (x1 e−jω + · · · + xn e−jnω )
+
+and the relation between x = (x0 , x1 , . . . , xn ) and y = (f (0), f (ωN ), . . . , f ((N −1)ωN ))
+simpliﬁes to
+                                                    1 H
+                                             x=       W y,
+                                                    N
+where the columns of W are the ﬁrst n + 1 columns of WDFT :
+                                             
+(25)                 W = w0 w1 · · · wn ∈ CN ×(n+1) .
+
+     3.3. Semideﬁnite representations. We now combine the observations in the
+previous two paragraphs to obtain SDP characterizations of nonnegative trigonometric
+polynomials. Let f be the trigonometric polynomial (23). Suppose N ≥ 2n + 1, W
+is deﬁned as in (25), and W1 ∈ CN ×n is the matrix formed by the ﬁrst n columns of
+WDFT .
+     Theorem 1. f is nonnegative everywhere if and only if there exists an X ∈ Hn+1
+such that
+
+(26)                         x = W H diag(W XW H ),                   X  0.
+
+    The result follows directly from the following fact: two vectors x ∈ R × Cn and
+u ∈ Cn+1 satisfy
+
+(27)      x0 + 2 (x1 e−jω + · · · + xn e−jnω ) = |u0 + u1 e−jω + · · · + un e−jnω |2
+
+for all ω if and only if
+                                        1 H
+(28)                              x=      W diag(W uuH W H ).
+                                        N
+To see this, we simply note that the elements of diag(W uuH W H ) are the right-hand
+side of (27) evaluated at ω = 2πk/N for k = 0, 1, . . . , N − 1. As we observed in sec-
+tion 3.2, the inverse DFT of this vector gives the (unique) coeﬃcients of the trigono-
+metric polynomial that assumes those speciﬁed values. Therefore, the coeﬃcients x
+deﬁned in (27) are given by (28). Since every nonnegative trigonometric polynomial
+can be expressed as (27), (26) holds with X = (1/N )uuH .
+             DISCRETE TRANSFORMS, SDP, AND SOS REPRESENTATIONS                               947
+                                                                                n       H
+    Conversely, if (26) holds, then by factoring X as X = (1/N )                 k=0 uk uk , with
+uk = (uk0 , uk1 , . . . , ukn ), we express f in the form
+
+                               
+                               n
+                     f (ω) =         |uk0 + uk1 e−jω + · · · + ukn e−jnω |2 ,
+                               k=0
+
+which shows f (ω) ≥ 0. This completes the proof of Theorem 1.
+    Theorem 2. f is nonnegative on [α − β, α + β], where 0 < β < π if and only if
+there exist X1 ∈ Hn+1 , X2 ∈ Hn such that
+                                                 
+(29) x = W H diag W X1 W H + d ◦ diag W1 X2 W1H , X1  0, X2  0,
+
+where d ∈ RN has elements dk = cos(2πk/N − α) − cos β for k = 0, . . . , N − 1.
+   The proof of this theorem is similar to the proof of Theorem 1. We have
+
+                x0 + 2 (x1 e−jω + · · · + xn e−jnω )
+                               2                       n−1          2
+                   n                                              
+                          −jkω                                 −jkω 
+(30)            =     uk e      + (cos(ω − α) − cos β)     vk e     
+                                                                    
+                     k=0                                          k=0
+
+for all ω if and only if
+                     1 H                                      
+                x=     W diag(W uuH W H ) + d ◦ diag W1 vv H W1H .
+                     N
+According to the extension of the Riesz–Fejér theorem mentioned in section 3.1, if f
+is nonnegative on [α − β, α + β], then it can be represented as (30), so (29) holds with
+X1 = (1/N )uuH , X2 = (1/N )vv H . Conversely, if (29) holds, then f can be expressed
+as a sum of functions of the form (30), so it is clearly nonnegative on [α − β, α + β].
+This proves Theorem 2.
+     The constraint (26) is better known in a diﬀerent form [14, 4, 11]. Let Ei be the
+ith “shift” matrix, i.e., Ei ∈ R(n+1)×(n+1) with elements
+                                        
+                                          1, k − l = i,
+                                Ei,kl =
+                                          0, otherwise.
+
+It is easily seen that Ei = (1/N )W H diag(wi )W , where W and wi are deﬁned in (25)
+with N ≥ 2n + 1. Therefore, (26) holds if and only if
+                                                                     
+  xi = wiH diag(W XW H ) = tr diag(wi )H W XW H = N tr EiT X = N              Xkl .
+                                                                                     k−l=i
+
+
+Hence the linear mapping H : Hn+1 → R × Cn deﬁned by
+                                           1 H
+(31)                           H(X) =        W diag(W XW H )
+                                           N
+can also be expressed as
+                                                            
+(32)                 H(X) = tr E0T X , tr E1T X , . . . , tr EnT X .
+
+              well-known result that f (ω) ≥ 0 if and only if there exists an X  0
+We obtain the 
+such that xi = k−l=i Xkl for i = 0, . . . , n.
+948                     TAE ROH AND LIEVEN VANDENBERGHE
+
+
+     The adjoint of H (with respect to the inner products (xH z) on R × Cn and
+tr(XZ) on Hn+1 ) can be derived using either one of the two expressions for H.
+From (32),
+                                   ⎡                       ⎤
+                                    2z0    z̄1  ···   z̄n
+                                 1⎢⎢ z1   2z0 · · · z̄n−1 ⎥⎥
+(33)                  Hadj (z) = ⎢ .        ..  ..      .. ⎥ ,
+                                 2 ⎣ ..      .     .     . ⎦
+                                         zn   zn−1    ···   2z0
+
+the Hermitian Toeplitz matrix with ﬁrst column (z0 , z1 /2, . . . , zn /2). From (31),
+
+                                    1
+                      (z H H(X)) =     (z H W H diag(W XW H ))
+                                    N
+                                    1                        
+                                  =      tr diag(W z)H W XW H
+                                    N
+                                    1
+                                  =   tr((W H diag( (W z))W )X),
+                                    N
+so
+                                        1 H
+                           Hadj (z) =     W diag( (W z))W.
+                                        N
+Although it is not immediately clear that this is equal to the Toeplitz matrix (33), it
+is suﬃcient to note that the convolution of z with an arbitrary y ∈ Cn+1 is given by
+
+                     1 H                  1
+                       W ((W z) ◦ (W y)) = W H diag(W z)W y.
+                     N                    N
+
+The matrix (1/N )W H diag(W z)W is, therefore, the lower triangular Toeplitz matrix
+with (z0 , z1 , . . . , zn ) as its ﬁrst column. Adding the complex conjugate transpose and
+dividing by 2 gives
+
+            1                             1
+              W H diag(W z) + diag(W z)H W = W H diag( (W z))W,
+           2N                               N
+so this is indeed the Hermitian Toeplitz matrix with ﬁrst column (z0 , z1 /2, . . . , zn /2).
+     4. Cosine polynomials. In this section we consider semideﬁnite formulations
+of the constraint
+
+              f (ω) = x0 + x1 cos ω + · · · + xn cos nω ≥ 0,       ω ∈ [α, β],
+
+where x ∈ Rn+1 and 0 ≤ α < β ≤ π. This is in fact a special case of the constraints
+considered in the previous section, since f is a trigonometric polynomial with real
+coeﬃcients. For example, using Theorem 1, we can say that f (ω) ≥ 0 for all ω if and
+only if
+
+                       (x0 , x1 /2, . . . , xn /2) = W H diag(W XW H )
+
+for some X  0, where N ≥ 2n + 1 and W is formed by the ﬁrst n + 1 columns of the
+length-N DFT matrix. The purpose of this section is to show that simpler semideﬁnite
+parametrizations, using smaller matrices, can be obtained for cosine polynomials.
+              DISCRETE TRANSFORMS, SDP, AND SOS REPRESENTATIONS                            949
+
+    4.1. Sum-of-squares characterizations. Let f be a cosine polynomial of de-
+gree n, i.e.,
+
+(34)                          f (ω) = x0 + x1 cos ω + · · · + xn cos nω,
+
+with x ∈ Rn+1 and xn = 0. If f is nonnegative on [α, β], where 0 ≤ α < β ≤ π, then
+it can be expressed as
+                   
+                     g(ω)2 + (cos ω − cos β)(cos α − cos ω)h(ω)2 , n even,
+           f (ω) =
+                     (cos ω − cos β)g(ω)2 + (cos α − cos ω)h(ω)2 , n odd,
+
+where g and h are cosine polynomials with deg(g) ≤ n/2, deg(h) ≤ (n − 1)/2.
+This result can be derived from the characterization of nonnegative polynomials on
+[−1, 1] (see section 5.1) by making a change of variables t = cos ω.
+    If α = 0, β = π, i.e., f is nonnegative everywhere, these expressions can be
+simpliﬁed. If n = 2m, we have
+
+                                f (ω) = g(ω)2 + (1 − cos2 ω)h(ω)2
+                                       = g(ω)2 + (sin ω)2 h(ω)2
+(35)                                   = g(ω)2 + h̃(ω)2 ,
+
+where h̃ is of the form h̃(ω) = v1 sin ω + v2 sin 2ω + · · · + vm sin mω. This follows from
+the fact that the function sin kω/ sin ω is a cosine polynomial of degree k − 1.
+    If n = 2m + 1, we have
+
+                          f (ω) = (cos ω + 1)g(ω)2 + (1 − cos ω)h(ω)2
+                               = 2(cos(ω/2))2 g(ω)2 + 2(sin(ω/2))2 h(ω)2
+(36)                           = g̃(ω)2 + h̃(ω)2 ,
+
+where g̃ and h̃ have the form
+                      
+                      m                                        
+                                                               m
+            g̃(ω) =         uk cos((k + 1/2)ω),      h̃(ω) =         vk sin((k + 1/2)ω).
+                      k=0                                      k=0
+
+This follows from the fact that cos((k+1/2)ω)/ cos(ω/2) and sin((k+1/2)ω)/ sin(ω/2)
+are cosine polynomials of degree k.
+       4.2. Discrete cosine transform. The matrices
+                 ⎡                                                             ⎤
+                   1      1      ···         1                             1
+                 ⎢1 cos(π/N ) · · · cos((N − 1)π/N )                    cos(π) ⎥
+                 ⎢                                                             ⎥
+                 ⎢                                                     cos(2π) ⎥
+          VDCT = ⎢1 cos(2π/N ) · · · cos(2(N − 1)π/N )                         ⎥ ∈ SN +1
+                 ⎢ ..     ..                 ..                            ..  ⎥
+                 ⎣.        .                  .                             .  ⎦
+                      1       cos(π)     ···      cos((N − 1)π)        cos(N π)
+
+and
+                                                  2
+                                       WDCT =       DVDCT D,
+                                                  N
+where D = diag(1/2, 1, 1, . . . , 1, 1, 1/2), are inverses:
+
+(37)                                      WDCT VDCT = I
+950                     TAE ROH AND LIEVEN VANDENBERGHE
+
+
+(see, for example, [7, p. 124]). The mapping VDCT Du is sometimes referred as the
+discrete cosine transform (DCT) of u.
+     Suppose N ≥ n, and let W and V be the matrices formed by taking the ﬁrst
+n + 1 columns of WDCT and VDCT , respectively. These matrices satisfy W T V = I as
+a consequence of (37) and the symmetry of WDCT . The matrix V maps the coeﬃcients
+x0 , . . . , xn of the cosine polynomial (34) to its values at ω = kπ/N , k = 0, . . . , N .
+Multiplying with W T maps these sample values to the coeﬃcients. In other words, if
+y = (f (0), f (π/N ), . . . , f ((N − 1)π/N ), f (π)), then
+
+                                   y = V x,     x = W T y.
+
+    4.3. Semideﬁnite representations. We now use the DCT and the sum-of-
+squares theorems in section 4.1 to express constraints on a cosine polynomial
+
+                         f (ω) = x0 + x1 cos ω + · · · + xn cos nω
+
+in semideﬁnite form. Assume N ≥ n and deﬁne ωN = π/N . As in section 4.2,
+W ∈ R(N +1)×(n+1) denotes the matrix formed with the ﬁrst n + 1 columns of WDCT .
+    Theorem 3. f (ω) ≥ 0 on [α, β] if and only if there exist X1 ∈ Sm1 +1 and
+X2 ∈ Sm2 +1 such that
+                                                    
+(38) x = W T d1 ◦ diag V1 X1 V1T + d2 ◦ diag V2 X2 V2T , X1  0, X2  0,
+
+where m1 = n/2, m2 = (n − 1)/2, and d1 , d2 ∈ RN +1 are deﬁned as
+                     
+                       1,                n even,
+              d1,k =
+                       cos kωN − cos β, n odd,
+                     
+                       (cos kωN − cos β)(cos α − cos kωN ), n even,
+              d2,k =
+                       cos α − cos kωN ,                    n odd
+
+for k = 0, . . . , N . The columns of V1 ∈ R(N +1)×(m1 +1) and V2 ∈ R(N +1)×(m2 +1) are
+the ﬁrst m1 + 1, respectively, m2 + 1, columns of VDCT .
+    We prove the theorem for n even (n = 2m). By the sum-of-squares characteriza-
+tion in section 4.1, if f is nonnegative on [α, β], then it can be expressed as
+
+(39)              f (ω) = g(ω)2 + (cos ω − cos β)(cos α − cos ω)h(ω)2
+
+for some cosine polynomials
+
+                             
+                             m                           
+                                                         m−1
+                    g(ω) =         uk cos kω,   h(ω) =         vk cos kω.
+                             k=0                         k=0
+
+From section 4.2, we can express the right-hand side of (39) as a cosine polynomial
+by computing the values at ω = kπ/N , k = 0, . . . , N , which gives the vectors
+                                                               
+                   d1 ◦ diag V1 uuT V1T + d2 ◦ diag V2 vv T V2T ,
+
+and then multiplying on the left with W T . In other words, (39) is equivalent to
+                                                                 
+             x = W T d1 ◦ diag V1 uuT V1T + d2 ◦ diag V2 vv T V2T .
+             DISCRETE TRANSFORMS, SDP, AND SOS REPRESENTATIONS                       951
+
+Therefore, (38) holds with X1 = uuT and X2 = vv T . Conversely, if (38) holds, with
+X1 and X2 of rank greater than 2, then f is a sum of cosine polynomials that are
+nonnegative on [α, β], so it is also nonnegative.
+     If α = 0 and β = π, we can start from (35) and (36) and express the semideﬁnite
+constraints in a slightly simpler form.
+     Theorem 4. f (ω) ≥ 0 everywhere if and only if there exist X1 ∈ Sm1 +1 , X2 ∈
+ m2 +1
+S        such that
+                                                  
+(40)         x = W T diag V1 X1 V1T + diag V2 X2 V2T , X1  0, X2  0,
+
+where m1 = n/2, m2 = (n − 1)/2. If n is even, we deﬁne V1 ∈ R(N +1)×(m1 +1) as
+the matrix formed by the ﬁrst m1 + 1 columns of VDCT and
+             ⎡                                         ⎤
+                   0           0       ···       0
+             ⎢ sin(ωN )
+             ⎢             sin(2ωN ) · · · sin(mωN ) ⎥ ⎥
+       V2 = ⎢
+             ⎢ sin(2ωN )   sin(4ωN ) · · · sin(2mωN ) ⎥⎥ ∈ R(N +1)×(m2 +1) .
+             ⎢     ..          ..                ..    ⎥
+             ⎣      .           .                 .    ⎦
+              sin(N ωN ) sin(2N ωN ) · · · sin(mN ωN )
+If n is odd, we deﬁne V1 and V2 as
+               ⎡                                       ⎤
+                     1        ···           1
+               ⎢ cos(ωN /2) · · · cos((m + 1/2)ωN ) ⎥
+               ⎢                                       ⎥
+               ⎢              · · · cos(2(m + 1/2)ωN ) ⎥
+          V1 = ⎢ cos(ωN )                              ⎥ ∈ R(N +1)×(m1 +1) ,
+               ⎢      ..                    ..         ⎥
+               ⎣       .                     .         ⎦
+               cos(N ωN /2)  · · · cos(N (m + 1/2)ωN )
+              ⎡                                       ⎤
+                     0       ···            0
+              ⎢ sin(ωN /2)   · · · sin((m + 1/2)ωN ) ⎥
+              ⎢                                       ⎥
+              ⎢              · · · sin(2(m + 1/2)ωN ) ⎥
+         V2 = ⎢ sin(ωN )                              ⎥ ∈ R(N +1)×(m2 +1) .
+              ⎢      ..                     ..        ⎥
+              ⎣       .                      .        ⎦
+                sin(N ωN /2) · · · sin(N (m + 1/2)ωN )
+
+Note that the matrices X1 and X2 in the constraints (38) and (40) have dimension
+roughly n/2, as opposed to the constraints for general trigonometric polynomials
+of degree n given in section 3, which involve matrix variables of size n. It is also
+interesting to note that the matrices V1 , V2 , and W are orthogonal or nearly orthogonal
+(i.e., have a condition number close to 1).
+    4.4. Example: Linear-phase Nyquist ﬁlter. We consider the lowpass ﬁlter
+design problem
+                      minimize t
+(41)
+                      subject to −t ≤ H(ω) ≤ t,        ωs ≤ ω ≤ π,
+
+in which H is the frequency response of a linear-phase Nyquist-M ﬁlter [32, sec-
+tion 4.6]:
+
+                        H(ω) = h0 + h1 cos ω + · · · + hn cos nω
+
+with
+
+(42)                h0 = 1/M,     hkM = 0,     k = 1, 2, . . . , n/M .
+952                           TAE ROH AND LIEVEN VANDENBERGHE
+
+                           0
+                         10
+
+
+
+                           −1
+                         10
+
+                |H(ω)|
+                           −2
+                         10
+
+
+
+                           −3
+                         10
+                               0   0.5        1      1.5      2     2.5   3
+                                                       ω
+
+    Fig. 1. Frequency response of a linear-phase Nyquist-5 ﬁlter of length 51 and stopband edge
+ωs = 1.1π/5 = 0.69.
+
+
+The variables in (41) are t and the n − n/M  coeﬃcients hi that are not determined
+by (42). Since H is a cosine polynomial, we can apply Theorem 3 to formulate this
+problem as an SDP,
+         minimize t                                                    
+         subject to h + te0 = W T d1 ◦ diag V1 X1 V1T + d2 ◦ diag V2 X2 V2T ,
+(43)                                                                      
+                    −h + te0 = W T d1 ◦ diag 1 V1 X3 V1T + d2 ◦ diag V2 X4 V2T ,
+                         X1  0,   X2  0,        X3  0,    X4  0,
+
+where e0 = (1, 0, . . . , 0) ∈ Rn+1 and W , d1 , d2 , V1 , V2 are deﬁned as in Theorem 3
+with α = ωs , β = π. The variables are t, the n − n/M  unknown entries of h =
+(h0 , h1 , . . . , hn ), and four symmetric matrices Xi , which have dimension roughly n/2.
+Figure 1 shows an example with n = 50, M = 5, ωs = 1.1π/M .
+       5. Real polynomials.
+    5.1. Sum-of-squares characterizations. Let f be a polynomial of degree n
+with real coeﬃcients. If f is nonnegative on R, then n is even and f can be expressed
+as
+(44)                                     f (t) = g(t)2 + h(t)2 ,
+where deg(g) ≤ n/2 and deg(h) ≤ n/2. If f is nonnegative on [a, ∞), then f can be
+expressed as
+                                   f (t) = g(t)2 + (t − a)h(t)2 ,
+where deg(g) ≤ n/2 and deg(h) ≤ (n − 1)/2. Finally, if f is nonnegative on [a, b],
+where a < b, then it can be expressed as
+                            
+                              g(t)2 + (t − a)(b − t)h(t)2 , n even,
+(45)                f (t) =
+                             (t − a)g(t)2 + (b − t)h(t)2 , n odd,
+where g and h are polynomials with deg(g) ≤ n/2 and deg(h) ≤ (n − 1)/2. This
+last result is known as the Markov–Lukács theorem [29, section 1.21], [20, section 3.2].
+               DISCRETE TRANSFORMS, SDP, AND SOS REPRESENTATIONS                          953
+
+    5.2. Discrete polynomial transforms. Let pk (t), k = 0, 1, . . ., be a system of
+orthogonal and normalized polynomials on a bounded or unbounded interval I ⊆ R
+with respect to a nonnegative weight function w(t):
+                                                 
+                                                    0, k = l,
+                            pk (t)pl (t)w(t) dt =
+                          I                         1, k = l.
+
+The kth polynomial pk has degree k with a positive leading coeﬃcient ak . It is well
+known that orthogonal polynomials satisfy a three-term recursion
+
+(46)                       pk+1 (t) = (αk t − βk )pk (t) − γk pk−1 (t),
+
+where we deﬁne p−1 (t) = 0. The coeﬃcients αk , γk are positive and satisfy
+                                     ak+1              αk γk+1
+(47)                          αk =        > 0,                 = 1.
+                                      ak                αk+1
+The recursion (46) for k = 0, . . . , N can be written in matrix-vector form as
+
+(48)                          tp(t) = Jp(t) + (1/αN )pN +1 (t)eN ,
+
+where p(t) = (p0 (t), p1 (t), . . . , pN (t)), eN = (0, 0, . . . , 0, 1) ∈ RN +1 , and
+                 ⎡                                                                   ⎤
+                   β0 /α0 1/α0                 0    ···            0            0
+                 ⎢γ1 /α1 β1 /α1 1/α1 · · ·
+                 ⎢                                                 0            0 ⎥  ⎥
+                 ⎢ 0
+                 ⎢             γ 2 /α  2   β 2 /α 2 · · ·          0            0 ⎥  ⎥
+            J =⎢ .                  ..         ..   ..              ..          ..   ⎥.
+                 ⎢ ..                .          .       .            .           .   ⎥
+                 ⎢                                                                   ⎥
+                 ⎣ 0                0          0    · · · βN −1 /αN −1 1/αN −1 ⎦
+                      0             0          0    ···       γN /αN        βN /αN
+
+It follows from (47) that J is symmetric. Another well-known property of orthogonal
+polynomials is that pk has exactly k distinct roots in the interior of I [10, p. 236].
+From (48) we see that this implies
+
+                             λi p(λi ) = Jp(λi ),       i = 0, . . . , N,
+
+where λ0 , λ1 , . . . , λN are the roots of pN +1 . In other words p(λi ) is an eigenvector
+of J with eigenvalue λi [15].
+    These properties provide an eﬃcient method for computing the matrix
+                         ⎡                                  ⎤
+                           p0 (λ0 ) p1 (λ0 ) · · · pN (λ0 )
+                         ⎢ p0 (λ1 ) p1 (λ1 ) · · · pN (λ1 ) ⎥
+                         ⎢                                  ⎥
+             VDPT = ⎢ .                 ..             ..   ⎥ ∈ R(N +1)×(N +1)
+                         ⎣ ..            .              .   ⎦
+                          p0 (λN ) p1 (λN ) · · · pN (λN )
+
+directly from the coeﬃcients αk , βk , γk in the recursion (46). Let
+
+                                        J = Q diag(λ)QT
+
+be the eigenvalue decomposition of J with normalized eigenvectors (QQT = QT Q = I)
+and the signs in the ﬁrst row of Q chosen to be positive. The ith column of Q is then
+a positive multiple of p(λi ), and therefore
+
+                                          VDPT = DQT
+954                      TAE ROH AND LIEVEN VANDENBERGHE
+
+
+with D positive diagonal. The matrix D is easily       determined by dividing the ﬁrst
+column of VDPT , which is a constant p0 (t) = ( w(t) dt)−1/2 , by the elements in the
+ﬁrst row q1T of Q: D = p0 (t) diag(q1 )−1 . It follows that
+                                     T
+                                    VDPT D−2 VDPT = I,
+
+so the matrix
+
+(49)                          WDPT = D−1 QT = D−2 VDPT
+           T
+satisﬁes WDPT VDPT = I. The matrices VDPT and WDPT thus deﬁne a pair of forward
+and inverse “discrete polynomial transforms” [7, section 8.5].
+     Now suppose N ≥ n, and let W and V be the matrices formed by the ﬁrst n + 1
+                                                T
+columns of WDPT and VDPT . Since VDPT and WDPT       are inverses, we have W T V = I.
+                                      T
+The linear transformations V x and W y map the coeﬃcients of the polynomial
+
+                        f (t) = x0 p0 (t) + x1 p1 (t) + · · · + xn pn (t)
+
+to N + 1 values at λ0 , . . . , λN and vice versa: If
+
+                              y = (f (λ0 ), f (λ1 ), . . . , f (λN )),
+
+then y = V x and x = W T y.
+     5.3. Semideﬁnite representations. We can apply the discrete transform asso-
+ciated with the orthogonal polynomials pk , combined with the sum-of-squares results
+in section 5.1, to derive LMI conditions for nonnegativity of the polynomial
+
+                        f (t) = x0 p0 (t) + x1 p1 (t) + · · · + xn pn (t).
+
+Assume N ≥ n. Let W ∈ R(N +1)×(n+1) be the matrix formed by the ﬁrst n + 1
+columns of WDPT in (49), and let λ = (λ0 , λ1 , . . . , λN ) be the vector of zeros of pN +1 .
+    Theorem 5. f (t) ≥ 0 for t ∈ R if and only if n is even and there exists an
+X ∈ Sn/2+1 such that
+                                                 
+                      x = W T diag V1 XV1T ,                X  0.
+
+Here V1 is the matrix formed by the ﬁrst n/2 + 1 columns of VDPT .
+    Theorem 6. f (t) ≥ 0 on [a, ∞) if and only if there exist X1 ∈ Sm1 +1 and
+X2 ∈ Sm2 +1 such that
+                                                   
+    x = W T diag V1 X1 V1T + (λ − a) ◦ diag V2 X2 V2T , X1  0, X2  0.
+
+Here m1 = n/2, m2 = (n − 1)/2, and V1 and V2 are the matrices formed by the
+ﬁrst m1 + 1, respectively, m2 + 1, columns of VDPT .
+    Theorem 7. f (t) ≥ 0 on [a, b] if and only if there exist X1 ∈ Sm1 +1 , X2 ∈ Sm2 +1
+such that
+                                                          
+     x = W T d1 ◦ diag(V1 X1 V1T ) + d2 ◦ diag(V2 X2 V2T ) , X1  0, X2  0.
+
+Here m1 = n/2, m2 = (n − 1)/2, and V1 and V2 are the matrices formed by the
+ﬁrst m1 + 1, respectively, m2 + 1, columns of VDPT . The vectors d1 , d2 ∈ RN +1 are
+deﬁned as
+                                           
+                 1,        n even,            (λ − a1) ◦ (b1 − λ), n even,
+         d1 =                          d2 =
+                 λ − a1, n odd,               b1 − λ,              n odd.
+              DISCRETE TRANSFORMS, SDP, AND SOS REPRESENTATIONS                            955
+
+
+                              1
+
+                             0.8
+
+
+
+
+                  |G(jω)|2
+                             0.6
+
+                             0.4
+
+                             0.2
+
+                              0
+
+                               0    1       2     3       4      5        6       7
+                                                      ω
+
+         Fig. 2. Minimax magnitude ﬁt of a rational transfer function to 25 data points.
+
+
+
+    The proofs follow exactly the same pattern as in sections 3.3 and 4.3, and are
+omitted.
+    There exist several other interesting choices for the matrices V1 , V2 , and W . First,
+we can deﬁne V1 and V2 as the ﬁrst columns of the matrix QT (instead of the ﬁrst
+columns of VDPT = DQT ) if we change the deﬁnition of W accordingly and construct
+W from the ﬁrst columns of DQT . With this choice, V1 and V2 are orthogonal.
+Alternatively, we can deﬁne W to be the ﬁrst columns of the matrix QT , and redeﬁne
+V1 and V2 as the ﬁrst columns of D1/2 QT . With this choice W is orthogonal.
+    Second, we can note that the basis polynomials used in the deﬁnitions of V1 and
+V2 need not be the same as in the deﬁnition of W . This follows from the fact that
+in (44)–(45), we can use a diﬀerent basis to represent the polynomials f , g, and h.
+We could, therefore, deﬁne V1 and V2 as generalized Vandermonde matrices with k, l
+elements ql (tk ), where tk are the zeros of pN , and q0 , q1 , . . . is any polynomial basis.
+This is equivalent to replacing the matrices Vk by Vk Tk , where Tk is nonsingular. In
+particular, we can replace V1 and V2 with orthogonal matrices that have the same
+column spaces.
+
+    5.4. Example: Minimax magnitude ﬁt of rational transfer function. We
+consider the problem of ﬁtting the magnitude of a rational transfer function
+
+                                            a0 + a1 s + · · · + an sn
+                                   G(s) =
+                                            b0 + b1 s + · · · + bm sm
+
+to data points, i.e., choosing the (real) coeﬃcients ai , bi so that |G(jωk )|2 ≈ γk for
+k = 1, . . . , K, where ωk and γk are given. Using a minimax criterion and introducing
+an auxiliary variable δ we can formulate this problem as
+
+                 minimize δ
+                 subject to −δ ≤ |G(jωk )|2 − γk ≤ δ,                k = 1, . . . , K.
+
+Figure 2 shows an example with n = 6, m = 8, and K = 25.
+956                          TAE ROH AND LIEVEN VANDENBERGHE
+
+
+    This problem can be posed as a quasi-convex optimization problem. We ﬁrst
+express the magnitude squared of the transfer function as
+
+                                                         f1 (ω 2 )
+                                           |G(jω)|2 =              ,
+                                                         f2 (ω 2 )
+
+where f1 and f2 are the real polynomials,
+
+(50)                f1 (t) = ae (t)2 + tao (t)2 ,         f2 (t) = be (t)2 + tbo (t)2
+
+with
+                             n/2                               (n−1)/2
+                                                                      
+                                             k
+                  ae (t) =           a2k (−t) ,       ao (t) =               a2k+1 (−t)k ,
+                             k=0                                       k=0
+
+
+
+                             m/2                               (m−1)/2
+                                                                      
+                  be (t) =           b2k (−t)k ,      bo (t) =               b2k+1 (−t)k .
+                             k=0                                       k=0
+
+
+Clearly f1 (t) ≥ 0 and f2 (t) ≥ 0 for t ≥ 0. Conversely, if f1 and f2 are nonnegative
+on the nonnegative real axis, then by the result mentioned in section 5.1, they can be
+expressed as (50). The ﬁtting problem is therefore equivalent to
+
+         minimize δ
+(51)     subject to (γk − δ)f2 (ωk2 ) ≤ f1 (ωk2 ) ≤ (γk + δ)f2 (ωk2 ),             k = 1, . . . , K,
+                    f1 (t) ≥ 0, f2 (t) ≥ 0 for t ≥ 0.
+
+The variables are δ and the coeﬃcients of the polynomials
+
+f1 (t) = x0 p0 (t) + x1 p1 (t) + · · · + xn pn (t),        f2 (t) = p0 (t) + y1 p1 (t) + · · · + ym pm (t)
+
+for some choice of orthogonal basis polynomials pk (t). We normalize the ﬁrst coeﬃ-
+cient of f2 to rule out the trivial solution f1 (t) = f2 (t) = 0. (Alternatively, one might
+prefer to replace f2 (t) ≥ 0 with f2 (t) ≥ for some small positive , which would also
+ensure that there are no poles on the imaginary axis.)
+     Problem (51) can be solved via bisection on δ. In each bisection step we ﬁx δ and
+determine whether the constraints are feasible or not. This feasibility problem can be
+cast as an SDP feasibility problem,
+
+               (γk − δ)f2 (ωk2 ) ≤ f1 (ωk2 ) ≤ (γk + δ)f2 (ωk )2 , k = 1, . . . , K,
+                                                                    
+                    x = W T diag V1 X1 V1T + λ ◦ diag V2 X2 V2T ,
+(52)                                                                
+                    y = W̃ T diag Ṽ1 X̃1 Ṽ1T + λ̃ ◦ diag Ṽ2 X̃2 Ṽ2T ,
+                         X1  0, X2  0, X̃1  0, X̃2  0,
+
+where x = (x0 , x1 , . . . , xn ) and y = (1, y1 , . . . , ym ). The variables are xk , yk and the
+matrices Xi and X̃i . The matrices W , V1 , V2 and the vector λ are deﬁned as in
+Theorem 6 with a = 0. The matrices W̃ , Ṽ1 , Ṽ2 and λ̃ are deﬁned similarly but with
+n replaced by m.
+             DISCRETE TRANSFORMS, SDP, AND SOS REPRESENTATIONS                                      957
+
+     6. Numerical examples. The SDP characterizations of nonnegative polynomi-
+als derived in the previous sections can be expressed in the following common form. A
+(trigonometric, cosine, real) polynomial with coeﬃcients x is nonnegative on a given
+interval if and only if there exist Hermitian matrices Xk such that
+                     
+                     s
+                x=         Ak diag(Ck Xk CkH ),        Xk  0,       k = 1, . . . , s.
+                     k=1
+
+In the case of cosine polynomials or real polynomials, the matrices Ak , Ck and the
+variables x and Xk are real. This representation allows us to formulate a wide variety
+of optimization problems involving polynomials as SDPs of the form
+          minimize     cT y
+                       si
+                                                H
+(53)      subject to          Aik diag(Cik Xik Cik ) + Bi y = bi ,              i = 1, . . . , L,
+                       k=1
+                       Xik  0,       k = 1, . . . , si ,   i = 1, . . . , L.
+
+The variables are y ∈ Rp and the Hermitian matrices Xik . Each of the L constraints
+expresses a nonnegativity condition on a polynomial with coeﬃcients bi − Bi y.
+    The SDP (53) is a special case of (11) or (19) if we interpret X as a block-diagonal
+matrix with diagonal blocks Xik , and deﬁne A, C, and B as block matrices constructed
+from Aik , Cik , and Bi . In this section we present numerical results for a primal-dual
+interior-point method that uses the fast method for solving the Newton equations
+described in section 2.1. We ﬁrst provide some details of the implementation.
+     6.1. Implementation. All examples are instances of the SDP (53) with real
+data and variables. Applying the method of section 2.1 to an SDP with block-diagonal
+structure (53) leads to a reduced Newton system (18),
+                   ⎡                          ⎤⎡      ⎤ ⎡        ⎤
+                     H1     0 ··· 0      B1       Δz1       r3,1
+                   ⎢ 0     H2 · · · 0    B2 ⎥   ⎢     ⎥ ⎢        ⎥
+                   ⎢                          ⎥ ⎢ Δz2 ⎥ ⎢ r3,2 ⎥
+                   ⎢ ..     .   .    .          ⎢
+                                           .. ⎥ ⎢ .. ⎥ = ⎢ .. ⎥
+                                           .  ⎥    .  ⎥   ⎢   .
+(54)               ⎢ .      ..    .. ..                          ⎥,
+                   ⎢                          ⎥⎢      ⎥ ⎢        ⎥
+                   ⎣ 0      0 · · · HL BL ⎦ ⎣ΔzL ⎦ ⎣r3,L ⎦
+                     B1T B2T · · · BLT 0          Δy         r2
+where
+                                    
+                                    si
+                                                              T
+                                                           T
+                             Hi =         Aik sqr Cik Tik Cik  Aik .
+                                    k=1
+
+When solving (54), we can exploit the “block-arrow” structure by ﬁrst eliminating
+the variables Δzi and then solving a positive deﬁnite set of linear equations in the
+variables Δy:
+                    L             
+                                          L
+                          T −1
+(55)                    Bi Hi Bi Δy =          BiT Hi−1 r3,i − r2 .
+                       i=1                           i=1
+
+From the solution Δy we obtain Δzi by solving Hi Δzi = r3,i − Bi Δy.
+   In the numerical experiments described below we implemented this idea as follows.
+                                                  T
+We compute the Hadamard products sqr(Cik Tik Cik     ) and factor them as
+                                        T
+                                            
+                            sqr Cik Tik Cik   = Vik VikT .
+958                         TAE ROH AND LIEVEN VANDENBERGHE
+
+                                                                                     T
+The eigenvalue decomposition is used for this purpose, since the matrix sqr(Cik Tik Cik )
+is often rank-deﬁcient. We then factor the matrices
+                                                  
+                                                  si
+                                        Hi =            Aik Vik VikT AT
+                                                                      ik
+                                                  k=1
+
+as Hi = RiT Ri via QR factorizations of the matrices
+                                                                          T
+                            Ai1 Vi1     Ai2 Vi2      · · · Airi Viri            = Qi Ri .
+
+This is more stable than using a Cholesky factorization of Hi , since it allows us to
+compute the triangular factors Ri without explicitly forming Hi . Equation (55) now
+reduces to
+                L                 
+                                          L
+                       T −1 −T
+                     Bi Ri Ri Bi Δy =          BiT Ri−1 Ri−T r3,i − r2 .
+                    i=1                                       i=1
+
+To improve the numerical stability, we again avoid forming the coeﬃcient matrix and
+use a QR factorization
+                      T −1                           
+                                                    −1 T
+                      B1 R1     B2T R2−1 · · · BLT RL    = QR
+
+instead. Given Q and R we can ﬁnd Δy by solving
+
+                                        RΔy = QT r̃3 − R−T r2 ,
+
+where
+                                      T                   T                            T T
+               r̃3 =        R1−T r3,1             R2−T r3,2          ···         −T
+                                                                                RL  r3,L             .
+
+     Except for the algorithm used for solving the Newton equations, the code is
+a rudimentary implementation of an SDPT3-style path-following method [30, 31],
+following the outline given in the appendix of [33]. Infeasible starting points are used:
+we take y = 0, Xik = I in the primal problem; in the dual problem
+
+             
+             L
+maximize           bT
+                    i zi
+             i=1
+                         
+            T
+subject to Cik diag AT
+                     ik zi Cik + Zik = 0,                      Zi  0,          k = 1, . . . , si ,      i = 1, . . . , L,
+             
+             L
+                   BiT zi = c
+             i=1
+
+we take Zik = I and for zi the least-norm solution of the last equality constraint. The
+stopping criterion is based on the following quantities.
+      • The duality gap
+
+                                                        
+                                                        L 
+                                                          si
+                                             ηabs =                 tr(Xik Zik ).
+                                                        i=1 k=1
+
+        (This is only truly the duality gap when the primal and dual iterates are
+        feasible.)
+                               DISCRETE TRANSFORMS, SDP, AND SOS REPRESENTATIONS                                                         959
+
+
+
+
+                                                                   Residuals rpri and rdu
+ Duality gap ηabs
+                                                                                              0
+                     0                                                                       10
+                    10
+
+
+
+                                                                                              −5
+                                                                                             10
+                     −5
+                    10
+
+
+                                                                                              −10
+                                                                                             10
+                     −10
+                    10
+                          0       5       10         15       20                                   0    5            10       15        20
+                                  Iteration number                                                      Iteration number
+
+     Fig. 3. Progress of the primal-dual method for the design of a lowpass Nyquist-5 ﬁlter. The left
+plot shows the duality gap versus iteration number. The right plot shows the primal residual (solid
+line) and the dual residual (dashed line).
+
+
+
+                     • The relative duality gap
+                                                       ⎧
+                                                       ⎨−ηabs
+                                                       ⎪      /cT y,      cT y < 0,
+                                                                           T
+                                                 ηrel = ηabs / i bTi zi ,    i bi zi > 0,
+                                                       ⎪
+                                                       ⎩
+                                                        ∞,                otherwise.
+
+                     • The primal residual
+                                                                                            si                             
+                                                       bi − Bi y −                           k=1 Aik diag
+                                                                                                                          T
+                                                                                                                 Cik Xik Cik   2
+                                      rpri = max                                                                                    .
+                                           i=1,...,L                                         max{1, bi 2 }
+
+                     • The dual residual
+                                                  L                                                
+                                               c − i=1 BiT zi 2                       T 
+                              rdu = max                           , max Sik + Cik diag Aik zi Cik 2 .
+                                                                                T
+                                                  max{1, c2 }      i,k
+
+
+
+In these expressions,  · 2 denotes the Euclidean norm for vectors and the matrix
+norm (maximum singular value norm) for matrices. The algorithm terminates if
+
+                           rpri ≤ feas   and rdu ≤ feas       and                            (ηabs ≤ gap       or ηrel ≤ gap ) ,
+
+where feas = 10−7 and gap = 10−8 . The code was implemented in MATLAB ver-
+sion 6.5.1 on a 2.4 GHz Pentium IV PC with 1 GB of memory.
+
+    6.2. Linear-phase FIR ﬁlter design. We ﬁrst illustrate the behavior of the
+algorithm with the example problem of section 4.4. Figure 3 shows the progress of
+the algorithm applied to the SDP (43) with the same parameters as used for Figure 1.
+The algorithm terminates after 19 iterations with a CPU time of 0.05 s per iteration.
+
+    6.3. Minimax magnitude ﬁt of transfer function. The example in sec-
+tion 5.4 was solved by bisection on δ. The optimal value of δ was computed with an
+          960                               TAE ROH AND LIEVEN VANDENBERGHE
+
+                                                                                               5
+                                                                                              10
+
+
+
+
+                                                                     Residuals rpri and rdu
+                    0
+
+
+
+
+Duality gap ηabs
+                   10
+                                                                                               0
+                                                                                              10
+
+
+
+                    −5
+                   10                                                                          −5
+                                                                                              10
+
+
+
+                    −10                                                                        −10
+                   10                                                                         10
+                         0   5    10   15    20     25   30                                         0   5    10    15     20    25     30
+                                 Iteration number                                                           Iteration number
+
+               Fig. 4. Progress of the primal-dual method applied to the phase-I problem in the last bisection
+          step for computing the function in Figure 2. The left plot shows the duality gap versus iteration
+          number. The right plot shows the primal residual (solid line) and the dual residual (dashed line).
+
+
+
+
+          absolute accuracy of 10−5 . We used the basis of Laguerre polynomials to construct the
+          SDP constraints (52). The feasibility problems (for ﬁxed δ) were solved by applying
+          the interior-point method to the “phase-I” problem
+
+             minimize u            
+             subject to (γk − δ)f2 ωk2 − u ≤ f1 (ωk2 ) ≤ (γk + δ)f2 (ωk )2 + u,                                         k = 1, . . . , K,
+                                                                         
+          (56)          x = W T diag(V1 X1 V1T ) + λ ◦ diag V2 X2 V2T ,
+                                                                        
+                        y = W̃ T diag Ṽ1 X̃1 Ṽ1T + λ̃ ◦ diag Ṽ2 X̃2 Ṽ2T ,
+                                  X1  0,     X2  0,     X̃1  0,              X̃2  0
+
+          with variables u, x, y, Xi , and X̃i .
+              Figure 4 shows the convergence of the primal-dual path-following method applied
+          to the SDP (56) in the ﬁnal bisection step. Although a primal feasible point for
+          problem (56) is known, the algorithm was started at the default infeasible starting
+          points. Instead of using the stopping criterion based on the duality gap described
+          in section 6.1, we terminated the interior-point algorithm as soon as the sign of the
+          optimal value of (56) was known.
+              We observed that the convergence of the algorithm for this example problem was
+          much more sensitive to the choice of problem parameters than for the other numerical
+          examples. Although the stability of our interior-point implementation certainly leaves
+          room for improvement, optimization problems over real polynomials on unbounded
+          intervals appear to be much more diﬃcult to solve than problems with cosine poly-
+          nomials.
+
+               6.4. Magnitude FIR ﬁlter design. The next example is a family of a lowpass
+          ﬁlter design problem similar to examples described in [1] and [8]. The design variables
+          are the (real) ﬁlter coeﬃcients hi of an FIR ﬁlter of length n+1 with transfer function
+
+                                                                  
+                                                                  n
+                                                    H(ω) = h0 +                         hk e−jkω .
+                                                                  k=0
+              DISCRETE TRANSFORMS, SDP, AND SOS REPRESENTATIONS                                  961
+
+
+                             0
+                           10
+
+
+
+
+                 |H(ω)|2
+                             −2
+                           10
+
+
+
+
+                             −4
+                           10
+
+
+                                 0     0.5          1     1.5       2      2.5      3
+                                                             ω
+     Fig. 5. Frequency response of lowpass ﬁlter with length 102. The ﬁlter minimizes the stopband
+energy subject to the upper and lower bounds shown in dashed lines.
+
+
+The objective is to minimize the stopband energy
+                                    π
+                                       |H(ω)|2 dω.
+                                                  ωs
+
+The constraints include upper and lower bounds on the ﬁlter magnitude |H(ω)| in the
+passband, and an upper bound on the magnitude in the stopband:
+          1/δp ≤ |H(ω)|2 ≤ δp ,              0 ≤ ω ≤ ωp ,        |H(ω)|2 ≤ δs ,    ωs ≤ ω ≤ π.
+This problem can be formulated as a convex problem by expressing the constraints in
+terms of Y (ω) = |H(ω)|2 , which is a cosine polynomial
+                                 Y (ω) = y0 + y1 cos ω + · · · + yn cos nω.
+The resulting problem is
+                                           π
+                           minimize               Y (ω) dω
+                                             ωs
+(57)                       subject to     1/δp ≤ Y (ω) ≤ δp , 0 ≤ ω ≤ ωp ,
+                                          Y (ω) ≤ δs , ωs ≤ ω ≤ π,
+                                          Y (ω) ≥ 0, 0 ≤ ω ≤ π,
+
+with variables y ∈ Rn+1 . From the optimal y, the ﬁlter coeﬃcients hk can be com-
+puted via spectral factorization [34].
+     Since Y is a cosine polynomial, problem (57) can be cast as an SDP of the
+form (53) as explained in section 4. The problem dimensions are L = 4 and si = 2
+for i = 1, . . . , L. The primal variables are the n + 1-vector y, and eight symmetric
+matrices Xik of size n/2 or (n − 1)/2.
+     We ﬁrst consider an instance with parameters
+             n = 101,           δp = 1.05,        δs = 0.001,     ωp = 0.2π,      ωs = 0.23π.
+Figure 5 shows the speciﬁcations and the optimal ﬁlter magnitude. Figure 6 shows the
+duality gap and the relative primal and dual residuals versus the iteration number.
+The code terminates after 20 iterations and requires 0.41 s per iteration.
+          962                             TAE ROH AND LIEVEN VANDENBERGHE
+
+
+
+
+                                                                   Residuals rpri and rdu
+                                                                                             0
+                    0                                                                       10
+
+
+
+
+Duality gap ηabs
+                   10
+
+
+
+                                                                                             −5
+                                                                                            10
+                    −5
+                   10
+
+
+                                                                                             −10
+                                                                                            10
+                    −10
+                   10
+                         0   5      10          15     20                                         0   5       10         15   20
+                             Iteration number                                                         Iteration number
+
+              Fig. 6. Progress of a primal-dual method for the lowpass ﬁlter design problem. The left plot
+          shows the duality gap versus iteration number. The right plot shows the primal residual (solid line)
+          and the dual residual (dashed line).
+
+                                                        Table 1
+               Numerical results for a family of magnitude ﬁlter design problems. The ﬁrst three columns
+          specify the design parameters. The last two columns show the CPU time per iteration in seconds for
+          a special-purpose interior-point implementation that exploits problem structure and for the general-
+          purpose solver SDPT3.
+
+                                          Design parameters                         Time per iteration (s)
+                                     n       ωs          δs                         Fast impl.   SDPT3
+                                     25     0.300π   5.62 × 10−3                            0.04      0.17
+                                     50     0.280π   3.16 × 10−3                            0.10      1.81
+                                     75     0.270π   1.00 × 10−3                            0.21      5.78
+                                    100     0.260π   1.00 × 10−3                            0.41      14.2
+                                    125     0.255π   1.00 × 10−3                            0.71      29.0
+                                    150     0.250π   1.00 × 10−3                            1.15      55.7
+                                    175     0.248π   1.00 × 10−3                            1.77      86.5
+                                    200     0.248π   3.16 × 10−4                            2.46      137
+                                    225     0.244π   2.24 × 10−4                            3.50      203
+                                    250     0.244π   1.78 × 10−4                            4.79      302
+                                    275     0.244π   1.78 × 10−4                            6.57
+                                    300     0.244π   1.78 × 10−4                            8.56
+
+
+
+               Table 1 show the solution times for 12 ﬁlter design problems from the same
+          family with ωp = 0.23π and δp = 1.1 and n ranging from 25 to 300. The stopband
+          parameters ωs and δs are modiﬁed to tighten the speciﬁcations as n increases. The
+          last two columns show the CPU time per iteration for the specialized interior-point
+          implementation and for the general-purpose solver SDPT3, applied to the primal
+          problem (53). (To express this problem as a standard form SDP, we split the y variable
+          as a diﬀerence of two nonnegative vectors before passing it to SDPT3.) Figure 7
+          shows a graph of the CPU time versus n. The results clearly illustrate the beneﬁts of
+          exploiting problem structure when solving the Newton equations.
+              7. Conclusion. We have described a new SDP formulation of sum-of-squares
+          theorems of nonnegative polynomials, cosine polynomials, and trigonometric polyno-
+          mials. The formulation results in structured SDPs that can be solved very eﬃciently
+          by taking advantage of simple properties of the diag operator.
+              The SDP parametrizations involve discrete transform matrices that are often
+          orthogonal, or products of orthogonal and diagonal matrices. This should beneﬁt
+          the numerical stability of interior-point algorithms based on the parametrization.
+              DISCRETE TRANSFORMS, SDP, AND SOS REPRESENTATIONS                               963
+
+                                         3
+                                        10
+                                                                SDPT3
+                                         2
+                                        10
+
+
+
+
+                   Time per iteration
+                                         1
+                                        10
+                                                                 fast impl.
+
+                                         0
+                                        10
+
+                                         −1
+                                        10
+
+                                         −2
+                                        10    1             2                 3
+                                             10        10                  10
+                                                        n
+
+      Fig. 7. CPU time per iteration versus problem dimension for the results in Table 1.
+
+
+
+Although we have not analyzed the numerical properties, the numerical experiments
+are encouraging. In particular, the FIR ﬁlter examples that we solved successfully
+are much larger than those reported with other fast implementations of interior-point
+methods [16, 4].
+
+                                                  REFERENCES
+
+ [1] J. W. Adams, FIR digital ﬁlters with least-squares stopbands subject to peak-gain constraints,
+         IEEE Trans. Circuits Syst., 39 (1991), pp. 376–388.
+ [2] N. I. Ahiezer and M. Krein, Some Questions in the Theory of Moments, Transl. Math.
+         Monogr. 2, AMS, Providence, RI, 1962 (translated from the 1938 Russian manuscript by
+         W. Fleming and D. Prill).
+ [3] F. Alizadeh, J.-P. A. Haeberly, and M. L. Overton, Primal-dual interior-point methods
+         for semideﬁnite programming: Convergence rates, stability and numerical results, SIAM
+         J. Optim., 8 (1998), pp. 746–768.
+ [4] B. Alkire and L. Vandenberghe, Convex optimization problems involving ﬁnite autocorre-
+         lation sequences, Math. Program. Ser. A, 93 (2002), pp. 331–359.
+ [5] S. J. Benson and Y. Ye, DSDP5: A Software Package Implementing the Dual-Scaling Algo-
+         rithm for Semideﬁnite Programming, Technical report ANL/MCS-TM-255, Mathematics
+         and Computer Science Division, Argonne National Laboratory, 2004.
+ [6] S. J. Benson, Y. Ye, and X. Zhang, Solving large-scale sparse semideﬁnite programs for
+         combinatorial optimization, SIAM J. Optim., 10 (2000), pp. 443–461.
+ [7] W. L. Briggs and V. E. Henson, The DFT: An Owner’s Manual for the Discrete Fourier
+         Transform, SIAM, Philadelphia, PA, 1995.
+ [8] T. N. Davidson, Z.-Q. Luo, and J. F. Sturm, Linear matrix inequality formulation of spectral
+         mask constraints, IEEE Trans. Signal Process., 50 (2002), pp. 2702–2715.
+ [9] T. N. Davidson, Z.-Q. Luo, and K. M. Wong, Design of orthogonal pulse shapes for commu-
+         nications via semideﬁnite programming, IEEE Trans. Signal Process., 48 (2000), pp. 1433–
+         1445.
+[10] P. J. Davis, Interpolation and Approximation, Dover, New York, 1975 (ﬁrst published by
+         Blaisdell Publishing Company in 1963).
+[11] B. Dumitrescu, I. Tabus, and P. Stoica, On the parametrization of positive real sequences
+         and MA parameter estimation, IEEE Trans. Signal Process., 49 (2001), pp. 2630–2639.
+[12] L. Faybusovich, On Nesterov’s approach to semi-inﬁnite programming, Acta Appl. Math., 74
+         (2002), pp. 195–215.
+[13] L. Faybusovich, Semideﬁnite descriptions of cones deﬁning spectral mask constraints, Euro-
+         pean J. Oper. Res., 169 (2006), pp. 1207–1221.
+[14] Y. Genin, Y. Hachez, Yu. Nesterov, and P. van Dooren, Optimization problems over
+964                      TAE ROH AND LIEVEN VANDENBERGHE
+
+
+         positive pseudopolynomial matrices, SIAM J. Matrix Anal. Appl., 25 (2003), pp. 57–79.
+[15] G. H. Golub and J. H. Welsch, Calculation of Gauss quadrature rules, Math. Comp., 23
+         (1969), pp. 221–230.
+[16] Y. Hachez, Convex Optimization over Non-Negative Polynomials: Structured Algorithms and
+         Applications, Ph.D. thesis, Université Catholique de Louvain, Belgium, 2003.
+[17] C. Helmberg, F. Rendl, R. Vanderbei, and H. Wolkowicz, An interior-point method for
+         semideﬁnite programming, SIAM J. Optim., 6 (1996), pp. 342–361.
+[18] D. Henrion, D. Arzelier, and D. Peaucelle, Positive polynomial matrices and improved
+         LMI robustness conditions, Automatica, 39 (2003), pp. 1479–1485.
+[19] M. Kojima, S. Shindoh, and S. Hara, Interior-point methods for the monotone linear com-
+         plementarity problem in symmetric matrices, SIAM J. Optim., 7 (1997), pp. 86–125.
+[20] M. G. Krein and A. A. Nudelman, The Markov Moment Problem and Extremal Problems,
+         Transl. Math. Monogr. 50, AMS, Providence, RI, 1977.
+[21] J. B. Lasserre, Global optimization with polynomials and the problem of moments, SIAM J.
+         Optim., 11 (2001), pp. 796–817.
+[22] J. Löfberg and P. A. Parrilo, From coeﬃcients to samples: A new approach to SOS op-
+         timization, in Proceedings of the 43rd IEEE Conference on Decision and Control, 2004,
+         pp. 3154–3159.
+[23] P. Moulin, M. Anitescu, K. O. Kortanek, and F. A. Potra, The role of linear semi-inﬁnite
+         programming in signal-adapted QMF bank design, IEEE Trans. Signal Process., 45 (1995),
+         pp. 2160–2174.
+[24] Y. Nesterov, Squared functional systems and optimization problems, in High Performance
+         Optimization Techniques, J. Frenk, C. Roos, T. Terlaky, and S. Zhang, eds., Kluwer Aca-
+         demic, Norwell, MA, 2000, pp. 405–440.
+[25] P. A. Parrilo, Semideﬁnite programming relaxations for semialgebraic problems, Math. Pro-
+         gram. Ser. B, 96 (2003), pp. 293–320.
+[26] A. Stoica, R. Moses, and P. Stoica, Enforcing positiveness on estimated spectral densities,
+         Electron. Lett., 29 (1993), pp. 2009–2011.
+[27] P. Stoica, T. McKelvey, and J. Mari, MA estimation in polynomial time, IEEE Trans.
+         Signal Process., 48 (2000), pp. 1999–2012.
+[28] J. F. Sturm, Using SEDUMI 1.02: A Matlab toolbox for optimization over symmetric cones,
+         Optim. Methods Softw., 11–12 (1999), pp. 625–653.
+[29] G. Szegö, Orthogonal Polynomials, AMS, Providence, RI, 2003 (ﬁrst published in 1939).
+[30] M. J. Todd, K. C. Toh, and R. H. Tütüncü, On the Nesterov–Todd direction in semideﬁnite
+         programming, SIAM J. Optim., 8 (1998), pp. 769–796.
+[31] R. H. Tütüncü and M. J. Todd, Solving semideﬁnite-quadratic-linear programs using SDPT3,
+         Math. Program. Ser. B, 95 (2003), pp. 189–217.
+[32] P. P. Vaidyanathan, Multirate Systems and Filter Banks, Prentice-Hall, Englewood Cliﬀs,
+         NJ, 1993.
+[33] L. Vandenberghe, V. R. Balakrishnan, R. Wallin, A. H. Hanson, and T. Roh, Interior
+         point algorithms for semideﬁnite programming problems derived from the KYP lemma, in
+         Positive Polynomials in Control, D. Henrion and A. Garulli, eds., Lecture Notes in Control
+         and Inform. Sci. 312, Springer, New York, 2005, pp. 195–238.
+[34] S.-P. Wu, S. Boyd, and L. Vandenberghe, FIR ﬁlter design via spectral factorization and
+         convex optimization, in Applied and Computational Control, Signals, and Circuits, Vol. 1,
+         B. Datta, ed., Birkhäuser, Boston, 1998, pp. 215–245.
+

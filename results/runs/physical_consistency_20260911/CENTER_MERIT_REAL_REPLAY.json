@@ -1,0 +1,34 @@
+{
+  "source_failed_run": "fine_watson_01_polish_02",
+  "resumed_run": "fine_watson_01_polish_03",
+  "cancellation": {
+    "elapsed_seconds": 69.37818485405296,
+    "stage": "joint_barrier_value_cancellation",
+    "mu": 3.0517578125e-08,
+    "iteration": 0,
+    "raw_merit_decrease": -1.628369177730179e-14,
+    "difference_roundoff_estimate": 1.5971848637567814e-12,
+    "model_decrease_lower": 5.940791414499858e-15,
+    "decrement": 1.1885716720539437e-14,
+    "step": 0.9998262466156297
+  },
+  "checked_center": {
+    "elapsed_seconds": 113.57978789811023,
+    "stage": "joint_stationary_point",
+    "mu": 3.0517578125e-08,
+    "iteration": 1,
+    "decrement": 3.821650612909861e-18,
+    "model_decrement": 1.8577003931588232e-18,
+    "model_curvature": 3.821650612909336e-18,
+    "linear_relative_residual": 4.69504833542059e-08,
+    "point_updated_after_check": false
+  },
+  "finite_center_bound": {
+    "mu": 3.0517578125e-08,
+    "lower": 0.28309216783416097,
+    "upper": 0.2833836310391182,
+    "gap": 0.0002914632049572097,
+    "central_converged": true
+  },
+  "scope": "Same frozen goal and saved mu. Local bound evaluated numerically; subsequent original finite primal/support audit is separate. Final goal still pending."
+}

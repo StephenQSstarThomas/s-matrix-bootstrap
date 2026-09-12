@@ -1,0 +1,592 @@
+{
+  "status": "typesetting_QA_passed",
+  "completed_utc": "2026-09-12T02:49:57.395643+00:00",
+  "PDF": "REPORT_ZH.pdf",
+  "PDF_sha256": "1a0361352682665879605ea42bacf2d83e68407c94a201bab90eea6a6f9e98c4",
+  "page_count": 18,
+  "source_sha256": "4ba7d903c94155799bc4e29f208aee1d5548ed08cd3cb2fc9a77b7ff92c487f8",
+  "source_and_snapshot_byte_identity_verified": true,
+  "scientific_body_reconstructed_exactly_after_recorded_formatting_transforms": true,
+  "all_A1_F3_steps_present": [
+    "A1",
+    "A2",
+    "A3",
+    "B1",
+    "B2",
+    "B3",
+    "C1",
+    "C2",
+    "C3",
+    "D1",
+    "D2",
+    "D3",
+    "E1",
+    "E2",
+    "E3",
+    "F1",
+    "F2",
+    "F3"
+  ],
+  "figure_checks": [
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_C3_fig7/profiles.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/fig7_IR.pdf",
+      "sha256": "32a5796817e91eca07ee770d0995fc5fccc9bd1b470d62fce46e8b73523ae185",
+      "byte_identity_verified": true,
+      "nonexecutable_readonly": true
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_native_phases/fig9.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/fig9.pdf",
+      "sha256": "1776ebe29179f46584cfacaf42fbd7a492409d294e97a35bd4f1429fdb4eaad3",
+      "byte_identity_verified": true,
+      "nonexecutable_readonly": true
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_native_phases/fig10.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/fig10.pdf",
+      "sha256": "d5f343c66d128cdf19169b3f205aee46747205b3cf18496d0269fdfbc2920a6f",
+      "byte_identity_verified": true,
+      "nonexecutable_readonly": true
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_native_phases/rho_mechanism.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/rho_mechanism.pdf",
+      "sha256": "0b24cc05319addc871dfc9fc104c30fbc1fd532689866efd18f03db7f9f014f5",
+      "byte_identity_verified": true,
+      "nonexecutable_readonly": true
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_native_phases/inelasticities.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/inelasticities.pdf",
+      "sha256": "a99e5a863b005f4266abc7cfe1fb27ce8c4a94a67a285637d93b65cde77cb046",
+      "byte_identity_verified": true,
+      "nonexecutable_readonly": true
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_F_five_complete/fig11.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/fig11.pdf",
+      "sha256": "ed703aa48a91ffb04f44020e528a60208660c31d9a62963a6cc37788af89f26b",
+      "byte_identity_verified": true,
+      "nonexecutable_readonly": true
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_F_five_complete/fig11_eta.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/fig11_eta.pdf",
+      "sha256": "14d9bafaa82391733cf141148e1abaa10d3db5538c02a1369842c008ac7cf96c",
+      "byte_identity_verified": true,
+      "nonexecutable_readonly": true
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_E1_regions_complete/regions.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/fig8_regions.pdf",
+      "sha256": "1c266f676a08fbcfe66a475f753bbbc1de9ed989a08d4dce38850005506acd4d",
+      "byte_identity_verified": true,
+      "nonexecutable_readonly": true
+    }
+  ],
+  "Fig8_complete_source_verified": true,
+  "visual_QA_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "visual_findings": "All 18 pages inspected at rendered page scale; text, equations, tables, verdict and all eight vector figures present and readable, with no clipping or overlapping content. Fig.11 retains its complete six-panel layout and vector zoom. Landscape headers retain the draft layout convention.",
+  "missing_glyph_warnings": 0,
+  "overfull_warnings": 0,
+  "underfull_warnings": [
+    "Underfull \\hbox (badness 1210) in paragraph at lines 267--268"
+  ],
+  "underfull_scope": "One non-clipping short-line spacing warning in the preserved prose; visually checked.",
+  "links": [
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 3
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 3
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 3
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 4
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 4
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 4
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 5
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 5
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 5
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 6
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 6
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 7
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 7
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 7
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 8
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 8
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 8
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 9
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 9
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 11
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 12
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 13
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 14
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 15
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 16
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 17
+    },
+    {
+      "page": 2,
+      "kind": 4,
+      "destination_page": 18
+    },
+    {
+      "page": 3,
+      "kind": 3,
+      "target": "../PROGRESS.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PROGRESS.json",
+      "exists": true
+    },
+    {
+      "page": 3,
+      "kind": 5,
+      "destination_page": 1,
+      "target": "../../../../references/2309.12402v3.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/references/2309.12402v3.pdf",
+      "exists": true
+    },
+    {
+      "page": 3,
+      "kind": 3,
+      "target": "../../../../references/2309.12402v3-source/prd_submission_2.tex",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/references/2309.12402v3-source/prd_submission_2.tex",
+      "exists": true
+    },
+    {
+      "page": 3,
+      "kind": 3,
+      "target": "../PV_SAME_INPUTS_INVENTORY.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_SAME_INPUTS_INVENTORY.md",
+      "exists": true
+    },
+    {
+      "page": 3,
+      "kind": 3,
+      "target": "../MAINLINE_SOURCE_REVIEW.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/MAINLINE_SOURCE_REVIEW.md",
+      "exists": true
+    },
+    {
+      "page": 3,
+      "kind": 3,
+      "target": "../PV_tip_support_01/report.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_tip_support_01/report.json",
+      "exists": true
+    },
+    {
+      "page": 4,
+      "kind": 3,
+      "target": "../verification_PV_bounded_coordinates.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/verification_PV_bounded_coordinates.json",
+      "exists": true
+    },
+    {
+      "page": 4,
+      "kind": 3,
+      "target": "../PV_REPRESENTATIVE_RULE.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_REPRESENTATIVE_RULE.json",
+      "exists": true
+    },
+    {
+      "page": 4,
+      "kind": 3,
+      "target": "../PV_FIXED_COORDINATES.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_FIXED_COORDINATES.json",
+      "exists": true
+    },
+    {
+      "page": 7,
+      "kind": 3,
+      "target": "../PV_F_five_complete/resolution.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_F_five_complete/resolution.json",
+      "exists": true
+    },
+    {
+      "page": 7,
+      "kind": 5,
+      "destination_page": 1,
+      "target": "../PV_F_five_complete/fig11.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_F_five_complete/fig11.pdf",
+      "exists": true
+    },
+    {
+      "page": 7,
+      "kind": 5,
+      "destination_page": 1,
+      "target": "../PV_F_five_complete/fig11_eta.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_F_five_complete/fig11_eta.pdf",
+      "exists": true
+    },
+    {
+      "page": 8,
+      "kind": 3,
+      "target": "../../../evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/AUDIT_ZH.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/AUDIT_ZH.md",
+      "exists": true
+    },
+    {
+      "page": 8,
+      "kind": 2,
+      "target": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/801684d9ece3de2918a20145178f569459081098/README.md#paper-snapshots"
+    },
+    {
+      "page": 8,
+      "kind": 3,
+      "target": "../PV_E1_regions_complete/regions.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_E1_regions_complete/regions.json",
+      "exists": true
+    },
+    {
+      "page": 8,
+      "kind": 5,
+      "destination_page": 1,
+      "target": "../PV_E1_regions_complete/regions.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_E1_regions_complete/regions.pdf",
+      "exists": true
+    },
+    {
+      "page": 11,
+      "kind": 5,
+      "destination_page": 1,
+      "target": "../PV_C3_fig7/profiles.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_C3_fig7/profiles.pdf",
+      "exists": true
+    },
+    {
+      "page": 12,
+      "kind": 5,
+      "destination_page": 1,
+      "target": "../PV_E1_regions_complete/regions.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_E1_regions_complete/regions.pdf",
+      "exists": true
+    },
+    {
+      "page": 13,
+      "kind": 5,
+      "destination_page": 1,
+      "target": "../PV_native_phases/fig9.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_native_phases/fig9.pdf",
+      "exists": true
+    },
+    {
+      "page": 14,
+      "kind": 5,
+      "destination_page": 1,
+      "target": "../PV_native_phases/fig10.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_native_phases/fig10.pdf",
+      "exists": true
+    },
+    {
+      "page": 15,
+      "kind": 5,
+      "destination_page": 1,
+      "target": "../PV_native_phases/inelasticities.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_native_phases/inelasticities.pdf",
+      "exists": true
+    },
+    {
+      "page": 16,
+      "kind": 5,
+      "destination_page": 1,
+      "target": "../PV_native_phases/rho_mechanism.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_native_phases/rho_mechanism.pdf",
+      "exists": true
+    },
+    {
+      "page": 17,
+      "kind": 5,
+      "destination_page": 1,
+      "target": "../PV_F_five_complete/fig11.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_F_five_complete/fig11.pdf",
+      "exists": true
+    },
+    {
+      "page": 18,
+      "kind": 5,
+      "destination_page": 1,
+      "target": "../PV_F_five_complete/fig11_eta.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_F_five_complete/fig11_eta.pdf",
+      "exists": true
+    }
+  ],
+  "source_local_link_count": 15,
+  "PDF_local_link_count": 23,
+  "bookmarks": [
+    [
+      1,
+      "1. 已核对的原式与实现",
+      3
+    ],
+    [
+      1,
+      "2. 原文未完全指定的内容必须留在合同中",
+      3
+    ],
+    [
+      1,
+      "3. 为原型闭环修补的数值问题",
+      3
+    ],
+    [
+      2,
+      "保留自由T0的有界坐标证明",
+      4
+    ],
+    [
+      1,
+      "4. ρ链路的验收条件",
+      4
+    ],
+    [
+      1,
+      "5. 验收范围",
+      4
+    ],
+    [
+      1,
+      "本轮IR数值闭合",
+      5
+    ],
+    [
+      1,
+      "原生峰与IR排除的完整短证明",
+      5
+    ],
+    [
+      1,
+      "已闭合的PV主线结果（M50/L10）",
+      5
+    ],
+    [
+      1,
+      "固定μ中心的唯一性与初始化的作用",
+      6
+    ],
+    [
+      1,
+      "L12可行性初始化的实质修补",
+      6
+    ],
+    [
+      1,
+      "M45/M60初始化与同模型复用",
+      7
+    ],
+    [
+      1,
+      "五组原文M/L配置：已完成的比较",
+      7
+    ],
+    [
+      1,
+      "ρ为什么出现，为什么矩阵通过仍不足以认定正确ρ",
+      7
+    ],
+    [
+      1,
+      "原文解析性说明中需要保留的条件",
+      8
+    ],
+    [
+      1,
+      "一手资料的最终边界与暂缓方案",
+      8
+    ],
+    [
+      1,
+      "Fig.8：同一参考截面的最终严格比较",
+      8
+    ],
+    [
+      1,
+      "正则化、支持及中心证明的适用范围",
+      9
+    ],
+    [
+      1,
+      "A1–F3最终对齐台账",
+      9
+    ],
+    [
+      1,
+      "附图1：Fig.7 IR对照",
+      11
+    ],
+    [
+      1,
+      "附图2：Fig.8 有限内外界",
+      12
+    ],
+    [
+      1,
+      "附图3：Fig.9 P1相位",
+      13
+    ],
+    [
+      1,
+      "附图4：Fig.10 S0/S2比较",
+      14
+    ],
+    [
+      1,
+      "附图5：三代表的非弹性",
+      15
+    ],
+    [
+      1,
+      "附图6：散射强度、FF与电流谱",
+      16
+    ],
+    [
+      1,
+      "附图7：Fig.11 五组M/L比较",
+      17
+    ],
+    [
+      1,
+      "附图8：五组M/L的非弹性",
+      18
+    ]
+  ],
+  "no_active_python_entry": true,
+  "scientific_calculations_performed": false,
+  "technical_provenance": {
+    "source": "results/runs/physical_consistency_20260911/PV_FINAL_VERIFICATION.json",
+    "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/sources/PV_FINAL_VERIFICATION.json",
+    "sha256": "2f66378bd3a5c658b8315e5a1874a542bdd50ba2028b50627c74a88af86de0c5",
+    "status": "passed_with_explicit_aggregator_provenance_scope",
+    "full_tests": 107,
+    "current_core_identical_to_tested_source": true,
+    "core_module_count": 21,
+    "test_file_count": 3,
+    "completed_CLI_report_count": 27,
+    "declared_input_hash_count": 142,
+    "upstream_IR_report_count": 29,
+    "all_recorded_input_checks_passed": true,
+    "aggregation_producer_absence": [
+      "PV_IR_regions"
+    ],
+    "provenance_scope": "Expected source.json at PV_IR_regions, but regions aggregation does not capture it; no scientific run failed. Final collection records absence rather than fabricating producer identity.",
+    "verification_read_not_recomputed": true,
+    "tests_not_rerun_by_typesetter": true
+  }
+}

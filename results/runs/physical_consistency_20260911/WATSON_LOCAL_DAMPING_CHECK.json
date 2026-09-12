@@ -1,0 +1,13 @@
+{
+  "reason": "At fixed mu 2.44140625e-7, the last 20 Newton steps keep decrement near 2.02 and expanded line minimum near 2. Test local damping from this exact checkpoint, not physical parameter tuning.",
+  "source": "results/runs/physical_consistency_20260911/fine_watson_01_support_03",
+  "checkpoint_sha256": "067565ee39c1f83d6c0127433e6d7cd49ddb2f236f695bb69669be8d815b49c9",
+  "fixed_goal_sha256": "06055bdd032e963291673d3f410d626ac5c799380960055350298b99ff0bb08d",
+  "same_objective": true,
+  "mu": 2.44140625e-07,
+  "change": "Existing --unit-newton-step, maximum feasible step 1",
+  "support_gap": 0.0001,
+  "solver_seconds": 900,
+  "physical_inputs_changed": false,
+  "phase_selection": false
+}

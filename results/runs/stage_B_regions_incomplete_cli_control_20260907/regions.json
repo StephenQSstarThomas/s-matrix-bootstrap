@@ -1,0 +1,25 @@
+{
+  "status": "incomplete",
+  "requested_nodes": 50,
+  "model_signature": null,
+  "regions": [],
+  "rejected": [
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_native_subtracted_pure_M50_round1_20260907/report.json",
+      "reasons": [
+        "support_optimality_certified is not true"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_default_equil_oldwarm_M3_subtracted_soc_20260907/report.json",
+      "reasons": [
+        "wrong_M: expected 50, found 3"
+      ]
+    }
+  ],
+  "qualified_support_points": 0,
+  "plots_created": false,
+  "completion_claimed": false,
+  "comparison_policy": "Identical declared M/L/B/infinity and full-grid input identities; different paths are not assumed equivalent.",
+  "scope": "Saved support aggregation only; no bootstrap computation or continuum certification."
+}

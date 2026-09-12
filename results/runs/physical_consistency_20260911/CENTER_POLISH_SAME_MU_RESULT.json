@@ -1,0 +1,19 @@
+{
+  "old_run": "results/runs/physical_consistency_20260911/fine_watson_01_support_04",
+  "new_run": "results/runs/physical_consistency_20260911/fine_watson_01_polish_01",
+  "mu": 1.220703125e-07,
+  "fixed_goal_identical": true,
+  "old_new_dual_upper": 0.29794945220885133,
+  "new_dual_upper": 0.2836971541670159,
+  "new_support_gap": 0.0011240892647765843,
+  "old_objective": 0.2825730649127646,
+  "new_objective": 0.28257306490420525,
+  "C_max_change": 8.755827002460137e-05,
+  "ImF_max_change": 1.1264043031644633e-09,
+  "old_decrement": 3.3415635822550437e-11,
+  "new_decrement": 6.159204281486133e-19,
+  "new_iterations": 1,
+  "source_checkpoint_sha256": "8dfdb748786a3f0ef182a5cd2e765fd65f9adb2574c0c13d0fd988fa2f5efc8d",
+  "center_point_array_sha256": "08dd712e65f677504db9e37fbdcb4b3ee565c626535d997a66ca96bfc9a87e22",
+  "interpretation": "A newly optimized and checked point at the same mu; not identity transfer of the old center. No phase data used. Final goal is still incomplete."
+}

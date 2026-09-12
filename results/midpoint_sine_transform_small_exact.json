@@ -1,0 +1,250 @@
+{
+  "schema": "smatrix-midpoint-sine-transform-small-exact-v1",
+  "mode_checks": [
+    {
+      "M": 1,
+      "n": 1,
+      "exact_identity": true,
+      "nyquist": true,
+      "rational_expression": "(z**2 + 2*z + 1)/(z**2 + 1)"
+    },
+    {
+      "M": 2,
+      "n": 1,
+      "exact_identity": true,
+      "nyquist": false,
+      "rational_expression": "(z**4 + z**3 + z + 1)/(z**4 + 1)"
+    },
+    {
+      "M": 2,
+      "n": 2,
+      "exact_identity": true,
+      "nyquist": true,
+      "rational_expression": "(-z**4 + 2*z**2 - 1)/(z**4 + 1)"
+    },
+    {
+      "M": 3,
+      "n": 1,
+      "exact_identity": true,
+      "nyquist": false,
+      "rational_expression": "(z**6 + z**5 + z + 1)/(z**6 + 1)"
+    },
+    {
+      "M": 3,
+      "n": 2,
+      "exact_identity": true,
+      "nyquist": false,
+      "rational_expression": "(-z**4 + 2*z**2 - 1)/(z**4 - z**2 + 1)"
+    },
+    {
+      "M": 3,
+      "n": 3,
+      "exact_identity": true,
+      "nyquist": true,
+      "rational_expression": "(z**6 + 2*z**3 + 1)/(z**6 + 1)"
+    },
+    {
+      "M": 4,
+      "n": 1,
+      "exact_identity": true,
+      "nyquist": false,
+      "rational_expression": "(z**8 + z**7 + z + 1)/(z**8 + 1)"
+    },
+    {
+      "M": 4,
+      "n": 2,
+      "exact_identity": true,
+      "nyquist": false,
+      "rational_expression": "(-z**8 + z**6 + z**2 - 1)/(z**8 + 1)"
+    },
+    {
+      "M": 4,
+      "n": 3,
+      "exact_identity": true,
+      "nyquist": false,
+      "rational_expression": "(z**8 + z**5 + z**3 + 1)/(z**8 + 1)"
+    },
+    {
+      "M": 4,
+      "n": 4,
+      "exact_identity": true,
+      "nyquist": true,
+      "rational_expression": "(-z**8 + 2*z**4 - 1)/(z**8 + 1)"
+    },
+    {
+      "M": 5,
+      "n": 1,
+      "exact_identity": true,
+      "nyquist": false,
+      "rational_expression": "(z**10 + z**9 + z + 1)/(z**10 + 1)"
+    },
+    {
+      "M": 5,
+      "n": 2,
+      "exact_identity": true,
+      "nyquist": false,
+      "rational_expression": "(-z**8 + 2*z**6 - 2*z**4 + 2*z**2 - 1)/(z**8 - z**6 + z**4 - z**2 + 1)"
+    },
+    {
+      "M": 5,
+      "n": 3,
+      "exact_identity": true,
+      "nyquist": false,
+      "rational_expression": "(z**10 + z**7 + z**3 + 1)/(z**10 + 1)"
+    },
+    {
+      "M": 5,
+      "n": 4,
+      "exact_identity": true,
+      "nyquist": false,
+      "rational_expression": "(-z**8 + z**6 + z**2 - 1)/(z**8 - z**6 + z**4 - z**2 + 1)"
+    },
+    {
+      "M": 5,
+      "n": 5,
+      "exact_identity": true,
+      "nyquist": true,
+      "rational_expression": "(z**10 + 2*z**5 + 1)/(z**10 + 1)"
+    },
+    {
+      "M": 6,
+      "n": 1,
+      "exact_identity": true,
+      "nyquist": false,
+      "rational_expression": "(z**12 + z**11 + z + 1)/(z**12 + 1)"
+    },
+    {
+      "M": 6,
+      "n": 2,
+      "exact_identity": true,
+      "nyquist": false,
+      "rational_expression": "(-z**12 + z**10 + z**2 - 1)/(z**12 + 1)"
+    },
+    {
+      "M": 6,
+      "n": 3,
+      "exact_identity": true,
+      "nyquist": false,
+      "rational_expression": "(z**12 + z**9 + z**3 + 1)/(z**12 + 1)"
+    },
+    {
+      "M": 6,
+      "n": 4,
+      "exact_identity": true,
+      "nyquist": false,
+      "rational_expression": "(-z**8 + 2*z**4 - 1)/(z**8 - z**4 + 1)"
+    },
+    {
+      "M": 6,
+      "n": 5,
+      "exact_identity": true,
+      "nyquist": false,
+      "rational_expression": "(z**12 + z**7 + z**5 + 1)/(z**12 + 1)"
+    },
+    {
+      "M": 6,
+      "n": 6,
+      "exact_identity": true,
+      "nyquist": true,
+      "rational_expression": "(-z**12 + 2*z**6 - 1)/(z**12 + 1)"
+    }
+  ],
+  "mode_case_count": 21,
+  "finite_part_checks": [
+    {
+      "M": 1,
+      "node": 0,
+      "n": 1,
+      "exact_nu_finite_part_identity": true
+    },
+    {
+      "M": 2,
+      "node": 0,
+      "n": 1,
+      "exact_nu_finite_part_identity": true
+    },
+    {
+      "M": 2,
+      "node": 0,
+      "n": 2,
+      "exact_nu_finite_part_identity": true
+    },
+    {
+      "M": 2,
+      "node": 1,
+      "n": 1,
+      "exact_nu_finite_part_identity": true
+    },
+    {
+      "M": 2,
+      "node": 1,
+      "n": 2,
+      "exact_nu_finite_part_identity": true
+    },
+    {
+      "M": 3,
+      "node": 0,
+      "n": 1,
+      "exact_nu_finite_part_identity": true
+    },
+    {
+      "M": 3,
+      "node": 0,
+      "n": 2,
+      "exact_nu_finite_part_identity": true
+    },
+    {
+      "M": 3,
+      "node": 0,
+      "n": 3,
+      "exact_nu_finite_part_identity": true
+    },
+    {
+      "M": 3,
+      "node": 1,
+      "n": 1,
+      "exact_nu_finite_part_identity": true
+    },
+    {
+      "M": 3,
+      "node": 1,
+      "n": 2,
+      "exact_nu_finite_part_identity": true
+    },
+    {
+      "M": 3,
+      "node": 1,
+      "n": 3,
+      "exact_nu_finite_part_identity": true
+    },
+    {
+      "M": 3,
+      "node": 2,
+      "n": 1,
+      "exact_nu_finite_part_identity": true
+    },
+    {
+      "M": 3,
+      "node": 2,
+      "n": 2,
+      "exact_nu_finite_part_identity": true
+    },
+    {
+      "M": 3,
+      "node": 2,
+      "n": 3,
+      "exact_nu_finite_part_identity": true
+    }
+  ],
+  "finite_part_case_count": 14,
+  "small_cardinal_correction_rank": 2,
+  "small_cardinal_correction_determinant": "-64*sqrt(15)/(11360160*sqrt(30) + 25402580*sqrt(6) + 27832392*sqrt(5) + 62236321)",
+  "giant_matrix_jobs": 0,
+  "optimizer_runs": 0,
+  "quadrature_calls": 0,
+  "source_full_rank_claim": false,
+  "scope": "Small exact algebra checks for two distinct finite transforms and their nodal finite-part relation; no full source PV/midpoint rank or shared-analytic-function claim.",
+  "elapsed_seconds": 1.2652345249662176,
+  "script_source_utf8": "\"\"\"Small exact checks of the midpoint/sine mode and finite-part identities.\"\"\"\nimport argparse\nimport hashlib\nimport json\nfrom pathlib import Path\nimport time\n\nimport sympy as sp\n\n\ndef midpoint_mode_from_root_trace(M,n,z):\n    \"\"\"Sum over Chebyshev midpoint roots using polynomial division and traces.\"\"\"\n    c,a=sp.symbols('c a')\n    root_polynomial=sp.chebyshevt(M,c)\n    q=(1-c)*sp.chebyshevu(n-1,c)\n    quotient,remainder=sp.div(q-q.subs(c,a),c-a,c)\n    assert sp.expand(remainder)==0\n    polynomial=sp.Poly(quotient,c)\n    # For powers below M, midpoint cosine sums retain only the constant term.\n    trace=sum(polynomial.nth(k)*(M*sp.binomial(k,k//2)/2**k if k%2==0 else 0)\n              for k in range(polynomial.degree()+1))\n    cauchy=q.subs(c,a)*sp.diff(root_polynomial,c).subs(c,a)/root_polynomial.subs(c,a)-trace\n    return sp.cancel((1+z)**2/(2*M*z)*cauchy.subs(a,(1+z*z)/(2*z)))\n\n\ndef main():\n    parser=argparse.ArgumentParser(description=__doc__)\n    parser.add_argument('--output',type=Path,default=Path('results/midpoint_sine_transform_small_exact.json'))\n    args=parser.parse_args()\n    if args.output.exists():raise FileExistsError('Use a new immutable output path')\n    started=time.monotonic();z=sp.symbols('z');mode_checks=[];finite_parts=[]\n    for M in range(1,7):\n        for n in range(1,M+1):\n            obtained=midpoint_mode_from_root_trace(M,n,z)\n            expected=(z**n+z**(2*M-n))/(1+z**(2*M))-(-1)**n\n            assert sp.cancel(obtained-expected)==0\n            assert sp.limit(obtained,z,0)==-(-1)**n\n            mode_checks.append(dict(M=M,n=n,exact_identity=True,nyquist=n==M,\n                rational_expression=str(obtained)))\n    for M in (1,2,3):\n        angles=[sp.pi*sp.Rational(2*j+1,2*M) for j in range(M)]\n        nodes=[sp.simplify(8/(1+sp.cos(phi))) for phi in angles]\n        weights=[sp.simplify(x*sp.tan(phi/2)/M) for x,phi in zip(nodes,angles)]\n        for i,phi in enumerate(angles):\n            diagonal=(2*sp.tan(phi/2)+sp.cot(phi))/(2*M)\n            for n in range(1,M+1):\n                direct=sum(weights[j]*sp.sin(n*angles[j])/(nodes[j]-nodes[i]) for j in range(M) if j!=i)\n                expected=(1-sp.Rational(n,M))*sp.cos(n*phi)-(-1)**n-diagonal*sp.sin(n*phi)\n                assert sp.simplify(sp.expand_trig(direct-expected))==0\n                finite_parts.append(dict(M=M,node=i,n=n,exact_nu_finite_part_identity=True))\n    # At two ordinary off-cut points the cardinal correction is already rank2.\n    # Check its determinant through the exact Cauchy factorization, without\n    # inferring a projected physical rank from this illustrative small matrix.\n    M=2;nodes=[16-8*sp.sqrt(2),16+8*sp.sqrt(2)];targets=[-1,-2]\n    correction=[]\n    for v in targets:\n        root=sp.sqrt(4-v);zz=(2-root)/(2+root)\n        correction.append([zz**M*root/(2*M)*(-1)**j*x/(x-v) for j,x in enumerate(nodes)])\n    determinant=sp.det(sp.Matrix(correction))\n    assert determinant.is_zero is False or sp.simplify(determinant)!=0\n    output=dict(schema='smatrix-midpoint-sine-transform-small-exact-v1',\n        mode_checks=mode_checks,mode_case_count=len(mode_checks),finite_part_checks=finite_parts,\n        finite_part_case_count=len(finite_parts),small_cardinal_correction_rank=2,\n        small_cardinal_correction_determinant=str(sp.simplify(determinant)),\n        giant_matrix_jobs=0,optimizer_runs=0,quadrature_calls=0,source_full_rank_claim=False,\n        scope='Small exact algebra checks for two distinct finite transforms and their nodal finite-part relation; no full source PV/midpoint rank or shared-analytic-function claim.',\n        elapsed_seconds=time.monotonic()-started,script_source_utf8=Path(__file__).read_text())\n    output['script_sha256']=hashlib.sha256(output['script_source_utf8'].encode()).hexdigest()\n    with args.output.open('x') as stream:json.dump(output,stream,indent=2);stream.write('\\n')\n    print(json.dumps(dict(output=str(args.output),mode_cases=len(mode_checks),finite_part_cases=len(finite_parts),\n        correction_rank=2,seconds=output['elapsed_seconds'])))\n\n\nif __name__=='__main__':main()\n",
+  "script_sha256": "dc935439ff83175ae5c9e8dc861fc33a5baf164be540945c7637057b8e2d294f"
+}

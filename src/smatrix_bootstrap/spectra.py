@@ -1,0 +1,270 @@
+"""Native current/scattering spectra from unchanged complete amplitudes.
+
+Schur budgets are diagnostics; certificates remain in certificates.py.
+Peak lists retain all native extrema and never select an amplitude or fit a pole.
+"""
+from pathlib import Path
+import numpy as np
+from . import read_json, save_figure
+
+def spectral_budget(S,F,rho,k2):
+    """Schur complement of the original Gram; undefined divisions stay explicit."""
+    S,F=np.asarray(S,complex),np.asarray(F,complex);rho,k2=np.asarray(rho,float),np.asarray(k2,float)
+    if not (S.shape==F.shape==rho.shape==k2.shape) or any(not np.isfinite(v).all() for v in (S,F,rho,k2)) or np.any(k2<=0):raise ValueError('Matching finite native current arrays with k2>0 required')
+    delta=1-abs(S)**2;two=k2*abs(F)**2;loss=k2*abs(F-S*F.conj())**2
+    resolved=delta>64*np.finfo(float).eps*(1+abs(S)**2)
+    penalty=np.divide(loss,delta,out=np.zeros_like(loss),where=resolved)
+    nullable=lambda v:[float(x) if ok else None for x,ok in zip(v,resolved)]
+    return dict(F_squared=abs(F)**2,rho_current=rho,two_pion=two,unitarity_defect=delta,
+        phase_penalty=nullable(penalty),rho_minimum=nullable(two+penalty),spectral_excess=nullable(rho-two-penalty),
+        determinant_slack=delta*(rho-two)-loss,schur_resolved=resolved,
+        scope='Float diagnostic; near-elastic division unresolved; use Arb for PSD')
+
+
+def native_peaks(x,y):
+    """All strict interior maxima, without smoothing or a resonance mass window."""
+    x,y=np.asarray(x,float),np.asarray(y,float)
+    if x.ndim!=1 or x.shape!=y.shape or len(x)<3 or not np.isfinite([x,y]).all() or np.any(np.diff(x)<=0):raise ValueError('Require >=3 ordered finite native values')
+    ids=np.flatnonzero((y[1:-1]>y[:-2])&(y[1:-1]>y[2:]))+1;j=int(np.argmax(y))
+    return dict(local=[dict(index=int(i),energy_gev=float(x[i]),value=float(y[i]),neighbor_energies_gev=x[i-1:i+2]) for i in ids],
+        maximum=dict(index=j,energy_gev=float(x[j]),value=float(y[j]),endpoint=j in (0,len(x)-1)),pole_determined=False)
+
+
+def ff_guided_phase(S,F,threshold_F):
+    S,F=np.asarray(S,complex),np.asarray(F,complex)
+    if S.shape!=F.shape or S.ndim!=1 or np.any(abs(S)==0) or np.any(abs(F)==0) or not np.isreal(threshold_F) or threshold_F==0:raise ValueError('Nonzero S/F and real nonzero threshold F required')
+    alpha=np.unwrap(np.angle(np.r_[complex(threshold_F),F]))[1:]-np.angle(complex(threshold_F))
+    return alpha+np.angle(S*F.conj()/F)/2
+
+
+def joint_observable_change(H,kap,current,old,new,M,L):
+    a=current['arrays'];p=H.shape[1];n=len(kap);cfg=current['metadata']['uv']['config']
+    low=np.flatnonzero(a['nodes']<=(cfg['matching_energy_gev']/cfg['pion_mass_gev'])**2)
+    ids=low[:,None]*3*L+np.array([0,2*L,L]);names=('S0','S2','P1')
+    def fields(point):
+        c=np.asarray(point[:p],np.longdouble);f=np.asarray(H[ids],np.longdouble)@c+1j*(np.asarray(H[n+ids],np.longdouble)@c)
+        S=1+1j*np.asarray(kap)[ids]*f;im=np.asarray(point[p:p+2*M]).reshape(2,M)
+        return S,(1+im@a['hilbert_kernel'].T+1j*im)[:,low].T
+    so,fo=fields(old);sn,fn=fields(new);changes={};channels={}
+    for j,name in enumerate(names):
+        valid=(abs(sn[:,j])>0)&(abs(so[:,j])>0)
+        changes[name]=dict(max_complex_S_change=float(max(abs(sn[:,j]-so[:,j]))),
+            max_phase_change_mod_pi_degrees=float(max(abs(np.degrees(np.angle(sn[valid,j]/so[valid,j]))/2))) if np.any(valid) else None,
+            phase_defined_nodes=int(sum(valid)),minimum_eta=float(min(abs(sn[:,j]))))
+    for j,k in enumerate((0,2)):
+        valid=(abs(fn[:,j])>0)&(abs(fo[:,j])>0);qo=fo[valid,j]/fo[valid,j].conj();qn=fn[valid,j]/fn[valid,j].conj()
+        channels[names[k]]=dict(defined_nodes=int(sum(valid)),low_grid_indices=np.flatnonzero(valid).tolist(),max_Q_change=float(max(abs(qn-qo))) if np.any(valid) else None,
+            old_Watson_residual=np.asarray(abs(so[valid,k]-qo),float).tolist(),new_Watson_residual=np.asarray(abs(sn[valid,k]-qn),float).tolist())
+    return dict(energy_gev=(cfg['pion_mass_gev']*np.sqrt(a['nodes'][low])).tolist(),partial_waves=changes,current_channels=channels,
+        criterion='Native changes; support gap certifies neither observables nor a fixed point',phase_branch_modified=False)
+
+
+def watson_diagnostics(evaluation):
+    from .model import FESR_POWERS
+    import json
+    d=evaluation;folder=Path(d['coefficients']).parent;signature=d['selection']['model_signature']
+    current=read_json(folder/'current.json');cfg=current['model']['uv']['config']
+    with np.load(Path(signature['current_preparation'])/'current_data.npz') as saved:
+        K=saved['hilbert_kernel'];nodes=saved['nodes'];k2=saved['k_squared']
+    def form_factor(record):
+        im=np.asarray(record['ImF']);return 1+im@K.T+1j*im
+    F=form_factor(current);s=np.asarray(d['energies']);keep=(s>4)&(s<=(cfg['matching_energy_gev']/cfg['pion_mass_gev'])**2)
+    ss=s[keep];ids=np.argmin(abs(ss[:,None]-nodes),axis=1)
+    if not np.allclose(ss,nodes[ids],rtol=1e-13,atol=0):
+        return dict(status='not_applicable_to_off_node_grid',scope='Saved current spectra are nodal; direct scattering evaluation remains available')
+    f=np.asarray(d['f'])[keep];S=1+1j*np.pi*np.sqrt(1-4/ss)[:,None]*(f[:,:,0]+1j*f[:,:,1]);rho=np.asarray(current['rho'])
+    oldF=None;functional=None;support=None
+    if (folder/'objective.npz').is_file():
+        with np.load(folder/'objective.npz') as saved:functional=json.loads(str(saved['metadata']))
+        oldF=form_factor(read_json(Path(functional['source_coefficients']).parent/'current.json'))
+        r=read_json(folder/'report.json');support=dict(lower=r['outer']['lower'],upper=r['outer']['upper'],optimality_certified=r['support_optimality_certified'])
+    channels={};M=len(nodes);threshold=1+np.asarray(current['ImF'])@(1/np.tan((np.arange(M)+.5)*np.pi/(2*M))/M)
+    for ch,name,column in ((0,'S0',0),(1,'P1',2)):
+        valid=abs(F[ch,ids])>0;j=ids[valid];v=S[valid,column];Q=F[ch,j]/F[ch,j].conj()
+        row=dict(energy_gev=cfg['pion_mass_gev']*np.sqrt(ss[valid]),eta=abs(v),S_minus_F_over_Fstar=abs(v-Q),
+            phase_mismatch_mod_pi_degrees=[float(np.degrees(np.angle(a/b))/2) if abs(a)>0 else None for a,b in zip(v,Q)],
+            two_pion_spectral_fraction=[float(k2[ch,b]*abs(F[ch,b])**2/rho[ch,b]) if rho[ch,b]>0 else None for b in j],
+            zero_F_nodes_omitted=int(sum(~valid)))
+        if threshold[ch]!=0 and np.all(abs(v)>0):
+            lift=ff_guided_phase(v,F[ch,j],threshold[ch]);nearest=np.unwrap(np.angle(np.r_[1.,S[:,column]]))[1:][valid]/2
+            row.update(threshold_F=float(threshold[ch]),ff_guided_phase_degrees=np.degrees(lift),nearest_phase_degrees=np.degrees(nearest),
+                integer_pi_difference=np.rint((lift-nearest)/np.pi).astype(int),complex_S_identity_error=float(max(abs(abs(v)*np.exp(2j*lift)-v),default=0.)))
+        if oldF is not None:
+            q=oldF[ch,j]/oldF[ch,j].conj();row['S_minus_frozen_F_over_Fstar']=abs(v-q)
+        budget=spectral_budget(S[:,column],F[ch,ids],rho[ch,ids],k2[ch,ids]);row['spectral_budget']=budget
+        row['spectral_energy_gev']=cfg['pion_mass_gev']*np.sqrt(ss)
+        row['native_peaks']={key:native_peaks(row['spectral_energy_gev'],budget[key]) for key in ('F_squared','rho_current','two_pion')}
+        W=np.asarray(current['model']['uv']['weights_raw']);uv=current['model']['uv'];moments=[]
+        for t in (2*ch,2*ch+1):
+            covered=bool(np.all(np.isin(np.flatnonzero(W[t]>0),ids)));w=W[t,ids];ok=budget['schur_resolved']|(w==0)
+            moments.append(dict(power=FESR_POWERS[t],covered=covered,current=float(w@rho[ch,ids]),two_pion=float(w@budget['two_pion']),
+                phase_penalty=float(w@np.array([v or 0 for v in budget['phase_penalty']])) if covered and all(ok) else None,
+                unresolved_weighted_nodes=int(sum(~ok)),target=uv['targets_raw'][t],error=uv['tolerances_raw'][t]))
+        row['moment_budget']=moments;channels[name]=row
+    return dict(channels=channels,functional=functional,support=support,
+        definitions='Q=F/F*; mismatch=arg(S/Q)/2; fraction=k²|F|²/rho',
+        phase_lift_scope='Lift preserves S, anchored by real F(4); no continuity, saturation or winding proof.',
+        scope='Native diagnostics, not constraints or continuum bounds')
+
+
+def plot_spectral_profiles(out,profiles,baseline):
+    from .analysis import COLORS
+    import matplotlib.pyplot as plt
+    fig,axes=plt.subplots(1,3,figsize=(15,4.3),layout='constrained')
+    if baseline is not None:axes[0].plot(baseline['energy_gev'],baseline['P1_intensity'],':',color='purple',label='IR only')
+    for p in profiles:
+        color=COLORS[p['role']];d=p['watson']['channels']['P1'];b=d['spectral_budget'];x=d['spectral_energy_gev']
+        iteration=p.get('selection',{}).get('watson_iteration',0);label=p['role']+(f' (Watson {iteration})' if iteration else '')
+        axes[0].plot(p['energy_gev'],p['P1_intensity'],'.-',color=color,label=label)
+        axes[1].plot(x,b['F_squared'],'.-',color=color,label=label)
+        axes[2].plot(x,b['rho_current'],'.-',color=color,label=label+' current')
+        axes[2].plot(x,b['two_pion'],'--',color=color,label=label+' two pion')
+    for ax,title in zip(axes,('P1: |S-1|²/4','Vector |F1|²','Vector spectrum and two-pion part')):
+        ax.set(title=title,xlabel='E [GeV]',xlim=(.28,1.2));ax.grid(alpha=.15);ax.legend(fontsize=7)
+    fig.suptitle('Fixed amplitudes: native peaks; no pole fit');save_figure(fig,out/'rho_mechanism')
+
+
+
+def direct_profiles(args):
+    """Report additional sampled checks of unchanged analytic amplitudes."""
+    from . import read_json,write_json,save_figure,digest,validate_evaluation_identity
+    from .analysis import phase_shifts
+    from pathlib import Path
+    import matplotlib.pyplot as plt
+    profiles=[];signature=None;energies=None;inputs={}
+    def read_input(path):
+        path=Path(path).resolve();inputs[str(path)]=dict(sha256=digest(path));return read_json(path)
+    fig,axes=plt.subplots(2,3,figsize=(14,8),layout='constrained')
+    colors={'tip':'red','mid':'coral','ref':'pink'}
+    for path in args.profile_runs:
+        d=read_input(Path(path)/'evaluation.json');validate_evaluation_identity(d);sel=d['selection'];sig=sel['model_signature']
+        if d['waves']!=[[0,0],[2,0],[1,1]] or sig['prescription']!='analytic-cardinal':raise ValueError('Analytic primary waves required')
+        if signature is not None and sig!=signature:raise ValueError('One analytic scattering model required')
+        signature=sig;s=np.asarray(d['energies'],float);E=.14*np.sqrt(s)
+        if energies is not None and not np.array_equal(energies,s):raise ValueError('Same additional energy grid required')
+        energies=s;f=np.asarray(d['f']);delta,eta=phase_shifts(f[:,:,0]+1j*f[:,:,1],s);delta=np.degrees(delta)
+        intervals=np.asarray(d['unitarity']['margin_intervals'],float);violations=[]
+        for i,j in np.argwhere(intervals[:,:,1]<0):
+            violations.append(dict(energy_gev=float(E[i]),wave=('S0','S2','P1')[j],margin_interval=intervals[i,j].tolist(),eta=float(eta[i,j])))
+        hit=np.flatnonzero((delta[:-1,2]<90)&(delta[1:,2]>=90));crossing=None
+        if len(hit):
+            j=int(hit[0]);crossing=dict(energy_bracket_gev=E[j:j+2].tolist(),phase_bracket_degrees=delta[j:j+2,2].tolist(),
+                linear_gev=float(E[j]+(90-delta[j,2])/(delta[j+1,2]-delta[j,2])*(E[j+1]-E[j])))
+        role=sel.get('role',str(sel['epsilon']));color=colors.get(role)
+        item=dict(role=role,selection=sel,evaluation=str(Path(path)/'evaluation.json'),coefficients=d['coefficients'],
+            energy_gev=E,phase_degrees=delta,eta=eta,maximum_eta_upper=d['maximum_eta'],
+            unitarity_status=d['unitarity']['status'],strict_violations=violations,P1_first_upward_90=crossing)
+        intensity=abs(eta[:,2]*np.exp(2j*np.radians(delta[:,2]))-1)**2/4
+        item.update(P1_intensity=intensity,P1_intensity_peaks=native_peaks(E,intensity) if len(E)>=3 else None)
+        if d.get('current_diagnostics',{}).get('channels'):item['watson']=d['current_diagnostics']
+        from flint import arb,ctx
+        with ctx.workprec(256):
+            T=arb(float(read_input(d['coefficients'])['coefficients'][0]))
+            limits=[(1+(arb.pi()*T*a)**2).sqrt() for a in (arb(5)/2,arb(1))]
+            item['infinity_obstruction']=dict(unsubtracted_T0=float(T),eta_S0_S2_limits=[v.str(25) for v in limits],
+                globally_unitary_impossible=bool(T!=0),necessary_condition='T0=0 in this finite conformal-polynomial family',
+                derivation='Each unsubtracted cardinal kernel tends to zero; dominated angular integration gives f00->5*T0/2 and f20->T0')
+            current=Path(d['coefficients']).parent/'current.json'
+            if current.exists():
+                M=sig['M'];b=[(arb(2*j+1)/(4*M)).tan_pi()/M for j in range(M)]
+                record=read_input(current);order=record['model'].get('ff_endpoint_order',0)
+                ff=[arb(0),arb(0)] if order else [1-sum((v*arb(float(y)) for v,y in zip(b,row)),arb(0)) for row in record['ImF']]
+                item['infinity_obstruction'].update(F0_F1_limits=[v.str(25) for v in ff],
+                    exact_FF_endpoint_order=order,
+                    vector_FF_global_bound_impossible=not ff[1].contains(0),FF_derivation='F(infinity)=1-b.ImF; vector k^2 grows linearly in s')
+        profiles.append(item)
+        iteration=sel.get('watson_iteration',0);label=role+(f' (Watson {iteration})' if iteration else '')
+        for j in range(3):
+            axes[0,j].plot(E,delta[:,j],'.-',ms=2,lw=.8,color=color,label=label)
+            axes[1,j].plot(E,eta[:,j],'.-',ms=2,lw=.8,color=color,label=label)
+    for j,wave in enumerate(('S0','S2','P1')):
+        axes[0,j].set(title=wave,ylabel='delta [degrees]');axes[1,j].axhline(1,color='black',ls='--',lw=.7)
+        axes[1,j].set(ylabel='eta',xlabel='E [GeV]')
+        for ax in axes[:,j]:ax.set_xlim(float(E.min()),float(E.max()));ax.grid(alpha=.15);ax.legend(fontsize=8)
+    fig.suptitle('Direct analytic evaluation of fixed amplitudes at declared energies')
+    save_figure(fig,args.output/'direct_profiles',180)
+    if profiles and all('watson' in p and p['role'] in colors for p in profiles):plot_spectral_profiles(args.output,profiles,None)
+    result=dict(status='declared_samples_checked',profiles=profiles,model_signature=signature,inputs=inputs,
+        coefficients_modified=False,optimization_performed=False,continuum_certified=False,
+        selection_uses_phase_data=any(p['selection'].get('watson_iteration',0)>0 for p in profiles),experimental_phase_fitting=False,
+        any_strict_unitarity_violation=any(p['strict_violations'] for p in profiles),
+        scope='Saved analytic functions at the supplied energies; this profile command imposes no new constraints')
+    write_json(args.output/'direct_profiles.json',result)
+    return result
+
+
+def plot_profiles(args):
+    import csv,matplotlib.pyplot as plt
+    from . import write_json,validate_evaluation_identity
+    from .model import weinberg_waves; from .analysis import phase_shifts, compare_phase
+    data=[read_json(Path(p)/'evaluation.json') for p in args.profile_runs];kind=args.profile_kind
+    for d in data:validate_evaluation_identity(d)
+    if not data or any(d['waves']!=[[0,0],[2,0],[1,1]] for d in data):raise ValueError('S0/S2/P1')
+    fig,axes=plt.subplots(1,1 if kind=='selection' else 3,figsize=(7,5) if kind=='selection' else (14,4),layout='constrained');axes=np.atleast_1d(axes);rows=[]
+    names=['S0','S2','P1'];palette={.006:'royalblue',.004:'darkorange',.002:'green'}
+    for d in data:
+        sel=d['selection'];s=np.array(d['energies']);f=np.array(d['f']);f=f[:,:,0]+1j*f[:,:,1];epsilon=sel['epsilon']
+        if kind=='selection' and 'vertices' not in sel:
+            region=read_json(args.region_summary)
+            if region['model_signature']!=sel['model_signature']:raise ValueError('Selection plot requires the same IR region')
+            group=next(g for g in region['regions'] if g['mode']=='chiral' and g['epsilon']==epsilon)
+            points=np.asarray([p['target'] for p in group['points'] if p['feasible']]);from scipy.spatial import ConvexHull
+            sel=dict(sel,vertices=points[ConvexHull(points).vertices].tolist(),regional_geometry_ready=group['geometry']['geometry_ready'])
+        row=dict(epsilon=epsilon,coefficients=d['coefficients'],selection=sel)
+        if kind=='selection':
+            P=np.array(sel['vertices']);P=np.vstack([P,P[0]]);ax=axes[0];ax.plot(*P.T,color='green',label='Feasible hull');ax.scatter(*sel['reference'],color='black',label='140/92 point');ax.scatter(*sel['target'],color='magenta',label='Representative');ax.axline((0,0),slope=-1/15,color='.5',lw=.7);ax.set(xlim=(0,max(P[:,0])*1.03),xlabel=r'$f^0_0(3)$',ylabel=r'$f^1_1(3)$',ylim=(min(P[:,1])*1.05,max(P[:,1]+P[:,0]/15)*1.1))
+        else:
+            if kind=='phase':
+                delta,eta=phase_shifts(f,s);x=.140*np.sqrt(s);y=np.degrees(delta);row.update(energy_gev=x,phase_degrees=y,eta=eta,maximum_eta=float(eta.max()))
+            else:
+                x=s;y=f.real;err=y-weinberg_waves(s);roots=np.flatnonzero(y[:-1,0]*y[1:,0]<0)
+                row.update(energies=s,f_real=y,max_absolute_deviation=np.max(abs(err),axis=0),S0_zero_brackets=[[s[i],s[i+1]] for i in roots])
+                if d['amplitude_model'].get('integral_enclosures') and d.get('f_enclosures'):
+                    from . import decode_real_ball
+                    vals=[decode_real_ball(v[0][0]) for v in d['f_enclosures']]
+                    brackets=[[float(s[i]),float(s[i+1])] for i in range(len(vals)-1) if vals[i]*vals[i+1]<0]
+                    row.update(S0_certified_zero_brackets=brackets,S0_zero_existence_certified=bool(brackets),
+                        zero_proof_scope='Opposite rigorous real signs and continuity on the positive subthreshold interval; no uniqueness or absence theorem')
+            for j,ax in enumerate(axes):ax.plot(x,y[:,j],'.-' if kind=='phase' else '-',ms=3,color='magenta' if kind=='phase' else palette.get(epsilon),label='Computed' if kind=='phase' else f'ε={epsilon:g}')
+        rows.append(row)
+    if kind=='subthreshold':
+        for j,ax in enumerate(axes):ax.plot(s,weinberg_waves(s)[:,j],'k--',lw=1,label='Weinberg (92 MeV)');ax.axhline(0,color='.6',lw=.5)
+    if kind=='phase' and args.phase_reference:
+        refs=list(csv.DictReader(args.phase_reference.open()))
+        for j,ax in enumerate(axes):
+            for role,style,color,label in [('phenomenology','--','.35','PDF fit'),('experiment','.','.6','PDF data'),('paper_bootstrap','o','darkorange','PDF χ')]:
+                pts=sorted((float(v['energy_gev']),float(v['delta_deg'])) for v in refs if v['wave']==names[j] and v['role']==role)
+                if pts:ax.plot(*np.array(pts).T,style,color=color,ms=3,lw=.8,fillstyle='none',label=label)
+                if role=='phenomenology' and pts:
+                    for v in rows:v.setdefault('PDF_fit_errors',{})[names[j]]=compare_phase(v['energy_gev'],v['phase_degrees'][:,j],pts)
+    for j,ax in enumerate(axes):
+        if kind!='selection':ax.set(title=names[j],xlabel=r'$E$ [GeV]' if kind=='phase' else r'$s/m_\pi^2$',ylabel='δ [degrees]' if kind=='phase' else r'$f(s)$')
+        if kind=='phase':ax.set_xlim(.28,1.2)
+        ax.grid(alpha=.15);ax.legend(fontsize=7)
+    joint=any(d['selection']['model_signature'].get('current_preparation') for d in data)
+    phase_title='Native phases of saved QCD-coupled amplitudes' if joint else 'Fig.7: native chiral phases'
+    fig.suptitle({'subthreshold':'Fig.5: subthreshold waves','selection':'Fig.6: fixed point and feasible hull approximation','phase':phase_title}[kind])
+    uses_phase=any(d['selection'].get('watson_iteration',0)>0 or d['selection'].get('selection_uses_phase_data',False) for d in data)
+    save_figure(fig,args.output/f'profiles',180);result=dict(status='profiles_completed',kind=kind,profiles=rows,reference=str(args.phase_reference) if args.phase_reference else None,selection_uses_phase_data=uses_phase,continuum_certified=False)
+    write_json(args.output/'profiles.json',result);return result
+
+
+def plot_resolution_profiles(out,rows,reference_curves,partial,subcomparisons):
+    import matplotlib.pyplot as plt
+    names=['S0','S2','P1']
+    fig,axes=plt.subplots(3,2,figsize=(12,13),layout='constrained');etafig,etaaxes=plt.subplots(1,3,figsize=(14,4.2),layout='constrained')
+    palette={(50,8):'seagreen',(50,10):'red',(50,12):'goldenrod',(45,10):'royalblue',(60,10):'purple'}
+    for p in rows:
+        key=(p['M'],p['L']);color=palette[key];x=p['energy_gev'];label=f'M={key[0]}, L={key[1]}'
+        for j,wave in enumerate(names):
+            for col,include in enumerate((key[0]==50,key[1]==10)):
+                if not include:continue
+                ax=axes[j,col];ax.plot(x,p['phase_degrees'][:,j],'.-',color=color,ms=3,lw=.9,label=label)
+                curve=[(float(v['energy_gev']),float(v['phase_deg'])) for v in reference_curves[wave] if (int(v['model_M']),int(v['model_L']))==key]
+                if curve:ax.plot(*np.asarray(curve).T,'--',color=color,alpha=.45,lw=.7)
+            etaaxes[j].plot(x,p['eta'][:,j],'.-',color=color,ms=3,lw=.8,label=label)
+    for j,wave in enumerate(names):
+        for col in range(2):axes[j,col].set(title=wave+(': fixed M=50' if col==0 else ': fixed L=10')+(' (partial)' if not subcomparisons['fixed_M50' if col==0 else 'fixed_L10']['complete'] else ''),xlabel='E [GeV]',ylabel='delta [degrees]',xlim=(.28,1.2));axes[j,col].grid(alpha=.15);axes[j,col].legend(fontsize=8)
+        etaaxes[j].set(title=wave,xlabel='E [GeV]',ylabel='eta',xlim=(.28,1.2),ylim=(0,1.03));etaaxes[j].legend(fontsize=7);etaaxes[j].grid(alpha=.15)
+    fig.suptitle(('Fig.11 (partial)' if partial else 'Fig.11')+': same UV tip rule; dashed = original paper marker curves')
+    save_figure(fig,out/('fig11_partial' if partial else 'fig11'),170);save_figure(etafig,out/('fig11_eta_partial' if partial else 'fig11_eta'),170)

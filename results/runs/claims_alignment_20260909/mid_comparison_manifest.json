@@ -1,0 +1,703 @@
+{
+  "comparisons": [
+    {
+      "id": "MID_paper_S0",
+      "group": "MID_paper",
+      "label": "mid",
+      "wave": "S0",
+      "profiles_json": "results/runs/claims_alignment_20260909/mid_precision_phases/phases.json",
+      "profile_filter": {
+        "role": "mid"
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure10_s0_phases.csv",
+      "reference_filter": {
+        "group": "pink"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "MID_precision_S0",
+      "group": "MID_precision",
+      "label": "new - original mid",
+      "wave": "S0",
+      "profiles_json": "results/runs/claims_alignment_20260909/mid_precision_phases/phases.json",
+      "profile_filter": {
+        "role": "mid"
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "results/runs/claims_alignment_20260909/original_mid_phases.csv",
+      "reference_filter": {
+        "wave": "S0"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Same prescribed x, same projection objective and physical constraints; only solver continuation",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "MID_paper_S2",
+      "group": "MID_paper",
+      "label": "mid",
+      "wave": "S2",
+      "profiles_json": "results/runs/claims_alignment_20260909/mid_precision_phases/phases.json",
+      "profile_filter": {
+        "role": "mid"
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure10_s2_phases.csv",
+      "reference_filter": {
+        "group": "pink"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "MID_precision_S2",
+      "group": "MID_precision",
+      "label": "new - original mid",
+      "wave": "S2",
+      "profiles_json": "results/runs/claims_alignment_20260909/mid_precision_phases/phases.json",
+      "profile_filter": {
+        "role": "mid"
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "results/runs/claims_alignment_20260909/original_mid_phases.csv",
+      "reference_filter": {
+        "wave": "S2"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Same prescribed x, same projection objective and physical constraints; only solver continuation",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "MID_paper_P1",
+      "group": "MID_paper",
+      "label": "mid",
+      "wave": "P1",
+      "profiles_json": "results/runs/claims_alignment_20260909/mid_precision_phases/phases.json",
+      "profile_filter": {
+        "role": "mid"
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure9_p1_phases.csv",
+      "reference_filter": {
+        "group": "pink"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "MID_precision_P1",
+      "group": "MID_precision",
+      "label": "new - original mid",
+      "wave": "P1",
+      "profiles_json": "results/runs/claims_alignment_20260909/mid_precision_phases/phases.json",
+      "profile_filter": {
+        "role": "mid"
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "results/runs/claims_alignment_20260909/original_mid_phases.csv",
+      "reference_filter": {
+        "wave": "P1"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Same prescribed x, same projection objective and physical constraints; only solver continuation",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    }
+  ],
+  "old_source": {
+    "role": "mid",
+    "evaluation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E3_mid_evaluate/evaluation.json",
+    "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E2_representatives/mid/coefficients.json",
+    "selection": {
+      "role": "mid",
+      "color": "#ff5555",
+      "rule": "Tip +x; nearest audited upper-boundary candidate to xref and (xref+x_tip)/2; no phase ranking or amplitude mixing",
+      "reference": [
+        0.07332139057293466,
+        -0.00488809270486231
+      ],
+      "target": [
+        0.0862847245195143,
+        -0.005265816456875685
+      ],
+      "target_x": 0.08628472452183995,
+      "x_deviation": -2.3256535586213545e-12,
+      "epsilon": 0.002,
+      "source_reports": [
+        "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E1_mid_upper_bound/report.json"
+      ],
+      "source_coefficients": [
+        "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E1_mid_upper_bound/coefficients.json"
+      ],
+      "source_joint": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E1_mid_upper_bound/joint.npz",
+      "model_signature": {
+        "M": 50,
+        "L": 10,
+        "density_limit": 377500.0,
+        "infinity": "free",
+        "unitarity_scope": "sampled",
+        "prescription": "pv-midpoint",
+        "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+        "current_preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_D_mainline_20260908/D1_current_M50",
+        "chiral_tolerance": 0.002,
+        "uv_config": {
+          "moment_source": "printed",
+          "sr_error": "raw-absolute",
+          "cutoff": "clipped-phi",
+          "mq_rule": "arithmetic-mean",
+          "pion_mass_gev": 0.14,
+          "matching_energy_gev": 1.2,
+          "up_mass_gev": 0.004,
+          "down_mass_gev": 0.0073,
+          "alpha_s": 0.4,
+          "gluon_condensate_gev4": 0.023,
+          "scalar_condensate_gev4": -0.0001,
+          "sr_tolerance": 0.002,
+          "ff_tolerance": 6e-05
+        },
+        "global_high_spin_enforced": false,
+        "tail_conditions_applied": false,
+        "additional_constraints": null,
+        "sampling_nodes": 50,
+        "scattering_samples": 1500
+      },
+      "direction": [
+        35.473409171440345,
+        500.0
+      ],
+      "support_lower": 0.4279051096872424,
+      "support_upper": 0.44452698153157977,
+      "support_gap": 0.016621871844337388,
+      "support_optimality_certified": true,
+      "boundary_y_distance_upper": 3.324374368867478e-05,
+      "exact_extremizer_claimed": false,
+      "joint_feasible": true,
+      "selection_uses_phase_data": false,
+      "coefficients_mixed": false,
+      "finite_only": true
+    },
+    "energy_gev": [
+      0.28,
+      0.28003454716713333,
+      0.2803111804598683,
+      0.2808658155751912,
+      0.28170120613216176,
+      0.28282152433185964,
+      0.28423241214550055,
+      0.2859410513754389,
+      0.2879562542262584,
+      0.29028857654496465,
+      0.29295045649510143,
+      0.29595638214610515,
+      0.2993230923196993,
+      0.30306981608187034,
+      0.3072185575562705,
+      0.31179443433331583,
+      0.31682607975136984,
+      0.32234612185478545,
+      0.32839175505192253,
+      0.33500542462514576,
+      0.34223564958409913,
+      0.3501380163147398,
+      0.35877638462978967,
+      0.36822435996941977,
+      0.3785671017632077,
+      0.38990355996172354,
+      0.4023492618199864,
+      0.416039812602881,
+      0.4311353321022626,
+      0.4478261314430577,
+      0.46634005349840985,
+      0.48695207392457945,
+      0.5099970180127428,
+      0.5358866395206641,
+      0.5651329118650767,
+      0.5983803371077314,
+      0.6364516260093482,
+      0.6804136821594831,
+      0.7316752603307709,
+      0.7921355788896206,
+      0.8644178555063566,
+      0.9522503411013047,
+      1.0611163210367387,
+      1.199424119524732
+    ],
+    "phase_degrees": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.20661462481499393,
+        -0.04071028739024833,
+        7.346947186799886e-06
+      ],
+      [
+        0.5942113734048718,
+        -0.1193375769474136,
+        0.00019773983699085762
+      ],
+      [
+        1.0456405462118041,
+        -0.21061430738991652,
+        0.0009227168942079846
+      ],
+      [
+        1.3980096090637704,
+        -0.27645601780452456,
+        0.0025199135409998408
+      ],
+      [
+        1.9393467740041732,
+        -0.3943836108528619,
+        0.00543295170703188
+      ],
+      [
+        2.224498298631806,
+        -0.4404943079911208,
+        0.00984789271930161
+      ],
+      [
+        2.915412688163145,
+        -0.5937721320504805,
+        0.016601951806567334
+      ],
+      [
+        3.1090235233311185,
+        -0.6235795350968758,
+        0.025261473451063436
+      ],
+      [
+        4.002743453948835,
+        -0.8095564486222585,
+        0.03780809281633231
+      ],
+      [
+        4.094659046942573,
+        -0.8389035565655084,
+        0.052194476111104754
+      ],
+      [
+        5.234414386067829,
+        -1.0433277015151547,
+        0.07290107463879648
+      ],
+      [
+        5.237688841788246,
+        -1.0991171869072183,
+        0.09466162893108912
+      ],
+      [
+        6.65105574140778,
+        -1.2996100971018367,
+        0.1263961325716558
+      ],
+      [
+        6.613179528489799,
+        -1.4146289473641935,
+        0.15758826734717285
+      ],
+      [
+        8.306743445273286,
+        -1.5879780184237249,
+        0.2037438345656118
+      ],
+      [
+        8.321753232366131,
+        -1.7922441919601142,
+        0.24728839398133315
+      ],
+      [
+        10.278919458526001,
+        -1.9246556551042637,
+        0.3117637492550767
+      ],
+      [
+        10.498053525184043,
+        -2.234721468421296,
+        0.37214597359246526
+      ],
+      [
+        12.683792717218589,
+        -2.33290739741834,
+        0.4594237748588295
+      ],
+      [
+        13.32160977063396,
+        -2.7419319477646598,
+        0.5435900320574809
+      ],
+      [
+        15.697704218188248,
+        -2.8415013809669523,
+        0.6593014654432774
+      ],
+      [
+        17.030523965578194,
+        -3.3142911313686234,
+        0.7775938205225401
+      ],
+      [
+        19.581314974584103,
+        -3.48086181255114,
+        0.9303017198610142
+      ],
+      [
+        21.935129286688554,
+        -3.958785856119935,
+        1.0973816702447619
+      ],
+      [
+        24.692633575598286,
+        -4.277430845432221,
+        1.3026010909347479
+      ],
+      [
+        28.415298576051132,
+        -4.696978491796874,
+        1.5393197773382645
+      ],
+      [
+        31.44768410230841,
+        -5.2482797016301905,
+        1.8267233209191602
+      ],
+      [
+        36.84977985545438,
+        -5.572913777550062,
+        2.1674746671702816
+      ],
+      [
+        40.142389929937046,
+        -6.399697082499199,
+        2.5919525260361462
+      ],
+      [
+        47.38612638630457,
+        -6.658218908350037,
+        3.1125216306681605
+      ],
+      [
+        50.565401651421816,
+        -7.733944066806541,
+        3.7735237051069195
+      ],
+      [
+        59.57036763507565,
+        -8.055002283087614,
+        4.688896631781827
+      ],
+      [
+        61.64414246815097,
+        -9.265310461019693,
+        5.799243050814297
+      ],
+      [
+        72.28117574931856,
+        -9.905408290758118,
+        7.8740006288864155
+      ],
+      [
+        71.80466470873381,
+        -11.042310477317024,
+        10.238647110767545
+      ],
+      [
+        84.40573238316833,
+        -12.410008052506484,
+        18.712976862069787
+      ],
+      [
+        80.10517294866447,
+        -13.1965858608309,
+        33.42736970617289
+      ],
+      [
+        95.59875420215054,
+        -15.752322274651105,
+        -1.9513050049146674
+      ],
+      [
+        87.29299623359742,
+        -16.143590759709532,
+        -15.176237578256071
+      ],
+      [
+        107.45488379300171,
+        -19.505400963007897,
+        -28.89134759275179
+      ],
+      [
+        96.94732471390775,
+        -20.791772696433757,
+        -13.874078430375251
+      ],
+      [
+        130.67949802071826,
+        -21.25719952048629,
+        -11.918340324126751
+      ],
+      [
+        199.78393107157757,
+        -25.45631340925408,
+        -4.561949682613061
+      ]
+    ],
+    "eta": [
+      [
+        1.0,
+        1.0,
+        1.0
+      ],
+      [
+        0.9998349138408993,
+        0.9999997421136181,
+        0.99999999965055
+      ],
+      [
+        0.9999897371448729,
+        0.9999997410428085,
+        0.9999999986348119
+      ],
+      [
+        0.999989175480473,
+        0.999999733160998,
+        0.9999999951898263
+      ],
+      [
+        0.9999892530507374,
+        0.9999997236609306,
+        0.9999999916300594
+      ],
+      [
+        0.9999880936770107,
+        0.9999997088976545,
+        0.9999999838027402
+      ],
+      [
+        0.9999874046282883,
+        0.9999996916207087,
+        0.9999999767754466
+      ],
+      [
+        0.9999857003159524,
+        0.9999996689601054,
+        0.9999999624200381
+      ],
+      [
+        0.9999843718032156,
+        0.999999642668229,
+        0.999999950096614
+      ],
+      [
+        0.9999818404692178,
+        0.9999996108546931,
+        0.9999999253487081
+      ],
+      [
+        0.9999797726859555,
+        0.99999957345591,
+        0.9999999046968353
+      ],
+      [
+        0.9999759447931255,
+        0.9999995306306206,
+        0.9999998629236453
+      ],
+      [
+        0.999972961922693,
+        0.9999994791728274,
+        0.9999998290941488
+      ],
+      [
+        0.9999670246488538,
+        0.9999994224895977,
+        0.9999997589323212
+      ],
+      [
+        0.9999629060537857,
+        0.9999993528595182,
+        0.9999997042296505
+      ],
+      [
+        0.9999534061439529,
+        0.9999992778633174,
+        0.9999995858659746
+      ],
+      [
+        0.999947933776794,
+        0.9999991847559775,
+        0.9999994980383258
+      ],
+      [
+        0.9999322101930266,
+        0.9999990843732689,
+        0.999999295917012
+      ],
+      [
+        0.9999252960425091,
+        0.999998960904635,
+        0.9999991553149239
+      ],
+      [
+        0.9998983559156441,
+        0.9999988239687938,
+        0.9999988031604773
+      ],
+      [
+        0.9998904126744113,
+        0.9999986610527898,
+        0.9999985780425107
+      ],
+      [
+        0.9998426343211311,
+        0.9999984707207846,
+        0.9999979463089312
+      ],
+      [
+        0.9998356670185861,
+        0.9999982551215614,
+        0.9999975854132749
+      ],
+      [
+        0.9997479522302162,
+        0.9999979864311467,
+        0.9999964054748435
+      ],
+      [
+        0.9997487944324728,
+        0.9999976965580517,
+        0.999995828191679
+      ],
+      [
+        0.9995823066675643,
+        0.9999973134470773,
+        0.9999934994553931
+      ],
+      [
+        0.9996118454798963,
+        0.9999969103554791,
+        0.999992593032604
+      ],
+      [
+        0.9992882052696164,
+        0.9999963610896875,
+        0.9999876304561779
+      ],
+      [
+        0.9994040177300055,
+        0.9999957703778861,
+        0.9999863154631543
+      ],
+      [
+        0.9987812698884818,
+        0.9999949793675659,
+        0.9999744871646754
+      ],
+      [
+        0.9991124925285904,
+        0.999994059263822,
+        0.9999732236314767
+      ],
+      [
+        0.9980159143720011,
+        0.9999929060303061,
+        0.999939577579043
+      ],
+      [
+        0.998743105627141,
+        0.9999913883021304,
+        0.9999429671856617
+      ],
+      [
+        0.9971490450722658,
+        0.9999896473657749,
+        0.9998097154936564
+      ],
+      [
+        0.9983021382539209,
+        0.999987013698532,
+        0.9998611502271808
+      ],
+      [
+        0.9964781217551788,
+        0.9999841668984264,
+        0.9981938573959154
+      ],
+      [
+        0.9977360243906169,
+        0.9999793799659472,
+        0.9995564471245277
+      ],
+      [
+        0.9961156750896112,
+        0.9999739453147981,
+        0.5673984638475879
+      ],
+      [
+        0.9968041693526962,
+        0.9999648646468753,
+        0.17377060057375412
+      ],
+      [
+        0.996123848285384,
+        0.999951461951296,
+        0.28247329090608975
+      ],
+      [
+        0.9929087299130896,
+        0.9999327208227633,
+        0.7106338045893684
+      ],
+      [
+        0.917386633642646,
+        0.999888502915858,
+        0.9998001167784487
+      ],
+      [
+        0.992356496787172,
+        0.999832620225178,
+        0.9999611111355273
+      ],
+      [
+        0.4197267046675305,
+        0.9996717508642757,
+        0.982895827996067
+      ]
+    ],
+    "unitarity": "sampled_passed",
+    "maximum_eta_upper": 1.0,
+    "P1_first_upward_90": null,
+    "P1_crossing_observed": false
+  }
+}

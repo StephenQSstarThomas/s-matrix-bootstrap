@@ -1,0 +1,154 @@
+{
+  "scope": "Exact N6-to-N10 physical embedding, strict auxiliary Gram witnesses, and bounded optimization/conditioning probes; no accepted optimized N10 improvement or infeasibility theorem",
+  "tests": {
+    "focused_passed": 17,
+    "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest tests/test_degree_promotion.py tests/test_joint_preconditioner.py -q"
+  },
+  "artifacts": [
+    {
+      "path": "results/degree_promotion_N6_to_N10_prepared.json",
+      "sha256": "b97c3144acc3c0056819640f11f4af9869f5a7e4db5cb20ff8f64ea4cb5fd421",
+      "prepared_only": true,
+      "finite_seed_pass": true,
+      "point": [
+        0.07532981099999994,
+        -0.00486419009508058
+      ],
+      "Gram_eigenvalue_bounds": [
+        "1/19200",
+        "1/4800",
+        "1/4800"
+      ],
+      "exact_invariants": {
+        "edge_u_modes_identical_with_zero_extension": true,
+        "fixed_spin_endpoint_derivatives_identical": true,
+        "endpoint_derivatives": {
+          "A_infinity": "-2163/10000000000000000000",
+          "alpha": "-927775015695292821/5000000000000000000",
+          "beta": "139273360906917211/500000000000000000",
+          "gamma": "265481623070814799/50000000000000000",
+          "delta": "-2623207007380290881/500000000000000000"
+        },
+        "A_infinity_exactly_zero": false,
+        "joint_impact_closed_forms_identical": true,
+        "impact_sine_modes_identical_with_zero_extension": true,
+        "meaning": "All signs/envelopes of the same fixed amplitude are inherited, including any failures; embedding creates no new physical validity"
+      },
+      "retention_checks": {
+        "FF_set_unchanged": true,
+        "impact_b_set_unchanged": true,
+        "scattering_sample_set_unchanged": true,
+        "fixed_spin_endpoint_count": 5,
+        "form_factor_degree_unchanged": true,
+        "scalar_and_vector_FF_endpoint_bounds_retained": true,
+        "current_grid_unchanged": true
+      }
+    },
+    {
+      "path": "results/degree_promotion_N10_continuation.json",
+      "sha256": "e7213ab39d21748f94b3e6f2b29ede82f83a83fef2591a6a63c6e618b4088cae",
+      "stages": [
+        {
+          "label": "N10_joint_margin_seed",
+          "solver_terminal_status": "AlmostSolved",
+          "signed_margin": -0.0011397379704332967,
+          "original_finite_pass": false,
+          "point": [
+            0.07532981100000385,
+            -0.00485517618962506
+          ],
+          "accepted_finite_boundary": false,
+          "repair_accepted": null
+        }
+      ]
+    },
+    {
+      "path": "results/degree_promotion_N10_support_from_embedded_seed.json",
+      "sha256": "0016830925a09a5472c7903bcd2bd9199d1d39457adc5391839b9f7b424449f9",
+      "stages": [
+        {
+          "label": "N10_original_pink_upper_support",
+          "solver_terminal_status": "AlmostSolved",
+          "signed_margin": -6.718922843712824e-07,
+          "original_finite_pass": false,
+          "point": [
+            0.0753298109999941,
+            -0.00465414580079139
+          ],
+          "accepted_finite_boundary": false,
+          "repair_accepted": false
+        }
+      ]
+    },
+    {
+      "path": "results/degree_promotion_N10_joint_metric_prepared.json",
+      "sha256": "8055d575980e7754f4b2944a599cc6caf7025c81ea8ff7f3fdc8ee8b50d3b200",
+      "prepared_only": true,
+      "finite_seed_pass": true,
+      "point": [
+        0.07532981099999994,
+        -0.00486419009508058
+      ],
+      "Gram_eigenvalue_bounds": [
+        "1/19200",
+        "1/4800",
+        "1/4800"
+      ],
+      "exact_invariants": {
+        "edge_u_modes_identical_with_zero_extension": true,
+        "fixed_spin_endpoint_derivatives_identical": true,
+        "endpoint_derivatives": {
+          "A_infinity": "-2163/10000000000000000000",
+          "alpha": "-927775015695292821/5000000000000000000",
+          "beta": "139273360906917211/500000000000000000",
+          "gamma": "265481623070814799/50000000000000000",
+          "delta": "-2623207007380290881/500000000000000000"
+        },
+        "A_infinity_exactly_zero": false,
+        "joint_impact_closed_forms_identical": true,
+        "impact_sine_modes_identical_with_zero_extension": true,
+        "meaning": "All signs/envelopes of the same fixed amplitude are inherited, including any failures; embedding creates no new physical validity"
+      },
+      "retention_checks": {
+        "FF_set_unchanged": true,
+        "impact_b_set_unchanged": true,
+        "scattering_sample_set_unchanged": true,
+        "fixed_spin_endpoint_count": 5,
+        "form_factor_degree_unchanged": true,
+        "scalar_and_vector_FF_endpoint_bounds_retained": true,
+        "current_grid_unchanged": true
+      }
+    },
+    {
+      "path": "results/degree_promotion_N10_joint_metric_continuation.json",
+      "sha256": "8a187b21fc2e9b285ceeeba0bcf2bfc52f865a4ea46b019e9d3f6ef791284185",
+      "stages": [
+        {
+          "label": "N10_joint_margin_seed",
+          "solver_terminal_status": "NumericalError",
+          "signed_margin": null,
+          "original_finite_pass": null,
+          "point": null,
+          "accepted_finite_boundary": false,
+          "repair_accepted": null
+        },
+        {
+          "label": "N10_original_pink_upper_support",
+          "solver_terminal_status": "NumericalError",
+          "signed_margin": null,
+          "original_finite_pass": null,
+          "point": null,
+          "accepted_finite_boundary": false,
+          "repair_accepted": null
+        }
+      ]
+    }
+  ],
+  "current_code_sha256": {
+    "src/smatrix_bootstrap/degree_promotion.py": "86d1d83fcde6aa9c8520689c34ff0b02edb469c49ada69477e0946e35c01874f",
+    "src/smatrix_bootstrap/optimization.py": "5768808dfc810642171063429fdfc922848e6446d58f1090c25b0d0781a8f383",
+    "scripts/promote_gauge_degree.py": "ca3b52405aaf101036dd55d75a4f8f642118b6f86de6bad98a539b7bcbb70d4b",
+    "tests/test_degree_promotion.py": "2e1393a740b271bb066c96cdc403c1c1eddb78c59f1c52442316bd56e3b01ae0",
+    "tests/test_joint_preconditioner.py": "24f3614e5395ba32dab4bad5f954f91cbefc82f6bdfee90f76f4b86aee604bc7"
+  }
+}

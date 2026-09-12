@@ -1,0 +1,59 @@
+{
+  "schema": "smatrix-moment-norm-compatibility-v1",
+  "previous_verification_path": "results/verification_refinement_centering.json",
+  "previous_verification_sha256": "8fbdccaa5db408ee995914baf9f72f178b57bfad4d4748a39d9f33780ebb7823",
+  "default_model": {
+    "degree": 2,
+    "energy_points": 8,
+    "waves_per_isospin": 2,
+    "angular_points": 24,
+    "chiral_tolerance": 0.002,
+    "form_factor_degree": 3,
+    "gauge_points": 10
+  },
+  "default_canonical_before": {
+    "A": "ecbf6b7ef3fc2ca0a59ffed826057974dbbaf9dc7b768dc4dce8ead2dc8e867e",
+    "indices": "60502a543c00749248e8e9c91f0deaf970ba1d1052ddb74f10cd6b5690c84c9c",
+    "indptr": "bf7047e014012bfbca26356e5f36b955eee3b36e243587128821cb3539abfde3",
+    "b": "900e4f55f86de30776e4527d9a952f3c98c4c475021207dffa7d8854becbe6eb",
+    "c": "44f81839a027d3ad7e74649db155e662e955b15a2a0272c7d06da0f1e82e06b5",
+    "dims": "1 equalities, 52 inequalities, 0 exponential cones, \nSOC constraints: [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 3, 3, 5], PSD constraints: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],\n 3d power cones [], [].",
+    "shape": [
+      385,
+      90
+    ]
+  },
+  "default_canonical_after": {
+    "A": "ecbf6b7ef3fc2ca0a59ffed826057974dbbaf9dc7b768dc4dce8ead2dc8e867e",
+    "indices": "60502a543c00749248e8e9c91f0deaf970ba1d1052ddb74f10cd6b5690c84c9c",
+    "indptr": "bf7047e014012bfbca26356e5f36b955eee3b36e243587128821cb3539abfde3",
+    "b": "900e4f55f86de30776e4527d9a952f3c98c4c475021207dffa7d8854becbe6eb",
+    "c": "44f81839a027d3ad7e74649db155e662e955b15a2a0272c7d06da0f1e82e06b5",
+    "dims": "1 equalities, 52 inequalities, 0 exponential cones, \nSOC constraints: [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 3, 3, 5], PSD constraints: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],\n 3d power cones [], [].",
+    "shape": [
+      385,
+      90
+    ]
+  },
+  "all_default_canonical_bits_preserved": true,
+  "new_option": "componentwise",
+  "new_config_name": "componentwise_of_four_moments",
+  "historical_default_config_name": "combined_l2_of_four_moments",
+  "focused_tests": "26 passed in3.68s",
+  "full_suite": "430 passed,3 skipped,2 existing warnings in74.40s",
+  "previous_coupled_source_sha256": "cdd5ad6be5d73937364bda36040bcc3bd551d7c0eb99e18e9317ab87c37be9c9",
+  "source_sha256": {
+    "src/smatrix_bootstrap/coupled_gauge.py": "4004abb936b3ec5a686df546549a71c1ac0b51cb2d1b982f39b047628815eae3",
+    "src/smatrix_bootstrap/feasibility.py": "c55d750cfed705015ff33be1aefcc61d027ac254fc4b5414f9bfb925cbeb982e",
+    "src/smatrix_bootstrap/gauge_boundary.py": "6032b61efc3438680097283ffc85b4dad09a82d3453fa2f22abe6a8b7b78bf5a",
+    "src/smatrix_bootstrap/gauge_joint_exchange.py": "066e8a696a8e97f92ec502352369ea226a88a18fc30f975a73c8bde66562763c",
+    "scripts/audit_finite_gauge_candidate.py": "0141787ad79838e336387b1812df0a8d5d934dd7494aac065262f4a9d170e429",
+    "scripts/run_gauge_boundary.py": "bd3b7d941b8989f681da2436064ff6817e036be253755888db44371b4a742b1e",
+    "scripts/run_gauge_feasibility.py": "78cec6d1a7366eb5a8cdeee315494d87f9345f4df72eca8635771860f16aa8b1",
+    "scripts/run_gauge_ff_exchange.py": "f61e6dea975b32c79fde3916b0ec1621b88e86189906a905a8dba61f7af12b43",
+    "scripts/run_gauge_pilot.py": "93e63ba248b14228549e86d689d011f1f6035efdabbe5f9a26a4f7f450a0beb6",
+    "scripts/run_joint_gauge_refinement.py": "7403785b0e9637306f07831bfa896023d2b669eea31f924296f028d6862cc123",
+    "tests/test_moment_norms.py": "a863360fd06c61435bd208c06dcc6c91633ca9ec1f9e72c9ecf4d4b0fe692d77"
+  },
+  "scope": "API and actual finite-norm distinction; no source-sized solve, physical feasibility or optimality conclusion from the isolated moment tests."
+}

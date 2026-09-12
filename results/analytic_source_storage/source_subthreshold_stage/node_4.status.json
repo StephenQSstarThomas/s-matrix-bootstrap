@@ -1,0 +1,8 @@
+{
+  "node_index": 4,
+  "returncode": 0,
+  "stdout": "{\"node\": 4, \"completed_K\": 20, \"total\": 53, \"seconds\": 0.30297837301623076}\n{\"node\": 4, \"completed_K\": 40, \"total\": 53, \"seconds\": 0.5506025810027495}\n{\"node\": 4, \"completed_K\": 53, \"total\": 53, \"seconds\": 0.714144274010323}\n",
+  "stderr": "",
+  "hard_timeout": false,
+  "supervisor_seconds": 1.5019146830309182
+}

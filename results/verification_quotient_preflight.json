@@ -1,0 +1,77 @@
+{
+  "timestamp_utc": "2026-09-06T10:36:28.178769+00:00",
+  "goal_status": "active",
+  "previous_turn_classification": "no progress: status report and task handoff; current turn revalidated data and resumed computation",
+  "previous_checkpoint_source_files_checked": 388,
+  "previous_checkpoint_source_mismatches_at_start": [],
+  "mathematical_result": {
+    "minimal_quotient_dimension": 2376,
+    "free_membership": 1205,
+    "free_symmetry": 1170,
+    "constant": 1,
+    "exact_family_scales": [
+      1,
+      32,
+      64
+    ],
+    "reconstruction_condition_number_bound": 4,
+    "constant_pivot_shape": [
+      1510,
+      2375
+    ],
+    "independent_review": "docs/64_projected_row_error_budgets.md"
+  },
+  "actual_source_controls": {
+    "ids": [
+      0,
+      2979,
+      3010
+    ],
+    "status": "passed",
+    "supervisor_seconds": 14.357190583017655,
+    "root_independently_redecoded_authenticated_output": true,
+    "candidate_known_alpha_containments": 0,
+    "corrected_known_alpha_containments": 450,
+    "known_quotient_zero_containments": 2376,
+    "known_DEV_weight_containments": 1500,
+    "input_or_source_changes": []
+  },
+  "python_tests": {
+    "passed": 491,
+    "skipped": 3,
+    "warnings": 2,
+    "elapsed_seconds": 110.68,
+    "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=/tmp/collocation_arb:src python -m pytest -q -p no:cacheprovider",
+    "scope": "Full suite at control milestone; optional Julia skips and same two interval-positivity warnings"
+  },
+  "full_assembly": {
+    "directory": "results/analytic_source_storage/source_remaining_quotient_2048_attempt01",
+    "session_id": 72950,
+    "worker_pid": 3279025,
+    "status_at_record": "running",
+    "hard_cap_seconds": 1200,
+    "working_bits": 2048,
+    "batch_size": 16,
+    "full_analytic_rank_claimed": false
+  },
+  "artifact_sha256": {
+    "results/analytic_source_storage/source_imaginary_quotient_controls_2048_attempt01/report.json": "aa422867fe30047bf7012c001cad5ea7f385a13dd1350d66e820a1c2721869cf",
+    "results/source_s_wave_masters_4096.json": "98e9cc3786e2bedc259d9596a4acd46e3135850eb87023ca4b20b10f273697b2",
+    "results/source_imaginary_quotient_controls_2048.json": "e9f14a7603d6db9204dc18a7eb6b28d0651152d4e2608ca4273a628c64d3aa17",
+    "results/imaginary_projection_independent_review.json": "72a3323a0b6ea53dcdbe6c22ad9ae71022bf4dca4c80ca271f58f527528c89f0",
+    "docs/62_validated_imaginary_projection.md": "7e8640fb04981bb750c0e91107ab4cc1e106edfe0dc67b1f04eddb40252a7151",
+    "docs/63_source_s_wave_masters.md": "e9fca6b8744f95d38f1121f9063d53ecf19899dd929fc52d9db0c648dc6d06be",
+    "docs/64_projected_row_error_budgets.md": "c630a70dd2df00e7fd74a4006e9f440e8ab957ea0bb832579411de66df3999d5",
+    "docs/65_minimal_imaginary_quotient.md": "08b0320caa6064a1e3596d52097b4d5ecdb506f427b1f1603357128a53d906c5",
+    "docs/66_remaining_rank_certificate_strategy.md": "2e91be8fc2ddaca03e28b98df5811eed554361e76fe0570864d01f4c5455157a",
+    "results/analytic_source_storage/source_imaginary_quotient_controls_2048_attempt01/candidate_alpha_2048.json.gz": "fd7f0efd93f1440d056f1fcb93465ca05f3c24974b7ab2ff24192a46b9b206b3",
+    "results/analytic_source_storage/source_imaginary_quotient_controls_2048_attempt01/corrected_alpha_2048.json.gz": "5e5f97e7f8a76fd81763ca753a974e1fd8da973553f949dd32c1571b57324d80",
+    "results/analytic_source_storage/source_imaginary_quotient_controls_2048_attempt01/quotient_controls_2048.json.gz": "c5fe35773890521862d700500bad4161ac765277dbde89ce96108c5d21955c4a",
+    "results/analytic_source_storage/source_imaginary_quotient_controls_2048_attempt01/DEV_weights_2048.json.gz": "02845768e790a42ef4dac657d618136e20cbcee907ccc6178374458accdfefbb"
+  },
+  "local_link_check": {
+    "count": 122,
+    "missing": []
+  },
+  "scope": "Source S-wave supplement, exact quotient proof, actual control audit and tests. Full remaining matrix/rank still pending at this checkpoint."
+}

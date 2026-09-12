@@ -1,0 +1,260 @@
+"""Original finite joint constraints and residual-supported dual certificates.
+
+A fixed-amplitude Farkas bound excludes only that amplitude's current fiber.
+All PSD repairs are independently checked on the repaired matrix with Arb.
+"""
+from flint import arb, acb, arb_mat, ctx
+import numpy as np
+
+def verify_scattering_layout(H,kappa,M,L):
+    """Check the exact free-column identities used to eliminate dual residuals."""
+    n=len(kappa);free=1+2*M;p=free+M*M+M*(M+1)//2;j=np.arange(M)
+    if H.shape!=(2*n+11,p) or n<3*M*L or not np.isfinite(H).all() or any(not k.is_finite() or not k>0 for k in kappa):
+        raise ValueError('Finite complete native scattering layout required')
+    expected=np.zeros((2*M,free));expected[j,1+j]=1.5;expected[j,1+M+j]=1;expected[M+j,1+M+j]=1
+    rows=np.r_[n+j*3*L,n+j*3*L+2*L]
+    if not np.array_equal(H[rows,:free],expected) or H[(M//2)*3*L,0]==0:
+        raise ValueError('Exact native imaginary/free-column identities required for this certificate')
+
+def affine_norm_support(K,d,r,total=2):
+    """Bound r.v if sum d_j |1+(K+iI)v|² <= total, d>0."""
+    from flint import arb_mat
+    M=len(d);D=arb_mat(M,M)
+    for j in range(M):D[j,j]=d[j]
+    v=arb_mat(M,1,r);C=K.transpose()*D*K+D
+    return (arb(total).sqrt()+sum(d,arb(0)).sqrt())*((v.transpose()*C.solve(v))[0,0].upper()).sqrt()
+
+
+def joint_audit(H,kap,current,point,M,L,bound,epsilon,direction,duals=None,bits=384,chiral_norm='separate-l2',objective=None,fixed_amplitude=False,analytic_preparation=None):
+    from .imaginary import support_outer
+    from .kernels import density_labels
+    p=len(density_labels(M));n=len(kap);a=current['arrays'];z=np.asarray(point,float).copy()
+    if z.shape!=(p+4*M,):raise ValueError('Complete C_flat and four current vectors required')
+    if H.shape!=(2*n+11,p) or current['metadata'].get('source_physical_rows',n)!=n:raise ValueError('Complete matching scattering metadata required before extracting current rows')
+    with ctx.workprec(bits):
+        from .endpoints import complete_imf,endpoint_matrix,endpoint_residual
+        endpoint_order=current['metadata'].get('ff_endpoint_order',0)
+        A=lambda v:v if isinstance(v,arb) else arb(float(v))
+        matrix=lambda x:arb_mat([[A(v) for v in row] for row in x])
+        dot=lambda x,y:sum((v*w for v,w in zip(x,y)),arb(0))
+        def minors(G):
+            return [G[i,i] for i in range(3)]+[G[i,i]*G[j,j]-G[i,j]**2 for i in range(3) for j in range(i)]+[G.det()]
+        K=matrix(a['hilbert_kernel']);ids=np.asarray(a['native_scattering_indices']).ravel()
+        rows=matrix(np.asarray(H)[np.r_[ids,n+ids]])
+        W=matrix(current['matrices']['moment_linear'][:,p+2*M:].toarray());targets=list(map(A,a['moment_targets_raw']));errors=list(map(A,a['moment_errors_raw']))
+        high=list(map(int,a['high_energy_indices']));caps=list(map(A,a['ff_caps_squared']));k=list(map(A,np.asarray(a['k']).ravel()))
+        if analytic_preparation is not None:
+            if not fixed_amplitude:raise ValueError('Analytic dual replay currently applies to a fixed amplitude only')
+            if read_json(Path(analytic_preparation)/'report.json')['amplitude_model']['prescription']!='analytic-cardinal':raise ValueError('Analytic preparation required')
+            from .operators import midpoint_grid
+            from .kernels import pv_matrix
+            from .model import current_kinematic_squares
+            from . import UVConfig
+            from dataclasses import asdict
+            if current['metadata']['uv']['config']!=asdict(UVConfig()):raise ValueError('Frozen printed/raw/hard UV inputs required')
+            with np.load(Path(analytic_preparation)/'amplitude.npz') as saved:
+                if not np.array_equal(saved['rows'],H):raise ValueError('Analytic dual preparation mismatch')
+                E=saved['radius_upper'][np.r_[ids,n+ids]]
+                from .sampling import prepared_sampling
+                sample_energies,_=prepared_sampling(saved,M,L)
+            if not np.isfinite(E).all() or np.any(E<0):raise ValueError('Finite outward row radii required')
+            rows=arb_mat([[arb(float(v),float(e)) for v,e in zip(h,r)] for h,r in zip(H[np.r_[ids,n+ids]],E)])
+            ss,ww=midpoint_grid(M);K=pv_matrix(M);s0=(arb('1.2')/arb('.14'))**2
+            if high!=[j for j,s in enumerate(ss) if s>s0]:raise ValueError('Exact cutoff mask differs')
+            kap=[arb.pi()*(1-4/(ss[j//(3*L)] if j<3*M*L else arb(float(s)))).sqrt() for j,s in enumerate(sample_energies)]
+            k=[current_kinematic_squares(s)[ch].sqrt() for ch in range(2) for s in ss]
+            mq=(arb('.004')+arb('.0073'))/(2*arb('.14'));caps=[2*mq**2*arb('.00006'),arb('.00003')]
+            powers=(0,1,-1,0);W=arb_mat(4,2*M)
+            for t,power in enumerate(powers):
+                for j,s in enumerate(ss):
+                    if s<=s0:W[t,(t//2)*M+j]=arb.pi()*ww[j]*s**power
+            targets=[arb('3.09e-8')*(arb('27.38')/2+arb('.61')),arb('3.09e-8')*arb('27.38')/3,
+                arb('4.34e-6')*arb('13.26'),arb('4.34e-6')*(arb('13.26')/2-arb('.41'))]
+            targets=[v*s0**(a+2) for v,a in zip(targets,powers)];errors=[arb('.002')]*4
+        f=rows*arb_mat(p,1,[A(v) for v in z[:p]])
+        if endpoint_order:
+            from .kernels import pv_matrix
+            K=pv_matrix(M)
+        v=[v for ch in range(2) for v in complete_imf(list(map(A,z[p+ch*M:p+(ch+1)*M])),bool(endpoint_order),endpoint_order or 1)]
+        if endpoint_order:z[p:p+2*M]=list(map(float,v))
+        rho=list(map(A,z[p+2*M:]));re=[];im=[];rb=[];vb=[];lifts=[];grams=[]
+        r2=arb(2).sqrt()
+        for q,index in enumerate(ids):
+            ch,j=divmod(q,M);fr=1+dot([K[j,b] for b in range(M)],v[ch*M:(ch+1)*M]);fi=v[q]
+            re.append(k[q]*fr);im.append(k[q]*fi);bkap=A(kap[index]);sr=1-bkap*f[2*M+q,0];si=bkap*f[q,0]
+            delta=bkap*(2*f[2*M+q,0]-bkap*(f[q,0]**2+f[2*M+q,0]**2))
+            limits=[((targets[t]+errors[t])/W[t,q]).upper() for t in range(4) if W[t,q]>0]
+            rb.append(min(limits,key=float) if limits else None)
+            if rb[-1] is not None and rb[-1]<0:rb[-1]=arb(0)  # Weaker nonnegative residual box; original FESR is unchanged.
+            limits=[] if rb[-1] is None else [rb[-1].sqrt()/k[q]]
+            if j in high:limits.append(caps[ch].sqrt()/k[q])
+            if not limits:raise ValueError('Every ImF variable needs a PSD/FESR or high-FF bound')
+            vb.append(min((t.upper() for t in limits),key=float))
+            if rb[-1] is None and delta>0:
+                floor=2*(re[-1]**2+im[-1]**2-sr*(re[-1]**2-im[-1]**2)-2*si*re[-1]*im[-1])/delta
+                before=z[p+2*M+q];z[p+2*M+q]=max(before,np.nextafter(float(floor.upper())*(1+1e-10)+1e-30,np.inf))
+                rho[q]=A(z[p+2*M+q]);lifts.append(dict(channel=ch,node=j,before=float(before),after=float(z[p+2*M+q])))
+            grams.append(arb_mat([[1+sr,si,r2*re[-1]],[si,1-sr,r2*im[-1]],[r2*re[-1],r2*im[-1],rho[q]]]))
+        moments=(W*arb_mat(2*M,1,rho)).entries();mm=[errors[j]-abs(moments[j]-targets[j]) for j in range(4)]
+        gm=[minors(G) for G in grams];fm=[caps[ch]-re[ch*M+j]**2-im[ch*M+j]**2 for ch in range(2) for j in high]
+        d={} if duals is None else duals
+        kr=d.get('kR',np.zeros(n));ki=d.get('kI',np.zeros(n));yy=d.get('y',np.zeros(8))
+        m=list(map(A,d.get('moment',np.zeros(4))));h=np.asarray(d.get('ff',np.zeros((2,len(high),2))),float)
+        Z=np.asarray(d.get('gram',np.zeros((2,M,3,3))),float).reshape(2*M,3,3)
+        scales=np.asarray(d.get('gram_congruence',np.ones((2,M,3))),float).reshape(2*M,3)
+        amp=[arb(0)]*(4*M);rv=[arb(0)]*(2*M);rr=[arb(0)]*(2*M);c0=arb(0);shifts=[];fixed=[]
+        for q,index in enumerate(ids):
+            ch,j=divmod(q,M);B=(Z[q]+Z[q].T)/2;shift=0.
+            e=np.maximum(abs(B.diagonal()),np.max(abs(B))*1e-30+1e-300);C=B/np.sqrt(e[:,None])/np.sqrt(e)
+            for attempt in range(32):
+                G=matrix(B+np.diag(shift*e))
+                if all(t>=0 for t in minors(G)):break
+                scale=max(abs(C).ravel())
+                shift=max(2*shift,np.nextafter(max(0.,-np.linalg.eigvalsh(C)[0])+8*np.finfo(float).eps*scale,np.inf))
+            else:raise ArithmeticError('Gram dual PSD repair unresolved')
+            shifts.append(float(max(shift*e)));fixed.append((B+np.diag(shift*e)).tolist())
+            Y=arb_mat(3,3,[G[r,s]*A(scales[q,r])*A(scales[q,s]) for r in range(3) for s in range(3)])
+            if rb[q] is None:
+                for r in range(3):Y[r,2]=Y[2,r]=arb(0)
+            amp[q]=2*A(kap[index])*Y[0,1];amp[2*M+q]=A(kap[index])*(Y[1,1]-Y[0,0])
+            c0+=2*Y[0,0]+2*r2*k[q]*Y[0,2];rr[q]=Y[2,2]
+            for b in range(M):rv[ch*M+b]+=2*r2*k[q]*Y[0,2]*K[j,b]
+            rv[q]+=2*r2*k[q]*Y[1,2]
+        for q in range(2*M):rr[q]-=sum((m[t]*W[t,q] for t in range(4)),arb(0))
+        c0+=sum((m[t]*targets[t]+abs(m[t])*errors[t] for t in range(4)),arb(0))
+        for ch in range(2):
+            for pos,j in enumerate(high):
+                q=ch*M+j;hr,hi=map(A,h[ch,pos]);c0+=caps[ch].sqrt()*(hr*hr+hi*hi).sqrt()-hr*k[q]
+                for b in range(M):rv[ch*M+b]-=hr*k[q]*K[j,b]
+                rv[q]-=hi*k[q]
+        if endpoint_order:
+            E=endpoint_matrix(M,endpoint_order,ctx.prec)
+            for ch in range(2):
+                rv[ch*M:(ch+1)*M],constant=endpoint_residual(rv[ch*M:(ch+1)*M],E);c0+=constant
+        bounds=[sum((abs(rv[q]).upper()*vb[q] for q in range(ch*M,(ch+1)*M)),arb(0)) for ch in range(2)]
+        for ch,t in enumerate((0,3)):
+            U=targets[t]+errors[t]
+            if U>0:
+                metric_weights=[k[ch*M+j]**2*(W[t,ch*M+j]/U if W[t,ch*M+j]>0 else 1/(M*caps[ch])) for j in range(M)]
+                bounds[ch]=min(bounds[ch],affine_norm_support(K,metric_weights,rv[ch*M:(ch+1)*M]),key=lambda v:float(v.upper()))
+        rest=sum(bounds,arb(0))
+        for r,b in zip(rr,rb):
+            if b is None:
+                if not r<=0:raise ArithmeticError('Positive residual on unbounded current spectrum')
+            else:rest+=max(arb(0),r.upper())*b
+        extra=(arb_mat(1,4*M,amp)*rows,c0+rest)
+        asymptotic=[]
+        if current['metadata'].get('asymptotic_unitarity'):
+            from .endpoints import asymptotic_audit
+            residual,support,asymptotic=asymptotic_audit(z[:p],M,d);extra=(extra[0]+residual,extra[1]+support)
+        if fixed_amplitude:
+            if any(direction) or objective is not None:raise ValueError('Fixed-amplitude certificate requires zero objective')
+            extra=(arb_mat(1,p),extra[1]+(extra[0]*arb_mat(p,1,list(map(A,z[:p]))))[0,0]);kr=ki=np.zeros(n);yy=np.zeros(8)
+        audit=support_outer(H,kap,kr,ki,yy,direction,bound,epsilon,bits,coefficients=z[:p],waves_per_isospin=L,joint=extra,chiral_norm=chiral_norm,objective=objective,infinity_zero=bool(endpoint_order))
+        amp_passed=audit['primal_feasible'] and all(t>=0 for t in asymptotic);passed=amp_passed and all(t>=0 for group in gm for t in group) and all(t>=0 for t in mm+fm)
+        audit.update(fixed_amplitude=bool(fixed_amplitude),primal_feasible=bool(passed),joint_primal_feasible=bool(passed),amplitude_primal_feasible=amp_passed,
+            asymptotic_margin_enclosures=[t.str(25) for t in asymptotic],
+            lower=audit['lower'] if passed else None,gram_principal_minor_enclosures=[[t.str(20) for t in group] for group in gm],
+            moment_margin_enclosures=[t.str(20) for t in mm],ff_margin_enclosures=[t.str(20) for t in fm],
+            moments=[t.str(20) for t in moments],restored_high_spectra=lifts,gram_dual_diagonal_shifts=shifts,
+            repaired_normalized_gram_dual=fixed,current_residual_support=float(rest.upper()),joint_constant_enclosure=c0.str(25),
+            current_variable_bounds=dict(ImF=[float(t) for t in vb],rho=[None if t is None else float(t) for t in rb]),
+            source=current['metadata']['source'],scope='Finite H/K/k/FESR, all original constraints; no continuum claim')
+        return z,audit
+
+
+
+def model_signature(r):
+    from .run import _path
+    p=r['parameters'];sig={k:r[k] for k in ('M','L','density_limit','infinity','unitarity_scope','prescription')}
+    sig.update(chiral_norm=r.get('chiral_norm','separate-l2'),preparation=str(_path(p['preparation'])),current_preparation=str(_path(p['current_preparation'])),
+        chiral_tolerance=r['chiral_tolerance'],uv_config=r['current_model']['uv']['config'],
+        global_high_spin_enforced=False,tail_conditions_applied=bool(r['current_model'].get('asymptotic_unitarity')),additional_constraints=None,
+        sampling_nodes=r['M'],scattering_samples=r['scattering_samples'])
+    if r['current_model'].get('ff_endpoint_order'):sig.update(ff_endpoint_order=r['current_model']['ff_endpoint_order'])
+    if r['scattering_samples']>3*r['M']*r['L']:
+        with np.load(Path(sig['preparation'])/'amplitude.npz') as saved:sig['sampling_nodes']=len(np.unique(saved['sample_energies']))
+        sig['additional_constraints']=dict(kind='explicit-analytic-samples',preparation=sig['preparation'])
+    return sig
+
+from pathlib import Path
+from . import read_json, write_json, digest
+
+def analytic_joint_audit(args,progress):
+    from .sampling import analytic_joint_audit as audit
+    return audit(args,progress)
+
+
+def analytic_scattering_audit(args,progress):
+    """Enclose every retained constraint of one complete IR amplitude."""
+    from . import read_cflat
+    from .operators import midpoint_grid
+    from .model import chiral_slices,unitarity_margin
+    from .imaginary import density_fourth_power
+    ctx.prec=args.bits;meta=read_json(args.preparation/'report.json')['amplitude_model']
+    if meta['prescription']!='analytic-cardinal':raise ValueError('Analytic preparation required')
+    M,L=meta['M'],meta['L'];c,_=read_cflat(args.coefficients,M,prescription='analytic-cardinal')
+    prior=read_json(args.coefficients.parent/'report.json')
+    if prior['mode'] not in ('pure','chiral') or Path(prior['parameters']['preparation']).resolve()!=args.preparation.resolve():
+        raise ValueError('Matching IR support preparation required')
+    if prior.get('infinity','free')!=args.infinity or bool(prior.get('tail_conditions_applied'))!=bool(args.asymptotic_unitarity):raise ValueError('IR endpoint/tail audit identity differs')
+    keys=('density_limit',)+(('chiral_norm','chiral_tolerance') if prior['mode']=='chiral' else ())
+    if any(prior[k]!=getattr(args,k) for k in keys):
+        raise ValueError('Audit constraints differ from IR candidate')
+    from .sampling import prepared_sampling
+    with np.load(args.preparation/'amplitude.npz') as data:H=data['rows'];E=data['radius_upper'];samples,_=prepared_sampling(data,M,L);n=len(samples)
+    if H.shape!=(2*n+11,len(c)) or E.shape!=H.shape or not np.isfinite(E).all() or np.any(E<0):
+        raise ValueError('Complete analytic coefficient bounds required')
+    cc=arb_mat(len(c),1,list(map(arb,c)));values=[]
+    for lo in range(0,len(H),64):
+        B=arb_mat([[arb(float(v),float(e)) for v,e in zip(h,r)] for h,r in zip(H[lo:lo+64],E[lo:lo+64])])
+        values.extend((B*cc).entries());progress(stage='analytic_IR_rows',completed=min(lo+64,len(H)),total=len(H))
+    ss,_=midpoint_grid(M)
+    margins=[unitarity_margin(acb(values[j],values[n+j]),ss[j//(3*L)] if j<3*M*L else arb(float(s))) for j,s in enumerate(samples)]
+    chi=[arb(str(args.chiral_tolerance))**2-sum((values[2*n+i]**2 for i in range(g.start,g.stop)),arb(0))
+        for g in chiral_slices(args.chiral_norm)] if prior['mode']=='chiral' else []
+    density=arb(str(args.density_limit))**4-density_fourth_power(cc.entries(),M)
+    tail=[];zero=args.infinity=='zero'
+    if args.asymptotic_unitarity:
+        from .endpoints import asymptotic_audit
+        _,_,tail=asymptotic_audit(c,M,{})
+    passed=all(v>=0 for v in margins+chi+[density]+tail) and (not zero or c[0]==0)
+    result=dict(status='analytic_IR_primal_certified' if passed else 'analytic_IR_primal_unresolved',analytic_primal_feasible=passed,
+        counts=dict(scattering=n,chiral=len(chi),density=1,endpoint_equalities=int(zero),asymptotic_inequalities=len(tail)),asymptotic_margin_enclosures=[v.str(25) for v in tail],minimum_scattering_margin=min(margins).str(25),
+        chiral_margins=[v.str(25) for v in chi],chiral_margin_lower=[v.lower().str(25) for v in chi],density_margin=density.str(25),targets=[v.str(25) for v in values[-2:]],
+        unresolved_scattering=[j for j,v in enumerate(margins) if not v>=0],amplitude_model=meta,
+        coefficients_modified=False,optimization_performed=False,
+        scope='Analytic coefficient enclosures and exact native kinematics; retained constraints only',
+        support_scope='Original support bound remains a separate saved-float64-H statement',
+        inputs={str(p.resolve()):dict(sha256=digest(p)) for p in (args.preparation/'report.json',args.preparation/'amplitude.npz',args.coefficients)})
+    write_json(args.output/'source_audit.json',result)
+    return result
+
+
+def analytic_fiber_audit(args,progress):
+    """Replay a fixed-C Farkas witness with analytic rows and exact UV inputs."""
+    from . import read_cflat,current_data
+    prior=read_json(args.coefficients.parent/'report.json');M,L=prior['M'],prior['L']
+    if not prior.get('fixed_amplitude') or any(prior['support_direction']):raise ValueError('Fixed-C zero-objective witness required')
+    if any(prior[k]!=getattr(args,k) for k in ('chiral_norm','density_limit','chiral_tolerance')):raise ValueError('Different IR inputs')
+    for key in ('preparation','current_preparation'):
+        if Path(prior['parameters'][key]).resolve()!=getattr(args,key).resolve():raise ValueError('Different fixed-C operators')
+    c,_=read_cflat(args.coefficients,M,prescription='analytic-cardinal');current=current_data(args.current_preparation,args.preparation)
+    from .endpoints import validate_endpoint_model
+    from .sampling import prepared_sampling
+    validate_endpoint_model(args,current)
+    with np.load(args.preparation/'amplitude.npz') as data:H=data['rows'];ss,_=prepared_sampling(data,M,L)
+    with np.load(args.coefficients.parent/'joint.npz') as data:
+        point=data['point'];duals={k:data[k] for k in ('kR','kI','y','moment','ff','gram','gram_congruence','asymptotic_kR','asymptotic_kI') if k in data}
+    if not np.array_equal(c,point[:len(c)]):raise ValueError('Complete amplitude identity mismatch')
+    kap=np.pi*np.sqrt(1-4/ss)
+    _,audit=joint_audit(H,kap,current,point,M,L,args.density_limit,args.chiral_tolerance,[0,0],duals,args.bits,
+        chiral_norm=args.chiral_norm,fixed_amplitude=True,analytic_preparation=args.preparation)
+    audit['scope']='Fixed-C analytic/UV bound; finite-H amplitude diagnostics are separate'
+    result=dict(status='analytic_fixed_amplitude_infeasible_certified' if audit['upper']<0 else 'analytic_fixed_amplitude_inconclusive',
+        analytic_fixed_amplitude_infeasible=audit['upper']<0,upper=audit['upper'],enclosure=audit['enclosure'],
+        certificate=audit,scope='Only this complete C; analytic row enclosures, exact K/kinematics and printed/raw/hard UV inputs',
+        optimization_performed=False,full_model_infeasibility_claimed=False,
+        inputs={str(p.resolve()):dict(sha256=digest(p)) for p in (args.preparation/'amplitude.npz',args.coefficients,args.coefficients.parent/'joint.npz')})
+    write_json(args.output/'source_audit.json',result)
+    return result

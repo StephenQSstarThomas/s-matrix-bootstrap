@@ -1,0 +1,148 @@
+{
+  "task": "Second-edition formatting only; current source texts unmodified",
+  "version": 2,
+  "input_files": {
+    "DERIVATION_ZH.md": "24180a41b18d1f58bc3ddf85d429d63df14b9fe652a652c0fad7c8153fb8e8bb",
+    "HELD_INTER_NODE_ISSUE_ZH.md": "ccc8057043fb73c85473a4856abd253d3c019873fddfc99ae06f8afea5a59a76"
+  },
+  "v1_preserved": {
+    "THEORY_AND_HELD_ISSUES_ZH.pdf": "4e5bb2ec012e1945c51eb717d56f6ab0208e5ab28432c6f69893da4d2daa93df",
+    "THEORY_AND_HELD_ISSUES_ZH.manifest.json": "93ba26f807e9eb0ae979f114967897fcde71c5bf0faea8809863814839f45872"
+  },
+  "commands": [
+    [
+      "/tmp/he_report_pandoc/pandoc",
+      "THEORY_AND_HELD_ISSUES_ZH_v2.md",
+      "--from",
+      "markdown+tex_math_single_backslash",
+      "--standalone",
+      "--to",
+      "latex",
+      "--toc",
+      "--toc-depth=2",
+      "--include-in-header",
+      "THEORY_AND_HELD_ISSUES_ZH_v2.header.tex",
+      "-V",
+      "mainfont=DejaVu Serif",
+      "-V",
+      "sansfont=DejaVu Sans",
+      "-V",
+      "monofont=DejaVu Sans Mono",
+      "-V",
+      "papersize=a4",
+      "-V",
+      "fontsize=11pt",
+      "-V",
+      "geometry:margin=20mm",
+      "-V",
+      "colorlinks=true",
+      "-o",
+      "THEORY_AND_HELD_ISSUES_ZH_v2.tex"
+    ],
+    [
+      "/home/shiqiu/.local/bin/tectonic",
+      "--keep-logs",
+      "--keep-intermediates",
+      "THEORY_AND_HELD_ISSUES_ZH_v2.tex"
+    ],
+    [
+      "pdfinfo",
+      "THEORY_AND_HELD_ISSUES_ZH_v2.pdf"
+    ],
+    [
+      "pdftotext",
+      "-layout",
+      "THEORY_AND_HELD_ISSUES_ZH_v2.pdf",
+      "THEORY_AND_HELD_ISSUES_ZH_v2.extracted.txt"
+    ],
+    [
+      "pdftoppm",
+      "-r",
+      "85",
+      "-png",
+      "THEORY_AND_HELD_ISSUES_ZH_v2.pdf",
+      "/tmp/theory_and_held_v2_qa/page"
+    ]
+  ],
+  "working_directory": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910",
+  "versions": {
+    "pandoc": "3.9",
+    "tectonic": "0.15.0"
+  },
+  "font_families": [
+    "DejaVu Serif",
+    "DejaVu Sans",
+    "DejaVu Sans Mono",
+    "Droid Sans Fallback"
+  ],
+  "formatting_only_changes": [
+    "Add title/contents and page break between the two documents",
+    "Split three long existing equations using aligned without changing the mathematical expressions",
+    "Use the v1 font mappings and Chinese contents heading"
+  ],
+  "outputs": {
+    "THEORY_AND_HELD_ISSUES_ZH_v2.pdf": {
+      "sha256": "f8f3097d31068d4eb97cc229e6f8c9ca6ef78a6e244f4ef26d9db0357f081aa4",
+      "bytes": 199356
+    },
+    "THEORY_AND_HELD_ISSUES_ZH_v2.md": {
+      "sha256": "1117c268ddf08df7f28b267f72687020c1128383db67e5fb84ab4369219574ab",
+      "bytes": 29761
+    },
+    "THEORY_AND_HELD_ISSUES_ZH_v2.tex": {
+      "sha256": "1cf54c04cac9563de00a6f34712cf6eb7c31eb6fe2a52815716d096c19ef0248",
+      "bytes": 36372
+    },
+    "THEORY_AND_HELD_ISSUES_ZH_v2.header.tex": {
+      "sha256": "36ea443c56577f743a6fed1f26ff42886eba0827d00f5c499dd2ce4312c3fe7f",
+      "bytes": 373
+    },
+    "THEORY_AND_HELD_ISSUES_ZH_v2.compile.log": {
+      "sha256": "21f75230f927d38805a669f25829f6a3a20a483d364ef20c705096d0b1163f48",
+      "bytes": 4093
+    },
+    "THEORY_AND_HELD_ISSUES_ZH_v2.pandoc.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "THEORY_AND_HELD_ISSUES_ZH_v2.log": {
+      "sha256": "ecfc478c587ad80e2b95114e7aaa1e16ebf0163b6116c20930752c35a79ebafc",
+      "bytes": 58834
+    },
+    "THEORY_AND_HELD_ISSUES_ZH_v2.pdfinfo.txt": {
+      "sha256": "3bf8495c73170c2900e9e5d3aded037a6e36d1f9280b4ef9649d17295cc9af33",
+      "bytes": 503
+    },
+    "THEORY_AND_HELD_ISSUES_ZH_v2.extracted.txt": {
+      "sha256": "4e4f159898f1a3a13f4584000cfdd4b75cdfefafb9142b77f0cd44d62bbe8daa",
+      "bytes": 36379
+    }
+  },
+  "checks": {
+    "pages": 10,
+    "missing_characters": 0,
+    "overfull_boxes": 0,
+    "undefined_controls": 0,
+    "visual_pages_checked": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "new_sections_12_13_and_fixed_x_premise_checked": true,
+    "Chinese_equations_tables_readable": true,
+    "toc_page_numbers_visually_checked": true,
+    "current_input_files_unchanged": true,
+    "v1_outputs_untouched": true
+  },
+  "nonfatal_TeX_notes": [
+    "Original \\over fraction syntax raises an amsmath notice",
+    "LaTeX label-rerun notice retained; displayed contents page numbers checked"
+  ]
+}

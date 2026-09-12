@@ -1,0 +1,221 @@
+{
+  "command": "evaluate",
+  "status": "evaluated",
+  "artifacts": {},
+  "inputs": {
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/tail_limit_control_prepare/report.json": {
+      "sha256": "5e028edd89a9be5cc585e90f3ad8fdf9bbef01c6f885df2937a0c1ed68f7ef9d"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/tail_limit_control_prepare/amplitude.npz": {
+      "sha256": "65712e032beb7c7ab15121ed19c055aad5a821b925aefe3dcdf3be4dc972af97"
+    }
+  },
+  "parameters": {
+    "command": "evaluate",
+    "comparison_manifest": null,
+    "region_summary": "results/runs/stage_B_delivery_20260907/regions/regions.json",
+    "primary_waves": false,
+    "profile_runs": [],
+    "profile_kind": "subthreshold",
+    "phase_reference": null,
+    "baseline_profile": null,
+    "selection_reference": null,
+    "support_runs": [],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/tail_limit_control_evaluate",
+    "density_limit": null,
+    "preparation": "results/runs/physical_consistency_20260911/tail_limit_control_prepare",
+    "prescription": "analytic-cardinal",
+    "source_registry": null,
+    "solver": "barrier",
+    "unitarity_scope": "sampled",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "current_preparation": null,
+    "joint_feasibility": false,
+    "fixed_amplitude": false,
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 3,
+    "processes": 1,
+    "waves": 2,
+    "bits": 512,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "free",
+    "asymptotic_zeros": false,
+    "asymptotic_unitarity": false,
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": "results/runs/physical_consistency_20260911/tail_limit_control_input/coefficients.json",
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      1000000.0,
+      100000000.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "chiral_norm": "separate-l2",
+    "chiral_barrier_weight": null,
+    "objective": "projection",
+    "resume_objective": false,
+    "require_center": false,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "fixed_x": null,
+    "ray": false,
+    "seconds": 180.0,
+    "start_mu_provenance": {
+      "kind": "new_problem_default"
+    }
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "1"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Finite model; regions/phases require verification.",
+  "amplitude_model": {
+    "prescription": "analytic-cardinal",
+    "M": 3,
+    "L": 2,
+    "bits": 512,
+    "coordinate_system": "unsubtracted analytic-cardinal C_flat",
+    "coefficient_count": 22,
+    "physical_samples": 18,
+    "nu0": 0,
+    "nyquist_retained": true,
+    "infinity_equality_imposed": false,
+    "density_limit_imposed": false,
+    "quadrature_order_per_panel": null,
+    "arithmetic": "Arb",
+    "integral_enclosures": true,
+    "authors_implementation_recovered": false,
+    "analytic_function_family_defined": true,
+    "angular_projection": "Authenticated rows where available; otherwise Arb Gauss-Legendre with ellipse remainder",
+    "spectral_quadrature": "Exact Cauchy transform of finite sine density",
+    "physical_evaluation": "One analytic family at positive real energies",
+    "analyticity_status": "One conformal polynomial from all M sine-cardinal density modes",
+    "infinity_row_meaning": "Unsubtracted constant; recorded but no endpoint equality imposed",
+    "angular_order": 64,
+    "source_registry": null,
+    "source_registry_sha256": null,
+    "evaluation_source": "Prepared analytic coefficient enclosures"
+  },
+  "unitarity": {
+    "criterion": "Eq.(2.12): 1-|S|^2 = kappa*(2 Im f-kappa*|f|^2) >= 0",
+    "samples_checked": 12,
+    "status": "sampled_passed",
+    "margin_intervals": [
+      [
+        [
+          8.541662483372883e-06,
+          8.541662483372886e-06
+        ],
+        [
+          1.678228869476819e-07,
+          1.6782288694768194e-07
+        ],
+        [
+          3.164013332483865e-08,
+          3.164013332483866e-08
+        ],
+        [
+          1.3103056489885741e-08,
+          1.3103056489885745e-08
+        ],
+        [
+          3.358589588758773e-06,
+          3.3585895887587736e-06
+        ],
+        [
+          5.594247470209982e-08,
+          5.594247470209983e-08
+        ]
+      ],
+      [
+        [
+          7.758079951121503e-07,
+          7.758079951121505e-07
+        ],
+        [
+          1.75410913203531e-09,
+          1.7541091320353105e-09
+        ],
+        [
+          3.2571292143991303e-10,
+          3.2571292143991314e-10
+        ],
+        [
+          1.388769085916567e-10,
+          1.3887690859165674e-10
+        ],
+        [
+          3.097357894311865e-07,
+          3.097357894311866e-07
+        ],
+        [
+          5.847191636135316e-10,
+          5.847191636135318e-10
+        ]
+      ]
+    ],
+    "minimum_margin": 1.3887690859165672e-10,
+    "scope": "Declared sampled pairs; analytic source enclosures included",
+    "continuum_certified": false,
+    "omitted_spins_checked": false,
+    "high_energy_tail_certified": false,
+    "analytic_tail": {
+      "status": "not_applicable"
+    },
+    "high_spin_necessary": {
+      "status": "not_applicable",
+      "violations": []
+    }
+  },
+  "elapsed_seconds": 0.31152305006980896,
+  "prescription": "analytic-cardinal",
+  "core_sources": {
+    "__init__.py": "9e65f9de80eaceb49fe41feb6d29c8335cafa24f7fa588f46d1b63cd66ff6cbb",
+    "analysis.py": "accca416d41e7de5f1f306c9b3200c2787ce73f00ceb9e73cee1cf90aa9f0ef8",
+    "analytic.py": "f7b6ffb9bd6b520f00dec8653ff0864da6fe46eaa0ed5814bef7bd3c5c22a727",
+    "basis.py": "5eda7c08a5cea679958b47980c9972ada51358f6352698d8db10db91bd5abec3",
+    "certificates.py": "7471d68841501b3af52d7cc34cd9c5971bf2c4dd5d7c5c9399ba644c54ecca66",
+    "endpoints.py": "6b4dacd438e750ca61f285744cc0a152d16e3090581e22c77962f23b867005db",
+    "gauge.py": "fdc94ef2e59e4bb24ca86b4ce00ff965733b6961ad1c0cf9add96a091a5d5ff7",
+    "imaginary.py": "fbf4ac702058f5c14733b572c7f3091db9cb65209ca2638968c3578f00a9b488",
+    "io.py": "f368531ec06a54b1e65a76d39de402cbeb205873ae7964246c7cebc643a3d779",
+    "kernels.py": "790ebcdba291c80f17c4909a31ddf77ad6373748c2af41c7ce1a0c28b309172a",
+    "linear.py": "ee754804d8e175dfc1940108c2c599d936a70c38f3ee04f0033b7008b1a92e75",
+    "model.py": "749d522b66404da47357cff2ab93f923f3d8d1024cbdfb210f5c84a74023b8a1",
+    "operators.py": "5850eb2add0c8a8638b7b92bf4868b4d0a9015e74be3737a0b9f4006ae1a1c0c",
+    "quadrature.py": "7ec2a6b9336cd6035db06fdf8a028368ccd22e4d106cc5e16900c878b8d40fad",
+    "quotient.py": "3ec58dc689af80cf12b564c74e40cd91af2189cda1789686694cc9691ef8c16d",
+    "run.py": "5c54a004cd77920e946f57904e55e3003593ee6af047240eb2f212561413753a",
+    "sampling.py": "311d7536c2f75b772afc1597951902ea608e15fefd90483f2337445a370ab188",
+    "scattering.py": "a7663475183e507a4b8b904a832803fa643703ce7e0d98422c3ff0278e93d7f5",
+    "spectra.py": "07489253c120fe925489a5c4560980a30128012ab61972c04aa1ee3adfd528a4"
+  },
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 180.0,
+  "supervisor_seconds": 0.969372073886916
+}

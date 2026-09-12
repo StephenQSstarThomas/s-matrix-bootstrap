@@ -1,0 +1,21 @@
+{
+  "reason": "Fig.8 upper/lower shrinkage is part of the original rationale for upper-boundary representatives. Current replay proves upper shrink but lower interval is too wide.",
+  "sequence": "After same-PV five-configuration F, one fixed-x lower support; no scan",
+  "fixed_x": 0.07332139057293466,
+  "direction": [
+    0,
+    -500
+  ],
+  "gap": 0.002,
+  "require_center": false,
+  "scope": "Geometry support only; this point will not enter phase comparisons",
+  "model": "Same M50/L10 PV H/current, separate .002, B377500, printed raw .002, hard-midpoint, free infinity",
+  "physical_inputs_changed": false,
+  "phase_data_used_for_selection": false,
+  "initializer": "First, largest-mu original-audited center of the same fixed-x upper-support path; no phase ranking",
+  "initializer_archive": "results/runs/physical_consistency_20260911/PV_UV_ref_support_01/center_path.npz",
+  "initializer_archive_sha256": "96e63162472f823ad54963f53da6d31c04b4ab814bf70ebc7a2d72734c482733",
+  "initializer_index": 0,
+  "initializer_mu": 0.0001,
+  "initializer_scope": "Data reuse only; zero-dual fresh audit before changing objective; no center/support label transferred to lower goal"
+}

@@ -1,0 +1,106 @@
+{
+  "scope": "Fixed existing amplitudes; diagnostic precision/selection checks, no optimization or model change",
+  "arithmetic": {
+    "bits": [
+      384,
+      768
+    ],
+    "exported_float_f_max_difference": 0.0,
+    "same_coefficients": true,
+    "scope": "Stability to saved float output precision; not a proof of384-bit physical accuracy"
+  },
+  "native_full": {
+    "nodes": 50,
+    "waves_per_isospin": 10,
+    "samples": 1500,
+    "status": "sampled_passed",
+    "minimum_margin": 5.970219385163588e-85,
+    "source": "full_native_768/evaluation.json"
+  },
+  "saved_operator_rounding": {
+    "maximum_complex_f_difference": 6.135357712678928e-11,
+    "energy": 4.171545146004663,
+    "wave": [
+      0,
+      0
+    ],
+    "scope": "Saved float64 H contraction versus768-bit PV kernel evaluation for this coefficient vector only"
+  },
+  "chiral": [
+    {
+      "epsilon": 0.006,
+      "fresh_kernel_norms": [
+        0.00599910248987017,
+        0.0007314130095550102
+      ]
+    },
+    {
+      "epsilon": 0.004,
+      "fresh_kernel_norms": [
+        0.003999746718850793,
+        0.0005091481827402769
+      ]
+    },
+    {
+      "epsilon": 0.002,
+      "fresh_kernel_norms": [
+        0.0019980394822011267,
+        0.00029015084570621055
+      ]
+    }
+  ],
+  "representative": {
+    "weights": [
+      0.7969425641325351,
+      0.20305743586746497
+    ],
+    "parent_coefficients": [
+      "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_parallel_003_20260907/coefficients.json",
+      "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_010_20260907/coefficients.json"
+    ],
+    "parent_targets": [
+      [
+        0.07591083375219798,
+        -0.004298756479816646
+      ],
+      [
+        0.06315856408932258,
+        -0.003412441508088698
+      ]
+    ],
+    "parent_phase_spread_max_degrees": [
+      25.707066728569174,
+      10.95784494966686,
+      3.6358160477056893
+    ],
+    "parent_eta_minima": [
+      [
+        0.9992929202764841,
+        0.9999168102063872,
+        0.9999727579132154
+      ],
+      [
+        0.9983425551777263,
+        0.9998782769356854,
+        0.9999696190606352
+      ]
+    ],
+    "mixture_eta_minima": [
+      0.9364840741027853,
+      0.9881466949772467,
+      0.9986697894199061
+    ],
+    "mixing_added_probability_max": [
+      0.12158963274393465,
+      0.023384089226507976,
+      0.0026028935713716212
+    ],
+    "mixing_identity_max_residual": 2.087457125557468e-10,
+    "wave_order": [
+      "S0",
+      "S2",
+      "P1"
+    ],
+    "scope": "Bracketing parents have different projected points; this is sensitivity, not a certified same-point phase error or uncertainty interval"
+  }
+}

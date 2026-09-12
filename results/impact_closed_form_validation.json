@@ -1,0 +1,943 @@
+{
+  "normalization": "b^2 exp(2b) J_m/(2pi)",
+  "comparisons": [
+    {
+      "b": 0.125,
+      "mode": 1,
+      "closed_form_enclosure": {
+        "lower_rational": "485787534528669274033763761003590627001752348413/2923003274661805836407369665432566039311865085952",
+        "upper_rational": "60723441816083659254220470125448828375219043557/365375409332725729550921208179070754913983135744",
+        "ball": "[0.1661946596980379154600514511380547565201584100 +/- 3.24e-47]",
+        "midpoint_approximate": 0.16619465969803793,
+        "radius_upper_approximate": 7.253613275585244e-48,
+        "relative_accuracy_bits": 153,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.16619465969803793,
+      "estimated_quadrature_error": 6.8611619960714105e-15,
+      "analytic_tail_bound_approximate": 1.9127403853814475e-43,
+      "absolute_difference": 0.0,
+      "difference_over_threshold_mode_limit": 0.0,
+      "relative_difference": 0.0
+    },
+    {
+      "b": 0.125,
+      "mode": 2,
+      "closed_form_enclosure": {
+        "lower_rational": "-633974484542095213079720580324890451620458896941/2923003274661805836407369665432566039311865085952",
+        "upper_rational": "-633974484542095213079720580324890451620458896775/2923003274661805836407369665432566039311865085952",
+        "ball": "[-0.2168914725610242921239525888560906037981237393 +/- 5.19e-47]",
+        "midpoint_approximate": -0.21689147256102428,
+        "radius_upper_approximate": 2.8229679448565465e-47,
+        "relative_accuracy_bits": 151,
+        "exact_zero": false
+      },
+      "independent_quadrature": -0.21689147256102428,
+      "estimated_quadrature_error": 1.267326188585101e-14,
+      "analytic_tail_bound_approximate": 1.9127403853814475e-43,
+      "absolute_difference": 0.0,
+      "difference_over_threshold_mode_limit": 0.0,
+      "relative_difference": 0.0
+    },
+    {
+      "b": 0.125,
+      "mode": 3,
+      "closed_form_enclosure": {
+        "lower_rational": "647963113902768217342470259905177298359818283079/2923003274661805836407369665432566039311865085952",
+        "upper_rational": "647963113902768217342470259905177298359818283441/2923003274661805836407369665432566039311865085952",
+        "ball": "[0.221677176867938385994760222560974281584530503 +/- 2.94e-46]",
+        "midpoint_approximate": 0.2216771768679384,
+        "radius_upper_approximate": 6.177819264420629e-47,
+        "relative_accuracy_bits": 150,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.22167717686793845,
+      "estimated_quadrature_error": 1.8039523417266154e-14,
+      "analytic_tail_bound_approximate": 1.9127403853814475e-43,
+      "absolute_difference": 5.551115123125783e-17,
+      "difference_over_threshold_mode_limit": 1.850371707708594e-17,
+      "relative_difference": 2.5041437289833385e-16
+    },
+    {
+      "b": 0.125,
+      "mode": 4,
+      "closed_form_enclosure": {
+        "lower_rational": "-1203553822780886803873717443503895858334737063505/5846006549323611672814739330865132078623730171904",
+        "upper_rational": "-1203553822780886803873717443503895858334737062239/5846006549323611672814739330865132078623730171904",
+        "ball": "[-0.205876235790419886992291830855995572522940811 +/- 1.30e-46]",
+        "midpoint_approximate": -0.2058762357904199,
+        "radius_upper_approximate": 1.0817737284007392e-46,
+        "relative_accuracy_bits": 149,
+        "exact_zero": false
+      },
+      "independent_quadrature": -0.2058762357904199,
+      "estimated_quadrature_error": 2.390674836046844e-14,
+      "analytic_tail_bound_approximate": 1.9127403853814475e-43,
+      "absolute_difference": 0.0,
+      "difference_over_threshold_mode_limit": 0.0,
+      "relative_difference": 0.0
+    },
+    {
+      "b": 0.125,
+      "mode": 5,
+      "closed_form_enclosure": {
+        "lower_rational": "529847993242366658794621934792488325263979726517/2923003274661805836407369665432566039311865085952",
+        "upper_rational": "529847993242366658794621934792488325263979727459/2923003274661805836407369665432566039311865085952",
+        "ball": "[0.181268354310574817356815774576550422259831792 +/- 4.79e-46]",
+        "midpoint_approximate": 0.1812683543105748,
+        "radius_upper_approximate": 1.611128283352095e-46,
+        "relative_accuracy_bits": 149,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.1812683543105748,
+      "estimated_quadrature_error": 4.247877636724649e-14,
+      "analytic_tail_bound_approximate": 1.9127403853814475e-43,
+      "absolute_difference": 0.0,
+      "difference_over_threshold_mode_limit": 0.0,
+      "relative_difference": 0.0
+    },
+    {
+      "b": 0.125,
+      "mode": 6,
+      "closed_form_enclosure": {
+        "lower_rational": "-899288040476650382018743448772006746943222942483/5846006549323611672814739330865132078623730171904",
+        "upper_rational": "-899288040476650382018743448772006746943222939949/5846006549323611672814739330865132078623730171904",
+        "ball": "[-0.153829461682813002369658735517954853640326661 +/- 6.29e-46]",
+        "midpoint_approximate": -0.153829461682813,
+        "radius_upper_approximate": 2.16573580248378e-46,
+        "relative_accuracy_bits": 148,
+        "exact_zero": false
+      },
+      "independent_quadrature": -0.15382946168281295,
+      "estimated_quadrature_error": 5.2137012775456253e-14,
+      "analytic_tail_bound_approximate": 1.9127403853814475e-43,
+      "absolute_difference": 5.551115123125783e-17,
+      "difference_over_threshold_mode_limit": 9.25185853854297e-18,
+      "relative_difference": 3.608616361521075e-16
+    },
+    {
+      "b": 0.5,
+      "mode": 1,
+      "closed_form_enclosure": {
+        "lower_rational": "1179877981755179146059367637054419074241122459255/2923003274661805836407369665432566039311865085952",
+        "upper_rational": "1179877981755179146059367637054419074241122460141/2923003274661805836407369665432566039311865085952",
+        "ball": "[0.403652637676805925658921500630720623925822140 +/- 2.94e-46]",
+        "midpoint_approximate": 0.4036526376768059,
+        "radius_upper_approximate": 1.5122611898045393e-46,
+        "relative_accuracy_bits": 150,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.403652637676806,
+      "estimated_quadrature_error": 4.736807564173315e-15,
+      "analytic_tail_bound_approximate": 4.049271427628259e-43,
+      "absolute_difference": 5.551115123125783e-17,
+      "difference_over_threshold_mode_limit": 5.551115123125783e-17,
+      "relative_difference": 1.3752208223077226e-16
+    },
+    {
+      "b": 0.5,
+      "mode": 2,
+      "closed_form_enclosure": {
+        "lower_rational": "-1233261341207463203541466491461382366823004588949/5846006549323611672814739330865132078623730171904",
+        "upper_rational": "-1233261341207463203541466491461382366823004583627/5846006549323611672814739330865132078623730171904",
+        "ball": "[-0.210957913030417776976764501892161871777466420 +/- 8.80e-46]",
+        "midpoint_approximate": -0.21095791303041778,
+        "radius_upper_approximate": 4.550468131254594e-46,
+        "relative_accuracy_bits": 147,
+        "exact_zero": false
+      },
+      "independent_quadrature": -0.2109579130304178,
+      "estimated_quadrature_error": 9.364538298022967e-14,
+      "analytic_tail_bound_approximate": 4.049271427628259e-43,
+      "absolute_difference": 2.7755575615628914e-17,
+      "difference_over_threshold_mode_limit": 1.3877787807814457e-17,
+      "relative_difference": 1.3156925576727178e-16
+    },
+    {
+      "b": 0.5,
+      "mode": 3,
+      "closed_form_enclosure": {
+        "lower_rational": "1446794779016599433469861909089235537150533081115/23384026197294446691258957323460528314494920687616",
+        "upper_rational": "1446794779016599433469861909089235537150533104165/23384026197294446691258957323460528314494920687616",
+        "ball": "[0.061871072449619258391494877049842027758921955 +/- 9.54e-46]",
+        "midpoint_approximate": 0.06187107244961926,
+        "radius_upper_approximate": 4.928533427074403e-46,
+        "relative_accuracy_bits": 145,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.061871072449619244,
+      "estimated_quadrature_error": 4.6429086086640465e-15,
+      "analytic_tail_bound_approximate": 4.049271427628259e-43,
+      "absolute_difference": 1.3877787807814457e-17,
+      "difference_over_threshold_mode_limit": 4.625929269271485e-18,
+      "relative_difference": 2.2430171739975807e-16
+    },
+    {
+      "b": 0.5,
+      "mode": 4,
+      "closed_form_enclosure": {
+        "lower_rational": "303110600652379645893359379428483839901744896119/23384026197294446691258957323460528314494920687616",
+        "upper_rational": "303110600652379645893359379428483839901744910665/23384026197294446691258957323460528314494920687616",
+        "ball": "[0.012962293066856460363924154056739042960694895 +/- 6.00e-46]",
+        "midpoint_approximate": 0.012962293066856461,
+        "radius_upper_approximate": 3.1102202537613225e-46,
+        "relative_accuracy_bits": 144,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.012962293066856506,
+      "estimated_quadrature_error": 5.639973143615612e-15,
+      "analytic_tail_bound_approximate": 4.049271427628259e-43,
+      "absolute_difference": 4.5102810375396984e-17,
+      "difference_over_threshold_mode_limit": 1.1275702593849246e-17,
+      "relative_difference": 3.479539472126366e-15
+    },
+    {
+      "b": 0.5,
+      "mode": 5,
+      "closed_form_enclosure": {
+        "lower_rational": "-474368072181345847912331839125315719230777325629/11692013098647223345629478661730264157247460343808",
+        "upper_rational": "-474368072181345847912331839125315719230777266371/11692013098647223345629478661730264157247460343808",
+        "ball": "[-0.04057197577346459435290584115248197769080026 +/- 3.31e-45]",
+        "midpoint_approximate": -0.040571975773464594,
+        "radius_upper_approximate": 2.534121639144041e-45,
+        "relative_accuracy_bits": 143,
+        "exact_zero": false
+      },
+      "independent_quadrature": -0.04057197577346463,
+      "estimated_quadrature_error": 1.598258958201358e-14,
+      "analytic_tail_bound_approximate": 4.049271427628259e-43,
+      "absolute_difference": 3.469446951953614e-17,
+      "difference_over_threshold_mode_limit": 6.938893903907228e-18,
+      "relative_difference": 8.551338419714691e-16
+    },
+    {
+      "b": 0.5,
+      "mode": 6,
+      "closed_form_enclosure": {
+        "lower_rational": "1029095461467019793009907989681891891446335674067/23384026197294446691258957323460528314494920687616",
+        "upper_rational": "1029095461467019793009907989681891891446335977773/23384026197294446691258957323460528314494920687616",
+        "ball": "[0.04400848052360149524221811509114141500342561 +/- 7.23e-45]",
+        "midpoint_approximate": 0.0440084805236015,
+        "radius_upper_approximate": 6.493875010153064e-45,
+        "relative_accuracy_bits": 141,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.04400848052360154,
+      "estimated_quadrature_error": 8.490037871669302e-14,
+      "analytic_tail_bound_approximate": 4.049271427628259e-43,
+      "absolute_difference": 4.163336342344337e-17,
+      "difference_over_threshold_mode_limit": 6.938893903907228e-18,
+      "relative_difference": 9.46030467948459e-16
+    },
+    {
+      "b": 1.0,
+      "mode": 1,
+      "closed_form_enclosure": {
+        "lower_rational": "810673813875214447151021649643011989477980105349/1461501637330902918203684832716283019655932542976",
+        "upper_rational": "810673813875214447151021649643011989477980115967/1461501637330902918203684832716283019655932542976",
+        "ball": "[0.55468553244710966121135336928504024418163743 +/- 7.40e-45]",
+        "midpoint_approximate": 0.5546855324471096,
+        "radius_upper_approximate": 3.631908762915663e-45,
+        "relative_accuracy_bits": 146,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.5546855324471096,
+      "estimated_quadrature_error": 6.20827872560658e-15,
+      "analytic_tail_bound_approximate": 1.100706094022031e-42,
+      "absolute_difference": 0.0,
+      "difference_over_threshold_mode_limit": 0.0,
+      "relative_difference": 0.0
+    },
+    {
+      "b": 1.0,
+      "mode": 2,
+      "closed_form_enclosure": {
+        "lower_rational": "0",
+        "upper_rational": "0",
+        "ball": "0",
+        "midpoint_approximate": 0.0,
+        "radius_upper_approximate": 0.0,
+        "relative_accuracy_bits": null,
+        "exact_zero": true
+      },
+      "independent_quadrature": 3.8637527971343034e-17,
+      "estimated_quadrature_error": 4.807771623326545e-15,
+      "analytic_tail_bound_approximate": 1.100706094022031e-42,
+      "absolute_difference": 3.8637527971343034e-17,
+      "difference_over_threshold_mode_limit": 1.9318763985671517e-17,
+      "relative_difference": null
+    },
+    {
+      "b": 1.0,
+      "mode": 3,
+      "closed_form_enclosure": {
+        "lower_rational": "-296804257283882818878258299550867532644372035593/2923003274661805836407369665432566039311865085952",
+        "upper_rational": "-296804257283882818878258299550867532644371801975/2923003274661805836407369665432566039311865085952",
+        "ball": "[-0.1015408569182062733248870621354426859980118 +/- 6.86e-44]",
+        "midpoint_approximate": -0.10154085691820627,
+        "radius_upper_approximate": 3.996194396324142e-44,
+        "relative_accuracy_bits": 140,
+        "exact_zero": false
+      },
+      "independent_quadrature": -0.10154085691820619,
+      "estimated_quadrature_error": 4.781884506571279e-15,
+      "analytic_tail_bound_approximate": 1.100706094022031e-42,
+      "absolute_difference": 8.326672684688674e-17,
+      "difference_over_threshold_mode_limit": 2.7755575615628914e-17,
+      "relative_difference": 8.20031752479302e-16
+    },
+    {
+      "b": 1.0,
+      "mode": 4,
+      "closed_form_enclosure": {
+        "lower_rational": "811168307976445933948026306791197776986030937645/11692013098647223345629478661730264157247460343808",
+        "upper_rational": "811168307976445933948026306791197776986033809875/11692013098647223345629478661730264157247460343808",
+        "ball": "[0.069377984880148556472380473628026025690864 +/- 5.53e-43]",
+        "midpoint_approximate": 0.06937798488014855,
+        "radius_upper_approximate": 1.2282867997491465e-43,
+        "relative_accuracy_bits": 138,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.06937798488014854,
+      "estimated_quadrature_error": 4.993484218328088e-15,
+      "analytic_tail_bound_approximate": 1.100706094022031e-42,
+      "absolute_difference": 1.3877787807814457e-17,
+      "difference_over_threshold_mode_limit": 3.469446951953614e-18,
+      "relative_difference": 2.0003157819859614e-16
+    },
+    {
+      "b": 1.0,
+      "mode": 5,
+      "closed_form_enclosure": {
+        "lower_rational": "-1334894193281219402558064508120102805085301001983/46768052394588893382517914646921056628989841375232",
+        "upper_rational": "-1334894193281219402558064508120102805085283201281/46768052394588893382517914646921056628989841375232",
+        "ball": "[-0.028542864732072270060826325917106112172359 +/- 2.25e-43]",
+        "midpoint_approximate": -0.02854286473207227,
+        "radius_upper_approximate": 1.9030834646814967e-43,
+        "relative_accuracy_bits": 135,
+        "exact_zero": false
+      },
+      "independent_quadrature": -0.02854286473207233,
+      "estimated_quadrature_error": 5.252501623155662e-15,
+      "analytic_tail_bound_approximate": 1.100706094022031e-42,
+      "absolute_difference": 6.245004513516506e-17,
+      "difference_over_threshold_mode_limit": 1.2490009027033011e-17,
+      "relative_difference": 2.1879389375024045e-15
+    },
+    {
+      "b": 1.0,
+      "mode": 6,
+      "closed_form_enclosure": {
+        "lower_rational": "821590549275294681914960959055630294663025997381/187072209578355573530071658587684226515959365500928",
+        "upper_rational": "821590549275294681914960959055630294663062374843/187072209578355573530071658587684226515959365500928",
+        "ball": "[0.004391836452496541544452753861342706652137 +/- 2.02e-43]",
+        "midpoint_approximate": 0.004391836452496542,
+        "radius_upper_approximate": 9.722839667631986e-44,
+        "relative_accuracy_bits": 134,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.004391836452496446,
+      "estimated_quadrature_error": 1.4685183334084437e-14,
+      "analytic_tail_bound_approximate": 1.100706094022031e-42,
+      "absolute_difference": 9.540979117872439e-17,
+      "difference_over_threshold_mode_limit": 1.590163186312073e-17,
+      "relative_difference": 2.172434975908282e-14
+    },
+    {
+      "b": 2.0,
+      "mode": 1,
+      "closed_form_enclosure": {
+        "lower_rational": "1020814466339573819727796446326697497463573662511/1461501637330902918203684832716283019655932542976",
+        "upper_rational": "1020814466339573819727796446326697497463573663097/1461501637330902918203684832716283019655932542976",
+        "ball": "[0.698469601583106670367267857970275061704867586 +/- 6.51e-46]",
+        "midpoint_approximate": 0.6984696015831067,
+        "radius_upper_approximate": 1.999413256542809e-46,
+        "relative_accuracy_bits": 150,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.6984696015831067,
+      "estimated_quadrature_error": 7.759712595528652e-15,
+      "analytic_tail_bound_approximate": 8.133179077163622e-42,
+      "absolute_difference": 0.0,
+      "difference_over_threshold_mode_limit": 0.0,
+      "relative_difference": 0.0
+    },
+    {
+      "b": 2.0,
+      "mode": 2,
+      "closed_form_enclosure": {
+        "lower_rational": "557760497427662491104078694190105812315423606285/1461501637330902918203684832716283019655932542976",
+        "upper_rational": "557760497427662491104078694190105812315423613427/1461501637330902918203684832716283019655932542976",
+        "ball": "[0.38163521899728004440721429564330074045841104 +/- 5.03e-45]",
+        "midpoint_approximate": 0.38163521899728003,
+        "radius_upper_approximate": 2.4430864796412775e-45,
+        "relative_accuracy_bits": 146,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.38163521899728015,
+      "estimated_quadrature_error": 1.86582343265717e-14,
+      "analytic_tail_bound_approximate": 8.133179077163622e-42,
+      "absolute_difference": 1.1102230246251565e-16,
+      "difference_over_threshold_mode_limit": 5.551115123125783e-17,
+      "relative_difference": 2.909120986113887e-16
+    },
+    {
+      "b": 2.0,
+      "mode": 3,
+      "closed_form_enclosure": {
+        "lower_rational": "-94706528515751162480360942053514127167273563841/1461501637330902918203684832716283019655932542976",
+        "upper_rational": "-94706528515751162480360942053514127167273550143/1461501637330902918203684832716283019655932542976",
+        "ball": "[-0.06480083641145341844716073331632641921195449 +/- 6.24e-45]",
+        "midpoint_approximate": -0.06480083641145341,
+        "radius_upper_approximate": 4.686231637543457e-45,
+        "relative_accuracy_bits": 143,
+        "exact_zero": false
+      },
+      "independent_quadrature": -0.06480083641145346,
+      "estimated_quadrature_error": 1.1431750089538548e-14,
+      "analytic_tail_bound_approximate": 8.133179077163622e-42,
+      "absolute_difference": 4.163336342344337e-17,
+      "difference_over_threshold_mode_limit": 1.3877787807814457e-17,
+      "relative_difference": 6.424818833987266e-16
+    },
+    {
+      "b": 2.0,
+      "mode": 4,
+      "closed_form_enclosure": {
+        "lower_rational": "-196310291584031801151095785333302316799289279695/5846006549323611672814739330865132078623730171904",
+        "upper_rational": "-196310291584031801151095785333302316799289047857/5846006549323611672814739330865132078623730171904",
+        "ball": "[-0.0335802380527173857159048398659169250808570 +/- 5.45e-44]",
+        "midpoint_approximate": -0.033580238052717384,
+        "radius_upper_approximate": 1.9828717146433284e-44,
+        "relative_accuracy_bits": 140,
+        "exact_zero": false
+      },
+      "independent_quadrature": -0.033580238052717315,
+      "estimated_quadrature_error": 3.7331911871936964e-14,
+      "analytic_tail_bound_approximate": 8.133179077163622e-42,
+      "absolute_difference": 6.938893903907228e-17,
+      "difference_over_threshold_mode_limit": 1.734723475976807e-17,
+      "relative_difference": 2.06636233281429e-15
+    },
+    {
+      "b": 2.0,
+      "mode": 5,
+      "closed_form_enclosure": {
+        "lower_rational": "1173611450686582183145739310669642477080381756331/46768052394588893382517914646921056628989841375232",
+        "upper_rational": "1173611450686582183145739310669642477080390134869/46768052394588893382517914646921056628989841375232",
+        "ball": "[0.025094298150041631965125364891302211846606 +/- 4.65e-43]",
+        "midpoint_approximate": 0.025094298150041633,
+        "radius_upper_approximate": 8.957542287557825e-44,
+        "relative_accuracy_bits": 137,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.025094298150041695,
+      "estimated_quadrature_error": 8.236027958670561e-15,
+      "analytic_tail_bound_approximate": 8.133179077163622e-42,
+      "absolute_difference": 6.245004513516506e-17,
+      "difference_over_threshold_mode_limit": 1.2490009027033011e-17,
+      "relative_difference": 2.4886149340288064e-15
+    },
+    {
+      "b": 2.0,
+      "mode": 6,
+      "closed_form_enclosure": {
+        "lower_rational": "-1352102349075619168827433103382041487310964813263/187072209578355573530071658587684226515959365500928",
+        "upper_rational": "-1352102349075619168827433103382041487310911541809/187072209578355573530071658587684226515959365500928",
+        "ball": "[-0.007227702886084147971125318356183275261083 +/- 3.04e-43]",
+        "midpoint_approximate": -0.007227702886084148,
+        "radius_upper_approximate": 1.423820606360218e-43,
+        "relative_accuracy_bits": 134,
+        "exact_zero": false
+      },
+      "independent_quadrature": -0.007227702886084079,
+      "estimated_quadrature_error": 1.9503245194875435e-14,
+      "analytic_tail_bound_approximate": 8.133179077163622e-42,
+      "absolute_difference": 6.852157730108388e-17,
+      "difference_over_threshold_mode_limit": 1.142026288351398e-17,
+      "relative_difference": 9.480408697071908e-15
+    },
+    {
+      "b": 3.0,
+      "mode": 1,
+      "closed_form_enclosure": {
+        "lower_rational": "1125890216831265099464069178938192859382152667627/1461501637330902918203684832716283019655932542976",
+        "upper_rational": "1125890216831265099464069178938192859382152669413/1461501637330902918203684832716283019655932542976",
+        "ball": "[0.770365347580071822982725428935911207699414952 +/- 8.46e-46]",
+        "midpoint_approximate": 0.7703653475800718,
+        "radius_upper_approximate": 6.109052020282056e-46,
+        "relative_accuracy_bits": 149,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.7703653475800718,
+      "estimated_quadrature_error": 8.573051587030396e-15,
+      "analytic_tail_bound_approximate": 6.009651646381102e-41,
+      "absolute_difference": 0.0,
+      "difference_over_threshold_mode_limit": 0.0,
+      "relative_difference": 0.0
+    },
+    {
+      "b": 3.0,
+      "mode": 2,
+      "closed_form_enclosure": {
+        "lower_rational": "952447642658813145961777740831379028486504332741/1461501637330902918203684832716283019655932542976",
+        "upper_rational": "952447642658813145961777740831379028486504389883/1461501637330902918203684832716283019655932542976",
+        "ball": "[0.6516911225622983354472137259491586463812785 +/- 6.31e-44]",
+        "midpoint_approximate": 0.6516911225622983,
+        "radius_upper_approximate": 1.9548966464902578e-44,
+        "relative_accuracy_bits": 144,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.6516911225622982,
+      "estimated_quadrature_error": 2.7954762418645918e-14,
+      "analytic_tail_bound_approximate": 6.009651646381102e-41,
+      "absolute_difference": 1.1102230246251565e-16,
+      "difference_over_threshold_mode_limit": 5.551115123125783e-17,
+      "relative_difference": 1.7036031122535736e-16
+    },
+    {
+      "b": 3.0,
+      "mode": 3,
+      "closed_form_enclosure": {
+        "lower_rational": "776032037907015995857835965212371114711732984379/5846006549323611672814739330865132078623730171904",
+        "upper_rational": "776032037907015995857835965212371114711733820869/5846006549323611672814739330865132078623730171904",
+        "ball": "[0.132745666868403288978875185501611300831549 +/- 4.30e-43]",
+        "midpoint_approximate": 0.13274566686840328,
+        "radius_upper_approximate": 7.15436469968788e-44,
+        "relative_accuracy_bits": 140,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.1327456668684033,
+      "estimated_quadrature_error": 9.301778965468198e-15,
+      "analytic_tail_bound_approximate": 6.009651646381102e-41,
+      "absolute_difference": 2.7755575615628914e-17,
+      "difference_over_threshold_mode_limit": 9.25185853854297e-18,
+      "relative_difference": 2.0908837380842162e-16
+    },
+    {
+      "b": 3.0,
+      "mode": 4,
+      "closed_form_enclosure": {
+        "lower_rational": "-1316187859475330909578723404561852658066251193867/23384026197294446691258957323460528314494920687616",
+        "upper_rational": "-1316187859475330909578723404561852658066234302965/23384026197294446691258957323460528314494920687616",
+        "ball": "[-0.056285767402519205773453930059434958053651 +/- 8.10e-43]",
+        "midpoint_approximate": -0.056285767402519206,
+        "radius_upper_approximate": 3.611632355884525e-43,
+        "relative_accuracy_bits": 135,
+        "exact_zero": false
+      },
+      "independent_quadrature": -0.056285767402519365,
+      "estimated_quadrature_error": 7.59703859993887e-15,
+      "analytic_tail_bound_approximate": 6.009651646381102e-41,
+      "absolute_difference": 1.5959455978986625e-16,
+      "difference_over_threshold_mode_limit": 3.9898639947466563e-17,
+      "relative_difference": 2.8354336656467655e-15
+    },
+    {
+      "b": 3.0,
+      "mode": 5,
+      "closed_form_enclosure": {
+        "lower_rational": "-467819972659572872283740101500505024769299083191/93536104789177786765035829293842113257979682750464",
+        "upper_rational": "-467819972659572872283740101500505024769243713609/93536104789177786765035829293842113257979682750464",
+        "ball": "[-0.005001490854403208725480460301468488019762 +/- 3.99e-43]",
+        "midpoint_approximate": -0.005001490854403209,
+        "radius_upper_approximate": 2.9597972889612093e-43,
+        "relative_accuracy_bits": 133,
+        "exact_zero": false
+      },
+      "independent_quadrature": -0.005001490854403212,
+      "estimated_quadrature_error": 7.74111787965882e-14,
+      "analytic_tail_bound_approximate": 6.009651646381102e-41,
+      "absolute_difference": 3.469446951953614e-18,
+      "difference_over_threshold_mode_limit": 6.938893903907229e-19,
+      "relative_difference": 6.936825544525759e-16
+    },
+    {
+      "b": 3.0,
+      "mode": 6,
+      "closed_form_enclosure": {
+        "lower_rational": "868013054569450952300375617150864421737660739965/93536104789177786765035829293842113257979682750464",
+        "upper_rational": "868013054569450952300375617150864421738427649667/93536104789177786765035829293842113257979682750464",
+        "ball": "[0.00927997864061023909523515415923402631916 +/- 5.12e-42]",
+        "midpoint_approximate": 0.00927997864061024,
+        "radius_upper_approximate": 4.099538374665844e-42,
+        "relative_accuracy_bits": 130,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.009279978640610382,
+      "estimated_quadrature_error": 1.184154565412409e-14,
+      "analytic_tail_bound_approximate": 6.009651646381102e-41,
+      "absolute_difference": 1.4224732503009818e-16,
+      "difference_over_threshold_mode_limit": 2.3707887505016363e-17,
+      "relative_difference": 1.5328410822801654e-14
+    },
+    {
+      "b": 8.0,
+      "mode": 1,
+      "closed_form_enclosure": {
+        "lower_rational": "1306473547132067843206182712318308707442207082257/1461501637330902918203684832716283019655932542976",
+        "upper_rational": "1306473547132067843206182712318308707442207106255/1461501637330902918203684832716283019655932542976",
+        "ball": "[0.8939254762095523362536084546963160041277162 +/- 3.64e-44]",
+        "midpoint_approximate": 0.8939254762095523,
+        "radius_upper_approximate": 8.209545187251538e-45,
+        "relative_accuracy_bits": 145,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.8939254762095521,
+      "estimated_quadrature_error": 9.930942639348548e-15,
+      "analytic_tail_bound_approximate": 1.3237138642771723e-36,
+      "absolute_difference": 2.220446049250313e-16,
+      "difference_over_threshold_mode_limit": 2.220446049250313e-16,
+      "relative_difference": 2.4839274730881485e-16
+    },
+    {
+      "b": 8.0,
+      "mode": 2,
+      "closed_form_enclosure": {
+        "lower_rational": "463741778789710702583160243941599468126823775053/365375409332725729550921208179070754913983135744",
+        "upper_rational": "463741778789710702583160243941599468126825288883/365375409332725729550921208179070754913983135744",
+        "ball": "[1.26922000480718873590933058347163304018448 +/- 6.76e-42]",
+        "midpoint_approximate": 1.2692200048071887,
+        "radius_upper_approximate": 2.0716079789375555e-42,
+        "relative_accuracy_bits": 138,
+        "exact_zero": false
+      },
+      "independent_quadrature": 1.2692200048071887,
+      "estimated_quadrature_error": 7.701104427072705e-14,
+      "analytic_tail_bound_approximate": 1.3237138642771723e-36,
+      "absolute_difference": 0.0,
+      "difference_over_threshold_mode_limit": 0.0,
+      "relative_difference": 0.0
+    },
+    {
+      "b": 8.0,
+      "mode": 3,
+      "closed_form_enclosure": {
+        "lower_rational": "383936496685298192330494610218491359521612562361/365375409332725729550921208179070754913983135744",
+        "upper_rational": "383936496685298192330494610218491359521701822535/365375409332725729550921208179070754913983135744",
+        "ball": "[1.050800045319059719860811423166873325479 +/- 2.88e-40]",
+        "midpoint_approximate": 1.0508000453190598,
+        "radius_upper_approximate": 1.2214857885895114e-40,
+        "relative_accuracy_bits": 132,
+        "exact_zero": false
+      },
+      "independent_quadrature": 1.0508000453190598,
+      "estimated_quadrature_error": 2.2885072239885806e-14,
+      "analytic_tail_bound_approximate": 1.3237138642771723e-36,
+      "absolute_difference": 0.0,
+      "difference_over_threshold_mode_limit": 0.0,
+      "relative_difference": 0.0
+    },
+    {
+      "b": 8.0,
+      "mode": 4,
+      "closed_form_enclosure": {
+        "lower_rational": "26190734265895679098935337710360633979167220239/45671926166590716193865151022383844364247891968",
+        "upper_rational": "26190734265895679098935337710360633979423776241/45671926166590716193865151022383844364247891968",
+        "ball": "[0.57345368291154656711195287857685613945 +/- 7.69e-39]",
+        "midpoint_approximate": 0.5734536829115465,
+        "radius_upper_approximate": 2.8086838407493336e-39,
+        "relative_accuracy_bits": 127,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.5734536829115463,
+      "estimated_quadrature_error": 1.303348761014854e-13,
+      "analytic_tail_bound_approximate": 1.3237138642771723e-36,
+      "absolute_difference": 2.220446049250313e-16,
+      "difference_over_threshold_mode_limit": 5.551115123125783e-17,
+      "relative_difference": 3.872058224435207e-16
+    },
+    {
+      "b": 8.0,
+      "mode": 5,
+      "closed_form_enclosure": {
+        "lower_rational": "1108481143197984691954544892303384993273187665/5708990770823839524233143877797980545530986496",
+        "upper_rational": "1108481143197984691954544892303384993589392047/5708990770823839524233143877797980545530986496",
+        "ball": "[0.1941641154620441993548966946800388636 +/- 4.90e-38]",
+        "midpoint_approximate": 0.1941641154620442,
+        "radius_upper_approximate": 2.7693544681836114e-38,
+        "relative_accuracy_bits": 121,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.19416411546204393,
+      "estimated_quadrature_error": 1.2203570774180963e-14,
+      "analytic_tail_bound_approximate": 1.3237138642771723e-36,
+      "absolute_difference": 2.7755575615628914e-16,
+      "difference_over_threshold_mode_limit": 5.551115123125783e-17,
+      "relative_difference": 1.4294904879606683e-15
+    },
+    {
+      "b": 8.0,
+      "mode": 6,
+      "closed_form_enclosure": {
+        "lower_rational": "152102004510525778833778531813112075380190045/5708990770823839524233143877797980545530986496",
+        "upper_rational": "152102004510525778833778531813112076345676963/5708990770823839524233143877797980545530986496",
+        "ball": "[0.026642538167665771662364307103776746 +/- 1.10e-37]",
+        "midpoint_approximate": 0.02664253816766577,
+        "radius_upper_approximate": 8.455845846994379e-38,
+        "relative_accuracy_bits": 117,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.026642538167665812,
+      "estimated_quadrature_error": 1.6897624935642785e-14,
+      "analytic_tail_bound_approximate": 1.3237138642771723e-36,
+      "absolute_difference": 4.163336342344337e-17,
+      "difference_over_threshold_mode_limit": 6.938893903907228e-18,
+      "relative_difference": 1.5626650569640898e-15
+    },
+    {
+      "b": 20.0,
+      "mode": 1,
+      "closed_form_enclosure": {
+        "lower_rational": "1393418858853808781100476940901596245200803151399/1461501637330902918203684832716283019655932542976",
+        "upper_rational": "1393418858853808781100476940901596245200803679501/1461501637330902918203684832716283019655932542976",
+        "ball": "[0.953415872594277967679975837601315008414945 +/- 6.43e-43]",
+        "midpoint_approximate": 0.953415872594278,
+        "radius_upper_approximate": 1.806706098339179e-43,
+        "relative_accuracy_bits": 140,
+        "exact_zero": false
+      },
+      "independent_quadrature": 0.9534158725942782,
+      "estimated_quadrature_error": 1.0585716577254228e-14,
+      "analytic_tail_bound_approximate": 3.506401821580506e-26,
+      "absolute_difference": 2.220446049250313e-16,
+      "difference_over_threshold_mode_limit": 2.220446049250313e-16,
+      "relative_difference": 2.328937573913471e-16
+    },
+    {
+      "b": 20.0,
+      "mode": 2,
+      "closed_form_enclosure": {
+        "lower_rational": "1207004993853189483380125975098708731732182134087/730750818665451459101842416358141509827966271488",
+        "upper_rational": "1207004993853189483380125975098708731732603683513/730750818665451459101842416358141509827966271488",
+        "ball": "[1.651732660467636417241436811698753430253 +/- 3.32e-40]",
+        "midpoint_approximate": 1.6517326604676363,
+        "radius_upper_approximate": 2.8843582123511213e-40,
+        "relative_accuracy_bits": 131,
+        "exact_zero": false
+      },
+      "independent_quadrature": 1.6517326604676368,
+      "estimated_quadrature_error": 1.8334496357763978e-14,
+      "analytic_tail_bound_approximate": 3.506401821580506e-26,
+      "absolute_difference": 4.440892098500626e-16,
+      "difference_over_threshold_mode_limit": 2.220446049250313e-16,
+      "relative_difference": 2.6886264374304536e-16
+    },
+    {
+      "b": 20.0,
+      "mode": 3,
+      "closed_form_enclosure": {
+        "lower_rational": "5557206650097514898117150468049232014488743277/2854495385411919762116571938898990272765493248",
+        "upper_rational": "5557206650097514898117150468049232015139058323/2854495385411919762116571938898990272765493248",
+        "ball": "[1.946826286179327165887806407393139857 +/- 4.68e-37]",
+        "midpoint_approximate": 1.946826286179327,
+        "radius_upper_approximate": 1.1391068441089035e-37,
+        "relative_accuracy_bits": 122,
+        "exact_zero": false
+      },
+      "independent_quadrature": 1.9468262861793277,
+      "estimated_quadrature_error": 6.773957528396613e-14,
+      "analytic_tail_bound_approximate": 3.506401821580506e-26,
+      "absolute_difference": 6.661338147750939e-16,
+      "difference_over_threshold_mode_limit": 2.220446049250313e-16,
+      "relative_difference": 3.4216397194964453e-16
+    },
+    {
+      "b": 20.0,
+      "mode": 4,
+      "closed_form_enclosure": {
+        "lower_rational": "20574689583818270055710930393456862579274703/11150372599265311570767859136324180752990208",
+        "upper_rational": "20574689583818270055710930393456863017397297/11150372599265311570767859136324180752990208",
+        "ball": "[1.8452019787369184953590873930180229 +/- 5.76e-35]",
+        "midpoint_approximate": 1.8452019787369185,
+        "radius_upper_approximate": 1.964609658106257e-35,
+        "relative_accuracy_bits": 115,
+        "exact_zero": false
+      },
+      "independent_quadrature": 1.8452019787369192,
+      "estimated_quadrature_error": 4.0930036725662264e-13,
+      "analytic_tail_bound_approximate": 3.506401821580506e-26,
+      "absolute_difference": 6.661338147750939e-16,
+      "difference_over_threshold_mode_limit": 1.6653345369377348e-16,
+      "relative_difference": 3.6100861718730503e-16
+    },
+    {
+      "b": 20.0,
+      "mode": 5,
+      "closed_form_enclosure": {
+        "lower_rational": "257348419717333618490025122550711795303457/174224571863520493293247799005065324265472",
+        "upper_rational": "257348419717333618490025122550712441342943/174224571863520493293247799005065324265472",
+        "ball": "[1.47710748813851882973212297718974 +/- 3.54e-33]",
+        "midpoint_approximate": 1.4771074881385189,
+        "radius_upper_approximate": 1.854042397951988e-33,
+        "relative_accuracy_bits": 108,
+        "exact_zero": false
+      },
+      "independent_quadrature": 1.4771074881385187,
+      "estimated_quadrature_error": 3.9641520720777084e-14,
+      "analytic_tail_bound_approximate": 3.506401821580506e-26,
+      "absolute_difference": 2.220446049250313e-16,
+      "difference_over_threshold_mode_limit": 4.4408920985006264e-17,
+      "relative_difference": 1.5032393154059252e-16
+    },
+    {
+      "b": 20.0,
+      "mode": 6,
+      "closed_form_enclosure": {
+        "lower_rational": "5534725079782734541968757740763114168153/5444517870735015415413993718908291383296",
+        "upper_rational": "5534725079782734541968757740764290580647/5444517870735015415413993718908291383296",
+        "ball": "[1.016568447599849839809488108939 +/- 2.67e-31]",
+        "midpoint_approximate": 1.0165684475998498,
+        "radius_upper_approximate": 1.0803642507294986e-31,
+        "relative_accuracy_bits": 102,
+        "exact_zero": false
+      },
+      "independent_quadrature": 1.0165684475998504,
+      "estimated_quadrature_error": 2.656824482218395e-14,
+      "analytic_tail_bound_approximate": 3.506401821580506e-26,
+      "absolute_difference": 6.661338147750939e-16,
+      "difference_over_threshold_mode_limit": 1.1102230246251565e-16,
+      "relative_difference": 6.55276893895199e-16
+    }
+  ],
+  "exact_closed_forms": [
+    {
+      "mode": 1,
+      "p_numerator": [
+        "4"
+      ],
+      "q": [
+        "-8"
+      ],
+      "convention": "Ascending powers; P(b)=poly(p_numerator,b)/b; Q(b)=poly(q,b)"
+    },
+    {
+      "mode": 2,
+      "p_numerator": [
+        "-8",
+        "-8",
+        "16"
+      ],
+      "q": [
+        "32",
+        "0",
+        "-32"
+      ],
+      "convention": "Ascending powers; P(b)=poly(p_numerator,b)/b; Q(b)=poly(q,b)"
+    },
+    {
+      "mode": 3,
+      "p_numerator": [
+        "12",
+        "36",
+        "-88",
+        "-8",
+        "16"
+      ],
+      "q": [
+        "-72",
+        "0",
+        "192",
+        "0",
+        "-32"
+      ],
+      "convention": "Ascending powers; P(b)=poly(p_numerator,b)/b; Q(b)=poly(q,b)"
+    },
+    {
+      "mode": 4,
+      "p_numerator": [
+        "-16",
+        "-272/3",
+        "800/3",
+        "176/3",
+        "-1120/9",
+        "-32/9",
+        "64/9"
+      ],
+      "q": [
+        "128",
+        "0",
+        "-640",
+        "0",
+        "256",
+        "0",
+        "-128/9"
+      ],
+      "convention": "Ascending powers; P(b)=poly(p_numerator,b)/b; Q(b)=poly(q,b)"
+    },
+    {
+      "mode": 5,
+      "p_numerator": [
+        "20",
+        "530/3",
+        "-1820/3",
+        "-700/3",
+        "4744/9",
+        "308/9",
+        "-632/9",
+        "-8/9",
+        "16/9"
+      ],
+      "q": [
+        "-200",
+        "0",
+        "1600",
+        "0",
+        "-1120",
+        "0",
+        "1280/9",
+        "0",
+        "-32/9"
+      ],
+      "convention": "Ascending powers; P(b)=poly(p_numerator,b)/b; Q(b)=poly(q,b)"
+    },
+    {
+      "mode": 6,
+      "p_numerator": [
+        "-24",
+        "-1488/5",
+        "5824/5",
+        "3384/5",
+        "-8144/5",
+        "-2656/15",
+        "9344/25",
+        "784/75",
+        "-4768/225",
+        "-32/225",
+        "64/225"
+      ],
+      "q": [
+        "288",
+        "0",
+        "-3360",
+        "0",
+        "3584",
+        "0",
+        "-768",
+        "0",
+        "128/3",
+        "0",
+        "-128/225"
+      ],
+      "convention": "Ascending powers; P(b)=poly(p_numerator,b)/b; Q(b)=poly(q,b)"
+    }
+  ],
+  "maximum_relative_difference": 2.172434975908282e-14,
+  "maximum_difference_over_threshold_mode_limit": 2.220446049250313e-16,
+  "environment": {
+    "numpy": "2.4.4",
+    "scipy": "1.15.3"
+  },
+  "command_argv": [
+    "scripts/validate_impact_closed_form.py"
+  ],
+  "source_snapshot_utf8": {
+    "/home/shiqiu/s-matrix-bootstrap/scripts/validate_impact_closed_form.py": "\"\"\"Independent quadrature check of modes 1..6; no optimization solves.\"\"\"\nimport argparse\nimport hashlib\nimport json\nfrom pathlib import Path\nimport sys\n\nimport numpy as np\nimport scipy\nfrom scipy.integrate import quad\nfrom scipy.special import k0e,k1e\n\nfrom smatrix_bootstrap.impact_closed_form import (evaluate_impact_integrals_arb,\n                                                 impact_integral_closed_forms)\n\n\ndef main():\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument('--arb-path')\n    parser.add_argument('--output',type=Path,default=Path('results/impact_closed_form_validation.json'))\n    args = parser.parse_args()\n    if args.arb_path:\n        sys.path.insert(0,args.arb_path)\n    rows = []\n    for b in [.125,.5,1.,2.,3.,8.,20.]:\n        result = evaluate_impact_integrals_arb(str(b),6,normalization='threshold')\n        cutoff = max(100.,2*b+50)\n        ymax = np.arccosh(cutoff/(2*b))\n        tail = cutoff/np.pi*k1e(cutoff)*np.exp(2*b-cutoff)\n        for row in result['modes']:\n            m = row['mode']\n            def integrand(y):\n                ch,sh = np.cosh(y),np.sinh(y)\n                return (4*b*b/np.pi*ch*sh*k0e(2*b*ch)*np.exp(-2*b*(ch-1))\n                        *np.sin(2*m*np.arctan(sh)))\n            value,error = quad(integrand,0,ymax,epsabs=1e-13,epsrel=1e-12,limit=300)\n            actual = row['enclosure']['midpoint_approximate']\n            rows.append(dict(b=b,mode=m,closed_form_enclosure=row['enclosure'],\n                independent_quadrature=value,estimated_quadrature_error=error,\n                analytic_tail_bound_approximate=tail,absolute_difference=abs(actual-value),\n                difference_over_threshold_mode_limit=abs(actual-value)/m,\n                relative_difference=None if row['enclosure']['exact_zero'] else abs(actual-value)/abs(actual)))\n    paths = [Path(__file__),Path('src/smatrix_bootstrap/impact_closed_form.py')]\n    sources = {str(path):path.read_text() for path in paths}\n    report = dict(normalization='b^2 exp(2b) J_m/(2pi)',comparisons=rows,\n        exact_closed_forms=[dict(mode=m,**form.as_dict()) for m,form in enumerate(impact_integral_closed_forms(6),1)],\n        maximum_relative_difference=max(r['relative_difference'] for r in rows if r['relative_difference'] is not None),\n        maximum_difference_over_threshold_mode_limit=max(r['difference_over_threshold_mode_limit'] for r in rows),\n        environment=dict(numpy=np.__version__,scipy=scipy.__version__),command_argv=sys.argv,\n        source_snapshot_utf8=sources,source_sha256={name:hashlib.sha256(source.encode()).hexdigest() for name,source in sources.items()},\n        scope='Numerical independent quadrature verification of exact closed forms; quadrature estimates are not rigorous error certificates.')\n    args.output.parent.mkdir(parents=True,exist_ok=True)\n    args.output.write_text(json.dumps(report,indent=2)+'\\n')\n    print(json.dumps(dict(output=str(args.output),comparisons=len(rows),\n        maximum_relative_difference=report['maximum_relative_difference'],\n        maximum_difference_over_threshold_mode_limit=report['maximum_difference_over_threshold_mode_limit']),indent=2))\n\n\nif __name__ == '__main__':\n    main()\n",
+    "src/smatrix_bootstrap/impact_closed_form.py": "\"\"\"Exact finite impact integrals and optional Arb evaluation.\n\nJ_m(b) = integral_4^infinity K0(b*sqrt(t))*sin(m*phi(t)) dt, with\ncos(phi)=8/t-1. Every mode is pi*(exp(-2*b)*P(b)+E1(2*b)*Q(b)),\nwhere b*P and Q have rational coefficients. See docs/21_closed_form_impact.md.\nNo optimization constraints or existing numerical projectors are changed.\n\"\"\"\nfrom dataclasses import dataclass\nfrom fractions import Fraction\nfrom functools import lru_cache\nfrom numbers import Integral\n\nfrom .amplitudes import basis_labels\n\nF = Fraction\nNORMALIZATIONS = (\"none\", \"threshold\", \"kernel_mass\")\n\n\ndef _rational(value):\n    if isinstance(value, bool):\n        raise ValueError(\"Use finite real rational or decimal inputs\")\n    if isinstance(value, F):\n        return value\n    try:\n        return F(str(value))\n    except (ValueError, TypeError, ZeroDivisionError) as error:\n        raise ValueError(\"Use finite real rational or decimal inputs\") from error\n\n\ndef _degree(value):\n    if not isinstance(value, Integral) or isinstance(value, bool) or value < 1:\n        raise ValueError(\"degree must be a positive integer\")\n    return int(value)\n\n\ndef _trim(values):\n    values = list(values)\n    while len(values) > 1 and values[-1] == 0:\n        values.pop()\n    return tuple(values)\n\n\ndef _at(values, index):\n    return values[index] if 0 <= index < len(values) else F(0)\n\n\ndef _horner(values, point):\n    out = F(0)\n    for value in reversed(values):\n        out = out*point + value\n    return out\n\n\n@dataclass(frozen=True)\nclass ImpactClosedForm:\n    \"\"\"pi*(exp(-2*b)*P(b)+E1(2*b)*Q(b)); arrays use ascending powers.\n\n    ``p_numerator`` stores b*P(b), so it also represents the possible 1/b\n    term without floating-point Laurent coefficients. ``q`` stores Q(b).\n    \"\"\"\n    p_numerator: tuple[Fraction, ...]\n    q: tuple[Fraction, ...]\n\n    def rational_values(self, b):\n        \"\"\"Return exact P(b), Q(b), evaluating all polynomial cancellation first.\"\"\"\n        b = _rational(b)\n        if b <= 0:\n            raise ValueError(\"A positive impact parameter is required\")\n        return _horner(self.p_numerator, b)/b, _horner(self.q, b)\n\n    def as_dict(self):\n        return dict(p_numerator=[str(v) for v in self.p_numerator],\n                    q=[str(v) for v in self.q],\n                    convention=\"Ascending powers; P(b)=poly(p_numerator,b)/b; Q(b)=poly(q,b)\")\n\n\n@lru_cache(maxsize=None)\ndef _laplace_forms(degree):\n    # L_k/pi = exp(-2b)*P_k + E1(2b)*Q_k.\n    forms = [ImpactClosedForm((F(1),), (F(-2),))]\n    for k in range(1, degree):\n        old = forms[-1]\n        qnew = [F(0)]*(len(old.q)+2)\n        for j, value in enumerate(old.q):\n            qnew[j+2] = value/F((j+2)**2)\n        pnew = [F(0)]*(2*k)\n        for j in range(2*k-1, -1, -1):\n            rhs = (_at(old.p_numerator, j+1)-2*_at(qnew, j+1)\n                   + 2*(j+2)*_at(qnew, j+2))\n            pnew[j] = (rhs+(4*j+6)*_at(pnew, j+1)\n                       -(j+2)**2*_at(pnew, j+2))/4\n        qnew[0] = (old.p_numerator[0]-_at(pnew, 1)+2*pnew[0])/2\n        forms.append(ImpactClosedForm(_trim([F(0), *pnew]), _trim(qnew)))\n    return tuple(forms)\n\n\ndef laplace_integral_closed_forms(degree):\n    \"\"\"Exact forms of L_k=integral sqrt(t-4)*t^(-k)*K0(b*sqrt(t)) dt, k=1..N.\"\"\"\n    return _laplace_forms(_degree(degree))\n\n\ndef _combine(forms, weights):\n    p = [F(0)]*max(len(f.p_numerator) for f in forms)\n    q = [F(0)]*max(len(f.q) for f in forms)\n    for form, weight in zip(forms, weights):\n        for j, value in enumerate(form.p_numerator):\n            p[j] += weight*value\n        for j, value in enumerate(form.q):\n            q[j] += weight*value\n    return ImpactClosedForm(_trim(p), _trim(q))\n\n\n@lru_cache(maxsize=None)\ndef _impact_forms(degree):\n    laplace = _laplace_forms(degree)\n    previous, current = (F(0),), (F(1),)\n    result = []\n    for mode in range(1, degree+1):\n        result.append(_combine(laplace[:mode], [4*v for v in current]))\n        # U_(n+1)(8v-1)=(16v-2)U_n(8v-1)-U_(n-1)(8v-1).\n        following = [F(0)]*(len(current)+1)\n        for j, value in enumerate(current):\n            following[j] -= 2*value\n            following[j+1] += 16*value\n        for j, value in enumerate(previous):\n            following[j] -= value\n        previous, current = current, _trim(following)\n    return tuple(result)\n\n\ndef impact_integral_closed_forms(degree):\n    \"\"\"Return immutable exact rational forms for J_1,...,J_degree.\"\"\"\n    return _impact_forms(_degree(degree))\n\n\ndef impact_profile_closed_forms(coefficients, degree):\n    \"\"\"Form the three profiles directly from exact decimal amplitude coefficients.\n\n    Combining the rational P/Q polynomials before transcendental evaluation\n    avoids cancellation introduced by separately rounded mode values.\n    \"\"\"\n    degree = _degree(degree)\n    coefficients = tuple(_rational(v) for v in coefficients)\n    labels = basis_labels(degree)\n    if len(coefficients) != len(labels):\n        raise ValueError(\"Incorrect amplitude coefficient count\")\n    sine = [[F(0)]*degree for _ in range(3)]\n    for value, (kind, n, m) in zip(coefficients, labels):\n        wn, wm = n*(-1)**(n+1), m*(-1)**(m+1)\n        if kind == \"double_s_tu\":\n            sine[0][m-1] += 3*wn*value\n            for row in sine:\n                row[n-1] += wm*value\n        elif kind == \"double_tu\":\n            for row, sign in zip(sine, (1, -1, 1)):\n                row[m-1] += F(sign*wn, 2)*value\n                row[n-1] += F(sign*wm, 2)*value\n    sine = tuple(tuple(row) for row in sine)\n    forms = impact_integral_closed_forms(degree)\n    return tuple(_combine(forms, row) for row in sine), sine\n\n\ndef impact_ratio_derivative_numerator(form):\n    \"\"\"Exact polynomial R with (H/Q)'=pi*exp(-2b)*R/(b^2*Q^2).\n\n    H=pi*(exp(-2b)*P+E1(2b)*Q). The identity is used only where Q != 0.\n    Positive roots of R and Q partition the half-line into intervals on which\n    H/Q is monotone. This helper does not itself isolate roots or certify a\n    whole-half-line sign, especially at common zeros of P and Q.\n    \"\"\"\n    a, q = form.p_numerator, form.q\n\n    def multiply(left, right):\n        out = [F(0)]*(len(left)+len(right)-1)\n        for j, x in enumerate(left):\n            for k, y in enumerate(right):\n                out[j+k] += x*y\n        return out\n\n    def derivative(values):\n        return [j*v for j, v in enumerate(values) if j] or [F(0)]\n\n    # R=b*(Q A'-Q' A-2 Q A-Q^2)-Q A, where A=b*P.\n    qa = multiply(q, a)\n    terms = [(1, multiply(q, derivative(a))),\n             (-1, multiply(derivative(q), a)),\n             (-2, qa), (-1, multiply(q, q))]\n    result = [F(0)]*(1+max(len(values) for _, values in terms))\n    for sign, values in terms:\n        for j, value in enumerate(values):\n            result[j+1] += sign*value\n    for j, value in enumerate(qa):\n        result[j] -= value\n    return _trim(result)\n\n\ndef _evaluate_arb(forms, b, normalization, precision_bits,\n                  target_accuracy_bits, max_precision_bits):\n    from flint import arb, ctx\n\n    b = _rational(b)\n    if b <= 0:\n        raise ValueError(\"A positive impact parameter is required\")\n    if normalization not in NORMALIZATIONS:\n        raise ValueError(f\"normalization must be one of {NORMALIZATIONS}\")\n    for value, name in ((precision_bits, \"precision_bits\"),\n                        (target_accuracy_bits, \"target_accuracy_bits\"),\n                        (max_precision_bits, \"max_precision_bits\")):\n        if not isinstance(value, Integral) or isinstance(value, bool) or value < 1:\n            raise ValueError(f\"{name} must be a positive integer\")\n    if precision_bits < 64 or max_precision_bits < precision_bits:\n        raise ValueError(\"Require 64 <= precision_bits <= max_precision_bits\")\n    rational_pairs = [form.rational_values(b) for form in forms]\n\n    def ball(value):\n        return arb(value.numerator)/value.denominator\n\n    def interval(value):\n        return dict(lower_rational=str(value.lower().fmpq()),\n                    upper_rational=str(value.upper().fmpq()), ball=str(value),\n                    midpoint_approximate=float(value.mid()),\n                    radius_upper_approximate=float(value.rad().upper()),\n                    relative_accuracy_bits=None if value.is_zero() else int(value.rel_accuracy_bits()),\n                    exact_zero=bool(value.is_zero()))\n\n    old_precision = ctx.prec\n    used = int(precision_bits)\n    try:\n        while True:\n            ctx.prec = used\n            bb = ball(b)\n            # U(1,1,x)=exp(x)*E1(x), evaluated in its scaled form.\n            scaled_e1 = (2*bb).hypgeom_u(1, 1)\n            if normalization == \"none\":\n                scale = arb.pi()*(-2*bb).exp()\n            elif normalization == \"threshold\":\n                scale = bb**2/2\n            else:\n                scale = arb.pi()*bb/(4*(2*bb).bessel_k(1, scaled=True))\n            values = [arb(0) if p == 0 and q == 0\n                      else scale*(ball(p)+ball(q)*scaled_e1)\n                      for p, q in rational_pairs]\n            finite = all(value.is_finite() for value in values)\n            accurate = finite and all(value.is_zero() or value.rel_accuracy_bits() >= target_accuracy_bits\n                                      for value in values)\n            if accurate or used == max_precision_bits:\n                break\n            used = min(2*used, int(max_precision_bits))\n        if not finite:\n            raise ArithmeticError(\"Arb evaluation remained non-finite at the precision limit\")\n        return dict(b=str(b), normalization=normalization,\n            normalization_formula={\"none\": \"J_m or H_I\",\n                \"threshold\": \"b^2 exp(2b)/(2pi) times J_m or H_I\",\n                \"kernel_mass\": \"(J_m or H_I)/M(b), M(b)=4 K1(2b)/b\"}[normalization],\n            precision_bits_requested=int(precision_bits), precision_bits_used=used,\n            target_accuracy_bits=int(target_accuracy_bits), accuracy_target_met=bool(accurate),\n            rigorous_enclosures=True, enclosures=[interval(value) for value in values],\n            coefficient_semantics=\"Exact supplied rational/decimal values; float inputs mean str(value).\",\n            method=\"Exact rational P,Q followed by Arb U(1,1,2b) and explicit positive normalization.\")\n    finally:\n        ctx.prec = old_precision\n\n\ndef evaluate_impact_integrals_arb(b, degree, *, normalization=\"none\", precision_bits=160,\n                                  target_accuracy_bits=80, max_precision_bits=2560):\n    \"\"\"Rigorous J_m enclosures, with adaptive precision for cancellation.\n\n    ``kernel_mass`` matches the probability-kernel normalization J_m/M used\n    by impact_constraints.py. ``threshold`` tends to m as b tends to infinity.\n    If the accuracy cap is reached, the still-rigorous enclosure is returned\n    with accuracy_target_met=False; no sign is inferred from its midpoint.\n    \"\"\"\n    degree = _degree(degree)\n    report = _evaluate_arb(impact_integral_closed_forms(degree), b, normalization,\n                           precision_bits, target_accuracy_bits, max_precision_bits)\n    report[\"degree\"] = degree\n    report[\"modes\"] = [dict(mode=i, enclosure=value)\n                       for i, value in enumerate(report.pop(\"enclosures\"), 1)]\n    return report\n\n\ndef certify_impact_profile_closed_form(b, coefficients, degree, *, normalization=\"none\",\n                                       precision_bits=160, target_accuracy_bits=80,\n                                       max_precision_bits=2560):\n    \"\"\"Certify one b value for all three exact-decimal amplitude profiles.\n\n    Negative upper endpoints exclude all-energy/all-spin unitarity of this\n    amplitude. Positive point evaluations do not certify the condition for all b.\n    \"\"\"\n    forms, sine = impact_profile_closed_forms(coefficients, degree)\n    report = _evaluate_arb(forms, b, normalization, precision_bits,\n                           target_accuracy_bits, max_precision_bits)\n    channels = []\n    for iso, enclosure in enumerate(report.pop(\"enclosures\")):\n        lower, upper = F(enclosure[\"lower_rational\"]), F(enclosure[\"upper_rational\"])\n        sign = \"negative\" if upper < 0 else (\"positive\" if lower > 0 else \"undetermined\")\n        channels.append(dict(isospin=iso, enclosure=enclosure, sign=sign,\n            excludes_all_energy_all_spin_unitarity=bool(upper < 0)))\n    report.update(degree=int(degree), channels=channels,\n        exact_sine_coefficients=[[str(v) for v in row] for row in sine],\n        exact_closed_forms=[form.as_dict() for form in forms],\n        scope=\"A certified value at one b only; neither all-b positivity nor continuum unitarity is certified.\")\n    return report\n"
+  },
+  "source_sha256": {
+    "/home/shiqiu/s-matrix-bootstrap/scripts/validate_impact_closed_form.py": "cb1c7def3c93daa0fa33e01708a0630019b74ea73e921a00c795735e4a501d7e",
+    "src/smatrix_bootstrap/impact_closed_form.py": "933fcc46194aac8a6250abb5322e1ed3bd299bca5ba2058429962ec955830a7b"
+  },
+  "scope": "Numerical independent quadrature verification of exact closed forms; quadrature estimates are not rigorous error certificates."
+}

@@ -1,0 +1,350 @@
+"""Independent UV/FESR, support, Gram-polynomial and moment-cone checks."""
+import numpy as np;import pytest
+pytest.importorskip("flint");from flint import arb,arb_mat,ctx
+from smatrix_bootstrap import write_json,read_json,decode_real_ball,encode_real_ball,UVConfig,read_cflat
+from smatrix_bootstrap.io import summarize_regions
+from smatrix_bootstrap.imaginary import support_outer,density_fourth_power
+from smatrix_bootstrap.kernels import region_geometry,density_labels,joint_audit
+from smatrix_bootstrap.model import fesr_data,current_kinematic_squares,fesr_weights,current_operators
+from smatrix_bootstrap.operators import midpoint_grid
+from smatrix_bootstrap.quotient import normal_dual,fesr_targets,barrier_terms
+def test_fesr_raw_and_normalized_constraint_units_and_squared_form_factor_caps():
+    from dataclasses import replace
+    config = UVConfig();data = fesr_data(50, config)
+    s0 = 3600/49;scales = np.array([s0**2, s0**3, s0, s0**2])
+    for raw, normalized in [('targets_raw', 'targets_normalized'),
+                            ('tolerances_raw', 'tolerances_normalized')]:
+        np.testing.assert_allclose(np.array(data[raw])/scales, data[normalized], rtol=1e-14)
+    np.testing.assert_allclose(np.array(data['weights_raw'])/scales[:, None], data['weights_normalized'])
+    assert data['tolerances_raw'] == [.002]*4
+    alternative = fesr_data(50, replace(config, sr_error='normalized-absolute'))
+    np.testing.assert_allclose(alternative['tolerances_raw'], .002*scales)
+    caps = data['rescaled_ff_caps_squared'];assert caps == pytest.approx([2*((4+7.3)/2/140)**2*6e-5, 3e-5])
+    k0sq, k1sq = current_kinematic_squares(100);assert float(k1sq/k0sq) == pytest.approx(2*(100-4)/9)
+    assert data['form_factors_at_zero'] == [1., 1.];assert sum(data['high_energy_mask']) == 7
+def test_fesr_cutoff_quadrature_against_analytic_constant_spectral_integrals():
+    from dataclasses import replace
+    config = UVConfig();s0 = config.s0
+    exact = np.array([s0-4, (s0*s0-16)/2, np.log(s0/4), s0-4])
+    hard = fesr_weights(50, config, normalized=False).sum(axis=1);clipped = replace(config, cutoff='clipped-phi')
+    partial = fesr_weights(50, clipped, normalized=False).sum(axis=1)
+    assert .28 < abs(hard[1]/exact[1]-1) < .30  # Material M50 endpoint effect.
+    assert np.all(abs(partial/exact-1) < abs(hard/exact-1))
+    fine = fesr_weights(1600, clipped, normalized=False).sum(axis=1)
+    np.testing.assert_allclose(fine, exact, rtol=4e-6)
+    data = fesr_data(45, clipped);assert sum(data['cell_phi_widths']) == pytest.approx(2*np.arccos(2/np.sqrt(s0)))
+    assert any(width > 0 and high for width, high in zip(data['cell_phi_widths'], data['high_energy_mask']))
+def test_eq250_moments_from_independent_complex_ope_contour():
+    from scipy.integrate import quad
+    config = UVConfig(moment_source='eq250')
+    pi, s0 = np.pi, config.s0;g = .023/.140**4
+    j = -.0001/.140**4;moments = []
+    for channel, n in [('S0', 0), ('S0', 1), ('P1', -1), ('P1', 0)]:
+        def integrand(phi):
+            s = s0*np.exp(1j*phi)
+            logarithm = 1j*(phi-pi)  # log(-s/s0), with the physical positive-s cut.
+            if channel == 'S0':
+                polarization = 2*((.004+.0073)/(.140*2))**2/(2*pi)**4*(
+                    -3/(8*pi*pi)*(1+13*.4/(3*pi))*s*logarithm-g/(8*s)-3*j/(2*s))
+            else:
+                polarization = .5/(2*pi)**4*(
+                    -(1+.4/pi)*s*logarithm/(4*pi*pi)+g/(12*s)+j/s)
+            return -np.exp(1j*(n+1)*phi)*polarization/s0
+        real = quad(lambda phi: integrand(phi).real, 0, 2*pi, epsabs=1e-14)[0]
+        imag = quad(lambda phi: integrand(phi).imag, 0, 2*pi, epsabs=1e-14)[0]
+        moments.append(real+1j*imag)
+    np.testing.assert_allclose(moments, fesr_targets(config), rtol=1e-12, atol=1e-22)
+def test_disk_support_bound_eliminates_the_free_amplitude_coordinates():
+    H=np.zeros((17,5));H[0,0]=2.5;H[3,1:3]=[1.5,1.];H[5,2]=1.
+    for real,imag,truth in [(1,0,1),(0,1,2),(0,-1,0),(1,-1,np.sqrt(2)-1)]:
+        H[-2]=real*H[0]+imag*H[3];result=support_outer(H,[1.],np.zeros(3),np.zeros(3),np.zeros(8),[1.,0.],3.)
+        assert result['upper']>=truth-1e-15 and abs(result['upper']-truth)<1e-13
+    H[-2]=[0,0,0,1,0]
+    assert support_outer(H,[1.],np.zeros(3),np.zeros(3),np.zeros(8),[1.,0.],3.)['upper']==pytest.approx(3.)
+def test_native_primal_simplex_keeps_a_feasible_basis_at_time_limit():
+    from scipy.sparse import csc_matrix;from smatrix_bootstrap import solve_feasible_basis_lp
+    A=csc_matrix([[1.,1.,1.,0.],[1.,-1.,0.,1.]]);b=np.array([1.,0.])
+    cost=np.array([-1.,0.,0.,0.]);initial=np.array([0.,0.,1.,0.])
+    result=solve_feasible_basis_lp(cost,A,b,[2,3],initial,1.)
+    assert result.success and result.fun==pytest.approx(-.5)
+    np.testing.assert_allclose(A@result.x,b,atol=1e-12)
+    stopped=solve_feasible_basis_lp(cost,A,b,[2,3],initial,0.);assert not stopped.success and np.all(stopped.x>=0)
+    np.testing.assert_allclose(A@stopped.x,b,atol=1e-12)
+def test_absorptive_coordinates_preserve_the_full_analytic_amplitude():
+    from smatrix_bootstrap.kernels import PVSourceRows; from smatrix_bootstrap.quotient import subtraction_rows, subtract_amplitude_coordinates, absorptive_change
+    M,L=3,2;source=PVSourceRows(M,L,256,12);n=3*M*L;free=1+2*M
+    H=np.empty(source.shape)
+    for index,_,row in source.iter_rows():H[index]=[float(v.mid()) for v in row]
+    scale=np.array([2. if f=='rho2' and i!=j else 1. for f,i,j in density_labels(M)])
+    actual=H*scale;sub=subtraction_rows(actual,M)
+    original=np.linspace(-.4,.7,H.shape[1]);original[0]=0
+    z=subtract_amplitude_coordinates(original,M,True);changed,point,inverse=absorptive_change(sub,z,M,L)
+    assert point[0]==z[0] and np.array_equal(point[free:],z[free:]) and point[0]!=0
+    np.testing.assert_allclose(inverse@point,z,rtol=2e-15,atol=2e-15)
+    np.testing.assert_allclose(changed@point,actual@original,rtol=1e-12,atol=2e-15)
+    count=(len(H)-11)//2;anchors=np.r_[count+np.arange(M)*3*L,count+np.arange(M)*3*L+2*L]
+    np.testing.assert_array_equal(changed[anchors,1:free],np.eye(2*M))
+def test_zero_centered_arb_physical_products_remain_finite():
+    with ctx.workprec(256):
+        value=density_fourth_power([0,0,0,arb('0 +/- 1e-100'),0],1)
+        assert value.is_finite() and value.contains(0)
+def _region_fixture(directory,name,*,M=50,mode='pure',epsilon=None,direction=(1.,0.),target=(1.,0.),**updates):
+    """Aggregation fixtures, not feasibility proofs."""
+    path=directory/name;path.mkdir()
+    grid=directory/'fixture_grid';grid.mkdir(exist_ok=True);p=1+2*M+M*M+M*(M+1)//2
+    H=np.zeros((2,p));H[0,1]=H[1,2]=1;np.savez(grid/'amplitude.npz',rows=H)
+    lower=float(np.asarray(direction)@target)
+    report=dict(command='boundary',status='candidate',M=M,L=1,density_limit=100.,infinity='free',prescription='pv-midpoint',unitarity_scope='sampled',global_high_spin_enforced=False,tail_conditions_applied=False,
+        mode=mode,chiral_tolerance=epsilon,sampling_nodes=50,scattering_samples=150,
+        parameters=dict(preparation=str(grid),additional_constraints=None,direction=list(direction)),
+        targets=list(target),outer=dict(lower=lower,upper=lower+1e-6,enclosure=str(lower+1e-6),primal_feasible=True),support_optimality_certified=True,
+        sampled_feasible=True,analytic_tail_conditions_passed=True,high_spin_necessary=dict(status='nonnegative_certified'))
+    report.update(updates);write_json(path/'report.json',report)
+    vector=np.zeros(p);vector[1:3]=target
+    write_json(path/'coefficients.json',dict(coordinates='unsubtracted PV-midpoint C_flat' if report.get('prescription')=='pv-midpoint' else 'unsubtracted sine-cardinal C_flat',prescription=report.get('prescription','finite-sine-cardinal'),coefficients=vector.tolist()))
+    return path
+def test_regions_reject_small_and_uncertified_runs_without_reference_plot(tmp_path,monkeypatch):
+    from smatrix_bootstrap import io
+    small=_region_fixture(tmp_path,'small',M=3);failed=_region_fixture(tmp_path,'failed',outer=dict(lower=1.,upper=1.000001,primal_feasible=True))
+    output=tmp_path/'output';output.mkdir()
+    monkeypatch.setattr(io,'plot_regions',lambda *a:pytest.fail('Unverified supports must not plot'))
+    import smatrix_bootstrap as core
+    monkeypatch.setattr(core,'digest',lambda *a:pytest.fail('Aggregation must not calculate new hashes'))
+    result=summarize_regions(output,[small,failed],tmp_path/'missing_reference')
+    assert result['status']=='incomplete' and result['qualified_support_points']==0
+    assert not result['plots_created'] and result['regions']==[] and len(result['rejected'])==2
+    assert 'wrong_M' in result['rejected'][0]['reasons'][0]
+    assert 'unverified_outer_bound' in result['rejected'][1]['reasons'][0]
+    assert not list(output.glob('*.png')) and not list(output.glob('*.pdf'))
+def test_regions_keep_model_identity_direction_coverage_and_negative_x(tmp_path,monkeypatch):
+    from smatrix_bootstrap import io;import matplotlib
+    matplotlib.use('Agg')
+    from matplotlib.figure import Figure
+    reference=tmp_path/'reference';reference.mkdir()
+    (reference/'purSplot_points.csv').write_text('role,epsilon,x,y\nboundary_sample,,-1,0\nboundary_sample,,1,0\n')
+    (reference/'chiplot_points.csv').write_text('role,epsilon,x,y\nboundary_sample,0.002,0,0\nboundary_sample,0.002,.1,-.006\n')
+    write_json(reference/'report.json',dict(curves=dict(chiplot=dict(series=[dict(epsilon=.002,color='green')],
+        highlights=[dict(color='black',x=.0713,y=-.00475)],formula_reference_mpi140_fpi92=dict(x=.0733,y=-.00489)))))
+    points=[]
+    for j,angle in enumerate([0.,2*np.pi/3,4*np.pi/3]):
+        direction=(np.cos(angle),np.sin(angle));points.append(_region_fixture(tmp_path,f'pure{j}',direction=direction,target=direction))
+    points.append(_region_fixture(tmp_path,'pure_duplicate_direction',direction=(2.,0.),support_optimality_certified=False,outer=dict(lower=2.,upper=2.02,enclosure='2.02',primal_feasible=True)))
+    for epsilon in [.002,.001]:
+        points.append(_region_fixture(tmp_path,f'chiral{epsilon}',command='dual',mode='chiral',epsilon=epsilon,direction=(0.,-1.),target=(-.2,-.002)))
+    wrong_B=_region_fixture(tmp_path,'wrong_B',density_limit=200.)
+    wrong_grid=_region_fixture(tmp_path,'wrong_grid',parameters=dict(preparation='other_grid',additional_constraints=None,direction=[1.,0.]))
+    limits=[];save=Figure.savefig
+    def capture(figure,*args,**kwargs):limits.append(figure.axes[1].get_xlim());return save(figure,*args,**kwargs)
+    monkeypatch.setattr(Figure,'savefig',capture)
+    output=tmp_path/'output';output.mkdir();result=summarize_regions(output,points+[wrong_B,wrong_grid],reference)
+    assert result['qualified_support_points']==6 and len(result['regions'])==3 and len(result['rejected'])==2
+    assert all('incomparable_model' in r['reasons'][0] for r in result['rejected'])
+    pure=result['regions'][0];assert pure['epsilon'] is None and len(pure['points'])==4 and not pure['points'][-1]['pointwise_tolerance_met'] and pure['points'][-1]['gap']>.019
+    assert pure['outer_closed'] and pure['direction_coverage']['unique_normals']==3
+    assert pure['geometry']['max_distance_upper']>.9 and not pure['geometry']['geometry_ready']
+    assert pure['direction_coverage']['largest_gap_degrees']==pytest.approx(120.)
+    assert all(not r['outer_closed'] for r in result['regions'][1:])
+    assert all(r['direction_coverage']['largest_gap_degrees']==pytest.approx(270.) and r['direction_coverage']['domain_half_planes']==1 for r in result['regions'][1:])
+    assert all(r['points'][0]['target'][0]<0 and r['geometry']['published_positive_x'] and min(v[0] for v in r['geometry']['inner_vertices'])>=0 for r in result['regions'][1:]) and not result['completion_claimed']
+    assert (output/'regions.pdf').is_file() and (output/'comparisons.json').is_file()
+    from copy import deepcopy; square=dict(mode='pure',epsilon=None,points=[dict(direction=d,lower=1.,upper=1.000001,
+        target_enclosures=[encode_real_ball(arb(x)) for x in p]) for p,d in [([1,1],[1,0]),([1,-1],[0,-1]),([-1,-1],[-1,0]),([-1,1],[0,1])]])
+    geometry=region_geometry(square);assert geometry['geometry_ready'] and geometry['max_distance_upper']>=2**.5*1e-6*(1-1e-9)
+    duplicate=region_geometry(square|dict(points=square['points']+[dict(square['points'][0],upper=2.)]));assert duplicate['geometry_ready'] and duplicate['max_distance_upper']==pytest.approx(geometry['max_distance_upper']) and duplicate['raw_support_gap_upper']>=1
+    near=[dict(square['points'][0],direction=d,lower=-1.,upper=3.) for d in ([-1.,np.nextafter(1.,0.)],[-1.,1.])]
+    for extra in (near,near[::-1]):
+        exact=region_geometry(square|dict(points=square['points']+extra));assert exact['geometry_ready'] and exact['max_distance_upper']==pytest.approx(geometry['max_distance_upper'])
+    clipped=region_geometry(square|dict(published_positive_x=True));assert clipped['geometry_ready'] and min(v[0] for v in clipped['inner_vertices'])>=0 and min(v[0] for v in clipped['outer_vertices'])>=0;assert any('source_points' in m for m in clipped['inner_mixtures'])
+    chiral=region_geometry(square|{'epsilon':.002});delta=1.000001-1;expected=np.hypot(delta/(5/(16*np.pi**2*(92/140)**2)),delta*16/15/.002)
+    assert chiral['geometry_ready'] and expected*(1-1e-14)<=chiral['max_distance_upper']<=expected*(1+1e-10)
+    uncertain=deepcopy(square)
+    for point in uncertain['points']:point['target_enclosures']=[encode_real_ball(decode_real_ball(v)+arb('0 +/- .1')) for v in point['target_enclosures']]
+    assert not region_geometry(uncertain)['geometry_ready']
+    small=_region_fixture(tmp_path,'nested_small',mode='chiral',epsilon=.001,target=(.2,0.));large=_region_fixture(tmp_path,'nested_large',mode='chiral',epsilon=.002,target=(.1,0.))
+    output=tmp_path/'contradiction';output.mkdir();result=summarize_regions(output,[small,large],reference)
+    assert result['status']=='incomplete' and result['nesting']['contradictions'] and not result['B3_geometry_ready']
+    relaxed=dict(unitarity_scope='sampled',global_high_spin_enforced=False,infinity='free',tail_conditions_applied=False,
+        analytic_tail_conditions_passed=False,physical_unitarity_accepted=False,high_spin_necessary=dict(status='violated',violations=[dict(isospin=0,cosine=0.,polynomial_value=-1.)]))
+    sampled=_region_fixture(tmp_path,'sampled',**relaxed)
+    strong=_region_fixture(tmp_path,'strong',unitarity_scope='strengthened',global_high_spin_enforced=True)
+    failed_tail=_region_fixture(tmp_path,'sampled_zero',**(relaxed|dict(infinity='zero',tail_conditions_applied=True)))
+    output=tmp_path/'scopes';output.mkdir();result=summarize_regions(output,[sampled,strong,failed_tail],reference)
+    assert result['qualified_support_points']==1 and result['model_signature']['unitarity_scope']=='sampled' and result['finite_only'] and not result['completion_claimed']
+    diagnostics=result['regions'][0]['points'][0]['diagnostics'];assert diagnostics['high_spin']==relaxed['high_spin_necessary'] and diagnostics['tail_passed'] is False and diagnostics['physical_unitarity_accepted'] is False
+    assert 'PV sampled/free' in result['rejected'][0]['reasons'][0]
+    assert 'PV sampled/free' in result['rejected'][1]['reasons'][0]
+    pv=_region_fixture(tmp_path,'pv',**(relaxed|dict(prescription='pv-midpoint',high_spin_necessary=dict(status='not_applicable'))))
+    legacy=_region_fixture(tmp_path,'legacy',prescription='finite-sine-cardinal')
+    output=tmp_path/'prescriptions';output.mkdir();result=summarize_regions(output,[pv,legacy],reference)
+    assert result['qualified_support_points']==1 and result['model_signature']['prescription']=='pv-midpoint' and result['regions'][0]['points'][0]['diagnostics']['high_spin']['status']=='not_applicable' and 'PV sampled/free' in result['rejected'][0]['reasons'][0]
+    write_json(pv/'coefficients.json',read_json(legacy/'coefficients.json'));output=tmp_path/'mismatched';output.mkdir();result=summarize_regions(output,[pv],reference);assert result['qualified_support_points']==0 and 'Report/coefficient prescription mismatch' in result['rejected'][0]['reasons'][0]
+@pytest.mark.parametrize('chiral_norm,factor',[('separate-l2',1.),('combined-l2',3.)])
+def test_joint_audit_restores_only_free_spectra_and_checks_the_complete_problem(chiral_norm,factor):
+    """Synthetic M4 moments/caps from a known point; not a QCD feasible solution."""
+    M=4;L=1;p=len(density_labels(M));n=3*M
+    with ctx.workprec(256):s=np.repeat([float(x) for x in midpoint_grid(M)[0]],3)
+    waves=np.tile([[0,0],[1,1],[2,0]],(M,1));kap=np.pi*np.sqrt(1-4/s)
+    H=np.zeros((2*n+11,p));c=np.zeros(p);c[1+2*M:1+2*M+n]=1
+    for j in range(M):
+        H[3*j,0]=2.5;H[3*j+2,0]=1.;H[n+3*j,1+j]=1.5
+        H[n+3*j,1+M+j]=1.;H[n+3*j+2,1+M+j]=1.
+    for i in range(n):H[n+i,1+2*M+i]=1/kap[i]
+    H[-2,1+2*M]=1.;current=current_operators(H,kap,s,waves,M);a=current['arrays']
+    rho=3*a['k_squared'];rho[:,-1]=0;point=np.r_[c,np.zeros(2*M),rho.ravel()]
+    a['moment_targets_raw']=current['matrices']['moment_linear']@point
+    a['moment_errors_raw']=np.full(4,1e-8);a['ff_caps_squared']=4*a['k_squared'][:,-1]
+    opts=dict(chiral_norm=chiral_norm,objective=None if factor==1 else factor*H[-2])
+    complete,audit=joint_audit(H,kap,current,point,M,L,10.,.002,[1,0],**opts)
+    assert len(complete)==p+4*M and np.array_equal(complete[:p+2*M],point[:p+2*M])
+    assert audit['joint_primal_feasible'] and audit['lower']<=factor<=audit['upper']
+    assert len(audit['restored_high_spectra'])==2 and len(audit['gram_principal_minor_enclosures'])==2*M
+    final_rho=complete[p+2*M:].reshape(2,M);np.testing.assert_array_equal(final_rho[:,:-1],rho[:,:-1])
+    np.testing.assert_allclose(final_rho[:,-1],2*a['k_squared'][:,-1],rtol=2e-10,atol=0)
+    larger=complete.copy();larger[p+3*M-1]=1e6;larger[p+4*M-1]=2e6
+    restored,_=joint_audit(H,kap,current,larger,M,L,10.,.002,[1,0],**opts);np.testing.assert_array_equal(restored[[p+3*M-1,p+4*M-1]],larger[[p+3*M-1,p+4*M-1]])
+    bad=point.copy();bad[p+2*M]=-1
+    _,failed=joint_audit(H,kap,current,bad,M,L,10.,.002,[1,0],**opts)
+    assert failed['amplitude_primal_feasible'] and not failed['joint_primal_feasible'] and failed['lower'] is None
+    rng=np.random.default_rng(19);G=rng.normal(size=(2,M,3,3))
+    duals=dict(gram=G,gram_congruence=np.ones((2,M,3)),moment=rng.normal(size=4),ff=rng.normal(size=(2,1,2)))
+    _,certificate=joint_audit(H,kap,current,point,M,L,10.,.002,[1,0],duals,**opts)
+    assert certificate['primal_feasible'] and certificate['lower']<=factor<=certificate['upper']
+    assert max(certificate['gram_dual_diagonal_shifts'])>0
+    assert np.linalg.eigvalsh(np.asarray(certificate['repaired_normalized_gram_dual'])).min()>=-1e-12
+@pytest.mark.parametrize('norm,divisor',[('separate-l2',1.),('combined-l2',np.sqrt(2.))])
+def test_chiral_group_primal_dual_and_custom_original_objective(norm,divisor):
+    H=np.zeros((17,5));H[0,0]=2.5;H[2,0]=1;H[3,1:3]=[1.5,1];H[4,4]=1;H[5,2]=1
+    H[6,0]=H[10,0]=1;H[-2,0]=1;H[-1,0]=2;c=np.array([.15,1/3,.5,.1,.01]);y=np.zeros(8);y[[0,4]]=1.5
+    result=support_outer(H,[1.],np.zeros(3),np.zeros(3),y,[12,-3],1.,.2,coefficients=c,chiral_norm=norm,objective=[3,0,0,0,0])
+    assert .6/divisor<=result['upper']<.6/divisor+1e-14 and result['chiral_norm']==norm
+    assert result['primal_feasible']==(norm=='separate-l2') and result['lower']==(pytest.approx(.45) if norm=='separate-l2' else None)
+    assert arb(result['targets'][0]).contains(arb(float(c[0]))) and arb(result['targets'][1]).contains(arb(float(2*c[0])))
+    c[0]=.05;kr,ki,y,_,lp=normal_dual(H,np.ones(3),1,1,1.,[1,0],.2,c,None,lambda **k:None,5,chiral_norm=norm)
+    upper=support_outer(H,[1.],kr,ki,y,[1,0],1.,.2,chiral_norm=norm)['upper']
+    assert .2/divisor<=upper<.2/divisor+1e-13 and lp['chiral_normals']==(2 if norm=='separate-l2' else 1)
+@pytest.mark.parametrize('norm,width',[('separate-l2',4),('combined-l2',8)])
+def test_chiral_group_barrier_curvature_matches_independent_log_ball(norm,width):
+    z=np.array([.13,.17,.03,.02],np.longdouble);v=np.array([.3,-.2,.1,.4],np.longdouble)
+    C=np.asarray(np.random.default_rng(51).normal(size=(8,4))*.2,np.longdouble)
+    R=np.array([[.2,.1,0,0]]);I=np.array([[0,1.,0,0]]);t=np.ones(1)
+    full=barrier_terms(z,R,I,t,C,.5,2.,2,chiral_norm=norm);base=barrier_terms(z,R,I,t,C,None,2.,2)
+    F,b=full['features'],full['rhs'];G,d=base['features'],base['rhs'];gradient=-F.T@b+G.T@d;hessian=F.T@F-G.T@G
+    value=lambda point:-np.log(np.longdouble('.25')-np.sum((C@point).reshape(-1,width)**2,axis=1)).sum()
+    h=np.longdouble('1e-4');plus,minus=value(z+h*v),value(z-h*v)
+    np.testing.assert_allclose(v@gradient,(plus-minus)/(2*h),rtol=1e-7,atol=1e-10)
+    np.testing.assert_allclose(v@hessian@v,(plus-2*value(z)+minus)/(h*h),rtol=1e-6,atol=1e-9)
+    assert len(full['chiral_slack'])==8//width
+@pytest.mark.parametrize('target_M',[3,4,6])
+def test_resolution_projection_preserves_low_modes_and_actual_density_packing(target_M):
+    """Nodal initialization only: no PV amplitude identity or feasibility transfer."""
+    from smatrix_bootstrap.operators import project_coefficients
+    def exact(M):
+        phi=(np.arange(M)+.5)*np.pi/M;u,v=np.sin(phi),np.sin(2*phi)
+        r1=np.outer(u,v);r2=np.outer(u,u)+(np.outer(u,v)+np.outer(v,u))/2
+        return np.r_[.125,u,v,r1.ravel(),[r2[i,j]*(1 if i==j else 2) for i in range(M) for j in range(i,M)]]
+    original=exact(4);projected=project_coefficients(original,target_M)
+    assert np.shape(projected)==np.shape(exact(target_M))
+    if target_M==4:assert np.array_equal(projected,original) and projected is not original
+    else:np.testing.assert_allclose(projected,exact(target_M),rtol=3e-14,atol=3e-14)
+    np.testing.assert_array_equal(original,exact(4))
+
+def test_joint_figures_reject_identical_samples_from_different_UV_models(tmp_path,monkeypatch):
+    from smatrix_bootstrap import io, model
+    from types import SimpleNamespace
+    from smatrix_bootstrap.analysis import gauge_regions, gauge_phases
+    sig=dict(M=1,L=1,density_limit=1.,infinity='free',unitarity_scope='sampled',prescription='pv-midpoint',
+        preparation=str(tmp_path/'H'),scattering_samples=3,chiral_norm='combined-l2')
+    square=[[-1.,-1.],[1.,-1.],[1.,1.],[-1.,1.]];baseline=tmp_path/'IR.json'
+    write_json(baseline,dict(model_signature=sig,regions=[dict(mode='chiral',epsilon=.002,points=[],
+        geometry=dict(inner_vertices=square,outer_vertices=square,outer_closed=True))]))
+    paths=[]
+    for j,cutoff in enumerate(('hard-midpoint','clipped-phi')):
+        path=tmp_path/f'UV{j}';path.mkdir();paths.append(path)
+        report=dict(sig,mode='gauge',chiral_tolerance=.002,joint_feasible=True,all_original_constraints_checked=True,
+            parameters=dict(preparation=sig['preparation'],current_preparation=str(tmp_path/'current'),direction=[1.,0.]),
+            current_model=dict(uv=dict(config=dict(cutoff=cutoff))),solver=dict(all_amplitude_directions_retained=True),
+            targets=[0.,0.],outer=dict(primal_feasible=True,joint_primal_feasible=True,lower=0.,upper=.1,enclosure='.1'))
+        write_json(path/'report.json',report)
+        for name in ('coefficients.json','current.json','joint.npz'):(path/name).touch()
+    monkeypatch.setattr(io,'plot_gauge_region',lambda *a:None)
+    result=gauge_regions(SimpleNamespace(output=tmp_path/'regions',region_summary=baseline,support_runs=paths))
+    assert result['qualified_support_points']==1 and len(result['rejected'])==1
+    assert result['rejected'][0]['reason']=='Joint input mismatch'
+    assert result['model_signature']['uv_config']['cutoff']=='hard-midpoint'
+    monkeypatch.setattr(model,'watson_diagnostics',lambda d:None)
+    profiles=[]
+    for j,role in enumerate(('tip','mid','ref')):
+        path=tmp_path/role;path.mkdir();profiles.append(path)
+        signature=dict(result['model_signature'],uv_config=dict(cutoff='clipped-phi' if j==1 else 'hard-midpoint'))
+        write_json(path/'evaluation.json',dict(energies=[4.,5.,6.],waves=[[0,0],[2,0],[1,1]],
+            f=np.zeros((3,3,2)),unitarity=dict(status='sampled_passed'),maximum_eta=1.,coefficients=str(path/'coefficients.json'),
+            selection=dict(role=role,model_signature=signature,coefficients_mixed=False)))
+    with pytest.raises(ValueError,match='same-model selections'):
+        gauge_phases(SimpleNamespace(output=tmp_path/'phases',profile_runs=profiles))
+
+def test_extra_analytic_rows_keep_native_current_identity_and_match_full_integral(tmp_path):
+    # Omitting a new row, its imaginary offset, or its true energy breaks this comparison.
+    from types import SimpleNamespace
+    from smatrix_bootstrap.basis import prepare_cardinal,CardinalSourceRows
+    from smatrix_bootstrap.sampling import prepared_sampling
+    from smatrix_bootstrap.analytic import CardinalAmplitude
+    from smatrix_bootstrap.run import support_data
+    from flint import acb
+    base=tmp_path/'base';extra=tmp_path/'extra';base.mkdir();extra.mkdir()
+    a=SimpleNamespace(nodes=3,waves=1,bits=256,angular_order=24,subtracted=False,source_registry=None,preparation=None,
+        output=base,density_limit=1500.,unitarity_energies=[],primary_waves=True,prescription='analytic-cardinal',command='prepare',infinity='free',unitarity_scope='sampled',additional_constraints=None)
+    write_json(base/'report.json',prepare_cardinal(a,lambda **kw:None))
+    a.preparation=base;a.output=extra;a.unitarity_energies=[9.5]
+    write_json(extra/'report.json',prepare_cardinal(a,lambda **kw:None))
+    with np.load(base/'amplitude.npz') as q:H0=q['rows'].copy()
+    with np.load(extra/'amplitude.npz') as q:H=q['rows'].copy();E=q['radius_upper'].copy();ss,ww=prepared_sampling(q,3,1)
+    assert H.shape==(35,22) and np.array_equal(H[:9],H0[:9]) and np.array_equal(H[12:21],H0[9:18]) and np.array_equal(H[-11:],H0[-11:])
+    a.preparation=extra;out=support_data(a,lambda **kw:None);np.testing.assert_array_equal(out[2],ss)
+    current=current_operators(H,out[1],ss,ww,3);np.testing.assert_array_equal(current['arrays']['native_scattering_indices'],[[0,3,6],[1,4,7]])
+    c=np.random.default_rng(37).normal(size=22);amp=CardinalAmplitude(c,3)
+    with ctx.workprec(256):
+        for j,(I,ell) in enumerate(ww[9:]):
+            value=acb(sum((arb(float(v),float(e))*arb(float(x)) for v,e,x in zip(H[9+j],E[9+j],c)),arb(0)),sum((arb(float(v),float(e))*arb(float(x)) for v,e,x in zip(H[21+j],E[21+j],c)),arb(0)))
+            assert (value-amp.partial_wave(arb('9.5'),None,int(I),int(ell))).contains(0)
+    source=CardinalSourceRows(3,1,256);source.attach_preparation(extra)
+    assert len(source.row(source.x[0],0,0,node=0))==22
+    from smatrix_bootstrap.operators import PhaseOneProblem
+    from smatrix_bootstrap.endpoints import configure_endpoint_coordinates
+    v=np.sin((np.arange(3)+.5)*np.pi/3);c=np.r_[0.,v/8,v/8,np.outer(v,v).ravel(),[v[i]*v[j]/(2 if i==j else 1) for i in range(3) for j in range(i,3)]]*1e-4
+    cur=current_operators(H,out[1],ss,ww,3,UVConfig(moment_source='eq250',matching_energy_gev=.8));P=PhaseOneProblem(H,out[1],cur,3,1,1500.,.002,np.r_[c,np.zeros(6),np.ones(6)],[0,0],absorptive=True)
+    configure_endpoint_coordinates(P);z=P.initial;raw=P.raw(z)
+    np.testing.assert_allclose(P.A@z[:22],H@raw[:22],rtol=1e-10,atol=1e-12)
+    np.testing.assert_allclose(P.C@z[:22],H[24:32]@raw[:22],rtol=1e-10,atol=1e-12)
+    D=P.congruence[P.keep];scale=np.column_stack((D[:,0]**2,D[:,0]*D[:,1],D[:,1]**2,D[:,0]*D[:,2],D[:,1]*D[:,2],D[:,2]**2));physical=(cur['arrays']['gram_constant']+cur['matrices']['gram_linear']@raw).reshape(6,6)[P.keep]
+    np.testing.assert_allclose((P.values(z)['gram']/scale),physical,rtol=1e-9,atol=1e-12)
+    cur['metadata'].update(ff_endpoint_order=2,asymptotic_unitarity=True);_,audit=joint_audit(H,out[1],cur,raw,3,1,1500.,.002,[0,0]);assert audit['amplitude_primal_feasible'] and len(audit['asymptotic_margin_enclosures'])==5
+    from smatrix_bootstrap.ir import zero_constant_coordinates,audit_ir
+    from smatrix_bootstrap.scattering import barrier_support
+    ir=zero_constant_coordinates(H,out[1],c,3,1,1500.,asymptotic=True,bits=256)
+    np.testing.assert_allclose(ir.A@ir.initial,H@c,atol=1e-13);np.testing.assert_allclose(ir.raw(ir.initial),c,atol=1e-13)
+    zi,kr,ki,yy,method=barrier_support(ir.A,out[1],3,1,1500.,[1,0],.002,ir.initial,lambda **kw:None,seconds=10,start_mu=1e-6,gap=1e-4,asymptotic=ir)
+    ci=ir.raw(zi);outer=audit_ir(H,out[1],ci,3,1,1500.,.002,method['support_direction'],dict(kR=kr,kI=ki,y=yy,**method['asymptotic_duals']),zero=True,asymptotic=True)
+    assert ci[0]==0 and outer['primal_feasible'] and outer['upper']>=outer['lower'] and len(outer['asymptotic_margin_enclosures'])==5
+    with np.load(extra/'amplitude.npz') as q:bad={k:q[k] for k in q.files}
+    bad['sample_energies']=ss.copy();bad['sample_energies'][0]=9.5
+    with pytest.raises(ValueError,match='native'):prepared_sampling(bad,3,1)
+def test_center_acceptance_rejects_activity_changes_but_allows_free_spectral_lift(tmp_path):
+    from smatrix_bootstrap.gauge import center_acceptance;from scipy.sparse import csr_matrix;from smatrix_bootstrap.ir import center_identity
+    original=np.arange(9,dtype=float);current={'arrays':{'high_energy_indices':np.array([0])},'matrices':{'moment_linear':csr_matrix((4,9))}}
+    lifted=original.copy();lifted[-2:]+=1;assert center_acceptance(original,lifted,1,current)['eligible']
+    for slot in [0,4,5,6]:
+        changed=lifted.copy();changed[slot]=np.nextafter(changed[slot],np.inf)
+        assert not center_acceptance(original,changed,1,current)['eligible']
+    np.savez(tmp_path/'center_converged.npz',has_newton_gradient=True,coefficients=original[:5],mu=1e-7);assert center_identity(tmp_path,original[:5],1,np.ones(2))['full_C_identical']
+    with pytest.raises(ValueError,match='differs'):center_identity(tmp_path,original[:5]*(1-1e-8),1,np.ones(2))
+def test_exact_form_factor_endpoint_and_dual_constant_identity():
+    from smatrix_bootstrap.endpoints import complete_imf,endpoint_residual,asymptotic_audit,asymptotic_margins
+    with ctx.workprec(256):
+        b=[(arb(2*j+1)/8).tan_pi()/2 for j in range(2)]
+        v=complete_imf([arb(2),arb(999)],True)
+        expected=(1-(arb(2).sqrt()-1))/( (arb(2).sqrt()+1)/2 )
+        assert (v[1]-expected).contains(0) and (1-sum(x*y for x,y in zip(b,v))).contains(0)
+        r=[arb('0.3'),arb('-0.7')];q,constant=endpoint_residual(r,b)
+        assert q[-1].is_zero() and (sum(x*y for x,y in zip(r,v))-constant-sum(x*y for x,y in zip(q,v))).contains(0)
+        assert complete_imf([arb(2),arb(999)],False)[1]==999
+        c=np.arange(12)/10;_,support,m=asymptotic_audit(c,2,{'asymptotic_kR':[0,0,1,0,0],'asymptotic_kI':[0,0,-2,0,0]});assert support==arb(1)/4 and all((x*a-y).contains(0) for x,a,y in zip(m,[1,1,5,3,5],asymptotic_margins(c,2)))

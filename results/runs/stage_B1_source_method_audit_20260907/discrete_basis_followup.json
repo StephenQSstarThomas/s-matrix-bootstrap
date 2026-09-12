@@ -1,0 +1,67 @@
+{
+  "status": "source_audit",
+  "primary_source": "2511.11513v1",
+  "facts": [
+    {
+      "topic": "Publication and scope",
+      "source": "https://arxiv.org/abs/2511.11513v1",
+      "anchor": "Sections 3–6",
+      "finding": "Independent discrete-basis implementation of the GTB framework; later UV inputs and channels differ from 2309. It is a methodology comparison, not the target paper implementation."
+    },
+    {
+      "topic": "Analytic basis",
+      "source": "https://arxiv.org/html/2511.11513v1#S3",
+      "anchor": "Eqs.(3.22–3.27)",
+      "finding": "nu0=0, sine modes and Phi_n=z^n−(−1)^n coincide with the analytic family underlying our nodal sine representation; finite truncation order is an independent parameter."
+    },
+    {
+      "topic": "Numerical coverage",
+      "source": "https://arxiv.org/html/2511.11513v1#S4",
+      "anchor": "Section4 and Eqs.(4.32–4.33)",
+      "finding": "Explicitly imposes unitarity at finitely many M energies and partial waves; does not certify continuum coverage."
+    },
+    {
+      "topic": "Convergence and cost",
+      "source": "https://arxiv.org/html/2511.11513v1#S5",
+      "anchor": "Sections5.1,6; Figs2,3",
+      "finding": "Studies M, angular truncation and nmax separately. Section6 reports M49,nmax37,lmax11 and about one minute per optimization, relative to roughly30 minutes in the earlier interpolation implementation. This reported timing has not been reproduced here."
+    },
+    {
+      "topic": "Regularization",
+      "source": "references/cordoba-discrete-gtb-2511.11513/f_00f_11ExperimentsSVZcircle.m",
+      "anchor": "lines306–321,360–362",
+      "finding": "Two separate L4 bounds on spectral-basis rho1 and full flattened symmetric rho2; diagonal/off-diagonal multiplicities and coordinates differ from our combined nodal actual-rho bound. Mreg10 times10^2=1000 in current script."
+    },
+    {
+      "topic": "Chiral norm and solver",
+      "source": "references/cordoba-discrete-gtb-2511.11513/f_00f_11ExperimentsSVZcircle.m",
+      "anchor": "lines304,371",
+      "finding": "CVX+MOSEK; one combined8-component Euclidean chiral residual. This is not evidence that2309 used that norm."
+    },
+    {
+      "topic": "Public script state",
+      "source": "https://github.com/rafaf991/Bootstrapping-Gauge-Theories",
+      "anchor": "retrieved2026-09-07; script lines21–31 and repo tree",
+      "finding": "Current script sweeps M49,nmax46–50,lmax11 and imports external matrix/data files; public tree contains only one.m, one.nb and README. It is not a turnkey frozen snapshot of the reported nmax37 run."
+    },
+    {
+      "topic": "Normalization check",
+      "source": "references/cordoba-discrete-gtb-2511.11513/BootstrpGenerateDATA.nb",
+      "anchor": "lines1583–1603 (f) and1914–1938 (Fextend)",
+      "finding": "Notebook includes an overall1/4 in projected f. This reconciles the table coefficient A_0^0=10 with the target convention f00(T0)=5T0/2; copying the printed coefficient table without this factor would give a factor4 error."
+    },
+    {
+      "topic": "Saturation iteration",
+      "source": "https://arxiv.org/html/2511.11513v1#S4.SS3",
+      "anchor": "Section4.3,Eqs.(4.37–4.39)",
+      "finding": "Repeated optimization changes a linear objective to encourage saturation while retaining the GTB constraints. It is distinct from Newton/KKT iterations and from enforcing |S|=1 as a new equality."
+    },
+    {
+      "topic": "Angular-index convention",
+      "source": "references/cordoba-discrete-gtb-2511.11513/BootstrpGenerateDATA.nb",
+      "anchor": "lines2105–2129 selectl; MATLAB lines365/513 and analogous tensor slices",
+      "finding": "The notebook maps index l to2*l forI0/I2 and2*l+1 forI1. MATLAB takes firstlmax entries, so lmax11 in that script includes evenell0..20 andoddell1..21. Do not equate the script index cutoff to literal maximumangularmomentum11 or compare it to ourL withoutmapping."
+    }
+  ],
+  "optimization_performed": false
+}

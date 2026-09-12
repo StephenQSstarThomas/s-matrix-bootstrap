@@ -1,0 +1,814 @@
+{
+  "created_utc": "2026-09-11T16:16:50.099781+00:00",
+  "scope": "Read-only archived identity and provenance checks; no UV phase files read, optimization or new mathematical center certificate",
+  "tip": {
+    "coefficient_count": 3876,
+    "raw_joint_variables": 4076,
+    "checkpoint_variables": 4062,
+    "checkpoint_Gram_blocks": 86,
+    "bounded_R_count": 86,
+    "free_high_R_count": 14,
+    "C_file_sha_equal": true,
+    "C_changes": {
+      "changed": 0,
+      "max_absolute": 0.0
+    },
+    "changes": {
+      "C": {
+        "changed": 0,
+        "max_absolute": 0.0
+      },
+      "ImF": {
+        "changed": 0,
+        "max_absolute": 0.0
+      },
+      "bounded_R": {
+        "changed": 0,
+        "max_absolute": 0.0
+      },
+      "free_high_R": {
+        "changed": 12,
+        "max_absolute": 2.5717751608866912e-09
+      }
+    },
+    "free_spectral_lifts": [
+      {
+        "spectral_index": 43,
+        "channel": 0,
+        "node": 43,
+        "before": 3.864091685189736e-07,
+        "after": 3.864091685842618e-07
+      },
+      {
+        "spectral_index": 44,
+        "channel": 0,
+        "node": 44,
+        "before": 6.424712826635488e-06,
+        "after": 6.424712841816227e-06
+      },
+      {
+        "spectral_index": 45,
+        "channel": 0,
+        "node": 45,
+        "before": 1.6657713848927555e-06,
+        "after": 1.6657713861951432e-06
+      },
+      {
+        "spectral_index": 46,
+        "channel": 0,
+        "node": 46,
+        "before": 0.0008549770809369856,
+        "after": 0.0008549773164557127
+      },
+      {
+        "spectral_index": 47,
+        "channel": 0,
+        "node": 47,
+        "before": 0.00037011238250295045,
+        "after": 0.0003701123993738832
+      },
+      {
+        "spectral_index": 48,
+        "channel": 0,
+        "node": 48,
+        "before": 0.0003193824590210502,
+        "after": 0.00031938246144524204
+      },
+      {
+        "spectral_index": 49,
+        "channel": 0,
+        "node": 49,
+        "before": 3.1292195574265867e-06,
+        "after": 3.129219561348652e-06
+      },
+      {
+        "spectral_index": 93,
+        "channel": 1,
+        "node": 43,
+        "before": 0.05471336499261179,
+        "after": 0.05471336756438695
+      },
+      {
+        "spectral_index": 94,
+        "channel": 1,
+        "node": 44,
+        "before": 0.009137358900686171,
+        "after": 0.009137358907176181
+      },
+      {
+        "spectral_index": 95,
+        "channel": 1,
+        "node": 45,
+        "before": 0.0010102908810652182,
+        "after": 0.001010290881114757
+      },
+      {
+        "spectral_index": 96,
+        "channel": 1,
+        "node": 46,
+        "before": 0.07241538883511178,
+        "after": 0.07241538968202522
+      },
+      {
+        "spectral_index": 98,
+        "channel": 1,
+        "node": 48,
+        "before": 0.0019552126865655436,
+        "after": 0.0019552126906939834
+      }
+    ],
+    "center_path_last_equals_saved_joint_all": true,
+    "center_path_last_active_equals_joint": true,
+    "raw_path_C_equals_delivered": true,
+    "saved_mu": 6.103515625e-09,
+    "last_center_mu": 6.103515625e-09,
+    "history_last": {
+      "mu": 6.103515625e-09,
+      "lower": 0.09317173379309758,
+      "upper": 0.0932313741491496,
+      "gap": 5.964035605202089e-05,
+      "central_converged": true,
+      "newton_converged": true,
+      "center_acceptance": {
+        "eligible": true,
+        "free_high_rho_increases": [
+          {
+            "spectral_index": 43,
+            "before": 0.0,
+            "after": 3.864091685189736e-07
+          },
+          {
+            "spectral_index": 44,
+            "before": 0.0,
+            "after": 6.424712826635488e-06
+          },
+          {
+            "spectral_index": 45,
+            "before": 0.0,
+            "after": 1.6657713848927555e-06
+          },
+          {
+            "spectral_index": 46,
+            "before": 0.0,
+            "after": 0.0008549770809369856
+          },
+          {
+            "spectral_index": 47,
+            "before": 0.0,
+            "after": 0.00037011238250295045
+          },
+          {
+            "spectral_index": 48,
+            "before": 0.0,
+            "after": 0.0003193824590210502
+          },
+          {
+            "spectral_index": 49,
+            "before": 0.0,
+            "after": 3.1292195574265867e-06
+          },
+          {
+            "spectral_index": 93,
+            "before": 0.0,
+            "after": 0.05471336499261179
+          },
+          {
+            "spectral_index": 94,
+            "before": 0.0,
+            "after": 0.009137358900686171
+          },
+          {
+            "spectral_index": 95,
+            "before": 0.0,
+            "after": 0.0010102908810652182
+          },
+          {
+            "spectral_index": 96,
+            "before": 0.0,
+            "after": 0.07241538883511178
+          },
+          {
+            "spectral_index": 97,
+            "before": 0.0,
+            "after": 5.7365342785489125e-05
+          },
+          {
+            "spectral_index": 98,
+            "before": 0.0,
+            "after": 0.0019552126865655436
+          },
+          {
+            "spectral_index": 99,
+            "before": 0.0,
+            "after": 0.0015780373729777123
+          }
+        ]
+      },
+      "support_direction": [
+        1.0,
+        0.0
+      ]
+    },
+    "last_Newton_diagnostics": {
+      "mu": 6.103515625e-09,
+      "iteration": 66,
+      "decrement": 2.5150791110758153e-09,
+      "linear_relative_residual": 1.2253832598749036e-08
+    },
+    "support_report_center": true,
+    "analytic_report_center": true,
+    "analytic_source_support_report": "results/runs/physical_consistency_20260911/fine_tip_support_02/report.json",
+    "support_interval": [
+      0.09317173379309758,
+      0.0932313741491496
+    ],
+    "support_gap": 5.964035605202089e-05,
+    "analytic_support_interval_unchanged": true,
+    "analytic_primal_passed": true,
+    "analytic_counts": {
+      "scattering": 3582,
+      "current_grams": 100,
+      "chiral": 2,
+      "FESR": 4,
+      "FF_caps": 14,
+      "density": 1,
+      "endpoint_equalities": 5,
+      "asymptotic_inequalities": 5
+    },
+    "raw_path_active_changes": 0
+  },
+  "IR": {
+    "coefficient_count": 3876,
+    "C_T0_exact_zero": true,
+    "center_coordinate_variables": 3875,
+    "native_to_candidate_C_change": {
+      "changed": 0,
+      "max_absolute": 0.0
+    },
+    "support_to_selection_C_change": {
+      "changed": 0,
+      "max_absolute": 0.0
+    },
+    "center_files_C_identical": {
+      "center_converged.npz": true,
+      "center_best.npz": true,
+      "center_last.npz": true
+    },
+    "center_mu": 1.220703125e-07,
+    "center_iteration": 29,
+    "center_decrement": 1.8165134266230093e-15,
+    "center_has_newton_gradient": true,
+    "center_identity_record": {
+      "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_ref_02/center_converged.npz",
+      "sha256": "4c6ead4f274185c58b9235cee865c2f7c9a4ab9dad37d891edb159f17f989acb",
+      "mu": 1.220703125e-07,
+      "full_C_identical": true
+    },
+    "solver_center": true,
+    "selection_center": true,
+    "recovery": {
+      "repaired": false,
+      "candidate_fraction": 1.0,
+      "primal_certified": true
+    },
+    "support_direction": [
+      35.23222309297576,
+      500.0
+    ],
+    "support_interval": [
+      0.5161863611099164,
+      0.517255595032318
+    ],
+    "support_gap": 0.0010692339224015468,
+    "vertical_gap": 2.1384678448030937e-06,
+    "normalized_vertical_gap": 0.0010692339224015468,
+    "analytic_primal_passed": true,
+    "analytic_counts": {
+      "scattering": 3582,
+      "chiral": 2,
+      "density": 1,
+      "endpoint_equalities": 1,
+      "asymptotic_inequalities": 5
+    },
+    "analytic_report_produces_new_C": false,
+    "analytic_bound_to_support_C_by_hash": true,
+    "selection_directly_reads_support_C": true,
+    "selection_defaults": {
+      "asymptotic_zeros": false,
+      "asymptotic_unitarity": false
+    },
+    "effective_selection_model": {
+      "M": 50,
+      "L": 10,
+      "density_limit": 377500.0,
+      "infinity": "zero",
+      "unitarity_scope": "sampled",
+      "prescription": "analytic-cardinal",
+      "chiral_norm": "separate-l2",
+      "scattering_samples": 3582,
+      "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare",
+      "global_high_spin_enforced": false,
+      "tail_conditions_applied": true,
+      "additional_constraints": {
+        "kind": "explicit-analytic-samples",
+        "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare"
+      },
+      "sampling_nodes": 285
+    },
+    "evaluations": {
+      "fine_IR_evaluate": {
+        "coefficient_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_selected/coefficients.json",
+        "coefficient_sha256": "aaa4e5ae75e98111754d2aa0d796ddbd9372573775a6e71d193b3fc959f5854d",
+        "selection_identical": true,
+        "energy_count": 44,
+        "energy_min": 4.0,
+        "energy_max": 73.39888869886113,
+        "wave_count": 3,
+        "unitarity": {
+          "status": "sampled_passed",
+          "samples_checked": 132,
+          "continuum_certified": false,
+          "high_energy_tail_certified": false,
+          "omitted_spins_checked": false
+        }
+      },
+      "fine_IR_subthreshold": {
+        "coefficient_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_selected/coefficients.json",
+        "coefficient_sha256": "aaa4e5ae75e98111754d2aa0d796ddbd9372573775a6e71d193b3fc959f5854d",
+        "selection_identical": true,
+        "energy_count": 18,
+        "energy_min": 0.1,
+        "energy_max": 3.75,
+        "wave_count": 3,
+        "unitarity": {
+          "status": "unresolved",
+          "samples_checked": 0,
+          "continuum_certified": false,
+          "high_energy_tail_certified": false,
+          "omitted_spins_checked": false
+        }
+      }
+    }
+  },
+  "run_source_and_status_checks": {
+    "fine_tip_support_02": {
+      "module_count": 21,
+      "snapshot_text_hash_mismatches": [],
+      "report_core_hash_mismatches": [],
+      "recorded_source_changes": [],
+      "recorded_input_changes": [],
+      "exit_code": 0,
+      "timeout": false,
+      "status": "joint_feasible"
+    },
+    "fine_tip_analytic": {
+      "module_count": 21,
+      "snapshot_text_hash_mismatches": [],
+      "report_core_hash_mismatches": [],
+      "recorded_source_changes": [],
+      "recorded_input_changes": [],
+      "exit_code": 0,
+      "timeout": false,
+      "status": "analytic_joint_primal_certified"
+    },
+    "fine_IR_ref_02": {
+      "module_count": 21,
+      "snapshot_text_hash_mismatches": [],
+      "report_core_hash_mismatches": [],
+      "recorded_source_changes": [],
+      "recorded_input_changes": [],
+      "exit_code": 0,
+      "timeout": false,
+      "status": "candidate"
+    },
+    "fine_IR_ref_analytic": {
+      "module_count": 21,
+      "snapshot_text_hash_mismatches": [],
+      "report_core_hash_mismatches": [],
+      "recorded_source_changes": [],
+      "recorded_input_changes": [],
+      "exit_code": 0,
+      "timeout": false,
+      "status": "analytic_IR_primal_certified"
+    },
+    "fine_IR_selected": {
+      "module_count": 21,
+      "snapshot_text_hash_mismatches": [],
+      "report_core_hash_mismatches": [],
+      "recorded_source_changes": [],
+      "recorded_input_changes": [],
+      "exit_code": 0,
+      "timeout": false,
+      "status": "selected"
+    },
+    "fine_IR_evaluate": {
+      "module_count": 21,
+      "snapshot_text_hash_mismatches": [],
+      "report_core_hash_mismatches": [],
+      "recorded_source_changes": [],
+      "recorded_input_changes": [],
+      "exit_code": 0,
+      "timeout": false,
+      "status": "evaluated"
+    },
+    "fine_IR_subthreshold": {
+      "module_count": 21,
+      "snapshot_text_hash_mismatches": [],
+      "report_core_hash_mismatches": [],
+      "recorded_source_changes": [],
+      "recorded_input_changes": [],
+      "exit_code": 0,
+      "timeout": false,
+      "status": "evaluated"
+    }
+  },
+  "registered_input_hash_checks": {
+    "fine_tip_support_02": [
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare/report.json",
+        "sha256": "c4486fd4d593d58fe55574abadda04dc21734408fecec307a278820f8105a2f0",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare/amplitude.npz",
+        "sha256": "507ef1937e8d65403c3fd7cd58e89740e997758a6055607805a143b360ea6592",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current/report.json",
+        "sha256": "88b5b6f6f2fb13dadae2fde18c57bef06c11d0bede50a9f03fe0c4bcc813cfc6",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current/current_data.npz",
+        "sha256": "ff8d5809c68515899780eb4793c4d2bb42dbf95d62fdb805d3b60044d071eac9",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current/gram_linear.npz",
+        "sha256": "89fb3448d57581621c1c4e4f82f19f219096d4bec8e0a4169241b9ba6ffece0f",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current/moment_linear.npz",
+        "sha256": "04e022b5aed199efc485438b3fb1b52000d9a26f14ef3c4b942383391cbaa0a4",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current/ff_cap_linear.npz",
+        "sha256": "79b38a0cda214c9b0a4aa6645e1271556cef9f13cc1113a9bc49bd42480a2920",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_support_01/coefficients.json",
+        "sha256": "ec0d717e9344e7a499369d58d40cfaa7a13479ecc5de24197d540fb0984b0b3f",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_support_01/report.json",
+        "sha256": "c08bf59a7570ea9bdfe636f9af2ea2836a18cd50c7a8a349b84ba37f7be97646",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_support_01/joint.npz",
+        "sha256": "e558b79fa40fd0362e6320bc1d8501a559757979e8d07f8e53827b55d0dd0a02",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_support_01/barrier_state.npz",
+        "sha256": "22ce54a0e5c207ccb8472927a8af30bd3b4eb5865dc39f3bf8465d73b46aaf83",
+        "matches": true
+      }
+    ],
+    "fine_tip_analytic": [
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare/report.json",
+        "sha256": "c4486fd4d593d58fe55574abadda04dc21734408fecec307a278820f8105a2f0",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare/amplitude.npz",
+        "sha256": "507ef1937e8d65403c3fd7cd58e89740e997758a6055607805a143b360ea6592",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_support_02/coefficients.json",
+        "sha256": "e6f45ed1f5c7805b00a9b37c428956fa731a7de9f610bc989a4b13ceef25a7be",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_support_02/joint.npz",
+        "sha256": "ebef38aeef58c0d887a8b0595ceb98d0ada26e45a6d79a6aa3373b9a0c640887",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current/report.json",
+        "sha256": "88b5b6f6f2fb13dadae2fde18c57bef06c11d0bede50a9f03fe0c4bcc813cfc6",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current/current_data.npz",
+        "sha256": "ff8d5809c68515899780eb4793c4d2bb42dbf95d62fdb805d3b60044d071eac9",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current/gram_linear.npz",
+        "sha256": "89fb3448d57581621c1c4e4f82f19f219096d4bec8e0a4169241b9ba6ffece0f",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current/moment_linear.npz",
+        "sha256": "04e022b5aed199efc485438b3fb1b52000d9a26f14ef3c4b942383391cbaa0a4",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current/ff_cap_linear.npz",
+        "sha256": "79b38a0cda214c9b0a4aa6645e1271556cef9f13cc1113a9bc49bd42480a2920",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_support_02/report.json",
+        "sha256": "3212303efc9b4ff3192734e2fdc8ac54872d0247ff4bfb78f20a3821bcecf5a7",
+        "matches": true
+      }
+    ],
+    "fine_IR_ref_02": [
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare/report.json",
+        "sha256": "c4486fd4d593d58fe55574abadda04dc21734408fecec307a278820f8105a2f0",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare/amplitude.npz",
+        "sha256": "507ef1937e8d65403c3fd7cd58e89740e997758a6055607805a143b360ea6592",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_ref_01/coefficients.json",
+        "sha256": "82059a744fed4c3d6b0ebcb387bb1eef08eac92da73925a3e5baa5217897b34e",
+        "matches": true
+      }
+    ],
+    "fine_IR_ref_analytic": [
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare/report.json",
+        "sha256": "c4486fd4d593d58fe55574abadda04dc21734408fecec307a278820f8105a2f0",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare/amplitude.npz",
+        "sha256": "507ef1937e8d65403c3fd7cd58e89740e997758a6055607805a143b360ea6592",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_ref_02/coefficients.json",
+        "sha256": "aaa4e5ae75e98111754d2aa0d796ddbd9372573775a6e71d193b3fc959f5854d",
+        "matches": true
+      }
+    ],
+    "fine_IR_selected": [
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_ref_02/report.json",
+        "sha256": "fc6367f1f64c69209fe9a11b5ec1cacb86f8f510cf436f9f968f5b08de56a0e6",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_ref_02/coefficients.json",
+        "sha256": "aaa4e5ae75e98111754d2aa0d796ddbd9372573775a6e71d193b3fc959f5854d",
+        "matches": true
+      }
+    ],
+    "fine_IR_evaluate": [
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_selected/coefficients.json",
+        "sha256": "aaa4e5ae75e98111754d2aa0d796ddbd9372573775a6e71d193b3fc959f5854d",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare/report.json",
+        "sha256": "c4486fd4d593d58fe55574abadda04dc21734408fecec307a278820f8105a2f0",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/analytic_source_registry_stage/registry.json",
+        "sha256": "18e01da602be9c98c614a56ae43f0fe9ac6d4c6ad63e45edbc21f3e8193671e2",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare/amplitude.npz",
+        "sha256": "507ef1937e8d65403c3fd7cd58e89740e997758a6055607805a143b360ea6592",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_selected/selection.json",
+        "sha256": "5ec14298b83b9d846d4024393ae9ef79864a0139426356d2860ac51db497b31b",
+        "matches": true
+      }
+    ],
+    "fine_IR_subthreshold": [
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_selected/coefficients.json",
+        "sha256": "aaa4e5ae75e98111754d2aa0d796ddbd9372573775a6e71d193b3fc959f5854d",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare/report.json",
+        "sha256": "c4486fd4d593d58fe55574abadda04dc21734408fecec307a278820f8105a2f0",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/analytic_source_registry_stage/registry.json",
+        "sha256": "18e01da602be9c98c614a56ae43f0fe9ac6d4c6ad63e45edbc21f3e8193671e2",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare/amplitude.npz",
+        "sha256": "507ef1937e8d65403c3fd7cd58e89740e997758a6055607805a143b360ea6592",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_subthreshold_stage/node_0.rows.json.gz",
+        "sha256": "879e8edebbf239c2dae8ef3ddde58dbf2a7c1777be6d5fa876306955a69ec5d2",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_subthreshold_stage/node_1.rows.json.gz",
+        "sha256": "ed1e6c32963eab77004fc60b69451b1af529421cfbaa3a242eb85fac45c5dc4c",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_subthreshold_stage/node_2.rows.json.gz",
+        "sha256": "13c5eca29266b8b80b9aa08454de67e9e33e0bab3da91ab1a2f7f5077d7470ee",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_subthreshold_stage/node_3.rows.json.gz",
+        "sha256": "91fc4df8d9645db85946cede9ee4ad6dda735760ce4c8fcc03bd85ce70860d31",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_subthreshold_stage/node_4.rows.json.gz",
+        "sha256": "f0a96da5ea408e35b1eee37088f6f95056cde73ce0c9920a45580797f1043c20",
+        "matches": true
+      },
+      {
+        "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_selected/selection.json",
+        "sha256": "5ec14298b83b9d846d4024393ae9ef79864a0139426356d2860ac51db497b31b",
+        "matches": true
+      }
+    ]
+  },
+  "producer_versions_equal_across_runs": true,
+  "artifact_sha256": {
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare/report.json": "c4486fd4d593d58fe55574abadda04dc21734408fecec307a278820f8105a2f0",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare/amplitude.npz": "507ef1937e8d65403c3fd7cd58e89740e997758a6055607805a143b360ea6592",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current/report.json": "88b5b6f6f2fb13dadae2fde18c57bef06c11d0bede50a9f03fe0c4bcc813cfc6",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current/current_data.npz": "ff8d5809c68515899780eb4793c4d2bb42dbf95d62fdb805d3b60044d071eac9",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current/gram_linear.npz": "89fb3448d57581621c1c4e4f82f19f219096d4bec8e0a4169241b9ba6ffece0f",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current/moment_linear.npz": "04e022b5aed199efc485438b3fb1b52000d9a26f14ef3c4b942383391cbaa0a4",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current/ff_cap_linear.npz": "79b38a0cda214c9b0a4aa6645e1271556cef9f13cc1113a9bc49bd42480a2920",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_support_01/coefficients.json": "ec0d717e9344e7a499369d58d40cfaa7a13479ecc5de24197d540fb0984b0b3f",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_support_01/report.json": "c08bf59a7570ea9bdfe636f9af2ea2836a18cd50c7a8a349b84ba37f7be97646",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_support_01/joint.npz": "e558b79fa40fd0362e6320bc1d8501a559757979e8d07f8e53827b55d0dd0a02",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_support_01/barrier_state.npz": "22ce54a0e5c207ccb8472927a8af30bd3b4eb5865dc39f3bf8465d73b46aaf83",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_support_02/report.json": "3212303efc9b4ff3192734e2fdc8ac54872d0247ff4bfb78f20a3821bcecf5a7",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_support_02/source.json": "8a4da8b177a6a7c653605262970d9e2240c65ca8ffde3d9e82da610412d7378d",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_support_02/coefficients.json": "e6f45ed1f5c7805b00a9b37c428956fa731a7de9f610bc989a4b13ceef25a7be",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_support_02/joint.npz": "ebef38aeef58c0d887a8b0595ceb98d0ada26e45a6d79a6aa3373b9a0c640887",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_analytic/report.json": "158395d83059987cffb1527bcffdce4ebc61cffad79a3db9eb1a92ce9e55c057",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_analytic/source.json": "8a4da8b177a6a7c653605262970d9e2240c65ca8ffde3d9e82da610412d7378d",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_ref_01/coefficients.json": "82059a744fed4c3d6b0ebcb387bb1eef08eac92da73925a3e5baa5217897b34e",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_ref_02/report.json": "fc6367f1f64c69209fe9a11b5ec1cacb86f8f510cf436f9f968f5b08de56a0e6",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_ref_02/source.json": "8a4da8b177a6a7c653605262970d9e2240c65ca8ffde3d9e82da610412d7378d",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_ref_02/coefficients.json": "aaa4e5ae75e98111754d2aa0d796ddbd9372573775a6e71d193b3fc959f5854d",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_ref_analytic/report.json": "c888597c8867eb18a8eb593a9927e68dbded31b6b9eb3696abd7e3b7b22039b1",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_ref_analytic/source.json": "8a4da8b177a6a7c653605262970d9e2240c65ca8ffde3d9e82da610412d7378d",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_selected/report.json": "8bfaffadc9c59af899e045c11a9954bd4d01576cbcf31369c46cf09fe18d032e",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_selected/source.json": "8a4da8b177a6a7c653605262970d9e2240c65ca8ffde3d9e82da610412d7378d",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_selected/coefficients.json": "aaa4e5ae75e98111754d2aa0d796ddbd9372573775a6e71d193b3fc959f5854d",
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/analytic_source_registry_stage/registry.json": "18e01da602be9c98c614a56ae43f0fe9ac6d4c6ad63e45edbc21f3e8193671e2",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_selected/selection.json": "5ec14298b83b9d846d4024393ae9ef79864a0139426356d2860ac51db497b31b",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_evaluate/report.json": "50874c3924c669ff0a9c9f41d2acd93440d1587a5f95c78d001a164f5add748b",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_evaluate/source.json": "8a4da8b177a6a7c653605262970d9e2240c65ca8ffde3d9e82da610412d7378d",
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_subthreshold_stage/node_0.rows.json.gz": "879e8edebbf239c2dae8ef3ddde58dbf2a7c1777be6d5fa876306955a69ec5d2",
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_subthreshold_stage/node_1.rows.json.gz": "ed1e6c32963eab77004fc60b69451b1af529421cfbaa3a242eb85fac45c5dc4c",
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_subthreshold_stage/node_2.rows.json.gz": "13c5eca29266b8b80b9aa08454de67e9e33e0bab3da91ab1a2f7f5077d7470ee",
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_subthreshold_stage/node_3.rows.json.gz": "91fc4df8d9645db85946cede9ee4ad6dda735760ce4c8fcc03bd85ce70860d31",
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_subthreshold_stage/node_4.rows.json.gz": "f0a96da5ea408e35b1eee37088f6f95056cde73ce0c9920a45580797f1043c20",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_subthreshold/report.json": "ec5308813d35c6737f15419c3eed931134c28d0d46c1aab0d32f29d00b68f007",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_subthreshold/source.json": "8a4da8b177a6a7c653605262970d9e2240c65ca8ffde3d9e82da610412d7378d",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_analytic/coefficients.json": "e6f45ed1f5c7805b00a9b37c428956fa731a7de9f610bc989a4b13ceef25a7be",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_ref_02/center_converged.npz": "4c6ead4f274185c58b9235cee865c2f7c9a4ab9dad37d891edb159f17f989acb",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_evaluate/evaluation.json": "507014d204599a6b6dff07674248cf30d96402f36773a6164d9d0741d71bcd49",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_subthreshold/evaluation.json": "fe58e42e74f7713621aa13d2423a959c1a1c89845c7f74c136a0e0a6ce3705e6",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_support_02/joint_path_candidate.npz": "53c3fddfca9aa280809830664ddca0dcbe2d9f1f5556476f1834c6f951cbaa3d",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_support_02/center_path.npz": "73b10abc3106d29ba35881572b1062a35f859a1b03e4ba3aa83be4d5b378b7d8",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_support_02/barrier_state.npz": "af66f751e2dc1a9bdd8b26413f5b0a770b2d2fff179efbac09a7e6623532ad86",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_support_02/progress.jsonl": "8f02b06c7641e6654baf053d49bd0757e173efdb463a0f6b2f90ef01b45ab33d",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_support_02/joint_audit.json": "002426bcc03e2e66761435233c6b9bd40ed164b5f71a3b0708756a642ed7d437",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_analytic/joint.npz": "4912390f187e38c6d3f028456bc796dfdbe4e4ecdbb8e8c01d4e4657634af91b",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_analytic/joint_audit.json": "a67649338214514ff0b54a02f2091c82eaff8ffc2d3b6d10233ed47c745392f2",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_tip_analytic/source_audit.json": "f7282c20b23c94e88e7f220be36592e07f6590a055146328db9eb4f658a074ea",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_ref_02/native_candidate.npz": "89927db773c628156d3c93807da018847b3371116dbbfb69e65857f6758c90da",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_ref_02/candidate.npz": "89927db773c628156d3c93807da018847b3371116dbbfb69e65857f6758c90da",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_ref_02/center_best.npz": "4c6ead4f274185c58b9235cee865c2f7c9a4ab9dad37d891edb159f17f989acb",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_ref_02/center_last.npz": "4c6ead4f274185c58b9235cee865c2f7c9a4ab9dad37d891edb159f17f989acb",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_ref_02/progress.jsonl": "afa826f7ba4369602872f75be8b9953104dfa8a8eb4a73046d86f18413c96bad",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_IR_ref_analytic/source_audit.json": "2c072f7f3a7bc84e0706e94343093be96fdeaecb6eaf96da30c2d8e1eece59e5",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_prepare/amplitude.npz": "8edc550f906b34addd37a7b3f3dee5c22aa74fb8e9cfbe5384e6f6ae254fdc92",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/FINE_OPERATOR_PREFIX_REPLAY.json": "090d81433168f220e6083284f0cc87239c7fb21f526f8a134f9a8df2bdb4beeb",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_current/current_data.npz": "ff8d5809c68515899780eb4793c4d2bb42dbf95d62fdb805d3b60044d071eac9",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_current/gram_linear.npz": "89fb3448d57581621c1c4e4f82f19f219096d4bec8e0a4169241b9ba6ffece0f",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_current/moment_linear.npz": "04e022b5aed199efc485438b3fb1b52000d9a26f14ef3c4b942383391cbaa0a4",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_current/ff_cap_linear.npz": "79b38a0cda214c9b0a4aa6645e1271556cef9f13cc1113a9bc49bd42480a2920",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/FINE_CURRENT_OPERATOR_REPLAY.json": "b01d16548c1017888830cd567b8305fff0d7b4aedae7de0cff952f7e3cf82ed3",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_tip_support_02/report.json": "4df4e7437aebe428ec9cece429982589428c900a9eb04e7c4a35c88757f045b3",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/FINE_TIP_SUPPORT_NESTING.json": "fab0e8b9ed790f7feb77c76e57190290a72230a1f20723064d78c7dbaed487f5"
+  },
+  "scope_notes": [
+    "Center means the numerical center of the actually used reduced barrier problem. An allowed finite lift of free high R is not a unique full-4076-variable all-Gram barrier center or a unique QCD amplitude.",
+    "The IR analytic audit is a separate proof branch referencing the same C, not a directory producing a new amplitude; selection reads the support C directly.",
+    "Selection CLI default endpoint/tail flags are false but the effective inherited model signature and re-audit keep zero T0 and the five high-energy inequalities.",
+    "The IR physical evaluation checks 132 supplied physical samples; the subthreshold evaluation checks zero physical unitarity samples and its unresolved status is not a failed 3582-row primal proof.",
+    "No-drift statements mean all seven recorded source_changes/input_changes are empty and registered input hashes match. The selector does not separately list every consumed H/candidate file in inputs; its C/center/source-report chain and this audit provide additional identity checks, not retrospective monitoring of unregistered reads."
+  ],
+  "conclusion": {
+    "complete_C_unchanged_in_both_chains": true,
+    "tip_active_ImF_and_bounded_R_unchanged": true,
+    "only_allowed_free_high_R_lifts": true,
+    "IR_recovery_changed_C": false,
+    "registered_hash_mismatches": 0,
+    "recorded_runtime_source_or_input_changes": 0,
+    "full_energy_or_unique_amplitude_claim": false
+  },
+  "additional_existing_evidence": {
+    "FINE_OPERATOR_PREFIX_REPLAY.json": {
+      "scope": "Read-only byte identity audit of the retained operator prefix; not a new feasibility certificate",
+      "input_hashes_match": true,
+      "input_checks": [
+        {
+          "path": "results/runs/physical_consistency_20260911/interlaced_prepare/amplitude.npz",
+          "matches": true
+        },
+        {
+          "path": "results/runs/physical_consistency_20260911/fine_prepare/amplitude.npz",
+          "matches": true
+        }
+      ]
+    },
+    "FINE_CURRENT_OPERATOR_REPLAY.json": {
+      "scope": "Read-only comparison of current operators in the 3123 and 3582 disk models",
+      "input_hashes_match": true,
+      "input_checks": [
+        {
+          "path": "results/runs/physical_consistency_20260911/interlaced_current/current_data.npz",
+          "matches": true
+        },
+        {
+          "path": "results/runs/physical_consistency_20260911/fine_current/current_data.npz",
+          "matches": true
+        },
+        {
+          "path": "results/runs/physical_consistency_20260911/interlaced_current/gram_linear.npz",
+          "matches": true
+        },
+        {
+          "path": "results/runs/physical_consistency_20260911/fine_current/gram_linear.npz",
+          "matches": true
+        },
+        {
+          "path": "results/runs/physical_consistency_20260911/interlaced_current/moment_linear.npz",
+          "matches": true
+        },
+        {
+          "path": "results/runs/physical_consistency_20260911/fine_current/moment_linear.npz",
+          "matches": true
+        },
+        {
+          "path": "results/runs/physical_consistency_20260911/interlaced_current/ff_cap_linear.npz",
+          "matches": true
+        },
+        {
+          "path": "results/runs/physical_consistency_20260911/fine_current/ff_cap_linear.npz",
+          "matches": true
+        }
+      ]
+    },
+    "FINE_TIP_SUPPORT_NESTING.json": {
+      "scope": "Support-value comparison for the two nested saved-float64-H finite programs, not a bound on phase shifts or exact-source support",
+      "input_hashes_match": true,
+      "input_checks": [
+        {
+          "path": "results/runs/physical_consistency_20260911/interlaced_tip_support_02/report.json",
+          "matches": true
+        },
+        {
+          "path": "results/runs/physical_consistency_20260911/fine_tip_support_02/report.json",
+          "matches": true
+        }
+      ],
+      "existing_upper_bound": "6.68429115469e-5",
+      "new_arithmetic_performed": false
+    }
+  }
+}

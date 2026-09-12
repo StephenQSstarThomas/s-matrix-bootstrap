@@ -1,0 +1,83 @@
+{
+  "records": [
+    {
+      "bits": 128,
+      "n": 200,
+      "threads": 4,
+      "build_seconds": 0.03330965805798769,
+      "multiply_seconds": 0.048318597953766584,
+      "solve_seconds": {
+        "lu": 0.055967031978070736,
+        "precond": 0.2947893168311566,
+        "approx": 0.06547968997620046
+      },
+      "approx_residual_max": 2.725969572552705e-38
+    },
+    {
+      "bits": 128,
+      "n": 300,
+      "threads": 4,
+      "build_seconds": 0.08513427712023258,
+      "multiply_seconds": 0.12304416089318693,
+      "solve_seconds": {
+        "lu": 0.1597583252005279,
+        "precond": 0.6902019579429179,
+        "approx": 0.16770622413605452
+      },
+      "approx_residual_max": 3.4426821627027753e-38
+    },
+    {
+      "bits": 128,
+      "n": 500,
+      "threads": 4,
+      "build_seconds": 0.2100409830454737,
+      "multiply_seconds": 0.3931185230612755,
+      "solve_seconds": {
+        "lu": 0.4338024959433824,
+        "precond": 1.7448720089159906,
+        "approx": 0.40987214888446033
+      },
+      "approx_residual_max": 2.063552032078336e-38
+    },
+    {
+      "bits": 192,
+      "n": 200,
+      "threads": 4,
+      "build_seconds": 0.031565005192533135,
+      "multiply_seconds": 0.04468494118191302,
+      "solve_seconds": {
+        "lu": 0.06683017197065055,
+        "precond": 0.2757378888782114,
+        "approx": 0.0748219471424818
+      },
+      "approx_residual_max": 1.1608040808972249e-57
+    },
+    {
+      "bits": 192,
+      "n": 300,
+      "threads": 4,
+      "build_seconds": 0.05727463494986296,
+      "multiply_seconds": 0.10371059295721352,
+      "solve_seconds": {
+        "lu": 0.17839097301475704,
+        "precond": 0.7273276231717318,
+        "approx": 0.17475937493145466
+      },
+      "approx_residual_max": 1.8658399201246065e-57
+    },
+    {
+      "bits": 192,
+      "n": 500,
+      "threads": 4,
+      "build_seconds": 0.16963977413251996,
+      "multiply_seconds": 0.40930920001119375,
+      "solve_seconds": {
+        "lu": 0.6663363880943507,
+        "precond": 2.9553795049432665,
+        "approx": 0.6149433280806988
+      },
+      "approx_residual_max": 1.1198011985975014e-57
+    }
+  ],
+  "scope": "Dense symmetric diagonally dominant matrices with random p-bit dyadic entries. Full precision mantissas; not the physical Hessian."
+}

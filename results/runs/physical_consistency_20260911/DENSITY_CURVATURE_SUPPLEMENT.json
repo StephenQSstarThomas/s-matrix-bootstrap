@@ -1,0 +1,312 @@
+{
+  "snapshot": {
+    "snapshot": "results/runs/physical_consistency_20260911/INTERLACED_STATE_AUDIT_phase_I_state_snapshot.npz",
+    "source": "results/runs/physical_consistency_20260911/interlaced_phase_I_02/phase_I_state.npz",
+    "captured_utc": "2026-09-11T07:45:23.475395+00:00",
+    "source_mtime_utc": "2026-09-11T07:41:47.513546+00:00",
+    "source_mtime_ns": 1789112507513545500,
+    "sha256": "bdacea7c0a2569a224fc5ac536fc3da610d5da5ce9508587298feadf500c7d2e",
+    "size_bytes": 194413,
+    "zip_crc_passed": true,
+    "all_npz_arrays_loaded": true,
+    "read_attempts": 1,
+    "mu": 0.01,
+    "tau": 3.390023509987084,
+    "z_dtype": "float128",
+    "z_shape": [
+      4063
+    ],
+    "keys": [
+      "z",
+      "mu",
+      "ray_rate",
+      "reference_point",
+      "x",
+      "y",
+      "chi",
+      "gram",
+      "ff",
+      "moment",
+      "slack",
+      "chiral_slack"
+    ],
+    "scope": "One accepted immutable checkpoint snapshot; not a final-center claim"
+  },
+  "problem": {
+    "M": 50,
+    "L": 10,
+    "n": 3123,
+    "p": 3876,
+    "variables": 4063,
+    "mu": 0.01,
+    "tau": 3.390023509987084,
+    "chiral_weight": 1561.5,
+    "epsilon": 0.002,
+    "density_bound": 377500,
+    "chiral_norm": "separate-l2",
+    "absorptive": true,
+    "ff_endpoint_order": 2,
+    "asymptotic_unitarity": true,
+    "endpoint_pivots": [
+      100,
+      3925,
+      3924,
+      3975,
+      3974
+    ],
+    "reference_point": "Copied from immutable NPZ",
+    "preparation": "results/runs/physical_consistency_20260911/interlaced_prepare",
+    "current_preparation": "results/runs/physical_consistency_20260911/interlaced_current",
+    "flint_precision": 512
+  },
+  "method": {
+    "full_features_shape": [
+      13731,
+      4063
+    ],
+    "feature_projection_seconds": 17.42691738717258,
+    "random_seed": 9621,
+    "normalization": "Full existing feature matrix F, ||F d||2=1",
+    "requested_difference_sizes": [
+      0.005,
+      0.0025
+    ],
+    "full_Hessian_formed": false,
+    "Newton_or_QR_performed": false,
+    "only_two_directions": true,
+    "original_reports_and_snapshot_modified": false,
+    "roundoff_indicator_scope": "Floating cancellation scale estimate only; density-gradient finite differences provide the component-curvature check.",
+    "artifact_assembly_note": "All numerical probes completed; a duplicate JSON keyword interrupted the first report assembly. This report uses the exact captured numerical records without rerunning the calculation.",
+    "density_feature_block_definition": "n + count(any(R != 0, axis=1)) + count(t > 0) + sum(1+group_size), followed by p-free+1 rows"
+  },
+  "base": {
+    "Phi": 78186.89927564442,
+    "density_l4_norm": 193625.2167847796,
+    "density_norm_over_B": 0.512914481549085
+  },
+  "directions": [
+    {
+      "name": "amplitude_radial_with_density",
+      "direction_definition": "d[:p]=z[:p], all other entries zero, endpoint pivots reset to zero",
+      "unscaled_feature_norm_squared": 725967661.5628546,
+      "normalization": "Full existing features matrix; ||F d||_2=1",
+      "feature_gradient": 0.9919761495940963,
+      "feature_curvature": 1,
+      "density_feature_gradient": 0.035789520489686,
+      "density_feature_curvature": 2.964297350096039e-06,
+      "density_curvature_fraction": 2.964297350096039e-06,
+      "density_direction_nonzero": 3775,
+      "max_density_direction": 2.7480421078026254,
+      "slope_gradient": 0.9919761495940963,
+      "gradient_feature_minus_slope": -8.944667923005412e-18,
+      "density_slope_gradient": 0.035789520489686,
+      "density_gradient_feature_minus_slope": 2.7172816947917955e-18,
+      "finite_differences": [
+        {
+          "requested_h": 0.005,
+          "used_h": 0.005,
+          "backtracks": 0,
+          "two_sided_strict": true,
+          "plus": {
+            "density_norm_over_B": 0.5129145767314142,
+            "minimum_scattering_slack": 5.445744845464477e-07,
+            "minimum_chiral_slack": 2.6269788570734503e-06,
+            "minimum_FF_slack": 0.4432642747413366,
+            "minimum_moment_slack": 0.1414384108165041,
+            "minimum_asymptotic_slack": 3.198860227456688e-06
+          },
+          "minus": {
+            "density_norm_over_B": 0.5129143863667559,
+            "minimum_scattering_slack": 5.445742824490273e-07,
+            "minimum_chiral_slack": 2.626979876247678e-06,
+            "minimum_FF_slack": 0.4432642747413366,
+            "minimum_moment_slack": 0.1414384108165041,
+            "minimum_asymptotic_slack": 3.1988592457473006e-06
+          },
+          "Phi_first_difference": 0.9919844839103575,
+          "Phi_second_difference": 1.0000120920494737,
+          "gradient_absolute_error": 8.33431626123815e-06,
+          "gradient_relative_error": 8.401730489839341e-06,
+          "curvature_relative_error": 1.2092049473722108e-05,
+          "slope_difference_curvature": 1.0000249997395285,
+          "slope_curvature_relative_error": 2.4999739528589133e-05,
+          "density_first_difference": 0.03578952048997053,
+          "density_second_difference": 2.96381585940253e-06,
+          "density_gradient_absolute_error": 2.845293445297159e-13,
+          "density_gradient_relative_error": 7.950074229458116e-12,
+          "density_curvature_relative_error": -0.0001624299578089575,
+          "density_slope_difference_curvature": 2.9642973500928116e-06,
+          "density_slope_curvature_relative_error": -1.0888310666296486e-12,
+          "density_component_cancellation_indicator": 4.372965345821315e-08,
+          "density_component_second_difference_resolved": false
+        },
+        {
+          "requested_h": 0.0025,
+          "used_h": 0.0025,
+          "backtracks": 0,
+          "two_sided_strict": true,
+          "plus": {
+            "density_norm_over_B": 0.5129145291402496,
+            "minimum_scattering_slack": 5.445744340220926e-07,
+            "minimum_chiral_slack": 2.6269791118670324e-06,
+            "minimum_FF_slack": 0.4432642747413366,
+            "minimum_moment_slack": 0.1414384108165041,
+            "minimum_asymptotic_slack": 3.198859982029355e-06
+          },
+          "minus": {
+            "density_norm_over_B": 0.5129144339579205,
+            "minimum_scattering_slack": 5.445743329733823e-07,
+            "minimum_chiral_slack": 2.6269796214541406e-06,
+            "minimum_FF_slack": 0.4432642747413366,
+            "minimum_moment_slack": 0.1414384108165041,
+            "minimum_asymptotic_slack": 3.1988594911746617e-06
+          },
+          "Phi_first_difference": 0.9919782337732386,
+          "Phi_second_difference": 1.0000040288105083,
+          "gradient_absolute_error": 2.084179142269882e-06,
+          "gradient_relative_error": 2.1010375532947044e-06,
+          "curvature_relative_error": 4.028810508316491e-06,
+          "slope_difference_curvature": 1.0000062501660096,
+          "slope_curvature_relative_error": 6.250166009615955e-06,
+          "density_first_difference": 0.035789520489259985,
+          "density_second_difference": 2.9621105568367057e-06,
+          "density_gradient_absolute_error": -4.260133912303843e-13,
+          "density_gradient_relative_error": -1.1903299776065872e-11,
+          "density_curvature_relative_error": -0.0007377104929310467,
+          "density_slope_difference_curvature": 2.9642973500907787e-06,
+          "density_slope_curvature_relative_error": -1.7746189054726238e-12,
+          "density_component_cancellation_indicator": 1.7491861382244412e-07,
+          "density_component_second_difference_resolved": false
+        }
+      ]
+    },
+    {
+      "name": "seeded_mixed_density_only",
+      "direction_definition": "d[free:p]=default_rng(9621).normal(nd), all other entries zero, endpoint pivots reset to zero",
+      "unscaled_feature_norm_squared": 91013.6316869863,
+      "normalization": "Full existing features matrix; ||F d||_2=1",
+      "feature_gradient": -0.2798654903891288,
+      "feature_curvature": 1,
+      "density_feature_gradient": -2.143820973228838e-06,
+      "density_feature_curvature": 4.3666662746505275e-11,
+      "density_curvature_fraction": 4.3666662746505275e-11,
+      "density_direction_nonzero": 3775,
+      "max_density_direction": 0.013616939410077992,
+      "slope_gradient": -0.2798654903891289,
+      "gradient_feature_minus_slope": 9.820161177287456e-17,
+      "density_slope_gradient": -2.143820973228838e-06,
+      "density_gradient_feature_minus_slope": 1.2883338040513406e-22,
+      "finite_differences": [
+        {
+          "requested_h": 0.005,
+          "used_h": 0.005,
+          "backtracks": 0,
+          "two_sided_strict": true,
+          "plus": {
+            "density_norm_over_B": 0.5129144815447139,
+            "minimum_scattering_slack": 5.44579127646317e-07,
+            "minimum_chiral_slack": 2.6269708227917787e-06,
+            "minimum_FF_slack": 0.4432642747413366,
+            "minimum_moment_slack": 0.1414384108165041,
+            "minimum_asymptotic_slack": 3.1988168779341443e-06
+          },
+          "minus": {
+            "density_norm_over_B": 0.5129144815534562,
+            "minimum_scattering_slack": 5.445696393491577e-07,
+            "minimum_chiral_slack": 2.6269879056626695e-06,
+            "minimum_FF_slack": 0.4432642747413366,
+            "minimum_moment_slack": 0.1414384108165041,
+            "minimum_asymptotic_slack": 3.1989025942879813e-06
+          },
+          "Phi_first_difference": -0.2798659633981515,
+          "Phi_second_difference": 1.0000021762834876,
+          "gradient_absolute_error": -4.7300902272784384e-07,
+          "gradient_relative_error": -1.6901298622783598e-06,
+          "curvature_relative_error": 2.176283487642758e-06,
+          "slope_difference_curvature": 1.0000006260050092,
+          "slope_curvature_relative_error": 6.260050091138822e-07,
+          "density_first_difference": -2.143820765354576e-06,
+          "density_second_difference": -7.105427357601002e-10,
+          "density_gradient_absolute_error": 2.0787426210163058e-13,
+          "density_gradient_relative_error": 9.696437561600506e-08,
+          "density_curvature_relative_error": -17.271972508752487,
+          "density_slope_difference_curvature": 4.366666274623273e-11,
+          "density_slope_curvature_relative_error": -6.2414453039684975e-12,
+          "density_component_cancellation_indicator": 4.372965345726207e-08,
+          "density_component_second_difference_resolved": false
+        },
+        {
+          "requested_h": 0.0025,
+          "used_h": 0.0025,
+          "backtracks": 0,
+          "two_sided_strict": true,
+          "plus": {
+            "density_norm_over_B": 0.5129144815468994,
+            "minimum_scattering_slack": 5.445767555720272e-07,
+            "minimum_chiral_slack": 2.6269750953345335e-06,
+            "minimum_FF_slack": 0.4432642747413366,
+            "minimum_moment_slack": 0.1414384108165041,
+            "minimum_asymptotic_slack": 3.1988383073908167e-06
+          },
+          "minus": {
+            "density_norm_over_B": 0.5129144815512706,
+            "minimum_scattering_slack": 5.445720114234477e-07,
+            "minimum_chiral_slack": 2.626983636769991e-06,
+            "minimum_FF_slack": 0.4432642747413366,
+            "minimum_moment_slack": 0.1414384108165041,
+            "minimum_asymptotic_slack": 3.198881165567735e-06
+          },
+          "Phi_first_difference": -0.2798656065351679,
+          "Phi_second_difference": 1.0000002703236532,
+          "gradient_absolute_error": -1.1614603911969112e-07,
+          "gradient_relative_error": -4.150066482230449e-07,
+          "curvature_relative_error": 2.7032365323986524e-07,
+          "slope_difference_curvature": 1.0000001563461194,
+          "slope_curvature_relative_error": 1.563461194918625e-07,
+          "density_first_difference": -2.1438218311686796e-06,
+          "density_second_difference": -1.7053025658242404e-09,
+          "density_gradient_absolute_error": -8.579398415385197e-13,
+          "density_gradient_relative_error": -4.0019192472324996e-07,
+          "density_curvature_relative_error": -40.05273402100597,
+          "density_slope_difference_curvature": 4.366666274749418e-11,
+          "density_slope_curvature_relative_error": 2.2646735170604715e-11,
+          "density_component_cancellation_indicator": 1.7491861382149306e-07,
+          "density_component_second_difference_resolved": false
+        }
+      ]
+    }
+  ],
+  "input_sha256": {
+    "results/runs/physical_consistency_20260911/INTERLACED_STATE_AUDIT_phase_I_state_snapshot.npz": "bdacea7c0a2569a224fc5ac536fc3da610d5da5ce9508587298feadf500c7d2e",
+    "results/runs/physical_consistency_20260911/INTERLACED_STATE_AUDIT_snapshot.json": "9d7db22c11c595bd4ac8d5b1eca5c94f4c584dc8408892fa61772a1c5f0f907e",
+    "results/runs/physical_consistency_20260911/interlaced_phase_I_02/report.json": "f1f47954afb748b3141286f32f3a95440c5d349584d0f8c53b5923dd510f6e4e",
+    "results/runs/physical_consistency_20260911/interlaced_phase_I_02/progress.jsonl": "33e616ef4bf8fcf31c0e68123098eabd59337a36b83e9aaba69e651771879be7",
+    "results/runs/physical_consistency_20260911/interlaced_phase_I_02/source.json": "f58a5189b83cb71ec536598121c00b2f57ce98fc579a008eed67fc7ace88f9be",
+    "results/runs/physical_consistency_20260911/interlaced_prepare/report.json": "149bdd18a3487365ac8c35c0a7e5efe0931e90d955e7c5f193de2b9679c3471a",
+    "results/runs/physical_consistency_20260911/interlaced_prepare/amplitude.npz": "8edc550f906b34addd37a7b3f3dee5c22aa74fb8e9cfbe5384e6f6ae254fdc92",
+    "results/runs/physical_consistency_20260911/interlaced_current/report.json": "e6be83775f0a8fe8a150c429f05bca6678d6e9a1c9860ed9ecb781387028b924",
+    "results/runs/physical_consistency_20260911/interlaced_current/current_data.npz": "ff8d5809c68515899780eb4793c4d2bb42dbf95d62fdb805d3b60044d071eac9",
+    "results/runs/physical_consistency_20260911/interlaced_current/gram_linear.npz": "89fb3448d57581621c1c4e4f82f19f219096d4bec8e0a4169241b9ba6ffece0f",
+    "results/runs/physical_consistency_20260911/interlaced_current/moment_linear.npz": "04e022b5aed199efc485438b3fb1b52000d9a26f14ef3c4b942383391cbaa0a4",
+    "results/runs/physical_consistency_20260911/interlaced_current/ff_cap_linear.npz": "79b38a0cda214c9b0a4aa6645e1271556cef9f13cc1113a9bc49bd42480a2920",
+    "src/smatrix_bootstrap/operators.py": "5850eb2add0c8a8638b7b92bf4868b4d0a9015e74be3737a0b9f4006ae1a1c0c",
+    "src/smatrix_bootstrap/endpoints.py": "6b4dacd438e750ca61f285744cc0a152d16e3090581e22c77962f23b867005db",
+    "src/smatrix_bootstrap/quotient.py": "3ec58dc689af80cf12b564c74e40cd91af2189cda1789686694cc9691ef8c16d",
+    "src/smatrix_bootstrap/imaginary.py": "fbf4ac702058f5c14733b572c7f3091db9cb65209ca2638968c3578f00a9b488",
+    "src/smatrix_bootstrap/linear.py": "ee754804d8e175dfc1940108c2c599d936a70c38f3ee04f0033b7008b1a92e75",
+    "src/smatrix_bootstrap/sampling.py": "a35babe3bfbc2d4b1002e4c4144242a436c2c5bffb5ac4ad34363bd4e0b275bd",
+    "results/runs/physical_consistency_20260911/INTERLACED_STATE_AUDIT.json": "cfe9b509103d97a341311da942e48cfa462da85fdbaef25098b4ef53802bbc13",
+    "results/runs/physical_consistency_20260911/INTERLACED_STATE_AUDIT.md": "1620fa2fae355f6eb6d644be30f675b4618c58fbaf8b097ab5592a63675e3e44"
+  },
+  "conclusion": {
+    "all_requested_two_sided_probes_strict": true,
+    "density_Hessian_omission_observed_in_these_two_directions": false,
+    "interpretation": "Fresh Phi gradients and curvatures agree along two directions with actual density variation. Density-gradient finite differences independently agree with the density block of the existing feature matrix. The full Phi curvature is dominated by other constraints; its agreement alone is insufficient to check the density Hessian.",
+    "limits": [
+      "Only two directions at the archived mu=.01, tau=3.390023509987084 snapshot.",
+      "Density-value second differences suffer cancellation and do not establish negative density curvature.",
+      "No full Hessian, Newton direction, optimizer-stagnation diagnosis or current interlaced_phase_I_03 audit."
+    ]
+  },
+  "created_utc": "2026-09-11T07:59:58.999985+00:00"
+}

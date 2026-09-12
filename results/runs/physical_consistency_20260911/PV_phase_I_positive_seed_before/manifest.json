@@ -1,0 +1,15 @@
+[
+  {
+    "path": "src/smatrix_bootstrap/gauge.py",
+    "sha256": "9ef8f15e028e5de19dd5571892b392038ff3fd096885c11f8b8d7334ccdfe580"
+  },
+  {
+    "path": "tests/test_mainline.py",
+    "sha256": "386b60875ff3105775fad0d3dd4841729268d4c866bf9e7efc76d4531ac91179"
+  },
+  {
+    "path": "src/smatrix_bootstrap/operators.py",
+    "sha256": "74cb905a1e9e881e3f3e5f7843d44e7e096e8c57e672f8f7abdbae336b78fc4e",
+    "source_snapshot": "PV_F_M50_L12_phase_I_01/source.json"
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "run": "fine_watson_goal_00",
+  "requested_solver_seconds": 0,
+  "actual_newton_iterations": 1,
+  "delivered_C": "Original feasible incumbent, unchanged",
+  "center_label": false,
+  "support_completion": false,
+  "correction": "Earlier zero-iteration wording was inaccurate: the solver checks the runtime after a step."
+}

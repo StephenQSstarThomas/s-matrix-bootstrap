@@ -1,0 +1,228 @@
+{
+  "command": "boundary",
+  "status": "candidate",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "boundary",
+    "support_runs": [],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_011_20260907",
+    "density_limit": 377500.0,
+    "preparation": "results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    "prescription": "pv-midpoint",
+    "solver": "barrier",
+    "unitarity_scope": "sampled",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "constraint_generation": false,
+    "working_state": null,
+    "density_cone": "soc",
+    "solver_seconds": 1200.0,
+    "dual_seconds": 1.0,
+    "dual_method": "highs-primal",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 0.0024999999999999996,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "free",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": "results/runs/stage_B3_pv_M50_eps006_adaptive_006_20260907/center_first_coefficients.json",
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.006,
+    "direction": [
+      17.588051241702665,
+      107.87704037004175
+    ],
+    "seconds": 1440.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "8"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Declared finite prescription; published regions/phases unverified.",
+  "solver": {
+    "solver": "analytic density barrier with longdouble Newton and radial centering",
+    "iterations": 93,
+    "seconds": 647.9652596199885,
+    "qr_factorizations": 43,
+    "pcg_steps": 102,
+    "qr_reuse": 6,
+    "raw_coordinates": true,
+    "matrix_threads": 8,
+    "krylov_storage": "longdouble CSR exact nonzeros; dense QR",
+    "tail_weights": {
+      "kR": [],
+      "kI": []
+    },
+    "tail_constraints_applied": false,
+    "history": [
+      {
+        "mu": 0.01,
+        "objective": -0.07012945496535217,
+        "outer_estimate": 21.321292804419127,
+        "gap_estimate": 21.39142225938448
+      },
+      {
+        "mu": 0.001,
+        "objective": 1.0587942816392357,
+        "outer_estimate": 3.248857897890976,
+        "gap_estimate": 2.19006361625174
+      },
+      {
+        "mu": 0.0001,
+        "objective": 1.8341413153563728,
+        "outer_estimate": 2.09733488182007,
+        "gap_estimate": 0.26319356646369696
+      },
+      {
+        "mu": 1e-05,
+        "objective": 1.9400098326884203,
+        "outer_estimate": 1.9751849552336225,
+        "gap_estimate": 0.03517512254520221
+      },
+      {
+        "mu": 1.0000000000000002e-06,
+        "objective": 1.9632010567061435,
+        "outer_estimate": 1.9674627307212158,
+        "gap_estimate": 0.004261674015072335
+      },
+      {
+        "mu": 1.0000000000000001e-07,
+        "objective": 1.9664606134081737,
+        "outer_estimate": 1.9669360562360436,
+        "gap_estimate": 0.0004754428278698566
+      }
+    ],
+    "feasible_path": true,
+    "all_density_directions_retained": true,
+    "primal_recovery": {
+      "candidate_fraction": 1.0,
+      "interior_fraction": 0.0,
+      "radial_scale": 1.0,
+      "candidate_weight": 0.99999999,
+      "zero_weight": 1.0000000050247593e-08,
+      "objective_before": 1.9664606134308968,
+      "objective_after": 1.966460593586584,
+      "objective_loss": 1.984620327311563e-08,
+      "repaired": true,
+      "coarse_feasible_fraction": 1.0,
+      "primal_certified": true,
+      "global_high_spin_enforced": false,
+      "scope": "Coefficient mixture on declared constraints; no continuum claim",
+      "incumbent_retained": false,
+      "incumbent_objective": -0.13136827174991073,
+      "final_contraction": 0.99999999
+    }
+  },
+  "normal_dual": {
+    "status": "not_needed",
+    "reason": "Support gap meets tolerance"
+  },
+  "outer": {
+    "upper": 1.9669360562303497,
+    "enclosure": "[1.966936056230349396659535 +/- 5.00e-26]",
+    "disk": 0.7779755093131284,
+    "chiral": 1.101703449010725,
+    "density_residual": 0.08725709790649616,
+    "tail_support": 0.0,
+    "scope": "exact saved float64 operator and supplied tail maps; angular quadrature error excluded",
+    "primal_feasible": true,
+    "lower": 1.9664605935859223,
+    "minimum_margin_enclosure": "[1.5127367902614207974e-85 +/- 1.91e-105]",
+    "density_norm": 376217.5132546392,
+    "targets": [
+      "[0.1803126708662221634024690 +/- 2.51e-26]",
+      "[-0.01116908562752956557964504 +/- 1.55e-27]"
+    ],
+    "tail_margin_enclosures": [],
+    "high_spin_necessary": {
+      "status": "not_applicable",
+      "violations": []
+    }
+  },
+  "M": 50,
+  "L": 10,
+  "sampling_nodes": 50,
+  "scattering_samples": 1500,
+  "infinity": "free",
+  "mode": "chiral",
+  "chiral_tolerance": 0.006,
+  "density_limit": 377500.0,
+  "targets": [
+    0.1803126708662407,
+    -0.011169085627529681
+  ],
+  "objective": 1.966460593586236,
+  "minimum_scattering_margin": 1.5127367902614138e-85,
+  "chiral_norms": [
+    0.005999999394584841,
+    0.001814693377078563
+  ],
+  "density_norm": 376217.5132546392,
+  "radial_shrink": 1.0,
+  "sampled_feasible": true,
+  "support_optimality_certified": true,
+  "global_high_spin_enforced": false,
+  "support_scope": "Exactly declared constraints; no extra diagnostic cuts",
+  "prescription": "pv-midpoint",
+  "coefficient_input_prescription": "pv-midpoint",
+  "unitarity_coverage": "Listed rows and declared tails/FG; no continuum certificate",
+  "analytic_tail_conditions_passed": null,
+  "analytic_tail_status": "not_applicable",
+  "analytic_tail_margins": [],
+  "high_spin_necessary": {
+    "status": "not_applicable",
+    "violations": []
+  },
+  "high_spin_cut_count": 0,
+  "tail_conditions_applied": false,
+  "operator_scope": "Declared saved float64 operator only",
+  "elapsed_seconds": 657.2955488138832,
+  "core_sources": {
+    "__init__.py": "cf28350738cd39bee0557339b3de06630546791812668263cffb863037b60dc5",
+    "analysis.py": "4c40e6ad4982e2023d29b27fe05bbd09c154cced3283b2ee7a63d915d574a76e",
+    "imaginary.py": "ad958e4eb800dee73dfcc35665fcf32af9a4ef3c1677ef1494dfdb83d1d42fb4",
+    "io.py": "5ab209f0688ce63d293ed590aba7de99ff777487ebbe19f88cb2198a5e91f987",
+    "kernels.py": "46df7b2c237f240d9f9ae2c3f6407920614ed647c1b88f350c36d95b0a144a12",
+    "linear.py": "3c064c67e3557c0756c174900a6fa3b7f26a272a27c0491613feee36e690b1a0",
+    "model.py": "74d9fb96db5c6bdaa0dca194557ba1b9f26c1ace7d0b8ae2ed95a17a97a71c45",
+    "operators.py": "37e9d85a22a76352ca2d5d861bea8c3d47b7936ea0b14a39b5204a6b2630a83f",
+    "quotient.py": "1187d1bcfc501913ae9d5009729118d8974024bf04d1495b960d380325be052c",
+    "run.py": "661c81e2a0b53d2ce774d02eb82810213ae59dd80b2d2797a7ae16fcae91434f"
+  },
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 1440.0,
+  "supervisor_seconds": 657.5588198071346
+}

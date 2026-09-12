@@ -1,0 +1,15 @@
+{
+  "rank_report": "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.json",
+  "rank_report_sha256": "236209537ab81bc51e8e21a2fd6aa98167321711112eb37c8ec653c1ad2287c2",
+  "terminal": true,
+  "process_exit_code": 0,
+  "external_timeout_seconds": 180,
+  "rank_call_count": 1,
+  "prime_count": 1,
+  "elapsed_rank_program_seconds": 10.045525269000791,
+  "native_RREF_seconds": 7.648470183950849,
+  "exact_dyadic_base_rank": 3009,
+  "exact_dyadic_augmented_rank": 3011,
+  "target_plane_certified": true,
+  "scope": "Exact dyadic interpretation of the frozen unpreconditioned Float64 sample/residual/endpoint rows; not exact analytic operators, authors implementation, or a separately rounded preconditioned CVXPY graph. No coupled claim."
+}

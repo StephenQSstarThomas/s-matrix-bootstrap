@@ -1,0 +1,39 @@
+{
+  "tests_passed": 106,
+  "test_log": "watson_adapter_pytest.log",
+  "core_modules": 21,
+  "test_files": 3,
+  "limits_passed": true,
+  "changes": [
+    "fixed Watson objective retained during analytic replay",
+    "latest joint covectors replayed",
+    "new lineage center flag and full point hashes",
+    "direct objective/current/selection input references captured"
+  ],
+  "sources": {
+    "src/smatrix_bootstrap/ir.py": "9fe83590027ee9bd611c954c1c7c9b7f333c469ab7cd242cd39ba97160fd419b",
+    "src/smatrix_bootstrap/endpoints.py": "6b4dacd438e750ca61f285744cc0a152d16e3090581e22c77962f23b867005db",
+    "src/smatrix_bootstrap/analysis.py": "7c858a1c763d7543dc7dbd167c495bcb8a156e69b7cf5e08de4e80c8153395ec",
+    "src/smatrix_bootstrap/model.py": "be73b782a40652cf099e4f5ed480f56cb4d00e0f86aaddfe9698ccf83ea3b975",
+    "src/smatrix_bootstrap/io.py": "02a78447d2cf63abddb6411f3496776f91f6130160e62fb5e9708e736cd95ab6",
+    "src/smatrix_bootstrap/operators.py": "74cb905a1e9e881e3f3e5f7843d44e7e096e8c57e672f8f7abdbae336b78fc4e",
+    "src/smatrix_bootstrap/basis.py": "5eda7c08a5cea679958b47980c9972ada51358f6352698d8db10db91bd5abec3",
+    "src/smatrix_bootstrap/scattering.py": "17d1e2d03fb467a5e58e6d87a6921dfd14da8c9f0eec2d6c28e64334dcfc7211",
+    "src/smatrix_bootstrap/__init__.py": "453f182db710c6bf96dc18ffa46ce0ae8d6b8a4ce3e8e7983d0d2cb50f860eec",
+    "src/smatrix_bootstrap/quadrature.py": "7ec2a6b9336cd6035db06fdf8a028368ccd22e4d106cc5e16900c878b8d40fad",
+    "src/smatrix_bootstrap/gauge.py": "9ef8f15e028e5de19dd5571892b392038ff3fd096885c11f8b8d7334ccdfe580",
+    "src/smatrix_bootstrap/quotient.py": "32b669bec9e0b9af1c21bf464f2806411cdca87fffa6ff0593d7bb77dd3428e9",
+    "src/smatrix_bootstrap/certificates.py": "aedcd1b65d0e1908c84e129e570a119214994c2b38d4e325b543beb9b27a9ad3",
+    "src/smatrix_bootstrap/analytic.py": "f7b6ffb9bd6b520f00dec8653ff0864da6fe46eaa0ed5814bef7bd3c5c22a727",
+    "src/smatrix_bootstrap/conic.py": "750741dbe9b45584c24176cbdeb2cfafc585361d5b23cff5d79a501a247abf01",
+    "src/smatrix_bootstrap/kernels.py": "790ebcdba291c80f17c4909a31ddf77ad6373748c2af41c7ce1a0c28b309172a",
+    "src/smatrix_bootstrap/imaginary.py": "9ad338b253d2941310401d245a24cba4ab546926e5c9c630f80c7bd647c1828c",
+    "src/smatrix_bootstrap/run.py": "dbb8be0494d6547598e3d55e4613ed7d91e7da4a85292878ec7ad86ac7bddb5a",
+    "src/smatrix_bootstrap/spectra.py": "c6352a5e1a8be6cd00cd724c9f3bae961bf5d72356e3d65ea27213952cebe996",
+    "src/smatrix_bootstrap/linear.py": "48d6330a638c28310c87860ecb5b70ce4396dce01878eff8c5855d96d643d0e2",
+    "src/smatrix_bootstrap/sampling.py": "925800fbb7cbad9eec19a90da8e6787914b56247990ed4c268d60f45426bb165",
+    "tests/test_mainline.py": "295a16626c2c5fd5a2a2ef8202aa6909f3f93621ae7a9184bf55f46570e54686",
+    "tests/test_kernels.py": "83bfc4aa58764db2f68be653ef670c790d2f87b477b1367d9fcffbd6650e6b93",
+    "tests/test_linear.py": "f3f9dd717384300f02c8cbd323147b7e68850fa3dd4891988206f24ef4f89d90"
+  }
+}

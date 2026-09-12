@@ -1,0 +1,122 @@
+{
+  "candidate": "results/gauge_feasibility_N6_F21_linf_edge_FF401_infinity_eliminated.json",
+  "candidate_sha256": "6ffb8ed096d04cfa8d2386d25b5cd5e941ba8920ff70cb0513b1da25db061829",
+  "amplitude_degree": 6,
+  "edge_certificates": [
+    {
+      "isospin": 0,
+      "subtracted_required_margin": "0",
+      "rigorous_certificate": true,
+      "degree": 5,
+      "delta": "1/4000",
+      "gram_shift_checks": [
+        {
+          "positive_definite_after_shift": true,
+          "ldl_pivots": [
+            "10965737077861519/200000000000000",
+            "22105369371308120229659290890579/1096573707786151900000000000000",
+            "23905513248162147275238189451965668859437591/6140380380918922286016469691827500000000000000"
+          ]
+        },
+        {
+          "positive_definite_after_shift": true,
+          "ldl_pivots": [
+            "4602387424235533/1000000000000000000",
+            "2013119068209336357291798017453861/460238742423553300000000000000000000",
+            "233551759080905572079909765188185391788091644703/402623813641867271458359603490772200000000000000000"
+          ]
+        }
+      ],
+      "exact_residual_t": [
+        "-195386331/4000000000000000000",
+        "-1887941043/40000000000000000000",
+        "1722853711/20000000000000000000",
+        "1109636789/40000000000000000000",
+        "1333903/10000000000000000000",
+        "93562009/20000000000000000000"
+      ],
+      "exact_uniform_residual_bound": "4294804097/20000000000000000000",
+      "exact_lower_bound": "9999995705195903/20000000000000000000",
+      "lower_bound_approximate": 0.0004999997852597951,
+      "scope": "Exact rational polynomial-positivity certificate for the supplied decimal data; no full unitarity claim."
+    },
+    {
+      "isospin": 1,
+      "subtracted_required_margin": "0",
+      "rigorous_certificate": true,
+      "degree": 5,
+      "delta": "1/4000",
+      "gram_shift_checks": [
+        {
+          "positive_definite_after_shift": true,
+          "ldl_pivots": [
+            "20975712540137377/1000000000000000",
+            "46733393562579797146692423428841/20975712540137377000000000000000",
+            "1090776492561787854183945562900557309647768213/46733393562579797146692423428841000000000000000"
+          ]
+        },
+        {
+          "positive_definite_after_shift": true,
+          "ldl_pivots": [
+            "2035144860929109/500000000000000000",
+            "35129011047206666204793805445381/4070289721858218000000000000000000",
+            "3428585096542844549367689907265053410588569986169/439112638090083327559922568067262500000000000000000"
+          ]
+        }
+      ],
+      "exact_residual_t": [
+        "3334003/625000000000000000",
+        "-354783243/20000000000000000000",
+        "-473496339/10000000000000000000",
+        "-167186501/20000000000000000000",
+        "51757353/10000000000000000000",
+        "1780969/5000000000000000000"
+      ],
+      "exact_uniform_residual_bound": "16862891/200000000000000000",
+      "exact_lower_bound": "99999983137109/200000000000000000",
+      "lower_bound_approximate": 0.000499999915685545,
+      "scope": "Exact rational polynomial-positivity certificate for the supplied decimal data; no full unitarity claim."
+    },
+    {
+      "isospin": 2,
+      "subtracted_required_margin": "0",
+      "rigorous_certificate": true,
+      "degree": 5,
+      "delta": "1/4000",
+      "gram_shift_checks": [
+        {
+          "positive_definite_after_shift": true,
+          "ldl_pivots": [
+            "1242472005910179/500000000000000",
+            "14819226339870892508877739584119/15530900073877237500000000000000",
+            "446835069216807588446959422077590964569534607/29638452679741785017755479168238000000000000000"
+          ]
+        },
+        {
+          "positive_definite_after_shift": true,
+          "ldl_pivots": [
+            "2227772112255927/250000000000000",
+            "2766348338713157166245252460787/1782217689804741600000000000000",
+            "50808863840950145191790375009322839142509419/6915870846782892915613131151967500000000000000"
+          ]
+        }
+      ],
+      "exact_residual_t": [
+        "-826733/125000000000000000",
+        "45152429/5000000000000000000",
+        "10363691/500000000000000000",
+        "-78521889/5000000000000000000",
+        "-1166161/100000000000000000",
+        "313407/625000000000000000"
+      ],
+      "exact_uniform_residual_bound": "160597927/2500000000000000000",
+      "exact_lower_bound": "1249999839402073/2500000000000000000",
+      "lower_bound_approximate": 0.0004999999357608292,
+      "scope": "Exact rational polynomial-positivity certificate for the supplied decimal data; no full unitarity claim."
+    }
+  ],
+  "all_three_polynomials_certified_positive": true,
+  "source_of_coefficients": "Exact decimal amplitude coefficients, recomputed independently of stored U coefficients.",
+  "scope": "All-energy leading large-spin necessary conditions only; not sufficient for continuum unitarity.",
+  "script_sha256": "30cdb4dd73d662164c2e9ce3b68dc7a2417216d52845577cd17d6d0910dd86bd"
+}

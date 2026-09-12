@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "text_snapshots_SHA_and_0444_verified": [
+    "sources/2403.10772v1__anc__GTB_numerics.nb.txt",
+    "sources/2309.12402v3__prd_submission_2.tex.txt",
+    "sources/2403.10772v1__QCDsumrule2_30.tex.txt",
+    "sources/2403.10772v1__anc__GTB_numerics.m.txt",
+    "sources/2309.12402v2__arxiv_submission_2.tex.txt",
+    "sources/2309.12402v1__arxiv_submission_2.tex.txt",
+    "sources/2403_GitHub_c840933_GTB_numerics.m.txt"
+  ],
+  "h43_formulas_byte_identical_after_edge_trim": true,
+  "all_local_document_links_valid": true,
+  "local_link_count": 11,
+  "PDF_archives_copied_into_final_evidence": false,
+  "source_snapshot_total_bytes": 728684,
+  "document_sha256": "1fad1570026a40dfaa90bea43a9913e7924051f08cc3f66c457d76a4cf9d4b05",
+  "addendum_sha256": "8b7509e0ec9be6dd8ca05b2a3a584bb7580b5f9a2a4641196d4290d8c6262bbf",
+  "manifest_sha256": "0542dddcf38b8f20723463ab877c1a28413fa5cbdfa6fc2406f2029efa1ffff8",
+  "author_programs_or_scientific_optimization_run": false
+}

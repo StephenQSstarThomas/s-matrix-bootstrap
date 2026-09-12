@@ -1,0 +1,20 @@
+[
+  {
+    "bits": 128,
+    "rows": 2000,
+    "columns": 500,
+    "threads": 4,
+    "build_seconds": 0.9362764831166714,
+    "gram_seconds": 0.9004359929822385,
+    "solve_seconds": 0.6302024510223418
+  },
+  {
+    "bits": 192,
+    "rows": 2000,
+    "columns": 500,
+    "threads": 4,
+    "build_seconds": 1.5348100510891527,
+    "gram_seconds": 1.4105476601980627,
+    "solve_seconds": 0.8782833870500326
+  }
+]

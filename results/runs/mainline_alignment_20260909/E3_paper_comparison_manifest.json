@@ -1,0 +1,204 @@
+{
+  "comparisons": [
+    {
+      "id": "E_paper_tip_S0",
+      "group": "E_paper",
+      "label": "tip",
+      "wave": "S0",
+      "profiles_json": "results/runs/mainline_alignment_20260909/E3_paper_phases/phases.json",
+      "profile_filter": {
+        "role": "tip"
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure10_s0_phases.csv",
+      "reference_filter": {
+        "group": "red"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "E_paper_tip_S2",
+      "group": "E_paper",
+      "label": "tip",
+      "wave": "S2",
+      "profiles_json": "results/runs/mainline_alignment_20260909/E3_paper_phases/phases.json",
+      "profile_filter": {
+        "role": "tip"
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure10_s2_phases.csv",
+      "reference_filter": {
+        "group": "red"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "E_paper_tip_P1",
+      "group": "E_paper",
+      "label": "tip",
+      "wave": "P1",
+      "profiles_json": "results/runs/mainline_alignment_20260909/E3_paper_phases/phases.json",
+      "profile_filter": {
+        "role": "tip"
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure9_p1_phases.csv",
+      "reference_filter": {
+        "group": "red"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "E_paper_mid_S0",
+      "group": "E_paper",
+      "label": "mid",
+      "wave": "S0",
+      "profiles_json": "results/runs/mainline_alignment_20260909/E3_paper_phases/phases.json",
+      "profile_filter": {
+        "role": "mid"
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure10_s0_phases.csv",
+      "reference_filter": {
+        "group": "pink"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "E_paper_mid_S2",
+      "group": "E_paper",
+      "label": "mid",
+      "wave": "S2",
+      "profiles_json": "results/runs/mainline_alignment_20260909/E3_paper_phases/phases.json",
+      "profile_filter": {
+        "role": "mid"
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure10_s2_phases.csv",
+      "reference_filter": {
+        "group": "pink"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "E_paper_mid_P1",
+      "group": "E_paper",
+      "label": "mid",
+      "wave": "P1",
+      "profiles_json": "results/runs/mainline_alignment_20260909/E3_paper_phases/phases.json",
+      "profile_filter": {
+        "role": "mid"
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure9_p1_phases.csv",
+      "reference_filter": {
+        "group": "pink"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "E_paper_ref_S0",
+      "group": "E_paper",
+      "label": "ref",
+      "wave": "S0",
+      "profiles_json": "results/runs/mainline_alignment_20260909/E3_paper_phases/phases.json",
+      "profile_filter": {
+        "role": "ref"
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure10_s0_phases.csv",
+      "reference_filter": {
+        "group": "light_pink"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "E_paper_ref_S2",
+      "group": "E_paper",
+      "label": "ref",
+      "wave": "S2",
+      "profiles_json": "results/runs/mainline_alignment_20260909/E3_paper_phases/phases.json",
+      "profile_filter": {
+        "role": "ref"
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure10_s2_phases.csv",
+      "reference_filter": {
+        "group": "light_pink"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "E_paper_ref_P1",
+      "group": "E_paper",
+      "label": "ref",
+      "wave": "P1",
+      "profiles_json": "results/runs/mainline_alignment_20260909/E3_paper_phases/phases.json",
+      "profile_filter": {
+        "role": "ref"
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure9_p1_phases.csv",
+      "reference_filter": {
+        "group": "light_pink"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    }
+  ],
+  "selection_frozen_before_evaluation": true,
+  "physical_inputs_changed": false
+}

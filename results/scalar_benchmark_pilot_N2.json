@@ -1,0 +1,40 @@
+{
+  "config": {
+    "degree": 2,
+    "energy_points": 120,
+    "ell_max": 12,
+    "angular_points": 80,
+    "enforce_edge": false,
+    "solver_tolerance": 1e-09,
+    "method": "symmetric_triple_quotient_threshold_pole_crossed_cut"
+  },
+  "status": "optimal",
+  "quartic_lambda": 2.6502095904074237,
+  "solver_objective": 2.650209590407423,
+  "coefficients": [
+    -4.691876594264667,
+    -0.08982712776489046,
+    0.19567896154670894,
+    0.018257248221534628,
+    -2.4473620615573637
+  ],
+  "coefficient_count": 5,
+  "threshold_coefficient_beta": -2.4473620615573637,
+  "max_sampled_unitarity_excess": 9.075754868794229e-08,
+  "metric_condition_number": 49.89285658958318,
+  "scaled_floor_directions": 0,
+  "discarded_directions": 0,
+  "elapsed_seconds": 0.245955228805542,
+  "independent_audit": {
+    "energy_points": 780,
+    "ell_max": 28,
+    "angular_points": 160,
+    "max_unitarity_excess": 9.721175671792616e-06,
+    "worst_energy": 8.55368297368496,
+    "worst_spin": 0,
+    "min_edge_imaginary_derivative": 7.58340638027341e-05,
+    "edge_worst_energy": 100000004.0,
+    "infinity_amplitude": -1.199040866595169e-14,
+    "threshold_s0_limit": -0.9982627555538184
+  }
+}

@@ -1,0 +1,491 @@
+                                                          Snowmass White Paper: S-matrix Bootstrap
+
+                                                                                  Martin Kruczenski
+                                                                      Department of Physics and Astronomy
+                                                                Purdue University, West Lafayette, IN 47907, USA.
+
+                                                                                    João Penedones
+                                                                 Fields and String Laboratory, Institute of Physics,
+                                                                École Polytechnique Fédérale de Lausanne (EPFL),
+                                                            Rte de la Sorge, BSP 728, CH-1015 Lausanne, Switzerland
+
+                                                                                  Balt C. van Rees
+                                                                        CPHT, CNRS, Ecole Polytechnique,
+                                                                           Institut Polytechnique de Paris,
+                                                                      Route de Saclay, 91128 Palaiseau, France
+
+
+
+
+arXiv:2203.02421v2 [hep-th] 5 May 2022
+
+                                            The S-matrix Bootstrap originated on the idea that the S-matrix might be fully constrained by
+                                         global symmetries, crossing, unitarity, and analyticity without relying on an underlying dynamical
+                                         theory that may or may not be a quantum field theory. Recently this approach was revived from
+                                         a somewhat different point of view. Using the same constraints, one numerically maps out the
+                                         (infinite-dimensional) space of allowed S-matrices that should contain all consistent quantum field
+                                         theories (and quantum theories of gravity). Moreover, in the best case scenario one finds special
+                                         points in the space that can be identified with a certain quantum field theory of interest. In that case,
+                                         the approach allows the numerical computation of the S-matrix without relying on the particular
+                                         Lagrangian of the theory.
+                                            In this white paper we summarize the state of the art and discuss the future of the topic.
+                                                                                                                       1
+
+                                                 I.   INTRODUCTION
+
+   In the middle of the twentieth century physicists were struggling to understand both the forces that hold together
+the nuclear constituents as well as the numerous newly discovered (mostly unstable) hadronic particles. A popular
+idea at the time was nuclear democracy: all particles are on an equal footing and none is more elementary than others.
+Furthermore, all these particles must have scattering amplitudes compatible with the principles of Lorentz invariance,
+causality and unitarity. This led to the old S-matrix Bootstrap: the idea that imposing such consistency conditions
+would fully determine the theory.
+   In hindsight this idea was far too optimistic. Indeed, given the infinity of presumably consistent QFTs each of these
+has an S-matrix compatible with all the bootstrap principles. It is more realistic to quantitatively constrain the space
+of consistent QFTs non-perturbatively. This is essentially the aim of the modern S-matrix bootstrap program.
+   In practice numerical algorithms are often used to implement the principles in a pragmatic and efficient way. In
+this way the community has begun to explore the landscape of scattering amplitudes, and uncovered universal bounds
+and extremal amplitudes in different settings. In the following we will provide a summary of the S-matrix bootstrap
+methods and survey the results obtained so far. We will sketch a brief vision for the future in the final two sections.
+
+
+                                               II.    STATE OF THE ART
+
+                                                      A.   Analyticity
+
+   There is no S-matrix bootstrap without analyticity. Nevertheless we only have an incomplete picture of the ana-
+lyticity properties of scattering amplitudes. What we do know relies mostly on the LSZ prescriptions together with
+some auxiliary assumptions like the distributional properties of position-space correlation functions. Starting from
+these, early results on the analyticity of two-to-two scattering amplitudes in gapped theories include the small and
+large Lehmann ellipses as well as analyticity in s for fixed t ≤ 0 in specific cases. A big step forward was made by
+Bros, Epstein and Glaser [1] who, with considerable effort, proved crossing symmetry: for two-to-two scattering, the
+s-, t-, and u-channel amplitudes are the boundary values of a single analytic function. Martin [2] then combined their
+results with the constraints of unitarity, which allowed him in particular to show that the analyticity in s persists for
+positive t < t∗ , with t∗ > 0 determined by the physics in the crossed channel. This was instrumental for his rigorous
+proof of the Froissart(-Martin) bound on the total cross section. Unfortunately very little progress has been made
+in the half-century that has since passed, and the question of analyticity remains wide open for general values of the
+Mandelstam invariants, on other sheets, or for higher-point amplitudes. For the interested reader we remark that old
+reviews of these results include [2, 3]; a more modern comprehensive discussion is contained in the textbook [4]. See
+also the recent paper [5] for an efficient summary.
+   Of course, the optimistic physicist is not deterred by this dearth of rigorous results. It is believed that the domain
+of analyticity of any scattering amplitude, and in particular of two-to-two scattering, is significantly larger than what
+is rigorously proven. One particular take is to assume Landau analyticity. This has come to mean the idea that all the
+singularities in the scattering amplitude (on the principal sheets) have a Landau diagram interpretation. The easiest
+process from an analyticity viewpoint is two-to-two scattering of the lightest particle in the theory. Then Landau
+analyticity should imply a fully analytic amplitude outside the cuts at s, t, u ≥ 4m2 and any potential bound-state
+poles. More generally Landau analyticity would hold, essentially by definition, if the sum over Feynman diagrams
+would converge. The S-matrices for two-dimensional integrable theories also appear to be in agreement with Landau
+analyticity, although it can take some work to show this [6]. Some very recent analyses of Landau singularities can
+be found in [7–9].
+   There is an intriguing complementarity between the axiomatic results and the Landau diagram analysis. On the
+one hand Landau diagrams inform us about specific non-analyticities like anomalous thresholds. They also have a
+very physical interpretation as particles travelling over large distances and interacting at widely separated points.
+But by construction these singularities must occur precisely outside the domain where the axiomatic analytic results
+apply. For general amplitudes there remains quite literally a gap between these approaches. It would be fascinating
+to see to which extent this can be bridged in the future.
+
+
+                                          B.    Two-dimensional amplitudes
+
+  In the introduction we stated that it would be too optimistic to think that any non-trivial S-matrix could be
+fully determined by general consistency conditions. There is one exception to this rule, which are the integrable
+                                                                                                                                          2
+
+field theories. Their existence is due to the simplicity of two-dimensional scattering, and for the same reason d = 2
+provided a convenient setting for the revived S-matrix bootstrap.
+   A first recent work in this direction was [10], who rediscovered an old result [11] and made contact with QFT in
+AdS discussed below. The main idea advocated in that paper was to define a basis for the space of all amplitudes
+allowed by analyticity and crossing symmetry, and then impose the non-linear unitarity condition afterwards, often
+numerically. (We will review the higher-dimensional version of this approach in the next subsection.) The specific
+example of [10] concerned two-to-two scattering for a single species of particles with mass m with exactly one bound
+state below threshold, corresponding to a pole in the amplitude on the physical sheet. Physically one expects the
+coupling of the particle to the bound state, so the residue of the pole, to be bounded because new bound states
+ought to appear if it were very strongly coupled. Such an upper bound indeed exists, and in the above works it was
+computed both numerically and analytically.
+   This initial result was quickly generalized. In [12] it was observed that even with no bound states the space of two-
+to-two amplitudes was restricted and, in fact, it was shown that the space is convex. In the case of flavor symmetry
+[12–15] this convex space was shown to have a vertex corresponding to the O(N ) integrable non-linear sigma model.
+   Similar considerations were applied to the case of resonances [16] and multiple amplitudes [17]. Although in the case
+of O(N ) symmetry an integrable model was found at a vertex of the space, in other cases where there are integrable
+models with free parameters, a whole locus of the boundary of the space can correspond to an integrable model such
+is the case of SUSY, and Z2 and Z4 symmetries [18] as well as theories with a boundary where one looks for the space
+of reflection matrices [19].
+   Two spacetime dimensions is also where the dual approach was pioneered in [15]. The primal approach of the
+aforementioned works always involves a truncation (and subsequent numerical exploration) of the space of scattering
+amplitudes. One therefore obtains extremal values, for example a largest possible coupling constant, that are always
+a bit smaller than the true extrema. On the other hand, in the dual approach one explores a space of constraints,
+leading to rigorous bounds and an approach of the true extrema from the other side. This latter approach is of course
+also widely in use in the numerical conformal bootstrap.
+   One important point of either approach is that the numerical algorithm not only estimates the extremal value
+for an observable but also the corresponding extremal amplitude. These amplitudes have been shown to agree with
+previously known analytic computations based on integrability or with other methods like Hamiltonian truncation [20].
+It however appears that the amplitudes found at the boundary almost universally saturate the unitarity conditions
+(for all energies, up to numerical errors).1 This implies that there is no particle creation, which is expected only in
+integrable theories. Therefore not all the extremal amplitudes correspond to physical theories.
+   On the whole the S-matrix bootstrap approach can be considered a successful and interesting approach to 2d
+massive theories but the real test would be to obtain results in higher dimensions to which we now turn.
+
+
+                                              C.    Higher-dimensional amplitudes
+
+  The modern non-perturbative S-matrix bootstrap in spacetime dimension d > 2 started with the primal numerical
+algorithm proposed in [21]. The algorithm has 4 main steps:2
+   1. Write an ansatz that obeys analyticity, Lorentz invariance and crossing symmetry:
+                                                            X
+                                            T = poles +           α(abc) ρas ρbt ρcu                                                    (1)
+                                                                   a+b+c≤N
+                       √
+      where ρs = q−√4−s is a conformal mapping from the cut s-plane to the unit disk (q > 0 is a constant).
+                 q+ 4−s
+
+   2. Impose unitarity for each partial wave
+                                                         2
+                                                 |S` (s)| ≤ 1 ,       s > 4,        0 ≤ ` ≤ L.                                          (2)
+
+   3. Maximize a linear functional of the amplitude T subject to the unitarity constraints. Notice that S` (s) is linear
+      in T and therefore in the parameters α(abc) . This makes the optimization problem semi-definite and we can use
+      SDPB [22, 23].
+
+
+
+1 In the bootstrap study of multiple amplitudes [17], it was found that unitarity was saturated among the two particle external states
+
+ considered. Therefore, the extremal amplitudes are not always elastic.
+2 Here, we consider the simplest case of identical scalars of mass m = 1 and no bound states. This applies to π 0 − π 0 elastic scattering.
+                                                                                                                      3
+
+   4. Extrapolate L → ∞ (all constraints) and N → ∞ (full space of analytic amplitudes).
+   In practice, this algorithm works and, after the extrapolation step, one effectively obtains bounds on a whole zoo
+of interesting observables like quartic and cubic couplings, scattering lengths, etc. The method can also be easily
+generalized to include global symmetries like isospin [24–26], and likewise extends to spinning particles as was done
+in 4 dimensions in [27]. It is also possible to study or impose the presence of resonances. For such variations it is
+often convenient to modify the ansatz (1) consistent with analyticity and crossing. Sometimes these modifications
+are straightforward, e.g. when imposing a zero for a resonance, but in other cases they are more difficult. It is for
+example not yet known how to modify equation (1) to obtain Froissart-type behavior at high energies.
+   These intial successes warrant further exploration. One of the main open questions is the nature of the optimal
+amplitude in the limit L → ∞ and N → ∞. The numerical results suggest that as N → ∞ the inequalities (2) tend
+to be saturated for any s and `. However, a purely elastic non-vanishing amplitude is not allowed [5, 28]. It would be
+very interesting to avoid the numerical saturation of the unitarity constraints, and obtain physical amplitudes with
+non-zero particle creation. See [29] for a first step in this direction.
+   The above constitutes the primal approach, which computes numerically a region contained inside the space of
+allowed S-matrices. There is also a higher-dimensional version of the aforementioned dual approach, which defines
+a region that contains the allowed space. This latter approach dates back to the work of Lopez and Mennesier [30]
+in the 1970s and has been revived in [31, 32]. The work [32] in particular exemplifies that Landau analyticity is
+not a necessity to set up a meaningful numerical program to constrain scattering amplitudes. Conceptually the dual
+approach has the nice feature that it is directly formulated in terms of (dual) partial waves instead of the amplitude.
+It is however far from given that either of the current approaches is optimal, both from a numerical and conceptual
+standpoint. In fact, in semidefinite programming problems there is always a dual version of each primal problem,
+where the role of Lagrange multipliers and fundamental variables is interchanged, and many solvers take a combined
+primal-dual approach.
+
+
+                                               D.    Massless particles
+
+  The numerical S-matrix Bootstrap can also be applied to massless particles, as long as their scattering amplitudes
+are non-perturbatively well defined (IR finite). This can be used to place bounds on Wilson coefficients of the
+corresponding Effective Field Theories (EFTs). The first application of this type was to flux tubes in confining gauge
+theories. More precisely, any two dimensional defect of a higher dimensional massive QFT that spontaneously breaks
+Poincare invariance is described by an EFT for the massless phonons (or branons) of the defect [33]. Following [34],
+the two-dimensional S-matrix bootstrap approach has been applied to the two-to-two scattering amplitude of these
+branons, leading to non-perturbative bounds on the leading Wilson coefficients. In this case, there are analytic and
+numerical primal [35] and dual [36] results. One remarkable result of these works is that S-matrices living at the
+boundary of the allowed space exhibit an intricate pattern of resonances with one sharper resonance whose quantum
+numbers, mass, and width match those of the world-sheet axion previously observed in lattice simulations [37–40].
+  In higher dimensions, there have been two salient applications of the numerical primal massless S-matrix bootstrap:
+pions [41] and supergravitons [42]. In this context, the first step of the algorithm described in II C is modified to be
+compatible with the presence of massless particles and the low energy behaviour predicted by the EFT of interest.
+In [41], the naive bounds of [43, 44] on the leading low energy constants of the chiral lagrangian were corrected
+including pion loop effects and the non-linear constraints from unitarity. The paper [42] studied two-to-two scattering
+of supergravitons in 10 spacetime dimensions with maximal supersymmetry. Unitarity requires a non-trivial UV
+completion of supergravity and leads to a lower bound on the leading curvature correction in the effective action.
+Remarkably, this lower bound is very close to the lowest value realized in string theory when the string coupling is
+varied. This intriguing result may be interpreted as evidence for the String Lamppost Principle [45].
+
+
+                                                E.   UV information
+
+  It would be very useful to input information about the UV behaviour of the QFT under study into the S-matrix
+bootstrap approach. This may aid to uniquely specify the theory. For example, it is possible to set up a mixed
+bootstrap which combines states created by acting with local operators on the vacuum with the usual scattering
+states [46, 47]. The new terms in these mixed bootstrap equations are two-particle form factors and spectral densities
+of local operators, which both depend on a single variable in a well-understood analytic manner and therefore can
+be directly incorporated into the numerical primal approach. In two spacetime dimensions, this approach is able to
+probe the central charge of the UV CFT [46]. For example, it was shown that the existence of N massive particles
+                                                                                                                            4
+
+transforming in the vector representation of an O(N ) global symmetry, implies a UV central charge scaling linearly
+with N . In addition, it is possible to input spectral density and form factor data from numerical simulations of the
+Renormalization Group flow using, for example, Hamiltonian truncation methods. This approach was used to study
+the φ4 theory in 2d in [48, 49]. For work similar in spirit see also [20] where the authors studied the 2d Ising field
+theory.
+  It would also be interesting to input hard scattering information [50] into the S-matrix Bootstrap. However, at the
+moment it is unclear how to make use of purely high energy properties like this.
+
+
+                                               F.    Unitarity versus Positivity
+
+  The unitarity equations (2) are often written in terms of the connected amplitude f` (s) = −i(S` (s) − 1), as follows
+
+                                                       2 Im f` (s) ≥ |f` (s)|2 .                                           (3)
+
+This implies the weaker condition Im f` (s) ≥ 0 known as positivity. The main advantage of positivity with respect to
+unitarity is that it is a linear constraint. Under the assumption of weak coupling unitarity reduces to positivity.
+   There has been a lot of recent progress in bounding EFT coefficients using positivity, see for example [51–64]. Most
+of these works assume a mass gap. This is justified under the assumption of weak coupling because one can neglect
+loop diagrams with massless particles. However, generically this is not the case and the usual methods of positivity
+break down. For example, the lower bound on curvature corrections to supergravity derived in [42] cannot be obtained
+solely with positivity. Another interesting example is the leading non-universal correction γ3 to the flux tube EFT in
+                                                                                                                       1
+D = 3. In this case, naive positivity predicts γ3 > 0 and the non-perturbative S-matrix bootstrap predicts γ3 > − 768
+[36]. Only the latter is compatible with the lattice measurements for SU (2) pure Yang-Mills [65].
+   Confining gauge theories at the planar level are an important open problem where unitarity reduces to positivity.
+In this case, the amplitudes are meromorphic functions with positive residues. In [66, 67] it was shown that the
+(unphysical) regime of s, t  1 is universal. On the other hand, so far no useful constraints have been derived on the
+mass spectrum and spins of the light particles.
+   It is also interesting to consider classical S-matrices for gravitons. In this case, an important open question is the
+uniqueness of Einstein gravity and the tree-level superstring amplitudes [68, 69], assuming the Classical Regge Growth
+conjecture [70].
+
+
+                                                         G.     QFT in AdS
+
+  An entirely orthogonal line of attack is based on studying quantum field theories in a fixed Anti-de Sitter (AdS)
+background. The focus is then on the boundary correlation functions, which are well-known from the AdS/CFT
+correspondence. These obey essentially all the axioms of CFT correlation functions, including for example a large
+and well-established domain of analyticity. Upon taking the flat-space limit, i.e. upon sending the AdS curvature
+radius R to infinity, the boundary correlation functions should transmogrify into scattering amplitudes. For a gapped
+theory the flat-space limit implies that the scaling dimensions of boundary operators all become large. For example,
+for single-particle states we expect ∆ ∼ mR with m the mass of the bulk particle created by a boundary operator of
+dimension ∆. The flat-space limit of the correlation functions can be taken in various ways. Suppressing normalization
+factors, we have the following prescriptions.
+   • Using the Mellin amplitude M (γij ) for connected correlation functions introduced in [71]. For massless particles
+     a prescription was introduced in [72], and for massive particles in [73]; the latter simply reads:
+
+                                    T (ki · kj ) ∝ lim M γij = mR(1 + ki · kj /m2 )
+                                                                                       
+                                                                                                                    (4)
+                                                         R→∞
+
+     so the Mellin amplitude directly becomes the scattering amplitude.
+   • In position space [74–77]. Again for massive particles, this prescription reads:
+
+                           hk̃ 1 . . . k̃ a |S|k 1 . . . k b i ∝ lim hO(ñ1 ) . . . O(ña )O(n1 ) . . . O(nb )i|S-matrix   (5)
+                                                          R→∞
+
+     where the precise map between boundary positions ni and in- and out-going on-shell momenta ki can be found
+     in the above references.
+                                                                                                                         5
+
+   • In spectral space. For example, the density c(∆, `) obtained from the conformal partial wave decomposition
+     reduces to the partial waves:
+                                                                      √
+                                        f` (s) ∝ lim cconnected (∆ = R s, `) .                              (6)
+                                                      R→∞
+
+      This is a variant of the phase shift formula of [73].
+Certainly all these prescriptions are related, often by a saddle point approximation of the integral that transforms one
+right-hand side into the other. They however each have different regimes of validity and corresponding (dis)advantages.
+   One intriguing prospect is to use the above equations to derive rigorous results about scattering amplitudes using
+solely CFT axioms rather than, say, the axioms implied by the LSZ prescriptions. Indeed, suppose there exists a
+one-parameter family of solutions to the crossing equations labelled by R, then what can we say about the limit
+R → ∞? Is the resulting object always an S-matrix? Would it always be unitary, analytic and crossing symmetric?
+Work in these directions is currently in progress by several groups.
+   One can also apply the familiar conformal bootstrap machinery directly to the boundary correlation functions,
+and extrapolate the resulting bounds to the flat-space limit. This was first done in [73] where, for two-dimensional
+theories, an excellent match was found with the S-matrix bounds of [10]. The obvious advantage of this procedure,
+which is that it does not rely on unproven analyticity properties, is somewhat offset by the significant computational
+resources demanded by the QFT in AdS computations. The reason for this slowdown are the large operator dimensions
+appearing (for a gapped theory) when AdS is nearly flat, and in this regime the numerical bootstrap is less powerful.
+The problem was illustrated for three-dimensional theories in [21]. In this context it is therefore interesting to consider
+a different basis of functionals for the conformal bootstrap, which may speed up the numerical algorithms or even
+lead to analytic results. In two dimensions it was already shown in [78–80] that alternative functionals can lead to a
+much more direct connection between the conformal and the S-matrix bootstrap.
+   The above results also marked the beginning of a revival of studies of QFT in AdS, with results ranging from
+perturbative computations (large N models in [81], weakly coupled RG flows in [82]) to general constraints (the
+a-theorem in AdS [83], AdS Cutkosky rules in [84]) to a study of numerical constraints for an entire RG flow in AdS
+[85]. In the flat-space limit [86] made a connection to the Froissart bound and [87] obtained connections on effective
+field theory coefficients in higher dimensions.
+   For a bulk theory with massless particles, as would be the case for gravitational theories, the works [88, 89] represent
+the state of the art. Here the authors demonstrate locality of the effective field theory in AdS dual to any CFT with
+a parametrically large central charge and spectral gap, and demonstrate analyticity of the amplitudes arising in the
+flat-space limit. These works provide an AdS version of the flat-space effective field theory bounds discussed above.
+
+
+                                            III.   FUTURE DIRECTIONS
+
+  Our vision is that the S-matrix bootstrap program will continue to develop along three different directions. First,
+there are surely many fundamental and universal properties of amplitudes and related bounds that remain to be
+uncovered. Second, there is the challenge of approximating the S-matrix for specific theories, i.e. the non-perturbative
+completion of perturbative results that specify the UV behavior. Third, there is the opposite question of which IR
+EFTs admit a non-perturbative completion, which is of particular importance for gravitational theories. We elaborate
+and exemplify each of these directions below.
+
+
+                                            A.     What is possible in QFT?
+
+  In its modern incarnation, the S-matrix bootstrap aims to constrain (rather than directly solve) physical observables.
+This naturally leads to a research program that seeks to obtain significant “axiomatic constraints” on scattering
+amplitudes, irrespective of whether physical theories saturate these constraints. So far we know of a large variety
+of constraints like bounds on scattering lengths, couplings, the value of the scattering amplitude in the Euclidean
+domain, and so on. But what else is possible? Can we say more about large spin partial waves, as is done for the
+Froissart bound or for Aks’ theorem? Can we concretize the predictions of Regge theory? It would be fascinating to
+see what the methods sketched above can teach us.
+                                                                                                                       6
+
+                                        B.   Strongly coupled gauge theories
+
+   One of the main problems in physics is to understand the confining regime of non-abelian gauge theories, in
+particular QCD. In fact understanding the strong interaction was the objective of the original S-matrix bootstrap.
+Following the new ideas one would like to map out the space of possible low energy theories and perhaps find QCD
+at a distinguished point in that space as happened in the 2d case. Although progress has been made in that direction
+by studying pion scattering (see for example [24, 41]), there is a lot to be explored in this area. For example, it seems
+feasible to bootstrap multiple two-to-two amplitudes involving pions and nucleons (assuming exact isospin symmetry).
+Can we study higher particle amplitudes? This would also allow to impose the soft relations that follow from the
+chiral lagrangian. Perhaps the main problem is how to incorporate UV information that distinguishes QCD from
+other QFTs with similar low energy spectrum.
+   In 2+1 dimensions, the dichotomy between bosons and fermions breaks down and particles can be anyons [90].
+It would be very interesting to study their scattering amplitudes. Explicit computations in Chern-Simons-matter
+theories [91] show that the crossing equations need to be modified to accommodate the non-trivial phases of anyon
+statistics. Nevertheless, a systematic relativistic S-matrix theory of anyons is still lacking.
+
+
+                                                C.    Quantum gravity
+
+  In the context of gravitational scattering there are many open questions for the future:
+   • Bound the leading higher curvature corrections to maximal supergravity in different spacetime dimensions
+     (5 ≤ D ≤ 11). In particular, there is a unique prediction from M-theory in D = 11 which would be interesting
+     to compare with the numerical bootstrap results.
+   • Study the allowed space of Wilson coefficients including subleading corrections in D = 10 and D = 11 where
+     there are concrete predictions from Superstring Theory.
+   • Study the curvature corrections without supersymmetry. This will require setting up the S-matrix Bootstrap
+     for spinning particles in different spacetime dimensions, generalizing [27].
+   • Study the effect of inelasticity (e.g. from black hole production) on the S-matrix Bootstrap bounds.
+   • Bootstrap IR safe observables in 4D. This involves defining finite observables (e.g. following the classic paper
+     [92] or using celestial amplitudes [93]) and understanding their analyticity and unitarity properties. Similar
+     comments apply to scattering of charged particles and photons in 4D.
+   In practice, the most urgent improvement is the development of a dual S-matrix Bootstrap approach to scattering
+of massless particles in more than 2 spacetime dimensions. A more efficient numerical algorithm will allow us to more
+easily explore many of the open problems listed above.
+
+
+                                                IV.    CONCLUSION
+
+   The S-matrix bootstrap from the 1950s and 1960s, which aimed at defining the S-matrix from its analyticity,
+crossing, and symmetry properties, has been reborn as a tool to understand quantum field theories by carving out
+the space of possible S-matrices. In certain cases we can additionally use properties of the theory to identify some
+distinguished point corresponding to the theory in question. Combined with new numerical optimization methods
+and computational capabilities we obtain a new powerful numerical technique to explore scattering amplitudes for
+strongly coupled theories. We think the most exciting results of this investigation are yet to come, and eagerly await
+the new insights it will produce into both strongly coupled gauge theories and gravity.
+
+
+                                                  Acknowledgments
+
+  We would like to thank Andrea Guerrieri, Yifei He, Denis Karateev, Miguel Paulos, Aninda Sinha, Pedro Vieira,
+Sasha Zhiboedov for discussion and comments on the draft. We are supported by Simons Foundation grants #488649
+(JP) and #488659 (BvR) (Simons collaboration on the non-perturbative bootstrap). JP is supported by the Swiss
+National Science Foundation through the project 200020 197160 and through the National Centre of Competence in
+Research SwissMAP. In addition, MK is very grateful to the DOE that supported in part this work through grant
+                                                                                                                             7
+
+DE-SC0007884 and the QuantiSED Fermilab consortium, as well as to the Keck Foundation that also provided partial
+support for this work.
+
+
+
+
+ [1] J. Bros, H. Epstein, and V. Glaser, Commun. Math. Phys. 1, 240 (1965).
+ [2] A. Martin, Nuovo Cim. A 42, 930 (1965).
+ [3] G. Sommer, Fortsch. Phys. 18, 577 (1970).
+ [4] N. N. Bogolyubov, A. A. Logunov, A. I. Oksak, and I. T. Todorov, General principles of quantum field theory (1990).
+ [5] M. Correia, A. Sever, and A. Zhiboedov (2020), 2006.08221.
+ [6] S. R. Coleman and H. J. Thun, Commun. Math. Phys. 61, 31 (1978).
+ [7] S. Mizera, Phys. Rev. D 103, 081701 (2021), 2101.08266.
+ [8] S. Mizera, Phys. Rev. D 104, 045003 (2021), 2104.12776.
+ [9] M. Correia, A. Sever, and A. Zhiboedov (2021), 2111.12100.
+[10] M. F. Paulos, J. Penedones, J. Toledo, B. C. van Rees, and P. Vieira, JHEP 11, 143 (2017), 1607.06110.
+[11] M. Creutz, Phys. Rev. D 6, 2763 (1972).
+[12] Y. He, A. Irrgang, and M. Kruczenski, JHEP 11, 093 (2018), 1805.02812.
+[13] L. Córdova and P. Vieira, JHEP 12, 063 (2018), 1805.11143.
+[14] M. F. Paulos and Z. Zheng, JHEP 05, 145 (2020), 1805.11429.
+[15] L. Córdova, Y. He, M. Kruczenski, and P. Vieira, JHEP 04, 142 (2020), 1909.06495.
+[16] N. Doroud and J. Elias Miró, JHEP 09, 052 (2018), 1804.04376.
+[17] A. Homrich, J. Penedones, J. Toledo, B. C. van Rees, and P. Vieira, JHEP 11, 076 (2019), 1905.06905.
+[18] C. Bercini, M. Fabri, A. Homrich, and P. Vieira, Phys. Rev. D 101, 045022 (2020), 1909.06453.
+[19] M. Kruczenski and H. Murali (2020), 2012.15576.
+[20] B. Gabai and X. Yin (2019), 1905.00710.
+[21] M. F. Paulos, J. Penedones, J. Toledo, B. C. van Rees, and P. Vieira, JHEP 12, 040 (2019), 1708.06765.
+[22] D. Simmons-Duffin, JHEP 06, 174 (2015), 1502.02033.
+[23] W. Landry and D. Simmons-Duffin (2019), 1909.09745.
+[24] A. L. Guerrieri, J. Penedones, and P. Vieira, Phys. Rev. Lett. 122, 241604 (2019), 1810.12849.
+[25] A. Bose, P. Haldar, A. Sinha, P. Sinha, and S. S. Tiwari, SciPost Phys. 9, 081 (2020), 2006.12213.
+[26] A. Bose, A. Sinha, and S. S. Tiwari (2020), 2011.07944.
+[27] A. Hebbar, D. Karateev, and J. Penedones (2020), 2011.11708.
+[28] S. O. Aks, J. Math. Phys. 6, 516 (1965).
+[29] P. Tourkine and A. Zhiboedov, JHEP 07, 228 (2021), 2101.05211.
+[30] C. Lopez and G. Mennessier, Nucl. Phys. B 118, 426 (1977).
+[31] Y. He and M. Kruczenski, JHEP 08, 125 (2021), 2103.11484.
+[32] A. Guerrieri and A. Sever, Phys. Rev. Lett. 127, 251601 (2021), 2106.10257.
+[33] O. Aharony and Z. Komargodski, JHEP 05, 118 (2013), 1302.6257.
+[34] S. Dubovsky, R. Flauger, and V. Gorbenko, JHEP 09, 044 (2012), 1203.1054.
+[35] J. Elias Miró, A. L. Guerrieri, A. Hebbar, J. Penedones, and P. Vieira, Phys. Rev. Lett. 123, 221602 (2019), 1906.08098.
+[36] J. Elias Miró and A. Guerrieri, JHEP 10, 126 (2021), 2106.07957.
+[37] A. Athenodorou, B. Bringoltz, and M. Teper, JHEP 02, 030 (2011), 1007.4720.
+[38] S. Dubovsky, R. Flauger, and V. Gorbenko, Phys. Rev. Lett. 111, 062006 (2013), 1301.2325.
+[39] S. Dubovsky, R. Flauger, and V. Gorbenko, J. Exp. Theor. Phys. 120, 399 (2015), 1404.0037.
+[40] A. Athenodorou and M. Teper, Phys. Lett. B 771, 408 (2017), 1702.03717.
+[41] A. Guerrieri, J. Penedones, and P. Vieira (2020), 2011.02802.
+[42] A. Guerrieri, J. Penedones, and P. Vieira, Phys. Rev. Lett. 127, 081601 (2021), 2102.02847.
+[43] T. N. Pham and T. N. Truong, Phys. Rev. D 31, 3027 (1985).
+[44] A. Adams, N. Arkani-Hamed, S. Dubovsky, A. Nicolis, and R. Rattazzi, JHEP 10, 014 (2006), hep-th/0602178.
+[45] H.-C. Kim, H.-C. Tarazi, and C. Vafa, Phys. Rev. D 102, 026003 (2020), 1912.06144.
+[46] D. Karateev, S. Kuhn, and J. Penedones, JHEP 07, 035 (2020), 1912.08940.
+[47] D. Karateev (2020), 2012.08538.
+[48] H. Chen, A. L. Fitzpatrick, and D. Karateev, JHEP 02, 146 (2022), 2107.10286.
+[49] H. Chen, A. L. Fitzpatrick, and D. Karateev, JHEP 04, 109 (2022), 2107.10285.
+[50] J. Polchinski and M. J. Strassler, Phys. Rev. Lett. 88, 031601 (2002), hep-th/0109174.
+[51] B. Bellazzini, J. Elias Miró, R. Rattazzi, M. Riembau, and F. Riva (2020), 2011.00037.
+[52] A. J. Tolley, Z.-Y. Wang, and S.-Y. Zhou, JHEP 05, 255 (2021), 2011.02400.
+[53] S. Caron-Huot and V. Van Duong, JHEP 05, 280 (2021), 2011.02957.
+[54] A. Sinha and A. Zahed, Phys. Rev. Lett. 126, 181601 (2021), 2012.04877.
+[55] N. Arkani-Hamed, T.-C. Huang, and Y.-T. Huang, JHEP 05, 259 (2021), 2012.15849.
+[56] X. Li, H. Xu, C. Yang, C. Zhang, and S.-Y. Zhou, Phys. Rev. Lett. 127, 121601 (2021), 2101.01191.
+[57] S. Caron-Huot, D. Mazac, L. Rastelli, and D. Simmons-Duffin, JHEP 07, 110 (2021), 2102.08951.
+                                                                                                                       8
+
+[58] P. Haldar, A. Sinha, and A. Zahed, SciPost Phys. 11, 002 (2021), 2103.12108.
+[59] Z. Bern, D. Kosmopoulos, and A. Zhiboedov, J. Phys. A 54, 344002 (2021), 2103.12728.
+[60] L.-Y. Chiang, Y.-t. Huang, W. Li, L. Rodina, and H.-C. Weng (2021), 2105.02862.
+[61] J. Henriksson, B. McPeak, F. Russo, and A. Vichi (2021), 2107.13009.
+[62] S. D. Chowdhury, K. Ghosh, P. Haldar, P. Raman, and A. Sinha (2021), 2112.11755.
+[63] B. Bellazzini, M. Riembau, and F. Riva (2021), 2112.12561.
+[64] S. Caron-Huot, Y.-Z. Li, J. Parra-Martinez, and D. Simmons-Duffin (2022), 2201.06602.
+[65] F. Caristo, M. Caselle, N. Magnoli, A. Nada, M. Panero, and A. Smecca (2021), 2109.06212.
+[66] S. Caron-Huot, Z. Komargodski, A. Sever, and A. Zhiboedov, JHEP 10, 026 (2017), 1607.04253.
+[67] A. Sever and A. Zhiboedov, JHEP 06, 054 (2018), 1707.05270.
+[68] S. D. Chowdhury, A. Gadde, T. Gopalka, I. Halder, L. Janagal, and S. Minwalla, JHEP 02, 114 (2020), 1910.14392.
+[69] Y.-t. Huang, J.-Y. Liu, L. Rodina, and Y. Wang, JHEP 04, 195 (2021), 2008.02293.
+[70] D. Chandorkar, S. D. Chowdhury, S. Kundu, and S. Minwalla, JHEP 05, 143 (2021), 2102.03122.
+[71] G. Mack (2009), 0907.2407.
+[72] J. Penedones, JHEP 03, 025 (2011), 1011.1485.
+[73] M. F. Paulos, J. Penedones, J. Toledo, B. C. van Rees, and P. Vieira, JHEP 11, 133 (2017), 1607.06109.
+[74] S. Dubovsky, V. Gorbenko, and M. Mirbabayi, JHEP 09, 136 (2017), 1706.06604.
+[75] E. Hijano, JHEP 07, 132 (2019), 1905.02729.
+[76] E. Hijano and D. Neuenfeld, JHEP 11, 009 (2020), 2005.03667.
+[77] S. Komatsu, M. F. Paulos, B. C. Van Rees, and X. Zhao, JHEP 11, 046 (2020), 2007.13745.
+[78] D. Mazac, JHEP 04, 146 (2017), 1611.10060.
+[79] D. Mazac and M. F. Paulos, JHEP 02, 162 (2019), 1803.10233.
+[80] D. Mazac and M. F. Paulos, JHEP 02, 163 (2019), 1811.10646.
+[81] D. Carmi, L. Di Pietro, and S. Komatsu, JHEP 01, 200 (2019), 1810.04185.
+[82] S. Giombi and H. Khanchandani, JHEP 11, 118 (2020), 2007.04955.
+[83] S. Kundu, JHEP 05, 014 (2020), 1912.09479.
+[84] D. Meltzer and A. Sivaramakrishnan, JHEP 11, 073 (2020), 2008.11730.
+[85] A. Antunes, M. S. Costa, J. Penedones, A. Salgarkar, and B. C. van Rees, JHEP 12, 094 (2021), 2109.13261.
+[86] P. Haldar and A. Sinha, SciPost Phys. 8, 095 (2020), 1911.05974.
+[87] S. Kundu (2020), 2012.10450.
+[88] S. Caron-Huot, D. Mazac, L. Rastelli, and D. Simmons-Duffin, JHEP 11, 164 (2021), 2106.10274.
+[89] S. Caron-Huot, D. Mazac, L. Rastelli, and D. Simmons-Duffin, JHEP 05, 243 (2021), 2008.04931.
+[90] F. Wilczek, Phys. Rev. Lett. 49, 957 (1982).
+[91] S. Jain, M. Mandlik, S. Minwalla, T. Takimi, S. R. Wadia, and S. Yokoyama, JHEP 04, 129 (2015), 1404.6373.
+[92] P. P. Kulish and L. D. Faddeev, Theor. Math. Phys. 4, 745 (1970).
+[93] N. Arkani-Hamed, M. Pate, A.-M. Raclariu, and A. Strominger, JHEP 08, 062 (2021), 2012.04208.
+

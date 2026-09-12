@@ -1,0 +1,17 @@
+[
+  {
+    "file": "STATUS.md",
+    "historical_content_unchanged": true,
+    "sha256": "0a4c689cd77e2d232bc7635d842b20fe8adbfd1f79da08b695ac3a85d0677ad7"
+  },
+  {
+    "file": "SCIENCE.md",
+    "historical_content_unchanged": true,
+    "sha256": "827904fea647a48412f89b28d45280d1bea6936d348e4f3846d3f9b9124ee23c"
+  },
+  {
+    "file": "REPRODUCTION_GUIDE_ZH.md",
+    "historical_content_unchanged": true,
+    "sha256": "4e3402fa4a2ac6a83fa502e2fa8369be93148beef9a6a74dd4d45416126ed8d8"
+  }
+]

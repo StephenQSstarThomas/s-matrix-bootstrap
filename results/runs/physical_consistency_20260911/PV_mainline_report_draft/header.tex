@@ -1,0 +1,26 @@
+\usepackage{xeCJK}
+\setCJKmainfont[AutoFakeBold=1.4,AutoFakeSlant=0.2]{Droid Sans Fallback}
+\setCJKsansfont[AutoFakeBold=1.4,AutoFakeSlant=0.2]{Droid Sans Fallback}
+\setCJKmonofont{Droid Sans Fallback}
+\emergencystretch=3em
+\setlength{\parindent}{0pt}
+\xeCJKDeclareCharClass{Default}{"2013,"00B7}
+\usepackage{newunicodechar}
+\newunicodechar{ℱ}{\ensuremath{\mathcal{F}}}
+\renewcommand{\contentsname}{目录}
+
+\usepackage{xurl}
+
+\newunicodechar{ℓ}{\ensuremath{\ell}}
+\newunicodechar{𝓕}{\ensuremath{\mathcal{F}}}
+\usepackage{pdflscape}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small PV主线 · 中文审阅草稿}
+\fancyhead[R]{\small F仍在执行 · 定量claim未完整复现}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0.3pt}
+
+\usepackage{graphicx}

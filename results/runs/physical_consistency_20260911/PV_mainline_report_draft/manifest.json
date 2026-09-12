@@ -1,0 +1,410 @@
+{
+  "created_utc": "2026-09-11T23:33:47.262447+00:00",
+  "status": "draft_ready",
+  "scope": "Only PV_CORE_CLAIM_AUDIT_ZH.md is the scientific prose source; existing four specified figures only; F ongoing and quantitative core claims incompletely reproduced",
+  "initial_source": {
+    "path": "results/runs/physical_consistency_20260911/PV_CORE_CLAIM_AUDIT_ZH.md",
+    "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_draft/sources/PV_CORE_CLAIM_AUDIT_ZH_initial.md",
+    "sha256": "861653facf2753ec6c1b93e765427810933132975a0737ab604a6ebfee68d245"
+  },
+  "figures": [
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_C3_fig7/profiles.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_draft/figures/fig7_IR.pdf",
+      "sha256": "32a5796817e91eca07ee770d0995fc5fccc9bd1b470d62fce46e8b73523ae185",
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1008.0,
+          288.0
+        ]
+      ]
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_native_phases/fig9.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_draft/figures/fig9.pdf",
+      "sha256": "1776ebe29179f46584cfacaf42fbd7a492409d294e97a35bd4f1429fdb4eaad3",
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          504.0,
+          345.6000061035156
+        ]
+      ]
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_native_phases/fig10.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_draft/figures/fig10.pdf",
+      "sha256": "d5f343c66d128cdf19169b3f205aee46747205b3cf18496d0269fdfbc2920a6f",
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1008.0,
+          345.6000061035156
+        ]
+      ]
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_native_phases/rho_mechanism.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_draft/figures/rho_mechanism.pdf",
+      "sha256": "0b24cc05319addc871dfc9fc104c30fbc1fd532689866efd18f03db7f9f014f5",
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1080.0,
+          309.6000061035156
+        ]
+      ]
+    }
+  ],
+  "local_links": [
+    {
+      "source_target": "PROGRESS.json",
+      "rendered_target": "../PROGRESS.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PROGRESS.json",
+      "exists": true
+    },
+    {
+      "source_target": "../../../references/2309.12402v3.pdf",
+      "rendered_target": "../../../../references/2309.12402v3.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/references/2309.12402v3.pdf",
+      "exists": true
+    },
+    {
+      "source_target": "../../../references/2309.12402v3-source/prd_submission_2.tex",
+      "rendered_target": "../../../../references/2309.12402v3-source/prd_submission_2.tex",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/references/2309.12402v3-source/prd_submission_2.tex",
+      "exists": true
+    },
+    {
+      "source_target": "PV_SAME_INPUTS_INVENTORY.md",
+      "rendered_target": "../PV_SAME_INPUTS_INVENTORY.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_SAME_INPUTS_INVENTORY.md",
+      "exists": true
+    },
+    {
+      "source_target": "MAINLINE_SOURCE_REVIEW.md",
+      "rendered_target": "../MAINLINE_SOURCE_REVIEW.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/MAINLINE_SOURCE_REVIEW.md",
+      "exists": true
+    },
+    {
+      "source_target": "PV_tip_support_01/report.json",
+      "rendered_target": "../PV_tip_support_01/report.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_tip_support_01/report.json",
+      "exists": true
+    },
+    {
+      "source_target": "verification_PV_bounded_coordinates.json",
+      "rendered_target": "../verification_PV_bounded_coordinates.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/verification_PV_bounded_coordinates.json",
+      "exists": true
+    },
+    {
+      "source_target": "PV_REPRESENTATIVE_RULE.json",
+      "rendered_target": "../PV_REPRESENTATIVE_RULE.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_REPRESENTATIVE_RULE.json",
+      "exists": true
+    },
+    {
+      "source_target": "PV_FIXED_COORDINATES.json",
+      "rendered_target": "../PV_FIXED_COORDINATES.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_FIXED_COORDINATES.json",
+      "exists": true
+    }
+  ],
+  "scientific_computation_performed": false,
+  "source_modified_by_builder": false,
+  "source": {
+    "path": "results/runs/physical_consistency_20260911/PV_CORE_CLAIM_AUDIT_ZH.md",
+    "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_draft/sources/PV_CORE_CLAIM_AUDIT_ZH.md",
+    "sha256": "861653facf2753ec6c1b93e765427810933132975a0737ab604a6ebfee68d245"
+  },
+  "formatting_changes": [
+    {
+      "source": "K_ki=(2/M) Σ_{n=1}^{M−1} cos(nφ_k) sin(nφ_i)\n     =(1/M) Σ_{n=1}^{M−1} [sin(n(φ_i+φ_k))+sin(n(φ_i−φ_k))]。",
+      "typeset": "\\[\n\\begin{aligned}\nK_{ki}&=\\frac{2}{M}\\sum_{n=1}^{M-1}\\cos(n\\phi_k)\\sin(n\\phi_i)\\\\\n&=\\frac{1}{M}\\sum_{n=1}^{M-1}\\left[\\sin\\bigl(n(\\phi_i+\\phi_k)\\bigr)+\\sin\\bigl(n(\\phi_i-\\phi_k)\\bigr)\\right].\n\\end{aligned}\n\\]",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "D_i=2/d_i+8a_i/(δ+2d_i²)>0",
+      "typeset": "\\(D_i=2/d_i+8a_i/(\\delta+2d_i^2)>0\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "a_n=(2/M)Σ_j v_j sin(nφ_j)",
+      "typeset": "\\(a_n=(2/M)\\sum_j v_j\\sin(n\\phi_j)\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "a_M=(1/M)Σ_j v_j sin(Mφ_j)",
+      "typeset": "\\(a_M=(1/M)\\sum_j v_j\\sin(M\\phi_j)\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "F(z)=1+Σ_{n=1}^M a_n z^n",
+      "typeset": "\\(F(z)=1+\\sum_{n=1}^M a_n z^n\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "ImF(e^{iφ_j})=v_j",
+      "typeset": "\\(\\operatorname{Im}F(e^{i\\phi_j})=v_j\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "ReF(e^{iφ_j})=1+ΣK_jk v_k",
+      "typeset": "\\(\\operatorname{Re}F(e^{i\\phi_j})=1+\\sum_k K_{jk}v_k\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "K_ki=K̃_{k+i+1}−K̃_{k−i}",
+      "typeset": "\\(K_{ki}=\\widetilde K_{k+i+1}-\\widetilde K_{k-i}\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "Σ_{n=1}^{M−1}sin(nmπ/M)",
+      "typeset": "\\(\\sum_{n=1}^{M-1}\\sin(nm\\pi/M)\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "cos(Mφ_k)=0",
+      "typeset": "\\(\\cos(M\\phi_k)=0\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "φ_j=(j+1/2)π/M",
+      "typeset": "\\(\\phi_j=(j+1/2)\\pi/M\\)",
+      "occurrences": 2,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "s_j=8/(1+cosφ_j)",
+      "typeset": "\\(s_j=8/(1+\\cos\\phi_j)\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "K̃_{i+j+1}−K̃_{i−j}",
+      "typeset": "\\(\\widetilde K_{i+j+1}-\\widetilde K_{i-j}\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "b_j=s′_j/(M s_j)",
+      "typeset": "\\(b_j=s_j^{\\prime}/(M s_j)\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "(π/M)s′_j s_jⁿ",
+      "typeset": "\\((\\pi/M)s_j^{\\prime}s_j^n\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "s′_j/M",
+      "typeset": "\\(s_j^{\\prime}/M\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "s0ⁿ⁺²",
+      "typeset": "\\(s_0^{n+2}\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "s=s_phys/mπ²",
+      "typeset": "\\(s=s_{\\mathrm{phys}}/m_\\pi^2\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "a=⌊M/2⌋",
+      "typeset": "\\(a=\\lfloor M/2\\rfloor\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "tr(G⁻¹δG G⁻¹δG)",
+      "typeset": "\\(\\operatorname{tr}(G^{-1}\\delta G\\,G^{-1}\\delta G)\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "区间[.09902001731987253,.09911230962662303]",
+      "typeset": "区间\\([.09902001731987253,\\allowbreak .09911230962662303]\\)",
+      "kind": "equivalent notation with an allowed line break"
+    },
+    {
+      "source": "\\allowbreak .09911230962662303]\\)，gap=9.22923×10⁻⁵",
+      "typeset": "\\allowbreak .09911230962662303]\\)，\\newline gap=9.22923×10⁻⁵",
+      "kind": "explicit line break only"
+    }
+  ],
+  "additional_layout_only": [
+    "Working-draft title, subtitle and warning box",
+    "A4 10pt with 18mm margins; running draft header",
+    "Explicit table column widths in Pandoc AST",
+    "Four unchanged PDF figures; wide plots on landscape pages",
+    "Rebase local links to draft directory",
+    "Explicit graphicx package for raw PDF inclusion",
+    "Explicit line break before the saved support gap eliminates a 0.218pt overfull line",
+    "Fig.10 appendix heading names S0/S2 to match the supplied plot"
+  ],
+  "original_heading": "# 原文约束下的有限原型：IR→UV→ρ主线审计",
+  "commands": [
+    [
+      "/tmp/he_report_pandoc/pandoc",
+      "REVIEW_ZH.md",
+      "--from",
+      "markdown+tex_math_single_backslash",
+      "--to",
+      "json",
+      "-o",
+      "document_ast.json"
+    ],
+    [
+      "/tmp/he_report_pandoc/pandoc",
+      "document_ast.json",
+      "--from",
+      "json",
+      "--standalone",
+      "--to",
+      "latex",
+      "--toc",
+      "--toc-depth=1",
+      "--shift-heading-level-by=-1",
+      "--include-in-header",
+      "header.tex",
+      "-V",
+      "mainfont=DejaVu Serif",
+      "-V",
+      "sansfont=DejaVu Sans",
+      "-V",
+      "monofont=DejaVu Sans Mono",
+      "-V",
+      "papersize=a4",
+      "-V",
+      "fontsize=10pt",
+      "-V",
+      "geometry:margin=18mm",
+      "-V",
+      "colorlinks=true",
+      "-o",
+      "REVIEW_ZH.tex"
+    ],
+    [
+      "/home/shiqiu/.local/bin/tectonic",
+      "--keep-logs",
+      "--keep-intermediates",
+      "--reruns",
+      "2",
+      "REVIEW_ZH.tex"
+    ]
+  ],
+  "table_column_widths": [
+    [
+      0.13,
+      0.87
+    ],
+    [
+      0.09,
+      0.26,
+      0.14,
+      0.26,
+      0.25
+    ]
+  ],
+  "thread_environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "RAYON_NUM_THREADS": "1"
+  },
+  "nice": 19,
+  "compile_exit": 0,
+  "completed_utc": "2026-09-11T23:41:56.517577+00:00",
+  "pages": 9,
+  "pdf": "REVIEW_ZH.pdf",
+  "pdf_sha256": "b6f2d00aed679085cdee5058eff65ef6b17524eb58cac6b22a1441a1a1a5da91",
+  "final_compile_log": "compile_3.log",
+  "source_currently_unchanged": true,
+  "qa": "qa.json",
+  "font_sha256": {},
+  "visual_QA_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "build_attempts": [
+    {
+      "log": "compile.log",
+      "exit": 1,
+      "issue": "Missing explicit graphicx for raw includegraphics; fixed only in build header"
+    },
+    {
+      "log": "compile_2.log",
+      "exit": 0,
+      "issue": "One 0.218pt overfull line; fixed only by explicit line break"
+    },
+    {
+      "log": "compile_3.log",
+      "exit": 0,
+      "overfull": 0,
+      "missing_glyphs": 0,
+      "underfull_unique": 1
+    }
+  ],
+  "artifact_sha256": {
+    "header.tex": "159ea56565ce3ee0e83cce69b24cdcdcaa6fffdca07c5bf034d47f1a0d0c097e",
+    "REVIEW_ZH.md": "363e607c8590bc28c2b81d7fccc74cc0f4ce8b908778b885c477b0ece3d003f2",
+    "REVIEW_ZH.tex": "2e86b1eae042c72b91baab1bedf729782d9df99a83f417ec7cf35bfce4b68a5a",
+    "document_ast.json": "c6c7fed4642e04693b20943476ea0bd9e317bc75de0f189e288e0ec447b8d3fb",
+    "qa.json": "8dcae2903d8f2ea0ef068876a290cf79a28a5236f1df14cc0d5a2345924567ae",
+    "build.py.txt": "cc225ba76318986eca03d0560212fa54c84e1d663f0027d55d18a3a70d4e2710"
+  },
+  "build_log_sha256": {
+    "REVIEW_ZH.log": "15cf8a96660b8e7ff9789e18372e78894e6640b70d884704d0da6651336f60f3",
+    "pandoc.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pandoc_2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pandoc_ast_3.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pandoc_ast_2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pandoc_3.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pandoc_ast.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "compile_3.log": "5cec474b28d01a26bd4418bb02139da4f458002420d115cdde86e365ac0fec63",
+    "compile_2.log": "61fe00cd517aa24dc33c183964dde7be8f543ed12edc3beb5615898b8da501f4",
+    "compile.log": "87bfcb057af6077e9a43b68dc467cf4c9a08a20b7885297a1b73239b9534bcd6"
+  },
+  "tool_binary_sha256": {
+    "/tmp/he_report_pandoc/pandoc": "decd3dd11a3fe0c16ce56443343ec53adde6fbed6f97d7f56f06b1c424248e7b",
+    "/home/shiqiu/.local/bin/tectonic": "4df19452c202c5bef9f7c7e4a01a3f2b9d5199f0a1f73b70b4fe1bffbc9837f6"
+  },
+  "builder_archive": {
+    "renamed_utc": "2026-09-11T23:43:03.576956+00:00",
+    "from": "build.py",
+    "to": "build.py.txt",
+    "sha256_before": "cc225ba76318986eca03d0560212fa54c84e1d663f0027d55d18a3a70d4e2710",
+    "sha256_after": "cc225ba76318986eca03d0560212fa54c84e1d663f0027d55d18a3a70d4e2710",
+    "bytes_unchanged": true,
+    "mode": "0o444",
+    "original_python_entry_removed": true,
+    "scope": "Non-executable read-only typesetting-producer evidence; any future build uses explicit tool commands"
+  }
+}

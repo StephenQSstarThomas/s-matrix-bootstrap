@@ -1,0 +1,822 @@
+{
+  "command": "boundary",
+  "status": "candidate",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "boundary",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_barrier_CG_M3_control_20260907",
+    "density_limit": null,
+    "preparation": "results/runs/stage_B_tail_control_prepare_20260906",
+    "solver": "barrier",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "constraint_generation": true,
+    "density_cone": "soc",
+    "solver_seconds": 120.0,
+    "dual_seconds": 5.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 1e-05,
+    "gap": 0.0001,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": "results/runs/stage_B_native_cli_M3_recovery_20260907/coefficients.json",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "seconds": 180.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3"
+  },
+  "scope": "Coherent finite-sine-cardinal conditional model; published regions and phases remain unverified.",
+  "solver": {
+    "solver": "barrier constraint generation",
+    "iterations": 26,
+    "seconds": 0.27306750300340354,
+    "qr_factorizations": 11,
+    "pcg_steps": 26,
+    "qr_reuse": 6,
+    "raw_coordinates": true,
+    "matrix_threads": 1,
+    "tail_weights": {
+      "kR": [
+        1.1013621270538231e-06,
+        -1.997568433299136e-06,
+        6.844623448885513e-07,
+        0.0,
+        0.0
+      ],
+      "kI": [
+        -2.297724860185759e-06,
+        -8.368727552229383e-06,
+        -1.410847871932651e-05,
+        -0.001828744899844776,
+        -2.468524248415863e-05
+      ]
+    },
+    "tail_constraints_applied": true,
+    "history": [
+      {
+        "mu": 1e-05,
+        "objective": 0.042770200031236584,
+        "outer_estimate": 0.04338321653481727,
+        "gap_estimate": 0.0006130165035806876
+      },
+      {
+        "mu": 1.0000000000000002e-06,
+        "objective": 0.042987114078022276,
+        "outer_estimate": 0.0430684866203592,
+        "gap_estimate": 8.137254233692229e-05
+      }
+    ],
+    "feasible_path": true,
+    "all_density_directions_retained": true,
+    "polynomial_dual": [
+      [
+        1.331079502903181,
+        -0.7042252509590556,
+        -0.5404386515021891
+      ],
+      [
+        1.6855339249434866,
+        -1.6541352323012641,
+        1.6371046444898838
+      ],
+      [
+        0.244071047561929,
+        0.1018190200040543,
+        -0.12590482788125454
+      ]
+    ],
+    "moment_dual_certificate": {
+      "passed": true,
+      "diagonal_shifts": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "attempts_per_channel": [
+        0,
+        0,
+        0
+      ],
+      "certificate": {
+        "passed": true,
+        "channels": [
+          {
+            "isospin": 0,
+            "passed": true,
+            "positive_definite": true,
+            "status": "positive_definite",
+            "failed_pivot": null,
+            "minimum_pivot_lower": "[0.0888047714061044693781250686024 +/- 4.97e-32]",
+            "zero_pivots": 0
+          },
+          {
+            "isospin": 1,
+            "passed": true,
+            "positive_definite": true,
+            "status": "positive_definite",
+            "failed_pivot": null,
+            "minimum_pivot_lower": "[0.0591588066179819406002080936687 +/- 4.98e-32]",
+            "zero_pivots": 0
+          },
+          {
+            "isospin": 2,
+            "passed": true,
+            "positive_definite": true,
+            "status": "positive_definite",
+            "failed_pivot": null,
+            "minimum_pivot_lower": "[0.0609568360777923556646970744221 +/- 1.22e-32]",
+            "zero_pivots": 0
+          }
+        ],
+        "bits": 384,
+        "arithmetic": "Arb LDL on exact float64 moments",
+        "basis": "Chebyshev T_0,...,T_(M-1)",
+        "pairing": "sum nu_k * p_T,k; no factor two",
+        "scope": "Positive functional on degree <= M-1 polynomials nonnegative on [-1,1]"
+      },
+      "correction": "Only nu[:,0] increased; all higher moments retained exactly",
+      "support_change": "Use corrected moments with the exact original polynomial coefficient map"
+    },
+    "FG_cut_count": 29,
+    "constraint_generation": {
+      "history": [
+        {
+          "round": 1,
+          "active_count": 18,
+          "raw_FG_status": "violated",
+          "FG_cut_count": 21,
+          "FG_added": 3,
+          "native_status": "analytic density barrier with longdouble Newton and radial centering",
+          "native_seconds": 1.4639279739931226,
+          "full_min_margin": -0.0004783857493120961,
+          "inactive_violations": 4,
+          "added": 4,
+          "working_upper": 1250.782913678401,
+          "candidate_objective": 0.04013069167365897,
+          "recovery": {
+            "candidate_fraction": 0.002046022685544841,
+            "interior_fraction": 0.9979539673349153,
+            "radial_scale": 1.0,
+            "candidate_weight": 0.0020460226650846143,
+            "zero_weight": 1.0000000161269895e-08,
+            "objective_before": 0.09187445715530057,
+            "objective_after": 0.0401306916736589,
+            "objective_loss": 0.05174376548164001,
+            "repaired": true,
+            "coarse_feasible_fraction": 0.0020460227060050684,
+            "primal_certified": true,
+            "scope": "Coefficient mixture; finite H plus analytic tail/FG checks; no continuum claim",
+            "incumbent_retained": false,
+            "incumbent_objective": 0.04002460610347175,
+            "final_contraction": 0.99999999
+          }
+        },
+        {
+          "round": 2,
+          "active_count": 22,
+          "raw_FG_status": "violated",
+          "FG_cut_count": 24,
+          "FG_added": 2,
+          "native_status": "analytic density barrier with longdouble Newton and radial centering",
+          "native_seconds": 0.46971686207689345,
+          "full_min_margin": -0.012379058351201304,
+          "inactive_violations": 2,
+          "added": 2,
+          "working_upper": 0.052775093585158236,
+          "candidate_objective": 0.04106448343332336,
+          "recovery": {
+            "candidate_fraction": 0.08198820863224994,
+            "interior_fraction": 0.918011782187632,
+            "radial_scale": 1.0,
+            "candidate_weight": 0.08198820781236785,
+            "zero_weight": 1.0000000161269895e-08,
+            "objective_before": 0.05270786578000798,
+            "objective_after": 0.04106448343332352,
+            "objective_loss": 0.01164338234668447,
+            "repaired": true,
+            "coarse_feasible_fraction": 0.08198820945213203,
+            "primal_certified": true,
+            "scope": "Coefficient mixture; finite H plus analytic tail/FG checks; no continuum claim",
+            "incumbent_retained": false,
+            "incumbent_objective": 0.04002460610347175,
+            "final_contraction": 0.99999999
+          }
+        },
+        {
+          "round": 3,
+          "active_count": 24,
+          "raw_FG_status": "violated",
+          "FG_cut_count": 26,
+          "FG_added": 1,
+          "native_status": "analytic density barrier with longdouble Newton and radial centering",
+          "native_seconds": 0.17094586789608002,
+          "full_min_margin": -0.0009819348867210708,
+          "inactive_violations": 2,
+          "added": 2,
+          "working_upper": 0.043191333903396315,
+          "candidate_objective": 0.04170004194536357,
+          "recovery": {
+            "candidate_fraction": 0.5416216527910545,
+            "interior_fraction": 0.458378342625162,
+            "radial_scale": 1.0,
+            "candidate_weight": 0.5416216473748379,
+            "zero_weight": 1.0000000105758744e-08,
+            "objective_before": 0.043117976263727216,
+            "objective_after": 0.04170004194536342,
+            "objective_loss": 0.0014179343183638013,
+            "repaired": true,
+            "coarse_feasible_fraction": 0.541621658207271,
+            "primal_certified": true,
+            "scope": "Coefficient mixture; finite H plus analytic tail/FG checks; no continuum claim",
+            "incumbent_retained": false,
+            "incumbent_objective": 0.04002460610347175,
+            "final_contraction": 0.99999999
+          }
+        },
+        {
+          "round": 4,
+          "active_count": 26,
+          "raw_FG_status": "violated",
+          "FG_cut_count": 27,
+          "FG_added": 1,
+          "native_status": "analytic density barrier with longdouble Newton and radial centering",
+          "native_seconds": 0.18815992190502584,
+          "full_min_margin": 5.598923528099697e-15,
+          "inactive_violations": 0,
+          "added": 0,
+          "working_upper": 0.04307316122362407,
+          "candidate_objective": 0.04002534037201435,
+          "recovery": {
+            "candidate_fraction": 0.00024743196724334,
+            "interior_fraction": 0.999752558035231,
+            "radial_scale": 1.0,
+            "candidate_weight": 0.0002474319647690203,
+            "zero_weight": 9.99999993922529e-09,
+            "objective_before": 0.042993781041349044,
+            "objective_after": 0.04002534037201432,
+            "objective_loss": 0.0029684406693347215,
+            "repaired": true,
+            "coarse_feasible_fraction": 0.0002474319697176597,
+            "primal_certified": true,
+            "scope": "Coefficient mixture; finite H plus analytic tail/FG checks; no continuum claim",
+            "incumbent_retained": false,
+            "incumbent_objective": 0.04002460610347175,
+            "final_contraction": 0.99999999
+          }
+        },
+        {
+          "round": 5,
+          "active_count": 26,
+          "raw_FG_status": "violated",
+          "FG_cut_count": 28,
+          "FG_added": 1,
+          "native_status": "analytic density barrier with longdouble Newton and radial centering",
+          "native_seconds": 0.18771714391186833,
+          "full_min_margin": 2.491914030279463e-14,
+          "inactive_violations": 0,
+          "added": 0,
+          "working_upper": 0.04306994643361483,
+          "candidate_objective": 0.04003633207904039,
+          "recovery": {
+            "candidate_fraction": 0.003954982678251765,
+            "interior_fraction": 0.996045007361298,
+            "radial_scale": 1.0,
+            "candidate_weight": 0.003954982638701938,
+            "zero_weight": 1.0000000050247593e-08,
+            "objective_before": 0.042989568755851186,
+            "objective_after": 0.04003633207904015,
+            "objective_loss": 0.002953236676811033,
+            "repaired": true,
+            "coarse_feasible_fraction": 0.003954982717801592,
+            "primal_certified": true,
+            "scope": "Coefficient mixture; finite H plus analytic tail/FG checks; no continuum claim",
+            "incumbent_retained": false,
+            "incumbent_objective": 0.04002460610347175,
+            "final_contraction": 0.99999999
+          }
+        },
+        {
+          "round": 6,
+          "active_count": 26,
+          "raw_FG_status": "nonnegative_certified",
+          "FG_cut_count": 29,
+          "FG_added": 0,
+          "native_status": "analytic density barrier with longdouble Newton and radial centering",
+          "native_seconds": 0.27306750300340354,
+          "full_min_margin": 5.2037697710091585e-12,
+          "inactive_violations": 0,
+          "added": 0,
+          "working_upper": 0.043068486607731896,
+          "candidate_objective": 0.04298711364815101,
+          "recovery": {
+            "candidate_fraction": 1.0,
+            "interior_fraction": 0.0,
+            "radial_scale": 1.0,
+            "candidate_weight": 0.99999999,
+            "zero_weight": 1.0000000050247593e-08,
+            "objective_before": 0.04298711407802225,
+            "objective_after": 0.04298711364815108,
+            "objective_loss": 4.298711694628005e-10,
+            "repaired": true,
+            "coarse_feasible_fraction": 1.0,
+            "primal_certified": true,
+            "scope": "Coefficient mixture; finite H plus analytic tail/FG checks; no continuum claim",
+            "incumbent_retained": false,
+            "incumbent_objective": 0.04002460610347175,
+            "final_contraction": 0.99999999
+          }
+        }
+      ],
+      "stop": "no_inactive_violations",
+      "full_count": 60,
+      "active_count": 26,
+      "active_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        23,
+        24,
+        26,
+        28,
+        33,
+        34,
+        40,
+        46
+      ],
+      "dual_active_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        23,
+        24,
+        26,
+        28,
+        33,
+        34,
+        40,
+        46
+      ],
+      "initial_active_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "fg_points": [
+        [
+          0,
+          -1.0
+        ],
+        [
+          0,
+          -0.8660254037844387
+        ],
+        [
+          0,
+          -0.4999999999999998
+        ],
+        [
+          0,
+          6.123233995736766e-17
+        ],
+        [
+          0,
+          0.5000000000000001
+        ],
+        [
+          0,
+          0.8660254037844387
+        ],
+        [
+          0,
+          1.0
+        ],
+        [
+          1,
+          -1.0
+        ],
+        [
+          1,
+          -0.8660254037844387
+        ],
+        [
+          1,
+          -0.4999999999999998
+        ],
+        [
+          1,
+          6.123233995736766e-17
+        ],
+        [
+          1,
+          0.5000000000000001
+        ],
+        [
+          1,
+          0.8660254037844387
+        ],
+        [
+          1,
+          1.0
+        ],
+        [
+          2,
+          -1.0
+        ],
+        [
+          2,
+          -0.8660254037844387
+        ],
+        [
+          2,
+          -0.4999999999999998
+        ],
+        [
+          2,
+          6.123233995736766e-17
+        ],
+        [
+          2,
+          0.5000000000000001
+        ],
+        [
+          2,
+          0.8660254037844387
+        ],
+        [
+          2,
+          1.0
+        ],
+        [
+          0,
+          0.05680233679279543
+        ],
+        [
+          1,
+          0.6813810098530355
+        ],
+        [
+          2,
+          0.2499508211938779
+        ],
+        [
+          0,
+          -0.24968410434995356
+        ],
+        [
+          2,
+          0.16402386028404328
+        ],
+        [
+          0,
+          -0.39438988460827284
+        ],
+        [
+          0,
+          -0.6489291426081116
+        ],
+        [
+          0,
+          -0.5591085061868564
+        ]
+      ],
+      "dual_active_count": 26,
+      "native_prefix": 18,
+      "amplitude_variables": 21,
+      "all_full_rows_checked": true,
+      "seconds": 2.9529962642118335,
+      "time_budget": 120.0,
+      "support_optimality_claimed": false
+    },
+    "primal_recovery": {
+      "candidate_fraction": 1.0,
+      "interior_fraction": 0.0,
+      "radial_scale": 1.0,
+      "candidate_weight": 0.99999999,
+      "zero_weight": 1.0000000050247593e-08,
+      "objective_before": 0.04298711364815108,
+      "objective_after": 0.04298711321828009,
+      "objective_loss": 4.298709904858924e-10,
+      "repaired": true,
+      "coarse_feasible_fraction": 1.0,
+      "primal_certified": true,
+      "scope": "Coefficient mixture; finite H plus analytic tail/FG checks; no continuum claim",
+      "incumbent_retained": false,
+      "incumbent_objective": 0.04022503399675663,
+      "final_contraction": 0.99999999
+    }
+  },
+  "normal_dual": {
+    "status": "not_needed",
+    "reason": "Independent initial support gap meets tolerance"
+  },
+  "outer": {
+    "upper": 0.043068486607731896,
+    "enclosure": "[0.04306848660773189090351007 +/- 1.55e-27]",
+    "disk": 0.0030970730261415157,
+    "chiral": 0.03995062421918314,
+    "density_residual": 2.0270398676463933e-05,
+    "tail_support": 5.189637307705126e-07,
+    "scope": "stored finite H and supplied tail maps plus analytic global high-spin cone; angular quadrature error excluded",
+    "polynomial_dual_verification": {
+      "passed": true,
+      "channels": [
+        {
+          "isospin": 0,
+          "passed": true,
+          "positive_definite": true,
+          "status": "positive_definite",
+          "failed_pivot": null,
+          "minimum_pivot_lower": "[0.0888047714061044693781250686024 +/- 4.97e-32]",
+          "zero_pivots": 0
+        },
+        {
+          "isospin": 1,
+          "passed": true,
+          "positive_definite": true,
+          "status": "positive_definite",
+          "failed_pivot": null,
+          "minimum_pivot_lower": "[0.0591588066179819406002080936687 +/- 4.98e-32]",
+          "zero_pivots": 0
+        },
+        {
+          "isospin": 2,
+          "passed": true,
+          "positive_definite": true,
+          "status": "positive_definite",
+          "failed_pivot": null,
+          "minimum_pivot_lower": "[0.0609568360777923556646970744221 +/- 1.22e-32]",
+          "zero_pivots": 0
+        }
+      ],
+      "bits": 384,
+      "arithmetic": "Arb LDL on exact float64 moments",
+      "basis": "Chebyshev T_0,...,T_(M-1)",
+      "pairing": "sum nu_k * p_T,k; no factor two",
+      "scope": "Positive functional on degree <= M-1 polynomials nonnegative on [-1,1]"
+    },
+    "high_spin_necessary": {
+      "status": "nonnegative_certified",
+      "channels": [
+        {
+          "isospin": 0,
+          "coefficients": [
+            "[0.352769167648929651060490137885 +/- 4.44e-31]",
+            "[0.349429438346020968196718220611 +/- 4.54e-31]",
+            "[0.162229825181905225025449200031 +/- 3.90e-31]"
+          ],
+          "coefficient_basis": "U_0,...,U_(M-1)",
+          "global_lower": "[0.00237891597654061681627220505430 +/- 3.53e-33]",
+          "global_nonnegative_certified": true,
+          "roots_certified": true,
+          "root_error": null,
+          "candidate_minimum": {
+            "cosine": -0.5384790342253842,
+            "polynomial_value": "[0.00237891597654061681627220505430 +/- 3.71e-33]"
+          }
+        },
+        {
+          "isospin": 1,
+          "coefficients": [
+            "[0.333865001234589601261896196750 +/- 1.55e-31]",
+            "[0.170722609812050328777817549822 +/- 4.36e-31]",
+            "[0.00283397363585478081408509525495 +/- 1.58e-33]"
+          ],
+          "coefficient_basis": "U_0,...,U_(M-1)",
+          "global_lower": "[0.000921702518053286148516382871871 +/- 7.17e-35]",
+          "global_nonnegative_certified": true,
+          "roots_certified": true,
+          "root_error": null,
+          "candidate_minimum": {
+            "cosine": -1.0,
+            "polynomial_value": "[0.000921702518053286148516382871871 +/- 7.17e-35]"
+          }
+        },
+        {
+          "isospin": 2,
+          "coefficients": [
+            "[0.314221038864063161456192290376 +/- 2.63e-31]",
+            "[-0.303997957073292764026574367804 +/- 1.51e-31]",
+            "[0.166271532725814836951064722539 +/- 3.65e-31]"
+          ],
+          "coefficient_basis": "U_0,...,U_(M-1)",
+          "global_lower": "[0.00899794240735793407201289128003 +/- 1.24e-33]",
+          "global_nonnegative_certified": true,
+          "roots_certified": true,
+          "root_error": null,
+          "candidate_minimum": {
+            "cosine": 0.4570805839244166,
+            "polynomial_value": "[0.00899794240735793407201289128003 +/- 8.63e-34]"
+          }
+        }
+      ],
+      "violations": [],
+      "scope": "Leading large-spin necessary polynomials on [-1,1]; positivity is not full partial-wave unitarity."
+    },
+    "primal_feasible": true,
+    "lower": 0.04298711321828008,
+    "minimum_margin_enclosure": "[5.2037697189727408663e-12 +/- 3.56e-32]",
+    "density_norm": 0.4294993233727861,
+    "targets": [
+      "[0.04298711321828009133999412 +/- 2.52e-27]",
+      "[-0.002713444837569120418010108 +/- 4.24e-28]"
+    ],
+    "tail_margin_enclosures": [
+      "[0.87042622257070454262 +/- 4.92e-21]",
+      "[0.23898495405115641671 +/- 3.58e-21]",
+      "[0.14175872540562972334 +/- 7.71e-22]",
+      "[0.0010936462270765234940 +/- 1.14e-23]",
+      "[0.081020065380498853828 +/- 2.98e-22]"
+    ]
+  },
+  "M": 3,
+  "L": 2,
+  "sampling_nodes": 10,
+  "scattering_samples": 60,
+  "infinity": "zero",
+  "mode": "chiral",
+  "chiral_tolerance": 0.002,
+  "density_limit": 1500,
+  "targets": [
+    0.04298711321828009,
+    -0.0027134448375691206
+  ],
+  "objective": 0.04298711321828009,
+  "minimum_scattering_margin": 5.203769718972741e-12,
+  "chiral_norms": [
+    0.0019999498978078155,
+    0.0007131078729269761
+  ],
+  "density_norm": 0.42949932337278607,
+  "radial_shrink": 1.0,
+  "sampled_feasible": true,
+  "support_optimality_certified": true,
+  "physical_unitarity_accepted": false,
+  "unitarity_coverage": "listed energies and waves only; off-grid and tails unverified",
+  "analytic_tail_conditions_passed": true,
+  "analytic_tail_margins": [
+    "[0.8704262225707154379358975 +/- 3.51e-26]",
+    "[0.2389849540511619560483996 +/- 3.34e-26]",
+    "[0.1417587254056302666711088 +/- 1.30e-26]",
+    "[0.001093646227076452893505589 +/- 1.39e-28]",
+    "[0.08102006538049887515703879 +/- 4.36e-27]"
+  ],
+  "high_spin_necessary": {
+    "status": "nonnegative_certified",
+    "channels": [
+      {
+        "isospin": 0,
+        "coefficients": [
+          "[0.352769167648929651060490137885 +/- 4.44e-31]",
+          "[0.349429438346020968196718220611 +/- 4.54e-31]",
+          "[0.162229825181905225025449200031 +/- 3.90e-31]"
+        ],
+        "coefficient_basis": "U_0,...,U_(M-1)",
+        "global_lower": "[0.00237891597654061681627220505430 +/- 3.53e-33]",
+        "global_nonnegative_certified": true,
+        "roots_certified": true,
+        "root_error": null,
+        "candidate_minimum": {
+          "cosine": -0.5384790342253842,
+          "polynomial_value": "[0.00237891597654061681627220505430 +/- 3.71e-33]"
+        }
+      },
+      {
+        "isospin": 1,
+        "coefficients": [
+          "[0.333865001234589601261896196750 +/- 1.55e-31]",
+          "[0.170722609812050328777817549822 +/- 4.36e-31]",
+          "[0.00283397363585478081408509525495 +/- 1.58e-33]"
+        ],
+        "coefficient_basis": "U_0,...,U_(M-1)",
+        "global_lower": "[0.000921702518053286148516382871871 +/- 7.17e-35]",
+        "global_nonnegative_certified": true,
+        "roots_certified": true,
+        "root_error": null,
+        "candidate_minimum": {
+          "cosine": -1.0,
+          "polynomial_value": "[0.000921702518053286148516382871871 +/- 7.17e-35]"
+        }
+      },
+      {
+        "isospin": 2,
+        "coefficients": [
+          "[0.314221038864063161456192290376 +/- 2.63e-31]",
+          "[-0.303997957073292764026574367804 +/- 1.51e-31]",
+          "[0.166271532725814836951064722539 +/- 3.65e-31]"
+        ],
+        "coefficient_basis": "U_0,...,U_(M-1)",
+        "global_lower": "[0.00899794240735793407201289128003 +/- 1.24e-33]",
+        "global_nonnegative_certified": true,
+        "roots_certified": true,
+        "root_error": null,
+        "candidate_minimum": {
+          "cosine": 0.4570805839244166,
+          "polynomial_value": "[0.00899794240735793407201289128003 +/- 8.63e-34]"
+        }
+      }
+    ],
+    "violations": [],
+    "scope": "Leading large-spin necessary polynomials on [-1,1]; positivity is not full partial-wave unitarity."
+  },
+  "high_spin_cut_count": 29,
+  "tail_conditions_applied": true,
+  "operator_scope": "Float64 operator; analytic tails checked separately; no continuum certificate",
+  "elapsed_seconds": 2.9780318301636726,
+  "core_sources": {
+    "__init__.py": "c333b5f896eee5442ba4de87c977d0907516e4956c0cf97e54bc3f331b044e5f",
+    "analysis.py": "fe0a308bfa4285654a9c93c334d565166b5df229f1582a42e5bf82b38e4774a8",
+    "imaginary.py": "ad38438757e586946e20be1852881da06eb6355e597579a6f454120ddf81b66e",
+    "io.py": "60548f740de3487af58b5c8759a9dbdbae5ee48e182393edee0a252fe7274066",
+    "kernels.py": "52864ab8be4e5c1c16de6524abfb8311b03ddfa20783c0983ac1bd424a8b70a9",
+    "linear.py": "89e7e90412bbe56e253b7005e50b8c79cce95f42559dcfcb87c1011581a1320a",
+    "model.py": "a9d812c787bf41174461e8eb00a6e3b2ed3896faa770de1ce01ba5ba84818be6",
+    "operators.py": "0143e4015a81f1d0600b01d0b1f64610d096cba1eaac10543d7074b9cf300eef",
+    "quotient.py": "4f930fe75ffa5b6893ca5f0e01d5dce776f1d70018a7d70bd6cf698e89b423d5",
+    "run.py": "9993f1eb9ed73344cc3ad0617268db010faa8660ba3b01181e44c6341cc39d87"
+  },
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 180.0,
+  "supervisor_seconds": 3.1747122150845826
+}

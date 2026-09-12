@@ -1,0 +1,37 @@
+{
+  "status": "independent_scope_controls_passed",
+  "M": 1,
+  "optimization_performed": false,
+  "checks": {
+    "recovery_False": {
+      "candidate_fraction": 1.0,
+      "FG_diagnostic": "violated",
+      "finite_feasible": true
+    },
+    "recovery_True": {
+      "candidate_fraction": 0.9499999904999993,
+      "FG_diagnostic": "nonnegative_certified",
+      "finite_feasible": true
+    },
+    "clarabel_boundary": {
+      "finite_support_certified": true,
+      "FG_diagnostic": "violated",
+      "physical_accepted": false,
+      "saved_global_high_spin_enforced": false,
+      "saved_polynomial_dual_present": false
+    },
+    "clarabel_dual_roundtrip": true,
+    "barrier_boundary": {
+      "finite_support_certified": true,
+      "FG_diagnostic": "violated",
+      "physical_accepted": false,
+      "saved_global_high_spin_enforced": false,
+      "saved_polynomial_dual_present": false
+    },
+    "barrier_dual_roundtrip": true,
+    "reject_flagged_FG_dual": true,
+    "reject_legacy_FG_dual": true,
+    "sampled_CG_parser_rejected_before_artifact": true
+  },
+  "scope": "Synthetic finite matrices and existing support formula; no physical M50 run"
+}

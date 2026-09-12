@@ -1,0 +1,48 @@
+{
+  "D1": "complete",
+  "D2": "complete",
+  "D3": "complete",
+  "acceptance": "Complete M50 joint feasible witness; no region, extremality or phase prediction claimed",
+  "candidate": "D3_hull_009",
+  "original_audit": "D3_original_audit_768",
+  "fresh_evaluation": "D3_fresh_native_768",
+  "variables": 4076,
+  "amplitude_coefficients": 3876,
+  "solver_variables": 390,
+  "parent_amplitudes": 204,
+  "targets": [
+    0.06491413702226134,
+    -0.0041121305491865255
+  ],
+  "unitarity_disks": 1500,
+  "current_grams": 100,
+  "gram_principal_minors": 700,
+  "fesr_moments": 4,
+  "high_FF_caps": 14,
+  "density_norm": 370688.36511338735,
+  "density_limit": 377500,
+  "chiral_norms_saved_H": [
+    0.0019998153066966133,
+    0.0006273655766441552
+  ],
+  "chiral_norms_fresh_native": [
+    0.0019998153167365483,
+    0.0006273655725098026
+  ],
+  "chiral_tolerance": 0.002,
+  "original_joint_feasible": true,
+  "fresh_unitarity_status": "sampled_passed",
+  "fresh_unitarity_samples": 1500,
+  "fresh_vs_saved_H_max_f_difference": 5.095522830593874e-11,
+  "native_solver_status": "AlmostSolved",
+  "solver_seconds": 0.263038915,
+  "support_optimality_certified": false,
+  "continuum_certified": false,
+  "tests": {
+    "passed": 101,
+    "failed": 0,
+    "seconds": 11.65,
+    "details": "verification.json"
+  },
+  "structure_passed": true
+}

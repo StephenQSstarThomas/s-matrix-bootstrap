@@ -1,0 +1,195 @@
+{
+  "task": "Initial combined-L2 retargeting by original CLI dual audits only",
+  "requested_chiral_records": 166,
+  "accepted_chiral_records": 163,
+  "rejected_chiral_records": [
+    {
+      "index": 154,
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_154/report.json",
+      "source_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_adaptive_010_20260907/report.json",
+      "epsilon": 0.0002,
+      "chiral_norms": [
+        0.00020000000441723417
+      ],
+      "chiral_excess": 4.417234156575689e-12,
+      "minimum_scattering_margin": 6.708473416093894e-86,
+      "density_norm": 337454.87653538445,
+      "radial_transfer": 0.8948986118575151
+    },
+    {
+      "index": 158,
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_158/report.json",
+      "source_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_adaptive_012_20260907/report.json",
+      "epsilon": 0.0002,
+      "chiral_norms": [
+        0.00020000000336676415
+      ],
+      "chiral_excess": 3.366764142866477e-12,
+      "minimum_scattering_margin": 8.351888374215415e-86,
+      "density_norm": 353375.7271795589,
+      "radial_transfer": 0.9374304332457479
+    },
+    {
+      "index": 164,
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_164/report.json",
+      "source_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_parallel_007_20260907/report.json",
+      "epsilon": 0.0002,
+      "chiral_norms": [
+        0.00020000000070956176
+      ],
+      "chiral_excess": 7.095617496344353e-13,
+      "minimum_scattering_margin": 1.9599492734455694e-85,
+      "density_norm": 301291.3283505806,
+      "radial_transfer": 0.7987277192506012
+    }
+  ],
+  "pure_records_reused": 38,
+  "qualified_records": 201,
+  "optimization_performed": false,
+  "dual_seconds": 0,
+  "bits": 384,
+  "BLAS_threads": 2,
+  "retarget_wall_seconds": 923.9149724519812,
+  "groups": [
+    {
+      "mode": "pure",
+      "epsilon": null,
+      "chiral_norm": "combined-l2",
+      "points": 38,
+      "outer_closed": true,
+      "geometry_ready": true,
+      "max_distance_upper": 0.009675773346601383,
+      "next_support": null
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.006,
+      "chiral_norm": "combined-l2",
+      "points": 29,
+      "outer_closed": true,
+      "geometry_ready": false,
+      "max_distance_upper": 0.14207359232567957,
+      "next_support": {
+        "action": "add_direction",
+        "direction": [
+          9.97106217015087,
+          -46.78666653785412
+        ],
+        "gap": 0.0024999999999999996,
+        "normal_units": "unit normal in declared region metric"
+      },
+      "suggested_initial_coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_001/coefficients.json",
+      "initial_selection_rule": "Largest requested support functional among this group saved feasible points; no phase data."
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.004,
+      "chiral_norm": "combined-l2",
+      "points": 27,
+      "outer_closed": true,
+      "geometry_ready": false,
+      "max_distance_upper": 0.11679600729383446,
+      "next_support": {
+        "action": "add_direction",
+        "direction": [
+          9.606619187795816,
+          -55.39424506906313
+        ],
+        "gap": 0.0024999999999999996,
+        "normal_units": "unit normal in declared region metric"
+      },
+      "suggested_initial_coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_030/coefficients.json",
+      "initial_selection_rule": "Largest requested support functional among this group saved feasible points; no phase data."
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.002,
+      "chiral_norm": "combined-l2",
+      "points": 28,
+      "outer_closed": true,
+      "geometry_ready": false,
+      "max_distance_upper": 0.0872544560134244,
+      "next_support": {
+        "action": "add_direction",
+        "direction": [
+          -6.126745046352974,
+          -265.30534472194347
+        ],
+        "gap": 0.0024999999999999996,
+        "normal_units": "unit normal in declared region metric"
+      },
+      "suggested_initial_coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_071/coefficients.json",
+      "initial_selection_rule": "Largest requested support functional among this group saved feasible points; no phase data."
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.001,
+      "chiral_norm": "combined-l2",
+      "points": 27,
+      "outer_closed": true,
+      "geometry_ready": false,
+      "max_distance_upper": 0.07443163243375917,
+      "next_support": {
+        "action": "add_direction",
+        "direction": [
+          -23.46478718333337,
+          -525.9670629253735
+        ],
+        "gap": 0.0025,
+        "normal_units": "unit normal in declared region metric"
+      },
+      "suggested_initial_coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_100/coefficients.json",
+      "initial_selection_rule": "Largest requested support functional among this group saved feasible points; no phase data."
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.0006,
+      "chiral_norm": "combined-l2",
+      "points": 25,
+      "outer_closed": true,
+      "geometry_ready": false,
+      "max_distance_upper": 0.08859216178218618,
+      "next_support": {
+        "action": "add_direction",
+        "direction": [
+          110.92213344455429,
+          1666.5225248837414
+        ],
+        "gap": 0.0024999999999999996,
+        "normal_units": "unit normal in declared region metric"
+      },
+      "suggested_initial_coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_132/coefficients.json",
+      "initial_selection_rule": "Largest requested support functional among this group saved feasible points; no phase data."
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.0002,
+      "chiral_norm": "combined-l2",
+      "points": 27,
+      "outer_closed": true,
+      "geometry_ready": false,
+      "max_distance_upper": 0.22661592643202044,
+      "next_support": {
+        "action": "add_direction",
+        "direction": [
+          -330.61650736597073,
+          -4978.290826245929
+        ],
+        "gap": 0.0024999999999999996,
+        "normal_units": "unit normal in declared region metric"
+      },
+      "suggested_initial_coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_139/coefficients.json",
+      "initial_selection_rule": "Largest requested support functional among this group saved feasible points; no phase data."
+    }
+  ],
+  "nesting": {
+    "six_chiral_present": true,
+    "contradictions": [],
+    "status": "no_observed_contradiction"
+  },
+  "B2_geometry_ready": true,
+  "B3_geometry_ready": false,
+  "region_summary": "results/runs/mainline_alignment_20260909/B_combined/regions_initial/regions.json",
+  "manifest": "results/runs/mainline_alignment_20260909/B_combined/manifest.json",
+  "additional_supports_started": false
+}

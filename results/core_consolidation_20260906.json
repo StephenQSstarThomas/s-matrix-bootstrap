@@ -1,0 +1,102 @@
+{
+  "schema": "smatrix-scientific-core-consolidation-v1",
+  "status": "verified",
+  "goal_status": "active",
+  "limits": {
+    "core_files": 10,
+    "lines_per_core_file": 350,
+    "bytes_per_core_file": 24576,
+    "test_files": 3,
+    "lines_per_test_file": 350
+  },
+  "core_files": {
+    "src/smatrix_bootstrap/__init__.py": {
+      "lines": 5,
+      "bytes": 210,
+      "sha256": "e86fdb5ae317a9b5a4f8fb0ef02a378b4bdba281c6915ca4009ce49b05cfc387"
+    },
+    "src/smatrix_bootstrap/analysis.py": {
+      "lines": 144,
+      "bytes": 7686,
+      "sha256": "b37e1ff2d7336e167afdd4924dc7131307e540e8171341796f32d2ff04b02f7c"
+    },
+    "src/smatrix_bootstrap/imaginary.py": {
+      "lines": 160,
+      "bytes": 10711,
+      "sha256": "01241b411accdd983238079ba7b6768ea9a9ed4887416056a8d8fa37669d7046"
+    },
+    "src/smatrix_bootstrap/io.py": {
+      "lines": 123,
+      "bytes": 4470,
+      "sha256": "9eacffdc963136388fc0c537b313ca5e68db17551f47242719ea8a5987da27c8"
+    },
+    "src/smatrix_bootstrap/kernels.py": {
+      "lines": 116,
+      "bytes": 6201,
+      "sha256": "19632abe1c455db13026e61c08c2ddc7cf3e8a62a89684a0a8e2f227b220df31"
+    },
+    "src/smatrix_bootstrap/linear.py": {
+      "lines": 247,
+      "bytes": 14320,
+      "sha256": "7fb8968bccc34c612120b4edf43ddafcd1a986d8bb8735f65826c821e494b49a"
+    },
+    "src/smatrix_bootstrap/model.py": {
+      "lines": 95,
+      "bytes": 2979,
+      "sha256": "06ba7d89acd960cb83d096231c13b4805a7a35c188d28594524c08b46a65096d"
+    },
+    "src/smatrix_bootstrap/operators.py": {
+      "lines": 306,
+      "bytes": 22024,
+      "sha256": "36adeed7ed72d128d422fd0dadc359e622a9e37b32d3acb165650d5813dc259f"
+    },
+    "src/smatrix_bootstrap/quotient.py": {
+      "lines": 300,
+      "bytes": 15872,
+      "sha256": "36267bd59d4ff7a4111b69a9be9e189eaa74152596fdd62fabe132f225521cdc"
+    },
+    "src/smatrix_bootstrap/run.py": {
+      "lines": 114,
+      "bytes": 5455,
+      "sha256": "310c1451ecc8dc7fb26dd9c1f2459413392696be78c0d7773ed07dc5d7163869"
+    }
+  },
+  "tests": {
+    "tests/test_kernels.py": {
+      "lines": 137,
+      "sha256": "348bff30c19ef2ede53e47b5be1abc49e133bac9b221f696a57d3374d1c70410"
+    },
+    "tests/test_linear.py": {
+      "lines": 207,
+      "sha256": "0cdf8e28e7e11d50510cd44bb0caf156781d8526c39e310c33230da6d62636a4"
+    },
+    "tests/test_mainline.py": {
+      "lines": 154,
+      "sha256": "a102ef20bce6ce8b06b526586df960f8f55177512e181ee4410bea9556c27884"
+    }
+  },
+  "active_tests_passed": 35,
+  "active_tests_seconds": 6.42,
+  "source_M50_control": "results/runs/core_control_20260906/report.json",
+  "source_M50_control_sha256": "b6cf86d0558f5cadd64a61447328ca06f18719efb65a43bc7caa9681341c8955",
+  "identical_staged_and_installed_numerical_payloads": {
+    "source_rows": true,
+    "quotient": true,
+    "alpha": true,
+    "weights": true
+  },
+  "archived_files_checked": 444,
+  "archived_file_hash_mismatches": [],
+  "prior429_source_versions_recoverable": true,
+  "prior_immutable_artifact_files_checked": 719,
+  "prior_artifact_hash_mismatches": [],
+  "archive_manifest": "archive/source_manifest.json",
+  "archive_manifest_sha256": "d5a8c1f70518c1bcf293b1c621b9652425f9ad8b791e6b45d925780a4841de7d",
+  "scientific_model_or_input_changes": false,
+  "new_optimization_run": false,
+  "remaining_work": [
+    "M50 PV/midpoint real/chiral/infinity/target rank",
+    "Source operator/regularization prescription for bounded regions",
+    "Published regions and phases, feasibility/convergence/continuum checks"
+  ]
+}

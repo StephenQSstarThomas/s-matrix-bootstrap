@@ -1,0 +1,8 @@
+{
+  "reason": "No initial iterate after more than 600 seconds of native solve, beyond the requested native budget; preserve assembled program and stop the dedicated worker group",
+  "requested_native_seconds": 600,
+  "observed_process_seconds_at_last_check": 674,
+  "compiled_at_elapsed_seconds": 50.94696612213738,
+  "physical_infeasibility_claimed": false,
+  "unix_time": 1789117659.630156
+}

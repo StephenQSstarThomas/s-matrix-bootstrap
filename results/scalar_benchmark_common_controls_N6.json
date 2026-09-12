@@ -1,0 +1,85 @@
+{
+  "scope": "Finite ansatz and collocation benchmark with independent audits; not a certified continuum bound or a replacement for gauge reproduction",
+  "primary_reference": "https://arxiv.org/abs/1708.06765v1",
+  "primary_source_sha256": "3447f007a9896d3733ef7a797af62ce12ebd9effd51a9b9747534547d5cf8407",
+  "published_comparison_lambda": 2.6613,
+  "comparison_value_use": "Only compared after optimization; never supplied to a constraint or objective",
+  "python_version": "3.13.12",
+  "studies": [
+    {
+      "config": {
+        "degree": 6,
+        "energy_points": 400,
+        "ell_max": 40,
+        "angular_points": 80,
+        "enforce_edge": true,
+        "enforce_asymptotic": true,
+        "solver_tolerance": 1e-10,
+        "method": "symmetric_triple_quotient_threshold_pole_crossed_cut"
+      },
+      "status": "optimal_inaccurate",
+      "quartic_lambda": 2.661189052464583,
+      "solver_objective": 2.661189052464582,
+      "coefficients": [
+        -4.687279522070257,
+        0.545084599101318,
+        2.8251631246556728,
+        -0.14339031076716258,
+        6.531146793540382,
+        -0.061070954107531876,
+        0.0017262872019637963,
+        -0.15192424064411386,
+        1.0422453379746806,
+        -0.1165087698562335,
+        -0.000300642251823492,
+        0.05770516301037618,
+        -0.6111526981127872,
+        -0.013386729538672829,
+        0.0014982424593306767,
+        -0.9839104736019371,
+        0.0015054632063952467,
+        -0.031814296080869414,
+        -0.0015440626993433997,
+        0.008066441687976529,
+        -0.00021770969548308016,
+        -2.449489524844947
+      ],
+      "solver_info": {
+        "cost_primal": -2.661189052464583,
+        "cost_dual": -2.66118906394079,
+        "res_primal": 5.056782359911985e-09,
+        "res_dual": 3.2473975674922865e-09,
+        "gap_abs": 1.14762066516505e-08,
+        "gap_rel": 4.312435691489916e-09
+      },
+      "coefficient_count": 22,
+      "threshold_coefficient_beta": -2.449489524844947,
+      "max_sampled_unitarity_excess": -1.0556060372931978e-257,
+      "metric_condition_number": 384170368.82809687,
+      "scaled_floor_directions": 0,
+      "discarded_directions": 0,
+      "elapsed_seconds": 6.631501913070679,
+      "independent_audit": {
+        "energy_points": 1380,
+        "ell_max": 48,
+        "angular_points": 160,
+        "max_unitarity_excess": 2.5e-323,
+        "worst_energy": 4.0000005751439245,
+        "worst_spin": 42,
+        "min_edge_imaginary_derivative": 6.944091911974728e-05,
+        "edge_worst_energy": 4.000001,
+        "endpoint_first_derivative": 0.02645810314666086,
+        "endpoint_mixed_derivative": 0.0012440219564440664,
+        "endpoint_positive_spin_margin": 0.0006839969787485902,
+        "infinity_amplitude": 3.9968028886505635e-13,
+        "threshold_s0_limit": -0.9999998220541793
+      },
+      "difference_from_published_rounded_value": -0.00011094753541707192
+    }
+  ],
+  "elapsed_seconds": 14.52167272567749,
+  "source_sha256": {
+    "/home/shiqiu/s-matrix-bootstrap/scripts/run_scalar_benchmark.py": "0cbfcd4f7429a4365338fe1f30e728dd231a3e7793e62803aa638667e676067d",
+    "src/smatrix_bootstrap/scalar_bootstrap.py": "36f448b054bd1d274b459da65a44cd69f9ff81fdf1177270616b8df0ade547f5"
+  }
+}

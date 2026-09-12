@@ -1,0 +1,27 @@
+[
+  {
+    "source": "src/smatrix_bootstrap/run.py",
+    "snapshot": "results/runs/major_claims_20260912/probe_before/run.py.txt",
+    "sha256": "7785590055bdd8d8bec61aecae7426d521017886bf989e06212adf9bd1890174"
+  },
+  {
+    "source": "src/smatrix_bootstrap/io.py",
+    "snapshot": "results/runs/major_claims_20260912/probe_before/io.py.txt",
+    "sha256": "328af2216f66e6782df6aae1ab273eb6d43c7c7a938d9eb9c5603a3630e2e143"
+  },
+  {
+    "source": "src/smatrix_bootstrap/model.py",
+    "snapshot": "results/runs/major_claims_20260912/probe_before/model.py.txt",
+    "sha256": "6e4d8da2f6126156f385a33d30084feb558aeb9a75616f3ca1df535e77534995"
+  },
+  {
+    "source": "src/smatrix_bootstrap/linear.py",
+    "snapshot": "results/runs/major_claims_20260912/probe_before/linear.py.txt",
+    "sha256": "f0b21a627cae43bdf768fdfa5562e971544b33179c8b10caa464993817e5da6f"
+  },
+  {
+    "source": "tests/test_linear.py",
+    "snapshot": "results/runs/major_claims_20260912/probe_before/test_linear.py.txt",
+    "sha256": "b3eabdae425084bb155b4d366117e4771737b2fbd843012432684dd63b518890"
+  }
+]

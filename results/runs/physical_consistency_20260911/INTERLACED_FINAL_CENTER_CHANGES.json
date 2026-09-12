@@ -1,0 +1,94 @@
+{
+  "points": {
+    "tip": {
+      "mu_old": 1.220703125e-08,
+      "mu_new": 6.103515625e-09,
+      "partial_waves": {
+        "S0": {
+          "max_complex_S_change": 0.001032021739710414,
+          "max_phase_change_mod_pi_degrees": 0.02804254908878481,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.874063877425465
+        },
+        "S2": {
+          "max_complex_S_change": 0.00042713773981284766,
+          "max_phase_change_mod_pi_degrees": 0.012245751651899485,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.9989760438261172
+        },
+        "P1": {
+          "max_complex_S_change": 0.004367084579778097,
+          "max_phase_change_mod_pi_degrees": 0.13541566806911431,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.30410463571857754
+        }
+      },
+      "source": "results/runs/physical_consistency_20260911/interlaced_tip_support_02/center_observables.json",
+      "sha256": "a13276656c46f460735b5223637fbf76d5a99ec2f65a122ed16249510b21c426"
+    },
+    "ref": {
+      "mu_old": 3.90625e-07,
+      "mu_new": 1.953125e-07,
+      "partial_waves": {
+        "S0": {
+          "max_complex_S_change": 0.0372313997447803,
+          "max_phase_change_mod_pi_degrees": 1.6076742378342574,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.28841435292232764
+        },
+        "S2": {
+          "max_complex_S_change": 0.002975489403628987,
+          "max_phase_change_mod_pi_degrees": 0.08518709015957608,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.9980310953652848
+        },
+        "P1": {
+          "max_complex_S_change": 0.002409103462680755,
+          "max_phase_change_mod_pi_degrees": 0.3127592274381799,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.196051860601499
+        }
+      },
+      "source": "results/runs/physical_consistency_20260911/interlaced_UV_ref_support_01/center_observables.json",
+      "sha256": "d72e213105a92cdc64be80058bedb760fbb5b8fb8e9ebdc1b2fe9ad1a4c73d27"
+    },
+    "mid": {
+      "mu_old": 3.90625e-07,
+      "mu_new": 1.953125e-07,
+      "partial_waves": {
+        "S0": {
+          "max_complex_S_change": 0.010812063876835067,
+          "max_phase_change_mod_pi_degrees": 0.23265828647571737,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.9296271221188865
+        },
+        "S2": {
+          "max_complex_S_change": 0.004703473554099509,
+          "max_phase_change_mod_pi_degrees": 0.13226798153935138,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.997639292132686
+        },
+        "P1": {
+          "max_complex_S_change": 0.007917681236931172,
+          "max_phase_change_mod_pi_degrees": 1.055344053088304,
+          "phase_defined_nodes": 43,
+          "minimum_eta": 0.21475866669408608
+        }
+      },
+      "inputs": {
+        "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_prepare/amplitude.npz": {
+          "sha256": "8edc550f906b34addd37a7b3f3dee5c22aa74fb8e9cfbe5384e6f6ae254fdc92"
+        },
+        "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_mid_support_01/joint.npz": {
+          "sha256": "3974c890fe9592bf108444677319939e120b37ca0905f52ab2cdaf32cf225740"
+        },
+        "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_mid_support_02/joint.npz": {
+          "sha256": "6105728cd4c1691bb285db5ce747346c7e6f12ecaa16d454752410b3aaf36d6d"
+        }
+      }
+    }
+  },
+  "scope": "Observed change between the final two converged centers; not an observable error bound or uniqueness theorem",
+  "optimization_performed": false,
+  "coefficients_modified": false
+}

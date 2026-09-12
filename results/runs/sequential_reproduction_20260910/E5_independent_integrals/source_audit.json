@@ -1,0 +1,550 @@
+{
+  "status": "independent_analytic_samples_verified",
+  "checks": [
+    {
+      "role": "tip",
+      "energy": 24.999999999999993,
+      "isospin": 0,
+      "ell": 0,
+      "match": true,
+      "direct": {
+        "real": "[0.0803990768690358617 +/- 1.16e-20]",
+        "imaginary": "[0.6938983744182037146 +/- 2.29e-20]",
+        "midpoint": [
+          0.08039907686903586,
+          0.6938983744182037
+        ],
+        "radius_upper": 3.626300829712758e-17,
+        "arithmetic_radius_upper": 9.712813456470775e-21
+      },
+      "stored": {
+        "real": "[0.0803990768690358617018390500778 +/- 2.80e-32]",
+        "imaginary": "[0.693898374418203714613168749119 +/- 1.80e-31]",
+        "midpoint": [
+          0.08039907686903586,
+          0.6938983744182037
+        ],
+        "radius_upper": 3.625329548368373e-17,
+        "arithmetic_radius_upper": 7.457581848858389e-65
+      },
+      "unitarity_margin": "[-0.049500954300179335 +/- 3.63e-19]",
+      "strict_violation": true
+    },
+    {
+      "role": "tip",
+      "energy": 24.999999999999993,
+      "isospin": 2,
+      "ell": 0,
+      "match": true,
+      "direct": {
+        "real": "[-0.208447129728656121240560788584 +/- 7.68e-32]",
+        "imaginary": "[0.0757409081440462393043790571754 +/- 3.38e-32]",
+        "midpoint": [
+          -0.20844712972865612,
+          0.07574090814404624
+        ],
+        "radius_upper": 4.797541147246182e-18,
+        "arithmetic_radius_upper": 1.195413645942043e-35
+      },
+      "stored": {
+        "real": "[-0.208447129728656121240560788584 +/- 7.68e-32]",
+        "imaginary": "[0.0757409081440462393043790571754 +/- 3.38e-32]",
+        "midpoint": [
+          -0.20844712972865612,
+          0.07574090814404624
+        ],
+        "radius_upper": 4.797541147246182e-18,
+        "arithmetic_radius_upper": 3.0588966400880317e-65
+      },
+      "unitarity_margin": "[0.0283818718671497654377829275725 +/- 4.20e-33]",
+      "strict_violation": false
+    },
+    {
+      "role": "tip",
+      "energy": 24.999999999999993,
+      "isospin": 1,
+      "ell": 1,
+      "match": true,
+      "direct": {
+        "real": "[0.30143325487456130597014 +/- 5.36e-24]",
+        "imaginary": "[0.15278435137479318200740 +/- 6.49e-24]",
+        "midpoint": [
+          0.3014332548745613,
+          0.15278435137479318
+        ],
+        "radius_upper": 9.892927578555504e-18,
+        "arithmetic_radius_upper": 1.8426555716422982e-24
+      },
+      "stored": {
+        "real": "[0.301433254874561305970143511646 +/- 1.80e-31]",
+        "imaginary": "[0.152784351374793182007404640061 +/- 4.81e-31]",
+        "midpoint": [
+          0.3014332548745613,
+          0.15278435137479318
+        ],
+        "radius_upper": 9.892925735899933e-18,
+        "arithmetic_radius_upper": 8.336405817810542e-65
+      },
+      "unitarity_margin": "[-0.0669841735804849194793 +/- 5.25e-23]",
+      "strict_violation": true
+    },
+    {
+      "role": "tip",
+      "energy": 41.32653061224489,
+      "isospin": 0,
+      "ell": 0,
+      "match": true,
+      "direct": {
+        "real": "[-0.3025161695406042470219 +/- 4.79e-23]",
+        "imaginary": "[0.1676812452329411270948 +/- 6.81e-23]",
+        "midpoint": [
+          -0.30251616954060423,
+          0.16768124523294112
+        ],
+        "radius_upper": 1.7539919757854116e-17,
+        "arithmetic_radius_upper": 4.059525890117906e-23
+      },
+      "stored": {
+        "real": "[-0.302516169540604247021907293910 +/- 2.30e-31]",
+        "imaginary": "[0.167681245232941127094772582126 +/- 4.92e-31]",
+        "midpoint": [
+          -0.30251616954060423,
+          0.16768124523294112
+        ],
+        "radius_upper": 1.7539879162595215e-17,
+        "arithmetic_radius_upper": 1.2652394678429042e-64
+      },
+      "unitarity_margin": "[-0.065160359425228959196 +/- 7.23e-22]",
+      "strict_violation": true
+    },
+    {
+      "role": "tip",
+      "energy": 41.32653061224489,
+      "isospin": 2,
+      "ell": 0,
+      "match": true,
+      "direct": {
+        "real": "[-0.2772941086666052701553 +/- 2.29e-23]",
+        "imaginary": "[0.1470191439166110208505 +/- 2.18e-23]",
+        "midpoint": [
+          -0.27729410866660525,
+          0.14701914391661103
+        ],
+        "radius_upper": 1.5568055506272688e-17,
+        "arithmetic_radius_upper": 1.8499300691198284e-23
+      },
+      "stored": {
+        "real": "[-0.277294108666605270155304388766 +/- 6.92e-32]",
+        "imaginary": "[0.147019143916611020850496719453 +/- 1.42e-31]",
+        "midpoint": [
+          -0.27729410866660525,
+          0.14701914391661103
+        ],
+        "radius_upper": 1.5568037006971997e-17,
+        "arithmetic_radius_upper": 5.187741447870977e-65
+      },
+      "unitarity_margin": "[-0.000214062495349488649 +/- 4.93e-22]",
+      "strict_violation": true
+    },
+    {
+      "role": "tip",
+      "energy": 41.32653061224489,
+      "isospin": 1,
+      "ell": 1,
+      "match": true,
+      "direct": {
+        "real": "[-0.32366058158220684515546 +/- 5.85e-24]",
+        "imaginary": "[0.16422772835597337069468 +/- 3.10e-24]",
+        "midpoint": [
+          -0.32366058158220684,
+          0.16422772835597338
+        ],
+        "radius_upper": 8.453803358531128e-18,
+        "arithmetic_radius_upper": 2.8776544930091423e-24
+      },
+      "stored": {
+        "real": "[-0.323660581582206845155457031039 +/- 4.69e-31]",
+        "imaginary": "[0.164227728355973370694679781425 +/- 1.12e-31]",
+        "midpoint": [
+          -0.32366058158220684,
+          0.16422772835597338
+        ],
+        "radius_upper": 8.453800480876635e-18,
+        "arithmetic_radius_upper": 1.2751219841897223e-64
+      },
+      "unitarity_margin": "[-0.1935914174659331795334 +/- 9.17e-23]",
+      "strict_violation": true
+    },
+    {
+      "role": "mid",
+      "energy": 24.999999999999993,
+      "isospin": 0,
+      "ell": 0,
+      "match": true,
+      "direct": {
+        "real": "[0.06365413708384154608 +/- 8.26e-21]",
+        "imaginary": "[0.7290035869503177252 +/- 4.15e-20]",
+        "midpoint": [
+          0.06365413708384154,
+          0.7290035869503178
+        ],
+        "radius_upper": 2.4978594621905456e-17,
+        "arithmetic_radius_upper": 6.7220604971636736e-21
+      },
+      "stored": {
+        "real": "[0.0636541370838415460815319257286 +/- 4.16e-32]",
+        "imaginary": "[0.729003586950317725165301227557 +/- 3.33e-31]",
+        "midpoint": [
+          0.06365413708384154,
+          0.7290035869503178
+        ],
+        "radius_upper": 2.4971872561414603e-17,
+        "arithmetic_radius_upper": 6.831349988129242e-65
+      },
+      "unitarity_margin": "[-0.241464351614889112 +/- 5.66e-19]",
+      "strict_violation": true
+    },
+    {
+      "role": "mid",
+      "energy": 24.999999999999993,
+      "isospin": 2,
+      "ell": 0,
+      "match": true,
+      "direct": {
+        "real": "[-0.161471180018820192347393179405 +/- 9.73e-32]",
+        "imaginary": "[0.0456423778758639305767882835449 +/- 4.36e-32]",
+        "midpoint": [
+          -0.1614711800188202,
+          0.04564237787586393
+        ],
+        "radius_upper": 5.006670851942331e-18,
+        "arithmetic_radius_upper": 8.840091283720396e-36
+      },
+      "stored": {
+        "real": "[-0.161471180018820192347393179405 +/- 9.73e-32]",
+        "imaginary": "[0.0456423778758639305767882835449 +/- 4.36e-32]",
+        "midpoint": [
+          -0.1614711800188202,
+          0.04564237787586393
+        ],
+        "radius_upper": 5.006670851942331e-18,
+        "arithmetic_radius_upper": 2.815938196735809e-65
+      },
+      "unitarity_margin": "[0.0294099633134389695928349113836 +/- 1.56e-32]",
+      "strict_violation": false
+    },
+    {
+      "role": "mid",
+      "energy": 24.999999999999993,
+      "isospin": 1,
+      "ell": 1,
+      "match": true,
+      "direct": {
+        "real": "[-0.02321263648106529664440 +/- 6.15e-24]",
+        "imaginary": "[0.43596658497830592904067 +/- 5.64e-24]",
+        "midpoint": [
+          -0.023212636481065297,
+          0.4359665849783059
+        ],
+        "radius_upper": 2.4397290203256467e-18,
+        "arithmetic_radius_upper": 1.750941163746449e-24
+      },
+      "stored": {
+        "real": "[-0.0232126364810652966444043935425 +/- 2.36e-32]",
+        "imaginary": "[0.435966584978305929040666115989 +/- 3.52e-32]",
+        "midpoint": [
+          -0.023212636481065297,
+          0.4359665849783059
+        ],
+        "radius_upper": 2.439727269384486e-18,
+        "arithmetic_radius_upper": 7.676306693641984e-65
+      },
+      "unitarity_margin": "[0.9303618841463772542791 +/- 5.27e-23]",
+      "strict_violation": false
+    },
+    {
+      "role": "mid",
+      "energy": 41.32653061224489,
+      "isospin": 0,
+      "ell": 0,
+      "match": true,
+      "direct": {
+        "real": "[-0.1367834466814016661985 +/- 5.60e-23]",
+        "imaginary": "[0.5917425303656744960038 +/- 3.36e-23]",
+        "midpoint": [
+          -0.13678344668140166,
+          0.5917425303656745
+        ],
+        "radius_upper": 1.6506049620189453e-17,
+        "arithmetic_radius_upper": 2.9657432216125886e-23
+      },
+      "stored": {
+        "real": "[-0.136783446681401666198473718623 +/- 1.45e-32]",
+        "imaginary": "[0.591742530365674496003803940179 +/- 1.66e-31]",
+        "midpoint": [
+          -0.13678344668140166,
+          0.5917425303656745
+        ],
+        "radius_upper": 1.6506019962757237e-17,
+        "arithmetic_radius_upper": 1.1588121721541367e-64
+      },
+      "unitarity_margin": "[0.245298176814651654758 +/- 7.12e-22]",
+      "strict_violation": false
+    },
+    {
+      "role": "mid",
+      "energy": 41.32653061224489,
+      "isospin": 2,
+      "ell": 0,
+      "match": true,
+      "direct": {
+        "real": "[-0.2172992644121955283751 +/- 2.64e-23]",
+        "imaginary": "[0.0716177370765214170458 +/- 4.21e-23]",
+        "midpoint": [
+          -0.21729926441219552,
+          0.07161773707652141
+        ],
+        "radius_upper": 8.683911641932987e-18,
+        "arithmetic_radius_upper": 1.6738333863392502e-23
+      },
+      "stored": {
+        "real": "[-0.217299264412195528375090403544 +/- 1.46e-31]",
+        "imaginary": "[0.0716177370765214170457747185877 +/- 6.92e-33]",
+        "midpoint": [
+          -0.21729926441219552,
+          0.07161773707652141
+        ],
+        "radius_upper": 8.683894903599123e-18,
+        "arithmetic_radius_upper": 4.774402178412699e-65
+      },
+      "unitarity_margin": "[-0.038991442336284071798 +/- 6.12e-22]",
+      "strict_violation": true
+    },
+    {
+      "role": "mid",
+      "energy": 41.32653061224489,
+      "isospin": 1,
+      "ell": 1,
+      "match": true,
+      "direct": {
+        "real": "[-0.09204966411136163698033 +/- 8.68e-24]",
+        "imaginary": "[-0.00220783784251375039143 +/- 8.18e-24]",
+        "midpoint": [
+          -0.09204966411136163,
+          -0.0022078378425137504
+        ],
+        "radius_upper": 5.467035690257779e-18,
+        "arithmetic_radius_upper": 5.8108649651657095e-24
+      },
+      "stored": {
+        "real": "[-0.0920496641113616369803271339071 +/- 4.05e-32]",
+        "imaginary": "[-0.00220783784251375039143236251689 +/- 4.51e-33]",
+        "midpoint": [
+          -0.09204966411136163,
+          -0.0022078378425137504
+        ],
+        "radius_upper": 5.467029879392814e-18,
+        "arithmetic_radius_upper": 1.1738332628467423e-64
+      },
+      "unitarity_margin": "[-0.0887595994313084365454 +/- 7.41e-23]",
+      "strict_violation": true
+    },
+    {
+      "role": "ref",
+      "energy": 24.999999999999993,
+      "isospin": 0,
+      "ell": 0,
+      "match": true,
+      "direct": {
+        "real": "[-0.1763141618559300119 +/- 4.00e-20]",
+        "imaginary": "[0.69435290654552508534 +/- 8.23e-21]",
+        "midpoint": [
+          -0.17631416185593002,
+          0.6943529065455251
+        ],
+        "radius_upper": 2.3838021317782764e-17,
+        "arithmetic_radius_upper": 5.4015478450980175e-21
+      },
+      "stored": {
+        "real": "[-0.176314161855930011934570261509 +/- 2.44e-31]",
+        "imaginary": "[0.694352906545525085342824293012 +/- 1.32e-31]",
+        "midpoint": [
+          -0.17631416185593002,
+          0.6943529065455251
+        ],
+        "radius_upper": 2.3832619769937666e-17,
+        "arithmetic_radius_upper": 6.642123805702448e-65
+      },
+      "unitarity_margin": "[-0.256248262644181355 +/- 3.15e-19]",
+      "strict_violation": true
+    },
+    {
+      "role": "ref",
+      "energy": 24.999999999999993,
+      "isospin": 2,
+      "ell": 0,
+      "match": true,
+      "direct": {
+        "real": "[-0.117049579132353506372662529499 +/- 2.15e-31]",
+        "imaginary": "[0.0230141717647016597493313851689 +/- 2.50e-32]",
+        "midpoint": [
+          -0.1170495791323535,
+          0.02301417176470166
+        ],
+        "radius_upper": 2.3985892240278216e-18,
+        "arithmetic_radius_upper": 9.94194133542266e-36
+      },
+      "stored": {
+        "real": "[-0.117049579132353506372662529499 +/- 2.15e-31]",
+        "imaginary": "[0.0230141717647016597493313851689 +/- 2.50e-32]",
+        "midpoint": [
+          -0.1170495791323535,
+          0.02301417176470166
+        ],
+        "radius_upper": 2.3985892240278216e-18,
+        "arithmetic_radius_upper": 2.7434424909368093e-65
+      },
+      "unitarity_margin": "[0.0145547241543608347843220284701 +/- 3.27e-32]",
+      "strict_violation": false
+    },
+    {
+      "role": "ref",
+      "energy": 24.999999999999993,
+      "isospin": 1,
+      "ell": 1,
+      "match": true,
+      "direct": {
+        "real": "[-0.09138830493016660063587 +/- 3.12e-24]",
+        "imaginary": "[0.39796313046420817902486 +/- 3.59e-24]",
+        "midpoint": [
+          -0.0913883049301666,
+          0.39796313046420817
+        ],
+        "radius_upper": 8.857619820301748e-18,
+        "arithmetic_radius_upper": 1.4950846015746791e-24
+      },
+      "stored": {
+        "real": "[-0.0913883049301666006358716247435 +/- 3.16e-32]",
+        "imaginary": "[0.397963130464208179024857911807 +/- 3.28e-33]",
+        "midpoint": [
+          -0.0913883049301666,
+          0.39796313046420817
+        ],
+        "radius_upper": 8.857618325217147e-18,
+        "arithmetic_radius_upper": 7.4790070903264435e-65
+      },
+      "unitarity_margin": "[0.9094837357129046382448 +/- 6.85e-23]",
+      "strict_violation": false
+    },
+    {
+      "role": "ref",
+      "energy": 41.32653061224489,
+      "isospin": 0,
+      "ell": 0,
+      "match": true,
+      "direct": {
+        "real": "[-0.2003417977710924473134 +/- 4.51e-23]",
+        "imaginary": "[0.5381895866139935070079 +/- 6.36e-23]",
+        "midpoint": [
+          -0.20034179777109246,
+          0.5381895866139935
+        ],
+        "radius_upper": 1.3273148721624633e-17,
+        "arithmetic_radius_upper": 2.1185167585938054e-23
+      },
+      "stored": {
+        "real": "[-0.200341797771092447313376101959 +/- 3.44e-31]",
+        "imaginary": "[0.538189586613993507007857657947 +/- 1.35e-31]",
+        "midpoint": [
+          -0.20034179777109246,
+          0.5381895866139935
+        ],
+        "radius_upper": 1.3273127536457047e-17,
+        "arithmetic_radius_upper": 1.1266839839642211e-64
+      },
+      "unitarity_margin": "[0.273921607480967209796 +/- 7.23e-22]",
+      "strict_violation": false
+    },
+    {
+      "role": "ref",
+      "energy": 41.32653061224489,
+      "isospin": 2,
+      "ell": 0,
+      "match": true,
+      "direct": {
+        "real": "[-0.1472620295160647244604 +/- 5.21e-23]",
+        "imaginary": "[0.0250586614078471244452 +/- 6.06e-23]",
+        "midpoint": [
+          -0.14726202951606474,
+          0.025058661407847124
+        ],
+        "radius_upper": 1.0774700092383855e-17,
+        "arithmetic_radius_upper": 1.7914148619431465e-23
+      },
+      "stored": {
+        "real": "[-0.147262029516064724460365855011 +/- 1.04e-31]",
+        "imaginary": "[0.0250586614078471244452425906713 +/- 3.45e-33]",
+        "midpoint": [
+          -0.14726202951606474,
+          0.025058661407847124
+        ],
+        "radius_upper": 1.0774682178235236e-17,
+        "arithmetic_radius_upper": 4.651102400892156e-65
+      },
+      "unitarity_margin": "[-0.049279986007259252058 +/- 5.00e-22]",
+      "strict_violation": true
+    },
+    {
+      "role": "ref",
+      "energy": 41.32653061224489,
+      "isospin": 1,
+      "ell": 1,
+      "match": true,
+      "direct": {
+        "real": "[-0.11304691669430294362393 +/- 9.33e-24]",
+        "imaginary": "[-0.00186990021151119983350 +/- 8.69e-24]",
+        "midpoint": [
+          -0.11304691669430295,
+          -0.0018699002115112
+        ],
+        "radius_upper": 2.136667330385481e-18,
+        "arithmetic_radius_upper": 4.644666177042358e-24
+      },
+      "stored": {
+        "real": "[-0.113046916694302943623934681833 +/- 3.88e-31]",
+        "imaginary": "[-0.00186990021151119983350404034520 +/- 1.43e-33]",
+        "midpoint": [
+          -0.11304691669430295,
+          -0.0018699002115112
+        ],
+        "radius_upper": 2.136662685719304e-18,
+        "arithmetic_radius_upper": 1.1435678419928399e-64
+      },
+      "unitarity_margin": "[-0.1251185860977152301100 +/- 6.16e-23]",
+      "strict_violation": true
+    }
+  ],
+  "inputs": {
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/E5_window_tip_saved/evaluation.json": {
+      "sha256": "2cf50391f3b3308f15fa0126acbc85a613da5ef64c778f7c63eb26c938c58109"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/E4_selection/tip/coefficients.json": {
+      "sha256": "b50f4a28984cefb97ce9a5a40cbeb6cd214559986b7d2cb2279bc26e66de1553"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/E5_window_mid/evaluation.json": {
+      "sha256": "31ef7900d6d3e3d4382e94498f3e58fabd6eebd64b4b58a0c0bc1097ff0e26d7"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/E4_selection/mid/coefficients.json": {
+      "sha256": "24b37365c6a14fddad05420657062488d6ffe77f2e3e7442564a95ddf2e0d59a"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/E5_window_ref/evaluation.json": {
+      "sha256": "d3d48a746ff6dcbd55ac73b70c5be91e365f44978524b744fcfdbc7845ceca13"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/E4_selection/ref/coefficients.json": {
+      "sha256": "dbdec8b2a6b942cd7ed186997a4c2d7e307501bff5a88613e56c7fe179443792"
+    }
+  },
+  "optimization_performed": false,
+  "coefficients_modified": false,
+  "scope": "Independent full-amplitude integral versus Gauss source rows; only requested samples"
+}

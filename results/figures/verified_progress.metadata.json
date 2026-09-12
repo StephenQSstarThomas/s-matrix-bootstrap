@@ -1,0 +1,22 @@
+{
+  "scope": "Separate evidence scopes: scalar finite benchmark, unforced gauge interior witness, norm-only moment ranges, and rigorous leading-edge certificates.",
+  "gauge_point": [
+    0.080330593397203,
+    -0.0052077173966281224
+  ],
+  "gauge_chiral_norm": "linf",
+  "gauge_moment_norm": "raw_absolute",
+  "rigorous_edge_floor": 0.0004999997852597951,
+  "source_sha256": {
+    "results/scalar_benchmark_common_controls_comparison.json": "ba06ca59ac5bdf83ceed7d7082acc2ed85af8ac05040ccfc577d65dc31b1d35e",
+    "results/gauge_feasibility_N6_F21_linf_edge_FF401_infinity_eliminated.json": "6ffb8ed096d04cfa8d2386d25b5cd5e941ba8920ff70cb0513b1da25db061829",
+    "references/figure9_p1_phases.csv": "66d946d57787f26ec7db4c850eedd9b801eedfd935f4c65d55c090bc43c2be90",
+    "results/fesr_centroid_audit.json": "9a1d486a5d067764f1aec7cb7a9bd9fbcf2d7a1fa833caf30fc751c707a9f568",
+    "results/gauge_feasibility_N6_F21_parent_edge_certificate.json": "d1fc876a881a85b66fb909415995d1109b8ba3b9bd89572699c5ccb60dc8954a",
+    "/home/shiqiu/s-matrix-bootstrap/scripts/plot_verified_progress.py": "dff55ee4eea281c162475de816d4bf09c745fdf5251b0707987643b967828372"
+  },
+  "output_sha256": {
+    "results/figures/verified_progress.pdf": "465daecc2e454a2c3872c9171e5f4523230cea708115802daa32b8c98d48c99c",
+    "results/figures/verified_progress.png": "1e7ec5fc8bf2a4c5bea661574a92d98bce66a0152c291838cfbc8cf8b46f747f"
+  }
+}

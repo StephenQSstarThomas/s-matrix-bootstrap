@@ -1,0 +1,828 @@
+{
+  "command": "evaluate",
+  "status": "evaluated",
+  "artifacts": {},
+  "inputs": {
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_selected/tip/coefficients.json": {
+      "sha256": "64bf8369ce452365fc917fe93b68256f9b09c478ec3f442ff48781fdfc10cdd4"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_prepare/report.json": {
+      "sha256": "149bdd18a3487365ac8c35c0a7e5efe0931e90d955e7c5f193de2b9679c3471a"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/analytic_source_registry_stage/registry.json": {
+      "sha256": "18e01da602be9c98c614a56ae43f0fe9ac6d4c6ad63e45edbc21f3e8193671e2"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_prepare/amplitude.npz": {
+      "sha256": "8edc550f906b34addd37a7b3f3dee5c22aa74fb8e9cfbe5384e6f6ae254fdc92"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_selected/tip/selection.json": {
+      "sha256": "e75f20efc4ff0e96f364358b1107063a36c1ccb7bb144d2f3e8f837877f2ed1c"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_current/report.json": {
+      "sha256": "e6be83775f0a8fe8a150c429f05bca6678d6e9a1c9860ed9ecb781387028b924"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_current/current_data.npz": {
+      "sha256": "ff8d5809c68515899780eb4793c4d2bb42dbf95d62fdb805d3b60044d071eac9"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_current/gram_linear.npz": {
+      "sha256": "89fb3448d57581621c1c4e4f82f19f219096d4bec8e0a4169241b9ba6ffece0f"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_current/moment_linear.npz": {
+      "sha256": "04e022b5aed199efc485438b3fb1b52000d9a26f14ef3c4b942383391cbaa0a4"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_current/ff_cap_linear.npz": {
+      "sha256": "79b38a0cda214c9b0a4aa6645e1271556cef9f13cc1113a9bc49bd42480a2920"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_selected/tip/joint.npz": {
+      "sha256": "97f082096fa02e919f5a57fab0a86ee5d05d99aaff6d6e8dc7f76c7e5c38f7a7"
+    }
+  },
+  "parameters": {
+    "command": "evaluate",
+    "comparison_manifest": null,
+    "region_summary": "results/runs/stage_B_delivery_20260907/regions/regions.json",
+    "primary_waves": true,
+    "profile_runs": [],
+    "profile_kind": "subthreshold",
+    "phase_reference": null,
+    "baseline_profile": null,
+    "selection_reference": null,
+    "support_runs": [],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_tip_evaluate",
+    "density_limit": null,
+    "preparation": "results/runs/physical_consistency_20260911/interlaced_prepare",
+    "prescription": "analytic-cardinal",
+    "source_registry": null,
+    "solver": "barrier",
+    "unitarity_scope": "sampled",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "current_preparation": "results/runs/physical_consistency_20260911/interlaced_current",
+    "joint_feasibility": false,
+    "fixed_amplitude": false,
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "unit_newton_step": false,
+    "gap": 0.0001,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 512,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "asymptotic_zeros": true,
+    "asymptotic_unitarity": true,
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": "results/runs/physical_consistency_20260911/interlaced_UV_selected/tip/coefficients.json",
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      4.0,
+      4.0009871228112965,
+      4.008895810755348,
+      4.024775834628433,
+      4.048753547771157,
+      4.081021154356971,
+      4.121840005818861,
+      4.171545146004663,
+      4.230551242245793,
+      4.299360085331724,
+      4.3785698959534844,
+      4.4688867414801745,
+      4.571138448766695,
+      4.68629150101524,
+      4.815471536069156,
+      4.9599882286343036,
+      5.121365551562314,
+      5.301378687490825,
+      5.5020992237796875,
+      5.72595074123848,
+      5.975777543176034,
+      6.254930125960254,
+      6.5673721514297325,
+      6.91781526912698,
+      7.31189033354055,
+      7.7563666362665975,
+      8.259435126892242,
+      8.831077840338791,
+      9.483554825863685,
+      10.23205326547218,
+      11.095563545760188,
+      12.098077668339238,
+      13.270252978667852,
+      14.651759715140308,
+      16.29465347311737,
+      18.26831774679399,
+      20.666871033160366,
+      23.620549942338062,
+      27.31370849898476,
+      32.01422323177521,
+      38.1233790264392,
+      46.264322047324036,
+      57.44733912094607,
+      73.39888869886113
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "chiral_norm": "separate-l2",
+    "chiral_barrier_weight": null,
+    "objective": "projection",
+    "resume_objective": false,
+    "require_center": false,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "fixed_x": null,
+    "ray": false,
+    "seconds": 120.0,
+    "start_mu_provenance": {
+      "kind": "new_problem_default"
+    }
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "1"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Finite model; regions/phases require verification.",
+  "amplitude_model": {
+    "prescription": "analytic-cardinal",
+    "M": 50,
+    "L": 10,
+    "bits": 512,
+    "coordinate_system": "unsubtracted analytic-cardinal C_flat",
+    "coefficient_count": 3876,
+    "physical_samples": 1500,
+    "nu0": 0,
+    "nyquist_retained": true,
+    "infinity_equality_imposed": false,
+    "density_limit_imposed": false,
+    "quadrature_order_per_panel": null,
+    "arithmetic": "Arb",
+    "integral_enclosures": true,
+    "authors_implementation_recovered": false,
+    "analytic_function_family_defined": true,
+    "angular_projection": "Authenticated rows where available; otherwise Arb Gauss-Legendre with ellipse remainder",
+    "spectral_quadrature": "Exact Cauchy transform of finite sine density",
+    "physical_evaluation": "One analytic family at positive real energies",
+    "analyticity_status": "One conformal polynomial from all M sine-cardinal density modes",
+    "infinity_row_meaning": "Unsubtracted constant; recorded but no endpoint equality imposed",
+    "angular_order": 64,
+    "source_registry": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/analytic_source_registry_stage/registry.json",
+    "source_registry_sha256": "18e01da602be9c98c614a56ae43f0fe9ac6d4c6ad63e45edbc21f3e8193671e2",
+    "evaluation_source": "Prepared analytic coefficient enclosures"
+  },
+  "unitarity": {
+    "criterion": "Eq.(2.12): 1-|S|^2 = kappa*(2 Im f-kappa*|f|^2) >= 0",
+    "samples_checked": 132,
+    "status": "sampled_passed",
+    "margin_intervals": [
+      [
+        [
+          -5e-324,
+          5e-324
+        ],
+        [
+          -5e-324,
+          5e-324
+        ],
+        [
+          -5e-324,
+          5e-324
+        ]
+      ],
+      [
+        [
+          5.624581482327374e-07,
+          5.624612746139072e-07
+        ],
+        [
+          1.1479477848579836e-07,
+          1.1479604365712248e-07
+        ],
+        [
+          4.5977754735378215e-10,
+          4.597775497174401e-10
+        ]
+      ],
+      [
+        [
+          1.1906924629201745e-05,
+          1.1906941135688762e-05
+        ],
+        [
+          6.966792441528474e-08,
+          6.967386233465077e-08
+        ],
+        [
+          4.767411880179458e-09,
+          4.767411928520977e-09
+        ]
+      ],
+      [
+        [
+          3.977289297935129e-07,
+          3.9776221452975407e-07
+        ],
+        [
+          1.7555776892869438e-07,
+          1.755644066414602e-07
+        ],
+        [
+          6.304522010866676e-09,
+          6.304522301799046e-09
+        ]
+      ],
+      [
+        [
+          6.2300199515700825e-06,
+          6.230070724060192e-06
+        ],
+        [
+          4.268301271403043e-08,
+          4.269691071999971e-08
+        ],
+        [
+          5.873910642642781e-09,
+          5.873911498046421e-09
+        ]
+      ],
+      [
+        [
+          5.412788081462519e-07,
+          5.413616344739712e-07
+        ],
+        [
+          1.8576772757156692e-07,
+          1.85789075716119e-07
+        ],
+        [
+          4.06865246320352e-08,
+          4.0686526354809826e-08
+        ]
+      ],
+      [
+        [
+          1.3471098500676098e-05,
+          1.3471206990798478e-05
+        ],
+        [
+          6.529894023407776e-08,
+          6.532051230310579e-08
+        ],
+        [
+          9.433794105108543e-09,
+          9.433797174714902e-09
+        ]
+      ],
+      [
+        [
+          9.748766114442355e-07,
+          9.75036230089577e-07
+        ],
+        [
+          1.5687933133570485e-07,
+          1.5691134792419554e-07
+        ],
+        [
+          7.956273132693508e-08,
+          7.95627373566591e-08
+        ]
+      ],
+      [
+        [
+          1.3125501904631643e-05,
+          1.31256630354246e-05
+        ],
+        [
+          1.7321906887456021e-07,
+          1.7327142370678112e-07
+        ],
+        [
+          1.532797222284456e-08,
+          1.532798055921448e-08
+        ]
+      ],
+      [
+        [
+          4.665181493857149e-06,
+          4.665403494277585e-06
+        ],
+        [
+          8.110676946276991e-08,
+          8.115940374539024e-08
+        ],
+        [
+          1.6948572812504454e-07,
+          1.6948573863521498e-07
+        ]
+      ],
+      [
+        [
+          1.919825406445642e-06,
+          1.920065527109447e-06
+        ],
+        [
+          2.7709758259227284e-07,
+          2.7713141043286674e-07
+        ],
+        [
+          3.68797825198912e-08,
+          3.687979985655365e-08
+        ]
+      ],
+      [
+        [
+          2.298811823137906e-05,
+          2.2988406783520883e-05
+        ],
+        [
+          7.056069328378309e-08,
+          7.062610275404945e-08
+        ],
+        [
+          3.78757502455936e-07,
+          3.7875752482703064e-07
+        ]
+      ],
+      [
+        [
+          1.3164297624306629e-06,
+          1.3167694386097745e-06
+        ],
+        [
+          3.4536124450177986e-07,
+          3.454136586343302e-07
+        ],
+        [
+          1.1759206714713095e-07,
+          1.175920948479011e-07
+        ]
+      ],
+      [
+        [
+          3.008841799326997e-05,
+          3.0088807132035894e-05
+        ],
+        [
+          1.2362078256284675e-07,
+          1.2367835715849122e-07
+        ],
+        [
+          2.57907744020455e-07,
+          2.579077810156058e-07
+        ]
+      ],
+      [
+        [
+          1.175724676151105e-06,
+          1.1761799349856424e-06
+        ],
+        [
+          3.1455216074383624e-07,
+          3.1461625916636964e-07
+        ],
+        [
+          7.868777675499537e-07,
+          7.868778262342473e-07
+        ]
+      ],
+      [
+        [
+          2.0537036309549392e-05,
+          2.0537495558976514e-05
+        ],
+        [
+          3.7561015807358144e-07,
+          3.756794619859084e-07
+        ],
+        [
+          1.4608894628750301e-07,
+          1.4608900825829558e-07
+        ]
+      ],
+      [
+        [
+          1.7741542490280394e-06,
+          1.7747241499036628e-06
+        ],
+        [
+          1.638533315544575e-07,
+          1.639408552353602e-07
+        ],
+        [
+          1.2208390190243056e-06,
+          1.2208390951940172e-06
+        ]
+      ],
+      [
+        [
+          5.8838562808395226e-05,
+          5.883913536801388e-05
+        ],
+        [
+          6.52455319642456e-07,
+          6.52547982851268e-07
+        ],
+        [
+          1.611455887888454e-07,
+          1.6114569976491125e-07
+        ]
+      ],
+      [
+        [
+          3.419252759577598e-06,
+          3.419997958796771e-06
+        ],
+        [
+          1.4551904916137747e-07,
+          1.4563930260486523e-07
+        ],
+        [
+          3.4578428377468963e-06,
+          3.4578430045625323e-06
+        ]
+      ],
+      [
+        [
+          8.002675183312513e-05,
+          8.002752753759283e-05
+        ],
+        [
+          8.911467956340611e-07,
+          8.912633451215703e-07
+        ],
+        [
+          4.635124574624171e-07,
+          4.6351265927153866e-07
+        ]
+      ],
+      [
+        [
+          8.333710931874148e-06,
+          8.334607561753002e-06
+        ],
+        [
+          2.870334169508321e-07,
+          2.8716508329163985e-07
+        ],
+        [
+          4.051263282209844e-06,
+          4.051263536065165e-06
+        ]
+      ],
+      [
+        [
+          3.663995872013381e-05,
+          3.664092029066536e-05
+        ],
+        [
+          7.725242941994998e-07,
+          7.726517564431678e-07
+        ],
+        [
+          9.758235363580548e-06,
+          9.758235675096577e-06
+        ]
+      ],
+      [
+        [
+          0.00010601948511935169,
+          0.00010602068129635465
+        ],
+        [
+          1.2405998994857988e-06,
+          1.2407480224131344e-06
+        ],
+        [
+          9.211540136293154e-07,
+          9.211544495079802e-07
+        ]
+      ],
+      [
+        [
+          1.1289750049010778e-05,
+          1.1291051543827214e-05
+        ],
+        [
+          3.3327481039605153e-07,
+          3.33471371453196e-07
+        ],
+        [
+          3.8130125988529975e-05,
+          3.813012651400756e-05
+        ]
+      ],
+      [
+        [
+          0.00025345191331615976,
+          0.0002534533853881745
+        ],
+        [
+          2.0091741356171944e-06,
+          2.009366067555203e-06
+        ],
+        [
+          9.76965766915395e-07,
+          9.769665405237074e-07
+        ]
+      ],
+      [
+        [
+          1.102397299097714e-05,
+          1.1025450956305391e-05
+        ],
+        [
+          3.4103288933271785e-07,
+          3.412203426102277e-07
+        ],
+        [
+          4.477038578355844e-05,
+          4.4770386738010235e-05
+        ]
+      ],
+      [
+        [
+          0.0003982076045070621,
+          0.0003982094518284362
+        ],
+        [
+          3.78883541181796e-06,
+          3.7891045311927494e-06
+        ],
+        [
+          1.356604972379227e-06,
+          1.3566061284522996e-06
+        ]
+      ],
+      [
+        [
+          1.2469381572276363e-05,
+          1.2471152215673894e-05
+        ],
+        [
+          1.1788765537935932e-06,
+          1.17908935567713e-06
+        ],
+        [
+          0.0003096634868175645,
+          0.00030966348821060286
+        ]
+      ],
+      [
+        [
+          0.00046232905134356166,
+          0.0004623312117997889
+        ],
+        [
+          1.2258195857194973e-06,
+          1.226023651940667e-06
+        ],
+        [
+          3.3244064516175663e-06,
+          3.3244083214802066e-06
+        ]
+      ],
+      [
+        [
+          1.4567892330114374e-05,
+          1.4569997766814361e-05
+        ],
+        [
+          8.838637069406793e-06,
+          8.838865308361659e-06
+        ],
+        [
+          0.0010689042127998488,
+          0.0010689042151222062
+        ]
+      ],
+      [
+        [
+          0.0005690663010701916,
+          0.0005690684071247309
+        ],
+        [
+          6.333887857295444e-07,
+          6.336126854922072e-07
+        ],
+        [
+          8.348688808500948e-06,
+          8.348691799723005e-06
+        ]
+      ],
+      [
+        [
+          2.311135882343149e-05,
+          2.311361760615486e-05
+        ],
+        [
+          1.190421414394341e-05,
+          1.1904576084077961e-05
+        ],
+        [
+          0.0030222347904666222,
+          0.0030222347942305233
+        ]
+      ],
+      [
+        [
+          0.0020433653471173072,
+          0.002043367581959779
+        ],
+        [
+          1.5747818932945623e-06,
+          1.5751149512650886e-06
+        ],
+        [
+          2.384708060546486e-05,
+          2.3847085755449858e-05
+        ]
+      ],
+      [
+        [
+          3.173852562906529e-05,
+          3.174065719235923e-05
+        ],
+        [
+          5.8779557890958e-06,
+          5.87831016262849e-06
+        ],
+        [
+          0.008027915029969078,
+          0.008027915036454997
+        ]
+      ],
+      [
+        [
+          0.005799489706167688,
+          0.005799491670025117
+        ],
+        [
+          5.114870001896176e-05,
+          5.1149103388045135e-05
+        ],
+        [
+          7.771344545614603e-05,
+          7.771345399649313e-05
+        ]
+      ],
+      [
+        [
+          3.868117434286657e-05,
+          3.8682753553838645e-05
+        ],
+        [
+          4.465827798279944e-06,
+          4.466200566992979e-06
+        ],
+        [
+          0.025017878100823576,
+          0.02501787811266768
+        ]
+      ],
+      [
+        [
+          0.0267073471209231,
+          0.026707348174925562
+        ],
+        [
+          0.00010663758752912668,
+          0.00010663797289895174
+        ],
+        [
+          0.012740392030289977,
+          0.012740392048142053
+        ]
+      ],
+      [
+        [
+          0.0007393238624501926,
+          0.0007393248199239944
+        ],
+        [
+          5.2824308231233764e-05,
+          5.282470245037418e-05
+        ],
+        [
+          0.4098263140535632,
+          0.4098263140757422
+        ]
+      ],
+      [
+        [
+          0.0346029887252641,
+          0.03460299026978741
+        ],
+        [
+          0.00011409208042720009,
+          0.00011409249576003898
+        ],
+        [
+          0.9075203705297272,
+          0.9075203705392112
+        ]
+      ],
+      [
+        [
+          0.0200029726567485,
+          0.02000297434139676
+        ],
+        [
+          0.0003838545431895229,
+          0.000383855073148944
+        ],
+        [
+          0.7183063892431951,
+          0.7183063892629001
+        ]
+      ],
+      [
+        [
+          0.0013771772858175307,
+          0.001377178913043255
+        ],
+        [
+          2.7550401741548633e-05,
+          2.755091551158557e-05
+        ],
+        [
+          0.11881118255228816,
+          0.11881118257745
+        ]
+      ],
+      [
+        [
+          0.0007383714054599856,
+          0.0007383727649104634
+        ],
+        [
+          0.00012465256830348055,
+          0.00012465308159252382
+        ],
+        [
+          0.0005448743601208317,
+          0.000544874372816476
+        ]
+      ],
+      [
+        [
+          3.840212970487255e-05,
+          3.840288433740524e-05
+        ],
+        [
+          0.002046863590610772,
+          0.0020468641331040124
+        ],
+        [
+          0.01383336181063211,
+          0.01383336181821221
+        ]
+      ],
+      [
+        [
+          0.23601233789512735,
+          0.23601233846504377
+        ],
+        [
+          2.5743209815837627e-05,
+          2.5743754329361314e-05
+        ],
+        [
+          0.00023002014970980857,
+          0.00023002015343481143
+        ]
+      ]
+    ],
+    "minimum_margin": 0.0,
+    "scope": "Declared sampled pairs; analytic source enclosures included",
+    "continuum_certified": false,
+    "omitted_spins_checked": false,
+    "high_energy_tail_certified": false,
+    "analytic_tail": {
+      "status": "not_applicable"
+    },
+    "high_spin_necessary": {
+      "status": "not_applicable",
+      "violations": []
+    }
+  },
+  "elapsed_seconds": 5.7601116260048,
+  "prescription": "analytic-cardinal"
+}

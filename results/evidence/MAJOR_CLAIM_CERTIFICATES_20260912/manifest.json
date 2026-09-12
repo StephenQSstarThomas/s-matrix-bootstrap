@@ -1,0 +1,57 @@
+[
+  {
+    "source": "results/runs/major_claims_20260912/tip_S0_certificate_final/probe.json",
+    "snapshot": "results/evidence/MAJOR_CLAIM_CERTIFICATES_20260912/tip_S0_certificate_final__probe.json",
+    "sha256": "d8f80910f1110d672b894fbeb112f53fa7bd72af8f829c135a29f4c76a67b0fd"
+  },
+  {
+    "source": "results/runs/major_claims_20260912/tip_S0_certificate_final/probe_goal.json",
+    "snapshot": "results/evidence/MAJOR_CLAIM_CERTIFICATES_20260912/tip_S0_certificate_final__probe_goal.json",
+    "sha256": "fe46928d8601b36880ba9f4579f05358ba97d5194bbd44cfd4c1833ec0ba34f1"
+  },
+  {
+    "source": "results/runs/major_claims_20260912/tip_S0_certificate_final/joint_audit.json",
+    "snapshot": "results/evidence/MAJOR_CLAIM_CERTIFICATES_20260912/tip_S0_certificate_final__joint_audit.json",
+    "sha256": "941dd1e0198e79e232d927f35764e13c27d74e9d04121285aecde8aa65e360a8"
+  },
+  {
+    "source": "results/runs/major_claims_20260912/ref_P1_certificate_final/probe.json",
+    "snapshot": "results/evidence/MAJOR_CLAIM_CERTIFICATES_20260912/ref_P1_certificate_final__probe.json",
+    "sha256": "a6c71dd889a45fe3a078006c1516ea3e26bd0db1e715235f7fadf8b7c8d0aaee"
+  },
+  {
+    "source": "results/runs/major_claims_20260912/ref_P1_certificate_final/probe_goal.json",
+    "snapshot": "results/evidence/MAJOR_CLAIM_CERTIFICATES_20260912/ref_P1_certificate_final__probe_goal.json",
+    "sha256": "76e8b23c7fc0d35eb4872881f5e2da2c55bc443fd4c60da35b00e0baaba53b7e"
+  },
+  {
+    "source": "results/runs/major_claims_20260912/ref_P1_certificate_final/joint_audit.json",
+    "snapshot": "results/evidence/MAJOR_CLAIM_CERTIFICATES_20260912/ref_P1_certificate_final__joint_audit.json",
+    "sha256": "c4a1307dfa0e935a72c9d2799a4f4cec245e6184018378a10c9bdbc5c9dd6516"
+  },
+  {
+    "source": "results/runs/major_claims_20260912/ref_P1_exact_section/probe.json",
+    "snapshot": "results/evidence/MAJOR_CLAIM_CERTIFICATES_20260912/ref_P1_exact_section__probe.json",
+    "sha256": "34f88015a7aabd0622cba30bf2233a271947e07cd6de7071f84a76b079ef2d21"
+  },
+  {
+    "source": "results/runs/major_claims_20260912/ref_P1_exact_section/probe_goal.json",
+    "snapshot": "results/evidence/MAJOR_CLAIM_CERTIFICATES_20260912/ref_P1_exact_section__probe_goal.json",
+    "sha256": "76e8b23c7fc0d35eb4872881f5e2da2c55bc443fd4c60da35b00e0baaba53b7e"
+  },
+  {
+    "source": "results/runs/major_claims_20260912/ref_P1_exact_section/joint_audit.json",
+    "snapshot": "results/evidence/MAJOR_CLAIM_CERTIFICATES_20260912/ref_P1_exact_section__joint_audit.json",
+    "sha256": "0dbce55707c48f6a117016643915072dbb1d7335d8c653468f543108b7d88e5a"
+  },
+  {
+    "source": "results/runs/major_claims_20260912/LOCAL_DESCENT_PROOF_ZH.md",
+    "snapshot": "results/evidence/MAJOR_CLAIM_CERTIFICATES_20260912/LOCAL_DESCENT_PROOF_ZH.md",
+    "sha256": "cb4f61bbec57c94ae296d5810d19896bd04f9f3ed84281d1ab89e20024309e06"
+  },
+  {
+    "source": "results/evidence/MAJOR_CLAIM_CERTIFICATES_20260912/CERTIFICATE_SCOPE_ZH.md",
+    "sha256": "1de64818d3fc71f76c962f2c5d05765fa02522aaf22fd3eadbcf9fdd67120aba",
+    "kind": "essential_conditional_derivation"
+  }
+]

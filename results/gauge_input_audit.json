@@ -1,0 +1,461 @@
+{
+  "scope": "Audited OPE, FESR input and Gram algebra; no gauge bootstrap solution.",
+  "primary_source": "https://arxiv.org/html/2309.12402v3",
+  "author_code_commit": "801684d9ece3de2918a20145178f569459081098",
+  "author_code_scope": "Public snapshots are later papers; 2309.12402 code unavailable.",
+  "environment": {
+    "python": "3.13.12",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3"
+  },
+  "source_sha256": {
+    "src/smatrix_bootstrap/gauge_inputs.py": "3aed562380695d2ce015f6dfd95f0d4084a57e599586017722b815b2daa77883",
+    "/home/shiqiu/s-matrix-bootstrap/scripts/audit_gauge_inputs.py": "6ce30e0dfbc0014a5e20203bf06d58c3f90055099f74b033c39940b065fcb024",
+    "tests/test_gauge_inputs.py": "98a2fcda9b04bf122def8420127b14e5d93ede21161276788aca2b9a79089693",
+    "references/2309.12402v3.pdf": "be8214741f8fb3f330473be94172c5e1dde15befb515f745ab4e35839c8982e2"
+  },
+  "unresolved_original_implementation": [
+    "Chiral norm and aggregation in Eq. (3.64)",
+    "Sum-rule normalization and norm for epsilon_SR=0.002",
+    "Finite-energy endpoint treatment in Eq. (3.72)",
+    "Effective scalar quark mass used in the high-energy form-factor bound",
+    "Any regularization of the original unpublished double spectral variables"
+  ],
+  "printed_moments": [
+    {
+      "channel": "S0",
+      "n": 0,
+      "normalized": 4.4186999999999997e-07
+    },
+    {
+      "channel": "S0",
+      "n": 1,
+      "normalized": 2.8201399999999997e-07
+    },
+    {
+      "channel": "P1",
+      "n": -1,
+      "normalized": 5.75484e-05
+    },
+    {
+      "channel": "P1",
+      "n": 0,
+      "normalized": 2.6994799999999998e-05
+    }
+  ],
+  "input_variants": [
+    {
+      "physical_inputs": {
+        "pion_mass_GeV": 0.14,
+        "pion_decay_constant_GeV": 0.092,
+        "matching_energy_GeV": 1.2,
+        "alpha_s": 0.4,
+        "up_mass_GeV": 0.004,
+        "down_mass_GeV": 0.0073,
+        "gluon_condensate_GeV4": 0.023,
+        "scalar_condensate_GeV4": -0.00010000000000000002,
+        "scalar_mass_convention": "sum_squares"
+      },
+      "dimensionless_inputs": {
+        "s0": 73.46938775510203,
+        "f_pi": 0.657142857142857,
+        "scalar_mass_prefactor": 0.003535204081632652,
+        "effective_degenerate_quark_mass": 0.042042859569923714,
+        "gluon_condensate": 59.87088713036233,
+        "scalar_condensate": -0.26030820491461887
+      },
+      "factorized_coefficients": {
+        "S0": {
+          "prefactor": 3.087369402895302e-08,
+          "perturbative": 27.216731268211742,
+          "condensate": 0.6066354861842533
+        },
+        "P1": {
+          "prefactor": 4.3666070354126084e-06,
+          "perturbative": 13.18181729292462,
+          "condensate": 0.40442365745616893
+        }
+      },
+      "moments": [
+        {
+          "channel": "S0",
+          "n": 0,
+          "normalized_ope": 4.388695952090618e-07,
+          "unnormalized_ope": 0.002368908768808596,
+          "printed_target": 4.4186999999999997e-07,
+          "relative_difference_from_printed": -0.006790243263716023,
+          "direct_contour": {
+            "real": 4.388695952090617e-07,
+            "imaginary": 8.524967264099954e-23,
+            "quadrature_error_estimate": 1.864493009744158e-20
+          },
+          "relative_contour_disagreement": 3.097353302213723e-16
+        },
+        {
+          "channel": "S0",
+          "n": 1,
+          "normalized_ope": 2.8009367788100263e-07,
+          "unnormalized_ope": 0.11107659763547548,
+          "printed_target": 2.8201399999999997e-07,
+          "relative_difference_from_printed": -0.006809314853153836,
+          "direct_contour": {
+            "real": 2.800936778810026e-07,
+            "imaginary": 1.236063575517456e-22,
+            "quadrature_error_estimate": 2.4776031709165317e-19
+          },
+          "relative_contour_disagreement": 4.800754091544345e-16
+        },
+        {
+          "channel": "P1",
+          "n": -1,
+          "normalized_ope": 5.7559816130808234e-05,
+          "unnormalized_ope": 0.004228884450426727,
+          "printed_target": 5.75484e-05,
+          "relative_difference_from_printed": 0.00019837442584380582,
+          "direct_contour": {
+            "real": 5.755981613080823e-05,
+            "imaginary": 6.589890581098386e-21,
+            "quadrature_error_estimate": 1.2786483863207267e-18
+          },
+          "relative_contour_disagreement": 1.6421555212213434e-16
+        },
+        {
+          "channel": "P1",
+          "n": 0,
+          "normalized_ope": 2.701394887746871e-05,
+          "unnormalized_ope": 0.14581456786838584,
+          "printed_target": 2.6994799999999998e-05,
+          "relative_difference_from_printed": 0.0007093543004101921,
+          "direct_contour": {
+            "real": 2.7013948877468708e-05,
+            "imaginary": 2.0226956684445866e-21,
+            "quadrature_error_estimate": 1.2770311541546605e-18
+          },
+          "relative_contour_disagreement": 1.4607183334104037e-16
+        }
+      ]
+    },
+    {
+      "physical_inputs": {
+        "pion_mass_GeV": 0.14,
+        "pion_decay_constant_GeV": 0.092,
+        "matching_energy_GeV": 1.2,
+        "alpha_s": 0.4,
+        "up_mass_GeV": 0.004,
+        "down_mass_GeV": 0.0073,
+        "gluon_condensate_GeV4": 0.023,
+        "scalar_condensate_GeV4": -0.00010000000000000002,
+        "scalar_mass_convention": "degenerate_mean"
+      },
+      "dimensionless_inputs": {
+        "s0": 73.46938775510203,
+        "f_pi": 0.657142857142857,
+        "scalar_mass_prefactor": 0.0032573979591836734,
+        "effective_degenerate_quark_mass": 0.040357142857142855,
+        "gluon_condensate": 59.87088713036233,
+        "scalar_condensate": -0.26030820491461887
+      },
+      "factorized_coefficients": {
+        "S0": {
+          "prefactor": 2.84475536914202e-08,
+          "perturbative": 27.216731268211742,
+          "condensate": 0.6066354861842533
+        },
+        "P1": {
+          "prefactor": 4.3666070354126084e-06,
+          "perturbative": 13.18181729292462,
+          "condensate": 0.40442365745616893
+        }
+      },
+      "moments": [
+        {
+          "channel": "S0",
+          "n": 0,
+          "normalized_ope": 4.043820075930517e-07,
+          "unnormalized_ope": 0.0021827533604356305,
+          "printed_target": 4.4186999999999997e-07,
+          "relative_difference_from_printed": -0.08483941522834382,
+          "direct_contour": {
+            "real": 4.0438200759305165e-07,
+            "imaginary": 2.627722618193177e-23,
+            "quadrature_error_estimate": 1.717975987789879e-20
+          },
+          "relative_contour_disagreement": 1.4615478397981007e-16
+        },
+        {
+          "channel": "S0",
+          "n": 1,
+          "normalized_ope": 2.580831413524695e-07,
+          "unnormalized_ope": 0.10234789112479337,
+          "printed_target": 2.8201399999999997e-07,
+          "relative_difference_from_printed": -0.08485698811949216,
+          "direct_contour": {
+            "real": 2.580831413524695e-07,
+            "imaginary": 5.1580277074267554e-23,
+            "quadrature_error_estimate": 2.2828916185046442e-19
+          },
+          "relative_contour_disagreement": 1.9985914928020538e-16
+        },
+        {
+          "channel": "P1",
+          "n": -1,
+          "normalized_ope": 5.7559816130808234e-05,
+          "unnormalized_ope": 0.004228884450426727,
+          "printed_target": 5.75484e-05,
+          "relative_difference_from_printed": 0.00019837442584380582,
+          "direct_contour": {
+            "real": 5.755981613080823e-05,
+            "imaginary": 6.589890581098386e-21,
+            "quadrature_error_estimate": 1.2786483863207267e-18
+          },
+          "relative_contour_disagreement": 1.6421555212213434e-16
+        },
+        {
+          "channel": "P1",
+          "n": 0,
+          "normalized_ope": 2.701394887746871e-05,
+          "unnormalized_ope": 0.14581456786838584,
+          "printed_target": 2.6994799999999998e-05,
+          "relative_difference_from_printed": 0.0007093543004101921,
+          "direct_contour": {
+            "real": 2.7013948877468708e-05,
+            "imaginary": 2.0226956684445866e-21,
+            "quadrature_error_estimate": 1.2770311541546605e-18
+          },
+          "relative_contour_disagreement": 1.4607183334104037e-16
+        }
+      ]
+    },
+    {
+      "physical_inputs": {
+        "pion_mass_GeV": 0.13957,
+        "pion_decay_constant_GeV": 0.092,
+        "matching_energy_GeV": 1.2,
+        "alpha_s": 0.4,
+        "up_mass_GeV": 0.004,
+        "down_mass_GeV": 0.0073,
+        "gluon_condensate_GeV4": 0.023,
+        "scalar_condensate_GeV4": -0.00010000000000000002,
+        "scalar_mass_convention": "sum_squares"
+      },
+      "dimensionless_inputs": {
+        "s0": 73.92278751496892,
+        "f_pi": 0.6591674428602134,
+        "scalar_mass_prefactor": 0.0035570207964668024,
+        "effective_degenerate_quark_mass": 0.042172389050579066,
+        "gluon_condensate": 60.61212665008421,
+        "scalar_condensate": -0.2635309854351488
+      },
+      "factorized_coefficients": {
+        "S0": {
+          "prefactor": 3.087369402895301e-08,
+          "perturbative": 27.38469318811371,
+          "condensate": 0.6103792002965787
+        },
+        "P1": {
+          "prefactor": 4.339824785340015e-06,
+          "perturbative": 13.263165905970686,
+          "condensate": 0.40691946686438574
+        }
+      },
+      "moments": [
+        {
+          "channel": "S0",
+          "n": 0,
+          "normalized_ope": 4.415779799548819e-07,
+          "unnormalized_ope": 0.0024130375415095714,
+          "printed_target": 4.4186999999999997e-07,
+          "relative_difference_from_printed": -0.0006608732095821912,
+          "direct_contour": {
+            "real": 4.415779799548819e-07,
+            "imaginary": 6.00495630967481e-23,
+            "quadrature_error_estimate": 1.8759993079400727e-20
+          },
+          "relative_contour_disagreement": 1.3598858145708183e-16
+        },
+        {
+          "channel": "S0",
+          "n": 1,
+          "normalized_ope": 2.818222128555255e-07,
+          "unnormalized_ope": 0.11384402079061277,
+          "printed_target": 2.8201399999999997e-07,
+          "relative_difference_from_printed": -0.0006800624950338285,
+          "direct_contour": {
+            "real": 2.8182221285552556e-07,
+            "imaginary": 7.60062009226698e-23,
+            "quadrature_error_estimate": 2.492887364296548e-19
+          },
+          "relative_contour_disagreement": 3.2866750545096824e-16
+        },
+        {
+          "channel": "P1",
+          "n": -1,
+          "normalized_ope": 5.7559816130808234e-05,
+          "unnormalized_ope": 0.004254982057238417,
+          "printed_target": 5.75484e-05,
+          "relative_difference_from_printed": 0.00019837442584380582,
+          "direct_contour": {
+            "real": 5.755981613080824e-05,
+            "imaginary": 5.224875865076581e-21,
+            "quadrature_error_estimate": 1.278648386320727e-18
+          },
+          "relative_contour_disagreement": 1.4865748878200272e-16
+        },
+        {
+          "channel": "P1",
+          "n": 0,
+          "normalized_ope": 2.701394887746871e-05,
+          "unnormalized_ope": 0.1476198446136573,
+          "printed_target": 2.6994799999999998e-05,
+          "relative_difference_from_printed": 0.0007093543004101921,
+          "direct_contour": {
+            "real": 2.701394887746872e-05,
+            "imaginary": 4.279289037510353e-21,
+            "quadrature_error_estimate": 1.2770311541546605e-18
+          },
+          "relative_contour_disagreement": 2.966751014091272e-16
+        }
+      ]
+    },
+    {
+      "physical_inputs": {
+        "pion_mass_GeV": 0.13957,
+        "pion_decay_constant_GeV": 0.092,
+        "matching_energy_GeV": 1.2,
+        "alpha_s": 0.4,
+        "up_mass_GeV": 0.004,
+        "down_mass_GeV": 0.0073,
+        "gluon_condensate_GeV4": 0.023,
+        "scalar_condensate_GeV4": -0.00010000000000000002,
+        "scalar_mass_convention": "degenerate_mean"
+      },
+      "dimensionless_inputs": {
+        "s0": 73.92278751496892,
+        "f_pi": 0.6591674428602134,
+        "scalar_mass_prefactor": 0.0032775002561758267,
+        "effective_degenerate_quark_mass": 0.04048147882782833,
+        "gluon_condensate": 60.61212665008421,
+        "scalar_condensate": -0.2635309854351488
+      },
+      "factorized_coefficients": {
+        "S0": {
+          "prefactor": 2.8447553691420198e-08,
+          "perturbative": 27.38469318811371,
+          "condensate": 0.6103792002965787
+        },
+        "P1": {
+          "prefactor": 4.339824785340015e-06,
+          "perturbative": 13.263165905970686,
+          "condensate": 0.40691946686438574
+        }
+      },
+      "moments": [
+        {
+          "channel": "S0",
+          "n": 0,
+          "normalized_ope": 4.068775599685299e-07,
+          "unnormalized_ope": 0.0022234143720259573,
+          "printed_target": 4.4186999999999997e-07,
+          "relative_difference_from_printed": -0.07919170803962716,
+          "direct_contour": {
+            "real": 4.0687755996852986e-07,
+            "imaginary": 5.520574701847982e-23,
+            "quadrature_error_estimate": 1.7285780893089773e-20
+          },
+          "relative_contour_disagreement": 1.8798546447020849e-16
+        },
+        {
+          "channel": "S0",
+          "n": 1,
+          "normalized_ope": 2.596758432639779e-07,
+          "unnormalized_ope": 0.1048978425079618,
+          "printed_target": 2.8201399999999997e-07,
+          "relative_difference_from_printed": -0.07920938937791067,
+          "direct_contour": {
+            "real": 2.5967584326397794e-07,
+            "imaginary": 5.0001805370037994e-23,
+            "quadrature_error_estimate": 2.2969992839532445e-19
+          },
+          "relative_contour_disagreement": 2.8042720960794403e-16
+        },
+        {
+          "channel": "P1",
+          "n": -1,
+          "normalized_ope": 5.7559816130808234e-05,
+          "unnormalized_ope": 0.004254982057238417,
+          "printed_target": 5.75484e-05,
+          "relative_difference_from_printed": 0.00019837442584380582,
+          "direct_contour": {
+            "real": 5.755981613080824e-05,
+            "imaginary": 5.224875865076581e-21,
+            "quadrature_error_estimate": 1.278648386320727e-18
+          },
+          "relative_contour_disagreement": 1.4865748878200272e-16
+        },
+        {
+          "channel": "P1",
+          "n": 0,
+          "normalized_ope": 2.701394887746871e-05,
+          "unnormalized_ope": 0.1476198446136573,
+          "printed_target": 2.6994799999999998e-05,
+          "relative_difference_from_printed": 0.0007093543004101921,
+          "direct_contour": {
+            "real": 2.701394887746872e-05,
+            "imaginary": 4.279289037510353e-21,
+            "quadrature_error_estimate": 1.2770311541546605e-18
+          },
+          "relative_contour_disagreement": 2.966751014091272e-16
+        }
+      ]
+    }
+  ],
+  "gram_examples": [
+    {
+      "label": "elastic_phase_matched",
+      "eta": 1.0,
+      "relative_form_factor_phase": 0.0,
+      "spectral_density": 1.0,
+      "form_factor_magnitude_squared": 0.16000000000000006,
+      "eigenvalues": [
+        -1.0581813203458523e-16,
+        0.745016556472925,
+        2.254983443527075
+      ],
+      "determinant": 7.539935111916051e-17,
+      "determinant_identity": 0.0
+    },
+    {
+      "label": "elastic_phase_mismatch",
+      "eta": 1.0,
+      "relative_form_factor_phase": 0.2,
+      "spectral_density": 1.0,
+      "form_factor_magnitude_squared": 0.16000000000000003,
+      "eigenvalues": [
+        -0.014650831303862143,
+        0.7671478910669268,
+        2.247502940236936
+      ],
+      "determinant": -0.02526048191907672,
+      "determinant_identity": -0.025260481919076778
+    },
+    {
+      "label": "inelastic_with_spectral_saturation",
+      "eta": 0.8,
+      "relative_form_factor_phase": 0.0,
+      "spectral_density": 0.16,
+      "form_factor_magnitude_squared": 0.16000000000000006,
+      "eigenvalues": [
+        -0.016192752432981763,
+        0.1999999999999999,
+        1.976192752432982
+      ],
+      "determinant": -0.006400000000000009,
+      "determinant_identity": -0.006400000000000013
+    }
+  ],
+  "verification": {
+    "max_relative_contour_disagreement": 4.800754091544345e-16,
+    "contour_gate": true,
+    "interpretation": "The gate tests the displayed OPE algebra, not its finite-energy accuracy in QCD."
+  }
+}

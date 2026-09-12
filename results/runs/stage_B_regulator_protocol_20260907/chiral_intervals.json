@@ -1,0 +1,63 @@
+{
+  "status": "all_five_predeclared_right_supports_resolved",
+  "same_problem_except_B": true,
+  "M": 50,
+  "L": 10,
+  "prescription": "pv-midpoint",
+  "mode": "chiral",
+  "epsilon": 0.002,
+  "direction": [
+    1,
+    0
+  ],
+  "density_norm": "ordinary actual rho combined L4",
+  "rows": [
+    {
+      "B": 100,
+      "lower": 0.08506347530548708,
+      "upper": 0.08508377988274593,
+      "enclosure": "[0.08508377988274591772279308 +/- 4.25e-27]",
+      "primal_feasible": true,
+      "run": "results/runs/stage_B_pv_chiral_M50_reg100_units_20260907",
+      "gap": 2.0304577258850598e-05
+    },
+    {
+      "B": 1000,
+      "lower": 0.08639829329429485,
+      "upper": 0.08644023407696746,
+      "enclosure": "[0.08644023407696744461730306 +/- 2.60e-27]",
+      "primal_feasible": true,
+      "run": "results/runs/stage_B_pv_chiral_M50_reg1000_barrier_20260907",
+      "gap": 4.1940782672611476e-05
+    },
+    {
+      "B": 10000,
+      "lower": 0.0881810925051951,
+      "upper": 0.08822508618257978,
+      "enclosure": "[0.08822508618257976625833185 +/- 1.35e-27]",
+      "primal_feasible": true,
+      "run": "results/runs/stage_B_pv_chiral_M50_reg10000_finish_20260907",
+      "gap": 4.3993677384682184e-05
+    },
+    {
+      "B": 100000,
+      "lower": 0.09577199350552085,
+      "upper": 0.0958185972315307,
+      "enclosure": "[0.09581859723153068964285068 +/- 2.79e-27]",
+      "primal_feasible": true,
+      "run": "results/runs/stage_B_pv_chiral_M50_reg100000_finish_20260907",
+      "gap": 4.660372600985563e-05
+    },
+    {
+      "B": 377500,
+      "lower": 0.10588509849925652,
+      "upper": 0.1059401757842492,
+      "enclosure": "[0.1059401757842491855365949 +/- 1.81e-27]",
+      "primal_feasible": true,
+      "run": "results/runs/stage_B_pv_chiral_M50_barrier_20260907",
+      "gap": 5.507728499268283e-05
+    }
+  ],
+  "continuum_certification": false,
+  "regulator_selected": false
+}

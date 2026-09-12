@@ -1,0 +1,277 @@
+{
+  "command": "boundary",
+  "status": "candidate",
+  "artifacts": {},
+  "inputs": {
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/tail_limit_control_prepare/report.json": {
+      "sha256": "5e028edd89a9be5cc585e90f3ad8fdf9bbef01c6f885df2937a0c1ed68f7ef9d"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/tail_limit_control_prepare/amplitude.npz": {
+      "sha256": "65712e032beb7c7ab15121ed19c055aad5a821b925aefe3dcdf3be4dc972af97"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/IR_slice_section_control/coefficients.json": {
+      "sha256": "b50adada01520ab2e8bd399749a3cb50c996b1831eb3d96bfe633720d3464386"
+    }
+  },
+  "parameters": {
+    "command": "boundary",
+    "comparison_manifest": null,
+    "region_summary": "results/runs/stage_B_delivery_20260907/regions/regions.json",
+    "primary_waves": false,
+    "profile_runs": [],
+    "profile_kind": "subthreshold",
+    "phase_reference": null,
+    "baseline_profile": null,
+    "selection_reference": null,
+    "support_runs": [],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/IR_slice_section_recenter",
+    "density_limit": 1500.0,
+    "preparation": "results/runs/physical_consistency_20260911/tail_limit_control_prepare",
+    "prescription": "analytic-cardinal",
+    "source_registry": null,
+    "solver": "barrier",
+    "unitarity_scope": "sampled",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "current_preparation": null,
+    "joint_feasibility": false,
+    "fixed_amplitude": false,
+    "solver_seconds": 30.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.001,
+    "unit_newton_step": false,
+    "gap": 0.0001,
+    "nodes": 3,
+    "processes": 1,
+    "waves": 2,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "asymptotic_zeros": true,
+    "asymptotic_unitarity": true,
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": "results/runs/physical_consistency_20260911/IR_slice_section_control/coefficients.json",
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "chiral_norm": "separate-l2",
+    "chiral_barrier_weight": null,
+    "objective": "projection",
+    "resume_objective": false,
+    "require_center": true,
+    "direction": [
+      0.0,
+      500.0
+    ],
+    "fixed_x": 0.07332139057293466,
+    "ray": false,
+    "seconds": 60.0,
+    "start_mu_provenance": {
+      "kind": "explicit"
+    }
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "1"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Finite model; regions/phases require verification.",
+  "solver": {
+    "solver": "analytic density barrier with feasible Newton steps",
+    "iterations": 42,
+    "seconds": 0.5209953300654888,
+    "chiral_barrier_weight": 9.0,
+    "support_direction": [
+      33.7308690465662,
+      500.0
+    ],
+    "fixed_x": 0.07332139057293466,
+    "require_center": true,
+    "representative_center_converged": true,
+    "fixed_x_deviation": 2.664426838883127e-16,
+    "qr_factorizations": 31,
+    "pcg_steps": 150,
+    "qr_reuse": 6,
+    "raw_coordinates": false,
+    "matrix_threads": 1,
+    "krylov_storage": "longdouble CSR exact nonzeros; dense QR",
+    "tail_weights": {
+      "kR": [],
+      "kI": []
+    },
+    "tail_constraints_applied": false,
+    "asymptotic_duals": {
+      "asymptotic_kR": [
+        0.0,
+        0.0,
+        1.736670579563375e-07,
+        -0.000663230765308668,
+        3.601369144043723e-08
+      ],
+      "asymptotic_kI": [
+        -0.0003899677959540133,
+        -7.738441518737401e-07,
+        -2.542647201153875e-08,
+        -0.00015052114367903325,
+        -5.26334112077089e-08
+      ]
+    },
+    "history": [
+      {
+        "mu": 0.001,
+        "objective": -1.9144280985152746,
+        "outer_estimate": -1.8784384368248597,
+        "gap_estimate": 0.03598966169041493
+      },
+      {
+        "mu": 0.0001,
+        "objective": -1.8946733151452098,
+        "outer_estimate": -1.8910495261363884,
+        "gap_estimate": 0.003623789008821406
+      },
+      {
+        "mu": 1e-05,
+        "objective": -1.8926182692047462,
+        "outer_estimate": -1.8922555998520971,
+        "gap_estimate": 0.00036266935264910873
+      },
+      {
+        "mu": 1e-06,
+        "objective": -1.8924114332118556,
+        "outer_estimate": -1.8923751630826955,
+        "gap_estimate": 3.627012916001735e-05
+      }
+    ],
+    "feasible_path": true,
+    "all_density_directions_retained": true,
+    "numerical_coordinates": "absorptive-zero-T0",
+    "primal_recovery": {
+      "repaired": false,
+      "candidate_fraction": 1.0,
+      "primal_certified": true
+    },
+    "coefficient_input": {
+      "path": "results/runs/physical_consistency_20260911/IR_slice_section_control/coefficients.json",
+      "key": "coefficients",
+      "format": "declared_JSON_C_flat",
+      "coordinates": "unsubtracted analytic-cardinal C_flat",
+      "prescription": "analytic-cardinal",
+      "sha256": "b50adada01520ab2e8bd399749a3cb50c996b1831eb3d96bfe633720d3464386",
+      "legacy_data_only": false,
+      "target_prescription": "analytic-cardinal",
+      "coordinate_transform": "identity",
+      "explicit_legacy_replay": false,
+      "old_feasibility_or_bound_transferred": false,
+      "purpose": "Numerical C only; recompute feasibility and support on the prepared target H"
+    },
+    "candidate_covectors": null
+  },
+  "support_direction": [
+    33.7308690465662,
+    500.0
+  ],
+  "fixed_x": 0.07332139057293466,
+  "normal_dual": {
+    "status": "not_requested",
+    "reason": "Zero T0 uses its transformed barrier covectors; free-T0 LP fallback is inapplicable"
+  },
+  "outer": {
+    "upper": 0.580819060661194,
+    "enclosure": "[0.5808190606611938840126409 +/- 4.44e-26]",
+    "disk": 0.17726659597933053,
+    "chiral": 0.40209048381175355,
+    "density_residual": 2.0184409950900077e-07,
+    "tail_support": 0.0,
+    "chiral_norm": "separate-l2",
+    "objective_kind": "target_plane",
+    "scope": "Exact saved float64 H; angular quadrature error excluded",
+    "primal_feasible": true,
+    "lower": 0.580782790515991,
+    "minimum_margin_enclosure": "[3.8018400447080020187e-11 +/- 6.40e-32]",
+    "density_norm": 22.511540697974826,
+    "targets": [
+      "[0.07332139057293649376468323 +/- 3.25e-27]",
+      "[-0.003784822866423726163898221 +/- 3.17e-28]"
+    ],
+    "tail_margin_enclosures": [],
+    "asymptotic_margin_enclosures": [
+      "[0.005128628622025215791217907 +/- 3.55e-28]",
+      "[2.584499727958555135385283 +/- 1.62e-25]",
+      "[78.65817951827466775030719 +/- 4.82e-24]",
+      "[0.01328716983617691567208252 +/- 2.24e-27]",
+      "[37.99867715408635173017559 +/- 4.25e-24]"
+    ],
+    "endpoint_equalities": 1,
+    "asymptotic_inequalities": 5
+  },
+  "M": 3,
+  "L": 2,
+  "sampling_nodes": 3,
+  "scattering_samples": 18,
+  "infinity": "zero",
+  "mode": "chiral",
+  "chiral_tolerance": 0.002,
+  "chiral_norm": "separate-l2",
+  "density_limit": 1500.0,
+  "targets": [
+    0.07332139057293649,
+    -0.0037848228664237264
+  ],
+  "objective": 0.5807827905159911,
+  "minimum_scattering_margin": 3.8018400447080105e-11,
+  "chiral_norms": [
+    0.0019999552335844216,
+    0.0007493951621257449
+  ],
+  "density_norm": 22.511540697974826,
+  "radial_shrink": 1.0,
+  "sampled_feasible": true,
+  "support_optimality_certified": true,
+  "global_high_spin_enforced": false,
+  "support_scope": "Exactly declared constraints",
+  "prescription": "analytic-cardinal",
+  "coefficient_input_prescription": "analytic-cardinal",
+  "unitarity_coverage": "All declared rows; no continuum certificate",
+  "analytic_tail_conditions_passed": true,
+  "analytic_tail_status": "leading necessary conditions",
+  "analytic_tail_margins": [
+    "[0.005128628622025215791217907 +/- 3.55e-28]",
+    "[2.584499727958555135385283 +/- 1.62e-25]",
+    "[78.65817951827466775030719 +/- 4.82e-24]",
+    "[0.01328716983617691567208252 +/- 2.24e-27]",
+    "[37.99867715408635173017559 +/- 4.25e-24]"
+  ],
+  "high_spin_necessary": {
+    "status": "not_applicable",
+    "violations": []
+  },
+  "high_spin_cut_count": 0,
+  "tail_conditions_applied": true,
+  "operator_scope": "Saved float64 operator",
+  "elapsed_seconds": 0.547876772005111
+}

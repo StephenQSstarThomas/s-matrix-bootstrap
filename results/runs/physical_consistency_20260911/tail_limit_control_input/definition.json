@@ -1,0 +1,21 @@
+{
+  "scope": "Independent verification of leading high-energy constants; not QCD reproduction",
+  "M": 3,
+  "lambda_exact": "1/1024",
+  "v_exact": [
+    "1/2",
+    "1",
+    "1/2"
+  ],
+  "unsubtracted_kernel": "h=1+z exactly; only the first harmonic",
+  "T0": 0,
+  "sigma1": "lambda*v/8",
+  "sigma2": "lambda*v/8",
+  "rho1": "lambda*v*v^T",
+  "rho2": "lambda*v*v^T/2",
+  "alpha1": "lambda/2",
+  "alpha2": "lambda/2",
+  "r": "16*lambda",
+  "q": "8*lambda",
+  "source": "Direct algebraic definition; no paper/output curve inputs"
+}

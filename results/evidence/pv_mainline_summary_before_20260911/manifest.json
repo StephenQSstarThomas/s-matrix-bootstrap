@@ -1,0 +1,55 @@
+{
+  "created_utc": "2026-09-11T21:07:09.580729+00:00",
+  "scope": "Only the current leading summaries of STATUS/SCIENCE/REPRODUCTION_GUIDE changed; historical suffixes remain byte-identical",
+  "reason": "User-directed priority: complete same-input mixed PV end-to-end/rho; W1 completed only as strengthened analytic follow-up, no W2",
+  "files": {
+    "STATUS.md": {
+      "before_sha256": "7616c9b2bd6cf282afc766942ea282014e37998935a373c744b35c148f6e1f08",
+      "before_snapshot": "results/evidence/pv_mainline_summary_before_20260911/STATUS.md.txt",
+      "preserved_boundary": "## 历史中间模型：3123盘",
+      "preserved_suffix_sha256": "48ff2b3e3528df728a819c7dafffcad94d0296a3044a6c22fa16b671183c3650",
+      "before_prefix_bytes": 6291,
+      "after_sha256": "b24151cc6b08cd7269d1caae5c1e405d53747e38270f214d52b9a059c591f533",
+      "after_prefix_bytes": 3592,
+      "historical_suffix_unchanged": true
+    },
+    "SCIENCE.md": {
+      "before_sha256": "e600a1b2d2ddc6809607be514668ec0cbc5cc0176bd79f958ba964eff950f1f0",
+      "before_snapshot": "results/evidence/pv_mainline_summary_before_20260911/SCIENCE.md.txt",
+      "preserved_boundary": "## Historical 1500-disk analytic branch record (2026-09-11)",
+      "preserved_suffix_sha256": "02cedd17614dcf82f04554fe4cf4c57dffd93656446fe641e9860c2104979282",
+      "before_prefix_bytes": 8305,
+      "after_sha256": "0b8b0808bbfcae6fa5c2150c554815c752e3970b4fd4ad581497d287d2197ec3",
+      "after_prefix_bytes": 3895,
+      "historical_suffix_unchanged": true
+    },
+    "REPRODUCTION_GUIDE_ZH.md": {
+      "before_sha256": "372cd1aba21d78c849a324648361c49b5e20bb92f3af6145d28192adba5226d2",
+      "before_snapshot": "results/evidence/pv_mainline_summary_before_20260911/REPRODUCTION_GUIDE_ZH.md.txt",
+      "preserved_boundary": "**下文保留历史说明。**",
+      "preserved_suffix_sha256": "b426c00cb903ce8695f1ebde50b6e9f4ccd49147581569186ea33b90eae111f6",
+      "before_prefix_bytes": 6414,
+      "after_sha256": "25f0963cf36603eb1cb4a3554a35e723e4b06d3951247b7a74cf3bf39995cf93",
+      "after_prefix_bytes": 3213,
+      "historical_suffix_unchanged": true
+    }
+  },
+  "evidence_sha256": {
+    "results/runs/physical_consistency_20260911/fine_watson_01_polish_03/report.json": "d2851942a64a1e617dfe02b1537f01e9a8fd53a0a9457cbb78ada013463092d6",
+    "results/runs/physical_consistency_20260911/fine_watson_01_analytic/report.json": "e63c30c94833b0210019afdf9e9c324d3c5e929f1b34f53b32b8afefd9489c53",
+    "results/runs/physical_consistency_20260911/fine_watson_01_native/report.json": "d1da148d2fbd5cd9500c6418bc4f1629d9a916eaf4be73e5b8a77f9f5a031fd2",
+    "results/runs/physical_consistency_20260911/fine_watson_01_native/evaluation.json": "cec7fca114821e2964cef8c5906e20c21f1a369aaf419dbc0fe7b6c43f4f856e",
+    "results/runs/physical_consistency_20260911/fine_watson_01_grid/report.json": "adf1d37d9eaefe2f46f1f04fcbafd6d466c23e94fbb498b5c0e13de84ab3e70d",
+    "results/runs/physical_consistency_20260911/fine_watson_01_grid/evaluation.json": "4b590cb0af53731cc0642ce8a92c23b4ac45da7f365b6a46cd55008b9d69e711",
+    "results/runs/physical_consistency_20260911/PV_REPRESENTATIVE_RULE.json": "fe128970948f69969a67d90bcb0500f819488cb57fb844e0c0a87581cb568acd",
+    "results/runs/physical_consistency_20260911/PV_SAME_INPUTS_INVENTORY.json": "2eb2ec1cebb90d63ffdc5ca485d46fc1da489938392e59276a02acc0d4f28a5a"
+  },
+  "source_code_modified": false,
+  "physical_inputs_modified": false,
+  "PROGRESS_modified": false,
+  "scientific_optimization_performed": false,
+  "backups_nonexecutable_read_only": true,
+  "subsequent_refinements": [
+    "terminology_refinement.json"
+  ]
+}

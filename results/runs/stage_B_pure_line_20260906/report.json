@@ -1,0 +1,135 @@
+{
+  "command": "boundary",
+  "status": "candidate",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "boundary",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pure_line_20260906",
+    "control": null,
+    "matrix": null,
+    "matrix_sha256": null,
+    "rank_report": null,
+    "density_limit": null,
+    "preparation": "results/runs/stage_B_unitarity150_20260906",
+    "margin": 1e-08,
+    "solver_seconds": 1050.0,
+    "conditioning": "qr",
+    "linear_solver": "qdldl",
+    "start_mu": 1e-05,
+    "gap": 0.002,
+    "optimizer": "barrier",
+    "nodes": 50,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "subtracted": false,
+    "infinity": "zero",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": "results/runs/stage_B_pure_x_20260906/coefficients.json",
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "mode": "pure",
+    "chiral_tolerance": 0.002,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "seconds": 1200.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3"
+  },
+  "scope": "Coherent finite-sine-cardinal conditional model; published regions and phases remain unverified.",
+  "solver": {
+    "solver": "analytic density barrier with QR and preconditioned CG",
+    "iterations": 124,
+    "seconds": 1057.420878452016,
+    "qr_factorizations": 123,
+    "pcg_steps": 1,
+    "qr_reuse": 6,
+    "raw_coordinates": true,
+    "history": [
+      {
+        "mu": 1e-05,
+        "objective": 0.8923760269283587,
+        "outer_estimate": 56737065719.49657,
+        "gap_estimate": 56737065718.604195
+      }
+    ],
+    "feasible_path": true,
+    "all_density_directions_retained": true
+  },
+  "outer": {
+    "upper": 56737065719.496574,
+    "enclosure": "[56737065719.49656392393965 +/- 1.07e-15]",
+    "disk": 261873.916962873,
+    "chiral": 0.0,
+    "density_residual": 56736803845.5796,
+    "scope": "exact saved float64 operator; angular quadrature error excluded",
+    "primal_feasible": true,
+    "lower": 0.8923760180077562,
+    "minimum_margin_enclosure": "[2.1566554439867817692e-100 +/- 7.41e-121]",
+    "density_norm": 135163.39572710483,
+    "targets": [
+      "[0.8923760180077562970163316 +/- 3.77e-26]",
+      "[0.02787357622974034760077074 +/- 3.78e-27]"
+    ]
+  },
+  "M": 50,
+  "L": 10,
+  "sampling_nodes": 150,
+  "infinity": "zero",
+  "mode": "pure",
+  "chiral_tolerance": null,
+  "density_limit": 377500,
+  "targets": [
+    0.8923760180066915,
+    0.02787357622973502
+  ],
+  "objective": 0.8923760180066915,
+  "minimum_scattering_margin": 2.1566554439867817e-100,
+  "chiral_norms": [
+    3.273072584795044,
+    1.3231011056648598
+  ],
+  "density_norm": 135163.39572710483,
+  "radial_shrink": 0.99999999,
+  "sampled_feasible": true,
+  "support_optimality_certified": false,
+  "operator_scope": "A-stage float64 quadrature; no continuum certificate",
+  "elapsed_seconds": 1070.48283962789,
+  "core_sources": {
+    "__init__.py": "49dd11423d525645991e1d52dd9bf2976113fff38e5635a647f47ebd34c9f3fa",
+    "analysis.py": "7a861728cf44ed3297da98a14bebe698af89b9a968f871438e0f2a54e1056190",
+    "imaginary.py": "49b430ee01ac59813a6d2279e5d2440ee9b9db57558e7e98a5f93c2ebf876e81",
+    "io.py": "03650f40f181b3fb6d650ea7a2bc0aa261781fbf1d77f9d6f2b53d1b38300fc4",
+    "kernels.py": "03b21ed2505c2be0a202aed8533bdd6d8e4a6e2f0a08df8315f55d08ff5f474d",
+    "linear.py": "eaae07454e569bddba5a28ccaeb94f5703656b436228e4b63ca7d315f69fadbd",
+    "model.py": "e46300b9b5d77a217033471f78da4b9ff1a392d4c863756331f84c9c1960b843",
+    "operators.py": "b946848d3371fb3b4a0eb0c73f9d8f433edfe4e24b693bbec55f10f93a0f101d",
+    "quotient.py": "d9e119b2a77677594ae572dae559004e94bcaef34207d224e4d038c5b799f2bd",
+    "run.py": "eb49beb3ec2284e694059837d66aa4c0b3675068566a8cd92ff93cc184b1a352"
+  },
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 1200.0,
+  "supervisor_seconds": 1070.7425174219534
+}

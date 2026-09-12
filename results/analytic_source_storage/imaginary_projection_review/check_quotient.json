@@ -1,0 +1,29 @@
+{
+  "schema": "smatrix-small-projection-quotient-review-v1",
+  "physical_data_used": false,
+  "M": 7,
+  "nonorthogonal_T": true,
+  "nonunit_physical_scales": true,
+  "input_dimension": 92,
+  "imaginary_rows": 42,
+  "quotient_dimension": 50,
+  "reconstruction_composition_equals_projector": true,
+  "quotient_after_reconstruction_is_identity": true,
+  "all_imaginary_rows_annihilated_exactly": true,
+  "transpose_counterexample": {
+    "delta": "1/100",
+    "right_residual_infinity": "10",
+    "actual_transpose_error": "10",
+    "wrong_forward_style_bound": "1/99",
+    "valid_one_norm_bound": "1000/99"
+  },
+  "interval_rhs_counterexample": {
+    "midpoint_only_tail": "0",
+    "required_full_magnitude_tail": "1/99"
+  },
+  "large_matrix_jobs": 0,
+  "optimizer_runs": 0,
+  "source_fixture_path": "/home/shiqiu/s-matrix-bootstrap/tests/test_imaginary_adjoint_inverse.py",
+  "source_fixture_sha256": "eefbbf67e23e756d36bcf4c1091656b60a9f434f6d6d293e57cdb741317faff1",
+  "script_source_utf8": "\"\"\"Small exact quotient reconstruction and Neumann norm counterexamples.\"\"\"\nfrom fractions import Fraction as F\nimport hashlib,importlib.util,json\nfrom pathlib import Path\nfrom flint import fmpq_mat\n\npath=Path('/home/shiqiu/s-matrix-bootstrap/tests/test_imaginary_adjoint_inverse.py')\nspec=importlib.util.spec_from_file_location('source_inverse_fixture',path)\nfixture=importlib.util.module_from_spec(spec);spec.loader.exec_module(fixture)\nmodel=fixture.fixture(True);op=model.op;M=model.M;n=model.coefficient_count\nfull=op.matrix();free=[i for i in range(op.rows) if i not in set(op.exact_zero_rows)|set(model.selected)]\n\ndef qapply(r):\n    at=1;ra=fmpq_mat(M,1,[r[at+i,0] for i in range(M)]);at+=M\n    rb=fmpq_mat(M,1,[r[at+i,0] for i in range(M)]);at+=M\n    rB=fmpq_mat(M,M,[r[at+i,0] for i in range(M*M)]);at+=M*M\n    rC=fmpq_mat(M,M)\n    for i in range(M):\n        for j in range(i,M):rC[i,j]=rC[j,i]=r[at,0];at+=1\n    a0=2*op.TinvT*ra/3;b0=op.TinvT*rb\n    P0=fmpq_mat(M,M,[model.W0[i,j]*a0[j,0] for i in range(M) for j in range(M)])\n    Q0=fmpq_mat(M,M,[model.W0[i,j]*b0[j,0] for i in range(M) for j in range(M)])\n    A=op.TinvT*rB*model.Tinv/2-3*P0.transpose()-Q0\n    H=op.TinvT*rC*model.Tinv/2-(Q0+Q0.transpose())/2\n    mem=[];signed=fmpq_mat(M,M)\n    for j in range(M):\n        column=fmpq_mat(M,1,[A[i,j] for i in range(M)])\n        value=op.membership[j]*column/3;mem.extend(value[i,0] for i in range(M))\n        value=op.signed[j]*column\n        for i in range(M):signed[i,j]=value[i,0]\n    H-= (signed+signed.transpose())/2\n    b=fmpq_mat(op.rows,1,mem+[H[i,j] for i,j in op.sym_pairs])\n    alpha=model.U*fmpq_mat(op.columns,1,[b[i,0] for i in model.selected])\n    e=b-full*alpha\n    assert all(e[i,0]==0 for i in set(op.exact_zero_rows)|set(model.selected))\n    return fmpq_mat(1+len(free),1,[r[0,0]]+[e[i,0] for i in free])\n\ndef reconstruct(q):\n    e=[0]*op.rows\n    for k,i in enumerate(free):e[i]=q[k+1,0]\n    mem=fmpq_mat(M,M,[e[j*M+i] for i in range(M) for j in range(M)])\n    H=fmpq_mat(M,M)\n    for k,(i,j) in enumerate(op.sym_pairs):H[i,j]=H[j,i]=e[M*M+k]\n    B=6*mem*op.T;C=2*op.TT*H*op.T\n    return fmpq_mat(n,1,[q[0,0]]+[0]*(2*M)+[B[i,j] for i in range(M) for j in range(M)]\n                    +[C[i,j] for i in range(M) for j in range(i,M)])\n\nqsize=1+len(free)\nQ=fixture.columns_from_apply(qapply,n,qsize)\nZ=fixture.columns_from_apply(reconstruct,qsize,n)\nI=fixture.independent_original_imaginary_matrix(model)\nL=fixture.columns_from_apply(model.left_apply,n,model.row_count)\neye=fmpq_mat(n,n,[int(i==j) for i in range(n) for j in range(n)])\nassert Z*Q==eye-I.transpose()*L\nassert Q*Z==fmpq_mat(qsize,qsize,[int(i==j) for i in range(qsize) for j in range(qsize)])\nassert Q*I.transpose()==fmpq_mat(qsize,model.row_count)\nassert qsize==50 and qsize==n-model.row_count\ndelta=F(1,100);large=F(1000)\n# R0=diag(1,K), B=[[1,-delta],[0,1/K]], v=e0.\n# Left residual has normdelta, yet transpose error from R0^T v isKdelta.\nwrong=delta/(1-delta);actual=large*delta;correct=large*delta/(1-delta)\nassert wrong<actual<=correct\n# Center-zero uncertain RHS: midpoint-only tail0 would lose the true endpoint.\ninput_radius=F(1);full_tail=delta/(1-delta)*input_radius\nassert 1+full_tail==1/(1-delta)>1\nout=dict(schema='smatrix-small-projection-quotient-review-v1',physical_data_used=False,\n    M=M,nonorthogonal_T=True,nonunit_physical_scales=True,input_dimension=n,imaginary_rows=model.row_count,\n    quotient_dimension=qsize,reconstruction_composition_equals_projector=True,\n    quotient_after_reconstruction_is_identity=True,all_imaginary_rows_annihilated_exactly=True,\n    transpose_counterexample=dict(delta=str(delta),right_residual_infinity=str(large*delta),\n        actual_transpose_error=str(actual),wrong_forward_style_bound=str(wrong),valid_one_norm_bound=str(correct)),\n    interval_rhs_counterexample=dict(midpoint_only_tail='0',required_full_magnitude_tail=str(full_tail)),\n    large_matrix_jobs=0,optimizer_runs=0,source_fixture_path=str(path),source_fixture_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),\n    script_source_utf8=Path(__file__).read_text())\noutput=Path('/tmp/imaginary_projection_review/check_quotient.json');assert not output.exists()\noutput.write_text(json.dumps(out,indent=2)+'\\n')\nprint(json.dumps({k:v for k,v in out.items() if k!='script_source_utf8'},indent=2))\n"
+}

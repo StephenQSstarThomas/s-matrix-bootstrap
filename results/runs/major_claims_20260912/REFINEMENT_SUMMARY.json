@@ -1,0 +1,65 @@
+{
+  "kind": "Summary of saved CLI evaluations; no new optimization",
+  "rows": [
+    {
+      "role": "tip",
+      "support": "tip_refine_01",
+      "lower": 0.09909604549005062,
+      "upper": 0.09909682883846381,
+      "gap": 7.83348413191387e-07,
+      "center_and_original_primal_support": true,
+      "native_90_mev": 803.3909157125215,
+      "min_eta_P1": 0.7774640796294163,
+      "max_phase_change_degrees_S0_S2_P1": [
+        0.0800407561479517,
+        0.04454103190558101,
+        0.05453015681015927
+      ],
+      "old_evaluation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_UV_tip_native/evaluation.json",
+      "new_evaluation": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/tip_native/evaluation.json"
+    },
+    {
+      "role": "mid",
+      "support": "mid_refine_01",
+      "lower": 0.6013478896267896,
+      "upper": 0.601367403222202,
+      "gap": 1.9513595412301576e-05,
+      "center_and_original_primal_support": true,
+      "native_90_mev": 701.0335190422452,
+      "min_eta_P1": 0.43489833663338734,
+      "max_phase_change_degrees_S0_S2_P1": [
+        0.60885176908468,
+        0.03253484800264772,
+        0.22654432585867568
+      ],
+      "old_evaluation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_UV_mid_native/evaluation.json",
+      "new_evaluation": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/mid_native/evaluation.json"
+    },
+    {
+      "role": "ref",
+      "support": "ref_refine_01",
+      "lower": 0.44281654856000835,
+      "upper": 0.442835778890503,
+      "gap": 1.923033049466838e-05,
+      "center_and_original_primal_support": true,
+      "native_90_mev": 696.4852034698122,
+      "min_eta_P1": 0.242205914297336,
+      "max_phase_change_degrees_S0_S2_P1": [
+        0.8169495029856932,
+        0.11457560552145019,
+        0.16379913652403388
+      ],
+      "old_evaluation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_UV_ref_native/evaluation.json",
+      "new_evaluation": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/ref_native/evaluation.json"
+    }
+  ],
+  "all_three_original_support_and_centers_passed": true,
+  "physical_inputs_changed": false,
+  "representative_coordinates_ref_mid_changed": false,
+  "maximum_support_targets": {
+    "tip": 1e-06,
+    "mid": 2e-05,
+    "ref": 2e-05
+  },
+  "scope": "Measured central-path refinement, not an all-amplitude or mu->0 error theorem"
+}

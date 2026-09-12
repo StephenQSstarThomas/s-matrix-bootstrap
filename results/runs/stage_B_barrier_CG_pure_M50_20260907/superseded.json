@@ -1,0 +1,6 @@
+{
+  "reason": "Replace weak initializer with independently audited M50 pure x=.825885925948; retain completed CG row pool and all previous artifacts.",
+  "new_initializer": "results/runs/stage_B_strong_pure_M50_round2_20260907/coefficients.json",
+  "retained_working_state": "results/runs/stage_B_barrier_CG_pure_M50_20260907/cg_state.npz",
+  "utc": "2026-09-07T11:39:19.136372+00:00"
+}

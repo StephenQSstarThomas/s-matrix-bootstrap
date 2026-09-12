@@ -1,0 +1,17 @@
+{
+  "source": "results/runs/stage_B_barrier_CG_M50_round3_20260907/cg_state.npz",
+  "selected_key": "working_candidate",
+  "parameters": {
+    "preparation": "results/runs/stage_B_unitarity_resolved_20260906",
+    "additional_constraints": "results/runs/stage_B_native_M50_round1_20260907/additional_scattering.npz",
+    "mode": "chiral",
+    "infinity": "zero",
+    "density_limit": null,
+    "chiral_tolerance": 0.002,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "bits": 640
+  }
+}

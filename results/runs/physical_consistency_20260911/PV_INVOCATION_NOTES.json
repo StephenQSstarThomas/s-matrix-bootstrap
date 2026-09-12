@@ -1,0 +1,9 @@
+[
+  {
+    "stage": "before_worker",
+    "output": "PV_tip_replay_00",
+    "error": "CLI enum names: sr-error is raw-absolute, mq-rule is arithmetic-mean",
+    "physical_calculation_started": false,
+    "physical_inputs_changed": false
+  }
+]

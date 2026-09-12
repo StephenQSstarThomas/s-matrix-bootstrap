@@ -1,0 +1,13 @@
+{
+  "question": "Do the native Hilbert and off-cut midpoint kernels represent one finite analytic family?",
+  "coefficient_runs": [
+    "results/runs/mainline_alignment_20260909/C2_fig6",
+    "results/runs/mainline_alignment_20260909/paper_tip_path_02"
+  ],
+  "node_rule": "first, midpoint in phi, last node below the declared matching scale, last native node",
+  "precision_bits": 256,
+  "integral_tolerance": "2^-65 relative and 2^-85 absolute; validated Arb integration",
+  "refitting": false,
+  "paper_curve_inputs": false,
+  "new_optimization_allowed_only_after_operator_review": true
+}

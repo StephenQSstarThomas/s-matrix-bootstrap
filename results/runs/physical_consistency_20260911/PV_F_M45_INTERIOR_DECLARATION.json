@@ -1,0 +1,10 @@
+{
+  "old_run": "PV_F_M45_L10_support_01",
+  "old_result": "Joint primal passed, no center/support within900s from old tip boundary; old cache retained",
+  "next": "Fresh same-model audit of historical hard-current Phase-I interior, then new reference at mu1e-4",
+  "historical_seed": "results/runs/mainline_alignment_20260909/F_paper/M45_L10_phase_I_02",
+  "old_norm": "combined-l2; no feasibility/center transfer",
+  "new_norm": "separate-l2",
+  "physical_constraints_changed": false,
+  "phase_data_used": false
+}

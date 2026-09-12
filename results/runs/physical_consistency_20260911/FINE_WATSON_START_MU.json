@@ -1,0 +1,7 @@
+{
+  "initial_fixed_goal_deficit": 0.2424320113831258,
+  "chosen_start_mu": 3.125e-05,
+  "reason": "Numerical start at a nearby continuation scale to deficit divided by the observed joint barrier count (~9000); final tolerances and physical set unchanged",
+  "goal_source": "fine_watson_goal_analytic/objective.npz",
+  "selection_uses_experimental_data": false
+}

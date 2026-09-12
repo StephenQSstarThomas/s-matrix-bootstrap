@@ -1,0 +1,118 @@
+{
+  "date": "2026-09-12",
+  "steps": [
+    {
+      "step": "A1",
+      "subject": "交叉/色散/变量",
+      "completed_scope": "明确有限模型内通过",
+      "remaining_scope": "作者完整producer身份；共同连续解析完成未声明"
+    },
+    {
+      "step": "A2",
+      "subject": "IR/UV输入",
+      "completed_scope": "单位、显示公式及声明合同通过",
+      "remaining_scope": "作者χ/B/误差打包的唯一恢复；OPE/GMOR近似的理论余项没有严格全界"
+    },
+    {
+      "step": "A3",
+      "subject": "投影/求值",
+      "completed_scope": "同H/C及原生精确源行核验通过",
+      "remaining_scope": "不移作另一插值或全能区证书"
+    },
+    {
+      "step": "B1",
+      "subject": "支撑/求解器",
+      "completed_scope": "本轮更严格支撑、中心和下降修补通过",
+      "remaining_scope": "精确驻点区间证明未要求/未提供；数值中心范围明确"
+    },
+    {
+      "step": "B2",
+      "subject": "Fig.3",
+      "completed_scope": "历史有限几何已有通过记录",
+      "remaining_scope": "原作者合同及原图定量身份尚未闭合"
+    },
+    {
+      "step": "B3",
+      "subject": "Fig.4",
+      "completed_scope": "历史sep六域有几何通过；combined另记",
+      "remaining_scope": "最终合同的原图范围/全部比较；不能混用两分支"
+    },
+    {
+      "step": "C1",
+      "subject": "Fig.5",
+      "completed_scope": "历史三色定性/零点证据保留",
+      "remaining_scope": "最终合同下独立三色链；蓝色无零点强命题不得伪造"
+    },
+    {
+      "step": "C2",
+      "subject": "Fig.6",
+      "completed_scope": "既有完整幅度图已交",
+      "remaining_scope": "与最终C1/C3/UV同合同重新衔接"
+    },
+    {
+      "step": "C3",
+      "subject": "Fig.7",
+      "completed_scope": "新完整IR对照通过",
+      "remaining_scope": "无ρ是对照结果，不是待修绘图缺陷"
+    },
+    {
+      "step": "D1",
+      "subject": "Gram/FF",
+      "completed_scope": "全部联合变量及归一化通过",
+      "remaining_scope": "不等于两π谱饱和、近弹性或全谱完成"
+    },
+    {
+      "step": "D2",
+      "subject": "FESR/高能FF",
+      "completed_scope": "当前四raw盒及FF条件通过",
+      "remaining_scope": "作者未明示口径；近似QCD输入不等于精确QCD定理"
+    },
+    {
+      "step": "D3",
+      "subject": "联合可行性",
+      "completed_scope": "M50三点与五组均完成",
+      "remaining_scope": "不等于所选幅度具有正确定量ρ"
+    },
+    {
+      "step": "E1",
+      "subject": "Fig.8",
+      "completed_scope": "精确截面弱不对称通过",
+      "remaining_scope": "明显不对称及完整UV轮廓对齐"
+    },
+    {
+      "step": "E2",
+      "subject": "代表选择",
+      "completed_scope": "独立冻结三点通过",
+      "remaining_scope": "作者最终选择/tie-break尚未恢复"
+    },
+    {
+      "step": "E3",
+      "subject": "Fig.9–10",
+      "completed_scope": "所有曲线/谱/峰已计算",
+      "remaining_scope": "ρ稳健性和S0未通过；两项有近区域全域障碍"
+    },
+    {
+      "step": "F1",
+      "subject": "五配置",
+      "completed_scope": "全部完成",
+      "remaining_scope": "若合同改变，必须相应重验"
+    },
+    {
+      "step": "F2",
+      "subject": "稳定性",
+      "completed_scope": "已量化并收紧M50精度",
+      "remaining_scope": "L稳健性未对齐；M不能笼统判失败"
+    },
+    {
+      "step": "F3",
+      "subject": "交付",
+      "completed_scope": "来源、失败、证明、数据、图齐备",
+      "remaining_scope": "交付齐备不等于全Fig.3–11物理复现成功"
+    }
+  ],
+  "quantitative_paper_success": false,
+  "full_original_parameter_impossibility_proved": false,
+  "next": "P0/P1 source contract and targeted operator/full-point check",
+  "plan": "CORE_CLAIM_LEDGER_AND_PLAN_ZH.md",
+  "sha256": "c0b917803fc0562f08a906b0dc8ee735988a292baab7c03e9f4828f052f23dae"
+}

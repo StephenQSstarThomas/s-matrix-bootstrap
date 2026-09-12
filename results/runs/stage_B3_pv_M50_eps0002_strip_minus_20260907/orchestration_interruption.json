@@ -1,0 +1,14 @@
+{
+  "status": "outer_supervisor_interrupted",
+  "cause": "Inline launcher handoff ended its execution cell; tool process cleanup removed CLI supervisors. Detached scientific workers completed.",
+  "time_recorded": "2026-09-07T21:18:03.594875+00:00",
+  "scientific_worker_status": "candidate",
+  "worker_primal_feasible": true,
+  "acceptance": "Not included as a completed support report; requires fresh CLI verification.",
+  "retained": [
+    "worker.json",
+    "coefficients.json",
+    "candidate.npz",
+    "progress.jsonl"
+  ]
+}

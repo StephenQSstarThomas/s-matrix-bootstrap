@@ -1,0 +1,299 @@
+{
+  "command": "profiles",
+  "status": "profiles_completed",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "profiles",
+    "comparison_manifest": null,
+    "region_summary": "results/runs/stage_B_delivery_20260907/regions/regions.json",
+    "primary_waves": false,
+    "profile_runs": [
+      "results/runs/mainline_alignment_20260909/C1_evaluate_002"
+    ],
+    "profile_kind": "selection",
+    "phase_reference": null,
+    "selection_reference": null,
+    "support_runs": [],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/C2_fig6",
+    "density_limit": null,
+    "preparation": "results/runs/stage_A_M50_L10_20260906",
+    "prescription": "auto",
+    "solver": "barrier",
+    "unitarity_scope": "strengthened",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "current_preparation": null,
+    "joint_feasibility": false,
+    "density_cone": "soc",
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": null,
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "chiral_norm": "combined-l2",
+    "chiral_barrier_weight": null,
+    "objective": "projection",
+    "resume_objective": false,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "fixed_x": null,
+    "ray": false,
+    "seconds": 60.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "2"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Saved-amplitude profiles; no continuum certificate.",
+  "kind": "selection",
+  "profiles": [
+    {
+      "epsilon": 0.002,
+      "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/C_select_002/coefficients.json",
+      "selection": {
+        "rule": "Upper feasible-hull edge at fixed Weinberg f00(3), before evaluating phases",
+        "reference": [
+          0.07332139057293466,
+          -0.00488809270486231
+        ],
+        "target": [
+          0.07332139056580267,
+          -0.004128922666413147
+        ],
+        "epsilon": 0.002,
+        "source_coefficients": [
+          "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_078/coefficients.json",
+          "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_070/coefficients.json"
+        ],
+        "weights": [
+          0.8568124948468576,
+          0.1431875051531424
+        ],
+        "source_reports": [
+          "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_078/report.json",
+          "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_070/report.json"
+        ],
+        "vertices": [
+          [
+            -0.0803661086031152,
+            0.005648377433647707
+          ],
+          [
+            -0.049307035410357206,
+            0.0026660177857699644
+          ],
+          [
+            -0.02117301628389862,
+            0.0005126330486404846
+          ],
+          [
+            -0.007152102660426174,
+            -0.0004796965849627923
+          ],
+          [
+            0.008088093093333732,
+            -0.0015130994321447832
+          ],
+          [
+            0.024969190073950383,
+            -0.002617409652345541
+          ],
+          [
+            0.040417222441683796,
+            -0.0035850302673628705
+          ],
+          [
+            0.05323209008549835,
+            -0.004342759549937369
+          ],
+          [
+            0.06540961880224935,
+            -0.005016891287796322
+          ],
+          [
+            0.07894659612776544,
+            -0.005695606479143987
+          ],
+          [
+            0.10084542477112678,
+            -0.006708993168618989
+          ],
+          [
+            0.10046040365837147,
+            -0.006349289221230599
+          ],
+          [
+            0.09814831476046604,
+            -0.006053220368523262
+          ],
+          [
+            0.09288182816103582,
+            -0.005579067323287421
+          ],
+          [
+            0.08500765151497165,
+            -0.00496516625369634
+          ],
+          [
+            0.07515914263942212,
+            -0.004256188944648252
+          ],
+          [
+            0.062324558612541096,
+            -0.003367380398961866
+          ],
+          [
+            0.041417199099007894,
+            -0.0019512370624219853
+          ],
+          [
+            0.020325775506164108,
+            -0.0005394014416402301
+          ],
+          [
+            0.005288932818805263,
+            0.00045526994050794996
+          ],
+          [
+            -0.010702742262063926,
+            0.0014960351979357957
+          ],
+          [
+            -0.04242511299184029,
+            0.0035023488722615037
+          ]
+        ],
+        "boundary_approximation": true,
+        "region_metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)",
+        "regional_distance_upper": 0.0737258341646967,
+        "exact_extremizer_claimed": false,
+        "original_H_feasibility": {
+          "upper": 5e-324,
+          "enclosure": "0",
+          "disk": 0.0,
+          "chiral": 0.0,
+          "density_residual": 0.0,
+          "tail_support": 0.0,
+          "chiral_norm": "combined-l2",
+          "objective_kind": "target_plane",
+          "scope": "exact saved float64 operator and supplied tail maps; angular quadrature error excluded",
+          "primal_feasible": true,
+          "lower": -5e-324,
+          "minimum_margin_enclosure": "[5.3476917121970957016e-85 +/- 1.50e-105]",
+          "density_norm": 371454.9381150035,
+          "targets": [
+            "[0.07332139056579841135025748 +/- 3.68e-27]",
+            "[-0.004128922666412635915331340 +/- 4.86e-28]"
+          ],
+          "tail_margin_enclosures": []
+        },
+        "model_signature": {
+          "chiral_norm": "combined-l2",
+          "M": 50,
+          "L": 10,
+          "density_limit": 377500.0,
+          "infinity": "free",
+          "unitarity_scope": "sampled",
+          "global_high_spin_enforced": false,
+          "tail_conditions_applied": false,
+          "prescription": "pv-midpoint",
+          "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+          "additional_constraints": null,
+          "sampling_nodes": 50,
+          "scattering_samples": 1500
+        },
+        "regional_geometry_ready": false,
+        "local_upper_boundary_ready": true,
+        "local_upper_boundary": {
+          "distance_upper": 1.396703940637508e-05,
+          "scaled_distance_upper": 0.00698351970318754,
+          "budget": 0.01,
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_078/report.json",
+          "scope": "Arb vertical distance to the true upper boundary at the actual saved x; scaled by epsilon; global region may remain unfinished"
+        }
+      }
+    }
+  ],
+  "reference": null,
+  "selection_uses_phase_data": false,
+  "continuum_certified": false,
+  "model_signature": {
+    "chiral_norm": "combined-l2",
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "free",
+    "unitarity_scope": "sampled",
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": false,
+    "prescription": "pv-midpoint",
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    "additional_constraints": null,
+    "sampling_nodes": 50,
+    "scattering_samples": 1500
+  },
+  "elapsed_seconds": 0.8744482481852174,
+  "prescription": "pv-midpoint",
+  "core_sources": {
+    "__init__.py": "5cb4ff026b180a96fc6867b64b503dead1f35f7a1105bb0a7e47b2f48a1251a4",
+    "analysis.py": "60cf25236f489d42f9bb373ef2da81f06186559726f22e496b869b12122c9711",
+    "figures.py": "2f4da33ad29117c8f6794fe46d989abe786d16e9f1b82ead3d4592abcfd820a7",
+    "gauge.py": "788041f37e7dcafa6bb29c66efbabf1afc1a8c919322f3b43a34418a7d9e2e18",
+    "imaginary.py": "9b35ee496c81a11819b4bdb2c19556a6652bca7573aef69010831be7b2fb1d47",
+    "io.py": "3eda45da6c1fb501bb8295573bf85211b094ba507a7aec5a13766943c0846378",
+    "joint.py": "0920e47ba29a16f5cbf483910bc1ec09b5f00e1c7ab6b873ad81811517dbbf50",
+    "kernels.py": "0d723328b51c696c62ad35fdce459ab59c8f3944a37929ca56461c411f375e67",
+    "linear.py": "d26934ab23b22afe9fc0fbfc142336a357f2db6b53294040e08bec5547bf56cf",
+    "model.py": "fcaa4d246fb328c186bd9a2b14445bb960509d43fb560537c36450a63d1cb992",
+    "operators.py": "7292e7bdbad026fa92e95e41c92f88949c150328a0928daee20ac876e7915e99",
+    "quotient.py": "4344c64a00dc9594fbf08a56b4446aa14a2b8136e2d5fc4f6b9f611709d924fb",
+    "resolution.py": "e0a5d199d2cb0ef6dabe55632ccfcff00fcb74a460924c5651fdecf88d9135e9",
+    "run.py": "a04981771a5382a4dd3ab73c8887445f4ab768fc3070020164ab400e4653eda7",
+    "selection.py": "b8e6a80921e3cdc727e9a6a47c21ed348b85becadc409d8e0802f4aa7e6e76ed"
+  },
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 60.0,
+  "supervisor_seconds": 1.4202938261441886
+}

@@ -1,0 +1,60 @@
+{
+  "schema": "smatrix-imaginary-projection-independent-review-index-v1",
+  "original_directory": "/tmp/imaginary_projection_review",
+  "durable_directory": "results/analytic_source_storage/imaginary_projection_review",
+  "files": [
+    {
+      "relative_path": "check_quotient.json",
+      "original_path": "/tmp/imaginary_projection_review/check_quotient.json",
+      "durable_path": "results/analytic_source_storage/imaginary_projection_review/check_quotient.json",
+      "bytes": 5396,
+      "source_sha256_before": "49ec6fa3e39942e25763cd93c8e13238a33a7ab6ad53dc319fcec0c8ae5db00e",
+      "source_sha256_after": "49ec6fa3e39942e25763cd93c8e13238a33a7ab6ad53dc319fcec0c8ae5db00e",
+      "destination_sha256": "49ec6fa3e39942e25763cd93c8e13238a33a7ab6ad53dc319fcec0c8ae5db00e",
+      "original_retained": true
+    },
+    {
+      "relative_path": "check_quotient.py",
+      "original_path": "/tmp/imaginary_projection_review/check_quotient.py",
+      "durable_path": "results/analytic_source_storage/imaginary_projection_review/check_quotient.py",
+      "bytes": 4315,
+      "source_sha256_before": "dd12f2dff9a7cda1e50d7141d88f3f4252a1e37d4775b1291810f53d43b405a6",
+      "source_sha256_after": "dd12f2dff9a7cda1e50d7141d88f3f4252a1e37d4775b1291810f53d43b405a6",
+      "destination_sha256": "dd12f2dff9a7cda1e50d7141d88f3f4252a1e37d4775b1291810f53d43b405a6",
+      "original_retained": true
+    }
+  ],
+  "source_before_after_and_destination_hashes_all_match": true,
+  "originals_retained": true,
+  "embedded_script_matches_durable_script": true,
+  "source_fixture_path": "/home/shiqiu/s-matrix-bootstrap/tests/test_imaginary_adjoint_inverse.py",
+  "source_fixture_sha256": "eefbbf67e23e756d36bcf4c1091656b60a9f434f6d6d293e57cdb741317faff1",
+  "source_fixture_hash_verified": true,
+  "physical_data_used": false,
+  "nonorthogonal_T": true,
+  "nonunit_physical_scales": true,
+  "dimensions": {
+    "amplitude": 92,
+    "imaginary": 42,
+    "quotient": 50
+  },
+  "exact_matrix_identity_checks": {
+    "reconstruction_composition_equals_projector": true,
+    "quotient_after_reconstruction_is_identity": true,
+    "all_imaginary_rows_annihilated_exactly": true
+  },
+  "transpose_counterexample": {
+    "delta": "1/100",
+    "right_residual_infinity": "10",
+    "actual_transpose_error": "10",
+    "wrong_forward_style_bound": "1/99",
+    "valid_one_norm_bound": "1000/99"
+  },
+  "interval_rhs_counterexample": {
+    "midpoint_only_tail": "0",
+    "required_full_magnitude_tail": "1/99"
+  },
+  "counterexample_rational_inequalities_rechecked": true,
+  "matrix_identity_checks_reexecuted_during_migration": false,
+  "scope": "Byte-preserved previously executed exact M7/L2 review; source/destination hashes and simple rational counterexample inequalities checked again. No new physical projection, inverse, rank calculation or optimizer."
+}

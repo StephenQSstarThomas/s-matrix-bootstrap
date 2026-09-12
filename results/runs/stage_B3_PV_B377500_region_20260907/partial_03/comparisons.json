@@ -1,0 +1,195 @@
+{
+  "regions": [
+    {
+      "mode": "chiral",
+      "epsilon": 0.006,
+      "feasible_points": 2,
+      "outer_closed": false,
+      "max_support_gap": 4.757808958050225e-05,
+      "direction_coverage": {
+        "unique_normals": 2,
+        "angles_degrees": [
+          0.0,
+          180.0
+        ],
+        "largest_gap_degrees": 180.0,
+        "positive_span": false,
+        "domain_half_planes": 1
+      },
+      "computed_min": [
+        0.0,
+        -0.011757752421207147
+      ],
+      "computed_max": [
+        0.1825201798903248,
+        0.0
+      ],
+      "paper_min": [
+        0.002744424854487674,
+        -0.010621989283668578
+      ],
+      "paper_max": [
+        0.1618803574738662,
+        0.001759011304530197
+      ]
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.004,
+      "feasible_points": 2,
+      "outer_closed": false,
+      "max_support_gap": 4.838372205900887e-05,
+      "direction_coverage": {
+        "unique_normals": 2,
+        "angles_degrees": [
+          0.0,
+          180.0
+        ],
+        "largest_gap_degrees": 180.0,
+        "positive_span": false,
+        "domain_half_planes": 1
+      },
+      "computed_min": [
+        0.0,
+        -0.009526834695232142
+      ],
+      "computed_max": [
+        0.14749075580901577,
+        0.0
+      ],
+      "paper_min": [
+        0.0021652405225254636,
+        -0.008271992511563542
+      ],
+      "paper_max": [
+        0.1255951855637415,
+        0.0011780013237101834
+      ]
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.002,
+      "feasible_points": 4,
+      "outer_closed": true,
+      "max_support_gap": 0.005697142509316355,
+      "direction_coverage": {
+        "unique_normals": 4,
+        "angles_degrees": [
+          0.0,
+          86.18592516570965,
+          180.0,
+          266.18592516570965
+        ],
+        "largest_gap_degrees": 93.81407483429038,
+        "positive_span": true,
+        "domain_half_planes": 1
+      },
+      "computed_min": [
+        0.0,
+        -0.006854817981383333
+      ],
+      "computed_max": [
+        0.10588509849925654,
+        0.0
+      ],
+      "paper_min": [
+        0.0014493069079627669,
+        -0.005435966800058552
+      ],
+      "paper_max": [
+        0.08257301276510262,
+        0.000582030231882398
+      ]
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.001,
+      "feasible_points": 2,
+      "outer_closed": false,
+      "max_support_gap": 4.7180390095491465e-05,
+      "direction_coverage": {
+        "unique_normals": 2,
+        "angles_degrees": [
+          0.0,
+          180.0
+        ],
+        "largest_gap_degrees": 180.0,
+        "positive_span": false,
+        "domain_half_planes": 1
+      },
+      "computed_min": [
+        0.0,
+        -0.005216993976238207
+      ],
+      "computed_max": [
+        0.08027466037399904,
+        0.0
+      ],
+      "paper_min": [
+        0.0010146743880986356,
+        -0.003599037138713174
+      ],
+      "paper_max": [
+        0.054782094917098303,
+        0.00027704049979893454
+      ]
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.0002,
+      "feasible_points": 2,
+      "outer_closed": false,
+      "max_support_gap": 5.282977995226673e-05,
+      "direction_coverage": {
+        "unique_normals": 2,
+        "angles_degrees": [
+          0.0,
+          180.0
+        ],
+        "largest_gap_degrees": 180.0,
+        "positive_span": false,
+        "domain_half_planes": 1
+      },
+      "computed_min": [
+        0.0,
+        -0.0035686733478122244
+      ],
+      "computed_max": [
+        0.054467489459640896,
+        0.0
+      ],
+      "paper_min": [
+        0.00037345455146233766,
+        -0.0014869761174045664
+      ],
+      "paper_max": [
+        0.022362576668828744,
+        4.3972272098490995e-05
+      ]
+    }
+  ],
+  "nesting": {
+    "six_chiral_present": false,
+    "contradictions": [],
+    "status": "no_observed_contradiction"
+  },
+  "status": "incomplete",
+  "reference_semantics": "PDF marker centers; finite plotted samples",
+  "reference_points": {
+    "pdf": {
+      "drawing_index": 699,
+      "epsilon": "",
+      "color": "black",
+      "role": "reference_marker",
+      "x": 0.07131334281385134,
+      "y": -0.004754181940087461,
+      "pdf_x": 431.29100036621094,
+      "pdf_y": 313.5449981689453,
+      "pdf_marker_radius": 4.3220062255859375
+    },
+    "formula": {
+      "x": 0.07332139057293466,
+      "y": -0.00488809270486231
+    }
+  }
+}

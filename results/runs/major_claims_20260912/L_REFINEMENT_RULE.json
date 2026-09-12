@@ -1,0 +1,28 @@
+{
+  "purpose": "Check the remaining fixed-M L stability discrepancy under100x tighter requested support tolerance",
+  "configurations": [
+    [
+      50,
+      8
+    ],
+    [
+      50,
+      12
+    ]
+  ],
+  "reference_configuration": "refined_selected/tip (50,10)",
+  "objective": [
+    1,
+    0
+  ],
+  "gap": 1e-06,
+  "require_center": true,
+  "physical_inputs_changed": false,
+  "barrier_weights": [
+    600,
+    900
+  ],
+  "density_limit": 377500,
+  "both_supports_before_new_phase_reading": true,
+  "M45_M60_scope": "Existing centered/verified results retained; their previously observed M spread was already comparable to the paper, not a new scan"
+}

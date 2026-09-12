@@ -1,0 +1,89 @@
+{
+  "violations": [],
+  "high_spin": [
+    {
+      "isospin": 0,
+      "cosine": -1.0
+    },
+    {
+      "isospin": 0,
+      "cosine": -0.8660254037844387
+    },
+    {
+      "isospin": 0,
+      "cosine": -0.4999999999999998
+    },
+    {
+      "isospin": 0,
+      "cosine": 6.123233995736766e-17
+    },
+    {
+      "isospin": 0,
+      "cosine": 0.5000000000000001
+    },
+    {
+      "isospin": 0,
+      "cosine": 0.8660254037844387
+    },
+    {
+      "isospin": 0,
+      "cosine": 1.0
+    },
+    {
+      "isospin": 1,
+      "cosine": -1.0
+    },
+    {
+      "isospin": 1,
+      "cosine": -0.8660254037844387
+    },
+    {
+      "isospin": 1,
+      "cosine": -0.4999999999999998
+    },
+    {
+      "isospin": 1,
+      "cosine": 6.123233995736766e-17
+    },
+    {
+      "isospin": 1,
+      "cosine": 0.5000000000000001
+    },
+    {
+      "isospin": 1,
+      "cosine": 0.8660254037844387
+    },
+    {
+      "isospin": 1,
+      "cosine": 1.0
+    },
+    {
+      "isospin": 2,
+      "cosine": -1.0
+    },
+    {
+      "isospin": 2,
+      "cosine": -0.8660254037844387
+    },
+    {
+      "isospin": 2,
+      "cosine": -0.4999999999999998
+    },
+    {
+      "isospin": 2,
+      "cosine": 6.123233995736766e-17
+    },
+    {
+      "isospin": 2,
+      "cosine": 0.5000000000000001
+    },
+    {
+      "isospin": 2,
+      "cosine": 0.8660254037844387
+    },
+    {
+      "isospin": 2,
+      "cosine": 1.0
+    }
+  ]
+}

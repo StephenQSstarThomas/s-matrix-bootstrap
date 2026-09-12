@@ -1,0 +1,40 @@
+{
+  "schema": "smatrix-universal-export-integrity-v1",
+  "reviews": [
+    {
+      "node_zero_based": 0,
+      "summary": "results/universal_source_N50_j0.json",
+      "summary_sha256": "9eaa89d3663d2beed7338ad96b28f208636b115d19a8dcb38a99fcfc5a64a6d8",
+      "row_archive": "/tmp/universal_source_stage/universal_source_N50_j0.rows.json.gz",
+      "row_archive_sha256": "44c1e87211cbcdb1afc7f7069c60943d401ad6a782560e2490c1371d1b4518bf",
+      "rows": 30,
+      "columns": 3876,
+      "all_dyadic_component_statistics_exactly_match": true,
+      "all_absolute_error_goals_confirmed": true,
+      "exact_zero_component_entries": {
+        "real": 58,
+        "imaginary": 2880
+      }
+    },
+    {
+      "node_zero_based": 49,
+      "summary": "results/universal_source_N50_j49.json",
+      "summary_sha256": "b7f4e86ce71299077915282c7f4e25c20ed6235689e50184420417d064cb2740",
+      "row_archive": "/tmp/universal_source_stage/universal_source_N50_j49.rows.json.gz",
+      "row_archive_sha256": "2bd000a08ed9671147de2d1cda5b1ce1b171fe55dd01cffabc09953acafbd7ee",
+      "rows": 30,
+      "columns": 3876,
+      "all_dyadic_component_statistics_exactly_match": true,
+      "all_absolute_error_goals_confirmed": true,
+      "exact_zero_component_entries": {
+        "real": 58,
+        "imaginary": 2880
+      }
+    }
+  ],
+  "no_quadrature_or_operator_recomputation": true,
+  "arithmetic": "Exact Python Fraction decode of stored dyadic midpoint/radius integers",
+  "script_source_utf8": "\"\"\"Exact dyadic decode/check of the two completed universal source-row exports.\"\"\"\nfrom fractions import Fraction as F\nimport gzip\nimport hashlib\nimport json\nfrom pathlib import Path\n\n\ndef dyadic(record):return F(int(record[0],16))*F(2)**record[1]\n\n\ndef main():\n    records=[]\n    for node in [0,49]:\n        path=Path(f'results/universal_source_N50_j{node}.json');raw=path.read_bytes();report=json.loads(raw)\n        rows_path=Path(report['rows_path'])\n        assert hashlib.sha256(rows_path.read_bytes()).hexdigest()==report['rows_sha256']\n        with gzip.open(rows_path,'rt') as stream:data=json.load(stream)\n        assert len(data['rows'])==30 and len(data['source_basis_labels'])==3876\n        assert sorted(r['canonical_wave_index'] for r in data['rows'])==list(range(30))\n        expected={(r['isospin'],r['ell']):r['accuracy'] for r in report['rows']}\n        zero_counts=[0,0]\n        for row in data['rows']:\n            assert len(row['coefficients'])==3876\n            assert data['canonical_wave_order'][row['canonical_wave_index']]==[row['isospin'],row['ell']]\n            for part,name in enumerate(['exported_real','exported_imaginary']):\n                mids=[];radii=[];zeros=0\n                for z in row['coefficients']:\n                    value=z[part]\n                    if value is None:mid=radius=F(0);zeros+=1\n                    else:mid,radius=map(dyadic,value);assert radius>=0 and (mid!=0 or radius!=0)\n                    mids.append(abs(mid));radii.append(radius)\n                maximum_mid,maximum_radius=max(mids),max(radii)\n                wanted=expected[row['isospin'],row['ell']][name]\n                assert maximum_mid==F(wanted['maximum_absolute_midpoint']['lower_rational'])==F(wanted['maximum_absolute_midpoint']['upper_rational'])\n                assert maximum_radius==F(wanted['maximum_absolute_radius']['lower_rational'])==F(wanted['maximum_absolute_radius']['upper_rational'])\n                assert zeros==wanted['exact_zero_entry_count']\n                assert maximum_radius<F(1,10**80)\n                ratio=wanted['max_radius_over_max_midpoint']\n                if maximum_mid:\n                    assert F(ratio['lower_rational'])<=maximum_radius/maximum_mid<=F(ratio['upper_rational'])\n                elif maximum_radius:assert ratio is None\n                else:assert wanted['all_entries_exactly_zero']\n                zero_counts[part]+=zeros\n        records.append(dict(node_zero_based=node,summary=str(path),summary_sha256=hashlib.sha256(raw).hexdigest(),\n            row_archive=str(rows_path),row_archive_sha256=report['rows_sha256'],\n            rows=30,columns=3876,all_dyadic_component_statistics_exactly_match=True,\n            all_absolute_error_goals_confirmed=True,exact_zero_component_entries=dict(real=zero_counts[0],imaginary=zero_counts[1])))\n        print(json.dumps(records[-1]))\n    script=Path(__file__);result=dict(schema='smatrix-universal-export-integrity-v1',reviews=records,\n        no_quadrature_or_operator_recomputation=True,arithmetic='Exact Python Fraction decode of stored dyadic midpoint/radius integers',\n        script_source_utf8=script.read_text(),script_sha256=hashlib.sha256(script.read_bytes()).hexdigest(),\n        scope='Lossless archive decode and agreement with recorded exported enclosures; analytic enclosure provenance remains in the worker results.')\n    target=Path('results/universal_source_export_integrity.json')\n    if target.exists():raise FileExistsError('Use a new immutable output path')\n    target.write_text(json.dumps(result,indent=2)+'\\n')\n\n\nif __name__=='__main__':main()\n",
+  "script_sha256": "667a7e8885cde45754e88a6f7b2cef26c2553f67462f1ee90fe37bb1a7745a99",
+  "scope": "Lossless archive decode and agreement with recorded exported enclosures; analytic enclosure provenance remains in the worker results."
+}

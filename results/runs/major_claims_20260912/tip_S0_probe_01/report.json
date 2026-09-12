@@ -1,0 +1,187 @@
+{
+  "command": "support-probe",
+  "status": "inconclusive",
+  "artifacts": {},
+  "inputs": {
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907/report.json": {
+      "sha256": "05de7c34b29385da3fb3d8d355839daa582b893fc8218aeafffae7fa90ebf6a0"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz": {
+      "sha256": "49ffd2d9e769bd56917ec6a74b752aa423e7563c2ed1d403ff6b94bf4707a0e5"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/D1_hard_M50/report.json": {
+      "sha256": "00438c6833295939d894d9a0eb7f54803012a3789884dbe80680a2e9b0268dfa"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/D1_hard_M50/current_data.npz": {
+      "sha256": "ff8d5809c68515899780eb4793c4d2bb42dbf95d62fdb805d3b60044d071eac9"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/D1_hard_M50/gram_linear.npz": {
+      "sha256": "5c27a2e40e4cbb45f7ad8e01d8b448dc754229654fe2f3ce0245120e377ac724"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/D1_hard_M50/moment_linear.npz": {
+      "sha256": "04e022b5aed199efc485438b3fb1b52000d9a26f14ef3c4b942383391cbaa0a4"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/D1_hard_M50/ff_cap_linear.npz": {
+      "sha256": "79b38a0cda214c9b0a4aa6645e1271556cef9f13cc1113a9bc49bd42480a2920"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_tip_support_01/coefficients.json": {
+      "sha256": "2fa4f6ba242aebef331c813c650f47ee57d86c4df888c72653ae7f4ff90c9309"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_tip_support_01/report.json": {
+      "sha256": "fac62c2871c57f5398b129f20b753f711312cd5cd4f45045069adb06e808ab39"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_tip_support_01/joint.npz": {
+      "sha256": "29028d0c0d9982d9b21acf0387558a6489470f4daa319389e8921385b8f477d1"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_tip_support_01/current.json": {
+      "sha256": "dc7a6d38c71dfc8b542c79af08677c468597c4bd4a9d8de1a7b9e680c1e88feb"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_tip_support_01/barrier_state.npz": {
+      "sha256": "aea36eadc448175f5c5483fc1558195d887e8c1aa8fad1d85db961c415611541"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/tip_refine_01/report.json": {
+      "sha256": "936d8da63437487bc7a57bd1201e3a071ef181aa0245230a6b61ae999f30080c"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/tip_refine_01/coefficients.json": {
+      "sha256": "8f972fcc2c5ab6704d51d538575d81bd0dc9c9fedd36d9d3dbb7e1e192dbeb57"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/tip_refine_01/joint.npz": {
+      "sha256": "a0c6630e67a927861e37694c4f8f8b16bb46fc3ddaed760656bb0a479cf280d2"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/tip_refine_01/current.json": {
+      "sha256": "fdb21cabb1ebb0d9adee6a06e1db6d7f3ef0545c71bf2a0f98e52ce9c906106c"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/tip_refine_01/barrier_state.npz": {
+      "sha256": "7b4158b07fd95cb850af2481c1806be2131f074521284236ef7faefcb48f6b96"
+    }
+  },
+  "parameters": {
+    "command": "support-probe",
+    "comparison_manifest": null,
+    "region_summary": "results/runs/stage_B_delivery_20260907/regions/regions.json",
+    "primary_waves": false,
+    "profile_runs": [],
+    "profile_kind": "subthreshold",
+    "phase_reference": null,
+    "baseline_profile": null,
+    "selection_reference": null,
+    "support_runs": [],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/tip_S0_probe_01",
+    "density_limit": 377500.0,
+    "preparation": "results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    "prescription": "pv-midpoint",
+    "source_registry": null,
+    "solver": "barrier",
+    "unitarity_scope": "sampled",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "current_preparation": "results/runs/mainline_alignment_20260909/D1_hard_M50",
+    "joint_feasibility": false,
+    "fixed_amplitude": false,
+    "solver_seconds": 900.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.0004,
+    "unit_newton_step": false,
+    "gap": 0.002,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 768,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "free",
+    "asymptotic_zeros": false,
+    "asymptotic_unitarity": false,
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": "results/runs/physical_consistency_20260911/PV_tip_support_01/coefficients.json",
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "gauge",
+    "chiral_tolerance": 0.002,
+    "chiral_norm": "separate-l2",
+    "chiral_barrier_weight": 750.0,
+    "objective": "projection",
+    "resume_objective": false,
+    "probe_anchor": "results/runs/major_claims_20260912/tip_refine_01/report.json",
+    "probe_node": 42,
+    "probe_wave": "S0",
+    "probe_component": "real",
+    "probe_sign": -1,
+    "probe_budget": 0.02,
+    "probe_audit_only": false,
+    "require_center": false,
+    "direction": [
+      0.0,
+      0.0
+    ],
+    "fixed_x": null,
+    "ray": false,
+    "seconds": 1200.0,
+    "start_mu_provenance": {
+      "kind": "explicit"
+    }
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "8"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Finite model; regions/phases require verification.",
+  "error": "Joint direction failed actual barrier descent",
+  "exception_type": "ArithmeticError",
+  "elapsed_seconds": 152.48818410886452,
+  "prescription": "pv-midpoint",
+  "core_sources": {
+    "__init__.py": "eab9d89f9c5aec186369fb48cef62f20db87a20a16512f8c8a6e7349a2a4473a",
+    "analysis.py": "91e1d1bf0013a8ac4030112a3191a32daed7641b391180a97c10a16e1b57c606",
+    "analytic.py": "f7b6ffb9bd6b520f00dec8653ff0864da6fe46eaa0ed5814bef7bd3c5c22a727",
+    "basis.py": "5eda7c08a5cea679958b47980c9972ada51358f6352698d8db10db91bd5abec3",
+    "certificates.py": "72314f97c4039bf52c42cba9fc5d4164973595f7d57f37737080a8ab3b56ffe6",
+    "conic.py": "750741dbe9b45584c24176cbdeb2cfafc585361d5b23cff5d79a501a247abf01",
+    "endpoints.py": "6b4dacd438e750ca61f285744cc0a152d16e3090581e22c77962f23b867005db",
+    "gauge.py": "ad822bb6461cbe93f459d8df85cc209d962904a6a9a926c30bad4f8bbbdc628e",
+    "imaginary.py": "9ad338b253d2941310401d245a24cba4ab546926e5c9c630f80c7bd647c1828c",
+    "io.py": "d8979a98b7e22474c108e0d5dbc52a0378aeaaac94f9e93b89dab6195fe7682e",
+    "ir.py": "bd6fb3d54b523cbf266da65f677e9364c1393aaae0f29f114bd315e60c6e5c17",
+    "kernels.py": "790ebcdba291c80f17c4909a31ddf77ad6373748c2af41c7ce1a0c28b309172a",
+    "linear.py": "0930793ae7afd139ee2c41c535c183c5b876e1f494a2202d9dbc1cd5ff1d031b",
+    "model.py": "d22b29d80da5300ab2c4305c514c00f57f62bbcff8c3b802df565429872f5c39",
+    "operators.py": "ced094909dcad6d0dcd083ca54990bdecabf3e85e11c06e3f01b8dd6143a17a8",
+    "probes.py": "142e2a13109cbea04356be175cd7125412c2c13c73d698379739ab78ff4510a7",
+    "quadrature.py": "7ec2a6b9336cd6035db06fdf8a028368ccd22e4d106cc5e16900c878b8d40fad",
+    "quotient.py": "32b669bec9e0b9af1c21bf464f2806411cdca87fffa6ff0593d7bb77dd3428e9",
+    "run.py": "d4e3a7a8d9e7512cf6b8dc95860d027f781171576320a1010d781fd741c64b60",
+    "sampling.py": "1721242b79f55cc44cfd6667cd21f49e6a51c888263e4ca623b97383a340f4c9",
+    "scattering.py": "23f5b856a9e14d19b1f085f52aac4508e0bdb5bd3ce166ee2621a3bc779621b7",
+    "spectra.py": "10b7bc464cb216b00674c95fa4d1218543a7f8737a0707b20ea7e2b55d53de95"
+  },
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 1200.0,
+  "supervisor_seconds": 153.4228633181192
+}

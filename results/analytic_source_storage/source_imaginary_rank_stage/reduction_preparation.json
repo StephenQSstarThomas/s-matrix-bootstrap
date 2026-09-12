@@ -1,0 +1,175 @@
+{
+  "schema": "smatrix-450-imaginary-rank-reduction-preparation-v1",
+  "synthetic_cases": [
+    {
+      "reciprocal_pair": false,
+      "full_operator_shape": [
+        77,
+        7
+      ],
+      "rank": 7,
+      "exact_zero_rows": [
+        1,
+        2,
+        3,
+        9,
+        10,
+        11,
+        17,
+        18,
+        19,
+        25,
+        26,
+        27,
+        33,
+        34,
+        28,
+        41,
+        35,
+        36,
+        42,
+        43,
+        44
+      ],
+      "physical_master_values_used": false,
+      "source_analogue_imaginary_rank": 42,
+      "direct_recovery_matches_row_factory": true
+    },
+    {
+      "reciprocal_pair": true,
+      "full_operator_shape": [
+        77,
+        7
+      ],
+      "rank": 6,
+      "exact_zero_rows": [
+        1,
+        2,
+        3,
+        7,
+        10,
+        11,
+        17,
+        18,
+        19,
+        25,
+        26,
+        27,
+        33,
+        34,
+        28,
+        41,
+        35,
+        36,
+        42,
+        43,
+        44
+      ],
+      "physical_master_values_used": false,
+      "source_analogue_imaginary_rank": 41,
+      "direct_recovery_matches_row_factory": true
+    }
+  ],
+  "exact_source_dimensions": {
+    "M": 50,
+    "even_dimension": 9,
+    "odd_dimension": 10,
+    "unknowns": 450,
+    "membership_rows": 2500,
+    "symmetry_rows": 1275,
+    "full_rows": 3775,
+    "proved_zero_membership_rows": 950,
+    "active_rows": 2825
+  },
+  "exact_rank_identity": "rank(ImG)=1050+rank(F); dimkerF equals the complete imaginary left-null dimension",
+  "fixed_local_minor": {
+    "monomial_powers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "spin_order": [
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18,
+      1,
+      3,
+      5,
+      7,
+      9,
+      11,
+      13,
+      15,
+      17,
+      19
+    ],
+    "proof": "Positive two-Vandermonde determinant integral including constantrow/column, followed by exact J_l0=delta_l0/2 reduction",
+    "normalized_determinant_lower_bound": "s^-95*C19 for columnnormalized J_l,n/k^n",
+    "C19": "2722258935367507707706996859454145691648/25079366915348069470429397353486312257626855916104055816817483725657432428712160976891218940280092525482177734375",
+    "normalized_inverse_infinity_upper": "19*(9/2)^9/(s^-95*C19)",
+    "original_inverse_extra_factor": "k^-19; physical2pi beta normalization adds its inverse factor",
+    "local_numerical_row_selection_required": false
+  },
+  "proposed_physical_preparation": {
+    "started": false,
+    "working_bits": 4096,
+    "export_bits": 4096,
+    "source_nodes": "Exact4/cos_pi((2j+1)/200)^2, j0..49",
+    "source_phase": "Exactsin_pi((2j+1)n/100), all50modes includingexactNyquist",
+    "J_generation": "ElementaryK0 r=-38..50, exact shiftedbinomial andLegendreLaurent combinations; ell1..19,n1..50; zeroquadrature",
+    "local_inverse": "One fixed19\u00d719 monomialminor pernode, dyadicrownormalization near k^-n, defaultvalidated Arb inverse",
+    "total_worker_cap_seconds": 180,
+    "automatic_precision_retry": false,
+    "storage_directory": "/tmp/source_imaginary_rank_stage",
+    "home_large_outputs": false
+  },
+  "proposed_rank_certificate": {
+    "started": false,
+    "requires_review_of_physical_factor_artifact_first": true,
+    "first_attempt": "Select450rows numerically from the complete2825active-row operator after explicit dyadic row/column scalings; then enclose the TRUE450-square minor at4096bits and validateits inverse",
+    "factorization_cap_seconds": 180,
+    "automatic_row_or_precision_retry": false,
+    "complete_operator_definition_retained": true,
+    "alternatives_not_yet_authorized": [
+      "All-row approximateleftinverseY with outward||I\u2212YF||inf<1",
+      "All-rowprewhitenedGram, retaining correctrowweights"
+    ]
+  },
+  "no_physical_master_evaluation_performed": true,
+  "no_large_factorization_performed": true,
+  "optimizer_run_performed": false,
+  "source_snapshot_utf8": {
+    "/home/shiqiu/s-matrix-bootstrap/scripts/prepare_imaginary_rank_reduction.py": "\"\"\"Small exact reduction checks and a physical-calculation proposal; no large job.\"\"\"\nimport argparse\nfrom fractions import Fraction as F\nimport hashlib\nimport json\nfrom math import comb\nfrom pathlib import Path\nimport time\n\nfrom smatrix_bootstrap.imaginary_rank_residual import ImaginaryRankResidual\n\n\ndef main():\n    from flint import fmpq_mat\n    p=argparse.ArgumentParser(description=__doc__)\n    p.add_argument('--directory',type=Path,default=Path('/tmp/source_imaginary_rank_stage'))\n    args=p.parse_args();args.directory.mkdir(parents=True,exist_ok=True,mode=0o700)\n    output=args.directory/'reduction_preparation.json'\n    if output.exists():raise FileExistsError('Preparation records are immutable')\n    start=time.monotonic();cases=[]\n    for reciprocal in [False,True]:\n        M=7;T=fmpq_mat(M,M,[int(i==j) for i in range(M) for j in range(M)]);J=[];selectors=[]\n        for j in range(M):\n            indices=[0 if reciprocal and j==1 else (j+1)%M,(j+2)%M,(j+3)%M]\n            J.append(fmpq_mat(M,3,[int(i==indices[k]) for i in range(M) for k in range(3)]));selectors.append(indices)\n        model=ImaginaryRankResidual(J,T,1,selectors);operator=model.matrix();rank=operator.rank()\n        if rank!=(6 if reciprocal else 7):raise ArithmeticError('Synthetic reduction rank mismatch')\n        alpha=fmpq_mat(M,1,[1,-1,0,0,0,0,0]);recovered=model.recover(alpha)\n        if operator*alpha!=recovered['residual_vector']:raise ArithmeticError('Row factory differs from direct recovery')\n        cases.append(dict(reciprocal_pair=reciprocal,full_operator_shape=[model.rows,model.columns],rank=rank,\n            exact_zero_rows=model.exact_zero_rows,physical_master_values_used=False,\n            source_analogue_imaginary_rank=35+rank,direct_recovery_matches_row_factory=True))\n    r=19;constant=F(1)\n    for ell in range(1,r+1):constant/=2*(2*ell+1)*F(comb(2*ell,ell),2**ell)\n    paths=[Path(__file__),Path('src/smatrix_bootstrap/imaginary_rank_residual.py'),Path('tests/test_imaginary_rank_residual.py')]\n    sources={str(path):path.read_text() for path in paths}\n    report=dict(schema='smatrix-450-imaginary-rank-reduction-preparation-v1',synthetic_cases=cases,\n        exact_source_dimensions=dict(M=50,even_dimension=9,odd_dimension=10,unknowns=450,\n            membership_rows=2500,symmetry_rows=1275,full_rows=3775,proved_zero_membership_rows=950,active_rows=2825),\n        exact_rank_identity='rank(ImG)=1050+rank(F); dimkerF equals the complete imaginary left-null dimension',\n        fixed_local_minor=dict(monomial_powers=list(range(1,20)),spin_order=list(range(2,20,2))+list(range(1,20,2)),\n            proof='Positive two-Vandermonde determinant integral including constantrow/column, followed by exact J_l0=delta_l0/2 reduction',\n            normalized_determinant_lower_bound='s^-95*C19 for columnnormalized J_l,n/k^n',C19=str(constant),\n            normalized_inverse_infinity_upper='19*(9/2)^9/(s^-95*C19)',\n            original_inverse_extra_factor='k^-19; physical2pi beta normalization adds its inverse factor',\n            local_numerical_row_selection_required=False),\n        proposed_physical_preparation=dict(started=False,working_bits=4096,export_bits=4096,\n            source_nodes='Exact4/cos_pi((2j+1)/200)^2, j0..49',\n            source_phase='Exactsin_pi((2j+1)n/100), all50modes includingexactNyquist',\n            J_generation='ElementaryK0 r=-38..50, exact shiftedbinomial andLegendreLaurent combinations; ell1..19,n1..50; zeroquadrature',\n            local_inverse='One fixed19\u00d719 monomialminor pernode, dyadicrownormalization near k^-n, defaultvalidated Arb inverse',\n            total_worker_cap_seconds=180,automatic_precision_retry=False,\n            storage_directory=str(args.directory),home_large_outputs=False),\n        proposed_rank_certificate=dict(started=False,requires_review_of_physical_factor_artifact_first=True,\n            first_attempt='Select450rows numerically from the complete2825active-row operator after explicit dyadic row/column scalings; then enclose the TRUE450-square minor at4096bits and validateits inverse',\n            factorization_cap_seconds=180,automatic_row_or_precision_retry=False,\n            complete_operator_definition_retained=True,\n            alternatives_not_yet_authorized=['All-row approximateleftinverseY with outward||I\u2212YF||inf<1','All-rowprewhitenedGram, retaining correctrowweights']),\n        no_physical_master_evaluation_performed=True,no_large_factorization_performed=True,optimizer_run_performed=False,\n        source_snapshot_utf8=sources,source_sha256={name:hashlib.sha256(text.encode()).hexdigest() for name,text in sources.items()},\n        elapsed_seconds=time.monotonic()-start,\n        scope='Exact reduction/proposal and small synthetic validation only. Full analytic imaginary rank and complete analytic target rank remain unresolved.')\n    output.write_text(json.dumps(report,indent=2)+'\\n')\n    print(json.dumps(dict(output=str(output),cases=cases,physical_job_started=False,elapsed_seconds=report['elapsed_seconds']),indent=2))\n\n\nif __name__=='__main__':main()\n",
+    "src/smatrix_bootstrap/imaginary_rank_residual.py": "\"\"\"Exact/validated450-variable reduction of the source imaginary left-null system.\n\nMatrix arguments use a common FLINT fmpq_mat or arb_mat backend. The inverse\nis DEFINED from an actual selected master minor. No approximate left inverse\nor orthogonal-projector assumption is accepted.\n\"\"\"\n\n\ndef _matrix_like(reference,rows,cols,entries=None):\n    cls=type(reference)\n    return cls(rows,cols) if entries is None else cls(rows,cols,entries)\n\n\ndef _identity(reference,size):\n    return _matrix_like(reference,size,size,[int(i==j) for i in range(size) for j in range(size)])\n\n\ndef _columns(matrix,start,stop):\n    return _matrix_like(matrix,matrix.nrows(),stop-start,\n        [matrix[i,j] for i in range(matrix.nrows()) for j in range(start,stop)])\n\n\nclass ImaginaryRankResidual:\n    \"\"\"Construct the COMPLETE residual map from untransformed J columns.\n\n    master_blocks[j] is50\u00d719 with column order even2..18, odd1..19.\n    T is the exact sine matrix. selector_rows[j] selects19 monomial rows;\n    source choice0..18 corresponds to powers1..19. All50 transformed\n    membership rows are retained, including19 algebraically exact zeros.\n    \"\"\"\n    def __init__(self,master_blocks,T,even_count,selector_rows=None,selector_row_powers=None):\n        self.J=list(master_blocks);self.T=T;self.M=T.nrows();self.e=int(even_count)\n        if T.ncols()!=self.M or len(self.J)!=self.M:raise ValueError('Square phase matrix and one master block per source node required')\n        if not self.J:raise ValueError('Nonempty master blocks required')\n        self.r=self.J[0].ncols();self.o=self.r-self.e\n        if not 0<self.e<self.r<=self.M:raise ValueError('Nonempty even/odd columns with independent local capacity required')\n        if any(type(J)!=type(T) or J.nrows()!=self.M or J.ncols()!=self.r for J in self.J):\n            raise ValueError('All master blocks must have matching backend and dimensions')\n        self.selectors=([list(range(self.r)) for _ in self.J] if selector_rows is None else [list(v) for v in selector_rows])\n        self.powers=([[0]*self.r for _ in self.J] if selector_row_powers is None else [list(v) for v in selector_row_powers])\n        if len(self.selectors)!=self.M or len(self.powers)!=self.M:raise ValueError('One selector/scaling record per node required')\n        for rows,powers in zip(self.selectors,self.powers):\n            if len(rows)!=self.r or len(set(rows))!=self.r or any(not isinstance(i,int) or not 0<=i<self.M for i in rows):\n                raise ValueError('Every selector must contain exactlyr distinct valid monomial rows')\n            if len(powers)!=self.r or any(not isinstance(i,int) for i in powers):raise ValueError('Integer dyadic row exponents required')\n        self.TT=T.transpose();self.TinvT=self.TT.inv();self.A=[];self.E=[];self.O=[]\n        self.membership=[];self.signed=[];self.inverse_checks=[]\n        eye=_identity(T,self.M);zero=T[0,0]*0;one=zero+1\n        for node,(J,rows,powers) in enumerate(zip(self.J,self.selectors,self.powers)):\n            # D is exactdyadic. A=(D S J)^-1 D S has the same exact left\n            # inverse definition as(SJ)^-1S; D only conditions this inversion.\n            scales=[one*(1<<p) if p>=0 else one/(1<<(-p)) for p in powers]\n            minor=_matrix_like(T,self.r,self.r,[scales[i]*J[row,k] for i,row in enumerate(rows) for k in range(self.r)])\n            inverse=minor.inv() # fmpq exact; Arb defaultvalidated, neverapprox.\n            A=_matrix_like(T,self.r,self.M)\n            for i in range(self.r):\n                for k,row in enumerate(rows):A[i,row]=inverse[i,k]*scales[k]\n            check=A*J\n            good=all((check[i,k].contains(int(i==k)) if hasattr(check[i,k],'contains') else check[i,k]==int(i==k))\n                for i in range(self.r) for k in range(self.r))\n            if not good:raise ArithmeticError('Local inverse product sanity check failed')\n            W=self.TinvT*J;E=_columns(W,0,self.e);O=_columns(W,self.e,self.r)\n            membership=(eye-J*A)*self.TT\n            # These rows vanish by S(I\u2212J(SJ)^-1S)=0. They are exact\n            # identities, not rounded residuals selected by a threshold.\n            for row in rows:\n                for k in range(self.M):membership[row,k]=zero\n            signedW=_matrix_like(T,self.M,self.r,\n                [W[i,k] if k<self.e else -W[i,k] for i in range(self.M) for k in range(self.r)])\n            signed=signedW*A*self.TT\n            self.A.append(A);self.E.append(E);self.O.append(O);self.membership.append(membership);self.signed.append(signed)\n            self.inverse_checks.append(dict(node=node,selector_rows=rows,dyadic_row_powers=powers,\n                inverse_defined_from_selected_minor=True,product_identity_enclosed_or_exact=True))\n        self.sym_pairs=[(i,j) for i in range(self.M) for j in range(i,self.M)]\n        self.columns=self.M*self.e;self.rows=self.M*self.M+len(self.sym_pairs)\n        self.exact_zero_rows=[j*self.M+i for j,rows in enumerate(self.selectors) for i in rows]\n        self.metadata=dict(source_node_count=self.M,even_dimension=self.e,odd_dimension=self.o,\n            unknown_count=self.columns,full_residual_row_count=self.rows,\n            exactly_zero_membership_rows=self.exact_zero_rows,active_row_count=self.rows-len(self.exact_zero_rows),\n            membership='(I\u2212J_j A_j) T^T P^T[:,j], retaining allM rows',\n            left_inverse='A_j=(D_j S_j J_j)^\u22121 D_j S_j; L_j=A_j T^T, hence L_j(T^\u2212T J_j)=I',\n            symmetry='Uppertriangle entries ofSym(Q\u2212R), unweighted; offdiagonals include1/2, notsqrt2',\n            transpose='Ordinary transpose in original congruence P/Q/R coordinates',\n            variable_order='node-major even weights; alpha[j*even_dimension+a]',\n            approximate_left_inverse_used_as_model=False,numerical_rank_truncation=False)\n\n    def row(self,index):\n        \"\"\"Assemble one exact/enclosed row without constructing the whole map.\"\"\"\n        if not isinstance(index,int) or not 0<=index<self.rows:raise ValueError('Residual row index out of range')\n        if index<self.M*self.M:\n            node,component=divmod(index,self.M)\n            return [self.membership[node][component,k]*self.E[k][node,a]\n                    for k in range(self.M) for a in range(self.e)]\n        i,j=self.sym_pairs[index-self.M*self.M]\n        if i==j:\n            return [-3*self.signed[j][j,k]*self.E[k][j,a]\n                    for k in range(self.M) for a in range(self.e)]\n        return [-3*(self.signed[j][i,k]*self.E[k][j,a]+self.signed[i][j,k]*self.E[k][i,a])/2\n                for k in range(self.M) for a in range(self.e)]\n\n    def matrix(self,row_indices=None):\n        \"\"\"Materialize requested rows; selecting a minor never changes fullmap.\"\"\"\n        indices=list(range(self.rows)) if row_indices is None else list(row_indices)\n        return _matrix_like(self.T,len(indices),self.columns,[v for i in indices for v in self.row(i)])\n\n    def recover(self,alpha):\n        \"\"\"Recover P,Q,R and every full residual for one candidate alpha.\"\"\"\n        if alpha.nrows()!=self.columns or alpha.ncols()!=1 or type(alpha)!=type(self.T):\n            raise ValueError('A matching backend column of all even weights is required')\n        P=_matrix_like(self.T,self.M,self.M);Q=_matrix_like(self.T,self.M,self.M);R=_matrix_like(self.T,self.M,self.M)\n        residual=_matrix_like(self.T,self.M,self.M);weights=[];zero=self.T[0,0]*0\n        for j in range(self.M):\n            a=_matrix_like(self.T,self.e,1,[alpha[j*self.e+k,0] for k in range(self.e)])\n            column=self.E[j]*a\n            for i in range(self.M):P[i,j]=column[i,0]\n        for j in range(self.M):\n            t=_matrix_like(self.T,self.M,1,[P[j,i] for i in range(self.M)])\n            z=self.A[j]*self.TT*t\n            even=_matrix_like(self.T,self.e,1,[-3*z[k,0] for k in range(self.e)])\n            odd=_matrix_like(self.T,self.o,1,[-3*z[self.e+k,0] for k in range(self.o)])\n            qc=self.E[j]*even;rc=self.O[j]*odd;res=self.membership[j]*t\n            for i in range(self.M):Q[i,j]=qc[i,0];R[i,j]=rc[i,0];residual[i,j]=res[i,0]\n            for i in self.selectors[j]:residual[i,j]=zero\n            weights.append((even,odd))\n        S=(Q-R+(Q-R).transpose())/2\n        vector=_matrix_like(self.T,self.rows,1,\n            [residual[i,j] for j in range(self.M) for i in range(self.M)]+[S[i,j] for i,j in self.sym_pairs])\n        return dict(P=P,Q=Q,R=R,membership=residual,symmetry=S,residual_vector=vector,recovered_weights=weights)\n",
+    "tests/test_imaginary_rank_residual.py": "import pytest\n\nflint=pytest.importorskip('flint')\nfrom flint import arb_mat,fmpq_mat\n\nfrom smatrix_bootstrap.imaginary_rank_residual import ImaginaryRankResidual\n\n\ndef fixture(reciprocal=False,nonorthogonal=False):\n    M=7;T=fmpq_mat(M,M,[int(i==j)+(int(j==i+1) if nonorthogonal else 0) for i in range(M) for j in range(M)])\n    blocks=[];selectors=[]\n    for j in range(M):\n        indices=[0 if reciprocal and j==1 else (j+1)%M,(j+2)%M,(j+3)%M]\n        W=fmpq_mat(M,3,[int(i==indices[k]) for i in range(M) for k in range(3)])\n        blocks.append(T.transpose()*W);selectors.append(indices)\n    return ImaginaryRankResidual(blocks,T,1,selectors)\n\n\ndef full_IS7_matrix(op):\n    M,e,o=op.M,op.e,op.o;unknowns=M*(2*e+o);columns=[]\n    for index in range(unknowns):\n        node,local=divmod(index,2*e+o);P=fmpq_mat(M,M);Q=fmpq_mat(M,M);R=fmpq_mat(M,M)\n        matrix,basis,coordinate=(P,op.E[node],local) if local<e else (\n            (Q,op.E[node],local-e) if local<2*e else (R,op.O[node],local-2*e))\n        for i in range(M):matrix[i,node]=basis[i,coordinate]\n        A=3*P.transpose()+Q+R;H=(Q-R+(Q-R).transpose())/2\n        columns.append([A[i,j] for j in range(M) for i in range(M)]+[H[i,j] for i in range(M) for j in range(i,M)])\n    return fmpq_mat(op.rows,unknowns,[columns[j][i] for i in range(op.rows) for j in range(unknowns)])\n\n\n@pytest.mark.parametrize('reciprocal,rank',[(False,7),(True,6)])\ndef test_complete_residual_kernel_matches_original_IS7(reciprocal,rank):\n    op=fixture(reciprocal);F=op.matrix();original=full_IS7_matrix(op)\n    assert (op.rows,op.columns)==(77,7) and F.rank()==rank\n    assert original.ncols()-original.rank()==op.columns-F.rank()\n    assert len(op.exact_zero_rows)==21\n    assert all(F[i,j]==0 for i in op.exact_zero_rows for j in range(op.columns))\n    active=[i for i in range(op.rows) if i not in op.exact_zero_rows]\n    assert op.matrix(active).rank()==rank\n    assert 35+F.rank()==(41 if reciprocal else 42)\n\n\ndef test_skew_kernel_reconstructs_all_original_coefficients():\n    op=fixture(True);alpha=fmpq_mat(7,1,[1,-1,0,0,0,0,0]);r=op.recover(alpha)\n    assert op.matrix()*alpha==r['residual_vector']==fmpq_mat(op.rows,1)\n    assert r['Q']==3*r['P'] and r['R']==fmpq_mat(7,7)\n    assert r['P']+r['P'].transpose()==fmpq_mat(7,7) and r['P']!=fmpq_mat(7,7)\n\n\ndef test_nonorthogonal_phase_transform_keeps_ordinary_transpose_and_all_rows():\n    op=fixture(True,True);alpha=fmpq_mat(7,1,[1,2,-1,3,0,-2,1]);r=op.recover(alpha)\n    assert op.matrix()*alpha==r['residual_vector']\n    assert 3*r['P'].transpose()+r['Q']+r['R']==3*op.TinvT*r['membership']\n    assert r['symmetry']==(r['Q']-r['R']+(r['Q']-r['R']).transpose())/2\n    assert op.matrix().rank()==6\n\n\ndef test_exact_left_inverse_choice_and_dyadic_conditioning_preserve_kernel():\n    T=fmpq_mat(3,3,[1,0,0,0,1,0,0,0,1]);J=fmpq_mat([[1,0],[1,1],[0,1]])\n    a=ImaginaryRankResidual([J]*3,T,1,[[0,2]]*3)\n    b=ImaginaryRankResidual([J]*3,T,1,[[0,1]]*3)\n    c=ImaginaryRankResidual([J]*3,T,1,[[0,2]]*3,[[7,-4]]*3)\n    A,B=a.matrix(),b.matrix()\n    joined=fmpq_mat(A.nrows()+B.nrows(),A.ncols(),list(A.entries())+list(B.entries()))\n    assert A.rank()==B.rank()==joined.rank()\n    assert A==c.matrix()\n    with pytest.raises(ValueError,match='distinct'):\n        ImaginaryRankResidual([J]*3,T,1,[[0,0]]*3)\n\n\ndef test_Arb_backend_encloses_exact_small_residual_operator():\n    exact=fixture(True);T=arb_mat(exact.T.tolist());blocks=[arb_mat(J.tolist()) for J in exact.J]\n    enclosed=ImaginaryRankResidual(blocks,T,1,exact.selectors)\n    F=exact.matrix();B=enclosed.matrix()\n    assert all(B[i,j].contains(F[i,j]) for i in range(F.nrows()) for j in range(F.ncols()))\n    assert all(B[i,j].is_zero() for i in enclosed.exact_zero_rows for j in range(enclosed.columns))\n\n\n@pytest.mark.parametrize('nonlinear',[False,True])\ndef test_fixed_monomial_minor_and_Vandermonde_lower_bound(nonlinear):\n    import sympy as s\n    x=s.Symbol('x');r=3;X=(x-1)/2+((x*x-1)/8 if nonlinear else 0)\n    full=s.Matrix([[s.integrate(s.legendre(ell,x)*X**n,(x,-1,1))/4\n                    for n in range(r+1)] for ell in range(r+1)])\n    minor=full[1:,1:]\n    C=s.prod(1/(2*(2*ell+1)*s.LC(s.Poly(s.legendre(ell,x),x))) for ell in range(1,r+1))\n    slope=s.Rational(1,4) if nonlinear else s.Rational(1,2)\n    bound=slope**(r*(r+1)//2)*C\n    assert minor.det()==2*full.det()>0\n    assert minor.det()>=bound\n    if not nonlinear:assert minor.det()==bound\n"
+  },
+  "source_sha256": {
+    "/home/shiqiu/s-matrix-bootstrap/scripts/prepare_imaginary_rank_reduction.py": "588650b2b820620233bcf8061ac0ee7a68502d6513c7819ee85d4c1b44e334a9",
+    "src/smatrix_bootstrap/imaginary_rank_residual.py": "bfd4bee96d37f28871acc67460c6215fcfb53d75ec6e48149c0efb4b2fba73bc",
+    "tests/test_imaginary_rank_residual.py": "f16a9ccf1bce58cbf3a398d61ce4fdb57211a2a2f4eafd52d287b6928e10f7a9"
+  },
+  "elapsed_seconds": 0.0032128109596669674,
+  "scope": "Exact reduction/proposal and small synthetic validation only. Full analytic imaginary rank and complete analytic target rank remain unresolved."
+}

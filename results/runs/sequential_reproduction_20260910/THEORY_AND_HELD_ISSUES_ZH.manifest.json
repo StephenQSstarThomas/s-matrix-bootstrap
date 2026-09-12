@@ -1,0 +1,168 @@
+{
+  "task": "Formatting only; source texts unmodified; no added physical claims",
+  "input_files": {
+    "DERIVATION_ZH.md": "def3e93941826f16f1329dfd0c93e15d2e8276ef74e51f0866f4c435dd52e4a0",
+    "HELD_INTER_NODE_ISSUE_ZH.md": "a9ae3bc5f23631caefc4c4f5d950290b7fad8dc104f930b64df9164bc3b78c1f"
+  },
+  "commands": [
+    [
+      "/tmp/he_report_pandoc/pandoc",
+      "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/THEORY_AND_HELD_ISSUES_ZH.md",
+      "--from",
+      "markdown+tex_math_single_backslash",
+      "--standalone",
+      "--to",
+      "latex",
+      "--toc",
+      "--toc-depth=2",
+      "--include-in-header",
+      "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/THEORY_AND_HELD_ISSUES_ZH.header.tex",
+      "-V",
+      "mainfont=DejaVu Serif",
+      "-V",
+      "sansfont=DejaVu Sans",
+      "-V",
+      "monofont=DejaVu Sans Mono",
+      "-V",
+      "papersize=a4",
+      "-V",
+      "fontsize=11pt",
+      "-V",
+      "geometry:margin=20mm",
+      "-V",
+      "colorlinks=true",
+      "-o",
+      "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/THEORY_AND_HELD_ISSUES_ZH.tex"
+    ],
+    [
+      "/home/shiqiu/.local/bin/tectonic",
+      "--keep-logs",
+      "--keep-intermediates",
+      "THEORY_AND_HELD_ISSUES_ZH.tex"
+    ],
+    [
+      "/home/shiqiu/.local/bin/tectonic",
+      "--keep-logs",
+      "--keep-intermediates",
+      "THEORY_AND_HELD_ISSUES_ZH.tex"
+    ],
+    [
+      "pdfinfo",
+      "THEORY_AND_HELD_ISSUES_ZH.pdf"
+    ],
+    [
+      "pdftotext",
+      "-layout",
+      "THEORY_AND_HELD_ISSUES_ZH.pdf",
+      "THEORY_AND_HELD_ISSUES_ZH.extracted.txt"
+    ],
+    [
+      "pdftoppm",
+      "-r",
+      "85",
+      "-png",
+      "THEORY_AND_HELD_ISSUES_ZH.pdf",
+      "/tmp/theory_and_held_qa/page"
+    ]
+  ],
+  "working_directory": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910",
+  "outputs": {
+    "THEORY_AND_HELD_ISSUES_ZH.pdf": {
+      "sha256": "4e5bb2ec012e1945c51eb717d56f6ab0208e5ab28432c6f69893da4d2daa93df",
+      "bytes": 185905
+    },
+    "THEORY_AND_HELD_ISSUES_ZH.md": {
+      "sha256": "7e36d3e39b123f797fa1230c7916c3ef06b9431900f394d6d7b56e9635805b8f",
+      "bytes": 25337
+    },
+    "THEORY_AND_HELD_ISSUES_ZH.tex": {
+      "sha256": "8f374abda163237c37bc15884176b42401f42e745a91bcbfeafc9d808e0df8de",
+      "bytes": 31576
+    },
+    "THEORY_AND_HELD_ISSUES_ZH.header.tex": {
+      "sha256": "36ea443c56577f743a6fed1f26ff42886eba0827d00f5c499dd2ce4312c3fe7f",
+      "bytes": 373
+    },
+    "THEORY_AND_HELD_ISSUES_ZH.log": {
+      "sha256": "3bf34dc42facbb727257d296c4e995e3adabfdfc2564876d2a626e97ff292c78",
+      "bytes": 58454
+    },
+    "THEORY_AND_HELD_ISSUES_ZH.final_compile.log": {
+      "sha256": "9a46e3cd58ce4fb5b7f4220df93ef030190afbc5496d248acafc7195b90f6db6",
+      "bytes": 3511
+    },
+    "THEORY_AND_HELD_ISSUES_ZH.pandoc.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "THEORY_AND_HELD_ISSUES_ZH.pdfinfo.txt": {
+      "sha256": "e4bf61626d32dec4972fa587d908fbcd177c37142e6873b5e2e8edce603e6dee",
+      "bytes": 502
+    },
+    "THEORY_AND_HELD_ISSUES_ZH.extracted.txt": {
+      "sha256": "f88fa5bfe3b99824047fc59f3a54f04647e4d3f6086f274c4a9f2aec473a798f",
+      "bytes": 30684
+    }
+  },
+  "checks": {
+    "pages": 9,
+    "missing_characters": 0,
+    "overfull_boxes": 0,
+    "undefined_controls": 0,
+    "Chinese_text_extracted": true,
+    "original_inputs_unchanged": true,
+    "visual_pages_checked": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "visual_result": "Chinese, equations and tables readable; no visible clipping or severe overflow",
+    "toc_page_numbers_visually_checked": true
+  },
+  "render_attempts": [
+    {
+      "attempt": 1,
+      "status": "failed",
+      "reason": "Tectonic linebreak iterator rejected babel zh-CN locale",
+      "log": "THEORY_AND_HELD_ISSUES_ZH.attempt1.compile.log"
+    },
+    {
+      "attempt": 2,
+      "status": "compiled_with_typesetting_warnings",
+      "formatting_change": "Use xeCJK for Chinese line breaking without babel locale",
+      "log": "THEORY_AND_HELD_ISSUES_ZH.attempt2.compile.log"
+    },
+    {
+      "attempt": 3,
+      "status": "compiled",
+      "log": "THEORY_AND_HELD_ISSUES_ZH.compile.log"
+    }
+  ],
+  "formatting_only_changes": [
+    "Combined existing texts with a title, contents and page break",
+    "Three long displayed equations split using aligned; mathematical expressions unchanged",
+    "Map Unicode script F to mathcal F and render dash/middle dot using Latin font glyphs",
+    "xeCJK Chinese typesetting without babel locale",
+    "Contents heading localized to Chinese"
+  ],
+  "versions": {
+    "pandoc": "3.9",
+    "tectonic": "0.15.0"
+  },
+  "font_families": [
+    "DejaVu Serif",
+    "DejaVu Sans",
+    "DejaVu Sans Mono",
+    "Droid Sans Fallback"
+  ],
+  "nonfatal_TeX_notes": [
+    "Original TeX \\over fraction syntax triggers an amsmath notice",
+    "LaTeX requests a label rerun; displayed contents page numbers were visually verified"
+  ]
+}

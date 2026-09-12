@@ -1,0 +1,493 @@
+{
+  "config": {
+    "scattering": {
+      "degree": 6,
+      "energy_points": 80,
+      "waves_per_isospin": 10,
+      "angular_points": 80,
+      "chiral_tolerance": 0.002,
+      "chiral_norm": "linf",
+      "enforce_infinite_energy": true,
+      "fixed_f00": null,
+      "enforce_asymptotic": false,
+      "cone_scale_floor": 1e-12,
+      "preconditioner_scale_floor": 1e-12,
+      "angular_quadrature": "threshold_series_72_log_s_wave_crossed_cut_legendre_q",
+      "unitarity_cone": "scaled_rotated_soc"
+    },
+    "current_channels": [
+      "S0",
+      "P1"
+    ],
+    "form_factor_degree": 20,
+    "nominal_gauge_points": 50,
+    "actual_gauge_points": 51,
+    "quadrature": "clipped_cells",
+    "scattering_basis_labels": [
+      [
+        "constant",
+        0,
+        0
+      ],
+      [
+        "single_s",
+        1,
+        0
+      ],
+      [
+        "single_s",
+        2,
+        0
+      ],
+      [
+        "single_s",
+        3,
+        0
+      ],
+      [
+        "single_s",
+        4,
+        0
+      ],
+      [
+        "single_s",
+        5,
+        0
+      ],
+      [
+        "single_s",
+        6,
+        0
+      ],
+      [
+        "single_tu",
+        1,
+        0
+      ],
+      [
+        "single_tu",
+        2,
+        0
+      ],
+      [
+        "single_tu",
+        3,
+        0
+      ],
+      [
+        "single_tu",
+        4,
+        0
+      ],
+      [
+        "single_tu",
+        5,
+        0
+      ],
+      [
+        "single_tu",
+        6,
+        0
+      ],
+      [
+        "double_s_tu",
+        1,
+        1
+      ],
+      [
+        "double_s_tu",
+        1,
+        2
+      ],
+      [
+        "double_s_tu",
+        1,
+        3
+      ],
+      [
+        "double_s_tu",
+        1,
+        4
+      ],
+      [
+        "double_s_tu",
+        1,
+        5
+      ],
+      [
+        "double_s_tu",
+        1,
+        6
+      ],
+      [
+        "double_s_tu",
+        2,
+        1
+      ],
+      [
+        "double_s_tu",
+        2,
+        2
+      ],
+      [
+        "double_s_tu",
+        2,
+        3
+      ],
+      [
+        "double_s_tu",
+        2,
+        4
+      ],
+      [
+        "double_s_tu",
+        2,
+        5
+      ],
+      [
+        "double_s_tu",
+        2,
+        6
+      ],
+      [
+        "double_s_tu",
+        3,
+        1
+      ],
+      [
+        "double_s_tu",
+        3,
+        2
+      ],
+      [
+        "double_s_tu",
+        3,
+        3
+      ],
+      [
+        "double_s_tu",
+        3,
+        4
+      ],
+      [
+        "double_s_tu",
+        3,
+        5
+      ],
+      [
+        "double_s_tu",
+        3,
+        6
+      ],
+      [
+        "double_s_tu",
+        4,
+        1
+      ],
+      [
+        "double_s_tu",
+        4,
+        2
+      ],
+      [
+        "double_s_tu",
+        4,
+        3
+      ],
+      [
+        "double_s_tu",
+        4,
+        4
+      ],
+      [
+        "double_s_tu",
+        4,
+        5
+      ],
+      [
+        "double_s_tu",
+        4,
+        6
+      ],
+      [
+        "double_s_tu",
+        5,
+        1
+      ],
+      [
+        "double_s_tu",
+        5,
+        2
+      ],
+      [
+        "double_s_tu",
+        5,
+        3
+      ],
+      [
+        "double_s_tu",
+        5,
+        4
+      ],
+      [
+        "double_s_tu",
+        5,
+        5
+      ],
+      [
+        "double_s_tu",
+        5,
+        6
+      ],
+      [
+        "double_s_tu",
+        6,
+        1
+      ],
+      [
+        "double_s_tu",
+        6,
+        2
+      ],
+      [
+        "double_s_tu",
+        6,
+        3
+      ],
+      [
+        "double_s_tu",
+        6,
+        4
+      ],
+      [
+        "double_s_tu",
+        6,
+        5
+      ],
+      [
+        "double_s_tu",
+        6,
+        6
+      ],
+      [
+        "double_tu",
+        1,
+        1
+      ],
+      [
+        "double_tu",
+        1,
+        2
+      ],
+      [
+        "double_tu",
+        1,
+        3
+      ],
+      [
+        "double_tu",
+        1,
+        4
+      ],
+      [
+        "double_tu",
+        1,
+        5
+      ],
+      [
+        "double_tu",
+        1,
+        6
+      ],
+      [
+        "double_tu",
+        2,
+        2
+      ],
+      [
+        "double_tu",
+        2,
+        3
+      ],
+      [
+        "double_tu",
+        2,
+        4
+      ],
+      [
+        "double_tu",
+        2,
+        5
+      ],
+      [
+        "double_tu",
+        2,
+        6
+      ],
+      [
+        "double_tu",
+        3,
+        3
+      ],
+      [
+        "double_tu",
+        3,
+        4
+      ],
+      [
+        "double_tu",
+        3,
+        5
+      ],
+      [
+        "double_tu",
+        3,
+        6
+      ],
+      [
+        "double_tu",
+        4,
+        4
+      ],
+      [
+        "double_tu",
+        4,
+        5
+      ],
+      [
+        "double_tu",
+        4,
+        6
+      ],
+      [
+        "double_tu",
+        5,
+        5
+      ],
+      [
+        "double_tu",
+        5,
+        6
+      ],
+      [
+        "double_tu",
+        6,
+        6
+      ]
+    ],
+    "moment_tolerance": 0.002,
+    "moment_convention": "relative",
+    "moment_norm": "combined_l2_of_four_moments",
+    "moment_targets": "printed",
+    "form_factor_tolerance": 6e-05,
+    "inputs_GeV": {
+      "pion_mass_GeV": 0.13957,
+      "pion_decay_constant_GeV": 0.092,
+      "matching_energy_GeV": 1.2,
+      "alpha_s": 0.4,
+      "up_mass_GeV": 0.004,
+      "down_mass_GeV": 0.0073,
+      "gluon_condensate_GeV4": 0.023,
+      "scalar_condensate_GeV4": -0.00010000000000000002,
+      "scalar_mass_convention": "sum_squares"
+    },
+    "inputs_dimensionless": {
+      "s0": 73.92278751496892,
+      "f_pi": 0.6591674428602134,
+      "scalar_mass_prefactor": 0.0035570207964668024,
+      "effective_degenerate_quark_mass": 0.042172389050579066,
+      "gluon_condensate": 60.61212665008421,
+      "scalar_condensate": -0.2635309854351488
+    },
+    "form_factor_representation": "F=1+sum real a_n z^n, z=(2-sqrt(4-s))/(2+sqrt(4-s))",
+    "spectral_representation": "independent rho=k_squared*r samples; no off-grid spectral function",
+    "gram_representation": "exact k-congruence followed by unitary real 3x3 reduction",
+    "scalar_FF_quark_mass": "RMS for sum_squares; arithmetic mean for degenerate_mean",
+    "units": "s/m_pi^2; F_S/m_pi^2; F_V; rho_S/m_pi^4; rho_V/m_pi^2",
+    "vector_F_at_infinity_zero": true,
+    "form_factor_endpoint_bounds": "scalar limiting value and vector first-derivative bound, derived from k-squared asymptotics",
+    "extra_form_factor_energies": [
+      75.86148288443871,
+      81.18128273704741,
+      87.09205764159513,
+      93.68466936025527,
+      101.06813880310635,
+      109.374181718949,
+      118.76312329903253,
+      129.43169245604426,
+      141.6234108170271,
+      155.64261268525317,
+      171.87362216067766,
+      190.8073751203051,
+      213.07898210953485,
+      239.52168967850344,
+      271.24596278669037,
+      309.75800003897444,
+      357.1418648750565,
+      416.34747567926837,
+      491.66108837348276,
+      589.5034711102178,
+      719.8451519537223,
+      898.8508898518654,
+      1154.1441707825315,
+      1536.1401240161445,
+      2144.9886254897056,
+      3203.5834211205565,
+      5294.848435359527,
+      10376.622641123211,
+      28821.581161943493,
+      259383.56346182525
+    ]
+  },
+  "interpretation": "Finite sampled primal SDP, independently audited. No published phase-shift reproduction or continuum feasibility claimed.",
+  "environment": {
+    "python": "3.13.12",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "cvxpy": "1.9.2",
+    "clarabel": "0.11.1",
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1"
+    }
+  },
+  "source_sha256": {
+    "src/smatrix_bootstrap/__init__.py": "917f23620fc4ae3e62557bb42621de3ae4238bacbd56e4a3eea10d11b1faab0f",
+    "src/smatrix_bootstrap/amplitudes.py": "89e7d0dc5adf033d34a59bb3e09217d90dc73ac7ae3b593e8af3ffbfa71fd662",
+    "src/smatrix_bootstrap/asymptotics.py": "d3cf8c482015d408e6fe45789f398ae9e180d57d01194779e632fffe4b59c7a4",
+    "src/smatrix_bootstrap/coupled_gauge.py": "21d63f65d8970a3fc9c0823398ce0bb0a09d3c37156474f75034b375cf62793a",
+    "src/smatrix_bootstrap/gauge_inputs.py": "3aed562380695d2ce015f6dfd95f0d4084a57e599586017722b815b2daa77883",
+    "src/smatrix_bootstrap/optimization.py": "af179690104c871461c1474ebd327582dc4d44ffa2511b50bc0e772cfbbf6305"
+  },
+  "solutions": [
+    {
+      "angle": 1.5707963267948966,
+      "status": null,
+      "objective": null,
+      "elapsed_seconds": 10.568687438033521,
+      "solver_tolerance": 1e-08,
+      "solver_options": {
+        "max_iter": 250,
+        "tol_gap_abs": 1e-08,
+        "tol_gap_rel": 1e-08,
+        "tol_feas": 1e-08,
+        "max_step_fraction": 0.9
+      },
+      "warnings": [],
+      "exception": "Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.",
+      "solver_terminal_status": "NumericalError",
+      "solver_info": {
+        "cost_primal": 0.015250569313524599,
+        "cost_dual": -0.6397908007392175,
+        "res_primal": 4.411579235067379e-15,
+        "res_dual": 7.631324359305888e-14,
+        "gap_abs": 0.6550413700527421,
+        "gap_rel": 0.6550413700527421,
+        "res_primal_inf": 2.649101821471054e-13,
+        "res_dual_inf": 6.972598601934547e-13,
+        "ktratio": 0.005132742224864843
+      },
+      "solver_iterations": 64
+    }
+  ]
+}

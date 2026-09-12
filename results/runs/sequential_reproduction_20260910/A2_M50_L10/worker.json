@@ -1,0 +1,289 @@
+{
+  "command": "prepare",
+  "status": "prepared",
+  "artifacts": {},
+  "inputs": {
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/analytic_source_registry_stage/registry.json": {
+      "sha256": "18e01da602be9c98c614a56ae43f0fe9ac6d4c6ad63e45edbc21f3e8193671e2"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/universal_source_stage/universal_source_N50_j0.rows.json.gz": {
+      "sha256": "44c1e87211cbcdb1afc7f7069c60943d401ad6a782560e2490c1371d1b4518bf"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j01/operator.rows.json.gz": {
+      "sha256": "7c1efa91486d35f454bb3da879b2f760c86595a6b2e82f9b3949e7091901b5a5"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j02/operator.rows.json.gz": {
+      "sha256": "49587d61fd86cf81c2364a8f52c08bf306cf642b7aa5ff54d5d940b073c2580e"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j03/operator.rows.json.gz": {
+      "sha256": "881fb404c4d51d35cbd79c6095b9354be25f6e77a65b656d7ed7468fbc455c42"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j04/operator.rows.json.gz": {
+      "sha256": "95705ea1c6880252dc09ba4ac51d52b0325befbe837f60bc7cffedddec4715a1"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j05/operator.rows.json.gz": {
+      "sha256": "0c7d9d34446d2599e5fe0b375367dee1767cb87c10eb87f56bdcb096f9a757bb"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j06/operator.rows.json.gz": {
+      "sha256": "2344c718cbef685d499b7255a39cb9a93bac7fdabdac986bfbcaa6f0f87496de"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j07/operator.rows.json.gz": {
+      "sha256": "5e5fe30e1230656e00760e91f034c13b988f89efdaa327d5109a9195c0c4db3f"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j08/operator.rows.json.gz": {
+      "sha256": "57182f55cb668254228083ac954913d6c23ac198cd5dc361efebb76490c21f0d"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j09/operator.rows.json.gz": {
+      "sha256": "fe4c85d2f2b31284b8916054269a0ba0fba2d4f228ea73a2d803b25f8389a152"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j10/operator.rows.json.gz": {
+      "sha256": "0139f1f73112f45904e0498ae067523bef9fb803156e219471b5bc6f1d514fe3"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j11/operator.rows.json.gz": {
+      "sha256": "18fac5d13f559d080ed807649d6a920d0536ff54f5d39d42ae0c37a5b68ca961"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j12/operator.rows.json.gz": {
+      "sha256": "cfcd635e54b8d80c381b0b9eeb28f450fba23b5d1357fa0b9549feef075acf50"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j13/operator.rows.json.gz": {
+      "sha256": "b067346ae73edeb40ae38b5d6782ed1dd335973ac5edee001db635458c97ddc6"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j14/operator.rows.json.gz": {
+      "sha256": "6e29788066f24405068f59746e69cf90abcbe27032aa284390abeb0d107c653a"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j15/operator.rows.json.gz": {
+      "sha256": "6b8a11c58aecc70357ce7cb2a89f0fdb8c255257c6f6eabdbf16f77d8502ba74"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j16/operator.rows.json.gz": {
+      "sha256": "bd35a9e04aebe2a3ec5635c4ed4924471cc3d0820f8cda08bf5fa7d11fdb690e"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j17/operator.rows.json.gz": {
+      "sha256": "57e90f87d25a6c833283ddf0a43bdd50e266b6ba93d3b1806f49821437841e1b"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j18/operator.rows.json.gz": {
+      "sha256": "c680f914a00e0eb768e561d837e5167b7832838d374c1bd6d83b63f770722bc6"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j19/operator.rows.json.gz": {
+      "sha256": "9e0dfeea0731aaf0810af9e0c8ea7b9fa6ec45633fe8a529079396e909a37c90"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j20/operator.rows.json.gz": {
+      "sha256": "732b6a75ccd850d47d325bf9b1d1b320e9f4f094d6464697d6119e3493b19643"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j21/operator.rows.json.gz": {
+      "sha256": "40402701e2c70a1f6e2da564401e2cd0554a06ef2f92caf41e88adbc6985020d"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j22/operator.rows.json.gz": {
+      "sha256": "4e4a90e4cb09f485b29821f13d1f47f4f663a7f0924f66cae2ce884ee662abeb"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j23/operator.rows.json.gz": {
+      "sha256": "b37b3cc8b4dcdafb2f54da204baf84ca144fe09972fbd3c0bf0d07c0750d0f76"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j24/operator.rows.json.gz": {
+      "sha256": "d366ecb6a1544ecb2224c2584b4e3a1a63e5b81ec199c88d9792527a6beab73f"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j25/operator.rows.json.gz": {
+      "sha256": "83d46ff7663b4c0b3435a14d9dca2934fa90345ad5500a03e775f15ffbce1965"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j26/operator.rows.json.gz": {
+      "sha256": "6ec885e2c2da4033f0ac093153beb33f841b8b2b5174fbc87001df40836f0a8b"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j27/operator.rows.json.gz": {
+      "sha256": "26c0e6a26d3d9ea7f7ee836b2cb14f3e359887adb8085063a50044ac8762e802"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j28/operator.rows.json.gz": {
+      "sha256": "0443df981a6098fb30d0e22534c2b4856dcd8187bfa8851f61ab61d7e35975b6"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j29/operator.rows.json.gz": {
+      "sha256": "38de644ac346c78fa86d9f517bca81bc749f696442f81b927cf3f0e50a76ba1c"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j30/operator.rows.json.gz": {
+      "sha256": "347215ff18a42686c73aa3ee95dd076d1aa09766c5cd2433dc4b6ddf90f71c7e"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j31/operator.rows.json.gz": {
+      "sha256": "311020ccef9733766b833fdd950faeafcd25637fa2f29ed0f120b5a975d1ac9a"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j32/operator.rows.json.gz": {
+      "sha256": "dd0a08c6b76f4f75beff3068b0b378a9cd093a4e108760b62596f3903ee5f95e"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j33/operator.rows.json.gz": {
+      "sha256": "9d58b0c66fca8920179cad60a4e7006d99841d59c92ac9d080e7c395b59121a8"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j34/operator.rows.json.gz": {
+      "sha256": "28bd0c1564d559773b17493f8c1845585214f0a8eef51c04fe638fd53782f2dc"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j35/operator.rows.json.gz": {
+      "sha256": "fa757261983aa8488921ed96ea1614103560ecf09f110b960abdcee42b36492a"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j36/operator.rows.json.gz": {
+      "sha256": "00bb19144700923b33f58614ed092be448d00c2dd187c39fd33a6e658829fe54"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j37/operator.rows.json.gz": {
+      "sha256": "6a5884a0a1bdd70167a774ff26eccb81f6228d417b3fb9aed9eac522bc6897fd"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j38/operator.rows.json.gz": {
+      "sha256": "ffd0062c225ff95f36101abb936b38a6b6d87c78d8ac40ecf2b0e8699075290c"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j39/operator.rows.json.gz": {
+      "sha256": "384c02bc193754c7c955aa90a3e78994550e1f6ab6e9dff9279ad32ad4e58f73"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j40/operator.rows.json.gz": {
+      "sha256": "04a038e533af3678a4c03b8a718dd1ae88cc7f0cefada588c44e9b4af8ee5432"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j41/operator.rows.json.gz": {
+      "sha256": "c5883c60ed1aa27bc3c04434a977a3a3e15c0fb7233784b625bfdc634535adf9"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j42/operator.rows.json.gz": {
+      "sha256": "a1227e06435a6c761e85a559474867192d3cfa6f8ccb68768dd465af80ba49c9"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j43/operator.rows.json.gz": {
+      "sha256": "41d1e2168711a748abee1cd5ae4e1c528c2c742d7f1803a3e4d84b589bbc8761"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j44/operator.rows.json.gz": {
+      "sha256": "f25b0d67c9b9a7a06d86b8b0f214b769d238e4b4635a09e8aec35958729ff092"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j45/operator.rows.json.gz": {
+      "sha256": "05cf854d38a50076ec6fac7592c195935432240177f6898a1effde13a172062d"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j46/operator.rows.json.gz": {
+      "sha256": "760aaf8b14d083b2a6ce030db20f4ced56f7fa456041f5f7ef543126c322a5f8"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j47/operator.rows.json.gz": {
+      "sha256": "d2a828c3fe7c5465d3d82f4845a8eafd4fa9b1b43b6af963f2087537d127d6ab"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j48/operator.rows.json.gz": {
+      "sha256": "f4b589456784da284f5973748c68abd00c82ebabf10edb7d8df8d782f6adcdde"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/universal_source_stage/universal_source_N50_j49.rows.json.gz": {
+      "sha256": "2bd000a08ed9671147de2d1cda5b1ce1b171fe55dd01cffabc09953acafbd7ee"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/analytic_source_registry_stage/supplement.rows.json.gz": {
+      "sha256": "c728a3f7bd3e768040c07b0ceb0b51f678590cb15a5972a6dbf1f0637ad2b309"
+    }
+  },
+  "parameters": {
+    "command": "prepare",
+    "comparison_manifest": null,
+    "region_summary": "results/runs/stage_B_delivery_20260907/regions/regions.json",
+    "primary_waves": false,
+    "profile_runs": [],
+    "profile_kind": "subthreshold",
+    "phase_reference": null,
+    "baseline_profile": null,
+    "selection_reference": null,
+    "support_runs": [],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/A2_M50_L10",
+    "density_limit": 377500.0,
+    "preparation": "results/runs/stage_A_M50_L10_20260906",
+    "prescription": "analytic-cardinal",
+    "source_registry": null,
+    "solver": "barrier",
+    "unitarity_scope": "sampled",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "current_preparation": null,
+    "joint_feasibility": false,
+    "fixed_amplitude": false,
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 512,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "free",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": null,
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "chiral_norm": "separate-l2",
+    "chiral_barrier_weight": null,
+    "objective": "projection",
+    "resume_objective": false,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "fixed_x": null,
+    "ray": false,
+    "seconds": 900.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "2"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Finite model; regions/phases require verification.",
+  "amplitude_model": {
+    "prescription": "analytic-cardinal",
+    "M": 50,
+    "L": 10,
+    "bits": 512,
+    "coordinate_system": "unsubtracted analytic-cardinal C_flat",
+    "coefficient_count": 3876,
+    "physical_samples": 1500,
+    "nu0": 0,
+    "nyquist_retained": true,
+    "infinity_equality_imposed": false,
+    "density_limit_imposed": false,
+    "quadrature_order_per_panel": null,
+    "arithmetic": "Arb",
+    "integral_enclosures": true,
+    "authors_implementation_recovered": false,
+    "analytic_function_family_defined": true,
+    "angular_projection": "Authenticated analytic coefficient enclosures; independent integral cross-check required",
+    "spectral_quadrature": "Exact Cauchy transform of finite sine density",
+    "physical_evaluation": "One analytic family; authenticated row registry covers retained native nodes",
+    "analyticity_status": "One conformal polynomial from all M sine-cardinal density modes",
+    "infinity_row_meaning": "Unsubtracted constant; recorded but no endpoint equality imposed",
+    "source_registry": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/analytic_source_registry_stage/registry.json",
+    "source_registry_sha256": "18e01da602be9c98c614a56ae43f0fe9ac6d4c6ad63e45edbc21f3e8193671e2"
+  },
+  "restrictions": {
+    "infinity": "free",
+    "density_limit": 377500.0,
+    "density_rule": "declared 100*double_density_count",
+    "density_norm": "actual-rho L4"
+  },
+  "operator": {
+    "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/A2_M50_L10/amplitude.npz",
+    "shape": [
+      3011,
+      3876
+    ],
+    "storage": "Float64 midpoints plus outward bounds around exact analytic coefficient enclosures"
+  },
+  "optimization_performed": false,
+  "old_feasibility_transferred": false,
+  "source_registry": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/analytic_source_registry_stage/registry.json",
+  "maximum_operator_radius_upper": 8.644431500510947e-16,
+  "elapsed_seconds": 241.67230031988584,
+  "prescription": "analytic-cardinal"
+}

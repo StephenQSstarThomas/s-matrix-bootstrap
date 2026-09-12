@@ -1,0 +1,10 @@
+{
+  "reason": "No returned iterate/audit beyond the requested 600-second native budget; original matrix and complete warm start preserved",
+  "warm_coordinate_conversion_seconds": 0.6099627,
+  "requested_native_seconds": 600,
+  "observed_process_seconds_at_previous_check": 755,
+  "physical_infeasibility_claimed": false,
+  "precise_native_substage_not_identified": true,
+  "stack_tools_available": false,
+  "unix_time": 1789118960.3423798
+}

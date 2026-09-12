@@ -1,0 +1,22 @@
+{
+  "source_initial_guess": "results/runs/stage_F_mainline_20260909/M60_L10_phase_I_04",
+  "source_scope": "Historical clipped-phi joint point; no hard feasibility transferred",
+  "fresh_hard_audit": "PV_F_M60_L10_interior_audit",
+  "hard_audit_failure": "Scalar n=1 moment below its allowed box; scattering/other recorded conditions passed",
+  "fixed_C_current_extension": "PV_F_M60_L10_current_seed",
+  "joint_feasible": true,
+  "C_unchanged": true,
+  "full_joint_variables": 5791,
+  "current_solver_variables": 222,
+  "next": "Complete +x support with all C directions free; no fixed-amplitude flag",
+  "signature_guard": {
+    "path": "results/runs/mainline_alignment_20260909/F_paper/M60_L10_selected/selection.json",
+    "sha256": "9beb1adc79e22c581dfa9ca26b46d3242164f8356407be003282c49afcb287bb",
+    "usage": "Only model signature, no region vertices, point coordinates or phase outputs used"
+  },
+  "numerical_threads": {
+    "available_cpus": 80,
+    "BLAS": 16,
+    "reason": "One larger M60 dense Newton calculation; physical model unchanged"
+  }
+}

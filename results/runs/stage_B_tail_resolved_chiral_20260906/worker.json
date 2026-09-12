@@ -1,0 +1,150 @@
+{
+  "command": "boundary",
+  "status": "candidate",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "boundary",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_tail_resolved_chiral_20260906",
+    "control": null,
+    "matrix": null,
+    "matrix_sha256": null,
+    "rank_report": null,
+    "density_limit": null,
+    "preparation": "results/runs/stage_B_unitarity_resolved_20260906",
+    "solver_seconds": 1100.0,
+    "start_mu": 1e-06,
+    "gap": 0.0001,
+    "nodes": 50,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": "results/runs/stage_B_tail_initializer_M50_chiral_20260906/coefficients.json",
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "seconds": 1300.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3"
+  },
+  "scope": "Coherent finite-sine-cardinal conditional model; published regions and phases remain unverified.",
+  "solver": {
+    "solver": "analytic density barrier with float QR and longdouble CG",
+    "iterations": 21,
+    "seconds": 1118.7570174748544,
+    "qr_factorizations": 7,
+    "pcg_steps": 26,
+    "qr_reuse": 6,
+    "raw_coordinates": true,
+    "tail_weights": {
+      "kR": [
+        1.4623133604137676e-08,
+        -3.912598467754203e-08,
+        7.597259546458081e-09,
+        0.0,
+        0.0
+      ],
+      "kI": [
+        -3.0500633341657994e-08,
+        -1.7259344787860975e-07,
+        -1.362538647372683e-07,
+        -0.0001360910666963664,
+        -2.5100901759277313e-05
+      ]
+    },
+    "tail_constraints_applied": true,
+    "history": [
+      {
+        "mu": 1e-06,
+        "objective": 0.01963871017253426,
+        "outer_estimate": 4120353985437.675,
+        "gap_estimate": 4120353985437.655
+      }
+    ],
+    "feasible_path": true,
+    "all_density_directions_retained": true
+  },
+  "outer": {
+    "upper": 4120353985437.6743,
+    "enclosure": "[4120353985437.674019932230 +/- 2.90e-13]",
+    "disk": 528277.8304529104,
+    "chiral": 1698.3927528321133,
+    "density_residual": 4120353455461.4507,
+    "tail_support": 8.152063150798248e-09,
+    "scope": "exact saved float64 operator and supplied tail maps; angular quadrature error excluded",
+    "primal_feasible": true,
+    "lower": 0.019638709979141154,
+    "minimum_margin_enclosure": "[1.1489499777334030554e-125 +/- 2.40e-146]",
+    "density_norm": 56327.58474858662,
+    "targets": [
+      "[0.01963870997914115811119094 +/- 1.68e-27]",
+      "[-0.001175475585340795582316960 +/- 3.97e-29]"
+    ],
+    "tail_margin_enclosures": [
+      "[65.572408205719421766 +/- 1.96e-19]",
+      "[11.587925292190257166 +/- 2.61e-19]",
+      "[14.678482580107185436 +/- 1.48e-19]",
+      "[0.014696041617583475424 +/- 4.83e-22]",
+      "[0.079678411521865090267 +/- 2.92e-22]"
+    ]
+  },
+  "M": 50,
+  "L": 12,
+  "sampling_nodes": 167,
+  "infinity": "zero",
+  "mode": "chiral",
+  "chiral_tolerance": 0.002,
+  "density_limit": 377500,
+  "targets": [
+    0.019638709975434744,
+    -0.0011754755853357012
+  ],
+  "objective": 0.019638709975434744,
+  "minimum_scattering_margin": 1.1489499777337209e-125,
+  "chiral_norms": [
+    0.0019999999774406117,
+    0.000748919493546674
+  ],
+  "density_norm": 56327.58474858662,
+  "radial_shrink": 0.99999999,
+  "sampled_feasible": true,
+  "support_optimality_certified": false,
+  "physical_unitarity_accepted": false,
+  "unitarity_coverage": "listed energies and waves only; off-grid and tails unverified",
+  "analytic_tail_conditions_passed": true,
+  "analytic_tail_margins": [
+    "[65.57240820658257499893626 +/- 1.62e-24]",
+    "[11.58792529280002387322789 +/- 1.78e-24]",
+    "[14.67848257956830119388420 +/- 1.10e-24]",
+    "[0.01469604161020332461409165 +/- 2.91e-27]",
+    "[0.07967841152119497405406937 +/- 1.76e-27]"
+  ],
+  "tail_conditions_applied": true,
+  "operator_scope": "float64 quadrature and tail maps; analytic tail checked separately; no continuum certificate",
+  "elapsed_seconds": 1150.1353267959785
+}

@@ -1,0 +1,25 @@
+{
+  "upper": 2.5599166019680384,
+  "lower": 0.8313100616400559,
+  "gap": 1.7286065403279824,
+  "source_dual_unchanged_and_zero_padded": true,
+  "physical_rows": 8221,
+  "tail_rows": 5,
+  "polynomial_dual_zero": true,
+  "primal_feasible": true,
+  "global_FG": "nonnegative_certified",
+  "analytic_tail_passed": true,
+  "density_norm": 625.9117847325205,
+  "support_optimality_certified": false,
+  "components": {
+    "disk": 2.4397386037969975,
+    "density_residual": 0.12016780378543564,
+    "tail_support": 1.0194385605065622e-05
+  },
+  "seconds": 72.82070797192864,
+  "scope": "stored finite H and supplied tail maps plus analytic global high-spin cone; angular quadrature error excluded",
+  "input_manifest": "../stage_B_reused_relaxation_dual_input_M50_20260907/sources.json",
+  "old_primal_reused": false,
+  "old_primal_rejection": "Global FG violated; its coefficients are absent from the new candidate",
+  "certificate": "Current frozen CLI recomputed the full stored-operator bound; this is a support enclosure, not boundary completion or continuum unitarity"
+}

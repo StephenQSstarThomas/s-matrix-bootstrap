@@ -1,0 +1,417 @@
+{
+  "status": "finite_reproduction_and_audit_completed_claims_partial",
+  "target": "2309.12402v3",
+  "followup": "2403.10772 Eq.(2.29), explicit S0/P1/S2 specialization in the unchanged v3 finite constraint model",
+  "model_signature": {
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "free",
+    "unitarity_scope": "sampled",
+    "prescription": "pv-midpoint",
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    "current_preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_D_mainline_20260908/D1_current_M50",
+    "chiral_tolerance": 0.002,
+    "uv_config": {
+      "moment_source": "printed",
+      "sr_error": "raw-absolute",
+      "cutoff": "clipped-phi",
+      "mq_rule": "arithmetic-mean",
+      "pion_mass_gev": 0.14,
+      "matching_energy_gev": 1.2,
+      "up_mass_gev": 0.004,
+      "down_mass_gev": 0.0073,
+      "alpha_s": 0.4,
+      "gluon_condensate_gev4": 0.023,
+      "scalar_condensate_gev4": -0.0001,
+      "sr_tolerance": 0.002,
+      "ff_tolerance": 6e-05
+    },
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": false,
+    "additional_constraints": null,
+    "sampling_nodes": 50,
+    "scattering_samples": 1500,
+    "chiral_norm": "separate-l2"
+  },
+  "E1_reference_section": {
+    "x": 0.07332139057293466,
+    "IR_lower": [
+      -0.005529000613147199,
+      -0.00551886182893384
+    ],
+    "IR_upper": [
+      -0.004118783634285717,
+      -0.004114955569025152
+    ],
+    "UV_lower": [
+      -0.005343583427102679,
+      -0.005339908783564498
+    ],
+    "UV_upper": [
+      -0.004319635044777488,
+      -0.0043128654145622395
+    ],
+    "upper_shrink": [
+      0.00019408178027652444,
+      0.00020467947575233478
+    ],
+    "lower_rise": [
+      0.00017527840183116232,
+      0.00018909182958269928
+    ],
+    "upper_minus_lower": [
+      4.9899506938252086e-06,
+      2.940107392117241e-05
+    ],
+    "upper_to_lower_ratio": [
+      1.0263890338616815,
+      1.1677392856964381
+    ],
+    "upper_change_larger": true,
+    "sources": {
+      "IR": {
+        "inner": [
+          {
+            "coefficients": [
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_012_20260907/coefficients.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_002_20260907/coefficients.json"
+            ],
+            "second_weight": "[0.7269662464971080212454821 +/- 1.07e-26]"
+          },
+          {
+            "coefficients": [
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_parallel_003_20260907/coefficients.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_010_20260907/coefficients.json"
+            ],
+            "second_weight": "[0.2030574358674653308796921 +/- 2.15e-26]"
+          }
+        ],
+        "outer": [
+          "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_002_20260907/report.json",
+          "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_parallel_003_20260907/report.json"
+        ]
+      },
+      "UV": {
+        "inner": [
+          {
+            "coefficients": [
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_closure_20260909/E1_lower_refine/coefficients.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E1_tip_016/coefficients.json"
+            ],
+            "second_weight": "[3.11614656587376e-10 +/- 5.30e-25]"
+          },
+          {
+            "coefficients": [
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E1_mid_upper_bound/coefficients.json",
+              "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E1_ref_upper_warm_002/coefficients.json"
+            ],
+            "second_weight": "[0.999999999848693931872817 +/- 9.31e-25]"
+          }
+        ],
+        "outer": [
+          "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_closure_20260909/E1_lower_refine/report.json",
+          "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E1_ref_upper_warm_002/report.json"
+        ]
+      }
+    },
+    "scope": "Arb at the declared float x; exact feasible convex segments and global support inequalities of the saved finite model; no dense-region or continuum claim"
+  },
+  "E1_dense_geometry_certified": false,
+  "E2_E3": [
+    {
+      "role": "tip",
+      "report": "results/runs/stage_E_closure_20260909/literal_W_tip_path_03/report.json",
+      "coefficients": "results/runs/stage_E_closure_20260909/literal_W_tip_path_03/coefficients.json",
+      "joint": "results/runs/stage_E_closure_20260909/literal_W_tip_path_03/joint.npz",
+      "evaluation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_closure_20260909/E3_W_tip_full/evaluation.json",
+      "initial_target": [
+        0.09924805847074525,
+        -0.006404544596518819
+      ],
+      "final_target": [
+        0.09249593704790876,
+        -0.006047397630659428
+      ],
+      "watson_iterations": 1,
+      "functional_source": "results/runs/stage_E_mainline_20260908/E2_representatives/tip/coefficients.json",
+      "support_interval": [
+        0.2701855208895253,
+        0.270807159028612
+      ],
+      "support_gap": 0.000621638139086722,
+      "initial_objective": 0.2645385454495389,
+      "ideal_disk_ceiling": 21.54621408688801,
+      "all_original_constraints_passed": true,
+      "primary_native_checks": 132,
+      "nearest_phase_P1_crossing": {
+        "native_energy_bracket_gev": [
+          0.7921355788896206,
+          0.8644178555063566
+        ],
+        "native_phase_bracket_degrees": [
+          79.41621194734279,
+          128.99717139052433
+        ],
+        "linear_in_energy_gev": 0.8075652983679572,
+        "relative_to_770mev": 0.048786101776567836,
+        "interpretation": "First upward 90-degree crossing; linear interpolation is descriptive, not a pole determination."
+      },
+      "previous_P1_crossing": {
+        "native_energy_bracket_gev": [
+          0.7921355788896206,
+          0.8644178555063566
+        ],
+        "native_phase_bracket_degrees": [
+          75.34992746327454,
+          127.70331202779595
+        ],
+        "linear_in_energy_gev": 0.8123623627807323,
+        "relative_to_770mev": 0.055016055559392596,
+        "interpretation": "First upward 90-degree crossing; linear interpolation is descriptive, not a pole determination."
+      },
+      "eta_minimum_by_wave": {
+        "S0": 0.9999662617880218,
+        "S2": 0.9999843396499337,
+        "P1": 0.9963478050355669
+      },
+      "previous_P1_eta_minimum": 0.8182085787717801,
+      "watson_diagnostics": {
+        "S0": {
+          "maximum_S_minus_Q": 0.13155794535965679,
+          "energy_at_maximum_gev": 0.28003454716713333,
+          "two_pion_fraction_at_maximum": 0.002205436969232672,
+          "maximum_S_minus_Q_above_four_pion_threshold": 7.705906910203263e-05,
+          "integer_pi_differences": [
+            0
+          ],
+          "same_complex_S_identity_error": 4.0029660424867215e-16
+        },
+        "P1": {
+          "maximum_S_minus_Q": 1.4725739767215293,
+          "energy_at_maximum_gev": 0.28003454716713333,
+          "two_pion_fraction_at_maximum": 2.917059179604039e-08,
+          "maximum_S_minus_Q_above_four_pion_threshold": 0.13223473708908542,
+          "integer_pi_differences": [
+            0,
+            1
+          ],
+          "same_complex_S_identity_error": 6.497413668604471e-16
+        }
+      }
+    },
+    {
+      "role": "mid",
+      "report": "results/runs/stage_E_closure_20260909/literal_W_mid_path_03/report.json",
+      "coefficients": "results/runs/stage_E_closure_20260909/literal_W_mid_path_03/coefficients.json",
+      "joint": "results/runs/stage_E_closure_20260909/literal_W_mid_path_03/joint.npz",
+      "evaluation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_closure_20260909/E3_W_mid_full/evaluation.json",
+      "initial_target": [
+        0.0862847245195143,
+        -0.005265816456875685
+      ],
+      "final_target": [
+        0.07768340197650614,
+        -0.005081506284352556
+      ],
+      "watson_iterations": 1,
+      "functional_source": "results/runs/stage_E_mainline_20260908/E2_representatives/mid/coefficients.json",
+      "support_interval": [
+        0.32131265166497663,
+        0.32197634898320193
+      ],
+      "support_gap": 0.0006636973182252981,
+      "initial_objective": 0.2718075557619379,
+      "ideal_disk_ceiling": 0.467786135812557,
+      "all_original_constraints_passed": true,
+      "primary_native_checks": 132,
+      "nearest_phase_P1_crossing": {
+        "native_energy_bracket_gev": [
+          0.6804136821594831,
+          0.7316752603307709
+        ],
+        "native_phase_bracket_degrees": [
+          46.405760795705135,
+          92.98908418867263
+        ],
+        "linear_in_energy_gev": 0.7283859893720283,
+        "relative_to_770mev": -0.054044169646716544,
+        "interpretation": "First upward 90-degree crossing; linear interpolation is descriptive, not a pole determination."
+      },
+      "previous_P1_crossing": null,
+      "eta_minimum_by_wave": {
+        "S0": 0.999689095520721,
+        "S2": 0.9999839268100157,
+        "P1": 0.9984251933221722
+      },
+      "previous_P1_eta_minimum": 0.17377060057375412,
+      "watson_diagnostics": {
+        "S0": {
+          "maximum_S_minus_Q": 1.4489370577286156,
+          "energy_at_maximum_gev": 0.28003454716713333,
+          "two_pion_fraction_at_maximum": 0.0002893071133878933,
+          "maximum_S_minus_Q_above_four_pion_threshold": 0.00011909247723728802,
+          "integer_pi_differences": [
+            0,
+            1
+          ],
+          "same_complex_S_identity_error": 9.777686967753793e-16
+        },
+        "P1": {
+          "maximum_S_minus_Q": 0.9183891764032671,
+          "energy_at_maximum_gev": 0.28003454716713333,
+          "two_pion_fraction_at_maximum": 2.745508043481537e-09,
+          "maximum_S_minus_Q_above_four_pion_threshold": 0.05476306728269448,
+          "integer_pi_differences": [
+            0
+          ],
+          "same_complex_S_identity_error": 8.082545620880531e-16
+        }
+      }
+    },
+    {
+      "role": "ref",
+      "report": "results/runs/stage_E_closure_20260909/literal_W_ref_path_02/report.json",
+      "coefficients": "results/runs/stage_E_closure_20260909/literal_W_ref_path_02/coefficients.json",
+      "joint": "results/runs/stage_E_closure_20260909/literal_W_ref_path_02/joint.npz",
+      "evaluation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_closure_20260909/E3_W_ref_full/evaluation.json",
+      "initial_target": [
+        0.07332139057100756,
+        -0.004319635044634659
+      ],
+      "final_target": [
+        0.07429859949281581,
+        -0.004686927420678928
+      ],
+      "watson_iterations": 1,
+      "functional_source": "results/runs/stage_E_mainline_20260908/E2_representatives/ref/coefficients.json",
+      "support_interval": [
+        0.2891224205575039,
+        0.2900432144639659
+      ],
+      "support_gap": 0.0009207939064619919,
+      "initial_objective": 0.26277905431381265,
+      "ideal_disk_ceiling": 0.31850738317325583,
+      "all_original_constraints_passed": true,
+      "primary_native_checks": 132,
+      "nearest_phase_P1_crossing": {
+        "native_energy_bracket_gev": [
+          0.6804136821594831,
+          0.7316752603307709
+        ],
+        "native_phase_bracket_degrees": [
+          68.46348213633257,
+          132.71604744283565
+        ],
+        "linear_in_energy_gev": 0.6975958116003754,
+        "relative_to_770mev": -0.09403141350600597,
+        "interpretation": "First upward 90-degree crossing; linear interpolation is descriptive, not a pole determination."
+      },
+      "previous_P1_crossing": {
+        "native_energy_bracket_gev": [
+          0.6804136821594831,
+          0.7316752603307709
+        ],
+        "native_phase_bracket_degrees": [
+          57.59999294961747,
+          142.59177978753647
+        ],
+        "linear_in_energy_gev": 0.6999552820711402,
+        "relative_to_770mev": -0.09096716614137634,
+        "interpretation": "First upward 90-degree crossing; linear interpolation is descriptive, not a pole determination."
+      },
+      "eta_minimum_by_wave": {
+        "S0": 0.9999404695448562,
+        "S2": 0.9999838051507985,
+        "P1": 0.8469913691621113
+      },
+      "previous_P1_eta_minimum": 0.3321545676383683,
+      "watson_diagnostics": {
+        "S0": {
+          "maximum_S_minus_Q": 0.37022874124226235,
+          "energy_at_maximum_gev": 0.28003454716713333,
+          "two_pion_fraction_at_maximum": 0.0001698373324227392,
+          "maximum_S_minus_Q_above_four_pion_threshold": 0.015832843519376763,
+          "integer_pi_differences": [
+            0
+          ],
+          "same_complex_S_identity_error": 9.550499576785472e-16
+        },
+        "P1": {
+          "maximum_S_minus_Q": 0.31112257928224646,
+          "energy_at_maximum_gev": 0.6804136821594831,
+          "two_pion_fraction_at_maximum": 0.7329119753031703,
+          "maximum_S_minus_Q_above_four_pion_threshold": 0.31112257928224646,
+          "integer_pi_differences": [
+            0
+          ],
+          "same_complex_S_identity_error": 6.106226635438361e-16
+        }
+      }
+    }
+  ],
+  "claims": {
+    "UV_region_subset_of_IR": true,
+    "UV_right_tip_strictly_smaller": true,
+    "upper_side_change_larger_at_xref": true,
+    "strong_Fig8_asymmetry_reproduced": false,
+    "literal_three_boundary_amplitudes_rho_robustness_reproduced": false,
+    "three_P1_upward_90_crossings_after_named_followup": true,
+    "all_three_readings_within_six_percent_of_770mev": false,
+    "near_identical_P1_phase_curves_reproduced": false,
+    "full_Watson_fixed_point_certified": false,
+    "all_paper_core_claims_reproduced": false
+  },
+  "native_checks_passed": 396,
+  "continuum_certified": false,
+  "F_started": false,
+  "physical_parameters_fitted": false,
+  "experimental_phase_fitting": false,
+  "primary_phase_convention": "Threshold-anchored nearest unwrap(arg S)/2; alternative FF lift is a separate conditional diagnostic",
+  "precision_followup": {
+    "status": "completed",
+    "same_frozen_linear_objective": true,
+    "source": "results/runs/stage_E_closure_20260909/literal_W_ref_path_02/report.json",
+    "refinement": "results/runs/stage_E_closure_20260909/E3_ref_precision/report.json",
+    "evaluation": "results/runs/stage_E_closure_20260909/E3_ref_precision_evaluate/evaluation.json",
+    "central_converged": true,
+    "support_interval": [
+      0.2891267662540481,
+      0.2897735732183624
+    ],
+    "support_gap": 0.0006468069643142949,
+    "primary_native_check": "sampled_passed",
+    "phase_change_max_degrees": {
+      "S0": 0.043471863733356986,
+      "S2": 0.004484142837503473,
+      "P1": 0.08270603343237026
+    },
+    "eta_change_max": {
+      "S0": 3.995690593838752e-06,
+      "S2": 1.0525325280230646e-06,
+      "P1": 0.002497397208275909
+    },
+    "refined_P1_eta_minimum": 0.8494887663703872,
+    "refined_P1_90_linear_gev": 0.6975666620714182,
+    "frozen_primary_representatives_replaced": false,
+    "scope": "One tighter same-M/same-objective center check; not M/L convergence or a phase uncertainty enclosure"
+  },
+  "artifacts": {
+    "region": "results/runs/stage_E_closure_20260909/E1_regions_certified/regions.pdf",
+    "P1": "results/runs/stage_E_closure_20260909/E3_W_phases/fig9.pdf",
+    "S0_S2": "results/runs/stage_E_closure_20260909/E3_W_phases/fig10.pdf",
+    "eta": "results/runs/stage_E_closure_20260909/E3_W_phases/inelasticities.pdf",
+    "watson": "results/runs/stage_E_closure_20260909/E3_W_phases/watson_diagnostics.pdf",
+    "conditional_FF_phase_lift": "results/runs/stage_E_closure_20260909/E3_W_phases/ff_guided_phases.pdf"
+  },
+  "tests_passed": 112,
+  "E1_right_tip": {
+    "UV_interval": [
+      0.0992480584707338,
+      0.0992592016367523
+    ],
+    "UV_report": "results/runs/stage_E_mainline_20260908/E1_tip_016/report.json",
+    "same_setting_IR_tip_approximately": 0.1059
+  },
+  "delivery_closed": true
+}

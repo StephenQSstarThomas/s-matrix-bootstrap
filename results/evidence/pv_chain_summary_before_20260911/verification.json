@@ -1,0 +1,23 @@
+{
+  "STATUS.md": {
+    "after_sha256_verified": true,
+    "before_snapshot_sha256_verified": true,
+    "historical_suffix_byte_identical": true,
+    "local_links_valid": true,
+    "backup_nonexecutable": true
+  },
+  "SCIENCE.md": {
+    "after_sha256_verified": true,
+    "before_snapshot_sha256_verified": true,
+    "historical_suffix_byte_identical": true,
+    "local_links_valid": true,
+    "backup_nonexecutable": true
+  },
+  "REPRODUCTION_GUIDE_ZH.md": {
+    "after_sha256_verified": true,
+    "before_snapshot_sha256_verified": true,
+    "historical_suffix_byte_identical": true,
+    "local_links_valid": true,
+    "backup_nonexecutable": true
+  }
+}

@@ -1,0 +1,57 @@
+from pathlib import Path
+from tempfile import TemporaryDirectory
+from types import SimpleNamespace
+from dataclasses import asdict
+import numpy as np
+from scipy import sparse
+from smatrix_bootstrap import write_json,read_json,UVConfig,resolution_report,current_data
+from smatrix_bootstrap.gauge import preserve_resolution_center,resolution_profile_center
+
+with TemporaryDirectory() as folder:
+    root=Path(folder);prep=root/'H';cp=root/'current';source=root/'center';prep.mkdir();cp.mkdir();source.mkdir()
+    cfg=asdict(UVConfig());metadata=dict(uv=dict(config=cfg),gram_block_sizes=[3,3],ff_cap_cone_sizes=[3,3])
+    write_json(cp/'report.json',dict(parameters=dict(preparation=str(prep)),current_model=metadata))
+    np.savez(cp/'current_data.npz',high_energy_indices=[0])
+    W=np.zeros((4,9));W[0,7]=1
+    for name,A in [('gram_linear',np.zeros((12,9))),('moment_linear',W),('ff_cap_linear',np.zeros((6,9)))]:sparse.save_npz(cp/(name+'.npz'),sparse.csr_matrix(A))
+    point=np.array([0.,.2,.3,.04,.05,.1,.2,1.,1.])
+    np.savez(source/'joint.npz',point=point)
+    write_json(source/'coefficients.json',dict(coordinates='unsubtracted analytic-cardinal C_flat',prescription='analytic-cardinal',coefficients=point[:5]))
+    write_json(source/'current.json',dict(ImF=point[5:7].reshape(2,1),rho=point[7:].reshape(2,1),model=metadata))
+    # Synthetic provenance fixture: these flags stand for completed native audits/centering.
+    # The control checks identity propagation, not a new QCD or numerical-center claim.
+    fresh=dict(lower=0.,upper=1e-5,primal_feasible=True,joint_primal_feasible=True,amplitude_primal_feasible=True)
+    old=dict(status='joint_feasible',M=1,L=1,mode='gauge',density_limit=1.,chiral_tolerance=.002,chiral_norm='separate-l2',prescription='analytic-cardinal',infinity='free',unitarity_scope='sampled',scattering_samples=3,current_model=metadata,
+        parameters=dict(preparation=str(prep),current_preparation=str(cp),direction=[1.,0.]),support_direction=[1.,0.],support_optimality_certified=True,joint_feasible=True,all_original_constraints_checked=True,outer=dict(fresh,upper=.005),
+        solver=dict(representative_center_converged=True,all_amplitude_directions_retained=True))
+    write_json(source/'report.json',old);current=current_data(cp,prep)
+    args=SimpleNamespace(coefficients=source/'coefficients.json',preparation=prep,current_preparation=cp,direction=[1.,0.],resolved_prescription='analytic-cardinal',infinity='free',unitarity_scope='sampled',chiral_tolerance=.002,chiral_norm='separate-l2',require_center=True,gap=1e-4)
+    lifted=point.copy();lifted[8]+=1
+    good=preserve_resolution_center(args,old,point,lifted,current,fresh,1,1,1.,3)
+    assert good['representative_center_converged'] and good['representative_center_source']['free_high_rho_increases']==[dict(spectral_index=1,before=1.,after=2.)]
+    for at in (0,5,6,7):
+        changed=point.copy();changed[at]=np.nextafter(changed[at],np.inf)
+        assert not preserve_resolution_center(args,old,point,changed,current,fresh,1,1,1.,3)['representative_center_converged']
+    assert not preserve_resolution_center(args,old,point,point,current,fresh,1,2,1.,6)['representative_center_converged']
+    assert not preserve_resolution_center(args,old,point,point,current,fresh,2,1,1.,6)['representative_center_converged']
+    assert not preserve_resolution_center(args,old,point,point,current,fresh,1,1,2.,3)['representative_center_converged']
+    for field,value in [('preparation',root/'other_H'),('current_preparation',root/'other_current'),('chiral_norm','combined-l2'),('chiral_tolerance',.004),('direction',[0.,1.])]:
+        changed=SimpleNamespace(**(vars(args)|{field:value}))
+        assert not preserve_resolution_center(changed,old,point,point,current,fresh,1,1,1.,3)['representative_center_converged']
+    H=np.zeros((17,5));H[-2,0]=1
+    for centered in (False,True):
+        args.output=root/('retained' if centered else 'uncentered');args.output.mkdir()
+        method=dict(solver='Original-operator resolution audit',optimization_performed=False,all_amplitude_directions_retained=True,**(good if centered else dict(representative_center_converged=False)))
+        result=resolution_report(args,H,np.ones(3),current,lifted,{},fresh,1,1,1.,method)
+        assert result['support_optimality_certified'] and result['selection_created']==centered
+        assert result['outer']['upper']==fresh['upper'] and result['outer']['upper']!=old['outer']['upper']
+        assert (args.output/'selection.json').exists()==centered
+        if centered:
+            write_json(args.output/'report.json',dict(result,parameters={k:str(v) if isinstance(v,Path) else v for k,v in vars(args).items()}));selection=read_json(args.output/'selection.json')
+            proof=args.output/'report.json';cfile=args.output/'coefficients.json'
+            origin=resolution_profile_center(proof,selection,cfile);assert origin['origin_report']==str(source/'report.json')
+            record=read_json(args.output/'current.json');record['ImF'][1][0]+=.001;write_json(args.output/'current.json',record)
+            try:resolution_profile_center(proof,selection,cfile)
+            except ValueError:pass
+            else:raise AssertionError('Changed ImF curve retained a center')
+    print('PASS: unchanged C/ImF + free-high-R lift retains provenance; new M/L, paths, chi/B/objective, C/ImF or bounded R cannot inherit it; uncentered support emits no selection; altered curve is rejected.')

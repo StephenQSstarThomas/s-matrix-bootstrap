@@ -1,0 +1,67 @@
+{
+  "source": "results/runs/physical_consistency_20260911/interlaced_phase_I_03/phase_I_state.npz",
+  "snapshot": "results/runs/physical_consistency_20260911/INTERLACED_NEWTON_DIRECTION_snapshot.npz",
+  "captured_utc": "2026-09-11T08:16:12.928043+00:00",
+  "source_mtime_utc": "2026-09-11T07:59:56.425504+00:00",
+  "source_mtime_ns": 1789113596425503837,
+  "bytes": 182879,
+  "sha256": "d715c9f0b3ad1d8423624e78b5a4b120a8cf02a335b9b0ab035c6356268088df",
+  "zip_crc_passed": true,
+  "all_npz_arrays_loaded": true,
+  "mu": 1e-05,
+  "tau": 1.1002095435196322,
+  "z_dtype": "float128",
+  "z_shape": [
+    4063
+  ],
+  "keys": [
+    "z",
+    "mu",
+    "ray_rate",
+    "reference_point",
+    "x",
+    "y",
+    "chi",
+    "gram",
+    "ff",
+    "moment",
+    "slack",
+    "chiral_slack"
+  ],
+  "run_status": "joint_candidate",
+  "solver": {
+    "solver": "Full-variable convex epigraph Phase I",
+    "phase_I": true,
+    "support_search": false,
+    "tau": 1.1002095435196322,
+    "all_amplitude_directions_retained": true,
+    "original_variables": 4076,
+    "solver_variables": 4063,
+    "iterations": 63,
+    "seconds": 621.1525658571627,
+    "physical_constraints_relaxed_at_acceptance": false,
+    "initial_mu": 1e-05,
+    "chiral_barrier_weight": 1561.5,
+    "infeasibility_certified": false,
+    "phase_I_model": "current-only-diagonal-v2",
+    "scattering_chiral_density_always_hard": true,
+    "phase_I_cache_distinct": true,
+    "support_direction": [
+      0.0,
+      0.0
+    ]
+  },
+  "parameters": {
+    "preparation": "results/runs/physical_consistency_20260911/interlaced_prepare",
+    "current_preparation": "results/runs/physical_consistency_20260911/interlaced_current",
+    "chiral_norm": "separate-l2",
+    "chiral_tolerance": 0.002,
+    "density_limit": 377500.0,
+    "asymptotic_zeros": true,
+    "asymptotic_unitarity": true,
+    "bits": 512,
+    "fixed_x": null,
+    "ray": false
+  },
+  "scope": "Immutable terminal Phase I iterate, not a converged center"
+}

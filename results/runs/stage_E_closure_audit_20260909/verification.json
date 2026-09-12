@@ -1,0 +1,96 @@
+{
+  "test_command": "OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 PYTHONPATH=/tmp/collocation_arb:src /home/shiqiu/miniconda3/bin/python -m pytest -q -p no:cacheprovider",
+  "tests_passed": 112,
+  "seconds": 14.17,
+  "core": [
+    {
+      "path": "src/smatrix_bootstrap/joint.py",
+      "lines": 193,
+      "bytes": 17421
+    },
+    {
+      "path": "src/smatrix_bootstrap/analysis.py",
+      "lines": 297,
+      "bytes": 24439
+    },
+    {
+      "path": "src/smatrix_bootstrap/model.py",
+      "lines": 331,
+      "bytes": 16996
+    },
+    {
+      "path": "src/smatrix_bootstrap/io.py",
+      "lines": 326,
+      "bytes": 22142
+    },
+    {
+      "path": "src/smatrix_bootstrap/operators.py",
+      "lines": 350,
+      "bytes": 23213
+    },
+    {
+      "path": "src/smatrix_bootstrap/__init__.py",
+      "lines": 314,
+      "bytes": 19023
+    },
+    {
+      "path": "src/smatrix_bootstrap/gauge.py",
+      "lines": 277,
+      "bytes": 19921
+    },
+    {
+      "path": "src/smatrix_bootstrap/quotient.py",
+      "lines": 335,
+      "bytes": 21148
+    },
+    {
+      "path": "src/smatrix_bootstrap/kernels.py",
+      "lines": 340,
+      "bytes": 19965
+    },
+    {
+      "path": "src/smatrix_bootstrap/imaginary.py",
+      "lines": 320,
+      "bytes": 24008
+    },
+    {
+      "path": "src/smatrix_bootstrap/run.py",
+      "lines": 333,
+      "bytes": 24550
+    },
+    {
+      "path": "src/smatrix_bootstrap/selection.py",
+      "lines": 180,
+      "bytes": 15125
+    },
+    {
+      "path": "src/smatrix_bootstrap/figures.py",
+      "lines": 293,
+      "bytes": 22981
+    },
+    {
+      "path": "src/smatrix_bootstrap/linear.py",
+      "lines": 303,
+      "bytes": 22640
+    }
+  ],
+  "test_files": [
+    {
+      "path": "tests/test_mainline.py",
+      "lines": 348
+    },
+    {
+      "path": "tests/test_kernels.py",
+      "lines": 350
+    },
+    {
+      "path": "tests/test_linear.py",
+      "lines": 337
+    }
+  ],
+  "checkpoint_resume_mu": 1.220703125e-07,
+  "certified_early_stop_Newton_steps": 1,
+  "resume_report": "results/runs/stage_E_closure_20260909/resume_stop_check/report.json",
+  "retired_backend": "Full conic trial failed to improve M50; producer source.json and native candidates preserved; dedicated tests compressed",
+  "scope": "Mathematical regressions and concrete M50 resume/stop checks, not continuum certification"
+}

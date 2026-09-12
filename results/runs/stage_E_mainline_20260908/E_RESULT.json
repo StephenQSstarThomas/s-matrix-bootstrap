@@ -1,0 +1,815 @@
+{
+  "status": "E_method_and_calculation_delivery_complete_claims_partial",
+  "all_E_paper_claims_reproduced": false,
+  "model_signature": {
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "free",
+    "unitarity_scope": "sampled",
+    "prescription": "pv-midpoint",
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    "current_preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_D_mainline_20260908/D1_current_M50",
+    "chiral_tolerance": 0.002,
+    "uv_config": {
+      "moment_source": "printed",
+      "sr_error": "raw-absolute",
+      "cutoff": "clipped-phi",
+      "mq_rule": "arithmetic-mean",
+      "pion_mass_gev": 0.14,
+      "matching_energy_gev": 1.2,
+      "up_mass_gev": 0.004,
+      "down_mass_gev": 0.0073,
+      "alpha_s": 0.4,
+      "gluon_condensate_gev4": 0.023,
+      "scalar_condensate_gev4": -0.0001,
+      "sr_tolerance": 0.002,
+      "ff_tolerance": 6e-05
+    },
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": false,
+    "additional_constraints": null,
+    "sampling_nodes": 50,
+    "scattering_samples": 1500
+  },
+  "original_variables": 4076,
+  "steps": {
+    "E1": {
+      "delivered": true,
+      "UV_subset_and_right_endpoint_shrink": true,
+      "right_endpoint_interval": [
+        0.09924805847073383,
+        0.09925920163675225
+      ],
+      "qualified_full_model_points": 6,
+      "dense_UV_region_convergence_certified": false,
+      "reference_section": {
+        "x": 0.07332139057293466,
+        "IR_inner": [
+          -0.005518861828933841,
+          -0.004118783634285716
+        ],
+        "IR_outer": [
+          -0.005529000613147199,
+          -0.004114955569025152
+        ],
+        "UV_inner": [
+          -0.005331743988928827,
+          -0.004319635044775316
+        ],
+        "UV_outer": [
+          -0.0053486021783885895,
+          -0.004312865414562241
+        ],
+        "upper_shrink_interval": [
+          0.00019408178027652528,
+          0.00020467947575016424
+        ],
+        "lower_rise_interval": [
+          0.0001702596505452512,
+          0.00019725662421837212
+        ],
+        "upper_minus_lower_interval": [
+          -3.174843941846847e-06,
+          3.4419825204913025e-05
+        ],
+        "upper_change_larger": null
+      },
+      "upper_to_lower_change_ratio_interval": [
+        0.9839050072238277,
+        1.2021607885055832
+      ],
+      "paper_display_ratio_at_same_x": 5.35,
+      "paper_strong_upper_lower_asymmetry_reproduced": false,
+      "scope": "Saved finite operator; rounded polygon/section diagnostics from audited supports. Sparse inner/outer region, not a dense contour certificate."
+    },
+    "E2": {
+      "delivered": true,
+      "three_complete_representatives_frozen": true,
+      "selection_uses_phase_data": false,
+      "coefficients_mixed_at_selection": false,
+      "representatives": [
+        {
+          "role": "tip",
+          "target": [
+            0.09924805847074525,
+            -0.006404544596518819
+          ],
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E1_tip_016/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E2_select/tip/coefficients.json",
+          "current": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E1_tip_016/current.json",
+          "joint": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E1_tip_016/joint.npz",
+          "support_direction": [
+            1.0,
+            0.0
+          ],
+          "support_gap": 1.1143166018426354e-05,
+          "all_original_joint_constraints_passed": true,
+          "evaluation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E3_tip_evaluate/evaluation.json",
+          "primary_samples": 132,
+          "P1_first_upward_90": {
+            "native_energy_bracket_gev": [
+              0.7921355788896206,
+              0.8644178555063566
+            ],
+            "native_phase_bracket_degrees": [
+              75.34992746327454,
+              127.70331202779595
+            ],
+            "linear_in_energy_gev": 0.8123623627807323,
+            "relative_to_770mev": 0.055016055559392596,
+            "interpretation": "First upward 90-degree crossing; linear interpolation is descriptive, not a pole determination."
+          },
+          "P1_eta_min": 0.8182085787717801
+        },
+        {
+          "role": "mid",
+          "target": [
+            0.0862847245195143,
+            -0.005265816456875685
+          ],
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E1_mid_upper_bound/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E2_representatives/mid/coefficients.json",
+          "current": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E1_mid_upper_bound/current.json",
+          "joint": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E1_mid_upper_bound/joint.npz",
+          "support_direction": [
+            35.473409171440345,
+            500.0
+          ],
+          "support_gap": 0.016621871844337388,
+          "all_original_joint_constraints_passed": true,
+          "evaluation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E3_mid_evaluate/evaluation.json",
+          "primary_samples": 132,
+          "P1_first_upward_90": null,
+          "P1_eta_min": 0.17377060057375412
+        },
+        {
+          "role": "ref",
+          "target": [
+            0.07332139057100756,
+            -0.004319635044634659
+          ],
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E1_ref_upper_warm_002/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E2_representatives/ref/coefficients.json",
+          "current": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E1_ref_upper_warm_002/current.json",
+          "joint": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E1_ref_upper_warm_002/joint.npz",
+          "support_direction": [
+            35.473409171440345,
+            500.0
+          ],
+          "support_gap": 0.003384815105620498,
+          "all_original_joint_constraints_passed": true,
+          "evaluation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E3_ref_evaluate/evaluation.json",
+          "primary_samples": 132,
+          "P1_first_upward_90": {
+            "native_energy_bracket_gev": [
+              0.6804136821594831,
+              0.7316752603307709
+            ],
+            "native_phase_bracket_degrees": [
+              57.59999294961747,
+              142.59177978753647
+            ],
+            "linear_in_energy_gev": 0.6999552820711402,
+            "relative_to_770mev": -0.09096716614137634,
+            "interpretation": "First upward 90-degree crossing; linear interpolation is descriptive, not a pole determination."
+          },
+          "P1_eta_min": 0.3321545676383683
+        }
+      ],
+      "reference_y_boundary_distance_upper": 6.769630211240995e-06,
+      "midpoint_y_boundary_distance_upper": 3.324374368867478e-05
+    },
+    "E3": {
+      "delivered": true,
+      "listed_primary_checks_passed": 396,
+      "tip_rho_feature_reproduced": true,
+      "three_point_rho_robustness_reproduced": false,
+      "unwrapped_no_crossing_is_not_a_no_pole_theorem": true,
+      "phase_spread": {
+        "S0": {
+          "pointwise_range_degrees": [
+            0.0,
+            0.05124127691942701,
+            0.16379643247030728,
+            0.24464573874918494,
+            0.40049810743584,
+            0.41838793416828635,
+            0.6568051336425536,
+            0.5756297740320404,
+            0.9272952226967011,
+            0.7201794011543647,
+            1.2019420181381628,
+            0.8552651161419655,
+            1.464101341135179,
+            0.980887240638264,
+            1.6874760575672916,
+            1.0884798076715372,
+            1.831186917483386,
+            1.1508513460297696,
+            1.8310618752944965,
+            1.1041740079225733,
+            1.5831908120676665,
+            0.8170271767671604,
+            0.9123910467768255,
+            0.22506873146431872,
+            0.5432829052532533,
+            1.661466838737617,
+            3.1080201954061657,
+            4.944282933554732,
+            7.6445500191863545,
+            10.452354307024457,
+            14.481203206796259,
+            17.874459845985783,
+            22.548949222281202,
+            24.820763503180856,
+            29.06091706647461,
+            27.684556238328476,
+            30.666664392843657,
+            22.104461065606372,
+            18.96184870186015,
+            20.960344046680916,
+            25.933378449797246,
+            64.56634697865367,
+            54.794950988535234,
+            89.40478888206758
+          ],
+          "maximum_degrees": 89.40478888206758,
+          "energy_at_maximum_gev": 1.199424119524732,
+          "range_at_first_physical_node": 0.05124127691942701,
+          "range_at_last_node": 89.40478888206758,
+          "mod_pi_pairwise_max_degrees": [
+            0.0,
+            0.05124127691942704,
+            0.16379643247030629,
+            0.24464573874918472,
+            0.4004981074358369,
+            0.4183879341682797,
+            0.6568051336425498,
+            0.5756297740320377,
+            0.9272952226966993,
+            0.7201794011543683,
+            1.201942018138169,
+            0.8552651161419647,
+            1.4641013411351764,
+            0.9808872406382676,
+            1.6874760575672951,
+            1.0884798076715327,
+            1.831186917483393,
+            1.1508513460297678,
+            1.8310618752944947,
+            1.1041740079225804,
+            1.58319081206767,
+            0.8170271767671551,
+            0.9123910467768326,
+            0.22506873146431872,
+            0.5432829052532497,
+            1.6614668387376241,
+            3.1080201954061693,
+            4.944282933554732,
+            7.6445500191863545,
+            10.45235430702445,
+            14.481203206796266,
+            17.874459845985783,
+            22.54894922228121,
+            24.820763503180856,
+            29.060917066474616,
+            27.684556238328476,
+            30.666664392843657,
+            22.104461065606372,
+            18.96184870186015,
+            20.960344046680916,
+            25.933378449797246,
+            64.56634697865367,
+            54.794950988535234,
+            89.40478888206758
+          ],
+          "complex_S_pairwise_max_distance": [
+            0.0,
+            0.0017887147310879732,
+            0.005717542731313817,
+            0.008539669519113027,
+            0.01397980178838975,
+            0.014604246270760013,
+            0.02292610558655872,
+            0.020092725681173994,
+            0.03236690454165191,
+            0.025138003607216977,
+            0.041951938436067863,
+            0.02985273104877385,
+            0.05110008737477314,
+            0.0342368778960657,
+            0.058893680646723616,
+            0.03799143784094785,
+            0.0639067431922878,
+            0.040167440637875806,
+            0.06390104919657758,
+            0.038537547162348015,
+            0.05525142554524295,
+            0.028516016981818732,
+            0.031843576850339124,
+            0.007856546858083817,
+            0.018963117996347756,
+            0.05796994504631922,
+            0.10839393486983735,
+            0.17225088548546977,
+            0.2658740306435895,
+            0.36234078249375995,
+            0.4996144218904537,
+            0.6124549000865258,
+            0.7658995604339376,
+            0.8371002163837246,
+            0.9698890963077385,
+            0.9264581397918602,
+            1.0181867213800235,
+            0.7505172917953922,
+            0.6484558920015588,
+            0.6787099187351744,
+            0.871560305208237,
+            1.7316966991157225,
+            1.4778091347006812,
+            1.5338011953537625
+          ],
+          "mod_pi_maximum_degrees": 89.40478888206758,
+          "mod_pi_at_last_node": 89.40478888206758,
+          "complex_S_maximum": 1.7316966991157225,
+          "complex_S_at_last_node": 1.5338011953537625
+        },
+        "S2": {
+          "pointwise_range_degrees": [
+            0.0,
+            0.013620424856555464,
+            0.03823105737172111,
+            0.07316589039146842,
+            0.0850698381342126,
+            0.14128740440169713,
+            0.13139733764683525,
+            0.21738968705283912,
+            0.18326457481727887,
+            0.3000105571943822,
+            0.24775546791208913,
+            0.38768835219009457,
+            0.3323039541001648,
+            0.4800421944965185,
+            0.44395688275202994,
+            0.579006477059786,
+            0.588715982531421,
+            0.6901467207185599,
+            0.7711098087260384,
+            0.8239776422893306,
+            0.9941887677396326,
+            0.9972107090620201,
+            1.2602617336906698,
+            1.2338531841034883,
+            1.5729908337188379,
+            1.5659664060265976,
+            1.942038800255654,
+            2.0334943343285934,
+            2.392384934113755,
+            2.6818929941754712,
+            2.981403283194018,
+            3.5565345601210447,
+            3.825872618892663,
+            4.699132307632198,
+            5.130505223711087,
+            6.178143293209882,
+            7.171513113627304,
+            8.257542627355301,
+            10.134701237457003,
+            11.842687983975196,
+            13.949703538304668,
+            18.477991551023823,
+            20.291281323617785,
+            26.910392400436482
+          ],
+          "maximum_degrees": 26.910392400436482,
+          "energy_at_maximum_gev": 1.199424119524732,
+          "range_at_first_physical_node": 0.013620424856555464,
+          "range_at_last_node": 26.910392400436482,
+          "mod_pi_pairwise_max_degrees": [
+            0.0,
+            0.013620424856554791,
+            0.038231057371717725,
+            0.07316589039146493,
+            0.08506983813421698,
+            0.14128740440169452,
+            0.13139733764683115,
+            0.21738968705284378,
+            0.18326457481727232,
+            0.3000105571943834,
+            0.2477554679120857,
+            0.38768835219009645,
+            0.3323039541001691,
+            0.4800421944965194,
+            0.44395688275203327,
+            0.5790064770597922,
+            0.5887159825314257,
+            0.690146720718559,
+            0.7711098087260382,
+            0.8239776422893357,
+            0.9941887677396295,
+            0.997210709062017,
+            1.260261733690669,
+            1.233853184103495,
+            1.5729908337188334,
+            1.5659664060266039,
+            1.9420388002556592,
+            2.0334943343285943,
+            2.3923849341137498,
+            2.6818929941754703,
+            2.9814032831940125,
+            3.556534560121051,
+            3.82587261889266,
+            4.699132307632198,
+            5.130505223711083,
+            6.178143293209885,
+            7.171513113627299,
+            8.257542627355306,
+            10.134701237457008,
+            11.842687983975196,
+            13.949703538304675,
+            18.47799155102382,
+            20.29128132361778,
+            26.91039240043648
+          ],
+          "complex_S_pairwise_max_distance": [
+            0.0,
+            0.0004754425416589636,
+            0.0013345153760895444,
+            0.0025539702732866056,
+            0.0029694959488734884,
+            0.0049318549067322755,
+            0.004586627440702583,
+            0.007588311815406527,
+            0.006397128123934462,
+            0.010472293602516513,
+            0.008648268033028164,
+            0.01353276914239207,
+            0.011599527378962637,
+            0.01675643148170564,
+            0.01549685724177282,
+            0.020210785494818882,
+            0.02054969223496246,
+            0.0240900684847111,
+            0.02691597966135875,
+            0.02876123244637519,
+            0.034701963455033624,
+            0.03480742867118242,
+            0.04398783658945316,
+            0.0430662161526169,
+            0.0549007587829794,
+            0.054655639013530655,
+            0.06777682563967093,
+            0.07096727368790846,
+            0.08348549072444987,
+            0.09358123626521302,
+            0.10402323840078613,
+            0.12406618317193721,
+            0.13344816047699531,
+            0.1638456905273805,
+            0.17884763181614616,
+            0.2152378939912763,
+            0.24967642573161522,
+            0.28724067998145913,
+            0.3519174581638217,
+            0.41043708460831735,
+            0.48211769646351305,
+            0.6338338313229208,
+            0.693509950370457,
+            0.9049979673761992
+          ],
+          "mod_pi_maximum_degrees": 26.91039240043648,
+          "mod_pi_at_last_node": 26.91039240043648,
+          "complex_S_maximum": 0.9049979673761992,
+          "complex_S_at_last_node": 0.9049979673761992
+        },
+        "P1": {
+          "pointwise_range_degrees": [
+            0.0,
+            3.166248577854862e-06,
+            8.186290163540299e-05,
+            0.0003967298346967261,
+            0.0010494179781296558,
+            0.002364966513207294,
+            0.00406688935715473,
+            0.007390761591672554,
+            0.01026027261074509,
+            0.017385182574077753,
+            0.020679555384517108,
+            0.0349171538040668,
+            0.036343869399247025,
+            0.06337482728620035,
+            0.058502064886871485,
+            0.10694851696259147,
+            0.08927379547384631,
+            0.17033149909861212,
+            0.13282837681391418,
+            0.25811192521070514,
+            0.19716877498619995,
+            0.3740380398240356,
+            0.29634852211104035,
+            0.5207427823664786,
+            0.4524757346191576,
+            0.7010907482165853,
+            0.6960529432668634,
+            0.9226730857182546,
+            1.0617696234578282,
+            1.2053775753314944,
+            1.572472612551786,
+            1.5803658085346446,
+            2.1769207352511684,
+            1.9929086961104812,
+            2.351780807980078,
+            1.2532825575301203,
+            5.609991394877966,
+            35.16598626140642,
+            144.54308479245114,
+            179.18382552285235,
+            196.63577003682448,
+            187.56581198655857,
+            182.62890470007596,
+            190.73471384195847
+          ],
+          "maximum_degrees": 196.63577003682448,
+          "energy_at_maximum_gev": 0.8644178555063566,
+          "range_at_first_physical_node": 3.166248577854862e-06,
+          "range_at_last_node": 190.73471384195847,
+          "mod_pi_pairwise_max_degrees": [
+            0.0,
+            3.1662485753258807e-06,
+            8.18629016379191e-05,
+            0.0003967298346907455,
+            0.0010494179781233015,
+            0.0023649665132126074,
+            0.004066889357147829,
+            0.007390761591679507,
+            0.010260272610750576,
+            0.017385182574074065,
+            0.020679555384518267,
+            0.034917153804073564,
+            0.03634386939924639,
+            0.06337482728619648,
+            0.05850206488686638,
+            0.10694851696258922,
+            0.08927379547384362,
+            0.17033149909860867,
+            0.13282837681391868,
+            0.2581119252106987,
+            0.19716877498619567,
+            0.37403803982402906,
+            0.296348522111046,
+            0.520742782366483,
+            0.45247573461915636,
+            0.7010907482165862,
+            0.6960529432668636,
+            0.9226730857182588,
+            1.0617696234578347,
+            1.2053775753314966,
+            1.5724726125517918,
+            1.5803658085346513,
+            2.176920735251173,
+            1.9929086961104758,
+            2.3517808079800773,
+            1.2532825575301274,
+            5.609991394877966,
+            35.16598626140642,
+            76.24669718732508,
+            89.47383495846938,
+            40.04111041627675,
+            11.755740295281726,
+            4.249679752456501,
+            11.785573727759072
+          ],
+          "complex_S_pairwise_max_distance": [
+            0.0,
+            1.105665120709796e-07,
+            2.857554803984055e-06,
+            1.384848449884404e-05,
+            3.663159895244469e-05,
+            8.255290564464775e-05,
+            0.0001419612195240295,
+            0.0002579862448946867,
+            0.00035815107027353126,
+            0.0006068573242681793,
+            0.0007218526098735797,
+            0.0012188384370368848,
+            0.001268640167229333,
+            0.002212198056787761,
+            0.002042106609327083,
+            0.0037332044687826142,
+            0.0031162411640465247,
+            0.005945679812250431,
+            0.004636578532439237,
+            0.009009769150083776,
+            0.006882468979027021,
+            0.013056282182228237,
+            0.01034445276858137,
+            0.018177063174290266,
+            0.015794174503005732,
+            0.024471977535214465,
+            0.024296106661821037,
+            0.03220573232135292,
+            0.03706024487111061,
+            0.04207185269788486,
+            0.05488150716983099,
+            0.05515614349823101,
+            0.07596609511110375,
+            0.06954414983114009,
+            0.08205181716483505,
+            0.04374163488046337,
+            0.19700912604520382,
+            0.9105721367339077,
+            1.6631077076715974,
+            1.81666295010132,
+            1.2849235658756797,
+            0.40737802490152525,
+            0.14812209842071308,
+            0.4074340262863105
+          ],
+          "mod_pi_maximum_degrees": 89.47383495846938,
+          "mod_pi_at_last_node": 11.785573727759072,
+          "complex_S_maximum": 1.81666295010132,
+          "complex_S_at_last_node": 0.4074340262863105
+        }
+      }
+    }
+  },
+  "P1_FESR_diagnostic": {
+    "raw_targets": [
+      0.004228045714285714,
+      0.1457112069970845
+    ],
+    "raw_absolute_errors": [
+      0.002,
+      0.002
+    ],
+    "relative_error_sizes": [
+      0.4730317823296951,
+      0.013725780200558063
+    ],
+    "points": [
+      {
+        "role": "tip",
+        "moment_enclosures": [
+          "[0.0043197571516125569588 +/- 2.02e-23]",
+          "[0.11383811959202718787 +/- 6.57e-22]",
+          "[0.0044164617327408198848 +/- 3.52e-23]",
+          "[0.14771116480004293006 +/- 6.25e-22]"
+        ],
+        "P1_Mminus1": 0.00441646173274082,
+        "P1_M0": 0.14771116480004293,
+        "P1_weighted_mean_s": 33.44558919304268,
+        "P1_spectral_energy_scale_gev": 0.8096502628812249,
+        "relative_Mminus1_displacement": 0.04456338251464191
+      },
+      {
+        "role": "mid",
+        "moment_enclosures": [
+          "[0.0042971820488576164386 +/- 4.34e-23]",
+          "[0.11378384723334914120 +/- 2.51e-22]",
+          "[0.0052672100662461503456 +/- 3.06e-23]",
+          "[0.14771066723053030504 +/- 2.55e-21]"
+        ],
+        "P1_Mminus1": 0.0052672100662461505,
+        "P1_M0": 0.1477106672305303,
+        "P1_weighted_mean_s": 28.043435779617795,
+        "P1_spectral_energy_scale_gev": 0.7413847457835296,
+        "relative_Mminus1_displacement": 0.24577888277066404
+      },
+      {
+        "role": "ref",
+        "moment_enclosures": [
+          "[0.0043576100490902443404 +/- 2.78e-23]",
+          "[0.11298251354488817214 +/- 1.81e-21]",
+          "[0.0060053984785146933471 +/- 4.27e-23]",
+          "[0.14771059288781583435 +/- 1.38e-21]"
+        ],
+        "P1_Mminus1": 0.0060053984785146935,
+        "P1_M0": 0.14771059288781582,
+        "P1_weighted_mean_s": 24.596301713579024,
+        "P1_spectral_energy_scale_gev": 0.6943252217701363,
+        "relative_Mminus1_displacement": 0.4203721729459224
+      }
+    ],
+    "scope": "M0/Mminus1 is the positive rho(s)/s weighted mean of sampled s, not a pole or 90-degree mass. It exposes permitted moment freedom; no tolerance was retuned."
+  },
+  "verification": {
+    "core_files": [
+      {
+        "path": "src/smatrix_bootstrap/__init__.py",
+        "lines": 347,
+        "bytes": 21816
+      },
+      {
+        "path": "src/smatrix_bootstrap/analysis.py",
+        "lines": 290,
+        "bytes": 23806
+      },
+      {
+        "path": "src/smatrix_bootstrap/figures.py",
+        "lines": 287,
+        "bytes": 22787
+      },
+      {
+        "path": "src/smatrix_bootstrap/gauge.py",
+        "lines": 291,
+        "bytes": 24057
+      },
+      {
+        "path": "src/smatrix_bootstrap/imaginary.py",
+        "lines": 330,
+        "bytes": 24520
+      },
+      {
+        "path": "src/smatrix_bootstrap/io.py",
+        "lines": 343,
+        "bytes": 24476
+      },
+      {
+        "path": "src/smatrix_bootstrap/kernels.py",
+        "lines": 350,
+        "bytes": 20204
+      },
+      {
+        "path": "src/smatrix_bootstrap/linear.py",
+        "lines": 278,
+        "bytes": 20146
+      },
+      {
+        "path": "src/smatrix_bootstrap/model.py",
+        "lines": 347,
+        "bytes": 18942
+      },
+      {
+        "path": "src/smatrix_bootstrap/operators.py",
+        "lines": 350,
+        "bytes": 23213
+      },
+      {
+        "path": "src/smatrix_bootstrap/quotient.py",
+        "lines": 334,
+        "bytes": 21019
+      },
+      {
+        "path": "src/smatrix_bootstrap/run.py",
+        "lines": 329,
+        "bytes": 24542
+      }
+    ],
+    "test_files": [
+      {
+        "path": "tests/test_kernels.py",
+        "lines": 350
+      },
+      {
+        "path": "tests/test_linear.py",
+        "lines": 350
+      },
+      {
+        "path": "tests/test_mainline.py",
+        "lines": 350
+      }
+    ],
+    "tests": {
+      "tests": 101,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "structure_passed": true
+  },
+  "implementation": {
+    "active_core_modules": 12,
+    "new_scientific_modules": [
+      "gauge.py",
+      "figures.py"
+    ],
+    "single_entry": "python -m smatrix_bootstrap.run",
+    "retired_methods": "Unsuccessful E column-generation and restricted-dual branches; producer sources preserved",
+    "numerical_method": "Full joint feasible barrier centers, same-section warmstarts, longdouble Newton/CG with QR preconditioning and feasible line minimization; original-variable audits"
+  },
+  "artifacts": {
+    "region": "E1_regions_final/regions.json",
+    "fig8": "E2_display_final/fig8_selected.pdf",
+    "selection": "E2_representatives/selection.json",
+    "fig9": "E3_phases_final/fig9.pdf",
+    "fig10": "E3_phases_final/fig10.pdf",
+    "inelasticities": "E3_phases_final/inelasticities.pdf",
+    "phases": "E3_phases_final/phases.json",
+    "phase_audit": "E3_AUDIT_ZH.md",
+    "replay": "REPLAY_ZH.md"
+  },
+  "remaining": {
+    "planned_stage": "F",
+    "steps": [
+      "F1 five M/L settings",
+      "F2 independent physics and phase/convergence audit",
+      "F3 source/claim report"
+    ],
+    "open_E_claims": [
+      "Fig8 strong upper/lower asymmetry",
+      "Three-point rho/phase robustness"
+    ],
+    "scope": "Completing the remaining three workflow steps is not a promise that all paper claims will match. No continuum certificate is claimed."
+  }
+}

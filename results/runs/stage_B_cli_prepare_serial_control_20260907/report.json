@@ -1,0 +1,294 @@
+{
+  "command": "prepare",
+  "status": "prepared",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "prepare",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_cli_prepare_serial_control_20260907",
+    "control": null,
+    "matrix": null,
+    "matrix_sha256": null,
+    "rank_report": null,
+    "density_limit": null,
+    "preparation": "results/runs/stage_A_M50_L10_20260906",
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 3,
+    "processes": 1,
+    "waves": 3,
+    "bits": 256,
+    "angular_order": 24,
+    "sampling_factor": 3,
+    "unitarity_energies": [
+      4.000109664275457,
+      9.0,
+      10000.0
+    ],
+    "subtracted": false,
+    "infinity": "zero",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": null,
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "seconds": 120.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3"
+  },
+  "scope": "Coherent finite-sine-cardinal conditional model; published regions and phases remain unverified.",
+  "amplitude_model": {
+    "prescription": "finite-sine-cardinal",
+    "M": 3,
+    "L": 3,
+    "bits": 320,
+    "coordinate_system": "unsubtracted sine-cardinal C_flat",
+    "coefficient_count": 22,
+    "physical_samples": 108,
+    "nyquist_retained": true,
+    "infinity_equality_imposed": false,
+    "density_limit_imposed": false,
+    "quadrature_order_per_panel": 24,
+    "arithmetic": "Arb",
+    "integral_enclosures": false,
+    "authors_implementation_recovered": false,
+    "analytic_function_family_defined": true,
+    "sampling_nodes": 12
+  },
+  "restrictions": {
+    "infinity": "zero",
+    "density_limit": 1500,
+    "asymptotic_necessary_conditions": true,
+    "density_rule": "100*number_of_double_densities",
+    "density_norm": "ordinary l4 of actual rho1 matrix and rho2 upper triangle; off C_flat/2",
+    "chiral_norm": "two separate l2 four-vectors",
+    "chiral_tolerance": 0.002
+  },
+  "operator": {
+    "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_cli_prepare_serial_control_20260907/amplitude.npz",
+    "shape": [
+      227,
+      22
+    ],
+    "storage": "float64 Arb quadrature approximation",
+    "rows": "Re f, Im f, chi01[4], chi21[4], A_infinity, f00(3), f11(3)"
+  },
+  "uv": {
+    "config": {
+      "moment_source": "printed",
+      "sr_error": "raw-absolute",
+      "cutoff": "hard-midpoint",
+      "mq_rule": "arithmetic-mean",
+      "pion_mass_gev": 0.14,
+      "matching_energy_gev": 1.2,
+      "up_mass_gev": 0.004,
+      "down_mass_gev": 0.0073,
+      "alpha_s": 0.4,
+      "gluon_condensate_gev4": 0.023,
+      "scalar_condensate_gev4": -0.0001,
+      "sr_tolerance": 0.002,
+      "ff_tolerance": 6e-05
+    },
+    "s0": 73.46938775510203,
+    "nodes": [
+      4.287187078897963,
+      7.999999999999998,
+      59.71281292110194
+    ],
+    "channels": [
+      "S0",
+      "S0",
+      "P1",
+      "P1"
+    ],
+    "powers": [
+      0,
+      1,
+      -1,
+      0
+    ],
+    "spectral_density_gev_powers": {
+      "S0": 4,
+      "P1": 2
+    },
+    "raw_moment_gev_powers": [
+      6,
+      8,
+      2,
+      4
+    ],
+    "form_factor_gev_powers": {
+      "S0": 2,
+      "P1": 0
+    },
+    "units": "divide physical GeV quantities by m_pi to the stated power",
+    "targets_normalized": [
+      4.4186999999999997e-07,
+      2.8201399999999997e-07,
+      5.75484e-05,
+      2.6994799999999998e-05
+    ],
+    "targets_raw": [
+      0.0023851042065805906,
+      0.11183813873471082,
+      0.004228045714285714,
+      0.1457112069970845
+    ],
+    "weights_raw": [
+      [
+        1.202966423029005,
+        8.377580409572777,
+        233.36928504500833
+      ],
+      [
+        5.157342105158051,
+        67.0206432765822,
+        13935.136459423895
+      ],
+      [
+        0.2805957381589776,
+        1.0471975511965974,
+        3.90819446662741
+      ],
+      [
+        1.202966423029005,
+        8.377580409572777,
+        233.36928504500833
+      ]
+    ],
+    "weights_normalized": [
+      [
+        0.00022286438130344455,
+        0.001552050197791994,
+        0.04323454115687231
+      ],
+      [
+        1.3004889860462529e-05,
+        0.00016900102153735044,
+        0.035139207589908315
+      ],
+      [
+        0.0038192197693860844,
+        0.014253522224620355,
+        0.05319486912909531
+      ],
+      [
+        0.00022286438130344455,
+        0.001552050197791994,
+        0.04323454115687231
+      ]
+    ],
+    "tolerances_raw": [
+      0.002,
+      0.002,
+      0.002,
+      0.002
+    ],
+    "tolerances_normalized": [
+      3.7052469135802477e-07,
+      5.043252743484227e-09,
+      2.7222222222222226e-05,
+      3.7052469135802477e-07
+    ],
+    "error_grouping": "four independent absolute scalar residuals",
+    "cell_phi_widths": [
+      1.0471975511965976,
+      1.0471975511965976,
+      1.0471975511965976
+    ],
+    "high_energy_mask": [
+      false,
+      false,
+      false
+    ],
+    "form_factors_at_zero": [
+      1.0,
+      1.0
+    ],
+    "mq_squared": 0.0016286989795918367,
+    "rescaled_ff_caps_squared": [
+      1.954438775510204e-07,
+      3e-05
+    ],
+    "ff_cap_variable": "abs(mathcal F)^2 = k_squared * abs(F)^2",
+    "finite_prescription_is_conditional": true
+  },
+  "quadrature_comparison": [
+    {
+      "s": 3.0,
+      "ell": 0,
+      "isospin": 0,
+      "maximum_absolute_row_change": 1.7783502021193794e-70,
+      "relative_to_largest_entry": 2.191703057796744e-71
+    },
+    {
+      "s": 9.0,
+      "ell": 1,
+      "isospin": 1,
+      "maximum_absolute_row_change": 2.151213951118018e-46,
+      "relative_to_largest_entry": 3.496349852919762e-45
+    },
+    {
+      "s": 4.287187078897963,
+      "ell": 5,
+      "isospin": 1,
+      "maximum_absolute_row_change": 3.664584859799359e-93,
+      "relative_to_largest_entry": 5.374670758877019e-83
+    },
+    {
+      "s": 10000.0,
+      "ell": 0,
+      "isospin": 0,
+      "maximum_absolute_row_change": 1.7730879723881603e-39,
+      "relative_to_largest_entry": 7.092351889552641e-40
+    }
+  ],
+  "quadrature_comparison_is_certificate": false,
+  "optimization_performed": false,
+  "stage_A_scope": "Conditional model; author implementation unresolved",
+  "elapsed_seconds": 0.13922678399831057,
+  "core_sources": {
+    "__init__.py": "97b92883aa81e89ddd3ff22b058b26482636340f2536390e71bf7074ffe6cbcc",
+    "analysis.py": "b0ace94c8596196e2e44ebc3e9e94c8a82173d7a848bf94065a8c82b0d6ec1e3",
+    "imaginary.py": "38f0ec4fb3f9ba3095357af27c1eb25b2ed3c42c86df07d023e415ec72689282",
+    "io.py": "0744caefe9c80bfd0ca37e8b70757a41173f6a4942833d2066d301e62636d486",
+    "kernels.py": "ba66e119c3342173b42c64634078f8c61e6a52ff725720e100d3536fadd08f6a",
+    "linear.py": "76b421226e64e2ac140ccc3b45f2ffcc3105a4d44c70b87644599388b4695b54",
+    "model.py": "45e793fb794317e40890ca530f2a8ef246b4851ddc1d827841390798a6ea3e76",
+    "operators.py": "458edb27c9a74cf59c9441e08ef2c75a42e8bdf4c42000538e1cd00240993995",
+    "quotient.py": "d9e119b2a77677594ae572dae559004e94bcaef34207d224e4d038c5b799f2bd",
+    "run.py": "250eb14663c091d3c8217349a02b18a9918a4e6332511ecf2fdac70b5a20ccc9"
+  },
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 120.0,
+  "supervisor_seconds": 0.3669947038870305
+}

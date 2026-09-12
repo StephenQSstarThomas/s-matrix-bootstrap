@@ -1,0 +1,436 @@
+{
+  "date": "2026-09-07",
+  "task": "B1 follow-up source and numerical-method audit",
+  "scope": "Research only; no optimization, no core changes, no transfer of later settings to 2309",
+  "sources": {
+    "author_readme": {
+      "kind": "official_author_readme",
+      "url": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/arxiv-2505.19332/README.md#L81-L100",
+      "local_file": "references/upstream-gauge-theory-bootstrap/README.md",
+      "lines": [
+        81,
+        100
+      ]
+    },
+    "paper2403": {
+      "kind": "paper",
+      "url": "https://arxiv.org/html/2403.10772v4",
+      "version": "v4",
+      "date": "2025-08-08"
+    },
+    "paper2505": {
+      "kind": "paper",
+      "url": "https://arxiv.org/html/2505.19332v3",
+      "version": "v3",
+      "date": "2026-02-04"
+    },
+    "paper2103": {
+      "kind": "paper",
+      "url": "https://arxiv.org/html/2103.11484v3",
+      "version": "v3",
+      "date": "2021-08-05"
+    },
+    "code2403_setup": {
+      "kind": "official_author_code",
+      "url": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/arxiv-2403.10772/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.m#L5-L45",
+      "local_file": "references/upstream-gauge-theory-bootstrap/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.m",
+      "lines": [
+        5,
+        45
+      ],
+      "tag": "arxiv-2403.10772"
+    },
+    "code2403_constraints": {
+      "kind": "official_author_code",
+      "url": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/arxiv-2403.10772/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.m#L51-L111",
+      "local_file": "references/upstream-gauge-theory-bootstrap/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.m",
+      "lines": [
+        51,
+        111
+      ],
+      "tag": "arxiv-2403.10772"
+    },
+    "code2403_watson": {
+      "kind": "official_author_code",
+      "url": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/arxiv-2403.10772/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.m#L117-L182",
+      "local_file": "references/upstream-gauge-theory-bootstrap/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.m",
+      "lines": [
+        117,
+        182
+      ],
+      "tag": "arxiv-2403.10772"
+    },
+    "code2403_precision": {
+      "kind": "official_author_code",
+      "url": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/arxiv-2403.10772/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb#L488-L550",
+      "local_file": "references/upstream-gauge-theory-bootstrap/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb",
+      "lines": [
+        488,
+        550
+      ],
+      "tag": "arxiv-2403.10772"
+    },
+    "code2403_legendre": {
+      "kind": "official_author_code",
+      "url": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/arxiv-2403.10772/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb#L1316-L1508",
+      "local_file": "references/upstream-gauge-theory-bootstrap/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb",
+      "lines": [
+        1316,
+        1508
+      ],
+      "tag": "arxiv-2403.10772"
+    },
+    "code2403_rho2": {
+      "kind": "official_author_code",
+      "url": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/arxiv-2403.10772/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb#L2840-L2933",
+      "local_file": "references/upstream-gauge-theory-bootstrap/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb",
+      "lines": [
+        2840,
+        2933
+      ],
+      "tag": "arxiv-2403.10772"
+    },
+    "code2403_rescale": {
+      "kind": "official_author_code",
+      "url": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/arxiv-2403.10772/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb#L4221-L4382",
+      "local_file": "references/upstream-gauge-theory-bootstrap/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb",
+      "lines": [
+        4221,
+        4382
+      ],
+      "tag": "arxiv-2403.10772"
+    },
+    "code2505_setup": {
+      "kind": "official_author_code",
+      "url": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/arxiv-2505.19332/theories/qcd/papers/arxiv-2505.19332/src/matlab/gtb_qcd_02_optimize.m#L17-L50",
+      "local_file": "references/upstream-gauge-theory-bootstrap/theories/qcd/papers/arxiv-2505.19332/src/matlab/gtb_qcd_02_optimize.m",
+      "lines": [
+        17,
+        50
+      ],
+      "tag": "arxiv-2505.19332"
+    },
+    "code2505_iteration": {
+      "kind": "official_author_code",
+      "url": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/arxiv-2505.19332/theories/qcd/papers/arxiv-2505.19332/src/matlab/gtb_qcd_02_optimize.m#L85-L123",
+      "local_file": "references/upstream-gauge-theory-bootstrap/theories/qcd/papers/arxiv-2505.19332/src/matlab/gtb_qcd_02_optimize.m",
+      "lines": [
+        85,
+        123
+      ],
+      "tag": "arxiv-2505.19332"
+    },
+    "code2505_core": {
+      "kind": "official_author_code",
+      "url": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/arxiv-2505.19332/theories/qcd/papers/arxiv-2505.19332/src/matlab/optimize_core.m#L24-L124",
+      "local_file": "references/upstream-gauge-theory-bootstrap/theories/qcd/papers/arxiv-2505.19332/src/matlab/optimize_core.m",
+      "lines": [
+        24,
+        124
+      ],
+      "tag": "arxiv-2505.19332"
+    },
+    "code2505_precision": {
+      "kind": "official_author_code",
+      "url": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/arxiv-2505.19332/theories/qcd/papers/arxiv-2505.19332/src/mathematica/gtb_qcd_01_generate_matrices.nb#L224-L250",
+      "local_file": "references/upstream-gauge-theory-bootstrap/theories/qcd/papers/arxiv-2505.19332/src/mathematica/gtb_qcd_01_generate_matrices.nb",
+      "lines": [
+        224,
+        250
+      ],
+      "tag": "arxiv-2505.19332"
+    },
+    "code2505_pv": {
+      "kind": "official_author_code",
+      "url": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/arxiv-2505.19332/theories/qcd/papers/arxiv-2505.19332/src/mathematica/gtb_qcd_01_generate_matrices.nb#L505-L586",
+      "local_file": "references/upstream-gauge-theory-bootstrap/theories/qcd/papers/arxiv-2505.19332/src/mathematica/gtb_qcd_01_generate_matrices.nb",
+      "lines": [
+        505,
+        586
+      ],
+      "tag": "arxiv-2505.19332"
+    },
+    "code2505_legendre": {
+      "kind": "official_author_code",
+      "url": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/arxiv-2505.19332/theories/qcd/papers/arxiv-2505.19332/src/mathematica/gtb_qcd_01_generate_matrices.nb#L751-L790",
+      "local_file": "references/upstream-gauge-theory-bootstrap/theories/qcd/papers/arxiv-2505.19332/src/mathematica/gtb_qcd_01_generate_matrices.nb",
+      "lines": [
+        751,
+        790
+      ],
+      "tag": "arxiv-2505.19332"
+    },
+    "code2505_chop": {
+      "kind": "official_author_code",
+      "url": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/arxiv-2505.19332/theories/qcd/papers/arxiv-2505.19332/src/mathematica/gtb_qcd_01_generate_matrices.nb#L4373-L4426",
+      "local_file": "references/upstream-gauge-theory-bootstrap/theories/qcd/papers/arxiv-2505.19332/src/mathematica/gtb_qcd_01_generate_matrices.nb",
+      "lines": [
+        4373,
+        4426
+      ],
+      "tag": "arxiv-2505.19332"
+    }
+  },
+  "paper_versions": {
+    "2403.10772": {
+      "v1": "2024-03-16",
+      "v2": "2024-09-15",
+      "v3": "2025-02-27",
+      "v4": "2025-08-08"
+    },
+    "2505.19332": {
+      "v1": "2025-05-25",
+      "v2": "2025-10-02",
+      "v3": "2026-02-04"
+    }
+  },
+  "official_tags": [
+    {
+      "tag": "arxiv-2403.10772",
+      "published_at": "2025-09-30T22:16:57Z",
+      "commit": "c8409331d5df911f592e53e5a43628418a39b213",
+      "url": "https://github.com/hyfysics/gauge-theory-bootstrap/releases/tag/arxiv-2403.10772",
+      "local_matlab_and_notebook_match": true
+    },
+    {
+      "tag": "arxiv-2505.19332",
+      "published_at": "2025-10-08T09:08:18Z",
+      "commit": "801684d9ece3de2918a20145178f569459081098",
+      "url": "https://github.com/hyfysics/gauge-theory-bootstrap/releases/tag/arxiv-2505.19332",
+      "local_matlab_and_generation_notebook_match": true
+    }
+  ],
+  "findings": [
+    {
+      "id": "F01",
+      "classification": "source_history",
+      "statement_zh": "作者README说2309当时没有公开代码；2403是首个公开版本，2505是后续版本。",
+      "evidence": [
+        "author_readme"
+      ],
+      "implementation_implication_zh": "可用后续代码做数值方法基准，不能称其为2309v3原始producer。",
+      "transfer_to_2309": "not_established"
+    },
+    {
+      "id": "F02",
+      "classification": "code_fact",
+      "statement_zh": "2403与2505公开MATLAB程序均以CVX构造SDP并明确cvx_solver mosek。",
+      "evidence": [
+        "code2403_constraints",
+        "code2505_core"
+      ],
+      "implementation_implication_zh": "成熟锥求解器是作者可复核基线；无需把自写Newton作为作者方法的必要组成。",
+      "transfer_to_2309": "not_established"
+    },
+    {
+      "id": "F03",
+      "classification": "paper_and_code_fact",
+      "statement_zh": "2403论文§8.4说明核先高精度计算、变量使用机器精度；两套nb的p=100是十进制预计算精度。",
+      "evidence": [
+        "paper2403",
+        "code2403_precision",
+        "code2505_precision"
+      ],
+      "implementation_implication_zh": "必须区分核生成精度与优化器精度；100位核不等于100位MOSEK求解。",
+      "transfer_to_2309": "not_established",
+      "paper_locator": "§8.4, equations (8.61)–(8.64)",
+      "solver_version_evidence": "2403v4 references [70] CVX 2.1, [73] MOSEK MATLAB manual 10.1; scripts do not pin executable builds"
+    },
+    {
+      "id": "F04",
+      "classification": "bounded_negative_evidence",
+      "statement_zh": "所审查的.m没有cvx_precision或cvx_solver_settings覆盖；2505输出cvx_status，但未给原式间隙/离节点证书。",
+      "evidence": [
+        "code2403_constraints",
+        "code2505_core",
+        "code2505_iteration"
+      ],
+      "implementation_implication_zh": "不能反向宣称作者使用某个1e-8容差或完整连续认证；复跑时应保存实际环境和求解状态。",
+      "transfer_to_2309": "not_established"
+    },
+    {
+      "id": "F05",
+      "classification": "paper_and_code_fact",
+      "statement_zh": "后续采用减除于nu0=-20的色散核，M50中点phi网格；角向投影使用解析LegendreQ核，物理节点使用离散PV cot核。",
+      "evidence": [
+        "code2403_setup",
+        "code2505_pv",
+        "code2403_legendre",
+        "code2505_legendre",
+        "paper2403"
+      ],
+      "implementation_implication_zh": "节点Hilbert矩阵相似不能证明与当前完整sine-cardinal交叉核在有限M等价；原型核应独立对照。",
+      "transfer_to_2309": "not_established",
+      "paper_locator": "§8.1–8.3, equations (8.3),(8.6),(8.28)–(8.40)"
+    },
+    {
+      "id": "F06",
+      "classification": "code_fact",
+      "statement_zh": "MATLAB l=10表示每同位旋10波；nb L=20表示ell<20。行顺序按I=0,2,1分块，每波内部走M个能量。",
+      "evidence": [
+        "code2403_setup",
+        "code2403_constraints",
+        "code2403_rescale",
+        "code2505_setup"
+      ],
+      "implementation_implication_zh": "导入作者矩阵时需要显式行排列映射，不能当作当前energy-major的I=0,1,2排列。",
+      "transfer_to_2309": "not_established",
+      "physical_constraints": 1500,
+      "max_spin": 19
+    },
+    {
+      "id": "F07",
+      "classification": "code_fact",
+      "statement_zh": "作者对每波定义Lambda=((sqrt(s)-2)/(sqrt(s)+2))^(ell/2)，以h/Lambda及Im(h)/Lambda^2形成SOC。",
+      "evidence": [
+        "code2403_rescale",
+        "code2403_constraints"
+      ],
+      "implementation_implication_zh": "应优先复核这种解析重缩放与作者状态基变换；它保持同一离散锥，作用不同于增加采样点。",
+      "transfer_to_2309": "not_established"
+    },
+    {
+      "id": "F08",
+      "classification": "code_fact",
+      "statement_zh": "两套代码都要求norm(rho/Mrho,4)<=100，Mrho=M^2+M(M+1)/2。M50执行上界为377500。",
+      "evidence": [
+        "code2403_setup",
+        "code2403_constraints",
+        "code2505_setup",
+        "code2505_core"
+      ],
+      "implementation_implication_zh": "本文给出的可执行B需与论文Mreg符号区分；借用于2309只能标作后续条件选择。",
+      "transfer_to_2309": "not_established",
+      "ordinary_l4_bound_M50": 377500,
+      "paper_normalization_note": "2403 equation (8.56) and text quote Mreg=100; normalized code vector is explicit, so bare unnormalized B=100 is not the released program"
+    },
+    {
+      "id": "F09",
+      "classification": "code_fact_with_algebraic_unpacking",
+      "statement_zh": "rho2核先乘2*symtr，对角列再除2，最后取上三角；因此优化rho2存actual上三角，off列核为Kij+Kji。",
+      "evidence": [
+        "code2403_rho2"
+      ],
+      "implementation_implication_zh": "将其映射到本repo C_flat时，off系数必须乘2；L4范数仍在actual rho2上计算。",
+      "transfer_to_2309": "not_established"
+    },
+    {
+      "id": "F10",
+      "classification": "code_fact",
+      "statement_zh": "sig有2M+1个自由分量，包含减除常数；两套程序均没有额外T0_unsub=0、五个解析尾锥或global FG PSD约束。",
+      "evidence": [
+        "code2403_constraints",
+        "code2505_core"
+      ],
+      "implementation_implication_zh": "这些附加条件不能包装成后续作者代码自带约束；应标清所用函数族和加强问题。",
+      "transfer_to_2309": "not_established"
+    },
+    {
+      "id": "F11",
+      "classification": "bounded_negative_evidence",
+      "statement_zh": "幺正约束只作用于生成矩阵的有限M×3l行；本次审查未找到离节点违例分离、无限高spin包络或区间式连续认证流程。",
+      "evidence": [
+        "code2403_constraints",
+        "code2505_core",
+        "paper2403"
+      ],
+      "implementation_implication_zh": "all energies的代码注释仅对应离散节点向量；不等于排除了所有连续幺正违例。",
+      "transfer_to_2309": "not_established",
+      "paper_locator": "§8.3–8.4 finite s_j and ell; Appendix B.1 finite parameter comparisons"
+    },
+    {
+      "id": "F12",
+      "classification": "paper_fact",
+      "statement_zh": "2403附录B.1比较M60、最大spin23、BSpline46及Mreg500，报告图形稳定；没有把它写成连续可行性证明。",
+      "evidence": [
+        "paper2403"
+      ],
+      "implementation_implication_zh": "收敛图和全域证书应分别验收；原型复现的分辨率变化先按论文做。",
+      "transfer_to_2309": "not_established",
+      "paper_locator": "Appendix B.1, Figure 17"
+    },
+    {
+      "id": "F13",
+      "classification": "code_fact",
+      "statement_zh": "2403：sqrt(s0)=2GeV，三电流S0/P1/D0，NB40非负三次BSpline系数，首系数=1；每电流三个FESR矩，组内l2误差；chiral合并8维l2并加12维D0/D2/F1低能l2约束。",
+      "evidence": [
+        "code2403_setup",
+        "code2403_constraints"
+      ],
+      "implementation_implication_zh": "这是一套后续完整GTB问题，不能把电流数、容差范数和cutoff倒灌为2309。",
+      "transfer_to_2309": "not_established"
+    },
+    {
+      "id": "F14",
+      "classification": "code_fact",
+      "statement_zh": "2403先固定F0=2(f00+5f02)并最大化F1=2(3f11+7f13)，之后一次Watsonian线性目标改进；不是每次强制eta=1。",
+      "evidence": [
+        "code2403_constraints",
+        "code2403_watson"
+      ],
+      "implementation_implication_zh": "后续图的投影坐标及选点程序不同于2309的(f00(3),f11(3))。",
+      "transfer_to_2309": "not_established"
+    },
+    {
+      "id": "F15",
+      "classification": "code_fact",
+      "statement_zh": "2505以49个电流谱系数替换BSpline，并约束leading系数在[1,10]及其余系数绝对值；使用六个FESR矩、逐分量误差和修改后的FF渐近界。",
+      "evidence": [
+        "code2505_setup",
+        "code2505_core",
+        "paper2505"
+      ],
+      "implementation_implication_zh": "这是IR/UV物理输入及有限谱参数化的改进，不能当成单纯换solver。",
+      "transfer_to_2309": "not_established",
+      "paper_locator": "§2.1, §2.4, Appendix B, Appendix C"
+    },
+    {
+      "id": "F16",
+      "classification": "paper_and_code_fact",
+      "statement_zh": "2505从minimize(0)的可行点开始，默认做五次Watsonian线性目标迭代，沿上一幅度模长和FF相位更新；每次仍解同一约束下的凸SDP。",
+      "evidence": [
+        "code2505_iteration",
+        "code2505_core",
+        "paper2505"
+      ],
+      "implementation_implication_zh": "它是寻找趋于饱和的特定QCD解的方法，不是原固定支持方向的全局最优性或全能区排违证书。",
+      "transfer_to_2309": "not_established",
+      "paper_locator": "§2.2–§3; §7 acknowledges systematic uncertainty in selecting the converged solution"
+    },
+    {
+      "id": "F17",
+      "classification": "code_fact",
+      "statement_zh": "2505导出JSON前对各矩阵Chop[...,10^-50]。",
+      "evidence": [
+        "code2505_chop"
+      ],
+      "implementation_implication_zh": "应在忠实代码基准中记录这项数值清理；不应误报默认10^-10或将截断后的矩阵视为严格原函数。",
+      "transfer_to_2309": "not_established"
+    },
+    {
+      "id": "F18",
+      "classification": "author_method_context",
+      "statement_zh": "2103.11484v3解释双谱Fredholm反问题的病态、高频近零方向和范数正则化，并推导正则化primal的对偶外界。",
+      "evidence": [
+        "paper2103"
+      ],
+      "implementation_implication_zh": "该理论支持保留可验证对偶与明确范数；不支持仅靠solver成功或少量primal波断言连续可行。",
+      "transfer_to_2309": "not_established",
+      "paper_locator": "§3.1–§3.2, §5"
+    }
+  ],
+  "uncertainties": [
+    "Official code tags are paper snapshots, not an explicit version-by-version mapping; the 2505 code tag predates paper v3.",
+    "MATLAB executable, CVX and MOSEK exact installed builds and solver tolerances are not pinned in the scripts.",
+    "2403 equation (8.73) labels P1/D0 errors as5e-6/6e-6, while the snapshot assigns eP1=6e-6/eD0=5e-6; preserve the executable branch explicitly.",
+    "No reviewed source establishes that all continuous-energy and all-spin unitarity violations are excluded.",
+    "No equivalence proof transfers the later PV/midpoint finite discretization to the current coherent finite-sine family."
+  ],
+  "prototype_implications": [
+    "First establish a source-faithful finite-operator and standard-conic baseline before additional solver tuning.",
+    "Compare analytic Legendre-Q/PV kernels, row order, actual rho2 packing, and author cone rescaling independently.",
+    "Separate published numerical replication from stronger off-grid/high-spin/interval verification and label any constraint feedback as an enhanced finite problem.",
+    "Treat Watsonian iteration as a later solution-selection/UV-to-phase mechanism, not a fixed-direction support certificate."
+  ],
+  "related_audit": "DISCRETE_BASIS_ZH.md is maintained separately by the parent audit; independent-basis conclusions are not duplicated here."
+}

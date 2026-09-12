@@ -1,0 +1,48 @@
+{
+  "running_queries": 0,
+  "main_running_queries": 0,
+  "parallel_running_queries": 0,
+  "activity_updated_at": "2026-09-08T02:52:09.557450+00:00",
+  "held_epsilons": [],
+  "allocation": {
+    "main_capacity": 6,
+    "parallel_capacity": 12,
+    "total_capacity": 12,
+    "threads_per_query": 8
+  },
+  "runs": [],
+  "geometry": {
+    "0.006": {
+      "ready": true,
+      "distance": 0.009812577971420494,
+      "points": 29
+    },
+    "0.004": {
+      "ready": true,
+      "distance": 0.009729681547872668,
+      "points": 27
+    },
+    "0.002": {
+      "ready": true,
+      "distance": 0.009849593699275495,
+      "points": 28
+    },
+    "0.001": {
+      "ready": true,
+      "distance": 0.00956684158009916,
+      "points": 27
+    },
+    "0.0006": {
+      "ready": true,
+      "distance": 0.009587225269165866,
+      "points": 25
+    },
+    "0.0002": {
+      "ready": true,
+      "distance": 0.00907372619064893,
+      "points": 30
+    }
+  },
+  "latest_summary": "results/runs/stage_B3_PV_B377500_region_20260907/final",
+  "B3_geometry_ready": true
+}

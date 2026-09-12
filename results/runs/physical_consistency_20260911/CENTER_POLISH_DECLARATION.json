@@ -1,0 +1,14 @@
+{
+  "source": "fine_watson_01_support_04",
+  "mu": 1.220703125e-07,
+  "old_decrement": 3.3415635822550437e-11,
+  "old_new_dual_upper": 0.29794945220885133,
+  "old_best_upper": 0.2843976392599185,
+  "old_objective": 0.2825730649127646,
+  "new_decrement_tolerance": 1e-14,
+  "goal_and_mu_unchanged": true,
+  "physical_inputs_changed": false,
+  "support_gap": 0.0001,
+  "source_checkpoint_sha256": "8dfdb748786a3f0ef182a5cd2e765fd65f9adb2574c0c13d0fd988fa2f5efc8d",
+  "scope": "A same-mu accuracy diagnostic, not a phase or physical-parameter adjustment"
+}

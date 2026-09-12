@@ -1,0 +1,117 @@
+{
+  "command": "boundary",
+  "status": "candidate",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "boundary",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_extended_precision_20260906",
+    "control": null,
+    "matrix": null,
+    "matrix_sha256": null,
+    "rank_report": null,
+    "density_limit": null,
+    "preparation": "results/runs/stage_B_unitarity150_20260906",
+    "solver_seconds": 800.0,
+    "start_mu": 1e-06,
+    "gap": 0.0001,
+    "nodes": 50,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": "results/runs/stage_B_line_M50_20260906/coefficients.json",
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "seconds": 1000.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3"
+  },
+  "scope": "Coherent finite-sine-cardinal conditional model; published regions and phases remain unverified.",
+  "solver": {
+    "solver": "analytic density barrier with float QR and longdouble CG",
+    "iterations": 26,
+    "seconds": 817.5040055369027,
+    "qr_factorizations": 5,
+    "pcg_steps": 26,
+    "qr_reuse": 6,
+    "raw_coordinates": true,
+    "history": [
+      {
+        "mu": 1e-06,
+        "objective": 0.07350490572728115,
+        "outer_estimate": 2513604874701.105,
+        "gap_estimate": 2513604874701.0317
+      }
+    ],
+    "feasible_path": true,
+    "all_density_directions_retained": true
+  },
+  "outer": {
+    "upper": 2513604874701.1055,
+    "enclosure": "[2513604874701.104924565559 +/- 3.60e-13]",
+    "disk": 34.34086341257172,
+    "chiral": 1662.7250056599653,
+    "density_residual": 2513604873004.039,
+    "scope": "exact saved float64 operator; angular quadrature error excluded",
+    "primal_feasible": true,
+    "lower": 0.0735049049910583,
+    "minimum_margin_enclosure": "[8.9320035782992567612e-103 +/- 1.18e-123]",
+    "density_norm": 304184.80501508457,
+    "targets": [
+      "[0.07350490499105831262682998 +/- 3.99e-27]",
+      "[-0.004392611103054505278306157 +/- 2.62e-28]"
+    ]
+  },
+  "M": 50,
+  "L": 10,
+  "sampling_nodes": 150,
+  "infinity": "zero",
+  "mode": "chiral",
+  "chiral_tolerance": 0.002,
+  "density_limit": 377500,
+  "targets": [
+    0.07350490498812617,
+    -0.004392611103056927
+  ],
+  "objective": 0.07350490498812617,
+  "minimum_scattering_margin": 8.932003578299146e-103,
+  "chiral_norms": [
+    0.001999999974511656,
+    0.00044171178133072284
+  ],
+  "density_norm": 304184.80501508457,
+  "radial_shrink": 0.99999999,
+  "sampled_feasible": true,
+  "support_optimality_certified": false,
+  "physical_unitarity_accepted": false,
+  "unitarity_coverage": "listed energies and waves only; off-grid and tails unverified",
+  "asymptotic_necessary_condition": true,
+  "operator_scope": "A-stage float64 quadrature; no continuum certificate",
+  "elapsed_seconds": 832.1677787741646
+}

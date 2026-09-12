@@ -1,0 +1,54 @@
+{
+  "schema": "smatrix-source-boundedness-decision-inputs-v1",
+  "memo": "docs/71_source_boundedness_decisions.md",
+  "local_input_files": {
+    "references/2309.12402v3-source/prd_submission_2.tex": {
+      "sha256": "39ec9e10da96f9c09c8db9e7d3ac63f342b1214df592896281adda727fb6be84",
+      "bytes": 105871
+    },
+    "references/2309.12402v3-source/prd_submission_2.bbl": {
+      "sha256": "15f18dad009946c7a12950ccc4ffde6d1fd2b14e42285fe38d722162f5c5482d",
+      "bytes": 15754
+    },
+    "references/upstream-gauge-theory-bootstrap/README.md": {
+      "sha256": "ffef51c0aeaa91b84a27926e2a07a7dec1433e3d1aef70d3ac47a16fad064ecb",
+      "bytes": 3580
+    },
+    "references/upstream-gauge-theory-bootstrap/theories/qcd/papers/arxiv-2403.10772/README.md": {
+      "sha256": "92706d98d97227d7875a22eb81dd1ca4dcf164ad596cd31afcd4e7e9efb457b6",
+      "bytes": 801
+    },
+    "references/upstream-gauge-theory-bootstrap/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.m": {
+      "sha256": "b12bf411407fc4cb8ae56aea41c88aa336e0f73aa7ae44ebef2b1bca3fc08ad2",
+      "bytes": 9398
+    },
+    "references/upstream-gauge-theory-bootstrap/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb": {
+      "sha256": "9a3a81d7e99ef35355aa5a2bbf10ce9a21e6af929e0cb8371c4afaff133922bd",
+      "bytes": 224480
+    },
+    "docs/44_source_prescription.md": {
+      "sha256": "06190404979f8db2e88e1fbfa2342640b60e3fad8f755a9a90bd350351bc639d",
+      "bytes": 22012
+    },
+    "docs/69_full_analytic_rank_and_finite_target_plane.md": {
+      "sha256": "ab5a4ff83e158795c1bfdcc9540c52f45d82e847e321fde1418750d67254fc29",
+      "bytes": 10721
+    },
+    "docs/71_source_boundedness_decisions.md": {
+      "sha256": "3837f754cf4025496c89d5121dc6db0e6cae640a8d68c1eb6f8b9a3992b2e903",
+      "bytes": 10581
+    }
+  },
+  "author_repository_commit": "801684d9ece3de2918a20145178f569459081098",
+  "additional_primary_pages_consulted": [
+    "https://arxiv.org/html/2103.11484v3",
+    "https://arxiv.org/html/2403.10772v2"
+  ],
+  "original_2023_executable_code_available_in_snapshot": false,
+  "source_code_edits": 0,
+  "optimizer_runs": 0,
+  "numerical_scans": 0,
+  "phase_fits": 0,
+  "outreach": 0,
+  "decision": "Derive the original-node PV/midpoint amplitude-kernel map and audit its target kernel before optimization; keep any density regularization as an explicitly separate hypothesis."
+}

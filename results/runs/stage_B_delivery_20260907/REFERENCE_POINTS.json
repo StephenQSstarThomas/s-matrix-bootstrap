@@ -1,0 +1,598 @@
+{
+  "task": "Final seven-domain reference-point membership",
+  "created_utc": "2026-09-08T02:55:19.098697+00:00",
+  "summary": "results/runs/stage_B_delivery_20260907/regions/regions.json",
+  "summary_report": "results/runs/stage_B_delivery_20260907/regions/report.json",
+  "accepted_supports": 204,
+  "model_signature": {
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "free",
+    "unitarity_scope": "sampled",
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": false,
+    "prescription": "pv-midpoint",
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    "additional_constraints": null,
+    "sampling_nodes": 50,
+    "scattering_samples": 1500
+  },
+  "chiral_norm": "two separate four-dimensional L2 balls",
+  "reference_source": "results/runs/stage_B_reference_20260906/report.json",
+  "references": {
+    "pdf_black": {
+      "name": "PDF黑点",
+      "coordinates": [
+        0.07131334281385134,
+        -0.004754181940087461
+      ],
+      "readout_halfwidths": [
+        1.9507737650137372e-06,
+        2.575056454782686e-07
+      ]
+    },
+    "formula_140_92": {
+      "name": "140/92公式点",
+      "coordinates": [
+        0.07332139057293466,
+        -0.00488809270486231
+      ]
+    }
+  },
+  "results": [
+    {
+      "mode": "pure",
+      "epsilon": null,
+      "geometry_ready": true,
+      "self_inner_outer_error_upper": 0.009675773346601383,
+      "reference_checks": {
+        "pdf_black": {
+          "status": "inside_inner_hull",
+          "triangle_vertex_indices": [
+            7,
+            26,
+            29
+          ],
+          "weights_approx": [
+            0.33606290232976377,
+            0.32796757785830777,
+            0.33596951981192846
+          ],
+          "weight_enclosures": [
+            "[0.33606290232976376072009101664172912 +/- 2.78e-36]",
+            "[0.32796757785830776293024799626682306 +/- 6.02e-37]",
+            "[0.33596951981192847634966098709144782 +/- 2.17e-36]"
+          ],
+          "minimum_weight_lower": 0.3279675778583077,
+          "readout_box_minimum_weight_lower": 0.32796503989165665
+        },
+        "formula_140_92": {
+          "status": "inside_inner_hull",
+          "triangle_vertex_indices": [
+            7,
+            26,
+            29
+          ],
+          "weights_approx": [
+            0.335850212941036,
+            0.32738020197789813,
+            0.33676958508106586
+          ],
+          "weight_enclosures": [
+            "[0.33585021294103601024038829824452567 +/- 4.73e-36]",
+            "[0.32738020197789813547516796153618075 +/- 4.25e-36]",
+            "[0.33676958508106585428444374021929358 +/- 4.79e-37]"
+          ],
+          "minimum_weight_lower": 0.3273802019778981
+        }
+      },
+      "certificate_vertices": [
+        {
+          "index": 7,
+          "target_enclosures": [
+            "[-2.526567495128274768596775908889579523527 +/- 1.94e-40]",
+            "[0.03284801959700547624923181973369477255443 +/- 4.58e-42]"
+          ],
+          "mixture": {
+            "source_point": 7
+          },
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_007_adaptive/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_007_adaptive/coefficients.json"
+        },
+        {
+          "index": 26,
+          "target_enclosures": [
+            "[0.5269932768169704763685476979452094425653 +/- 3.10e-41]",
+            "[0.06527037580762186077633863536733479991122 +/- 6.63e-43]"
+          ],
+          "mixture": {
+            "source_point": 26
+          },
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_026_adaptive/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_026_adaptive/coefficients.json"
+        },
+        {
+          "index": 29,
+          "target_enclosures": [
+            "[2.225089466544173654027084440540580065649 +/- 1.50e-40]",
+            "[-0.1107235853478412609447361020563330740957 +/- 1.96e-41]"
+          ],
+          "mixture": {
+            "source_point": 29
+          },
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_029_adaptive/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_029_adaptive/coefficients.json"
+        }
+      ]
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.006,
+      "geometry_ready": true,
+      "self_inner_outer_error_upper": 0.009812577971420494,
+      "reference_checks": {
+        "pdf_black": {
+          "status": "inside_inner_hull",
+          "triangle_vertex_indices": [
+            6,
+            14,
+            19
+          ],
+          "weights_approx": [
+            0.3284647539892205,
+            0.3256202132496233,
+            0.34591503276115615
+          ],
+          "weight_enclosures": [
+            "[0.32846475398922049945419151344297950 +/- 4.74e-36]",
+            "[0.32562021324962333290664537433895983 +/- 8.61e-37]",
+            "[0.34591503276115616763916311221806067 +/- 3.88e-36]"
+          ],
+          "minimum_weight_lower": 0.32562021324962326,
+          "readout_box_minimum_weight_lower": 0.32555321105404483
+        },
+        "formula_140_92": {
+          "status": "inside_inner_hull",
+          "triangle_vertex_indices": [
+            4,
+            14,
+            19
+          ],
+          "weights_approx": [
+            0.3374422881238159,
+            0.33012319814686364,
+            0.3324345137293205
+          ],
+          "weight_enclosures": [
+            "[0.33744228812381585775272381498929101 +/- 4.69e-36]",
+            "[0.33012319814686366190058289910634418 +/- 3.34e-36]",
+            "[0.33243451372932048034669328590436482 +/- 1.99e-36]"
+          ],
+          "minimum_weight_lower": 0.3301231981468636
+        }
+      },
+      "certificate_vertices": [
+        {
+          "index": 4,
+          "target_enclosures": [
+            "[0.03076481884154121312710952792039831380000 +/- 1.83e-42]",
+            "[-0.004779616150232839380325579808303955629520 +/- 2.91e-43]"
+          ],
+          "mixture": {
+            "source_point": 3
+          },
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_001_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_001_20260907/coefficients.json"
+        },
+        {
+          "index": 6,
+          "target_enclosures": [
+            "[0.01812539242689021343293763204532833573158 +/- 3.77e-42]",
+            "[-0.004008032286140001557101977444902116595384 +/- 1.26e-43]"
+          ],
+          "mixture": {
+            "source_point": 5
+          },
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_strip_minus_fixed_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_strip_minus_fixed_20260907/coefficients.json"
+        },
+        {
+          "index": 14,
+          "target_enclosures": [
+            "[0.007407849035246706828843401235558185935761 +/- 3.88e-44]",
+            "[0.001655819622491306519604882992405473110364 +/- 1.45e-43]"
+          ],
+          "mixture": {
+            "source_point": 17
+          },
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_013_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_013_20260907/coefficients.json"
+        },
+        {
+          "index": 19,
+          "target_enclosures": [
+            "[0.1819742968796622099322851626161411713111 +/- 4.24e-41]",
+            "[-0.01149661784882317719449033239354273113807 +/- 1.52e-42]"
+          ],
+          "mixture": {
+            "source_point": 22
+          },
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_parallel_003_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_parallel_003_20260907/coefficients.json"
+        }
+      ]
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.004,
+      "geometry_ready": true,
+      "self_inner_outer_error_upper": 0.009729681547872668,
+      "reference_checks": {
+        "pdf_black": {
+          "status": "inside_inner_hull",
+          "triangle_vertex_indices": [
+            0,
+            5,
+            6
+          ],
+          "weights_approx": [
+            0.3430042137708396,
+            0.33156936463286574,
+            0.32542642159629465
+          ],
+          "weight_enclosures": [
+            "[0.34300421377083961088141515302394773 +/- 4.76e-37]",
+            "[0.33156936463286576039631711998382809 +/- 1.06e-36]",
+            "[0.32542642159629462872226772699222418 +/- 1.54e-36]"
+          ],
+          "minimum_weight_lower": 0.3254264215962946,
+          "readout_box_minimum_weight_lower": 0.3252822495184416
+        },
+        "formula_140_92": {
+          "status": "inside_inner_hull",
+          "triangle_vertex_indices": [
+            0,
+            5,
+            6
+          ],
+          "weights_approx": [
+            0.3245010606390252,
+            0.34092381236173647,
+            0.33457512699923836
+          ],
+          "weight_enclosures": [
+            "[0.32450106063902518184718575270457969 +/- 6.21e-37]",
+            "[0.34092381236173645863779976712640273 +/- 1.83e-37]",
+            "[0.33457512699923835951501448016901758 +/- 4.39e-37]"
+          ],
+          "minimum_weight_lower": 0.3245010606390251
+        }
+      },
+      "certificate_vertices": [
+        {
+          "index": 0,
+          "target_enclosures": [
+            "0",
+            "0"
+          ],
+          "mixture": {
+            "zero_amplitude": true
+          }
+        },
+        {
+          "index": 5,
+          "target_enclosures": [
+            "[0.09736197588333741472496162601501530932756 +/- 3.22e-42]",
+            "[-0.007763705883383936023676245633909529557208 +/- 8.86e-45]"
+          ],
+          "mixture": {
+            "source_point": 4
+          },
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_002_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_002_20260907/coefficients.json"
+        },
+        {
+          "index": 6,
+          "target_enclosures": [
+            "[0.1199383078342436765296373297223830249177 +/- 1.79e-41]",
+            "[-0.006698825812741656194905194594536091357511 +/- 9.28e-44]"
+          ],
+          "mixture": {
+            "source_point": 6
+          },
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_004_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_004_20260907/coefficients.json"
+        }
+      ]
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.002,
+      "geometry_ready": true,
+      "self_inner_outer_error_upper": 0.009849593699275495,
+      "reference_checks": {
+        "pdf_black": {
+          "status": "inside_inner_hull",
+          "triangle_vertex_indices": [
+            5,
+            19,
+            21
+          ],
+          "weights_approx": [
+            0.344058990334171,
+            0.32334898282734664,
+            0.3325920268384824
+          ],
+          "weight_enclosures": [
+            "[0.34405899033417099841677591079681094 +/- 1.11e-36]",
+            "[0.32334898282734662485168514206089437 +/- 3.45e-36]",
+            "[0.33259202683848237673153894714229469 +/- 2.35e-36]"
+          ],
+          "minimum_weight_lower": 0.3233489828273466,
+          "readout_box_minimum_weight_lower": 0.3231427891807559
+        },
+        "formula_140_92": {
+          "status": "inside_inner_hull",
+          "triangle_vertex_indices": [
+            1,
+            7,
+            18
+          ],
+          "weights_approx": [
+            0.32477287889681067,
+            0.3564237667783061,
+            0.31880335432488316
+          ],
+          "weight_enclosures": [
+            "[0.32477287889681068429385816940864563 +/- 6.90e-37]",
+            "[0.35642376677830612989379451879267845 +/- 1.48e-37]",
+            "[0.31880335432488318581234731179867592 +/- 8.38e-37]"
+          ],
+          "minimum_weight_lower": 0.3188033543248831
+        }
+      },
+      "certificate_vertices": [
+        {
+          "index": 1,
+          "target_enclosures": [
+            "[0.1058850984992565424885460515605569900981 +/- 1.96e-41]",
+            "[-0.006854817981383333352534038723266678787444 +/- 2.48e-43]"
+          ],
+          "mixture": {
+            "source_point": 0
+          },
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_chiral_M50_barrier_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_chiral_M50_barrier_20260907/coefficients.json"
+        },
+        {
+          "index": 5,
+          "target_enclosures": [
+            "[0.06918945637586494956962600192864983568403 +/- 2.40e-42]",
+            "[-0.005306803300247702519783105525586120136022 +/- 1.52e-43]"
+          ],
+          "mixture": {
+            "source_point": 4
+          },
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_002_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_002_20260907/coefficients.json"
+        },
+        {
+          "index": 7,
+          "target_enclosures": [
+            "[0.08578963027560368102983787338856025928722 +/- 4.04e-42]",
+            "[-0.005010840431032000719506814234152066382864 +/- 4.82e-43]"
+          ],
+          "mixture": {
+            "source_point": 6
+          },
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_003_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_003_20260907/coefficients.json"
+        },
+        {
+          "index": 18,
+          "target_enclosures": [
+            "[0.02620837897205812873236688630299223305502 +/- 4.49e-42]",
+            "[-0.002747308338195242052476909940662037436933 +/- 2.01e-43]"
+          ],
+          "mixture": {
+            "source_point": 22
+          },
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_016_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_016_20260907/coefficients.json"
+        },
+        {
+          "index": 19,
+          "target_enclosures": [
+            "[0.04228360500636360559187936493741147031220 +/- 9.71e-43]",
+            "[-0.001992054968530632655879251672138422213177 +/- 2.61e-43]"
+          ],
+          "mixture": {
+            "source_point": 23
+          },
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_parallel_004_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_parallel_004_20260907/coefficients.json"
+        },
+        {
+          "index": 21,
+          "target_enclosures": [
+            "[0.1017334298839095118003204179132951566086 +/- 5.94e-42]",
+            "[-0.006867872415958215439300201031699106726919 +/- 4.64e-43]"
+          ],
+          "mixture": {
+            "source_point": 26
+          },
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_parallel_006_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_parallel_006_20260907/coefficients.json"
+        }
+      ]
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.001,
+      "geometry_ready": true,
+      "self_inner_outer_error_upper": 0.00956684158009916,
+      "reference_checks": {
+        "pdf_black": {
+          "status": "inside_inner_hull",
+          "triangle_vertex_indices": [
+            9,
+            13,
+            20
+          ],
+          "weights_approx": [
+            0.34337766562494154,
+            0.3207517868157424,
+            0.3358705475593161
+          ],
+          "weight_enclosures": [
+            "[0.34337766562494151831307429668767909 +/- 1.95e-36]",
+            "[0.32075178681574238787236518421835611 +/- 3.34e-36]",
+            "[0.33587054755931609381456051909396480 +/- 1.40e-36]"
+          ],
+          "minimum_weight_lower": 0.32075178681574235,
+          "readout_box_minimum_weight_lower": 0.3198665825510374
+        },
+        "formula_140_92": {
+          "status": "inside_inner_hull",
+          "triangle_vertex_indices": [
+            13,
+            14,
+            20
+          ],
+          "weights_approx": [
+            0.3255919920314714,
+            0.387749763263743,
+            0.28665824470478557
+          ],
+          "weight_enclosures": [
+            "[0.32559199203147140482095443810189516 +/- 7.27e-37]",
+            "[0.38774976326374301947314083192216695 +/- 4.84e-36]",
+            "[0.28665824470478557570590472997593788 +/- 4.45e-36]"
+          ],
+          "minimum_weight_lower": 0.2866582447047855
+        }
+      },
+      "certificate_vertices": [
+        {
+          "index": 9,
+          "target_enclosures": [
+            "[0.07640152592203625436065137836508199573775 +/- 2.25e-42]",
+            "[-0.004797383064558689089374562526206066714431 +/- 7.51e-44]"
+          ],
+          "mixture": {
+            "source_point": 9
+          },
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_006_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_006_20260907/coefficients.json"
+        },
+        {
+          "index": 13,
+          "target_enclosures": [
+            "[0.07892341122426069361193425738791073861832 +/- 3.81e-42]",
+            "[-0.005235605248166401039246422311651917819340 +/- 4.22e-43]"
+          ],
+          "mixture": {
+            "source_point": 15
+          },
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_012_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_012_20260907/coefficients.json"
+        },
+        {
+          "index": 14,
+          "target_enclosures": [
+            "[0.07932039592791038811632090442958333666181 +/- 3.12e-42]",
+            "[-0.005067827119101011162898265252006345228474 +/- 8.19e-44]"
+          ],
+          "mixture": {
+            "source_point": 16
+          },
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_013_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_013_20260907/coefficients.json"
+        },
+        {
+          "index": 20,
+          "target_enclosures": [
+            "[0.05884392116070683801113144289351822813655 +/- 3.20e-42]",
+            "[-0.004250262531897976134992745545612922833061 +/- 1.08e-43]"
+          ],
+          "mixture": {
+            "source_point": 25
+          },
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_parallel_005_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_parallel_005_20260907/coefficients.json"
+        }
+      ]
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.0006,
+      "geometry_ready": true,
+      "self_inner_outer_error_upper": 0.009587225269165866,
+      "reference_checks": {
+        "pdf_black": {
+          "status": "excluded_by_outer_halfspace",
+          "direction": [
+            1.0,
+            0.0
+          ],
+          "upper": 0.06832086671992502,
+          "violation_margin": "[0.0029924760939263189696291078689682763 +/- 6.99e-39]",
+          "violation_margin_lower": 0.0029924760939263185,
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_x_20260907/report.json",
+          "readout_box_violation_margin_lower": 0.0029905253201473604
+        },
+        "formula_140_92": {
+          "status": "excluded_by_outer_halfspace",
+          "direction": [
+            1.0,
+            0.0
+          ],
+          "upper": 0.06832086671992502,
+          "violation_margin": "[0.0050005238530096418614334652374964207 +/- 4.11e-38]",
+          "violation_margin_lower": 0.005000523853009641,
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_x_20260907/report.json"
+        }
+      },
+      "certificate_vertices": []
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.0002,
+      "geometry_ready": true,
+      "self_inner_outer_error_upper": 0.00907372619064893,
+      "reference_checks": {
+        "pdf_black": {
+          "status": "excluded_by_outer_halfspace",
+          "direction": [
+            1.0,
+            0.0
+          ],
+          "upper": 0.05452031923959315,
+          "violation_margin": "[0.016793023574258186814134319320146460 +/- 8.62e-38]",
+          "violation_margin_lower": 0.016793023574258183,
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_x_20260907/report.json",
+          "readout_box_violation_margin_lower": 0.016791072800479225
+        },
+        "formula_140_92": {
+          "status": "excluded_by_outer_halfspace",
+          "direction": [
+            1.0,
+            0.0
+          ],
+          "upper": 0.05452031923959315,
+          "violation_margin": "[0.018801071333341509705938676688674605 +/- 4.80e-37]",
+          "violation_margin_lower": 0.018801071333341506,
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_x_20260907/report.json"
+        }
+      },
+      "certificate_vertices": []
+    }
+  ],
+  "certificate": "For triangle(a,b,c), weights are the cyclic determinants det(b-P,c-P)/det(b-a,c-a). Exact identities give sum=1 and P=sum(weights*vertices); positive Arb enclosures certify the convex combination of saved feasible amplitudes. Exclusions use stored outward upper bounds directly.",
+  "arithmetic": "384-bit Arb on saved target enclosures and float64 reference coordinates; no new amplitude evaluation or optimization",
+  "readout_scope": "Existing PDF center readout halfwidths also checked; they are not author solver-error bounds or physical-input confidence intervals.",
+  "scope": "Conditional PV M50/L10 sampled/free B377500 model; no continuum or joint-QCD feasibility claim.",
+  "old_snapshots_preserved": true,
+  "new_optimization": false
+}

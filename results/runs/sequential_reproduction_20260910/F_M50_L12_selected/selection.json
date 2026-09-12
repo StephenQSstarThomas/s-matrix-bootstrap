@@ -1,0 +1,50 @@
+{
+  "role": "tip",
+  "rule": "Fixed +f00(3) UV support; no phase selection",
+  "model_signature": {
+    "M": 50,
+    "L": 12,
+    "density_limit": 377500.0,
+    "infinity": "free",
+    "unitarity_scope": "sampled",
+    "prescription": "analytic-cardinal",
+    "chiral_norm": "separate-l2",
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/F_M50_L12_prepare",
+    "current_preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/F_M50_L12_current",
+    "chiral_tolerance": 0.002,
+    "uv_config": {
+      "moment_source": "printed",
+      "sr_error": "raw-absolute",
+      "cutoff": "hard-midpoint",
+      "mq_rule": "arithmetic-mean",
+      "pion_mass_gev": 0.14,
+      "matching_energy_gev": 1.2,
+      "up_mass_gev": 0.004,
+      "down_mass_gev": 0.0073,
+      "alpha_s": 0.4,
+      "gluon_condensate_gev4": 0.023,
+      "scalar_condensate_gev4": -0.0001,
+      "sr_tolerance": 0.002,
+      "ff_tolerance": 6e-05
+    },
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": false,
+    "additional_constraints": null,
+    "sampling_nodes": 50,
+    "scattering_samples": 1800
+  },
+  "target": [
+    0.09037819041464042,
+    -0.0058485104832454535
+  ],
+  "epsilon": 0.002,
+  "joint_feasible": true,
+  "coefficients_mixed": false,
+  "selection_uses_phase_data": false,
+  "resolution_comparison": true,
+  "representative_center_converged": true,
+  "source_reports": [
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/F_M50_L12_selected/report.json"
+  ],
+  "support_gap": 7.919443217697941e-05
+}

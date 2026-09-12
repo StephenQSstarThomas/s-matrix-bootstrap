@@ -1,0 +1,61 @@
+{
+  "schema": "smatrix-source-gauge-fiber-independent-review-v1",
+  "input_hashes": {
+    "results/source_M50_shared_G_gauge_fiber.json": "b938d1476203ef9e1b6f68440930c9cbf905aa0aa6cd1728ff895244de1d439b",
+    "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.json": "236209537ab81bc51e8e21a2fd6aa98167321711112eb37c8ec653c1ad2287c2",
+    "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.prepared.json": "fde6819094222e872b1a44d3e7f3b3da83d6459b8f97c07989a886bde09d04cc",
+    "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.input_bits.npz": "64259750c62dc34edbd0db9eb9d7939c3545befacc8862fc6c84f4eec9a722be",
+    "results/source_M50_shared_G_gauge_fiber.input_bits.npz": "7278e1090081e240b60c54d9dbfd646194a27b82495f0f608bef4bd147010f74",
+    "references/2309.12402v3-source/prd_submission_2.tex": "39ec9e10da96f9c09c8db9e7d3ac63f342b1214df592896281adda727fb6be84",
+    "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.extra_bits.npz": "0d51fa123168977667552e8906aec56bd6ad5a0c0b1f1e549c7ba40319bf5d6e",
+    "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.modular.npy": "5b1d4f472757924981ed0d26310b9402e1787423695750880394d29c51fe3ba8"
+  },
+  "channels": [
+    {
+      "channel": "S0",
+      "minimum_direct_Gram_determinant": "19/100000000000000",
+      "maximum_high_FF_squared_ratio": "3971666316894530506515552818022717869795412482766629474644318871376619261892619197265625/5047782282837028774650356832142560939046963870422103028532678070155325422070083631448064",
+      "raw_moment_residuals": [
+        "3563911752706054677749326248292885336939006060793096155962714635301909288819800852136356931316284849823347562611037413511399484069774905849/2034628928423329719235715879583831353402429802881365329764000385737505421604034595719008582867803723859314783943140316443203076096000000000000",
+        "0"
+      ]
+    },
+    {
+      "channel": "P1",
+      "minimum_direct_Gram_determinant": "19/100000000000000",
+      "maximum_high_FF_squared_ratio": "167998617829703222279423781185939362156946938529439437898322825619309469483375734375/1457001669169296803189596430117639179981805129289104640938859307304178213903906373632",
+      "raw_moment_residuals": [
+        "0",
+        "0"
+      ]
+    }
+  ],
+  "all_100_FF_affine_relations_verified": true,
+  "all_100_direct_Gram_determinants_positive": true,
+  "all_1500_scattering_disks_strict": true,
+  "minimum_disk_margin": "19/100",
+  "all_four_raw_scalar_intervals_strict": true,
+  "incidental_combined_L2_squared": "12701466981076342631669306660717872914584406556841186692642935118966705778494330396834681973661252950797723533941564725096241518274221699093742212355512353183558857292903071640273633797432413658068523598787012865079023720300471503395381613696752507415014973522901318236814410801/4139714876377066969857419209968645780603634108309987191541062559079715934545453266837444528016858529531612845095031670704214688510274777031631970540008714360302405467558296687877050629200820244516296290538008548511529321720633637318689015135939332956766601216000000000000000000000000",
+  "incidental_combined_L2_also_strict": true,
+  "formal_RHS_row_order_verified": true,
+  "complete_modular_entries_verified": 11670636,
+  "prime": 2147483647,
+  "prime_verified": true,
+  "square_minor_shape": [
+    3011,
+    3011
+  ],
+  "square_minor_sha256": "35ba7d64a512a5aa3cfa46c7487a15e94a86d5e20c010ff53542beb54d855f22",
+  "independent_minor_determinant_mod_p": 61598319,
+  "determinant_call_count": 1,
+  "RREF_call_count": 0,
+  "exact_full_augmented_rank": 3011,
+  "exact_base_rank": 3009,
+  "entire_target_plane_for_declared_shared_rounded_map_verified": true,
+  "source_sha256": {
+    "/home/shiqiu/s-matrix-bootstrap/scripts/review_source_gauge_fiber.py": "c7242b7c2a4b36162c59d321c3f4654b4620af44328382bd780e800601316748",
+    "src/smatrix_bootstrap/dyadic_modular_rank.py": "d756339f1a2e4aabfa340dd92ced9c93a22a711f0f69a372c55502f4a94ed513"
+  },
+  "elapsed_seconds": 6.83453718398232,
+  "scope": "Exact saved dyadic shared operators and rational fiber; no analytic-operator, author-code, independently rounded graph, or continuum claim."
+}

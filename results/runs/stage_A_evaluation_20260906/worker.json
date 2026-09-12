@@ -1,0 +1,65 @@
+{
+  "command": "evaluate",
+  "status": "evaluated",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "evaluate",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_A_evaluation_20260906",
+    "control": null,
+    "matrix": null,
+    "matrix_sha256": null,
+    "rank_report": null,
+    "density_limit": null,
+    "nodes": 50,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "subtracted": false,
+    "infinity": "free",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": "results/runs/stage_A_M50_L10_20260906/constant_evaluation_input.json",
+    "energies": [
+      0.5,
+      3.0,
+      4.0,
+      5.3,
+      9.0
+    ],
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "seconds": 120.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3"
+  },
+  "scope": "Coherent finite-sine-cardinal conditional model; published regions and phases remain unverified.",
+  "amplitude_model": {
+    "prescription": "finite-sine-cardinal",
+    "M": 50,
+    "L": 10,
+    "bits": 384,
+    "coordinate_system": "unsubtracted sine-cardinal C_flat",
+    "coefficient_count": 3876,
+    "physical_samples": 1500,
+    "nyquist_retained": true,
+    "infinity_equality_imposed": false,
+    "density_limit_imposed": false,
+    "quadrature_order_per_panel": 24,
+    "arithmetic": "Arb",
+    "integral_enclosures": false,
+    "authors_implementation_recovered": false,
+    "analytic_function_family_defined": true
+  },
+  "elapsed_seconds": 5.065344400005415
+}

@@ -1,0 +1,351 @@
+{
+  "task_date": "2026-09-11",
+  "archived_utc": "2026-09-12T02:28:42.545303+00:00",
+  "status": "bounded_primary_source_audit_complete",
+  "document": "AUDIT_ZH.md",
+  "source_manifest": "source_manifest.json",
+  "source_manifest_sha256": "ffe4175353372d0b906847399ecbe2244b3f4abf2cddd1654815aaf72c29332a",
+  "scope": {
+    "author_programs_executed": false,
+    "optimization_performed": false,
+    "output_curves_used_for_inference": false,
+    "production_source_modified": false,
+    "physical_inputs_modified": false,
+    "mathematical_arithmetic_only": "Previously computed normalization factors and unit restoration, using independent 45-digit arithmetic; no amplitude solve or observable fitting"
+  },
+  "sources": [
+    {
+      "kind": "author_code_nonexecuting_snapshot",
+      "source_url": "https://raw.githubusercontent.com/hyfysics/gauge-theory-bootstrap/c8409331d5df911f592e53e5a43628418a39b213/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.m",
+      "fixed_commit": "c8409331d5df911f592e53e5a43628418a39b213",
+      "snapshot": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/GTB_numerics.m.txt",
+      "sha256": "b12bf411407fc4cb8ae56aea41c88aa336e0f73aa7ae44ebef2b1bca3fc08ad2",
+      "bytes": 9398,
+      "mode": "0444",
+      "preservation": "Byte-identical copy of the already verified fixed-release download; no newline normalization or code execution"
+    },
+    {
+      "kind": "author_code_nonexecuting_snapshot",
+      "source_url": "https://raw.githubusercontent.com/hyfysics/gauge-theory-bootstrap/c8409331d5df911f592e53e5a43628418a39b213/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb",
+      "fixed_commit": "c8409331d5df911f592e53e5a43628418a39b213",
+      "snapshot": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/GTB_numerics.nb.txt",
+      "sha256": "9a3a81d7e99ef35355aa5a2bbf10ce9a21e6af929e0cb8371c4afaff133922bd",
+      "bytes": 224480,
+      "mode": "0444",
+      "preservation": "Byte-identical copy of the already verified fixed-release download; no newline normalization or code execution"
+    },
+    {
+      "kind": "primary_source_metadata",
+      "source_url": "https://raw.githubusercontent.com/hyfysics/gauge-theory-bootstrap/801684d9ece3de2918a20145178f569459081098/README.md",
+      "final_url": "https://raw.githubusercontent.com/hyfysics/gauge-theory-bootstrap/801684d9ece3de2918a20145178f569459081098/README.md",
+      "retrieved_utc": "2026-09-12T02:21:37.380349+00:00",
+      "http_status": 200,
+      "snapshot": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/author_README.md.txt",
+      "sha256": "ffef51c0aeaa91b84a27926e2a07a7dec1433e3d1aef70d3ac47a16fad064ecb",
+      "bytes": 3580,
+      "mode": "0444"
+    },
+    {
+      "kind": "primary_source_metadata",
+      "source_url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/trees/801684d9ece3de2918a20145178f569459081098?recursive=1",
+      "final_url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/trees/801684d9ece3de2918a20145178f569459081098?recursive=1",
+      "retrieved_utc": "2026-09-12T02:21:37.526046+00:00",
+      "http_status": 200,
+      "snapshot": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/repository_tree_fixed.json",
+      "sha256": "ac683ff3e19c4ddb34cbf17b1133ffe4cc8feab682af4d019af979f9d78a9d8f",
+      "bytes": 10567,
+      "mode": "0444"
+    },
+    {
+      "kind": "primary_source_metadata",
+      "source_url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/branches",
+      "final_url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/branches",
+      "retrieved_utc": "2026-09-12T02:21:37.674156+00:00",
+      "http_status": 200,
+      "snapshot": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/repository_branches.json",
+      "sha256": "716241e41c2d447e20125016191179c703490475297cc82e584acb9796eb2e01",
+      "bytes": 213,
+      "mode": "0444"
+    },
+    {
+      "kind": "primary_source_metadata",
+      "source_url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/tags",
+      "final_url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/tags",
+      "retrieved_utc": "2026-09-12T02:21:37.824517+00:00",
+      "http_status": 200,
+      "snapshot": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/repository_tags.json",
+      "sha256": "32f554acefc6605f5bf446f3ccdf20fc44832a9926232fa1835adbf243ce63b4",
+      "bytes": 987,
+      "mode": "0444"
+    },
+    {
+      "kind": "primary_source_metadata",
+      "source_url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/releases",
+      "final_url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/releases",
+      "retrieved_utc": "2026-09-12T02:21:38.038405+00:00",
+      "http_status": 200,
+      "snapshot": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/repository_releases.json",
+      "sha256": "9715ecb9620ad912fc6191e8d0e178f19f413d5a0e885896843e19f35d3e9941",
+      "bytes": 4533,
+      "mode": "0444"
+    },
+    {
+      "kind": "official_arxiv_source_archive",
+      "source_url": "https://arxiv.org/src/2309.12402v3",
+      "final_url": "https://arxiv.org/src/2309.12402v3",
+      "retrieved_utc": "2026-09-12T02:21:38.209692+00:00",
+      "http_status": 200,
+      "snapshot": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/2309.12402v3_source.tar.gz",
+      "sha256": "f8fe776bc387766604c42c60557452abeb08696b6dc9b1ef4eb17bc553b9adfd",
+      "bytes": 1648690,
+      "mode": "0444"
+    }
+  ],
+  "availability_2309": {
+    "arxiv_version": "2309.12402v3",
+    "arxiv_version_date": "2024-12-04",
+    "arxiv_first_submission": "2023-09-21",
+    "official_source_url": "https://arxiv.org/src/2309.12402v3",
+    "official_source_archive_sha256": "f8fe776bc387766604c42c60557452abeb08696b6dc9b1ef4eb17bc553b9adfd",
+    "archive_file_count": 20,
+    "archive_files": [
+      "chiP1plot.pdf",
+      "chiplot2.pdf",
+      "chiplot.pdf",
+      "chiS0plot.pdf",
+      "chiS2plot.pdf",
+      "chiSRplot.pdf",
+      "FESR2.png",
+      "lin1.pdf",
+      "lin2.pdf",
+      "lin3.pdf",
+      "method2.png",
+      "P1ML.pdf",
+      "P1ps.pdf",
+      "prd_submission_2.bbl",
+      "prd_submission_2.tex",
+      "purSplot.pdf",
+      "S0ML.pdf",
+      "S0ps.pdf",
+      "S2ML.pdf",
+      "S2ps.pdf"
+    ],
+    "archive_numerical_producer_found": false,
+    "author_README_statement": "No public code was provided at the time.",
+    "author_statement_scope": "2309 paper at the time; not a universal claim about all possible public locations today",
+    "checked_repository_commit": "801684d9ece3de2918a20145178f569459081098",
+    "tree_truncated": false,
+    "branches": [
+      {
+        "name": "main",
+        "sha": "801684d9ece3de2918a20145178f569459081098"
+      }
+    ],
+    "tags": [
+      {
+        "name": "arxiv-2505.19332",
+        "sha": "801684d9ece3de2918a20145178f569459081098"
+      },
+      {
+        "name": "arxiv-2403.10772",
+        "sha": "c8409331d5df911f592e53e5a43628418a39b213"
+      }
+    ],
+    "releases": [
+      {
+        "tag_name": "arxiv-2505.19332",
+        "published_at": "2025-10-08T09:08:18Z",
+        "url": "https://github.com/hyfysics/gauge-theory-bootstrap/releases/tag/arxiv-2505.19332"
+      },
+      {
+        "tag_name": "arxiv-2403.10772",
+        "published_at": "2025-09-30T22:16:57Z",
+        "url": "https://github.com/hyfysics/gauge-theory-bootstrap/releases/tag/arxiv-2403.10772"
+      }
+    ],
+    "2309_snapshot_found": false,
+    "publication_pages_checked": [
+      "https://journals.aps.org/prd/abstract/10.1103/PhysRevD.110.096001",
+      "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.133.191601"
+    ],
+    "publication_numerical_attachment_link_found": false,
+    "conclusion": "Original 2309 numerical producer not found in the explicitly checked official source archive, publisher pages and author repository. Do not claim universal nonexistence."
+  },
+  "release_2403": {
+    "tag": "arxiv-2403.10772",
+    "commit": "c8409331d5df911f592e53e5a43628418a39b213",
+    "published_at": "2025-09-30T22:16:57Z",
+    "script_sha256": "b12bf411407fc4cb8ae56aea41c88aa336e0f73aa7ae44ebef2b1bca3fc08ad2",
+    "notebook_sha256": "9a3a81d7e99ef35355aa5a2bbf10ce9a21e6af929e0cb8371c4afaff133922bd",
+    "line_references": {
+      "setup": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/c8409331d5df911f592e53e5a43628418a39b213/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.m#L5-L15",
+      "FESR_tolerances": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/c8409331d5df911f592e53e5a43628418a39b213/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.m#L38-L39",
+      "FESR_norms": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/c8409331d5df911f592e53e5a43628418a39b213/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.m#L88-L91",
+      "chi_norms": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/c8409331d5df911f592e53e5a43628418a39b213/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.m#L97-L103",
+      "density_bound": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/c8409331d5df911f592e53e5a43628418a39b213/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.m#L53-L60",
+      "spectral_kinematics": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/c8409331d5df911f592e53e5a43628418a39b213/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb#L4729-L4771",
+      "moment_rows": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/c8409331d5df911f592e53e5a43628418a39b213/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb#L4798-L4857",
+      "QCD_inputs_targets": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/c8409331d5df911f592e53e5a43628418a39b213/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb#L4924-L5030",
+      "direct_exports": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/c8409331d5df911f592e53e5a43628418a39b213/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb#L5149-L5157",
+      "PV_kernel": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/c8409331d5df911f592e53e5a43628418a39b213/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb#L943-L1018",
+      "crossed_rational_block": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/c8409331d5df911f592e53e5a43628418a39b213/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb#L1130",
+      "density_symmetrization": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/c8409331d5df911f592e53e5a43628418a39b213/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb#L2837-L2922",
+      "cone_rescaling": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/c8409331d5df911f592e53e5a43628418a39b213/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb#L4332",
+      "FF_subtraction_correction": "https://github.com/hyfysics/gauge-theory-bootstrap/blob/c8409331d5df911f592e53e5a43628418a39b213/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb#L4464-L4525"
+    }
+  },
+  "FESR": {
+    "epsilon_0_002_is": "echi, not epsilon_SR in this script",
+    "error_norm": "one Euclidean L2 ball per channel, three moments each",
+    "moments": {
+      "S0": [
+        0,
+        1,
+        2
+      ],
+      "P1": [
+        -1,
+        0,
+        1
+      ],
+      "D0": [
+        -2,
+        -1,
+        0
+      ]
+    },
+    "normalized_error_radius": {
+      "S0": "1e-7",
+      "P1": "6e-6",
+      "D0": "5e-6"
+    },
+    "normalization_exponent_offset": {
+      "S0": 2,
+      "P1": 2,
+      "D0": 3
+    },
+    "variables": {
+      "rho": "amplitude double spectral densities, not current R",
+      "specC": "B-spline coefficients",
+      "spec": "hat_R at nodes",
+      "ImFF": "imaginary parts of normalized form factors",
+      "R_relation": "R_c(s)=k_c(s)^2*hat_R_c(s)"
+    },
+    "kinematic_factors": {
+      "S0": "3*sqrt(1-4/s)/(256*pi^5)",
+      "P1": "(s-4)*sqrt(1-4/s)/(384*pi^5)",
+      "D0": "(s-4)^2*sqrt(1-4/s)/(2560*pi^5)"
+    },
+    "raw_moment": "I_raw[c,n]=Delta_phi*sum_{j<=n0}(s_prime[j]*s[j]^n*R_c(s[j]))",
+    "normalized_residual": "w[c,n]=I_raw[c,n]/s_star^(n+d_c)-q[c,n]",
+    "raw_error_domain": "sum_n((I_raw[c,n]-s_star^(n+d_c)*q[c,n])/(e_c*s_star^(n+d_c)))^2 <= 1 for each channel",
+    "division_by_QCD_target": false,
+    "extra_prefactor_after_moment_row": false,
+    "physical_spectral_mass_dimension": {
+      "S0": 4,
+      "P1": 2,
+      "D0": 4
+    },
+    "physical_raw_moment_conversion": {
+      "S0": "m_pi^(2*n+6)*I_raw",
+      "P1": "m_pi^(2*n+4)*I_raw",
+      "D0": "m_pi^(2*n+6)*I_raw"
+    },
+    "paper_code_discrepancy": {
+      "paper": "arXiv:2403.10772v4 Eq.(8.73), PDF page 66",
+      "paper_eP1": "5e-6",
+      "paper_eD0": "6e-6",
+      "code_eP1": "6e-6",
+      "code_eD0": "5e-6",
+      "audit_uses": "fixed script values; no silent correction"
+    },
+    "numeric_restoration": {
+      "precision_decimal_digits": 45,
+      "M": 50,
+      "nu0": -20,
+      "m_pi_GeV": "0.13957",
+      "nominal_cutoff_energy_GeV": "2",
+      "n0": 39,
+      "s_star": "172.08533939065126099",
+      "last_node_energy_GeV": "1.8308974290695215335",
+      "common_moment_axis_limits": [
+        {
+          "channel": "S0",
+          "n": 0,
+          "raw": "0.002961336403319563",
+          "physical": "2.188972050400521e-8",
+          "physical_GeV_power": 6,
+          "epsilon_over_QCD": "0.321275664171"
+        },
+        {
+          "channel": "S0",
+          "n": 1,
+          "raw": "0.5096025800151375",
+          "physical": "7.337840139108745e-8",
+          "physical_GeV_power": 8,
+          "epsilon_over_QCD": "0.481913496257"
+        },
+        {
+          "channel": "P1",
+          "n": -1,
+          "raw": "0.001032512036343908",
+          "physical": "2.011311237464030e-5",
+          "physical_GeV_power": 2,
+          "epsilon_over_QCD": "0.106815415010"
+        },
+        {
+          "channel": "P1",
+          "n": 0,
+          "raw": "0.1776801841991738",
+          "physical": "6.742288156581814e-5",
+          "physical_GeV_power": 4,
+          "epsilon_over_QCD": "0.213630830020"
+        }
+      ],
+      "axis_limit_scope": "Each axis value consumes the whole channel L2 budget; they are not simultaneous independent box tolerances"
+    }
+  },
+  "kernel_chiral_density": {
+    "PV_kernel": "K_ij=Ktilde_(i+j-2M-1)-Ktilde_(i-j); periodic cotangent sequence",
+    "crossed_example": "W_(j,n),(m,n)=Delta_phi/pi*s_prime_m*[1/(s_m+s_n+s_j-4)-1/(s_m-nu0)]",
+    "FF_correction": "K0_j=Delta_phi/pi*s_prime_j*nu0/[s_j*(s_j-nu0)]; KFF=K+1*K0",
+    "chiral_norm": "combined eight-component L2 residual <= .002",
+    "additional_IR": "D0/D2/F1 at four subthreshold points, one twelve-component L2 <= .002",
+    "density_variables": "actual independent rho1 and symmetric rho2 entries; kernel columns carry off-diagonal multiplicity",
+    "density_bound": "||rho||_4 <= 100*M_rho, M_rho=M^2+M*(M+1)/2",
+    "M50_Mrho": 3775,
+    "M50_B": 377500,
+    "structure_matches_declared_mixed_PV_type": true,
+    "exact_2309_producer_identity_established": false
+  },
+  "transfer_boundary": {
+    "equivalent_if_fully_transformed": [
+      "positive Gram basis/congruence rescaling at fixed nodes",
+      "h/Lambda row scaling",
+      "R=k^2*hat_R variable conversion",
+      "moment normalization only with the entire tolerance domain transformed"
+    ],
+    "finite_model_or_constraint_changes": [
+      "nu0=-20 changes actual collocation nodes",
+      "B-spline current spectrum and first coefficient fixed to one",
+      "combined chi norm plus additional high-wave IR matching",
+      "three current channels with three FESR moments each",
+      "different FESR error ellipsoids and last-node normalization",
+      "different projection functionals"
+    ],
+    "physical_input_changes": {
+      "m_pi_MeV": "139.57",
+      "nominal_matching_GeV": "2",
+      "alpha_s": "0.3145887440",
+      "m_u_MeV": "3.6",
+      "m_d_MeV": "6.5",
+      "QCD_targets": "specified perturbative identity terms; scalar mass square sum; no frozen 2309 condensate contributions in these definitions",
+      "FF_bounds": "different channel-specific constraints"
+    },
+    "uniform_linear_units_map_from_four_raw_boxes_to_followup_error_domain": false,
+    "original_2309_epsilon_SR_interpretation_resolved": false,
+    "rho_discrepancy_root_cause_proved": false,
+    "current_inputs_changed": false
+  },
+  "document_sha256": "833b35088744d7bac0b836250262ffb42fa50e5a8952344302624eec2c935f32"
+}

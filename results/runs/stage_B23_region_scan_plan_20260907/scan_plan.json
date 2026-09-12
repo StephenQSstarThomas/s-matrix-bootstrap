@@ -1,0 +1,1145 @@
+{
+  "schema": "smatrix-region-scan-plan/1",
+  "created": "2026-09-07",
+  "status": "planned_not_executed",
+  "purpose": "Conditional M50 counterparts of v3 Fig.3 and Fig.4; no optimization performed by creating this manifest.",
+  "execution": {
+    "cwd": "/home/shiqiu/s-matrix-bootstrap",
+    "environment_overlay": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "/tmp/collocation_arb:src"
+    },
+    "argv_rule": "subprocess.run(base_argv + job.argv, cwd=cwd, env=os.environ | environment_overlay, check=True); shell=False",
+    "entrypoint": "Existing python -m smatrix_bootstrap.run; there is no --scan-plan flag.",
+    "max_simultaneous_M50_jobs": 1,
+    "preconditions": [
+      "Existing B1 physical acceptance decision resolved for the common input profile; currently pending.",
+      "Freeze the same full-row input identity for all seven regions. If the profile changes, explicitly supersede this manifest.",
+      "Do not execute or overwrite an existing output directory."
+    ]
+  },
+  "base_argv": [
+    "python",
+    "-m",
+    "smatrix_bootstrap.run",
+    "boundary",
+    "--preparation",
+    "results/runs/stage_B_unitarity_resolved_20260906",
+    "--additional-constraints",
+    "results/runs/stage_B_chiral_expanded_recover_M50_20260907/additional_scattering.npz",
+    "--nodes",
+    "50",
+    "--waves",
+    "12",
+    "--density-limit",
+    "377500",
+    "--infinity",
+    "zero",
+    "--solver",
+    "barrier",
+    "--constraint-generation",
+    "--bits",
+    "832",
+    "--angular-order",
+    "40",
+    "--start-mu",
+    "0.00001",
+    "--solver-seconds",
+    "7200",
+    "--dual-seconds",
+    "60",
+    "--dual-method",
+    "highs-primal",
+    "--seconds",
+    "7800"
+  ],
+  "model": {
+    "M": 50,
+    "all_coefficient_count_before_T0_equality": 3876,
+    "base_L_per_isospin": 12,
+    "base_physical_rows": 6012,
+    "full_physical_rows": 10062,
+    "distinct_full_energies": 1200,
+    "preparation": "results/runs/stage_B_unitarity_resolved_20260906",
+    "additional_constraints": "results/runs/stage_B_chiral_expanded_recover_M50_20260907/additional_scattering.npz",
+    "density_family": "all sine-cardinal modes including Nyquist; one analytic crossed amplitude",
+    "coordinates": "original unsubtracted C_flat, with T0_unsub=0",
+    "density_norm": "ordinary L4 of actual rho1 and actual upper rho2",
+    "density_bound": 377500,
+    "chiral_norm": "two separate L2 four-vectors at s=0.5,1,1.5,2",
+    "extra_necessary_conditions": "five fixed-spin high-energy inequalities plus all three FG polynomials nonnegative on [-1,1]",
+    "stored_operator_scope": "fixed float64 operator from Arb quadrature, without certified angular integral enclosures",
+    "optimization_domain": "complete projection; x>=0 is not an optimization constraint"
+  },
+  "metrics": {
+    "pure": {
+      "map": "q=(x,y)",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    "chiral": {
+      "map": "q=(x/x_ref,(y+x/15)/epsilon)",
+      "x_ref_formula": "5/(16*pi^2*(92/140)^2)",
+      "x_ref": 0.07332139057293466,
+      "reason": "Known mass and decay-constant units plus the declared epsilon, independent of digitized figure coordinates."
+    },
+    "shared_chiral_nesting": {
+      "map": "q=(x/x_ref,(y+x/15)/0.002)",
+      "epsilon_ref": 0.002
+    },
+    "normal_conversion": "For unit metric normal n choose raw d=A^T n/||A^T n||. Pass this raw unit d to --direction. Metric support gap is ||A^T n||*(upper-lower)."
+  },
+  "accuracy": {
+    "hausdorff_metric_upper_max": 0.01,
+    "support_metric_gap_max": 0.0025,
+    "additional_raw_support_gap_max": 0.0001,
+    "raw_gap_rule": "min(0.0001,0.0025/||A^T n||)",
+    "policy": "Targets declared before the scan; numerical resolution in physical/reference units, not a claim about the accuracy of the paper figure.",
+    "rounding": "Use the stored outward upper bounds and actual stored raw normals. Propagate target-coordinate enclosures and directed geometric rounding into the 0.01 total bound."
+  },
+  "initial_scan": {
+    "direction_count": 28,
+    "directions_per_region": 4,
+    "order_note": "Complete epsilon=0.002 first for the mainline; pure can run independently when resources permit. Four normals only initialize a closed outer enclosure, not a completed region.",
+    "jobs": [
+      {
+        "id": "chiral_002_plus_x",
+        "region": "chiral_002",
+        "status": "planned",
+        "metric_normal": [
+          1.0,
+          0.0
+        ],
+        "raw_normal": [
+          1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_002_plus_x",
+          "--chiral-tolerance",
+          "0.002"
+        ]
+      },
+      {
+        "id": "chiral_002_plus_transverse",
+        "region": "chiral_002",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          1.0
+        ],
+        "raw_normal": [
+          0.06651901052377393,
+          0.9977851578566089
+        ],
+        "metric_objective_scale": 501.10987927909696,
+        "raw_gap_target": 4.988925789283045e-06,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "0.06651901052377393",
+          "0.99778515785660893",
+          "--gap",
+          "4.9889257892830446e-06",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_002_plus_transverse",
+          "--chiral-tolerance",
+          "0.002"
+        ]
+      },
+      {
+        "id": "chiral_002_minus_x",
+        "region": "chiral_002",
+        "status": "planned",
+        "metric_normal": [
+          -1.0,
+          0.0
+        ],
+        "raw_normal": [
+          -1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_002_minus_x",
+          "--chiral-tolerance",
+          "0.002"
+        ]
+      },
+      {
+        "id": "chiral_002_minus_transverse",
+        "region": "chiral_002",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          -1.0
+        ],
+        "raw_normal": [
+          -0.06651901052377393,
+          -0.9977851578566089
+        ],
+        "metric_objective_scale": 501.10987927909696,
+        "raw_gap_target": 4.988925789283045e-06,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-0.06651901052377393",
+          "-0.99778515785660893",
+          "--gap",
+          "4.9889257892830446e-06",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_002_minus_transverse",
+          "--chiral-tolerance",
+          "0.002"
+        ]
+      },
+      {
+        "id": "chiral_001_plus_x",
+        "region": "chiral_001",
+        "status": "planned",
+        "metric_normal": [
+          1.0,
+          0.0
+        ],
+        "raw_normal": [
+          1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_001_plus_x",
+          "--chiral-tolerance",
+          "0.001"
+        ]
+      },
+      {
+        "id": "chiral_001_plus_transverse",
+        "region": "chiral_001",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          1.0
+        ],
+        "raw_normal": [
+          0.06651901052377393,
+          0.9977851578566089
+        ],
+        "metric_objective_scale": 1002.2197585581939,
+        "raw_gap_target": 2.4944628946415223e-06,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "0.06651901052377393",
+          "0.99778515785660893",
+          "--gap",
+          "2.4944628946415223e-06",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_001_plus_transverse",
+          "--chiral-tolerance",
+          "0.001"
+        ]
+      },
+      {
+        "id": "chiral_001_minus_x",
+        "region": "chiral_001",
+        "status": "planned",
+        "metric_normal": [
+          -1.0,
+          0.0
+        ],
+        "raw_normal": [
+          -1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_001_minus_x",
+          "--chiral-tolerance",
+          "0.001"
+        ]
+      },
+      {
+        "id": "chiral_001_minus_transverse",
+        "region": "chiral_001",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          -1.0
+        ],
+        "raw_normal": [
+          -0.06651901052377393,
+          -0.9977851578566089
+        ],
+        "metric_objective_scale": 1002.2197585581939,
+        "raw_gap_target": 2.4944628946415223e-06,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-0.06651901052377393",
+          "-0.99778515785660893",
+          "--gap",
+          "2.4944628946415223e-06",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_001_minus_transverse",
+          "--chiral-tolerance",
+          "0.001"
+        ]
+      },
+      {
+        "id": "chiral_004_plus_x",
+        "region": "chiral_004",
+        "status": "planned",
+        "metric_normal": [
+          1.0,
+          0.0
+        ],
+        "raw_normal": [
+          1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_004_plus_x",
+          "--chiral-tolerance",
+          "0.0040000000000000001"
+        ]
+      },
+      {
+        "id": "chiral_004_plus_transverse",
+        "region": "chiral_004",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          1.0
+        ],
+        "raw_normal": [
+          0.06651901052377393,
+          0.9977851578566089
+        ],
+        "metric_objective_scale": 250.55493963954848,
+        "raw_gap_target": 9.97785157856609e-06,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "0.06651901052377393",
+          "0.99778515785660893",
+          "--gap",
+          "9.9778515785660892e-06",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_004_plus_transverse",
+          "--chiral-tolerance",
+          "0.0040000000000000001"
+        ]
+      },
+      {
+        "id": "chiral_004_minus_x",
+        "region": "chiral_004",
+        "status": "planned",
+        "metric_normal": [
+          -1.0,
+          0.0
+        ],
+        "raw_normal": [
+          -1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_004_minus_x",
+          "--chiral-tolerance",
+          "0.0040000000000000001"
+        ]
+      },
+      {
+        "id": "chiral_004_minus_transverse",
+        "region": "chiral_004",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          -1.0
+        ],
+        "raw_normal": [
+          -0.06651901052377393,
+          -0.9977851578566089
+        ],
+        "metric_objective_scale": 250.55493963954848,
+        "raw_gap_target": 9.97785157856609e-06,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-0.06651901052377393",
+          "-0.99778515785660893",
+          "--gap",
+          "9.9778515785660892e-06",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_004_minus_transverse",
+          "--chiral-tolerance",
+          "0.0040000000000000001"
+        ]
+      },
+      {
+        "id": "chiral_0006_plus_x",
+        "region": "chiral_0006",
+        "status": "planned",
+        "metric_normal": [
+          1.0,
+          0.0
+        ],
+        "raw_normal": [
+          1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_0006_plus_x",
+          "--chiral-tolerance",
+          "0.00059999999999999995"
+        ]
+      },
+      {
+        "id": "chiral_0006_plus_transverse",
+        "region": "chiral_0006",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          1.0
+        ],
+        "raw_normal": [
+          0.06651901052377393,
+          0.9977851578566089
+        ],
+        "metric_objective_scale": 1670.3662642636566,
+        "raw_gap_target": 1.4966777367849134e-06,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "0.06651901052377393",
+          "0.99778515785660893",
+          "--gap",
+          "1.4966777367849134e-06",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_0006_plus_transverse",
+          "--chiral-tolerance",
+          "0.00059999999999999995"
+        ]
+      },
+      {
+        "id": "chiral_0006_minus_x",
+        "region": "chiral_0006",
+        "status": "planned",
+        "metric_normal": [
+          -1.0,
+          0.0
+        ],
+        "raw_normal": [
+          -1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_0006_minus_x",
+          "--chiral-tolerance",
+          "0.00059999999999999995"
+        ]
+      },
+      {
+        "id": "chiral_0006_minus_transverse",
+        "region": "chiral_0006",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          -1.0
+        ],
+        "raw_normal": [
+          -0.06651901052377393,
+          -0.9977851578566089
+        ],
+        "metric_objective_scale": 1670.3662642636566,
+        "raw_gap_target": 1.4966777367849134e-06,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-0.06651901052377393",
+          "-0.99778515785660893",
+          "--gap",
+          "1.4966777367849134e-06",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_0006_minus_transverse",
+          "--chiral-tolerance",
+          "0.00059999999999999995"
+        ]
+      },
+      {
+        "id": "chiral_006_plus_x",
+        "region": "chiral_006",
+        "status": "planned",
+        "metric_normal": [
+          1.0,
+          0.0
+        ],
+        "raw_normal": [
+          1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_006_plus_x",
+          "--chiral-tolerance",
+          "0.0060000000000000001"
+        ]
+      },
+      {
+        "id": "chiral_006_plus_transverse",
+        "region": "chiral_006",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          1.0
+        ],
+        "raw_normal": [
+          0.06651901052377393,
+          0.9977851578566089
+        ],
+        "metric_objective_scale": 167.03662642636564,
+        "raw_gap_target": 1.4966777367849135e-05,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "0.06651901052377393",
+          "0.99778515785660893",
+          "--gap",
+          "1.4966777367849135e-05",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_006_plus_transverse",
+          "--chiral-tolerance",
+          "0.0060000000000000001"
+        ]
+      },
+      {
+        "id": "chiral_006_minus_x",
+        "region": "chiral_006",
+        "status": "planned",
+        "metric_normal": [
+          -1.0,
+          0.0
+        ],
+        "raw_normal": [
+          -1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_006_minus_x",
+          "--chiral-tolerance",
+          "0.0060000000000000001"
+        ]
+      },
+      {
+        "id": "chiral_006_minus_transverse",
+        "region": "chiral_006",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          -1.0
+        ],
+        "raw_normal": [
+          -0.06651901052377393,
+          -0.9977851578566089
+        ],
+        "metric_objective_scale": 167.03662642636564,
+        "raw_gap_target": 1.4966777367849135e-05,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-0.06651901052377393",
+          "-0.99778515785660893",
+          "--gap",
+          "1.4966777367849135e-05",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_006_minus_transverse",
+          "--chiral-tolerance",
+          "0.0060000000000000001"
+        ]
+      },
+      {
+        "id": "chiral_0002_plus_x",
+        "region": "chiral_0002",
+        "status": "planned",
+        "metric_normal": [
+          1.0,
+          0.0
+        ],
+        "raw_normal": [
+          1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_0002_plus_x",
+          "--chiral-tolerance",
+          "0.00020000000000000001"
+        ]
+      },
+      {
+        "id": "chiral_0002_plus_transverse",
+        "region": "chiral_0002",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          1.0
+        ],
+        "raw_normal": [
+          0.06651901052377393,
+          0.997785157856609
+        ],
+        "metric_objective_scale": 5011.098792790969,
+        "raw_gap_target": 4.988925789283046e-07,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "0.06651901052377393",
+          "0.99778515785660904",
+          "--gap",
+          "4.9889257892830456e-07",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_0002_plus_transverse",
+          "--chiral-tolerance",
+          "0.00020000000000000001"
+        ]
+      },
+      {
+        "id": "chiral_0002_minus_x",
+        "region": "chiral_0002",
+        "status": "planned",
+        "metric_normal": [
+          -1.0,
+          0.0
+        ],
+        "raw_normal": [
+          -1.0,
+          0.0
+        ],
+        "metric_objective_scale": 13.638584759317602,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_0002_minus_x",
+          "--chiral-tolerance",
+          "0.00020000000000000001"
+        ]
+      },
+      {
+        "id": "chiral_0002_minus_transverse",
+        "region": "chiral_0002",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          -1.0
+        ],
+        "raw_normal": [
+          -0.06651901052377393,
+          -0.997785157856609
+        ],
+        "metric_objective_scale": 5011.098792790969,
+        "raw_gap_target": 4.988925789283046e-07,
+        "argv": [
+          "--mode",
+          "chiral",
+          "--direction",
+          "-0.06651901052377393",
+          "-0.99778515785660904",
+          "--gap",
+          "4.9889257892830456e-07",
+          "--coefficients",
+          "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_0002_minus_transverse",
+          "--chiral-tolerance",
+          "0.00020000000000000001"
+        ]
+      },
+      {
+        "id": "pure_plus_x",
+        "region": "pure",
+        "status": "planned",
+        "metric_normal": [
+          1.0,
+          0.0
+        ],
+        "raw_normal": [
+          1.0,
+          0.0
+        ],
+        "metric_objective_scale": 1.0,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "pure",
+          "--direction",
+          "1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_recover_pure_M50_raw_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_barrier_CG_pure_M50_round2_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/pure_plus_x"
+        ]
+      },
+      {
+        "id": "pure_plus_transverse",
+        "region": "pure",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          1.0
+        ],
+        "raw_normal": [
+          0.0,
+          1.0
+        ],
+        "metric_objective_scale": 1.0,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "pure",
+          "--direction",
+          "0",
+          "1",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_recover_pure_M50_raw_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_barrier_CG_pure_M50_round2_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/pure_plus_transverse"
+        ]
+      },
+      {
+        "id": "pure_minus_x",
+        "region": "pure",
+        "status": "planned",
+        "metric_normal": [
+          -1.0,
+          0.0
+        ],
+        "raw_normal": [
+          -1.0,
+          0.0
+        ],
+        "metric_objective_scale": 1.0,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "pure",
+          "--direction",
+          "-1",
+          "0",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_recover_pure_M50_raw_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_barrier_CG_pure_M50_round2_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/pure_minus_x"
+        ]
+      },
+      {
+        "id": "pure_minus_transverse",
+        "region": "pure",
+        "status": "planned",
+        "metric_normal": [
+          0.0,
+          -1.0
+        ],
+        "raw_normal": [
+          0.0,
+          -1.0
+        ],
+        "metric_objective_scale": 1.0,
+        "raw_gap_target": 0.0001,
+        "argv": [
+          "--mode",
+          "pure",
+          "--direction",
+          "0",
+          "-1",
+          "--gap",
+          "0.0001",
+          "--coefficients",
+          "results/runs/stage_B_recover_pure_M50_raw_20260907/coefficients.json",
+          "--working-state",
+          "results/runs/stage_B_barrier_CG_pure_M50_round2_20260907/cg_state.npz",
+          "--output",
+          "results/runs/stage_B23_region_scan_plan_20260907/supports/pure_minus_transverse"
+        ]
+      }
+    ]
+  },
+  "adaptive": {
+    "implemented_by_existing_CLI": false,
+    "meaning": "The support jobs below are directly executable; adaptive job selection and the certified polygon-distance acceptance remain a small region-postprocessing task, not a new physics solver.",
+    "inner": "convex hull of projections of accepted feasible amplitudes",
+    "outer": "intersection of all accepted support upper halfspaces",
+    "distance": "max over vertices v of P_out of dist(A v,A P_in), including coordinate/geometry enclosures",
+    "choose_next": "At the worst outer vertex v, let z be its closest point in the metric inner hull. Take n=(A v-A z)/||A v-A z|| and append a new job with d=A^T n/||A^T n|| and the raw_gap_rule.",
+    "already_present_direction": "First tighten that direction if its support interval accounts for the gap; otherwise keep the distinct worst-vertex normal.",
+    "stop": "Finite closed nonempty outer polygon, positive spanning support directions, accepted feasible coefficients, per-direction gap targets, total metric Hausdorff upper <=0.01, and nesting checks passed.",
+    "max_directions_per_region": 128,
+    "budget_semantics": "An operation guard only: reaching the direction or time limit with an unresolved gap is incomplete, never completion.",
+    "argv_template_rule": "Copy any job of the same region, replace --direction, --gap and --output with the new values; choose a saved feasible initializer and an explicitly compatible CG pool. Keep base_argv unchanged.",
+    "warm_start_rule": "Pool physical-row indices and FG cuts; every candidate/dual is evaluated for the current objective and epsilon. Smaller-epsilon feasible amplitudes are also feasible for larger epsilon; the opposite transfer requires the existing recovery/recheck."
+  },
+  "nesting": {
+    "order": [
+      "chiral_0002",
+      "chiral_0006",
+      "chiral_001",
+      "chiral_002",
+      "chiral_004",
+      "chiral_006",
+      "pure"
+    ],
+    "mathematical_basis": "Same frozen constraints except nested chiral balls: K_small is a subset of K_large.",
+    "contradiction_test": "At any common raw d, L_small(d)>U_large(d), beyond directed rounding, is an error. Every feasible small-region point must satisfy all larger-region support halfspaces.",
+    "valid_bound_propagation": "Pool feasible smaller-region points into each larger inner hull, and intersect each smaller outer hull with the larger outer hulls. Preserve the independent records and flag contradictions before propagation.",
+    "not_required": "Do not require U_small<=L_large or P_out_small subset P_in_large: neighboring true regions can touch.",
+    "display": "Render the full computed sets and their bounds; Fig.4 comparison can then clip the display to x>0."
+  },
+  "existing_evidence": {
+    "old_8221_chiral_x_interval": [
+      0.0901570253685,
+      0.0902496174826
+    ],
+    "old_8221_chiral_x_status": "Failed the later dense audit: 1841 rows were added. Do not reuse its lower bound as a 10062-row feasible point or physical boundary.",
+    "current_chiral_initializer": "results/runs/stage_B_chiral_expanded_recover_M50_20260907/coefficients.json",
+    "current_chiral_initializer_target": [
+      0.08062415041519794,
+      -0.005281374935159352
+    ],
+    "pure_initializer": "results/runs/stage_B_recover_pure_M50_raw_20260907/coefficients.json",
+    "old_pure_coarse_interval": [
+      0.83131006164,
+      2.218540783076
+    ],
+    "new_10062_support_status": "Chiral/pure CG ongoing; no converged new-profile support asserted in this plan.",
+    "reuse_rule": "Replace a planned job only with a compatible support report at the same direction and epsilon, after existing acceptance checks. A recover report alone is not a support report."
+  },
+  "conditional_completion": {
+    "B2": "One full pure region with saved amplitudes and support bounds, a closed inner/outer enclosure meeting the declared resolution, and the existing physical acceptance status stated.",
+    "B3": "All six full chiral regions with the same evidence, correct nested enclosures, and the fixed Weinberg line/reference annotation.",
+    "not_claimed": [
+      "Exact author-v3 discretization or chiral norm recovered",
+      "Literal Fig.3/4 reproduction: paper uses M50/L10 while this profile is the declared strengthened L12 plus additional-row model",
+      "Continuum unitarity or certified angular quadrature",
+      "Unique boundary amplitudes or downstream Fig.5-11 results"
+    ],
+    "reference_policy": "Compare extracted paper markers only after numerical choices and region enclosures are frozen; never tune the norm, density bound, truncation, geometry metric or solver stopping to the image."
+  },
+  "source_anchors": [
+    {
+      "path": "references/2309.12402v3-source/prd_submission_2.tex",
+      "lines": [
+        929,
+        932
+      ],
+      "pdf_page": 22,
+      "claim": "Convex projection and example radial maximization"
+    },
+    {
+      "path": "references/2309.12402v3-source/prd_submission_2.tex",
+      "lines": [
+        938,
+        953
+      ],
+      "claim": "Two chiral constraints, four sample points, unspecified norm"
+    },
+    {
+      "path": "references/2309.12402v3-source/prd_submission_2.tex",
+      "lines": [
+        1059,
+        1069
+      ],
+      "pdf_page": 26,
+      "claim": "Fig.3 M50, ten partial waves per isospin; baseline not used later"
+    },
+    {
+      "path": "references/2309.12402v3-source/prd_submission_2.tex",
+      "lines": [
+        1074,
+        1083
+      ],
+      "pdf_page": 28,
+      "claim": "Fig.4 six epsilons, x>0 display, Weinberg reference"
+    }
+  ],
+  "aggregate": {
+    "argv": [
+      "python",
+      "-m",
+      "smatrix_bootstrap.run",
+      "regions",
+      "--nodes",
+      "50",
+      "--support-runs",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_002_plus_x",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_002_plus_transverse",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_002_minus_x",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_002_minus_transverse",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_001_plus_x",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_001_plus_transverse",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_001_minus_x",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_001_minus_transverse",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_004_plus_x",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_004_plus_transverse",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_004_minus_x",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_004_minus_transverse",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_0006_plus_x",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_0006_plus_transverse",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_0006_minus_x",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_0006_minus_transverse",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_006_plus_x",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_006_plus_transverse",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_006_minus_x",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_006_minus_transverse",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_0002_plus_x",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_0002_plus_transverse",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_0002_minus_x",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/chiral_0002_minus_transverse",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/pure_plus_x",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/pure_plus_transverse",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/pure_minus_x",
+      "results/runs/stage_B23_region_scan_plan_20260907/supports/pure_minus_transverse",
+      "--reference-directory",
+      "results/runs/stage_B_reference_20260906",
+      "--output",
+      "results/runs/stage_B23_region_scan_plan_20260907/initial_aggregate"
+    ],
+    "when": "After accepted supports exist; include all subsequently accepted adaptive support directories as well.",
+    "current_behavior": "regions validates comparable support reports, builds float hulls/halfspaces, and plots references. It explicitly does not claim completion and does not yet certify the proposed Hausdorff or nesting criteria."
+  }
+}

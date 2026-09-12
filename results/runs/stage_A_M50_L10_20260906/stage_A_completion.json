@@ -1,0 +1,54 @@
+{
+  "stage": "A",
+  "status": "completed_conditional_formulation",
+  "completed_steps": [
+    "A1",
+    "A2",
+    "A3"
+  ],
+  "mainline": "HK 2309.12402v3 Fig.3–11",
+  "A1": {
+    "family": "all finite-sine cardinal densities",
+    "coordinates": "unsubtracted C_flat",
+    "constant": "free",
+    "density_norm": "ordinary l4 actual rho1 plus actual rho2 upper triangle",
+    "density_bound": "100*(M*M+M*(M+1)/2)",
+    "subtraction_is_invertible": true,
+    "infinity_zero_is_optional_extra_condition": true
+  },
+  "A2": {
+    "moment_targets": "printed Eq.2.56",
+    "default_error": "four raw scalar absolute errors <= .002",
+    "default_cutoff": "hard-midpoint",
+    "comparison_cutoff": "clipped-phi",
+    "quark_mass_rule": "arithmetic-mean; RMS is an explicit comparison",
+    "independent_check": "OPE complex contour and constant spectral integrals"
+  },
+  "A3": {
+    "complete_operator": "amplitude.npz",
+    "shape": [
+      3011,
+      3876
+    ],
+    "physical_samples": 1500,
+    "arithmetic_bits": 384,
+    "stored_dtype": "float64",
+    "quadrature_order": 24,
+    "comparison_order": 32,
+    "arbitrary_positive_energy_evaluator": true,
+    "cli_evaluation": "../stage_A_evaluation_20260906/report.json"
+  },
+  "tests": {
+    "passed": 59,
+    "seconds": 8.55,
+    "scope": "Cauchy and full amplitude integrals, complete subtraction map, UV units/contour, retained existing checks"
+  },
+  "source_scope": "Conditional completion; the unpublished v3 numerical prescription is not recovered",
+  "new_boundary_optimization": false,
+  "continuum_unitarity_certificate": false,
+  "next_step": "B1: adapt support solver to coherent operator and free T0, obtain a nontrivial support point",
+  "remaining": {
+    "stages": 5,
+    "steps": 15
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "sources": {
+    "2203.02421v2.pdf": {
+      "url": "https://arxiv.org/pdf/2203.02421v2",
+      "sha256": "e5c2611e2b769b7dce180abbc7993f2c484cce6dbe7e8ada7438ef1d66b20be1",
+      "bytes": 864215
+    },
+    "2309.12402v3.pdf": {
+      "url": "https://arxiv.org/pdf/2309.12402v3",
+      "sha256": "be8214741f8fb3f330473be94172c5e1dde15befb515f745ab4e35839c8982e2",
+      "bytes": 2131549
+    },
+    "2309.12402v3-source.tar": {
+      "url": "https://arxiv.org/src/2309.12402v3",
+      "sha256": "f8fe776bc387766604c42c60557452abeb08696b6dc9b1ef4eb17bc553b9adfd",
+      "bytes": 1648690
+    },
+    "1708.06765v1-source.tar": {
+      "url": "https://arxiv.org/src/1708.06765v1",
+      "sha256": "3447f007a9896d3733ef7a797af62ce12ebd9effd51a9b9747534547d5cf8407",
+      "bytes": 795269
+    },
+    "de_klerk_elabwabi_den_hertog_2006.pdf": {
+      "url": "https://repository.tilburguniversity.edu/bitstreams/b86d47e0-72b4-4b1d-a79d-db5652b79d27/download",
+      "sha256": "6e83d976f8e70515b20ac2d976a906d4216b4a39710b59a787df6f3f95d2227b",
+      "bytes": 333864
+    },
+    "roh_vandenberghe_2006.pdf": {
+      "url": "https://www.seas.ucla.edu/~vandenbe/publications/nnp.pdf",
+      "sha256": "55cb0a1c2c45cf27d65475c321f12b46e7d11c76072272a5f80f4799ffbdf9a0",
+      "bytes": 269673
+    }
+  },
+  "note": "Downloaded primary sources; source tar and figure bytes are pinned independently from arXiv HTML rendering."
+}

@@ -1,0 +1,58 @@
+{
+  "name": "backup",
+  "coefficients": "results/runs/stage_B_strong_pure_M50_backup_20260907/coefficients.json",
+  "audit": "results/runs/stage_B_strong_pure_M50_backup_audit_20260907/report.json",
+  "initialization_only": true,
+  "support_optimality_certified": false,
+  "continuum_certified": false,
+  "targets": [
+    0.25709445758129257,
+    0.0033337440420605135
+  ],
+  "M": 50,
+  "L": 14,
+  "bits": 832,
+  "angular_order": 40,
+  "infinity": "zero",
+  "mode": "pure",
+  "density_limit": 377500,
+  "actual_density_l4_float": 2.1832224695197597,
+  "unitarity_status": "sampled_passed",
+  "physical_energy_count": 1261,
+  "samples_checked": 52962,
+  "original_additional_rows_covered": true,
+  "original_additional_row_count": 2209,
+  "analytic_tail_status": "necessary_conditions_passed",
+  "high_spin_status": "nonnegative_certified",
+  "high_spin_global_lower": [
+    "[3.52650446606741477079817099532e-10 +/- 3.58e-40]",
+    "[0.00862628579200196189142084051389 +/- 3.25e-33]",
+    "[0.0333088666631545162310151145614 +/- 3.35e-32]"
+  ],
+  "audit_seconds": 228.08645127411,
+  "small_model_outer": {
+    "upper": 5.665832231763123,
+    "enclosure": "[5.665832231763122772720505 +/- 2.18e-25]",
+    "disk": 5.66583169379432,
+    "chiral": 0.0,
+    "density_residual": 6.741015800195862e-12,
+    "tail_support": 5.379620617695534e-07,
+    "scope": "exact saved float64 operator and supplied tail maps; angular quadrature error excluded",
+    "primal_feasible": true,
+    "lower": 0.2570944575812926,
+    "minimum_margin_enclosure": "[8.5571909253961361821e-148 +/- 4.21e-168]",
+    "density_norm": 0.6247790105489183,
+    "targets": [
+      "[0.2570944575812926914890376 +/- 2.49e-26]",
+      "[0.003333744042060513678614180 +/- 4.57e-28]"
+    ],
+    "tail_margin_enclosures": [
+      "[25.284607075993606595 +/- 1.70e-19]",
+      "[9.3937384902087849991 +/- 3.47e-20]",
+      "[0.80700290681406645308 +/- 4.07e-21]",
+      "[0.036505642517312356351 +/- 2.86e-22]",
+      "[0.11467309830189761586 +/- 1.92e-21]"
+    ]
+  },
+  "scope": "Exact sine-mode embedding supplies a candidate only; physical values recomputed at M50 on the recorded 1261-energy L14 grid. Arb evaluation excludes angular quadrature error. No small-model optimality or continuum certificate is transferred."
+}

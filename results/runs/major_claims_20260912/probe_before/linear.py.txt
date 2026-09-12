@@ -1,0 +1,227 @@
+"""Complete feasible Newton support paths."""
+from concurrent.futures import ThreadPoolExecutor
+from scipy import linalg
+import numpy as np
+import time
+from . import extended_product, extended_sparse_blocks, extended_triangular
+
+from .scattering import barrier_support
+
+JOINT_CENTER_TOLERANCE=1e-14
+
+def self_concordant_decrease(step,descent,curvature):
+    """Exact-model lower bound; its floating evaluation is not a certificate."""
+    if not np.isfinite([step,descent,curvature]).all() or step<=0 or descent<=0 or curvature<0:return -np.inf
+    radius=step*np.sqrt(curvature)
+    if radius>=1:return -np.inf
+    return step*descent-step*step*curvature/(2*(1-radius))
+
+def joint_direction_status(error,decrement,model_decrement,curvature,phase_one=False):
+    """An inexact direction may descend; it never earns a center label."""
+    finite=bool(np.isfinite([error,decrement,model_decrement,curvature]).all())
+    accurate=finite and 0<=error<=1e-6;tol=1. if phase_one else JOINT_CENTER_TOLERANCE
+    centered=bool(accurate and 0<=decrement<tol and abs(model_decrement)<tol and 0<=curvature<tol)
+    descending=finite and decrement>0 and model_decrement>0 and curvature>0
+    return dict(usable=bool(descending or centered),centered=centered,linear_accurate=bool(accurate))
+
+
+def center_joint_support(H,kap,current,seed,M,L,bound,epsilon,direction,args,progress,objective=None,witness=None,incumbent=None):
+    from .imaginary import restore_joint_segment
+    from . import center_report, phase_one_report
+    from . import radial_coordinates
+    from pathlib import Path
+    from . import read_json, write_json
+    from .kernels import joint_audit
+    norm=getattr(args,'chiral_norm','separate-l2');require_center=getattr(args,'require_center',False);representative=None
+    phase_one=args.command=='resolution' and args.joint_feasibility
+    initial=args.interior_coefficients if objective is not None and args.interior_coefficients is not None else args.coefficients
+    cache_name='phase_I_state.npz' if phase_one else 'barrier_state.npz'
+    cache=initial.parent/cache_name;fixed=getattr(args,'fixed_x',None);reference=seed;ray=bool(getattr(args,'ray',False))
+    use_cache=cache.exists() and phase_one==bool(read_json(initial.parent/'report.json').get('solver',{}).get('phase_I'))
+    if use_cache and phase_one:use_cache=read_json(initial.parent/'report.json')['solver'].get('phase_I_model')=='current-only-diagonal-v2'
+    if ray and (fixed is not None or direction[1]):raise ValueError('A projection ray uses a pure x objective')
+    if use_cache:
+        old=read_json(initial.parent/'report.json')['parameters']
+        if (objective is None and (old.get('fixed_x')!=fixed or old.get('ray',False)!=ray)) or old.get('chiral_norm','separate-l2')!=norm or any(old[k]!=getattr(args,k) for k in ('density_limit','chiral_tolerance')):raise ValueError('Incompatible center section or constraints')
+        if any(Path(old[k]).resolve()!=getattr(args,k).resolve() for k in ('preparation','current_preparation')):raise ValueError('Checkpoint operators changed')
+        with np.load(cache) as data:
+            if 'reference_point' in data:reference=data['reference_point']
+            else:
+                with np.load(Path(old['coefficients']).parent/'joint.npz') as original:reference=original['point']
+    from .operators import JointProblem
+    if phase_one:
+        from .operators import PhaseOneProblem
+        JointProblem=PhaseOneProblem
+    weight=getattr(args,'chiral_barrier_weight',None)
+    default_weight=1. if phase_one else max(1.,len(kap)/2)
+    if weight is None:weight=read_json(initial.parent/'report.json').get('solver',{}).get('chiral_barrier_weight',default_weight) if use_cache else default_weight
+    if not np.isfinite(weight) or weight<1:raise ValueError('Chiral barrier weight must be finite and >=1')
+    P=JointProblem(H,kap,current,M,L,bound,epsilon,reference,direction,absorptive=True,chiral_norm=norm,objective=objective);P.fixed_x=fixed;P.chiral_weight=weight
+    if current['metadata'].get('ff_endpoint_order'):
+        from .endpoints import configure_endpoint_coordinates
+        if ray:raise ValueError('Endpoint slice currently supports projections and fixed x, not rays')
+        configure_endpoint_coordinates(P,current['metadata']['ff_endpoint_order'])
+    if current['metadata'].get('asymptotic_unitarity'):
+        from .endpoints import configure_asymptotic_constraints
+        configure_asymptotic_constraints(P)
+    z=P.initial.copy()
+    if fixed is not None:z[0]=fixed
+    values=None;rate=z[P.target_slot]/z[0] if ray else np.longdouble(0)
+    if use_cache:
+        with np.load(cache) as data:
+            z=data['z'];values={k:data[k] for k in ('x','y','chi','gram','ff','moment','slack','chiral_slack') if k in data}
+            if ray:rate=data['ray_rate']
+    state=P.state(z,values)
+    if state is None:raise ArithmeticError('Strict complete joint center required')
+    locked=P.target_slot if ray else 0;fixed_columns=list(getattr(P,'endpoint_pivots',[]))+([locked] if ray or fixed is not None else []);cols=np.delete(np.arange(len(z)),fixed_columns)
+    axis=np.eye(1,len(z),locked,dtype=np.longdouble).ravel();dx=P.delta(axis)
+    started=time.monotonic();history=[];centers=[];changes=[];best=None;primal=None;iterations=0;R=None;age=3;qr_count=0;cg_count=0
+    def certify(point,normal,duals):return joint_audit(H,kap,current,point,M,L,bound,epsilon,normal,duals,max(384,args.bits),chiral_norm=norm,objective=objective)
+    if witness is not None:
+        point,audit=certify(seed if incumbent is None else incumbent,direction,witness);best=(audit['upper'],witness,np.asarray(direction,float))
+        if not audit['primal_feasible']:raise ValueError('Watsonian reference must satisfy the declared joint constraints')
+        primal=(float(objective@point[:P.p]),point)
+        if incumbent is not None:
+            point,audit=certify(seed,direction,witness)
+            if audit['primal_feasible'] and float(objective@point[:P.p])>primal[0]:primal=(float(objective@point[:P.p]),point)
+    def checkpoint():np.savez_compressed(args.output/cache_name,z=z,mu=mu,ray_rate=rate,reference_point=reference,**state['values'])
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        mu=args.start_mu
+        if phase_one and not use_cache:mu=max(mu,float(z[-1])/(3*len(P.keep)+len(P.ffscale)+8))
+        initial_mu=mu
+        while mu>=1e-12:
+            converged=False
+            for _ in range(100):
+                terms=P.state(z,state['values'],True);F=terms['features'][:,cols];b=terms['rhs'];cost=P.cost[cols].copy()
+                if ray:F[:,0]+=rate*terms['features'][:,P.target_slot];cost[0]+=rate*P.cost[P.target_slot]
+                at=P.n+int(np.sum(np.any(P.R!=0,axis=1)))+int(np.sum(P.t>0))
+                radial=at+np.r_[0,np.cumsum([1+g.stop-g.start for g in P.groups])[:-1]]
+                F,c,restore=radial_coordinates(F,cost,radial,P.free-sum(j<P.free for j in fixed_columns))
+                packed=extended_sparse_blocks(F)
+                adj=lambda v:extended_product(packed,v,True,pool)
+                g=c/mu+adj(b)
+                while True:
+                    fresh=R is None or age>=3
+                    if fresh:
+                        scale=1/np.sqrt(np.sum(F*F,axis=0));R=linalg.qr(np.asarray(F*scale,float),mode='r',overwrite_a=True,check_finite=False)[0][:len(cols)];age=0;qr_count+=1
+                    def pre(v,transpose=False):return extended_triangular(R,scale*v,True) if transpose else scale*extended_triangular(R,v)
+                    right=pre(g,True);w=np.zeros_like(right);res=right.copy();search=res.copy();rr=res@res;tol=rr*1e-14
+                    for cg in range(64 if fresh else 12):
+                        q=pre(adj(extended_product(packed,pre(search),pool=pool)),True);den=search@q
+                        if den<=0:break
+                        a=rr/den;w+=a*search;res-=a*q;nr=res@res
+                        if nr<=tol:break
+                        search=res+nr/rr*search;rr=nr
+                    cg_count+=cg+1;res=pre(g-adj(extended_product(packed,pre(w),pool=pool)),True)
+                    linear_error=float(np.sqrt((res@res)/max(right@right,np.finfo(np.longdouble).tiny)))
+                    if linear_error<=1e-6:break
+                    if fresh:
+                        checkpoint();progress(stage='joint_inexact_linear_direction',mu=mu,iteration=iterations,linear_relative_residual=linear_error,
+                            minimum_QR_diagonal=float(min(abs(np.diag(R)))),maximum_QR_diagonal=float(max(abs(np.diag(R)))),cg_iterations=cg+1)
+                        break
+                    R=None
+                age+=1
+                change=pre(w);dz=np.zeros_like(z);dz[cols]=restore(change)
+                if ray:dz[P.target_slot]=rate*dz[0]
+                dec=g@change;dv=P.delta(dz);model_dec=P.cost@dz/mu-P.slope(state,dv,dz);model_curv=np.sum((terms['features']@dz)**2)
+                direction_status=joint_direction_status(linear_error,dec,model_dec,model_curv,phase_one)
+                if not direction_status['usable']:raise ArithmeticError('No verified joint descent direction or accurate stationary point')
+                if direction_status['centered'] and not fresh:R=None;continue
+                if direction_status['centered'] and not phase_one:
+                    converged=True
+                    progress(stage='joint_stationary_point',mu=mu,iteration=iterations,decrement=float(dec),model_decrement=float(model_dec),model_curvature=float(model_curv),linear_relative_residual=linear_error,point_updated_after_check=False)
+                    break
+                def on_ray(a):
+                    s=P.advance(z,state,dz,dv,a)
+                    return s,np.inf if s is None else P.slope(s,dv,dz)-P.cost@dz/mu
+                lo=np.longdouble(0);hi=np.longdouble(1);future=state
+                for _ in range(32):
+                    trial,slope=on_ray(hi)
+                    if trial is None or slope>=0:break
+                    lo=hi;future=trial
+                    if dec<1e-8 or getattr(args,'unit_newton_step',False):break
+                    hi*=2
+                if lo<hi:
+                    for _ in range(60):
+                        a=(lo+hi)/2;s,derivative=on_ray(a)
+                        if s is None or derivative>0:hi=a
+                        else:lo=a;future=s
+                step=lo
+                merit_decrease=state['value']-future['value']+step*(P.cost@dz)/mu
+                raw_merit=merit_decrease;merit_method='value_difference'
+                noise=64*np.finfo(np.longdouble).eps*(abs(state['value'])+abs(future['value'])+abs(step*(P.cost@dz)/mu))
+                if not phase_one and direction_status['linear_accurate'] and dec<1e-6 and abs(raw_merit)<=noise:
+                    merit_decrease=self_concordant_decrease(step,model_dec,model_curv);merit_method='local_self_concordant_bound'
+                    progress(stage='joint_barrier_value_cancellation',mu=mu,iteration=iterations,raw_merit_decrease=float(raw_merit),difference_roundoff_estimate=float(noise),model_decrease_lower=float(merit_decrease),decrement=float(dec),step=float(step))
+                if not direction_status['centered'] and not merit_decrease>0:
+                    progress(stage='joint_barrier_descent_failed',mu=mu,iteration=iterations,decrement=float(dec),raw_merit_decrease=float(raw_merit),difference_roundoff_estimate=float(noise),step=float(step))
+                    raise ArithmeticError('Joint direction failed actual barrier descent')
+                z=z+step*dz;state=future;iterations+=1;checkpoint()
+                progress(stage='joint_Newton',mu=mu,iteration=iterations,objective=float(P.cost@z),decrement=float(dec),model_decrement=float(model_dec),model_curvature=float(model_curv),step=float(step),cg=cg+1,qr_refreshed=fresh,linear_relative_residual=linear_error,inexact_direction=not direction_status['linear_accurate'],barrier_merit_decrease=float(merit_decrease),barrier_merit_method=merit_method,seconds=time.monotonic()-started)
+                if phase_one and z[-1]<0:break
+                if direction_status['centered']:converged=True;break
+                # Reuse the audited dual before another center.
+                if not require_center and (objective is not None or any(direction)) and best is not None and best[0]-float(P.cost@z)<=args.gap:break
+                if time.monotonic()-started>=args.solver_seconds:break
+            lam=0. if not ray and fixed is None else P.cost[locked]-mu*P.slope(state,dx,axis);normal=np.asarray(direction,float).copy()
+            if ray:normal+=float(lam)*np.array([float(rate-np.longdouble(1)/15),-1.])
+            else:normal[0]-=float(lam)
+            duals=P.duals(state,mu);candidate=P.raw(z);raw_candidate=candidate.copy()
+            checkpoint()
+            np.savez_compressed(args.output/'joint_path_candidate.npz',point=candidate,support_direction=normal,**duals)
+            candidate,audit=certify(candidate,normal,duals)
+            if phase_one:
+                proof=P.original_duals(state,mu);np.savez_compressed(args.output/'phase_I_duals.npz',**proof)
+                _,bound_audit=certify(candidate,[0,0],proof);write_json(args.output/'phase_I_infeasibility.json',bound_audit)
+                empty=bound_audit['upper']<0
+                if empty and audit['primal_feasible']:raise ArithmeticError('Original feasibility and Farkas bounds contradict')
+                progress(stage='full_phase_I',tau=float(z[-1]),original_primal_feasible=audit['primal_feasible'],mu=mu,original_zero_objective_upper=bound_audit['upper'],infeasibility_certified=empty)
+                if audit['primal_feasible'] or empty or time.monotonic()-started>=args.solver_seconds:
+                    return candidate,duals,phase_one_report(P,z,iterations,time.monotonic()-started,initial_mu,empty),audit
+                if converged:mu*=.5
+                continue
+            if not audit['primal_feasible']:
+                candidate,fraction=restore_joint_segment(P,candidate);candidate,audit=certify(candidate,normal,duals)
+            if not audit['primal_feasible']:candidate,audit=certify(seed,normal,duals)
+            if not audit['primal_feasible']:raise ArithmeticError('No original joint feasible point survived center recovery')
+            from .gauge import center_acceptance
+            recovery=center_acceptance(raw_candidate,candidate,M,current);accepted_center=converged and recovery['eligible']
+            gap=audit['upper']-audit['lower'];history.append(dict(mu=mu,lower=audit['lower'],upper=audit['upper'],gap=gap,central_converged=accepted_center,newton_converged=converged,center_acceptance=recovery,support_direction=normal.tolist()))
+            if accepted_center:
+                from .model import joint_observable_change
+                if centers:changes.append(dict(mu_old=centers[-1][0],mu_new=mu,**joint_observable_change(H,kap,current,centers[-1][1],candidate,M,L)))
+                centers.append((mu,candidate.copy()))
+                np.savez_compressed(args.output/'center_path.npz',mu=[v[0] for v in centers],points=np.stack([v[1] for v in centers]))
+                write_json(args.output/'center_observables.json',dict(changes=changes,scope='Converged and original-audited full centers in this run; no phase fitting'))
+            progress(stage='joint_center',**history[-1])
+            value=float(np.asarray(direction)@np.asarray(H[-2:],np.longdouble)@candidate[:P.p].astype(np.longdouble)) if objective is None else float(np.asarray(objective,np.longdouble)@candidate[:P.p].astype(np.longdouble))
+            upper=audit['upper']+(direction[0]-normal[0])*fixed if fixed is not None else audit['upper']
+            if primal is None or value>primal[0]:primal=(value,candidate)
+            if best is None or upper<best[0]:best=(upper,duals,normal)
+            if accepted_center:representative=(value,candidate)
+            chosen=representative if require_center else primal
+            if (chosen is not None and (converged if objective is None and not any(direction) else best[0]-chosen[0]<=args.gap)) or time.monotonic()-started>=args.solver_seconds:break
+            if converged:mu*=.5
+    chosen=representative if require_center and representative is not None else primal
+    _,duals,normal=best;point,audit=certify(chosen[1],normal,duals)
+    method=center_report(P,normal,fixed,rate,ray,history,iterations,qr_count,cg_count,time.monotonic()-started)
+    if getattr(args,'unit_newton_step',False):method['step_policy']='Feasible line minimum restricted to 0 <= step <= 1'
+    method.update(require_center=require_center,representative_center_converged=representative is not None if require_center else None,
+        newton_decrement_tolerance=JOINT_CENTER_TOLERANCE,center_requires_fresh_QR=True,
+        QR_policy='Refresh every three directions or on failed linear residual; fresh QR at the accepted center')
+    return point,duals,method,audit
+
+def raw_support_residual(A,kap,kr,ki,y,c,M,L,free):
+    n=(A.shape[0]-11)//2
+    wr=np.asarray(kr,np.longdouble)*kap;wi=np.asarray(ki,np.longdouble)*kap
+    r=np.asarray(c,np.longdouble)-wr@A[:n]-wi@A[n:2*n]-np.asarray(y,np.longdouble)@A[2*n:2*n+8]
+    offset=int(free==2*M+1)
+    if offset:
+        anchor=(M//2)*3*L;delta=r[0]/A[anchor,0]
+        wr[anchor]+=delta;r-=delta*A[anchor]
+    for j in range(M):
+        a,b=j*3*L,j*3*L+2*L
+        da=r[offset+j]*2/3;db=r[offset+M+j]-da
+        wi[a]+=da;wi[b]+=db
+        r[free:]-=da*A[n+a,free:]+db*A[n+b,free:]
+    return wr/kap,wi/kap,r[free:]

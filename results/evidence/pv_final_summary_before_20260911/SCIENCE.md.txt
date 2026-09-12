@@ -1,0 +1,272 @@
+# Scientific contract — He–Kruczenski 2309.12402v3
+
+Updated: 2026-09-11. **The declared mixed-PV finite implementation now has an independent end-to-end IR→UV→resonance-signal chain. Stable, physically reasonable rho behavior and quantitative agreement across all three partial waves still show major differences; the full Fig.3–11 reproduction remains unfinished.** The same-PV five-configuration F comparison is the active next step.
+
+## Completed finite chain and fixed inputs
+
+Use the unchanged [PV H](results/runs/stage_B_pv_M50_L10_prepare_20260907/report.json) and [hard-midpoint current preparation](results/runs/mainline_alignment_20260909/D1_hard_M50/report.json): M50/L10, 1500 disks, separate-L2 chiral balls with epsilon=.002, four independent printed raw-moment tolerances .002, B=377500, free infinity, and the existing masses, couplings and FF bounds. The [preregistered rule](results/runs/physical_consistency_20260911/PV_REPRESENTATIVE_RULE.json) fixes the +x tip, physical xref and midpoint section independently of phase results and old Fig.8 marker coordinates.
+
+[PV_IR_ref_05](results/runs/physical_consistency_20260911/PV_IR_ref_05/report.json) has a converged center and an original-H support gap .00159036; [PV_IR_selected](results/runs/physical_consistency_20260911/PV_IR_selected/report.json) freezes its complete amplitude. UV [tip](results/runs/physical_consistency_20260911/PV_tip_support_01/report.json), [mid](results/runs/physical_consistency_20260911/PV_UV_mid_support_02/report.json) and [ref](results/runs/physical_consistency_20260911/PV_UV_ref_support_02/report.json) have converged centers and full joint support gaps 9.22923e-5, .001131500 and .001106419. [PV_UV_selected](results/runs/physical_consistency_20260911/PV_UV_selected/report.json) freezes their full C/ImF/R before phase inspection.
+
+The [IR](results/runs/physical_consistency_20260911/PV_IR_native/evaluation.json) and UV [tip](results/runs/physical_consistency_20260911/PV_UV_tip_native/evaluation.json)/[mid](results/runs/physical_consistency_20260911/PV_UV_mid_native/evaluation.json)/[ref](results/runs/physical_consistency_20260911/PV_UV_ref_native/evaluation.json) evaluations each pass 132 primary-wave samples: 528 in total. The [saved phase and interval report](results/runs/physical_consistency_20260911/PV_native_phases/phases.json) covers .28–1.199424 GeV. IR P1 ends at 8.56389 degrees. In tip/mid/ref order, the descriptive native 90-degree readings are 803.386/701.114/696.561 MeV, minimum P1 eta values are .775985/.434728/.243206, and the main native P1-intensity peak nodes are 792.136/680.414/680.414 MeV.
+
+The peak certificate encloses positive differences from adjacent native nodes. Any continuous function matching such values has an interior maximum within the stated bracket, but a continuous scattering completion, peak uniqueness and a pole have not been proved. The 90-degree interpolation is a descriptive observable. Neither sampled feasibility nor these signals establishes stable quantitative rho reproduction.
+
+The same report gives strict UV support-plane separation of the frozen IR point, with ref/mid margins .09777174521/.08328539559 in the corresponding support objectives. This excludes a UV extension of this full IR amplitude, not every IR or nonresonant amplitude. It does not establish the complete Fig.8 boundary or its reported strong asymmetry.
+
+## Active F work and scope
+
+The [F representative rule](results/runs/physical_consistency_20260911/PV_F_REPRESENTATIVE_RULE.json) was preregistered before new F phases. Reuse the [four-group operator/initializer inventory](results/runs/physical_consistency_20260911/PV_F_REUSE_INVENTORY.md), with B(M)=100[M²+M(M+1)/2] and numerical chiral-barrier weight equal to half the native disk count. Old combined-L2 points are initializers only; their support and center labels do not transfer.
+
+Mixed-PV names this repository's finite implementation of the paper's constraints. Sampled nodes and the form-factor PV kernel K are explicit in the paper, but the scattering-crossing interpolation, uncertainty norm and regulator conventions have not been uniquely recovered. Do not call this the authors' original code. Do not import analytic-family endpoint equations, leading high-energy constraints or extra samples, require a continuum certificate for the finite prototype, or invent an off-node PV amplitude.
+
+The existing [complete five-configuration F result](results/runs/sequential_reproduction_20260910/F_five_configs_verified_comparison/resolution.json) belongs to the 1500-disk analytic-cardinal baseline. Strengthened analytic W1 support and primal verification remain a separate follow-up diagnostic; W2 has not begun. Mainline verification reports 107 tests with 21 core modules and three test files; strict native peaks and projection exclusion use the same CLI. These checks do not establish full scientific success.
+
+Execution is tracked in [STATUS](STATUS.md) and [PROGRESS](results/runs/physical_consistency_20260911/PROGRESS.json). [Pre-edit snapshots and hashes](results/evidence/pv_chain_summary_before_20260911/manifest.json) preserve the former summary. Everything below the historical boundary remains verbatim and does not override this current contract.
+
+## Historical 1500-disk analytic branch record (2026-09-11)
+
+The following record is retained for provenance. Its older pending L12/M45/M60 statuses, test counts and center-label assertions are superseded by the current summary and later audits above. These paragraphs and the subsequent PV/source reviews describe their own historical models; they must not be read as the current3582-disk status or as transferable certificates.
+
+The current derivations and held issues are also archived in the [v2 theory PDF](results/runs/sequential_reproduction_20260910/THEORY_AND_HELD_ISSUES_ZH_v2.pdf), with separate source hashes and rendering provenance.
+
+The [current branch](results/runs/sequential_reproduction_20260910/SEQUENCE.json) uses one full analytic-cardinal family at M50/L10, retaining 3876 amplitude coefficients and 4076 joint variables. Two separate Euclidean chiral balls, printed moments, original masses/couplings, hard-midpoint cutoff and FF bounds were fixed before optimization. B(M)=100[M²+M(M+1)/2] remains a declared regulator. **Raw absolute .002 moment errors have a printed basis in Eqs.(3.72–74)** after restoring the units of Eq.(2.56); the author's norm packing and implementation scaling remain partly unspecified. Absolute versus relative errors must not be described as wholly unsupported alternatives, or selected using phase agreement.
+
+[Fig.5](results/runs/sequential_reproduction_20260910/C1_fig5/profiles.pdf), [Fig.6](results/runs/sequential_reproduction_20260910/C2_fig6/profiles.pdf) and [Fig.7](results/runs/sequential_reproduction_20260910/C3_fig7/profiles.pdf) are now delivered using the saved full IR amplitudes. Blue/orange/green centers, finite-H supports, analytic primals and selections pass. Analytic endpoint signs and continuity establish an orange S0 zero in s∈[.3,.4] and a green zero in [.4,.5], without uniqueness claims; blue has only sampled absence. The [fixed-green current-extension certificate](results/runs/sequential_reproduction_20260910/CD_fixed_current_analytic/source_audit.json), including analytic errors, has upper bound −9.109617136909641. Its exclusion applies to that full C only.
+
+The [new pure-scattering witness](results/runs/sequential_reproduction_20260910/B2_WITNESS_SCOPE_ZH.md), rechecked on both the current finite H and analytic source rows, has x≈1.60656781. Compared with the same finite-H chiral upper bound .10592809, it supports strong shrinkage in the +x direction without completing the pure region. The [IR +x replay](results/runs/sequential_reproduction_20260910/B3_IR_tip_replay/report.json) and its [analytic primal check](results/runs/sequential_reproduction_20260910/B3_IR_tip_analytic_signs/report.json) give [.1058808058047516,.1059280880042031], beyond the printed green maximum about .082573; old bounds were not transferred, and the printed curve is not a mathematical exclusion certificate. The [Fig.8 same-xref certificate](results/runs/sequential_reproduction_20260910/E6_regions/regions.json) gives upper/lower shrink ratio [1.0149888666,1.0745319267]: slight asymmetry is established, while strong asymmetry remains unreproduced. These are directional/section results, not complete dense regions.
+
+The three UV centers remain valid at the original finite constraints, but their continuous physical interpretation fails. The [final direct-evaluation archive](results/runs/sequential_reproduction_20260910/E5_direct_profiles_final/direct_profiles.json) records nonzero F1(infinity) and nine input hashes; the scattering values remain unchanged. Maximum eta is 1.0925161/1.1189324/1.1409410 for tip/mid/ref, with 42/40/40 strictly violating energy/wave samples. Descriptive 90-degree readings are 802.0117/697.1341/688.3834 MeV, separately from the original-grid readings. All 18 [independent rational-circle integrals](results/runs/sequential_reproduction_20260910/E5_independent_integrals/report.json) at 0.70/0.90 GeV match, including 11 strict violations; these are not plotting or integration errors.
+
+There is also an analytic infinity obstruction in this finite family. Each unsubtracted cardinal kernel tends to zero, and dominated angular integration gives f00→5T0/2 and f20→T0. With real T0 and kappa→pi, all-energy unitarity requires T0=0. The saved tip/mid/ref have T0≈27.6169/−70.7100/−64.9345 and S0 eta limits about216.90/555.36/510.00. This is a necessary, insufficient condition for this finite polynomial family, not a general statement about all possible density tails or the unpublished author implementation. [The held issue](results/runs/sequential_reproduction_20260910/HELD_INTER_NODE_ISSUE_ZH.md) records endpoint relations and denser-grid proposals. They have not been imposed on the baseline under the user's instruction to report these academic counterexamples separately. None of these findings proves the paper's finite program inconsistent or all original-parameter solutions impossible.
+
+[Derivation §11](results/runs/sequential_reproduction_20260910/DERIVATION_ZH.md) explains the low vector scale without fitting: positivity gives the R/s-weighted mean-square energy m_pi² I0/I−1. The saved moments imply root-mean-square scales about808/700/689 MeV for tip/mid/ref. This moment ratio is not a peak or pole formula. The allowed raw errors affect the two moments very differently, permitting this variation; it is not evidence that a smaller Newton residual would move every representative to770 MeV.
+
+The five-configuration comparison remains incomplete. The common +x choice is our preregistered rule; Appendix A does not explicitly identify the author's representatives. The M50/L8 chain is now separately archived: [support_05](results/runs/sequential_reproduction_20260910/F_M50_L8_support_05/report.json), [analytic verification](results/runs/sequential_reproduction_20260910/F_M50_L8_verified/report.json), [selection](results/runs/sequential_reproduction_20260910/F_M50_L8_selected/report.json) and [native evaluation](results/runs/sequential_reproduction_20260910/F_M50_L8_evaluate/evaluation.json). A newly converged center, finite support gap6.86247e−5, analytic primal and132 primary-wave samples pass. The x support interval is [.119959409536529,.120028034254141]. Resumption now uses the actually saved mu. The inappropriate default-mu restart in support_04 and the two earlier QR failures remain archived; they are not the delivered L8 result.
+
+M50/L12 now has a new full joint witness. [Balanced Phase I](results/runs/sequential_reproduction_20260910/F_M50_L12_phase_I_balanced_03/report.json) reaches tau=−.0157323797 and passes the original joint constraints with all4076 original variables retained. The subsequent [analytic primal audit](results/runs/sequential_reproduction_20260910/F_M50_L12_phase_I_analytic/report.json) passes1800 scattering disks,100 Grams, two chiral balls, four FESRs,14 FF bounds and L4. F_M50_L12_support_01 is now finding the independent +x representative center; the witness alone does not complete its support or phase comparison. The Phase I interface now honors an explicit chiral barrier weight while retaining default1. This run uses900=n_disks/2 as a numerical centering setting, with the physical feasible set unchanged. The earlier failed tip/D3 transfers remain archived.
+
+M45/L10 and M60/L10 operators are ready, but their existing numerical points fail replay on the corresponding new H. Historical feasibility and center status cannot be inherited; each requires a new Phase I. The earlier M45 preparation-default failure remains recorded. Full five-configuration delivery is still incomplete.
+
+Main optimization stays sequential; independent operator preparation may run with one thread at low priority. Each configuration's witness, support, analytic check, selection and evaluation retains its own evidence. Full Fig.3–11 and five-configuration comparison are unfinished. All99 tests pass again after the numerical interface correction, with17 modules and three test files. Earlier PV sections below remain historical evidence and do not supersede the current branch.
+
+## Foundation audit: analytic compatibility and independent inputs (2026-09-10)
+
+The [original-claim review](results/runs/followup_research_20260910/MAINLINE_ALIGNMENT_ZH.md) fixes the acceptance scope: Fig.7 is the IR control without the correct rho; the UV rho signature has appeared, while Fig.4 extent, Fig.8 asymmetry, the three phase profiles and the full Fig.11 comparison remain incomplete. No whole-model infeasibility under the original physical inputs has been proved. Exact pole uniqueness, continuum all-energy/all-spin certification and uniqueness of a later iteration are not prerequisites added to the paper's finite numerical prototype.
+
+A declared PV collocation approximation can retain its conditional finite evidence. A claim of a common exact analytic family requires consistent operators and a new joint witness. These are distinct scopes; selecting the latter must not silently change the physical inputs or transfer the former's feasibility. The new fixed-coefficient quadrature majorant is a computation bound, not a new regulator or an amplitude solution. Later-paper algebraic counterexamples are [held separately](results/runs/followup_research_20260910/HELD_ISSUES_ZH.md).
+
+[The new proofs](results/evidence/FOUNDATIONS_PROOFS_20260910.md) and [claim ledger](results/runs/foundations_review_20260910/CLAIM_LEDGER.json) supersede any suggestion of exact analytic-family alignment. Native K+iI and rational off-cut evaluation are different finite reconstructions. The exact residue identity Res f_R(s_i)=−w_i Im f_PV(s_i) obstructs a common analytic function whenever the residue is nonzero. The independent analytic-cardinal comparison preserves all coefficients; it does not import retired sine proofs or transfer feasibility. Its low-energy differences are bounded, while the saved tip fails analytic-lift unitarity at the highest native node.
+
+This is a distinction between the stated finite collocation approximation and a complete analytic amplitude, not a claim that every analytic completion of finite data is impossible or that the unpublished author producer has been recovered. A consistent model must choose its interpolation and density/tail assumptions before optimization. Arbitrarily imposing this lift's T0 or FF endpoint conditions on PV would change the model.
+
+Historical Fig.5 residual inference for the chiral norm and Fig.8 marker-based ref/mid selection are output-assisted choices. They remain recorded, but are not independent derivations. New optimizations must explicitly name the chiral norm, and new scientific selection rejects paper marker inputs. Printed moments versus Eq2.50, the scalar current/mass rule, GMOR estimates and OPE/endpoint errors remain distinct input assumptions. The new audit does not retune any of them.
+
+Finite support and fixed-C Farkas proofs remain valid for their declared matrices. The verifier now checks the free-column identities used by its elimination. Evaluation records retain exact f balls and outward floating margin bounds. Phase extraction rejects undefined/nonfinite S; zeros of F remain in spectral moment accounting.
+
+## Expert-response mechanism audit (2026-09-10)
+
+The [new audit](results/runs/expert_response_20260910/RHO_MECHANISM_AUDIT_ZH.md) adds native scattering/FF/current peaks for the unchanged C/E amplitudes and an original-operator Farkas certificate excluding the fixed Fig.7 amplitude's UV current extension. This excludes that complete C vector only; it is neither full joint infeasibility nor a theorem that every allowed amplitude has a rho pole. The negative zero-objective upper bound is about −9.09881296 and passes a 768-bit replay.
+
+[Finite-model derivations](results/evidence/RHO_FINITE_MODEL_THEOREMS_20260910.md) prove the exact spectral Schur floor, finite scattering compactness under the actual-density L4 bound, and the separate closure/attainment issue caused by unbounded high-energy current spectra. They do not transfer sine rank/tail claims to PV. `spectra` owns observables; `certificates` owns original joint audits. Under the user's updated instruction, module count is no longer fixed to ten; independent tests stay in three files.
+
+The fixed-amplitude calculation substitutes C exactly into the current cones, using Arb products of the original H before rounding the small conic constants. It eliminates the redundant coefficient λ=1 instead of allowing its solver equality residual to perturb almost-elastic Grams. All current variables remain available. Dual residuals are supported by the original moment/FF bounds. Affine-norm bounds and diagonal-scale PSD repair change neither physical constraints nor acceptance checks. Earlier positive-bound failures are preserved. A negative fixed-C bound must never be reused as a bound for varying C.
+
+## Historical output-assisted chiral grouping (2026-09-09)
+
+C selection is now decoupled from unrelated global polygon gaps. For its audited complete point (xc,yc), any valid upper plane nx*x+ny*y<=U with ny>0 bounds ymax(xc)-yc by (U-nx*xc)/ny-yc. `select` computes the minimum bound with Arb and scales by epsilon; the same .01 metric budget can certify this local representative while B3's global geometry remains unfinished. Both scopes are recorded; no phase data enter the choice. See [the derivation](results/runs/mainline_alignment_20260909/C_LOCAL_SELECTION_ZH.md).
+
+The [original Fig.5 residual reconstruction](results/runs/mainline_alignment_20260909/CHIRAL_SOURCE_RESIDUALS_ZH.md) identifies a much stronger source fingerprint than the words “some norm”: the three colored curves have combined eight-component L2/epsilon approximately1.000007,1.000020,1.000146. Interpolation uncertainty is retained; this is not a strict violation test or exact producer recovery. Together with the author's explicit later stack8 implementation, it motivated the historical `combined-l2` choice. That inference used published output and is not an independent derivation; the CLI now requires an explicit norm for physical optimization. Historical separate-L2 replays must request it explicitly.
+
+[PAPER_MAINLINE](results/runs/mainline_alignment_20260909/PAPER_MAINLINE.json) now fixes combined-L2 and the uniform hard-midpoint quadrature below. Pure and H/current operators are unchanged; B/C and joint points must be re-audited under the new ball. Reusing a dual requires evaluating its support function for the new norm, and scaling a scattering-only amplitude requires rechecking the resulting full coefficients. A complete gauge point is never rescaled as if F(0)=1 were homogeneous. The [normalization audit](results/runs/mainline_alignment_20260909/NORMALIZATION_TRANSFER_ZH.md) confirms that the actual-amplitude rho bound requires no additional pi or overall factor2 conversion.
+
+## Printed-quadrature source decision (2026-09-09)
+
+The new [cutoff decision](results/runs/mainline_alignment_20260909/CUTOFF_DECISION_ZH.md) adopts `hard-midpoint` for D–F: the uniform pi/M weights printed in v3 Eq.(3.72), masked to native s<=s0. Previous `clipped-phi` results remain a named endpoint-corrected variant. Masses, s0, chi, actual-density bound, moment targets/errors and FF caps are unchanged. This is a choice of the direct published discretization, not recovery of the unpublished producer. At M50 the exact-weight hard (S,F) projection is contained in clipped by monotonically increasing the latter's endpoint current spectrum; floating matrices still require fresh audits. M45/M60 have different positive-weight supports, so that proof does not transfer.
+
+The [hard D witness](results/runs/mainline_alignment_20260909/D_RESULT_ZH.md) passes all original joint constraints. New E near-black x positions are declared in [PAPER_MAINLINE](results/runs/mainline_alignment_20260909/PAPER_MAINLINE.json) before new phase evaluation. The historical `--selection-reference` path read original Fig.8 marker geometry. New scientific selection rejects it; its lack of phase input did not make it independent of published outputs. The default selection remains available for historical replays.
+
+Numerical trials of unit chi-barrier weight, wider QR reuse and a unit step cap did not close the old mid problem; the original QR/line-search strategy was restored. `--chiral-barrier-weight` is explicitly numerical; omitted values preserve checkpoint weights or the established n_disks/2 default. A convex mixture of boundary points is not an analytic center. Production now uses complete center paths from appropriate joint interiors. Converged full vectors are retained in center_path.npz and their native S/F changes in center_observables.json: projection gap does not bound those changes. The author explicitly permits repeating2403 Watsonian updates until convergence; old-Q objective optimality remains distinct from that iteration's fixed-point behavior.
+
+## Fixed scattering conventions (A1/A3)
+
+Use pion-mass units, s+t+u=4, t=−(s−4)(1−μ)/2, and
+
+\[
+T^0=3A(s,t,u)+A(t,s,u)+A(u,t,s),\quad
+T^1=A(t,s,u)-A(u,t,s),\quad T^2=A(t,s,u)+A(u,t,s),
+\]
+\[
+f^I_\ell(s)=\tfrac14\int_{-1}^{1}P_\ell(\mu)T^I(s,t,u)d\mu,
+\qquad S^I_\ell=1+i\pi\sqrt{1-4/s}\,f^I_\ell=\eta e^{2i\delta}.
+\]
+
+These are (2.7–12), TeX lines 554–579. Only even spins appear for I=0,2 and odd spins for I=1. L=10 means 0,2,…,18 in each even channel and 1,3,…,19 in I=1, not all spins through 10. The original M=50 energy grid gives 1500 retained scattering samples; the sine provider allows a separate scattering grid, so 150 energies with the same M50 basis give 4500 samples. The current PV provider keeps its original physical nodes. There is one constant, two M-vectors, an unrestricted M² double density, and a symmetric M² double density: 3876 real amplitude coefficients before the optional zero equality is imposed. A gauge discretization adds two ImF M-vectors and two current-density M-vectors, for 4076 raw real variables before eliminations.
+
+The full scattering operator obeys S_full^dagger S_full=1. Let P project onto
+the normalized two-pion elastic states in a fixed I,ell sector. Then the
+elastic block satisfies
+
+\[
+(PS_{\rm full}P)^\dagger(PS_{\rm full}P)
+=P-PS_{\rm full}^\dagger(1-P)S_{\rm full}P\preceq P.
+\]
+
+In the one-channel pion sector this is |S_ell^I|²<=1. The missing probability
+is the sum/integral of transitions from that incoming channel to other
+states. Eta=1 requires no such transition at that energy and partial wave;
+it is not a condition imposed at every energy in v3. For every physical
+s>=4 and every allowed I,ell, write kappa=pi sqrt(1-4/s). The concrete
+constraint is Eq.(2.12):
+
+\[
+|S|\le1\quad\Longleftrightarrow\quad
+\Delta=1-|S|^2=2\kappa\operatorname{Im}f-\kappa^2|f|^2\ge0
+\quad\Longleftrightarrow\quad
+\begin{pmatrix}1&S\\S^*&1\end{pmatrix}\succeq0.
+\]
+
+The Gram matrix is Eq.(3.71), PDF p.24, TeX 1009–1017; its eigenvalues are 1±|S| and determinant is Delta. The normalization and unitarity equations (2.9–12) are on PDF p.9. For s>4, this is equivalent to Im f>=kappa|f|²/2; Im f>=0 alone is insufficient. Eta<1 is allowed, eta=1 is an elastic limiting case. At exact threshold s=4 and finite f, kappa=0, S=1 and Delta=0; the Gram is positive semidefinite, not positive definite. Subthreshold amplitudes do not obey this physical disk condition.
+
+`model.scattering_matrix`, `unitarity_margin(f,s)` and `scattering_gram(f,s)` share these conventions. The margin uses kappa(2 Im f−kappa|f|²) to avoid subtracting two numbers near one. Independent analytic tests start from S=eta exp(2i delta), with eta=1,.6,1.1, and check the margin and Gram determinant; the eta>1 example has Im f>0 and is correctly rejected. These physical helpers reject nonfinite f and energies below, or uncertain across, threshold; the general amplitude evaluator still accepts subthreshold energies. A returned sign is about the listed energy/wave pairs only. Arb rounding enclosures for the evaluated quadrature do not include angular-integration error, and neither a sampled pass nor additional finite spins proves continuum or full S-matrix unitarity.
+
+Amplitude density and current spectral density are different variables. In the current flat coefficient representation `C_flat_ii=rho2_ii`, `C_flat_ij=2*rho2_ij` off diagonal. The density norm must be evaluated on the actual amplitude densities, never on quotient coordinates.
+
+The target plane is x=f00(3), y=f11(3), below the physical threshold s=4. Its coordinates are not cross sections. A boundary projection need not identify a unique full amplitude. Save the amplitude selected by each optimization, including any selection tie-break.
+
+## Parameters directly stated in v3 (A2)
+
+| Input | v3 value and source |
+|---|---|
+| Mass and reference scale | mπ=140 MeV; fπ≈92 MeV, (2.2), TeX 507–513 |
+| Matching scale | sqrt(s0)=1.2 GeV, hence dimensionless s0=(1.2/.140)²=3600/49; some prose incorrectly writes s0 with energy units |
+| UV theory | Nc=3, Nf=2, αs=.4; mu=4 MeV, md=7.3 MeV, (2.54), TeX 865–869 |
+| Condensates | gluon .023 GeV⁴; scalar −(.1 GeV)⁴, (2.55), TeX 870–874 |
+| Chiral samples | s=1/2,1,3/2,2, (3.63–64), TeX 938–953 |
+| Chiral tolerances | .006,.004,.002,.001,.0006,.0002 in Fig.4; .002 for subsequent plots, TeX 1079–1083 |
+| Current channels | S0 and P1; S2 retains ordinary scattering unitarity, (3.70–71) |
+| FESR moments | S0: n=0,1; P1: n=−1,0; four moments, (2.50)/(2.56) |
+| UV tolerances | εSR=.002, εFF=.00006, §4.3, TeX 1141; SR scaling remains an open source question |
+| Resolution study | (M,L)=(50,8),(50,10),(50,12),(45,10),(60,10), Appendix A; five configurations |
+
+The chiral linear residuals are
+
+\[
+r_{01}(s)=f^0_0(s)-\frac{3(2s-1)}{s-4}f^1_1(s),\qquad
+r_{21}(s)=f^2_0(s)-\frac{3(2-s)}{s-4}f^1_1(s).
+\]
+
+v3 says “some norm”. The current source-identified choice is the combined Euclidean norm of all eight residuals. The ratios remove fπ; the physical black reference point uses fπ separately. These finite residual constraints do not impose exact linear amplitudes or fixed scattering lengths. For the same ε, K_comb(ε) is contained in K_sep(ε), itself contained in K_comb(sqrt(2) ε); historical two-ball certificates are never transferred without a fresh audit.
+
+## Current / UV contract (A2, then D1–D3)
+
+The scalar normalization is F0(0)≈mπ²=1, whereas the vector charge gives F1(0)=1. Use the paper's subtracted dispersion relation (2.37), and ReF_i=1+K_ij ImF_j from (3.66–67). The latter explicitly defines a form-factor Hilbert kernel; it does not specify the entire scattering double-density implementation.
+
+Write mathcal F=k F. Equation (2.33) gives
+
+\[
+k_0^2=\frac{3\sqrt{1-4/s}}{256\pi^5},\qquad
+k_1^2=\frac{(s-4)\sqrt{1-4/s}}{384\pi^5}.
+\]
+
+For each retained node in S0 and P1, impose (3.70)
+
+\[
+\begin{pmatrix}1&S&\mathcal F\\S^*&1&\mathcal F^*\\
+\mathcal F^*&\mathcal F&\rho_{\rm current}\end{pmatrix}\succeq0.
+\]
+
+`model.current_gram` uses the congruent matrix with F and rho_current/k²; k>0 makes the two PSD conditions equivalent. This congruence applies strictly above threshold; k=0 at threshold cannot be divided out. Its S must come from the same amplitude variables as all the scattering constraints. Expected two-pion saturation and Watson's theorem explain the physics; do not add eta=1 or rho_current=|mathcal F|² as strict extra constraints.
+
+For normalized moments J_n=s0^(−n−2)∫₄^s0 rho_current(x)x^n dx, the printed (2.56) gives approximately
+
+| Channel, n | J_n from printed coefficients |
+|---|---|
+| S0, 0 | 4.41870e−7 |
+| S0, 1 | 2.82014e−7 |
+| P1, −1 | 5.75484e−5 |
+| P1, 0 | 2.69948e−5 |
+
+These numbers are rounded paper inputs, not exact UV identities. A comparison branch should begin with the printed moments; independently recompute them from (2.50) to audit the UV conventions. The paper starts with equal mq but reports unequal mu,md; selecting mq=(mu+md)/2 is an additional choice, not an explicitly recovered rule. With the printed masses it produces scalar moments 8.484% below the printed values. Replacing Nf mq² by mu²+md² (the RMS choice) reduces the difference to about .680%. The latter suggests a possible flavor convention, but does not prove the original prescription. Both are explicit audit branches; the scalar FF cap follows the chosen mq rule.
+
+The FESR Jacobian is (π/M)s'_i, while a scattering Cauchy kernel already includes 1/π and therefore uses s'_i/M. Confusing these weights changes the moments by π. Equation (3.72) integrates only to s0 but writes a full-M sum: a finite implementation must specify the low-energy mask and the partial endpoint cell. The current direct printed rule uses a hard native mask (43 low, 7 high nodes at M50), fixed before new phases. Equation (3.74) writes raw integral errors while (2.56) reports normalized moments, leaving the scale and grouping of εSR=.002 unresolved. Raw per-moment absolute errors, normalized errors and a combined vector norm are different feasible sets. A2 fixes raw per-moment errors as the main conditional reading and keeps normalized absolute errors as a named comparison. In normalized units the four raw .002 tolerances become approximately (3.70525e−7,5.04325e−9,2.72222e−5,3.70525e−7).
+
+For s_i>s0, (3.75) bounds the **squared rescaled** form factors:
+
+\[
+|\mathcal F_0|^2\lesssim2m_q^2\epsilon^{FF},\qquad
+|\mathcal F_1|^2\lesssim\epsilon^{FF}/2.
+\]
+
+It is not a bound of the same numerical size on |F| or |F|². With the conditional arithmetic-mean mq=5.65/140 and epsilonFF=6e−5, the caps on |mathcal F0|² and |mathcal F1|² are 1.9544387755e−7 and 3e−5; the RMS branch changes the scalar cap explicitly. Four FESR integrals and these high-energy inequalities do not insert a rho resonance by hand. Active code contains these UV helpers plus `current_operators`, and the `prepare-current` entry. The affine layout has 4076 variables, 100 real 3-by-3 PSD blocks, four moments and 14 high-FF cones at M50; independent algebraic controls have passed. D has completed this M50 current preparation and a fully coupled feasible solution, as recorded above. The [independent current witness](results/source_M50_exact_current_fiber_256.json) remains historical evidence; it is not used as a substitute for the joint solution.
+
+The units are explicit in `fesr_data`: physical scalar and vector spectral densities are divided by mπ⁴ and mπ², respectively; raw moments in the order (S0,0),(S0,1),(P1,−1),(P1,0) are divided by mπ^(6,8,2,4). F0_phys is divided by mπ², while F1 is dimensionless. Direct integration of the complex OPE around the FESR circle reproduces the Eq.(2.50) implementation independently.
+
+For rho_current=1, exact raw integrals are (s0−4,(s0²−16)/2,log(s0/4),s0−4). At M50, hard-midpoint relative errors are approximately (14.64%,28.86%,4.57%,14.64%); clipped-phi reduces them to (.917%,2.855%,.106%,.917%). The latter uses the overlap of each phi cell with [0,phi0], keeping its original node and Jacobian; in some M it uses a partial cell whose center is above s0. The high-FF mask always remains node>s0. This example demonstrates a real discretization sensitivity, not an estimate for an optimized unknown spectrum. The comparison is preserved in the cutoff decision; it does not justify choosing weights from phase agreement.
+
+## PV scope and preserved finite-sine proofs
+
+The active `PVSourceRows` is now independent of the retired sine provider. It implements the audited later-author PV/midpoint and analytic Legendre-Q collocation kernels at the target paper's center nu0=0, retaining every coefficient. Native physical nodes, subthreshold values and the threshold limit are defined; other physical points and sine embedding are rejected. Coordinates remain `unsubtracted PV-midpoint C_flat`, with exact subtraction changes explicitly supported. The [kernel mapping](results/runs/stage_B1_source_method_audit_20260907/COLLOCATION_KERNEL_MAP_ZH.md) establishes formula correspondence, not recovery of all unpublished v3 numerical settings.
+
+The original-center nodes and subtracted off-cut kernel are phi_j=pi*(j+1/2)/M, x_j=4/cos(phi_j/2)^2, w_j=x'_j/M and q_j(v)=w_j*v/[x_j*(x_j-v)]. Assigned physical values K+iI are not limits of this rational expression at its poles. Connecting native samples in a figure does not define a continuous PV amplitude.
+
+Finite-sine, its necessary T0/tail/large-spin statements and completed rank proofs retain their original scope and exact inputs. Their active execution is retired; complete source/tests are preserved in [the pre-cleanup evidence](results/evidence/core_before_ten_modules_20260910.json.gz), and the full derivations remain in [the historical contract](results/runs/mainline_alignment_20260909/SCIENCE_BEFORE_CONSOLIDATION.md). No sine amplitude, rank, feasibility or tail conclusion is transferred to PV without proof. Current solves keep sampled/free and their declared density bound; they do not silently acquire sine strengthening.
+
+## E closure audit and the named follow-up method (2026-09-09)
+
+The [independent operator audit](results/runs/stage_E_closure_audit_20260909/OPERATOR_AUDIT_ZH.md) reconstructs Eq.(2.7) angular projections without calling the production projection kernels. Representative M50 rows agree across all3876 coefficients within5.33e-15. The original complex Gram determinant, conjugations, current dimensions, FESR Jacobian and squared FF cap have independent checks; no major normalization error was found. This is an audit of the declared finite model, not recovery of unpublished v3 settings.
+
+The [primary-source audit](results/runs/stage_E_closure_audit_20260909/SOURCE_AUDIT_ZH.md) identifies the targeted continuation in2403.10772v4 Eq.(2.29) and the authors' public MATLAB snapshot. For an old feasible full joint solution define Q=F_old/F_old* in S0/P1 and Q=S_old in S2. Optimize the linear functional
+
+\[
+W=\frac1{3N_{\rm low}}\sum_{I=0,1,2}\sum_{4<s_j\le s_0}
+\Lambda_{\ell}(s_j)^{-2}\Re[Q_{Ij}^*(S_{Ij}^{\rm new}-1)],
+\qquad \Lambda_0=1,\quad \Lambda_1=\frac{\sqrt{s-4}}{\sqrt s+2}.
+\]
+
+This is the three-primary-wave specialization for2309 (S0/P1/S2); the later six-wave objective and D0 current are not claimed to be reproduced. Every original scattering disk, chiral ball, actual-density bound, current Gram, FESR and FF cap remains imposed. The positive overall normalization changes no maximizer. As in the author's second CVX block, the original projection equalities are released: later curves must carry both their initial geometric role and their new projected coordinates. Q comes from the prior computed FF, with no experimental phase input, branch choice or fitted resonance mass. For any feasible S the elementary upper bound is sum(w*(abs(Q)-Re(Q)))/(3*N_low); a smaller jointly audited dual bound may certify the actual optimum even when this ideal disk ceiling cannot be reached.
+
+This is an explicitly named follow-up algorithm, not a step documented by2309v3. It improves the search for the Watson/saturation behavior underlying the physical argument; PSD alone permits eta<1 and does not force S=F/F*. Changing the optimization objective cannot change the Fig.8 feasible region. The2505 update has a different iteration and UV inputs and is not silently substituted. `--objective watson` starts a new frozen functional; `--resume-objective` continues the same one. A solver time limit is not a completed Watson iteration.
+
+A useful exact consequence of the original Gram determinant is
+
+\[
+|S-Q|^2\le (1-|S|^2)\left(\frac{\rho_{\rm current}}{|\mathcal F|^2}-1\right),
+\qquad Q=F/F^*,\quad F\ne0.
+\]
+
+Thus numerical eta close to1 does not by itself give a uniform Watson phase bound when the two-pion fraction r=|mathcal F|^2/rho_current is very small. In the completed mid continuation the first P1 node has eta=0.99999999853 but r=2.75e-9 and |S-Q|=.9184. This satisfies the Gram constraint and exposes the role of spectral dominance in the paper's physical argument. It is not evidence of a lost unitarity disk or justification for replacing the input spectrum. Exact eta=1 with nonzero F still forces Q=S.
+
+For a uniform additional phase diagnostic, define delta_FF=unwrap(arg F_new)+arg(S_new/(F_new/F_new*))/2, with the real nonzero F(4) fixing the overall integer-pi threshold anchor. This exactly preserves eta*exp(2i*delta_FF)=S at the evaluated nonzero S/F samples. The known FF family gives F(4)=1+sum_j cot(phi_j/2)*ImF_j/M. Both lifts and their integer-pi difference are reported; the primary Fig.9–10 curves retain the nearest native S lift. Exact elastic Watson equality, continuity and treatment of zeros/branch crossings are additional requirements for a unique physical interpretation. The2403 discussion treats4<s<16 as the elastic region; above it saturation is approximate. Native inequalities alone do not impose exact saturation, and a completed old-Q optimization does not imply a new-S/new-F fixed point. FF analyticity cannot supply the missing PV scattering winding between nodes. This diagnostic is fixed uniformly before viewing the new phases, not selected by a desired rho mass.
+
+## F resolution protocol and numerical Phase I (2026-09-09)
+
+The [Fig.11 source audit](results/runs/stage_F_mainline_20260909/SOURCE_AUDIT_ZH.md) fixes exactly (M,L)=(50,8),(50,10),(50,12),(45,10),(60,10). L counts waves per isospin. The original appendix does not specify the exact representative functional or a regulator rescaling rule. Before inspecting new phases, this reproduction chooses the full joint +f00(3) support for all five, with no Watsonian step, and the declared discrete recipe B(M)=100[M²+M(M+1)/2]. This is a conditional common recipe, not a recovered continuum norm. All chiral/current/UV inputs remain the E projection baseline. Each support is checked to gap<=1e-4.
+
+Cross-M density projection uses the sine Galerkin map in subtracted coordinates, then returns to original C_flat; this avoids losing large subtraction cancellations when modes are dropped. It is only a numerical initializer. Neither a PV amplitude identity nor feasibility is transferred. Cross-L amplitudes retain their complete variables; every added disk is enforced. At fixed M all shared old/new rows agree exactly, but the old L10 tip violates some added L12 high-energy/high-spin disks, so simple inheritance is invalid.
+
+The initializer now follows B→D explicitly. Construct the same strict analytic scattering seed used in B on the actual M/L grid, with the chiral and actual-density bounds. Every scattering disk, chiral ball and L4 bound remains hard throughout Phase I. Only the current subsystem receives one scalar tau: normalized Grams G+tau*I, FF slacks 1+tau−||F_scaled||², and moment halfspaces 1+tau±r where r=(moment−target)/error. A same-resolution B amplitude can initialize this step; a small analytic-seed mixture preserves strict scattering slack. Current Grams use the same positive diagonal equilibration as the full joint support solver. This is a fixed invertible congruence from the numerical reference, not an extra physical condition. Earlier unbalanced current-only runs and their checkpoints remain separate. Minimizing tau is a standard convex epigraph Phase I. Negative tau guarantees all original current constraints; acceptance uses the independent original joint audit. No Phase-I dual is reused for support. Failed projected pools and earlier all-constraint slack attempts remain numerical failures, not original-model infeasibility proofs.
+
+For a fresh Phase I, start with mu=max(.001,tau_initial/nu), nu=3*N_Gram+N_FF+8, balancing the initial objective and current barrier; decrease it in a Newton neighborhood (decrement squared below1); it does not require support-level central accuracy. Its checkpoint is distinct from the unrelaxed support checkpoint. Both stages use the existing feasible line-minimization expansion; a trial cap at a full Newton step did not improve the calculation and was removed. Support resumes follow half-mu continuation from a center, avoiding a premature tenfold jump. These are numerical choices, without altered physical constraints or phase data. Independent directional first/second derivative tests cover both barriers.
+
+A Phase-I checkpoint also supplies candidate covectors for the original zero-objective problem: the hard amplitude/chiral covectors, positive mu*(G+tau*I)^(-1) with its saved congruence, the existing FF covector using shifted FF slack, and moment weights mu*(1/ms_minus−1/ms_plus)/error. The original joint audit includes all residual support terms and no tau constants. Only a strictly negative original Arb upper bound certifies finite infeasibility; a positive bound remains inconclusive. These covectors are saved separately and never presented as +x support weights.
+
+For the current L12 feasibility search, an auxiliary-center plateau is recorded explicitly. Short runs may decrease the auxiliary barrier parameter without claiming the previous center was solved. This is only a candidate-generation strategy for the same Phase-I problem: scattering, chi and density remain hard, and only an original joint audit can accept a witness. Neither a positive tau nor this continuation schedule is an optimality/infeasibility certificate, and the final projection supports keep their original audited gap criterion.
+
+F compares fresh native S0/S2/P1 values and eta on each actual M grid. Across-M interpolation is a plot/comparison diagnostic only; it does not evaluate or certify an off-node PV amplitude. The original Fig.11 vector marker CSVs are reference readouts, never optimization inputs. Finite support error, resolution sensitivity and the remaining E physical discrepancies are reported separately.
+
+## Result and verification contract (C/E/F)
+
+Recover phases from the saved S: δ=unwrap(arg S)/2, eta=|S|, E_GeV=.140 sqrt(s); record branch choice and threshold behavior. Do not force eta=1 or interpolate assigned PV node values into an allegedly certified global amplitude. The new analytic module supplies a separately defined comparison family; its feasibility is not inherited from PV. Active and historical PV values are defined only on their stated domain; connecting plotted native points does not define or certify a physical off-node amplitude.
+
+Fig.3 is a baseline, explicitly not used further in §4.1. Fig.4–7 establish the chiral comparison; Fig.8 adds UV data without changing the common scattering assumptions. Fig.9–10 require the tip plus nearby representative amplitudes, a rho crossing near 90° with the reported roughly 6% displacement, and S0/S2 checks. Fig.11 contains five resolution runs and is empirical sensitivity evidence, not a continuum theorem.
+
+Save full coefficients/current variables, source and configuration records, individual constraint diagnostics, primal/outer support bounds and plot data under `results/runs`. Separate solver error, truncation, UV-input uncertainty and unresolved prescriptions. The paper's M/L comparisons and stability of claim-relevant observables remain required. Additional checks must respect the source's defined domain; the PV off-node limitation is not evidence of a violation and cannot be filled by a sine continuation. Rigorous interval coverage and tail estimates are additional requirements only for a continuum-certification claim. If source choices remain unresolved, final plots describe a conditional reproduction even when they resemble the paper.
+
+For B1, the five predeclared regulator supports are summarized through `run regulators`; the published source and conclusions are in [the regulator results](results/runs/stage_B_regulator_protocol_20260907/RESULTS_ZH.md). B1 retained the requested 1e-4 support gaps. B2/B3 use valid brackets and the unchanged .01 whole-region metric budget; new query objectives are scaled to unit normals in that metric with a .0025 stopping budget. Positive objective scaling changes neither the feasible amplitude set nor its exact extremizer.
+
+## Numerical solver and retained historical proofs
+
+2309 v3 specifies the convex constraints, not Newton or a named software solver. The current implementation uses QR-preconditioned Newton/CG for full supports and Clarabel for the D initializer. Invertible coordinate changes and positive barrier weights leave the physical feasible set unchanged. Full support bounds are audited using original operators; a small Newton decrement is insufficient. Original support bounds also do not certify the phase shift of a unique amplitude. See [solver decision](results/runs/mainline_alignment_20260909/SOLVER_DECISION_ZH.md) and [B linear-residual correction](results/runs/mainline_alignment_20260909/B_SOLVER_FIX_ZH.md).
+
+The pre-consolidation contract, including the complete finite-sine asymptotic, large-spin and rank derivations, remains in [SCIENCE_BEFORE_CONSOLIDATION](results/runs/mainline_alignment_20260909/SCIENCE_BEFORE_CONSOLIDATION.md). Those statements retain their original finite-sine scope and do not become constraints on the current PV model. Historical failed amplitudes, exact proof inputs and production snapshots remain in their existing locations. They need not be reread to continue the current IR→UV→phase sequence. Numerical outcomes and current completion are maintained only in [STATUS](STATUS.md).

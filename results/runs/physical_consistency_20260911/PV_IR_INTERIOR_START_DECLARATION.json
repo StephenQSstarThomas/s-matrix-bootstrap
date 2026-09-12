@@ -1,0 +1,17 @@
+{
+  "reason": "Existing same-H IR point passes fresh original constraint audit; restart the new fixed-x objective from a genuinely IR initializer using standard interior path mu .01 rather than tiny-mu UV-boundary cold start.",
+  "source": "PV_IR_seed_replay_05",
+  "start_mu": 0.01,
+  "chiral_barrier_weight": 750,
+  "fixed_x": 0.07332139057293466,
+  "direction": [
+    0,
+    500
+  ],
+  "gap": 0.002,
+  "native_coordinates": "absorptive-free-T0",
+  "physical_constraints_changed": false,
+  "old_center_or_covectors_transferred": false,
+  "phase_data_used": false,
+  "bounded_solver_seconds": 900
+}

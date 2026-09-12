@@ -1,0 +1,10 @@
+{
+  "source": "results/runs/stage_F_mainline_20260909/M45_L10_selected",
+  "amplitude_fraction": 0.875,
+  "current_variables_unchanged": true,
+  "form_factor_normalization_unchanged": true,
+  "initialization_only": true,
+  "original_amplitude_and_joint_audits_required": true,
+  "old_feasibility_and_support_not_transferred": true,
+  "uses_phase_data": false
+}

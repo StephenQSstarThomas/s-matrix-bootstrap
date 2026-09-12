@@ -1,0 +1,474 @@
+{
+  "schema": "smatrix-imaginary-rank-completion-storage-migration-v1",
+  "status": "complete_verified",
+  "original_root": "/tmp/source_imaginary_rank_stage",
+  "copied_subdirectories": [
+    "minor_4096_attempt01",
+    "minor_residual_1024_2048_attempt01"
+  ],
+  "root_level_regular_files_included": true,
+  "excluded_previously_migrated_subdirectory": "physical_4096_attempt01",
+  "durable_root": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage",
+  "files_copied": 21,
+  "bytes_copied": 305612887,
+  "all_source_before_copy_stream_source_after_and_destination_hashes_match": true,
+  "source_selection_unchanged": true,
+  "original_files_retained": true,
+  "scientific_recomputations": 0,
+  "source_code_edits": 0,
+  "original_reports_and_embedded_paths_modified": false,
+  "files": [
+    {
+      "original_path": "/tmp/source_imaginary_rank_stage/reduction_preparation.json",
+      "relative_path": "reduction_preparation.json",
+      "bytes": 23261,
+      "source_device": 64516,
+      "source_inode": 1981599,
+      "source_mtime_ns": 1788680410642887350,
+      "source_mode": 420,
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/reduction_preparation.json",
+      "sha256": "6ef1f71f51c97bfd00daa7133cfc800ae0f85ebb95233b1e4b201f82307ece85",
+      "source_sha256_before": "6ef1f71f51c97bfd00daa7133cfc800ae0f85ebb95233b1e4b201f82307ece85",
+      "copy_stream_sha256": "6ef1f71f51c97bfd00daa7133cfc800ae0f85ebb95233b1e4b201f82307ece85",
+      "source_sha256_after": "6ef1f71f51c97bfd00daa7133cfc800ae0f85ebb95233b1e4b201f82307ece85",
+      "destination_sha256": "6ef1f71f51c97bfd00daa7133cfc800ae0f85ebb95233b1e4b201f82307ece85",
+      "all_hashes_match": true
+    },
+    {
+      "original_path": "/tmp/source_imaginary_rank_stage/test_imaginary_rank_residual.py",
+      "relative_path": "test_imaginary_rank_residual.py",
+      "bytes": 3759,
+      "source_device": 64516,
+      "source_inode": 1981547,
+      "source_mtime_ns": 1788679759091032247,
+      "source_mode": 420,
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/test_imaginary_rank_residual.py",
+      "sha256": "287e362616f2bdf7831dbbde53050b58c3dc0f24a527e347124bca9426d2a01d",
+      "source_sha256_before": "287e362616f2bdf7831dbbde53050b58c3dc0f24a527e347124bca9426d2a01d",
+      "copy_stream_sha256": "287e362616f2bdf7831dbbde53050b58c3dc0f24a527e347124bca9426d2a01d",
+      "source_sha256_after": "287e362616f2bdf7831dbbde53050b58c3dc0f24a527e347124bca9426d2a01d",
+      "destination_sha256": "287e362616f2bdf7831dbbde53050b58c3dc0f24a527e347124bca9426d2a01d",
+      "all_hashes_match": true
+    },
+    {
+      "original_path": "/tmp/source_imaginary_rank_stage/minor_4096_attempt01/progress.jsonl",
+      "relative_path": "minor_4096_attempt01/progress.jsonl",
+      "bytes": 1669,
+      "source_device": 64516,
+      "source_inode": 1981729,
+      "source_mtime_ns": 1788682305177588793,
+      "source_mode": 420,
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_4096_attempt01/progress.jsonl",
+      "sha256": "2ee32e772366ce660f72ae5a6c0b30a801b1b4e140613a6f5ef0180d37f7e843",
+      "source_sha256_before": "2ee32e772366ce660f72ae5a6c0b30a801b1b4e140613a6f5ef0180d37f7e843",
+      "copy_stream_sha256": "2ee32e772366ce660f72ae5a6c0b30a801b1b4e140613a6f5ef0180d37f7e843",
+      "source_sha256_after": "2ee32e772366ce660f72ae5a6c0b30a801b1b4e140613a6f5ef0180d37f7e843",
+      "destination_sha256": "2ee32e772366ce660f72ae5a6c0b30a801b1b4e140613a6f5ef0180d37f7e843",
+      "all_hashes_match": true
+    },
+    {
+      "original_path": "/tmp/source_imaginary_rank_stage/minor_4096_attempt01/proxy_scaled.npy",
+      "relative_path": "minor_4096_attempt01/proxy_scaled.npy",
+      "bytes": 10170128,
+      "source_device": 64516,
+      "source_inode": 1981728,
+      "source_mtime_ns": 1788682295780170629,
+      "source_mode": 420,
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_4096_attempt01/proxy_scaled.npy",
+      "sha256": "92c5903b891eb692da56d034ff6e187878930fc50703ac97fdbe3191d3cea2e9",
+      "source_sha256_before": "92c5903b891eb692da56d034ff6e187878930fc50703ac97fdbe3191d3cea2e9",
+      "copy_stream_sha256": "92c5903b891eb692da56d034ff6e187878930fc50703ac97fdbe3191d3cea2e9",
+      "source_sha256_after": "92c5903b891eb692da56d034ff6e187878930fc50703ac97fdbe3191d3cea2e9",
+      "destination_sha256": "92c5903b891eb692da56d034ff6e187878930fc50703ac97fdbe3191d3cea2e9",
+      "all_hashes_match": true
+    },
+    {
+      "original_path": "/tmp/source_imaginary_rank_stage/minor_4096_attempt01/proxy_unscaled.npy",
+      "relative_path": "minor_4096_attempt01/proxy_unscaled.npy",
+      "bytes": 10170128,
+      "source_device": 64516,
+      "source_inode": 1981730,
+      "source_mtime_ns": 1788682295713174777,
+      "source_mode": 420,
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_4096_attempt01/proxy_unscaled.npy",
+      "sha256": "61bc3994da6a280b731b8db52cffea4aae455d2dcab989f56f121df10cfb886b",
+      "source_sha256_before": "61bc3994da6a280b731b8db52cffea4aae455d2dcab989f56f121df10cfb886b",
+      "copy_stream_sha256": "61bc3994da6a280b731b8db52cffea4aae455d2dcab989f56f121df10cfb886b",
+      "source_sha256_after": "61bc3994da6a280b731b8db52cffea4aae455d2dcab989f56f121df10cfb886b",
+      "destination_sha256": "61bc3994da6a280b731b8db52cffea4aae455d2dcab989f56f121df10cfb886b",
+      "all_hashes_match": true
+    },
+    {
+      "original_path": "/tmp/source_imaginary_rank_stage/minor_4096_attempt01/report.json",
+      "relative_path": "minor_4096_attempt01/report.json",
+      "bytes": 13167,
+      "source_device": 64516,
+      "source_inode": 1981734,
+      "source_mtime_ns": 1788682461761896118,
+      "source_mode": 420,
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_4096_attempt01/report.json",
+      "sha256": "0f31e90377e43d075bd31c9245eb28776cb0b06b0d08845afe83d2cd53947520",
+      "source_sha256_before": "0f31e90377e43d075bd31c9245eb28776cb0b06b0d08845afe83d2cd53947520",
+      "copy_stream_sha256": "0f31e90377e43d075bd31c9245eb28776cb0b06b0d08845afe83d2cd53947520",
+      "source_sha256_after": "0f31e90377e43d075bd31c9245eb28776cb0b06b0d08845afe83d2cd53947520",
+      "destination_sha256": "0f31e90377e43d075bd31c9245eb28776cb0b06b0d08845afe83d2cd53947520",
+      "all_hashes_match": true
+    },
+    {
+      "original_path": "/tmp/source_imaginary_rank_stage/minor_4096_attempt01/selected_minor_B.json.gz",
+      "relative_path": "minor_4096_attempt01/selected_minor_B.json.gz",
+      "bytes": 124510924,
+      "source_device": 64516,
+      "source_inode": 1981732,
+      "source_mtime_ns": 1788682305048596779,
+      "source_mode": 420,
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_4096_attempt01/selected_minor_B.json.gz",
+      "sha256": "28c1bd9af542548794a35a37f5007b99fc5c6c5b93f43359c380e68b4b997b93",
+      "source_sha256_before": "28c1bd9af542548794a35a37f5007b99fc5c6c5b93f43359c380e68b4b997b93",
+      "copy_stream_sha256": "28c1bd9af542548794a35a37f5007b99fc5c6c5b93f43359c380e68b4b997b93",
+      "source_sha256_after": "28c1bd9af542548794a35a37f5007b99fc5c6c5b93f43359c380e68b4b997b93",
+      "destination_sha256": "28c1bd9af542548794a35a37f5007b99fc5c6c5b93f43359c380e68b4b997b93",
+      "all_hashes_match": true
+    },
+    {
+      "original_path": "/tmp/source_imaginary_rank_stage/minor_4096_attempt01/selection.json",
+      "relative_path": "minor_4096_attempt01/selection.json",
+      "bytes": 152440,
+      "source_device": 64516,
+      "source_inode": 1981731,
+      "source_mtime_ns": 1788682295966159113,
+      "source_mode": 420,
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_4096_attempt01/selection.json",
+      "sha256": "583fc1ccdf8391a1c783e2623adfcef4f6c96338adc485b225b801f02a902fed",
+      "source_sha256_before": "583fc1ccdf8391a1c783e2623adfcef4f6c96338adc485b225b801f02a902fed",
+      "copy_stream_sha256": "583fc1ccdf8391a1c783e2623adfcef4f6c96338adc485b225b801f02a902fed",
+      "source_sha256_after": "583fc1ccdf8391a1c783e2623adfcef4f6c96338adc485b225b801f02a902fed",
+      "destination_sha256": "583fc1ccdf8391a1c783e2623adfcef4f6c96338adc485b225b801f02a902fed",
+      "all_hashes_match": true
+    },
+    {
+      "original_path": "/tmp/source_imaginary_rank_stage/minor_4096_attempt01/source_snapshot.json",
+      "relative_path": "minor_4096_attempt01/source_snapshot.json",
+      "bytes": 35000,
+      "source_device": 64516,
+      "source_inode": 1981725,
+      "source_mtime_ns": 1788682281676043906,
+      "source_mode": 420,
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_4096_attempt01/source_snapshot.json",
+      "sha256": "6f237d15c65169b22fd89b396f6537cbace66bf57e3207c1c2b1c182750edd91",
+      "source_sha256_before": "6f237d15c65169b22fd89b396f6537cbace66bf57e3207c1c2b1c182750edd91",
+      "copy_stream_sha256": "6f237d15c65169b22fd89b396f6537cbace66bf57e3207c1c2b1c182750edd91",
+      "source_sha256_after": "6f237d15c65169b22fd89b396f6537cbace66bf57e3207c1c2b1c182750edd91",
+      "destination_sha256": "6f237d15c65169b22fd89b396f6537cbace66bf57e3207c1c2b1c182750edd91",
+      "all_hashes_match": true
+    },
+    {
+      "original_path": "/tmp/source_imaginary_rank_stage/minor_4096_attempt01/worker_report.json",
+      "relative_path": "minor_4096_attempt01/worker_report.json",
+      "bytes": 12884,
+      "source_device": 64516,
+      "source_inode": 1981713,
+      "source_mtime_ns": 1788682305177588793,
+      "source_mode": 420,
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_4096_attempt01/worker_report.json",
+      "sha256": "6ef752e19f86a32e0602cac26d905af2e6a7cb61c1e2d1e4e47e55ff2b9cf7a7",
+      "source_sha256_before": "6ef752e19f86a32e0602cac26d905af2e6a7cb61c1e2d1e4e47e55ff2b9cf7a7",
+      "copy_stream_sha256": "6ef752e19f86a32e0602cac26d905af2e6a7cb61c1e2d1e4e47e55ff2b9cf7a7",
+      "source_sha256_after": "6ef752e19f86a32e0602cac26d905af2e6a7cb61c1e2d1e4e47e55ff2b9cf7a7",
+      "destination_sha256": "6ef752e19f86a32e0602cac26d905af2e6a7cb61c1e2d1e4e47e55ff2b9cf7a7",
+      "all_hashes_match": true
+    },
+    {
+      "original_path": "/tmp/source_imaginary_rank_stage/minor_4096_attempt01/worker_stderr.log",
+      "relative_path": "minor_4096_attempt01/worker_stderr.log",
+      "bytes": 0,
+      "source_device": 64516,
+      "source_inode": 1981727,
+      "source_mtime_ns": 1788682281676043906,
+      "source_mode": 420,
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_4096_attempt01/worker_stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_sha256_before": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy_stream_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_sha256_after": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "destination_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "all_hashes_match": true
+    },
+    {
+      "original_path": "/tmp/source_imaginary_rank_stage/minor_4096_attempt01/worker_stdout.log",
+      "relative_path": "minor_4096_attempt01/worker_stdout.log",
+      "bytes": 1669,
+      "source_device": 64516,
+      "source_inode": 1981726,
+      "source_mtime_ns": 1788682305177588793,
+      "source_mode": 420,
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_4096_attempt01/worker_stdout.log",
+      "sha256": "2ee32e772366ce660f72ae5a6c0b30a801b1b4e140613a6f5ef0180d37f7e843",
+      "source_sha256_before": "2ee32e772366ce660f72ae5a6c0b30a801b1b4e140613a6f5ef0180d37f7e843",
+      "copy_stream_sha256": "2ee32e772366ce660f72ae5a6c0b30a801b1b4e140613a6f5ef0180d37f7e843",
+      "source_sha256_after": "2ee32e772366ce660f72ae5a6c0b30a801b1b4e140613a6f5ef0180d37f7e843",
+      "destination_sha256": "2ee32e772366ce660f72ae5a6c0b30a801b1b4e140613a6f5ef0180d37f7e843",
+      "all_hashes_match": true
+    },
+    {
+      "original_path": "/tmp/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/B_outward_2048.json.gz",
+      "relative_path": "minor_residual_1024_2048_attempt01/B_outward_2048.json.gz",
+      "bytes": 62544101,
+      "source_device": 64516,
+      "source_inode": 1981712,
+      "source_mtime_ns": 1788683193970341992,
+      "source_mode": 420,
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/B_outward_2048.json.gz",
+      "sha256": "cea4c5bd693668b016861caf141b6bbac11f374d553c9c495d2b509b95a89849",
+      "source_sha256_before": "cea4c5bd693668b016861caf141b6bbac11f374d553c9c495d2b509b95a89849",
+      "copy_stream_sha256": "cea4c5bd693668b016861caf141b6bbac11f374d553c9c495d2b509b95a89849",
+      "source_sha256_after": "cea4c5bd693668b016861caf141b6bbac11f374d553c9c495d2b509b95a89849",
+      "destination_sha256": "cea4c5bd693668b016861caf141b6bbac11f374d553c9c495d2b509b95a89849",
+      "all_hashes_match": true
+    },
+    {
+      "original_path": "/tmp/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/R0_exact_dyadic.json.gz",
+      "relative_path": "minor_residual_1024_2048_attempt01/R0_exact_dyadic.json.gz",
+      "bytes": 31520115,
+      "source_device": 64516,
+      "source_inode": 1981746,
+      "source_mtime_ns": 1788683210012344708,
+      "source_mode": 420,
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/R0_exact_dyadic.json.gz",
+      "sha256": "de4887b57161fd873740ebc3ec6a489566a83fa767025957f61cf158047c86f8",
+      "source_sha256_before": "de4887b57161fd873740ebc3ec6a489566a83fa767025957f61cf158047c86f8",
+      "copy_stream_sha256": "de4887b57161fd873740ebc3ec6a489566a83fa767025957f61cf158047c86f8",
+      "source_sha256_after": "de4887b57161fd873740ebc3ec6a489566a83fa767025957f61cf158047c86f8",
+      "destination_sha256": "de4887b57161fd873740ebc3ec6a489566a83fa767025957f61cf158047c86f8",
+      "all_hashes_match": true
+    },
+    {
+      "original_path": "/tmp/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/inverse_residual_2048.json.gz",
+      "relative_path": "minor_residual_1024_2048_attempt01/inverse_residual_2048.json.gz",
+      "bytes": 63531027,
+      "source_device": 64516,
+      "source_inode": 1981749,
+      "source_mtime_ns": 1788683221692618626,
+      "source_mode": 420,
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/inverse_residual_2048.json.gz",
+      "sha256": "10c8585a6fd213a84e28b304e5630dadcc4dc158db6cc7ca3bac03b5b4b4307d",
+      "source_sha256_before": "10c8585a6fd213a84e28b304e5630dadcc4dc158db6cc7ca3bac03b5b4b4307d",
+      "copy_stream_sha256": "10c8585a6fd213a84e28b304e5630dadcc4dc158db6cc7ca3bac03b5b4b4307d",
+      "source_sha256_after": "10c8585a6fd213a84e28b304e5630dadcc4dc158db6cc7ca3bac03b5b4b4307d",
+      "destination_sha256": "10c8585a6fd213a84e28b304e5630dadcc4dc158db6cc7ca3bac03b5b4b4307d",
+      "all_hashes_match": true
+    },
+    {
+      "original_path": "/tmp/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/progress.jsonl",
+      "relative_path": "minor_residual_1024_2048_attempt01/progress.jsonl",
+      "bytes": 807,
+      "source_device": 64516,
+      "source_inode": 1981711,
+      "source_mtime_ns": 1788683221761614337,
+      "source_mode": 420,
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/progress.jsonl",
+      "sha256": "d732f88a732ff27b3555519953672adab4069c613dfa2a750c67fa91a4074f52",
+      "source_sha256_before": "d732f88a732ff27b3555519953672adab4069c613dfa2a750c67fa91a4074f52",
+      "copy_stream_sha256": "d732f88a732ff27b3555519953672adab4069c613dfa2a750c67fa91a4074f52",
+      "source_sha256_after": "d732f88a732ff27b3555519953672adab4069c613dfa2a750c67fa91a4074f52",
+      "destination_sha256": "d732f88a732ff27b3555519953672adab4069c613dfa2a750c67fa91a4074f52",
+      "all_hashes_match": true
+    },
+    {
+      "original_path": "/tmp/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/report.json",
+      "relative_path": "minor_residual_1024_2048_attempt01/report.json",
+      "bytes": 1447373,
+      "source_device": 64516,
+      "source_inode": 1981747,
+      "source_mtime_ns": 1788683222036597243,
+      "source_mode": 420,
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/report.json",
+      "sha256": "bfd438e336837d9a9d8e392b28ba7e6db4f32f937c4e3615c4ea25142251a8c9",
+      "source_sha256_before": "bfd438e336837d9a9d8e392b28ba7e6db4f32f937c4e3615c4ea25142251a8c9",
+      "copy_stream_sha256": "bfd438e336837d9a9d8e392b28ba7e6db4f32f937c4e3615c4ea25142251a8c9",
+      "source_sha256_after": "bfd438e336837d9a9d8e392b28ba7e6db4f32f937c4e3615c4ea25142251a8c9",
+      "destination_sha256": "bfd438e336837d9a9d8e392b28ba7e6db4f32f937c4e3615c4ea25142251a8c9",
+      "all_hashes_match": true
+    },
+    {
+      "original_path": "/tmp/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/source_snapshot.json",
+      "relative_path": "minor_residual_1024_2048_attempt01/source_snapshot.json",
+      "bytes": 26569,
+      "source_device": 64516,
+      "source_inode": 1981740,
+      "source_mtime_ns": 1788683186620798914,
+      "source_mode": 420,
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/source_snapshot.json",
+      "sha256": "d4f074262961dcbd31ba21843c170a5cb196ec67681a163dfea89591d834d89c",
+      "source_sha256_before": "d4f074262961dcbd31ba21843c170a5cb196ec67681a163dfea89591d834d89c",
+      "copy_stream_sha256": "d4f074262961dcbd31ba21843c170a5cb196ec67681a163dfea89591d834d89c",
+      "source_sha256_after": "d4f074262961dcbd31ba21843c170a5cb196ec67681a163dfea89591d834d89c",
+      "destination_sha256": "d4f074262961dcbd31ba21843c170a5cb196ec67681a163dfea89591d834d89c",
+      "all_hashes_match": true
+    },
+    {
+      "original_path": "/tmp/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/worker_report.json",
+      "relative_path": "minor_residual_1024_2048_attempt01/worker_report.json",
+      "bytes": 1447059,
+      "source_device": 64516,
+      "source_inode": 1981748,
+      "source_mtime_ns": 1788683221760614399,
+      "source_mode": 420,
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/worker_report.json",
+      "sha256": "80dac746666dd46a4a9bdc969073024143da8e0c6e17e0fd456fa74c8e854064",
+      "source_sha256_before": "80dac746666dd46a4a9bdc969073024143da8e0c6e17e0fd456fa74c8e854064",
+      "copy_stream_sha256": "80dac746666dd46a4a9bdc969073024143da8e0c6e17e0fd456fa74c8e854064",
+      "source_sha256_after": "80dac746666dd46a4a9bdc969073024143da8e0c6e17e0fd456fa74c8e854064",
+      "destination_sha256": "80dac746666dd46a4a9bdc969073024143da8e0c6e17e0fd456fa74c8e854064",
+      "all_hashes_match": true
+    },
+    {
+      "original_path": "/tmp/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/worker_stderr.log",
+      "relative_path": "minor_residual_1024_2048_attempt01/worker_stderr.log",
+      "bytes": 0,
+      "source_device": 64516,
+      "source_inode": 1981742,
+      "source_mtime_ns": 1788683186620798914,
+      "source_mode": 420,
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/worker_stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_sha256_before": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy_stream_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_sha256_after": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "destination_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "all_hashes_match": true
+    },
+    {
+      "original_path": "/tmp/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/worker_stdout.log",
+      "relative_path": "minor_residual_1024_2048_attempt01/worker_stdout.log",
+      "bytes": 807,
+      "source_device": 64516,
+      "source_inode": 1981741,
+      "source_mtime_ns": 1788683221761614337,
+      "source_mode": 420,
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/worker_stdout.log",
+      "sha256": "d732f88a732ff27b3555519953672adab4069c613dfa2a750c67fa91a4074f52",
+      "source_sha256_before": "d732f88a732ff27b3555519953672adab4069c613dfa2a750c67fa91a4074f52",
+      "copy_stream_sha256": "d732f88a732ff27b3555519953672adab4069c613dfa2a750c67fa91a4074f52",
+      "source_sha256_after": "d732f88a732ff27b3555519953672adab4069c613dfa2a750c67fa91a4074f52",
+      "destination_sha256": "d732f88a732ff27b3555519953672adab4069c613dfa2a750c67fa91a4074f52",
+      "all_hashes_match": true
+    }
+  ],
+  "original_to_durable": {
+    "/tmp/source_imaginary_rank_stage/reduction_preparation.json": {
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/reduction_preparation.json",
+      "sha256": "6ef1f71f51c97bfd00daa7133cfc800ae0f85ebb95233b1e4b201f82307ece85",
+      "bytes": 23261
+    },
+    "/tmp/source_imaginary_rank_stage/test_imaginary_rank_residual.py": {
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/test_imaginary_rank_residual.py",
+      "sha256": "287e362616f2bdf7831dbbde53050b58c3dc0f24a527e347124bca9426d2a01d",
+      "bytes": 3759
+    },
+    "/tmp/source_imaginary_rank_stage/minor_4096_attempt01/progress.jsonl": {
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_4096_attempt01/progress.jsonl",
+      "sha256": "2ee32e772366ce660f72ae5a6c0b30a801b1b4e140613a6f5ef0180d37f7e843",
+      "bytes": 1669
+    },
+    "/tmp/source_imaginary_rank_stage/minor_4096_attempt01/proxy_scaled.npy": {
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_4096_attempt01/proxy_scaled.npy",
+      "sha256": "92c5903b891eb692da56d034ff6e187878930fc50703ac97fdbe3191d3cea2e9",
+      "bytes": 10170128
+    },
+    "/tmp/source_imaginary_rank_stage/minor_4096_attempt01/proxy_unscaled.npy": {
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_4096_attempt01/proxy_unscaled.npy",
+      "sha256": "61bc3994da6a280b731b8db52cffea4aae455d2dcab989f56f121df10cfb886b",
+      "bytes": 10170128
+    },
+    "/tmp/source_imaginary_rank_stage/minor_4096_attempt01/report.json": {
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_4096_attempt01/report.json",
+      "sha256": "0f31e90377e43d075bd31c9245eb28776cb0b06b0d08845afe83d2cd53947520",
+      "bytes": 13167
+    },
+    "/tmp/source_imaginary_rank_stage/minor_4096_attempt01/selected_minor_B.json.gz": {
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_4096_attempt01/selected_minor_B.json.gz",
+      "sha256": "28c1bd9af542548794a35a37f5007b99fc5c6c5b93f43359c380e68b4b997b93",
+      "bytes": 124510924
+    },
+    "/tmp/source_imaginary_rank_stage/minor_4096_attempt01/selection.json": {
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_4096_attempt01/selection.json",
+      "sha256": "583fc1ccdf8391a1c783e2623adfcef4f6c96338adc485b225b801f02a902fed",
+      "bytes": 152440
+    },
+    "/tmp/source_imaginary_rank_stage/minor_4096_attempt01/source_snapshot.json": {
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_4096_attempt01/source_snapshot.json",
+      "sha256": "6f237d15c65169b22fd89b396f6537cbace66bf57e3207c1c2b1c182750edd91",
+      "bytes": 35000
+    },
+    "/tmp/source_imaginary_rank_stage/minor_4096_attempt01/worker_report.json": {
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_4096_attempt01/worker_report.json",
+      "sha256": "6ef752e19f86a32e0602cac26d905af2e6a7cb61c1e2d1e4e47e55ff2b9cf7a7",
+      "bytes": 12884
+    },
+    "/tmp/source_imaginary_rank_stage/minor_4096_attempt01/worker_stderr.log": {
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_4096_attempt01/worker_stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "/tmp/source_imaginary_rank_stage/minor_4096_attempt01/worker_stdout.log": {
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_4096_attempt01/worker_stdout.log",
+      "sha256": "2ee32e772366ce660f72ae5a6c0b30a801b1b4e140613a6f5ef0180d37f7e843",
+      "bytes": 1669
+    },
+    "/tmp/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/B_outward_2048.json.gz": {
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/B_outward_2048.json.gz",
+      "sha256": "cea4c5bd693668b016861caf141b6bbac11f374d553c9c495d2b509b95a89849",
+      "bytes": 62544101
+    },
+    "/tmp/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/R0_exact_dyadic.json.gz": {
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/R0_exact_dyadic.json.gz",
+      "sha256": "de4887b57161fd873740ebc3ec6a489566a83fa767025957f61cf158047c86f8",
+      "bytes": 31520115
+    },
+    "/tmp/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/inverse_residual_2048.json.gz": {
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/inverse_residual_2048.json.gz",
+      "sha256": "10c8585a6fd213a84e28b304e5630dadcc4dc158db6cc7ca3bac03b5b4b4307d",
+      "bytes": 63531027
+    },
+    "/tmp/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/progress.jsonl": {
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/progress.jsonl",
+      "sha256": "d732f88a732ff27b3555519953672adab4069c613dfa2a750c67fa91a4074f52",
+      "bytes": 807
+    },
+    "/tmp/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/report.json": {
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/report.json",
+      "sha256": "bfd438e336837d9a9d8e392b28ba7e6db4f32f937c4e3615c4ea25142251a8c9",
+      "bytes": 1447373
+    },
+    "/tmp/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/source_snapshot.json": {
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/source_snapshot.json",
+      "sha256": "d4f074262961dcbd31ba21843c170a5cb196ec67681a163dfea89591d834d89c",
+      "bytes": 26569
+    },
+    "/tmp/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/worker_report.json": {
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/worker_report.json",
+      "sha256": "80dac746666dd46a4a9bdc969073024143da8e0c6e17e0fd456fa74c8e854064",
+      "bytes": 1447059
+    },
+    "/tmp/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/worker_stderr.log": {
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/worker_stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "/tmp/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/worker_stdout.log": {
+      "durable_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/worker_stdout.log",
+      "sha256": "d732f88a732ff27b3555519953672adab4069c613dfa2a750c67fa91a4074f52",
+      "bytes": 807
+    }
+  },
+  "verification_procedure": [
+    "Inventory only root-level regular files and the two explicitly authorized completed subtrees.",
+    "Hash every selected source before copying; require an unchanged selected source inventory.",
+    "Copy through exclusive destination files while hashing the copy stream; preserve file metadata.",
+    "Hash every source again and every destination after copying; require equality with source prehash and copy-stream hash.",
+    "Confirm selected source paths/sizes/inodes/modification times/modes remain unchanged and destination counts/bytes match."
+  ],
+  "elapsed_seconds": 1.655142763047479,
+  "scope": "Byte-preserving durable migration of completed global-minor preparation/certificate data. No factor, matrix or rank computation was repeated."
+}

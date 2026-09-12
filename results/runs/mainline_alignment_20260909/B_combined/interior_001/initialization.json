@@ -1,0 +1,19 @@
+{
+  "source_coefficients": "results/runs/mainline_alignment_20260909/B_combined/retarget_071/coefficients.json",
+  "source_report": "results/runs/mainline_alignment_20260909/B_combined/retarget_071/report.json",
+  "numerical_scale": 0.5,
+  "binary_scaling_exact": true,
+  "initialization_only": true,
+  "full_original_audit_performed_here": false,
+  "scope": "B scattering-only initializer; no affine current/form-factor variables or gauge scaling.",
+  "source_report_chiral_norm": [
+    0.0019999999798626105
+  ],
+  "original_chiral_norm_enclosure": "[0.001999999979869590608768712 +/- 4.72e-28]",
+  "original_chiral_squared_margin_enclosure": "[8.052163732622522154827347e-14 +/- 8.69e-40]",
+  "halved_chiral_norm_enclosure": "[0.0009999999899347953043843562 +/- 3.59e-29]",
+  "halved_chiral_squared_margin_enclosure": "[3.000000020130409456456396e-6 +/- 3.43e-31]",
+  "old_density_norm": 350016.2957266567,
+  "predicted_halved_density_norm": 175008.14786332834,
+  "original_constraints_unchanged": true
+}

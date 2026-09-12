@@ -1,0 +1,31 @@
+{
+  "decision": "Audit IR\u2192UV spectral mechanism using only existing frozen C/E amplitudes; then test the unchanged C current fiber. No new amplitude selection or parameter scan.",
+  "inputs": {
+    "references/2309.12402v3.pdf": "be8214741f8fb3f330473be94172c5e1dde15befb515f745ab4e35839c8982e2",
+    "results/reports/expert_review_20260910/He_Kruczenski_2309v3_Expert_Review_ZH.pdf": "bc18cb72d9a939afc71ef523810ff253084aa58b15b764663dfd65b23d56ae8f",
+    "results/runs/mainline_alignment_20260909/PAPER_MAINLINE.json": "7235ba16170b95cca6cf52e0be1a6ad9e7efb4ebe749028b57e623c491e23303",
+    "results/runs/mainline_alignment_20260909/C3_evaluate/evaluation.json": "5c0f262d9ee202436901125f5d0d748b587dec7cb5d9c421cd7545ba33eb391c",
+    "results/runs/mainline_alignment_20260909/E3_paper_tip_evaluate/evaluation.json": "084d2626cc6c3833e0f5a2f27a3e74a8ccdf9407de96150cc9d8d39e73991e1f",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_tip_path_02/coefficients.json": "5e828d1c881760d198dd73d042f04d4161e2d5088411ef052d4457594582b2ae",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_tip_path_02/current.json": "e2991fc07f18162699dbdd45ae79699e3aa123a2d11870d62002dec58de3c6aa",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_tip_path_02/joint.npz": "1c67b9fa8e22034b3468017da329ea228b5ae6e99149329447c7b87bcb7370a3",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_tip_path_02/selection.json": "f1b3286cfc046388196d68e28cb80a6cb2d4a0dffa115a678e2f106ffb61e467",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_tip_path_02/report.json": "24ca6d8345d68859f716e8d5d993fd90f8eae3f68dbdb73003ecb2d448bc805d",
+    "results/runs/mainline_alignment_20260909/E3_paper_mid_evaluate/evaluation.json": "1792160f73363cb345234b76c32dcbce26b045121a01f604d6534196ecca2f36",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_mid_path_03/coefficients.json": "e5db3cb9e7b0781967e8c6b296936a0a296037e8483d96bf1800c6f3bef4ce9f",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_mid_path_03/current.json": "d937ce9c8099c3abf1ab08cd0ad6ef106375371ba1382b983e0782e2eeb19c41",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_mid_path_03/joint.npz": "79b4c84f4d7cd472a892e5d7a37fc4529193939a81ddfa40a063d6de910ed975",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_mid_path_03/selection.json": "9479b3c293c7f45a5b491161ae7917815af582b603cb84ee8561030a6bc34f26",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_mid_path_03/report.json": "2e8aa2ead0cb546a6fcb18664c1b592c8eb4153ec25204ce288550176ae9ad2c",
+    "results/runs/mainline_alignment_20260909/E3_paper_ref_evaluate/evaluation.json": "e03138dc519f1e712a7084d286e8b084a24d761ce909bb17ae5249ff44f1a027",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_ref_path_02/coefficients.json": "0fd2a1d15d29fc464c5c43179a95c41f54e40a25c112db978402e4085e0781ae",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_ref_path_02/current.json": "417aecc4bf7d21918a09144e469eb0c8cbe7a9d5a5f9e1ada8578d02ef965489",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_ref_path_02/joint.npz": "98e423aa686facf5d9c794af5fe934db156f03de5376060c8bdddb8c54dd6cd1",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_ref_path_02/selection.json": "8173170e4fb6ea1036e2aa18973a29c48363054194749ce5296e21bf3b45bd2d",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_ref_path_02/report.json": "0ebe4216cfe9a8f533ffdf66b2994f0c68ebd08de66f91f0f7f739a325cec032",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/C2_fig6/coefficients.json": "19b1c389fe4dd731d5ba1993416f324bd90e6d49206bab84c57154f7cf18d988",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/C2_fig6/selection.json": "354c644f228c7b368bba3757166a5d37c3beef87a29be2b00790d2c7730ac6f8"
+  },
+  "mainline": "PV M50 L10, combined-l2 .002, B377500, hard-midpoint, printed raw FESR .002, FF 6e-5",
+  "fixed_fiber": "Only FF/current spectra vary; a negative independently audited zero-objective upper bound excludes only the fixed amplitude."
+}

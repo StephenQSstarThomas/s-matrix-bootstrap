@@ -1,0 +1,30 @@
+{
+  "node": 13,
+  "channel": 0,
+  "method": "One affected node; original authenticated Arb source row, no prepared float64 box",
+  "f": [
+    "[0.19537973037841056860372882898364617 +/- 4.90e-36]",
+    "[0.025082511120269840090594978033257454 +/- 1.84e-37]"
+  ],
+  "determinant": "[1.2176914739670386925638089703817483e-14 +/- 2.63e-49]",
+  "Schur_slack": "[1.0354926721629859538217320122363380e-8 +/- 1.65e-43]",
+  "delta": "[1.1759537336207964508312778213450681e-6 +/- 3.08e-41]",
+  "passed": true,
+  "coefficients_modified": false,
+  "optimization_performed": false,
+  "seconds": 1.466972071910277,
+  "inputs": {
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/analytic_source_registry_stage/registry.json": {
+      "sha256": "18e01da602be9c98c614a56ae43f0fe9ac6d4c6ad63e45edbc21f3e8193671e2"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_full_grid_stage/j13/operator.rows.json.gz": {
+      "sha256": "b067346ae73edeb40ae38b5d6782ed1dd335973ac5edee001db635458c97ddc6"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_tip_support_02/coefficients.json": {
+      "sha256": "64bf8369ce452365fc917fe93b68256f9b09c478ec3f442ff48781fdfc10cdd4"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_tip_support_02/joint.npz": {
+      "sha256": "9d5bf8c53c31a2f555c51adfc866d39c0a1431830ee0ee0bc0a2d058e904ad8c"
+    }
+  }
+}

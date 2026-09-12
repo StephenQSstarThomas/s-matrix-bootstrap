@@ -1,0 +1,787 @@
+{
+  "target": "2309.12402v3 Fig3-11",
+  "sequence": [
+    {
+      "step": 1,
+      "name": "Declare source-faithful finite problem and check reusable analytic rows",
+      "gate": "One function family, full coefficient map, independent angular check",
+      "status": "complete"
+    },
+    {
+      "step": 2,
+      "name": "Complete provider and finite solver identity chain",
+      "gate": "Full M50/L10 H, exact native free-column identities, strict IR seed",
+      "status": "complete_for_M50_L10"
+    },
+    {
+      "step": 3,
+      "name": "Obtain full original-parameter current witness",
+      "gate": "All scattering, chiral, actual-density, Gram, FESR and FF constraints pass",
+      "status": "complete"
+    },
+    {
+      "step": 4,
+      "name": "Independent representative supports and rho/phase comparison",
+      "gate": "tip +x; ref at xref; mid halfway; complete saved amplitudes",
+      "status": "computed_with_major_discrepancies_and_strict_off_node_violations",
+      "remaining": "Native rho signatures persist, but the same three analytic amplitudes strictly violate unitarity between original constraints; ref/mid quantitative robustness also remains unmatched."
+    },
+    {
+      "step": 5,
+      "name": "IR/UV regions and Fig8 mechanism",
+      "gate": "Support bounds distinguish shrink and asymmetry without curve tuning",
+      "status": "same_section_complete_full_regions_incomplete",
+      "completed": "Fig5/6/7 delivered; three IR controls and certified orange/green zero brackets; current-model IR +x replay and same-xref Fig8 shrink ratio certified.",
+      "remaining": "Complete Fig3/4 regions and full figure/comparison delivery; green extent and strong Fig8 asymmetry remain discrepant."
+    },
+    {
+      "step": 6,
+      "name": "Five prescribed M/L configurations and final figure delivery",
+      "gate": "Witnesses plus supports and same-function phase evaluation; discrepancies preserved",
+      "status": "fixed_M50_complete_M45_phase_I_running",
+      "completed": "M50/L8 new center, finite support, analytic primal, full selection and native evaluation delivered; M50/L12 current prepared; M45/L10 and M60/L10 operators prepared.",
+      "remaining": "Find L12 joint witness and support; obtain M45/M60 joint supports and phases; assemble and assess all five prescribed configurations."
+    }
+  ],
+  "single_calculation_cap_seconds": 900,
+  "no_physical_parameter_scan": true,
+  "current_prescription": "analytic-cardinal",
+  "all_coefficients_retained": true,
+  "chiral_norm": "separate-l2",
+  "chiral_norm_reason": "Two separate residual inequalities printed in v3; Euclidean norm explicitly chosen",
+  "regulator": {
+    "rule": "100*(M*M+M*(M+1)/2)",
+    "identity": "Declared inherited regulator, not a parameter uniquely printed in 2309"
+  },
+  "physical_inputs": "UVConfig defaults: printed/raw-absolute/hard-midpoint/arithmetic-mean; no parameter retuning",
+  "selection": {
+    "tip": "maximize x",
+    "ref": "maximize y at xref=5/(16*pi^2*(92/140)^2)",
+    "mid": "maximize y at (xref+tip.x)/2",
+    "require_audited_converged_center": true,
+    "fixed_ref_x": 0.07332139057293466,
+    "fixed_mid_x": 0.08618059962161377,
+    "IR_control": {
+      "x": 0.07332139057293466,
+      "objective": "upper y on fixed-x section",
+      "chiral_tolerances": [
+        0.006,
+        0.004,
+        0.002
+      ],
+      "current_constraints": false,
+      "phase_data_used": false
+    },
+    "Fig11": {
+      "rule": "same +x support at each of the five published M/L configurations",
+      "source": "Our preregistered rule; Appendix A does not explicitly state the author selection",
+      "phase_data_used": false,
+      "require_new_center_for_changed_model": true
+    }
+  },
+  "estimated_order": "Development/verification first; one bounded full-resolution solve next; later runtime reassessed from measured progress.",
+  "analytic_scope": "Exact conformal-polynomial family with sampled constraints; continuum certification not an added prerequisite",
+  "source_reuse": "Authenticated non-executable analytic row data only; no retired code restored",
+  "completed_evidence": [
+    "A1_source_audit/source_audit.json",
+    "A2_M50_L10/report.json",
+    "D1_M50_L10/report.json",
+    "D2_phase_I_01/initial_scattering.json",
+    "D2_phase_I_02/report.json",
+    "D3_analytic_primal_lifted/report.json",
+    "E1_tip_center/report.json",
+    "E1_tip_verified/report.json",
+    "E2_ref_seed/report.json",
+    "E2_ref_01/report.json",
+    "E2_ref_verified/report.json",
+    "E3_mid_seed/report.json",
+    "E3_mid_01/report.json",
+    "E3_mid_verified/report.json",
+    "E4_selection/selection.json",
+    "E4_evaluate_tip/evaluation.json",
+    "E4_evaluate_mid/evaluation.json",
+    "E4_evaluate_ref/evaluation.json",
+    "E4_phases/phases.json",
+    "C1_green_balanced/report.json",
+    "C1_green_analytic/report.json",
+    "C2_green_selection/report.json",
+    "C3_green_evaluate/report.json",
+    "CE_phases/phases.json",
+    "CD_fixed_current_analytic/source_audit.json",
+    "C1_orange/report.json",
+    "C1_orange_analytic/report.json",
+    "C2_orange_selection/report.json",
+    "C1_blue/report.json",
+    "C1_blue_analytic/report.json",
+    "C2_blue_selection/report.json",
+    "E5_direct_profiles/direct_profiles.json",
+    "E5_independent_integrals/report.json",
+    "C1_fig5/report.json",
+    "C2_fig6/report.json",
+    "C3_fig7/report.json",
+    "C1_subthreshold_orange/evaluation.json",
+    "C1_subthreshold_green/evaluation.json",
+    "E6_regions/regions.json",
+    "B3_IR_tip_replay/report.json",
+    "B3_IR_tip_analytic_signs/report.json",
+    "E5_direct_profiles_complete/direct_profiles.json",
+    "F_M50_L8_prepare/report.json",
+    "F_M50_L8_current/report.json",
+    "F_M50_L8_transfer/report.json",
+    "F_M50_L8_support_03/report.json",
+    "F_M50_L12_prepare/report.json",
+    "F_M50_L8_support_05/report.json",
+    "F_M50_L8_verified/report.json",
+    "F_M50_L8_selected/report.json",
+    "F_M50_L8_evaluate/evaluation.json",
+    "F_M50_L12_current/report.json",
+    "F_M45_L10_prepare_02/report.json",
+    "F_M60_L10_prepare/report.json",
+    "B2_pure_replay/report.json",
+    "B2_pure_analytic/source_audit.json",
+    "B2_WITNESS_SCOPE_ZH.md",
+    "PROOF_SCOPE_REVIEW_ZH.md",
+    "F_M45_L10_current/report.json",
+    "F_M60_L10_current/report.json",
+    "F_M50_L12_phase_I_balanced_03/report.json",
+    "F_M50_L12_phase_I_analytic/source_audit.json",
+    "E5_direct_profiles_final/direct_profiles.json",
+    "THEORY_AND_HELD_ISSUES_ZH_v2.manifest.json",
+    "F_M50_L12_support_02/report.json",
+    "F_M50_L12_verified/source_audit.json",
+    "F_M50_L12_selected/selection.json",
+    "F_M50_L12_evaluate/evaluation.json",
+    "F_fixed_M50_comparison/resolution_partial.json",
+    "F_M50_L8_window_diagnostic/direct_profiles.json",
+    "F_M50_L12_window_diagnostic/direct_profiles.json",
+    "F_M45_L10_phase_I_01/report.json",
+    "F_M45_L10_phase_I_analytic/source_audit.json"
+  ],
+  "current_calculation": "F_M45_L10_support_01",
+  "validation": {
+    "tests_passed": 99,
+    "analytic_primal_certified": true,
+    "retained_scattering": 1500,
+    "current_grams": 100,
+    "full_original_variables": 4076,
+    "active_python_modules": 17,
+    "active_test_files": 3,
+    "three_UV_analytic_primals_certified": true,
+    "three_UV_centers_converged": true,
+    "support_bounds_scope": "Stored finite H; separate from analytic-primal verification",
+    "continuum_certified": false,
+    "tests_run_scope": "Latest suite passed",
+    "analytic_primal_scope": "Original retained nodes only; the same UV representatives have strict off-node violations",
+    "three_IR_analytic_primals_certified": true,
+    "off_node_independent_checks": 18,
+    "off_node_independent_matches": 18,
+    "off_node_independent_strict_violations": 11,
+    "last_validated_fixes": [
+      "Resume with actual saved mu",
+      "Correct preparation default for new M"
+    ],
+    "subsequent_changes": "Phase-I explicit numerical chiral weight is honored and recorded; existing independent weighted derivative tests and full suite pass (99). Physical constraints unchanged."
+  },
+  "tip": {
+    "x": 0.09903980867029288,
+    "support_lower": 0.09903980867034552,
+    "support_upper": 0.09911418047407121,
+    "gap": 7.437180372568686e-05,
+    "center_converged": true,
+    "analytic_primal_certified": true
+  },
+  "current_decision": "M45 original joint witness and analytic primal pass; now obtain its independent +x center. In parallel, only a light M60 transfer audit of the frozen M45 witness, with no new optimization.",
+  "representatives": {
+    "tip": {
+      "report": "E1_tip_verified/report.json",
+      "target": [
+        0.09903980867029288,
+        -0.006390669847677146
+      ],
+      "support_direction": [
+        1.0,
+        0.0
+      ],
+      "support_lower": 0.09903980867034552,
+      "support_upper": 0.09911418047407121,
+      "support_gap": 7.437180372568686e-05,
+      "center_converged": true,
+      "analytic_primal_certified": true,
+      "finite_H_support_certified": true,
+      "P1_upward_90_mev": 803.4866277114987,
+      "P1_min_eta_on_saved_grid": 0.7752211546018012,
+      "P1_upward_90_mev_scope": "Original native grid; descriptive interpolation, not a pole",
+      "off_node_diagnostic": {
+        "maximum_eta_upper": 1.0925160948315285,
+        "strict_violating_energy_wave_samples": 42,
+        "P1_upward_90_mev": 802.0117416184065
+      },
+      "infinity_obstruction": {
+        "unsubtracted_T0": 27.616889191127854,
+        "eta_S0_S2_limits": [
+          "[216.9048456651513431337026 +/- 1.13e-23]",
+          "[86.76677896340107741186954 +/- 3.39e-24]"
+        ],
+        "globally_unitary_impossible": true,
+        "necessary_condition": "T0=0 in this finite conformal-polynomial family",
+        "derivation": "Each unsubtracted cardinal kernel tends to zero; dominated angular integration gives f00->5*T0/2 and f20->T0"
+      }
+    },
+    "ref": {
+      "report": "E2_ref_verified/report.json",
+      "target": [
+        0.07332139057292619,
+        -0.00431780339489828
+      ],
+      "support_direction": [
+        35.47766592755243,
+        500.0
+      ],
+      "support_lower": 0.44237010263643595,
+      "support_upper": 0.44452596581509596,
+      "support_gap": 0.0021558631786600113,
+      "center_converged": true,
+      "analytic_primal_certified": true,
+      "finite_H_support_certified": true,
+      "P1_upward_90_mev": 696.6312510990729,
+      "P1_min_eta_on_saved_grid": 0.24286676584407618,
+      "P1_upward_90_mev_scope": "Original native grid; descriptive interpolation, not a pole",
+      "off_node_diagnostic": {
+        "maximum_eta_upper": 1.1409410100925024,
+        "strict_violating_energy_wave_samples": 40,
+        "P1_upward_90_mev": 688.383436377262
+      },
+      "infinity_obstruction": {
+        "unsubtracted_T0": -64.93454399443445,
+        "eta_S0_S2_limits": [
+          "[509.9956963441685930079332 +/- 4.45e-23]",
+          "[204.0003373681812001265710 +/- 3.32e-24]"
+        ],
+        "globally_unitary_impossible": true,
+        "necessary_condition": "T0=0 in this finite conformal-polynomial family",
+        "derivation": "Each unsubtracted cardinal kernel tends to zero; dominated angular integration gives f00->5*T0/2 and f20->T0"
+      }
+    },
+    "mid": {
+      "report": "E3_mid_verified/report.json",
+      "target": [
+        0.08618059960720947,
+        -0.005252055064746935
+      ],
+      "support_direction": [
+        37.479931811791815,
+        500.0
+      ],
+      "support_lower": 0.6040154644041404,
+      "support_upper": 0.6062208927353991,
+      "support_gap": 0.0022054283312586964,
+      "center_converged": true,
+      "analytic_primal_certified": true,
+      "finite_H_support_certified": true,
+      "P1_upward_90_mev": 701.2587648550293,
+      "P1_min_eta_on_saved_grid": 0.4358604483491208,
+      "P1_upward_90_mev_scope": "Original native grid; descriptive interpolation, not a pole",
+      "off_node_diagnostic": {
+        "maximum_eta_upper": 1.11893236649046,
+        "strict_violating_energy_wave_samples": 40,
+        "P1_upward_90_mev": 697.134083715464
+      },
+      "infinity_obstruction": {
+        "unsubtracted_T0": -70.71003326569264,
+        "eta_S0_S2_limits": [
+          "[555.3562029302717345210357 +/- 2.22e-24]",
+          "[222.1443718425039584017852 +/- 4.61e-23]"
+        ],
+        "globally_unitary_impossible": true,
+        "necessary_condition": "T0=0 in this finite conformal-polynomial family",
+        "derivation": "Each unsubtracted cardinal kernel tends to zero; dominated angular integration gives f00->5*T0/2 and f20->T0"
+      }
+    }
+  },
+  "IR_green": {
+    "report": "C1_green_balanced/report.json",
+    "target": [
+      0.07332138984905495,
+      -0.004116720289331671
+    ],
+    "support_direction": [
+      35.054394167217474,
+      500.0
+    ],
+    "support_gap": 0.0005441343459429149,
+    "center_converged": true,
+    "finite_H_primal_certified": true,
+    "finite_H_support_certified": true,
+    "analytic_primal_certified": true,
+    "analytic_primal_status": "passed_original_nodes",
+    "phase_evaluation_status": "completed_native",
+    "analytic_report": "C1_green_analytic/report.json",
+    "selection": "C2_green_selection/selection.json",
+    "evaluation": "C3_green_evaluate/evaluation.json"
+  },
+  "core_alignment": {
+    "rho_structure_observed_in_three_UV_representatives": true,
+    "quantitative_three_point_robustness_reproduced": false,
+    "major_open_issues": [
+      "Current IR green x extent exceeds the printed curve",
+      "Fig8 has only slight, not strong, asymmetry",
+      "Three UV representatives have strict off-node unitarity violations and nonzero-T0 infinity obstruction in this finite family",
+      "Ref/mid rho indicators and native inelasticity remain discrepant",
+      "Full Fig3/4 regions and five M/L comparisons incomplete"
+    ],
+    "all_Fig3_to_Fig11_complete": false,
+    "no_original_parameter_whole_model_infeasibility_proved": true,
+    "continuous_physical_representatives_obtained": false,
+    "strict_off_node_unitarity_failure_demonstrated": true,
+    "rho_observation_scope": "Finite-program outputs; the same analytic continuations violate unitarity between constraints"
+  },
+  "rho_mechanism": {
+    "IR_amplitude": "results/runs/sequential_reproduction_20260910/C2_green_selection/coefficients.json",
+    "IR_analytic_primal": true,
+    "UV_phase_comparison": "results/runs/sequential_reproduction_20260910/CE_phases/phases.json",
+    "fixed_IR_current_extension": "infeasible_certified_including_analytic_operator_errors",
+    "analytic_Farkas_upper": -9.109617136909641,
+    "proof_scope": "Only the saved full IR amplitude; no universal rho or whole-model infeasibility theorem",
+    "UV_continuum_physical_amplitude_claimed": false
+  },
+  "next_direct_evaluation": {
+    "purpose": "Check analytic amplitude between native rho nodes without reoptimizing or imposing extra constraints",
+    "profiles": [
+      "tip",
+      "mid",
+      "ref"
+    ],
+    "energy_window_GeV": [
+      0.6,
+      0.9
+    ],
+    "step_GeV": 0.01,
+    "selection_changed": false,
+    "status": "completed; see off_node_diagnostic"
+  },
+  "IR_controls": {
+    "blue": {
+      "support": "C1_blue/report.json",
+      "selection": "C2_blue_selection/selection.json",
+      "analytic_report": "C1_blue_analytic/report.json",
+      "chiral_tolerance": 0.006,
+      "center_converged": true,
+      "finite_H_support_certified": true,
+      "analytic_primal_certified": true,
+      "analytic_counts": {
+        "scattering": 1500,
+        "chiral": 2,
+        "density": 1
+      }
+    },
+    "orange": {
+      "support": "C1_orange/report.json",
+      "selection": "C2_orange_selection/selection.json",
+      "analytic_report": "C1_orange_analytic/report.json",
+      "chiral_tolerance": 0.004,
+      "center_converged": true,
+      "finite_H_support_certified": true,
+      "analytic_primal_certified": true,
+      "analytic_counts": {
+        "scattering": 1500,
+        "chiral": 2,
+        "density": 1
+      }
+    },
+    "green": {
+      "support": "C1_green_balanced/report.json",
+      "selection": "C2_green_selection/selection.json",
+      "analytic_report": "C1_green_analytic/report.json",
+      "chiral_tolerance": 0.002,
+      "center_converged": true,
+      "finite_H_support_certified": true,
+      "analytic_primal_certified": true,
+      "analytic_counts": {
+        "scattering": 1500,
+        "chiral": 2,
+        "density": 1
+      }
+    }
+  },
+  "off_node_diagnostic": {
+    "status": "strict_unitarity_violations_confirmed",
+    "direct_report": "E5_direct_profiles/direct_profiles.json",
+    "independent_report": "E5_independent_integrals/report.json",
+    "additional_energy_window_GeV": [
+      0.6,
+      0.9
+    ],
+    "additional_step_GeV": 0.01,
+    "coefficients_modified": false,
+    "optimization_performed": false,
+    "new_constraints_imposed": false,
+    "independent_energies_GeV": [
+      0.7,
+      0.9
+    ],
+    "independent_checks": 18,
+    "independent_matches": 18,
+    "independent_strict_violations": 11,
+    "profiles": {
+      "tip": {
+        "maximum_eta_upper": 1.0925160948315285,
+        "strict_violating_energy_wave_samples": 42,
+        "P1_upward_90_mev": 802.0117416184065
+      },
+      "mid": {
+        "maximum_eta_upper": 1.11893236649046,
+        "strict_violating_energy_wave_samples": 40,
+        "P1_upward_90_mev": 697.134083715464
+      },
+      "ref": {
+        "maximum_eta_upper": 1.1409410100925024,
+        "strict_violating_energy_wave_samples": 40,
+        "P1_upward_90_mev": 688.383436377262
+      }
+    },
+    "proof_scope": "These fixed complete analytic amplitudes fail unitarity away from their original constraints. Their native finite certificates remain valid; no whole-model or paper-finite-program impossibility claim.",
+    "complete_report": "E5_direct_profiles_complete/direct_profiles.json"
+  },
+  "held_repair_proposal": {
+    "proposal": "For this finite family, consider derived endpoint relations including T0=0, then explicitly denser scattering constraints; recompute whole amplitudes",
+    "status": "held_per_user_instruction",
+    "baseline_modified": false,
+    "reason": "Academic counterexample/limitation of native feasibility must be reported separately before changing the baseline",
+    "continuum_certification_would_follow_automatically": false,
+    "evidence": "HELD_INTER_NODE_ISSUE_ZH.md",
+    "endpoint_condition_is_sufficient": false
+  },
+  "current_calculation_status": "running full new-model Phase I after two inadmissible high-wave transfers",
+  "FESR_interpretation": {
+    "raw_absolute_002_has_printed_basis": true,
+    "source": "v3 Eqs.3.72-3.74 after undoing Eq.2.56 normalization; DERIVATION section11",
+    "author_norm_packing_and_scaling_fully_known": false,
+    "vector_R_over_s_weighted_RMS_energy_MeV": {
+      "tip": 808.13,
+      "mid": 700.04,
+      "ref": 689.28
+    },
+    "moment_ratio_is_peak_or_pole_formula": false
+  },
+  "IR_figures": {
+    "Fig5": "C1_fig5/profiles.pdf",
+    "Fig6": "C2_fig6/profiles.pdf",
+    "Fig7": "C3_fig7/profiles.pdf",
+    "full_amplitudes_preserved": true,
+    "zero_claims": {
+      "orange": {
+        "S0_bracket_s": [
+          0.3,
+          0.4
+        ],
+        "existence_certified": true,
+        "uniqueness_certified": false,
+        "source": "C1_subthreshold_orange/evaluation.json"
+      },
+      "green": {
+        "S0_bracket_s": [
+          0.4,
+          0.5
+        ],
+        "existence_certified": true,
+        "uniqueness_certified": false,
+        "source": "C1_subthreshold_green/evaluation.json"
+      },
+      "blue": {
+        "sampled_no_zero": true,
+        "whole_interval_no_zero_certified": false
+      }
+    }
+  },
+  "region_comparison": {
+    "IR_x_support": [
+      0.1058808058047516,
+      0.10592808800420311
+    ],
+    "IR_support_report": "B3_IR_tip_replay/report.json",
+    "IR_analytic_primal": "B3_IR_tip_analytic_signs/report.json",
+    "printed_green_max_x": 0.082573,
+    "printed_curve_is_exclusion_certificate": false,
+    "Fig8_reference_section": {
+      "x": 0.07332139057293466,
+      "IR_lower": [
+        -0.005526251314581105,
+        -0.005525090226382472
+      ],
+      "IR_upper": [
+        -0.004116720350196233,
+        -0.004115632071391754
+      ],
+      "UV_lower": [
+        -0.005336941955966382,
+        -0.005332385820265839
+      ],
+      "UV_upper": [
+        -0.004317803394907682,
+        -0.004313491668550143
+      ],
+      "upper_shrink": [
+        0.00019677131835391193,
+        0.00020217132351592692
+      ],
+      "lower_rise": [
+        0.00018814827041609112,
+        0.0001938654943152652
+      ],
+      "upper_minus_lower": [
+        2.9058240386468007e-06,
+        1.4023053099835736e-05
+      ],
+      "upper_to_lower_ratio": [
+        1.014988866631012,
+        1.0745319267024018
+      ],
+      "upper_change_larger": true,
+      "sources": {
+        "IR": {
+          "inner": [
+            {
+              "coefficients": [
+                "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/E6_IR_lower/coefficients.json",
+                "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/B3_IR_tip_replay/coefficients.json"
+              ],
+              "second_weight": "[2.245997834637863804542930e-8 +/- 2.14e-33]"
+            },
+            {
+              "coefficients": [
+                "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/C1_green_balanced/coefficients.json",
+                "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/B3_IR_tip_replay/coefficients.json"
+              ],
+              "second_weight": "[2.223329761710247964355978e-8 +/- 3.98e-33]"
+            }
+          ],
+          "outer": [
+            "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/E6_IR_lower/report.json",
+            "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/C1_green_balanced/report.json"
+          ]
+        },
+        "UV": {
+          "inner": [
+            {
+              "coefficients": [
+                "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/E6_UV_lower_verified_support/coefficients.json",
+                "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/E1_tip_verified/coefficients.json"
+              ],
+              "second_weight": "[5.07702435467603e-10 +/- 2.46e-25]"
+            },
+            {
+              "coefficients": [
+                "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/E3_mid_verified/coefficients.json",
+                "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/E2_ref_verified/coefficients.json"
+              ],
+              "second_weight": "[0.99999999999002240041658 +/- 4.72e-24]"
+            }
+          ],
+          "outer": [
+            "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/E6_UV_lower_verified_support/report.json",
+            "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/E2_ref_verified/report.json"
+          ]
+        }
+      },
+      "scope": "Arb at saved x: feasible segments and global supports; no dense-region or continuum claim"
+    },
+    "strong_asymmetry_reproduced": false,
+    "full_dense_regions_certified": false
+  },
+  "resolution_progress": {
+    "M50_L8": {
+      "preparation": "F_M50_L8_prepare/report.json",
+      "operator_shape": [
+        2411,
+        3876
+      ],
+      "reused_rows": 2411,
+      "generated_rows": 0,
+      "operator_prepared": true,
+      "current_prepared": true,
+      "current_report": "F_M50_L8_current/report.json",
+      "transfer_report": "F_M50_L8_transfer/report.json",
+      "transfer_joint_primal_passed": true,
+      "old_center_inherited": false,
+      "failed_starts": [
+        {
+          "report": "F_M50_L8_support_01/report.json",
+          "reason": "QR residual failure after too-small-mu start"
+        },
+        {
+          "report": "F_M50_L8_support_02/report.json",
+          "reason": "QR residual failure from unsuitable state"
+        },
+        {
+          "report": "F_M50_L8_support_04/report.json",
+          "reason": "Inappropriate default-mu restart; feasible but not a delivered support",
+          "used_for_delivery": false
+        }
+      ],
+      "current_support": "F_M50_L8_support_05/report.json",
+      "new_center_converged": true,
+      "new_joint_primal_passed": true,
+      "support_optimality_certified": true,
+      "support_interval": [
+        0.11995940953652895,
+        0.12002803425414091
+      ],
+      "status": "center_support_analytic_selection_evaluation_delivered",
+      "support_gap": 6.862471761195921e-05,
+      "analytic_report": "F_M50_L8_verified/report.json",
+      "analytic_primal_certified": true,
+      "selection": "F_M50_L8_selected/report.json",
+      "evaluation": "F_M50_L8_evaluate/evaluation.json",
+      "native_evaluation_status": "sampled_passed",
+      "native_primary_samples": 132,
+      "actual_saved_mu_resume_fixed": true,
+      "complete_five_configuration_comparison": false
+    },
+    "M50_L12": {
+      "preparation": "F_M50_L12_prepare/report.json",
+      "operator_shape": [
+        3611,
+        3876
+      ],
+      "reused_rows": 3011,
+      "generated_rows": 600,
+      "operator_prepared": true,
+      "joint_solution_claimed": false,
+      "status": "full_new_model_phase_I_running",
+      "current_prepared": true,
+      "current_report": "F_M50_L12_current/report.json",
+      "phase_I": "F_M50_L12_phase_I_01",
+      "whole_model_infeasibility_proved": false,
+      "failed_transfers": [
+        {
+          "source": "old_tip",
+          "report": "F_M50_L12_transfer/report.json",
+          "joint_primal_passed": false,
+          "minimum_margin_enclosure": "[-1.7449459131974595451 +/- 4.41e-20]",
+          "old_center_inherited": false
+        },
+        {
+          "source": "D3_point",
+          "report": "F_M50_L12_interior_transfer/report.json",
+          "joint_primal_passed": false,
+          "minimum_margin_enclosure": "[-1.1284810860054873325 +/- 2.68e-20]",
+          "old_center_inherited": false
+        }
+      ]
+    },
+    "M45_L10": {
+      "first_attempt": "F_M45_L10_prepare/report.json",
+      "status": "operator_prepared",
+      "valid_operator_data_available": true,
+      "next": "Current preparation, joint witness and +x support",
+      "preparation": "F_M45_L10_prepare_02/report.json",
+      "operator_prepared": true,
+      "operator_shape": [
+        2711,
+        3151
+      ],
+      "joint_solution_claimed": false,
+      "preparation_default_fixed": true,
+      "failed_first_attempt_retained": true
+    },
+    "M60_L10": {
+      "status": "operator_prepared",
+      "preparation": "F_M60_L10_prepare/report.json",
+      "operator_prepared": true,
+      "valid_operator_data_available": true,
+      "operator_shape": [
+        3611,
+        5551
+      ],
+      "joint_solution_claimed": false,
+      "next": "Current preparation, joint witness and +x support"
+    }
+  },
+  "execution_policy": {
+    "main_optimization": "serial and bounded",
+    "independent_operator_preparation": "Next configuration may run with one thread at low priority",
+    "parameter_scan": false
+  },
+  "updated_date": "2026-09-11",
+  "B2_pure_witness": {
+    "finite_H_primal": true,
+    "analytic_primal": true,
+    "x_lower": 1.6065678088549464,
+    "complete_region": false,
+    "report": "B2_WITNESS_SCOPE_ZH.md"
+  },
+  "F_phase_I": {
+    "M": 50,
+    "L": 12,
+    "first_run": "F_M50_L12_phase_I_01",
+    "first_tau": 736.1706981265228,
+    "first_mu": 3.2225256222993064,
+    "first_primal": false,
+    "first_infeasibility_certified": false,
+    "current_run": "F_M50_L12_phase_I_balanced_02",
+    "new_explicit_chiral_weight": 900,
+    "scope": "Numerical barrier only; no physical constraints changed",
+    "completed_run": "F_M50_L12_phase_I_balanced_03",
+    "tau": -0.015732379685667333,
+    "original_joint_feasible": true,
+    "analytic_primal_feasible": true,
+    "analytic_report": "F_M50_L12_phase_I_analytic/source_audit.json",
+    "retained_scattering_disks": 1800
+  },
+  "F_L12_support": {
+    "completed_run": "F_M50_L12_support_02",
+    "center_converged": true,
+    "support_lower": 0.09037819041467544,
+    "support_upper": 0.09045738484685242,
+    "support_tolerance_met": true,
+    "analytic_primal": true,
+    "selection_created": true,
+    "native_evaluation_passed": true
+  },
+  "M45_M60_initial_reuse": [
+    {
+      "M": 45,
+      "report": "F_M45_L10_existing_point_replay/report.json",
+      "fresh_primal": false,
+      "old_bound_or_feasibility_transferred": false,
+      "scope": "Numerical data from prior same-M/L PV run, independently checked against the new analytic H; initializer only"
+    },
+    {
+      "M": 60,
+      "report": "F_M60_L10_existing_point_replay/report.json",
+      "fresh_primal": false,
+      "old_bound_or_feasibility_transferred": false,
+      "scope": "Numerical data from prior same-M/L PV run, independently checked against the new analytic H; initializer only"
+    }
+  ],
+  "F_fixed_M50": {
+    "complete": true,
+    "comparison": "F_fixed_M50_comparison/resolution_partial.json",
+    "P1_native_MeV": [
+      835.5473866,
+      803.4866277,
+      789.080437
+    ],
+    "P1_extra_grid_MeV": [
+      836.1453097,
+      802.0117416,
+      789.5304984
+    ],
+    "additional_scattering_maximum_eta": [
+      1.0414547236,
+      1.0925160948,
+      1.1016738572
+    ],
+    "scope": "Three independently centered +x supports; native constraints pass; additional points strictly violate unitarity; readings are not poles"
+  },
+  "next_after_M45": "Audit the new M45 strict joint witness, finish its +x center; transfer that same analytic function to M60 before launching Phase I, then recheck every new constraint. M60 old-PV data replay already failed.",
+  "F_M45_phase_I": {
+    "report": "F_M45_L10_phase_I_01/report.json",
+    "tau": -0.00014305449718126433,
+    "original_joint_primal": true,
+    "analytic_primal": true,
+    "analytic_report": "F_M45_L10_phase_I_analytic/source_audit.json",
+    "full_original_variables": 3331,
+    "retained_scattering": 1350
+  }
+}

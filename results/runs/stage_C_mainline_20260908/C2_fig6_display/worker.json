@@ -1,0 +1,257 @@
+{
+  "command": "profiles",
+  "status": "profiles_completed",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "profiles",
+    "region_summary": "results/runs/stage_B_delivery_20260907/regions/regions.json",
+    "primary_waves": false,
+    "profile_runs": [
+      "results/runs/stage_C_mainline_20260908/C1_evaluate_002"
+    ],
+    "profile_kind": "selection",
+    "phase_reference": null,
+    "support_runs": [],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_C_mainline_20260908/C2_fig6_display",
+    "density_limit": null,
+    "preparation": "results/runs/stage_A_M50_L10_20260906",
+    "prescription": "auto",
+    "solver": "barrier",
+    "unitarity_scope": "sampled",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "constraint_generation": false,
+    "working_state": null,
+    "density_cone": "soc",
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "free",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": null,
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "seconds": 60.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "8"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Declared finite prescription; published regions/phases unverified.",
+  "kind": "selection",
+  "profiles": [
+    {
+      "epsilon": 0.002,
+      "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_C_mainline_20260908/C1_select_002/coefficients.json",
+      "selection": {
+        "rule": "Upper feasible-hull edge at fixed Weinberg f00(3), before evaluating phases",
+        "reference": [
+          0.07332139057293466,
+          -0.00488809270486231
+        ],
+        "target": [
+          0.07332139056202114,
+          -0.0041187836343235685
+        ],
+        "epsilon": 0.002,
+        "source_coefficients": [
+          "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_parallel_003_20260907/coefficients.json",
+          "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_010_20260907/coefficients.json"
+        ],
+        "weights": [
+          0.7969425641325351,
+          0.20305743586746497
+        ],
+        "source_reports": [
+          "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_parallel_003_20260907/report.json",
+          "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_010_20260907/report.json"
+        ],
+        "vertices": [
+          [
+            0.10542884856533873,
+            -0.006922236948991772
+          ],
+          [
+            0.10588509849925654,
+            -0.006854817981383333
+          ],
+          [
+            0.10456192338788715,
+            -0.006608513095370679
+          ],
+          [
+            0.10064104983345665,
+            -0.00620695784990215
+          ],
+          [
+            0.09414445149046227,
+            -0.005654908428888711
+          ],
+          [
+            0.08578963027560368,
+            -0.005010840431032001
+          ],
+          [
+            0.07591083375216748,
+            -0.004298756479815579
+          ],
+          [
+            0.0631585640892976,
+            -0.0034124415080884142
+          ],
+          [
+            0.042283605006363606,
+            -0.0019920549685306325
+          ],
+          [
+            0.020848394943177882,
+            -0.0005532706138851372
+          ],
+          [
+            0.005419688501939745,
+            0.000466525354796016
+          ],
+          [
+            -0.010900162244432205,
+            0.0015236306706474247
+          ],
+          [
+            -0.042657223100054355,
+            0.0035215104158714036
+          ],
+          [
+            -0.08389273138240552,
+            0.005896239336392741
+          ],
+          [
+            -0.0520161794587322,
+            0.0028125004561183184
+          ],
+          [
+            -0.022167920481937286,
+            0.0005367212920167428
+          ],
+          [
+            -0.007501162731009074,
+            -0.0005031082908331506
+          ],
+          [
+            0.008506019521505882,
+            -0.0015912840265362794
+          ],
+          [
+            0.02620837897205813,
+            -0.002747308338195242
+          ],
+          [
+            0.042423601382034375,
+            -0.003762997203991565
+          ],
+          [
+            0.056078111521364125,
+            -0.004574942559383217
+          ],
+          [
+            0.06918945637586495,
+            -0.005306803300247702
+          ],
+          [
+            0.08432287539112945,
+            -0.006083478440099566
+          ],
+          [
+            0.09859506582625586,
+            -0.006747990058936726
+          ],
+          [
+            0.10173342988390952,
+            -0.0068678724159582155
+          ],
+          [
+            0.1040220336828363,
+            -0.0069264117562378245
+          ]
+        ],
+        "boundary_approximation": true,
+        "region_metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)",
+        "regional_distance_upper": 0.009849593699275495,
+        "exact_extremizer_claimed": false,
+        "original_H_feasibility": {
+          "upper": 5e-324,
+          "enclosure": "0",
+          "disk": 0.0,
+          "chiral": 0.0,
+          "density_residual": 0.0,
+          "tail_support": 0.0,
+          "scope": "exact saved float64 operator and supplied tail maps; angular quadrature error excluded",
+          "primal_feasible": true,
+          "lower": -5e-324,
+          "minimum_margin_enclosure": "[5.9702193851650468262e-85 +/- 3.86e-105]",
+          "density_norm": 375301.29114350013,
+          "targets": [
+            "[0.07332139056202588837571291 +/- 2.84e-27]",
+            "[-0.004118783634323666554801638 +/- 4.13e-28]"
+          ],
+          "tail_margin_enclosures": []
+        },
+        "model_signature": {
+          "M": 50,
+          "L": 10,
+          "density_limit": 377500.0,
+          "infinity": "free",
+          "unitarity_scope": "sampled",
+          "global_high_spin_enforced": false,
+          "tail_conditions_applied": false,
+          "prescription": "pv-midpoint",
+          "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+          "additional_constraints": null,
+          "sampling_nodes": 50,
+          "scattering_samples": 1500
+        }
+      }
+    }
+  ],
+  "reference": null,
+  "selection_uses_phase_data": false,
+  "continuum_certified": false,
+  "elapsed_seconds": 0.9036798768211156,
+  "prescription": "finite-sine-cardinal"
+}

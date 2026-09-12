@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "scope": "Synthetic provenance/IO positive and negative controls; no physics or center-convergence claim from the fixture",
+  "fresh_bounds_preserved": true,
+  "new_ML_cannot_inherit_center": true,
+  "only_free_high_R_increases_allowed": true,
+  "selection_gate_checked": true,
+  "comparison_source_checked": true,
+  "optimization_performed": false,
+  "ML_calculation_performed": false,
+  "source_files": {
+    "src/smatrix_bootstrap/operators.py": {
+      "lines": 328,
+      "bytes": 22498,
+      "base_sha256": "9cc96d81c49587010a307579fc0e78328d014b0289fd9b14494785cfd66e63be"
+    },
+    "src/smatrix_bootstrap/gauge.py": {
+      "lines": 225,
+      "bytes": 19022,
+      "base_sha256": "6ec961f1a9cbb8f8adc3302a5b413dd3eeca95c8d26aaa4d1f030ca2b2e00980"
+    },
+    "src/smatrix_bootstrap/__init__.py": {
+      "lines": 344,
+      "bytes": 24208,
+      "base_sha256": "1c179cbcead2378fdd4ba955074033e86f6dc97853cc364f6ab205e4a74ce1ef"
+    },
+    "src/smatrix_bootstrap/model.py": {
+      "lines": 287,
+      "bytes": 19257,
+      "base_sha256": "3d49e6bd122254cc3fbd741bfa5f32f1a70dbd6e20a5ca602571bf1970231715"
+    }
+  },
+  "test_files_unchanged": 3
+}

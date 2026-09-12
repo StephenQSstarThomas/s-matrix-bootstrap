@@ -1,0 +1,61 @@
+{
+  "archived_result": "results/primal_barrier_N10_support.json",
+  "archived_sha256": "c87d101f3de3aca0a2aa4dc11e0840d13b71852369e23ec399119f103430d7f3",
+  "strict_terminal_cones_reverified": true,
+  "mu": 2e-07,
+  "gradient": {
+    "final_float_projected_gradient_inf": 2826.0878645611306,
+    "final_MP_projected_gradient_inf": "2826.091596290218651270103733735847127608575305974565624700655042430891",
+    "float_vs_MP_gradient_absolute_inf": "0.0039968384334142625307210300184549193863047955727814906273163196270000000000000252",
+    "float_barrier_derivative_vs_MP_using_same_B_inf": "0.0039968384334142625307210300184549193863047955727814906273163196271257047852567125",
+    "B_rounding_and_projection_difference_inf": "0.00000000000014949459289804809845571578358144613940236848585465513509735875404148301444926121",
+    "equality_fit_E_times_rd_inf": "4.0644522579587548670463093729344327398122539101299937646571958911363813202548782e-69",
+    "equality_dual_inf": "257.2903285911451949801665448683950893472200024732347793551777416565275",
+    "Q_projection_of_eq_fit_difference_inf": "0.000000000000033491784926021266126067137113548479706770495305763296300484504019450238767525637"
+  },
+  "hessian_directional_checks": [
+    {
+      "direction_column": 196,
+      "curvature_MP": "191127341541480044226.07547208699740133535342016664731132428233233557278206392859",
+      "curvature_float": 1.9112678458304997e+20,
+      "relative_difference": "-0.0000029140698844162300441385417169235597930572087825106824186162291202678525456947335",
+      "by_family": {
+        "nn": "51278414.929403920957381305370193174973126065561280931477255515834958723745815932",
+        "soc": "8630367787.513610658916197826547145054859534127982873147265823626859377650986969",
+        "psd": "191127341532798398023.63245750712382220343608193681465113073817825682970292123425"
+      }
+    },
+    {
+      "direction_column": 0,
+      "curvature_MP": "11272108264.002636737922914821487970451647453602690445274701381578331635512179746",
+      "curvature_float": 11272075100.666693,
+      "relative_difference": "-0.0000029420703889006225036216249867271549708237527570794804362672447940155704367890261",
+      "by_family": {
+        "nn": "687.29590815293502172103795398740498392472401236058907800720178055140581622487857",
+        "soc": "49.889273517539529927349531866243651511923211550667164399150891917480300311071875",
+        "psd": "11272107526.817455067448363173100484597998818166043221363445139171978963043293629"
+      }
+    },
+    {
+      "direction_column": 123,
+      "curvature_MP": "139425402525811974.74109595938645295445965326632301173628859571934810378476078214",
+      "curvature_float": 1.3942493326970158e+17,
+      "relative_difference": "-0.0000033656428591186402168877807265437494674775904337052200348219583608721587158159326",
+      "by_family": {
+        "nn": "210118118415.40152589725750787421058254090042855469538758985416558298555727719487",
+        "soc": "17301602502.139319584735233507131175013578507055575369661067431860240407609609413",
+        "psd": "139425175106091057.20025047739371157311789571184407612601783846842650634153481726"
+      }
+    }
+  ],
+  "initial_scaled_objective": "2637563461795049151940380195852569630084621254275544982512627278601617/33890064561602896927975203741661690886447498673835378250465331648659456",
+  "initial_physical_f11": -0.004864190095080591,
+  "terminal_scaled_objective": "0.07553026975327695725960416095636386663426149283321783819221497560451509",
+  "terminal_physical_f11": -0.0047206418595798095,
+  "no_Newton_step_computed": true,
+  "no_optimization_run": true,
+  "elapsed_seconds": 16.237229181919247,
+  "audit_source_utf8": "import json, time, hashlib\nfrom fractions import Fraction as F\nimport numpy as np\nimport mpmath as mp\nfrom smatrix_bootstrap.primal_barrier import PrimalLogBarrier\nstart=time.monotonic()\np=json.load(open('results/primal_barrier_N10_support.json'));r=p['result']\nseed=json.load(open(p['seed_path']));payload=json.load(open(p['input_path']))\nmodel=PrimalLogBarrier.from_payload(payload,equality_rank=seed['equality_rank'],equality_rows=seed['equality_rows'],pivot_columns=seed['pivot_columns'],pivot_inverse=seed['pivot_inverse'])\nx=list(map(F,r['x_rational']));ns,den=model.exact_slack(x);cert=model.certify_strict_slack(ns,den)\nbar,gs,W,s=model.evaluate(ns,den,cert);mu=r['last_mu'];g=model.c_projected-mu*(model.B.T@gs)\nwith mp.workdps(80):\n    m=mp.mpf(mu);z=list(map(mp.mpf,r['final_KKT']['z_decimal']));rd=list(map(mp.mpf,r['final_KKT']['dual_residual_decimal']))\n    Q=model.eq.direction_basis;E=model.A[:model.zero].toarray()\n    eqterm=[mp.fsum(mp.mpf(float(E[i,j]))*z[i] for i in range(model.zero)) for j in range(len(x))]\n    rbase=[v-w for v,w in zip(rd,eqterm)]\n    gmp=[mp.fsum(mp.mpf(float(Q[i,j]))*rbase[i] for i in range(len(x))) for j in range(Q.shape[1])]\n    gmp_B=[mp.mpf(float(model.c_projected[j]))+mp.fsum(mp.mpf(float(model.B[i,j]))*z[i] for i in range(model.zero,len(z))) for j in range(Q.shape[1])]\n    projected_residual=[mp.fsum(mp.mpf(float(Q[i,j]))*rd[i] for i in range(len(x))) for j in range(Q.shape[1])]\n    eq_fit=[mp.fsum(mp.mpf(float(E[i,j]))*rd[j] for j in range(len(x))) for i in range(model.zero)]\n    difference=[mp.mpf(float(a))-b for a,b in zip(g,gmp)]\n    barrier_error=[mp.mpf(float(a))-b for a,b in zip(g,gmp_B)]\n    gradient_info=dict(final_float_projected_gradient_inf=float(np.max(np.abs(g))),\n      final_MP_projected_gradient_inf=str(max(map(abs,gmp))),\n      float_vs_MP_gradient_absolute_inf=str(max(map(abs,difference))),\n      float_barrier_derivative_vs_MP_using_same_B_inf=str(max(map(abs,barrier_error))),\n      B_rounding_and_projection_difference_inf=str(max(abs(a-b) for a,b in zip(gmp_B,gmp))),\n      equality_fit_E_times_rd_inf=str(max(map(abs,eq_fit))),\n      equality_dual_inf=str(max(map(abs,z[:model.zero]))),\n      Q_projection_of_eq_fit_difference_inf=str(max(abs(a-b) for a,b in zip(projected_residual,gmp))))\n    indices=[int(np.argmax(np.abs(g))),0,123]\n    curvature=[]\n    smp=[mp.mpf(v)/den for v in ns]\n    for j in indices:\n        contributions=dict(nn=mp.mpf(0),soc=mp.mpf(0),psd=mp.mpf(0))\n        for kind,offset,size in model.blocks:\n            if kind=='nn':\n                contributions[kind]+=mp.fsum((mp.mpf(float(model.B[i,j]))/smp[i])**2 for i in range(offset,offset+size))\n            elif kind=='soc':\n                sv=smp[offset:offset+size];dv=[mp.mpf(float(v)) for v in model.B[offset:offset+size,j]]\n                det=sv[0]**2-mp.fsum(v*v for v in sv[1:]);mix=sv[0]*dv[0]-mp.fsum(a*b for a,b in zip(sv[1:],dv[1:]))\n                contributions[kind]+=4*mix*mix/det**2-2*(dv[0]**2-mp.fsum(v*v for v in dv[1:]))/det\n            else:\n                S=mp.matrix(size);D=mp.matrix(size);k=offset\n                for col in range(size):\n                    for row in range(col+1):\n                        scale=mp.mpf(1) if row==col else mp.sqrt(2)\n                        S[row,col]=S[col,row]=smp[k]/scale\n                        D[row,col]=D[col,row]=mp.mpf(float(model.B[k,j]))/scale;k+=1\n                V=(S**-1)*D\n                contributions[kind]+=mp.fsum(V[a,b]*V[b,a] for a in range(size) for b in range(size))\n        true=sum(contributions.values());floatcurv=float(W[:,j]@W[:,j])\n        curvature.append(dict(direction_column=j,curvature_MP=str(true),curvature_float=floatcurv,\n            relative_difference=str((mp.mpf(floatcurv)-true)/true),by_family={k:str(v) for k,v in contributions.items()}))\n    initial=list(map(F,seed['x_rational']));initial_obj=sum(F.from_float(float(c))*v for c,v in zip(model.c,initial))\n    report=dict(archived_result='results/primal_barrier_N10_support.json',archived_sha256=hashlib.sha256(open('results/primal_barrier_N10_support.json','rb').read()).hexdigest(),\n      strict_terminal_cones_reverified=cert['strict'],mu=mu,gradient=gradient_info,hessian_directional_checks=curvature,\n      initial_scaled_objective=str(initial_obj),initial_physical_f11=-float(initial_obj)/16,\n      terminal_scaled_objective=r['final_KKT']['objective'],terminal_physical_f11=r['physical_objective_reporting']['estimated_f11'],\n      no_Newton_step_computed=True,no_optimization_run=True,elapsed_seconds=time.monotonic()-start)\nprint(json.dumps(report,indent=2))\nopen('results/primal_barrier_N10_support.derivative_audit.json','w').write(json.dumps(report,indent=2)+'\\n')\n",
+  "audit_source_sha256": "36d66064a38a5a336a760859ce95f5cba88cb6323edc1c0a5a18ae241a0f473c",
+  "scope": "Read-only numerical derivative diagnosis, not a rigorous error bound or a Newton solve."
+}

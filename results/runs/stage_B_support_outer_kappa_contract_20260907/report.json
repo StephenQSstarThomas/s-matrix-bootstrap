@@ -1,0 +1,178 @@
+{
+  "scope": "minimal support_outer interface reproduction; current pipeline supplies L explicitly",
+  "H": [
+    [
+      2.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.5,
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.5,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "kappa_rows": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "coefficients": [
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "without_explicit_L": {
+    "upper": 5e-324,
+    "enclosure": "0",
+    "disk": 0.0,
+    "chiral": 0.0,
+    "density_residual": 0.0,
+    "tail_support": 0.0,
+    "scope": "exact saved float64 operator and supplied tail maps; angular quadrature error excluded",
+    "primal_feasible": true,
+    "lower": 1.4999999999999998,
+    "minimum_margin_enclosure": "0",
+    "density_norm": 0.0,
+    "targets": [
+      "1.500000000000000000000000",
+      "0"
+    ],
+    "tail_margin_enclosures": []
+  },
+  "with_explicit_L": {
+    "upper": 2.0000000000000004,
+    "enclosure": "2.000000000000000000000000",
+    "disk": 2.0,
+    "chiral": 0.0,
+    "density_residual": 0.0,
+    "tail_support": 0.0,
+    "scope": "exact saved float64 operator and supplied tail maps; angular quadrature error excluded",
+    "primal_feasible": true,
+    "lower": 1.4999999999999998,
+    "minimum_margin_enclosure": "0",
+    "density_norm": 0.0,
+    "targets": [
+      "1.500000000000000000000000",
+      "0"
+    ],
+    "tail_margin_enclosures": []
+  },
+  "first_unscaled_target_case": {
+    "target": "sigma1",
+    "upper": "nan",
+    "lower": 1.0
+  },
+  "suggested_guard": "if len(kappa)==n and waves_per_isospin is None: raise ValueError(\"Per-row kappa requires waves_per_isospin\")"
+}

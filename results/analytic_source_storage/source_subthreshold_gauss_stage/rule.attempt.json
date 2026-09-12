@@ -1,0 +1,6 @@
+{
+  "kind": "rule",
+  "node": null,
+  "hard_cap_seconds": 180,
+  "retries": 0
+}

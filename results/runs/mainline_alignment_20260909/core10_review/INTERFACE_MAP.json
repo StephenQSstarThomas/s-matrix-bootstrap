@@ -1,0 +1,862 @@
+[
+  {
+    "name": "JointProblem",
+    "old_modules": [
+      "gauge"
+    ],
+    "new_module": "operators"
+  },
+  {
+    "name": "Model",
+    "old_modules": [
+      "__init__"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "PVSourceRows",
+    "old_modules": [
+      "operators"
+    ],
+    "new_module": "kernels"
+  },
+  {
+    "name": "PhaseOneProblem",
+    "old_modules": [
+      "resolution"
+    ],
+    "new_module": "operators"
+  },
+  {
+    "name": "UVConfig",
+    "old_modules": [
+      "__init__"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "_clip",
+    "old_modules": [
+      "figures"
+    ],
+    "new_module": "analysis"
+  },
+  {
+    "name": "_fesr_grid",
+    "old_modules": [
+      "model"
+    ],
+    "new_module": "quotient"
+  },
+  {
+    "name": "_hull",
+    "old_modules": [
+      "figures"
+    ],
+    "new_module": "analysis"
+  },
+  {
+    "name": "_interval_verdict",
+    "old_modules": [
+      "figures"
+    ],
+    "new_module": "analysis"
+  },
+  {
+    "name": "_path",
+    "old_modules": [
+      "figures"
+    ],
+    "new_module": "run"
+  },
+  {
+    "name": "_phase_data",
+    "old_modules": [
+      "figures"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "_section",
+    "old_modules": [
+      "figures"
+    ],
+    "new_module": "analysis"
+  },
+  {
+    "name": "_signature",
+    "old_modules": [
+      "figures"
+    ],
+    "new_module": "run"
+  },
+  {
+    "name": "absorptive_change",
+    "old_modules": [
+      "quotient"
+    ],
+    "new_module": "quotient"
+  },
+  {
+    "name": "angular_kernels",
+    "old_modules": [
+      "kernels"
+    ],
+    "new_module": "operators"
+  },
+  {
+    "name": "assemble_density_row",
+    "old_modules": [
+      "kernels"
+    ],
+    "new_module": "operators"
+  },
+  {
+    "name": "barrier_support",
+    "old_modules": [
+      "linear"
+    ],
+    "new_module": "linear"
+  },
+  {
+    "name": "barrier_terms",
+    "old_modules": [
+      "model"
+    ],
+    "new_module": "quotient"
+  },
+  {
+    "name": "canonical_waves",
+    "old_modules": [
+      "operators"
+    ],
+    "new_module": "kernels"
+  },
+  {
+    "name": "cardinal_projection",
+    "old_modules": [
+      "resolution"
+    ],
+    "new_module": "kernels"
+  },
+  {
+    "name": "center_joint_support",
+    "old_modules": [
+      "joint"
+    ],
+    "new_module": "linear"
+  },
+  {
+    "name": "center_report",
+    "old_modules": [],
+    "new_module": "__init__"
+  },
+  {
+    "name": "certify_reference_section",
+    "old_modules": [
+      "selection"
+    ],
+    "new_module": "kernels"
+  },
+  {
+    "name": "cflat_labels",
+    "old_modules": [
+      "kernels"
+    ],
+    "new_module": "kernels"
+  },
+  {
+    "name": "check_core_unchanged",
+    "old_modules": [
+      "io"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "chiral_bound",
+    "old_modules": [
+      "model"
+    ],
+    "new_module": "model"
+  },
+  {
+    "name": "chiral_ratio",
+    "old_modules": [
+      "model"
+    ],
+    "new_module": "imaginary"
+  },
+  {
+    "name": "chiral_selection_record",
+    "old_modules": [],
+    "new_module": "__init__"
+  },
+  {
+    "name": "chiral_slices",
+    "old_modules": [
+      "model"
+    ],
+    "new_module": "model"
+  },
+  {
+    "name": "coefficient_blocks",
+    "old_modules": [
+      "operators"
+    ],
+    "new_module": "kernels"
+  },
+  {
+    "name": "coherent_boundary",
+    "old_modules": [
+      "analysis"
+    ],
+    "new_module": "imaginary"
+  },
+  {
+    "name": "compare_phase",
+    "old_modules": [
+      "model"
+    ],
+    "new_module": "analysis"
+  },
+  {
+    "name": "compare_selected_profiles",
+    "old_modules": [
+      "selection"
+    ],
+    "new_module": "model"
+  },
+  {
+    "name": "convert_subtraction",
+    "old_modules": [
+      "kernels",
+      "model"
+    ],
+    "new_module": "quotient"
+  },
+  {
+    "name": "current_data",
+    "old_modules": [
+      "resolution"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "current_gram",
+    "old_modules": [
+      "model"
+    ],
+    "new_module": "model"
+  },
+  {
+    "name": "current_kinematic_squares",
+    "old_modules": [
+      "model"
+    ],
+    "new_module": "model"
+  },
+  {
+    "name": "current_operators",
+    "old_modules": [
+      "model",
+      "gauge"
+    ],
+    "new_module": "model"
+  },
+  {
+    "name": "decode_real_ball",
+    "old_modules": [
+      "io"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "density_fourth_power",
+    "old_modules": [
+      "model"
+    ],
+    "new_module": "imaginary"
+  },
+  {
+    "name": "density_labels",
+    "old_modules": [
+      "kernels"
+    ],
+    "new_module": "kernels"
+  },
+  {
+    "name": "density_row_to_cflat",
+    "old_modules": [
+      "kernels"
+    ],
+    "new_module": "kernels"
+  },
+  {
+    "name": "digest",
+    "old_modules": [
+      "io"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "encode_real_ball",
+    "old_modules": [
+      "io"
+    ],
+    "new_module": "run"
+  },
+  {
+    "name": "energy_rows",
+    "old_modules": [
+      "operators"
+    ],
+    "new_module": "analysis"
+  },
+  {
+    "name": "extended_product",
+    "old_modules": [
+      "__init__"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "extended_sparse_blocks",
+    "old_modules": [
+      "__init__"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "extended_triangular",
+    "old_modules": [
+      "__init__"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "exterior_legendre_q",
+    "old_modules": [
+      "kernels"
+    ],
+    "new_module": "kernels"
+  },
+  {
+    "name": "fesr_data",
+    "old_modules": [
+      "model"
+    ],
+    "new_module": "model"
+  },
+  {
+    "name": "fesr_targets",
+    "old_modules": [
+      "model"
+    ],
+    "new_module": "quotient"
+  },
+  {
+    "name": "fesr_weights",
+    "old_modules": [
+      "model"
+    ],
+    "new_module": "model"
+  },
+  {
+    "name": "ff_guided_phase",
+    "old_modules": [
+      "model"
+    ],
+    "new_module": "analysis"
+  },
+  {
+    "name": "fraction_ball",
+    "old_modules": [
+      "io"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "gauge_phases",
+    "old_modules": [
+      "figures"
+    ],
+    "new_module": "analysis"
+  },
+  {
+    "name": "gauge_region_report",
+    "old_modules": [],
+    "new_module": "__init__"
+  },
+  {
+    "name": "gauge_regions",
+    "old_modules": [
+      "figures"
+    ],
+    "new_module": "analysis"
+  },
+  {
+    "name": "gauge_selection_report",
+    "old_modules": [],
+    "new_module": "__init__"
+  },
+  {
+    "name": "gauge_support",
+    "old_modules": [
+      "linear"
+    ],
+    "new_module": "run"
+  },
+  {
+    "name": "initialize",
+    "old_modules": [
+      "resolution"
+    ],
+    "new_module": "analysis"
+  },
+  {
+    "name": "inverse_cholesky",
+    "old_modules": [
+      "linear"
+    ],
+    "new_module": "imaginary"
+  },
+  {
+    "name": "joint_audit",
+    "old_modules": [
+      "imaginary"
+    ],
+    "new_module": "kernels"
+  },
+  {
+    "name": "joint_hull_candidate",
+    "old_modules": [
+      "joint"
+    ],
+    "new_module": "quotient"
+  },
+  {
+    "name": "joint_observable_change",
+    "old_modules": [
+      "gauge"
+    ],
+    "new_module": "model"
+  },
+  {
+    "name": "joint_result",
+    "old_modules": [],
+    "new_module": "__init__"
+  },
+  {
+    "name": "json_scalar",
+    "old_modules": [
+      "__init__"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "main",
+    "old_modules": [
+      "run"
+    ],
+    "new_module": "run"
+  },
+  {
+    "name": "midpoint_grid",
+    "old_modules": [
+      "kernels"
+    ],
+    "new_module": "operators"
+  },
+  {
+    "name": "normal_dual",
+    "old_modules": [
+      "quotient"
+    ],
+    "new_module": "quotient"
+  },
+  {
+    "name": "offcut_row",
+    "old_modules": [
+      "kernels"
+    ],
+    "new_module": "kernels"
+  },
+  {
+    "name": "phase_one_report",
+    "old_modules": [],
+    "new_module": "__init__"
+  },
+  {
+    "name": "phase_shifts",
+    "old_modules": [
+      "model"
+    ],
+    "new_module": "analysis"
+  },
+  {
+    "name": "phase_space",
+    "old_modules": [
+      "model"
+    ],
+    "new_module": "model"
+  },
+  {
+    "name": "physical_node_row",
+    "old_modules": [
+      "kernels"
+    ],
+    "new_module": "kernels"
+  },
+  {
+    "name": "plot_gauge_region",
+    "old_modules": [],
+    "new_module": "io"
+  },
+  {
+    "name": "plot_gauge_selections",
+    "old_modules": [],
+    "new_module": "io"
+  },
+  {
+    "name": "plot_profiles",
+    "old_modules": [
+      "figures",
+      "io"
+    ],
+    "new_module": "io"
+  },
+  {
+    "name": "plot_regions",
+    "old_modules": [
+      "io"
+    ],
+    "new_module": "io"
+  },
+  {
+    "name": "plot_resolution_profiles",
+    "old_modules": [],
+    "new_module": "io"
+  },
+  {
+    "name": "prepare_amplitude",
+    "old_modules": [
+      "operators"
+    ],
+    "new_module": "operators"
+  },
+  {
+    "name": "project_coefficients",
+    "old_modules": [
+      "resolution"
+    ],
+    "new_module": "operators"
+  },
+  {
+    "name": "published_inner_vertices",
+    "old_modules": [
+      "io"
+    ],
+    "new_module": "analysis"
+  },
+  {
+    "name": "pv_matrix",
+    "old_modules": [
+      "kernels"
+    ],
+    "new_module": "kernels"
+  },
+  {
+    "name": "radial_coordinates",
+    "old_modules": [
+      "__init__"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "raw_support_residual",
+    "old_modules": [
+      "operators"
+    ],
+    "new_module": "quotient"
+  },
+  {
+    "name": "read_cflat",
+    "old_modules": [
+      "io"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "read_json",
+    "old_modules": [
+      "io"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "recover_candidate_segment",
+    "old_modules": [
+      "analysis"
+    ],
+    "new_module": "imaginary"
+  },
+  {
+    "name": "region_geometry",
+    "old_modules": [
+      "__init__"
+    ],
+    "new_module": "kernels"
+  },
+  {
+    "name": "region_summary_record",
+    "old_modules": [],
+    "new_module": "__init__"
+  },
+  {
+    "name": "resolution_compare",
+    "old_modules": [],
+    "new_module": "model"
+  },
+  {
+    "name": "resolution_comparison_record",
+    "old_modules": [],
+    "new_module": "__init__"
+  },
+  {
+    "name": "resolution_difference",
+    "old_modules": [],
+    "new_module": "model"
+  },
+  {
+    "name": "resolution_report",
+    "old_modules": [
+      "resolution"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "resolution_run",
+    "old_modules": [],
+    "new_module": "operators"
+  },
+  {
+    "name": "resolve_prescription",
+    "old_modules": [
+      "run"
+    ],
+    "new_module": "run"
+  },
+  {
+    "name": "resolve_start_mu",
+    "old_modules": [
+      "io"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "restore_joint_segment",
+    "old_modules": [
+      "linear"
+    ],
+    "new_module": "imaginary"
+  },
+  {
+    "name": "save_evaluation",
+    "old_modules": [
+      "io"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "save_figure",
+    "old_modules": [],
+    "new_module": "__init__"
+  },
+  {
+    "name": "scattering_gram",
+    "old_modules": [
+      "model"
+    ],
+    "new_module": "model"
+  },
+  {
+    "name": "scattering_matrix",
+    "old_modules": [
+      "model"
+    ],
+    "new_module": "model"
+  },
+  {
+    "name": "select_chiral_amplitude",
+    "old_modules": [
+      "selection",
+      "__init__"
+    ],
+    "new_module": "io"
+  },
+  {
+    "name": "select_gauge",
+    "old_modules": [
+      "figures",
+      "selection"
+    ],
+    "new_module": "analysis"
+  },
+  {
+    "name": "snapshot_core",
+    "old_modules": [
+      "io"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "solve_feasible_basis_lp",
+    "old_modules": [
+      "__init__"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "source_contract",
+    "old_modules": [
+      "run"
+    ],
+    "new_module": "run"
+  },
+  {
+    "name": "source_rows",
+    "old_modules": [
+      "operators"
+    ],
+    "new_module": "kernels"
+  },
+  {
+    "name": "subtract_amplitude_coordinates",
+    "old_modules": [
+      "quotient"
+    ],
+    "new_module": "quotient"
+  },
+  {
+    "name": "subtraction_rows",
+    "old_modules": [
+      "quotient"
+    ],
+    "new_module": "quotient"
+  },
+  {
+    "name": "summarize_regions",
+    "old_modules": [
+      "io"
+    ],
+    "new_module": "io"
+  },
+  {
+    "name": "support_data",
+    "old_modules": [
+      "run"
+    ],
+    "new_module": "run"
+  },
+  {
+    "name": "support_gradient_width",
+    "old_modules": [
+      "__init__"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "support_outer",
+    "old_modules": [
+      "kernels"
+    ],
+    "new_module": "imaginary"
+  },
+  {
+    "name": "svec",
+    "old_modules": [
+      "linear"
+    ],
+    "new_module": "imaginary"
+  },
+  {
+    "name": "symmetric",
+    "old_modules": [
+      "linear"
+    ],
+    "new_module": "imaginary"
+  },
+  {
+    "name": "transfer",
+    "old_modules": [
+      "resolution"
+    ],
+    "new_module": "operators"
+  },
+  {
+    "name": "unitarity_margin",
+    "old_modules": [
+      "model"
+    ],
+    "new_module": "model"
+  },
+  {
+    "name": "validate_uv_config",
+    "old_modules": [],
+    "new_module": "model"
+  },
+  {
+    "name": "watson_diagnostics",
+    "old_modules": [
+      "gauge"
+    ],
+    "new_module": "model"
+  },
+  {
+    "name": "watson_lineage",
+    "old_modules": [
+      "selection"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "watsonian_objective",
+    "old_modules": [
+      "gauge"
+    ],
+    "new_module": "imaginary"
+  },
+  {
+    "name": "weinberg_waves",
+    "old_modules": [
+      "model"
+    ],
+    "new_module": "model"
+  },
+  {
+    "name": "worker",
+    "old_modules": [
+      "run"
+    ],
+    "new_module": "run"
+  },
+  {
+    "name": "workspace",
+    "old_modules": [
+      "io"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "write_json",
+    "old_modules": [
+      "io"
+    ],
+    "new_module": "__init__"
+  },
+  {
+    "name": "zero_joint_duals",
+    "old_modules": [],
+    "new_module": "__init__"
+  }
+]

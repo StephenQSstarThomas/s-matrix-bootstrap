@@ -1,0 +1,7 @@
+{
+  "source": "results/runs/mainline_alignment_20260909/E_lower_path_01/center_path.npz",
+  "mu": 6.25e-05,
+  "selection": "smallest saved mu whose complete center is strictly inside combined chi",
+  "original_audit_required": true,
+  "old_feasibility_transferred": false
+}

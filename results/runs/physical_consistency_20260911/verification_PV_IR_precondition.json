@@ -1,0 +1,138 @@
+{
+  "tests_passed": 107,
+  "test_files": 3,
+  "test_log": "PV_IR_precondition_pytest.log",
+  "actual_production_failure": "PV_IR_ref_01/report.json",
+  "core": [
+    {
+      "path": "src/smatrix_bootstrap/__init__.py",
+      "lines": 337,
+      "bytes": 23059,
+      "sha256": "eab9d89f9c5aec186369fb48cef62f20db87a20a16512f8c8a6e7349a2a4473a"
+    },
+    {
+      "path": "src/smatrix_bootstrap/analysis.py",
+      "lines": 309,
+      "bytes": 23576,
+      "sha256": "7c858a1c763d7543dc7dbd167c495bcb8a156e69b7cf5e08de4e80c8153395ec"
+    },
+    {
+      "path": "src/smatrix_bootstrap/analytic.py",
+      "lines": 320,
+      "bytes": 19176,
+      "sha256": "f7b6ffb9bd6b520f00dec8653ff0864da6fe46eaa0ed5814bef7bd3c5c22a727"
+    },
+    {
+      "path": "src/smatrix_bootstrap/basis.py",
+      "lines": 350,
+      "bytes": 23483,
+      "sha256": "5eda7c08a5cea679958b47980c9972ada51358f6352698d8db10db91bd5abec3"
+    },
+    {
+      "path": "src/smatrix_bootstrap/certificates.py",
+      "lines": 260,
+      "bytes": 19417,
+      "sha256": "aedcd1b65d0e1908c84e129e570a119214994c2b38d4e325b543beb9b27a9ad3"
+    },
+    {
+      "path": "src/smatrix_bootstrap/conic.py",
+      "lines": 168,
+      "bytes": 12139,
+      "sha256": "750741dbe9b45584c24176cbdeb2cfafc585361d5b23cff5d79a501a247abf01"
+    },
+    {
+      "path": "src/smatrix_bootstrap/endpoints.py",
+      "lines": 169,
+      "bytes": 8980,
+      "sha256": "6b4dacd438e750ca61f285744cc0a152d16e3090581e22c77962f23b867005db"
+    },
+    {
+      "path": "src/smatrix_bootstrap/gauge.py",
+      "lines": 293,
+      "bytes": 23927,
+      "sha256": "9ef8f15e028e5de19dd5571892b392038ff3fd096885c11f8b8d7334ccdfe580"
+    },
+    {
+      "path": "src/smatrix_bootstrap/imaginary.py",
+      "lines": 222,
+      "bytes": 14147,
+      "sha256": "9ad338b253d2941310401d245a24cba4ab546926e5c9c630f80c7bd647c1828c"
+    },
+    {
+      "path": "src/smatrix_bootstrap/io.py",
+      "lines": 295,
+      "bytes": 23474,
+      "sha256": "328af2216f66e6782df6aae1ab273eb6d43c7c7a938d9eb9c5603a3630e2e143"
+    },
+    {
+      "path": "src/smatrix_bootstrap/ir.py",
+      "lines": 211,
+      "bytes": 16679,
+      "sha256": "e4bb92ec3a8a962820790314ab3472e6566288b1fcd7273515963dc9e2a54537"
+    },
+    {
+      "path": "src/smatrix_bootstrap/kernels.py",
+      "lines": 278,
+      "bytes": 18365,
+      "sha256": "790ebcdba291c80f17c4909a31ddf77ad6373748c2af41c7ce1a0c28b309172a"
+    },
+    {
+      "path": "src/smatrix_bootstrap/linear.py",
+      "lines": 227,
+      "bytes": 17566,
+      "sha256": "f0b21a627cae43bdf768fdfa5562e971544b33179c8b10caa464993817e5da6f"
+    },
+    {
+      "path": "src/smatrix_bootstrap/model.py",
+      "lines": 288,
+      "bytes": 19466,
+      "sha256": "be73b782a40652cf099e4f5ed480f56cb4d00e0f86aaddfe9698ccf83ea3b975"
+    },
+    {
+      "path": "src/smatrix_bootstrap/operators.py",
+      "lines": 329,
+      "bytes": 22720,
+      "sha256": "74cb905a1e9e881e3f3e5f7843d44e7e096e8c57e672f8f7abdbae336b78fc4e"
+    },
+    {
+      "path": "src/smatrix_bootstrap/quadrature.py",
+      "lines": 137,
+      "bytes": 6896,
+      "sha256": "7ec2a6b9336cd6035db06fdf8a028368ccd22e4d106cc5e16900c878b8d40fad"
+    },
+    {
+      "path": "src/smatrix_bootstrap/quotient.py",
+      "lines": 335,
+      "bytes": 24549,
+      "sha256": "32b669bec9e0b9af1c21bf464f2806411cdca87fffa6ff0593d7bb77dd3428e9"
+    },
+    {
+      "path": "src/smatrix_bootstrap/run.py",
+      "lines": 326,
+      "bytes": 23275,
+      "sha256": "7785590055bdd8d8bec61aecae7426d521017886bf989e06212adf9bd1890174"
+    },
+    {
+      "path": "src/smatrix_bootstrap/sampling.py",
+      "lines": 206,
+      "bytes": 16503,
+      "sha256": "1721242b79f55cc44cfd6667cd21f49e6a51c888263e4ca623b97383a340f4c9"
+    },
+    {
+      "path": "src/smatrix_bootstrap/scattering.py",
+      "lines": 305,
+      "bytes": 22745,
+      "sha256": "657a60a013a6fe636c5308d345e68f6ad58c680e94f82bb0d39fdee0ad2781ef"
+    },
+    {
+      "path": "src/smatrix_bootstrap/spectra.py",
+      "lines": 270,
+      "bytes": 22007,
+      "sha256": "10b7bc464cb216b00674c95fa4d1218543a7f8737a0707b20ea7e2b55d53de95"
+    }
+  ],
+  "linear_residual_gate_unchanged": 1e-06,
+  "physical_constraints_changed": false,
+  "original_objective_gradient_used_for_width": true,
+  "initial_state": "Restart same PV tip seed; failed IR_01 did not persist an intermediate point"
+}

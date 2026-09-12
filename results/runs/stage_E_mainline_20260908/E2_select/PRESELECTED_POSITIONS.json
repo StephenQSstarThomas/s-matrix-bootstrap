@@ -1,0 +1,6 @@
+{
+  "tip_source": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E1_tip_016",
+  "ref_x": 0.07332139057293466,
+  "mid_x": 0.08628472452183995,
+  "rule": "These positions and the full tip amplitude are frozen before viewing any E phase curves. Ref/mid use the corresponding full-space upper support search; no phase ranking."
+}

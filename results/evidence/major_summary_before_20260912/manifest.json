@@ -1,0 +1,17 @@
+[
+  {
+    "source": "STATUS.md",
+    "snapshot": "results/evidence/major_summary_before_20260912/STATUS.md.txt",
+    "sha256": "85a145c3ca012e25df904caa1d4637b0e2c2e517b2f58e6b7fa66a66d8d184a4"
+  },
+  {
+    "source": "SCIENCE.md",
+    "snapshot": "results/evidence/major_summary_before_20260912/SCIENCE.md.txt",
+    "sha256": "b3720347d258560e380cc1d92429e8436f0974eef2224ab2e04985a7569807a9"
+  },
+  {
+    "source": "REPRODUCTION_GUIDE_ZH.md",
+    "snapshot": "results/evidence/major_summary_before_20260912/REPRODUCTION_GUIDE_ZH.md.txt",
+    "sha256": "e6496304be95bade2867ce0d036e3c3dd31f40d8bbd076ab3bf6fe88464bc84b"
+  }
+]

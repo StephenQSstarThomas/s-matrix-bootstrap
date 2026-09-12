@@ -1,0 +1,56 @@
+{
+  "generated_column_sources": [
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E1_ref_column_002/oracle_000.npz",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E1_ref_column_005/oracle_000.npz",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_E_mainline_20260908/E1_ref_column_005/oracle_001.npz"
+  ],
+  "oracle_chiral_tolerance": 0.002,
+  "history": [
+    {
+      "iteration": 0,
+      "columns": 30,
+      "lower": 11.545507252010237,
+      "upper": 51.77037224129031,
+      "gap": 40.22486498928007,
+      "support_direction": [
+        188.86253100805817,
+        500.0
+      ],
+      "target": [
+        0.07332139070304022,
+        -0.004604312346440179
+      ],
+      "simplex_dual": 20.84518692535651,
+      "oracle_lower": 26.826011852979686,
+      "oracle_upper": 59.28881228787885,
+      "oracle_seconds": 123.02613336988725,
+      "oracle_primal_feasible": true,
+      "original_joint_feasible": true
+    },
+    {
+      "iteration": 1,
+      "columns": 31,
+      "lower": 11.60276143827874,
+      "upper": 62.40048450566831,
+      "gap": 50.79772306738957,
+      "support_direction": [
+        189.64339341300354,
+        500.0
+      ],
+      "target": [
+        0.07332139088869727,
+        -0.004604311879201193
+      ],
+      "simplex_dual": 20.966899884515943,
+      "oracle_lower": 27.496848422424048,
+      "oracle_upper": 69.97195485667245,
+      "oracle_seconds": 123.43174062296748,
+      "oracle_primal_feasible": true,
+      "original_joint_feasible": true
+    }
+  ],
+  "support_direction": [
+    188.86253100805817,
+    500.0
+  ]
+}

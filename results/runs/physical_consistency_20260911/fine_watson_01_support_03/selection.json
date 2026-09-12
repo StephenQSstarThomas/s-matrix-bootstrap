@@ -1,0 +1,80 @@
+{
+  "role": "tip",
+  "color": "red",
+  "rule": "2403 Watsonian from a fixed initial role; projection coordinates released",
+  "selection_template": null,
+  "reference": [
+    0.07332139057293466,
+    -0.00488809270486231
+  ],
+  "target": [
+    0.08309992398355934,
+    -0.005440660317561435
+  ],
+  "epsilon": 0.002,
+  "source_reports": [
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_watson_01_support_03/report.json"
+  ],
+  "source_coefficients": [
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_watson_01_support_03/coefficients.json"
+  ],
+  "source_joint": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_watson_01_support_03/joint.npz",
+  "model_signature": {
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "zero",
+    "unitarity_scope": "sampled",
+    "prescription": "analytic-cardinal",
+    "chiral_norm": "separate-l2",
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare",
+    "current_preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current",
+    "chiral_tolerance": 0.002,
+    "uv_config": {
+      "moment_source": "printed",
+      "sr_error": "raw-absolute",
+      "cutoff": "hard-midpoint",
+      "mq_rule": "arithmetic-mean",
+      "pion_mass_gev": 0.14,
+      "matching_energy_gev": 1.2,
+      "up_mass_gev": 0.004,
+      "down_mass_gev": 0.0073,
+      "alpha_s": 0.4,
+      "gluon_condensate_gev4": 0.023,
+      "scalar_condensate_gev4": -0.0001,
+      "sr_tolerance": 0.002,
+      "ff_tolerance": 6e-05
+    },
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": true,
+    "additional_constraints": {
+      "kind": "explicit-analytic-samples",
+      "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare"
+    },
+    "sampling_nodes": 285,
+    "scattering_samples": 3582,
+    "ff_endpoint_order": 2
+  },
+  "representative_center_converged": true,
+  "exact_extremizer_claimed": false,
+  "joint_feasible": true,
+  "selection_uses_phase_data": true,
+  "selection_uses_paper_marker_coordinates": false,
+  "coefficients_mixed": false,
+  "finite_only": true,
+  "initial_target": [
+    0.09317173379302376,
+    -0.005959179092505098
+  ],
+  "initial_selection": "results/runs/physical_consistency_20260911/fine_UV_selected/tip/selection.json",
+  "watson_iteration": 1,
+  "watson_reference": "results/runs/physical_consistency_20260911/fine_UV_selected/tip/coefficients.json",
+  "uses_previous_bootstrap_form_factor_phase": true,
+  "initial_selection_uses_phase_data": false,
+  "selection_uses_experimental_data": false,
+  "objective_kind": "watson",
+  "support_optimality_certified": false,
+  "coefficient_sha256": "a4e5d2c635e07489937a23cef4a40a5f09e51fadc21997d90e5d88ad4a53a8f2",
+  "current_sha256": "d5c032833d127b6f326c21cd9297f1961861117bdf67afc28da310ae1bd158ff",
+  "joint_sha256": "475e68f0f02fa5f8cf721eae3a80f0d0258b465d0eef786cd9cae38694771146"
+}

@@ -1,0 +1,34 @@
+{
+  "report": "results/full_barrier_Newton_N10_terminal_256.json",
+  "report_sha256": "653a53d92c6041bbdd81937140637de9af23bf70c3641c0532c7fe407e91ad26",
+  "system_path": "results/full_barrier_Newton_N10_terminal_256.system.json.gz",
+  "system_sha256": "eef7a201be422d691a73a666dd2a7446dadf8afa0f587f4090045ad0caf8c1dd",
+  "precision_bits": 320,
+  "dimension": 367,
+  "Newton_residual_all_components_contain_zero": true,
+  "Newton_residual_infinity_upper": "1519173412064391677271901326146535364360539/26959946667150639794667015087019630673637144422540572481103610249216",
+  "independently_recomputed_lambda_squared": {
+    "lower": "39403867177198378871068610898956695308312209070729467/1496577676626844588240573268701473812127674924007424",
+    "upper": "39403867177198378871068610898956695316255069820659963/1496577676626844588240573268701473812127674924007424",
+    "ball": "[26.32931640809400217765987612370336182 +/- 7.23e-36]"
+  },
+  "spectral_free_coordinate_count": 86,
+  "spectral_conditional_decrement_squared": {
+    "lower": "1008934963531246921900006835817356371244799666684744664374537365784836293397/113078212145816597093331040047546785012958969400039613319782796882727665664",
+    "upper": "1008934963531246921900006835817356371244799666684744664374537368443239748373/113078212145816597093331040047546785012958969400039613319782796882727665664",
+    "ball": "[8.9224523839323288693998398297056273461571948578279215823169307 +/- 3.64e-62]"
+  },
+  "remaining_Schur_complement_decrement_squared": {
+    "lower": "1968337062917536494695751438157815149564181165987724028175212497036893058283/113078212145816597093331040047546785012958969400039613319782796882727665664",
+    "upper": "1968337062917536494695751438157815150164326756758711391877582381962321032427/113078212145816597093331040047546785012958969400039613319782796882727665664",
+    "ball": "[17.40686402416167330826003629399773448 +/- 4.24e-36]"
+  },
+  "spectral_fraction_of_full_decrement": {
+    "lower": "7738628306707683782527953998448418784760322357/22835963083295358096932575511191922182123945984",
+    "upper": "7738628306707683782527953998448418786320265319/22835963083295358096932575511191922182123945984",
+    "ball": "[0.3388789988178136487814494709001972769 +/- 6.25e-38]"
+  },
+  "identity": "lambda\u00b2=g_rho.T H_rhorho^-1 g_rho + g_reduced.T H_Schur^-1 g_reduced",
+  "scope": "Independent arithmetic on the complete archived interval system, not an independent reconstruction of physical projection operators. No primal point moved.",
+  "script_source_utf8": "\"\"\"Independently reread a full Newton enclosure and partition its spectral block.\"\"\"\nimport argparse\nfrom fractions import Fraction as F\nimport gzip\nimport hashlib\nimport json\nfrom pathlib import Path\n\n\ndef main():\n    from flint import arb,arb_mat,ctx\n    p=argparse.ArgumentParser(description=__doc__)\n    p.add_argument('report',type=Path)\n    p.add_argument('--output',type=Path,required=True)\n    args=p.parse_args()\n    if args.output.exists():raise FileExistsError('Use a new immutable output path')\n    raw=args.report.read_bytes();report=json.loads(raw);r=report['result']\n    spec=report['system_enclosures'];path=Path(spec['path'])\n    if hashlib.sha256(path.read_bytes()).hexdigest()!=spec['sha256']:raise ValueError('System hash mismatch')\n    system=json.load(gzip.open(path,'rt'));seed=json.loads(Path(report['seed_path']).read_text())\n    if hashlib.sha256(Path(report['seed_path']).read_bytes()).hexdigest()!=report['seed_sha256']:\n        raise ValueError('Seed hash mismatch')\n    source=json.loads(Path(seed['source_seed']).read_text())\n    rho=next(v for v in source['original_variable_map'] if v['name']=='rho_over_k_squared')\n    free=r['equality']['free_columns']\n    selected=[i for i,j in enumerate(free) if rho['offset']<=seed['current_to_original_columns'][j]<rho['offset']+rho['size']]\n    old=ctx.prec\n    try:\n        ctx.prec=320\n        def ball(q):q=F(q);return arb(q.numerator)/q.denominator\n        def enclosure(bounds):\n            lo,hi=map(F,bounds)\n            if lo>hi:raise ValueError('Reversed interval')\n            return ball((lo+hi)/2)+arb(0,ball((hi-lo)/2).upper())\n        def interval(v):return dict(lower=str(v.lower().fmpq()),upper=str(v.upper().fmpq()),ball=str(v))\n        n=system['dimension'];H=arb_mat(n,n);k=0\n        for i in range(n):\n            for j in range(i+1):H[i,j]=H[j,i]=enclosure(system['Hessian_lower_triangle_bounds'][k]);k+=1\n        g=arb_mat([[enclosure(v)] for v in system['gradient_bounds']])\n        direction=arb_mat([[enclosure([v['lower_rational'],v['upper_rational']])] for v in r['free_direction_enclosures']])\n        residual=H*direction+g;lam=-(g.transpose()*direction)[0,0]\n        Hrr=arb_mat([[H[i,j] for j in selected] for i in selected]);gr=arb_mat([[g[i,0]] for i in selected])\n        conditional=(gr.transpose()*Hrr.solve(gr))[0,0]\n        remaining=lam-conditional\n        out=dict(report=str(args.report),report_sha256=hashlib.sha256(raw).hexdigest(),\n            system_path=str(path),system_sha256=spec['sha256'],precision_bits=320,dimension=n,\n            Newton_residual_all_components_contain_zero=all(residual[i,0].contains(0) for i in range(n)),\n            Newton_residual_infinity_upper=str(max(abs(residual[i,0]).upper() for i in range(n)).fmpq()),\n            independently_recomputed_lambda_squared=interval(lam),spectral_free_coordinate_count=len(selected),\n            spectral_conditional_decrement_squared=interval(conditional),\n            remaining_Schur_complement_decrement_squared=interval(remaining),\n            spectral_fraction_of_full_decrement=interval(conditional/lam),\n            identity='lambda\u00b2=g_rho.T H_rhorho^-1 g_rho + g_reduced.T H_Schur^-1 g_reduced',\n            scope='Independent arithmetic on the complete archived interval system, not an independent reconstruction of physical projection operators. No primal point moved.',\n            script_source_utf8=Path(__file__).read_text())\n        args.output.write_text(json.dumps(out,indent=2)+'\\n')\n        print(json.dumps({k:v for k,v in out.items() if k not in ['script_source_utf8','Newton_residual_infinity_upper']}),flush=True)\n    finally:ctx.prec=old\n\n\nif __name__=='__main__':main()\n"
+}

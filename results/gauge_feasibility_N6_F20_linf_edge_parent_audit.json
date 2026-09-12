@@ -1,0 +1,22 @@
+{
+  "candidate": "results/gauge_feasibility_N6_F20_linf_edge.json",
+  "candidate_sha256": "15207242466a577aa8ba8b3b786d752392f868519c2a0176a56d6d7d04bd11df",
+  "passes_parent_finite_numerical_audit": true,
+  "values": {
+    "min_training_unitarity_circle_margin": 1.5122676880048682e-88,
+    "min_training_unitarity_relative_margin": 0.00013878616341444185,
+    "min_current_gram_eigenvalue": 5.96740084044453e-10,
+    "min_conditioned_current_gram_eigenvalue": 2.3154508791734386e-05,
+    "chiral_residual": 0.001999931090541797,
+    "chiral_tolerance": 0.002,
+    "selected_moment_residual_norm": 0.001999782325758829,
+    "moment_tolerance": 0.002,
+    "max_current_high_FF_ratio": 0.9998891835422846,
+    "amplitude_at_infinity": 6.127043317150083e-15,
+    "vector_F_at_infinity": 0.005543753715234986
+  },
+  "scope": "Original finite scattering/current/chi/moment/FF constraints for free-coordinate candidates; numerical eigenvalues and double-generated quadrature. Extra global edge certificates audited separately.",
+  "angular_points": 160,
+  "summation": "numpy clongdouble/longdouble; eigvalsh float64",
+  "script_sha256": "ae0913411043b073c7619639d2d4716f43b0238aca18b21f9d29145fd649c459"
+}

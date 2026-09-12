@@ -1,0 +1,28 @@
+{
+  "status": "predeclared_before_new_regulator_runs",
+  "source": "https://arxiv.org/html/2103.11484v3",
+  "anchors": [
+    "Sec3.3/Eq3.23",
+    "Sec6/Fig3"
+  ],
+  "prescription": "pv-midpoint",
+  "preparation": "results/runs/stage_B_pv_M50_L10_prepare_20260907",
+  "nodes": 50,
+  "waves_per_isospin": 10,
+  "initial_direction": [
+    1,
+    0
+  ],
+  "initial_chiral_epsilon": 0.002,
+  "actual_density_limits": [
+    100,
+    1000,
+    10000,
+    100000,
+    377500
+  ],
+  "density_norm": "fixed combinedordinaryL4 ofactual nodalrho1 andrho2uppertriangle; onlyBvaries",
+  "selection_rule": "Require a resolved stable regulator interval before adopting a common scanB; compare at least successive decades, then neighboringM and remaininginitialdirections/epsilons. Preserve allupturn/failure data. Do notchooseBbyPDFdistance.",
+  "initial_plateau_resolution": "Relative supportchange <=1percent using validated brackets, subject to confirmation over neighboringresolution and relevant directions; unresolvedbrackets do notpass.",
+  "scope": "Regulatorstability study motivated by source; no physicalquark/chiral/UVparameter tuning andnoregulator selectedyet"
+}

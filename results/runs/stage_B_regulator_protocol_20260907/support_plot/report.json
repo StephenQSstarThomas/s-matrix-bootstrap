@@ -1,0 +1,205 @@
+{
+  "command": "regulators",
+  "status": "no_preset_platform",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "regulators",
+    "support_runs": [
+      "results/runs/stage_B_pv_chiral_M50_reg100_units_20260907",
+      "results/runs/stage_B_pv_chiral_M50_reg1000_barrier_20260907",
+      "results/runs/stage_B_pv_chiral_M50_reg10000_finish_20260907",
+      "results/runs/stage_B_pv_chiral_M50_reg100000_finish_20260907",
+      "results/runs/stage_B_pv_chiral_M50_barrier_20260907"
+    ],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_regulator_protocol_20260907/support_plot",
+    "density_limit": null,
+    "preparation": "results/runs/stage_A_M50_L10_20260906",
+    "prescription": "auto",
+    "solver": "barrier",
+    "unitarity_scope": "strengthened",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "constraint_generation": false,
+    "working_state": null,
+    "density_cone": "soc",
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": null,
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "seconds": 60.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "8"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Supplied fixed finite problem only; no claim outside the supplied sequence or for other directions",
+  "prescription": "pv-midpoint",
+  "identity": [
+    50,
+    10,
+    "pv-midpoint",
+    "sampled",
+    "free",
+    "chiral",
+    0.002,
+    "results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    [
+      1.0,
+      0.0
+    ],
+    null
+  ],
+  "rows": [
+    {
+      "B": 100.0,
+      "lower": 0.08506347530548707,
+      "upper": 0.08508377988274594,
+      "report": "results/runs/stage_B_pv_chiral_M50_reg100_units_20260907/report.json"
+    },
+    {
+      "B": 1000.0,
+      "lower": 0.08639829329429484,
+      "upper": 0.08644023407696748,
+      "report": "results/runs/stage_B_pv_chiral_M50_reg1000_barrier_20260907/report.json"
+    },
+    {
+      "B": 10000.0,
+      "lower": 0.08818109250519508,
+      "upper": 0.08822508618257979,
+      "report": "results/runs/stage_B_pv_chiral_M50_reg10000_finish_20260907/report.json"
+    },
+    {
+      "B": 100000.0,
+      "lower": 0.09577199350552083,
+      "upper": 0.09581859723153072,
+      "report": "results/runs/stage_B_pv_chiral_M50_reg100000_finish_20260907/report.json"
+    },
+    {
+      "B": 377500,
+      "lower": 0.10588509849925651,
+      "upper": 0.10594017578424922,
+      "report": "results/runs/stage_B_pv_chiral_M50_barrier_20260907/report.json"
+    }
+  ],
+  "windows": [
+    {
+      "B_interval": [
+        100.0,
+        10000.0
+      ],
+      "growth_interval": [
+        0.03640309147898164,
+        0.0371676664483609
+      ],
+      "status": "excluded"
+    },
+    {
+      "B_interval": [
+        100.0,
+        100000.0
+      ],
+      "growth_interval": [
+        0.1256198729946451,
+        0.12643642747276618
+      ],
+      "status": "excluded"
+    },
+    {
+      "B_interval": [
+        100.0,
+        377500
+      ],
+      "growth_interval": [
+        0.24448042441434645,
+        0.24542496534250455
+      ],
+      "status": "excluded"
+    },
+    {
+      "B_interval": [
+        1000.0,
+        100000.0
+      ],
+      "growth_interval": [
+        0.10795620266650639,
+        0.10903344936627274
+      ],
+      "status": "excluded"
+    },
+    {
+      "B_interval": [
+        1000.0,
+        377500
+      ],
+      "growth_interval": [
+        0.2249515475047774,
+        0.22618366341323082
+      ],
+      "status": "excluded"
+    }
+  ],
+  "relative_budget": 0.01,
+  "minimum_decades": 2,
+  "regulator_selected": false,
+  "elapsed_seconds": 0.6815933941397816,
+  "core_sources": {
+    "__init__.py": "2b942f4174b12cec4c509d89e879052dbe588f8b79a1732eb27cf9698c989c57",
+    "analysis.py": "0a1018b1806e7139e0495ef74f58bda84a288e4964eb8e9c8ea5dba1f143529a",
+    "imaginary.py": "ad958e4eb800dee73dfcc35665fcf32af9a4ef3c1677ef1494dfdb83d1d42fb4",
+    "io.py": "5ab209f0688ce63d293ed590aba7de99ff777487ebbe19f88cb2198a5e91f987",
+    "kernels.py": "46df7b2c237f240d9f9ae2c3f6407920614ed647c1b88f350c36d95b0a144a12",
+    "linear.py": "2d96d00565c4ef1974964a8c41bef952d6d94a76879f2d642dd5ea9e3b97774c",
+    "model.py": "74d9fb96db5c6bdaa0dca194557ba1b9f26c1ace7d0b8ae2ed95a17a97a71c45",
+    "operators.py": "37e9d85a22a76352ca2d5d861bea8c3d47b7936ea0b14a39b5204a6b2630a83f",
+    "quotient.py": "42bd19fcc1ab6281c3ab8a3209d4b650f838289024397637a89cf09131718dca",
+    "run.py": "75422f6686c32f97928e2f26c67ab60f6a97c0e59a2dec3feb51bfe01656680d"
+  },
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 60.0,
+  "supervisor_seconds": 0.9188336129300296
+}

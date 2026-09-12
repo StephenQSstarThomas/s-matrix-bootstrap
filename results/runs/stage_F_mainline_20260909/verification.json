@@ -1,0 +1,115 @@
+{
+  "tests": {
+    "command": "SMATRIX_BLAS_THREADS=2 PYTHONPATH=/tmp/collocation_arb:src /home/shiqiu/miniconda3/bin/python -m pytest -q",
+    "passed": 120,
+    "failed": 0,
+    "seconds": 12.52
+  },
+  "modules": [
+    {
+      "path": "src/smatrix_bootstrap/__init__.py",
+      "lines": 314,
+      "bytes": 19023
+    },
+    {
+      "path": "src/smatrix_bootstrap/analysis.py",
+      "lines": 297,
+      "bytes": 24439
+    },
+    {
+      "path": "src/smatrix_bootstrap/figures.py",
+      "lines": 293,
+      "bytes": 22981
+    },
+    {
+      "path": "src/smatrix_bootstrap/gauge.py",
+      "lines": 278,
+      "bytes": 19929
+    },
+    {
+      "path": "src/smatrix_bootstrap/imaginary.py",
+      "lines": 321,
+      "bytes": 24133
+    },
+    {
+      "path": "src/smatrix_bootstrap/io.py",
+      "lines": 326,
+      "bytes": 22142
+    },
+    {
+      "path": "src/smatrix_bootstrap/joint.py",
+      "lines": 215,
+      "bytes": 19467
+    },
+    {
+      "path": "src/smatrix_bootstrap/kernels.py",
+      "lines": 340,
+      "bytes": 19965
+    },
+    {
+      "path": "src/smatrix_bootstrap/linear.py",
+      "lines": 303,
+      "bytes": 22640
+    },
+    {
+      "path": "src/smatrix_bootstrap/model.py",
+      "lines": 331,
+      "bytes": 16996
+    },
+    {
+      "path": "src/smatrix_bootstrap/operators.py",
+      "lines": 350,
+      "bytes": 23213
+    },
+    {
+      "path": "src/smatrix_bootstrap/quotient.py",
+      "lines": 335,
+      "bytes": 21148
+    },
+    {
+      "path": "src/smatrix_bootstrap/resolution.py",
+      "lines": 249,
+      "bytes": 20585
+    },
+    {
+      "path": "src/smatrix_bootstrap/run.py",
+      "lines": 336,
+      "bytes": 24565
+    },
+    {
+      "path": "src/smatrix_bootstrap/selection.py",
+      "lines": 180,
+      "bytes": 15125
+    }
+  ],
+  "test_files": [
+    {
+      "path": "tests/test_kernels.py",
+      "lines": 350,
+      "bytes": 20813
+    },
+    {
+      "path": "tests/test_linear.py",
+      "lines": 350,
+      "bytes": 28666
+    },
+    {
+      "path": "tests/test_mainline.py",
+      "lines": 350,
+      "bytes": 26600
+    }
+  ],
+  "structure_passed": true,
+  "original_constraint_totals": {
+    "scattering_disks": 7650,
+    "current_grams": 510,
+    "chiral_balls": 10,
+    "density_bounds": 5,
+    "FESR": 20,
+    "FF_caps": 74,
+    "fresh_primary_samples": 669
+  },
+  "all_five_supports_and_fresh_native_checks_passed": true,
+  "source_cleanup": "Removed F projected-pool/SOC4 initializer; original D hull and historical inputs/source_snapshot_utf8 retained",
+  "scope": "Declared finite operators and fresh native primary waves; not continuum certification"
+}

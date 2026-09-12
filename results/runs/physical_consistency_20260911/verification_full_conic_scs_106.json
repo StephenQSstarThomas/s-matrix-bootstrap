@@ -1,0 +1,124 @@
+{
+  "tests_passed": 106,
+  "test_seconds": 10.61,
+  "modules": 20,
+  "test_files": 3,
+  "files": {
+    "src/smatrix_bootstrap/endpoints.py": {
+      "lines": 169,
+      "bytes": 8980,
+      "sha256": "6b4dacd438e750ca61f285744cc0a152d16e3090581e22c77962f23b867005db"
+    },
+    "src/smatrix_bootstrap/analysis.py": {
+      "lines": 309,
+      "bytes": 23455,
+      "sha256": "accca416d41e7de5f1f306c9b3200c2787ce73f00ceb9e73cee1cf90aa9f0ef8"
+    },
+    "src/smatrix_bootstrap/model.py": {
+      "lines": 288,
+      "bytes": 19466,
+      "sha256": "be73b782a40652cf099e4f5ed480f56cb4d00e0f86aaddfe9698ccf83ea3b975"
+    },
+    "src/smatrix_bootstrap/io.py": {
+      "lines": 262,
+      "bytes": 21063,
+      "sha256": "f368531ec06a54b1e65a76d39de402cbeb205873ae7964246c7cebc643a3d779"
+    },
+    "src/smatrix_bootstrap/operators.py": {
+      "lines": 329,
+      "bytes": 22720,
+      "sha256": "74cb905a1e9e881e3f3e5f7843d44e7e096e8c57e672f8f7abdbae336b78fc4e"
+    },
+    "src/smatrix_bootstrap/basis.py": {
+      "lines": 350,
+      "bytes": 23483,
+      "sha256": "5eda7c08a5cea679958b47980c9972ada51358f6352698d8db10db91bd5abec3"
+    },
+    "src/smatrix_bootstrap/scattering.py": {
+      "lines": 264,
+      "bytes": 19378,
+      "sha256": "a7663475183e507a4b8b904a832803fa643703ce7e0d98422c3ff0278e93d7f5"
+    },
+    "src/smatrix_bootstrap/__init__.py": {
+      "lines": 341,
+      "bytes": 23915,
+      "sha256": "9e65f9de80eaceb49fe41feb6d29c8335cafa24f7fa588f46d1b63cd66ff6cbb"
+    },
+    "src/smatrix_bootstrap/quadrature.py": {
+      "lines": 137,
+      "bytes": 6896,
+      "sha256": "7ec2a6b9336cd6035db06fdf8a028368ccd22e4d106cc5e16900c878b8d40fad"
+    },
+    "src/smatrix_bootstrap/gauge.py": {
+      "lines": 291,
+      "bytes": 23663,
+      "sha256": "4fbfb5b647cafd1e3feea523a89c31d4051c469a833eba0a20d0b4b819f97829"
+    },
+    "src/smatrix_bootstrap/quotient.py": {
+      "lines": 335,
+      "bytes": 24549,
+      "sha256": "32b669bec9e0b9af1c21bf464f2806411cdca87fffa6ff0593d7bb77dd3428e9"
+    },
+    "src/smatrix_bootstrap/certificates.py": {
+      "lines": 255,
+      "bytes": 18914,
+      "sha256": "726151e3225eda13f82260d589b4a503c1ebd3afdbdddd05831e440a7efc66a4"
+    },
+    "src/smatrix_bootstrap/analytic.py": {
+      "lines": 320,
+      "bytes": 19176,
+      "sha256": "f7b6ffb9bd6b520f00dec8653ff0864da6fe46eaa0ed5814bef7bd3c5c22a727"
+    },
+    "src/smatrix_bootstrap/conic.py": {
+      "lines": 161,
+      "bytes": 11308,
+      "sha256": "90e83ce342f67dbd35b845204dd7f1f7927bcc50bf920835dc16284902f64944"
+    },
+    "src/smatrix_bootstrap/kernels.py": {
+      "lines": 278,
+      "bytes": 18365,
+      "sha256": "790ebcdba291c80f17c4909a31ddf77ad6373748c2af41c7ce1a0c28b309172a"
+    },
+    "src/smatrix_bootstrap/imaginary.py": {
+      "lines": 314,
+      "bytes": 23213,
+      "sha256": "fbf4ac702058f5c14733b572c7f3091db9cb65209ca2638968c3578f00a9b488"
+    },
+    "src/smatrix_bootstrap/run.py": {
+      "lines": 313,
+      "bytes": 22296,
+      "sha256": "b8c26f63dd637a36c1b97fdda612a19f1a3bca445501c8057e4dc4fd4e3f83a1"
+    },
+    "src/smatrix_bootstrap/spectra.py": {
+      "lines": 238,
+      "bytes": 18914,
+      "sha256": "07489253c120fe925489a5c4560980a30128012ab61972c04aa1ee3adfd528a4"
+    },
+    "src/smatrix_bootstrap/linear.py": {
+      "lines": 191,
+      "bytes": 14456,
+      "sha256": "48d6330a638c28310c87860ecb5b70ce4396dce01878eff8c5855d96d643d0e2"
+    },
+    "src/smatrix_bootstrap/sampling.py": {
+      "lines": 178,
+      "bytes": 14262,
+      "sha256": "a35babe3bfbc2d4b1002e4c4144242a436c2c5bffb5ac4ad34363bd4e0b275bd"
+    },
+    "tests/test_mainline.py": {
+      "lines": 350,
+      "bytes": 29431,
+      "sha256": "ca86f1daa9ddd9d38f158ec63c66fb1cb1038b06f4b444d9b8b79934a8054050"
+    },
+    "tests/test_kernels.py": {
+      "lines": 350,
+      "bytes": 22212,
+      "sha256": "18f3f7ce416ab1586f3191aa5ced625527ab4ecb2b276ded6a56c41b19a525e4"
+    },
+    "tests/test_linear.py": {
+      "lines": 350,
+      "bytes": 29776,
+      "sha256": "89c8026f03f52fda402c2f45d7a407ef40e6fbfec0080252aaf08f8f7aab110a"
+    }
+  },
+  "scope": "Cone identities, full spectrum retention, SCS row/PSD ordering and one known-feasible solver-interface control; not the full QCD result"
+}

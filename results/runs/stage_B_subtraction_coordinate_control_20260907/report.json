@@ -1,0 +1,14 @@
+{
+  "M": 3,
+  "rows": 141,
+  "columns": 22,
+  "source_comparison": "Independent SineSourceRows(subtracted=False/True), full native, chi, infinity and target rows in actual-rho dual coordinates",
+  "maximum_row_difference": 8.493639819251442e-16,
+  "maximum_vector_difference_from_Arb": 0.0,
+  "maximum_roundtrip_error": 1.3552527156068805e-20,
+  "density_components_unchanged": true,
+  "matrix_dtype": "float64",
+  "vector_dtype": "float128",
+  "row_conversion_seconds": 0.0006011899095028639,
+  "scope": "Equivalent subtraction coordinates; no physical constraint changed, no M50 optimization performed"
+}

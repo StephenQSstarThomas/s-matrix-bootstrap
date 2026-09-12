@@ -1,0 +1,62 @@
+{
+  "created_utc": "2026-09-11T23:25:50.596314+00:00",
+  "scope": "Only three current leading summaries updated; all historical suffixes preserved byte-for-byte",
+  "scientific_calculations_performed": false,
+  "production_source_or_physical_inputs_modified": false,
+  "PROGRESS_modified": false,
+  "files": {
+    "STATUS.md": {
+      "before_snapshot": "results/evidence/pv_chain_summary_before_20260911/STATUS.md.txt",
+      "before_sha256": "a7b44e1657b17018c5c8b12e526cceb15e900de06e8a6551f94cd993b476a4fe",
+      "after_sha256": "81829f9d3dd640947dce5bc4cab3c070b2cb441c869a74bec8b57e92d7d6aeca",
+      "historical_boundary": "## 历史中间模型：3123盘",
+      "historical_suffix_sha256": "48ff2b3e3528df728a819c7dafffcad94d0296a3044a6c22fa16b671183c3650",
+      "historical_suffix_byte_identical": true,
+      "backup_mode": "0o444"
+    },
+    "SCIENCE.md": {
+      "before_snapshot": "results/evidence/pv_chain_summary_before_20260911/SCIENCE.md.txt",
+      "before_sha256": "537c2767529132097d73a35b911ee62420bf25f2a926c17319ea64321a470c3b",
+      "after_sha256": "5d45f6d54f4900754c3a7efeea99f4862fb4845377b6994e52ae9c3d16225d07",
+      "historical_boundary": "## Historical 1500-disk analytic branch record (2026-09-11)",
+      "historical_suffix_sha256": "02cedd17614dcf82f04554fe4cf4c57dffd93656446fe641e9860c2104979282",
+      "historical_suffix_byte_identical": true,
+      "backup_mode": "0o444"
+    },
+    "REPRODUCTION_GUIDE_ZH.md": {
+      "before_snapshot": "results/evidence/pv_chain_summary_before_20260911/REPRODUCTION_GUIDE_ZH.md.txt",
+      "before_sha256": "89a81e367b29b5e6361f565bd437705379f6d9070df958bd096da8d744e2b1f7",
+      "after_sha256": "ab4ea445fad31ac6bd716110b0df9cea90475a8fc944b0ff43be31f543dc564d",
+      "historical_boundary": "**下文保留历史说明。**",
+      "historical_suffix_sha256": "b426c00cb903ce8695f1ebde50b6e9f4ccd49147581569186ea33b90eae111f6",
+      "historical_suffix_byte_identical": true,
+      "backup_mode": "0o444"
+    }
+  },
+  "evidence_sha256": {
+    "results/runs/physical_consistency_20260911/PV_IR_ref_05/report.json": "d64e0f9afc96cf2398723c443cee9cdb995297a1dec1ab4aa7fbde6144d8310b",
+    "results/runs/physical_consistency_20260911/PV_IR_selected/report.json": "acbd0a55f01f9c5be77fa8b732039757dfdeb9b6a313ff83dadfc28347a0c62b",
+    "results/runs/physical_consistency_20260911/PV_tip_support_01/report.json": "fac62c2871c57f5398b129f20b753f711312cd5cd4f45045069adb06e808ab39",
+    "results/runs/physical_consistency_20260911/PV_UV_ref_support_02/report.json": "5aad6c7b3095e8649859b1621464e17f7beaea3ef77b831dd7ca53647affb227",
+    "results/runs/physical_consistency_20260911/PV_UV_mid_support_02/report.json": "590d9efbbcd5f7d897701d01c02eaab2eabde2f5e9970b34c5e26bdfc0c84961",
+    "results/runs/physical_consistency_20260911/PV_UV_selected/report.json": "68c3f9c2320cea67bf2286f911b47e9ba63ae37601b0b7867fd9ed79cd987ba0",
+    "results/runs/physical_consistency_20260911/PV_IR_native/report.json": "03a18d3a361e5a3cd3d0140ade06c7dc2c5b1f0a3f0d27709424c41448e9183e",
+    "results/runs/physical_consistency_20260911/PV_UV_tip_native/report.json": "7ebf2e200d7fd2c4ecea6065df77aa4353d978b99578a4f8dee12aac241e6f0d",
+    "results/runs/physical_consistency_20260911/PV_UV_mid_native/report.json": "b7ee1857224bce8b30738782e141560ceb7a5cb13ebbf1fd357d5fd94e32e450",
+    "results/runs/physical_consistency_20260911/PV_UV_ref_native/report.json": "3356898babdbb4dd7149df43a14d5236c61b421bd1b505d6e66788f103dfa5d9",
+    "results/runs/physical_consistency_20260911/PV_native_phases/phases.json": "3025a4c57fb7b371bc813f697ff6d52d8e543828513321cdbd0d48848740cc1b",
+    "results/runs/physical_consistency_20260911/PV_F_REPRESENTATIVE_RULE.json": "c7365b9acc891a42a09b8e853ddd286396eb8e7e385c03ac85b27e734423ad81",
+    "results/runs/physical_consistency_20260911/PV_F_REUSE_INVENTORY.json": "0bfc4c9a83848f9401484e02a6a7967be0c7866da79c7844e7efdf9633cfd46d"
+  },
+  "parent_reported_validation": {
+    "tests": 107,
+    "core_modules": 21,
+    "test_files": 3,
+    "tests_not_rerun_for_document_edit": true
+  },
+  "parent_reported_min_eta_P1_tip_mid_ref": [
+    0.775985,
+    0.434728,
+    0.243206
+  ]
+}

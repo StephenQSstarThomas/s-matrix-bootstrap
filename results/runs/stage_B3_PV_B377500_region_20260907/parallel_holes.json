@@ -1,0 +1,929 @@
+{
+  "jobs": [
+    {
+      "epsilon": 0.0006,
+      "direction": [
+        97.83942320693748,
+        1544.4788515390815
+      ],
+      "metric_normal": [
+        -0.3758332446357925,
+        0.9266873109234488
+      ],
+      "distance": 0.039405411737992974,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_62",
+      "vertex": 8,
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps0006_adaptive_007_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 111.4930930807809,
+      "run": "results/runs/stage_B3_pv_M50_eps0006_parallel_001_20260907",
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "release_hold_on_start": true,
+      "lower": 0.5914475971574397,
+      "upper": 0.5919190648497926
+    },
+    {
+      "epsilon": 0.0002,
+      "direction": [
+        -298.5370428041737,
+        -4561.807248991742
+      ],
+      "metric_normal": [
+        0.40938561885080405,
+        -0.9123614497983484
+      ],
+      "distance": 0.04820186043481496,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_62",
+      "vertex": 0,
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps0002_adaptive_003_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 90.19964273942621,
+      "run": "results/runs/stage_B3_pv_M50_eps0002_parallel_001_20260907",
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "release_hold_on_start": false,
+      "lower": 1.0553175839839815,
+      "upper": 1.0558099374208303
+    },
+    {
+      "epsilon": 0.002,
+      "direction": [
+        -3.4029460696181233,
+        -232.2200737768316
+      ],
+      "metric_normal": [
+        0.8856045106820151,
+        -0.46444014755366325
+      ],
+      "distance": 0.04725207033988431,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_62",
+      "vertex": 1,
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps002_adaptive_005_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 113.53610088242868,
+      "run": "results/runs/stage_B3_pv_M50_eps002_parallel_001_20260907",
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "release_hold_on_start": true,
+      "lower": 1.2544704783675695,
+      "upper": 1.2549459798101572
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps0002_parallel_002_20260907",
+      "epsilon": 0.0002,
+      "direction": [
+        -246.8917659058768,
+        -3559.7135951037194
+      ],
+      "metric_normal": [
+        -0.7022375416006681,
+        -0.7119427190207439
+      ],
+      "distance": 0.0419766682581487,
+      "vertex": 9,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_71",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps0002_adaptive_008_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 107.95023403349462,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.829234414280973,
+      "upper": 0.8297244464373037
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps004_parallel_001_20260907",
+      "epsilon": 0.004,
+      "direction": [
+        -10.27196390598828,
+        -231.43769469663943
+      ],
+      "metric_normal": [
+        0.3781342295747397,
+        -0.9257507787865576
+      ],
+      "distance": 0.03145630019832115,
+      "vertex": 1,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_71",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps004_adaptive_005_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 102.42846293465023,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.8094954672550738,
+      "upper": 0.8099546297104724
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps006_parallel_001_20260907",
+      "epsilon": 0.006,
+      "direction": [
+        -12.711405487707308,
+        -165.3890868058425
+      ],
+      "metric_normal": [
+        -0.12358073781565428,
+        -0.9923345208350551
+      ],
+      "distance": 0.03097972486150407,
+      "vertex": 10,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_71",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps006_adaptive_009_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 175.87926873281265,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.477546213088251,
+      "upper": 0.477980441668064
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps002_parallel_002_20260907",
+      "epsilon": 0.002,
+      "direction": [
+        35.89426463406911,
+        445.6759640744225
+      ],
+      "metric_normal": [
+        0.45331196783819455,
+        0.891351928148845
+      ],
+      "distance": 0.027551117206674983,
+      "vertex": 1,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_81",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps002_adaptive_003_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 120.12931094329609,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.8589890898303805,
+      "upper": 0.859460367801669
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps001_parallel_001_20260907",
+      "epsilon": 0.001,
+      "direction": [
+        -67.52868081901748,
+        -947.5380277132152
+      ],
+      "metric_normal": [
+        -0.31964306036163226,
+        -0.9475380277132153
+      ],
+      "distance": 0.027455856830077053,
+      "vertex": 10,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_81",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps001_adaptive_009_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 126.7637187095561,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.5817069787588552,
+      "upper": 0.5821741342213106
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps0006_parallel_002_20260907",
+      "epsilon": 0.0006,
+      "direction": [
+        89.62980817665775,
+        1202.8369360765412
+      ],
+      "metric_normal": [
+        0.6922037199232605,
+        0.7217021616459247
+      ],
+      "distance": 0.025803805604241694,
+      "vertex": 4,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_81",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps0006_adaptive_006_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 124.27743023395333,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.881310907358258,
+      "upper": 0.8817901527790645
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps004_parallel_002_20260907",
+      "epsilon": 0.004,
+      "direction": [
+        -18.55526318741049,
+        -247.0631115663754
+      ],
+      "metric_normal": [
+        -0.1528303060595382,
+        -0.9882524462655016
+      ],
+      "distance": 0.028116595814392024,
+      "vertex": 12,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_89",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps004_adaptive_009_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 167.90608871200124,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.49092399269577247,
+      "upper": 0.49137269918893095
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps006_parallel_002_20260907",
+      "epsilon": 0.006,
+      "direction": [
+        14.617626774388224,
+        159.36180180326105
+      ],
+      "metric_normal": [
+        0.2928094611460723,
+        0.9561708108195663
+      ],
+      "distance": 0.02593773837785341,
+      "vertex": 1,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_89",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps006_adaptive_004_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 145.07971391430044,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.9063011039218427,
+      "upper": 0.9067655603966469
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps0002_parallel_003_20260907",
+      "epsilon": 0.0002,
+      "direction": [
+        304.0625215279509,
+        4469.208225573822
+      ],
+      "metric_normal": [
+        0.4483827756042057,
+        0.8938416451147645
+      ],
+      "distance": 0.020084567304223533,
+      "vertex": 4,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_89",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps0002_adaptive_002_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 99.35989223295098,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.9227127830464453,
+      "upper": 0.9231936997490111
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps001_parallel_002_20260907",
+      "epsilon": 0.001,
+      "direction": [
+        61.86933032382292,
+        807.3133036001022
+      ],
+      "metric_normal": [
+        0.5901230632929788,
+        0.8073133036001022
+      ],
+      "distance": 0.027347359334821107,
+      "vertex": 0,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_97",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps001_adaptive_003_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 134.88121374225426,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.8678157681475697,
+      "upper": 0.868290791070063
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps0002_parallel_004_20260907",
+      "epsilon": 0.0002,
+      "direction": [
+        -306.3938080019558,
+        -4507.3575646542085
+      ],
+      "metric_normal": [
+        -0.4328384356479669,
+        -0.9014715129308417
+      ],
+      "distance": 0.026402258805655634,
+      "vertex": 11,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_97",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps0002_adaptive_008_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 107.24374226521715,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.9958887944128046,
+      "upper": 0.9963783344758684
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps004_parallel_003_20260907",
+      "epsilon": 0.004,
+      "direction": [
+        -15.643000605472563,
+        -249.35306354386145
+      ],
+      "metric_normal": [
+        0.07189433371731017,
+        -0.9974122541754458
+      ],
+      "distance": 0.022193768423720193,
+      "vertex": 1,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_97",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps004_adaptive_007_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 155.38864110687024,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.5022478799022746,
+      "upper": 0.5026900835158711
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps0006_parallel_003_20260907",
+      "epsilon": 0.0006,
+      "direction": [
+        106.49627880953058,
+        1636.3113032370604
+      ],
+      "metric_normal": [
+        -0.18998609107907868,
+        0.9817867819422362
+      ],
+      "distance": 0.020168613144469924,
+      "vertex": 11,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_98",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps0006_adaptive_008_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 157.21296583637337,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.5568895274347966,
+      "upper": 0.5573634764849865
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps006_parallel_003_20260907",
+      "epsilon": 0.006,
+      "direction": [
+        16.830483703417656,
+        63.11455827701259
+      ],
+      "metric_normal": [
+        0.9255246572652254,
+        0.37868734966207557
+      ],
+      "distance": 0.015027381336567985,
+      "vertex": 4,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_98",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps006_adaptive_011_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 108.90749471019977,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 2.337111480865947,
+      "upper": 2.3375916518282023
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps002_parallel_003_20260907",
+      "epsilon": 0.002,
+      "direction": [
+        34.94756160393605,
+        494.8080034064202
+      ],
+      "metric_normal": [
+        0.1437364221754819,
+        0.9896160068128403
+      ],
+      "distance": 0.014615404597008379,
+      "vertex": 3,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_98",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps002_adaptive_010_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 175.6655332481256,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.5258394280520633,
+      "upper": 0.5262908647184247
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps001_parallel_003_20260907",
+      "epsilon": 0.001,
+      "direction": [
+        64.04763136379908,
+        989.82458813657
+      ],
+      "metric_normal": [
+        -0.14229295386725696,
+        0.98982458813657
+      ],
+      "distance": 0.022028833987987786,
+      "vertex": 14,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_108",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps001_adaptive_010_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 161.91707932481685,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.47833894844500846,
+      "upper": 0.4788026658062197
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps0006_parallel_004_20260907",
+      "epsilon": 0.0006,
+      "direction": [
+        111.39804910645265,
+        1626.1196330682483
+      ],
+      "metric_normal": [
+        0.21923635196288777,
+        0.9756717798409489
+      ],
+      "distance": 0.01874764998931461,
+      "vertex": 3,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_108",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps0006_adaptive_008_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 91.22928832692926,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.6242166826869124,
+      "upper": 0.624682673904916
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps004_parallel_004_20260907",
+      "epsilon": 0.004,
+      "direction": [
+        18.125348112530567,
+        248.33934698657484
+      ],
+      "metric_normal": [
+        0.11506997789391114,
+        0.9933573879462994
+      ],
+      "distance": 0.014868741655862595,
+      "vertex": 8,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_108",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps004_adaptive_012_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 160.63241882860146,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.5178076898572067,
+      "upper": 0.5182514725732006
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps0002_parallel_005_20260907",
+      "epsilon": 0.0002,
+      "direction": [
+        333.61141173331606,
+        4996.261298560893
+      ],
+      "metric_normal": [
+        0.03866421420518959,
+        0.9992522597121786
+      ],
+      "distance": 0.011890504781517628,
+      "vertex": 1,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_108",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps0002_adaptive_006_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 105.77268972406183,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.7929883813925706,
+      "upper": 0.7934502022199473
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps002_parallel_004_20260907",
+      "epsilon": 0.002,
+      "direction": [
+        33.76944547737177,
+        499.7221232963112
+      ],
+      "metric_normal": [
+        0.033334635934794216,
+        0.9994442465926224
+      ],
+      "distance": 0.010814356771749817,
+      "vertex": 2,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_108",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps002_adaptive_010_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 159.85143213976386,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.4324199552520255,
+      "upper": 0.4328669194492835
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps006_parallel_004_20260907",
+      "epsilon": 0.006,
+      "direction": [
+        12.460986241717242,
+        165.7744153712398
+      ],
+      "metric_normal": [
+        0.10333612872394325,
+        0.9946464922274388
+      ],
+      "distance": 0.01455747819826822,
+      "vertex": 4,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_115",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps006_adaptive_012_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 109.37347231030574,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.5276498791985056,
+      "upper": 0.5280913260256226
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps0006_parallel_005_20260907",
+      "epsilon": 0.0006,
+      "direction": [
+        -111.3427385928786,
+        -1624.3156561879064
+      ],
+      "metric_normal": [
+        -0.2239989144228748,
+        -0.9745893937127438
+      ],
+      "distance": 0.016556223083282244,
+      "vertex": 15,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_120",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps0006_adaptive_012_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 116.24794423632163,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.6537834177874823,
+      "upper": 0.6542572320303083
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps0002_parallel_006_20260907",
+      "epsilon": 0.0002,
+      "direction": [
+        -327.16234499306006,
+        -4859.233544737964
+      ],
+      "metric_normal": [
+        -0.23561403673748532,
+        -0.9718467089475927
+      ],
+      "distance": 0.014643381952748015,
+      "vertex": 10,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_120",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps0002_adaptive_008_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 131.38190242650464,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 1.0667059696158308,
+      "upper": 1.0671999721462935
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps004_parallel_005_20260907",
+      "epsilon": 0.004,
+      "direction": [
+        -17.65663507039803,
+        -249.27442684381063
+      ],
+      "metric_normal": [
+        -0.07613252883646508,
+        -0.9970977073752425
+      ],
+      "distance": 0.014229570092825482,
+      "vertex": 16,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_120",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps004_adaptive_007_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 72.95128349644041,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.47538526072644055,
+      "upper": 0.4758377383147276
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps001_parallel_004_20260907",
+      "epsilon": 0.001,
+      "direction": [
+        -67.97848067955236,
+        -987.7371552772934
+      ],
+      "metric_normal": [
+        -0.15612594942776242,
+        -0.9877371552772933
+      ],
+      "distance": 0.013662566347095359,
+      "vertex": 14,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_120",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps001_adaptive_014_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 179.09414967728287,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.5735526354274144,
+      "upper": 0.574017968113074
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps002_parallel_005_20260907",
+      "epsilon": 0.002,
+      "direction": [
+        4.8270247072846955,
+        -125.61231641171874
+      ],
+      "metric_normal": [
+        0.9679288113610055,
+        -0.2512246328234375
+      ],
+      "distance": 0.013046888128052696,
+      "vertex": 1,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_120",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps002_adaptive_005_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 69.70435676530121,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 1.3784258747991114,
+      "upper": 1.3789004859115077
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps006_parallel_005_20260907",
+      "epsilon": 0.006,
+      "direction": [
+        -11.95033904635078,
+        -166.33390298081986
+      ],
+      "metric_normal": [
+        -0.06315993896465615,
+        -0.9980034178849192
+      ],
+      "distance": 0.01604587572578476,
+      "vertex": 17,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_123",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps006_adaptive_015_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 68.31642368920019,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.4622247801709563,
+      "upper": 0.46265930702808067
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps0002_parallel_007_20260907",
+      "epsilon": 0.0002,
+      "direction": [
+        -322.15615431363443,
+        -4877.372629998479
+      ],
+      "metric_normal": [
+        0.22011235568606502,
+        -0.9754745259996958
+      ],
+      "distance": 0.013417406378863912,
+      "vertex": 1,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_128",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps0002_adaptive_003_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 82.11680345173185,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 1.0967970520943282,
+      "upper": 1.0972912393329062
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps004_parallel_006_20260907",
+      "epsilon": 0.004,
+      "direction": [
+        -4.557376012633364,
+        -195.68253769821013
+      ],
+      "metric_normal": [
+        0.6223612383815506,
+        -0.7827301507928405
+      ],
+      "distance": 0.012401434270085193,
+      "vertex": 0,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_128",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps004_adaptive_005_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 70.04546254341551,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 1.2461779060900608,
+      "upper": 1.2466411861644102
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps002_parallel_006_20260907",
+      "epsilon": 0.002,
+      "direction": [
+        -10.32553428042017,
+        -314.0668623239127
+      ],
+      "metric_normal": [
+        0.7781054067156004,
+        -0.6281337246478254
+      ],
+      "distance": 0.010980581248013897,
+      "vertex": 0,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_128",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps002_adaptive_005_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 56.75776168581688,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 1.1065191227899167,
+      "upper": 1.1069893463407334
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps001_parallel_005_20260907",
+      "epsilon": 0.001,
+      "direction": [
+        -40.764071708753036,
+        -747.382081861263
+      ],
+      "metric_normal": [
+        0.6643944789902488,
+        -0.747382081861263
+      ],
+      "distance": 0.010938313435111586,
+      "vertex": 1,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_130",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps001_adaptive_011_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 135.22616371569939,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.7778522377275684,
+      "upper": 0.778326571404794
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps006_parallel_006_20260907",
+      "epsilon": 0.006,
+      "direction": [
+        -1.7850931304578233,
+        -139.22923077185888
+      ],
+      "metric_normal": [
+        0.5496798766121539,
+        -0.8353753846311534
+      ],
+      "distance": 0.012855087660652692,
+      "vertex": 0,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_130",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps006_adaptive_005_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 36.96626221108366,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 1.367297838208967,
+      "upper": 1.3677600617982635
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps002_parallel_007_20260907",
+      "epsilon": 0.002,
+      "direction": [
+        32.67433148950436,
+        499.4762580133568
+      ],
+      "metric_normal": [
+        -0.04575883219552775,
+        0.9989525160267136
+      ],
+      "distance": 0.010371522229431227,
+      "vertex": 6,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_132",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps002_adaptive_013_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 171.70696859374326,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.4101030371641022,
+      "upper": 0.41055221277185416
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps006_parallel_007_20260907",
+      "epsilon": 0.006,
+      "direction": [
+        17.07194579753484,
+        133.33554673871143
+      ],
+      "metric_normal": [
+        0.5999822923486995,
+        0.8000132804322686
+      ],
+      "distance": 0.010701106960039567,
+      "vertex": 1,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_138",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps006_adaptive_006_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 109.78631662079185,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 1.5941629958538563,
+      "upper": 1.5946385106875685
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps0002_parallel_008_20260907",
+      "epsilon": 0.0002,
+      "direction": [
+        -210.0151770086586,
+        -3303.78447621822
+      ],
+      "metric_normal": [
+        0.7505999769437647,
+        -0.660756895243644
+      ],
+      "distance": 0.010168404196078009,
+      "vertex": 3,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_138",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps0002_adaptive_010_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 35.926744233733004,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.8831368525252465,
+      "upper": 0.883626887863879
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps0002_parallel_009_20260907",
+      "epsilon": 0.0002,
+      "direction": [
+        -269.09832577828143,
+        -4150.548059538479
+      ],
+      "metric_normal": [
+        0.5576002440982739,
+        -0.8301096119076958
+      ],
+      "distance": 0.011328367378207778,
+      "vertex": 0,
+      "source_summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_141",
+      "warm_coefficients": "results/runs/stage_B3_pv_M50_eps0002_adaptive_003_20260907/center_first_coefficients.json",
+      "minimum_running_angle_degrees": 14.752375943377737,
+      "status": "completed",
+      "start_mu": 0.01,
+      "solver_seconds": 1200,
+      "query_gap": 0.0025,
+      "lower": 0.997769750754674,
+      "upper": 0.9982615527568011
+    }
+  ],
+  "policy": "At most12 total queries; passed windows stop; freed slots may serve additional true distance>.01 holes at least30 degrees from all active same-epsilon normals. Heuristic only; fixed source/model/mu.",
+  "dispatch_notes": [
+    {
+      "type": "duplicate_direction_race",
+      "runs": [
+        "results/runs/stage_B3_pv_M50_eps006_adaptive_018_20260907",
+        "results/runs/stage_B3_pv_M50_eps006_parallel_006_20260907"
+      ],
+      "cause": "Main dispatch read one-second-old epsilon lock immediately after summary refresh. Existing runs retained; keeper now holds every epsilon with any supplemental query. No distinct-normal count credited twice."
+    },
+    {
+      "type": "duplicate_direction_race",
+      "runs": [
+        "results/runs/stage_B3_pv_M50_eps0002_adaptive_015_20260907",
+        "results/runs/stage_B3_pv_M50_eps0002_parallel_007_20260907"
+      ],
+      "cause": "Same pre-fix keeper race as epsilon .006. Both preserved; distinct normals deduplicated in geometry."
+    },
+    {
+      "type": "final_uncovered_vertex",
+      "run": "results/runs/stage_B3_pv_M50_eps0002_parallel_009_20260907",
+      "reason": "At remaining six supra-tolerance vertices, epsilon .0002 had one uncovered distinct support normal 14.76deg from another active hole. Idle slot used; original30deg scheduling heuristic relaxed for this independent objective only. Scientific source, budgets and physical model unchanged."
+    }
+  ],
+  "planned": []
+}

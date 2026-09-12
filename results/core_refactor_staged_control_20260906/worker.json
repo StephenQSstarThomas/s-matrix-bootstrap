@@ -1,0 +1,1137 @@
+{
+  "command": "control",
+  "status": "passed",
+  "artifacts": {
+    "source_rows": {
+      "path": "results/core_refactor_staged_control_20260906/source_rows.json.gz",
+      "sha256": "b1a813f06ec92933f189c77f28597e829beba249914690fbcdd7a3495917176f",
+      "bytes": 2461771
+    },
+    "quotient": {
+      "path": "results/core_refactor_staged_control_20260906/quotient.json.gz",
+      "sha256": "0acc982bb8372862cc1d0504938007b5321125b5df5a21e93f8b707ebb0c9223",
+      "bytes": 1129319
+    },
+    "alpha": {
+      "path": "results/core_refactor_staged_control_20260906/alpha.json.gz",
+      "sha256": "0361a02822e3519a820e05c532f3c8507181708305a6dd724ccfcf0f854d9914",
+      "bytes": 311404
+    },
+    "weights": {
+      "path": "results/core_refactor_staged_control_20260906/weights.json.gz",
+      "sha256": "9481aaf4e783eac8a35438c5628de174e82688e891fd4266203a06fa025fd815",
+      "bytes": 658306
+    }
+  },
+  "inputs": {
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/report.json": {
+      "sha256": "9cc07c41216785d7ac85b435ab3fa7dc264b661b9f343a2bfd2f62c05402ac8b",
+      "bytes": 371288
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/grid.json.gz": {
+      "sha256": "58b32351b4087c5f72d084f734a29f314e8c578c4ecfcb59e852c69d50447a10",
+      "bytes": 90374
+    },
+    "results/pv_midpoint_storage/source_imaginary_rank_1024_2048_attempt01/report.json": {
+      "sha256": "68f2ec9e36e6bb849e949a50bfa735a3cee38ccdb24a958a4b6d3ea0650f2dff",
+      "bytes": 818168
+    },
+    "results/pv_midpoint_storage/source_imaginary_rank_1024_2048_attempt01/selection.json": {
+      "sha256": "d9ef99af517932a7cdd0c8c5edde4f3fd3b89f3684310081297c116487b554f7",
+      "bytes": 171688
+    },
+    "results/pv_midpoint_storage/source_imaginary_rank_1024_2048_attempt01/R0_exact_dyadic.json.gz": {
+      "sha256": "3258701731acad725e9518b36f799582aaeac36b62a9369546631f14976048fa",
+      "bytes": 31528662
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/S0.json.gz": {
+      "sha256": "2ae5c5474fcf6b994f04d56b231095e6c98c966f709f62f1b383cbdafe88fc2e",
+      "bytes": 783896
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_00.factors.json.gz": {
+      "sha256": "b9f68ae340413f91b6f718d157f8cfa7f10f756a03d873abe0fc3635a2e05d02",
+      "bytes": 1116957
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_00.masters.json.gz": {
+      "sha256": "c76976e686bc6414b055ee9243fde09598b2b9cabb5a9fcca0e9be1b57c0003d",
+      "bytes": 638783
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_01.factors.json.gz": {
+      "sha256": "9d13990e20205d230a28e954bdb0d5cd36d931ac7426d20a8d6412c38af084d8",
+      "bytes": 1120543
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_01.masters.json.gz": {
+      "sha256": "bfe9530806aa42f09885b10a0b3d8499f2778d38711876c86899cfe29faf4fbc",
+      "bytes": 638790
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_02.factors.json.gz": {
+      "sha256": "efb9ef28632297542255770043f7c2bd75e4e88d6b4650b45eec6ce933bc7b11",
+      "bytes": 1119950
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_02.masters.json.gz": {
+      "sha256": "8b9ccf6be14fc6c50de1217c4faa108424953a8a4dd30602d56781ccfdf309d7",
+      "bytes": 638174
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_03.factors.json.gz": {
+      "sha256": "d09833664b54b8dab0f095d11cf2a321c32856a1cd794753f50e7e0fcff998ef",
+      "bytes": 1119667
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_03.masters.json.gz": {
+      "sha256": "aa1e131b545f5bb3ef212667d7dd37feaae71c59ecaa45daf84ba364a5f9b86a",
+      "bytes": 638130
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_04.factors.json.gz": {
+      "sha256": "2953c071895f9df5bdea7aa9c2644526850e40c95e33d10245ba448b1568c76c",
+      "bytes": 1120736
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_04.masters.json.gz": {
+      "sha256": "0dcc1f50545c6ab3b888e19fa9f1fdb522bdb609c564936232dd91101028e60c",
+      "bytes": 638761
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_05.factors.json.gz": {
+      "sha256": "c19884445ca3f8547498529342522c4ddbea4d6c33305f0c221be82112208d7b",
+      "bytes": 1120291
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_05.masters.json.gz": {
+      "sha256": "2b57f4790b00746142eeccbf4cd637d0077b6f860187c2c27bc55a2804ad23fd",
+      "bytes": 638589
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_06.factors.json.gz": {
+      "sha256": "0e61fe531722e3618603efa16bf3ad56bb3f49bdd5cb3cf2fc673569cddf6d2a",
+      "bytes": 1120594
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_06.masters.json.gz": {
+      "sha256": "7fa166ef17946156b6dd4e9434ba2e0c690682eb587d9e60fb1f6528c328ec1c",
+      "bytes": 637871
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_07.factors.json.gz": {
+      "sha256": "bbc3b8130526c5e9810cf32d38c47ac8b53ceaaef00d41c964400f9ad0d86f15",
+      "bytes": 1120107
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_07.masters.json.gz": {
+      "sha256": "cb02318f0bf50496e8b6017ed2e43f1e168bbdbd3a134a84ffb1e4317646b1e6",
+      "bytes": 638026
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_08.factors.json.gz": {
+      "sha256": "32fd59f59a1bb1ac841f680697ea23e2c29f619d5a670ae932beda5353178b1a",
+      "bytes": 1119731
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_08.masters.json.gz": {
+      "sha256": "a112211785c18f51b2cf0dce8b5f0b48dcb30700f9d0ab8380d0e1774d0b4e18",
+      "bytes": 638162
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_09.factors.json.gz": {
+      "sha256": "52bbf4cf9534a1f7c586ef07fa5cf4f514af294f5085b6cee6b7d328cb48f9eb",
+      "bytes": 1119969
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_09.masters.json.gz": {
+      "sha256": "356dd6c42c23a9a0978c576e0272e07dd243f49a76085b0feae94dc5065dca0e",
+      "bytes": 638569
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_10.factors.json.gz": {
+      "sha256": "e8459f9d7bbf480a45f9dda1f562ef7814dd258fa69572241e4a83bff23d16d3",
+      "bytes": 1120484
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_10.masters.json.gz": {
+      "sha256": "4490ac28597175b83378ffc42fcbc90f092370ba0c52be009a387cb81a4b972d",
+      "bytes": 638046
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_11.factors.json.gz": {
+      "sha256": "45ac819747d08237e3827085bfaf1f696deb72bca9b040cbe89ef8f53235f9ea",
+      "bytes": 1120689
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_11.masters.json.gz": {
+      "sha256": "bcb067350b1297600c1f8151cc72c3e23f5f88101b66f19e343ebea29a005e4d",
+      "bytes": 638051
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_12.factors.json.gz": {
+      "sha256": "a5c34c7367e301ea63c9dd571e90e669d55d3fd5f25b25b130a83ec4a080640d",
+      "bytes": 1120999
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_12.masters.json.gz": {
+      "sha256": "8753f881e95b5074a219585d37ea4cf6021a81e36a8be1bff7867c8d3db5592a",
+      "bytes": 638015
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_13.factors.json.gz": {
+      "sha256": "81b21428d230b5bede40330639cbc4730f190c1bdc635ae3553107a9529d0485",
+      "bytes": 1120803
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_13.masters.json.gz": {
+      "sha256": "1e8f33c78e2623abbfc680cdba058a4ecfde543d204021adaa27aa8832bce71d",
+      "bytes": 637792
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_14.factors.json.gz": {
+      "sha256": "2940644b02e4c441c3d3d145cfa0dcff88ad32e7be760b04efd15faecaee8140",
+      "bytes": 1121043
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_14.masters.json.gz": {
+      "sha256": "14767caee561db44244c5a6c7bf4518f9a0314d9c43db989f19871057a7cb95f",
+      "bytes": 637958
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_15.factors.json.gz": {
+      "sha256": "fd66efc4afbc35d66f4e578cf39c1f507fce6c40272c85d85853066b91a8131b",
+      "bytes": 1120108
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_15.masters.json.gz": {
+      "sha256": "eabef5e699695f96f4d9a814b68d7ebfbe6b50211d646f591752e1fdddc29159",
+      "bytes": 638006
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_16.factors.json.gz": {
+      "sha256": "ceb5c308d51e980395263443c69f8f425d95ab201ae299dc936ad37fabf947a5",
+      "bytes": 1120370
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_16.masters.json.gz": {
+      "sha256": "434baa802a79ec1cedc39147cf787e915d6510acca82ff4588b8092b3d2229c3",
+      "bytes": 637712
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_17.factors.json.gz": {
+      "sha256": "2be35b89965729ff93111b8287b3d0aec816d49ed99ae94be89dd5a30d0b9109",
+      "bytes": 1119432
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_17.masters.json.gz": {
+      "sha256": "d0ff246c9df0c13549c54a149525bb78ef4552f245d8f1635a2855efe7b4c79a",
+      "bytes": 638301
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_18.factors.json.gz": {
+      "sha256": "461a0684d0ee48434d5714a347b7563ea72f5d45a54e23961811757182af79d5",
+      "bytes": 1120021
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_18.masters.json.gz": {
+      "sha256": "ea695e42bd117b1fe41782a07eedbef1dc4530a910ed0e4a7c5e34ff1ac312c6",
+      "bytes": 637903
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_19.factors.json.gz": {
+      "sha256": "5bd2a233672b5508d93af156134af245060fd1f13a9a6733b9a1b7727a22cf6e",
+      "bytes": 1120538
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_19.masters.json.gz": {
+      "sha256": "4ef1477e58204927f5181afc4f231a98f51f5274014509a9fbb4a8582917ea41",
+      "bytes": 637614
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_20.factors.json.gz": {
+      "sha256": "584c28fd89466c9b2decca071664c58331d3b3e210e2f82abc2542d50345318b",
+      "bytes": 1120510
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_20.masters.json.gz": {
+      "sha256": "2d7fafa61b407d910143a41f0314107d144e8ad1702278f14ffa6e82a9ae07f5",
+      "bytes": 637785
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_21.factors.json.gz": {
+      "sha256": "0fee078495eb1a994ba7aeddb7cf5811881ae11d21de5a18b753b6523b2d400e",
+      "bytes": 1120042
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_21.masters.json.gz": {
+      "sha256": "a1183c0a3a150684e669b66cb0d053e2a952bef17664bbea42197ad7db628c31",
+      "bytes": 637435
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_22.factors.json.gz": {
+      "sha256": "e3bbff11e074441f3d6a82e60837da42408ba5265e33817249914b6f9f2f77af",
+      "bytes": 1120571
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_22.masters.json.gz": {
+      "sha256": "02fbd867892d64a0867c3bcb828001995a48df87bb12597d97e4744663266549",
+      "bytes": 637739
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_23.factors.json.gz": {
+      "sha256": "ef0e94af36c8406824bf03f89b524302738e0ff8244c23617bb16556f551d368",
+      "bytes": 1120614
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_23.masters.json.gz": {
+      "sha256": "62abd86b2f0d578cc1083aa0e0f18f8daf3f927dbd7b35117193bd356a1e3889",
+      "bytes": 638346
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_24.factors.json.gz": {
+      "sha256": "f4b730a03f0444652e6c8250f473ebeb8d92ddf091ee65d639bbaa4ca91b9cb0",
+      "bytes": 1119233
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_24.masters.json.gz": {
+      "sha256": "ff5fba63895f496cab76c9745087d70459fc45ebfd9c5aad4491d15fabfa2632",
+      "bytes": 637597
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_25.factors.json.gz": {
+      "sha256": "59896fec2bacd4002d6d62037388c85db2e6d742c2c221d6d1f695e4eb474fd9",
+      "bytes": 1120613
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_25.masters.json.gz": {
+      "sha256": "ee1cdafe7733a405aeefce3ffdc4177660f5f3dd8cd2fd188dbed3bfb6094980",
+      "bytes": 637517
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_26.factors.json.gz": {
+      "sha256": "51b70991397627b2236ce8997a5bd8e49d63dc946829dc96cf8361be984a961a",
+      "bytes": 1120626
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_26.masters.json.gz": {
+      "sha256": "c81d7dedcbb38b527412e55d664b87edfe5361ed217330d666d4a2fcc40e9324",
+      "bytes": 637548
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_27.factors.json.gz": {
+      "sha256": "e56b6b8979632fb9bc642fd8d3fd71e6c93490b20df3d25d80a0533cc32098d1",
+      "bytes": 1119972
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_27.masters.json.gz": {
+      "sha256": "d331d62e5fab46fb8e93dc8913bed52c85e4ccfbcb9ab23b3df0b77af9f97012",
+      "bytes": 637460
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_28.factors.json.gz": {
+      "sha256": "7f13117ba834bf0d8725156e50b2a37c4d21274e3afa363d67dd38a4e9f5f482",
+      "bytes": 1119806
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_28.masters.json.gz": {
+      "sha256": "addf98da156e78ca9e7a85c1a31a11750d1e974da9a7b83203233f367294abc2",
+      "bytes": 638082
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_29.factors.json.gz": {
+      "sha256": "2e59197758ee65d32e765d13fd358d0263d39a5298987d2085089cf6ac45ae5d",
+      "bytes": 1120635
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_29.masters.json.gz": {
+      "sha256": "2606731d91733660ed3f2383988dfd2c54abd73d89fa3ac1805abbcc67540a7f",
+      "bytes": 637318
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_30.factors.json.gz": {
+      "sha256": "6b21910d271cf33c7020afa881c3b1ef779b46e012ce641afdf8eab740708027",
+      "bytes": 1120490
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_30.masters.json.gz": {
+      "sha256": "f439c159d4a8b587791dbb7ceff70a3e786970c0282261de03b1315f360fd218",
+      "bytes": 637040
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_31.factors.json.gz": {
+      "sha256": "c8ef0da65630e4a4c03fbbcaf89c52b63c5c0963574907689f817fef0548d7e2",
+      "bytes": 1120791
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_31.masters.json.gz": {
+      "sha256": "06c1cc82ae9f2adca111d391621bfdfbd45e906684e0c54366bd43e606bb9110",
+      "bytes": 637448
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_32.factors.json.gz": {
+      "sha256": "709a17cbedb7e060ca3e7d951c46ab3404a82a173cb75ab97adf85d9c2aedaff",
+      "bytes": 1122128
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_32.masters.json.gz": {
+      "sha256": "1b7eeadbc7409ebea2b78fc18d613663d8853d7f14a52201f7d2359f9036347e",
+      "bytes": 636981
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_33.factors.json.gz": {
+      "sha256": "470e5eb6691951b17d210834569e13f5c829f9b48d6228462d28d859cc08c978",
+      "bytes": 1121574
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_33.masters.json.gz": {
+      "sha256": "07a3ba3ac7d7718c7b1b9a378b88a501d48903cd7a616b0b22babcdc9f7007ac",
+      "bytes": 637049
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_34.factors.json.gz": {
+      "sha256": "495fe6dc41c793af7c3d239da5bf71b09ad73e1205553336cc35196b092f2f41",
+      "bytes": 1121571
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_34.masters.json.gz": {
+      "sha256": "d22dd2dceee8a013b2900d287d1e5354a7152577332d5e118de4c19d0cd5104b",
+      "bytes": 636761
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_35.factors.json.gz": {
+      "sha256": "a8e73eb0d993cef4e2f7a3a82edc245e40007b7f9ac99874636b05e3f7641e32",
+      "bytes": 1122401
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_35.masters.json.gz": {
+      "sha256": "faf70267adc58dce783877e2ffc65b7f1fc8b5f9faec3f06917ba9e797524d11",
+      "bytes": 636691
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_36.factors.json.gz": {
+      "sha256": "159caa7821cea844b0f4217f067d6424fcc4b6f8fecc2fb935a017b932b505aa",
+      "bytes": 1121795
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_36.masters.json.gz": {
+      "sha256": "234a08cf95f99c54d6693ae92498d524ff6d1210edc092cdc396c2aa34a48367",
+      "bytes": 636768
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_37.factors.json.gz": {
+      "sha256": "0d40b210b9c7ce971f92ac26f2f19fe4204cc5acd21f02260f6a9b7928d74c93",
+      "bytes": 1123073
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_37.masters.json.gz": {
+      "sha256": "d16ef3394f2fafe17ed1b34290e5b6aa4cd602a12de06b43a4f099a817ae14c3",
+      "bytes": 637285
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_38.factors.json.gz": {
+      "sha256": "3ce86e3f404aa5cad35be4d5739b05c55d169184705372c1d27cd455603c3ce1",
+      "bytes": 1121896
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_38.masters.json.gz": {
+      "sha256": "c7b381e3a9d554e9d53b147bda54f1d1c20b28dfe8f760d9ed867faf2a4c6e30",
+      "bytes": 636621
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_39.factors.json.gz": {
+      "sha256": "9462d6b8dd4983e0610c0a0a028030c4c5d32bdfc2ac3be5a6faefdaf2d36e5a",
+      "bytes": 1121829
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_39.masters.json.gz": {
+      "sha256": "d55beb6816d5689f7b77a7239f103e3fc11eb2c73d3b17c96cf8702a1b02c01b",
+      "bytes": 636470
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_40.factors.json.gz": {
+      "sha256": "1c4726b808c7050d59f5450efbf23d127b3cf26a2f34353db23a29601483f83f",
+      "bytes": 1122535
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_40.masters.json.gz": {
+      "sha256": "025289c3a8bef66f59024cdd652d2415532d67bebcfe3b3bb27d81e87bbc02c3",
+      "bytes": 636605
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_41.factors.json.gz": {
+      "sha256": "a644d7681fabf33ddf73ad6e8516fd78bc0ae6c4c709b4aaf54d5c98d00bfc6c",
+      "bytes": 1121734
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_41.masters.json.gz": {
+      "sha256": "65e5676fe366d5f414bec2563f6d9a20ba94c49a0631f5a7b4c4a984c05665d2",
+      "bytes": 635592
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_42.factors.json.gz": {
+      "sha256": "19724039ccac2103fc4b3f3873c9faef917608c71f149f34b4a251440593d80a",
+      "bytes": 1117142
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_42.masters.json.gz": {
+      "sha256": "e586378a0effc1c642b167db5ef8322e4b46a6ba38e7f486b6e7620bec8c0d0f",
+      "bytes": 635520
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_43.factors.json.gz": {
+      "sha256": "96ce26be20fbb6b31e907d2693237b5fbf80b05144b203fff2f9b5b264f21dfe",
+      "bytes": 1117272
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_43.masters.json.gz": {
+      "sha256": "2405d7c681226cad38965ef26d09477261f2d52d5df61e2f697d9d6133100bbb",
+      "bytes": 635283
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_44.factors.json.gz": {
+      "sha256": "bbaf420a625bcbd235de88a9662110769f9b526e96c91e86d79cbb7ea40ff1a9",
+      "bytes": 1115865
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_44.masters.json.gz": {
+      "sha256": "c25714cfbc454fa85dbc45578590137cec29f41041ad18874f3ba0aa1a0ae6bf",
+      "bytes": 634740
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_45.factors.json.gz": {
+      "sha256": "0f6f28f4797ea01bf74e810c969aec0ec2377546eb0e9ed3b13c330e89da7b8c",
+      "bytes": 1118529
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_45.masters.json.gz": {
+      "sha256": "e1c53ef5a44660887aaed8da4aa446504b125b7eba3ce961313d35f246ac2970",
+      "bytes": 635020
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_46.factors.json.gz": {
+      "sha256": "26db2f41a80015e99a08d65d832da71845236d7665d3174cc8c9cfc8ec0e6e7b",
+      "bytes": 1112853
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_46.masters.json.gz": {
+      "sha256": "d1feae4dc6124c32cb039a5e3f3ca02775c32236237c0ca3a63b38b9786a16f9",
+      "bytes": 634689
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_47.factors.json.gz": {
+      "sha256": "b217e723d60bd8f1c4ec6890f147fa4ca8f4a838486f68b91204a2b6fc82ee83",
+      "bytes": 1112017
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_47.masters.json.gz": {
+      "sha256": "e0f8d126ba0c7f2e9752180e02f1c846e404807a523160e84d96b628c2da6242",
+      "bytes": 635119
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_48.factors.json.gz": {
+      "sha256": "45660e5a796bb0781b4c637ef76715a567715dac0d60b863c740364a2204c565",
+      "bytes": 1107872
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_48.masters.json.gz": {
+      "sha256": "fc96953af3dc40739142549fdf95c9413b2c3136a97cf70ecee54f1ab2524a97",
+      "bytes": 633835
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_49.factors.json.gz": {
+      "sha256": "4b3b4f851dc027cabca34af3ec5281b3c932c0fa7acc0a0f1941e5e6834dd42a",
+      "bytes": 1098287
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_49.masters.json.gz": {
+      "sha256": "80dd582e62bd0e8d67fb96615938befbc91b866f8a7e0e205e89cffd01b83577",
+      "bytes": 632776
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/subthreshold.json.gz": {
+      "sha256": "c3c16e38849d8547b3cc772ac2388aa2ae766f6bed8ee0f7f430793df1d6306b",
+      "bytes": 329622
+    }
+  },
+  "scope": "Original-center discrete PV/midpoint prescription; published regions and phases remain unverified.",
+  "provenance": {
+    "factor_report_path": "results/pv_midpoint_storage/source_factors_2048_attempt01/report.json",
+    "factor_report_sha256": "9cc07c41216785d7ac85b435ab3fa7dc264b661b9f343a2bfd2f62c05402ac8b",
+    "inputs": {
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/report.json": {
+        "sha256": "9cc07c41216785d7ac85b435ab3fa7dc264b661b9f343a2bfd2f62c05402ac8b",
+        "bytes": 371288
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/grid.json.gz": {
+        "sha256": "58b32351b4087c5f72d084f734a29f314e8c578c4ecfcb59e852c69d50447a10",
+        "bytes": 90374
+      },
+      "results/pv_midpoint_storage/source_imaginary_rank_1024_2048_attempt01/report.json": {
+        "sha256": "68f2ec9e36e6bb849e949a50bfa735a3cee38ccdb24a958a4b6d3ea0650f2dff",
+        "bytes": 818168
+      },
+      "results/pv_midpoint_storage/source_imaginary_rank_1024_2048_attempt01/selection.json": {
+        "sha256": "d9ef99af517932a7cdd0c8c5edde4f3fd3b89f3684310081297c116487b554f7",
+        "bytes": 171688
+      },
+      "results/pv_midpoint_storage/source_imaginary_rank_1024_2048_attempt01/R0_exact_dyadic.json.gz": {
+        "sha256": "3258701731acad725e9518b36f799582aaeac36b62a9369546631f14976048fa",
+        "bytes": 31528662
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/S0.json.gz": {
+        "sha256": "2ae5c5474fcf6b994f04d56b231095e6c98c966f709f62f1b383cbdafe88fc2e",
+        "bytes": 783896
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_00.factors.json.gz": {
+        "sha256": "b9f68ae340413f91b6f718d157f8cfa7f10f756a03d873abe0fc3635a2e05d02",
+        "bytes": 1116957
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_00.masters.json.gz": {
+        "sha256": "c76976e686bc6414b055ee9243fde09598b2b9cabb5a9fcca0e9be1b57c0003d",
+        "bytes": 638783
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_01.factors.json.gz": {
+        "sha256": "9d13990e20205d230a28e954bdb0d5cd36d931ac7426d20a8d6412c38af084d8",
+        "bytes": 1120543
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_01.masters.json.gz": {
+        "sha256": "bfe9530806aa42f09885b10a0b3d8499f2778d38711876c86899cfe29faf4fbc",
+        "bytes": 638790
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_02.factors.json.gz": {
+        "sha256": "efb9ef28632297542255770043f7c2bd75e4e88d6b4650b45eec6ce933bc7b11",
+        "bytes": 1119950
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_02.masters.json.gz": {
+        "sha256": "8b9ccf6be14fc6c50de1217c4faa108424953a8a4dd30602d56781ccfdf309d7",
+        "bytes": 638174
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_03.factors.json.gz": {
+        "sha256": "d09833664b54b8dab0f095d11cf2a321c32856a1cd794753f50e7e0fcff998ef",
+        "bytes": 1119667
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_03.masters.json.gz": {
+        "sha256": "aa1e131b545f5bb3ef212667d7dd37feaae71c59ecaa45daf84ba364a5f9b86a",
+        "bytes": 638130
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_04.factors.json.gz": {
+        "sha256": "2953c071895f9df5bdea7aa9c2644526850e40c95e33d10245ba448b1568c76c",
+        "bytes": 1120736
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_04.masters.json.gz": {
+        "sha256": "0dcc1f50545c6ab3b888e19fa9f1fdb522bdb609c564936232dd91101028e60c",
+        "bytes": 638761
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_05.factors.json.gz": {
+        "sha256": "c19884445ca3f8547498529342522c4ddbea4d6c33305f0c221be82112208d7b",
+        "bytes": 1120291
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_05.masters.json.gz": {
+        "sha256": "2b57f4790b00746142eeccbf4cd637d0077b6f860187c2c27bc55a2804ad23fd",
+        "bytes": 638589
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_06.factors.json.gz": {
+        "sha256": "0e61fe531722e3618603efa16bf3ad56bb3f49bdd5cb3cf2fc673569cddf6d2a",
+        "bytes": 1120594
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_06.masters.json.gz": {
+        "sha256": "7fa166ef17946156b6dd4e9434ba2e0c690682eb587d9e60fb1f6528c328ec1c",
+        "bytes": 637871
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_07.factors.json.gz": {
+        "sha256": "bbc3b8130526c5e9810cf32d38c47ac8b53ceaaef00d41c964400f9ad0d86f15",
+        "bytes": 1120107
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_07.masters.json.gz": {
+        "sha256": "cb02318f0bf50496e8b6017ed2e43f1e168bbdbd3a134a84ffb1e4317646b1e6",
+        "bytes": 638026
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_08.factors.json.gz": {
+        "sha256": "32fd59f59a1bb1ac841f680697ea23e2c29f619d5a670ae932beda5353178b1a",
+        "bytes": 1119731
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_08.masters.json.gz": {
+        "sha256": "a112211785c18f51b2cf0dce8b5f0b48dcb30700f9d0ab8380d0e1774d0b4e18",
+        "bytes": 638162
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_09.factors.json.gz": {
+        "sha256": "52bbf4cf9534a1f7c586ef07fa5cf4f514af294f5085b6cee6b7d328cb48f9eb",
+        "bytes": 1119969
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_09.masters.json.gz": {
+        "sha256": "356dd6c42c23a9a0978c576e0272e07dd243f49a76085b0feae94dc5065dca0e",
+        "bytes": 638569
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_10.factors.json.gz": {
+        "sha256": "e8459f9d7bbf480a45f9dda1f562ef7814dd258fa69572241e4a83bff23d16d3",
+        "bytes": 1120484
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_10.masters.json.gz": {
+        "sha256": "4490ac28597175b83378ffc42fcbc90f092370ba0c52be009a387cb81a4b972d",
+        "bytes": 638046
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_11.factors.json.gz": {
+        "sha256": "45ac819747d08237e3827085bfaf1f696deb72bca9b040cbe89ef8f53235f9ea",
+        "bytes": 1120689
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_11.masters.json.gz": {
+        "sha256": "bcb067350b1297600c1f8151cc72c3e23f5f88101b66f19e343ebea29a005e4d",
+        "bytes": 638051
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_12.factors.json.gz": {
+        "sha256": "a5c34c7367e301ea63c9dd571e90e669d55d3fd5f25b25b130a83ec4a080640d",
+        "bytes": 1120999
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_12.masters.json.gz": {
+        "sha256": "8753f881e95b5074a219585d37ea4cf6021a81e36a8be1bff7867c8d3db5592a",
+        "bytes": 638015
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_13.factors.json.gz": {
+        "sha256": "81b21428d230b5bede40330639cbc4730f190c1bdc635ae3553107a9529d0485",
+        "bytes": 1120803
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_13.masters.json.gz": {
+        "sha256": "1e8f33c78e2623abbfc680cdba058a4ecfde543d204021adaa27aa8832bce71d",
+        "bytes": 637792
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_14.factors.json.gz": {
+        "sha256": "2940644b02e4c441c3d3d145cfa0dcff88ad32e7be760b04efd15faecaee8140",
+        "bytes": 1121043
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_14.masters.json.gz": {
+        "sha256": "14767caee561db44244c5a6c7bf4518f9a0314d9c43db989f19871057a7cb95f",
+        "bytes": 637958
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_15.factors.json.gz": {
+        "sha256": "fd66efc4afbc35d66f4e578cf39c1f507fce6c40272c85d85853066b91a8131b",
+        "bytes": 1120108
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_15.masters.json.gz": {
+        "sha256": "eabef5e699695f96f4d9a814b68d7ebfbe6b50211d646f591752e1fdddc29159",
+        "bytes": 638006
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_16.factors.json.gz": {
+        "sha256": "ceb5c308d51e980395263443c69f8f425d95ab201ae299dc936ad37fabf947a5",
+        "bytes": 1120370
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_16.masters.json.gz": {
+        "sha256": "434baa802a79ec1cedc39147cf787e915d6510acca82ff4588b8092b3d2229c3",
+        "bytes": 637712
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_17.factors.json.gz": {
+        "sha256": "2be35b89965729ff93111b8287b3d0aec816d49ed99ae94be89dd5a30d0b9109",
+        "bytes": 1119432
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_17.masters.json.gz": {
+        "sha256": "d0ff246c9df0c13549c54a149525bb78ef4552f245d8f1635a2855efe7b4c79a",
+        "bytes": 638301
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_18.factors.json.gz": {
+        "sha256": "461a0684d0ee48434d5714a347b7563ea72f5d45a54e23961811757182af79d5",
+        "bytes": 1120021
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_18.masters.json.gz": {
+        "sha256": "ea695e42bd117b1fe41782a07eedbef1dc4530a910ed0e4a7c5e34ff1ac312c6",
+        "bytes": 637903
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_19.factors.json.gz": {
+        "sha256": "5bd2a233672b5508d93af156134af245060fd1f13a9a6733b9a1b7727a22cf6e",
+        "bytes": 1120538
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_19.masters.json.gz": {
+        "sha256": "4ef1477e58204927f5181afc4f231a98f51f5274014509a9fbb4a8582917ea41",
+        "bytes": 637614
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_20.factors.json.gz": {
+        "sha256": "584c28fd89466c9b2decca071664c58331d3b3e210e2f82abc2542d50345318b",
+        "bytes": 1120510
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_20.masters.json.gz": {
+        "sha256": "2d7fafa61b407d910143a41f0314107d144e8ad1702278f14ffa6e82a9ae07f5",
+        "bytes": 637785
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_21.factors.json.gz": {
+        "sha256": "0fee078495eb1a994ba7aeddb7cf5811881ae11d21de5a18b753b6523b2d400e",
+        "bytes": 1120042
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_21.masters.json.gz": {
+        "sha256": "a1183c0a3a150684e669b66cb0d053e2a952bef17664bbea42197ad7db628c31",
+        "bytes": 637435
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_22.factors.json.gz": {
+        "sha256": "e3bbff11e074441f3d6a82e60837da42408ba5265e33817249914b6f9f2f77af",
+        "bytes": 1120571
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_22.masters.json.gz": {
+        "sha256": "02fbd867892d64a0867c3bcb828001995a48df87bb12597d97e4744663266549",
+        "bytes": 637739
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_23.factors.json.gz": {
+        "sha256": "ef0e94af36c8406824bf03f89b524302738e0ff8244c23617bb16556f551d368",
+        "bytes": 1120614
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_23.masters.json.gz": {
+        "sha256": "62abd86b2f0d578cc1083aa0e0f18f8daf3f927dbd7b35117193bd356a1e3889",
+        "bytes": 638346
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_24.factors.json.gz": {
+        "sha256": "f4b730a03f0444652e6c8250f473ebeb8d92ddf091ee65d639bbaa4ca91b9cb0",
+        "bytes": 1119233
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_24.masters.json.gz": {
+        "sha256": "ff5fba63895f496cab76c9745087d70459fc45ebfd9c5aad4491d15fabfa2632",
+        "bytes": 637597
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_25.factors.json.gz": {
+        "sha256": "59896fec2bacd4002d6d62037388c85db2e6d742c2c221d6d1f695e4eb474fd9",
+        "bytes": 1120613
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_25.masters.json.gz": {
+        "sha256": "ee1cdafe7733a405aeefce3ffdc4177660f5f3dd8cd2fd188dbed3bfb6094980",
+        "bytes": 637517
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_26.factors.json.gz": {
+        "sha256": "51b70991397627b2236ce8997a5bd8e49d63dc946829dc96cf8361be984a961a",
+        "bytes": 1120626
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_26.masters.json.gz": {
+        "sha256": "c81d7dedcbb38b527412e55d664b87edfe5361ed217330d666d4a2fcc40e9324",
+        "bytes": 637548
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_27.factors.json.gz": {
+        "sha256": "e56b6b8979632fb9bc642fd8d3fd71e6c93490b20df3d25d80a0533cc32098d1",
+        "bytes": 1119972
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_27.masters.json.gz": {
+        "sha256": "d331d62e5fab46fb8e93dc8913bed52c85e4ccfbcb9ab23b3df0b77af9f97012",
+        "bytes": 637460
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_28.factors.json.gz": {
+        "sha256": "7f13117ba834bf0d8725156e50b2a37c4d21274e3afa363d67dd38a4e9f5f482",
+        "bytes": 1119806
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_28.masters.json.gz": {
+        "sha256": "addf98da156e78ca9e7a85c1a31a11750d1e974da9a7b83203233f367294abc2",
+        "bytes": 638082
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_29.factors.json.gz": {
+        "sha256": "2e59197758ee65d32e765d13fd358d0263d39a5298987d2085089cf6ac45ae5d",
+        "bytes": 1120635
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_29.masters.json.gz": {
+        "sha256": "2606731d91733660ed3f2383988dfd2c54abd73d89fa3ac1805abbcc67540a7f",
+        "bytes": 637318
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_30.factors.json.gz": {
+        "sha256": "6b21910d271cf33c7020afa881c3b1ef779b46e012ce641afdf8eab740708027",
+        "bytes": 1120490
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_30.masters.json.gz": {
+        "sha256": "f439c159d4a8b587791dbb7ceff70a3e786970c0282261de03b1315f360fd218",
+        "bytes": 637040
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_31.factors.json.gz": {
+        "sha256": "c8ef0da65630e4a4c03fbbcaf89c52b63c5c0963574907689f817fef0548d7e2",
+        "bytes": 1120791
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_31.masters.json.gz": {
+        "sha256": "06c1cc82ae9f2adca111d391621bfdfbd45e906684e0c54366bd43e606bb9110",
+        "bytes": 637448
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_32.factors.json.gz": {
+        "sha256": "709a17cbedb7e060ca3e7d951c46ab3404a82a173cb75ab97adf85d9c2aedaff",
+        "bytes": 1122128
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_32.masters.json.gz": {
+        "sha256": "1b7eeadbc7409ebea2b78fc18d613663d8853d7f14a52201f7d2359f9036347e",
+        "bytes": 636981
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_33.factors.json.gz": {
+        "sha256": "470e5eb6691951b17d210834569e13f5c829f9b48d6228462d28d859cc08c978",
+        "bytes": 1121574
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_33.masters.json.gz": {
+        "sha256": "07a3ba3ac7d7718c7b1b9a378b88a501d48903cd7a616b0b22babcdc9f7007ac",
+        "bytes": 637049
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_34.factors.json.gz": {
+        "sha256": "495fe6dc41c793af7c3d239da5bf71b09ad73e1205553336cc35196b092f2f41",
+        "bytes": 1121571
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_34.masters.json.gz": {
+        "sha256": "d22dd2dceee8a013b2900d287d1e5354a7152577332d5e118de4c19d0cd5104b",
+        "bytes": 636761
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_35.factors.json.gz": {
+        "sha256": "a8e73eb0d993cef4e2f7a3a82edc245e40007b7f9ac99874636b05e3f7641e32",
+        "bytes": 1122401
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_35.masters.json.gz": {
+        "sha256": "faf70267adc58dce783877e2ffc65b7f1fc8b5f9faec3f06917ba9e797524d11",
+        "bytes": 636691
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_36.factors.json.gz": {
+        "sha256": "159caa7821cea844b0f4217f067d6424fcc4b6f8fecc2fb935a017b932b505aa",
+        "bytes": 1121795
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_36.masters.json.gz": {
+        "sha256": "234a08cf95f99c54d6693ae92498d524ff6d1210edc092cdc396c2aa34a48367",
+        "bytes": 636768
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_37.factors.json.gz": {
+        "sha256": "0d40b210b9c7ce971f92ac26f2f19fe4204cc5acd21f02260f6a9b7928d74c93",
+        "bytes": 1123073
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_37.masters.json.gz": {
+        "sha256": "d16ef3394f2fafe17ed1b34290e5b6aa4cd602a12de06b43a4f099a817ae14c3",
+        "bytes": 637285
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_38.factors.json.gz": {
+        "sha256": "3ce86e3f404aa5cad35be4d5739b05c55d169184705372c1d27cd455603c3ce1",
+        "bytes": 1121896
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_38.masters.json.gz": {
+        "sha256": "c7b381e3a9d554e9d53b147bda54f1d1c20b28dfe8f760d9ed867faf2a4c6e30",
+        "bytes": 636621
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_39.factors.json.gz": {
+        "sha256": "9462d6b8dd4983e0610c0a0a028030c4c5d32bdfc2ac3be5a6faefdaf2d36e5a",
+        "bytes": 1121829
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_39.masters.json.gz": {
+        "sha256": "d55beb6816d5689f7b77a7239f103e3fc11eb2c73d3b17c96cf8702a1b02c01b",
+        "bytes": 636470
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_40.factors.json.gz": {
+        "sha256": "1c4726b808c7050d59f5450efbf23d127b3cf26a2f34353db23a29601483f83f",
+        "bytes": 1122535
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_40.masters.json.gz": {
+        "sha256": "025289c3a8bef66f59024cdd652d2415532d67bebcfe3b3bb27d81e87bbc02c3",
+        "bytes": 636605
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_41.factors.json.gz": {
+        "sha256": "a644d7681fabf33ddf73ad6e8516fd78bc0ae6c4c709b4aaf54d5c98d00bfc6c",
+        "bytes": 1121734
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_41.masters.json.gz": {
+        "sha256": "65e5676fe366d5f414bec2563f6d9a20ba94c49a0631f5a7b4c4a984c05665d2",
+        "bytes": 635592
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_42.factors.json.gz": {
+        "sha256": "19724039ccac2103fc4b3f3873c9faef917608c71f149f34b4a251440593d80a",
+        "bytes": 1117142
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_42.masters.json.gz": {
+        "sha256": "e586378a0effc1c642b167db5ef8322e4b46a6ba38e7f486b6e7620bec8c0d0f",
+        "bytes": 635520
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_43.factors.json.gz": {
+        "sha256": "96ce26be20fbb6b31e907d2693237b5fbf80b05144b203fff2f9b5b264f21dfe",
+        "bytes": 1117272
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_43.masters.json.gz": {
+        "sha256": "2405d7c681226cad38965ef26d09477261f2d52d5df61e2f697d9d6133100bbb",
+        "bytes": 635283
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_44.factors.json.gz": {
+        "sha256": "bbaf420a625bcbd235de88a9662110769f9b526e96c91e86d79cbb7ea40ff1a9",
+        "bytes": 1115865
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_44.masters.json.gz": {
+        "sha256": "c25714cfbc454fa85dbc45578590137cec29f41041ad18874f3ba0aa1a0ae6bf",
+        "bytes": 634740
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_45.factors.json.gz": {
+        "sha256": "0f6f28f4797ea01bf74e810c969aec0ec2377546eb0e9ed3b13c330e89da7b8c",
+        "bytes": 1118529
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_45.masters.json.gz": {
+        "sha256": "e1c53ef5a44660887aaed8da4aa446504b125b7eba3ce961313d35f246ac2970",
+        "bytes": 635020
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_46.factors.json.gz": {
+        "sha256": "26db2f41a80015e99a08d65d832da71845236d7665d3174cc8c9cfc8ec0e6e7b",
+        "bytes": 1112853
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_46.masters.json.gz": {
+        "sha256": "d1feae4dc6124c32cb039a5e3f3ca02775c32236237c0ca3a63b38b9786a16f9",
+        "bytes": 634689
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_47.factors.json.gz": {
+        "sha256": "b217e723d60bd8f1c4ec6890f147fa4ca8f4a838486f68b91204a2b6fc82ee83",
+        "bytes": 1112017
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_47.masters.json.gz": {
+        "sha256": "e0f8d126ba0c7f2e9752180e02f1c846e404807a523160e84d96b628c2da6242",
+        "bytes": 635119
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_48.factors.json.gz": {
+        "sha256": "45660e5a796bb0781b4c637ef76715a567715dac0d60b863c740364a2204c565",
+        "bytes": 1107872
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_48.masters.json.gz": {
+        "sha256": "fc96953af3dc40739142549fdf95c9413b2c3136a97cf70ecee54f1ab2524a97",
+        "bytes": 633835
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_49.factors.json.gz": {
+        "sha256": "4b3b4f851dc027cabca34af3ec5281b3c932c0fa7acc0a0f1941e5e6834dd42a",
+        "bytes": 1098287
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_49.masters.json.gz": {
+        "sha256": "80dd582e62bd0e8d67fb96615938befbc91b866f8a7e0e205e89cffd01b83577",
+        "bytes": 632776
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/subthreshold.json.gz": {
+        "sha256": "c3c16e38849d8547b3cc772ac2388aa2ae766f6bed8ee0f7f430793df1d6306b",
+        "bytes": 329622
+      }
+    },
+    "working_bits": 2048,
+    "input_decode_bits": 4096,
+    "nu0": 0,
+    "physical_normalization": "f; S=1+i*pi*sqrt(1-4/s)*f",
+    "physical_hypergeometric_recomputations": 0,
+    "subthreshold_hypergeometric_recomputations": 0,
+    "supplement_mode": "read frozen five-energy A archive; algebraic assembly only",
+    "regularizer_added": false,
+    "coordinate_conversion": "C_flat_ii=rho2_ii; C_flat_ij=2*rho2_ij fori<j; rowoffdiagonals dividedby2",
+    "preparation_audits_checked": [
+      "supervisor_exit_code",
+      "hard_timeout_occurred",
+      "source_files_changed_during_run",
+      "gate_inputs_changed_during_run"
+    ],
+    "coordinate_metadata_sha256": "e4349dbc22a140b219b9ac3da072fc3a36f00b94cec0069c56afa66d92c1753b",
+    "imaginary_certificate_path": "results/pv_midpoint_storage/source_imaginary_rank_1024_2048_attempt01/report.json",
+    "imaginary_certificate_sha256": "68f2ec9e36e6bb849e949a50bfa735a3cee38ccdb24a958a4b6d3ea0650f2dff",
+    "true_inverse_enclosed": true,
+    "neumann_corrections": 0,
+    "new_inverse_candidates": 0,
+    "quotient_coordinate_system": "Remaining original nodal B/C_flat dual entries, scales1/6/2",
+    "reconstruction_condition_number": 1,
+    "global_analytic_amplitude_interpretation_claimed": false
+  },
+  "passed": true,
+  "canonical_ids": [
+    0,
+    2979,
+    3010
+  ],
+  "raw_row_checks": 3876,
+  "alpha_checks": 450,
+  "quotient_zero_checks": 2376,
+  "weight_checks": 1500,
+  "pre_tail_alpha_checks": 0,
+  "constant_preserved": true,
+  "row_metrics": [
+    {
+      "max_radius": {
+        "display": "[1.083803440581155315433220e-223 +/- 2.23e-248]",
+        "exact_ball": [
+          [
+            "0xa077b2d",
+            -768
+          ],
+          [
+            "0x0",
+            0
+          ]
+        ]
+      },
+      "max_midpoint": {
+        "display": "[7118843534975.846016688174 +/- 3.97e-13]",
+        "exact_ball": [
+          [
+            "0x6797c23de7fd8948cb7944a8f1d58ea9b575975b9765bf47b9393b9bdb9009ba1c711dba400deb1610b1b8d8a1defecd0b83fb41c2dbff71d30283865338f8de20753d48fe026cb58a6918eac94ba83cd54052b5c3982123004d9a54fc85744a8b459390fa60a7ea8897e4263084bff4bb6ca0a6890913d69a80066928d73c76d777c5cd051db9735a6f695541f6b34b6940444299d06ae133b9c3454d097e21db5ce76d20dd0dec4ccdca8424e429125ab4513710dd997c36e55a79b27348f272c87bf6746c84f7ad78ad571e0617ac38cd8d4066701bba943b10e099d43fbd50f8ecd1a115fd38219f30232ac0506e1dd17615e0432e094b1ae65482498031",
+            -2004
+          ],
+          [
+            "0x0",
+            0
+          ]
+        ]
+      },
+      "relative_radius": {
+        "display": "[1.522443126128958559867255e-236 +/- 2.15e-261]",
+        "exact_ball": [
+          [
+            "0xc6465d1ae00d81250a4123ba52663fdf13dd8a83afb29958a880a5e1709a37f2e4c6bd276eefc0c68c4324a73101eabdea0de7b4ec4e1918cc106ce2c7af51af5b0745c0a30ee55db825eafd6ed258ba5109bd7346225529a6399a9c0712a00afb5bf6a8a25a1c98a06da0865317cf2ad6026ae91616f76a1b1904f3fecf5f0cca348cdb1c1cab45c8ba4ee31e8a94fadb14f22df3cc66b6ef24a0ffd915cb5fcdab42285b1ff969d6b1f6cdefb459de4434187d57ba1b55cea49c971dc1b54973280068f0d344b7301f6b4987d0c6eecf014f092216dd200b9364537b45e57337f638923ddb1cb969e2551026f61801a566900dc0198ea84f69d071c8d2316f",
+            -2831
+          ],
+          [
+            "0x0",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "max_radius": {
+        "display": "[7.195459903420383050651135e-253 +/- 1.67e-278]",
+        "exact_ball": [
+          [
+            "0xa8d0077",
+            -865
+          ],
+          [
+            "0x0",
+            0
+          ]
+        ]
+      },
+      "max_midpoint": {
+        "display": "[7.939328826636876541452537e-264 +/- 2.15e-290]",
+        "exact_ball": [
+          [
+            "0x4000000000000001",
+            -936
+          ],
+          [
+            "0x0",
+            0
+          ]
+        ]
+      },
+      "relative_radius": {
+        "display": "[90630581759.99999998034763 +/- 4.73e-15]",
+        "exact_ball": [
+          [
+            "0x546803b7fffffffeae5ff1200000000546803b7fffffffeae5ff1200000000546803b7fffffffeae5ff1200000000546803b7fffffffeae5ff1200000000546803b7fffffffeae5ff1200000000546803b7fffffffeae5ff1200000000546803b7fffffffeae5ff1200000000546803b7fffffffeae5ff1200000000546803b7fffffffeae5ff1200000000546803b7fffffffeae5ff1200000000546803b7fffffffeae5ff1200000000546803b7fffffffeae5ff1200000000546803b7fffffffeae5ff1200000000546803b7fffffffeae5ff1200000000546803b7fffffffeae5ff1200000000546803b7fffffffeae5ff1200000000546803b7ffffffff",
+            -2010
+          ],
+          [
+            "0x0",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "max_radius": {
+        "display": "[2.286370965397156317682187e-241 +/- 3.18e-266]",
+        "exact_ball": [
+          [
+            "0x6192511",
+            -826
+          ],
+          [
+            "0x0",
+            0
+          ]
+        ]
+      },
+      "max_midpoint": {
+        "display": "[2.451231504214565482302597e-5 +/- 2.56e-30]",
+        "exact_ball": [
+          [
+            "0xcd9fcbb4ce5ced935ad8cf6ea05fc83c8d8626987e14401ec8a40b6c0e98d8f84e565ae1af76758fe2bc8d04f365bb58185c966c2b7866722bfb9b5cc83a8980bd68ce126f19ec8ab1201686aef21e487e6646e30878d3712fd8426b6a06875c455e28c015548d42abe1c556431c5eeda5b8ea0f21aa6fd98e05e8d9aa868644a5e744fd3f5c9844bdbb6fb64d5e3cc81dc5b69d7db800e67e6b8aabb65b3b0d28d1688b7cb718eeb2e746d5105c0195ef8034f3259422717088114b7c5de49b29d3d917be9521cdb0956519b080dcad113dd3331b698ec3901bcdb152e5c67c343e8fb9b95f239a99eee80c1398c19fd4f660ba920765b18d9eebcf358ce483",
+            -2063
+          ],
+          [
+            "0x0",
+            0
+          ]
+        ]
+      },
+      "relative_radius": {
+        "display": "[9.327437908112907871397891e-237 +/- 4.06e-262]",
+        "exact_ball": [
+          [
+            "0x7979becbc1195380c778ac60c09b52b255a4679f68ab024acfc194fc2eaa1cccfe32e2a3e70d76e9bf99f5627c5a377c759efdb539338aab8d9bdfba7b9f8a860b41c0665acd8e685a9180fdc09d03976217ca343a5c91d44cbe87b7ea54431e397b7a26464372afc3c8da54f5094b8053201b7d5c273b61b7cadb04c6a360f3e2f2e43db60fce83cb57e78a3d7dcddd52b92c9aa8ce4ff95b8b435928e4c725f216362841345d65f59eb2fd8ce700f7e36a46fe56d504b0e25dfc6d694fa04350e6f5243cc717beb0a882fff3e761db099b293b191c029592cd9293b21620d1cd0e74bea330ae998b737390ca7530ff0a60466a3f26fe65e3f456209a3e1c11",
+            -2831
+          ],
+          [
+            "0x0",
+            0
+          ]
+        ]
+      }
+    }
+  ],
+  "solve_tails": [
+    {
+      "display": "[7.962135855323778627757641e-226 +/- 3.10e-251]",
+      "exact_ball": [
+        [
+          "0x96e53ff999688f593f0304a7a28ed9ff64298c6962fd51b241bd36a87cad127783ec312964a2ace4098647666e016a443ed2313cc09d973b1519f8795f4924c9c73db3244f8cfeffd8133082bba0ca7634039770a74556953d644b2fe43375e350a0ffe8d264ae7ad4282314a9bd420e0e0a541d1e7d3effd87e460dd5eb08aebca737d6f33c297f1438f27a6ce7328e6a8e87a65476b601774fb19eb5dac7d66eebd7cf3ceca6328678944ff02119406f147f043c3f19a68abfab1e0cc0438a6534528b5c1bc9cf2789ce0ba9a230c7e41ec437a8a04c40d8e64be7dbb7779292c2d6d50c93168e3ecba072f1522193a60f09645f5f121b353b0692e5451c5b",
+          -2795
+        ],
+        [
+          "0x0",
+          0
+        ]
+      ]
+    },
+    {
+      "display": "[5.286127296152450492203900e-255 +/- 1.41e-280]",
+      "exact_ball": [
+        [
+          "0x27af895b1dd332cbf11ac4fa9c07c7e7e7a46d33cc7d9db64f2615ed74656b48fd32a9fcea99ce491a99c767d2653167fae7f9a83236c192386a08489974efa99146874e33f15a22f3e83e88358eb55c922085643277a2d081eaac2d9019b02e6262e857d07c8270ddc1ba90884c9886db0baa590aaf8226b9aa3aa27f62ff3928d3fe1e2cca76d061deb546b9eba44472a2c693822b5d12a151e2d8a8f758835323e7525e9ac83b4340136fec1120a6596ebcda136204bf8a06c6afb54f82d35d70c7c75321f30406bb23880f59c4705abf5d5b581c32ad90c6c2251bd91f88ec187d6f4c3ca9d372ae12c378556fb8169b850bb36abc0abd91f51abdebd397",
+          -2890
+        ],
+        [
+          "0x0",
+          0
+        ]
+      ]
+    },
+    {
+      "display": "[1.679676930470295236564246e-243 +/- 3.22e-268]",
+      "exact_ball": [
+        [
+          "0xb780aa8e73cc38bfdfeede68842be80382f38f6f537f6546f90de0205a85531b36ebaddde3bfc241708e9b8f973ee4bd0b110241254d0fb96725621b9ba0312f7397d05303e5e349c22dcea1007c5beec99c5cb7ea4a380f82efb7f4974f4e078fa10663f1b906eb7280684f3f45bbb5c88b5196a6dd87eae0a0009a4e76f35b8d14de0041f5b8546cf8b5fd43424fc2378a84e5b830635ee14670b2e7b06d5f52b9575f968f046fb378087b782473102c0a5e96e9a177e93ebb334bac2204497dfee9351db502720512c91940838e3f181403592e10f60c9bc98f499e8b90c2bc68e0c54ff7f0e756e23afcd42c1011435d5290bf16aaddbb339294851add07",
+          -2854
+        ],
+        [
+          "0x0",
+          0
+        ]
+      ]
+    }
+  ],
+  "selected_solution_radii": [
+    {
+      "display": "[5.320749119281625755838184e-503 +/- 1.41e-528]",
+      "exact_ball": [
+        [
+          "0x2caffc63",
+          -1698
+        ],
+        [
+          "0x0",
+          0
+        ]
+      ]
+    },
+    {
+      "display": "[3.390787929344110246732105e-503 +/- 7.69e-529]",
+      "exact_ball": [
+        [
+          "0x38f4ddcd",
+          -1699
+        ],
+        [
+          "0x0",
+          0
+        ]
+      ]
+    },
+    {
+      "display": "[6.301981113695979316238367e-507 +/- 2.38e-533]",
+      "exact_ball": [
+        [
+          "0xad6fab7",
+          -1709
+        ],
+        [
+          "0x0",
+          0
+        ]
+      ]
+    }
+  ],
+  "global_analytic_amplitude_claimed": false,
+  "remaining_rank_claimed": false,
+  "elapsed_seconds": 5.20812838699203
+}

@@ -1,0 +1,34 @@
+{
+  "purpose": "E1 physical-xref IR lower support; initial convex mixture then B-only binary inward scaling",
+  "xref": 0.07332139057293466,
+  "parent_targets": [
+    [
+      0.06540961880224935,
+      -0.005016891287796322
+    ],
+    [
+      0.07894659612776544,
+      -0.005695606479143987
+    ]
+  ],
+  "source_coefficients": [
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_061/coefficients.json",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/B_combined/retarget_073/coefficients.json"
+  ],
+  "second_weight_enclosure": "[0.58445630663591806971962605904811283 +/- 1.07e-36]",
+  "source_weights": [
+    0.4155436933640819,
+    0.5844563066359181
+  ],
+  "direction": [
+    -25.068934335449544,
+    -500.0
+  ],
+  "direction_x_enclosure": "[-25.068934335449543867461899935805601 +/- 2.98e-34]",
+  "initialization_only": true,
+  "numerical_scale": 0.5,
+  "binary_scaling_exact": true,
+  "full_original_audit_performed_here": false,
+  "physical_constraints_unchanged": true,
+  "projection_section_not_imposed_on_support": true
+}

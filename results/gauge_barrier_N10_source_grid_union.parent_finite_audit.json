@@ -1,0 +1,42 @@
+{
+  "candidate": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+  "candidate_sha256": "42b2f6abaa2a2ddfdd974dedf0e8fe29314b368cb4cf20859a85cd5cbfb602f3",
+  "stage": null,
+  "repaired": false,
+  "passes_parent_finite_numerical_audit": true,
+  "values": {
+    "min_training_unitarity_circle_margin": 2.325719886525692e-89,
+    "min_training_unitarity_relative_margin": 0.0025930959700270636,
+    "added_scattering_sample_count": 1528,
+    "min_added_scattering_circle_margin": 4.508707855023176e-85,
+    "min_current_gram_eigenvalue": 2.79167314951694e-10,
+    "min_conditioned_current_gram_eigenvalue": 3.7702610821056176e-06,
+    "chiral_residual": 0.0019999466729556607,
+    "chiral_tolerance": 0.002,
+    "selected_moment_norm": "combined_l2_of_four_moments",
+    "selected_moment_residual_norm": 0.001999171115451345,
+    "moment_tolerance": 0.002,
+    "max_current_high_FF_ratio": 0.9986585616725507,
+    "amplitude_at_infinity": -1.1872447469585268e-14,
+    "vector_F_at_infinity": -4.336808689942018e-18,
+    "max_extra_high_FF_ratio": 0.9994349804587405,
+    "vector_endpoint_parameterization": "Exact affine elimination; full stored coefficient array is its rounded reconstruction.",
+    "scalar_FF_endpoint_ratio": 0.8922595012207659,
+    "vector_FF_endpoint_derivative_ratio": 0.9706499482442129,
+    "fixed_f00_target": 0.075329811,
+    "fixed_f00_residual": 4.1190873411797724e-16,
+    "fixed_spin_endpoint_margins": {
+      "s0_leading_imaginary": 0.1793217866533776,
+      "s2_leading_imaginary": 2.18487929122169,
+      "i0_d_wave_margin": 88.51114011621829,
+      "i2_d_wave_margin": 3.6677902487496867,
+      "i1_p_wave_margin": 53.47013586163596
+    },
+    "min_sampled_normalized_impact_profile": 0.5125418207060686,
+    "min_small_b_leading_coefficient": 3.6960188050995564
+  },
+  "scope": "Finite scattering/current/chi/moment/FF, configured additional scattering/fixed-spin/impact samples, FF endpoints and fixed-f00 equality; numerical eigenvalues and double-generated quadrature. Global edge/FF/impact certificates audited separately.",
+  "angular_points": 160,
+  "summation": "numpy clongdouble/longdouble; eigvalsh float64",
+  "script_sha256": "0141787ad79838e336387b1812df0a8d5d934dd7494aac065262f4a9d170e429"
+}

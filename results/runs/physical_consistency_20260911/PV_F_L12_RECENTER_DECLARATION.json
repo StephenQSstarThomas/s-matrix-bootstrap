@@ -1,0 +1,15 @@
+{
+  "reason": "First +x run from Phase-I witness made feasible descent but remained uncentered at mu 2e-6 for its bounded 900 seconds; Newton decrement about10 and original support gap unclosed.",
+  "hypothesis": "Starting a new objective too far from its small-mu center; use a larger interior mu and rebuild the numerical reference from the freshly audited complete candidate.",
+  "new_seed": "PV_F_M50_L12_recenter_seed",
+  "old_cache_retained_but_not_reused": true,
+  "new_mu": 0.0001,
+  "objective": [
+    1,
+    0
+  ],
+  "physical_constraints_changed": false,
+  "phase_data_used": false,
+  "negative_current_seed_repair_at_this_stage": false,
+  "scope": "Numerical recentering, not a different physical model or a continuation falsely claiming the old saved mu."
+}

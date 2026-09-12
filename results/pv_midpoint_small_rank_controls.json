@@ -1,0 +1,44 @@
+{
+  "schema": "smatrix-PV-small-rank-controls-v1",
+  "records": [
+    {
+      "name": "M4_direct_angular_attempt01",
+      "report_path": "results/pv_midpoint_storage/M4_direct_angular_attempt01/report.json",
+      "report_sha256": "b3e470b9582d5a4352a986478cad32d6c7c60cb62b4c835aeafee75208624a35",
+      "status": "inconclusive_M4_residual",
+      "delta": "[13277.4989161186429021728387886 +/- 2.09e-26]",
+      "elapsed_seconds": 0.7158315760316327
+    },
+    {
+      "name": "M4_rank34_attempt01",
+      "report_path": "results/pv_midpoint_storage/M4_rank34_attempt01/report.json",
+      "report_sha256": "678534d897917073c7c60ab683bfec35b7040fa797eb5fe4dd68e8f594417715",
+      "status": "certified_rank34",
+      "delta": "[3.29569168817069572643200119838e-70 +/- 2.88e-100]",
+      "elapsed_seconds": 0.05934630706906319
+    },
+    {
+      "name": "M5_direct_angular_attempt01",
+      "report_path": "results/pv_midpoint_storage/M5_direct_angular_attempt01/report.json",
+      "report_sha256": "847c11056ac14c828b84d4c4bb6cd575d16faf15f7c23a789ace34744bf33bf9",
+      "status": "certified_small_full_row_rank",
+      "delta": "[3.79105505616835312000274549342e-70 +/- 4.45e-100]",
+      "elapsed_seconds": 0.7660645180149004
+    },
+    {
+      "name": "M8L2_direct_angular_attempt01",
+      "report_path": "results/pv_midpoint_storage/M8L2_direct_angular_attempt01/report.json",
+      "report_sha256": "e567c35a0b3defee6cc64e1150f9a17cad349a5793db4307b07c85a37d4507fd",
+      "status": "certified_small_full_row_rank",
+      "delta": "[8.94113795577344566200768105077e-67 +/- 9.61e-98]",
+      "elapsed_seconds": 3.3724159490084276
+    }
+  ],
+  "M4_exact_rank": 34,
+  "M5L1_exact_rank": 41,
+  "M8L2_exact_rank": 107,
+  "M50_rank_claimed": false,
+  "capacity_formula": "rank<=min(d,min(4ML+5,M^2+M)+2ML+6)",
+  "proof_doc": "docs/75_isospin_capacity_and_small_PV_rank.md",
+  "complete_M4_M5_comparison": "results/pv_midpoint_small_complete_comparison.json"
+}

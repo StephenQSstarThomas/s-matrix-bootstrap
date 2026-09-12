@@ -1,0 +1,463 @@
+{
+  "command": "support",
+  "status": "inconclusive",
+  "artifacts": {},
+  "inputs": {
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/report.json": {
+      "sha256": "9cc07c41216785d7ac85b435ab3fa7dc264b661b9f343a2bfd2f62c05402ac8b",
+      "bytes": 371288
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/grid.json.gz": {
+      "sha256": "58b32351b4087c5f72d084f734a29f314e8c578c4ecfcb59e852c69d50447a10",
+      "bytes": 90374
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_00.masters.json.gz": {
+      "sha256": "c76976e686bc6414b055ee9243fde09598b2b9cabb5a9fcca0e9be1b57c0003d",
+      "bytes": 638783
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_01.masters.json.gz": {
+      "sha256": "bfe9530806aa42f09885b10a0b3d8499f2778d38711876c86899cfe29faf4fbc",
+      "bytes": 638790
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_02.masters.json.gz": {
+      "sha256": "8b9ccf6be14fc6c50de1217c4faa108424953a8a4dd30602d56781ccfdf309d7",
+      "bytes": 638174
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_03.masters.json.gz": {
+      "sha256": "aa1e131b545f5bb3ef212667d7dd37feaae71c59ecaa45daf84ba364a5f9b86a",
+      "bytes": 638130
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_04.masters.json.gz": {
+      "sha256": "0dcc1f50545c6ab3b888e19fa9f1fdb522bdb609c564936232dd91101028e60c",
+      "bytes": 638761
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_05.masters.json.gz": {
+      "sha256": "2b57f4790b00746142eeccbf4cd637d0077b6f860187c2c27bc55a2804ad23fd",
+      "bytes": 638589
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_06.masters.json.gz": {
+      "sha256": "7fa166ef17946156b6dd4e9434ba2e0c690682eb587d9e60fb1f6528c328ec1c",
+      "bytes": 637871
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_07.masters.json.gz": {
+      "sha256": "cb02318f0bf50496e8b6017ed2e43f1e168bbdbd3a134a84ffb1e4317646b1e6",
+      "bytes": 638026
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_08.masters.json.gz": {
+      "sha256": "a112211785c18f51b2cf0dce8b5f0b48dcb30700f9d0ab8380d0e1774d0b4e18",
+      "bytes": 638162
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_09.masters.json.gz": {
+      "sha256": "356dd6c42c23a9a0978c576e0272e07dd243f49a76085b0feae94dc5065dca0e",
+      "bytes": 638569
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_10.masters.json.gz": {
+      "sha256": "4490ac28597175b83378ffc42fcbc90f092370ba0c52be009a387cb81a4b972d",
+      "bytes": 638046
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_11.masters.json.gz": {
+      "sha256": "bcb067350b1297600c1f8151cc72c3e23f5f88101b66f19e343ebea29a005e4d",
+      "bytes": 638051
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_12.masters.json.gz": {
+      "sha256": "8753f881e95b5074a219585d37ea4cf6021a81e36a8be1bff7867c8d3db5592a",
+      "bytes": 638015
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_13.masters.json.gz": {
+      "sha256": "1e8f33c78e2623abbfc680cdba058a4ecfde543d204021adaa27aa8832bce71d",
+      "bytes": 637792
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_14.masters.json.gz": {
+      "sha256": "14767caee561db44244c5a6c7bf4518f9a0314d9c43db989f19871057a7cb95f",
+      "bytes": 637958
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_15.masters.json.gz": {
+      "sha256": "eabef5e699695f96f4d9a814b68d7ebfbe6b50211d646f591752e1fdddc29159",
+      "bytes": 638006
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_16.masters.json.gz": {
+      "sha256": "434baa802a79ec1cedc39147cf787e915d6510acca82ff4588b8092b3d2229c3",
+      "bytes": 637712
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_17.masters.json.gz": {
+      "sha256": "d0ff246c9df0c13549c54a149525bb78ef4552f245d8f1635a2855efe7b4c79a",
+      "bytes": 638301
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_18.masters.json.gz": {
+      "sha256": "ea695e42bd117b1fe41782a07eedbef1dc4530a910ed0e4a7c5e34ff1ac312c6",
+      "bytes": 637903
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_19.masters.json.gz": {
+      "sha256": "4ef1477e58204927f5181afc4f231a98f51f5274014509a9fbb4a8582917ea41",
+      "bytes": 637614
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_20.masters.json.gz": {
+      "sha256": "2d7fafa61b407d910143a41f0314107d144e8ad1702278f14ffa6e82a9ae07f5",
+      "bytes": 637785
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_21.masters.json.gz": {
+      "sha256": "a1183c0a3a150684e669b66cb0d053e2a952bef17664bbea42197ad7db628c31",
+      "bytes": 637435
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_22.masters.json.gz": {
+      "sha256": "02fbd867892d64a0867c3bcb828001995a48df87bb12597d97e4744663266549",
+      "bytes": 637739
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_23.masters.json.gz": {
+      "sha256": "62abd86b2f0d578cc1083aa0e0f18f8daf3f927dbd7b35117193bd356a1e3889",
+      "bytes": 638346
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_24.masters.json.gz": {
+      "sha256": "ff5fba63895f496cab76c9745087d70459fc45ebfd9c5aad4491d15fabfa2632",
+      "bytes": 637597
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_25.masters.json.gz": {
+      "sha256": "ee1cdafe7733a405aeefce3ffdc4177660f5f3dd8cd2fd188dbed3bfb6094980",
+      "bytes": 637517
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_26.masters.json.gz": {
+      "sha256": "c81d7dedcbb38b527412e55d664b87edfe5361ed217330d666d4a2fcc40e9324",
+      "bytes": 637548
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_27.masters.json.gz": {
+      "sha256": "d331d62e5fab46fb8e93dc8913bed52c85e4ccfbcb9ab23b3df0b77af9f97012",
+      "bytes": 637460
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_28.masters.json.gz": {
+      "sha256": "addf98da156e78ca9e7a85c1a31a11750d1e974da9a7b83203233f367294abc2",
+      "bytes": 638082
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_29.masters.json.gz": {
+      "sha256": "2606731d91733660ed3f2383988dfd2c54abd73d89fa3ac1805abbcc67540a7f",
+      "bytes": 637318
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_30.masters.json.gz": {
+      "sha256": "f439c159d4a8b587791dbb7ceff70a3e786970c0282261de03b1315f360fd218",
+      "bytes": 637040
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_31.masters.json.gz": {
+      "sha256": "06c1cc82ae9f2adca111d391621bfdfbd45e906684e0c54366bd43e606bb9110",
+      "bytes": 637448
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_32.masters.json.gz": {
+      "sha256": "1b7eeadbc7409ebea2b78fc18d613663d8853d7f14a52201f7d2359f9036347e",
+      "bytes": 636981
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_33.masters.json.gz": {
+      "sha256": "07a3ba3ac7d7718c7b1b9a378b88a501d48903cd7a616b0b22babcdc9f7007ac",
+      "bytes": 637049
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_34.masters.json.gz": {
+      "sha256": "d22dd2dceee8a013b2900d287d1e5354a7152577332d5e118de4c19d0cd5104b",
+      "bytes": 636761
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_35.masters.json.gz": {
+      "sha256": "faf70267adc58dce783877e2ffc65b7f1fc8b5f9faec3f06917ba9e797524d11",
+      "bytes": 636691
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_36.masters.json.gz": {
+      "sha256": "234a08cf95f99c54d6693ae92498d524ff6d1210edc092cdc396c2aa34a48367",
+      "bytes": 636768
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_37.masters.json.gz": {
+      "sha256": "d16ef3394f2fafe17ed1b34290e5b6aa4cd602a12de06b43a4f099a817ae14c3",
+      "bytes": 637285
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_38.masters.json.gz": {
+      "sha256": "c7b381e3a9d554e9d53b147bda54f1d1c20b28dfe8f760d9ed867faf2a4c6e30",
+      "bytes": 636621
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_39.masters.json.gz": {
+      "sha256": "d55beb6816d5689f7b77a7239f103e3fc11eb2c73d3b17c96cf8702a1b02c01b",
+      "bytes": 636470
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_40.masters.json.gz": {
+      "sha256": "025289c3a8bef66f59024cdd652d2415532d67bebcfe3b3bb27d81e87bbc02c3",
+      "bytes": 636605
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_41.masters.json.gz": {
+      "sha256": "65e5676fe366d5f414bec2563f6d9a20ba94c49a0631f5a7b4c4a984c05665d2",
+      "bytes": 635592
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_42.masters.json.gz": {
+      "sha256": "e586378a0effc1c642b167db5ef8322e4b46a6ba38e7f486b6e7620bec8c0d0f",
+      "bytes": 635520
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_43.masters.json.gz": {
+      "sha256": "2405d7c681226cad38965ef26d09477261f2d52d5df61e2f697d9d6133100bbb",
+      "bytes": 635283
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_44.masters.json.gz": {
+      "sha256": "c25714cfbc454fa85dbc45578590137cec29f41041ad18874f3ba0aa1a0ae6bf",
+      "bytes": 634740
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_45.masters.json.gz": {
+      "sha256": "e1c53ef5a44660887aaed8da4aa446504b125b7eba3ce961313d35f246ac2970",
+      "bytes": 635020
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_46.masters.json.gz": {
+      "sha256": "d1feae4dc6124c32cb039a5e3f3ca02775c32236237c0ca3a63b38b9786a16f9",
+      "bytes": 634689
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_47.masters.json.gz": {
+      "sha256": "e0f8d126ba0c7f2e9752180e02f1c846e404807a523160e84d96b628c2da6242",
+      "bytes": 635119
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_48.masters.json.gz": {
+      "sha256": "fc96953af3dc40739142549fdf95c9413b2c3136a97cf70ecee54f1ab2524a97",
+      "bytes": 633835
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/node_49.masters.json.gz": {
+      "sha256": "80dd582e62bd0e8d67fb96615938befbc91b866f8a7e0e205e89cffd01b83577",
+      "bytes": 632776
+    },
+    "results/pv_midpoint_storage/source_factors_2048_attempt01/subthreshold.json.gz": {
+      "sha256": "c3c16e38849d8547b3cc772ac2388aa2ae766f6bed8ee0f7f430793df1d6306b",
+      "bytes": 329622
+    }
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3"
+  },
+  "scope": "Original-center discrete PV/midpoint prescription; published regions and phases remain unverified.",
+  "provenance": {
+    "factor_report_path": "results/pv_midpoint_storage/source_factors_2048_attempt01/report.json",
+    "factor_report_sha256": "9cc07c41216785d7ac85b435ab3fa7dc264b661b9f343a2bfd2f62c05402ac8b",
+    "inputs": {
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/report.json": {
+        "sha256": "9cc07c41216785d7ac85b435ab3fa7dc264b661b9f343a2bfd2f62c05402ac8b",
+        "bytes": 371288
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/grid.json.gz": {
+        "sha256": "58b32351b4087c5f72d084f734a29f314e8c578c4ecfcb59e852c69d50447a10",
+        "bytes": 90374
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_00.masters.json.gz": {
+        "sha256": "c76976e686bc6414b055ee9243fde09598b2b9cabb5a9fcca0e9be1b57c0003d",
+        "bytes": 638783
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_01.masters.json.gz": {
+        "sha256": "bfe9530806aa42f09885b10a0b3d8499f2778d38711876c86899cfe29faf4fbc",
+        "bytes": 638790
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_02.masters.json.gz": {
+        "sha256": "8b9ccf6be14fc6c50de1217c4faa108424953a8a4dd30602d56781ccfdf309d7",
+        "bytes": 638174
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_03.masters.json.gz": {
+        "sha256": "aa1e131b545f5bb3ef212667d7dd37feaae71c59ecaa45daf84ba364a5f9b86a",
+        "bytes": 638130
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_04.masters.json.gz": {
+        "sha256": "0dcc1f50545c6ab3b888e19fa9f1fdb522bdb609c564936232dd91101028e60c",
+        "bytes": 638761
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_05.masters.json.gz": {
+        "sha256": "2b57f4790b00746142eeccbf4cd637d0077b6f860187c2c27bc55a2804ad23fd",
+        "bytes": 638589
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_06.masters.json.gz": {
+        "sha256": "7fa166ef17946156b6dd4e9434ba2e0c690682eb587d9e60fb1f6528c328ec1c",
+        "bytes": 637871
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_07.masters.json.gz": {
+        "sha256": "cb02318f0bf50496e8b6017ed2e43f1e168bbdbd3a134a84ffb1e4317646b1e6",
+        "bytes": 638026
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_08.masters.json.gz": {
+        "sha256": "a112211785c18f51b2cf0dce8b5f0b48dcb30700f9d0ab8380d0e1774d0b4e18",
+        "bytes": 638162
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_09.masters.json.gz": {
+        "sha256": "356dd6c42c23a9a0978c576e0272e07dd243f49a76085b0feae94dc5065dca0e",
+        "bytes": 638569
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_10.masters.json.gz": {
+        "sha256": "4490ac28597175b83378ffc42fcbc90f092370ba0c52be009a387cb81a4b972d",
+        "bytes": 638046
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_11.masters.json.gz": {
+        "sha256": "bcb067350b1297600c1f8151cc72c3e23f5f88101b66f19e343ebea29a005e4d",
+        "bytes": 638051
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_12.masters.json.gz": {
+        "sha256": "8753f881e95b5074a219585d37ea4cf6021a81e36a8be1bff7867c8d3db5592a",
+        "bytes": 638015
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_13.masters.json.gz": {
+        "sha256": "1e8f33c78e2623abbfc680cdba058a4ecfde543d204021adaa27aa8832bce71d",
+        "bytes": 637792
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_14.masters.json.gz": {
+        "sha256": "14767caee561db44244c5a6c7bf4518f9a0314d9c43db989f19871057a7cb95f",
+        "bytes": 637958
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_15.masters.json.gz": {
+        "sha256": "eabef5e699695f96f4d9a814b68d7ebfbe6b50211d646f591752e1fdddc29159",
+        "bytes": 638006
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_16.masters.json.gz": {
+        "sha256": "434baa802a79ec1cedc39147cf787e915d6510acca82ff4588b8092b3d2229c3",
+        "bytes": 637712
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_17.masters.json.gz": {
+        "sha256": "d0ff246c9df0c13549c54a149525bb78ef4552f245d8f1635a2855efe7b4c79a",
+        "bytes": 638301
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_18.masters.json.gz": {
+        "sha256": "ea695e42bd117b1fe41782a07eedbef1dc4530a910ed0e4a7c5e34ff1ac312c6",
+        "bytes": 637903
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_19.masters.json.gz": {
+        "sha256": "4ef1477e58204927f5181afc4f231a98f51f5274014509a9fbb4a8582917ea41",
+        "bytes": 637614
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_20.masters.json.gz": {
+        "sha256": "2d7fafa61b407d910143a41f0314107d144e8ad1702278f14ffa6e82a9ae07f5",
+        "bytes": 637785
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_21.masters.json.gz": {
+        "sha256": "a1183c0a3a150684e669b66cb0d053e2a952bef17664bbea42197ad7db628c31",
+        "bytes": 637435
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_22.masters.json.gz": {
+        "sha256": "02fbd867892d64a0867c3bcb828001995a48df87bb12597d97e4744663266549",
+        "bytes": 637739
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_23.masters.json.gz": {
+        "sha256": "62abd86b2f0d578cc1083aa0e0f18f8daf3f927dbd7b35117193bd356a1e3889",
+        "bytes": 638346
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_24.masters.json.gz": {
+        "sha256": "ff5fba63895f496cab76c9745087d70459fc45ebfd9c5aad4491d15fabfa2632",
+        "bytes": 637597
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_25.masters.json.gz": {
+        "sha256": "ee1cdafe7733a405aeefce3ffdc4177660f5f3dd8cd2fd188dbed3bfb6094980",
+        "bytes": 637517
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_26.masters.json.gz": {
+        "sha256": "c81d7dedcbb38b527412e55d664b87edfe5361ed217330d666d4a2fcc40e9324",
+        "bytes": 637548
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_27.masters.json.gz": {
+        "sha256": "d331d62e5fab46fb8e93dc8913bed52c85e4ccfbcb9ab23b3df0b77af9f97012",
+        "bytes": 637460
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_28.masters.json.gz": {
+        "sha256": "addf98da156e78ca9e7a85c1a31a11750d1e974da9a7b83203233f367294abc2",
+        "bytes": 638082
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_29.masters.json.gz": {
+        "sha256": "2606731d91733660ed3f2383988dfd2c54abd73d89fa3ac1805abbcc67540a7f",
+        "bytes": 637318
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_30.masters.json.gz": {
+        "sha256": "f439c159d4a8b587791dbb7ceff70a3e786970c0282261de03b1315f360fd218",
+        "bytes": 637040
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_31.masters.json.gz": {
+        "sha256": "06c1cc82ae9f2adca111d391621bfdfbd45e906684e0c54366bd43e606bb9110",
+        "bytes": 637448
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_32.masters.json.gz": {
+        "sha256": "1b7eeadbc7409ebea2b78fc18d613663d8853d7f14a52201f7d2359f9036347e",
+        "bytes": 636981
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_33.masters.json.gz": {
+        "sha256": "07a3ba3ac7d7718c7b1b9a378b88a501d48903cd7a616b0b22babcdc9f7007ac",
+        "bytes": 637049
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_34.masters.json.gz": {
+        "sha256": "d22dd2dceee8a013b2900d287d1e5354a7152577332d5e118de4c19d0cd5104b",
+        "bytes": 636761
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_35.masters.json.gz": {
+        "sha256": "faf70267adc58dce783877e2ffc65b7f1fc8b5f9faec3f06917ba9e797524d11",
+        "bytes": 636691
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_36.masters.json.gz": {
+        "sha256": "234a08cf95f99c54d6693ae92498d524ff6d1210edc092cdc396c2aa34a48367",
+        "bytes": 636768
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_37.masters.json.gz": {
+        "sha256": "d16ef3394f2fafe17ed1b34290e5b6aa4cd602a12de06b43a4f099a817ae14c3",
+        "bytes": 637285
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_38.masters.json.gz": {
+        "sha256": "c7b381e3a9d554e9d53b147bda54f1d1c20b28dfe8f760d9ed867faf2a4c6e30",
+        "bytes": 636621
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_39.masters.json.gz": {
+        "sha256": "d55beb6816d5689f7b77a7239f103e3fc11eb2c73d3b17c96cf8702a1b02c01b",
+        "bytes": 636470
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_40.masters.json.gz": {
+        "sha256": "025289c3a8bef66f59024cdd652d2415532d67bebcfe3b3bb27d81e87bbc02c3",
+        "bytes": 636605
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_41.masters.json.gz": {
+        "sha256": "65e5676fe366d5f414bec2563f6d9a20ba94c49a0631f5a7b4c4a984c05665d2",
+        "bytes": 635592
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_42.masters.json.gz": {
+        "sha256": "e586378a0effc1c642b167db5ef8322e4b46a6ba38e7f486b6e7620bec8c0d0f",
+        "bytes": 635520
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_43.masters.json.gz": {
+        "sha256": "2405d7c681226cad38965ef26d09477261f2d52d5df61e2f697d9d6133100bbb",
+        "bytes": 635283
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_44.masters.json.gz": {
+        "sha256": "c25714cfbc454fa85dbc45578590137cec29f41041ad18874f3ba0aa1a0ae6bf",
+        "bytes": 634740
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_45.masters.json.gz": {
+        "sha256": "e1c53ef5a44660887aaed8da4aa446504b125b7eba3ce961313d35f246ac2970",
+        "bytes": 635020
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_46.masters.json.gz": {
+        "sha256": "d1feae4dc6124c32cb039a5e3f3ca02775c32236237c0ca3a63b38b9786a16f9",
+        "bytes": 634689
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_47.masters.json.gz": {
+        "sha256": "e0f8d126ba0c7f2e9752180e02f1c846e404807a523160e84d96b628c2da6242",
+        "bytes": 635119
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_48.masters.json.gz": {
+        "sha256": "fc96953af3dc40739142549fdf95c9413b2c3136a97cf70ecee54f1ab2524a97",
+        "bytes": 633835
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/node_49.masters.json.gz": {
+        "sha256": "80dd582e62bd0e8d67fb96615938befbc91b866f8a7e0e205e89cffd01b83577",
+        "bytes": 632776
+      },
+      "results/pv_midpoint_storage/source_factors_2048_attempt01/subthreshold.json.gz": {
+        "sha256": "c3c16e38849d8547b3cc772ac2388aa2ae766f6bed8ee0f7f430793df1d6306b",
+        "bytes": 329622
+      }
+    },
+    "working_bits": 2048,
+    "input_decode_bits": 4096,
+    "nu0": 0,
+    "physical_normalization": "f; S=1+i*pi*sqrt(1-4/s)*f",
+    "physical_hypergeometric_recomputations": 0,
+    "subthreshold_hypergeometric_recomputations": 0,
+    "supplement_mode": "read frozen five-energy A archive; algebraic assembly only",
+    "regularizer_added": false,
+    "coordinate_conversion": "C_flat_ii=rho2_ii; C_flat_ij=2*rho2_ij fori<j; rowoffdiagonals dividedby2",
+    "preparation_audits_checked": [
+      "supervisor_exit_code",
+      "hard_timeout_occurred",
+      "source_files_changed_during_run",
+      "gate_inputs_changed_during_run"
+    ],
+    "coordinate_metadata_sha256": "e4349dbc22a140b219b9ac3da072fc3a36f00b94cec0069c56afa66d92c1753b"
+  },
+  "error": "Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.",
+  "exception_type": "SolverError",
+  "elapsed_seconds": 99.62331064790487
+}

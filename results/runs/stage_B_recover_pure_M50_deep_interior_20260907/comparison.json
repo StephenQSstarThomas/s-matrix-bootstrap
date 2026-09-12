@@ -1,0 +1,10 @@
+{
+  "raw_checkpoint": "results/runs/stage_B_recover_M50_checkpoint_20260907/cg_state.npz",
+  "strong_interior_result": "results/runs/stage_B_recover_pure_M50_raw_20260907/report.json",
+  "strong_interior_objective": 0.831310061640056,
+  "deep_interior_objective": 0.08327078091153707,
+  "improved": false,
+  "independent_dense_audit_performed": false,
+  "decision": "Stop: the deep-FG interior increases admissible raw weight but lowers the resulting physical objective; retain the independently audited 0.831310061640056 initializer.",
+  "initialization_only": true
+}

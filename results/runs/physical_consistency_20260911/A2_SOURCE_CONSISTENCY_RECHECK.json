@@ -1,0 +1,83 @@
+{
+  "scope": "Conditional algebraic source comparison only; no QCD/OPE total error bound and no infeasibility claim for the production program using printed moments alone",
+  "arithmetic": "Independent 384-bit Arb evaluation of the displayed TeX expressions; no production FESR function called",
+  "inputs_exact_decimal": {
+    "m_pi_GeV": ".140",
+    "f_pi_GeV": ".092",
+    "m_u_GeV": ".004",
+    "m_d_GeV": ".0073",
+    "alpha_s": ".4",
+    "matching_energy_GeV": "1.2",
+    "gluon_condensate_GeV4": ".023",
+    "flavor_summed_jS_GeV4": "-.0001",
+    "raw_tolerance": ".002"
+  },
+  "mass_rule": "Conditional common arithmetic mean m_q=(m_u+m_d)/2=5.65 MeV",
+  "jS_definition": "m_q*(ubar u+dbar d), flavor-summed; TeX lines 649 and 803",
+  "gmor_ratio": "[0.6027931021179738436017128968789784344740 +/- 2.14e-41]",
+  "gmor_fpi_from_printed_condensate_MeV": "[71.42857142857142857142857142857142857143 +/- 1.44e-39]",
+  "raw_unit_rule": "x=s_phys/m_pi^2, R_hat=rho_S_phys/m_pi^4, I_n_phys=m_pi^(2n+6)*I_n_raw",
+  "rows": [
+    {
+      "channel": "S0",
+      "n": 0,
+      "printed_normalized": "[4.418700000000000000000000000000000000000e-7 +/- 3e-51]",
+      "eq250_normalized": "[4.043820075930516603453096653075746229571e-7 +/- 1.30e-48]",
+      "printed_raw": "[0.002385104206580591420241566014160766347355 +/- 2.69e-43]",
+      "eq250_raw": "[0.002182753360435630786370351212988824287182 +/- 7.20e-45]",
+      "signed_raw_difference": "[-0.0002023508461449606338712148011719420601733 +/- 3.86e-44]",
+      "relative_difference_percent": "[-8.483941522834394653334766943314861167968 +/- 2.47e-40]",
+      "absolute_difference_over_raw_tolerance": "[0.1011754230724803169356074005859710300866 +/- 3.08e-41]",
+      "raw_tolerance": "[0.002000000000000000000000000000000000000000 +/- 1e-47]",
+      "normalized_tolerance": "[3.705246913580246913580246913580246913580e-7 +/- 2.47e-47]",
+      "printed_box": [
+        "[0.0003851042065805914202415660141607663473553 +/- 3.14e-44]",
+        "[0.004385104206580591420241566014160766347355 +/- 2.69e-43]"
+      ],
+      "eq250_box": [
+        "[0.0001827533604356307863703512129888242871820 +/- 7.19e-45]",
+        "[0.004182753360435630786370351212988824287182 +/- 7.20e-45]"
+      ],
+      "printed_lower_minus_eq250_upper": "[-0.003797649153855039366128785198828057939827 +/- 2.62e-43]",
+      "boxes_strictly_disjoint": false,
+      "shown_order_depends_on_condensates": true,
+      "physical_raw_dimension_GeV_power": 6,
+      "physical_raw_tolerance": "[1.505907200000000000000000000000000000000e-8 +/- 3e-52]"
+    },
+    {
+      "channel": "S0",
+      "n": 1,
+      "printed_normalized": "[2.820140000000000000000000000000000000000e-7 +/- 3e-51]",
+      "eq250_normalized": "[2.580831413524695402019295671876209432949e-7 +/- 1.13e-47]",
+      "printed_raw": "[0.1118381387347108772705250363369004411427 +/- 2.12e-41]",
+      "eq250_raw": "[0.1023478911247934012839992340496361442117 +/- 3.43e-41]",
+      "signed_raw_difference": "[-0.009490247609917475986525802287264296930987 +/- 1.45e-43]",
+      "relative_difference_percent": "[-8.485698811949215215581649426049436093638 +/- 3.46e-40]",
+      "absolute_difference_over_raw_tolerance": "[4.745123804958737993262901143632148465493 +/- 4.28e-40]",
+      "raw_tolerance": "[0.002000000000000000000000000000000000000000 +/- 1e-47]",
+      "normalized_tolerance": "[5.043252743484224965706447187928669410151e-9 +/- 1.09e-49]",
+      "printed_box": [
+        "[0.1098381387347108772705250363369004411427 +/- 2.12e-41]",
+        "[0.1138381387347108772705250363369004411427 +/- 2.12e-41]"
+      ],
+      "eq250_box": [
+        "[0.1003478911247934012839992340496361442117 +/- 3.43e-41]",
+        "[0.1043478911247934012839992340496361442117 +/- 3.43e-41]"
+      ],
+      "printed_lower_minus_eq250_upper": "[0.005490247609917475986525802287264296930987 +/- 1.45e-43]",
+      "boxes_strictly_disjoint": true,
+      "shown_order_depends_on_condensates": false,
+      "physical_raw_dimension_GeV_power": 8,
+      "physical_raw_tolerance": "[2.951578112000000000000000000000000000000e-10 +/- 1e-54]",
+      "certified_separation_lower_decimal": "0.00549024760"
+    }
+  ],
+  "production_inputs_modified": false,
+  "optimization_performed": false,
+  "full_model_infeasibility_claimed": false,
+  "approximation_error_certified": false,
+  "source_sha256": {
+    "references/2309.12402v3-source/prd_submission_2.tex": "39ec9e10da96f9c09c8db9e7d3ac63f342b1214df592896281adda727fb6be84",
+    "references/2309.12402v3.pdf": "be8214741f8fb3f330473be94172c5e1dde15befb515f745ab4e35839c8982e2"
+  }
+}

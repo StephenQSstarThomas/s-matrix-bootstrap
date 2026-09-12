@@ -1,0 +1,24 @@
+{
+  "violations": [
+    {
+      "energy": 9,
+      "isospin": 0,
+      "ell": 0
+    },
+    {
+      "energy": 12,
+      "isospin": 1,
+      "ell": 1
+    }
+  ],
+  "high_spin": [
+    {
+      "isospin": 0,
+      "cosine": 0.1
+    },
+    {
+      "isospin": 1,
+      "cosine": 0.2
+    }
+  ]
+}

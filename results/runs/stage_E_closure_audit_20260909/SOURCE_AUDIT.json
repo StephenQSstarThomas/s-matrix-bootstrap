@@ -1,0 +1,196 @@
+{
+  "status": "source_audit_complete_no_optimization",
+  "scope": "E1 Fig8 and E3 representative robustness only; no F progression",
+  "online_sources": [
+    {
+      "id": "2309",
+      "url": "https://arxiv.org/abs/2309.12402v3",
+      "version": "v3",
+      "role": "target",
+      "local": "references/2309.12402v3-source/prd_submission_2.tex"
+    },
+    {
+      "id": "2403",
+      "url": "https://arxiv.org/html/2403.10772v4",
+      "version": "v4",
+      "last_revision": "2025-08-08",
+      "anchors": [
+        "2.25-2.29",
+        "8.56",
+        "8.61-8.78",
+        "B.4"
+      ]
+    },
+    {
+      "id": "2403_code",
+      "url": "https://raw.githubusercontent.com/hyfysics/gauge-theory-bootstrap/main/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.m",
+      "local": "references/upstream-gauge-theory-bootstrap/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.m",
+      "lines": {
+        "IR": 102,
+        "density": 60,
+        "FESR": [
+          39,
+          89,
+          90,
+          91
+        ],
+        "initial_projection": [
+          43,
+          45,
+          105,
+          109
+        ],
+        "Watsonian": [
+          117,
+          120,
+          122,
+          180
+        ],
+        "phase_display": [
+          190,
+          192
+        ]
+      }
+    },
+    {
+      "id": "2505",
+      "url": "https://arxiv.org/html/2505.19332v3",
+      "version": "v3",
+      "last_revision": "2026-02-04",
+      "anchors": [
+        "2.3-2.15",
+        "2.4",
+        "C.28"
+      ]
+    },
+    {
+      "id": "current_code",
+      "url": "https://raw.githubusercontent.com/hyfysics/gauge-theory-bootstrap/main/theories/qcd/src/matlab/gtb_qcd_02_optimize.m",
+      "local": "references/upstream-gauge-theory-bootstrap/theories/qcd/src/matlab/gtb_qcd_02_optimize.m",
+      "lines": {
+        "iterations": 50,
+        "update": [
+          91,
+          100
+        ]
+      }
+    },
+    {
+      "id": "2511",
+      "url": "https://arxiv.org/html/2511.11513v1",
+      "version": "v1",
+      "last_revision": "2025-11-14",
+      "anchors": [
+        "4.38-4.39",
+        "6.41"
+      ],
+      "code": "https://github.com/rafaf991/Bootstrapping-Gauge-Theories"
+    },
+    {
+      "id": "2026_review",
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7082720",
+      "role": "located; no missing 2309 numerical details inferred from abstract"
+    }
+  ],
+  "findings": [
+    {
+      "id": "old_saturation_expectation",
+      "certainty": "explicit_2309",
+      "evidence_lines": [
+        492,
+        861
+      ],
+      "finding": "The UV-to-phase argument expects two-pion spectral and elastic/Watson saturation; no numerical Watson iteration is specified in 2309."
+    },
+    {
+      "id": "no_proven_spurious_admission",
+      "certainty": "bounded_negative_search",
+      "finding": "No explicit statement assigning spurious inelasticity to 2309 was found in inspected 2403 v1/v4 passages. Do not attribute that admission to the authors."
+    },
+    {
+      "id": "watsonian2403",
+      "certainty": "explicit_paper_and_code",
+      "formula": "max sum_j w_j Re[conj(Q_old_j)*(S_new_j-1)], Q_old=F_old/conj(F_old)",
+      "physical_linear_coefficients": [
+        "w*Im(Q)*kappa on Re f",
+        "-w*Re(Q)*kappa on Im f"
+      ],
+      "code_weight": "1/Lambda_l(s)^2, Lambda=((sqrt(s)-2)/(sqrt(s)+2))^(ell/2)",
+      "constraints": "retained",
+      "original_projection_fixed_in_second_CVX": false
+    },
+    {
+      "id": "factor_two",
+      "certainty": "algebra_and_code",
+      "finding": "Rank-one (8.61) with entry 2 ImFhat requires htilde=2 ImFhat/conj(F), agreeing with code119-120; isolated webpage8.76/8.78 lacks the factor."
+    },
+    {
+      "id": "later_update_differs",
+      "certainty": "explicit_paper_and_code",
+      "formula": "2505: h_reference=abs(h_old)*F_old/abs(F_old)",
+      "same_as_2403_Q_update_generically": false
+    },
+    {
+      "id": "IR_norm",
+      "certainty": "explicit_followup_only",
+      "later": "combined eight-component L2 at .5,1,1.5,2",
+      "current": "two separate four-component L2 balls",
+      "not_proven_2309_unique_norm": true
+    },
+    {
+      "id": "FESR_scale",
+      "certainty": "2309_underspecified_followup_explicit",
+      "current": "four independent raw abs .002",
+      "2403": "three normalized moments per channel, L2 errors",
+      "2403_paper_P1_D0": [
+        5e-06,
+        6e-06
+      ],
+      "2403_code_P1_D0": [
+        6e-06,
+        5e-06
+      ],
+      "no_source_grounded_replacement_of_2309_raw_tolerance": true
+    },
+    {
+      "id": "FESR2505",
+      "certainty": "explicit_latest_v3",
+      "finding": "Adds pinched weights, higher pQCD terms and a different spectral parametrization; current-code errors are not the 2309 raw moment errors."
+    },
+    {
+      "id": "phase_definition",
+      "certainty": "mathematical",
+      "finding": "For eta !=1, arg(h) is not arg(S)/2; keep direct complex-S phase and eta, no invented node-between winding."
+    }
+  ],
+  "one_recommendation": {
+    "name": "2403 Watsonian continuation",
+    "keep": "original 2309 finite constraints, D physical inputs and original saved E results",
+    "change": "one explicitly predeclared linear objective based on old FF/old S, using source-positive weights",
+    "do_not_change": [
+      "UV matching energy",
+      "number of current channels",
+      "FESR targets/tolerances",
+      "density norm",
+      "phase branch to fit curves"
+    ],
+    "projection_policy": "Declare before execution: official2403 releases the original F0 constraint; fixing our original projection would be an additional local selection condition.",
+    "expected_question": "Does saturation transfer the already imposed UV information into the selected phase shifts?",
+    "guaranteed_reproduction": false,
+    "changes_Fig8_feasible_region": false
+  },
+  "not_done": [
+    "No optimization",
+    "No core edits",
+    "No parameter/solver scans",
+    "No phase reranking",
+    "No F-stage work"
+  ],
+  "local_comparison": [
+    "src/smatrix_bootstrap/model.py:7",
+    "src/smatrix_bootstrap/model.py:132",
+    "src/smatrix_bootstrap/model.py:142",
+    "src/smatrix_bootstrap/model.py:17",
+    "SCIENCE.md:233"
+  ]
+}

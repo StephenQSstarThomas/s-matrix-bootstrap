@@ -1,0 +1,18 @@
+Title:           He–Kruczenski 2309.12402v3：理论推导与暂缓问题
+Creator:         LaTeX via pandoc
+Producer:        xdvipdfmx (0.1)
+CreationDate:    Fri Sep 11 00:22:26 2026 EDT
+Custom Metadata: no
+Metadata Stream: no
+Tagged:          no
+UserProperties:  no
+Suspects:        no
+Form:            none
+JavaScript:      no
+Pages:           9
+Encrypted:       no
+Page size:       595.28 x 841.89 pts (A4)
+Page rot:        0
+File size:       185905 bytes
+Optimized:       no
+PDF version:     1.5

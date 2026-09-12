@@ -1,0 +1,91 @@
+{
+  "all_five_complete": true,
+  "centers_required": true,
+  "rows": [
+    {
+      "M": 50,
+      "L": 8,
+      "native_P1_90_mev": 835.5473866332625,
+      "minimum_native_eta_P1": 0.9826427532738939,
+      "T0": -128.48151175651776,
+      "eta_S0_infinity": "[1009.091929136083402048357 +/- 3.14e-22]",
+      "F1_infinity": "[0.01838677909208982455353907 +/- 2.24e-27]",
+      "global_scattering_obstruction": true,
+      "global_vector_FF_obstruction": true
+    },
+    {
+      "M": 50,
+      "L": 10,
+      "native_P1_90_mev": 803.4866277114987,
+      "minimum_native_eta_P1": 0.7752211546018012,
+      "T0": 27.616889191127854,
+      "eta_S0_infinity": "[216.9048456651513431337026 +/- 1.13e-23]",
+      "F1_infinity": "[0.01838329740015554930955549 +/- 2.89e-27]",
+      "global_scattering_obstruction": true,
+      "global_vector_FF_obstruction": true
+    },
+    {
+      "M": 50,
+      "L": 12,
+      "native_P1_90_mev": 789.0804370073763,
+      "minimum_native_eta_P1": 0.6276649592813844,
+      "T0": 37.416493820219465,
+      "eta_S0_infinity": "[293.8701567083478265194194 +/- 2.90e-23]",
+      "F1_infinity": "[0.01840461735630717455766169 +/- 3.20e-27]",
+      "global_scattering_obstruction": true,
+      "global_vector_FF_obstruction": true
+    },
+    {
+      "M": 45,
+      "L": 10,
+      "native_P1_90_mev": 749.4307496659086,
+      "minimum_native_eta_P1": 0.5218820019460801,
+      "T0": 52.38864721785163,
+      "eta_S0_infinity": "[411.4606882624879830406173 +/- 2.99e-24]",
+      "F1_infinity": "[0.02011908351229791017841524 +/- 2.01e-27]",
+      "global_scattering_obstruction": true,
+      "global_vector_FF_obstruction": true
+    },
+    {
+      "M": 60,
+      "L": 10,
+      "native_P1_90_mev": 773.6137698045308,
+      "minimum_native_eta_P1": 0.7002900571296098,
+      "T0": -39.13524759366089,
+      "eta_S0_infinity": "[307.3691425544716317528941 +/- 6.67e-24]",
+      "F1_infinity": "[0.01496813355158322269956310 +/- 9.22e-28]",
+      "global_scattering_obstruction": true,
+      "global_vector_FF_obstruction": true
+    }
+  ],
+  "spans": {
+    "fixed_M50": {
+      "computed_mev": 46.46694962588617,
+      "paper_display_mev": 12.538597423542797
+    },
+    "fixed_L10": {
+      "computed_mev": 54.055878045590134,
+      "paper_display_mev": 54.348883029840295
+    }
+  },
+  "inputs": {
+    "results/runs/sequential_reproduction_20260910/F_five_configs_verified_comparison/resolution.json": "0f9b212105ef14687a4ea196612675f5bd24ab3633994134f1f5ca392993317b",
+    "results/runs/sequential_reproduction_20260910/F_M50_L8_evaluate/evaluation.json": "4d703de7ca9fa3a1be9e652ec06e147b2fa7be6b33c241439695f4de779305b3",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/F_M50_L8_selected/coefficients.json": "3b97f1824fe8ad7c239e1c8794e96efae0336a7a44497ad2abeb4a626f829e04",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/F_M50_L8_selected/current.json": "9b37d6ab9a687b3a183a7cb159bd75de2cca69fa944f122bad3fc7a4a6d0ea31",
+    "results/runs/sequential_reproduction_20260910/E4_evaluate_tip/evaluation.json": "386a76b95066ea2c287d9af526391628c0aa7a42c5603bb29a9ff6186bd7a422",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/E4_selection/tip/coefficients.json": "b50f4a28984cefb97ce9a5a40cbeb6cd214559986b7d2cb2279bc26e66de1553",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/E4_selection/tip/current.json": "911bb23da4ed68c96b3368fdf197b138579238b7be62d4375d4b3af5b5362c03",
+    "results/runs/sequential_reproduction_20260910/F_M50_L12_evaluate/evaluation.json": "39ab8ca4117a123fb53ef513e193b6eb8b147a34a8406df3fef53a5051f63e83",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/F_M50_L12_selected/coefficients.json": "81a65c80316c47372f2c9d0e8aed1aa6ed2bcb265bd757b5c41b169018d20af5",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/F_M50_L12_selected/current.json": "82c8bb9756ffd154d3d9e43c1c54ef877a0f520d570083f3d42bdcb3776e039e",
+    "results/runs/sequential_reproduction_20260910/F_M45_L10_evaluate/evaluation.json": "bc32f6be8fc8a43fd83740e3becdceed6295560fceefc243b82701145aed9a68",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/F_M45_L10_selected/coefficients.json": "ed2a9ca3f129fc2d4ab7d4827c222a12f1b088218df9ad29f3231f7e1d039edb",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/F_M45_L10_selected/current.json": "fdcb6b04e06c76d5587c2fe261f491325cb2e225c73acdce037b0bd42be7d30a",
+    "results/runs/sequential_reproduction_20260910/F_M60_L10_evaluate/evaluation.json": "9300e8593e07a68a5afdaa9803e5d59e406d31d8428579cfb696aed110cb05ab",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/F_M60_L10_selected/coefficients.json": "ba2e9181af63f0e867bb143f6c17dfbe620d615f369b0e479b0805ff44b77911",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/F_M60_L10_selected/current.json": "2f51cc95fbbeebdcecd2f583f62ae1834a02ca9872633ab7bc2f67526cff93c8"
+  },
+  "scope": "Same preregistered computed tip rule; paper Appendix representative identity remains unspecified; limits are properties of the saved analytic family",
+  "optimization_performed": false
+}

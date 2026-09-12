@@ -1,0 +1,67 @@
+{
+  "pdf": "results/reproduction_comparison_20260906/论文原图与当前结果对照.pdf",
+  "pdf_sha256": "1c54c82293a0d410b8ddae5b494034bbdef006a93f1e1c71be44bd8d35f3fcec",
+  "figures": [
+    {
+      "file": "references/2309.12402v3-source/chiSRplot.pdf",
+      "paper_figure": 8,
+      "paper_page": 32,
+      "sha256": "8e8e1cdc722fb71404e702777f6e833057210d53cedbe372815864a892f309cd"
+    },
+    {
+      "file": "references/2309.12402v3-source/P1ps.pdf",
+      "paper_figure": 9,
+      "paper_page": 33,
+      "sha256": "a368271727174828d53779921b9ac7efa8ed7dca7dad9debef5ab8090f49a58c"
+    },
+    {
+      "file": "references/2309.12402v3-source/S0ps.pdf",
+      "paper_figure": 10,
+      "paper_page": 34,
+      "sha256": "b07a8b2717d66207bfe9241956610bb252d4caba72bbf8c80384996269ca3582"
+    },
+    {
+      "file": "references/2309.12402v3-source/S2ps.pdf",
+      "paper_figure": 10,
+      "paper_page": 34,
+      "sha256": "caad15a7800ad012103455e4d5d6dc67949b0c55eb5260974c4b5ec84b351e44"
+    },
+    {
+      "file": "references/2309.12402v3-source/purSplot.pdf",
+      "paper_figure": 3,
+      "paper_page": 27,
+      "sha256": "b7c10d5cb5bb19b0cd78125fefe3dc6a8d3aeb0a2ff09a791979158c8fc828ac"
+    },
+    {
+      "file": "references/2309.12402v3-source/chiplot.pdf",
+      "paper_figure": 4,
+      "paper_page": 28,
+      "sha256": "ca5fb8b46498ec0182ba6cc87ad66116beaf63d83053f34dad08282bad9d23d1"
+    }
+  ],
+  "seed_report": "results/runs/pv_regularized_seed_20260906/report.json",
+  "seed_xy": [
+    0.0001342414013952372,
+    -3.203760911409117e-09
+  ],
+  "scalar_report": "results/scalar_benchmark_necessary_N8_M400_L40.json",
+  "scalar_value": 2.661284102648572,
+  "published_scalar_rounded": 2.6613,
+  "textual_weinberg_reference_xy": [
+    0.07332139057293466,
+    -0.00488809270486231
+  ],
+  "textual_reference_over_seed_x": 546.1905925509509,
+  "note": "Only orange seed marker/arrow added; original points preserved. Selected-point coordinates are not tabulated. Seed is regularized pure/chiral only, not gauge checked.",
+  "axes_overlay_calibration": {
+    "x_origin_native_pt": 65.727,
+    "x_points_per_unit": 10049.565,
+    "y_origin_native_pt": 107.109,
+    "y_points_per_unit": -79894.48
+  },
+  "major_claims_reproduced": false,
+  "phase_curve_available": false,
+  "boundary_available": false,
+  "seed_report_sha256": "834ed19c03533f161b50b68f79e4ab8e1a92c52d325193c0d0b1d85d89e2ee95",
+  "scalar_report_sha256": "015e2987e785898d9e6207811077c8b730a7cd53a14ec8db12d220175acd7028"
+}

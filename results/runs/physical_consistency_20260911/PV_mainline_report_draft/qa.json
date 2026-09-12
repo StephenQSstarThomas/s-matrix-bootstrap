@@ -1,0 +1,362 @@
+{
+  "status": "draft_ready",
+  "scope": "Typesetting QA only; no physical calculations or final-reproduction-success claim",
+  "pages": 9,
+  "source_snapshot_sha256_verified": true,
+  "source_currently_unchanged": true,
+  "source_modified_by_builder": false,
+  "scientific_body_reconstructed_exactly_after_recorded_formatting_transforms": true,
+  "figure_snapshot_checks": [
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_C3_fig7/profiles.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_draft/figures/fig7_IR.pdf",
+      "sha256_verified": true
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_native_phases/fig9.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_draft/figures/fig9.pdf",
+      "sha256_verified": true
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_native_phases/fig10.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_draft/figures/fig10.pdf",
+      "sha256_verified": true
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_native_phases/rho_mechanism.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_draft/figures/rho_mechanism.pdf",
+      "sha256_verified": true
+    }
+  ],
+  "missing_glyph_warnings": 0,
+  "overfull_warnings": 0,
+  "underfull_warnings": [
+    "Underfull \\hbox (badness 1210) in paragraph at lines 251--252"
+  ],
+  "nonfatal_warning_scope": "One short underfull line (not overflow); absolute font paths pinned by SHA. All pages visually inspected; final pages 2 and 8 re-inspected after formatting changes.",
+  "links": [
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 1
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 2
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 2
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 3
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 3
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 3
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 4
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 4
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 5
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 6
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 7
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 8
+    },
+    {
+      "page": 1,
+      "kind": 4,
+      "destination_page": 9
+    },
+    {
+      "page": 1,
+      "kind": 3,
+      "target": "../PROGRESS.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PROGRESS.json",
+      "exists": true
+    },
+    {
+      "page": 1,
+      "kind": 5,
+      "target": "../../../../references/2309.12402v3.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/references/2309.12402v3.pdf",
+      "exists": true,
+      "destination_page": 1
+    },
+    {
+      "page": 1,
+      "kind": 3,
+      "target": "../../../../references/2309.12402v3-source/prd_submission_2.tex",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/references/2309.12402v3-source/prd_submission_2.tex",
+      "exists": true
+    },
+    {
+      "page": 1,
+      "kind": 3,
+      "target": "../PV_SAME_INPUTS_INVENTORY.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_SAME_INPUTS_INVENTORY.md",
+      "exists": true
+    },
+    {
+      "page": 2,
+      "kind": 3,
+      "target": "../MAINLINE_SOURCE_REVIEW.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/MAINLINE_SOURCE_REVIEW.md",
+      "exists": true
+    },
+    {
+      "page": 2,
+      "kind": 3,
+      "target": "../PV_tip_support_01/report.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_tip_support_01/report.json",
+      "exists": true
+    },
+    {
+      "page": 3,
+      "kind": 3,
+      "target": "../verification_PV_bounded_coordinates.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/verification_PV_bounded_coordinates.json",
+      "exists": true
+    },
+    {
+      "page": 3,
+      "kind": 3,
+      "target": "../PV_REPRESENTATIVE_RULE.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_REPRESENTATIVE_RULE.json",
+      "exists": true
+    },
+    {
+      "page": 3,
+      "kind": 3,
+      "target": "../PV_FIXED_COORDINATES.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_FIXED_COORDINATES.json",
+      "exists": true
+    },
+    {
+      "page": 6,
+      "kind": 5,
+      "target": "../PV_C3_fig7/profiles.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_C3_fig7/profiles.pdf",
+      "exists": true,
+      "destination_page": 1
+    },
+    {
+      "page": 7,
+      "kind": 5,
+      "target": "../PV_native_phases/fig9.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_native_phases/fig9.pdf",
+      "exists": true,
+      "destination_page": 1
+    },
+    {
+      "page": 8,
+      "kind": 5,
+      "target": "../PV_native_phases/fig10.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_native_phases/fig10.pdf",
+      "exists": true,
+      "destination_page": 1
+    },
+    {
+      "page": 9,
+      "kind": 5,
+      "target": "../PV_native_phases/rho_mechanism.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_native_phases/rho_mechanism.pdf",
+      "exists": true,
+      "destination_page": 1
+    }
+  ],
+  "toc": [
+    [
+      1,
+      "1. 已核对的原式与实现",
+      1
+    ],
+    [
+      1,
+      "2. 原文未完全指定的内容必须留在合同中",
+      2
+    ],
+    [
+      1,
+      "3. 为原型闭环修补的数值问题",
+      2
+    ],
+    [
+      1,
+      "4. ρ链路的验收条件",
+      3
+    ],
+    [
+      1,
+      "5. 当前剩余验收",
+      3
+    ],
+    [
+      1,
+      "本轮IR数值闭合",
+      3
+    ],
+    [
+      1,
+      "原生峰与IR排除的完整短证明",
+      4
+    ],
+    [
+      1,
+      "已闭合的PV主线结果（M50/L10）",
+      4
+    ],
+    [
+      1,
+      "固定μ中心的唯一性与初始化的作用",
+      5
+    ],
+    [
+      1,
+      "附图1：Fig.7 IR对照",
+      6
+    ],
+    [
+      1,
+      "附图2：Fig.9 UV相位",
+      7
+    ],
+    [
+      1,
+      "附图3：Fig.10 S0/S2比较",
+      8
+    ],
+    [
+      1,
+      "附图4：散射强度、FF与电流谱",
+      9
+    ]
+  ],
+  "page_metadata": [
+    {
+      "page": 1,
+      "rotation": 0,
+      "size_points": [
+        595.280029296875,
+        841.8900146484375
+      ],
+      "text_length": 991
+    },
+    {
+      "page": 2,
+      "rotation": 0,
+      "size_points": [
+        595.280029296875,
+        841.8900146484375
+      ],
+      "text_length": 1880
+    },
+    {
+      "page": 3,
+      "rotation": 0,
+      "size_points": [
+        595.280029296875,
+        841.8900146484375
+      ],
+      "text_length": 1764
+    },
+    {
+      "page": 4,
+      "rotation": 0,
+      "size_points": [
+        595.280029296875,
+        841.8900146484375
+      ],
+      "text_length": 2097
+    },
+    {
+      "page": 5,
+      "rotation": 0,
+      "size_points": [
+        595.280029296875,
+        841.8900146484375
+      ],
+      "text_length": 827
+    },
+    {
+      "page": 6,
+      "rotation": 90,
+      "size_points": [
+        841.8900146484375,
+        595.280029296875
+      ],
+      "text_length": 392
+    },
+    {
+      "page": 7,
+      "rotation": 0,
+      "size_points": [
+        595.280029296875,
+        841.8900146484375
+      ],
+      "text_length": 266
+    },
+    {
+      "page": 8,
+      "rotation": 90,
+      "size_points": [
+        841.8900146484375,
+        595.280029296875
+      ],
+      "text_length": 441
+    },
+    {
+      "page": 9,
+      "rotation": 90,
+      "size_points": [
+        841.8900146484375,
+        595.280029296875
+      ],
+      "text_length": 515
+    }
+  ],
+  "visual_QA_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "PDF_sha256": "b6f2d00aed679085cdee5058eff65ef6b17524eb58cac6b22a1441a1a1a5da91"
+}

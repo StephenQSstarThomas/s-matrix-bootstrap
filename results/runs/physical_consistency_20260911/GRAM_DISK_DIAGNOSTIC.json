@@ -1,0 +1,85 @@
+{
+  "conditions": "R>0, F!=0, r=abs(mathcal F)^2/R, Q=F/F*; exact original Gram implies abs(S-r Q)<=1-r",
+  "records": [
+    {
+      "role": "tip",
+      "native_node": 37,
+      "energy_gev": "[0.7316752603307708555997202 +/- 2.29e-26]",
+      "eta": "[0.30410463572 +/- 6.78e-12]",
+      "two_pion_fraction": "[0.5919622674217293825038008 +/- 2.39e-26]",
+      "Gram_disk_radius": "[0.4080377325782706174961992 +/- 2.39e-26]",
+      "minimum_allowed_eta": "[0.1839245348434587650076016 +/- 4.78e-26]",
+      "disk_slack": "[3.60513e-6 +/- 6.27e-12]",
+      "disk_certified": true,
+      "phase_mismatch_degrees": "[-19.925180879 +/- 9.83e-10]",
+      "S_minus_Q": "[0.79091393481 +/- 1.78e-12]",
+      "current_spectrum": "[0.01012977922884926440527664 +/- 2.27e-27]",
+      "two_pion_spectrum": "[0.005996447080791147897712395 +/- 4.04e-28]"
+    },
+    {
+      "role": "mid",
+      "native_node": 36,
+      "energy_gev": "[0.6804136821594830257156953 +/- 2.66e-26]",
+      "eta": "[0.214758666694 +/- 4.88e-13]",
+      "two_pion_fraction": "[0.6065475109617056653663835 +/- 6.93e-27]",
+      "Gram_disk_radius": "[0.3934524890382943346336165 +/- 6.92e-27]",
+      "minimum_allowed_eta": "[0.2130950219234113307327670 +/- 1.39e-26]",
+      "disk_slack": "[2.29425e-6 +/- 2.57e-12]",
+      "disk_certified": true,
+      "phase_mismatch_degrees": "[-2.86758555 +/- 9.85e-10]",
+      "S_minus_Q": "[0.78660913870 +/- 4.13e-12]",
+      "current_spectrum": "[0.01916435042521124135217470 +/- 4.14e-27]",
+      "two_pion_spectrum": "[0.01162408904960978404316291 +/- 3.86e-27]"
+    },
+    {
+      "role": "ref",
+      "native_node": 36,
+      "energy_gev": "[0.6804136821594830257156953 +/- 2.66e-26]",
+      "eta": "[0.19605186060 +/- 2.46e-12]",
+      "two_pion_fraction": "[0.5980100472701173296448060 +/- 4.58e-27]",
+      "Gram_disk_radius": "[0.4019899527298826703551940 +/- 4.58e-27]",
+      "minimum_allowed_eta": "[0.1960200945402346592896120 +/- 9.15e-27]",
+      "disk_slack": "[2.38705e-6 +/- 3.48e-12]",
+      "disk_certified": true,
+      "phase_mismatch_degrees": "[-0.40257181 +/- 3.74e-9]",
+      "S_minus_Q": "[0.80397221631 +/- 3.01e-12]",
+      "current_spectrum": "[0.01907750808073812795462310 +/- 4.34e-27]",
+      "two_pion_spectrum": "[0.01140854150915825323188236 +/- 2.54e-27]"
+    }
+  ],
+  "inputs": {
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_native_phases/phases.json": {
+      "sha256": "4c0592a1db192164521f22e67a2037725a50dfb4a005b743add9ba23bfbaab4b"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_tip_evaluate/evaluation.json": {
+      "sha256": "ef2c67a2e8a4fefa2f9bb9e3ef7f74d79b370016f1523e5b98a47dfce4f01cc1"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_selected/tip/joint.npz": {
+      "sha256": "97f082096fa02e919f5a57fab0a86ee5d05d99aaff6d6e8dc7f76c7e5c38f7a7"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_selected/tip/coefficients.json": {
+      "sha256": "64bf8369ce452365fc917fe93b68256f9b09c478ec3f442ff48781fdfc10cdd4"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_mid_evaluate/evaluation.json": {
+      "sha256": "48a123a2cb8b408a072818846180588bcd58be9267d4872ea9a7307f20bb9841"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_selected/mid/joint.npz": {
+      "sha256": "55b42f23c210960ff4b0026ef87145d097d531e3857d604a194a1a0b9021ed1e"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_selected/mid/coefficients.json": {
+      "sha256": "eaec8b873bb217bfae06fae0d0775a28ebfeb7799d35fa7cf676c3f38ee0b383"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_ref_evaluate/evaluation.json": {
+      "sha256": "16a76590ead1e0efdde0964480e5e5a8e80eafb68a9f7706ff95eee4f9338351"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_selected/ref/joint.npz": {
+      "sha256": "88591426cb3957d24683b05ac483bb3f5998e31828c2cd3ff2233bed7f1be700"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_UV_selected/ref/coefficients.json": {
+      "sha256": "78d7380f2f6af96887d66550b6fdca603eb2c129cedc87f4ae38dca2610f8751"
+    }
+  },
+  "optimization_performed": false,
+  "coefficients_modified": false,
+  "scope": "Coupled finite-model examples; disk is a necessary and sufficient local Gram statement, not full-QCD existence"
+}

@@ -1,0 +1,613 @@
+{
+  "candidate": "results/gauge_boundary_N6_F21_pink_FFcuts_round1.json",
+  "candidate_sha256": "463a3418053deff32736874b23f6f65eda2e2095f28a476481662ea2539bb8d0",
+  "stage": "initial_support_lambda_0",
+  "repaired": true,
+  "source_sha256": {
+    "/home/shiqiu/s-matrix-bootstrap/scripts/audit_impact_parameter.py": "e9f9239937026227631af2a5f718019f794a3752c1de8670a7edde40211a12f8",
+    "src/smatrix_bootstrap/impact_parameter.py": "e4a646d01644f484cf98458c305882d2e41af4b502ef83e780ef6956cceb9c58",
+    "src/smatrix_bootstrap/amplitudes.py": "e56a90e92c00daeb5f8906471745a35bf7d2963b222faf24dede5dd11d4635eb"
+  },
+  "source_snapshot_utf8": {
+    "/home/shiqiu/s-matrix-bootstrap/scripts/audit_impact_parameter.py": "\"\"\"Audit an archived amplitude in the joint energy/spin limit.\n\nPYTHONPATH=src python scripts/audit_impact_parameter.py CANDIDATE --b 2 3 \\\n    --arb-path /path/to/optional/deps --output results/impact_candidate.json\n\"\"\"\nimport argparse\nimport hashlib\nimport json\nfrom pathlib import Path\nimport sys\n\nimport numpy as np\n\nfrom smatrix_bootstrap.amplitudes import partial_wave_matrix\nfrom smatrix_bootstrap.impact_parameter import impact_profile,certify_impact_profile\n\n\ndef main():\n    p=argparse.ArgumentParser(description=__doc__)\n    p.add_argument('candidate',type=Path)\n    p.add_argument('--stage',help='Named stage in an archived boundary family')\n    p.add_argument('--repaired',action='store_true')\n    p.add_argument('--b',nargs='+',required=True,help='Exact decimal impact parameters; numerical cross-checks use Float64 conversions')\n    p.add_argument('--cells',type=int,default=2048)\n    p.add_argument('--precision-bits',type=int,default=160)\n    p.add_argument('--arb-path')\n    p.add_argument('--numerical-only',action='store_true')\n    p.add_argument('--spins',type=int,nargs='+',default=[20,40,80,160])\n    p.add_argument('--output',type=Path,required=True)\n    args=p.parse_args()\n    if args.arb_path:sys.path.insert(0,args.arb_path)\n    raw=args.candidate.read_bytes()\n    candidate=json.loads(raw,parse_float=str)\n    if args.stage:\n        matches=[s for s in candidate.get('stages',[]) if s['label']==args.stage]\n        if len(matches)!=1:raise ValueError('Stage must select precisely one complete candidate')\n        solution=matches[0].get('convex_repair',{}) if args.repaired else matches[0]\n        degree=int(candidate['config']['scattering']['degree'])\n    elif args.repaired:\n        raise ValueError('--repaired requires --stage')\n    elif 'rounds' in candidate:\n        solution=candidate['rounds'][-1]['solution'];degree=int(candidate['config']['degree'])\n    else:\n        solution=candidate['solution'];degree=int(candidate['config']['scattering']['degree'])\n    coefficients=solution['coefficients']\n    if coefficients is None:raise ValueError('Candidate has no amplitude coefficients')\n    profiles=[]\n    for b_decimal in args.b:\n        b=float(b_decimal)\n        row=dict(numerical=impact_profile(b,coefficients,degree))\n        if not args.numerical_only:\n            row['validated']=certify_impact_profile(b_decimal,coefficients,degree,\n                cells=args.cells,precision_bits=args.precision_bits)\n        checks=[]\n        for base_spin in args.spins:\n            if base_spin<2 or base_spin%2:raise ValueError('Use positive even base spins')\n            for isospin in range(3):\n                spin=base_spin+int(isospin==1);s=(2*(spin+.5)/b)**2\n                if s<=4:continue\n                f=(partial_wave_matrix([s],degree,((isospin,spin),),120)[0,0]\n                   @np.asarray(coefficients,np.longdouble))\n                checks.append(dict(isospin=isospin,spin=spin,s=s,\n                    imaginary_partial_wave=float(f.imag),\n                    scaled_imaginary_partial_wave=float(np.pi*s**1.5*f.imag/8),\n                    real_partial_wave=float(f.real)))\n        row['finite_sequence_numerical_checks']=checks\n        profiles.append(row)\n    source_paths=[Path(__file__),Path('src/smatrix_bootstrap/impact_parameter.py'),\n                  Path('src/smatrix_bootstrap/amplitudes.py')]\n    result=dict(candidate=str(args.candidate),candidate_sha256=hashlib.sha256(raw).hexdigest(),\n        stage=args.stage,repaired=args.repaired,\n        source_sha256={str(path):hashlib.sha256(path.read_bytes()).hexdigest() for path in source_paths},\n        source_snapshot_utf8={str(path):path.read_text() for path in source_paths},\n        command_argv=sys.argv,profiles=profiles,\n        scope='Exact-decimal joint-limit sign enclosures when Arb is enabled; finite-spin evaluations are numerical cross-checks. No full continuum feasibility claim.')\n    args.output.parent.mkdir(parents=True,exist_ok=True)\n    args.output.write_text(json.dumps(result,indent=2)+'\\n')\n    print(json.dumps(dict(output=str(args.output),profiles=[dict(b=r['numerical']['b'],\n        numerical=r['numerical']['profile'],validated_signs=[c['sign'] for c in r.get('validated',{}).get('channels',[])])\n        for r in profiles]),indent=2))\n\n\nif __name__=='__main__':main()\n",
+    "src/smatrix_bootstrap/impact_parameter.py": "\"\"\"Joint high-energy/large-spin necessary conditions for the finite pion ansatz.\n\nThe limit keeps b=2*(ell+1/2)/sqrt(s)>0 fixed. Its derivation and limitations\nare in docs/18_impact_parameter_limit.md. No optimizer constraints are added.\n\"\"\"\nfrom functools import lru_cache\nfrom fractions import Fraction\n\nimport numpy as np\nfrom scipy.integrate import quad\nfrom scipy.special import k0,k1\n\nfrom .amplitudes import basis_labels\n\n\ndef absorptive_double_sine_coefficients(coefficients,degree):\n    \"\"\"D[I,n-1,m-1] in Im(Disc_t T^I/(2i))=sum D_nm sin(n phi_s)sin(m phi_t).\"\"\"\n    c=np.asarray(coefficients,float)\n    labels=basis_labels(degree)\n    if c.shape!=(len(labels),):raise ValueError('Incorrect amplitude coefficient count')\n    out=np.zeros((3,degree,degree))\n    for value,(kind,n,m) in zip(c,labels):\n        if kind=='double_s_tu':\n            out[0,n-1,m-1]+=3*value\n            out[:,m-1,n-1]+=value\n        elif kind=='double_tu':\n            for i,sign in enumerate([1,-1,1]):\n                out[i,n-1,m-1]+=sign*value/2\n                out[i,m-1,n-1]+=sign*value/2\n    return out\n\n\n@lru_cache(maxsize=None)\ndef impact_sine_coefficient_matrix(degree):\n    \"\"\"A[I,m-1,k] multiplying the coefficients in the joint absorptive profile.\n\n    A_m=sum_n n*(-1)^(n+1) D_nm. Entries are small integers/half-integers.\n    \"\"\"\n    labels=basis_labels(degree);out=np.zeros((3,degree,len(labels)))\n    for k,(kind,n,m) in enumerate(labels):\n        wn=n*(-1.)**(n+1);wm=m*(-1.)**(m+1)\n        if kind=='double_s_tu':\n            out[0,m-1,k]+=3*wn\n            out[:,n-1,k]+=wm\n        elif kind=='double_tu':\n            for i,sign in enumerate([1,-1,1]):\n                out[i,m-1,k]+=sign*wn/2\n                out[i,n-1,k]+=sign*wm/2\n    out.setflags(write=False)\n    return out\n\n\n@lru_cache(maxsize=None)\ndef impact_basis_integrals(b,degree,epsabs=1e-12,epsrel=1e-11):\n    \"\"\"J_m(b)=int_4^infinity K0(b sqrt(t))*sin(m phi(t)) dt.\n\n    Integrate with t=4 cosh(y)^2. The analytic tail bound is independent of m.\n    Returned quadrature errors and their arithmetic are not rigorous balls.\n    \"\"\"\n    if not np.isfinite(b) or b<=0:raise ValueError('A finite positive impact parameter is required')\n    z_cut=max(80.,2*b+40.)\n    ymax=np.arccosh(z_cut/(2*b))\n    values=[];errors=[]\n    for m in range(1,degree+1):\n        def integrand(y):\n            ch=np.cosh(y);sh=np.sinh(y)\n            return 8*ch*sh*k0(2*b*ch)*np.sin(2*m*np.arctan(sh))\n        value,error=quad(integrand,0,ymax,epsabs=epsabs,epsrel=epsrel,limit=400)\n        values.append(value);errors.append(error)\n    # int_T^infinity K0(b sqrt(t))dt = 2 sqrt(T)/b * K1(b sqrt(T)).\n    tail=2*z_cut/b**2*k1(z_cut)\n    return np.array(values),np.array(errors),float(tail)\n\n\ndef impact_profile(b,coefficients,degree):\n    \"\"\"H_I(b) whose positivity is necessary in the joint limit.\n\n    Im f_l(s)=8 H_I(b)/(pi*s^(3/2))+o(s^(-3/2)) along fixed b.\n    A negative H rejects all-energy/all-spin unitarity for this amplitude.\n    A nonnegative value by itself is not a complete unitarity certificate.\n    \"\"\"\n    a=impact_sine_coefficient_matrix(degree) @ np.asarray(coefficients,float)\n    integrals,errors,tail=impact_basis_integrals(float(b),degree)\n    return dict(b=float(b),profile=(a @ integrals).tolist(),\n        quadrature_error_estimates=(np.abs(a) @ errors).tolist(),\n        analytic_tail_bounds=(np.sum(np.abs(a),axis=1)*tail).tolist(),\n        sine_coefficients=a.tolist(),rigorous_certificate=False)\n\n\ndef certify_impact_profile(b,coefficients,degree,*,cells=2048,precision_bits=160,z_cut=None):\n    \"\"\"Enclose H for exact decimal coefficients using Arb and analytic errors.\n\n    This optional audit requires python-flint. It uses positive, exactly\n    integrated K0 kernel masses, a proved midpoint remainder, and a tail bound.\n    The derivative bound used here is proved only for b>=1. A positive enclosure\n    certifies this necessary condition at one b, not full partial-wave unitarity.\n    See docs/18_impact_parameter_limit.md for the error proof.\n    \"\"\"\n    from flint import arb,ctx\n\n    bq=Fraction(str(b));cutq=Fraction(str(z_cut)) if z_cut is not None else max(Fraction(80),2*bq+40)\n    if bq<1:raise ValueError('Validated midpoint derivative bound requires b>=1')\n    if cutq<=2*bq:raise ValueError('z_cut must exceed 2*b')\n    if not isinstance(cells,int) or cells<1:raise ValueError('cells must be a positive integer')\n    if precision_bits<64:raise ValueError('At least 64 precision bits are required')\n    cq=[Fraction(str(value)) for value in coefficients]\n    matrix=impact_sine_coefficient_matrix(degree)\n    if len(cq)!=matrix.shape[-1]:raise ValueError('Incorrect amplitude coefficient count')\n    aq=[[sum((Fraction(float(weight))*c for weight,c in zip(row,cq)),Fraction(0))\n         for row in channel] for channel in matrix]\n    def ball(q):\n        q=Fraction(q)\n        return arb(q.numerator)/q.denominator\n    def interval(x):\n        return dict(lower_rational=str(x.lower().fmpq()),upper_rational=str(x.upper().fmpq()),\n                    ball=str(x),midpoint_approximate=float(x.mid()),radius_upper_approximate=float(x.rad().upper()))\n    old_prec=ctx.prec\n    try:\n        ctx.prec=precision_bits\n        bb=ball(bq);cut=ball(cutq);phi_max=2*(2*bb/cut).acos()\n        aa=[[ball(v) for v in row] for row in aq]\n        norms=[[ball(sum(abs(v)*m**k for m,v in enumerate(row,1))) for k in range(3)] for row in aq]\n        def max_power_exp(p):\n            # Exact maximizer of u^p exp(-u) on u>=2b.\n            u=ball(max(2*bq,p))\n            return u**ball(p)*(-u).exp()\n        w1=arb.pi().sqrt()/(8*bb**4)*(3/arb(2).sqrt()*max_power_exp(Fraction(7,2))\n            +8*bb**2/arb(2).sqrt()*max_power_exp(Fraction(3,2))\n            +max_power_exp(Fraction(9,2))+4*bb**2*max_power_exp(Fraction(5,2)))\n        def remaining_mass(u):return 2*u*u.bessel_k(1)/bb**2\n        full_mass=remaining_mass(2*bb);tail_mass=remaining_mass(cut)\n        finite_mass=full_mass-tail_mass\n        previous=full_mass;approx=[arb(0) for _ in range(3)]\n        for j in range(cells):\n            next_phi=phi_max*(j+1)/cells\n            following=tail_mass if j+1==cells else remaining_mass(2*bb/(next_phi/2).cos())\n            mass=previous-following\n            mid=phi_max*(2*j+1)/(2*cells)\n            sins=[(m*mid).sin() for m in range(1,degree+1)]\n            for i in range(3):approx[i]+=mass*sum((v*s for v,s in zip(aa[i],sins)),arb(0))\n            previous=following\n        channels=[]\n        for i,(b0,b1,b2) in enumerate(norms):\n            remainder=b1*w1*phi_max**3/(12*cells**2)+b2*finite_mass*phi_max**2/(8*cells**2)\n            tail=b0*tail_mass\n            enclosure=approx[i]+arb(0,(remainder+tail).upper())\n            channels.append(dict(isospin=i,enclosure=interval(enclosure),\n                midpoint_sum=interval(approx[i]),midpoint_error_bound=interval(remainder),\n                tail_error_bound=interval(tail),\n                sign='negative' if enclosure<0 else ('positive' if enclosure>0 else 'undetermined'),\n                excludes_all_energy_all_spin_unitarity=bool(enclosure<0)))\n        return dict(rigorous_certificate=True,b=str(bq),degree=degree,cells=cells,\n            precision_bits=precision_bits,z_cut=str(cutq),\n            exact_sine_coefficients=[[str(v) for v in row] for row in aq],\n            kernel_derivative_bound=interval(w1),channels=channels,\n            coefficient_semantics='Exact rational values of the supplied decimal strings.',\n            method='Arb positive kernel masses, analytic second-order midpoint error and analytic infinite tail.',\n            scope='Encloses one joint-limit profile per isospin. A negative upper endpoint rejects continuum unitarity; positive values do not certify full unitarity.')\n    finally:\n        ctx.prec=old_prec\n",
+    "src/smatrix_bootstrap/amplitudes.py": "\"\"\"Analytic, crossing-compatible Mandelstam ansatz. See docs/03_discretization.md.\n\nAll Mandelstam invariants are in pion-mass-squared units. A real argument\ns>4 means the physical UPPER lip. Complex arguments retain their sheet side.\n\"\"\"\nfrom functools import lru_cache\n\nimport numpy as np\nfrom numpy.polynomial.legendre import leggauss, legval\nfrom scipy.special import gammaln, hyp2f1, lqmn\n\n\nPROJECTION_METHOD = \"threshold_series_72_log_s_wave_crossed_cut_legendre_q\"\n\n\ndef conformal_z(s):\n    \"\"\"Eq. (3.58), physical sheet; real s>=4 denotes s+i0.\"\"\"\n    s = np.asarray(s, dtype=complex)\n    # Force the negative signed zero in 4-s on the real upper lip.\n    root = np.sqrt(4.0 - s)\n    root = np.where((s.imag == 0) & (s.real > 4),\n                    -1j * np.sqrt(np.maximum(s.real - 4, 0)), root)\n    return (2.0 - root) / (2.0 + root)\n\n\ndef energy_grid(count):\n    \"\"\"Midpoints (3.60)-(3.61), covering 4<s<infinity.\"\"\"\n    phi = np.pi * (np.arange(count) + 0.5) / count\n    return 4.0 / np.cos(phi / 2.0)**2\n\n\ndef allowed_waves(per_isospin):\n    return tuple((iso, 2 * k + (iso == 1))\n                 for iso in range(3) for k in range(per_isospin))\n\n\n@lru_cache(maxsize=None)\ndef basis_labels(degree):\n    if degree < 1:\n        raise ValueError(\"degree must be positive\")\n    return ([(\"constant\", 0, 0)]\n            + [(\"single_s\", n, 0) for n in range(1, degree + 1)]\n            + [(\"single_tu\", n, 0) for n in range(1, degree + 1)]\n            + [(\"double_s_tu\", n, m) for n in range(1, degree + 1)\n               for m in range(1, degree + 1)]\n            + [(\"double_tu\", n, m) for n in range(1, degree + 1)\n               for m in range(n, degree + 1)])\n\n\ndef amplitude_basis(s, t, u, degree):\n    \"\"\"A(s,t,u)=basis @ real coefficients, with t-u symmetry manifest.\n\n    Tensor product degree <=N in each of two variables, NOT total degree <=N.\n    Symmetric t-u cross terms are averaged for n!=m; coefficients are free.\n    \"\"\"\n    s, t, u = np.broadcast_arrays(s, t, u)\n    powers = np.arange(1, degree + 1)\n    zs = conformal_z(s)[..., None]**powers\n    zt = conformal_z(t)[..., None]**powers\n    zu = conformal_z(u)[..., None]**powers\n    values = [np.ones(s.shape, dtype=complex)]\n    values += [zs[..., n] for n in range(degree)]\n    values += [zt[..., n] + zu[..., n] for n in range(degree)]\n    values += [zs[..., n] * (zt[..., m] + zu[..., m])\n               for n in range(degree) for m in range(degree)]\n    values += [(zt[..., n] * zu[..., m] + zt[..., m] * zu[..., n]) / 2\n               for n in range(degree) for m in range(n, degree)]\n    return np.stack(values, axis=-1)\n\n\ndef infinite_energy_basis(degree):\n    \"\"\"Fixed-angle s->+infinity: all three conformal variables tend to -1.\"\"\"\n    values = []\n    for kind, n, m in basis_labels(degree):\n        factor = 2 if kind in (\"single_tu\", \"double_s_tu\") else 1\n        values.append(factor * (-1.)**(n+m))\n    return np.asarray(values)\n\n\ndef isospin_basis(s, mu, degree):\n    \"\"\"Eq. (2.6); output axes (..., isospin, coefficient).\"\"\"\n    t = -(np.asarray(s) - 4) * (1 - np.asarray(mu)) / 2\n    u = 4 - np.asarray(s) - t\n    a = amplitude_basis(s, t, u, degree)\n    b = amplitude_basis(t, s, u, degree)\n    c = amplitude_basis(u, t, s, degree)\n    return np.stack((3*a+b+c, b-c, b+c), axis=-2)\n\n\ndef _threshold_projection(s, degree, waves, order=72):\n    \"\"\"Power-series projection for 4<s<=8, with exact polynomial orthogonality.\n\n    Ordinary quadrature leaks constant amplitudes into tiny high-spin waves.\n    Here z(t)=sum a_k mu^k, whose convergence ratio is <=1/3 in this range;\n    integrating monomials against P_l analytically eliminates that leakage.\n    \"\"\"\n    a = (s-4)/2\n    ratio = a/(4+a)\n    root = np.empty(order, float)\n    root[0] = np.sqrt(4+a)\n    for k in range(1, order):\n        root[k] = root[k-1]*(1.5-k)/k*(-ratio)\n    denominator = root.copy()\n    denominator[0] += 2\n    zt = -root.copy()\n    zt[0] += 2\n    for k in range(order):\n        zt[k] = (zt[k] - np.dot(denominator[1:k+1], zt[k-1::-1])\n                 if k else zt[k]) / denominator[0]\n    # A power's full low-order Taylor coefficients are obtained by convolution.\n    powers_t = np.zeros((degree, order))\n    powers_t[0] = zt\n    for n in range(1, degree):\n        powers_t[n] = np.convolve(powers_t[n-1], zt)[:order]\n    powers_u = powers_t * (-1.)**np.arange(order)\n    powers_s = np.zeros((degree, order), complex)\n    powers_s[:,0] = conformal_z(s)**np.arange(1,degree+1)\n\n    def polynomial_basis(ps, pt, pu):\n        one = np.zeros(order, complex)\n        one[0] = 1\n        columns = [one] + list(ps) + list(pt+pu)\n        columns += [np.convolve(ps[n],pt[m]+pu[m])[:order]\n                    for n in range(degree) for m in range(degree)]\n        columns += [(np.convolve(pt[n],pu[m])[:order]\n                     + np.convolve(pt[m],pu[n])[:order])/2\n                    for n in range(degree) for m in range(n,degree)]\n        return np.stack(columns,axis=-1)\n\n    aa = polynomial_basis(powers_s,powers_t,powers_u)\n    bb = polynomial_basis(powers_t,powers_s,powers_u)\n    cc = polynomial_basis(powers_u,powers_t,powers_s)\n    iso = [3*aa+bb+cc, bb-cc, bb+cc]\n    result = []\n    for i, ell in waves:\n        if ell % 2 != (i == 1):\n            result.append(np.zeros(len(basis_labels(degree)), complex))\n            continue\n        # Rodrigues formula: (1/4)int mu^k P_l(mu) dmu.\n        k = np.arange(ell, order, 2)\n        moments = np.exp(gammaln(k+1)-gammaln(k-ell+1)-(ell+2)*np.log(2)\n                        +gammaln((k-ell+1)/2)-gammaln((k+ell+3)/2))\n        result.append(moments @ iso[i][k])\n    return np.array(result)\n\n\n@lru_cache(maxsize=None)\ndef _gaussian_rule(points):\n    return leggauss(points)\n\n\ndef _crossed_cut_projection(s, degree, waves, angular_points=80):\n    \"\"\"Positive-spin projection by a dispersion integral in the angular plane.\n\n    For allowed Bose parity, f_l = int_{1+8/(s-4)}^infinity\n    Q_l(x) Disc[T(x)]/(2 i pi) dx. Polynomial constants vanish analytically;\n    no subtraction of nearly equal angular values is required. See the\n    derivation, tail bound, and independent checks in docs/06_projection_accuracy.md.\n    \"\"\"\n    if any(ell < 1 for _, ell in waves):\n        raise ValueError(\"The crossed-cut projection requires positive spin\")\n    d = s - 4\n    # x=1+8 cosh(y)^2/d. This resolves the square-root onset of the cut\n    # and gives exponentially decaying tails over a logarithmic energy range.\n    ymax = max(0., np.log(d / 8) / 2) + 32\n    breaks = np.r_[0., 1., np.arange(3., ymax, 2.), ymax]\n    y_parts, w_parts = [], []\n    for j, (lo, hi) in enumerate(zip(breaks[:-1], breaks[1:])):\n        points = (max(angular_points, 2 * degree) if j == 0\n                  else max(24, angular_points // 3, degree))\n        nodes, weight = _gaussian_rule(points)\n        y_parts.append((lo + hi) / 2 + (hi - lo) / 2 * nodes)\n        w_parts.append((hi - lo) / 2 * weight)\n    y, weights = np.concatenate(y_parts), np.concatenate(w_parts)\n    ch, sh = np.cosh(y), np.sinh(y)\n    x = 1 + 8 * ch**2 / d\n    jacobian = 16 * ch * sh / d\n    powers = np.arange(1, degree + 1)\n    # The t-cut values have z_t=exp(i phi), so their discontinuities are\n    # exactly 2 i sin(n phi). The spectator u remains on the negative real axis.\n    sine = np.sin(2 * np.arctan(sh)[:, None] * powers)\n    upowers = conformal_z(-d - 4 * ch**2).real[:, None]**powers\n    spowers = conformal_z(s)**powers\n    spins = sorted(set(ell for _, ell in waves))\n    # Hypergeometric Q_l is positive and stable away from x=1. Near x=1\n    # scipy's recurrence avoids the accuracy loss of zero-balanced 2F1.\n    near = x < 1.1\n    q_near = lqmn(0, max(spins), x[near])[0][0] if np.any(near) else None\n    upper = np.triu_indices(degree)\n    projected = {}\n    for ell in spins:\n        q = np.exp(.5 * np.log(np.pi) + gammaln(ell + 1)\n                   - gammaln(ell + 1.5) - (ell + 1) * np.log(2 * x))\n        q *= hyp2f1((ell + 1) / 2, (ell + 2) / 2, ell + 1.5, 1 / x**2)\n        if np.any(near):\n            q[near] = q_near[ell]\n        kernel = weights * jacobian * q / np.pi\n        single = kernel @ sine\n        mixed = (kernel[:, None] * sine).T @ upowers\n        # These are already integrated discontinuities of A(s,t,u),\n        # A(t,s,u), and A(u,t,s), in precisely basis_labels() order.\n        aa = np.r_[0., np.zeros(degree), single,\n                   np.outer(spowers, single).ravel(),\n                   ((mixed + mixed.T) / 2)[upper]]\n        bb = np.r_[0., single, np.zeros(degree),\n                   (mixed + np.outer(single, spowers)).ravel(),\n                   np.zeros(len(upper[0]))]\n        cc = np.r_[0., np.zeros(degree), single, mixed.T.ravel(),\n                   ((np.outer(single, spowers)\n                     + np.outer(spowers, single)) / 2)[upper]]\n        projected[ell] = (3 * aa + bb + cc, bb - cc, bb + cc)\n    zero = np.zeros(len(basis_labels(degree)), complex)\n    return np.array([projected[ell][iso] if ell % 2 == (iso == 1) else zero\n                     for iso, ell in waves])\n\n\ndef partial_wave_matrix(s, degree, waves, angular_points=80):\n    \"\"\"Eq. (2.9). Shape (energy, wave, coefficient).\n\n    The threshold series and crossed-cut integral avoid high-spin cancellation.\n    S waves use a logarithmic angular contour; below threshold/at complex s,\n    ordinary Gauss-Legendre is used. Increasing angular_points refines the\n    quadratures. See docs/06_projection_accuracy.md for the verified scope.\n    \"\"\"\n    s = np.atleast_1d(np.asarray(s))\n    nodes, weight = leggauss(angular_points)\n    result = np.empty((len(s), len(waves), len(basis_labels(degree))), complex)\n    near_threshold = np.isreal(s) & (s.real>4) & (s.real<=8)\n    if np.any(near_threshold):\n        for i in np.flatnonzero(near_threshold):\n            result[i] = _threshold_projection(float(s[i].real),degree,waves)\n        if np.all(near_threshold):\n            return result\n        result[~near_threshold] = partial_wave_matrix(s[~near_threshold],degree,waves,angular_points)\n        return result\n    # Each row is dispatched independently: mixing physical and subthreshold\n    # energies must not silently change the physical high-spin algorithm.\n    positive_spin = [k for k, (_, ell) in enumerate(waves) if ell > 0]\n    physical = np.isreal(s) & (s.real > 4)\n    if np.any(physical) and not np.all(physical):\n        result[physical] = partial_wave_matrix(s[physical], degree, waves, angular_points)\n        result[~physical] = partial_wave_matrix(s[~physical], degree, waves, angular_points)\n        return result\n    if positive_spin:\n        cut_waves = tuple(waves[k] for k in positive_spin)\n        for i in np.flatnonzero(physical):\n            result[i, positive_spin] = _crossed_cut_projection(\n                float(s[i].real), degree, cut_waves, angular_points)\n    for lo in range(0, len(s), 8):\n        hi = min(lo+8, len(s))\n        block = s[lo:hi]\n        if len(positive_spin) == len(waves) and np.all(physical[lo:hi]):\n            continue\n        # Endpoint boundary layers at high energy defeat uniform-angle Gaussian\n        # quadrature. On each half interval, set sqrt(4-t)=2 exp(y).\n        # The resulting real contour covers mu in [0,1] and its reflection.\n        # Below threshold (or for complex s) retain ordinary Gauss-Legendre.\n        if np.all(np.isreal(block)) and np.all(block.real > 4):\n            d = block.real[:, None]-4\n            ymax = np.log1p(d/8)/2\n            y = ymax*(nodes[None, :]+1)/2\n            positive_mu = 1-8*np.expm1(2*y)/d\n            half_weight = weight[None, :]*ymax/2*16*np.exp(2*y)/d\n            mu = np.concatenate((positive_mu, -positive_mu), axis=1)\n            weights = np.concatenate((half_weight, half_weight), axis=1)\n        else:\n            mu = np.broadcast_to(nodes, (len(block), len(nodes)))\n            weights = np.broadcast_to(weight, mu.shape)\n        iso_basis = isospin_basis(block[:, None], mu, degree)\n        for k, (iso, ell) in enumerate(waves):\n            if ell > 0 and np.all(physical[lo:hi]):\n                continue\n            kernel = weights * legval(mu, [0]*ell+[1]) / 4\n            values = np.einsum(\"eq,eqc->ec\", kernel, iso_basis[:, :, iso])\n            use = ~physical[lo:hi] if ell > 0 else np.ones(hi - lo, dtype=bool)\n            result[lo:hi, k][use] = values[use]\n    return result\n\n\ndef s_matrix(s, partial_waves):\n    \"\"\"Eq. (2.11); s must lie on the physical real cut.\"\"\"\n    s = np.asarray(s, dtype=float)\n    if np.any(s < 4):\n        raise ValueError(\"S-matrix boundary values require s>=4\")\n    sigma = np.sqrt(1-4/s)\n    while sigma.ndim < np.ndim(partial_waves):\n        sigma = sigma[..., None]\n    return 1 + 1j * np.pi * sigma * partial_waves\n\n\ndef chiral_partial_waves(s, fpi=92/140):\n    \"\"\"Eq. (2.18), output order S0, P1, S2. These are tree-level inputs.\"\"\"\n    s = np.asarray(s)\n    return np.stack((2*s-1, (s-4)/3, 2-s), axis=-1) / (16*np.pi**2*fpi**2)\n\n\ndef chiral_residual_matrix(degree, angular_points=80):\n    \"\"\"Eight absolute linear residuals in (3.64), at the published nodes.\"\"\"\n    s = np.array([0.5, 1, 1.5, 2])\n    f = partial_wave_matrix(s, degree, ((0, 0), (1, 1), (2, 0)), angular_points).real\n    r01 = 3*(2*s-1)/(s-4)\n    r21 = 3*(2-s)/(s-4)\n    return np.vstack((f[:, 0]-r01[:, None]*f[:, 1],\n                      f[:, 2]-r21[:, None]*f[:, 1]))\n"
+  },
+  "command_argv": [
+    "scripts/audit_impact_parameter.py",
+    "results/gauge_boundary_N6_F21_pink_FFcuts_round1.json",
+    "--stage",
+    "initial_support_lambda_0",
+    "--repaired",
+    "--b",
+    "3",
+    "4",
+    "--arb-path",
+    "/tmp/collocation_arb",
+    "--output",
+    "results/impact_gauge_boundary_pink_FFcuts.json"
+  ],
+  "profiles": [
+    {
+      "numerical": {
+        "b": 3.0,
+        "profile": [
+          -0.00037731205446731475,
+          0.014337267448221539,
+          0.0017307904563072715
+        ],
+        "quadrature_error_estimates": [
+          7.967582276288224e-13,
+          2.89827581571997e-12,
+          3.146170139634332e-12
+        ],
+        "analytic_tail_bounds": [
+          2.750655064472974e-34,
+          2.25214335781824e-33,
+          1.608083674422086e-33
+        ],
+        "sine_coefficients": [
+          [
+            0.096924419979315,
+            -0.548353700829177,
+            0.9153894578192769,
+            0.5840792433291568,
+            2.9499386257647404,
+            -0.9947789806119891
+          ],
+          [
+            2.1600927560746985,
+            8.032982415546126,
+            14.375116084179622,
+            8.326009579090327,
+            -7.268903621809535,
+            -9.695371228144452
+          ],
+          [
+            1.2215581592273006,
+            0.5832832422752809,
+            -5.098649394364615,
+            -5.51143549567481,
+            11.871754589879107,
+            11.313451100425882
+          ]
+        ],
+        "rigorous_certificate": false
+      },
+      "validated": {
+        "rigorous_certificate": true,
+        "b": "3",
+        "degree": 6,
+        "cells": 2048,
+        "precision_bits": 160,
+        "z_cut": "80",
+        "exact_sine_coefficients": [
+          [
+            "775395359834533/8000000000000000",
+            "-34272106301823569/62500000000000000",
+            "183077891563855199/200000000000000000",
+            "584079243329155349/1000000000000000000",
+            "368742328220592633/125000000000000000",
+            "-4973894903059947/5000000000000000"
+          ],
+          [
+            "432018551214939777/200000000000000000",
+            "4016491207773062903/500000000000000000",
+            "2875023216835924373/200000000000000000",
+            "333040383163613091/40000000000000000",
+            "-1817225905452383699/250000000000000000",
+            "-969537122814445161/100000000000000000"
+          ],
+          [
+            "9772465273818403/8000000000000000",
+            "291641621137640453/500000000000000000",
+            "-1019729878872922933/200000000000000000",
+            "-44091483965398487/8000000000000000",
+            "2967938647469777001/250000000000000000",
+            "226269022008517647/20000000000000000"
+          ]
+        ],
+        "kernel_derivative_bound": {
+          "lower_rational": "162898805764152210785740326246603354322036746939/2923003274661805836407369665432566039311865085952",
+          "upper_rational": "651595223056608843142961304986413417288146987767/11692013098647223345629478661730264157247460343808",
+          "ball": "[0.055729942958411414106823151948392589295884157918 +/- 7.11e-49]",
+          "midpoint_approximate": 0.05572994295841142,
+          "radius_upper_approximate": 4.701271517336991e-49
+        },
+        "channels": [
+          {
+            "isospin": 0,
+            "enclosure": {
+              "lower_rational": "-1131933009711131816468998139613687116625729238043/2993155353253689176481146537402947624255349848014848",
+              "upper_rational": "-1126772811007703907123849216484436844457579459611/2993155353253689176481146537402947624255349848014848",
+              "ball": "[-0.00038 +/- 3.56e-6]",
+              "midpoint_approximate": -0.00037731182550607086,
+              "radius_upper_approximate": 8.619998119741012e-07
+            },
+            "midpoint_sum": {
+              "lower_rational": "-1129352910359417861796423678066432365953689793563/2993155353253689176481146537402947624255349848014848",
+              "upper_rational": "-1129352910359417861796423678031691595129618904091/2993155353253689176481146537402947624255349848014848",
+              "ball": "[-0.00037731182550607086230555253763 +/- 5.89e-33]",
+              "midpoint_approximate": -0.00037731182550607086,
+              "radius_upper_approximate": 5.8033691412485775e-33
+            },
+            "midpoint_error_bound": {
+              "lower_rational": "660505433183126294661968945691815953721496598227/766247770432944429179173513575154591809369561091801088",
+              "upper_rational": "660505433183126294661968945691815953721496976635/766247770432944429179173513575154591809369561091801088",
+              "ball": "[8.61999810857430982928332637847096939919251e-7 +/- 6.60e-49]",
+              "midpoint_approximate": 8.61999810857431e-07,
+              "radius_upper_approximate": 2.469223159570983e-49
+            },
+            "tail_error_bound": {
+              "lower_rational": "1043674224022422852984563294571021030536376654203/3794275180128377091639574036764685364535950857523710002444946112771297432041422848",
+              "upper_rational": "1043674224022422852984563294571021030536376654225/3794275180128377091639574036764685364535950857523710002444946112771297432041422848",
+              "ball": "[2.7506550644729746334752998729036974638674272108e-34 +/- 6.89e-81]",
+              "midpoint_approximate": 2.7506550644729745e-34,
+              "radius_upper_approximate": 2.879691565661766e-81
+            },
+            "sign": "negative",
+            "excludes_all_energy_all_spin_unitarity": true
+          },
+          {
+            "isospin": 1,
+            "enclosure": {
+              "lower_rational": "83780640177912459646521022743675459582532033541/5846006549323611672814739330865132078623730171904",
+              "upper_rational": "83850824755287108957913085707043875008591993861/5846006549323611672814739330865132078623730171904",
+              "ball": "[0.01434 +/- 8.74e-6]",
+              "midpoint_approximate": 0.014337262840784423,
+              "radius_upper_approximate": 6.002779571190331e-06
+            },
+            "midpoint_sum": {
+              "lower_rational": "83815732466599784302217054225333936007173676037/5846006549323611672814739330865132078623730171904",
+              "upper_rational": "83815732466599784302217054225385398583950351365/5846006549323611672814739330865132078623730171904",
+              "ball": "[0.01433726284078442257843700638486 +/- 6.55e-33]",
+              "midpoint_approximate": 0.014337262840784423,
+              "radius_upper_approximate": 4.401515491171456e-33
+            },
+            "midpoint_error_bound": {
+              "lower_rational": "143738014143340677790207334196196706593721800513/23945242826029513411849172299223580994042798784118784",
+              "upper_rational": "287476028286681355580414668392393413187443752255/47890485652059026823698344598447161988085597568237568",
+              "ball": "[6.00277955782896662803202827363736915821406e-6 +/- 3.72e-48]",
+              "midpoint_approximate": 6.002779557828966e-06,
+              "radius_upper_approximate": 1.578900627996508e-48
+            },
+            "tail_error_bound": {
+              "lower_rational": "534078227791295737708196766106433486495146273197/237142198758023568227473377297792835283496928595231875152809132048206089502588928",
+              "upper_rational": "534078227791295737708196766106433486495146273209/237142198758023568227473377297792835283496928595231875152809132048206089502588928",
+              "ball": "[2.2521433578182403177987364744147084484337433173e-33 +/- 4.56e-80]",
+              "midpoint_approximate": 2.2521433578182405e-33,
+              "radius_upper_approximate": 2.3482080958665195e-80
+            },
+            "sign": "positive",
+            "excludes_all_energy_all_spin_unitarity": false
+          },
+          {
+            "isospin": 2,
+            "enclosure": {
+              "lower_rational": "1291126381696977778408661643785281380324010899515/748288838313422294120286634350736906063837462003712",
+              "upper_rational": "1299135142686270917830554153353158201347847764027/748288838313422294120286634350736906063837462003712",
+              "ball": "[0.00173 +/- 6.15e-6]",
+              "midpoint_approximate": 0.0017307898980702906,
+              "radius_upper_approximate": 5.351383435936441e-06
+            },
+            "midpoint_sum": {
+              "lower_rational": "1295130762191624348119607898560232266121996679227/748288838313422294120286634350736906063837462003712",
+              "upper_rational": "1295130762191624348119607898578207315549861984315/748288838313422294120286634350736906063837462003712",
+              "ball": "[0.0017307898980702906163437925674 +/- 5.46e-32]",
+              "midpoint_approximate": 0.0017307898980702906,
+              "radius_upper_approximate": 1.2010769443240325e-32
+            },
+            "midpoint_error_bound": {
+              "lower_rational": "256280351007803214224258113801151126739013964353/47890485652059026823698344598447161988085597568237568",
+              "upper_rational": "128140175503901607112129056900575563369507059075/23945242826029513411849172299223580994042798784118784",
+              "ball": "[5.35138342237263514185511731254797606898292e-6 +/- 5.83e-48]",
+              "midpoint_approximate": 5.3513834223726355e-06,
+              "radius_upper_approximate": 1.60571522987736e-48
+            },
+            "tail_error_bound": {
+              "lower_rational": "381344498339335320678814483638069357619640485383/237142198758023568227473377297792835283496928595231875152809132048206089502588928",
+              "upper_rational": "23834031146208457542425905227379334851227530337/14821387422376473014217086081112052205218558037201992197050570753012880593911808",
+              "ball": "[1.6080836744220865987968865735773965080275548291e-33 +/- 6.77e-80]",
+              "midpoint_approximate": 1.6080836744220865e-33,
+              "radius_upper_approximate": 1.7935401566025586e-80
+            },
+            "sign": "positive",
+            "excludes_all_energy_all_spin_unitarity": false
+          }
+        ],
+        "coefficient_semantics": "Exact rational values of the supplied decimal strings.",
+        "method": "Arb positive kernel masses, analytic second-order midpoint error and analytic infinite tail.",
+        "scope": "Encloses one joint-limit profile per isospin. A negative upper endpoint rejects continuum unitarity; positive values do not certify full unitarity."
+      },
+      "finite_sequence_numerical_checks": [
+        {
+          "isospin": 0,
+          "spin": 20,
+          "s": 186.77777777777777,
+          "imaginary_partial_wave": 6.470867154864954e-09,
+          "scaled_imaginary_partial_wave": 6.486496314541187e-06,
+          "real_partial_wave": -1.0166065415313161e-07
+        },
+        {
+          "isospin": 1,
+          "spin": 21,
+          "s": 205.44444444444446,
+          "imaginary_partial_wave": 9.186351542337639e-06,
+          "scaled_imaginary_partial_wave": 0.010622935614159147,
+          "real_partial_wave": -1.1974461017466492e-05
+        },
+        {
+          "isospin": 2,
+          "spin": 20,
+          "s": 186.77777777777777,
+          "imaginary_partial_wave": 1.935605749134147e-06,
+          "scaled_imaginary_partial_wave": 0.0019402808399062866,
+          "real_partial_wave": -8.239604372912598e-06
+        },
+        {
+          "isospin": 0,
+          "spin": 40,
+          "s": 729.0,
+          "imaginary_partial_wave": -3.375046170586887e-08,
+          "scaled_imaginary_partial_wave": -0.00026087405959999277,
+          "real_partial_wave": 4.949344518163864e-07
+        },
+        {
+          "isospin": 1,
+          "spin": 41,
+          "s": 765.4444444444445,
+          "imaginary_partial_wave": 1.5934467832147271e-06,
+          "scaled_imaginary_partial_wave": 0.013251589145205791,
+          "real_partial_wave": -4.938862103823685e-06
+        },
+        {
+          "isospin": 2,
+          "spin": 40,
+          "s": 729.0,
+          "imaginary_partial_wave": 2.3247469814051637e-07,
+          "scaled_imaginary_partial_wave": 0.001796912255207861,
+          "real_partial_wave": -2.6041103007501284e-06
+        },
+        {
+          "isospin": 0,
+          "spin": 80,
+          "s": 2880.111111111111,
+          "imaginary_partial_wave": -5.709485670018726e-09,
+          "scaled_imaginary_partial_wave": -0.0003465538571507544,
+          "real_partial_wave": 2.3675070529331964e-07
+        },
+        {
+          "isospin": 1,
+          "spin": 81,
+          "s": 2952.1111111111113,
+          "imaginary_partial_wave": 2.2304432058751004e-07,
+          "scaled_imaginary_partial_wave": 0.014049151765050494,
+          "real_partial_wave": -1.4762526386395767e-06
+        },
+        {
+          "isospin": 2,
+          "spin": 80,
+          "s": 2880.111111111111,
+          "imaginary_partial_wave": 2.8804934278781123e-08,
+          "scaled_imaginary_partial_wave": 0.001748399357879961,
+          "real_partial_wave": -7.415007393365729e-07
+        },
+        {
+          "isospin": 0,
+          "spin": 160,
+          "s": 11449.0,
+          "imaginary_partial_wave": -7.680548194329769e-10,
+          "scaled_imaginary_partial_wave": -0.0003694906367200298,
+          "real_partial_wave": 7.783966764918414e-08
+        },
+        {
+          "isospin": 1,
+          "spin": 161,
+          "s": 11592.111111111111,
+          "imaginary_partial_wave": 2.910186637985061e-08,
+          "scaled_imaginary_partial_wave": 0.014263448253383283,
+          "real_partial_wave": -3.975954452537126e-07
+        },
+        {
+          "isospin": 2,
+          "spin": 160,
+          "s": 11449.0,
+          "imaginary_partial_wave": 3.607094836033086e-09,
+          "scaled_imaginary_partial_wave": 0.0017352768760169211,
+          "real_partial_wave": -1.9899936281635676e-07
+        }
+      ]
+    },
+    {
+      "numerical": {
+        "b": 4.0,
+        "profile": [
+          -1.9022049675591398e-05,
+          0.001832652873418083,
+          -9.111120163468919e-05
+        ],
+        "quadrature_error_estimates": [
+          1.5026687675859733e-12,
+          1.074723381321361e-11,
+          1.0691581460354793e-11
+        ],
+        "analytic_tail_bounds": [
+          1.5472434737660476e-34,
+          1.26683063877276e-33,
+          9.045470668624234e-34
+        ],
+        "sine_coefficients": [
+          [
+            0.096924419979315,
+            -0.548353700829177,
+            0.9153894578192769,
+            0.5840792433291568,
+            2.9499386257647404,
+            -0.9947789806119891
+          ],
+          [
+            2.1600927560746985,
+            8.032982415546126,
+            14.375116084179622,
+            8.326009579090327,
+            -7.268903621809535,
+            -9.695371228144452
+          ],
+          [
+            1.2215581592273006,
+            0.5832832422752809,
+            -5.098649394364615,
+            -5.51143549567481,
+            11.871754589879107,
+            11.313451100425882
+          ]
+        ],
+        "rigorous_certificate": false
+      },
+      "validated": {
+        "rigorous_certificate": true,
+        "b": "4",
+        "degree": 6,
+        "cells": 2048,
+        "precision_bits": 160,
+        "z_cut": "80",
+        "exact_sine_coefficients": [
+          [
+            "775395359834533/8000000000000000",
+            "-34272106301823569/62500000000000000",
+            "183077891563855199/200000000000000000",
+            "584079243329155349/1000000000000000000",
+            "368742328220592633/125000000000000000",
+            "-4973894903059947/5000000000000000"
+          ],
+          [
+            "432018551214939777/200000000000000000",
+            "4016491207773062903/500000000000000000",
+            "2875023216835924373/200000000000000000",
+            "333040383163613091/40000000000000000",
+            "-1817225905452383699/250000000000000000",
+            "-969537122814445161/100000000000000000"
+          ],
+          [
+            "9772465273818403/8000000000000000",
+            "291641621137640453/500000000000000000",
+            "-1019729878872922933/200000000000000000",
+            "-44091483965398487/8000000000000000",
+            "2967938647469777001/250000000000000000",
+            "226269022008517647/20000000000000000"
+          ]
+        ],
+        "kernel_derivative_bound": {
+          "lower_rational": "6002037145266201870474065852895529300285185283/730750818665451459101842416358141509827966271488",
+          "upper_rational": "192065188648518459855170107292656937609125929059/23384026197294446691258957323460528314494920687616",
+          "ball": "[0.0082135209321113649192480730118951242275820658223 +/- 7.97e-50]",
+          "midpoint_approximate": 0.008213520932111366,
+          "radius_upper_approximate": 6.148469712132602e-50
+        },
+        "channels": [
+          {
+            "isospin": 0,
+            "enclosure": {
+              "lower_rational": "-916590937863822148513718350573583158198782618167/47890485652059026823698344598447161988085597568237568",
+              "upper_rational": "-905358351162521896178736864100312664888936720951/47890485652059026823698344598447161988085597568237568",
+              "ball": "[-1.9e-5 +/- 1.40e-7]",
+              "midpoint_approximate": -1.902203813784054e-05,
+              "radius_upper_approximate": 1.1727367710268055e-07
+            },
+            "midpoint_sum": {
+              "lower_rational": "-910974644513172022346227607362794301218176854583/47890485652059026823698344598447161988085597568237568",
+              "upper_rational": "-910974644513172022346227607311101521869542484535/47890485652059026823698344598447161988085597568237568",
+              "ball": "[-1.9022038137840540683241140303e-5 +/- 9.13e-34]",
+              "midpoint_approximate": -1.902203813784054e-05,
+              "radius_upper_approximate": 5.396977984750491e-34
+            },
+            "midpoint_error_bound": {
+              "lower_rational": "1437771096313554141958247823618464687277662403179/12259964326927110866866776217202473468949912977468817408",
+              "upper_rational": "1437771096313554141958247823618464687277699556061/12259964326927110866866776217202473468949912977468817408",
+              "ball": "[1.1727367698417464723288423735119547039683e-7 +/- 2.61e-48]",
+              "midpoint_approximate": 1.1727367698417465e-07,
+              "radius_upper_approximate": 1.5152116325248784e-48
+            },
+            "tail_error_bound": {
+              "lower_rational": "1174133502025225709607633706392398659353423735979/7588550360256754183279148073529370729071901715047420004889892225542594864082845696",
+              "upper_rational": "1174133502025225709607633706392398659353423736003/7588550360256754183279148073529370729071901715047420004889892225542594864082845696",
+              "ball": "[1.5472434737660482313298561785083298234254278061e-34 +/- 6.21e-81]",
+              "midpoint_approximate": 1.5472434737660482e-34,
+              "radius_upper_approximate": 1.4905091904481148e-81
+            },
+            "sign": "negative",
+            "excludes_all_energy_all_spin_unitarity": true
+          },
+          {
+            "isospin": 1,
+            "enclosure": {
+              "lower_rational": "685370210312033377838078034248886760013564969789/374144419156711147060143317175368453031918731001856",
+              "upper_rational": "685982797319280607360190709046053711452499313469/374144419156711147060143317175368453031918731001856",
+              "ball": "[0.00183 +/- 3.48e-6]",
+              "midpoint_approximate": 0.0018326519619378848,
+              "radius_upper_approximate": 8.186504674156936e-07
+            },
+            "midpoint_sum": {
+              "lower_rational": "685676503815656992599134371645942306776099554109/374144419156711147060143317175368453031918731001856",
+              "upper_rational": "685676503815656992599134371648998164689964729149/374144419156711147060143317175368453031918731001856",
+              "ball": "[0.00183265196193788474359636603989 +/- 4.58e-33]",
+              "midpoint_approximate": 0.0018326519619378848,
+              "radius_upper_approximate": 4.083794595617398e-33
+            },
+            "midpoint_error_bound": {
+              "lower_rational": "1254578189315446657956691907655016730418717021363/1532495540865888858358347027150309183618739122183602176",
+              "upper_rational": "1254578189315446657956691907655016730418746717073/1532495540865888858358347027150309183618739122183602176",
+              "ball": "[8.186504664193582841972286933651029553336e-7 +/- 5.04e-47]",
+              "midpoint_approximate": 8.186504664193583e-07,
+              "radius_upper_approximate": 9.688677446973635e-48
+            },
+            "tail_error_bound": {
+              "lower_rational": "1201676012530415409843442723739475344614079114695/948568795032094272909893509191171341133987714380927500611236528192824358010355712",
+              "upper_rational": "1201676012530415409843442723739475344614079114719/948568795032094272909893509191171341133987714380927500611236528192824358010355712",
+              "ball": "[1.2668306387727601787617892668582735022439806160e-33 +/- 4.31e-80]",
+              "midpoint_approximate": 1.2668306387727603e-33,
+              "radius_upper_approximate": 1.2152955285820149e-80
+            },
+            "sign": "positive",
+            "excludes_all_energy_all_spin_unitarity": false
+          },
+          {
+            "isospin": 2,
+            "enclosure": {
+              "lower_rational": "-1099541313488623463379060560477825396277186974197/11972621413014756705924586149611790497021399392059392",
+              "upper_rational": "-1082132619384151546259387674193151962112205836789/11972621413014756705924586149611790497021399392059392",
+              "ball": "[-9.1e-5 +/- 8.38e-7]",
+              "midpoint_approximate": -9.111095463610004e-05,
+              "radius_upper_approximate": 7.270209883003531e-07
+            },
+            "midpoint_sum": {
+              "lower_rational": "-1090836966436387504819224117400517648656759575029/11972621413014756705924586149611790497021399392059392",
+              "upper_rational": "-1090836966436387504819224117270459709732633235957/11972621413014756705924586149611790497021399392059392",
+              "ball": "[-9.111095463610004380376133087e-5 +/- 6.39e-33]",
+              "midpoint_approximate": -9.111095463610004e-05,
+              "radius_upper_approximate": 5.431472959745797e-33
+            },
+            "midpoint_error_bound": {
+              "lower_rational": "1114156420758279664178253542244233837037610407003/1532495540865888858358347027150309183618739122183602176",
+              "upper_rational": "1114156420758279664178253542244233837037640607305/1532495540865888858358347027150309183618739122183602176",
+              "ball": "[7.270209870423246332616514228168867524446e-7 +/- 1.18e-47]",
+              "midpoint_approximate": 7.270209870423246e-07,
+              "radius_upper_approximate": 9.853308013684745e-48
+            },
+            "tail_error_bound": {
+              "lower_rational": "429012560631752235763666294092828027322095546057/474284397516047136454946754595585670566993857190463750305618264096412179005177856",
+              "upper_rational": "214506280315876117881833147046414013661047773033/237142198758023568227473377297792835283496928595231875152809132048206089502588928",
+              "ball": "[9.045470668624237118232486976372855357654995914e-34 +/- 1.15e-80]",
+              "midpoint_approximate": 9.045470668624237e-34,
+              "radius_upper_approximate": 9.297172478062422e-81
+            },
+            "sign": "negative",
+            "excludes_all_energy_all_spin_unitarity": true
+          }
+        ],
+        "coefficient_semantics": "Exact rational values of the supplied decimal strings.",
+        "method": "Arb positive kernel masses, analytic second-order midpoint error and analytic infinite tail.",
+        "scope": "Encloses one joint-limit profile per isospin. A negative upper endpoint rejects continuum unitarity; positive values do not certify full unitarity."
+      },
+      "finite_sequence_numerical_checks": [
+        {
+          "isospin": 0,
+          "spin": 20,
+          "s": 105.0625,
+          "imaginary_partial_wave": 4.7036478766232574e-08,
+          "scaled_imaginary_partial_wave": 1.989144274768163e-05,
+          "real_partial_wave": 1.100119422547956e-07
+        },
+        {
+          "isospin": 1,
+          "spin": 21,
+          "s": 115.5625,
+          "imaginary_partial_wave": 2.2744264948612893e-06,
+          "scaled_imaginary_partial_wave": 0.0011095763317542488,
+          "real_partial_wave": -1.817287397155009e-06
+        },
+        {
+          "isospin": 2,
+          "spin": 20,
+          "s": 105.0625,
+          "imaginary_partial_wave": 2.2282246841563273e-07,
+          "scaled_imaginary_partial_wave": 9.423027593997046e-05,
+          "real_partial_wave": -1.5989675331474927e-06
+        },
+        {
+          "isospin": 0,
+          "spin": 40,
+          "s": 410.0625,
+          "imaginary_partial_wave": -1.7321063306351448e-09,
+          "scaled_imaginary_partial_wave": -5.648192858384988e-06,
+          "real_partial_wave": 1.8726506912874455e-07
+        },
+        {
+          "isospin": 1,
+          "spin": 41,
+          "s": 430.5625,
+          "imaginary_partial_wave": 4.583825363087011e-07,
+          "scaled_imaginary_partial_wave": 0.0016082081258056552,
+          "real_partial_wave": -1.005456891760616e-06
+        },
+        {
+          "isospin": 2,
+          "spin": 40,
+          "s": 410.0625,
+          "imaginary_partial_wave": -9.53293213634901e-09,
+          "scaled_imaginary_partial_wave": -3.1085758570174657e-05,
+          "real_partial_wave": -4.752863587794321e-07
+        },
+        {
+          "isospin": 0,
+          "spin": 80,
+          "s": 1620.0625,
+          "imaginary_partial_wave": -6.005695006673759e-10,
+          "scaled_imaginary_partial_wave": -1.537874206805762e-05,
+          "real_partial_wave": 8.719113453543495e-08
+        },
+        {
+          "isospin": 1,
+          "spin": 81,
+          "s": 1660.5625,
+          "imaginary_partial_wave": 6.668733570729818e-08,
+          "scaled_imaginary_partial_wave": 0.0017720912931713814,
+          "real_partial_wave": -3.2003858992607575e-07
+        },
+        {
+          "isospin": 2,
+          "spin": 80,
+          "s": 1620.0625,
+          "imaginary_partial_wave": -2.928469536267562e-09,
+          "scaled_imaginary_partial_wave": -7.4989118832004e-05,
+          "real_partial_wave": -1.3567950960387043e-07
+        },
+        {
+          "isospin": 0,
+          "spin": 160,
+          "s": 6440.0625,
+          "imaginary_partial_wave": -8.912623723840343e-11,
+          "scaled_imaginary_partial_wave": -1.8088417800651918e-05,
+          "real_partial_wave": 2.892218521954649e-08
+        },
+        {
+          "isospin": 1,
+          "spin": 161,
+          "s": 6520.5625,
+          "imaginary_partial_wave": 8.787873619494475e-09,
+          "scaled_imaginary_partial_wave": 0.00181706842312503,
+          "real_partial_wave": -8.755736298771084e-08
+        },
+        {
+          "isospin": 2,
+          "spin": 160,
+          "s": 6440.0625,
+          "imaginary_partial_wave": -4.286430109998533e-10,
+          "scaled_imaginary_partial_wave": -8.699429158615824e-05,
+          "real_partial_wave": -3.711381576523222e-08
+        }
+      ]
+    }
+  ],
+  "scope": "Exact-decimal joint-limit sign enclosures when Arb is enabled; finite-spin evaluations are numerical cross-checks. No full continuum feasibility claim."
+}

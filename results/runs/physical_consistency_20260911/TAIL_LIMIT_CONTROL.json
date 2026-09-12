@@ -1,0 +1,105 @@
+{
+  "scope": "Two finite-energy checks of the independent first-harmonic amplitude; the limit theorem is proved separately, not inferred from convergence",
+  "definition": "tail_limit_control_input/definition.json",
+  "rows": [
+    {
+      "s": 1000000.0,
+      "I": 0,
+      "ell": 0,
+      "scaled_Im_f": 0.0013594912383512981,
+      "exact_predicted_limit": 0.001220703125,
+      "relative_difference": 0.11369522245738342
+    },
+    {
+      "s": 1000000.0,
+      "I": 0,
+      "ell": 2,
+      "scaled_Im_f": 0.02671130784588405,
+      "exact_predicted_limit": 0.028125,
+      "relative_difference": -0.050264609924122676
+    },
+    {
+      "s": 1000000.0,
+      "I": 1,
+      "ell": 1,
+      "scaled_Im_f": 0.005035693729964793,
+      "exact_predicted_limit": 0.005208333333333333,
+      "relative_difference": -0.03314680384675961
+    },
+    {
+      "s": 1000000.0,
+      "I": 1,
+      "ell": 3,
+      "scaled_Im_f": 0.0020854203876539607,
+      "exact_predicted_limit": 0.002232142857142857,
+      "relative_difference": -0.06573166633102553
+    },
+    {
+      "s": 1000000.0,
+      "I": 2,
+      "ell": 0,
+      "scaled_Im_f": 0.0005345437916898533,
+      "exact_predicted_limit": 0.00048828125,
+      "relative_difference": 0.09474568538081951
+    },
+    {
+      "s": 1000000.0,
+      "I": 2,
+      "ell": 2,
+      "scaled_Im_f": 0.00890376928196135,
+      "exact_predicted_limit": 0.009375,
+      "relative_difference": -0.05026460992412256
+    },
+    {
+      "s": 100000000.0,
+      "I": 0,
+      "ell": 0,
+      "scaled_Im_f": 0.0012347407826748416,
+      "exact_predicted_limit": 0.001220703125,
+      "relative_difference": 0.011499649167230253
+    },
+    {
+      "s": 100000000.0,
+      "I": 0,
+      "ell": 2,
+      "scaled_Im_f": 0.027918997142136498,
+      "exact_predicted_limit": 0.028125,
+      "relative_difference": -0.007324546057368986
+    },
+    {
+      "s": 100000000.0,
+      "I": 1,
+      "ell": 1,
+      "scaled_Im_f": 0.005183882251706195,
+      "exact_predicted_limit": 0.005208333333333333,
+      "relative_difference": -0.0046946076724105334
+    },
+    {
+      "s": 100000000.0,
+      "I": 1,
+      "ell": 3,
+      "scaled_Im_f": 0.0022102946926509815,
+      "exact_predicted_limit": 0.002232142857142857,
+      "relative_difference": -0.009787977692360228
+    },
+    {
+      "s": 100000000.0,
+      "I": 2,
+      "ell": 0,
+      "scaled_Im_f": 0.000492960467597343,
+      "exact_predicted_limit": 0.00048828125,
+      "relative_difference": 0.009583037639358416
+    },
+    {
+      "s": 100000000.0,
+      "I": 2,
+      "ell": 2,
+      "scaled_Im_f": 0.009306332380712165,
+      "exact_predicted_limit": 0.009375,
+      "relative_difference": -0.007324546057368986
+    }
+  ],
+  "inputs": {
+    "results/runs/physical_consistency_20260911/tail_limit_control_evaluate/evaluation.json": "7b410238316ac68885fb331628a754dc91f42d4cdf0b7cfa8957a557451881ed"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "regions": [
+    {
+      "mode": "chiral",
+      "epsilon": 0.002,
+      "feasible_points": 1,
+      "outer_closed": false,
+      "max_support_gap": 9.259211412812607e-05,
+      "geometry": {
+        "geometry_ready": false,
+        "outer_closed": false,
+        "max_distance_upper": null,
+        "metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)",
+        "epsilon": 0.002,
+        "budgets": {
+          "distance": 0.01,
+          "metric_support": 0.0025,
+          "raw_support": 0.0001
+        },
+        "distance_witnesses": [],
+        "next_support": {
+          "action": "add_direction",
+          "direction": [
+            -1.0,
+            1.2246467991473532e-16
+          ],
+          "gap": 9.999999999999999e-05
+        },
+        "metric_support_gap_upper": 0.0012628253965808567,
+        "raw_support_gap_upper": 9.259211412812608e-05,
+        "outer_vertices": [],
+        "outer_vertex_enclosures": [],
+        "direction_coverage": {
+          "unique_normals": 1,
+          "angles_degrees": [
+            0.0
+          ],
+          "largest_gap_degrees": 360.0,
+          "positive_span": false
+        },
+        "geometry_scope": "Arb vertex/mixture bounds; float hull selects segments only. Finite H; no continuum or quadrature certificate."
+      },
+      "direction_coverage": {
+        "unique_normals": 1,
+        "angles_degrees": [
+          0.0
+        ],
+        "largest_gap_degrees": 360.0,
+        "positive_span": false
+      },
+      "computed_min": [
+        0.09015702536851065,
+        -0.00587151505097973
+      ],
+      "computed_max": [
+        0.09015702536851065,
+        -0.00587151505097973
+      ],
+      "paper_min": [
+        0.0014493069079627669,
+        -0.005435966800058552
+      ],
+      "paper_max": [
+        0.08257301276510262,
+        0.000582030231882398
+      ]
+    }
+  ],
+  "nesting": {
+    "six_chiral_present": false,
+    "contradictions": [],
+    "status": "no_observed_contradiction"
+  },
+  "status": "incomplete",
+  "reference_semantics": "PDF marker centers; finite plotted samples",
+  "reference_points": {
+    "pdf": {
+      "drawing_index": 699,
+      "epsilon": "",
+      "color": "black",
+      "role": "reference_marker",
+      "x": 0.07131334281385134,
+      "y": -0.004754181940087461,
+      "pdf_x": 431.29100036621094,
+      "pdf_y": 313.5449981689453,
+      "pdf_marker_radius": 4.3220062255859375
+    },
+    "formula": {
+      "x": 0.07332139057293466,
+      "y": -0.00488809270486231
+    }
+  }
+}

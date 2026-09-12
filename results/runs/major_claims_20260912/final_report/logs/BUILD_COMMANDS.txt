@@ -1,0 +1,9 @@
+Typesetting commands only; no scientific program or active build.py.
+Working directory: /home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/final_report
+Environment: {"OPENBLAS_NUM_THREADS": "1", "OMP_NUM_THREADS": "1", "MKL_NUM_THREADS": "1", "RAYON_NUM_THREADS": "1"}
+Priority: nice 19.
+
+The saved document_ast.json contains the recorded table widths. The full sources and equivalent typography transforms are pinned in manifest.json.
+
+/tmp/he_report_pandoc/pandoc document_ast.json --from json --standalone --to latex --toc-depth=1 --shift-heading-level-by=-1 --include-in-header header.tex -V 'mainfont=DejaVu Serif' -V 'sansfont=DejaVu Sans' -V 'monofont=DejaVu Sans Mono' -V papersize=a4 -V fontsize=10pt -V geometry:margin=18mm -V colorlinks=true -o REPORT_ZH.tex
+/home/shiqiu/.local/bin/tectonic --keep-logs --keep-intermediates --reruns 2 REPORT_ZH.tex

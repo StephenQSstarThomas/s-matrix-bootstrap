@@ -1,0 +1,3755 @@
+Journal Article
+The Gauge Theory Bootstrap: Predicting Pion Dynamics from QCD
+Yifei He
+,
+Yifei He
+Laboratoire de Physique de l’École Normale Supérieure, ENS, Université PSL,
+CNRS
+, Sorbonne Université,
+Université Paris Cité, F-75005 Paris
+,
+France
+yifei.he@ens.fr
+https://orcid.org/0000-0002-1366-6157
+Search for other works by this author on:
+Oxford Academic
+Google Scholar
+ADS
+Martin Kruczenski
+Martin Kruczenski
+Department of Physics and Astronomy and
+PQSEI (Purdue Quantum Science and Engineering Institute), Purdue University
+,
+West Lafayette, IN 47907
+,
+USA
+markru@purdue.edu
+https://orcid.org/0000-0001-9108-3638
+Search for other works by this author on:
+Oxford Academic
+Google Scholar
+ADS
+Progress of Theoretical and Experimental Physics
+, Volume 2026, Issue 6, June 2026, 063B05,
+https://doi.org/10.1093/ptep/ptag087
+Published:
+18 May 2026
+Article history
+Received:
+07 October 2025
+Revision received:
+22 April 2026
+Accepted:
+10 May 2026
+Published:
+18 May 2026
+Corrected and typeset:
+30 June 2026
+Abstract
+The gauge theory bootstrap computes the strongly coupled pion dynamics by considering the most general scattering matrix, form factors, and spectral densities and matching them with perturbative QCD at high energy and with weakly coupled pions at low energy. In this work, we show that further constraints on the spectral densities significantly reduce the possible solutions to a small set of qualitatively similar ones. Quantitatively, the precise solution is controlled by the asymptotic value of the form factors and Shifman–Vainshtein–Zakharov sum rules. We also introduce an iterative procedure that, starting from a generic feasible point, converges to a unique solution parameterized by the UV input. For the converged solution we compute the masses and widths of resonances that appear, scattering lengths and effective ranges of partial waves, and low-energy coefficients in the effective action. Additionally, we use these results to discuss the thermodynamics of a pion gas including pair correlations of pions with the same and opposite charge.
+1. Motivation and summary
+In asymptotically free gauge theories, the UV is understood in perturbation theory, and the IR is understood as a weakly coupled theory of pions determined by symmetries and the mass
+|$m_{\pi }$|
+and coupling
+|$f_{\pi }$|
+of the pion. In the intermediate-energy region both descriptions are strongly coupled and the dynamics is difficult to solve. That region has a rich dynamics known from phenomenological analysis of experiments [
+1–8
+] and from lattice simulations [
+9
+].
+In Refs. [
+10–12
+] we proposed the gauge theory bootstrap (GTB), a method to understand this region from a purely theoretical point of view. The idea is to write the most general
+S
+-matrix, form factors, and current spectral densities that satisfy basic physical properties and add more and more constraints based on the matching of the physics to the known UV and IR. In that way we expect to converge to a unique solution parameterized by the UV and IR properties. In this paper we get much closer to this main goal by adding further IR constraints on the spectral density that greatly reduce the space of solutions and, further, by creating an iterative procedure that pushes the constraints towards saturation and converges to a unique solution. Instead of using a functional to map out the space of solutions, and extract extremal amplitudes as we did in previous work, we can remove the functional and allow the program to choose an arbitrary feasible point and then use this iterative procedure to converge to a solution. This differs from the standard
+S
+-matrix bootstrap procedure that uses kinematic constraints to put bounds on theory parameters; instead we introduce
+dynamical information
+1
+from the UV and IR to compute the
+S
+-matrix. In that way, we perhaps go back to the original bootstrap philosophy of the 1960s [
+13
+,
+14
+] but augmented with microscopic dynamical information that was not known at that time. In that work [
+13
+,
+14
+] the dynamical information was the idea of self-consistency, or hadron democracy: e.g. the
+|$\rho$|
+meson gave rise to an attractive potential between pions, which in turn gave rise to a resonance, the
+|$\rho$|
+meson itself (see e.g. Refs. [
+15
+,
+16
+]). Although interesting, such ideas did not match the experimental results and were superseded by QCD. In the recent bootstrap revival [
+17–20
+], powerful numerical methods were used to put bounds on couplings and other parameters of generic quantum field theories, including the effective field theory of pions [
+21–30
+]. This also extended to form factors and spectral densities (mostly in 2D theories) [
+31–35
+]. However, it is clear that general kinematical constraints, although nontrivial, still allow an enormous number of theories and that dynamical information, here provided by QCD, is necessary to identify the correct theory.
+2
+In that way, without using experimental input, we can predict and
+compute
+low-energy constants, partial waves, form factors, the resonance spectrum, etc. For example, in the recent work [
+36
+] this method was used as a tool to study the
+|$g-2$|
+factor contribution from hadrons. Notice also that the only assumption on the spectrum is that there are no bound states. The number of resonances together with their masses and widths are results of the computation based on the UV input from pQCD and matching with low-energy pions.
+One caveat that became apparent due to this improved procedure is that, at the moment, the results depends on having accurate values of the form factors at high (but not asymptotically high) energy (
+⁠|$\sqrt{s}\sim 2\, \mbox{GeV}$|⁠
+). At that energy, calculations of the Brodsky–Lepage [
+37
+] type give the form factors up to a factor of order one. Therefore we allow for a range of values starting from the minimum that the constraints allow. We discuss this later in the paper. On the plus side, the asymptotic form factors represent the only place where
+|$f_{\pi }$|
+is used and, as we have just mentioned, we allow for a range of values, meaning that the precise value of
+|$f_{\pi }$|
+is not really used. Therefore,
+|$f_{\pi }$|
+when interpreted as a low-energy coupling is an outcome of our computation.
+As we did in our previous work [
+12
+],
+3
+we have made publicly available the numerical program used to obtain the results of this paper at
+https://github.com/hyfysics/gauge-theory-bootstrap/releases/tag/arxiv-2505.19332
+. The latest version of the numerical GTB program can be found in the GitHub repository:
+gauge-theory-bootstrap
+.
+2. New ingredients for the GTB procedure
+The procedure that we use in this paper is basically the same as that described in previous work; we refer the interested reader to Refs. [
+10–12
+] for the necessary details and main notation, but include a brief summary of the numerical parameterization in Appendix
+D
+.
+4
+In this section we discuss two crucial new additions to the GTB procedure. First we introduce, from
+|$\chi _{PT}$|⁠
+, constraints on the low-energy kinematic (i.e. from the free pion Lagrangian) behavior of the spectral densities using a parameterization that we discuss in the appendix. Second, and perhaps the most importantly, we devise an iterative procedure that starts from an arbitrary feasible point and converges to a unique solution (after fixing the UV and IR information). We now discuss those new ingredients in detail as well as the input from the asymptotic form factors. Once more, the only numerical inputs to the GTB procedure are the values of
+|$m_{\pi }$|⁠
+, which sets the units;
+|$f_{\pi }$|⁠
+, which is used in the asymptotic form factors,
+|$\alpha _s$|⁠
+,
+|$N_c=3$|⁠
+,
+|$N_f=2$|⁠
+; and
+|$m_q$|
+from the gauge theory to compute the Shifman–Vainshtein–Zakharov (SVZ) sum rules [
+38–40
+]. At the moment, however, all pQCD calculations are done with
+|$m_q=0$|
+assuming
+|$m_q\ll \Lambda _\mathrm{QCD}$|⁠
+. Therefore
+|$m_q$|
+only appears as an overall factor in the
+S
+0 sum rule. Presumably
+|$m_q$|
+should be computed by consistency in future work. The fact that
+|$f_{\pi }$|
+does not appear in the low-energy matching, and only in the asymptotic form factors, is discussed around Eq. (
+5.26
+).
+2.1. Low-energy spectral density
+A major role in the gauge theory bootstrap is played by the currents,
+5
+a set of QCD operators chosen to match the quantum numbers of the different partial waves. In this and previous papers we consider the following operators for
+|$N_f=2$|⁠
+:
+$$\begin{eqnarray}
+j_S = m_q(\bar{u}u+\bar{d}d) = \frac{1}{2}m^2_{\pi }\pi ^a\pi ^a +{\cal O}(\pi ^4)
+\end{eqnarray}$$
+(2.1a)
+$$\begin{eqnarray}
+j_V = \frac{1}{2}(\bar{u}\gamma ^\mu u-\bar{d}\gamma ^\mu d)\Delta _\mu = \epsilon ^{abc} \pi ^b \partial _\Delta \pi ^c +{\cal O}(\pi ^4)
+\end{eqnarray}$$
+(2.1b)
+$$\begin{eqnarray}
+j_T = T^{\mu \nu } \Delta _\mu \Delta _\nu ,
+\end{eqnarray}$$
+(2.1c)
+written both from QCD and from the free pion Lagrangian. Here
+|$T^{\mu \nu }$|
+is the energy–momentum tensor (either in QCD or in terms of pions) and
+|$\Delta _\mu =(0,1,i,0)$|
+is a (complex) light-like vector
+|$\Delta ^2=0$|
+with components in the
+|$(x,y)$|
+plane. In general, currents can be identified at low energy up to a normalization constant; however, for these three, the normalization is known. Using the free pion Lagrangian, namely kinematically, one can compute the spectral densities at low energy [
+41
+]:
+$$\begin{eqnarray}
+\rho ^0_0(s) \simeq \frac{m_{\pi }^4}{(2\pi )^4}\, \frac{3}{16\pi }\, \left(1-\frac{4m_{\pi }^2}{s}\right)^{\frac{1}{2}}
+\end{eqnarray}$$
+(2.2a)
+$$\begin{eqnarray}
+\rho ^1_1(s) \simeq \frac{1}{(2\pi )^4}\, \frac{s}{24\pi }\, \left(1-\frac{4m_{\pi }^2}{s}\right)^{\frac{3}{2}}
+\end{eqnarray}$$
+(2.2b)
+$$\begin{eqnarray}
+\rho ^0_2(s) \simeq \frac{1}{(2\pi )^4}\, \frac{s^2}{160\pi }\left(1-\frac{4m_{\pi }^2}{s}\right)^{\frac{5}{2}}.
+\end{eqnarray}$$
+(2.2c)
+In Appendix
+B
+we describe a parameterization of the spectral densities that takes into account this behavior. This is the first addition to the procedure and plays a crucial role because the spectral density is now also constrained in the IR and not only in the UV (by the SVZ sum rules as explained in Section
+2.4
+and Appendix
+C
+).
+2.2. Iterative “Watsonian” procedure
+An important ingredient of any bootstrap program is positivity constraints associated with the positivity of the norm in quantum mechanics; e.g. in the gauge theory bootstrap we use Eq. (
+2.12
+) below. If a large enough matrix, with many pion states and QCD operators included, is considered, we expect such a matrix of state overlaps to saturate the positivity condition since scattering is unitary and QCD operators acting on the vacuum should be representable as linear combinations of pion states giving rise to zero modes or null states. See Fig.
+1
+for an illustration. In Eq. (
+2.12
+) below, where only two-pion states are considered, this saturation should certainly be exact below the four-pion threshold and approximate above. In general, we adopt the philosphy of always looking for saturation of the constraints (i.e. matrix with zero modes) and, if that is not possible, to further add pion states and QCD operators to the matrix. Once a matrix such as Eq. (
+2.12
+) is chosen, to achieve the desired saturation, we now introduce an iterative procedure that leads to a particular solution to the GTB constraints.
+Fig. 1.
+The matrix of state overlaps should saturate the positive semidefinite condition and have zero modes.
+Open in new tab
+Download slide
+Iterative procedures in the
+S
+-matrix bootstrap were introduced initially in Ref. [
+42
+] to get closer to the boundary of the allowed space. The main idea is that, denoting the bootstrap variables as
+|$x_j$|
+and given a constraint
+|$\Phi _A(x_j) \le 0$|⁠
+, after finding a solution
+|$x_j=\bar{x}_j$|⁠
+, we can improve the solution to saturate the constraint by maximizing again in the direction of the gradient of the constraint, namely a functional linear in the variables
+|$x_j$|⁠
+:
+$$\begin{eqnarray}
+\mathcal {F}=\sum _{A,j}\left.\frac{\partial \Phi _A}{\partial x_j}\right|_{\bar{x}_j}x_j .
+\end{eqnarray}$$
+(2.3)
+In terms of the normalized partial wave
+|$h^I_\ell (s)$|
+where
+$$\begin{eqnarray}
+S^I_\ell (s) = 1+ih^I_{\ell }(s)=\eta ^I_{\ell }(s) e^{2i\delta _\ell ^I(s)}
+\end{eqnarray}$$
+(2.4)
+with
+|$\delta _\ell ^I$|
+the usual phase shift, the unitarity constraint reads
+$$\begin{eqnarray}
+(\mathrm{Re}h^I_\ell (s))^2 + (\mathrm{Im}h^I_\ell (s))^2 - 2 \mathrm{Im}h^I_\ell (s) \le 0,\;\; s\gt 4m^2_{\pi },\;\forall \;I,\ell .
+\end{eqnarray}$$
+(2.5)
+It is known, qualitatively, that 2-to-2 pion scattering tends to saturate unitarity even at energies larger than the four-pion threshold.
+6
+If we want to approach the unitarity saturation more closely, we can linearize the constraint (
+2.5
+), and the new functional to maximize for the next iteration is
+$$\begin{eqnarray}
+{\cal F}= 2 \int ds \sum _{\ell ,I} \Big [\left.\mathrm{Re}h^I_\ell (s)\right|_\mathrm{old}\, \left.\mathrm{Re}h^I_\ell (s)\right|_\mathrm{new} + \left.\mathrm{Im}h^I_\ell (s)\right|_\mathrm{old}\, \left.\mathrm{Im}h^I_\ell (s)\right|_\mathrm{new} - \left.\mathrm{Im}h^I_\ell (s)\right|_\mathrm{new} \Big ]
+\end{eqnarray}$$
+(2.6)
+where “old” are the values from the previous iteration, and “new” are the values in the maximization that is being performed. In the case of two dimensions it was very successful in converging to the desired solutions. One might expect that the same happens here. Although this is true, once we include form factors and spectral densities in the bootstrap, Watson’s theorem provides a
+new natural iterative functional
+for our purpose. Watson’s theorem establishes that, when the four-pion state contribution is negligible, the two-pion form factor can be written as
+$$\begin{eqnarray}
+\mathcal {F}^{I}_{\ell }={}_{\text{out}}\langle \pi \pi |\mathcal {O}^I_{\ell }|0\rangle ={}_{\text{out}}\langle \pi \pi |\pi \pi \rangle _\mathrm{in}\;{}_\mathrm{in}\langle \pi \pi |\mathcal {O}^I_{\ell }|0\rangle =S^I_{\ell }\mathcal {F}^{I*}_{\ell } .
+\end{eqnarray}$$
+(2.7)
+Putting Eqs. (
+2.7
+) and (
+2.4
+) together, one finds
+$$\begin{eqnarray}
+F^I_{\ell }(s)=|F^I_{\ell }(s)|e^{i\delta _I(s)},\;\;h^I_{\ell }(s)=2\sin \delta ^I_{\ell }(s)e^{i\delta ^I_{\ell }(s)}
+\end{eqnarray}$$
+(2.8)
+so the phase of the form factors agrees with the phase of the interacting part of the partial wave
+|$h^I_{\ell }(s)$|⁠
+. Namely, Watson’s theorem requires
+$$\begin{eqnarray}
+h^I_{\ell }(s)=|h^I_{\ell }(s)|\frac{F^I_{\ell }(s)}{|F^I_{\ell }(s)|} .
+\end{eqnarray}$$
+(2.9)
+The procedure then replaces the phase of the previous (old) partial wave with the phase of the previous (old) form factor when computing the functional; i.e. in Eq. (
+2.6
+) we replace
+$$\begin{eqnarray}
+\left. h^I_\ell (s)\right|_\mathrm{old} \rightarrow \left.\left(|h^I_{\ell }(s)| \frac{F^I_\ell (s)}{|F^I_\ell (s)|}\right)\right|_\mathrm{old}
+\end{eqnarray}$$
+(2.10)
+according to the condition (
+2.9
+). Namely, instead of just using the old partial wave
+|$h^I_{\ell }(s)$|
+to determine the functional, we use its modulus and replace its phase with the phase of the form factor. Such iteration will tend to converge to unitarity saturation while matching the phase of the form factor with the phase shift. To summarize, the iteration procedure schematically goes as:
+(2.11)
+From a physical point of view, the UV information incorporated into the form factors and spectral densities is conveyed to the phase shifts and partial waves. At the same time the crossing and unitarity constraints on the partial waves feed back to the form factors.
+2.2.1. Iteration procedure and matrix zero modes
+The iterative procedure in the previous subsection can be directly interpreted as a way of finding the zero modes of the matrix described in Fig.
+1
+. Indeed, following the form factor bootstrap [
+31
+], we introduce a
+|$3\times 3$|
+positive semidefinite matrix of inner products:
+$$\begin{eqnarray}
+G_{\text{SDP}}= \begin{array}{c c}& \begin{array}{c c c}\mbox{$| \mbox{in} \rangle $}_{P,I,\ell } & \mbox{$| \mbox{out} \rangle $}_{P,I,\ell } & {\cal O}_{P,I,\ell }\mbox{$| 0 \rangle $} \\\end{array} \\\begin{array}{c c c}\mbox{$\langle \mbox{in} |$}_{P^{\prime },I,\ell } \\\mbox{$\langle \mbox{out} |$}_{P^{\prime },I,\ell }\\\mbox{$\langle 0 |$} {\cal O}^\dagger _{P^{\prime },I,\ell } \end{array} & \begin{pmatrix}1 &\ S^I_\ell (s)\ &\ \ {\cal F}^I_\ell (s) \\S_\ell ^{I*}(s) &\ 1\ & \ \ {\cal F}^{I*}_\ell (s) \\{\cal F}^{I*}_\ell (s) &\ {\cal F}^I_\ell (s)\ &\ \ \rho ^I_\ell (s) \end{pmatrix} \end{array} \succeq 0,\;\; \forall I,\ell , \ s\gt 4m^2_{\pi },\;\;
+\end{eqnarray}$$
+(2.12)
+where we removed an overall factor
+|$\delta ^4(P-P^{\prime })$|⁠
+, namely the identity in the center of mass momentum. The in- and out- states are two-pion states and
+|${\cal O}_{P,I,\ell }$|
+is a momentum space current. The elements of the matrix are the scattering matrix
+|$S_\ell ^I$|⁠
+, the form factors
+|${\cal F}_\ell ^I$|⁠
+, and the spectral density
+|$\rho _\ell ^I$|⁠
+. Recall that for a positive semidefinite Hermitian matrix
+|$G_{\text{SDP}}$|⁠
+, one has
+$$\begin{eqnarray}
+\text{Tr}(M\cdot G_{\text{SDP}})\ge 0,\;\; \forall \; M=vv^{\dagger }
+\end{eqnarray}$$
+(2.13)
+where
+|$v$|
+is an arbitrary complex vector. When the positive semidefinite condition is saturated, this matrix has two zero eigenvalues. That means that two linear combinations of the states vanish. One simply means that the in and out states are the same (up to a phase) if there is no particle production. The other, interestingly, means that we have a way to write
+|${\cal O}_{I,\ell ,P}\mbox{$| 0 \rangle $}$|
+as a two-pion state. So, from a physical perspective, one can understand the zero modes as a way to write pQCD currents acting on vacuum in terms of pion states and vice versa. In terms of the matrix elements, this gives rise to the conditions:
+$$\begin{eqnarray}
+S^I_{\ell }=\frac{\mathcal {F}^I_{\ell }}{\mathcal {F}^{I*}_{\ell }},\;\; \rho ^I_{\ell }=\mathcal {F}^I_{\ell }\mathcal {F}^{I*}_{\ell }
+\end{eqnarray}$$
+(2.14)
+where the first one is equivalent to Watson’s theorem. The matrix
+|$(2.12)$|
+then becomes
+$$\begin{eqnarray}
+G_{\text{sat}}= {\begin{pmatrix} 1 & \frac{\mathcal {F}_{\ell }(s)}{\mathcal {F}^{*}_{\ell }(s)}&\mathcal {F}_{\ell }(s)\\\frac{\mathcal {F}^{*}_{\ell }(s)}{\mathcal {F}_{\ell }(s)}&1&{\mathcal {F}^{*}_{\ell }(s)}\\{\mathcal {F}^{*}_{\ell }(s)}&{\mathcal {F}_{\ell }(s)}&{\mathcal {F}_{\ell }(s)}{\mathcal {F}^{*}_{\ell }(s)} \end{pmatrix}}
+\end{eqnarray}$$
+(2.15)
+with two zero modes
+$$\begin{eqnarray}
+v_1={\begin{pmatrix}-\mathcal {F}_\ell (s)\\0\\1 \end{pmatrix}},\;\; v_2={\begin{pmatrix}-\frac{\mathcal {F}_\ell (s)}{\mathcal {F}^{*}_\ell (s)}\\1\\0 \end{pmatrix}}
+\end{eqnarray}$$
+(2.16)
+and we have
+$$\begin{eqnarray}
+\text{Tr}(M_i\cdot G_{\text{sat}})=0,\;\; M_i=v_iv_i^{\dagger },\;\; i=1,2,
+\end{eqnarray}$$
+(2.17)
+i.e. the minimum attainable for Eq. (
+2.13
+). Now, given one old solution
+|$\mathcal {F}^{(\text{old})}$|⁠
+, we can construct the matrices
+|$M^{(\text{old})}=v_iv_i^{\dagger }$|
+following Eq. (
+2.16
+), and write down a linear functional
+|${\cal F}_P$|
+to minimize
+$$\begin{eqnarray}
+\text{min}\; \left\lbrace {\cal F}_P =\int ds\sum _{I,\ell }\text{Tr}\big (M^{(\text{old})}\cdot G^{(\text{new})}\big ) \right\rbrace .
+\end{eqnarray}$$
+(2.18)
+Repeating this procedure until convergence leads to the GTB solution; i.e. the solution that we look for is a fixed point of this iterative procedure. Taking
+|$i=2$|⁠
+, the functional becomes precisely the Watsonian iterative functional that we describe above.
+7
+This procedure should be interpreted as projecting onto the null space of the positive semidefinite matrix iteratively.
+2.3. Asymptotic form factors
+This new improved procedure highlights the need for more precise high-energy inputs. This is not a problem for the SVZ sum rules [
+38–40
+] but it is a problem for the form factors. The theoretical computation of form factors at high energy is well established [
+43
+] and proceeds similarly to the better known case of deep inelastic scattering. However, there is less validation from experiments, especially in the case of the pion. Qualitatively, at high energy, the pion is highly boosted but in the transverse directions it has the same size given by its radius
+|$R_\pi \sim \frac{1}{f_{\pi }}$|⁠
+. The probability of a probing particle hitting a quark is inversely proportional to the transverse area. That is the reason that
+|$f_{\pi }$|
+appears in the asymptotic formulas. More technically, the distribution amplitude is required, a low-energy piece of information. At high energy the results of Brodsky–Lepage [
+12
+,
+37
+,
+44
+,
+45
+] allow us to determine form factors as
+$$\begin{eqnarray}
+|F_1^1(s)| & \simeq & \frac{16\pi \alpha _s f_\pi ^2}{s}
+\end{eqnarray}$$
+(2.19a)
+$$\begin{eqnarray}
+|F_2^0(s)| & \simeq & \frac{48\pi \alpha _s f_\pi ^2}{s} .
+\end{eqnarray}$$
+(2.19b)
+The scalar form factor was crudely estimated in Ref. [
+12
+] to be
+|$|F_0^0(s)| \sim \frac{1}{s} \ln \left(\frac{s}{m_{\pi }^2}\right)$|⁠
+. At an energy
+|$s_0 \sim 2\,\mbox{GeV}$|
+these formulas are not quite valid. For example, it has been argued that the
+|$P1$|
+form factor changes by a factor of up to three [
+46
+]. So we define
+|$\chi _{\ell }^I$|⁠
+, three rescaling factors of order one, and require:
+$$\begin{eqnarray}
+|F_0^0(s\gt s_0)| & \le & \chi _0^0\ \frac{m_{\pi }^4}{s}\, \ln \!\left(\frac{s}{m_{\pi }^2}\right)
+\end{eqnarray}$$
+(2.20a)
+$$\begin{eqnarray}
+|F_1^1(s\gt s_0)| & \le & \chi _1^1\ \frac{16\pi \alpha _s f_\pi ^2}{s}
+\end{eqnarray}$$
+(2.20b)
+$$\begin{eqnarray}
+|F_2^0(s\gt s_0)| & \le & \chi _2^0\ \frac{48\pi \alpha _s f_\pi ^2}{s}
+\end{eqnarray}$$
+(2.20c)
+where in the scalar case we just chose the factor
+|$m_{\pi }^4$|
+from units. The parameters
+|$\chi ^I_{\ell }$|
+associated with the asymptotic form factors have a range of values that we determine as follows. The lowest possible value is such that the problem is feasible, namely that there is a solution that satisfies the given asymptotic constraint. This would be the one that most closely matched the pQCD extrapolation to 2 GeV. Then we assume, as a potential error, up to a factor of two variation in the parameter. Within that range the values (close to the minimum allowed)
+$$\begin{eqnarray}
+\chi _0^0=8,\; \; \chi _1^1=2.2,\; \; \chi ^0_2=9
+\end{eqnarray}$$
+(2.21)
+are chosen just to make concrete plots in this paper. How the plots depend on the choice of the parameters is studied later in Section
+5
+and Figs.
+9
+,
+10
+,
+11
+,
+12
+. Within that range of variation, the partial waves and form factors agree reasonably well with the experimental results. We emphasize that we are not just computing masses and widths of resonances but the whole amplitude and form factors as analytic functions. We do not assume how many resonances appear in each channel or any other quantitative information; the overall picture is a result of the calculation.
+2.4. SVZ sum rules
+As proposed in Refs. [
+10–12
+], important information about the gauge theory is incorporated into the bootstrap by means of the SVZ sum rules [
+38–40
+]. In this paper, as compared to the previous ones, we use a slightly improved version of the finite-energy sum rules, as explained in detail in Appendix
+C
+where we also quote the three-loop results taken from the available literature on perturbative QCD.
+3. Convergence of the solution
+To test this new improved procedure, we fix the asymptotic (high-energy) form factors and sum rules and then maximize and minimize a given physical quantity. The range of values should be relatively small and the partial waves associated with the maximum and minimum should be qualitatively similar. Furthermore, if we apply the iterative procedure to those initial solutions, or to any other arbitrary solution, the procedure should converge to a certain result. The values of the physical quantities for the given UV/IR input will be estimated by the values after convergence.
+3.1. Test by computing the pion coupling
+|$\lambda$|
+It is customary to define the coupling
+|$\lambda$|
+as the
+|$\pi ^0$|
+scattering amplitude at the symmetric point:
+$$\begin{eqnarray}
+\lambda = \frac{1}{32\pi } \left.{\cal M}(\pi ^0\pi ^0\rightarrow \pi ^0\pi ^0) \right|_{s=t=u=\frac{4}{3}m^2_\pi } = \frac{3\pi }{4} A\left(\frac{4}{3}m^2_\pi ,\frac{4}{3}m^2_\pi ,\frac{4}{3}m^2_\pi \right),
+\end{eqnarray}$$
+(3.22)
+which is bounded from above and below from analyticity, crossing, and unitarity:
+|$-8.02\le \lambda \le 2.661$|
+[
+19
+,
+47–51
+]. For low-energy pions it is approximately (tree-level amplitude)
+$$\begin{eqnarray}
+\lambda \simeq \frac{m_{\pi }^2}{32\pi f_{\pi }^2} \simeq 0.023 ,
+\end{eqnarray}$$
+(3.23)
+which, as we mentioned in Ref. [
+11
+], is a simple way to argue that the theory of pions is weakly coupled at low energy.
+In this work the low- and high-energy constraints severely restrict the values of
+|$\lambda$|⁠
+. Given a set of input parameters, we maximize and minimize
+|$\lambda$|
+obtaining an initial spread
+|$0.01\lesssim \lambda \lesssim 0.022$|⁠
+. See Fig.
+2
+. For the maximum and minimum, we plot the partial waves
+8
+in six channels in Fig.
+3
+and see that they are qualitatively similar, except in the isospin
+|$I=2$|
+channels (
+⁠|$S2$|
+and
+|$D2$|⁠
+) and the spin three (
+⁠|$F1$|⁠
+) channel, a fact that can be understood due to the lack of high-energy input in those channels. This tells us that the space of solutions is indeed tightly controlled by the asymptotics, as we can also see by changing the asymptotic values in Section
+5
+. After that, we take the solutions associated with the maximum and the minimum and apply the iterative procedure of Section 2.2. In Fig.
+2
+we show the convergence of the values of
+|$\lambda$|
+to a definite one, whether we start from the maximum
+|$\lambda$|⁠
+, from the minimum, or from a feasible point chosen by the optimizer (using no functional
+9
+). So, we take the final converged value of
+|$\lambda =0.02$|
+as the computed value of
+|$\lambda$|
+for these values of the UV/IR input. The main thing we see is that the existence of resonances in the
+|$S0$|⁠
+,
+|$P1$|⁠
+, and
+|$D0$|
+channels is a generic result of the procedure that was not input in any way. This is mostly due to the SVZ sum rules combined with the asymptotic behavior of the form factors.
+Fig. 2.
+Convergence of max–min
+|$\lambda$|
+with Watsonian iterations. Maximizing:
+, minimizing:
+, no functional:
+.
+Open in new tab
+Download slide
+Fig. 3.
+Partial waves of the maximum and minimum
+|$\lambda$|
+after one Watsonian iteration. As a reference we plot the experimental data from Refs. [
+70–72
+] (gray dots) as well as phenomenological fits from Ref. [
+2
+] (gray lines). In the experimental data, the
+|$S0$|
+wave has a bump from kaon pair production that we do not have since we do not include the
+|$s$|
+quark. Resonances are clearly visible in the
+|$S0$|⁠
+,
+|$P1$|⁠
+, and
+|$D0$|
+channels.
+Open in new tab
+Download slide
+3.2. Test by computing scattering lengths
+Here we repeat the calculation of the previous section for the
+|$S0,P1,S2$|
+scattering lengths
+|$a^{(0)}_0,a^{(1)}_1,a^{(2)}_0$|
+defined from:
+$$\begin{eqnarray}
+\text{Re}\, h^I_{\ell }(s)\overset{k\rightarrow 0}{\simeq }\frac{4m_\pi }{\sqrt{s}}k^{2\ell +1}\big (a^I_{\ell }+b^I_{\ell }k^2+\ldots \big ),\;\; k=\frac{\sqrt{s-4m^2_\pi }}{2}\;.
+\end{eqnarray}$$
+(3.24)
+Here
+|$S^I_\ell = 1+ ih_\ell ^I$|
+as in Eq. (
+2.4
+). It should be noted that according to the pure
+S
+-matrix bootstrap [
+21
+], the scattering lengths do not have upper bounds. This seems to be reflected here in the fact that the UV and IR constraints still allow an upper value quite a bit larger than the minimum one. In spite of that, the iteration procedure converges again whether we start from maximum, minimum, or just a feasible point. The results are shown in Fig.
+4
+.
+Fig. 4.
+Convergence of max–min
+|$a^{(I)}_{\ell }$|
+with Watsonian iterations. Maximizing:
+, minimizing:
+, no functional:
+.
+Open in new tab
+Download slide
+3.3. Test by computing pion radii
+In this case, we show in Fig.
+5
+convergence of the iterations for the pion radii defined from an expansion of the form factor around
+|$s=0$|⁠
+:
+Fig. 5.
+Convergence of max–min
+|$\langle r_\pi ^2\rangle ^I_\ell$|
+with Watsonian iterations. Maximizing:
+, minimizing:
+, no functional:
+. As conventional we denote
+|$\langle r_\pi ^2\rangle ^0_0=\langle r_\pi ^2\rangle _S$|⁠
+,
+|$\langle r_\pi ^2\rangle ^1_1=\langle r_\pi ^2\rangle _V$|⁠
+,
+|$\langle r_\pi ^2\rangle ^0_2=\langle r_\pi ^2\rangle _T$|⁠
+, the scalar vector, and tensor radii.
+Open in new tab
+Download slide
+$$\begin{eqnarray}
+F^I_\ell (s)=F^I_\ell (0)\Big (1+\frac{1}{6}\langle r_\pi ^2\rangle ^I_\ell +\ldots \Big ) .
+\end{eqnarray}$$
+(3.25)
+In summary, these tests show that the procedure uniquely converges to a solution that satisfies all constraints.
+4. Detailed study of a converged solution
+Having shown that, given some fixed UV data, the procedure converges to a unique solution, we analyze here the properties of the converged solution computing low-energy coefficients, scattering lengths, charge radii, etc. In Fig.
+6
+, we show the partial waves and form factors of the converged solution that we obtained in the previous section using no functional, as well as comparison with experimental and phenomenological work. In obtaining these, we still keep the values that determine the form factor asymptotics as
+|$\chi _0^0=8$|⁠
+,
+|$\chi _1^1=2.2$|⁠
+,
+|$\chi ^0_2=9$|
+as in Eq. (
+2.21
+). In Section
+5
+we will study how the results change with those values.
+Fig. 6.
+Partial waves and form factors for 10 iterated solutions (
+) using no functional, namely starting from an arbitrarily feasible point. Horizontal axes are energy–momentum transfer in
+|$\mbox{GeV}$|⁠
+. The experimental/phenomenological values in gray are the same as in Fig.
+3
+.
+Open in new tab
+Download slide
+4.1. Low-energy parameters and one-loop
+|$\chi _{PT}$|
+amplitude
+By comparing the pion scattering amplitude
+|$A(s,t,u)$|
+of the converged solution with the
+|$\chi _{PT}$|
+one-loop amplitude (see Appendix
+A
+), we can extract the low-energy constants
+|$\bar{\ell }_j$|
+and the pion coupling
+|$\lambda$|⁠
+, and from there the low-energy
+|$f_{\pi }$|
+using Eq. (
+A.13
+). Also, we can match the partial waves in Fig.
+6
+with the low-energy expansion of the partial waves and form factors in Eqs. (
+2.4
+) and (
+3.25
+) (or use dispersion relations) to extract the scattering lengths, effective ranges, and pion radii. The results are presented in Tables
+1
+and
+2
+.
+Table 1.
+Open in new tab
+Comparison of low-energy constants
+|$ \bar{\ell }_i$|
+(see Appendix
+A
+for definitions) computed in this paper (GTB) with analysis of experimental results: GL [
+52
+], Bij [
+3–5
+], CGL [
+1
+]. The value of
+|$\lambda =0.023$|
+is from the (tree-level) Weinberg model (W) (
+3.23
+) and
+|$f_{\pi }\simeq 92\,\mbox{MeV}$|
+is the standard value [
+53
+]. There is reasonable agreement except for the values for
+|$\bar{\ell }_{1,3}$|⁠
+, which are quite difficult to determine.
+GTB
+.
+GL
+.
+Bij
+.
+CGL
+.
+|$\bar{\ell }_1$|
+1.6
+−2.3
+|$\pm$|
+3.7
+−1.7
+|$\pm$|
+1.0
+−0.4
+|$\pm$|
+0.6
+|$\bar{\ell }_2$|
+5.5
+6.0
+|$\pm$|
+1.3
+6.1
+|$\pm$|
+0.5
+4.3
+|$\pm$|
+0.1
+|$\bar{\ell }_3$|
+7.8
+2.9
+|$\pm$|
+2.4
+|$\bar{\ell }_4$|
+4.7
+4.3
+|$\pm$|
+0.9
+4.4
+|$\pm$|
+0.3
+4.4
+|$\pm$|
+0.2
+|$\bar{\ell }_6$|
+14.3
+18.7
+|$\pm$|
+1.1
+16.0
+|$\pm$|
+|$0.5 \pm 0.7$|
+Exp
+.
+W
+|$\lambda$|
+0.02
+0.023
+|$f_{\pi }$|
+(
+⁠|$\mbox{MeV}$|⁠
+)
+101
+92
+GTB
+GL
+Bij
+CGL
+$\bar{\ell }_1$
+1.6
+−2.3
+$\pm$
+3.7
+−1.7
+$\pm$
+1.0
+−0.4
+$\pm$
+0.6
+$\bar{\ell }_2$
+5.5
+6.0
+$\pm$
+1.3
+6.1
+$\pm$
+0.5
+4.3
+$\pm$
+0.1
+$\bar{\ell }_3$
+7.8
+2.9
+$\pm$
+2.4
+$\bar{\ell }_4$
+4.7
+4.3
+$\pm$
+0.9
+4.4
+$\pm$
+0.3
+4.4
+$\pm$
+0.2
+$\bar{\ell }_6$
+14.3
+18.7
+$\pm$
+1.1
+16.0
+$\pm$
+$0.5 \pm 0.7$
+Exp
+.
+W
+$\lambda$
+0.02
+0.023
+$f_{\pi }$
+(
+$\mbox{MeV}$
+)
+101
+92
+Table 2.
+Open in new tab
+Comparison of scattering lengths and pion radii as computed here (GTB) with experimental values from GL [
+52
+], PY [
+2
+], and the tree-level Weinberg model (W) [
+54
+].
+GTB
+.
+GL
+.
+PY
+.
+W
+.
+|$a^{(0)}_0$|
+0.172
+0.220
+|$\pm$|
+0.005
+0.230
+|$\pm$|
+0.010
+0.16
+|$a^{(2)}_0$|
+−0.0366
+−0.0444
+|$\pm$|
+0.0010
+−0.0422
+|$\pm$|
+0.0022
+−0.046
+|$b^{(0)}_0$|
+0.251
+0.280
+|$\pm$|
+0.001
+0.268
+|$\pm$|
+0.010
+0.18
+|$b^{(2)}_0$|
+−0.063
+−0.080
+|$\pm$|
+0.001
+−0.071
+|$\pm$|
+0.004
+−0.092
+|$10^3 \times a^{(1)}_1$|
+32.1
+37.0
+|$\pm$|
+0.13
+38.1
+|$\pm$|
+1.4
+31
+|$10^3 \times b^{(1)}_1$|
+2.69
+5.67
+|$\pm$|
+0.13
+4.75
+|$\pm$|
+0.16
+0
+|$10^4 \times a^{(0)}_2$|
+12.9
+17.5
+|$\pm$|
+0.3
+18.0
+|$\pm$|
+0.2
+0
+|$10^4 \times a^{(2)}_2$|
+−1.1
+1.70
+|$\pm$|
+0.13
+2.2
+|$\pm$|
+0.2
+0
+Exp. fits
+|$\langle r^2 \rangle ^\pi _{S}$|
+(
+⁠|$\mathrm{fm}^2$|⁠
+)
+0.55
+0.61
+|$\pm$|
+0.04
+|$\langle r^2 \rangle ^\pi _{V}$|
+(
+⁠|$\mathrm{fm}^2$|⁠
+)
+0.441
+0.439
+|$\pm$|
+0.0087
+|$\langle r^2 \rangle ^\pi _{T}$|
+(
+⁠|$\mathrm{fm}^2$|⁠
+)
+0.146
+GTB
+GL
+PY
+W
+$a^{(0)}_0$
+0.172
+0.220
+$\pm$
+0.005
+0.230
+$\pm$
+0.010
+0.16
+$a^{(2)}_0$
+−0.0366
+−0.0444
+$\pm$
+0.0010
+−0.0422
+$\pm$
+0.0022
+−0.046
+$b^{(0)}_0$
+0.251
+0.280
+$\pm$
+0.001
+0.268
+$\pm$
+0.010
+0.18
+$b^{(2)}_0$
+−0.063
+−0.080
+$\pm$
+0.001
+−0.071
+$\pm$
+0.004
+−0.092
+$10^3 \times a^{(1)}_1$
+32.1
+37.0
+$\pm$
+0.13
+38.1
+$\pm$
+1.4
+31
+$10^3 \times b^{(1)}_1$
+2.69
+5.67
+$\pm$
+0.13
+4.75
+$\pm$
+0.16
+0
+$10^4 \times a^{(0)}_2$
+12.9
+17.5
+$\pm$
+0.3
+18.0
+$\pm$
+0.2
+0
+$10^4 \times a^{(2)}_2$
+−1.1
+1.70
+$\pm$
+0.13
+2.2
+$\pm$
+0.2
+0
+Exp. fits
+$\langle r^2 \rangle ^\pi _{S}$
+(
+$\mathrm{fm}^2$
+)
+0.55
+0.61
+$\pm$
+0.04
+$\langle r^2 \rangle ^\pi _{V}$
+(
+$\mathrm{fm}^2$
+)
+0.441
+0.439
+$\pm$
+0.0087
+$\langle r^2 \rangle ^\pi _{T}$
+(
+$\mathrm{fm}^2$
+)
+0.146
+We can then plot the computed amplitude
+|$A(s,t,u)$|
+and compare it with the
+|$\chi _{PT}$|
+results using the low-energy coefficients that we extracted. To simplify the plot we follow the value of the amplitude along a path in the Mandelstam triangle as depicted in Fig.
+7
+. The matching is a check of the accuracy of the results.
+Fig. 7.
+We follow the value of the pion scattering amplitude
+|$A(s,t,u)=A(s,u,t)$|
+along the path indicated on the right in the
+|$(s,t)$|
+plane. The blue line is the prediction of
+|$\chi _{PT}$|
+using tree level plus one-loop with the values of the constants extracted from our result as shown in Table
+1
+. The red circles are the results of the GTB converged solution. The inset depicts the same with the tree-level part removed.
+Open in new tab
+Download slide
+4.2. Resonances
+As seen in Fig.
+6
+, the partial waves and form factors display very clear resonances in the
+|$P1$|
+and
+|$D0$|
+channels, whose widths and masses can be extracted by fitting the form factors with a Breit–Wigner shape. The results are summarized in Table
+3
+. Once again we would like to emphasize that no assumption was made on the number of resonances or any other property of the spectrum. The existence of these resonances is a result of the calculation. Finally, one can notice broad resonances in the
+|$S0$|
+channel, the well-known
+|$\sigma /f_0(500)$|
+whose nature is somewhat controversial [
+55
+] (and perhaps additional
+|$f_0$|
+states) that we do not list in the table. Also, the
+|$P1$|
+form factor is of interest due to its relation to the hadronic ratio
+|$R$|
+[
+53
+] that measures hadronic photoproduction in
+|$e^+e^-$|
+collisions. We compare the results of this paper with experiment in Fig.
+8
+. The agreement is good although we are basically showing the
+|$\rho$|
+meson dominance of the form factor.
+Fig. 8.
+Hadronic
+R
+-ratio (green) taken from Ref. [
+53
+], rescaled to match the vector form factor
+|$|F^1_1|$|⁠
+, and compared with the present result (blue). The
+|$N_f=2$|
+vector current does not couple to the
+|$\omega$|
+and
+|$\phi$|
+resonances so we do not see those peaks. The agreement is reasonable and of interest in computations of the hadronic contributions to
+|$g-2$|
+based on this method [
+36
+].
+Open in new tab
+Download slide
+Table 3.
+Open in new tab
+Masses and widths of the most prominent resonances. The results are similar and compatible with our previous work [
+10
+,
+11
+] and agree reasonably well with the known experimental results [
+53
+].
+GTB
+.
+PDG
+.
+|$m_\rho$|
+758
+775
+|$\pm$|
+0.23
+MeV
+|$\Gamma _\rho$|
+137
+149.1
+|$\pm$|
+0.8
+MeV
+|$m_{\rho ^{\prime }}$|
+1514
+1465
+|$\pm$|
+25
+MeV
+|$\Gamma _{\rho ^{\prime }}$|
+162
+400
+|$\pm$|
+60
+MeV
+|$m_{f_2}$|
+1180
+1275.4
+|$\pm$|
+0.8
+MeV
+|$\Gamma _{f_2}$|
+249
+186.6
+|$\pm$|
+2.3
+MeV
+GTB
+PDG
+$m_\rho$
+758
+775
+$\pm$
+0.23
+MeV
+$\Gamma _\rho$
+137
+149.1
+$\pm$
+0.8
+MeV
+$m_{\rho ^{\prime }}$
+1514
+1465
+$\pm$
+25
+MeV
+$\Gamma _{\rho ^{\prime }}$
+162
+400
+$\pm$
+60
+MeV
+$m_{f_2}$
+1180
+1275.4
+$\pm$
+0.8
+MeV
+$\Gamma _{f_2}$
+249
+186.6
+$\pm$
+2.3
+MeV
+5. Dependence on the input parameters
+5.1. Form factor asymptotics
+As mentioned before, an input of the procedure is the asymptotic value of the form factors. In the literature it has been argued, for instance, that, at
+|$2\,\mbox{GeV}$|
+the
+P
+1 form factor can differ from the Brodsky–Lepage value [
+37
+,
+56
+] by a factor of up to 3 [
+46
+]. For that reason we explore how the
+|$\rho$|
+mass and width and the
+|$f_2$|
+mass and width change as a function of this parameter starting from minimal feasible values. The results are in Figs.
+9
+,
+10
+,
+11
+,
+12
+.
+Fig. 9.
+The
+|$\rho ,f_2$|
+meson masses and widths (in MeV) (a) and pion coupling
+|$\lambda$|
+(b) for form factor asymptotic factor
+|$2.2\le \chi ^1_1\le 4$|⁠
+.
+Open in new tab
+Download slide
+Fig. 10.
+The
+P
+1 phase shift
+|$\delta ^1_1$|
+and vector form factor
+|$|F^1_1(s)|$|
+for form factor asymptotic factor
+|$2.2\le \chi ^1_1\le 3.8$|⁠
+.
+Open in new tab
+Download slide
+Fig. 11.
+The
+|$\rho ,f_2$|
+meson masses and widths (in MeV) (a) and pion coupling
+|$\lambda$|
+(b) for form factor asymptotic factor
+|$4\le \chi ^0_2\le 12$|⁠
+.
+Open in new tab
+Download slide
+Fig. 12.
+The
+|$\rho ,f_2$|
+meson masses and widths (in MeV) (a) and pion coupling
+|$\lambda$|
+(b) for form factor asymptotic factor
+|$8\le \chi ^0_0\le 10.5$|⁠
+.
+Open in new tab
+Download slide
+5.2. Low-energy tolerance
+For completeness we also study the dependence of the converged solution on the tolerance used to match the low-energy partial waves [
+10
+,
+11
+]. At low energy we choose a small set of points
+|$s_j$|
+in the very low-energy unphysical region
+|$0\lt s_j\le 2$|⁠
+, and require that
+$$\begin{eqnarray}
+||f^0_0(s_j)-R^{\text{tree}}_{01}(s_j)f^1_1(s_j)||\le \epsilon ^{\chi },&& \\||f^2_0(s_j)-R^{\text{tree}}_{21}(s_j)f^1_1(s_j)||\le \epsilon ^{\chi },&& \\R^{\text{tree}}_{01}=\frac{f^0_{0,\text{tree}}}{f^1_{1,\text{tree}}},\;\;R^{\text{tree}}_{21}=\frac{f^2_{0,\text{tree}}}{f^1_{1,\text{tree}}}&&
+\end{eqnarray}$$
+(5.26)
+with some tolerance
+|$\epsilon ^\chi$|⁠
+. The values referred as “tree” are from the tree-level Weinberg model (
+A.2
+). The results for various values of the tolerance
+|$\epsilon ^{\chi }$|
+are displayed in Fig.
+13
+. Once again, the Watsonian iteration removes the dependence on this parameter except somewhat for the
+|$I=2$|
+channels (and also spin three) where we do not have UV input.
+Fig. 13.
+Partial waves after 10 iterations with different low-energy tolerance values
+|$\epsilon _{\chi }$|⁠
+.
+Open in new tab
+Download slide
+6. Thermodynamics of a dilute gas of pions, second virial coefficients, and density of pion pairs
+The computation of the two-particle elastic
+S
+-matrix allows us to study the thermodynamics properties of a pion gas in the low-density and low-energy region [
+57
+,
+58
+]. A dilute gas of bosons is such that each single-particle state
+|$\epsilon _\alpha$|
+has a low occupation number
+|$n_\alpha \ll 1$|⁠
+. In that case, the virial expansion determines the partition function in terms of the single-particle partition function with corrections from two-particle elastic scattering, which we can compute from our results in a similar way to that done in Ref. [
+59
+] based on experimental phase shifts. This is part of a more general program of computing the thermodynamics of relativistic gases based on the scattering matrix [
+58
+]. See also Ref. [
+60
+] for a recent discussion in the context of QCD strings. Briefly, the grand canonical partition function
+|$\Xi$|
+can be expanded in powers of the fugacity
+|$z=e^{\beta \mu }$|
+as
+$$\begin{eqnarray}
+\beta P = \lim _{V\rightarrow \infty }\frac{1}{V} \ln \Xi = \sum _{n=1}^\infty b_n(T) z^n
+\end{eqnarray}$$
+(6.27)
+where e.g. from Ref. [
+59
+] we have
+$$\begin{eqnarray}
+b_1 = 3\int \frac{d^3 p}{(2\pi \hbar )^3}\, e^{-\beta \sqrt{p^2+m_{\pi }^2}} = \frac{3m_{\pi }^2}{2\pi ^2\hbar ^3\beta }\, K_2(\beta m_{\pi })
+\end{eqnarray}$$
+(6.28a)
+$$\begin{eqnarray}
+b_2 = \frac{1}{2\pi ^3\beta } \int _{2m_{\pi }}^\infty dM\, M^2 K_2(\beta M) \sum _{I\ell }{}^{^{\prime }} (2I+1)(2\ell +1) \frac{\partial \delta ^I_\ell }{\partial M}
+\end{eqnarray}$$
+(6.28b)
+where
+|$K_2(x)$|
+is a standard modified Bessel function and
+|$\delta ^I_\ell$|
+are the scattering phase shifts. If pions are created by a transition from an unconfined phase, the number of pions will maximize the entropy and therefore the chemical potential would be zero. In general one would also expect
+|$\mu =0$|
+since the number of pions is not conserved, but inelastic scattering is highly suppressed in the dilute gas and low-energy approximations so an effective
+|$\mu$|
+can appear. Presumably we can even have Bose–Einstein condensation. However, this is only on the assumption that electromagnetic and weak interactions are disconnected so that pions are stable (as in e.g. lattice calculations).
+From here we can compute the pressure as a function of temperature (for
+|$\mu =0$|⁠
+)
+$$\begin{eqnarray}
+\begin{aligned} P_{\text{int}} = T b_2, \; \epsilon _{\text{int}} = -\frac{\partial b_2}{\partial \beta },\; n_{\text{int}} = 2 b_2, \; s_{\text{int}} = \left[ b_2 \left(1 - 2 \mu \beta \right) - \beta \frac{\partial b_2}{\partial \beta } \right] \end{aligned}
+\end{eqnarray}$$
+(6.29)
+where “int” denotes the interaction correction to the ideal gas expressions. The results are displayed in Fig.
+14
+and, as expected, are similar to those in Ref. [
+59
+].
+Fig. 14.
+Thermodynamic quantities (pressure
+|$P$|⁠
+, energy density
+|$\epsilon$|⁠
+, entropy density
+|$s$|⁠
+) of a dilute interacting pion gas as a function of temperature for
+|$\mu =0$|⁠
+, computed from the phase shifts that we obtained (Fig.
+6
+). We compare with a free gas of pions and
+|$\rho$|
+mesons. As discussed, in Ref. [
+59
+] the results are similar.
+Open in new tab
+Download slide
+6.1. Pairs of pions with opposite and same signs of electric charge
+A quantity that is of interest for pions produced in high-energy nuclear collisions
+10
+[
+61
+], when the quark–gluon plasma cools down, is the difference in the pairs of pions with opposite (electric) charge
+|$N_{\mbox{os}}$|
+minus the number of pairs with the same sign
+|$N_{\mbox{ss}}$|⁠
+. If we consider that quantity in a gas at equilibrium, as we do here, then we define
+$$\begin{eqnarray}
+N_{\mbox{os}}-N_{\mbox{ss}} = 2 \langle \langle N_+ N_-\rangle \rangle - \langle \langle N_+ N_+\rangle \rangle - \langle \langle N_- N_-\rangle \rangle
+\end{eqnarray}$$
+(6.30)
+where the brackets
+|$\langle \langle \rangle \rangle$|
+indicate thermal average. For a dilute gas of free pions this difference vanishes since e.g.
+|$\langle \langle N_+ N_-\rangle \rangle = \langle \langle N_+\rangle \rangle \langle \langle N_-\rangle \rangle$|
+and
+|$\langle \langle N_+\rangle \rangle = \langle \langle N_-\rangle \rangle$|⁠
+. In an interacting gas, this is no longer true; the eigenstates of the Hamiltonian that enter the partition function are not eigenstates of
+|$N_\pm$|⁠
+. Suppose we want to compute the number of pairs with opposite sign:
+$$\begin{eqnarray}
+N_\mathrm{OS} = \langle \langle N_+ N_- \rangle \rangle = \frac{1}{\Xi } \sum _{\nu } N_+ N_- e^{-\beta E_\nu + \beta \mu N_\nu } .
+\end{eqnarray}$$
+(6.31)
+Expanding in powers of the fugacity it is clear that we need at least two particles to have a pair so we get, at order
+|$z^2$|⁠
+:
+$$\begin{eqnarray}
+N_\mathrm{OS}-N_\mathrm{OS}^\mathrm{free} &=& z^2 \sum _{\nu , N_\nu =2} N_+ N_- e^{-\beta E_\nu } \\&=& V z^2 \int dM \frac{M^2}{2\pi ^2\beta }\, K_2(\beta M) \sum _{\ell ,I,I_z} (2\ell +1) \mbox{$\langle II_z |$} N_+ N_- \mbox{$| II_z \rangle $} \frac{1}{\pi } \frac{\partial \delta ^{I}_\ell }{\partial M}.
+\end{eqnarray}$$
+(6.32)
+In the sum over
+|$I_z$|
+only
+|$I_z=0$|
+survives. Now we have
+$$\begin{eqnarray}
+\mbox{$\langle I 0 |$} N_+N_- \mbox{$| I0 \rangle $} = |\mbox{$\langle I0 |$} +-\rangle |^2=\left\lbrace \begin{array}{cc}=\frac{1}{3} , \ \ I=0 \\\\=\frac{1}{2} , \ \ I=1 \\\\= \frac{1}{6}, \ \ I=2\\\end{array}\right.
+\end{eqnarray}$$
+(6.33)
+whereas for same sign we have
+|$I_z=2$|
+and then
+|$I=2$|⁠
+. Putting everything together we find
+$$\begin{eqnarray}
+N_\mathrm{OS}-N_\mathrm{SS} = V z^2 \int _{2m_{\pi }}^{\infty } dM \frac{M^2}{2\pi ^2\beta }\, K_2(\beta M) \sum _{\ell }{}^{\prime } (2\ell +1) \frac{1}{\pi }\frac{\partial }{\partial M}\left( \frac{1}{3}\delta ^0_\ell +\frac{1}{2}\delta ^1_\ell -\frac{5}{6}\delta ^2_\ell \right)
+\end{eqnarray}$$
+where
+|$\sum {}^{\prime }$|
+indicates that the sum is over even or odd
+|$\ell$|
+for even or odd isospin. Still using the distribution in
+|$M$|
+(
+⁠|$M^2=(p_1+p_2)^2$|⁠
+) but introducing
+|$s=M^2$|
+we get:
+$$\begin{eqnarray}
+N_{\rm{os}}-N_{\rm{ss}} &=&V z^2 \int _{2m_{\pi }}^{\infty } dM\;n_{os-ss}(M) \\&= &V z^2 \int _{2m_{\pi }}^{\infty } dM \frac{s^{\frac{3}{2}}}{\pi ^3\beta } K_2(\beta \sqrt{s}) \frac{\partial }{\partial s} \left(\frac{1}{3}\delta _{S0}+\frac{3}{2}\delta _{P1}-\frac{5}{6}\delta _{S2} +\frac{5}{3}\delta _{D0}\right)
+\end{eqnarray}$$
+(6.34)
+The results are depicted in Fig.
+15
+for the case of zero chemical potential
+|$z=1$|⁠
+. The
+|$\rho$|
+resonance peak coming from
+|$\frac{\partial \delta _1^1}{\partial M}$|
+is evident. It can be interpreted as an increase in the density of states near the
+|$\rho$|
+mass or as
+|$\rho$|
+mesons being created and destroyed leading in both cases to an extra density of pairs of opposite sign.
+Fig. 15.
+From Eq. (
+6.34
+),
+|$n_\mathrm{os-ss}/T^2$|⁠
+, i.e. the density of pairs of pions with opposite signs minus same signs distributed over the invariant mass
+|$M$|
+and normalized with
+|$T^2$|⁠
+. The results are for a dilute gas of pions using the phase shifts obtained in this paper. The chemical potential is taken to be
+|$\mu =0$|⁠
+.
+Open in new tab
+Download slide
+7. Conclusions
+The goal of the gauge theory bootstrap is to completely determine the dynamics of asymptotically free gauge theories (QCD) in the strongly coupled regime where perturbative QCD does not apply and neither does the low-energy effective pion Lagrangian. An important point is that the only stable particles are pions (assuming that no other interactions are present and ignoring nucleons) and therefore pions are the only asymptotic states in that energy region. The idea is then to constrain the dynamics using input from the very low-energy Lagrangian (using
+|$m_{\pi }$|⁠
+) and from high energy using sum rules and asymptotic form factors. Notice that the leading asymptotic form factors are basically controlled by the pion radius that is determined by
+|$f_{\pi }$|⁠
+. Therefore we also need, from low energy, at least the order of magnitude of
+|$f_{\pi }$|⁠
+. Given those and the gauge theory parameters, we expect to find a unique pion scattering matrix, form factors, spectral densities, etc. In this paper we introduce an iterative procedure that, given the UV and IR information, converges to a unique answer that we take to be the result of the computation. By maximizing and minimizing various physical quantities (like couplings, scattering lengths, etc.) we show that there is a small space of qualitatively similar solutions around the converged one, providing an estimate on the error of the computation. Another source of error is the fact that the asymptotic values of the form factors are not predicted from QCD very precisely. Finally there is a systematic error due to the fact that we take the converged solution as the best estimate of the physical solution. This could be improved by e.g. including more operators in each channel. We expect to explore this further in future work.
+Acknowledgements
+We are grateful to Lance Dixon, Nick Manton, Ian Moult, Massimiliano Procura, and Arkady Vainshtein for many interesting discussions on the topics of this paper. We would like to thank Slava Rychkov for comments on the previous version of this paper. Y.H. is grateful to CERN for hospitality while this work was being completed. This work was supported in part by DOE through the QuantiSED Fermilab consortium.
+Funding
+Open Access funding: SCOAP
+3
+.
+Appendix A. Chiral Lagrangian and one-loop amplitude
+The very low-energy description of pion dynamics is given by the nonlinear sigma model:
+$$\begin{eqnarray}
+{\cal L}_2 = \frac{F^2}{4}\mbox{Tr}[D_\mu U D^\mu U^\dagger ] + \frac{F^2}{4} \mbox{Tr}(\chi U^\dagger +U \chi ^\dagger )
+\end{eqnarray}$$
+(A.1)
+where
+|$U=\exp (i\pi ^a\tau _a/F)$|
+and covariant derivatives include external gauge fields as sources. Also
+|$\chi$|
+is a source whose expectation value determines the pion mass.
+11
+We refer to Refs. [
+41
+,
+52
+] for the notation and main summary of the chiral perturbation theory approach. In particular, in this appendix we follow Ref. [
+52
+] and denote as
+|$F$|⁠
+,
+|$M$|
+the parameters of the effective action whereas
+|$f_{\pi }$|⁠
+,
+|$m_{\pi }$|
+denote the physical values of the pion decay constant and mass (see Eq. (
+A.5
+) below). At this order, the pion scattering amplitude is
+$$\begin{eqnarray}
+A_{\text{tree}}(s,t,u) = \frac{s-M^2}{8\pi ^2\, F^2} .
+\end{eqnarray}$$
+(A.2)
+This is the
+|$t\leftrightarrow u$|
+symmetric part. The full amplitude for
+|$\pi _a(p_1) +\pi _b(p_2) \rightarrow \pi _c(p_3) +\pi _d(p_4)$|
+is written as
+$$\begin{eqnarray}
+T_{ab,cd} = A(s,t,u) \delta _{ab}\delta _{cd} +A(t,s,u) \delta _{ac}\delta _{bd} +A(u,t,s) \delta _{ad}\delta _{bc}
+\end{eqnarray}$$
+(A.3)
+where
+|$a,b,c,d$|
+are isospin one indices. The higher energy corrections were studied systematically by Gasser and Leutwyler in the same work [
+41
+] leading to the definition of a number of low-energy (or Wilson) coefficients
+|$\bar{\ell }_j$|
+through the Lagrangian [
+41
+]:
+$$\begin{eqnarray}
+{\cal L}_4 &=& \frac{l_1}{4}\left\lbrace \mbox{Tr}[D_\mu U (D^\mu U)^\dagger ]\right\rbrace ^2 + \frac{l_2}{4}\mbox{Tr}[D_\mu U(D_\nu U)^\dagger ]\mbox{Tr}[D^\mu U(D^\nu U)^\dagger ] \\&& +\frac{l_3}{16}[\mbox{Tr}(\chi U^\dagger +U\chi ^\dagger )]^2 +\frac{l_4}{4}\mbox{Tr}[D_\mu U(D^\mu \chi )^\dagger +D_\mu \chi (D^\mu U)^\dagger ] \\&& +l_5\left[\mbox{Tr}(f_{\mu \nu }^R U f_L^{\mu \nu } U^\dagger ) -\frac{1}{2}\mbox{Tr}(f_{\mu \nu }^L f^{\mu \nu }_L +f^R_{\mu \nu }f^{\mu \nu }_R) \right] \\&& +i\frac{l_6}{2}\mbox{Tr}[f_{\mu \nu }^R D^\mu U (D^\nu U)^\dagger + f_{\mu \nu }^L (D^\mu U)^\dagger D^\nu U ] \\&& -\frac{l_7}{16} [\mbox{Tr}(\chi U^\dagger - U \chi ^\dagger )]^2 .
+\end{eqnarray}$$
+(A.4)
+At the one-loop level one introduces the renormalized constants
+|$\bar{\ell }_j$|
+defined at a renormalization scale
+|$\mu =m_{\pi }$|
+[
+52
+]. It also gives the physical
+|$m_{\pi }$|⁠
+,
+|$f_{\pi }$|
+as [
+52
+]
+$$\begin{eqnarray}
+m_{\pi }^2 = M^2\left\lbrace 1-\frac{M^2}{32\pi ^2 F^2} \bar{\ell }_3 +{\cal O}(M^4)\right\rbrace
+\end{eqnarray}$$
+(A.5)
+$$\begin{eqnarray}
+f_{\pi }= F \left\lbrace 1+\frac{M^2}{16\pi ^2 F^2} \bar{\ell }_4 +{\cal O}(M^4)\right\rbrace .
+\end{eqnarray}$$
+(A.6)
+Although all this is well known, we include it here to give the definition of
+|$\bar{\ell }_j$|
+and as a reference point for interpreting our results in comparison with other work. Notice, however, that our main focus is the intermediate-energy region where pions are strongly coupled, namely where this Lagrangian does not apply. In chiral perturbation theory the low-energy constants
+|$\bar{\ell }_i$|
+are determined from fitting with experiments but in the gauge theory bootstrap approach they are computed from QCD (under certain assumptions).
+One way to compute the
+|$\bar{\ell }_j$|
+is to match the amplitude that we obtain in GTB to the tree-level plus the one-loop result from Ref. [
+52
+] (replacing
+|$M$|
+with
+|$m_{\pi }$|
+using Eq. (
+A.5
+)):
+$$\begin{eqnarray}
+A(s,t,u) = \frac{s-m_{\pi }^2}{8\pi ^2F^2}- \frac{\bar{\ell }_3}{256\pi ^4 F^4} + \frac{1}{768\pi ^4F^4}(A_1(s,t,u)+A_2(s,t,u)) + {\cal O}(p^6)
+\end{eqnarray}$$
+(A.7)
+where
+$$\begin{eqnarray}
+A_1(s,t,u) =&& 3(s^2-m_{\pi }^4)I_f(s) + (t(t - u) - 2tm_{\pi }^2 + 4um_{\pi }^2 - 2m_{\pi }^4)I_f(t)\\&&\quad + (u(u - t) - 2um_{\pi }^2 + 4tm_{\pi }^2 - 2m_{\pi }^4)I_f(u) \\A_2(s,t,u) =&& 2\left(\bar{\ell }_1 - \frac{4}{3}\right)(s - 2m_{\pi }^2)^2 + \left(\bar{\ell }_2 - \frac{5}{6}\right)(s^2 + (t - u)^2) - 12 sm_{\pi }^2 + 15m_{\pi }^4
+\end{eqnarray}$$
+(A.8)
+with
+$$\begin{eqnarray}
+I_f(s) = \beta (s)\ln \left(\frac{\beta (s) - 1}{\beta (s) + 1}\right)+ 2,\;\;\;\; \beta (s) = \sqrt{1-\frac{4m_{\pi }^2}{s}} .
+\end{eqnarray}$$
+(A.9)
+For
+|$0\lt s\lt 4m^2_{\pi }$|
+the expression
+$$\begin{eqnarray}
+I_f(s) = 2-2\, \sqrt{\frac{4m_{\pi }^2}{s}-1}\ \mathrm{arccot}\!\left(\sqrt{\frac{4m_{\pi }^2}{s}-1}\right)
+\end{eqnarray}$$
+(A.10)
+is also useful. Introducing
+|$\lambda$|
+as defined in Eq. (
+3.22
+), we obtain (we now set
+|$m_{\pi }=1$|
+as in most of the paper):
+$$\begin{eqnarray}
+\lambda = \frac{1}{32\pi F^2} \left( 1 + \frac{1}{96 F^2}(1-\sqrt{2} \arctan (2\sqrt{2}) ) + \frac{1}{39 F^2} (\bar{\ell }_1+\bar{\ell }_2) \right) + {\cal O}\left(\frac{1}{F^6}\right) .
+\end{eqnarray}$$
+(A.11)
+We also get:
+$$\begin{eqnarray}
+A(s,t,u) = \frac{4}{\pi }\lambda (s-1) + \frac{4\lambda ^2}{3\pi ^2}\left[A_1(s,t,u)+A_2(s,t,u)-3(s-1)(\bar{A}_1+\bar{A}_2-3\bar{\ell }_3)-3\bar{\ell }_3\right]
+\end{eqnarray}$$
+where
+|$\bar{A}_{1,2}=A_{1,2}(\frac{4}{3},\frac{4}{3},\frac{4}{3})$|⁠
+. In particular notice the dependence on the coefficients
+|$\bar{\ell }_{1,2,3}$|⁠
+:
+$$\begin{eqnarray}
+\begin{aligned} &A(s,t,u;\bar{\ell }_1,\bar{\ell }_2,\bar{\ell }_3) = A(s,t,u;0,0,0) \\&+\frac{4\lambda ^2}{3\pi ^2}\left[2\bar{\ell }_1 (s - 2)^2 + \bar{\ell }_2 (s^2 + (t - u)^2) -\frac{8}{3}(s-1)(\bar{\ell }_1+2\bar{\ell }_2-\frac{27}{8}\bar{\ell }_3)-3\bar{\ell }_3\right] \end{aligned}
+\end{eqnarray}$$
+(A.12)
+The physical value of
+|$f_{\pi }$|
+is related to
+|$\lambda$|
+through
+$$\begin{eqnarray}
+\frac{1}{f_{\pi }^2} =32 \pi \lambda -\frac{32}{9} \lambda ^2 \left(8 \bar{l}_1+16 \bar{l}_2-27 \bar{l}_3+36 \bar{l}_4+33-33 \sqrt{2} \tan ^{-1}\left(2 \sqrt{2}\right)\right)+\mathcal {O}(\lambda ^3) .
+\end{eqnarray}$$
+(A.13)
+It is interesting to study the amplitude in the Mandelstam triangle defined by
+|$s\gt 0$|⁠
+,
+|$t\gt 0$|⁠
+,
+|$u\gt 0$|⁠
+. Since
+|$A(s,t,u)$|
+is symmetric under the interchange
+|$t\leftrightarrow u$|⁠
+, we only need the subregion
+|$t\lt u$|⁠
+. To simplify the plots we just consider the amplitude along the boundary of that triangle, as depicted in Fig.
+7
+. By matching the results of the computation with Eq. (
+A.12
+) we determine the values of
+|$\bar{\ell }_{1,2,3}$|⁠
+. Further, we can write the form factors near
+|$s=0$|
+and at the lowest nontrivial order as:
+$$\begin{eqnarray}
+F^{(0)}_0(s)=1+\frac{2\lambda }{\pi }s\left(\bar{\ell }_4-\frac{13}{12}\right)+\mathcal {O}(\lambda ^2)
+\end{eqnarray}$$
+(A.14a)
+$$\begin{eqnarray}
+F^{(1)}_1(s)=1+\frac{\lambda }{3\pi }s\left(\bar{\ell }_6-1\right)+\mathcal {O}(\lambda ^2)
+\end{eqnarray}$$
+(A.14b)
+and use them to then determine
+|$\bar{\ell }_{4,6}$|⁠
+. These expressions are used in the main text to obtain the results in Table
+2
+. As a check and to get an idea of the errors in our computation, we can use the values in Table
+2
+to recompute the scattering lengths from Ref. [
+52
+]:
+$$\begin{eqnarray}
+a^{(0)}_0 &=& 7 \lambda +\frac{\lambda ^2}{9 \pi } \left[64 \bar{\ell }_1+128 \bar{\ell }_2+144 \bar{\ell }_3+84+231 \sqrt{2} \tan ^{-1}(2 \sqrt{2})\right]+\mathcal {O}(\lambda ^3) \\a^{(2)}_0 &=& -2 \lambda +\frac{2\lambda ^2}{9 \pi } \left[32 \bar{\ell }_1+64 \bar{\ell }_2-36 \bar{\ell }_3+42-33 \sqrt{2} \tan ^{-1}(2 \sqrt{2})\right]+\mathcal {O}(\lambda ^3) \\a^{(1)}_1 &=& \frac{4 \lambda }{3}+\frac{2 \lambda ^2}{27 \pi }\left[-64 \bar{\ell }_1+16 \bar{\ell }_2+54 \bar{\ell }_3-131+66 \sqrt{2} \tan ^{-1}(2 \sqrt{2})\right]+\mathcal {O}(\lambda ^3) \\a_2^{(0)} &=& \frac{32\lambda ^2}{45\pi }\left[\bar{\ell }_1+4\bar{\ell }_2-\frac{53}{8}\right]+\mathcal {O}(\lambda ^3) \\a_2^{(2)} &=& \frac{32\lambda ^2}{45\pi }\left[\bar{\ell }_1+\bar{\ell }_2-\frac{103}{40}\right]+\mathcal {O}(\lambda ^3)
+\end{eqnarray}$$
+(A.15)
+and compare them with the values in Table
+2
+extracted directly from the partial waves. See Table
+A1
+for the comparison.
+Table A1.
+Open in new tab
+The scattering lengths extracted directly from the partial waves (GTB) compared with the ones calculated from our low-energy constant
+|$\bar{\ell }_i$|
+computation using Eq. (
+A.15
+) (GTB 2). They are consistent except for the
+|$I=2$|
+scattering length, which currently seems difficult to compute in this approach.
+GTB
+.
+GTB 2
+.
+|$a^{(0)}_0$|
+0.172
+0.170
+|$a^{(2)}_0$|
+−0.0366
+−0.0363
+|$10^3\times a^{(1)}_1$|
+32.1
+29.7
+|$10^4\times a^{(0)}_2$|
+12.9
+15.0
+|$10^4\times a^{(2)}_2$|
+−1.1
+4
+GTB
+GTB 2
+$a^{(0)}_0$
+0.172
+0.170
+$a^{(2)}_0$
+−0.0366
+−0.0363
+$10^3\times a^{(1)}_1$
+32.1
+29.7
+$10^4\times a^{(0)}_2$
+12.9
+15.0
+$10^4\times a^{(2)}_2$
+−1.1
+4
+Appendix B. Parameterization of the spectral density
+In this appendix we describe the parameterizations used for the spectral density, designed to satisfy the correct low-energy behavior as described in Section 2.1. Consider e.g. the vector current with the behavior (
+2.2b
+) at lowest order in
+|$\chi _{PT}$|
+[
+41
+] in our conventions. Setting
+|$m_{\pi }=1$|
+we obtain, for
+|$s\in \mathbb {R}_{\ge 4}$|⁠
+:
+$$\begin{eqnarray}
+\rho ^1_1(s) = \frac{1}{(2\pi )^4}\frac{s}{24\pi } \left(1-\frac{4}{s}\right)^{\frac{3}{2}} = \frac{1}{(2\pi )^4}\frac{1}{48\pi } (s-4)^{\frac{3}{2}} \left[ 1 -\frac{1}{8} (s-4) + \frac{3}{128} (s-4)^2 +\ldots \right].
+\end{eqnarray}$$
+(B.16)
+This suggest parameterizing a general
+|$\rho$|
+in the region
+|$4\le s\le s_0$|
+as
+$$\begin{eqnarray}
+\rho ^1_1(s) = \frac{1}{(2\pi )^4}\frac{1}{48\pi } (s-4)^{\frac{3}{2}} \left[ B + \sum _{n\ge 0} b_n (s-4)^n \right] .
+\end{eqnarray}$$
+(B.17)
+Here
+|$B$|
+is a variable and so are the
+|$b_n$|⁠
+. Although the powers
+|$(s-4)^n$|
+provide a basis in this interval, such functions grow as
+|$s\rightarrow \infty$|⁠
+. To avoid this we consider the map that we have already been using
+$$\begin{eqnarray}
+z = \frac{\sqrt{4-s_a}-\sqrt{4-s}}{\sqrt{4-s_a}+\sqrt{4-s}}
+\end{eqnarray}$$
+(B.18)
+such that
+$$\begin{eqnarray}
+\mathrm{Im}[(1-z)^{2k+1}] = (-1)^k\, 2^{2k+1} \left(\frac{s-4}{4-s_a}\right)^{k+\frac{1}{2}} (1+{\cal O}(s-4)) .
+\end{eqnarray}$$
+(B.19)
+Based on the previous parameterization we can write a parameterization that respects the leading behavior with functions that remain finite at
+|$s\rightarrow \infty$|
+(or
+|$z\rightarrow -1$|⁠
+):
+$$\begin{eqnarray}
+\rho _{0}^0 = -\frac{1}{(2\pi )^4} \frac{3}{32\pi } \left(1-\frac{s_a}{4}\right)^{\frac{1}{2}} \mathrm{Im}\left\lbrace (1-z) \left[ A + (1-z)\sum _{n=0}^N a_n z^n\right] \right\rbrace
+\end{eqnarray}$$
+(B.20)
+$$\begin{eqnarray}
+\rho _{1}^1 = +\frac{1}{(2\pi )^4} \frac{1}{48\pi } \left(1-\frac{s_a}{4}\right)^{\frac{3}{2}} \mathrm{Im}\left\lbrace (1-z)^3 \left[ B + (1-z)\sum _{n=0}^N b_n z^n\right] \right\rbrace
+\end{eqnarray}$$
+(B.21)
+$$\begin{eqnarray}
+\rho _{2}^0 = -\frac{1}{(2\pi )^4} \frac{1}{320\pi }\left(1-\frac{s_a}{4}\right)^{\frac{5}{2}} \mathrm{Im}\left\lbrace (1-z)^5 \left[ C + (1-z)\sum _{n=0}^N c_n z^n\right] \right\rbrace .
+\end{eqnarray}$$
+(B.22)
+The coefficients
+|$A,B,C$|
+and
+|$a_n$|⁠
+,
+|$b_n$|⁠
+, and
+|$c_n$|
+are real parameters. These parameterizations allow even powers of
+|$(1-z)$|⁠
+, adding more flexibility. Finally, to make sure that the leading term dominates, we regulate the coefficients by requiring
+|$|a_n|\le a_\mathrm{max}$|⁠
+,
+|$|b_n|\le b_\mathrm{max}$|⁠
+,
+|$|c_n|\le c_\mathrm{max}$|⁠
+. The value of the regulator should be chosen in a range that does not affect the results.
+Appendix C. Finite-energy sum rules up to the three-loop level
+The SVZ sum rules have played a major role in the understading of hadrons from QCD and therefore there is considerably material on them. In particular we quote here three-loop results for the two-point correlator of the scalar and vector currents (keeping only terms with imaginary parts). All expressions are for two flavors
+|$N_f=2$|
+and are taken from Ref. [
+65
+] where one can find the original references:
+$$\begin{eqnarray}
+&& \Pi ^0_0(s) = -\frac{1}{(2\pi )^4}\frac{m_q^2}{8\pi ^2} s \Bigg \lbrace 6\ln \left(-\frac{s}{\mu ^2}\right) +\frac{\alpha _s}{\pi } \left[ 34\ln \left(-\frac{s}{\mu ^2}\right)- 6 \ln ^2\left(-\frac{s}{\mu ^2}\right)\right]\\&&\, +\left(\frac{\alpha _s}{\pi }\right)^2 \left[\left(\frac{10\,021}{24}-109\zeta (3)\right)\ln \left(-\frac{s}{\mu ^2}\right)-\frac{296}{3} \ln ^2 \left(-\frac{s}{\mu ^2}\right)+\frac{53}{6}\ln ^3 \left(-\frac{s}{\mu ^2}\right)\right]+O(\alpha _s^3)\Bigg \rbrace\\
+\end{eqnarray}$$
+(C.23)
+and
+$$\begin{eqnarray}
+\Pi ^1_1 &=& -\frac{1}{(2\pi )^4}\frac{s}{8\pi ^2} \Bigg \lbrace \ln \left(-\frac{s}{\mu ^2}\right) +\frac{\alpha _s}{\pi } \ln \left(-\frac{s}{\mu ^2}\right)\\&&\, +\left(\frac{\alpha _s}{\pi }\right)^2 \left[\left(\frac{107}{8}-\frac{29\zeta (3)}{3}\right)\ln \left(-\frac{s}{\mu ^2}\right)-\frac{29}{24} \ln ^2 \left(-\frac{s}{\mu ^2}\right)\right]+O(\alpha _s^3) \Bigg \rbrace.
+\end{eqnarray}$$
+(C.24)
+In the previous expressions we only kept the parts that have a nonvanishing imaginary part because we are interested in
+|$\rho = 2\, \mathrm{Im}\Pi (s+i\epsilon )$|
+to find the finite-energy sum rules (setting
+|$m_{\pi }=1$|⁠
+):
+$$\begin{eqnarray}
+&& \frac{1}{s_0^{n+2}}\int _4^{s_0} \rho ^0_0(x) x^n dx = \frac{m_q^2}{(2\pi )^4} \frac{3}{2\pi (n+2)} \Bigg \lbrace 1+\frac{\alpha _s}{\pi } \left[\frac{17}{3} + \frac{2}{n+2}\right]\\&&\, +\left(\frac{\alpha _s}{\pi }\right)^2 \bigg [\frac{10\,021}{144}-\frac{109}{6}\zeta (3)+\frac{296}{9(n+2)}+\frac{53}{6(n+2)^2}-\frac{53}{36}\pi ^2\bigg ]+O(\alpha _s^3)\Bigg \rbrace
+\end{eqnarray}$$
+(C.25)
+and
+$$\begin{eqnarray}
+&& \frac{1}{s_0^{n+2}}\int _4^{s_0} \rho ^1_1(x) x^n dx= \frac{1}{(2\pi )^4}\frac{1}{4\pi (n+2)} \Bigg \lbrace 1 +\frac{\alpha _s}{\pi }+\left(\frac{\alpha _s}{\pi }\right)^2 \bigg [\left(\frac{107}{8}-\frac{29\zeta (3)}{3}\right)\\&&\, +\frac{29}{12(n+2)}\bigg ]+O(\alpha _s^3) \Bigg \rbrace .
+\end{eqnarray}$$
+(C.26)
+Finally, for the
+|$S0$|
+and
+|$P1$|
+waves, we find it useful to improve the procedure by using a different analytical kernel such as the one in Ref. [
+66
+] that captures more on the lower-energy region:
+12
+$$\begin{eqnarray}
+K(s) = s^n \left(1-\frac{s}{s_0}\right) e^{-s/s_0}
+\end{eqnarray}$$
+(C.27)
+leading to the
+|$S0,P1$|
+sum rules
+$$\begin{eqnarray}
+\frac{1}{s_0^{n+2}}\int _4^{s_0} \rho ^0_0(x) K(x) dx = m_q^2 \left\lbrace c^{S0}_{n,0} + c^{S0}_{n,1} \frac{\alpha _s}{\pi } + c^{S0}_{n,2} \left(\frac{\alpha _s}{\pi }\right)^2+{\cal O}(\alpha _s^3) \right\rbrace
+\end{eqnarray}$$
+(C.28a)
+$$\begin{eqnarray}
+\frac{1}{s_0^{n+2}}\int _4^{s_0} \rho ^1_1(x) K(x) dx = c^{P1}_{n,0} + c^{P1}_{n,1} \frac{\alpha _s}{\pi } + c^{P1}_{n,2} \left(\frac{\alpha _s}{\pi }\right)^2+{\cal O}(\alpha _s^3) .
+\end{eqnarray}$$
+(C.28b)
+In the main text we use these “pinched” sum rules for
+|$\rho ^0_0,\rho ^1_1$|
+up to
+|$n=6$|⁠
+. (For
+|$\rho ^0_2$|
+we use the same sum rules with weights
+|$s^n$|
+as in previous work [
+12
+].) The corresponding numerical coefficients
+|$c_{i,j}$|
+are shown in Tables
+C1
+and
+C2
+for reference. The numerical values are used to constrain the spectral densities following Eq. (C.28).
+Table C1.
+Open in new tab
+Numerical values of the
+S
+0 sum rule coefficients
+|$ c^{S0}_{i,j}$|⁠
+. These coefficients are used to constrain the spectral density
+|$ i \backslash j$|
+.
+0
+.
+1
+.
+2
+.
+0
+|$ 3.1750 \times 10^{-5}$|
+|$ 2.4104 \times 10^{-4}$|
+|$ 2.2490 \times 10^{-3}$|
+1
+|$ 1.4299 \times 10^{-5}$|
+|$ 1.0012 \times 10^{-4}$|
+|$ 8.3028 \times 10^{-4}$|
+2
+|$ 7.9936 \times 10^{-6}$|
+|$ 5.3436 \times 10^{-5}$|
+|$ 4.1288 \times 10^{-4}$|
+3
+|$ 5.0653 \times 10^{-6}$|
+|$ 3.2859 \times 10^{-5}$|
+|$ 2.4218 \times 10^{-4}$|
+4
+|$ 3.4828 \times 10^{-6}$|
+|$ 2.2124 \times 10^{-5}$|
+|$ 1.5766 \times 10^{-4}$|
+5
+|$ 2.5359 \times 10^{-6}$|
+|$ 1.5862 \times 10^{-5}$|
+|$ 1.1022 \times 10^{-4}$|
+$ i \backslash j$
+0
+1
+2
+0
+$ 3.1750 \times 10^{-5}$
+$ 2.4104 \times 10^{-4}$
+$ 2.2490 \times 10^{-3}$
+1
+$ 1.4299 \times 10^{-5}$
+$ 1.0012 \times 10^{-4}$
+$ 8.3028 \times 10^{-4}$
+2
+$ 7.9936 \times 10^{-6}$
+$ 5.3436 \times 10^{-5}$
+$ 4.1288 \times 10^{-4}$
+3
+$ 5.0653 \times 10^{-6}$
+$ 3.2859 \times 10^{-5}$
+$ 2.4218 \times 10^{-4}$
+4
+$ 3.4828 \times 10^{-6}$
+$ 2.2124 \times 10^{-5}$
+$ 1.5766 \times 10^{-4}$
+5
+$ 2.5359 \times 10^{-6}$
+$ 1.5862 \times 10^{-5}$
+$ 1.1022 \times 10^{-4}$
+Table C2.
+Open in new tab
+Numerical values of the
+P
+1 sum rule coefficients
+|$ c^{P1}_{i,j}$|⁠
+.
+|$ i \backslash j$|
+.
+0
+.
+1
+.
+2
+.
+−1
+|$ 1.8783 \times 10^{-5}$|
+|$ 1.8783 \times 10^{-5}$|
+|$ 1.1097 \times 10^{-4}$|
+0
+|$ 5.2916 \times 10^{-6}$|
+|$ 5.2916 \times 10^{-6}$|
+|$ 2.1597 \times 10^{-5}$|
+1
+|$ 2.3831 \times 10^{-6}$|
+|$ 2.3831 \times 10^{-6}$|
+|$ 8.0286 \times 10^{-6}$|
+2
+|$ 1.3323 \times 10^{-6}$|
+|$ 1.3323 \times 10^{-6}$|
+|$ 3.9775 \times 10^{-6}$|
+3
+|$ 8.4421 \times 10^{-7}$|
+|$ 8.4421 \times 10^{-7}$|
+|$ 2.3186 \times 10^{-6}$|
+4
+|$ 5.8047 \times 10^{-7}$|
+|$ 5.8047 \times 10^{-7}$|
+|$ 1.4997 \times 10^{-6}$|
+$ i \backslash j$
+0
+1
+2
+−1
+$ 1.8783 \times 10^{-5}$
+$ 1.8783 \times 10^{-5}$
+$ 1.1097 \times 10^{-4}$
+0
+$ 5.2916 \times 10^{-6}$
+$ 5.2916 \times 10^{-6}$
+$ 2.1597 \times 10^{-5}$
+1
+$ 2.3831 \times 10^{-6}$
+$ 2.3831 \times 10^{-6}$
+$ 8.0286 \times 10^{-6}$
+2
+$ 1.3323 \times 10^{-6}$
+$ 1.3323 \times 10^{-6}$
+$ 3.9775 \times 10^{-6}$
+3
+$ 8.4421 \times 10^{-7}$
+$ 8.4421 \times 10^{-7}$
+$ 2.3186 \times 10^{-6}$
+4
+$ 5.8047 \times 10^{-7}$
+$ 5.8047 \times 10^{-7}$
+$ 1.4997 \times 10^{-6}$
+Appendix D. Parameterization of the amplitude and form factors
+In this appendix, we briefly review the parameterization of the amplitudes and form factors used in this paper. See Ref. [
+12
+] for more details.
+The pion 2-to-2 scattering amplitude is an analytic function in the Mandelstam invariants
+|$s,t,u$|
+with cuts
+|$s,t,u\ge 4$|
+(taking
+|$m^2_{\pi }=1$|⁠
+) and can be parameterized through the Mandelstam double dispersion relations:
+$$\begin{eqnarray}
+A(s,t,u) &=& T_0 + \frac{1}{\pi } \int _4^\infty \!\!\!\!\!\! dx\, \frac{\sigma _1(x)}{x-s}+\frac{1}{\pi } \int _4^\infty \!\!\!\!\!\! dx\, \sigma _2(x) \left[\frac{1}{x-t}+\frac{1}{x-u}\right] \\&& + \frac{1}{\pi ^2} \int _4^\infty \!\!\!\!\!\! dx \int _4^\infty \!\!\!\!\!\! dy\, \frac{\rho _1(x,y)}{x-s}\left[\frac{1}{y-t}+\frac{1}{y-u}\right] \\&& + \frac{1}{\pi ^2} \int _4^\infty \!\!\!\!\!\! dx \int _4^\infty \!\!\!\!\!\! dy\, \frac{\rho _2(x,y)}{(x-t)(y-u)}
+\end{eqnarray}$$
+(D.29)
+where
+|$\rho _2(x,y)=\rho _2(y,x)$|
+enforcing
+|$A(s,t,u)=A(s,u,t)$|⁠
+. This way, the set of variables
+$$\begin{eqnarray}
+\lbrace F_0, \sigma _1(x), \sigma _{2}(x), \rho _{1}(x,y), \rho _{2}(x,y)\rbrace
+\end{eqnarray}$$
+(D.30)
+completely characterizes the amplitudes. The partial waves with a fixed isospin
+|$I$|
+are given by
+$$\begin{eqnarray}
+f^I_\ell (s) = \frac{1}{4} \int _{-1}^1\!\!\!\! d\cos \theta P_{\ell }(\cos \theta ) T^I(s,t),\;\; \ell =\left\lbrace \begin{array}{@{}l@{\quad }l@{}}\text{even},& I=0,2\\\text{odd}& I=1 \end{array}\right.
+\end{eqnarray}$$
+(D.31)
+with
+$$\begin{eqnarray}
+t=-\frac{(s-4)(1-\cos \theta )}{2}
+\end{eqnarray}$$
+(D.32)
+where
+|$T^I$|
+are amplitudes of fixed isospins:
+$$\begin{eqnarray}
+T^{I=0}(s,t,u) = 3 A(s,t,u)+A(t,s,u)+A(u,t,s)
+\end{eqnarray}$$
+(D.33a)
+$$\begin{eqnarray}
+T^{I=1}(s,t,u) = A(t,s,u)-A(u,t,s)
+\end{eqnarray}$$
+(D.33b)
+$$\begin{eqnarray}
+T^{I=2}(s,t,u) = A(t,s,u)+A(u,t,s) .
+\end{eqnarray}$$
+(D.33c)
+In the physical region
+|$s\in \mathbb {R}_{\ge 4}$|
+the partial waves satisfy the unitarity constraints (
+2.5
+) where
+$$\begin{eqnarray}
+h^I_{\ell }(s)=\pi \sqrt{\frac{s-4}{s}}f^I_{\ell }(s) .
+\end{eqnarray}$$
+(D.34)
+The form factors
+|$F^I_{\ell }$|
+are analytic functions in
+|$s$|
+with cuts
+|$s\ge 4$|
+and can be parameterized by the dispersion relation
+$$\begin{eqnarray}
+F^I_{\ell }(s)=1+\frac{1}{\pi }\int _4^{\infty }\!\!\! dx\bigg (\frac{1}{x-s}-\frac{1}{x}\bigg )\text{Im}F^I_{\ell }(x)
+\end{eqnarray}$$
+(D.35)
+where we have fixed the normalization
+|$F^I_{\ell }(s=0)=1$|
+for the currents (2.1).
+Together with the spectral density parameterization described in Appendix
+B
+, the bootstrap variables are
+$$\begin{eqnarray}
+\lbrace F_0, \sigma _1(x), \sigma _{2}(x), \rho _{1}(x,y), \rho _{2}(x,y), \text{Im}F^I_{\ell }(x),A,B,C,a_n,b_n,c_n\rbrace .
+\end{eqnarray}$$
+(D.36)
+In a numerical computation, we discretize the bootstrap variables
+$$\begin{eqnarray}
+\lbrace F_0, \sigma _1(x_i), \sigma _{2}(x_i), \rho _{1}(x_i,y_j), \rho _{2}(x_i,y_j),\text{Im}F^I_{\ell }(x_i),A,B,C,a_n,b_n,c_n\rbrace
+\end{eqnarray}$$
+(D.37)
+with
+|$i=1,\ldots , M,\;\; n=1,\ldots ,n_{\text{max}},\;\; (I,\ell )=(0,0),(1,1),(0,2)$|⁠
+. Unitarity constraints (
+2.5
+) as well as the positive semidefinite constraints for
+|$S0, P1, D0$|
+are imposed at a discrete set of points
+|$\lbrace s_j\rbrace ,\;\;j=1,\ldots ,M$|
+up to a maximal angular momentum
+|$l_\text{max}$|⁠
+. The bootstrap variables are further subject to the constraints (2.20), (
+5.26
+), and (C.28). In this paper, we take
+$$\begin{eqnarray}
+M=50,\;l_{\text{max}}=21,\; n_{\text{max}}=50 .
+\end{eqnarray}$$
+(D.38)
+See Section 8 and Appendix A of Ref. [
+12
+] for more details about the numerical implementation and a test of the numerical discretizations.
+Notice that, from Eqs. (
+D.29
+), (
+D.31
+), (D.33), (
+D.34
+), the partial waves are linear in the bootstrap variables (
+D.30
+). The iterative functional described in Eq. (
+2.2
+) gives a linear functional of the bootstrap variables that can be maximized by standard convex optimization software such as MOSEK [
+67
+]. To produce the results of this paper, we use the MOSEK solver in CVX—a package for specifying and solving convex programs [
+68
+,
+69
+].
+Footnotes
+1
+We are grateful to A. Vainshtein for emphasizing this point.
+2
+In Ref. [
+33
+], dynamical information about the
+|$\phi ^4$|
+theory was extracted using Hamiltonian truncation and used as input in the bootstrap; in Ref. [
+34
+], the central charge of
+|$2\mathrm{D}$|
+Ising CFT is used as an input.
+3
+A frozen snapshot of the numerical program for that paper is available at
+https://github.com/hyfysics/gauge-theory-bootstrap/releases/tag/arxiv-2403.10772.
+4
+See Ref. [
+62
+] for an alternative numerical implementation.
+5
+It is customary to call QCD operators currents whether they are actual currents or not. Of course these operators play an important role in most studies of QCD, not just here.
+6
+At higher energy we could incorporate some method of particle production such as was done in Refs. [
+63
+,
+64
+] or via resonance decay as suggested in Ref. [
+12
+].
+7
+In addition, we can also take the other zero mode
+|$i=1$|⁠
+, which we leave for future work.
+8
+In all cases we always do one initial Watsonian iteration to smooth out the functions.
+9
+Technically the minimizer program is required to minimize an
+|${\cal F}= 0$|
+functional.
+10
+We are grateful to Fuqiang Wang for a discussion on this topic.
+11
+It is conventional to call this source
+|$\chi$|
+as we do in this appendix. It should not be confused with
+|$\chi ^I_\ell$|
+in the main text, which represents the factors in the form factor asymptotics.
+12
+As compared with the weight
+|$s^n$|
+that tends to favor the larger values of
+|$x$|
+close to
+|$s_0$|⁠
+.
+References
+[1]
+G.
+Colangelo
+,
+J.
+Gasser
+,
+H.
+Leutwyler
+,
+Nucl. Phys. B
+.
+603
+,
+125
+(
+2001
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1016/S0550-3213(01)00147-X
+Crossref
+Search ADS
+[2]
+J. R.
+Pelaez
+,
+F. J.
+Yndurain
+,
+Phys. Rev. D
+.
+71
+,
+074016
+(
+2005
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1103/PhysRevD.71.074016
+Crossref
+Search ADS
+[3]
+J.
+Bijnens
+,
+G.
+Colangelo
+,
+J.
+Gasser
+,
+Nucl. Phys. B
+.
+427
+,
+427
+(
+1994
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1016/0550-3213(94)90634-3
+Crossref
+Search ADS
+[4]
+J.
+Bijnens
+,
+G.
+Colangelo
+,
+G.
+Ecker
+,
+J.
+Gasser
+,
+M. E.
+Sainio
+,
+Nucl. Phys. B
+.
+508
+,
+263
+(
+1997
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1016/S0550-3213(97)80013-2
+Crossref
+Search ADS
+[5]
+J.
+Bijnens
+,
+G.
+Colangelo
+,
+P.
+Talavera
+,
+J. High Energy Phys.
+9805
+,
+014
+(
+1998
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+[6]
+B.
+Ananthanarayan
+,
+I.
+Caprini
+,
+G.
+Colangelo
+,
+J.
+Gasser
+,
+H.
+Leutwyler
+,
+Phys. Lett. B
+.
+602
+,
+218
+(
+2004
+).
+10.1016/j.physletb.2004.10.005
+Crossref
+Search ADS
+[7]
+A.
+Guerrieri
+,
+K.
+Häring
+,
+N.
+Su
+,
+SciPost Phys.
+20,
+:
+034
+(
+2026
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+[8]
+J. R.
+Peláez
+,
+P.
+Rabán
+,
+J.
+Ruiz de Elvira
+,
+Phys. Rev. D
+.
+111
+,
+074003
+(
+2025
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1103/PhysRevD.111.074003
+Crossref
+Search ADS
+[9]
+Y.
+Aoki
+et al.
+,
+Phys. Rev. D
+.
+113
+,
+014508
+(
+2026
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+[10]
+Y.
+He
+,
+M.
+Kruczenski
+,
+Phys. Rev. Lett.
+133
+,
+191601
+(
+2024
+).
+10.1103/PhysRevLett.133.191601
+Crossref
+Search ADS
+PubMed
+[11]
+Y.
+He
+,
+M.
+Kruczenski
+,
+Phys. Rev. D
+.
+110
+,
+096001
+(
+2024
+).
+10.1103/PhysRevD.110.096001
+Crossref
+Search ADS
+[12]
+Y.
+He
+,
+M.
+Kruczenski
+,
+arXiv
+[
+Search inSPIRE
+]
+.
+[13]
+R. J.
+Eden
+,
+P. V.
+Landshoff
+,
+D. I.
+Olive
+,
+J. C.
+Polkinghorne
+,
+The Analytic S-Matrix
+(
+Cambridge University Press
+,
+Cambridge, UK
+,
+1966
+).
+[14]
+G. F.
+Chew
+,
+The Analytic S Matrix: A Basis for Nuclear Democracy
+(
+W. A. Benjamin
+,
+New York
+,
+1966
+).
+Google Scholar
+Google Preview
+OpenURL Placeholder Text
+WorldCat
+COPAC
+[15]
+F.
+Zachariasen
+,
+Phys. Rev. Lett.
+7
+,
+112
+(
+1961
+).
+10.1103/PhysRevLett.7.112
+Crossref
+Search ADS
+[16]
+P. D. B.
+Collins
+,
+Phys. Rev.
+142
+,
+1163
+(
+1966
+).
+10.1103/PhysRev.142.1163
+Crossref
+Search ADS
+[17]
+M. F.
+Paulos
+,
+J.
+Penedones
+,
+J.
+Toledo
+,
+B. C.
+van Rees
+,
+P.
+Vieira
+,
+J. High Energy Phys.
+1711
+,
+133
+(
+2017
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1007/JHEP11(2017)133
+Crossref
+Search ADS
+[18]
+M. F.
+Paulos
+,
+J.
+Penedones
+,
+J.
+Toledo
+,
+B. C.
+van Rees
+,
+P.
+Vieira
+,
+J. High Energy Phys.
+1711
+,
+143
+(
+2017
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1007/JHEP11(2017)143
+Crossref
+Search ADS
+[19]
+M. F.
+Paulos
+,
+J.
+Penedones
+,
+J.
+Toledo
+,
+B. C.
+van Rees
+,
+P.
+Vieira
+,
+J. High Energy Phys.
+1912
+,
+040
+(
+2019
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1007/JHEP12(2019)040
+Crossref
+Search ADS
+[20]
+M.
+Kruczenski
+,
+J.
+Penedones
+,
+B. C.
+van Rees
+,
+arXiv
+[
+Search inSPIRE
+]
+.
+[21]
+A. L.
+Guerrieri
+,
+J.
+Penedones
+,
+P.
+Vieira
+,
+Phys. Rev. Lett.
+,
+122
+,
+241604
+(
+2019
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1103/PhysRevLett.122.241604
+Crossref
+Search ADS
+PubMed
+[22]
+A.
+Bose
+,
+A.
+Sinha
+,
+S. S.
+Tiwari
+,
+SciPost Phys.
+10
+,
+122
+(
+2021
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+[23]
+A.
+Bose
+,
+P.
+Haldar
+,
+A.
+Sinha
+,
+P.
+Sinha
+,
+S. S.
+Tiwari
+,
+SciPost Phys.
+9
+,
+081
+(
+2020
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.21468/SciPostPhys.9.5.081
+Crossref
+Search ADS
+[24]
+A.
+Guerrieri
+,
+J.
+Penedones
+,
+P.
+Vieira
+,
+J. High Energy Phys.
+2021
+,
+88
+(
+2021
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+[25]
+J.
+Albert
+,
+L.
+Rastelli
+,
+J. High Energy Phys.
+2208
+,
+151
+(
+2022
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1007/JHEP08(2022)151
+Crossref
+Search ADS
+[26]
+C.
+Fernandez
+,
+A.
+Pomarol
+,
+F.
+Riva
+,
+F.
+Sciotti
+,
+J. High Energy Phys.
+2306
+,
+094
+(
+2023
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1007/JHEP06(2023)094
+Crossref
+Search ADS
+[27]
+J.
+Albert
+,
+J.
+Henriksson
+,
+L.
+Rastelli
+,
+A.
+Vichi
+,
+J. High Energy Phys.
+2024
+,
+172
+(
+2024
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+[28]
+J.
+Albert
+,
+L.
+Rastelli
+,
+J. High Energy Phys.
+2024
+,
+39
+(
+2024
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+[29]
+T.
+Ma
+,
+A.
+Pomarol
+,
+F.
+Sciotti
+,
+J. High Energy Phys.
+2311
+,
+176
+(
+2023
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1007/JHEP11(2023)176
+Crossref
+Search ADS
+[30]
+F.
+Bhat
+,
+D.
+Chowdhury
+,
+A.
+Sinha
+,
+S.
+Tiwari
+,
+A.
+Zahed
+,
+J. High Energy Phys.
+2403
+,
+157
+(
+2024
+), [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1007/JHEP03(2024)157
+Crossref
+Search ADS
+[31]
+D.
+Karateev
+,
+S.
+Kuhn
+,
+J.
+Penedones
+,
+J. High Energy Phys.
+2007
+,
+035
+(
+2020
+), [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1007/JHEP07(2020)035
+Crossref
+Search ADS
+[32]
+D.
+Karateev
+,
+J. High Energy Phys.
+2202
+,
+186
+(
+2022
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1007/JHEP02(2022)186
+Crossref
+Search ADS
+[33]
+H.
+Chen
+,
+A. L.
+Fitzpatrick
+,
+D.
+Karateev
+,
+J. High Energy Phys.
+2202
+,
+146
+(
+2022
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+[34]
+M.
+Correia
+,
+J.
+Penedones
+,
+A.
+Vuignier
+,
+J. High Energy Phys.
+2308
+,
+108
+(
+2023
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1007/JHEP08(2023)108
+Crossref
+Search ADS
+[35]
+L.
+Cordova
+,
+M.
+Correia
+,
+A.
+Georgoudis
+,
+A.
+Vuignier
+,
+J. High Energy Phys.
+2401
+,
+093
+(
+2024
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1007/JHEP01(2024)093
+Crossref
+Search ADS
+[36]
+A.
+Zahed
+,
+Phys. Rev. D
+.
+112
+,
+034031
+(
+2025
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+[37]
+G. P.
+Lepage
+,
+S. J.
+Brodsky
+,
+Phys. Lett. B
+.
+87
+,
+359
+(
+1979
+).
+Crossref
+Search ADS
+[38]
+M. A.
+Shifman
+,
+A. I.
+Vainshtein
+,
+V. I.
+Zakharov
+,
+Nucl. Phys. B
+,
+147
+,
+385
+(
+1979
+).
+10.1016/0550-3213(79)90022-1
+Crossref
+Search ADS
+[39]
+M. A.
+Shifman
+,
+A. I.
+Vainshtein
+,
+V. I.
+Zakharov
+,
+Nucl. Phys. B
+,
+147
+,
+448
+(
+1979
+).
+10.1016/0550-3213(79)90023-3
+Crossref
+Search ADS
+[40]
+M. A.
+Shifman
+,
+A. I.
+Vainshtein
+,
+V. I.
+Zakharov
+,
+Nucl. Phys. B
+.
+147
+,
+519
+(
+1979
+).
+10.1016/0550-3213(79)90024-5
+Crossref
+Search ADS
+[41]
+J.
+Gasser
+,
+Nucl. Phys. B
+.
+279
+,
+65
+(
+1987
+).
+10.1016/0550-3213(87)90307-5
+Crossref
+Search ADS
+[42]
+Y.
+He
+,
+A.
+Irrgang
+,
+M.
+Kruczenski
+,
+J. High Energy Phys.
+1811
+,
+093
+(
+2018
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1007/JHEP11(2018)093
+Crossref
+Search ADS
+[43]
+A. H.
+Mueller
+,
+Phys. Rep.
+73
+,
+237
+(
+1981
+).
+10.1016/0370-1573(81)90030-2
+Crossref
+Search ADS
+[44]
+X.-B.
+Tong
+,
+J.-P.
+Ma
+,
+F.
+Yuan
+,
+Phys. Lett. B
+.
+823
+,
+136751
+(
+2021
+).
+10.1016/j.physletb.2021.136751
+Crossref
+Search ADS
+[45]
+X.-B.
+Tong
+,
+J.-P.
+Ma
+,
+F.
+Yuan
+,
+J. High Energy Phys.
+2022
+,
+46
+(
+2022
+).
+Crossref
+Search ADS
+[46]
+L.
+Chang
+,
+I. C.
+Cloët
+,
+C. D.
+Roberts
+,
+S. M.
+Schmidt
+,
+P. C.
+Tandy
+,
+Phys. Rev. Lett.
+111
+,
+141802
+(
+2013
+).
+10.1103/PhysRevLett.111.141802
+Crossref
+Search ADS
+PubMed
+[47]
+C.
+Lopez
+,
+G.
+Mennessier
+,
+Nucl. Phys. B
+.
+118
+,
+426
+(
+1977
+).
+10.1016/0550-3213(77)90237-1
+Crossref
+Search ADS
+[48]
+Y.
+He
+,
+M.
+Kruczenski
+,
+J. High Energy Phys.
+2108
+,
+125
+(
+2021
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1007/JHEP08(2021)125
+Crossref
+Search ADS
+[49]
+A.
+Guerrieri
+,
+A.
+Server
+,
+Phys. Rev. Lett.
+127
+,
+251601
+(
+2021
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1103/PhysRevLett.127.251601
+Crossref
+Search ADS
+PubMed
+[50]
+H.
+Chen
+,
+A. L.
+Fitzpatrick
+,
+D.
+Karateev
+,
+J. High Energy Phys.
+2212
+,
+092
+(
+2022
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1007/JHEP12(2022)092
+Crossref
+Search ADS
+[51]
+J. E.
+Miro
+,
+A.
+Guerrieri
+,
+M. A.
+Gumus
+,
+J. High Energy Phys.
+2305
+,
+001
+(
+2023
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1007/JHEP05(2023)001
+Crossref
+Search ADS
+[52]
+J.
+Gasser
+,
+H.
+Leutwyler
+,
+Ann. Phys.
+158
+,
+142
+(
+1984
+).
+10.1016/0003-4916(84)90242-2
+Crossref
+Search ADS
+[53]
+R. L.
+Workman
+et al.
+,
+Prog. Theor. Exp. Phys.
+2022
+,
+083C01
+(
+2022
+).
+10.1093/ptep/ptac097
+Crossref
+Search ADS
+[54]
+S.
+Weinberg
+,
+Phys. Rev. Lett.
+17
+,
+616
+(
+1966
+).
+10.1103/PhysRevLett.17.616
+Crossref
+Search ADS
+[55]
+J. R.
+Pelaez
+,
+Phys. Rept.
+658
+,
+1
+(
+2016
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1016/j.physrep.2016.09.001
+Crossref
+Search ADS
+[56]
+B.
+Pire
+,
+Exclusive reactions in QCD, in Les Houches Summer School on Theoretical Physics, Session 66: Trends in Nuclear Physics, 100 Years Later
+, p.
+567
+(
+1996
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+[57]
+K.
+Huang
+,
+Statistical Mechanics
+(
+Wiley
+,
+New York
+,
+1987
+).
+Google Scholar
+Google Preview
+OpenURL Placeholder Text
+WorldCat
+COPAC
+[58]
+R.
+Dashen
+,
+S.-K.
+Ma
+,
+H. J.
+Bernstein
+,
+Phys. Rev.
+187
+,
+345
+(
+1969
+).
+10.1103/PhysRev.187.345
+Crossref
+Search ADS
+[59]
+R.
+Venugopalan
+,
+M.
+Prakash
+,
+Nucl. Phys. A
+.
+546
+,
+718
+(
+1992
+).
+10.1016/0375-9474(92)90005-5
+Crossref
+Search ADS
+[60]
+P.
+Baratella
+,
+J. E.
+Miro
+,
+E.
+Gendy
+,
+J. High Energy Phys.
+12
+,
+001
+(
+2024
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+[61]
+M. S.
+Abdallah
+et al.
+,
+Phys. Rev. C
+.
+106
+,
+034908
+(
+2022
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1103/PhysRevC.106.034908
+Crossref
+Search ADS
+[62]
+R.
+Cordoba
+,
+arXiv
+[
+Search inSPIRE
+]
+.
+[63]
+P.
+Tourkine
+,
+A.
+Zhiboedov
+,
+J. High Energy Phys.
+2107
+,
+228
+(
+2021
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1007/JHEP07(2021)228
+Crossref
+Search ADS
+[64]
+P.
+Tourkine
+,
+A.
+Zhiboedov
+,
+J. High Energy Phys.
+2311
+,
+005
+(
+2023
+) [
+arXiv
+]
+[
+Search inSPIRE
+]
+.
+10.1007/JHEP11(2023)005
+Crossref
+Search ADS
+[65]
+S.
+Narison
+,
+QCD as a Theory of Hadrons: From Partons to Confinement
+(
+Cambridge University Press
+,
+Cambridge, UK
+,
+2004
+),
+Cambridge Monographs on Particle Physics, Nuclear Physics and Cosmology
+.
+Google Scholar
+Crossref
+Search ADS
+Google Preview
+WorldCat
+COPAC
+[66]
+S. N.
+Cherry
+,
+M. R.
+Pennington
+,
+arXiv
+[
+Search inSPIRE
+]
+.
+[67]
+MOSEK ApS
+,
+The MOSEK optimization toolbox for MATLAB manual
+,
+version 10.1
+(
+2024
+).
+[68]
+M.
+Grant
+,
+S.
+Boyd
+,
+CVX: Matlab software for disciplined convex programming
+,
+version 2.1
+(
+2014
+) (
+available at
+:
+http://cvxr.com/cvx
+,
+date last accessed: August 2012
+).
+[69]
+M.
+Grant
+,
+S.
+Boyd
+,
+Graph implementations for nonsmooth convex programs
+, in
+Recent Advances in Learning and Control
+, eds.
+V.
+Blondel
+,
+S.
+Boyd
+,
+H.
+Kimura
+(
+Springer
+,
+Berlin
+,
+2008
+),
+Lecture Notes in Control and Information Sciences
+, p.
+95
+.
+[70]
+S. D.
+Protopopescu
+,
+M.
+Alston-Garnjost
+,
+A.
+Barbaro-Galtieri
+,
+S. M.
+Flatte
+,
+J. H.
+Friedman
+,
+T. A.
+Lasinski
+,
+G. R.
+Lynch
+,
+M. S.
+Rabin
+,
+F. T.
+Solmitz
+,
+Phys. Rev. D
+.
+7
+,
+1279
+(
+1973
+).
+10.1103/PhysRevD.7.1279
+Crossref
+Search ADS
+[71]
+M. J.
+Losty
+,
+V.
+Chaloupka
+,
+A.
+Ferrando
+,
+L.
+Montanet
+,
+E.
+Paul
+,
+D.
+Yaffe
+,
+A.
+Zieminski
+,
+J.
+Alitti
+,
+B.
+Gandois
+,
+Nucl. Phys. B
+.
+69
+,
+185
+(
+1974
+).
+10.1016/0550-3213(74)90131-X
+Crossref
+Search ADS
+[72]
+B.
+Hyams
+et al.
+,
+Nucl. Phys. B
+.
+100
+,
+205
+(
+1975
+).
+10.1016/0550-3213(75)90616-1
+Crossref
+Search ADS
+© The Author(s) 2026. Published by Oxford University Press on behalf of the Physical Society of Japan.
+This is an Open Access article distributed under the terms of the Creative Commons Attribution License (
+https://creativecommons.org/licenses/by/4.0/
+), which permits unrestricted reuse, distribution, and reproduction in any medium, provided the original work is properly cited.Funded by SCOAP
+3

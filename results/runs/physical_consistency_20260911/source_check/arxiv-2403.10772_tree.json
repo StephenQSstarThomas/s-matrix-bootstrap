@@ -1,0 +1,242 @@
+{
+  "sha": "c8409331d5df911f592e53e5a43628418a39b213",
+  "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/trees/c8409331d5df911f592e53e5a43628418a39b213",
+  "tree": [
+    {
+      "path": "GTBscope.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c6569a6f28fe875f2bcd504f9b74f9def8d62c31",
+      "size": 1503085,
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/blobs/c6569a6f28fe875f2bcd504f9b74f9def8d62c31"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9ae8cba8b6af8b24ce9e9be93c1d4036af63b0e5",
+      "size": 3404,
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/blobs/9ae8cba8b6af8b24ce9e9be93c1d4036af63b0e5"
+    },
+    {
+      "path": "theories",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "6e27050577a4dc80ece7313e61fdf8840aeb760d",
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/trees/6e27050577a4dc80ece7313e61fdf8840aeb760d"
+    },
+    {
+      "path": "theories/qcd",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "d399e12a5291554c372d7a4349006bfb61c25798",
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/trees/d399e12a5291554c372d7a4349006bfb61c25798"
+    },
+    {
+      "path": "theories/qcd/configs",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "5bfad2b3f8e483b6b173d8aaff19597e84626f15",
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/trees/5bfad2b3f8e483b6b173d8aaff19597e84626f15"
+    },
+    {
+      "path": "theories/qcd/configs/.gitkeep",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "size": 1,
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/blobs/8b137891791fe96927ad78e64b0aad7bded08bdc"
+    },
+    {
+      "path": "theories/qcd/data",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "1744e4842273b94d815d2fef6bc640b6c3cce566",
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/trees/1744e4842273b94d815d2fef6bc640b6c3cce566"
+    },
+    {
+      "path": "theories/qcd/data/.gitkeep",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "size": 1,
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/blobs/8b137891791fe96927ad78e64b0aad7bded08bdc"
+    },
+    {
+      "path": "theories/qcd/data/figures",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "5bfad2b3f8e483b6b173d8aaff19597e84626f15",
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/trees/5bfad2b3f8e483b6b173d8aaff19597e84626f15"
+    },
+    {
+      "path": "theories/qcd/data/figures/.gitkeep",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "size": 1,
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/blobs/8b137891791fe96927ad78e64b0aad7bded08bdc"
+    },
+    {
+      "path": "theories/qcd/data/matrices",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "5bfad2b3f8e483b6b173d8aaff19597e84626f15",
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/trees/5bfad2b3f8e483b6b173d8aaff19597e84626f15"
+    },
+    {
+      "path": "theories/qcd/data/matrices/.gitkeep",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "size": 1,
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/blobs/8b137891791fe96927ad78e64b0aad7bded08bdc"
+    },
+    {
+      "path": "theories/qcd/data/results",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "5bfad2b3f8e483b6b173d8aaff19597e84626f15",
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/trees/5bfad2b3f8e483b6b173d8aaff19597e84626f15"
+    },
+    {
+      "path": "theories/qcd/data/results/.gitkeep",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "size": 1,
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/blobs/8b137891791fe96927ad78e64b0aad7bded08bdc"
+    },
+    {
+      "path": "theories/qcd/papers",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "e26da70c1e59f86767a351866639825ef9764de1",
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/trees/e26da70c1e59f86767a351866639825ef9764de1"
+    },
+    {
+      "path": "theories/qcd/papers/.gitkeep",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "size": 1,
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/blobs/8b137891791fe96927ad78e64b0aad7bded08bdc"
+    },
+    {
+      "path": "theories/qcd/papers/arxiv-2403.10772",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "908db35f03a0c47353a5f1ece5bdc9cb3133a522",
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/trees/908db35f03a0c47353a5f1ece5bdc9cb3133a522"
+    },
+    {
+      "path": "theories/qcd/papers/arxiv-2403.10772/GTB_numerics.m",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "85370b810e76e7d8de65f7a4585b607765f93e25",
+      "size": 9398,
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/blobs/85370b810e76e7d8de65f7a4585b607765f93e25"
+    },
+    {
+      "path": "theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7e5e504637945095c21e9678742196fa42970e67",
+      "size": 224480,
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/blobs/7e5e504637945095c21e9678742196fa42970e67"
+    },
+    {
+      "path": "theories/qcd/papers/arxiv-2403.10772/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "822fd1a2ce58015e2f8b032a3bb47012d064fbe2",
+      "size": 801,
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/blobs/822fd1a2ce58015e2f8b032a3bb47012d064fbe2"
+    },
+    {
+      "path": "theories/qcd/src",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "083e3a20522ebf1c4ed6334d762f88a9d481aac4",
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/trees/083e3a20522ebf1c4ed6334d762f88a9d481aac4"
+    },
+    {
+      "path": "theories/qcd/src/mathematica",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "5c4fea7e2d1427dbb287abfdd3841ba9928c58dc",
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/trees/5c4fea7e2d1427dbb287abfdd3841ba9928c58dc"
+    },
+    {
+      "path": "theories/qcd/src/mathematica/.gitkeep",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "size": 1,
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/blobs/8b137891791fe96927ad78e64b0aad7bded08bdc"
+    },
+    {
+      "path": "theories/qcd/src/mathematica/gtb_qcd_01_generate_matrices.nb",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bbe0933b18c7e676c60dd1bc309733c5fe0d9466",
+      "size": 194817,
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/blobs/bbe0933b18c7e676c60dd1bc309733c5fe0d9466"
+    },
+    {
+      "path": "theories/qcd/src/mathematica/gtb_qcd_03_analyze_plot.nb",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3c1fc011f7606dde8ca590731830473fd1f921c2",
+      "size": 64956,
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/blobs/3c1fc011f7606dde8ca590731830473fd1f921c2"
+    },
+    {
+      "path": "theories/qcd/src/matlab",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "52e9e6f204b681e2a4e6bd131a4e690c7db1939d",
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/trees/52e9e6f204b681e2a4e6bd131a4e690c7db1939d"
+    },
+    {
+      "path": "theories/qcd/src/matlab/.gitkeep",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "size": 1,
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/blobs/8b137891791fe96927ad78e64b0aad7bded08bdc"
+    },
+    {
+      "path": "theories/qcd/src/matlab/gtb_qcd_02_optimize.m",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "76f00f42624e5f794712a0577ab7b17525b63368",
+      "size": 6278,
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/blobs/76f00f42624e5f794712a0577ab7b17525b63368"
+    },
+    {
+      "path": "theories/qcd/src/matlab/optimize_core.m",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "539402a955998817ef52ebf0a2974d47601ffc3c",
+      "size": 5424,
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/blobs/539402a955998817ef52ebf0a2974d47601ffc3c"
+    },
+    {
+      "path": "theories/qcd/src/python",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "5bfad2b3f8e483b6b173d8aaff19597e84626f15",
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/trees/5bfad2b3f8e483b6b173d8aaff19597e84626f15"
+    },
+    {
+      "path": "theories/qcd/src/python/.gitkeep",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "size": 1,
+      "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/blobs/8b137891791fe96927ad78e64b0aad7bded08bdc"
+    }
+  ],
+  "truncated": false
+}

@@ -1,0 +1,46 @@
+{
+  "scope": "Only auxiliary candidate-generation mu sequence; no physical input change; no phase data used",
+  "runs": [
+    {
+      "run": "M50_L12_phase_I_04",
+      "mu": 0.0005676183183295568,
+      "tau": 0.3282114934076873,
+      "iterations": 11,
+      "amplitude_passed": true,
+      "joint_passed": false,
+      "infeasibility_certified": false,
+      "center_mus": []
+    },
+    {
+      "run": "M50_L12_phase_I_05",
+      "mu": 5.676183183295568e-05,
+      "tau": 0.11110853962468768,
+      "iterations": 11,
+      "amplitude_passed": true,
+      "joint_passed": false,
+      "infeasibility_certified": false,
+      "center_mus": []
+    },
+    {
+      "run": "M50_L12_phase_I_06",
+      "mu": 5.676183183295568e-06,
+      "tau": 0.0696672104618125,
+      "iterations": 10,
+      "amplitude_passed": false,
+      "joint_passed": false,
+      "infeasibility_certified": false,
+      "center_mus": []
+    },
+    {
+      "run": "M50_L12_phase_I_07",
+      "mu": 5.676183183295568e-07,
+      "tau": 0.05841602727216649,
+      "iterations": 10,
+      "amplitude_passed": false,
+      "joint_passed": false,
+      "infeasibility_certified": false,
+      "center_mus": []
+    }
+  ],
+  "stopped_after_four_prespecified_levels": true
+}

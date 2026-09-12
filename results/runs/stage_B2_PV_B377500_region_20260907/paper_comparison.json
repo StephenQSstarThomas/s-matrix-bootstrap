@@ -1,0 +1,90 @@
+{
+  "mode": "pure",
+  "epsilon": null,
+  "feasible_points": 38,
+  "outer_closed": true,
+  "max_support_gap": 12478.112934825751,
+  "direction_coverage": {
+    "unique_normals": 36,
+    "angles_degrees": [
+      0.0,
+      71.71665386818373,
+      88.3033964509372,
+      89.29475462499657,
+      90.0,
+      91.85229147052449,
+      93.60992159502777,
+      106.18948225469533,
+      118.83552635946734,
+      127.6331578727691,
+      134.86042507873032,
+      141.99040045261677,
+      151.60561538138046,
+      161.07186959892033,
+      170.13725183918112,
+      180.0,
+      203.6443783544556,
+      228.80319192975685,
+      242.2173024311597,
+      250.18011121021388,
+      259.56123563204625,
+      264.1233165863573,
+      267.3509593684565,
+      268.25470178618235,
+      270.0,
+      272.02241065689515,
+      275.2187497310838,
+      281.1591076076261,
+      286.87072059717883,
+      291.44494788566084,
+      298.34389452663396,
+      306.5851260632148,
+      315.73025903151336,
+      326.0103972377872,
+      336.8804257210241,
+      348.18053387377546
+    ],
+    "largest_gap_degrees": 71.71665386818373,
+    "positive_span": true,
+    "domain_half_planes": 0
+  },
+  "computed_min": [
+    -2.9025173125294828,
+    -0.7341874510146442
+  ],
+  "computed_max": [
+    2.2348893985478413,
+    0.07946458317167251
+  ],
+  "paper_min": [
+    -2.901953925935337,
+    -0.7335887012742578
+  ],
+  "paper_max": [
+    2.232886819039312,
+    0.07932269069749306
+  ],
+  "reference_marker_count": 498,
+  "reference_marker_max_distance_to_computed_inner": 0.0041377735674993305,
+  "reference_marker_max_distance_to_computed_outer": 0.0,
+  "computed_inner_vertex_max_distance_to_reference_marker_hull": 0.015991902590260218,
+  "computed_outer_vertex_max_distance_to_reference_marker_hull": 0.019117708071180402,
+  "comparison_estimates_not_certificates": true,
+  "scope": "Float geometric comparison of saved polygons and extracted PDF marker centers; not an author-region certificate or an additional optimization.",
+  "inner_minus_paper_min": [
+    -0.0005633865941456762,
+    -0.0005987497403864284
+  ],
+  "inner_minus_paper_max": [
+    0.002002579508529223,
+    0.00014189247417945028
+  ],
+  "largest_computed_inner_difference": {
+    "distance": 0.015991902590260218,
+    "target": [
+      2.2300738622368224,
+      0.031507193497752196
+    ],
+    "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_019_adaptive/report.json"
+  }
+}

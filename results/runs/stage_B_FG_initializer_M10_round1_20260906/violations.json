@@ -1,0 +1,66 @@
+{
+  "violations": [],
+  "high_spin": [
+    {
+      "isospin": 0,
+      "cosine": -0.7197754964398665,
+      "polynomial_value": "[-6541.66007744397869393195812510 +/- 3.15e-27]"
+    },
+    {
+      "isospin": 0,
+      "cosine": 0.42432469586723204,
+      "polynomial_value": "[-24.9898109842288328572039979169 +/- 3.97e-29]"
+    },
+    {
+      "isospin": 0,
+      "cosine": 0.8588710995830459,
+      "polynomial_value": "[-27.7943162874804614374820212057 +/- 1.14e-29]"
+    },
+    {
+      "isospin": 0,
+      "cosine": -0.04853439024156623,
+      "polynomial_value": "[-201.515556333916817297177583448 +/- 1.68e-28]"
+    },
+    {
+      "isospin": 1,
+      "cosine": -0.6648598297273154,
+      "polynomial_value": "[-23.7283476831556471526175602908 +/- 8.12e-30]"
+    },
+    {
+      "isospin": 1,
+      "cosine": 0.8090407615694731,
+      "polynomial_value": "[-7.01486229551642666300103250494 +/- 2.08e-31]"
+    },
+    {
+      "isospin": 1,
+      "cosine": 0.029723917161908593,
+      "polynomial_value": "[-43.1406635738523485075072294961 +/- 3.46e-29]"
+    },
+    {
+      "isospin": 2,
+      "cosine": -0.7173558833524665,
+      "polynomial_value": "[-3813.25586063222949687049780591 +/- 3.39e-27]"
+    },
+    {
+      "isospin": 2,
+      "cosine": 1.0,
+      "polynomial_value": "[-0.340169172080039800227118807783 +/- 1.99e-31]"
+    },
+    {
+      "isospin": 2,
+      "cosine": 0.5251658152365449,
+      "polynomial_value": "[-24.9266193290584143245656220612 +/- 3.11e-29]"
+    },
+    {
+      "isospin": 2,
+      "cosine": 0.9648209738218465,
+      "polynomial_value": "[-0.0201147539953702504671956720927 +/- 4.38e-32]"
+    },
+    {
+      "isospin": 2,
+      "cosine": -0.01651687973366404,
+      "polynomial_value": "[-77.2177737016957658298179561183 +/- 4.26e-29]"
+    }
+  ],
+  "scope": "Global high-spin necessary polynomial separation; finite-wave independent audit remains required"
+}

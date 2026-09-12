@@ -1,0 +1,34 @@
+{
+  "target": "He\u2013Kruczenski2309.12402v3 Fig3/4 finiteprototype",
+  "preparation": "results/runs/stage_A_M50_L10_20260906",
+  "M": 50,
+  "L_per_isospin": 10,
+  "scattering_samples": 1500,
+  "amplitude_variables": 3876,
+  "center": 0,
+  "infinity": "free",
+  "unitarity_scope": "sampled",
+  "global_high_spin_enforced": false,
+  "additional_constraints": null,
+  "density_limit": 377500,
+  "density_norm": "combined ordinaryL4 ofnodal actualrho1 andrho2 uppertriangle",
+  "chiral_norm": "two separate4-vectorL2 balls; conditional literalreading ofEq3.64",
+  "epsilons": [
+    0.006,
+    0.004,
+    0.002,
+    0.001,
+    0.0006,
+    0.0002
+  ],
+  "numerical_method": {
+    "solver": "Clarabel",
+    "backend": "faer",
+    "coordinates": "subtracted",
+    "density_cone": "soc",
+    "scattering_scaling": "HK2403(8.62) Lambda; positive equivalenttransform"
+  },
+  "source_scope": "v3physicalinputs/nodes/spins; analyticfinite-sineinterpolation andlaterdensitybound explicitlyconditional; notclaimedrecoveryofunpublishedauthorcode",
+  "physical_scope": "All declared finite disks enforced. Knownoffgrid/tail/FG diagnosticsreportedseparately. Nocontinuumclaim.",
+  "source_snapshot": "/tmp/smatrix_B_sampled_source_z02q2kib"
+}

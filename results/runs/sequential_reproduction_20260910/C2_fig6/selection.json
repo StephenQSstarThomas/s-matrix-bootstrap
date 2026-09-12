@@ -1,0 +1,79 @@
+{
+  "rule": "Converged upper IR support at preregistered Weinberg x before phase evaluation",
+  "reference": [
+    0.07332139057293466,
+    -0.00488809270486231
+  ],
+  "target": [
+    0.07332138984905495,
+    -0.004116720289331671
+  ],
+  "epsilon": 0.002,
+  "model_signature": {
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "free",
+    "unitarity_scope": "sampled",
+    "prescription": "analytic-cardinal",
+    "chiral_norm": "separate-l2",
+    "scattering_samples": 1500,
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/A2_M50_L10",
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": false,
+    "additional_constraints": null,
+    "sampling_nodes": 50
+  },
+  "source_reports": [
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/C1_green_balanced/report.json"
+  ],
+  "coefficients_mixed": false,
+  "selection_uses_phase_data": false,
+  "representative_center_converged": true,
+  "exact_extremizer_claimed": false,
+  "regional_geometry_ready": false,
+  "local_upper_boundary_ready": true,
+  "local_upper_boundary": {
+    "distance_upper": 1.0882686918858297e-06,
+    "scaled_distance_upper": 0.0005441343459429148,
+    "budget": 0.01
+  },
+  "original_H_feasibility": {
+    "upper": 5e-324,
+    "enclosure": "0",
+    "disk": 0.0,
+    "chiral": 0.0,
+    "density_residual": 0.0,
+    "tail_support": 0.0,
+    "chiral_norm": "separate-l2",
+    "objective_kind": "target_plane",
+    "scope": "Exact saved float64 H; angular quadrature error excluded",
+    "primal_feasible": true,
+    "lower": -5e-324,
+    "minimum_margin_enclosure": "[4.6715205986425996895e-85 +/- 4.10e-105]",
+    "density_norm": 375430.65093208576,
+    "targets": [
+      "[0.07332138984903147304261852 +/- 2.49e-27]",
+      "[-0.004116720289331665084396096 +/- 2.69e-28]"
+    ],
+    "tail_margin_enclosures": []
+  },
+  "vertices": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.07332138984165087,
+      -0.005525090196529315
+    ],
+    [
+      0.10588080580475161,
+      -0.006854261420382254
+    ],
+    [
+      0.07332138984903147,
+      -0.004116720289331665
+    ]
+  ]
+}

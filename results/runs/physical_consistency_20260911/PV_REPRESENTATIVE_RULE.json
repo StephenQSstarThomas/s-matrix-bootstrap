@@ -1,0 +1,72 @@
+{
+  "status": "preregistered_before_new_PV_phases",
+  "prescription": "pv-midpoint",
+  "scope": "Original mixed collocation finite program; no global analytic amplitude certificate asserted",
+  "M": 50,
+  "L": 10,
+  "scattering_disks": 1500,
+  "preparation": "results/runs/stage_B_pv_M50_L10_prepare_20260907",
+  "current_preparation": "results/runs/mainline_alignment_20260909/D1_hard_M50",
+  "operator_sha256": {
+    "results/runs/stage_B_pv_M50_L10_prepare_20260907/report.json": "05de7c34b29385da3fb3d8d355839daa582b893fc8218aeafffae7fa90ebf6a0",
+    "results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz": "49ffd2d9e769bd56917ec6a74b752aa423e7563c2ed1d403ff6b94bf4707a0e5",
+    "results/runs/mainline_alignment_20260909/D1_hard_M50/report.json": "00438c6833295939d894d9a0eb7f54803012a3789884dbe80680a2e9b0268dfa",
+    "results/runs/mainline_alignment_20260909/D1_hard_M50/current_data.npz": "ff8d5809c68515899780eb4793c4d2bb42dbf95d62fdb805d3b60044d071eac9",
+    "results/runs/mainline_alignment_20260909/D1_hard_M50/gram_linear.npz": "5c27a2e40e4cbb45f7ad8e01d8b448dc754229654fe2f3ce0245120e377ac724",
+    "results/runs/mainline_alignment_20260909/D1_hard_M50/moment_linear.npz": "04e022b5aed199efc485438b3fb1b52000d9a26f14ef3c4b942383391cbaa0a4",
+    "results/runs/mainline_alignment_20260909/D1_hard_M50/ff_cap_linear.npz": "79b38a0cda214c9b0a4aa6645e1271556cef9f13cc1113a9bc49bd42480a2920"
+  },
+  "chiral_norm": "separate-l2",
+  "chiral_tolerance": 0.002,
+  "chiral_norm_is_declared_conditional_choice": true,
+  "historical_chiral_norm_inference_output_assisted": true,
+  "density_limit": 377500,
+  "density_recipe": "100 * [M^2+M*(M+1)/2]; declared recipe, not a uniquely recovered 2309 implementation value",
+  "FESR": "printed; four independent raw absolute .002 boxes; hard-midpoint",
+  "mass_rule": "average",
+  "infinity": "free",
+  "new_endpoint_constraints": false,
+  "new_asymptotic_constraints": false,
+  "reference_x": 0.07332139057293466,
+  "reference_origin": "5 / [16*pi^2*(92/140)^2]",
+  "reference_role": "f_pi reference used for point selection, not an additional absolute chiral-amplitude constraint",
+  "tip": {
+    "direction": [
+      1,
+      0
+    ],
+    "support_gap": 0.0001
+  },
+  "ref": {
+    "fixed_x": 0.07332139057293466,
+    "direction": [
+      0,
+      500
+    ],
+    "support_gap": 0.002
+  },
+  "mid": {
+    "fixed_x_rule": "(accepted_tip_x+reference_x)/2",
+    "direction": [
+      0,
+      500
+    ],
+    "support_gap": 0.002
+  },
+  "chiral_barrier_weight": 750,
+  "require_center": true,
+  "complete_C_ImF_R_preserved_after_selection": true,
+  "old_ref_coordinate_is_output_assisted_and_not_inherited": true,
+  "legacy_caches_not_reused_without_coordinate_proof": true,
+  "new_phase_evaluations_started": false,
+  "comparison": "Native S0/S2/P1 phase, eta, P1 intensity and native current spectra; do not invent PV off-node continuation",
+  "sequence": [
+    "finish active fixed Watson goal1",
+    "replay same-input PV tip candidate with current original-operator dual audit",
+    "fresh independent tip support",
+    "same-PV IR reference control and UV reference/mid supports",
+    "freeze complete three representatives before phase inspection",
+    "native evaluation and comparisons",
+    "decide required resolution/region reuse from matched evidence"
+  ]
+}

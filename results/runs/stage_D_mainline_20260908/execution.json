@@ -1,0 +1,22 @@
+{
+  "frozen_solver_source": "/tmp/smatrix_D_joint_zo7tibfu",
+  "cutoff": "clipped-phi",
+  "solver": "Clarabel faer",
+  "solver_seconds": 300,
+  "outer_seconds": 480,
+  "scientific_concurrency": 1,
+  "optimization_scope": "D3 complete joint witness only; E1 full-space support remains",
+  "second_frozen_solver_source": "/tmp/smatrix_D_joint_scaled_v4nvzaey",
+  "second_change": "Only affine origin rho proportional to k squared; all constraints, solver and budget unchanged",
+  "third_frozen_solver_source": "/tmp/smatrix_D_joint_QR_hhei1qs8",
+  "third_change": "Invertible QR column preconditioner only; physical problem and dual unscaling unchanged",
+  "finished": true,
+  "initial_attempt_settings_note": "The preceding settings describe initial full-space attempts, not the successful witness",
+  "all_attempts": "ATTEMPTS.json",
+  "final_method": "Current SDP over all 204 saved same-model B feasible amplitudes; explicit chiral balls; original full M50 audit",
+  "successful_run": "D3_hull_009",
+  "final_solver_cap_seconds": 60,
+  "final_supervisor_cap_seconds": 120,
+  "final_solver_seconds": 0.263038915,
+  "final_total_seconds": 5.779212708817795
+}

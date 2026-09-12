@@ -1,0 +1,755 @@
+{
+  "artifact_sha256": {
+    "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.extra_bits.npz": "0d51fa123168977667552e8906aec56bd6ad5a0c0b1f1e549c7ba40319bf5d6e",
+    "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.json": "236209537ab81bc51e8e21a2fd6aa98167321711112eb37c8ec653c1ad2287c2",
+    "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.modular.npy": "5b1d4f472757924981ed0d26310b9402e1787423695750880394d29c51fe3ba8",
+    "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.prepared.json": "fde6819094222e872b1a44d3e7f3b3da83d6459b8f97c07989a886bde09d04cc",
+    "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.progress.jsonl": "64957c8af0cbb79337ada52a8c7ab87710743aa7521bd4e509789e47747aa50f",
+    "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.status.json": "7f3756dfc6091d14f40c2d1be825e6d4c7acfbe07247ea68474522d6a962934c",
+    "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.input_bits.npz": "64259750c62dc34edbd0db9eb9d7939c3545befacc8862fc6c84f4eec9a722be",
+    "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.json": "00f1c9fa2439bb59983273bdc01b7dfb81403d61fca5cda9bf28e7a68d993511",
+    "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.modular.npy": "bd612922c5dd67fe9e65870c8d3e0d0c685008ce43677adc70a7e49ef40aea51",
+    "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.prepared.json": "e59c6b24e62ac961b8b68b9b7a23362bdd448d89160534e5e9fa3537171606d0",
+    "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.progress.jsonl": "b9e93000da654a140d494f81df98c7ae24ef38657025dfdb3b7bcc319fca926c",
+    "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.status.json": "97b0a59685555960b7c22838b1872956724730ac90e11b14ecd4b6015658fe96",
+    "results/gauge_barrier_N10_source_grid_union.audit.json": "1f4ff25ccc8b31610ff3d0698687f2c9f262d5207417129cb1d78fda606a3d15",
+    "results/gauge_barrier_N10_source_grid_union.conic.json": "5f3948845e87d9e47ecd154d6442b5cf7febb0ad1394f6b80e200067cd776b01",
+    "results/gauge_barrier_N10_source_grid_union.edge_certificate.json": "5e8ca4073b15661ad4ed4a8ffca4fa09decc4eeb848e0084881464c11b2277dc",
+    "results/gauge_barrier_N10_source_grid_union.materialization_check.json": "7951cefd88336b57636b6b09f0e878c6b2bbbe625566ceb7dbdd9d0d23fbad41",
+    "results/gauge_barrier_N10_source_grid_union.operators.json": "d1ba47bc60508ce33620d48e951774c715e81ec115371bb2f316b47a3e67f7d4",
+    "results/gauge_barrier_N10_source_grid_union.original.conic.json": "a460d45a87246fa266e9413ec6a2b4f651295968c33d36acd88bfef778dc3e32",
+    "results/gauge_barrier_N10_source_grid_union.original_primal.json": "3db99037919124d1eef36b738229037f18dc5eb81e56ca417b2b3db970701040",
+    "results/gauge_barrier_N10_source_grid_union.parent_finite_audit.json": "9e6fa78577fc7db6427479c3f464f465e51fb7e7e1c4eb0c2c077cdbd893a0b8",
+    "results/gauge_barrier_N10_source_grid_union.physical_candidate.json": "42b2f6abaa2a2ddfdd974dedf0e8fe29314b368cb4cf20859a85cd5cbfb602f3",
+    "results/gauge_barrier_N10_source_grid_union.primal_start.json": "1309ba0594cd1456ba315313c96e349d921e59f86f1600786f7b3f9ba3003e6b",
+    "results/gauge_barrier_N10_source_grid_union.retention_check.json": "5c562b3b70d5bf0a7ae73e7f1fad182ff9da7a4997790cd017d92069879b9b2e",
+    "results/gauge_barrier_N10_source_grid_union.rounded_scattering_transfer.json": "d5102cfa853104929a1e507e9ce53e6a58dcf0c03f8b1cc5316a35ea2d083a7c",
+    "results/gauge_barrier_N10_source_grid_union.seed.json": "6127f8dde8345067d1f80a788d43e55a3e8f18e3ad3f9fa1cfc9c3194b5e6dd9",
+    "results/gauge_barrier_N10_source_grid_union.untrained_scattering_certificate.json": "82be5a399a5d77f91bbe15c0eae35a4cedceea896cacc5560efb2afda68c4c00",
+    "results/moment_norm_prescription_compatibility.json": "6a91ad0a90a712fe88b95a6ab255d507edaf856859d903edad182172a54809da",
+    "results/source_M50_exact_current_fiber_256.json": "dd480c47f5a16048b64c951bb45872529ae48c33f646bb6ff9e77d58eaef06b2",
+    "results/source_M50_shared_G_gauge_fiber.independent_review.json": "b8047a74d7880354c4d6fe260821dd0a4f9d03423bcca70a9542d8f3c586d0c5",
+    "results/source_M50_shared_G_gauge_fiber.input_bits.npz": "7278e1090081e240b60c54d9dbfd646194a27b82495f0f608bef4bd147010f74",
+    "results/source_M50_shared_G_gauge_fiber.json": "b938d1476203ef9e1b6f68440930c9cbf905aa0aa6cd1728ff895244de1d439b",
+    "results/source_master_N50_last_node_l2.elementary_J_review.json": "ab342f6fb1f9674e9b186bd6edd088b08ada3dea80ff839e2415bf9449f33a57",
+    "results/source_master_N50_last_node_l2.json": "224ca34f48bbb7b0245394f42e86a15e05509bc6aa190e6ef2cd212f6539eeae"
+  },
+  "artifact_count": 33,
+  "embedded_source_checks": [
+    {
+      "where": "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.json",
+      "path": "/home/shiqiu/s-matrix-bootstrap/scripts/audit_source_chiral_dyadic_rank.py",
+      "sha256": "be25df5486ae2b76c476fec2207e080161ef9145785e9b8da882173320dcf5b8"
+    },
+    {
+      "where": "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.prepared.json",
+      "path": "/home/shiqiu/s-matrix-bootstrap/scripts/audit_source_chiral_dyadic_rank.py",
+      "sha256": "be25df5486ae2b76c476fec2207e080161ef9145785e9b8da882173320dcf5b8"
+    },
+    {
+      "where": "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.prepared.json",
+      "path": "src/smatrix_bootstrap/amplitudes.py",
+      "sha256": "e56a90e92c00daeb5f8906471745a35bf7d2963b222faf24dede5dd11d4635eb"
+    },
+    {
+      "where": "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.prepared.json",
+      "path": "src/smatrix_bootstrap/dyadic_modular_rank.py",
+      "sha256": "d756339f1a2e4aabfa340dd92ced9c93a22a711f0f69a372c55502f4a94ed513"
+    },
+    {
+      "where": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.json",
+      "path": "/home/shiqiu/s-matrix-bootstrap/scripts/audit_source_dyadic_rank.py",
+      "sha256": "051b16a681f8a8ff109c974147f1916fabad774407f413b419354a09503cdb67"
+    },
+    {
+      "where": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.prepared.json",
+      "path": "/home/shiqiu/s-matrix-bootstrap/scripts/audit_source_dyadic_rank.py",
+      "sha256": "051b16a681f8a8ff109c974147f1916fabad774407f413b419354a09503cdb67"
+    },
+    {
+      "where": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.prepared.json",
+      "path": "src/smatrix_bootstrap/dyadic_modular_rank.py",
+      "sha256": "d756339f1a2e4aabfa340dd92ced9c93a22a711f0f69a372c55502f4a94ed513"
+    },
+    {
+      "where": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.prepared.json",
+      "path": "scripts/audit_collocation_nullspace.py",
+      "sha256": "9c6f6ddea3c605cf10f5efb45c4ad09f55dfeb063ce7205815045cd7701a6804"
+    },
+    {
+      "where": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.prepared.json",
+      "path": "src/smatrix_bootstrap/amplitudes.py",
+      "sha256": "e56a90e92c00daeb5f8906471745a35bf7d2963b222faf24dede5dd11d4635eb"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json",
+      "path": "/home/shiqiu/s-matrix-bootstrap/scripts/build_source_grid_union.py",
+      "sha256": "bcfef3f81ec129d77b43947c860ca7a7fdfbaf3ee597965c54de3d42f09e2202"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json",
+      "path": "src/smatrix_bootstrap/source_grid_union.py",
+      "sha256": "e36dfd8d8a638486d450d1b253d87980126b6920750537cbf5824cfea236df7e"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json",
+      "path": "src/smatrix_bootstrap/scattering_cut_extension.py",
+      "sha256": "8209ce6f7b22376d0090b4c151a0885877f3bd88dbcbf97cf54a09daf1e4438e"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json",
+      "path": "src/smatrix_bootstrap/dyadic_conic_scaling.py",
+      "sha256": "f2de9efe7d9a0f5e1ba1eb24cd6b26a676cb86fa2b2ffa960e76ab7c13a8bafd"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json",
+      "path": "src/smatrix_bootstrap/canonical_seed.py",
+      "sha256": "6a71c56662c2a7845f921ef8959ab92a5e74157c866e303aae41cbddf583f7f6"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json",
+      "path": "src/smatrix_bootstrap/amplitudes.py",
+      "sha256": "e56a90e92c00daeb5f8906471745a35bf7d2963b222faf24dede5dd11d4635eb"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json",
+      "path": "src/smatrix_bootstrap/optimization.py",
+      "sha256": "5768808dfc810642171063429fdfc922848e6446d58f1090c25b0d0781a8f383"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json",
+      "path": "scripts/recover_barrier_primal.py",
+      "sha256": "f8dbb912c80f3b2c449c203e488823fd85460ce4f3325d7d8407bb6e1236059a"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json",
+      "path": "references/2309.12402v3-source/prd_submission_2.tex",
+      "sha256": "39ec9e10da96f9c09c8db9e7d3ac63f342b1214df592896281adda727fb6be84"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.original_primal.json",
+      "path": "/home/shiqiu/s-matrix-bootstrap/scripts/recover_barrier_primal.py",
+      "sha256": "f8dbb912c80f3b2c449c203e488823fd85460ce4f3325d7d8407bb6e1236059a"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.original_primal.json",
+      "path": "src/smatrix_bootstrap/canonical_seed.py",
+      "sha256": "6a71c56662c2a7845f921ef8959ab92a5e74157c866e303aae41cbddf583f7f6"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.original_primal.json",
+      "path": "src/smatrix_bootstrap/conic_residuals.py",
+      "sha256": "134f74cfb298f14a26519f77a38e2d8e85af22f8981a672573b7f8fa9f689580"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.original_primal.json",
+      "path": "src/smatrix_bootstrap/julia_bridge.py",
+      "sha256": "85631c190d93ab18797c8c971d41a1365c08306accf2dad5a5bfe9b19498767b"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "/home/shiqiu/s-matrix-bootstrap/scripts/materialize_barrier_candidate.py",
+      "sha256": "929f68cadc0e0384ca30663631e58ce43b6ea023262f3b724c9141572d6e7ae4"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/__init__.py",
+      "sha256": "917f23620fc4ae3e62557bb42621de3ae4238bacbd56e4a3eea10d11b1faab0f"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/amplitudes.py",
+      "sha256": "e56a90e92c00daeb5f8906471745a35bf7d2963b222faf24dede5dd11d4635eb"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/asymptotics.py",
+      "sha256": "d3cf8c482015d408e6fe45789f398ae9e180d57d01194779e632fffe4b59c7a4"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/barrier_decrement.py",
+      "sha256": "04f76bdefe02bbcf80aeef2c22587bf126c45460fa215be025a9d93b9ee26838"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/canonical_seed.py",
+      "sha256": "6a71c56662c2a7845f921ef8959ab92a5e74157c866e303aae41cbddf583f7f6"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/conditional_spectral_center.py",
+      "sha256": "0b4ff7eddcf773e584feaaf6e91f245ca9c077b9460b3cc8aa814cf4cb1180f5"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/conic_residuals.py",
+      "sha256": "134f74cfb298f14a26519f77a38e2d8e85af22f8981a672573b7f8fa9f689580"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/coupled_gauge.py",
+      "sha256": "4004abb936b3ec5a686df546549a71c1ac0b51cb2d1b982f39b047628815eae3"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/degree_promotion.py",
+      "sha256": "86d1d83fcde6aa9c8520689c34ff0b02edb469c49ada69477e0946e35c01874f"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/dyadic_conic_scaling.py",
+      "sha256": "f2de9efe7d9a0f5e1ba1eb24cd6b26a676cb86fa2b2ffa960e76ab7c13a8bafd"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/dyadic_modular_rank.py",
+      "sha256": "d756339f1a2e4aabfa340dd92ced9c93a22a711f0f69a372c55502f4a94ed513"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/exact_interval_audit.py",
+      "sha256": "8742fd409b7b7e8b5c0ee79122dd8e73090888bd00b411a06546738bf97188ed"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/feasibility.py",
+      "sha256": "c55d750cfed705015ff33be1aefcc61d027ac254fc4b5414f9bfb925cbeb982e"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/finite_spectral_projection.py",
+      "sha256": "3e79d4f77dc2b21ee720996b398708148c20a598f95f244cca8c3541a7bfb115"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/form_factor_envelope.py",
+      "sha256": "1f81af4a9c718edca2f0cf88747f81ab0619446e89dfc2f1276f6529a2421fce"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/full_barrier_newton.py",
+      "sha256": "2812541a42e357ade7526b57d90b34953144dc1dd083c348d7521f1c7f00a89d"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/gauge_boundary.py",
+      "sha256": "6032b61efc3438680097283ffc85b4dad09a82d3453fa2f22abe6a8b7b78bf5a"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/gauge_ff_exchange.py",
+      "sha256": "2aeeca26c9f5bd61fb75ec39a4c639656e8f3178d36eff31ddd0385496f4c6ee"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/gauge_inputs.py",
+      "sha256": "3aed562380695d2ce015f6dfd95f0d4084a57e599586017722b815b2daa77883"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/gauge_joint_exchange.py",
+      "sha256": "066e8a696a8e97f92ec502352369ea226a88a18fc30f975a73c8bde66562763c"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/impact_closed_form.py",
+      "sha256": "933fcc46194aac8a6250abb5322e1ed3bd299bca5ba2058429962ec955830a7b"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/impact_constraints.py",
+      "sha256": "af0812e2380c264c9b7e9b49851d7efcefd5af869fdd60189919977519cb71d5"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/impact_global.py",
+      "sha256": "d4c7e35c584a131cee1b7ccc071b13ac990db11a4c752656a48d345991ff8869"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/impact_parameter.py",
+      "sha256": "e4a646d01644f484cf98458c305882d2e41af4b502ef83e780ef6956cceb9c58"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/interval_positivity.py",
+      "sha256": "78849912bf7182491b261c1a422de64cc64291c5df6f874c7177f5c31af3ec60"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/julia_bridge.py",
+      "sha256": "85631c190d93ab18797c8c971d41a1365c08306accf2dad5a5bfe9b19498767b"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/large_spin.py",
+      "sha256": "d0eabfa82aa8bbcf4cee82ee15b97fa9b538f193bed5b3e82769bb059f888756"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/optimization.py",
+      "sha256": "5768808dfc810642171063429fdfc922848e6446d58f1090c25b0d0781a8f383"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/phase_capacity.py",
+      "sha256": "6bf1885639863de8a2378f82079696131903014cf8bf48af39b9a1cdbe32d375"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/primal_barrier.py",
+      "sha256": "2fb51f471daa32cdd51553293ec7472425f12d562d60796a0e6f8fafa3e8d789"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/rational_partial_wave.py",
+      "sha256": "f53201c82e0cb15443dec2c67f6c9c8fb8d7aa1647bc2824081ad1a81b1ea620"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/scalar_bootstrap.py",
+      "sha256": "36f448b054bd1d274b459da65a44cd69f9ff81fdf1177270616b8df0ade547f5"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/scattering_cut_extension.py",
+      "sha256": "8209ce6f7b22376d0090b4c151a0885877f3bd88dbcbf97cf54a09daf1e4438e"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/source_gauge_fiber.py",
+      "sha256": "93ee4fa47deca04ced7f0d631a8e4aa325c9a1e1f894d37c1dc162fd6f49cc35"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/source_grid_union.py",
+      "sha256": "e36dfd8d8a638486d450d1b253d87980126b6920750537cbf5824cfea236df7e"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/spectral_face_reduction.py",
+      "sha256": "968156ebf2c9ff8b5125e1afd09a86504f2bee4b9dc5a893f3124efb23d1e9a2"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/validated_partial_wave.py",
+      "sha256": "1f72e568cc1319e8a3cbddaaeab5db894641daf7d9393d0b93ab2d4026c68f2d"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "path": "src/smatrix_bootstrap/validation.py",
+      "sha256": "23d8c36e3ba287d37f6ec834189495c52e91daba93cd7602e48c45b038455909"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.untrained_scattering_certificate.json",
+      "path": "/home/shiqiu/s-matrix-bootstrap/scripts/certify_rational_partial_wave.py",
+      "sha256": "c36ec04dea4bd841618bb8f46286534ba3748f6f1e5add3080ac5af514af33ad"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.untrained_scattering_certificate.json",
+      "path": "src/smatrix_bootstrap/rational_partial_wave.py",
+      "sha256": "f53201c82e0cb15443dec2c67f6c9c8fb8d7aa1647bc2824081ad1a81b1ea620"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.untrained_scattering_certificate.json",
+      "path": "src/smatrix_bootstrap/amplitudes.py",
+      "sha256": "e56a90e92c00daeb5f8906471745a35bf7d2963b222faf24dede5dd11d4635eb"
+    },
+    {
+      "where": "results/source_M50_shared_G_gauge_fiber.json",
+      "path": "/home/shiqiu/s-matrix-bootstrap/scripts/construct_source_gauge_fiber.py",
+      "sha256": "f14db10d0867501d895122b3612508a8414d2268425be2645701a92f9e66820b"
+    },
+    {
+      "where": "results/source_M50_shared_G_gauge_fiber.json",
+      "path": "src/smatrix_bootstrap/source_gauge_fiber.py",
+      "sha256": "93ee4fa47deca04ced7f0d631a8e4aa325c9a1e1f894d37c1dc162fd6f49cc35"
+    },
+    {
+      "where": "results/source_M50_shared_G_gauge_fiber.json",
+      "path": "src/smatrix_bootstrap/gauge_inputs.py",
+      "sha256": "3aed562380695d2ce015f6dfd95f0d4084a57e599586017722b815b2daa77883"
+    },
+    {
+      "where": "results/source_master_N50_last_node_l2.json",
+      "path": "/home/shiqiu/s-matrix-bootstrap/scripts/validate_source_master_row.py",
+      "sha256": "380b061c78f98fe8b9e8f073d1a6d533fce0c5ffd43a9d4453e36a7e3b93ce77"
+    },
+    {
+      "where": "results/source_master_N50_last_node_l2.json",
+      "path": "src/smatrix_bootstrap/partial_wave_master_prototype.py",
+      "sha256": "c5105378b575dfcc1fa26e1b4986435d93282a70dcdf5229c6e770fb48666260"
+    },
+    {
+      "where": "results/source_master_N50_last_node_l2.json",
+      "path": "src/smatrix_bootstrap/rational_partial_wave.py",
+      "sha256": "f53201c82e0cb15443dec2c67f6c9c8fb8d7aa1647bc2824081ad1a81b1ea620"
+    },
+    {
+      "where": "results/source_master_N50_last_node_l2.json",
+      "path": "src/smatrix_bootstrap/amplitudes.py",
+      "sha256": "e56a90e92c00daeb5f8906471745a35bf7d2963b222faf24dede5dd11d4635eb"
+    }
+  ],
+  "input_hash_checks": [
+    {
+      "where": "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.json.prepared_path",
+      "path": "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.prepared.json",
+      "sha256": "fde6819094222e872b1a44d3e7f3b3da83d6459b8f97c07989a886bde09d04cc"
+    },
+    {
+      "where": "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.prepared.json.base_prepared_path",
+      "path": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.prepared.json",
+      "sha256": "e59c6b24e62ac961b8b68b9b7a23362bdd448d89160534e5e9fa3537171606d0"
+    },
+    {
+      "where": "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.prepared.json.base_input_bits_path",
+      "path": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.input_bits.npz",
+      "sha256": "64259750c62dc34edbd0db9eb9d7939c3545befacc8862fc6c84f4eec9a722be"
+    },
+    {
+      "where": "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.prepared.json.extra_bits_path",
+      "path": "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.extra_bits.npz",
+      "sha256": "0d51fa123168977667552e8906aec56bd6ad5a0c0b1f1e549c7ba40319bf5d6e"
+    },
+    {
+      "where": "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.prepared.json.modular_path",
+      "path": "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.modular.npy",
+      "sha256": "5b1d4f472757924981ed0d26310b9402e1787423695750880394d29c51fe3ba8"
+    },
+    {
+      "where": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.json.prepared_path",
+      "path": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.prepared.json",
+      "sha256": "e59c6b24e62ac961b8b68b9b7a23362bdd448d89160534e5e9fa3537171606d0"
+    },
+    {
+      "where": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.json.input_bits_path",
+      "path": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.input_bits.npz",
+      "sha256": "64259750c62dc34edbd0db9eb9d7939c3545befacc8862fc6c84f4eec9a722be"
+    },
+    {
+      "where": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.prepared.json.input_bits_path",
+      "path": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.input_bits.npz",
+      "sha256": "64259750c62dc34edbd0db9eb9d7939c3545befacc8862fc6c84f4eec9a722be"
+    },
+    {
+      "where": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.prepared.json.modular_path",
+      "path": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.modular.npy",
+      "sha256": "bd612922c5dd67fe9e65870c8d3e0d0c685008ce43677adc70a7e49ef40aea51"
+    },
+    {
+      "where": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.prepared.json.historical_audits",
+      "path": "results/collocation_nullspace_source_N50_M50_L10.json",
+      "sha256": "9531be2e6bde29d4d35586c0806acd7bf8bf17bf33c2016d2a7635f94ed4564a"
+    },
+    {
+      "where": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.prepared.json.historical_audits",
+      "path": "results/collocation_nullspace_source_N50_M50_L10_scaled.json",
+      "sha256": "1387c3c6e5e91fe7ee85646d68f9c20cd6adc144558672944fc3d872cd5cab31"
+    },
+    {
+      "where": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.prepared.json.cache_path",
+      "path": "results/projection_source_N50_M50_convergence.npz",
+      "sha256": "0889baccf5e213c8f381ab9fd9d0f43b90d469934201ce33f5a6b10da6c63076"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json.input_sha256",
+      "path": "results/gauge_barrier_N10_two_scattering_cuts.seed.json",
+      "sha256": "d36e864dd58ad3a0ef654c87ad3b87e82bcef9cc1c976372ff52ed7fb17fffaa"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json.input_sha256",
+      "path": "results/gauge_barrier_N10_two_scattering_cuts.conic.json",
+      "sha256": "0d3cf11278be691d83d3c627d1d325b4a871ef33f0e0935b0bb880da3ea2f6cf"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json.input_sha256",
+      "path": "results/gauge_barrier_N10_two_scattering_cuts.original.conic.json",
+      "sha256": "76bdeb1faef2cb971f1176cff8dba29acacd0508326abb0176885d57a13a477f"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json.input_sha256",
+      "path": "results/gauge_canonical_seed_N10_joint.json",
+      "sha256": "e4caccac19adb795033b6fabd251db0879936f8cbaff9fd7aae740a830f1458e"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json.input_sha256",
+      "path": "results/degree_promotion_N10_joint_metric_prepared.json",
+      "sha256": "8055d575980e7754f4b2944a599cc6caf7025c81ea8ff7f3fdc8ee8b50d3b200"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json.input_sha256",
+      "path": "results/primal_barrier_N10_after_spectral_center.json",
+      "sha256": "7c0aec663675d0034b55295c8cf4bac34126bbc535dc96de97bade110d961cbd"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json.input_sha256",
+      "path": "results/gauge_barrier_N10_two_scattering_cuts.audit.json",
+      "sha256": "10a8ae188df590edd75afc4c8b77b2b46eb8c7e298a2d93e033e448b18c9aff9"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json.input_sha256",
+      "path": "results/final_N10_source_M50_grid_audit.json",
+      "sha256": "88b8d23467077cb4c47cd6643708ab9af29ed8adb013fa28be6bf7d658185af6"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json.input_sha256",
+      "path": "results/gauge_barrier_N10_compactness_audit.json",
+      "sha256": "c3195441805b30258d3a48b18528e9b8c31c4767f1028f0ef539e6f8b50896f3"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json.output_sha256",
+      "path": "results/gauge_barrier_N10_source_grid_union.conic.json",
+      "sha256": "5f3948845e87d9e47ecd154d6442b5cf7febb0ad1394f6b80e200067cd776b01"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json.output_sha256",
+      "path": "results/gauge_barrier_N10_source_grid_union.original.conic.json",
+      "sha256": "a460d45a87246fa266e9413ec6a2b4f651295968c33d36acd88bfef778dc3e32"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json.output_sha256",
+      "path": "results/gauge_barrier_N10_source_grid_union.operators.json",
+      "sha256": "d1ba47bc60508ce33620d48e951774c715e81ec115371bb2f316b47a3e67f7d4"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.audit.json.output_sha256",
+      "path": "results/gauge_barrier_N10_source_grid_union.seed.json",
+      "sha256": "6127f8dde8345067d1f80a788d43e55a3e8f18e3ad3f9fa1cfc9c3194b5e6dd9"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.materialization_check.json.files.candidate.path",
+      "path": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json",
+      "sha256": "42b2f6abaa2a2ddfdd974dedf0e8fe29314b368cb4cf20859a85cd5cbfb602f3"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.materialization_check.json.files.primal.path",
+      "path": "results/gauge_barrier_N10_source_grid_union.original_primal.json",
+      "sha256": "3db99037919124d1eef36b738229037f18dc5eb81e56ca417b2b3db970701040"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.materialization_check.json.files.seed.path",
+      "path": "results/gauge_barrier_N10_source_grid_union.seed.json",
+      "sha256": "6127f8dde8345067d1f80a788d43e55a3e8f18e3ad3f9fa1cfc9c3194b5e6dd9"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.materialization_check.json.files.wrapper.path",
+      "path": "results/gauge_barrier_N10_source_grid_union.primal_start.json",
+      "sha256": "1309ba0594cd1456ba315313c96e349d921e59f86f1600786f7b3f9ba3003e6b"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.materialization_check.json.files.original.path",
+      "path": "results/gauge_barrier_N10_source_grid_union.original.conic.json",
+      "sha256": "a460d45a87246fa266e9413ec6a2b4f651295968c33d36acd88bfef778dc3e32"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.materialization_check.json.files.reduced.path",
+      "path": "results/gauge_barrier_N10_source_grid_union.conic.json",
+      "sha256": "5f3948845e87d9e47ecd154d6442b5cf7febb0ad1394f6b80e200067cd776b01"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.materialization_check.json.files.operators.path",
+      "path": "results/gauge_barrier_N10_source_grid_union.operators.json",
+      "sha256": "d1ba47bc60508ce33620d48e951774c715e81ec115371bb2f316b47a3e67f7d4"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.materialization_check.json.files.finite.path",
+      "path": "results/gauge_barrier_N10_source_grid_union.parent_finite_audit.json",
+      "sha256": "9e6fa78577fc7db6427479c3f464f465e51fb7e7e1c4eb0c2c077cdbd893a0b8"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.materialization_check.json.files.edge.path",
+      "path": "results/gauge_barrier_N10_source_grid_union.edge_certificate.json",
+      "sha256": "5e8ca4073b15661ad4ed4a8ffca4fa09decc4eeb848e0084881464c11b2277dc"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.materialization_check.json.files.rational_scattering.path",
+      "path": "results/gauge_barrier_N10_source_grid_union.untrained_scattering_certificate.json",
+      "sha256": "82be5a399a5d77f91bbe15c0eae35a4cedceea896cacc5560efb2afda68c4c00"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.materialization_check.json.files.rounded_scattering_transfer.path",
+      "path": "results/gauge_barrier_N10_source_grid_union.rounded_scattering_transfer.json",
+      "sha256": "d5102cfa853104929a1e507e9ce53e6a58dcf0c03f8b1cc5316a35ea2d083a7c"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.original_primal.json.barrier_path",
+      "path": "results/gauge_barrier_N10_source_grid_union.primal_start.json",
+      "sha256": "1309ba0594cd1456ba315313c96e349d921e59f86f1600786f7b3f9ba3003e6b"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.original_primal.json.seed_path",
+      "path": "results/gauge_barrier_N10_source_grid_union.seed.json",
+      "sha256": "6127f8dde8345067d1f80a788d43e55a3e8f18e3ad3f9fa1cfc9c3194b5e6dd9"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.original_primal.json.scaled_conic_path",
+      "path": "results/gauge_barrier_N10_source_grid_union.conic.json",
+      "sha256": "5f3948845e87d9e47ecd154d6442b5cf7febb0ad1394f6b80e200067cd776b01"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.original_primal.json.original_conic_path",
+      "path": "results/gauge_barrier_N10_source_grid_union.original.conic.json",
+      "sha256": "a460d45a87246fa266e9413ec6a2b4f651295968c33d36acd88bfef778dc3e32"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.physical_candidate.json.joint_constraints.source_grid_operator_path",
+      "path": "results/gauge_barrier_N10_source_grid_union.operators.json",
+      "sha256": "d1ba47bc60508ce33620d48e951774c715e81ec115371bb2f316b47a3e67f7d4"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.primal_start.json.seed_path",
+      "path": "results/gauge_barrier_N10_source_grid_union.seed.json",
+      "sha256": "6127f8dde8345067d1f80a788d43e55a3e8f18e3ad3f9fa1cfc9c3194b5e6dd9"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.primal_start.json.input_path",
+      "path": "results/gauge_barrier_N10_source_grid_union.conic.json",
+      "sha256": "5f3948845e87d9e47ecd154d6442b5cf7febb0ad1394f6b80e200067cd776b01"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.seed.json.input_path",
+      "path": "results/gauge_barrier_N10_source_grid_union.conic.json",
+      "sha256": "5f3948845e87d9e47ecd154d6442b5cf7febb0ad1394f6b80e200067cd776b01"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.seed.json.original_support_path",
+      "path": "results/gauge_barrier_N10_source_grid_union.original.conic.json",
+      "sha256": "a460d45a87246fa266e9413ec6a2b4f651295968c33d36acd88bfef778dc3e32"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.seed.json.base_seed_path",
+      "path": "results/gauge_barrier_N10_support.seed.json",
+      "sha256": "d904e49c8aac9ae293be0aebea558ce2561118d45116ee902452c8820a8ea3da"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.seed.json.base_conic_path",
+      "path": "results/gauge_barrier_N10_support.conic.json",
+      "sha256": "1c52393a35c2253a9094a38fa55c3110f813363532ed0669a38f19e6fdb421dc"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.seed.json.base_original_support_path",
+      "path": "results/gauge_barrier_N10_support.original.conic.json",
+      "sha256": "825747721de9da3cbfc31a671e7a6468e86686043c872c7a5d85204cdcfa703e"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.seed.json.base_prepared_path",
+      "path": "results/degree_promotion_N10_joint_metric_prepared.json",
+      "sha256": "8055d575980e7754f4b2944a599cc6caf7025c81ea8ff7f3fdc8ee8b50d3b200"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.seed.json.source_terminal_path",
+      "path": "results/primal_barrier_N10_after_spectral_center.json",
+      "sha256": "7c0aec663675d0034b55295c8cf4bac34126bbc535dc96de97bade110d961cbd"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.seed.json.previous_seed_path",
+      "path": "results/gauge_barrier_N10_two_scattering_cuts.seed.json",
+      "sha256": "d36e864dd58ad3a0ef654c87ad3b87e82bcef9cc1c976372ff52ed7fb17fffaa"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.seed.json.previous_conic_path",
+      "path": "results/gauge_barrier_N10_two_scattering_cuts.conic.json",
+      "sha256": "0d3cf11278be691d83d3c627d1d325b4a871ef33f0e0935b0bb880da3ea2f6cf"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.seed.json.previous_original_support_path",
+      "path": "results/gauge_barrier_N10_two_scattering_cuts.original.conic.json",
+      "sha256": "76bdeb1faef2cb971f1176cff8dba29acacd0508326abb0176885d57a13a477f"
+    },
+    {
+      "where": "results/gauge_barrier_N10_source_grid_union.seed.json.source_grid_operator_path",
+      "path": "results/gauge_barrier_N10_source_grid_union.operators.json",
+      "sha256": "d1ba47bc60508ce33620d48e951774c715e81ec115371bb2f316b47a3e67f7d4"
+    },
+    {
+      "where": "results/moment_norm_prescription_compatibility.json.previous_verification_path",
+      "path": "results/verification_refinement_centering.json",
+      "sha256": "8fbdccaa5db408ee995914baf9f72f178b57bfad4d4748a39d9f33780ebb7823"
+    },
+    {
+      "where": "results/source_M50_exact_current_fiber_256.json.source_path",
+      "path": "results/source_M50_shared_G_gauge_fiber.json",
+      "sha256": "b938d1476203ef9e1b6f68440930c9cbf905aa0aa6cd1728ff895244de1d439b"
+    },
+    {
+      "where": "results/source_M50_shared_G_gauge_fiber.independent_review.json.input_hashes",
+      "path": "results/source_M50_shared_G_gauge_fiber.json",
+      "sha256": "b938d1476203ef9e1b6f68440930c9cbf905aa0aa6cd1728ff895244de1d439b"
+    },
+    {
+      "where": "results/source_M50_shared_G_gauge_fiber.independent_review.json.input_hashes",
+      "path": "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.json",
+      "sha256": "236209537ab81bc51e8e21a2fd6aa98167321711112eb37c8ec653c1ad2287c2"
+    },
+    {
+      "where": "results/source_M50_shared_G_gauge_fiber.independent_review.json.input_hashes",
+      "path": "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.prepared.json",
+      "sha256": "fde6819094222e872b1a44d3e7f3b3da83d6459b8f97c07989a886bde09d04cc"
+    },
+    {
+      "where": "results/source_M50_shared_G_gauge_fiber.independent_review.json.input_hashes",
+      "path": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.input_bits.npz",
+      "sha256": "64259750c62dc34edbd0db9eb9d7939c3545befacc8862fc6c84f4eec9a722be"
+    },
+    {
+      "where": "results/source_M50_shared_G_gauge_fiber.independent_review.json.input_hashes",
+      "path": "results/source_M50_shared_G_gauge_fiber.input_bits.npz",
+      "sha256": "7278e1090081e240b60c54d9dbfd646194a27b82495f0f608bef4bd147010f74"
+    },
+    {
+      "where": "results/source_M50_shared_G_gauge_fiber.independent_review.json.input_hashes",
+      "path": "references/2309.12402v3-source/prd_submission_2.tex",
+      "sha256": "39ec9e10da96f9c09c8db9e7d3ac63f342b1214df592896281adda727fb6be84"
+    },
+    {
+      "where": "results/source_M50_shared_G_gauge_fiber.independent_review.json.input_hashes",
+      "path": "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.extra_bits.npz",
+      "sha256": "0d51fa123168977667552e8906aec56bd6ad5a0c0b1f1e549c7ba40319bf5d6e"
+    },
+    {
+      "where": "results/source_M50_shared_G_gauge_fiber.independent_review.json.input_hashes",
+      "path": "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.modular.npy",
+      "sha256": "5b1d4f472757924981ed0d26310b9402e1787423695750880394d29c51fe3ba8"
+    },
+    {
+      "where": "results/source_M50_shared_G_gauge_fiber.json.rank_certificate_path",
+      "path": "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.json",
+      "sha256": "236209537ab81bc51e8e21a2fd6aa98167321711112eb37c8ec653c1ad2287c2"
+    },
+    {
+      "where": "results/source_M50_shared_G_gauge_fiber.json.rank_prepared_path",
+      "path": "results/collocation_nullspace_source_N50_M50_L10_chiral_infinity_modular_p2147483647.prepared.json",
+      "sha256": "fde6819094222e872b1a44d3e7f3b3da83d6459b8f97c07989a886bde09d04cc"
+    },
+    {
+      "where": "results/source_M50_shared_G_gauge_fiber.json.shared_G_input_bits_path",
+      "path": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.input_bits.npz",
+      "sha256": "64259750c62dc34edbd0db9eb9d7939c3545befacc8862fc6c84f4eec9a722be"
+    },
+    {
+      "where": "results/source_M50_shared_G_gauge_fiber.json.input_bits_path",
+      "path": "results/source_M50_shared_G_gauge_fiber.input_bits.npz",
+      "sha256": "7278e1090081e240b60c54d9dbfd646194a27b82495f0f608bef4bd147010f74"
+    },
+    {
+      "where": "results/source_M50_shared_G_gauge_fiber.json.primary_TeX_path",
+      "path": "references/2309.12402v3-source/prd_submission_2.tex",
+      "sha256": "39ec9e10da96f9c09c8db9e7d3ac63f342b1214df592896281adda727fb6be84"
+    },
+    {
+      "where": "results/source_master_N50_last_node_l2.elementary_J_review.json.input_path",
+      "path": "results/source_master_N50_last_node_l2.json",
+      "sha256": "224ca34f48bbb7b0245394f42e86a15e05509bc6aa190e6ef2cd212f6539eeae"
+    }
+  ],
+  "failures": [],
+  "historical_source_mutation_flags": [],
+  "previous_immutable_artifacts_rechecked": 53,
+  "previous_immutable_artifact_mismatches": [],
+  "provenance_rule": "Historical embedded sources match their recorded hashes; immutable linked inputs match disk. Historical source copies need not equal later guarded code. Mathematical claims remain scoped to their own operators and coefficient representations.",
+  "scope": "New source-prescription milestone provenance, separate from the individual arithmetic proofs and physical projection certificates.",
+  "local_file_links_checked": 523,
+  "missing_local_file_links": []
+}

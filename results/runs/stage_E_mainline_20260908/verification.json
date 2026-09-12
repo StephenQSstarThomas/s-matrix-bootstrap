@@ -1,0 +1,85 @@
+{
+  "core_files": [
+    {
+      "path": "src/smatrix_bootstrap/__init__.py",
+      "lines": 347,
+      "bytes": 21816
+    },
+    {
+      "path": "src/smatrix_bootstrap/analysis.py",
+      "lines": 290,
+      "bytes": 23806
+    },
+    {
+      "path": "src/smatrix_bootstrap/figures.py",
+      "lines": 287,
+      "bytes": 22787
+    },
+    {
+      "path": "src/smatrix_bootstrap/gauge.py",
+      "lines": 291,
+      "bytes": 24057
+    },
+    {
+      "path": "src/smatrix_bootstrap/imaginary.py",
+      "lines": 330,
+      "bytes": 24520
+    },
+    {
+      "path": "src/smatrix_bootstrap/io.py",
+      "lines": 343,
+      "bytes": 24476
+    },
+    {
+      "path": "src/smatrix_bootstrap/kernels.py",
+      "lines": 350,
+      "bytes": 20204
+    },
+    {
+      "path": "src/smatrix_bootstrap/linear.py",
+      "lines": 278,
+      "bytes": 20146
+    },
+    {
+      "path": "src/smatrix_bootstrap/model.py",
+      "lines": 347,
+      "bytes": 18942
+    },
+    {
+      "path": "src/smatrix_bootstrap/operators.py",
+      "lines": 350,
+      "bytes": 23213
+    },
+    {
+      "path": "src/smatrix_bootstrap/quotient.py",
+      "lines": 334,
+      "bytes": 21019
+    },
+    {
+      "path": "src/smatrix_bootstrap/run.py",
+      "lines": 329,
+      "bytes": 24542
+    }
+  ],
+  "test_files": [
+    {
+      "path": "tests/test_kernels.py",
+      "lines": 350
+    },
+    {
+      "path": "tests/test_linear.py",
+      "lines": 350
+    },
+    {
+      "path": "tests/test_mainline.py",
+      "lines": 350
+    }
+  ],
+  "tests": {
+    "tests": 101,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "structure_passed": true
+}

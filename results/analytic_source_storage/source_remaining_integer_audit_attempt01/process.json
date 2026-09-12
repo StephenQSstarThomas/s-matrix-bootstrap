@@ -1,0 +1,12 @@
+{
+  "worker_pid": 110222,
+  "supervisor_pid": 110220,
+  "command_argv": [
+    "/home/shiqiu/miniconda3/bin/python",
+    "/home/shiqiu/s-matrix-bootstrap/scripts/audit_remaining_rank_integer.py",
+    "--worker",
+    "--directory",
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_remaining_integer_audit_attempt01"
+  ],
+  "hard_worker_cap_seconds": 1800
+}

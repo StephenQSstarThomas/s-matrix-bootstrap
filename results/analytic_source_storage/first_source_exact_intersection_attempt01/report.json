@@ -1,0 +1,18 @@
+{
+  "status": "worker_exception",
+  "all_exact_intersections_nonempty": false,
+  "supervisor_exit_code": 1,
+  "hard_timeout_occurred": false,
+  "hard_worker_cap_seconds": 120,
+  "elapsed_supervisor_seconds": 2.920028188964352,
+  "source_snapshot_sha256": "11a71b0a6aff5668e45689947d28fb88a7e3288e80c40ad6718acfbc4bee0b6a",
+  "source_files_changed_during_run": [],
+  "command_argv": [
+    "/home/shiqiu/miniconda3/bin/python",
+    "/home/shiqiu/s-matrix-bootstrap/scripts/materialize_first_source_intersection.py",
+    "--worker",
+    "--directory",
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/first_source_exact_intersection_attempt01"
+  ],
+  "all_completed_and_partial_outputs_preserved": true
+}

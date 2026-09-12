@@ -1,0 +1,339 @@
+Discrete basis parameterizationfor the Gauge Theory Bootstrap Report GitHub Issue × Title: Content selection saved. Describe the issue below: Description: Submit without GitHub Submit in GitHub arXiv is now an independent nonprofit! Learn more × Back to arXiv Why HTML? Report Issue Back to Abstract Download PDF Abstract 1 Introduction Note 2 Summary of the Gauge Theory Bootstrap 3 Discrete Basis Parametrization Form Factor and Spectral Density Parametrization. 4 Numerical Implementation 4.1 Analyticity, Crossing Symmetry and Unitarity Bootstrap 4.2 IR information and Full Gauge Theory Bootstrap 4.3 Unitarity Improved Solutions 5 Convergence Plots and GTB Numerical Dependences 5.1 $M,\,\ell_{max}$ and $n_{max}$ Dependence 5.2 Tolerance and Stability of GTB 6 Bootstrapped $S-$ Matrix 6.1 Partial Waves 6.2 Resonances and Pole Structure 7 Conclusions References License: CC BY 4.0 arXiv:2511.11513v1 [hep-th] 14 Nov 2025 Discrete basis parameterization for the Gauge Theory Bootstrap Rafael Córdoba Affiliation: Laboratoire de Physique de l’Ecole Normale Supérieure Affiliation: ENS-Université PSL,
+CNRS, Sorbonne Université, Université Paris Cité, F-75005 Paris, France Email: rafael.cordoba@ens.fr Abstract We implement the Gauge Theory Bootstrap (GTB) framework, initiated by He and Kruczenski in [ 1 , 2 ] , using a discrete basis parametrization of the 2-to-2 pion scattering $S$ -matrix, the spectral densities and the form factors. This approach enables a refined analysis of the convergence of the GTB and drastically reduced computational time —from approximately half an hour in [ 2 ] to under one minute in ours. The discrete basis also facilitates the evaluation of the $S$ -matrix across the complex sheet resulting, in additional of the dominant $\rho(770)$ and $f_{2}(1270)$ resonances identified in [ 2 ] , in the extraction of the $\sigma$ meson pole located far from the real axis. 1 Introduction The modern S-matrix bootstrap program [ 3 , 4 , 5 , 6 ] revives the old idea [ 7 ] that physical amplitudes are required to satisfy consistency constraints –the analyticity, crossing, and unitarity (ACU) constraints– by making those constraints computationally concrete. These developments allowed novel, non-perturbative explorations of scattering amplitudes including, in the context of pion scattering, bounds on low energy parameters [ 8 , 9 , 10 , 11 , 12 , 13 , 14 , 15 ] . A improvement of the S-matrix bootstrap was further introduced in [ 16 ] , where the bootstrap philosophy was extended beyond amplitudes to include additional observables, such as form factors and spectral densities, thereby encoding further physical information into the bootstrap setup. Building on these ideas, the recently proposed Gauge Theory Bootstrap (GTB) [ 1 ] explores the strongly coupled dynamics of QCD by combining the S-matrix bootstrap principles (the ACU constraints) with both, IR information coming from chiral symmetry breaking and, UV input from perturbative QCD. The IR information is, for instance, incorporated by requiring the S-matrix to reproduce, at low energies, the tree-level amplitude [ 17 , 18 ] , while the UV input is encoded through the SVZ Finite Energy Sum Rules (FESR) for spectral functions [ 19 , 20 , 21 ] and the asymptotic behavior of form factors [ 22 , 23 , 24 , 2 ] . Enforcing the amplitude to satisfy the ACU constraints, the IR behavior, and the UV behavior on spectral functions and form factors defines the GTB constraints, whose solutions can be found with the help of semi-definite programming. To numerically implement the GTB framework, [ 1 , 2 ] parametrized the GTB observables, i.e. the amplitude, form factors and spectral densities, using an interpolation point method. Imposing the GTB constraints at these interpolation points, for finitely many constraints –as this often yields good convergence [ 5 ] –, results in a finite-dimensional convex optimization problem, whose solutions yield the 2-to-2 pion scattering amplitudes, from factors and spectral densities.
+The outcome of this procedure is promising, offering first-principles insights into the non-perturbative dynamics of QCD and demonstrating remarkable agreement with both experimental and phenomenological QCD data [ 2 , 1 , 25 ] . Although the GTB yielded encouraging results, it was desirable to improve the computational cost: the complexity scaled significantly with the number of interpolation points $M$ , limiting an efficient exploration of the observables.
+In this work, we present an alternative implementation of the GTB using the discrete basis introduced in [ 26 ] , for the $S$ -matrix, form factors, and spectral densities. This parametrization expresses each observable as a Taylor series in the discrete basis variable, very much in line with the ideas of [ 5 ] 1 1 1 Such discrete basis has be used previously in [ 27 ] for studying the $\phi^{4}$ theory by combining the form factor bootstrap of [ 16 ] with Hamiltonian truncation. . To implement the GTB numerically, we thus consider the observable’s partial sums, until an order where good convergence is achieved, reducing the problem of determining the observables to that of finding a finite set of Taylor coefficients. Imposing the GTB constraints on these coefficients also yields a finite-dimensional convex optimization problem, whose solutions are our bootstrapped observables. This approach provides two main advantages. First, it serves as a check of the results obtained by He and Kruczenski [ 2 ] , thereby further corroborating the GTB framework. Second, it enables a study of the convergence properties of the bootstrap procedure and helps identify the minimal number of coefficients needed –to reliably discard higher order Taylor coefficients–, as well as the minimal number of constraints we impose to those.
+The result of this procedure allows us to drastically reduced computational time –from approximately
+half an hour in [ 1 , 2 ] to under one minute in ours– while achieving comparable results. The organization of this paper is as follows. In Section 2 , we briefly review the GTB framework, followed in Section 3 by the discrete parametrization of the $S$ -matrix, form factors, and spectral densities. Section 4 details the numerical implementation and shows the resulting 2d space of allowed amplitudes consistent with the ACU constraints alone, with ACU supplemented by IR information, and with the full set of GTB constraints. In section 5 , we present graphical convergences of the GTB on the numerical parameters.
+Section 6 then presents our main results, including the first six partial waves obtained from the discrete parametrization. We also plot the pole structure of the bootstrapped amplitudes on the $S0$ , $P1$ and $D0$ channel. Finally, Section 7 summarizes the work done. Note While this paper is being completed, new ingredients on the GTB where introduced in [ 25 ] . Although here we follow the initial setup of [ 1 , 2 ] , it would be good to consider the new ingredients of [ 25 ] for future works and improvements. 2 Summary of the Gauge Theory Bootstrap The theory we consider is an $SU(3)$ gauge theory in 4d with matter content consisting of two quark flavours –i.e. QCD–. We assume that the theory undergoes spontaneous chiral symmetry breaking and confinement. The low-energy physics, thus, is governed by the three pions $\pi_{a}$ , which transform under the isospin symmetry $SU(2)_{V}$ and appear as the Goldstone bosons of the symmetry breaking. We consider the lightest scattering process in the theory: the pion-pion scattering, $\pi_{a}(p_{1})+\pi_{b}(p_{2})\to\pi_{c}(p_{3})+\pi_{d}(p_{4}).$ (2.1) Letting $P=p_{1}+p_{2}$ be the in-coming momentum and $s=P^{2}$ , the physical observables we are going to compute are
+the $S$ -matrix elements in each partial wave channel 2 2 2 Here we use the angular momentum and isospin partial wave decomposition, $f^{I}_{\ell}(s)=\frac{1}{4}\int_{-1}^{1}d\cos\theta P_{\ell}(\cos\theta)T^{I}(s,t),$ (2.2) where $P_{\ell}$ are the Legendre polynomials, $T^{I}$ is the $T$ -Matrix ( $S=1+iT$ ) with defined isospin, and $t=\frac{(s-4)(1-\cos\theta)}{2}$ . $S^{I}_{\ell}(s)=1+if_{\ell}^{I}(s),\quad s\in\mathbb{R}{\geq 4},$ (2.3) the form factors $\displaystyle F_{\ell}^{I}(s):=\,_{out}\langle\pi(p_{2})\pi(p_{1})|\mathcal{O}_{\ell}^{I}(0)|0\rangle,$ (2.4) and the spectral densities $\text{Spec}^{I}_{\ell}(s):=\int\frac{d^{4}x}{(2\pi)^{4}}e^{iP\cdot x}\langle 0|\mathcal{O}_{\ell}^{I}(x)^{\dagger}\mathcal{O}_{\ell}^{I}(0)|0\rangle,$ (2.5) where the local operators $\mathcal{O}_{\ell}^{I}$ are taken from [ 2 ] $\mathcal{O}^{0}_{0}=m_{q}(\bar{u}u+\bar{d}d),\quad\mathcal{O}^{1}_{1}=\frac{1}{2}(\bar{u}\gamma^{\mu}u-\bar{d}\gamma^{\mu}d),\quad\mathcal{O}^{0}_{2}=T^{++},$ (2.6) $m_{q}$ is the quark mass (here we take $m_{q}=(m_{u}+m_{d})/2$ ), $u$ and $d$ are the standard up and down spinors, $T^{\mu\nu}$ is the energy-momentum tensor, and we have used the coordinates $x^{\pm}=\frac{1}{\sqrt{2}}(x\pm iy)$ . In order to bootstrap these observables, we impose the
+Analyticity, Crossing Symmetry and Unitarity (ACU) constraints together with the UV and IR information defined as follows: Analyticity, Crossing Symmetry and Unitarity constraints In addition to the $S-$ matrix unitarity constraint, $|S^{I}_{\ell}(s)|\leq 1,\quad\,s\in\mathbb{R}_{\geq 4}$ (2.7) where, due to Bose statistics, $\ell\in\text{Mod}_{2}(I)+2\mathbb{N}$ ,
+we impose the positive semi-definite condition [ 16 ] : $B:=\left(\begin{array}[]{ccc}1&S_{\ell}^{I}(s)&\mathcal{F}_{\ell}^{I}(s)\\
+{S}_{\ell}^{*I}(s)&1&\mathcal{F}_{\ell}^{*I}(s)\\
+\mathcal{F}_{\ell}^{*I}(s)&\mathcal{F}_{\ell}^{I}(s)&\text{Spec}_{\ell}^{I}(s)\end{array}\right)\succeq 0.$ (2.8) Here $\mathcal{F}_{\ell}^{I}$ are the form factors in the momentum $P$ and angular momentum $\ell$ 3 3 3 The relation between the form factors $\mathfrak{F}_{\ell}^{I}$ and $F_{\ell}^{I}$ , for the $S0$ , $P1$ and $D0$ channels –up to Kronecker delta functions projecting into the basis– are given by [ 2 ] : $\displaystyle\mathfrak{F}_{0}^{0}(s)$ $\displaystyle=\frac{\sqrt{3}}{16\pi^{5/2}}\left(\frac{s-4}{s}\right)^{1/4}F_{0}^{0}(s),$ (2.9) $\displaystyle\mathfrak{F}_{1}^{1}(s)$ $\displaystyle=\frac{\sqrt{s}}{8\sqrt{6}\pi^{5/2}}\left(\frac{s-4}{s}\right)^{3/4}F_{1}^{1}(s),$ (2.10) $\displaystyle\mathfrak{F}^{0}_{2}(s)$ $\displaystyle=\frac{s}{16\sqrt{10}\pi^{5/2}}\left(\frac{s-4}{s}\right)^{5/4}F^{0}_{2}(s).$ (2.11) . Notice that eq. ( 2.8 ) couple together the $S-$ Matrix elements, form factors and, spectral densities. Maximal analyticity and crossing symmetry of the $S$ -matrix elements, on the other hand, is made manifest by parametrizing it in terms of a scattering amplitude $A(s,t,u)$ –where $s$ , $t$ , and $u$ are the Mandelstam variables–as follows: $\displaystyle T_{ab,cd}$ $\displaystyle=A(s,t,u)\delta_{ab}\delta_{cd}+A(t,s,u)\delta_{ac}\delta_{bd}+A(u,t,s)\delta_{ad}\delta_{bc}$ (2.12) with $A(s,t,u)$ defined in terms of the Mandelstam representation [ 26 ] : $\displaystyle A(s,t,u)=T_{0}$ $\displaystyle+\frac{1}{\pi}\int_{4}^{\infty}dx\frac{\sigma^{(1)}(x)}{x-s}+\frac{1}{\pi}\int_{4}^{\infty}dx\>\sigma^{(2)}(x)\left[\frac{1}{x-t}+\frac{1}{x-u}\right]$ (2.13) $\displaystyle+\frac{1}{\pi^{2}}\int_{4}^{\infty}dx\int_{4}^{\infty}dy\frac{\rho^{(1)}(x,y)}{x-s}\left[\frac{1}{y-t}+\frac{1}{y-u}\right]$ $\displaystyle+\frac{1}{\pi^{2}}\int_{4}^{\infty}dx\int_{4}^{\infty}dy\frac{\rho^{(2)}(x,y)}{(x-t)(y-u)},$ where $T_{0}$ is a constant, $\sigma^{(\alpha)}(x)$ and $\rho^{(\alpha)}(x,y)$ for $\alpha=1,2$ are spectral functions parametrizing the amplitude $A(s,t,u)$ and, the function $\rho^{(2)}(x,y)$ is required to satisfy $\rho^{(2)}(x,y)=\rho^{(2)}(y,x)$ . Similarly, analyticity of the form factor is manifest via the dispersion relation [ 1 ] : $F^{I}_{\ell}(s)=1+\frac{1}{\pi}\int_{4}^{\infty}dx\left(\frac{1}{x-s}-\frac{1}{x}\right)\Im F^{I}_{\ell}(x),$ (2.14) where we have imposed the normalization condition $F^{I}_{\ell}(0)=1$ and we have set $m_{\pi}=1$ in all of these expressions. analyticity of two point function of local operators $\mathcal{O}_{\ell}^{I}$ implies its associated spectral functions $\text{Spec}_{\ell}^{I}(s)$ has support on the physical region $s\in[4,\infty).$ IR information Using chiral perturbation theory, the tree-level amplitude $A(s,t,u)$ ,
+at low energies, takes the form [ 17 , 28 ] : $A^{\chi}(s,t,u)=\frac{s-m_{\pi}^{2}}{8\pi^{2}f_{\pi}^{2}},$ (2.15) which allows us to determine the $S-$ matrix element partial waves $f_{\ell}^{I}(s)$ , defined by eq. ( 2.2 ), as $f_{0,\mathrm{tree}}^{0}(s)=\frac{2}{\pi}\frac{2s-m_{\pi}^{2}}{32\pi f_{\pi}^{2}},\quad f_{1,\mathrm{tree}}^{1}(s)=\frac{2}{\pi}\frac{s-4m_{\pi}^{2}}{96\pi f_{\pi}^{2}},\quad f_{0,\mathrm{tree}}^{2}(s)=\frac{2}{\pi}\frac{2m_{\pi}^{2}-s}{32\pi f_{\pi}^{2}},$ (2.16) where $f_{\pi}$ is the pion decay constant.
+Following [ 1 , 2 ] , we match the tree-level amplitudes at low energies by imposing the constraints: $||f^{I,\mathrm{boot}}_{0}(s_{j})-R^{\chi}_{I1}(s_{j})f^{1,\mathrm{boot}}_{1}(s_{j})||\leq\varepsilon_{CSB},\quad R_{I1}^{\chi}(s)=\frac{f_{0,\mathrm{tree}}^{I}(s)}{f_{1,\mathrm{tree}}^{1}(s)}.$ (2.17) Here, $f^{I,\mathrm{boot}}_{\ell}(s_{j})$ denotes the partial waves $f_{\ell}^{I}(s)$ computed from the parametrization ( 2.13 ) and $I=0,2$ . The constraints ( 2.17 ) are imposed at sample points $\tilde{s}_{j}\in(0,4)$ , thereby incorporating IR behavior. Although in this paper we only consider the IR behavior of the scattering amplitude, as pointed out in [ 25 ] , the set of operators ( 2.6 ) can be identified in the free pion theory from which one can include further constraints on the low energy behavior of the spectral functions. These new ingredients of the GTB turns out to be quite powerful [ 25 ] , whose study we leave for future work. UV information UV information can be encoded using Finite Energy Sum Rule (FESR) [ 19 , 20 , 21 ] and form factor’s asymptotic behavior [ 22 ] for $s>s_{0}$ , where $s_{0}$ is an energy scale at which pQCD is consider to be valid. Leading order behavior of both of those can be found from pQCD, whose values read [ 2 ] : $\displaystyle\frac{1}{s_{0}^{n+2}}\int_{4}^{s_{0}}\text{Spec}^{0}_{0}(x)x^{n}dx$ $\displaystyle\simeq$ $\displaystyle\frac{3\left(m_{d}^{2}+m_{u}^{2}\right)}{64\pi^{5}(n+2)}\left(1+\alpha_{S}\frac{13}{3\pi}\right),\ n\geq 0,$ (2.18a) $\displaystyle\frac{1}{s_{0}^{n+2}}\int_{4}^{s_{0}}\text{Spec}^{1}_{1}(x)x^{n}dx$ $\displaystyle\simeq$ $\displaystyle\frac{1}{64\pi^{5}(n+2)}\left(1+\frac{\alpha_{S}}{\pi}\right),\ \ n\geq-1,$ (2.18b) $\displaystyle\frac{1}{s_{0}^{n+3}}\int_{4}^{s_{0}}\!\text{Spec}^{0}_{2}(x)x^{n}dx$ $\displaystyle\simeq$ $\displaystyle\frac{1}{64\pi^{5}(n+3)}\left(\frac{11}{10}-\frac{17\alpha_{S}}{18\pi}\right),\ n\geq-2,$ (2.18c) $\displaystyle|F^{0}_{0}(s\to\infty)|$ $\displaystyle\simeq$ $\displaystyle 4\pi\alpha_{S}f_{\pi}^{2}\frac{\left(m_{d}^{2}+m_{u}^{2}\right)}{s}\log s,\ \ $ (2.19a) $\displaystyle|F^{1}_{1}(s\to\infty)|$ $\displaystyle\simeq$ $\displaystyle 16\pi\frac{\alpha_{S}f_{\pi}^{2}}{s},\ \ $ (2.19b) $\displaystyle|F^{0}_{2}(s\to\infty)|$ $\displaystyle\simeq$ $\displaystyle\frac{48\pi\alpha_{S}f_{\pi}^{2}}{s},\;$ (2.19c) where $m_{d}$ and $m_{u}$ are the masses of the two quark flavours, $f_{\pi}$ is the pion decay constant, and $\alpha_{S}$ is the QCD coupling.
+Following [ 1 , 2 ] , these high-energy predictions
+translates into constraints on the bootstrap through the inequalities: $\displaystyle\left|\int_{4}^{s_{0}}\text{Spec}^{boot}(x)x^{n}dx-\int_{4}^{s_{0}}\text{Spec}(x)x^{n}dx\right|$ $\displaystyle\leq$ $\displaystyle\varepsilon_{SVZ},$ (2.20a) $\displaystyle\left|F^{\text{boot}}(s>s_{0})\right|$ $\displaystyle\leq$ $\displaystyle\varepsilon_{\text{FF}},$ (2.20b) where we have suppressed isospin and angular momentum indices. Here $\text{Spec}^{\text{boot}}$ and $F^{boot}$ are functions we want to determine. Because of eq. ( 2.14 ), one further parametrize the $F^{boot}$ function in terms of the imaginary part of the form factor, $\Im F^{I,boot}_{\ell}$ . All together, the GTB framework encodes the data in the following functions: $\left\{T_{0},\,\sigma^{(\alpha)}(x),\,\rho^{(\alpha)}(x,y),\ \text{Im}{F}^{I,boot}_{\ell}(x),\,\text{Spec}_{\ell}^{I,boot}(x)\right\}.$ (2.21) Functions ( 2.21 ) are thus found –bootstrapped– by requiring them to follow the ACU constraints ( 2.7 ) and ( 2.8 ) and, the IR and UV constraints from eq.s ( 2.17 ) and ( 2.20 ). 3 Discrete Basis Parametrization In order to bootstrap the functions ( 2.21 ), we implement a different parametrization from that of [ 1 , 2 ] (see Section 8 of [ 2 ] for details); we parametrize the observables in terms of a discrete basis defined as follows. Consider the map [ 5 ] $z(s)=\frac{\sqrt{4-\nu_{0}}-\sqrt{4-s}}{\sqrt{4-\nu_{0}}+\sqrt{4-s}}$ (3.22) that sends the first complex sheet of the Mandelstam variable $s$ into the unit disk. We choose $\nu_{0}=0$ so that $s=0$ is mapped to the center of the disk. Under this map, the physical region $s\in[4,\infty)$ gets identified with the upper-half circle by $z(s+i\epsilon)=e^{i\varphi},$ where the $i\varepsilon$ prescription ensures we are working in the first complex sheet.
+We then consider the discrete basis of functions $\{\phi_{n}(x)\}_{n\in\mathbb{N}_{\geq 0}}$ defined by [ 26 ] : $\phi_{n}(x)=\sin(n\varphi),\quad x(\varphi)=\frac{4}{\cos^{2}\frac{\varphi}{2}},\quad n\geq 1.$ (3.23) Using this basis, the functions parameterizing the scattering amplitude ( 2.13 ) can be expanded as $\displaystyle\rho^{(\alpha)}(x,y)$ $\displaystyle=\sum_{n_{1},n_{2}=1}^{\infty}\rho^{(\alpha)}_{n_{1}n_{2}}\phi_{n_{1}}(x)\phi_{n_{2}}(y),\quad\quad\sigma^{(\alpha)}(x)$ $\displaystyle=\sum_{n=1}^{\infty}\sigma_{n}^{(\alpha)}\phi_{n}(x),$ (3.24) where, due to $\rho^{(2)}(x,y)=\rho^{(2)}(y,x)$ symmetry, we require $\rho^{(2)}_{nm}=\rho^{(2)}_{mn}$ .
+Writing the $S-$ matrix elements in the form of $S^{I}_{\ell}(s)=1+i\pi\sqrt{\frac{s-4}{s}}f^{I}_{\ell}(s),$ (3.25) we can find the discrete basis parametrization of $f_{\ell}^{I}(s)$ to be $f_{\ell}^{I}(s)=\left\{T_{0}A_{\ell}^{I}+\sum_{n=1}^{\infty}\left[A_{\ell n}^{I}(s)\sigma_{n}^{(1)}+B_{\ell n}^{I}(s)\sigma_{n}^{(2)}\right]\right.+\sum_{n,m=1}^{\infty}\left[A_{\ell,nm}^{I}(s)\rho_{nm}^{(1)}+B_{\ell,nm}^{I}(s)\rho_{nm}^{(2)}\right]\biggr\},$ (3.26) where the functions $A(s)$ and $B(s)$ can be found by plugging-in the discrete basis expansion ( 3.24 ) on the Mandelstam representation ( 2.13 ) and taking the $S-$ matrix partial waves decomposition. Explicit expressions are [ 26 ] ( $N=3$ ): $\displaystyle A_{\ell}^{0}$ $\displaystyle=2(N+2)\delta_{\ell 0},$ $\displaystyle A_{\ell}^{1}$ $\displaystyle=0,$ $\displaystyle A_{\ell}^{2}$ $\displaystyle=4\delta_{\ell 0},$ $\displaystyle A_{\ell,n}^{0}$ $\displaystyle=2N\delta_{\ell 0}\Phi_{n}+2\hat{\Phi}_{n\ell},$ $\displaystyle A_{\ell,n}^{1}$ $\displaystyle=2\hat{\Phi}_{n\ell},$ $\displaystyle A_{\ell,n}^{2}$ $\displaystyle=2\hat{\Phi}_{n\ell},$ $\displaystyle B_{\ell,n}^{0}$ $\displaystyle=4\delta_{\ell 0}\Phi_{n}+2(N+1)\hat{\Phi}_{n\ell},$ $\displaystyle B_{\ell,n}^{1}$ $\displaystyle=-2\hat{\Phi}_{n\ell},$ $\displaystyle B_{\ell,n}^{2}$ $\displaystyle=4\delta_{\ell 0}\Phi_{n}+2\hat{\Phi}_{n\ell},$ $\displaystyle A_{\ell,nm}^{0}$ $\displaystyle=2N\Phi_{n}\hat{\Phi}_{m\ell}+2\Phi_{m}\hat{\Phi}_{n\ell}+2\tilde{\Phi}_{nm,\ell},$ $\displaystyle A_{\ell,nm}^{1}$ $\displaystyle=2\Phi_{m}\hat{\Phi}_{n\ell}+2\tilde{\Phi}_{nm,\ell},$ $\displaystyle A_{\ell,nm}^{2}$ $\displaystyle=2\Phi_{m}\hat{\Phi}_{n\ell}+2\tilde{\Phi}_{nm,\ell},$ $\displaystyle B_{\ell,nm}^{0}$ $\displaystyle=\Phi_{n}\hat{\Phi}_{m\ell}+\Phi_{m}\hat{\Phi}_{n\ell}+N\tilde{\Phi}_{nm,\ell},$ $\displaystyle B_{\ell,nm}^{1}$ $\displaystyle=-\Phi_{n}\hat{\Phi}_{m\ell}-\Phi_{m}\hat{\Phi}_{n\ell},$ $\displaystyle B_{\ell,nm}^{2}$ $\displaystyle=\Phi_{n}\hat{\Phi}_{m\ell}+\Phi_{m}\hat{\Phi}_{n\ell},$ where $\Phi_{n}$ , $\hat{\Phi}_{m\ell}$ and $\tilde{\Phi}_{nm,\ell}$ are defined as $\displaystyle\Phi_{n}(s)$ $\displaystyle=$ $\displaystyle\frac{1}{\pi}\int_{4}^{\infty}dx,\frac{\phi_{n}(x)}{x-s}=z^{n}(s)-(-1)^{n},$ (3.27a) $\displaystyle\hat{\Phi}_{n,\ell}(s)$ $\displaystyle=$ $\displaystyle\int_{-1}^{+1}d\mu P_{\ell}(\mu)\Phi_{n}(t),$ (3.27b) $\displaystyle\tilde{\Phi}_{nm,\ell}(s)$ $\displaystyle=$ $\displaystyle\int_{-1}^{+1}d\mu P_{\ell}(\mu)\Phi_{n}(t)\Phi_{m}(u),$ (3.27c) with $z(x)$ as in eq. ( 3.22 ). Form Factor and Spectral Density Parametrization. Using the discrete basis of functions ( 3.23 ), we parametrize the imaginary part of the form factor and the spectral densities as 4 4 4 Note that with the new ingredients of [ 25 ] , the low energy behavior can be explicitly parametrized into the basis expansion (c.f. eqs. B.20-B.22 in [ 25 ] ). $\displaystyle\Im F_{\ell}^{I}(s)=\sum_{n=1}^{\infty}ImF_{\ell,n}^{I}\phi_{n}(s),$ (3.28) $\displaystyle\text{Spec}_{\ell}^{I}(x)=\sum_{n=1}^{\infty}\text{Spec}_{\ell,n}^{I}\phi_{n}(x),$ (3.29) where $ImF_{\ell,n}^{I}$ and $\text{Spec}_{\ell,n}^{I}$ are constant coefficients. Using the dispersion relation ( 2.14 ), together with the integral ( 3.27a ),
+one finds the form factor discrete basis parametrization: $F_{\ell}^{I}(s)=1+\sum_{n=1}^{\infty}ImF_{\ell,n}^{I}z^{n}(s).$ (3.30) All together, the GTB parameters ( 2.21 ) are completely characterized by coefficients $\displaystyle{\bf v}:=\{T_{0},\,\sigma^{(\alpha)}_{n},\,\rho^{(\alpha)}_{nm},\,\text{Spec}_{\ell,n}^{I}\,,\mathrm{Im}F^{I}_{n,\ell}\}_{\alpha=1,2}^{n,m=1,2,..},$ (3.31) with $\rho^{(2)}_{nm}=\rho^{(2)}_{mn}$ and quantum numbers $(I,\ell)\in\{(0,0),(1,1),(0,2)\}$ corresponding to the $S0$ , $P1$ and $D0$ form factor/spectral densities we consider here. 4 Numerical Implementation To implement the bootstrap numerically, we require the unitarity constraints ( 2.7 ) and ( 2.8 ) to be satisfied only at finitely many values. For this, we consider the physical energies $\{s_{i}=x(\varphi_{i})\}_{i=1,...,M}\subset[4,\infty),$ (4.32) where $M$ is the number of energies we consider, $x(\varphi)$ is the map described in ( 3.23 ), and $\varphi_{i}$ are uniformly distributed angles given by $\varphi_{i}=\frac{\pi}{M}\left(i-\frac{1}{2}\right),\quad i=1,2,\ldots,M.$ (4.33) We also consider the partial sums of the $S-$ matrix elements, form factors and spectral densities basis expansion –mainly ( 3.26 ), ( 3.29 ) and ( 3.30 )–, until a maximum value $n_{\text{max}}$ , chosen such that partial sums converges with the desired precision. The –now finitely many–GTB coefficients ( 3.31 ) that satisfy the GTB constraints –namely, eq.s ( 2.7 ), ( 2.8 ), ( 2.17 ), and ( 2.20 )– at the physical energies $\{s_{i}\}_{i=1}^{M}$ , and for each partial wave $\ell\leq\ell_{\text{max}}$ , yield the bootstrapped $S$ -matrix, spectral functions, and form factors. Since these constraints define a finite-dimensional convex optimization problem 5 5 5 In general, regularizing the norm of the double spectral density $\rho(x,y)$ is necessary. This stems from the fact that highly oscillatory contributions to $\rho(x,y)$ have negligible impact on the physical amplitude. Imposing an upper bound on the norm suppresses such oscillations; see [ 26 ] for further details. , such coefficients can be found, for instance, using semi-definite programming solvers [ 29 , 30 , 31 , 32 ] . Since it is instructive to show how each constraint supresses portions of the allowed space of amplitudes, as done in [ 1 ] , we proceed to show the resulting 2d space of allowed amplitudes consistent with the ACU constraints alone, with ACU supplemented by IR information, and with the full set of GTB constraints. 4.1 Analyticity, Crossing Symmetry and Unitarity Bootstrap At this level, the amplitude is characterized by the coefficients ${\bf w}:=\{T_{0},\,\sigma^{(\alpha)}_{n},\,\rho^{(\alpha)}_{nm}\}_{\alpha=1,2}^{n,m=1,...,n_{max}},$ (4.34) where $\rho^{(2)}$ is required to be symmetric and, $n_{max}$ is the order at which we consider the partial in the discrete basis expansion ( 3.26 ). Using the Mandelstam representation of the amplitude $A(s,t,u)$ , crossing symmetry and analyticity are manifest. Unitarity, i.e. eq. ( 2.7 ), is then imposed only at the finitely many energies $\{s_{i}\}_{i=1}^{M}$ of eq. ( 4.32 ) and for a finite number of partial waves $(I,\ell)$ , where $I\in\{0,1,2\}$ and $\ell\leq\ell_{\text{max}}$ . This results on a finite dimensional, convex problem, of $1+\frac{5n_{\text{max}}\left(3n_{\text{max}}+1\right)}{2}$ variables subject to $M\cdot\ell_{\text{max}}\cdot 3$ constraints. Figure 1 : Gauge Theory Bootstrap: The region in green represents the space of allowed amplitudes under the constraints of ACU. Zooming-in, in blue we observe the space of allowed amplitudes constrained by both ACU and CSB constraints (IR information). Incorporating the full GTB constraints yields the GTB-allowed space shown in orange. Within this region, the relation between $f_{0}^{0}(3)$ and $f_{1}^{1}(3)$ , predicted by tree-level chiral perturbation theory, is shown by a red dashed line. To compare with the results of [ 1 ] , we consider the linear functional $f_{\ell}^{I}(s)$ defined in eq. ( 3.26 ), whose coefficients $A(s)$ and $B(s)$ ’s are evaluated to 20-digit numerical precision using Mathematica . Finding the extremal values of $f_{0}^{0}(3)$ within the range of the extremal values of $f_{1}^{1}(3)$ , subject to the constraint of ( 2.7 ), corresponds to finding the
+boundary of the ACU-allowed amplitude space on the $f_{0}^{0}(3)-f_{1}^{1}(3)$ plane. For instance, with $M=49$ , $\ell_{max}=11$ and $n_{max}=31$ , the convex optimization yields the ACU-allowed space shown in green in Figure 1 . Each point within the ACU-allowed corresponds to an amplitude satisfying the ACU constraints. For boundary points, the convex optimization gives the explicit values of the ACU parameters ( 4.34 ) where constraints are saturated i.e. where $|S_{\ell}^{I}(s_{i})|=1$ . Substituting these solutions into eq. ( 3.26 ) yields the bootstrapped partial waves $f_{\ell}^{I}(s)$ for each boundary point. 4.2 IR information and Full Gauge Theory Bootstrap To incorporate the IR information from Chiral Symmetry Breaking, in addition to the ACU constraints and following [ 1 , 2 ] , we impose the relation of eq. ( 2.17 ) at low-energy points $\tilde{s}_{i}\in\{1/2,1,3/2,2\}$ . The inclusion of this IR data further constrains the amplitude space obtained from the ACU bootstrap, in agreement with the findings of [ 1 ] . Figure 1 illustrates this effect. The green region corresponds to the set of amplitudes satisfying only the ACU constraints. Once the CSB constraints from eq. ( 2.17 ) are imposed, the allowed region is significantly reduced, as shown in blue. Zooming-in on the ACU-CSB constrained space, we observe that the set of allowed amplitudes—now satisfying both ACU and CSB conditions—is tightly bounded around the relation predicted by three-level chiral perturbation theory: $y=R_{01}^{\chi}(3)x,$ (4.35) where $R_{01}^{\chi}(3)$ is the partial wave ratio of eq. ( 2.17 ). This is shown in the figure as a red dashed line, emphasizing consistency between the bootstrap results and the effective field theory. Having incorporated both the ACU and IR constraints we now complete the Gauge Theory Bootstrap by imposing the full constraints; it remains to include the UV information in the form of form factor asymptotics and the FESR of eq.s ( 2.20 ) and ( 2.8 ).
+To evaluate the theoretical estimates appearing in eq.s ( 2.18 ) and ( 2.19 ), which are required as input for eq. ( 2.20 ), we use the following physical input parameters: $\displaystyle s_{0}=(2\mathrm{GeV})^{2},\quad\alpha_{S}(2GeV)=0.3145887440,\quad\left(\begin{matrix}m_{u}\\
+m_{d}\end{matrix}\right)_{2GeV}=\left(\begin{matrix}3.6MeV\\
+6.5MeV\end{matrix}\right).$ Implementing these additional UV constraints on top of the ACU and CSB setup, shown in blue in Figure 1 , results in a further reduction of the allowed amplitude space. This is visualized in Figure 1 on orange, consistent with the findings of [ 1 ] .
+From the figure, we observe that incorporating the UV information –via the from factor asymptotics and sum rules– further suppress portions of the ACU-CSB allowed space and push the allowed amplitudes toward the lower-right region. The graph reflects the nontrivial impact of UV information on low-energy scattering data. The information the bootstrapped amplitudes carry is discussed in Section 6 . All convex optimization and numerical computations were carried out using Mathematica and MatLab . The relevant scripts and data are available in the repository: Bootstrapping Gauge Theories . 4.3 Unitarity Improved Solutions Running the GTB yields the bootstrapped coefficients: $\displaystyle\{T_{0}^{\text{GTB}},\,\sigma^{(\alpha),{\text{GTB}}}_{n},\,\rho^{(\alpha),{\text{GTB}}}_{n,m},\,\text{Spec}_{n,\ell}^{{\text{GTB}},I},\,\mathrm{Im}F_{n,\ell}^{\text{GTB}}\}_{\alpha=1,2}^{n,m=1,...,n_{max}},$ (4.36) for each boundary point in the two-dimensional space of allowed amplitudes (Orange region in Figure 1 ).
+In particular, each solution ( 4.36 ) corresponds to an amplitude where unitarity ( 2.8 ) is saturated and consequently where the spectral densities are dominated by two-pion intermediate states [ 1 ] . Numerically, however, the saturation of unitarity ( 2.8 ) is not fully achieved, and an additional numerical reinforcement is required. Following [ 2 , 33 ] , we implement a unitarization reinforcement as follows. Consider a solution ( 4.36 ) satisfying the GTB constraints. Starting from its underlying amplitude –which is now a known function–, we define $h_{\ell}^{I}(s)|_{old}$ by 6 6 6 Here one can also implement the ’Watsonian unitarization’ where both amplitude and form factor’s information is stored in $h_{\ell}^{I}(s)|_{old}$ . This is done by making a different choice of $h_{\ell}^{I}(s)|_{old}$ , as shown in [ 25 ] . $S^{I}_{\ell}(s)=1+ih_{\ell}^{I}(s)\Big|_{old}.$ (4.37) Associated to this amplitude we consider an unitarity-improved $h_{\ell}^{I}(s,{\bf w})|_{new}$ (whose parameters ${\bf w}$ of eq. ( 4.34 ) are sought to be found) close to the initial $h_{\ell}^{I}(s)|_{old}$ i.e. $h_{\ell}^{I}(s)|_{new}=h_{\ell}^{I}(s)|_{old}+\varepsilon.$ Linearizing the unitarity constraint of Equation ( 2.7 ) by plugging the solution $h_{\ell}^{I}(s)|_{old}$ gives, in terms of $h_{\ell}^{I}$ , $\hat{\mathcal{F}}_{\ell}^{I}(s,{\bf w})=\text{Re}h_{\ell}^{I}(s)\Big|_{old}\text{Re}h_{\ell}^{I}(s,{\bf w})\Big|_{new}+\text{Im}h_{\ell}^{I}(s)\Big|_{old}\text{Im}h_{\ell}^{I}(s,{\bf w})\Big|_{new}-\text{Im}h_{\ell}^{I}(s,{\bf w})\Big|_{new}\leq 0.$ (4.38) Since improvement of saturation requires the functional $\hat{\mathcal{F}}_{\ell}^{I}$ to be as big as possible, to take into account all the partial waves, at all physical energies, we maximize the functional $\displaystyle\mathcal{F}=\sum_{i=1}^{M}\sum_{\ell,I}\hat{\mathcal{F}}_{\ell}^{I}(s_{i},{\bf w})$ (4.39) subject to the GTB constraints. Solving the convex problem yields the unitary-improved $S_{\ell}^{I}|_{new}(s)$ . One can iterate the process again until a convergence is found.
+Such point is the solution we take as our bootstrapped $S$ -matrix. 5 Convergence Plots and GTB Numerical Dependences In the GTB all the relevant information is encoded in the vector of coefficients ${\bf v}(M,\ell_{\max},n_{\max})$ , defined in eq. ( 3.31 ), and where we have emphasized its dependence on the numerical parameters $M,\,\ell_{\max}$ and, $n_{\max}$ .
+As seen in Section 4.1 , the complexity of the resulting optimization problem scales quadratically with $n_{\text{max}}$ –as $L=1+\frac{5n_{\text{max}}\left(3n_{\text{max}}+1\right)}{2}$ is the number of variables–, and linearly with both $M$ and $\ell_{\text{max}}$ , which determine the number of constraints. Therefore, before analyzing the physical information contained in the bootstrapped amplitudes, we analyze the convergence behavior of these numerical parameters as increasing them leads to a rapid growth in computational cost. 5.1 $M,\,\ell_{max}$ and $n_{max}$ Dependence In Figure 2 we present graphical convergences illustrating how the discrete basis bootstrap –imposing only the ACU constraints– depends on the $M$ , $\ell_{max}$ and $n_{max}$ parameters, varying one parameter at a time while keeping the others fixed. In Figure 2(a) , we observe that the ACU-allowed space of amplitudes stabilizes for $M\geq 25$ .
+At $M=121$ , some points are missing near the lower-right kink due to weak unfeasibility in the optimization. This was resolved by increasing the regularization parameter to $M_{\text{Reg}}>1000$ . This issue does not affect the full GTB analysis: the FESR and form factor asymptotics effectively constrain the high-frequency oscillations in the amplitude making the choice of regularization superfluous. Convergence in $\ell_{\text{max}}$ is shown in Figure 2(b) for fixed $M=49$ and $n_{\text{max}}=11$ . We observe that the space of allowed amplitudes, projected onto $f_{0}^{0}(3)$ and $f_{1}^{1}(3)$ , stabilizes after including just four nontrivial partial waves 7 7 7 Here we refer to the lower-right quadrant of the allowed region, where the physical value of $(f_{0}^{0}(3),f_{1}^{1}(3))$ is expected to be. .
+Similarly, convergence in $n_{\text{max}}$ is shown in Figure 2(c) for fixed $\ell_{\text{max}}=7$ and $M=25$ . We observe good convergence around $n_{max}\sim 29$ . On Figure 3 we further corroborate the $n_{max}$ dependence by examining an amplitude found by imposing the full GTB constraints 8 8 8 This amplitude corresponds to the cyan point shown in Figure 4 . . Figure 3 shows, in solid lines, the phase shifts $\delta_{\ell}^{I}$ and elasticities $\eta_{\ell}^{I}$ , defined by $S_{\ell}^{I}(s)=\eta(s)e^{2i\delta_{\ell}^{I}(s)},$ (5.40) for the $S0$ , $P1$ , and $D0$ partial waves at fixed $\ell_{\text{max}}=11$ and $M=49$ . On top of the solid lines we plot added the points at which the GTB constraints were imposed, according to the maps of eq.s ( 4.32 ) and ( 4.33 ).
+Beyond $n_{\text{max}}\approx 29$ , the amplitudes stabilize, with higher-order modes providing finer corrections.
+At very high orders, however, the highly oscillatory character of the basis functions $\phi_{n}$ can interfere with numerical precision. The results show good agreement with experimental data (green dots) and phenomenological models (gray line) which we are going to discuss in the next section. (a) $M$ (b) $\ell_{\text{max}}$ (c) $n_{\text{max}}$ Figure 2 : Dependence of the allowed amplitude space (ACU) on the parameters $M$ , $\ell_{\text{max}}$ and $n_{max}$ . $
+
+
+
+
+
+δ
+0
+
+0
+
+
+$ $
+
+
+
+
+
+η
+0
+
+0
+
+
+$ (a) $S0$ channel. $
+
+
+
+
+
+δ
+2
+
+0
+
+
+$ $
+
+
+
+
+
+η
+2
+
+0
+
+
+$ (b) $D0$ channel. $
+
+
+
+
+
+δ
+1
+
+1
+
+
+$ $
+
+
+
+
+
+η
+1
+
+1
+
+
+$ (c) $P1$ channel. Figure 3 : Convergence of phase shifts $\delta_{\ell}^{I}$ and elasticities $\eta_{\ell}^{I}$ for fixed $M=49$ and $\ell_{\text{max}}=11$ . The gray curve shows the QCD phenomenological fit from [ 34 ] , where Kaon production has been removed. The green dots represent the experimental results of [ 35 ] .
+We also show the points (dots) at which unitarity was imposed (energies $s_{i}$ of Eq. 4.32 ). 5.2 Tolerance and Stability of GTB Tolerances are chosen to be able to accommodate further corrections of the UV and IR leading order predictions. Too strict tolerance could make the problem unfeasible as, for instance, higher order corrections are required to achieve unitarity on the chiral amplitude of eq. ( 2.15 ). Varying $\varepsilon_{CSB}$ while fixing the other tolerances is illustrated in Figure 4 . There, the relation between $f_{0}^{0}(3)$ and $f_{1}^{1}(3)$ , predicted by chiral perturbation theory, i.e. eq. ( 4.35 ), is taken as the $x$ -axis. The black dot corresponds to the physical value where chiral perturbation theory predicts the coordinates of $f_{0}^{0}(3)$ and $f_{1}^{1}(3)$ through eq. ( 2.16 ) at the experimentally-observed pion decay constant $f_{\pi}=92MeV$ . We highlight on cyan the closest boundary point –for $\varepsilon_{CSB}=2.0\times 10^{-3}$ – to the physical point. The phase shifts of the bootstrapped S-Matrix elements associated to the cyan point are shown in the next Section in Figure 5 . Figure 4 : Gauge Theory Bootstrap $\varepsilon_{CSB}$ tolerance. The relation between $f_{0}^{0}(3)$ and $f_{1}^{1}(3)$ , predicted by tree-level chiral perturbation theory, is taken as the $x$ -axis. The black dot corresponds to the physical point (i.e. $f_{\pi}=92MeV$ ) where tree-level chiral perturbation theory predicts the coordinates of $f_{0}^{0}(3)$ and $f_{1}^{1}(3)$ . We highlight on cyan a point in the boundary of the allowed region for $\varepsilon_{CSB}=2.0\times 10^{-3}$ . 6 Bootstrapped $S-$ Matrix The numerical convergence analysis of Section 5.1 allows us to select a set of parameters that stabilizes the bootstrap and optimizes computational performance. Being conservative, we choose $M=49$ , $n_{max}=37$ and $l_{max}=11$ which reduces the runtime of the optimization problem from roughly 30 minutes in [ 2 ] to about one minute on a standard computer. For the tolerance parameters $\varepsilon_{CSB},\varepsilon_{SVZ}$ , and $\varepsilon_{FF}$ of the IR and UV constraints of eq.s ( 2.17 ), ( 2.20a ) and ( 2.20b ), respectively, we keep the same order of magnitude as in [ 2 ] . We take then: $\varepsilon_{CSB}=2\times 10^{-3},\quad\vec{\varepsilon}_{SVZ}=\left(\begin{matrix}1\times 10^{-7}\\
+4\times 10^{-6}\\
+4\times 10^{-6}\end{matrix}\right),\quad\vec{\varepsilon}_{FF}=\left(\begin{matrix}3\times 10^{-8}\\
+2\times 10^{-6}\\
+2\times 10^{-6}\end{matrix}\right),\quad M_{reg}=10^{3}.$ (6.41) Here, each element of the vectors $\vec{\varepsilon}_{FF}$ and $\vec{\varepsilon}_{SVZ}$ are the tolerance associated to the constraints for the $S0$ , $P1$ , and $D0$ partial waves, respectively. We consider the resulting bootstrapped amplitude associated to the cyan point in Figure 4 . This is the closest solution –on the boundary of the GTB-allowed region–to the physical value of $f_{\pi}=92\text{MeV}$ , here showed as a black dot. 6.1 Partial Waves We present our bootstrapped $S$ -matrix (cyan point in Fig. 4 ) in terms of the phase shifts $\delta_{\ell}^{I}$ and elasticities $\eta_{\ell}^{I}$ , defined in eq. ( 5.40 ), and compare it with experimental data [ 35 ] . Since our setup consider only two quark flavors, we also compare it with a phenomenological QCD model [ 34 ] where Kaon production is removed (as there is no strange quark producing it). $
+
+
+
+
+
+δ
+0
+
+0
+
+
+$ $
+
+
+
+
+
+η
+0
+
+0
+
+
+$ (a) $S0$ channel. $
+
+
+
+
+
+δ
+2
+
+0
+
+
+$ $
+
+
+
+
+
+η
+2
+
+0
+
+
+$ (b) $D0$ channel. $
+
+
+
+
+
+δ
+1
+
+1
+
+
+$ $
+
+
+
+
+
+η
+1
+
+1
+
+
+$ (c) $P1$ channel. $
+
+
+
+
+
+δ
+3
+
+1
+
+
+$ $
+
+
+
+
+
+η
+3
+
+1
+
+
+$ (d) $F1$ channel. $
+
+
+
+
+
+δ
+0
+
+2
+
+
+$ $
+
+
+
+
+
+η
+0
+
+2
+
+
+$ (e) $S2$ channel. $
+
+
+
+
+
+δ
+2
+
+2
+
+
+$ $
+
+
+
+
+
+η
+2
+
+2
+
+
+$ (f) $D2$ channel. Figure 5 : Bootstrapped phase shifts $\delta_{\ell}^{I}$ and elasticities $\eta_{\ell}^{I}$ for the first six partial waves.
+The gray curve shows the two-quark QCD phenomenological fit from [ 34 ] and the green dots represent the experimental results of [ 35 ] , where Kaon production has been removed. The continuous blue line represents our GTB result. For reference, we also have added the points (blue dots) at which unitarity was imposed (energies $s_{i}$ of Eq. 4.32 ). Figure 5 displays the first six phase shifts for our bootstrapped $S-$ matrix. We observe that below $1GeV$ both data shows good agreement with the bootstrapped amplitude. Above $1GeV$ the $S0$ channel shows a phase rise due to kaon production in the experimental data—a feature not expected in our setup since the strange quark is excluded. The phenomenological model, with kaon contributions subtracted, aligns better, after $1GeV$ , with our bootstrapped phase shifts. All together we observe good agreement with the literature checking the consistency of the GTB results of [ 2 , 1 ] . From these figures, we can extract the resonances of the scattering. For example, Figure 5(a) shows a broad rise near $\sqrt{s}\sim 200–800MeV$ suggesting an identification with the $\sigma$ meson. Similarly, Figure 5(c) shows a rise around $\sqrt{s}\sim 800$ MeV indicating the $\rho(770)$ meson. In the $D0$ channel (Figure 5(e) ), we observe the $f_{2}(1270)$ resonance. 6.2 Resonances and Pole Structure Since the bootstrapped S-matrix can be directly evaluated across the first and second complex sheet, we plot the poles of the $S0$ , $P1$ and $D0$ channels, evaluated at the second complex sheet, in Fig. 6 . Here we have colored in red the regions where hadrons were experimentally identified, according to the Particle Data Group (PDG) [ 36 ] . $
+
+σ
+
+$ $
+
+
+
+f
+0
+
+
+$ $
+
+
+
+
+
+f
+0
+
+′
+
+
+$ (a) $|S_{0}^{0}(z)|$ $
+
+ρ
+
+$ (b) $|S_{1}^{1}(z)|$ $
+
+
+
+f
+2
+
+
+$ (c) $|S_{2}^{0}(z)|$ Figure 6 : $S$ -matrix element partial waves poles on the second complex sheet. The $x-$ axis and $y-$ axis represents $Re[\sqrt{s}]$ and $Im[\sqrt{s}]$ , in GeV, respectively. Red regions indicate PDG-reported meson pole ranges [ 36 ] . Figure 6(a) shows the presence of the $\sigma$ meson (a.k.a the $f_{0}(550)$ resonance), a second pole around $\sqrt{s}\sim(1000+i\cdot 30)MeV$ and a third pole around $\sqrt{s}\sim(1400+i\cdot 300)MeV$ .
+In the $P1$ channel, Figure 6(b) , we identify the $\rho(770)$ with $\sim 7\%$ error relative to the PDG value. For the $D0$ channel, Figure 6(c) , we identify the $f_{2}(1270)$ resonance.
+The poles located far from the real axis –such as the $\sigma$ meson– were difficult to identify using the interpolation-based methods of [ 2 ] . With our implementation they can be easily found by evaluating the explicit amplitude across the second complex sheet. Doubling the resolution of the evaluation grid significantly enhances the precision of the pole location. From these we deduce the T-Matrix Poles shown in Table 1 . State PDG best value [ 36 ] Bootstrap Re $[\sqrt{s}]$ [MeV] Im $[\sqrt{s}]$ [MeV] Re $[\sqrt{s}]$ [MeV] Im $[\sqrt{s}]$ [MeV] $\sigma$ $400$ – $550$ $200$ – $350$ $484.375$ $250$ $\rho$ $761$ – $765$ $71$ – $74$ $764$ $31.25$ $f_{2}(1270)$ $1260$ – $1283$ $90$ – $110$ $1350$ $10$ Table 1 : T-Matrix Poles for the first three partial waves. 7 Conclusions In this work, we have implemented a discrete basis parametrization of the Gauge Theory Bootstrap [ 1 , 2 ] , to the case of QCD with $N_{f}=2$ , for the $2$ -to- $2$ pion scattering.
+The results obtained are aligned from those of the original implementation [ 1 , 2 ] , exhibiting good agreement with both phenomenological [ 34 ] and experimental data [ 35 ] . In particular, the parametrization hereby introduced of the GTB allowed us the identification of the $S$ -matrix’s resonances associated to the $S0$ , $P1$ , and $D0$ partial waves. Our analysis reveals poles corresponding to the $\sigma$ , $\rho(770)$ , and $f_{2}(1270)$ mesons, in good agreement with the reported values of the PDG [ 36 ] . Since the discrete basis give the parametrization of the S-matrix in all it’s partial waves, in principle, other channels could be explored, although we haven’t introduced their explicit UV information and so we do not expect enlightening information from those bootstrapped partial waves. It would be interesting to explore –and quantify– how these additional channels may modify the pole structure of the dominant, found poles. The key advantages of the discrete basis parametrization is its computational efficiency. Compared to the original implementation in [ 2 ] , which required approximately 30 minutes per run, the new parametrization reduces the runtime to about one minute on a standard computer.
+This improvement enabled us to perform checks of the consistency and convergence of the bootstrap procedure and opens the door for a more exhaustive exploration of the GTB framework. In particular, it will allows us to investigate the uniqueness of the solutions, as suggested in [ 25 ] . Overall, the newly obtained results further corroborate the consistency of the Gauge Theory Bootstrap and its power for studying the
+strongly coupled physics of gauge theories. Acknowledgments We would like to thank Yifei He for useful discussions and comments on the draft. References (1) Y. He and M. Kruczenski, Bootstrapping gauge theories , Phys. Rev. Lett. 133 (2024) 191601 [ 2309.12402 ]. (2) Y. He and M. Kruczenski, Gauge Theory Bootstrap: Pion amplitudes and low
+energy parameters , 2403.10772 . (3) M.F. Paulos, J. Penedones, J. Toledo, B.C. van Rees and P. Vieira, The
+S-matrix bootstrap. Part I: QFT in AdS , JHEP 11 (2017) 133 [ 1607.06109 ]. (4) M.F. Paulos, J. Penedones, J. Toledo, B.C. van Rees and P. Vieira, The
+S-matrix bootstrap II: two dimensional amplitudes , JHEP 11 (2017) 143 [ 1607.06110 ]. (5) M.F. Paulos, J. Penedones, J. Toledo, B.C. van Rees and P. Vieira, The
+S-matrix bootstrap. Part III: higher dimensional amplitudes , JHEP 12 (2019) 040 [ 1708.06765 ]. (6) M. Kruczenski, J. Penedones and B.C. van Rees, Snowmass White Paper:
+S-matrix Bootstrap , 2203.02421 . (7) R.J. Eden, P.V. Landshoff, D.I. Olive and J.C. Polkinghorne, The
+analytic S-matrix , Cambridge Univ. Press, Cambridge (1966). (8) A.L. Guerrieri, J. Penedones and P. Vieira, Bootstrapping QCD Using Pion
+Scattering Amplitudes , Phys. Rev. Lett. 122 (2019) 241604 [ 1810.12849 ]. (9) A. Bose, A. Sinha and S.S. Tiwari, Selection rules for the S-Matrix
+bootstrap , SciPost Phys. 10 (2021) 122 . (10) A. Bose, P. Haldar, A. Sinha, P. Sinha and S.S. Tiwari, Relative entropy
+in scattering and the S-matrix bootstrap , SciPost Phys. 9 (2020) 081 . (11) A.L. Guerrieri, J. Penedones and P. Vieira, S-matrix bootstrap for
+effective field theories: massless pions , JHEP 06 (2021) 088 [ 2011.02802 ]. (12) C. Fernandez, A. Pomarol, F. Riva and F. Sciotti, Cornering large- $N_{c}$ QCD with positivity bounds , Journal of High Energy
+Physics 2023 (2023) 94 . (13) J. Albert and L. Rastelli, Bootstrapping pions at large N , JHEP 08 (2022) 151 [ 2203.11950 ]. (14) J. Albert, J. Henriksson, L. Rastelli and A. Vichi, Bootstrapping mesons
+at large N: Regge trajectory from spin-two maximization , Journal of High Energy
+Physics 2024 (2024) 172 . (15) J. Albert and L. Rastelli, Bootstrapping pions at large N. Part II.
+Background gauge fields and the chiral anomaly , Journal of High Energy
+Physics 2024 (2024) 39 . (16) D. Karateev, S. Kuhn and J. Penedones, Bootstrapping Massive Quantum
+Field Theories , JHEP 07 (2020) 035 [ 1912.08940 ]. (17) S. Weinberg, Pion scattering lengths , Phys. Rev. Lett. 17 (1966) 616 . (18) J. Gasser and H. Leutwyler, Chiral perturbation theory to one loop , Annals
+of Physics 158 (1984) 142 . (19) M.A. Shifman, A.I. Vainshtein and V.I. Zakharov, QCD and Resonance
+Physics. Theoretical Foundations , Nucl. Phys. B 147 (1979) 385 . (20) M.A. Shifman, A.I. Vainshtein and V.I. Zakharov, QCD and Resonance
+Physics: Applications , Nucl. Phys. B 147 (1979) 448 . (21) M. Shifman, A. Vainshtein and V. Zakharov, QCD and Resonance Physics:
+The rho-omega mixing , Nuclear
+Physics B 147 (1979) 519 . (22) S.J. Brodsky and G.P. Lepage, Exclusive Processes in Quantum
+Chromodynamics , Adv. Ser. Direct.
+High Energy Phys. 5 (1989) 93 . (23) X.-B. Tong, J.-P. Ma and F. Yuan, Perturbative calculations of
+gravitational form factors at large momentum transfer , Journal of High Energy
+Physics 2022 (2022) . (24) X.-B. Tong, J.-P. Ma and F. Yuan, Gluon gravitational form factors at
+large momentum transfer , Physics
+Letters B 823 (2021) 136751 . (25) Y. He and M. Kruczenski, The Gauge Theory Bootstrap: Predicting pion
+dynamics from QCD , 2505.19332 . (26) Y. He and M. Kruczenski, S-matrix bootstrap in 3+1 dimensions:
+regularization and dual convex problem , JHEP 08 (2021) 125 [ 2103.11484 ]. (27) H. Chen, A.L. Fitzpatrick and D. Karateev, Bootstrapping 2d $\phi$ 4 theory with Hamiltonian truncation data , JHEP 02 (2022) 146 [ 2107.10286 ]. (28) J.F. Donoghue, E. Golowich and B.R. Holstein, Dynamics of the Standard
+Model: Second edition , Cambridge University Press (11, 2022), 10.1017/9781009291033 . (29) M. ApS, The MOSEK Optimization Toolbox for MATLAB Manual , 2023. (30) S. Boyd and L. Vandenberghe, Convex Optimization , no. ptie. 1 in
+Berichte über verteilte messysteme, Cambridge University Press (2004). (31) M.C. Grant and S.P. Boyd, Graph Implementations for Nonsmooth Convex
+Programs , in Recent Advances in Learning and Control , V.D. Blondel,
+S.P. Boyd and H. Kimura, eds., (London), pp. 95–110, Springer London, 2008. (32) M.C. Grant, CVX : Matlab software for disciplined convex programming,
+version 1.21 , http://cvxr.com/cvx (2011) . (33) Y. He, A. Irrgang and M. Kruczenski, A note on the S-matrix bootstrap
+for the 2d O(N) bosonic model , JHEP 11 (2018) 093 [ 1805.02812 ]. (34) J.R. Peláez and F.J. Ynduráin, Pion-Pion scattering amplitude , Physical Review D 71 (2005) . (35) S.D. Protopopescu, M. Alston-Garnjost, A. Barbaro-Galtieri, S.M. Flatté,
+J.H. Friedman, T.A. Lasinski et al., $\pi\pi$ partial-wave analysis from reactions ${\pi}^{+}p\rightarrow{\pi}^{+}{\pi}^{-}{\Delta}^{++}$ and ${\pi}^{+}p\rightarrow{K}^{+}{K}^{-}{\Delta}^{++}$ at 7.1 gev/c , Phys.
+Rev. D 7 (1973) 1279 . (36) Particle Data Group collaboration, Review of Particle
+Physics , PTEP 2022 (2022) 083C01 . * Experimental support, please view the build logs for errors. Generated by L A T E xml . Instructions for reporting errors We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+      support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+      methods listed below: Click the "Report Issue" ( ) button, located in the page header. Tip: You can select the relevant text first, to include it in your report. Our team has already identified the following issues . We appreciate your time reviewing and reporting rendering errors we
+      may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+      should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+      all. Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a list of packages that need conversion , and welcome developer contributions . We gratefully acknowledge support from
+        our major funders , member institutions , ,
+        and all contributors. About · Help · Contact · Subscribe · Copyright · Privacy · Accessibility · Operational Status (opens in new tab) Major funding support from

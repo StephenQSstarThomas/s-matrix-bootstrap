@@ -1,0 +1,196 @@
+{
+  "status": "conditional_geometry_ready",
+  "completed_at": "2026-09-08T02:52:09.557450+00:00",
+  "B3_geometry_ready": true,
+  "full_paper_numerical_agreement_claimed": false,
+  "continuum_unitarity_certified": false,
+  "regulator_accepted": false,
+  "model": {
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "free",
+    "unitarity_scope": "sampled",
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": false,
+    "prescription": "pv-midpoint",
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    "additional_constraints": null,
+    "sampling_nodes": 50,
+    "scattering_samples": 1500
+  },
+  "metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)",
+  "geometric_budget": 0.01,
+  "metric_support_query_budget": 0.0025,
+  "regions": [
+    {
+      "epsilon": 0.006,
+      "geometry_ready": true,
+      "max_distance_upper": 0.009812577971420494,
+      "support_records": 29,
+      "distinct_query_normals": 27,
+      "normal_count_tolerance_radians": 1e-10,
+      "x_support_lower": 0.18252017989032474,
+      "x_support_upper": 0.18256775797990524,
+      "pdf_maximum_marker_x": 0.1618803574738662,
+      "x_lower_minus_pdf_marker": 0.020639822416458536,
+      "relative_x_lower_minus_pdf_marker": 0.12750047466253345,
+      "computed_inner_min": [
+        0.0,
+        -0.012077498679964981
+      ],
+      "computed_inner_max": [
+        0.1825201798903248,
+        0.00210876673416614
+      ],
+      "outer_closed": true
+    },
+    {
+      "epsilon": 0.004,
+      "geometry_ready": true,
+      "max_distance_upper": 0.009729681547872668,
+      "support_records": 27,
+      "distinct_query_normals": 27,
+      "normal_count_tolerance_radians": 1e-10,
+      "x_support_lower": 0.14749075580901572,
+      "x_support_upper": 0.14753913953107473,
+      "pdf_maximum_marker_x": 0.1255951855637415,
+      "x_lower_minus_pdf_marker": 0.02189557024527422,
+      "relative_x_lower_minus_pdf_marker": 0.1743344710786058,
+      "computed_inner_min": [
+        0.0,
+        -0.009712832805638425
+      ],
+      "computed_inner_max": [
+        0.14749075580901577,
+        0.001478350564757597
+      ],
+      "outer_closed": true
+    },
+    {
+      "epsilon": 0.002,
+      "geometry_ready": true,
+      "max_distance_upper": 0.009849593699275495,
+      "support_records": 28,
+      "distinct_query_normals": 27,
+      "normal_count_tolerance_radians": 1e-10,
+      "x_support_lower": 0.10588509849925651,
+      "x_support_upper": 0.10594017578424922,
+      "pdf_maximum_marker_x": 0.08257301276510262,
+      "x_lower_minus_pdf_marker": 0.023312085734153887,
+      "relative_x_lower_minus_pdf_marker": 0.28232088128442545,
+      "computed_inner_min": [
+        0.0,
+        -0.0069264117562378245
+      ],
+      "computed_inner_max": [
+        0.10588509849925654,
+        0.0008175813549210727
+      ],
+      "outer_closed": true
+    },
+    {
+      "epsilon": 0.001,
+      "geometry_ready": true,
+      "max_distance_upper": 0.00956684158009916,
+      "support_records": 27,
+      "distinct_query_normals": 26,
+      "normal_count_tolerance_radians": 1e-10,
+      "x_support_lower": 0.08027466037399901,
+      "x_support_upper": 0.0803218407640945,
+      "pdf_maximum_marker_x": 0.054782094917098303,
+      "x_lower_minus_pdf_marker": 0.025492565456900707,
+      "relative_x_lower_minus_pdf_marker": 0.4653448447978958,
+      "computed_inner_min": [
+        0.0,
+        -0.0052356052481664014
+      ],
+      "computed_inner_max": [
+        0.08027466037399904,
+        0.0004750134200642585
+      ],
+      "outer_closed": true
+    },
+    {
+      "epsilon": 0.0006,
+      "geometry_ready": true,
+      "max_distance_upper": 0.009587225269165866,
+      "support_records": 25,
+      "distinct_query_normals": 24,
+      "normal_count_tolerance_radians": 1e-10,
+      "x_support_lower": 0.06827327440306555,
+      "x_support_upper": 0.06832086671992502,
+      "pdf_maximum_marker_x": 0.04100124573777742,
+      "x_lower_minus_pdf_marker": 0.027272028665288127,
+      "relative_x_lower_minus_pdf_marker": 0.6651512210069371,
+      "computed_inner_min": [
+        0.0,
+        -0.004450210014175769
+      ],
+      "computed_inner_max": [
+        0.06827327440306558,
+        0.00032839136753464175
+      ],
+      "outer_closed": true
+    },
+    {
+      "epsilon": 0.0002,
+      "geometry_ready": true,
+      "max_distance_upper": 0.00907372619064893,
+      "support_records": 30,
+      "distinct_query_normals": 26,
+      "normal_count_tolerance_radians": 1e-10,
+      "x_support_lower": 0.05446748945964088,
+      "x_support_upper": 0.05452031923959315,
+      "pdf_maximum_marker_x": 0.022362576668828744,
+      "x_lower_minus_pdf_marker": 0.03210491279081214,
+      "relative_x_lower_minus_pdf_marker": 1.435653559348698,
+      "computed_inner_min": [
+        0.0,
+        -0.0035686733478122244
+      ],
+      "computed_inner_max": [
+        0.054467489459640896,
+        0.00015512207566850184
+      ],
+      "outer_closed": true
+    }
+  ],
+  "qualified_support_records": 166,
+  "rejected": [],
+  "nesting": {
+    "six_chiral_present": true,
+    "contradictions": [],
+    "status": "no_observed_contradiction"
+  },
+  "all_supervisors_finished": true,
+  "running_queries": 0,
+  "optimization_source": "/tmp/smatrix_B_central_fix_rekhgjje",
+  "geometry_source": "/tmp/smatrix_B_geometry_order_qcumh0ai",
+  "reference_semantics": "PDF marker centers; finite plotted samples",
+  "reference_points": {
+    "pdf": {
+      "drawing_index": 699,
+      "epsilon": "",
+      "color": "black",
+      "role": "reference_marker",
+      "x": 0.07131334281385134,
+      "y": -0.004754181940087461,
+      "pdf_x": 431.29100036621094,
+      "pdf_y": 313.5449981689453,
+      "pdf_marker_radius": 4.3220062255859375
+    },
+    "formula": {
+      "x": 0.07332139057293466,
+      "y": -0.00488809270486231
+    }
+  },
+  "final_regions": "results/runs/stage_B3_PV_B377500_region_20260907/final/regions.json",
+  "preserved_incomplete_original_runs": [
+    "results/runs/stage_B3_pv_M50_eps0002_strip_minus_20260907",
+    "results/runs/stage_B3_pv_M50_eps001_strip_plus_20260907",
+    "results/runs/stage_B3_pv_M50_eps001_strip_minus_20260907",
+    "results/runs/stage_B3_pv_M50_eps0006_strip_plus_20260907",
+    "results/runs/stage_B3_pv_M50_eps0006_strip_minus_20260907"
+  ]
+}

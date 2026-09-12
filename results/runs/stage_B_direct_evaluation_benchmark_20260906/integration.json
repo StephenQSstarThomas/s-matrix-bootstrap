@@ -1,0 +1,14 @@
+{
+  "new_line_counts": {
+    "src/smatrix_bootstrap/kernels.py": 350,
+    "src/smatrix_bootstrap/operators.py": 334,
+    "src/smatrix_bootstrap/analysis.py": 311,
+    "src/smatrix_bootstrap/linear.py": 330,
+    "tests/test_kernels.py": 347
+  },
+  "retired_test_evidence": "results/evidence/coherent_bounded_coordinates_test.py.gz",
+  "retired_helpers": "Only the unused bounded-coordinate forward/inverse helpers and delegating wrappers; current raw-coefficient optimization is unchanged.",
+  "existing_embedding_check": "tests/test_mainline.py::test_density_refinement_preserves_the_analytic_amplitude already supplies a same-function embedding check.",
+  "science_followup": "SCIENCE.md lines228\u2013230 should describe the bounded-coordinate comparison as historical; those wrappers retire in this patch.",
+  "physical_constraints_changed": false
+}

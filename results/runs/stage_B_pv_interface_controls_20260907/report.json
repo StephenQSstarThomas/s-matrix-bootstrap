@@ -1,0 +1,81 @@
+{
+  "status": "M3_interface_checks_passed",
+  "M": 3,
+  "full_M50_run_performed": false,
+  "boundary_bounds": [
+    0.09166397296433207,
+    0.09166406656289675
+  ],
+  "cases": {
+    "native_evaluate": {
+      "status": "evaluated",
+      "prescription": "pv-midpoint",
+      "error": null,
+      "support_optimality_certified": null,
+      "report": "results/runs/stage_B_pv_M3_native_evaluate_20260907/report.json"
+    },
+    "dual": {
+      "status": "candidate",
+      "prescription": "pv-midpoint",
+      "error": null,
+      "support_optimality_certified": true,
+      "report": "results/runs/stage_B_pv_M3_dual_20260907/report.json"
+    },
+    "offgrid_rejected": {
+      "status": "inconclusive",
+      "prescription": "pv-midpoint",
+      "error": "PV-midpoint physical evaluation requires native nodes; off-grid continuation is unspecified",
+      "support_optimality_certified": null,
+      "report": "results/runs/stage_B_pv_M3_offgrid_rejected_20260907/report.json"
+    },
+    "scope_rejected": {
+      "status": "inconclusive",
+      "prescription": "pv-midpoint",
+      "error": "PV-midpoint requires --unitarity-scope sampled --infinity free",
+      "support_optimality_certified": null,
+      "report": "results/runs/stage_B_pv_M3_scope_rejected_20260907/report.json"
+    },
+    "prescription_mismatch": {
+      "status": "inconclusive",
+      "prescription": "finite-sine-cardinal",
+      "error": "Requested prescription does not match the saved source",
+      "support_optimality_certified": null,
+      "report": "results/runs/stage_B_pv_M3_prescription_mismatch_20260907/report.json"
+    },
+    "embed_rejected": {
+      "status": "inconclusive",
+      "prescription": "pv-midpoint",
+      "error": "Analytic embedding is defined only for unsubtracted sine coefficients",
+      "support_optimality_certified": null,
+      "report": "results/runs/stage_B_pv_M3_embed_rejected_20260907/report.json"
+    },
+    "cross_recover_fixed": {
+      "status": "recovered_initializer",
+      "prescription": "pv-midpoint",
+      "error": null,
+      "sampled_feasible": true,
+      "support_optimality_certified": false,
+      "report": "results/runs/stage_B_pv_M3_cross_recover_fixed_20260907/report.json"
+    },
+    "cross_dual_rejected": {
+      "status": "inconclusive",
+      "prescription": "pv-midpoint",
+      "error": "Dual coefficients require the same prescription",
+      "sampled_feasible": null,
+      "support_optimality_certified": null,
+      "report": "results/runs/stage_B_pv_M3_cross_dual_rejected_20260907/report.json"
+    },
+    "cross_warm": {
+      "status": "candidate",
+      "prescription": "pv-midpoint",
+      "sampled_feasible": true,
+      "support_optimality_certified": true,
+      "report": "results/runs/stage_B_pv_M3_cross_warm_20260907/report.json"
+    },
+    "recover_import_failure_preserved": {
+      "report": "results/runs/stage_B_pv_M3_cross_recover_20260907/report.json",
+      "failure": "NameError missing chiral_bound import after relocation",
+      "resolution": "Added local import; new run passed; original failure untouched"
+    }
+  }
+}

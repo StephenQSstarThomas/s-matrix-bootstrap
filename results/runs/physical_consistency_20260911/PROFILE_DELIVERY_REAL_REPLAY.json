@@ -1,0 +1,22 @@
+{
+  "status": "declared_samples_checked",
+  "checks": {
+    "energy_gev": true,
+    "phase_degrees": true,
+    "eta": true,
+    "P1_intensity": true,
+    "current_diagnostics_identical": true
+  },
+  "profile": "results/runs/physical_consistency_20260911/profile_delivery_native_final",
+  "P1_intensity_peaks_equal": true,
+  "selection_uses_phase_data": false,
+  "files": {
+    "direct_profiles.json": "607948557658da87333088954e33008bf66556ba2c37ec6076a54ceee3ee8acf",
+    "rho_mechanism.pdf": "093716a69a9cd329924b51c1ef916bb8ec5ebd63a17d27138e48431373d48bce",
+    "source.json": "b9a62fee44037952f178b4b0915e1640efb72985d30094c65961724511b860f8",
+    "report.json": "03fd203f20ca8c458ba762ad084bb0d3a73cd90df30bcb045bf94e8f83733a09",
+    "worker.json": "387f0bd91b14b1321227c044b63159a707094889891d114be96fc8567dc24415",
+    "direct_profiles.pdf": "232bb4c5c0b139b881c68312f30e767143c7801dbfa6004509fa27cbabfa42ec"
+  },
+  "scope": "Same frozen native geometric tip; positive plot/metric replay, not a completed Watson result"
+}

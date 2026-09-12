@@ -1,0 +1,262 @@
+{
+  "status": "Declared mixed-PV finite IR/UV/rho-signal and five-configuration chains completed; full paper reproduction not achieved",
+  "date": "2026-09-11",
+  "active_scientific_calculation": null,
+  "remaining_delivery": null,
+  "overall_claim": "major quantitative discrepancies retained; neither paper refutation nor proof of all original-parameter implementations failing",
+  "model": {
+    "prescription": "pv-midpoint",
+    "preparation": "results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    "current": "results/runs/mainline_alignment_20260909/D1_hard_M50",
+    "M": 50,
+    "L": 10,
+    "scattering_disks": 1500,
+    "full_joint_variables": 4076,
+    "chiral_norm": "separate-l2",
+    "epsilon": 0.002,
+    "density_limit": 377500,
+    "density_rule": "100*(M*M+M*(M+1)/2), actual independent rho l4",
+    "infinity": "free",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute, four independent .002 boxes",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "chiral_barrier_weight": 750,
+    "physical_inputs_changed_for_rho": false
+  },
+  "representative_rules": [
+    "PV_REPRESENTATIVE_RULE.json",
+    "PV_FIXED_COORDINATES.json",
+    "PV_F_REPRESENTATIVE_RULE.json"
+  ],
+  "IR": {
+    "support": "PV_IR_ref_05",
+    "selected": "PV_IR_selected",
+    "evaluation": "PV_IR_native",
+    "figure": "PV_C3_fig7/profiles.pdf",
+    "center": true,
+    "original_primal_and_support": true,
+    "gap": 0.001590364564230895,
+    "P1_last_phase_degrees": 8.5638925785
+  },
+  "UV": {
+    "supports": [
+      "PV_tip_support_01",
+      "PV_UV_mid_support_02",
+      "PV_UV_ref_support_02"
+    ],
+    "selected": "PV_UV_selected",
+    "phases": "PV_native_phases/phases.json",
+    "centers_and_full_original_supports": true,
+    "P1_native_90_mev": [
+      803.3864642707761,
+      701.1141802,
+      696.5611972
+    ],
+    "P1_min_eta": [
+      0.7759845596711741,
+      0.4347277,
+      0.2432061
+    ],
+    "main_intensity_peak_native_mev": [
+      792.135579,
+      680.413682,
+      680.413682
+    ],
+    "IR_projection_excluded": true,
+    "all_nonresonant_amplitudes_excluded": false,
+    "strict_discrete_peaks": true,
+    "continuous_scattering_or_poles_certified": false
+  },
+  "E1": {
+    "lower_support": "PV_E1_lower_support",
+    "lower_support_gap": 0.001378962008753648,
+    "regions": "PV_E1_regions_complete/regions.json",
+    "section_certificate": {
+      "x": 0.07332139057293466,
+      "IR_lower": [
+        -0.005529000613147199,
+        -0.00551886182893384
+      ],
+      "IR_upper": [
+        -0.004118513648184869,
+        -0.0041153329190532556
+      ],
+      "UV_lower": [
+        -0.00533683482625371,
+        -0.005334076901045079
+      ],
+      "UV_upper": [
+        -0.004316269976448883,
+        -0.004314057138607678
+      ],
+      "upper_shrink": [
+        0.00019554349042281036,
+        0.00020093705739562543
+      ],
+      "lower_rise": [
+        0.0001820270026801312,
+        0.00019492371210211832
+      ],
+      "upper_minus_lower": [
+        6.197783206920853e-07,
+        1.8910054715494193e-05
+      ],
+      "upper_to_lower_ratio": [
+        1.0031795942833643,
+        1.1038859863485426
+      ],
+      "upper_change_larger": true,
+      "sources": {
+        "IR": {
+          "inner": [
+            {
+              "coefficients": [
+                "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_012_20260907/coefficients.json",
+                "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_002_20260907/coefficients.json"
+              ],
+              "second_weight": "[0.7269662464971080212454821 +/- 1.07e-26]"
+            },
+            {
+              "coefficients": [
+                "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_IR_ref_05/coefficients.json",
+                "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_010_20260907/coefficients.json"
+              ],
+              "second_weight": "[4.633164912528465423284854e-10 +/- 2.05e-35]"
+            }
+          ],
+          "outer": [
+            "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_002_20260907/report.json",
+            "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_IR_ref_05/report.json"
+          ]
+        },
+        "UV": {
+          "inner": [
+            {
+              "coefficients": [
+                "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_UV_lower_replay/coefficients.json",
+                "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_E1_lower_support/coefficients.json"
+              ],
+              "second_weight": "[0.9999999812350884234918 +/- 3.89e-23]"
+            },
+            {
+              "coefficients": [
+                "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_UV_mid_support_02/coefficients.json",
+                "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_UV_ref_support_02/coefficients.json"
+              ],
+              "second_weight": "[0.99999999914240007072423 +/- 5.81e-24]"
+            }
+          ],
+          "outer": [
+            "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_E1_lower_support/report.json",
+            "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_UV_ref_support_02/report.json"
+          ]
+        }
+      },
+      "scope": "Arb at saved x: feasible segments and global supports; no dense-region or continuum claim"
+    },
+    "strong_asymmetry_reproduced": false,
+    "dense_region_certified": false
+  },
+  "F": {
+    "complete": true,
+    "all_centers_original_primal_support_and_native_checks_passed": true,
+    "comparison": "PV_F_five_complete/resolution.json",
+    "counts": {
+      "scattering_disks": 7650,
+      "current_grams": 510,
+      "chiral_balls": 10,
+      "density_bounds": 5,
+      "FESR": 20,
+      "FF_caps": 74,
+      "fresh_primary_samples": 669
+    },
+    "results": [
+      {
+        "M": 50,
+        "L": 8,
+        "native_90_mev": 835.494602813231,
+        "min_eta_P1": 0.9828001212019394,
+        "support_bounds": {
+          "lower": 0.11993136745970169,
+          "upper": 0.120018587740014,
+          "gap": 8.722028031231399e-05
+        }
+      },
+      {
+        "M": 50,
+        "L": 10,
+        "native_90_mev": 803.3864642707761,
+        "min_eta_P1": 0.7759845596711741,
+        "support_bounds": {
+          "lower": 0.09902001731987253,
+          "upper": 0.09911230962662303,
+          "gap": 9.229230675049382e-05
+        }
+      },
+      {
+        "M": 50,
+        "L": 12,
+        "native_90_mev": 789.2366605032144,
+        "min_eta_P1": 0.6289942970182503,
+        "support_bounds": {
+          "lower": 0.09038433089586395,
+          "upper": 0.09046352432060076,
+          "gap": 7.919342473680646e-05
+        }
+      },
+      {
+        "M": 45,
+        "L": 10,
+        "native_90_mev": 749.3265710970961,
+        "min_eta_P1": 0.5244700645726987,
+        "support_bounds": {
+          "lower": 0.09584885338968424,
+          "upper": 0.09591273900508104,
+          "gap": 6.38856153968026e-05
+        }
+      },
+      {
+        "M": 60,
+        "L": 10,
+        "native_90_mev": 773.5288564902776,
+        "min_eta_P1": 0.701938676217573,
+        "support_bounds": {
+          "lower": 0.10275032735015552,
+          "upper": 0.10284658404499969,
+          "gap": 9.625669484417121e-05
+        }
+      }
+    ],
+    "L_native_90_spread_mev": 46.2579423100166,
+    "paper_L_descriptive_spread_mev": 12.5385974,
+    "M_native_90_spread_mev": 54.05989317368,
+    "paper_M_descriptive_spread_mev": 54.348883,
+    "L_stability_major_discrepancy": true,
+    "M_spread_same_order": true,
+    "S0_paper_shape_major_discrepancy": true
+  },
+  "earlier_figures_scope": "B2/B3 full regions and historical C1/C2 source/selection limitations retained; not newly certified by rho chain",
+  "source_audit": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/AUDIT_ZH.md",
+  "current_report": "PV_CORE_CLAIM_AUDIT_ZH.md",
+  "final_pdf": "PV_mainline_report_final/REPORT_ZH.pdf",
+  "verification": {
+    "tests_passed": 107,
+    "core_modules": 21,
+    "active_test_files": 3,
+    "latest_code_verification": "verification_PV_phase_I_seed.json",
+    "physical_success_not_implied_by_tests": true,
+    "final_provenance": "PV_FINAL_VERIFICATION.json",
+    "PDF_QA": "PV_mainline_report_final/verification.json"
+  },
+  "held_branches": [
+    "Watsonian iterations",
+    "analytic extra-sample/endpoint extensions",
+    "later-paper uncertainty/input substitutions"
+  ],
+  "historical_progress": "results/evidence/pv_final_summary_before_20260911/PROGRESS.json.txt",
+  "historical_progress_sha256": "8ad5bf1b99a9a76fbfd061005b7b59dc37aa5d635105017fadd4bcca249eec99",
+  "delivery_complete": true,
+  "final_pdf_sha256": "1a0361352682665879605ea42bacf2d83e68407c94a201bab90eea6a6f9e98c4",
+  "final_pdf_pages": 18
+}

@@ -1,0 +1,313 @@
+{
+  "all_18_steps_reviewed": true,
+  "all_paper_core_claims_proved": false,
+  "proof_file": "results/evidence/FOUNDATIONS_PROOFS_20260910.md",
+  "claims": [
+    {
+      "step": "A1",
+      "status": "structural_obstruction",
+      "proofs": [
+        "P1",
+        "P6",
+        "P7",
+        "P8"
+      ],
+      "supported": [
+        "Exact crossing/isospin algebra",
+        "Full coefficient count"
+      ],
+      "not_established": [
+        "Common exact analytic family for current native and off-cut values"
+      ],
+      "evidence": "verified_analytic_audit/analytic_audit.json"
+    },
+    {
+      "step": "A2",
+      "status": "conditional_inputs",
+      "proofs": [
+        "P1",
+        "P3",
+        "P4"
+      ],
+      "supported": [
+        "Tree-level projection",
+        "Current normalization",
+        "FESR contour transform"
+      ],
+      "not_established": [
+        "Unique norm/mass/regulator prescription",
+        "Certified OPE truncation error"
+      ],
+      "evidence": "verified_analytic_audit/analytic_audit.json"
+    },
+    {
+      "step": "A3",
+      "status": "validated_finite_comparison",
+      "proofs": [
+        "P6",
+        "P7",
+        "P8"
+      ],
+      "supported": [
+        "24 independent PV angular integrals",
+        "Uniform crossed-kernel bound below matching"
+      ],
+      "not_established": [
+        "Full continuum feasibility"
+      ],
+      "evidence": "verified_analytic_audit/analytic_audit.json"
+    },
+    {
+      "step": "B1",
+      "status": "proved_for_declared_matrices",
+      "proofs": [
+        "P10",
+        "P11"
+      ],
+      "supported": [
+        "Finite compactness",
+        "Original weak duality",
+        "Verified free-column identities"
+      ],
+      "not_established": [
+        "Continuum support bounds"
+      ],
+      "evidence": "finite_tip_recheck/report.json"
+    },
+    {
+      "step": "B2",
+      "status": "finite_geometry_certified",
+      "proofs": [
+        "P12"
+      ],
+      "supported": [
+        "38 qualified supports",
+        "Declared distance budget .00967577"
+      ],
+      "not_established": [
+        "Identity with unpublished paper feasible set"
+      ],
+      "evidence": "../mainline_alignment_20260909/B_combined/regions_IR_lower_003/regions.json"
+    },
+    {
+      "step": "B3",
+      "status": "partial",
+      "proofs": [
+        "P12"
+      ],
+      "supported": [
+        "Epsilon nesting",
+        "Some inclusion/exclusion and strict support shrink"
+      ],
+      "not_established": [
+        "All six whole-region budgets passed",
+        "epsilon .001 formula-point verdict"
+      ],
+      "evidence": "../mainline_alignment_20260909/B_combined/FIG4_CORE_CLAIMS_ZH.md"
+    },
+    {
+      "step": "C1",
+      "status": "sampled_trend_and_root_existence",
+      "proofs": [
+        "P1",
+        "P12"
+      ],
+      "supported": [
+        "Sampled linearity trend",
+        "Orange and green root existence brackets"
+      ],
+      "not_established": [
+        "Blue has no zero on entire interval",
+        "Uniform continuum linearity error"
+      ],
+      "evidence": "C1_green_root/evaluation.json"
+    },
+    {
+      "step": "C2",
+      "status": "coefficient_identity",
+      "proofs": [
+        "P7"
+      ],
+      "supported": [
+        "Same saved vector through C figures"
+      ],
+      "not_established": [
+        "Identity of an unspecified complete analytic amplitude"
+      ],
+      "evidence": "../mainline_alignment_20260909/C2_fig6/selection.json"
+    },
+    {
+      "step": "C3",
+      "status": "selected_point_observation",
+      "proofs": [
+        "P1",
+        "P5"
+      ],
+      "supported": [
+        "Selected IR P1 lacks target crossing",
+        "Computed S0/S2 low-energy trend"
+      ],
+      "not_established": [
+        "Every IR amplitude lacks rho"
+      ],
+      "evidence": "../mainline_alignment_20260909/C3_fig7/profiles.json"
+    },
+    {
+      "step": "D1",
+      "status": "proved_local_Gram",
+      "proofs": [
+        "P2",
+        "P3"
+      ],
+      "supported": [
+        "Complex/real Gram equivalence",
+        "Schur floor and singular-face conditions"
+      ],
+      "not_established": [
+        "Sufficiency for a full QCD S-matrix"
+      ],
+      "evidence": "../../evidence/FOUNDATIONS_PROOFS_20260910.md"
+    },
+    {
+      "step": "D2",
+      "status": "conditional_UV_constraints",
+      "proofs": [
+        "P3",
+        "P4",
+        "P5",
+        "P9"
+      ],
+      "supported": [
+        "Four discrete moments and squared FF caps"
+      ],
+      "not_established": [
+        "Two moments force a resonance",
+        "Finite caps prove asymptotic behavior"
+      ],
+      "evidence": "verified_analytic_audit/analytic_audit.json"
+    },
+    {
+      "step": "D3",
+      "status": "finite_witness",
+      "proofs": [
+        "P11"
+      ],
+      "supported": [
+        "Complete joint finite witness"
+      ],
+      "not_established": [
+        "Complete global QCD solution",
+        "Restricted initializer is a full support solve"
+      ],
+      "evidence": "../mainline_alignment_20260909/D3_paper_hull/report.json"
+    },
+    {
+      "step": "E1",
+      "status": "finite_strict_shrink_only",
+      "proofs": [
+        "P12"
+      ],
+      "supported": [
+        "UV subset theorem",
+        "Strict finite shrink"
+      ],
+      "not_established": [
+        "Published strong asymmetry reproduced"
+      ],
+      "evidence": "../mainline_alignment_20260909/E1_PAPER_RESULT_ZH.md"
+    },
+    {
+      "step": "E2",
+      "status": "historical_output_assisted_selection",
+      "proofs": [
+        "P10",
+        "P12"
+      ],
+      "supported": [
+        "Finite projection supports",
+        "Tip +x is a geometric objective"
+      ],
+      "not_established": [
+        "Old ref/mid marker selection was independent",
+        "Full amplitude uniqueness"
+      ],
+      "evidence": "../mainline_alignment_20260909/PAPER_MAINLINE.json"
+    },
+    {
+      "step": "E3",
+      "status": "finite_mechanism_evidence",
+      "proofs": [
+        "P3",
+        "P5",
+        "P7",
+        "P8",
+        "P11"
+      ],
+      "supported": [
+        "Native spectral peaks",
+        "Fixed C excluded by the current constraints"
+      ],
+      "not_established": [
+        "Unique pole/width",
+        "All three curves quantitatively robust",
+        "Analytic feasibility transferred"
+      ],
+      "evidence": "finite_C_exclusion_recheck/report.json"
+    },
+    {
+      "step": "F1",
+      "status": "missing_L12",
+      "proofs": [
+        "P12"
+      ],
+      "supported": [
+        "Four completed resolutions"
+      ],
+      "not_established": [
+        "Five resolutions complete",
+        "Phase-I failure proves infeasibility"
+      ],
+      "evidence": "../mainline_alignment_20260909/F_paper/F_RESULT_ZH.md"
+    },
+    {
+      "step": "F2",
+      "status": "empirical_partial_sensitivity",
+      "proofs": [
+        "P8",
+        "P12"
+      ],
+      "supported": [
+        "Measured four-configuration changes"
+      ],
+      "not_established": [
+        "M/L continuum convergence theorem"
+      ],
+      "evidence": "../mainline_alignment_20260909/F_paper/fig11_partial/resolution_partial.json"
+    },
+    {
+      "step": "F3",
+      "status": "audit_delivered_reproduction_partial",
+      "proofs": [
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7",
+        "P8",
+        "P9",
+        "P10",
+        "P11",
+        "P12"
+      ],
+      "supported": [
+        "Proofs, counterexamples and preserved sources"
+      ],
+      "not_established": [
+        "All paper core claims achieved"
+      ],
+      "evidence": "REVIEW_ZH.md"
+    }
+  ]
+}

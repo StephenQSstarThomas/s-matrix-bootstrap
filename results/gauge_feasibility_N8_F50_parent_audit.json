@@ -1,0 +1,22 @@
+{
+  "candidate": "results/gauge_feasibility_N8_F50_free.json",
+  "candidate_sha256": "6be06afabd3788c371e2470144afd403343349b2abb6b7559331e484b4da297e",
+  "passes_parent_finite_numerical_audit": true,
+  "values": {
+    "min_training_unitarity_circle_margin": 2.4617579373415002e-89,
+    "min_training_unitarity_relative_margin": 0.00010516793535001488,
+    "min_current_gram_eigenvalue": 3.411281655867031e-11,
+    "min_conditioned_current_gram_eigenvalue": 1.0747540840860524e-06,
+    "chiral_residual": 0.0019999450881577055,
+    "chiral_tolerance": 0.002,
+    "selected_moment_residual_norm": 0.0019999624843948815,
+    "moment_tolerance": 0.002,
+    "max_current_high_FF_ratio": 0.9997337910662786,
+    "amplitude_at_infinity": 1.8082757513582237e-14,
+    "vector_F_at_infinity": 0.01680769077227216
+  },
+  "scope": "Original finite scattering/current/chi/moment/FF constraints for free-coordinate candidates; numerical eigenvalues and double-generated quadrature. Extra global edge certificates audited separately.",
+  "angular_points": 160,
+  "summation": "numpy clongdouble/longdouble; eigvalsh float64",
+  "script_sha256": "ae0913411043b073c7619639d2d4716f43b0238aca18b21f9d29145fd649c459"
+}

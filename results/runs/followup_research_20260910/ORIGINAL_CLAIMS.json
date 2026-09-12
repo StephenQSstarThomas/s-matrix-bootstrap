@@ -1,0 +1,87 @@
+{
+  "target": "2309.12402v3 Fig.3-11",
+  "original_physical_inputs_retained": true,
+  "full_original_parameter_infeasibility_proved": false,
+  "whole_problem_impossibility_proofs": 0,
+  "observed_difference_groups": [
+    [
+      "Fig4 extent"
+    ],
+    [
+      "Fig8 asymmetry"
+    ],
+    [
+      "Fig9 and Fig10 phase profiles"
+    ],
+    [
+      "Fig11 resolution comparison"
+    ]
+  ],
+  "grouping_is_not_completion_percentage": true,
+  "all_core_claims_aligned": false,
+  "extra_requirements_not_added": [
+    "unique complex rho pole",
+    "all-energy all-spin continuum certification",
+    "uniqueness of followup iterations"
+  ],
+  "figures": [
+    {
+      "figure": 3,
+      "step": "B2",
+      "status": "finite_geometry_delivered",
+      "limitation": "Exact author operator identity remains unspecified."
+    },
+    {
+      "figure": 4,
+      "step": "B3",
+      "status": "partial_with_persistent_extent_difference",
+      "limitation": "Nesting and .002 inclusion proved; six full geometries incomplete."
+    },
+    {
+      "figure": 5,
+      "step": "C1",
+      "status": "sampled_trend_and_two_root_existence",
+      "limitation": "Blue zero absence on the whole interval unproved."
+    },
+    {
+      "figure": 6,
+      "step": "C2",
+      "status": "same_full_vector_delivered",
+      "limitation": "Declared geometric selection, not recovered unique author selection."
+    },
+    {
+      "figure": 7,
+      "step": "C3",
+      "status": "IR_control_reproduced",
+      "limitation": "Missing correct P1 rho is intended in the original figure."
+    },
+    {
+      "figure": 8,
+      "step": "E1",
+      "status": "strong_asymmetry_not_reproduced",
+      "limitation": "Both sides shrink; ratio interval [.955397,1.180340]."
+    },
+    {
+      "figure": 9,
+      "step": "E3",
+      "status": "rho_signature_present_robustness_partial",
+      "limitation": "Three crossings ~789/700/696 MeV; no mass used as optimization input."
+    },
+    {
+      "figure": 10,
+      "step": "E3",
+      "status": "partial_phase_alignment",
+      "limitation": "S0 intermediate/high-energy and elasticity differences remain."
+    },
+    {
+      "figure": 11,
+      "step": "F1-F3",
+      "status": "partial_missing_L12",
+      "limitation": "Four witnesses, no complete (50,12) witness or exclusion."
+    }
+  ],
+  "inputs_and_selection_independent": false,
+  "reason": "Historical combined norm and ref/mid selection were output assisted; new independent full results have not been generated.",
+  "source_report": "MAINLINE_ALIGNMENT_ZH.md",
+  "held_issues": "HELD_ISSUES_ZH.md"
+}

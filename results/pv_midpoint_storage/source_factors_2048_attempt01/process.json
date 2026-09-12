@@ -1,0 +1,11 @@
+{
+  "worker_pid": 2416270,
+  "command_argv": [
+    "/home/shiqiu/miniconda3/bin/python",
+    "/home/shiqiu/s-matrix-bootstrap/scripts/prepare_pv_midpoint_source_factors.py",
+    "--worker",
+    "--directory",
+    "/home/shiqiu/s-matrix-bootstrap/results/pv_midpoint_storage/source_factors_2048_attempt01"
+  ],
+  "hard_cap_seconds": 300
+}

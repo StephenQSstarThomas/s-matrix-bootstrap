@@ -1,0 +1,33 @@
+{
+  "snapshot": "results/runs/physical_consistency_20260911/INTERLACED_STATE_AUDIT_phase_I_state_snapshot.npz",
+  "source": "results/runs/physical_consistency_20260911/interlaced_phase_I_02/phase_I_state.npz",
+  "captured_utc": "2026-09-11T07:45:23.475395+00:00",
+  "source_mtime_utc": "2026-09-11T07:41:47.513546+00:00",
+  "source_mtime_ns": 1789112507513545577,
+  "sha256": "bdacea7c0a2569a224fc5ac536fc3da610d5da5ce9508587298feadf500c7d2e",
+  "size_bytes": 194413,
+  "zip_crc_passed": true,
+  "all_npz_arrays_loaded": true,
+  "read_attempts": 1,
+  "mu": 0.01,
+  "tau": 3.390023509987084,
+  "z_dtype": "float128",
+  "z_shape": [
+    4063
+  ],
+  "keys": [
+    "z",
+    "mu",
+    "ray_rate",
+    "reference_point",
+    "x",
+    "y",
+    "chi",
+    "gram",
+    "ff",
+    "moment",
+    "slack",
+    "chiral_slack"
+  ],
+  "scope": "One accepted immutable checkpoint snapshot; not a final-center claim"
+}

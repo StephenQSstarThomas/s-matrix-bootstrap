@@ -1,0 +1,10 @@
+{
+  "source": "results/evidence/WATSONIAN_DIAGNOSTIC_SCOPE_20260911.md",
+  "before_sha256": "4c47819cc252474c490f454a4fd821eb8bf6c510ab4c27736901e7ad23e3824c",
+  "authorized_changes": [
+    "Section 3 title: Gram 正定 -> Gram 半正定",
+    "Rank-two example: 满足原 Gram 正定 -> 满足原 Gram 半正定"
+  ],
+  "scope": "Explicit terminology correction requested by root; no model, equation or conclusion changed",
+  "after_sha256": "5633af95512d781edbbc6d18980d6f575bb0ecd05215b48c78eb2efc048682be"
+}

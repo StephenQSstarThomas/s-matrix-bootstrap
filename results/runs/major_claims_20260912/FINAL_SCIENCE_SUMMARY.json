@@ -1,0 +1,128 @@
+{
+  "kind": "Summary derived from existing original-matrix CLI certificates and saved native evaluations",
+  "F_complete": true,
+  "F_results": [
+    {
+      "M": 50,
+      "L": 8,
+      "native_90_mev": 835.4893038129869,
+      "min_eta_P1": 0.984570879547613,
+      "support_bounds": {
+        "lower": 0.12000641341680135,
+        "upper": 0.1200071504134126,
+        "gap": 7.36996611253038e-07
+      }
+    },
+    {
+      "M": 50,
+      "L": 10,
+      "native_90_mev": 803.3909157125215,
+      "min_eta_P1": 0.7774640796294163,
+      "support_bounds": {
+        "lower": 0.09909604549005062,
+        "upper": 0.09909682883846381,
+        "gap": 7.83348413191387e-07
+      }
+    },
+    {
+      "M": 50,
+      "L": 12,
+      "native_90_mev": 789.2797088547048,
+      "min_eta_P1": 0.6300198481995276,
+      "support_bounds": {
+        "lower": 0.09044723389366552,
+        "upper": 0.09044793889347898,
+        "gap": 7.049998134583957e-07
+      }
+    },
+    {
+      "M": 45,
+      "L": 10,
+      "native_90_mev": 749.3265710970961,
+      "min_eta_P1": 0.5244700645726987,
+      "support_bounds": {
+        "lower": 0.09584885338968424,
+        "upper": 0.09591273900508104,
+        "gap": 6.38856153968026e-05
+      }
+    },
+    {
+      "M": 60,
+      "L": 10,
+      "native_90_mev": 773.5288564902776,
+      "min_eta_P1": 0.701938676217573,
+      "support_bounds": {
+        "lower": 0.10275032735015552,
+        "upper": 0.10284658404499969,
+        "gap": 9.625669484417121e-05
+      }
+    }
+  ],
+  "fixed_M_L_spread_mev": 46.20959495828208,
+  "fixed_L_M_spread_mev": 54.0643446154254,
+  "counts": {
+    "scattering_disks": 7650,
+    "current_grams": 510,
+    "chiral_balls": 10,
+    "density_bounds": 5,
+    "FESR": 20,
+    "FF_caps": 74,
+    "fresh_primary_samples": 669
+  },
+  "M45_M60_reused_not_recomputed": true,
+  "source_choice_replays": {
+    "baseline_tip_replay": {
+      "upper": 0.09909682883846381,
+      "primal": true,
+      "chiral_norms": [
+        "[0.00199999662807740184527840617552 +/- 4.86e-33]",
+        "[0.000681278379143808075378139523398 +/- 3.57e-34]"
+      ],
+      "chiral_margins": [
+        "[3.37192259819635495724791851123e-9 +/- 1.58e-39]",
+        "[0.00131872162085619196625522390005 +/- 4.28e-33]"
+      ],
+      "strict_chiral_violation": false,
+      "source_report_sha256": "31e008bcef1d32ee78e774bd063e2043b539eebc6d4cd19816d591a1ce135c16"
+    },
+    "B_half_upper": {
+      "upper": 0.09354981012281616,
+      "primal": false,
+      "chiral_norms": null,
+      "chiral_margins": null,
+      "strict_chiral_violation": null,
+      "source_report_sha256": "3a200cc56679c3a3cab6954d0ccb873e70883e290cc2a20a9061785366af7f34"
+    },
+    "chi_combined_replay": {
+      "upper": 0.09909675993189163,
+      "primal": false,
+      "chiral_norms": [
+        "[0.00211284801682700110607950575285 +/- 2.06e-34]"
+      ],
+      "chiral_margins": [
+        "[-0.000112848016827001064446142329407 +/- 1.65e-34]"
+      ],
+      "strict_chiral_violation": true,
+      "source_report_sha256": "7b43d11e82440c9dfcc0d605fcfcdb2bfad6282200e1b43e6936460bcd89e371"
+    },
+    "chi_witness_replay": {
+      "upper": 5e-324,
+      "primal": true,
+      "chiral_norms": [
+        "[0.00194041117035636100551904328137 +/- 1.30e-33]"
+      ],
+      "chiral_margins": [
+        "[5.95888296436390361143201420747e-5 +/- 3.10e-35]"
+      ],
+      "strict_chiral_violation": false,
+      "source_report_sha256": "619e78924637392de0b610331832ec9a36dc1e96a77babec965584ad344024e9"
+    },
+    "B_half_projection_separation_lower": 0.005546235367234461
+  },
+  "phase_probe_runs": [
+    "tip_S0_certificate_final",
+    "ref_P1_certificate_final"
+  ],
+  "full_paper_quantitative_success": false,
+  "all_original_parameter_implementations_impossible_proved": false
+}

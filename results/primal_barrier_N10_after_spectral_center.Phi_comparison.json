@@ -1,0 +1,33 @@
+{
+  "result_path": "results/primal_barrier_N10_after_spectral_center.json",
+  "result_sha256": "7c0aec663675d0034b55295c8cf4bac34126bbc535dc96de97bade110d961cbd",
+  "mu_rational": "944473296573929/4722366482869645213696",
+  "definition": "Phi=q.x+mu*F(b-Ax), all original input cone barrier terms",
+  "start": {
+    "exact_linear_objective": "289012717109936797701720676889462637454189468542183206618215847917839280982037696753237671/3907258422558639577261163528612446630959742571756371369391638847734231669916790932740505600",
+    "barrier_F_float64": 19096.003286163246,
+    "Phi_float64": 0.07778736090005553,
+    "f11": -0.00462301001517643,
+    "exactly_strict": true
+  },
+  "terminal": {
+    "exact_linear_objective": "286833627663464550882751789131233734485099606193130428561607484285138219713972140230639271/3907258422558639577261163528612446630959742571756371369391638847734231669916790932740505600",
+    "barrier_F_float64": 19254.04855043489,
+    "Phi_float64": 0.07726126702906656,
+    "f11": -0.0045881535824362244,
+    "exactly_strict": true
+  },
+  "exact_linear_objective_change": "-590643377976361331801820179042531737609816516811582101905310523987/1059064517550090528999225116926927840201484333557355570327041614020608",
+  "barrier_F_change_float64": 158.04526427164456,
+  "Phi_change_float64": -0.0005260938709889541,
+  "independent_full_barrier_evaluation": true,
+  "optimizer_run_performed": false,
+  "full_Hessian_assembled": false,
+  "scope": "Exact rational linear objective and feasibility; full barrier scalars evaluated by the frozen Float64 barrier routine, so Phi comparison is numerical, not an interval certificate",
+  "source_snapshot_utf8": {
+    "/home/shiqiu/s-matrix-bootstrap/scripts/compare_primal_barrier_objective.py": "\"\"\"Compare complete barrier objectives at the archived start and terminal point.\"\"\"\nimport argparse\nfrom fractions import Fraction as F\nimport hashlib\nimport json\nfrom pathlib import Path\n\nfrom smatrix_bootstrap.primal_barrier import PrimalLogBarrier\n\n\ndef main():\n    p=argparse.ArgumentParser(description=__doc__);p.add_argument('result',type=Path)\n    p.add_argument('--output',type=Path,required=True);args=p.parse_args()\n    if args.output.exists():raise FileExistsError('Comparison artifacts are immutable')\n    raw=args.result.read_bytes();r=json.loads(raw);seed_bytes=Path(r['seed_path']).read_bytes();input_bytes=Path(r['input_path']).read_bytes()\n    if hashlib.sha256(seed_bytes).hexdigest()!=r['seed_sha256'] or hashlib.sha256(input_bytes).hexdigest()!=r['input_sha256']:\n        raise ValueError('Input/seed hash mismatch')\n    seed=json.loads(seed_bytes);payload=json.loads(input_bytes)\n    model=PrimalLogBarrier.from_payload(payload,equality_rank=seed['equality_rank'],equality_rows=seed['equality_rows'],\n        pivot_columns=seed['pivot_columns'],pivot_inverse=seed['pivot_inverse'])\n    points=[list(map(F,r['initial_x_rational'])),list(map(F,r['result']['x_rational']))];evaluations=[]\n    mu=F.from_float(r['result']['last_mu']);factor=F(2)**seed['objective_scale_power']\n    for x in points:\n        model.eq.validate_seed(x);ns,den=model.exact_slack(x);certificate=model.certify_strict_slack(ns,den)\n        if not certificate['strict']:raise ValueError('Comparison point is not exactly strict')\n        barrier=model.evaluate(ns,den,certificate,derivatives=False)[0]\n        objective=sum((q*v for q,v in zip(model.c_frac,x)),F(0))\n        evaluations.append(dict(exact_linear_objective=str(objective),barrier_F_float64=barrier,\n            Phi_float64=float(objective)+float(mu)*barrier,f11=-float(objective/factor),exactly_strict=True))\n    delta_q=F(evaluations[1]['exact_linear_objective'])-F(evaluations[0]['exact_linear_objective'])\n    delta_F=evaluations[1]['barrier_F_float64']-evaluations[0]['barrier_F_float64']\n    out=dict(result_path=str(args.result),result_sha256=hashlib.sha256(raw).hexdigest(),\n        mu_rational=str(mu),definition='Phi=q.x+mu*F(b-Ax), all original input cone barrier terms',\n        start=evaluations[0],terminal=evaluations[1],exact_linear_objective_change=str(delta_q),\n        barrier_F_change_float64=delta_F,Phi_change_float64=float(delta_q)+float(mu)*delta_F,\n        independent_full_barrier_evaluation=True,optimizer_run_performed=False,full_Hessian_assembled=False,\n        scope='Exact rational linear objective and feasibility; full barrier scalars evaluated by the frozen Float64 barrier routine, so Phi comparison is numerical, not an interval certificate',\n        source_snapshot_utf8={str(Path(__file__)):Path(__file__).read_text()})\n    out['source_sha256']={k:hashlib.sha256(v.encode()).hexdigest() for k,v in out['source_snapshot_utf8'].items()}\n    args.output.write_text(json.dumps(out,indent=2)+'\\n');print(json.dumps(out,indent=2))\n\n\nif __name__=='__main__':main()\n"
+  },
+  "source_sha256": {
+    "/home/shiqiu/s-matrix-bootstrap/scripts/compare_primal_barrier_objective.py": "9d570da2064298592c737fe6dce97a3f9b05e5345ebaf9e65a324234627f8d17"
+  }
+}

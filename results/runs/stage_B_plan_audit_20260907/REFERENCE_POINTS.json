@@ -1,0 +1,470 @@
+{
+  "task": "Fig4 reference-point membership from existing certified inner/outer data",
+  "created_utc": "2026-09-07T23:27:33.924935+00:00",
+  "summary": "results/runs/stage_B3_PV_B377500_region_20260907/partial_25/regions.json",
+  "manifest": "results/runs/stage_B3_PV_B377500_region_20260907/manifest.json",
+  "reference_source": "results/runs/stage_B_reference_20260906/report.json",
+  "model_signature": {
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "free",
+    "unitarity_scope": "sampled",
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": false,
+    "prescription": "pv-midpoint",
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    "additional_constraints": null,
+    "sampling_nodes": 50,
+    "scattering_samples": 1500
+  },
+  "chiral_norm": "two separate four-vector L2 balls",
+  "arithmetic": "384-bit Arb arithmetic on saved point enclosures and outward support upper bounds; no new amplitude or optimization evaluation",
+  "scope": "PV M50/L10 sampled/free B377500 conditional scattering/chiral model only. Convex-combination membership does not establish continuum unitarity or gauge feasibility.",
+  "readout_scope": "PDF nominal center is checked as saved; existing readout halfwidths are also tested. These are neither author solver error bounds nor physical input confidence intervals.",
+  "update_rule": "Re-read manifest.latest_summary and repeat the same triangle/halfspace tests with its accepted point enclosures and bounds; retain undetermined unless a valid membership or exclusion certificate exists.",
+  "new_optimization": false,
+  "core_or_manifest_modified": false,
+  "references": {
+    "pdf_black": {
+      "name": "PDF黑点中心",
+      "coordinates": [
+        0.07131334281385134,
+        -0.004754181940087461
+      ],
+      "source_key": "curves.chiplot.highlights[color=black]",
+      "existing_readout_halfwidths": [
+        1.9507737650137372e-06,
+        2.575056454782686e-07
+      ]
+    },
+    "formula_140_92": {
+      "name": "140/92公式点",
+      "coordinates": [
+        0.07332139057293466,
+        -0.00488809270486231
+      ],
+      "source_key": "curves.chiplot.formula_reference_mpi140_fpi92"
+    }
+  },
+  "triangle_certificate": "For ordered vertices (a,b,c), lambda=(det(b-P,c-P),det(c-P,a-P),det(a-P,b-P))/det(b-a,c-a). These exact determinant ratios sum to one and reproduce P; saved interval enclosures prove all weights positive. The same convex combination of saved feasible amplitudes is feasible.",
+  "results": [
+    {
+      "epsilon": 0.006,
+      "reference_checks": {
+        "pdf_black": {
+          "status": "inside_inner_hull",
+          "triangle_vertex_indices": [
+            0,
+            3,
+            5
+          ],
+          "barycentric_weight_enclosures": [
+            "[0.26524409111362868723138795929092492 +/- 1.25e-36]",
+            "[0.32448717215844120833960999555659684 +/- 1.38e-36]",
+            "[0.41026873672793010442900204515247824 +/- 2.63e-36]"
+          ],
+          "weights_approx": [
+            0.2652440911136287,
+            0.3244871721584412,
+            0.41026873672793013
+          ],
+          "minimum_weight_lower": 0.2652440911136286,
+          "readout_box_minimum_weight_lower": 0.2651602634576297
+        },
+        "formula_140_92": {
+          "status": "inside_inner_hull",
+          "triangle_vertex_indices": [
+            0,
+            3,
+            5
+          ],
+          "barycentric_weight_enclosures": [
+            "[0.24456168264482944486590205553633146 +/- 5.00e-36]",
+            "[0.33361059318500552301639663541572843 +/- 4.42e-36]",
+            "[0.42182772417016503211770130904794011 +/- 5.76e-37]"
+          ],
+          "weights_approx": [
+            0.24456168264482944,
+            0.3336105931850055,
+            0.421827724170165
+          ],
+          "minimum_weight_lower": 0.24456168264482941
+        }
+      },
+      "certificate_vertices": [
+        {
+          "index": 0,
+          "target_enclosures": [
+            "0",
+            "0"
+          ],
+          "zero_amplitude": true
+        },
+        {
+          "index": 3,
+          "target_enclosures": [
+            "[0.06123465195612446935171143223270395106200 +/- 1.44e-43]",
+            "[-0.001837630801203111787327679444707226982349 +/- 2.36e-43]"
+          ],
+          "point_index": 2,
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_strip_plus_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_strip_plus_20260907/coefficients.json"
+        },
+        {
+          "index": 5,
+          "target_enclosures": [
+            "[0.1253897242397412189972355422137680416627 +/- 3.43e-41]",
+            "[-0.01013456289917386946818220901814782498758 +/- 4.98e-42]"
+          ],
+          "point_index": 4,
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_002_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_adaptive_002_20260907/coefficients.json"
+        }
+      ]
+    },
+    {
+      "epsilon": 0.004,
+      "reference_checks": {
+        "pdf_black": {
+          "status": "inside_inner_hull",
+          "triangle_vertex_indices": [
+            1,
+            2,
+            4
+          ],
+          "barycentric_weight_enclosures": [
+            "[0.35375527081384350875004222093619381 +/- 1.58e-37]",
+            "[0.32565829548501792490847792954982901 +/- 3.23e-36]",
+            "[0.32058643370113856634147984951397718 +/- 3.38e-36]"
+          ],
+          "weights_approx": [
+            0.3537552708138435,
+            0.3256582954850179,
+            0.32058643370113854
+          ],
+          "minimum_weight_lower": 0.3205864337011385,
+          "readout_box_minimum_weight_lower": 0.32047642873648463
+        },
+        "formula_140_92": {
+          "status": "inside_inner_hull",
+          "triangle_vertex_indices": [
+            1,
+            2,
+            4
+          ],
+          "barycentric_weight_enclosures": [
+            "[0.37128590713738040983343866552261637 +/- 4.30e-36]",
+            "[0.31440621321589039384938813864816961 +/- 3.53e-36]",
+            "[0.31430787964672919631717319582921402 +/- 7.74e-37]"
+          ],
+          "weights_approx": [
+            0.3712859071373804,
+            0.3144062132158904,
+            0.3143078796467292
+          ],
+          "minimum_weight_lower": 0.3143078796467291
+        }
+      },
+      "certificate_vertices": [
+        {
+          "index": 1,
+          "target_enclosures": [
+            "[0.1474907558090157632034220582698270073024 +/- 4.12e-41]",
+            "[-0.009526834695232142663039527148470363104827 +/- 2.06e-43]"
+          ],
+          "point_index": 0,
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_x_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_x_20260907/coefficients.json"
+        },
+        {
+          "index": 2,
+          "target_enclosures": [
+            "[0.04159757586887574676911197993459917961004 +/- 4.39e-42]",
+            "[-0.001230020424761941198595916057384363766076 +/- 3.18e-43]"
+          ],
+          "point_index": 1,
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_strip_plus_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_strip_plus_20260907/coefficients.json"
+        },
+        {
+          "index": 4,
+          "target_enclosures": [
+            "[0.01744027291416809342901118784030458116799 +/- 2.09e-42]",
+            "[-0.003067651947037675099190491505802619053755 +/- 2.79e-43]"
+          ],
+          "point_index": 3,
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_001_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_001_20260907/coefficients.json"
+        }
+      ]
+    },
+    {
+      "epsilon": 0.002,
+      "reference_checks": {
+        "pdf_black": {
+          "status": "inside_inner_hull",
+          "triangle_vertex_indices": [
+            1,
+            2,
+            5
+          ],
+          "barycentric_weight_enclosures": [
+            "[0.36904398870855637685483737372057633 +/- 2.26e-36]",
+            "[0.23784370683546749013839331137111818 +/- 1.45e-36]",
+            "[0.39311230445597613300676931490830549 +/- 3.70e-36]"
+          ],
+          "weights_approx": [
+            0.36904398870855637,
+            0.2378437068354675,
+            0.3931123044559761
+          ],
+          "minimum_weight_lower": 0.23784370683546746,
+          "readout_box_minimum_weight_lower": 0.23769609284676568
+        },
+        "formula_140_92": {
+          "status": "inside_inner_hull",
+          "triangle_vertex_indices": [
+            1,
+            2,
+            5
+          ],
+          "barycentric_weight_enclosures": [
+            "[0.39992707190389015240006307907559394 +/- 3.25e-36]",
+            "[0.21962233262252430109879191002324982 +/- 5.56e-37]",
+            "[0.38045059547358554650114501090115624 +/- 3.80e-36]"
+          ],
+          "weights_approx": [
+            0.39992707190389015,
+            0.2196223326225243,
+            0.38045059547358556
+          ],
+          "minimum_weight_lower": 0.21962233262252429
+        }
+      },
+      "certificate_vertices": [
+        {
+          "index": 1,
+          "target_enclosures": [
+            "[0.1058850984992565424885460515605569900981 +/- 1.96e-41]",
+            "[-0.006854817981383333352534038723266678787444 +/- 2.48e-43]"
+          ],
+          "point_index": 0,
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_chiral_M50_barrier_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_chiral_M50_barrier_20260907/coefficients.json"
+        },
+        {
+          "index": 2,
+          "target_enclosures": [
+            "[0.02118137640025871293265160492302728674366 +/- 4.91e-42]",
+            "[-0.0005814023736492066724076699164618024462274 +/- 2.66e-44]"
+          ],
+          "point_index": 1,
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_strip_plus_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_strip_plus_20260907/coefficients.json"
+        },
+        {
+          "index": 5,
+          "target_enclosures": [
+            "[0.06918945637586494956962600192864983568403 +/- 2.40e-42]",
+            "[-0.005306803300247702519783105525586120136022 +/- 1.52e-43]"
+          ],
+          "point_index": 4,
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_002_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_adaptive_002_20260907/coefficients.json"
+        }
+      ]
+    },
+    {
+      "epsilon": 0.001,
+      "reference_checks": {
+        "pdf_black": {
+          "status": "inside_inner_hull",
+          "triangle_vertex_indices": [
+            1,
+            4,
+            5
+          ],
+          "barycentric_weight_enclosures": [
+            "[0.76395774571100853681600628355320913 +/- 1.83e-36]",
+            "[0.056745372809957523938820586449721425 +/- 2.09e-37]",
+            "[0.17929688147903393924517312999706944 +/- 2.97e-36]"
+          ],
+          "weights_approx": [
+            0.7639577457110085,
+            0.05674537280995753,
+            0.17929688147903394
+          ],
+          "minimum_weight_lower": 0.05674537280995752,
+          "readout_box_minimum_weight_lower": 0.05623455167645476
+        },
+        "formula_140_92": {
+          "status": "undetermined",
+          "inner_edge_vertices": [
+            5,
+            1
+          ],
+          "inner_edge_reference_cross": "[-1.3719602666268773048689744441142216e-9 +/- 3.08e-44]",
+          "outer_halfspaces": [
+            {
+              "direction": [
+                1.0,
+                0.0
+              ],
+              "upper": 0.0803218407640945,
+              "slack": "[0.0070004501911598432384309376175224315 +/- 3.76e-38]",
+              "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_x_20260907/report.json"
+            },
+            {
+              "direction": [
+                66.66666666666667,
+                1000.0
+              ],
+              "upper": 0.4878145758685049,
+              "slack": "[0.48781457586850415506366913151880157 +/- 2.26e-36]",
+              "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_strip_plus_reverified_20260907/report.json"
+            },
+            {
+              "direction": [
+                -66.66666666666667,
+                -1000.0
+              ],
+              "upper": 0.5799798582807438,
+              "slack": "[0.57997985828074458394406236974162153 +/- 7.70e-37]",
+              "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_strip_minus_reverified_20260907/report.json"
+            },
+            {
+              "direction": [
+                -46.5681431967769,
+                -816.6045213691485
+              ],
+              "upper": 7040851.650732551,
+              "slack": "[7040851.0735349626951600956210742078 +/- 4.98e-29]",
+              "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_001_20260907/report.json"
+            },
+            {
+              "direction": [
+                -46.01830291136559,
+                -810.1915125580755
+              ],
+              "upper": 0.7448908563941616,
+              "slack": "[0.15872559558552445084820576904187194 +/- 3.74e-36]",
+              "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_002_20260907/report.json"
+            },
+            {
+              "direction": [
+                66.66666666666667,
+                1000.0
+              ],
+              "upper": 0.480518068488346,
+              "slack": "[0.48051806848834524308193123007669942 +/- 4.33e-36]",
+              "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_strip_plus_fixed_20260907/report.json"
+            },
+            {
+              "direction": [
+                67.2910394740427,
+                939.0168690589857
+              ],
+              "upper": 0.6863450743997888,
+              "slack": "[0.34247399445461492746316053974811335 +/- 1.92e-38]",
+              "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_003_20260907/report.json"
+            }
+          ],
+          "interpretation": "Outside the present inner hull, inside all known outer halfspaces: unresolved, not excluded from the feasible region."
+        }
+      },
+      "certificate_vertices": [
+        {
+          "index": 1,
+          "target_enclosures": [
+            "[0.08027466037399903730852389415767436240737 +/- 1.11e-42]",
+            "[-0.005216993976238207459117504310329758662836 +/- 2.00e-43]"
+          ],
+          "point_index": 0,
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_x_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_x_20260907/coefficients.json"
+        },
+        {
+          "index": 4,
+          "target_enclosures": [
+            "[0.008112747973137311770056960414631754583650 +/- 5.21e-44]",
+            "[-0.001118248565981583844439821062999332383255 +/- 5.30e-44]"
+          ],
+          "point_index": 3,
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_001_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_001_20260907/coefficients.json"
+        },
+        {
+          "index": 5,
+          "target_enclosures": [
+            "[0.05313273298442329810824310685317356638836 +/- 8.95e-43]",
+            "[-0.003932938180657881327557115150476239297594 +/- 4.43e-43]"
+          ],
+          "point_index": 4,
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_002_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps001_adaptive_002_20260907/coefficients.json"
+        }
+      ]
+    },
+    {
+      "epsilon": 0.0006,
+      "reference_checks": {
+        "pdf_black": {
+          "status": "excluded_by_outer_halfspace",
+          "direction": [
+            1.0,
+            0.0
+          ],
+          "upper": 0.06832086671992502,
+          "violation_margin": "[0.0029924760939263189696291078689682763 +/- 6.99e-39]",
+          "violation_margin_lower": 0.0029924760939263185,
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_x_20260907/report.json",
+          "readout_box_violation_margin_lower": 0.0029905253201473604
+        },
+        "formula_140_92": {
+          "status": "excluded_by_outer_halfspace",
+          "direction": [
+            1.0,
+            0.0
+          ],
+          "upper": 0.06832086671992502,
+          "violation_margin": "[0.0050005238530096418614334652374964207 +/- 4.11e-38]",
+          "violation_margin_lower": 0.005000523853009641,
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0006_x_20260907/report.json"
+        }
+      },
+      "certificate_vertices": []
+    },
+    {
+      "epsilon": 0.0002,
+      "reference_checks": {
+        "pdf_black": {
+          "status": "excluded_by_outer_halfspace",
+          "direction": [
+            1.0,
+            0.0
+          ],
+          "upper": 0.05452031923959315,
+          "violation_margin": "[0.016793023574258186814134319320146460 +/- 8.62e-38]",
+          "violation_margin_lower": 0.016793023574258183,
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_x_20260907/report.json",
+          "readout_box_violation_margin_lower": 0.016791072800479225
+        },
+        "formula_140_92": {
+          "status": "excluded_by_outer_halfspace",
+          "direction": [
+            1.0,
+            0.0
+          ],
+          "upper": 0.05452031923959315,
+          "violation_margin": "[0.018801071333341509705938676688674605 +/- 4.80e-37]",
+          "violation_margin_lower": 0.018801071333341506,
+          "support_report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_x_20260907/report.json"
+        }
+      },
+      "certificate_vertices": []
+    }
+  ],
+  "updated_utc": "2026-09-07T23:35:06.711803+00:00",
+  "previous_summary_checked": "results/runs/stage_B3_PV_B377500_region_20260907/partial_22/regions.json"
+}

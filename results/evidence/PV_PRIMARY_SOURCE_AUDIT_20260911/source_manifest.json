@@ -1,0 +1,114 @@
+{
+  "task_date": "2026-09-11",
+  "sources": [
+    {
+      "kind": "author_code_nonexecuting_snapshot",
+      "source_url": "https://raw.githubusercontent.com/hyfysics/gauge-theory-bootstrap/c8409331d5df911f592e53e5a43628418a39b213/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.m",
+      "fixed_commit": "c8409331d5df911f592e53e5a43628418a39b213",
+      "snapshot": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/GTB_numerics.m.txt",
+      "sha256": "b12bf411407fc4cb8ae56aea41c88aa336e0f73aa7ae44ebef2b1bca3fc08ad2",
+      "bytes": 9398,
+      "mode": "0444",
+      "preservation": "Byte-identical copy of the already verified fixed-release download; no newline normalization or code execution"
+    },
+    {
+      "kind": "author_code_nonexecuting_snapshot",
+      "source_url": "https://raw.githubusercontent.com/hyfysics/gauge-theory-bootstrap/c8409331d5df911f592e53e5a43628418a39b213/theories/qcd/papers/arxiv-2403.10772/GTB_numerics.nb",
+      "fixed_commit": "c8409331d5df911f592e53e5a43628418a39b213",
+      "snapshot": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/GTB_numerics.nb.txt",
+      "sha256": "9a3a81d7e99ef35355aa5a2bbf10ce9a21e6af929e0cb8371c4afaff133922bd",
+      "bytes": 224480,
+      "mode": "0444",
+      "preservation": "Byte-identical copy of the already verified fixed-release download; no newline normalization or code execution"
+    },
+    {
+      "kind": "primary_source_metadata",
+      "source_url": "https://raw.githubusercontent.com/hyfysics/gauge-theory-bootstrap/801684d9ece3de2918a20145178f569459081098/README.md",
+      "final_url": "https://raw.githubusercontent.com/hyfysics/gauge-theory-bootstrap/801684d9ece3de2918a20145178f569459081098/README.md",
+      "retrieved_utc": "2026-09-12T02:21:37.380349+00:00",
+      "http_status": 200,
+      "snapshot": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/author_README.md.txt",
+      "sha256": "ffef51c0aeaa91b84a27926e2a07a7dec1433e3d1aef70d3ac47a16fad064ecb",
+      "bytes": 3580,
+      "mode": "0444"
+    },
+    {
+      "kind": "primary_source_metadata",
+      "source_url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/trees/801684d9ece3de2918a20145178f569459081098?recursive=1",
+      "final_url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/trees/801684d9ece3de2918a20145178f569459081098?recursive=1",
+      "retrieved_utc": "2026-09-12T02:21:37.526046+00:00",
+      "http_status": 200,
+      "snapshot": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/repository_tree_fixed.json",
+      "sha256": "ac683ff3e19c4ddb34cbf17b1133ffe4cc8feab682af4d019af979f9d78a9d8f",
+      "bytes": 10567,
+      "mode": "0444"
+    },
+    {
+      "kind": "primary_source_metadata",
+      "source_url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/branches",
+      "final_url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/branches",
+      "retrieved_utc": "2026-09-12T02:21:37.674156+00:00",
+      "http_status": 200,
+      "snapshot": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/repository_branches.json",
+      "sha256": "716241e41c2d447e20125016191179c703490475297cc82e584acb9796eb2e01",
+      "bytes": 213,
+      "mode": "0444"
+    },
+    {
+      "kind": "primary_source_metadata",
+      "source_url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/tags",
+      "final_url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/tags",
+      "retrieved_utc": "2026-09-12T02:21:37.824517+00:00",
+      "http_status": 200,
+      "snapshot": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/repository_tags.json",
+      "sha256": "32f554acefc6605f5bf446f3ccdf20fc44832a9926232fa1835adbf243ce63b4",
+      "bytes": 987,
+      "mode": "0444"
+    },
+    {
+      "kind": "primary_source_metadata",
+      "source_url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/releases",
+      "final_url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/releases",
+      "retrieved_utc": "2026-09-12T02:21:38.038405+00:00",
+      "http_status": 200,
+      "snapshot": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/repository_releases.json",
+      "sha256": "9715ecb9620ad912fc6191e8d0e178f19f413d5a0e885896843e19f35d3e9941",
+      "bytes": 4533,
+      "mode": "0444"
+    },
+    {
+      "kind": "official_arxiv_source_archive",
+      "source_url": "https://arxiv.org/src/2309.12402v3",
+      "final_url": "https://arxiv.org/src/2309.12402v3",
+      "retrieved_utc": "2026-09-12T02:21:38.209692+00:00",
+      "http_status": 200,
+      "snapshot": "results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/sources/2309.12402v3_source.tar.gz",
+      "sha256": "f8fe776bc387766604c42c60557452abeb08696b6dc9b1ef4eb17bc553b9adfd",
+      "bytes": 1648690,
+      "mode": "0444"
+    }
+  ],
+  "arxiv_archive_files": [
+    "chiP1plot.pdf",
+    "chiplot2.pdf",
+    "chiplot.pdf",
+    "chiS0plot.pdf",
+    "chiS2plot.pdf",
+    "chiSRplot.pdf",
+    "FESR2.png",
+    "lin1.pdf",
+    "lin2.pdf",
+    "lin3.pdf",
+    "method2.png",
+    "P1ML.pdf",
+    "P1ps.pdf",
+    "prd_submission_2.bbl",
+    "prd_submission_2.tex",
+    "purSplot.pdf",
+    "S0ML.pdf",
+    "S0ps.pdf",
+    "S2ML.pdf",
+    "S2ps.pdf"
+  ],
+  "scope": "Read-only source inspection and evidence preservation; archive not extracted, code not executed"
+}

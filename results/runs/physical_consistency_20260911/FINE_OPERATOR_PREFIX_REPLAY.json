@@ -1,0 +1,19 @@
+{
+  "scope": "Read-only byte identity audit of the retained operator prefix; not a new feasibility certificate",
+  "old_samples": 3123,
+  "new_samples": 3582,
+  "checks": {
+    "rows": true,
+    "radius_upper": true,
+    "energies": true,
+    "waves": true,
+    "coefficient_labels": true,
+    "sample_energies": true,
+    "sample_waves": true
+  },
+  "all_identical": true,
+  "inputs": {
+    "results/runs/physical_consistency_20260911/interlaced_prepare/amplitude.npz": "8edc550f906b34addd37a7b3f3dee5c22aa74fb8e9cfbe5384e6f6ae254fdc92",
+    "results/runs/physical_consistency_20260911/fine_prepare/amplitude.npz": "507ef1937e8d65403c3fd7cd58e89740e997758a6055607805a143b360ea6592"
+  }
+}

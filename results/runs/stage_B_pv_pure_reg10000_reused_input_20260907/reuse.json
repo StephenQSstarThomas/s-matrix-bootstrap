@@ -1,0 +1,9 @@
+{
+  "status": "inputs_for_original_H_reverification",
+  "primal_source": "results/runs/stage_B_pv_pure_M50_reg10000_units_20260907",
+  "dual_source": "results/runs/stage_B_pv_pure_M50_barrier_20260907",
+  "preparation": "results/runs/stage_B_pv_M50_L10_prepare_20260907",
+  "prescription": "pv-midpoint",
+  "target_bound": 10000,
+  "reason": "Same H, direction and pure scope. Reevaluate old dual at smaller B; use separate feasible new-B primal. No optimality or feasibility is transferred without rechecking."
+}

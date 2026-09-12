@@ -1,0 +1,780 @@
+{
+  "command": "regions",
+  "status": "incomplete",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "regions",
+    "support_runs": [
+      "results/runs/stage_B3_pv_M50_eps006_x_20260907",
+      "results/runs/stage_B3_pv_M50_eps004_x_20260907",
+      "results/runs/stage_B_pv_chiral_M50_barrier_20260907",
+      "results/runs/stage_B3_pv_M50_eps0002_x_20260907",
+      "results/runs/stage_B3_pv_M50_eps002_strip_plus_20260907"
+    ],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_PV_B377500_region_20260907/partial_02",
+    "density_limit": null,
+    "preparation": "results/runs/stage_A_M50_L10_20260906",
+    "prescription": "auto",
+    "solver": "barrier",
+    "unitarity_scope": "strengthened",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "constraint_generation": false,
+    "working_state": null,
+    "density_cone": "soc",
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": null,
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "seconds": 60.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "8"
+  },
+  "unitarity_scope": "strengthened",
+  "physical_unitarity_accepted": false,
+  "scope": "Finite model only; separate physical diagnostics; no continuum certificate.",
+  "requested_nodes": 50,
+  "model_signature": {
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "free",
+    "unitarity_scope": "sampled",
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": false,
+    "prescription": "pv-midpoint",
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    "additional_constraints": null,
+    "sampling_nodes": 50,
+    "scattering_samples": 1500
+  },
+  "regions": [
+    {
+      "mode": "chiral",
+      "epsilon": 0.006,
+      "points": [
+        {
+          "target": [
+            0.1825201798903248,
+            -0.011757752421207147
+          ],
+          "target_enclosures": [
+            [
+              [
+                "0x2eb9a47b7d2de9f1a713fcb868799",
+                -116
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x181472d0fd0786c581c77516254381",
+                -123
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            1.0,
+            0.0
+          ],
+          "lower": 0.18252017989032474,
+          "upper": 0.18256775797990524,
+          "gap": 4.7578089580502254e-05,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_x_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps006_x_20260907/coefficients.json"
+        }
+      ],
+      "published_positive_x": true,
+      "geometry": {
+        "geometry_ready": false,
+        "outer_closed": false,
+        "max_distance_upper": null,
+        "published_positive_x": true,
+        "inner_vertices": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.1825201798903248,
+            -0.011757752421207147
+          ]
+        ],
+        "inner_vertex_enclosures": [
+          [
+            null,
+            null
+          ],
+          [
+            [
+              [
+                "0x2eb9a47b7d2de9f1a713fcb868799",
+                -116
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x181472d0fd0786c581c77516254381",
+                -123
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ]
+        ],
+        "inner_mixtures": [
+          {
+            "zero_amplitude": true
+          },
+          {
+            "source_point": 0
+          }
+        ],
+        "metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)",
+        "epsilon": 0.006,
+        "budgets": {
+          "distance": 0.01,
+          "metric_support": 0.0025
+        },
+        "distance_witnesses": [],
+        "next_support": {
+          "action": "add_direction",
+          "direction": [
+            7.912089475396667e-15,
+            129.21422700660096
+          ],
+          "gap": 0.0024999999999999996,
+          "normal_units": "unit normal in declared region metric"
+        },
+        "metric_support_gap_upper": 0.0006488978074300858,
+        "raw_support_gap_upper": 4.7578089580502254e-05,
+        "outer_vertices": [],
+        "outer_vertex_enclosures": [],
+        "direction_coverage": {
+          "unique_normals": 2,
+          "angles_degrees": [
+            0.0,
+            180.0
+          ],
+          "largest_gap_degrees": 180.0,
+          "positive_span": false,
+          "domain_half_planes": 1
+        },
+        "geometry_scope": "Arb vertex/mixture bounds; float hull selects segments only. Finite H; no continuum or quadrature certificate."
+      },
+      "direction_coverage": {
+        "unique_normals": 2,
+        "angles_degrees": [
+          0.0,
+          180.0
+        ],
+        "largest_gap_degrees": 180.0,
+        "positive_span": false,
+        "domain_half_planes": 1
+      },
+      "outer_closed": false
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.004,
+      "points": [
+        {
+          "target": [
+            0.14749075580901577,
+            -0.009526834695232142
+          ],
+          "target_enclosures": [
+            [
+              [
+                "0x4b83e88952f786b3ee6922a483f",
+                -109
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x9c1670dcd3af297ed726350e76ad",
+                -118
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            1.0,
+            0.0
+          ],
+          "lower": 0.14749075580901572,
+          "upper": 0.14753913953107473,
+          "gap": 4.838372205900888e-05,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_x_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_x_20260907/coefficients.json"
+        }
+      ],
+      "published_positive_x": true,
+      "geometry": {
+        "geometry_ready": false,
+        "outer_closed": false,
+        "max_distance_upper": null,
+        "published_positive_x": true,
+        "inner_vertices": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.14749075580901577,
+            -0.009526834695232142
+          ]
+        ],
+        "inner_vertex_enclosures": [
+          [
+            null,
+            null
+          ],
+          [
+            [
+              [
+                "0x4b83e88952f786b3ee6922a483f",
+                -109
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x9c1670dcd3af297ed726350e76ad",
+                -118
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ]
+        ],
+        "inner_mixtures": [
+          {
+            "zero_amplitude": true
+          },
+          {
+            "source_point": 0
+          }
+        ],
+        "metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)",
+        "epsilon": 0.004,
+        "budgets": {
+          "distance": 0.01,
+          "metric_support": 0.0025
+        },
+        "distance_witnesses": [],
+        "next_support": {
+          "action": "add_direction",
+          "direction": [
+            9.694603611241163e-15,
+            158.32489200953162
+          ],
+          "gap": 0.0025,
+          "normal_units": "unit normal in declared region metric"
+        },
+        "metric_support_gap_upper": 0.0006598854942730575,
+        "raw_support_gap_upper": 4.838372205900888e-05,
+        "outer_vertices": [],
+        "outer_vertex_enclosures": [],
+        "direction_coverage": {
+          "unique_normals": 2,
+          "angles_degrees": [
+            0.0,
+            180.0
+          ],
+          "largest_gap_degrees": 180.0,
+          "positive_span": false,
+          "domain_half_planes": 1
+        },
+        "geometry_scope": "Arb vertex/mixture bounds; float hull selects segments only. Finite H; no continuum or quadrature certificate."
+      },
+      "direction_coverage": {
+        "unique_normals": 2,
+        "angles_degrees": [
+          0.0,
+          180.0
+        ],
+        "largest_gap_degrees": 180.0,
+        "positive_span": false,
+        "domain_half_planes": 1
+      },
+      "outer_closed": false
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.002,
+      "points": [
+        {
+          "target": [
+            0.10588509849925654,
+            -0.006854817981383333
+          ],
+          "target_enclosures": [
+            [
+              [
+                "0x6c6d24acc08f01eb3ae82608ffd1",
+                -114
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0xe09e618668d47204da7603b0365f",
+                -119
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            1.0,
+            0.0
+          ],
+          "lower": 0.10588509849925651,
+          "upper": 0.10594017578424922,
+          "gap": 5.507728499271059e-05,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_chiral_M50_barrier_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_chiral_M50_barrier_20260907/coefficients.json"
+        },
+        {
+          "target": [
+            0.021181376400258713,
+            -0.0005814023736492067
+          ],
+          "target_enclosures": [
+            [
+              [
+                "0x56c2486ec6275b84f979e7d59295",
+                -116
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x261a502e3e6e398f24ee43bc740fb",
+                -124
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            33.333333333333336,
+            500.0
+          ],
+          "lower": 0.41534469318402034,
+          "upper": 0.4210418356933367,
+          "gap": 0.005697142509316356,
+          "pointwise_tolerance_met": false,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_strip_plus_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_strip_plus_20260907/coefficients.json"
+        }
+      ],
+      "published_positive_x": true,
+      "geometry": {
+        "geometry_ready": false,
+        "outer_closed": false,
+        "max_distance_upper": null,
+        "published_positive_x": true,
+        "inner_vertices": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.10588509849925654,
+            -0.006854817981383333
+          ],
+          [
+            0.021181376400258713,
+            -0.0005814023736492067
+          ]
+        ],
+        "inner_vertex_enclosures": [
+          [
+            null,
+            null
+          ],
+          [
+            [
+              [
+                "0x6c6d24acc08f01eb3ae82608ffd1",
+                -114
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0xe09e618668d47204da7603b0365f",
+                -119
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "0x56c2486ec6275b84f979e7d59295",
+                -116
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x261a502e3e6e398f24ee43bc740fb",
+                -124
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ]
+        ],
+        "inner_mixtures": [
+          {
+            "zero_amplitude": true
+          },
+          {
+            "source_point": 0
+          },
+          {
+            "source_point": 1
+          }
+        ],
+        "metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)",
+        "epsilon": 0.002,
+        "budgets": {
+          "distance": 0.01,
+          "metric_support": 0.0025
+        },
+        "distance_witnesses": [],
+        "next_support": {
+          "action": "add_direction",
+          "direction": [
+            -3.478171497534305e-14,
+            -189.34283745898242
+          ],
+          "gap": 0.0024999999999999996,
+          "normal_units": "unit normal in declared region metric"
+        },
+        "metric_support_gap_upper": 0.005697142509316356,
+        "raw_support_gap_upper": 5.507728499271059e-05,
+        "outer_vertices": [],
+        "outer_vertex_enclosures": [],
+        "direction_coverage": {
+          "unique_normals": 3,
+          "angles_degrees": [
+            0.0,
+            86.18592516570965,
+            180.0
+          ],
+          "largest_gap_degrees": 180.0,
+          "positive_span": false,
+          "domain_half_planes": 1
+        },
+        "geometry_scope": "Arb vertex/mixture bounds; float hull selects segments only. Finite H; no continuum or quadrature certificate."
+      },
+      "direction_coverage": {
+        "unique_normals": 3,
+        "angles_degrees": [
+          0.0,
+          86.18592516570965,
+          180.0
+        ],
+        "largest_gap_degrees": 180.0,
+        "positive_span": false,
+        "domain_half_planes": 1
+      },
+      "outer_closed": false
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.0002,
+      "points": [
+        {
+          "target": [
+            0.054467489459640896,
+            -0.0035686733478122244
+          ],
+          "target_enclosures": [
+            [
+              [
+                "0x37c65357b29149859ec4d4cf15b1",
+                -114
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x3a7819d469d89d5a67cae4cd671",
+                -114
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            1.0,
+            0.0
+          ],
+          "lower": 0.05446748945964088,
+          "upper": 0.05452031923959315,
+          "gap": 5.282977995226674e-05,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_x_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps0002_x_20260907/coefficients.json"
+        }
+      ],
+      "published_positive_x": true,
+      "geometry": {
+        "geometry_ready": false,
+        "outer_closed": false,
+        "max_distance_upper": null,
+        "published_positive_x": true,
+        "inner_vertices": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.054467489459640896,
+            -0.0035686733478122244
+          ]
+        ],
+        "inner_vertex_enclosures": [
+          [
+            null,
+            null
+          ],
+          [
+            [
+              [
+                "0x37c65357b29149859ec4d4cf15b1",
+                -114
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x3a7819d469d89d5a67cae4cd671",
+                -114
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ]
+        ],
+        "inner_mixtures": [
+          {
+            "zero_amplitude": true
+          },
+          {
+            "source_point": 0
+          }
+        ],
+        "metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)",
+        "epsilon": 0.0002,
+        "budgets": {
+          "distance": 0.01,
+          "metric_support": 0.0025
+        },
+        "distance_witnesses": [],
+        "next_support": {
+          "action": "add_direction",
+          "direction": [
+            1.2516364442664996e-14,
+            204.4077435449858
+          ],
+          "gap": 0.0024999999999999996,
+          "normal_units": "unit normal in declared region metric"
+        },
+        "metric_support_gap_upper": 0.0007205234316950879,
+        "raw_support_gap_upper": 5.282977995226674e-05,
+        "outer_vertices": [],
+        "outer_vertex_enclosures": [],
+        "direction_coverage": {
+          "unique_normals": 2,
+          "angles_degrees": [
+            0.0,
+            180.0
+          ],
+          "largest_gap_degrees": 180.0,
+          "positive_span": false,
+          "domain_half_planes": 1
+        },
+        "geometry_scope": "Arb vertex/mixture bounds; float hull selects segments only. Finite H; no continuum or quadrature certificate."
+      },
+      "direction_coverage": {
+        "unique_normals": 2,
+        "angles_degrees": [
+          0.0,
+          180.0
+        ],
+        "largest_gap_degrees": 180.0,
+        "positive_span": false,
+        "domain_half_planes": 1
+      },
+      "outer_closed": false
+    }
+  ],
+  "rejected": [],
+  "qualified_support_points": 5,
+  "nesting": {
+    "six_chiral_present": false,
+    "contradictions": [],
+    "status": "no_observed_contradiction"
+  },
+  "B2_geometry_ready": false,
+  "B3_geometry_ready": false,
+  "plots_created": true,
+  "completion_claimed": false,
+  "finite_only": true,
+  "comparison_policy": "Same prescription, scope, constraints and input paths.",
+  "elapsed_seconds": 1.8334980891086161,
+  "prescription": "finite-sine-cardinal"
+}

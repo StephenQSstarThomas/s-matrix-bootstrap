@@ -1,0 +1,12 @@
+[
+  {
+    "source": "src/smatrix_bootstrap/linear.py",
+    "snapshot": "results/runs/physical_consistency_20260911/center_merit_before/linear.py.txt",
+    "sha256": "d6138aa0b6770bbb55e1e7e5c83c5425ddd6228512fe8791c9f13cdcca7a003e"
+  },
+  {
+    "source": "tests/test_mainline.py",
+    "snapshot": "results/runs/physical_consistency_20260911/center_merit_before/test_mainline.py.txt",
+    "sha256": "4263584395b679621030e6fcf6b155bddb6c67bb2a7d1226ffeab542319878de"
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "test_log": "PV_peak_bounds_pytest.log",
+  "core_modules": 21,
+  "tests": 3,
+  "core_limits_passed": true,
+  "test_line_limits_passed": true,
+  "sources": {
+    "src/smatrix_bootstrap/ir.py": "bd6fb3d54b523cbf266da65f677e9364c1393aaae0f29f114bd315e60c6e5c17",
+    "src/smatrix_bootstrap/endpoints.py": "6b4dacd438e750ca61f285744cc0a152d16e3090581e22c77962f23b867005db",
+    "src/smatrix_bootstrap/analysis.py": "91e1d1bf0013a8ac4030112a3191a32daed7641b391180a97c10a16e1b57c606",
+    "src/smatrix_bootstrap/model.py": "be73b782a40652cf099e4f5ed480f56cb4d00e0f86aaddfe9698ccf83ea3b975",
+    "src/smatrix_bootstrap/io.py": "328af2216f66e6782df6aae1ab273eb6d43c7c7a938d9eb9c5603a3630e2e143",
+    "src/smatrix_bootstrap/operators.py": "74cb905a1e9e881e3f3e5f7843d44e7e096e8c57e672f8f7abdbae336b78fc4e",
+    "src/smatrix_bootstrap/basis.py": "5eda7c08a5cea679958b47980c9972ada51358f6352698d8db10db91bd5abec3",
+    "src/smatrix_bootstrap/scattering.py": "23f5b856a9e14d19b1f085f52aac4508e0bdb5bd3ce166ee2621a3bc779621b7",
+    "src/smatrix_bootstrap/__init__.py": "eab9d89f9c5aec186369fb48cef62f20db87a20a16512f8c8a6e7349a2a4473a",
+    "src/smatrix_bootstrap/quadrature.py": "7ec2a6b9336cd6035db06fdf8a028368ccd22e4d106cc5e16900c878b8d40fad",
+    "src/smatrix_bootstrap/gauge.py": "9ef8f15e028e5de19dd5571892b392038ff3fd096885c11f8b8d7334ccdfe580",
+    "src/smatrix_bootstrap/quotient.py": "32b669bec9e0b9af1c21bf464f2806411cdca87fffa6ff0593d7bb77dd3428e9",
+    "src/smatrix_bootstrap/certificates.py": "72314f97c4039bf52c42cba9fc5d4164973595f7d57f37737080a8ab3b56ffe6",
+    "src/smatrix_bootstrap/analytic.py": "f7b6ffb9bd6b520f00dec8653ff0864da6fe46eaa0ed5814bef7bd3c5c22a727",
+    "src/smatrix_bootstrap/conic.py": "750741dbe9b45584c24176cbdeb2cfafc585361d5b23cff5d79a501a247abf01",
+    "src/smatrix_bootstrap/kernels.py": "790ebcdba291c80f17c4909a31ddf77ad6373748c2af41c7ce1a0c28b309172a",
+    "src/smatrix_bootstrap/imaginary.py": "9ad338b253d2941310401d245a24cba4ab546926e5c9c630f80c7bd647c1828c",
+    "src/smatrix_bootstrap/run.py": "7785590055bdd8d8bec61aecae7426d521017886bf989e06212adf9bd1890174",
+    "src/smatrix_bootstrap/spectra.py": "10b7bc464cb216b00674c95fa4d1218543a7f8737a0707b20ea7e2b55d53de95",
+    "src/smatrix_bootstrap/linear.py": "f0b21a627cae43bdf768fdfa5562e971544b33179c8b10caa464993817e5da6f",
+    "src/smatrix_bootstrap/sampling.py": "1721242b79f55cc44cfd6667cd21f49e6a51c888263e4ca623b97383a340f4c9"
+  },
+  "tests_passed": 107,
+  "final_test_log": "PV_native_delivery_pytest.log",
+  "initial_integration_failure": "Early certificate call masked the existing same-model guard; moved after all three identity/grid checks.",
+  "scope_fixes": [
+    "Exact provider float aliases only; near-node regression included",
+    "PV/order0 only; non-PV returns not_applicable"
+  ],
+  "IR_exclusion": "Enclosed IR coordinates tested against certified global UV support planes; no new optimization"
+}

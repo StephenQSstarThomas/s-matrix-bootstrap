@@ -1,0 +1,123 @@
+{
+  "schema": "smatrix-remaining-rank-integer-preflight-v1",
+  "status": "preflight_complete_no_products",
+  "source_report": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_remaining_rank_1024_2048_attempt01/report.json",
+  "source_report_sha256": "7e642270fa9a6e5027df175926d5f600b18e43e2c3f32808ba37bdf8fc7be715",
+  "inputs": {
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_remaining_rank_1024_2048_attempt01/report.json": {
+      "sha256": "7e642270fa9a6e5027df175926d5f600b18e43e2c3f32808ba37bdf8fc7be715",
+      "bytes": 2085150
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_remaining_minor_2048_attempt01/report.json": {
+      "sha256": "8958cc6c8bd749322c78569e254d1202f8b591d6c0b103004e9eab81b1f708ad",
+      "bytes": 39086
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_remaining_minor_2048_attempt01/selection.json": {
+      "sha256": "5296c28d743fb634f5c913851c58386a6f8f445c9a1a3780afa50f320d5ce817",
+      "bytes": 218116
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_remaining_minor_2048_attempt01/source_snapshot.json": {
+      "sha256": "242c5d2429b9375f4591e9cf18532bc13f4cba8a7ad33a5a98a951376975e1ce",
+      "bytes": 59047
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_remaining_minor_2048_attempt01/selected_minor_B.json.gz": {
+      "sha256": "7e47d4724777e790861b5092709f018d91dc33d24b94b5013b3782f6b77ddc67",
+      "bytes": 527040608
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_remaining_rank_1024_2048_attempt01/R0_exact_dyadic.json.gz": {
+      "sha256": "7b69b9d30bc77bc4fa885e2314ddc1a6047f8afa75f7b290cb940e0bc2cbfc18",
+      "bytes": 355361513
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_remaining_rank_1024_2048_attempt01/source_snapshot.json": {
+      "sha256": "f8546c6fbc99efcfdb5632fcebcc7c69314abdc9e6eb275ffaca6cb056eb55c5",
+      "bytes": 36245
+    }
+  },
+  "order": 1510,
+  "entries_per_matrix": 2280100,
+  "source_B_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_remaining_minor_2048_attempt01/selected_minor_B.json.gz",
+  "saved_exact_R0_path": "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_remaining_rank_1024_2048_attempt01/R0_exact_dyadic.json.gz",
+  "plan": {
+    "order": 1510,
+    "R": {
+      "common_exponent": -1019,
+      "nonzero_entries": 2280100,
+      "maximum_stored_exponent": -815,
+      "maximum_integer_bits": 1220
+    },
+    "midpoint": {
+      "common_exponent": -2072,
+      "nonzero_entries": 2280100,
+      "maximum_stored_exponent": -503,
+      "maximum_integer_bits": 2072
+    },
+    "radius": {
+      "common_exponent": -861,
+      "nonzero_entries": 2280100,
+      "maximum_stored_exponent": -431,
+      "maximum_integer_bits": 454
+    },
+    "midpoint_product_exponent": -3091,
+    "uncertainty_product_exponent": -1880,
+    "residual_common_exponent": -3091,
+    "midpoint_shift": 0,
+    "uncertainty_shift": 1211,
+    "identity_integer_bit": 3091
+  },
+  "midpoint_integer_product_maximum_bits": 3303,
+  "radius_matvec_maximum_bits": 1696,
+  "memory": {
+    "R_dense_integer_payload_upper_bytes": 348855300,
+    "Bmid_dense_integer_payload_upper_bytes": 590545900,
+    "midpoint_product_dense_integer_payload_upper_bytes": 941681300,
+    "optional_abs_R_payload_upper_bytes": 348855300,
+    "radius_row_sum_vector_payload_upper_bytes": 89090,
+    "radius_matvec_output_payload_upper_bytes": 320120,
+    "measured_preflight_maximum_resident_KiB": 4298756,
+    "qualification": "Raw integer limb payload bounds exclude Python objects, allocator overhead, JSON copies and FLINT multiplication workspace.",
+    "R_Bmid_product_payload_upper_bytes": 1881082500
+  },
+  "proposal": {
+    "full_audit_has_not_been_launched": true,
+    "proposed_single_worker_cap_seconds": 1800,
+    "planned_square_integer_products": 1,
+    "planned_integer_radius_matrix_vector_products": 1,
+    "approximate_solves": 0,
+    "new_candidates": 0,
+    "master_recomputations": 0,
+    "automatic_retries": 0,
+    "old450_integer_product_seconds": 16.531912080012262,
+    "old450_whole_audit_seconds": 30.285694619989954,
+    "dimension_only_cubic_ratio": "3442951/91125",
+    "dimension_only_product_estimate_seconds": 624.6207212926233,
+    "additional_input_bit_size_ratio": "3292/5633",
+    "bit_weighted_product_estimate_seconds": 365.0366437946593,
+    "dimension_only_whole_audit_estimate_seconds": 1144.2761325387,
+    "qualification": "Extrapolations only, not measured1510-product timings; FLINT algorithms and exponent spread can change runtime. A separate root decision is required before the one full product."
+  },
+  "all_candidate_radii_exact_zero": true,
+  "all1510_rows_and_selected_columns_unchanged": true,
+  "integer_matrix_products": 0,
+  "integer_matrix_vector_products": 0,
+  "approximate_solves": 0,
+  "numerical_rank_tests": 0,
+  "physical_master_calls": 0,
+  "helper_called": "plan_residual only",
+  "input_files_changed_during_preflight": [],
+  "elapsed_worker_seconds": 32.190498184994794,
+  "scope": "Authenticated dimensional/bit-size planning for an independent audit of an existing certificate; no new residual or rank computation.",
+  "supervisor_exit_code": 0,
+  "hard_timeout_occurred": false,
+  "hard_preflight_cap_seconds": 180,
+  "elapsed_supervisor_seconds": 32.98655575199518,
+  "source_snapshot_sha256": "d38d7f93f18ea0662c96fc97b5ead9b023ad3dac56bcedf098832655136a8db6",
+  "source_files_changed_during_run": [],
+  "command_argv": [
+    "/home/shiqiu/miniconda3/bin/python",
+    "/home/shiqiu/s-matrix-bootstrap/scripts/preflight_remaining_rank_integer.py",
+    "--worker",
+    "--directory",
+    "/home/shiqiu/s-matrix-bootstrap/results/analytic_source_storage/source_remaining_integer_preflight_attempt01"
+  ],
+  "all_completed_and_partial_outputs_preserved": true
+}

@@ -1,0 +1,43 @@
+{
+  "scope": "Read-only diagnostic of an immutable snapshot; no optimization or feasibility certificate; transient snapshot digest only, not a standalone reproducible certificate",
+  "checkpoint_sha256": "0a7c20560a71f03ce23cca92e50e31a94d37a1b5e71a99064ac024fe2c39d318",
+  "mu": 3.125e-05,
+  "cached_state_valid": true,
+  "fresh_state_valid": true,
+  "fields": {
+    "x": {
+      "max_absolute": 7.386059537421719e-15,
+      "max_relative_to_one_plus_value": 6.503556391713798e-15
+    },
+    "y": {
+      "max_absolute": 6.4867062120484674e-15,
+      "max_relative_to_one_plus_value": 6.437999833858705e-15
+    },
+    "chi": {
+      "max_absolute": 2.4460140994776855e-17,
+      "max_relative_to_one_plus_value": 2.444033077258491e-17
+    },
+    "gram": {
+      "max_absolute": 8.944952417655472e-12,
+      "max_relative_to_one_plus_value": 6.286186193162438e-13
+    },
+    "ff": {
+      "max_absolute": 9.86623976961809e-18,
+      "max_relative_to_one_plus_value": 5.048390700739637e-18
+    },
+    "moment": {
+      "max_absolute": 3.957337929572091e-18,
+      "max_relative_to_one_plus_value": 1.9819375047770327e-18
+    },
+    "slack": {
+      "max_absolute": 1.2956349673293436e-14,
+      "max_relative_to_one_plus_value": 1.2953295231892183e-14
+    },
+    "chiral_slack": {
+      "max_absolute": 1.2017171371714988e-19,
+      "max_relative_to_one_plus_value": 1.2017168377727256e-19
+    }
+  },
+  "barrier_value_difference": -1.8376513864382105e-05,
+  "snapshot_bytes_retained": false
+}

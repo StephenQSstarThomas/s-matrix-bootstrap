@@ -1,0 +1,39 @@
+{
+  "status": "round_audit_repairs_and_detailed_plan_delivered",
+  "quantitative_paper_core_reproduced": false,
+  "all_original_parameter_implementations_impossible_proved": false,
+  "PDFs": [
+    {
+      "path": "results/runs/major_claims_20260912/final_report/REPORT_ZH.pdf",
+      "pages": 17,
+      "sha256": "9da5a65cb9a3e7b4a526948a1d35c7049301f0e722df7a7588be86bc9401bb4b"
+    },
+    {
+      "path": "results/runs/major_claims_20260912/final_report/PLAN_ZH.pdf",
+      "pages": 4,
+      "sha256": "d6f4ba875354399806e8503361f6b8d2e02855ef60fe050add3796ca1becdd2a"
+    }
+  ],
+  "verification": "FINAL_VERIFICATION.json",
+  "verification_sha256": "47f7a0f3ca9c70fd8170eb53952dc08546ece2038be845487f36d68e6fb035aa",
+  "ledger": "CLAIM_LEDGER.json",
+  "ledger_sha256": "077b7aa6b67cbf0fbb5d586a1955844dbefc2a1ab082f1cb05afc55557abe68c",
+  "plan_source_sha256": "c0b917803fc0562f08a906b0dc8ee735988a292baab7c03e9f4828f052f23dae",
+  "scientific_source_sha256": "edb1d5cf0910358a61247aca14000b44107b5b20c11f23f2157c6660401879ef",
+  "code_still_matches_last_107_test_verification": true,
+  "core_modules": 23,
+  "test_files": 3,
+  "root_visual_review": {
+    "REPORT_ZH.pdf": [
+      3,
+      4,
+      8
+    ],
+    "PLAN_ZH.pdf": [
+      2,
+      3
+    ]
+  },
+  "historical_root_document_tails_unchanged": true,
+  "next_scope": "P0/P1 source-contract recovery and targeted operator/full-point audit before any same-claim reconstruction"
+}

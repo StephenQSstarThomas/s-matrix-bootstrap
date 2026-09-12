@@ -1,0 +1,107 @@
+{
+  "energies": [
+    4.0
+  ],
+  "waves": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      0
+    ]
+  ],
+  "f": [
+    [
+      [
+        0.11976253264925553,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        -0.02329311745069208,
+        0.0
+      ]
+    ]
+  ],
+  "amplitude_model": {
+    "prescription": "finite-sine-cardinal",
+    "M": 50,
+    "L": 1,
+    "bits": 384,
+    "coordinate_system": "unsubtracted sine-cardinal C_flat",
+    "coefficient_count": 3876,
+    "physical_samples": 150,
+    "nyquist_retained": true,
+    "infinity_equality_imposed": false,
+    "density_limit_imposed": false,
+    "quadrature_order_per_panel": 24,
+    "arithmetic": "Arb",
+    "integral_enclosures": false,
+    "authors_implementation_recovered": false,
+    "analytic_function_family_defined": true
+  },
+  "constraints_checked": [
+    "unitarity at supplied physical energy/wave pairs"
+  ],
+  "eta": [
+    [
+      1.0,
+      1.0,
+      1.0
+    ]
+  ],
+  "maximum_eta": 1.0,
+  "unitarity": {
+    "criterion": "Eq.(2.12): 1-|S|^2 = kappa*(2 Im f-kappa*|f|^2) >= 0",
+    "status": "violated",
+    "margin_intervals": [
+      [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    ],
+    "minimum_margin": 0.0,
+    "scope": "listed energy/wave pairs; Arb rounding bounds exclude angular quadrature error",
+    "continuum_certified": false,
+    "omitted_spins_checked": false,
+    "high_energy_tail_certified": false,
+    "analytic_tail": {
+      "status": "violated",
+      "constant": "0",
+      "order": [
+        "S0 nonzero-spin cone",
+        "P1 cone",
+        "S2 nonzero-spin cone",
+        "S0 absorptive leading",
+        "S2 absorptive leading"
+      ],
+      "margins": [
+        "[-39163459.97130023384613802 +/- 3.59e-18]",
+        "[-981747.6445317457539224837 +/- 4.09e-20]",
+        "[-4687433.430295670334437100 +/- 3.86e-19]",
+        "[1548.936039527570922676352 +/- 8.20e-23]",
+        "[876.4579509123792494136366 +/- 2.27e-23]"
+      ],
+      "scope": "analytic fixed-spin necessary limits; no quadrature; not sufficient for full unitarity"
+    }
+  }
+}

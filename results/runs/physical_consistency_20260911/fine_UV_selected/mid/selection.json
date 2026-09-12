@@ -1,0 +1,76 @@
+{
+  "role": "mid",
+  "color": "#ff5555",
+  "rule": "Tip +x; nearest audited upper points to xref and (xref+x_tip)/2; no phase ranking/mixing",
+  "selection_template": null,
+  "reference": [
+    0.07332139057293466,
+    -0.00488809270486231
+  ],
+  "target": [
+    0.08324656217423829,
+    -0.005101209916640211
+  ],
+  "target_x": 0.08324656218297921,
+  "x_deviation": -8.740924650751936e-12,
+  "epsilon": 0.002,
+  "source_reports": [
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_UV_mid_analytic/report.json"
+  ],
+  "source_coefficients": [
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_UV_mid_analytic/coefficients.json"
+  ],
+  "source_joint": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_UV_mid_analytic/joint.npz",
+  "model_signature": {
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "zero",
+    "unitarity_scope": "sampled",
+    "prescription": "analytic-cardinal",
+    "chiral_norm": "separate-l2",
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare",
+    "current_preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current",
+    "chiral_tolerance": 0.002,
+    "uv_config": {
+      "moment_source": "printed",
+      "sr_error": "raw-absolute",
+      "cutoff": "hard-midpoint",
+      "mq_rule": "arithmetic-mean",
+      "pion_mass_gev": 0.14,
+      "matching_energy_gev": 1.2,
+      "up_mass_gev": 0.004,
+      "down_mass_gev": 0.0073,
+      "alpha_s": 0.4,
+      "gluon_condensate_gev4": 0.023,
+      "scalar_condensate_gev4": -0.0001,
+      "sr_tolerance": 0.002,
+      "ff_tolerance": 6e-05
+    },
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": true,
+    "additional_constraints": {
+      "kind": "explicit-analytic-samples",
+      "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare"
+    },
+    "sampling_nodes": 285,
+    "scattering_samples": 3582,
+    "ff_endpoint_order": 2
+  },
+  "direction": [
+    37.63567015969865,
+    500.0
+  ],
+  "support_lower": 0.5824351975971332,
+  "support_upper": 0.584258706467383,
+  "support_gap": 0.0018235088702497348,
+  "support_optimality_certified": true,
+  "representative_center_converged": true,
+  "boundary_y_distance_upper": 3.64701774049947e-06,
+  "exact_extremizer_claimed": false,
+  "joint_feasible": true,
+  "selection_uses_phase_data": false,
+  "selection_uses_paper_marker_coordinates": false,
+  "coefficients_mixed": false,
+  "finite_only": true
+}

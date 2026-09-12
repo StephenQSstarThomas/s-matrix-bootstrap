@@ -1,0 +1,97 @@
+{
+  "command": "regions",
+  "status": "incomplete",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "regions",
+    "support_runs": [
+      "results/runs/stage_B_native_subtracted_pure_M50_round1_20260907",
+      "results/runs/stage_B_default_equil_oldwarm_M3_subtracted_soc_20260907"
+    ],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_regions_incomplete_cli_control_20260907",
+    "density_limit": null,
+    "preparation": "results/runs/stage_A_M50_L10_20260906",
+    "solver": "barrier",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "constraint_generation": false,
+    "density_cone": "soc",
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": null,
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "seconds": 4200.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3"
+  },
+  "scope": "Saved support aggregation only; no bootstrap computation or continuum certification.",
+  "requested_nodes": 50,
+  "model_signature": null,
+  "regions": [],
+  "rejected": [
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_native_subtracted_pure_M50_round1_20260907/report.json",
+      "reasons": [
+        "support_optimality_certified is not true"
+      ]
+    },
+    {
+      "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_default_equil_oldwarm_M3_subtracted_soc_20260907/report.json",
+      "reasons": [
+        "wrong_M: expected 50, found 3"
+      ]
+    }
+  ],
+  "qualified_support_points": 0,
+  "plots_created": false,
+  "completion_claimed": false,
+  "comparison_policy": "Identical declared M/L/B/infinity and full-grid input identities; different paths are not assumed equivalent.",
+  "elapsed_seconds": 0.0017771050333976746,
+  "core_sources": {},
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 4200.0,
+  "supervisor_seconds": 0.21559619717299938
+}

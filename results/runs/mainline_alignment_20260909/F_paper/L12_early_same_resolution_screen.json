@@ -1,0 +1,92 @@
+{
+  "scope": "Only three old same-M50/L12 early complete points; original-H and hard-current-moment arithmetic screen, not new optimization or complete proof",
+  "candidates": [
+    {
+      "source": "results/runs/stage_F_mainline_20260909/M50_L12_phase_I_11",
+      "old_joint_feasible": true,
+      "combined_chi": 0.0021076382114687668,
+      "combined_chi_passed": false,
+      "hard_moments": [
+        0.004564640217154419,
+        0.12377858696176994,
+        0.006223631633325303,
+        0.14890396849571813
+      ],
+      "raw_residuals": [
+        0.0021795360105738284,
+        0.011940448227059112,
+        0.00199558591903959,
+        0.003192761498633628
+      ],
+      "hard_moment_margins": [
+        -0.0001795360105738282,
+        -0.009940448227059112,
+        4.414080960410236e-06,
+        -0.0011927614986336277
+      ],
+      "all_four_hard_moments_passed": false,
+      "old_tau": -0.004165408058640744,
+      "candidate_for_original_resolution_audit": false,
+      "reported_initial_mu": 0.011954683605001135,
+      "actual_saved_cache_mu": 9.339596566407137e-05
+    },
+    {
+      "source": "results/runs/stage_F_mainline_20260909/M50_L12_tip_01",
+      "old_joint_feasible": true,
+      "combined_chi": 0.002084396154812877,
+      "combined_chi_passed": false,
+      "hard_moments": [
+        0.004428957121744666,
+        0.11720411343846322,
+        0.005081224507083263,
+        0.1497679256761629
+      ],
+      "raw_residuals": [
+        0.0020438529151640752,
+        0.0053659747037524035,
+        0.0008531787927975491,
+        0.004056718679078402
+      ],
+      "hard_moment_margins": [
+        -4.3852915164075394e-05,
+        -0.0033659747037524035,
+        0.001146821207202451,
+        -0.002056718679078402
+      ],
+      "all_four_hard_moments_passed": false,
+      "old_tau": null,
+      "candidate_for_original_resolution_audit": false,
+      "reported_initial_mu": 1e-05,
+      "actual_saved_cache_mu": 1.25e-06
+    },
+    {
+      "source": "results/runs/stage_F_mainline_20260909/M50_L12_tip_02",
+      "old_joint_feasible": true,
+      "combined_chi": 0.002121512496541428,
+      "combined_chi_passed": false,
+      "hard_moments": [
+        0.004417881848105852,
+        0.11631153187283137,
+        0.004578810373692709,
+        0.14989469526107238
+      ],
+      "raw_residuals": [
+        0.002032777641525262,
+        0.004473393138120556,
+        0.0003507646594069951,
+        0.004183488263987885
+      ],
+      "hard_moment_margins": [
+        -3.277764152526199e-05,
+        -0.0024733931381205553,
+        0.001649235340593005,
+        -0.0021834882639878853
+      ],
+      "all_four_hard_moments_passed": false,
+      "old_tau": null,
+      "candidate_for_original_resolution_audit": false,
+      "reported_initial_mu": 1.25e-06,
+      "actual_saved_cache_mu": 9.765625e-09
+    }
+  ]
+}

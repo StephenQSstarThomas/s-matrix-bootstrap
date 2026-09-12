@@ -1,0 +1,61 @@
+{
+  "command": "embed",
+  "status": "embedded_initializer",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "embed",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_tail_initializer_M50_chiral_20260906",
+    "control": null,
+    "matrix": null,
+    "matrix_sha256": null,
+    "rank_report": null,
+    "density_limit": null,
+    "preparation": "results/runs/stage_A_M50_L10_20260906",
+    "solver_seconds": 300.0,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 50,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": "results/runs/stage_B_tail_initializer_M3_chiral_20260906/coefficients.json",
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "seconds": 120.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3"
+  },
+  "scope": "Historical original-center PV/midpoint prescription; published regions and phases remain unverified.",
+  "coefficient_count": 3876,
+  "nodes": 50,
+  "initialization_only": true,
+  "feasibility_and_support_not_transferred": true,
+  "elapsed_seconds": 0.03341704304330051
+}

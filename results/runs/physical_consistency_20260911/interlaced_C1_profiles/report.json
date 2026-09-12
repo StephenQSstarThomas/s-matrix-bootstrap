@@ -1,0 +1,366 @@
+{
+  "command": "profiles",
+  "status": "profiles_completed",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "profiles",
+    "comparison_manifest": null,
+    "region_summary": "results/runs/stage_B_delivery_20260907/regions/regions.json",
+    "primary_waves": false,
+    "profile_runs": [
+      "results/runs/physical_consistency_20260911/interlaced_IR_subthreshold"
+    ],
+    "profile_kind": "subthreshold",
+    "phase_reference": null,
+    "baseline_profile": null,
+    "selection_reference": null,
+    "support_runs": [],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_C1_profiles",
+    "density_limit": null,
+    "preparation": null,
+    "prescription": "auto",
+    "source_registry": null,
+    "solver": "barrier",
+    "unitarity_scope": "sampled",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "current_preparation": null,
+    "joint_feasibility": false,
+    "fixed_amplitude": false,
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "unit_newton_step": false,
+    "gap": 0.0001,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "free",
+    "asymptotic_zeros": false,
+    "asymptotic_unitarity": false,
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": null,
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "chiral_norm": "separate-l2",
+    "chiral_barrier_weight": null,
+    "objective": "projection",
+    "resume_objective": false,
+    "require_center": false,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "fixed_x": null,
+    "ray": false,
+    "seconds": 60.0,
+    "start_mu_provenance": {
+      "kind": "new_problem_default"
+    }
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "1"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Saved profiles; no continuum certificate.",
+  "kind": "subthreshold",
+  "profiles": [
+    {
+      "epsilon": 0.002,
+      "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_IR_selected/coefficients.json",
+      "selection": {
+        "rule": "Converged upper IR support at preregistered Weinberg x before phase evaluation",
+        "reference": [
+          0.07332139057293466,
+          -0.00488809270486231
+        ],
+        "target": [
+          0.07332139056634385,
+          -0.004134888038548687
+        ],
+        "center_identity": {
+          "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_IR_ref_02/center_converged.npz",
+          "sha256": "f2a1168e46f904152466d7e80d5191c1b4d26b7bc18a6b4fa8ef64ac3b71ae0f",
+          "mu": 1.953125e-07,
+          "full_C_identical": true
+        },
+        "coefficient_sha256": "0d5576b74ece16e1e3883ca73abeb92a61da99a61381a34e00266fa8f526821e",
+        "epsilon": 0.002,
+        "model_signature": {
+          "M": 50,
+          "L": 10,
+          "density_limit": 377500.0,
+          "infinity": "zero",
+          "unitarity_scope": "sampled",
+          "prescription": "analytic-cardinal",
+          "chiral_norm": "separate-l2",
+          "scattering_samples": 3123,
+          "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_prepare",
+          "global_high_spin_enforced": false,
+          "tail_conditions_applied": true,
+          "additional_constraints": {
+            "kind": "explicit-analytic-samples",
+            "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_prepare"
+          },
+          "sampling_nodes": 132
+        },
+        "source_reports": [
+          "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_IR_ref_02/report.json"
+        ],
+        "coefficients_mixed": false,
+        "selection_uses_phase_data": false,
+        "representative_center_converged": true,
+        "exact_extremizer_claimed": false,
+        "regional_geometry_ready": false,
+        "local_upper_boundary_ready": true,
+        "local_upper_boundary": {
+          "distance_upper": 3.0937877310213135e-06,
+          "scaled_distance_upper": 0.0015468938655106568,
+          "budget": 0.01
+        },
+        "original_H_feasibility": {
+          "upper": 0.5177345027146033,
+          "enclosure": "[0.5177345027146032118507379 +/- 2.54e-26]",
+          "disk": 0.07532226748139817,
+          "chiral": 0.39351818829985064,
+          "density_residual": 0.04889353540464518,
+          "tail_support": 0.0,
+          "chiral_norm": "separate-l2",
+          "objective_kind": "target_plane",
+          "scope": "Exact saved float64 H; angular quadrature error excluded",
+          "primal_feasible": true,
+          "lower": 0.5161876088490926,
+          "minimum_margin_enclosure": "[7.2179983549558367748e-97 +/- 1.86e-117]",
+          "density_norm": 373626.05704638053,
+          "targets": [
+            "[0.07332139056635589833668690 +/- 1.08e-27]",
+            "[-0.004134888038549147048030401 +/- 1.06e-28]"
+          ],
+          "tail_margin_enclosures": [],
+          "asymptotic_margin_enclosures": [
+            "[101.1459447650250538228968 +/- 3.66e-23]",
+            "[125.8303940798083561844350 +/- 4.58e-23]",
+            "[70856.41825705396096085242 +/- 4.98e-22]",
+            "[48511.10985492481431897800 +/- 2.74e-21]",
+            "[27784.80872768648000068470 +/- 1.71e-21]"
+          ],
+          "endpoint_equalities": 1,
+          "asymptotic_inequalities": 5
+        }
+      },
+      "energies": [
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.75,
+        1.0,
+        1.25,
+        1.5,
+        1.75,
+        2.0,
+        2.25,
+        2.5,
+        2.75,
+        3.0,
+        3.25,
+        3.5,
+        3.75
+      ],
+      "f_real": [
+        [
+          -0.007171456927120825,
+          0.027647882627852546,
+          -0.019211714570643953
+        ],
+        [
+          -0.005115623393472118,
+          0.026028954647022852,
+          -0.01854641802007118
+        ],
+        [
+          -0.003002243510754585,
+          0.02444324272783796,
+          -0.017902579030293082
+        ],
+        [
+          -0.0008393611206986503,
+          0.02288336923815052,
+          -0.017276143064781584
+        ],
+        [
+          0.001368442060261993,
+          0.021344677915578935,
+          -0.0166647289306539
+        ],
+        [
+          0.0070697818306703795,
+          0.017571416844333203,
+          -0.015192106040122964
+        ],
+        [
+          0.013023937443590459,
+          0.013881160978747403,
+          -0.013787064278841741
+        ],
+        [
+          0.019241431637220696,
+          0.010258985044108966,
+          -0.012439079795932579
+        ],
+        [
+          0.025746924760957707,
+          0.006698353510107451,
+          -0.011140691732574867
+        ],
+        [
+          0.03257452211925607,
+          0.0031974001652172405,
+          -0.009886188170446229
+        ],
+        [
+          0.03976591642646095,
+          -0.00024305734791988255,
+          -0.008670983183091436
+        ],
+        [
+          0.04737037535590052,
+          -0.003620639698140979,
+          -0.007491273335437584
+        ],
+        [
+          0.05544643305098724,
+          -0.006932023810797992,
+          -0.006343828116059204
+        ],
+        [
+          0.06406582527728812,
+          -0.01017321255706908,
+          -0.005225852059701295
+        ],
+        [
+          0.07332139055836126,
+          -0.013339486441445938,
+          -0.004134888038569226
+        ],
+        [
+          0.08334385481536373,
+          -0.016424899736230184,
+          -0.0030687447275431863
+        ],
+        [
+          0.09434420675531287,
+          -0.019420688001243077,
+          -0.0020254366571330912
+        ],
+        [
+          0.10676565481820735,
+          -0.02230924401398504,
+          -0.0010031237698121327
+        ]
+      ],
+      "max_absolute_deviation": [
+        0.011447847073392303,
+        0.0033532426865420864,
+        0.0011120204154939691
+      ],
+      "S0_zero_brackets": [
+        [
+          0.4,
+          0.5
+        ]
+      ],
+      "S0_certified_zero_brackets": [
+        [
+          0.4,
+          0.5
+        ]
+      ],
+      "S0_zero_existence_certified": true,
+      "zero_proof_scope": "Opposite rigorous real signs and continuity on the positive subthreshold interval; no uniqueness or absence theorem"
+    }
+  ],
+  "reference": null,
+  "selection_uses_phase_data": false,
+  "continuum_certified": false,
+  "model_signature": {
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "zero",
+    "unitarity_scope": "sampled",
+    "prescription": "analytic-cardinal",
+    "chiral_norm": "separate-l2",
+    "scattering_samples": 3123,
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_prepare",
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": true,
+    "additional_constraints": {
+      "kind": "explicit-analytic-samples",
+      "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_prepare"
+    },
+    "sampling_nodes": 132
+  },
+  "elapsed_seconds": 0.9518542781006545,
+  "prescription": "analytic-cardinal",
+  "core_sources": {
+    "__init__.py": "eb90c095e0415af900073b308a5aa229af7525815996fb9ed22c40bf8d0e07ea",
+    "analysis.py": "7c858a1c763d7543dc7dbd167c495bcb8a156e69b7cf5e08de4e80c8153395ec",
+    "analytic.py": "f7b6ffb9bd6b520f00dec8653ff0864da6fe46eaa0ed5814bef7bd3c5c22a727",
+    "basis.py": "5eda7c08a5cea679958b47980c9972ada51358f6352698d8db10db91bd5abec3",
+    "certificates.py": "aedcd1b65d0e1908c84e129e570a119214994c2b38d4e325b543beb9b27a9ad3",
+    "conic.py": "750741dbe9b45584c24176cbdeb2cfafc585361d5b23cff5d79a501a247abf01",
+    "endpoints.py": "6b4dacd438e750ca61f285744cc0a152d16e3090581e22c77962f23b867005db",
+    "gauge.py": "4fbfb5b647cafd1e3feea523a89c31d4051c469a833eba0a20d0b4b819f97829",
+    "imaginary.py": "9ad338b253d2941310401d245a24cba4ab546926e5c9c630f80c7bd647c1828c",
+    "io.py": "f368531ec06a54b1e65a76d39de402cbeb205873ae7964246c7cebc643a3d779",
+    "ir.py": "9fe83590027ee9bd611c954c1c7c9b7f333c469ab7cd242cd39ba97160fd419b",
+    "kernels.py": "790ebcdba291c80f17c4909a31ddf77ad6373748c2af41c7ce1a0c28b309172a",
+    "linear.py": "48d6330a638c28310c87860ecb5b70ce4396dce01878eff8c5855d96d643d0e2",
+    "model.py": "be73b782a40652cf099e4f5ed480f56cb4d00e0f86aaddfe9698ccf83ea3b975",
+    "operators.py": "74cb905a1e9e881e3f3e5f7843d44e7e096e8c57e672f8f7abdbae336b78fc4e",
+    "quadrature.py": "7ec2a6b9336cd6035db06fdf8a028368ccd22e4d106cc5e16900c878b8d40fad",
+    "quotient.py": "32b669bec9e0b9af1c21bf464f2806411cdca87fffa6ff0593d7bb77dd3428e9",
+    "run.py": "50cff7cedc05707edf0de22ed741204be95eda912337c248bc96c65c99fd601c",
+    "sampling.py": "0d7ea723d58a18971b4a768a5f29cbd40646113bd06fe46e7c5ce920492744e3",
+    "scattering.py": "17d1e2d03fb467a5e58e6d87a6921dfd14da8c9f0eec2d6c28e64334dcfc7211",
+    "spectra.py": "07489253c120fe925489a5c4560980a30128012ab61972c04aa1ee3adfd528a4"
+  },
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 60.0,
+  "supervisor_seconds": 1.8218075651675463
+}

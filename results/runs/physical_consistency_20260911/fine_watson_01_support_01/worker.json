@@ -1,0 +1,153 @@
+{
+  "command": "boundary",
+  "status": "inconclusive",
+  "artifacts": {},
+  "inputs": {
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare/report.json": {
+      "sha256": "c4486fd4d593d58fe55574abadda04dc21734408fecec307a278820f8105a2f0"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_prepare/amplitude.npz": {
+      "sha256": "507ef1937e8d65403c3fd7cd58e89740e997758a6055607805a143b360ea6592"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current/report.json": {
+      "sha256": "88b5b6f6f2fb13dadae2fde18c57bef06c11d0bede50a9f03fe0c4bcc813cfc6"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current/current_data.npz": {
+      "sha256": "ff8d5809c68515899780eb4793c4d2bb42dbf95d62fdb805d3b60044d071eac9"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current/gram_linear.npz": {
+      "sha256": "89fb3448d57581621c1c4e4f82f19f219096d4bec8e0a4169241b9ba6ffece0f"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current/moment_linear.npz": {
+      "sha256": "04e022b5aed199efc485438b3fb1b52000d9a26f14ef3c4b942383391cbaa0a4"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_current/ff_cap_linear.npz": {
+      "sha256": "79b38a0cda214c9b0a4aa6645e1271556cef9f13cc1113a9bc49bd42480a2920"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_watson_goal_analytic/coefficients.json": {
+      "sha256": "e6f45ed1f5c7805b00a9b37c428956fa731a7de9f610bc989a4b13ceef25a7be"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_watson_goal_analytic/report.json": {
+      "sha256": "088d43e94de88a5fdd168ce27027f46c765bda40aca758bf2b9edf36497955c4"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_watson_goal_analytic/joint.npz": {
+      "sha256": "65ff8adc7f2a7bd245f0f11d177a9b12b2c6b1d3df8582c39ba985c120ab6c55"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_watson_goal_analytic/objective.npz": {
+      "sha256": "06055bdd032e963291673d3f410d626ac5c799380960055350298b99ff0bb08d"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_watson_goal_analytic/selection.json": {
+      "sha256": "6b97af842fe909f0210af327caf6f26f86dcc1cb63e529c249a84646c60ac22e"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_watson_goal_analytic/current.json": {
+      "sha256": "23d31e6788e9c6764df28a63de7a6aa6d0ac721fa3dfd430be63115effb4cfdb"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_watson_goal_analytic/watson_update.json": {
+      "sha256": "0c3ac0d485a03e04bfd9eea9d3f636cbb48b4b0610fb2716d79ca935799990f3"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_UV_selected/tip/coefficients.json": {
+      "sha256": "e6f45ed1f5c7805b00a9b37c428956fa731a7de9f610bc989a4b13ceef25a7be"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_UV_selected/tip/joint.npz": {
+      "sha256": "4912390f187e38c6d3f028456bc796dfdbe4e4ecdbb8e8c01d4e4657634af91b"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_UV_selected/tip/selection.json": {
+      "sha256": "6f7c9d48bf97cdf89c4f8f1569e7da1e7f47735b013a967bc5dd2e3c3df1b477"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_UV_selected/tip/current.json": {
+      "sha256": "23d31e6788e9c6764df28a63de7a6aa6d0ac721fa3dfd430be63115effb4cfdb"
+    }
+  },
+  "parameters": {
+    "command": "boundary",
+    "comparison_manifest": null,
+    "region_summary": "results/runs/stage_B_delivery_20260907/regions/regions.json",
+    "primary_waves": false,
+    "profile_runs": [],
+    "profile_kind": "subthreshold",
+    "phase_reference": null,
+    "baseline_profile": null,
+    "selection_reference": null,
+    "support_runs": [],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/fine_watson_01_support_01",
+    "density_limit": 377500.0,
+    "preparation": "results/runs/physical_consistency_20260911/fine_prepare",
+    "prescription": "analytic-cardinal",
+    "source_registry": null,
+    "solver": "centered",
+    "unitarity_scope": "sampled",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "current_preparation": "results/runs/physical_consistency_20260911/fine_current",
+    "joint_feasibility": false,
+    "fixed_amplitude": false,
+    "solver_seconds": 900.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 3.125e-05,
+    "unit_newton_step": false,
+    "gap": 0.0001,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 512,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "asymptotic_zeros": true,
+    "asymptotic_unitarity": true,
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": "results/runs/physical_consistency_20260911/fine_watson_goal_analytic/coefficients.json",
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "gauge",
+    "chiral_tolerance": 0.002,
+    "chiral_norm": "separate-l2",
+    "chiral_barrier_weight": 1791.0,
+    "objective": "watson",
+    "resume_objective": true,
+    "require_center": true,
+    "direction": [
+      0.0,
+      0.0
+    ],
+    "fixed_x": null,
+    "ray": false,
+    "seconds": 1200.0,
+    "start_mu_provenance": {
+      "kind": "explicit"
+    }
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "8"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Finite model; regions/phases require verification.",
+  "error": "Joint Newton linear residual failed after fresh QR (1.08e-05)",
+  "exception_type": "ArithmeticError",
+  "elapsed_seconds": 320.50821699691005,
+  "prescription": "analytic-cardinal"
+}

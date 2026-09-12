@@ -1,0 +1,470 @@
+{
+  "paper": "He–Kruczenski, 2309.12402v3",
+  "pdf": "references/2309.12402v3.pdf",
+  "tex": "references/2309.12402v3-source/prd_submission_2.tex",
+  "audit_date": "2026-09-07",
+  "page_convention": "PDF one-based page number equals printed page number for cited pages; the PDF has43 pages.",
+  "scope": "Local original v3 only; sections3–4, AppendixA and relevant theoretical/unitarity and conclusion passages. No external search or current-code review.",
+  "visual_pages_inspected": [
+    21,
+    24,
+    27,
+    28,
+    36,
+    37
+  ],
+  "classifications": {
+    "explicit": "原文明确文字/公式",
+    "not_reported": "在列明的公开数值描述中未报告；不等于作者实际未做",
+    "inference": "由公式或章节衔接推得，未作为作者直接陈述",
+    "visual_observation": "直接查看PDF页面所得，不添加定量认证"
+  },
+  "answer": {
+    "theoretical_all_energy_all_spin_constraint": true,
+    "documented_finite_discretization": true,
+    "does_absence_prove_author_amplitudes_violate": false,
+    "summary_zh": "理论约束覆盖所有s及分波；公开数值工作是有限M/L的原型及相移敏感性比较，没有提供全部幺正违例已排除的连续证书。",
+    "reported_proof_all_numerical_violations_excluded": false
+  },
+  "evidence": [
+    {
+      "id": "theory_unitarity",
+      "classification": "explicit",
+      "pdf_pages": [
+        9
+      ],
+      "tex_line_anchors": [
+        565,
+        582
+      ],
+      "equations": [
+        "2.9",
+        "2.11",
+        "2.12"
+      ],
+      "finding_zh": "理论问题要求 |S^I_l(s)|≤1，对所有 s≥4 和所有 l,I；这是真正的物理约束，不等于已经证明有限计算在该全域满足它。"
+    },
+    {
+      "id": "grid",
+      "classification": "explicit",
+      "pdf_pages": [
+        21
+      ],
+      "tex_line_anchors": [
+        909,
+        929
+      ],
+      "equations": [
+        "3.58",
+        "3.60",
+        "3.61",
+        "3.62"
+      ],
+      "finding_zh": "用 phi_i=pi(i−1/2)/M、s_i=8/(1+cos phi_i) 的 M 个上半圆节点离散单/双谱密度，rho2 对称；T0保留为变量。"
+    },
+    {
+      "id": "fig3_resolution",
+      "classification": "explicit",
+      "pdf_pages": [
+        26
+      ],
+      "tex_line_anchors": [
+        1061,
+        1069
+      ],
+      "equations": [
+        "3.61"
+      ],
+      "finding_zh": "Fig.3 明确使用 M=50，且每个isospin施加10个分波的幺正性。"
+    },
+    {
+      "id": "node_psd",
+      "classification": "explicit",
+      "pdf_pages": [
+        23,
+        24
+      ],
+      "tex_line_anchors": [
+        966,
+        1017
+      ],
+      "equations": [
+        "3.65",
+        "3.69",
+        "3.70",
+        "3.71"
+      ],
+      "finding_zh": "联合模型在节点i对S0/P1施加含S、form factor和current spectral density的3×3 PSD；其它保留分波施加2×2 PSD。"
+    },
+    {
+      "id": "finite_pair_count",
+      "classification": "inference",
+      "pdf_pages": [
+        9,
+        21,
+        24,
+        26
+      ],
+      "tex_line_anchors": [
+        573,
+        579,
+        921,
+        929,
+        996,
+        1017,
+        1062
+      ],
+      "equations": [
+        "2.12",
+        "3.61",
+        "3.70",
+        "3.71"
+      ],
+      "finding_zh": "若按文中共同节点逐波实施，M50/L10对应1500个能量-isospin-分波对；I=0,2取l=0,2,…,18，I=1取l=1,3,…,19。数目由M、L及奇偶性推得，并非原文单独报出的约束计数。"
+    },
+    {
+      "id": "off_node_verification",
+      "classification": "not_reported",
+      "pdf_pages": [
+        21,
+        22,
+        24,
+        36,
+        37
+      ],
+      "tex_line_anchors": [
+        905,
+        933,
+        998,
+        1017,
+        1204,
+        1229
+      ],
+      "equations": [
+        "3.70",
+        "3.71"
+      ],
+      "finding_zh": "已检查的数值章节/附录没有报告独立离节点幺正扫描、连续能量最大违例搜索、交换式补点算法或其无违例证书；不能把未报告写成作者肯定未检查。"
+    },
+    {
+      "id": "higher_spin_verification",
+      "classification": "not_reported",
+      "pdf_pages": [
+        26,
+        36,
+        37
+      ],
+      "tex_line_anchors": [
+        1062,
+        1206,
+        1208
+      ],
+      "equations": [],
+      "finding_zh": "作者改变有限L至8/10/12比较相移；没有报告覆盖全部未保留l的解析尾界、FG全区间多项式检查或无限高spin幺正认证。"
+    },
+    {
+      "id": "infinite_energy_verification",
+      "classification": "not_reported",
+      "pdf_pages": [
+        21,
+        24,
+        25,
+        36,
+        37
+      ],
+      "tex_line_anchors": [
+        909,
+        929,
+        998,
+        1040,
+        1204,
+        1229
+      ],
+      "equations": [
+        "3.61",
+        "3.71",
+        "3.75"
+      ],
+      "finding_zh": "中点phi网格没有s=4或s=∞端点；文中未给出对散射振幅s→∞的T0=0约束、固定spin解析尾检查或阈值邻域的统一幺正误差界。此结论不否认文中存在高能节点约束及form-factor衰减约束。"
+    },
+    {
+      "id": "high_energy_nodes_vs_domain",
+      "classification": "inference",
+      "pdf_pages": [
+        9,
+        10,
+        20,
+        21,
+        24,
+        25
+      ],
+      "tex_line_anchors": [
+        579,
+        581,
+        909,
+        929,
+        1020,
+        1039
+      ],
+      "equations": [
+        "2.12",
+        "3.60",
+        "3.61",
+        "3.75"
+      ],
+      "finding_zh": "phi∈(0,pi)映射整条物理cut；M50节点最小/最大s为4 sec²(pi/200)与4 csc²(pi/200)，均有限。因此不能把作者主要比较低于约1.2GeV的物理讨论误读为幺正只在该能区采样，也不能把高能节点等同于连续高能尾保证。"
+    },
+    {
+      "id": "numerical_certificates",
+      "classification": "not_reported",
+      "pdf_pages": [
+        21,
+        22,
+        24,
+        36,
+        37
+      ],
+      "tex_line_anchors": [
+        905,
+        933,
+        998,
+        1017,
+        1204,
+        1229
+      ],
+      "equations": [],
+      "finding_zh": "没有给出数值求解器/最优性容差、逐方向原始-对偶支持间隙、Arb式外舍入、角积分包络、全能量全分波最大幺正残差或严格的区域Hausdorff误差证书。"
+    },
+    {
+      "id": "unpublished_numerical_choices",
+      "classification": "not_reported",
+      "pdf_pages": [
+        9,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "tex_line_anchors": [
+        553,
+        563,
+        909,
+        951,
+        970,
+        983,
+        1020,
+        1052
+      ],
+      "equations": [
+        "2.7",
+        "3.62",
+        "3.64",
+        "3.67",
+        "3.72"
+      ],
+      "finding_zh": "谱密度的具体连续插值/积分实现、双密度的ordinary L4界及B(M)=100×维数、去T0规则均未在这些方法段规定；手征范数明确写some norm。式3.67明确给出的是form-factor节点Hilbert矩阵，不能单凭它认定全部散射插值细节已公开。"
+    },
+    {
+      "id": "chiral_inputs",
+      "classification": "explicit",
+      "pdf_pages": [
+        22,
+        23,
+        27,
+        28
+      ],
+      "tex_line_anchors": [
+        944,
+        953,
+        1073,
+        1083
+      ],
+      "equations": [
+        "3.64",
+        "4.79"
+      ],
+      "finding_zh": "手征在s=1/2,1,3/2,2四点约束两组线性差值，范数未指定；扫描epsilon=.006,.004,.002,.001,.0006,.0002。选择.002是兼顾近线性及不排除物理f_pi参考点，并承认可接受非线性程度有歧义；四点条件不强制整个阈下区间线性或固定散射长度。"
+    },
+    {
+      "id": "fig3_role_and_scan",
+      "classification": "explicit",
+      "pdf_pages": [
+        21,
+        22,
+        26,
+        27
+      ],
+      "tex_line_anchors": [
+        929,
+        931,
+        1061,
+        1069
+      ],
+      "equations": [],
+      "finding_zh": "Fig.3是纯S基线二维投影；作者明确说它在后续不再起作用。边界扫描例子是从一个内点沿角alpha的射线最大化t；支持法向扫描可恢复同一凸集，但不能把两种角参数逐点等同。"
+    },
+    {
+      "id": "fig4_role",
+      "classification": "explicit",
+      "pdf_pages": [
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "tex_line_anchors": [
+        1073,
+        1112,
+        1133,
+        1137
+      ],
+      "equations": [
+        "3.64",
+        "4.79"
+      ],
+      "finding_zh": "Fig.4展示六种手征容差如何把区域压向Weinberg直线，只展示x>0一侧；配合Fig.5选epsilon，再由Fig.6/7考察仅手征输入的相移。它不是离节点幺正或连续误差图。"
+    },
+    {
+      "id": "fig4_resolution_scope",
+      "classification": "inference",
+      "pdf_pages": [
+        26,
+        28,
+        36
+      ],
+      "tex_line_anchors": [
+        1062,
+        1071,
+        1083,
+        1206
+      ],
+      "equations": [],
+      "finding_zh": "Fig.4图注没有单独重申M/L；沿用M50/L10是同一数值setup及未声明变更所支持的推断。Fig.3和最终Fig.9/10的M50/L10则有明确文字，不应混淆证据等级。"
+    },
+    {
+      "id": "fig11_settings",
+      "classification": "explicit",
+      "pdf_pages": [
+        36,
+        37
+      ],
+      "tex_line_anchors": [
+        1204,
+        1229
+      ],
+      "equations": [],
+      "finding_zh": "附录明确最终Fig.9/10主结果使用M50/L10，是精度与速度的折中；Fig.11比较(50,8),(50,10),(50,12),(45,10),(60,10)共五组。"
+    },
+    {
+      "id": "fig11_convergence_claim",
+      "classification": "explicit",
+      "pdf_pages": [
+        36,
+        37
+      ],
+      "tex_line_anchors": [
+        1206,
+        1208
+      ],
+      "equations": [],
+      "finding_zh": "固定M50改变L时作者称三种分波有reasonably good convergence；固定L10改变M时，S0/S2被描述为收敛较好，P1的rho共振位置随M略移。作者同时明确M改变变量数、幺正约束以及SVZ约束。"
+    },
+    {
+      "id": "fig11_visual",
+      "classification": "visual_observation",
+      "pdf_pages": [
+        37
+      ],
+      "tex_line_anchors": [
+        1210,
+        1229
+      ],
+      "equations": [],
+      "finding_zh": "已实际查看PDF：图11只有S0、S2、P1三幅相移点图，横轴sqrt(s)以GeV计、可见区间约0.28–1.2；图例绿色(50,8)、蓝色(50,12)、红色(50,10)、橙色(45,10)、紫色(60,10)。它没有eta、幺正违例曲线或区域内外界，bootstrap没有显示认证误差带。"
+    },
+    {
+      "id": "convergence_limit",
+      "classification": "not_reported",
+      "pdf_pages": [
+        36,
+        37
+      ],
+      "tex_line_anchors": [
+        1206,
+        1229
+      ],
+      "equations": [],
+      "finding_zh": "附录没有M,L→∞的定理/误差界、定量收敛率、统一能量-分波范数、Fig.3/4区域收敛图，或跨分辨率代表振幅的精确同一选点协议。五组相移稳定性是经验敏感性证据，不能证明所有幺正违例已排除。"
+    },
+    {
+      "id": "uv_tolerances",
+      "classification": "explicit",
+      "pdf_pages": [
+        24,
+        25,
+        26,
+        31,
+        32,
+        33
+      ],
+      "tex_line_anchors": [
+        1020,
+        1057,
+        1141,
+        1149
+      ],
+      "equations": [
+        "3.72",
+        "3.74",
+        "3.75"
+      ],
+      "finding_zh": "S0用n=0,1，P1用n=−1,0的四项FESR；最终epsilon_SR=.002、epsilon_FF=6e−5，并保持epsilon_chi=.002。容差用于约束足够强且问题仍可行。作者拒绝调s0去拟合rho质量；约6%的rho偏移被保留。"
+    },
+    {
+      "id": "main_claim_and_selection_limits",
+      "classification": "explicit",
+      "pdf_pages": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "tex_line_anchors": [
+        1111,
+        1135,
+        1148,
+        1149,
+        1172,
+        1180,
+        1187
+      ],
+      "equations": [],
+      "finding_zh": "主要claim是prototype能把IR手征与UV pQCD/SVZ连接：仅手征的S0/S2较好而P1不足，加入UV后出现较合理rho共振。作者承认上/下边界选择没有特别判据，比较尖端及附近三点，不同点相移相近但不相同；这不是唯一QCD振幅或精密拟合的宣称。"
+    },
+    {
+      "id": "elasticity_and_future",
+      "classification": "explicit",
+      "pdf_pages": [
+        9,
+        10,
+        35,
+        36
+      ],
+      "tex_line_anchors": [
+        581,
+        582,
+        1189,
+        1191
+      ],
+      "equations": [
+        "2.12"
+      ],
+      "finding_zh": "作者讨论bootstrap常见的弹性饱和与真实高能非弹性之间的问题，将主要物理应用放在约1.2GeV以下；高能current谱密度不再被两粒子态饱和，粒子产生以及更多分波/味数留作后续。|S|≤1与强制|S|=1必须区分。"
+    }
+  ]
+}

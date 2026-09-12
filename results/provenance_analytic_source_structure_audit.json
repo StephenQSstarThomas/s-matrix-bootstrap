@@ -1,0 +1,354 @@
+{
+  "workspace_report_count": 9,
+  "staged_file_count": 10,
+  "embedded_source_checks": [
+    {
+      "where": "results/source_imaginary_structure_small_exact.json",
+      "path": "/home/shiqiu/s-matrix-bootstrap/scripts/check_source_imaginary_structure.py",
+      "sha256": "be0cec520de4c7a169f647b01d65bf1ccbbd98cd040eeb4337e44dcede806919"
+    },
+    {
+      "where": "results/source_imaginary_structure_small_exact.json",
+      "path": "src/smatrix_bootstrap/amplitudes.py",
+      "sha256": "e56a90e92c00daeb5f8906471745a35bf7d2963b222faf24dede5dd11d4635eb"
+    },
+    {
+      "where": "results/source_imaginary_structure_small_exact.json",
+      "path": "src/smatrix_bootstrap/partial_wave_master_prototype.py",
+      "sha256": "c5105378b575dfcc1fa26e1b4986435d93282a70dcdf5229c6e770fb48666260"
+    },
+    {
+      "where": "results/universal_source_N50_j0.json",
+      "path": "/tmp/universal_source_stage/validate_universal_source_rows.py",
+      "sha256": "6cd9d9b930001c09e1e320a2f2c86f5dba8e2d908ebf2a51942767b1d6881404"
+    },
+    {
+      "where": "results/universal_source_N50_j0.json",
+      "path": "src/smatrix_bootstrap/universal_partial_wave_masters.py",
+      "sha256": "e14c2d28e15c9f3e5ace272037d630a07cd9c768c90f09c3a5e9feb304d24310"
+    },
+    {
+      "where": "results/universal_source_N50_j0.json",
+      "path": "src/smatrix_bootstrap/partial_wave_master_prototype.py",
+      "sha256": "c5105378b575dfcc1fa26e1b4986435d93282a70dcdf5229c6e770fb48666260"
+    },
+    {
+      "where": "results/universal_source_N50_j0.json",
+      "path": "src/smatrix_bootstrap/rational_partial_wave.py",
+      "sha256": "f53201c82e0cb15443dec2c67f6c9c8fb8d7aa1647bc2824081ad1a81b1ea620"
+    },
+    {
+      "where": "results/universal_source_N50_j0.json",
+      "path": "src/smatrix_bootstrap/amplitudes.py",
+      "sha256": "e56a90e92c00daeb5f8906471745a35bf7d2963b222faf24dede5dd11d4635eb"
+    },
+    {
+      "where": "results/universal_source_N50_j49.json",
+      "path": "/tmp/universal_source_stage/validate_universal_source_rows.py",
+      "sha256": "6cd9d9b930001c09e1e320a2f2c86f5dba8e2d908ebf2a51942767b1d6881404"
+    },
+    {
+      "where": "results/universal_source_N50_j49.json",
+      "path": "src/smatrix_bootstrap/universal_partial_wave_masters.py",
+      "sha256": "e14c2d28e15c9f3e5ace272037d630a07cd9c768c90f09c3a5e9feb304d24310"
+    },
+    {
+      "where": "results/universal_source_N50_j49.json",
+      "path": "src/smatrix_bootstrap/partial_wave_master_prototype.py",
+      "sha256": "c5105378b575dfcc1fa26e1b4986435d93282a70dcdf5229c6e770fb48666260"
+    },
+    {
+      "where": "results/universal_source_N50_j49.json",
+      "path": "src/smatrix_bootstrap/rational_partial_wave.py",
+      "sha256": "f53201c82e0cb15443dec2c67f6c9c8fb8d7aa1647bc2824081ad1a81b1ea620"
+    },
+    {
+      "where": "results/universal_source_N50_j49.json",
+      "path": "src/smatrix_bootstrap/amplitudes.py",
+      "sha256": "e56a90e92c00daeb5f8906471745a35bf7d2963b222faf24dede5dd11d4635eb"
+    },
+    {
+      "where": "results/threshold_source_M50_N50_j0_512.json",
+      "path": "/home/shiqiu/s-matrix-bootstrap/scripts/certify_threshold_source_rows.py",
+      "sha256": "a951ed1206ff85e21cd5bed4a5c8b8ba44c814fe68cbe4e85afab7208e33222e"
+    },
+    {
+      "where": "results/threshold_source_M50_N50_j0_512.json",
+      "path": "src/smatrix_bootstrap/threshold_moment_enclosures.py",
+      "sha256": "83feedfe95df3dfc7e0f96d90248500be7d7f4e63b8d5f32eff998a912dcf62c"
+    },
+    {
+      "where": "results/threshold_source_M50_N50_j0_512.json",
+      "path": "src/smatrix_bootstrap/partial_wave_master_prototype.py",
+      "sha256": "c5105378b575dfcc1fa26e1b4986435d93282a70dcdf5229c6e770fb48666260"
+    },
+    {
+      "where": "results/threshold_source_M50_N50_j0_512.json",
+      "path": "src/smatrix_bootstrap/amplitudes.py",
+      "sha256": "e56a90e92c00daeb5f8906471745a35bf7d2963b222faf24dede5dd11d4635eb"
+    },
+    {
+      "where": "results/threshold_source_M50_N50_j0_512.export_failure.json",
+      "path": "scripts/certify_threshold_source_rows.py",
+      "sha256": "49c8d4be7eb35b46c0411f6744043f831c41d6f0818141414bb4d5432ccf3d64"
+    },
+    {
+      "where": "results/threshold_source_M50_N50_j0_512.export_failure.json",
+      "path": "src/smatrix_bootstrap/threshold_moment_enclosures.py",
+      "sha256": "83feedfe95df3dfc7e0f96d90248500be7d7f4e63b8d5f32eff998a912dcf62c"
+    },
+    {
+      "where": "results/threshold_source_M50_N50_j0_512.export_failure.json",
+      "path": "src/smatrix_bootstrap/partial_wave_master_prototype.py",
+      "sha256": "c5105378b575dfcc1fa26e1b4986435d93282a70dcdf5229c6e770fb48666260"
+    },
+    {
+      "where": "results/threshold_source_M50_N50_j0_512.export_failure.json",
+      "path": "src/smatrix_bootstrap/amplitudes.py",
+      "sha256": "e56a90e92c00daeb5f8906471745a35bf7d2963b222faf24dede5dd11d4635eb"
+    },
+    {
+      "where": "results/threshold_source_M50_N50_j0_512.space_failure.json",
+      "path": "scripts/certify_threshold_source_rows.py",
+      "sha256": "a951ed1206ff85e21cd5bed4a5c8b8ba44c814fe68cbe4e85afab7208e33222e"
+    },
+    {
+      "where": "results/threshold_source_M50_N50_j0_512.space_failure.json",
+      "path": "src/smatrix_bootstrap/threshold_moment_enclosures.py",
+      "sha256": "83feedfe95df3dfc7e0f96d90248500be7d7f4e63b8d5f32eff998a912dcf62c"
+    },
+    {
+      "where": "results/threshold_source_M50_N50_j0_512.space_failure.json",
+      "path": "src/smatrix_bootstrap/partial_wave_master_prototype.py",
+      "sha256": "c5105378b575dfcc1fa26e1b4986435d93282a70dcdf5229c6e770fb48666260"
+    },
+    {
+      "where": "results/threshold_source_M50_N50_j0_512.space_failure.json",
+      "path": "src/smatrix_bootstrap/amplitudes.py",
+      "sha256": "e56a90e92c00daeb5f8906471745a35bf7d2963b222faf24dede5dd11d4635eb"
+    },
+    {
+      "where": "/tmp/smatrix_threshold_source_stage/threshold_source_M50_N50_j0_512.json",
+      "path": "/home/shiqiu/s-matrix-bootstrap/scripts/certify_threshold_source_rows.py",
+      "sha256": "a951ed1206ff85e21cd5bed4a5c8b8ba44c814fe68cbe4e85afab7208e33222e"
+    },
+    {
+      "where": "/tmp/smatrix_threshold_source_stage/threshold_source_M50_N50_j0_512.json",
+      "path": "src/smatrix_bootstrap/threshold_moment_enclosures.py",
+      "sha256": "83feedfe95df3dfc7e0f96d90248500be7d7f4e63b8d5f32eff998a912dcf62c"
+    },
+    {
+      "where": "/tmp/smatrix_threshold_source_stage/threshold_source_M50_N50_j0_512.json",
+      "path": "src/smatrix_bootstrap/partial_wave_master_prototype.py",
+      "sha256": "c5105378b575dfcc1fa26e1b4986435d93282a70dcdf5229c6e770fb48666260"
+    },
+    {
+      "where": "/tmp/smatrix_threshold_source_stage/threshold_source_M50_N50_j0_512.json",
+      "path": "src/smatrix_bootstrap/amplitudes.py",
+      "sha256": "e56a90e92c00daeb5f8906471745a35bf7d2963b222faf24dede5dd11d4635eb"
+    },
+    {
+      "where": "/tmp/universal_source_stage/universal_source_N50_j0.json",
+      "path": "/tmp/universal_source_stage/validate_universal_source_rows.py",
+      "sha256": "6cd9d9b930001c09e1e320a2f2c86f5dba8e2d908ebf2a51942767b1d6881404"
+    },
+    {
+      "where": "/tmp/universal_source_stage/universal_source_N50_j0.json",
+      "path": "src/smatrix_bootstrap/universal_partial_wave_masters.py",
+      "sha256": "e14c2d28e15c9f3e5ace272037d630a07cd9c768c90f09c3a5e9feb304d24310"
+    },
+    {
+      "where": "/tmp/universal_source_stage/universal_source_N50_j0.json",
+      "path": "src/smatrix_bootstrap/partial_wave_master_prototype.py",
+      "sha256": "c5105378b575dfcc1fa26e1b4986435d93282a70dcdf5229c6e770fb48666260"
+    },
+    {
+      "where": "/tmp/universal_source_stage/universal_source_N50_j0.json",
+      "path": "src/smatrix_bootstrap/rational_partial_wave.py",
+      "sha256": "f53201c82e0cb15443dec2c67f6c9c8fb8d7aa1647bc2824081ad1a81b1ea620"
+    },
+    {
+      "where": "/tmp/universal_source_stage/universal_source_N50_j0.json",
+      "path": "src/smatrix_bootstrap/amplitudes.py",
+      "sha256": "e56a90e92c00daeb5f8906471745a35bf7d2963b222faf24dede5dd11d4635eb"
+    },
+    {
+      "where": "/tmp/universal_source_stage/universal_source_N50_j49.json",
+      "path": "/tmp/universal_source_stage/validate_universal_source_rows.py",
+      "sha256": "6cd9d9b930001c09e1e320a2f2c86f5dba8e2d908ebf2a51942767b1d6881404"
+    },
+    {
+      "where": "/tmp/universal_source_stage/universal_source_N50_j49.json",
+      "path": "src/smatrix_bootstrap/universal_partial_wave_masters.py",
+      "sha256": "e14c2d28e15c9f3e5ace272037d630a07cd9c768c90f09c3a5e9feb304d24310"
+    },
+    {
+      "where": "/tmp/universal_source_stage/universal_source_N50_j49.json",
+      "path": "src/smatrix_bootstrap/partial_wave_master_prototype.py",
+      "sha256": "c5105378b575dfcc1fa26e1b4986435d93282a70dcdf5229c6e770fb48666260"
+    },
+    {
+      "where": "/tmp/universal_source_stage/universal_source_N50_j49.json",
+      "path": "src/smatrix_bootstrap/rational_partial_wave.py",
+      "sha256": "f53201c82e0cb15443dec2c67f6c9c8fb8d7aa1647bc2824081ad1a81b1ea620"
+    },
+    {
+      "where": "/tmp/universal_source_stage/universal_source_N50_j49.json",
+      "path": "src/smatrix_bootstrap/amplitudes.py",
+      "sha256": "e56a90e92c00daeb5f8906471745a35bf7d2963b222faf24dede5dd11d4635eb"
+    }
+  ],
+  "input_hash_checks": [
+    {
+      "where": "results/source_imaginary_structure_small_exact.json.Nyquist_column_restricted_identity.input_path",
+      "path": "results/collocation_nullspace_source_N50_M50_L10_modular_p2147483647.input_bits.npz",
+      "sha256": "64259750c62dc34edbd0db9eb9d7939c3545befacc8862fc6c84f4eec9a722be"
+    },
+    {
+      "where": "results/source_imaginary_structure_small_exact.json.reference_document_sha256",
+      "path": "docs/46_partial_wave_master_reduction.md",
+      "sha256": "3f57b264cb5ebd0ac1fc7b441658aed99b500f31d98f0deda54ff2e6afbceeb1"
+    },
+    {
+      "where": "results/source_imaginary_structure_small_exact.json.reference_document_sha256",
+      "path": "docs/47_source_chiral_rank.md",
+      "sha256": "a453bcbf5fbbfaa5f4547db9f97db3d172fa5f394754a652b6e6835f48197ff0"
+    },
+    {
+      "where": "results/source_imaginary_structure_small_exact.json.reference_document_sha256",
+      "path": "docs/50_rank_transfer_limits.md",
+      "sha256": "4d1db9a4b856101437d36c0f5b12380a87aa437113cd61fbc8115a1de968f9da"
+    },
+    {
+      "where": "results/universal_source_N50_j0.json.rows_path",
+      "path": "/tmp/universal_source_stage/universal_source_N50_j0.rows.json.gz",
+      "sha256": "44c1e87211cbcdb1afc7f7069c60943d401ad6a782560e2490c1371d1b4518bf"
+    },
+    {
+      "where": "results/universal_source_N50_j49.json.rows_path",
+      "path": "/tmp/universal_source_stage/universal_source_N50_j49.rows.json.gz",
+      "sha256": "2bd000a08ed9671147de2d1cda5b1ce1b171fe55dd01cffabc09953acafbd7ee"
+    },
+    {
+      "where": "results/source_N50_j0_local_rank_review.json.inputs.universal.metadata_path",
+      "path": "/tmp/universal_source_stage/universal_source_N50_j0.json",
+      "sha256": "9eaa89d3663d2beed7338ad96b28f208636b115d19a8dcb38a99fcfc5a64a6d8"
+    },
+    {
+      "where": "results/source_N50_j0_local_rank_review.json.inputs.universal.rows_path",
+      "path": "/tmp/universal_source_stage/universal_source_N50_j0.rows.json.gz",
+      "sha256": "44c1e87211cbcdb1afc7f7069c60943d401ad6a782560e2490c1371d1b4518bf"
+    },
+    {
+      "where": "results/source_N50_j0_local_rank_review.json.inputs.threshold.metadata_path",
+      "path": "/tmp/smatrix_threshold_source_stage/threshold_source_M50_N50_j0_512.json",
+      "sha256": "18ab6633055644d4abc055b44758af51326089b45e1620cc6b060e46d5a1a9f1"
+    },
+    {
+      "where": "results/source_N50_j0_local_rank_review.json.inputs.threshold.rows_path",
+      "path": "/tmp/smatrix_threshold_source_stage/threshold_source_M50_N50_j0_512.rows.json.gz",
+      "sha256": "5202ac6e812db2748661d0c769a1ed31f19fbe18830624a08a3524d71ae0e994"
+    },
+    {
+      "where": "results/source_N50_j0_local_rank_review.json.detail_path",
+      "path": "/tmp/source_local_block_stage/source_N50_j0_local_rank.json",
+      "sha256": "92a37dd2020222c7d253f461f52d0454c78c7177d47303e87b9d8913cfb2c65e"
+    },
+    {
+      "where": "results/universal_source_j49_ell2_overlap_review.json.input_hashes",
+      "path": "results/source_master_N50_last_node_l2.json",
+      "sha256": "224ca34f48bbb7b0245394f42e86a15e05509bc6aa190e6ef2cd212f6539eeae"
+    },
+    {
+      "where": "results/universal_source_j49_ell2_overlap_review.json.input_hashes",
+      "path": "results/universal_source_N50_j49.json",
+      "sha256": "b7f4e86ce71299077915282c7f4e25c20ed6235689e50184420417d064cb2740"
+    },
+    {
+      "where": "results/universal_source_j49_ell2_overlap_review.json.input_hashes",
+      "path": "/tmp/universal_source_stage/universal_source_N50_j49.rows.json.gz",
+      "sha256": "2bd000a08ed9671147de2d1cda5b1ce1b171fe55dd01cffabc09953acafbd7ee"
+    },
+    {
+      "where": "results/threshold_universal_source_j0_overlap_review.json.input_hashes",
+      "path": "/tmp/smatrix_threshold_source_stage/threshold_source_M50_N50_j0_512.rows.json.gz",
+      "sha256": "5202ac6e812db2748661d0c769a1ed31f19fbe18830624a08a3524d71ae0e994"
+    },
+    {
+      "where": "results/threshold_universal_source_j0_overlap_review.json.input_hashes",
+      "path": "/tmp/universal_source_stage/universal_source_N50_j0.rows.json.gz",
+      "sha256": "44c1e87211cbcdb1afc7f7069c60943d401ad6a782560e2490c1371d1b4518bf"
+    },
+    {
+      "where": "results/threshold_source_M50_N50_j0_512.json.rows_path",
+      "path": "/tmp/smatrix_threshold_source_stage/threshold_source_M50_N50_j0_512.rows.json.gz",
+      "sha256": "5202ac6e812db2748661d0c769a1ed31f19fbe18830624a08a3524d71ae0e994"
+    },
+    {
+      "where": "results/threshold_source_M50_N50_j0_512.space_failure.json.partial_output_path",
+      "path": "/tmp/smatrix_threshold_source_stage/partial_rows_from_space_failure.json.gz",
+      "sha256": "35624bc6e0e27e56b17fa7959edc9cb4e1abcc58c6f56e97ee6ad1e210f83694"
+    },
+    {
+      "where": "/tmp/smatrix_threshold_source_stage/threshold_source_M50_N50_j0_512.json.rows_path",
+      "path": "/tmp/smatrix_threshold_source_stage/threshold_source_M50_N50_j0_512.rows.json.gz",
+      "sha256": "5202ac6e812db2748661d0c769a1ed31f19fbe18830624a08a3524d71ae0e994"
+    },
+    {
+      "where": "/tmp/smatrix_threshold_source_stage/threshold_universal_source_j0_overlap_review.json.input_hashes",
+      "path": "/tmp/smatrix_threshold_source_stage/threshold_source_M50_N50_j0_512.rows.json.gz",
+      "sha256": "5202ac6e812db2748661d0c769a1ed31f19fbe18830624a08a3524d71ae0e994"
+    },
+    {
+      "where": "/tmp/smatrix_threshold_source_stage/threshold_universal_source_j0_overlap_review.json.input_hashes",
+      "path": "/tmp/universal_source_stage/universal_source_N50_j0.rows.json.gz",
+      "sha256": "44c1e87211cbcdb1afc7f7069c60943d401ad6a782560e2490c1371d1b4518bf"
+    },
+    {
+      "where": "/tmp/source_local_block_stage/source_N50_j0_local_rank.json.inputs.universal.metadata_path",
+      "path": "/tmp/universal_source_stage/universal_source_N50_j0.json",
+      "sha256": "9eaa89d3663d2beed7338ad96b28f208636b115d19a8dcb38a99fcfc5a64a6d8"
+    },
+    {
+      "where": "/tmp/source_local_block_stage/source_N50_j0_local_rank.json.inputs.universal.rows_path",
+      "path": "/tmp/universal_source_stage/universal_source_N50_j0.rows.json.gz",
+      "sha256": "44c1e87211cbcdb1afc7f7069c60943d401ad6a782560e2490c1371d1b4518bf"
+    },
+    {
+      "where": "/tmp/source_local_block_stage/source_N50_j0_local_rank.json.inputs.threshold.metadata_path",
+      "path": "/tmp/smatrix_threshold_source_stage/threshold_source_M50_N50_j0_512.json",
+      "sha256": "18ab6633055644d4abc055b44758af51326089b45e1620cc6b060e46d5a1a9f1"
+    },
+    {
+      "where": "/tmp/source_local_block_stage/source_N50_j0_local_rank.json.inputs.threshold.rows_path",
+      "path": "/tmp/smatrix_threshold_source_stage/threshold_source_M50_N50_j0_512.rows.json.gz",
+      "sha256": "5202ac6e812db2748661d0c769a1ed31f19fbe18830624a08a3524d71ae0e994"
+    },
+    {
+      "where": "/tmp/universal_source_stage/universal_source_N50_j0.json.rows_path",
+      "path": "/tmp/universal_source_stage/universal_source_N50_j0.rows.json.gz",
+      "sha256": "44c1e87211cbcdb1afc7f7069c60943d401ad6a782560e2490c1371d1b4518bf"
+    },
+    {
+      "where": "/tmp/universal_source_stage/universal_source_N50_j49.json.rows_path",
+      "path": "/tmp/universal_source_stage/universal_source_N50_j49.rows.json.gz",
+      "sha256": "2bd000a08ed9671147de2d1cda5b1ce1b171fe55dd01cffabc09953acafbd7ee"
+    },
+    {
+      "where": "local block script",
+      "path": "scripts/certify_source_local_rank_block.py",
+      "sha256": "90dc95c2a0a4d5a5b36916fdffc782b73004077225d05051c53b8a705ff72e35"
+    }
+  ],
+  "failures": [],
+  "historical_source_mutation_flags": [],
+  "previous_immutable_artifacts_checked": 34,
+  "previous_immutable_artifact_mismatches": [],
+  "staging_manifest_path": "results/source_operator_staging_manifest.json",
+  "staging_manifest_sha256": "b453c78672f13d3207c0a38aebc91d7eaa540ca2e4935fe65114cb2c3c9373d2",
+  "source_snapshot_contents_verified": true,
+  "bundle_member_bytes_verified": true,
+  "rule": "Historical embedded sources match their own recorded hashes; later operational fixes may differ from those source copies. Every checked immutable input matches disk. Staged artifacts are retained and bundled, but durable migration is still pending.",
+  "local_file_links_checked": 568,
+  "missing_local_file_links": []
+}

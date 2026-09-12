@@ -1,0 +1,5 @@
+{
+  "dual_checkpoint": "results/runs/stage_B_chiral_round3_recovery_checkpoint_20260907/cg_state.npz",
+  "coefficients": "results/runs/stage_B_chiral_round3_recovered_M50_20260907/coefficients.json",
+  "scope": "Fixed complete dual weights plus independently recovered original C_flat primal; no previous support certificate transferred"
+}

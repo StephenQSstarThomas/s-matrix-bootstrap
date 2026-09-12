@@ -1,0 +1,19 @@
+{
+  "source": "results/runs/stage_B_barrier_CG_pure_M50_strong_20260907/cg_state.npz",
+  "selected_key": "raw_candidate",
+  "M": 50,
+  "physical_rows": 8221,
+  "active_rows": 2184,
+  "parameters": {
+    "preparation": "results/runs/stage_B_unitarity_resolved_20260906",
+    "additional_constraints": "results/runs/stage_B_native_M50_round1_20260907/additional_scattering.npz",
+    "density_limit": null,
+    "infinity": "zero",
+    "mode": "pure",
+    "direction": [
+      1.0,
+      0.0
+    ]
+  },
+  "scope": "Fixed copy of the selected internal CG checkpoint; candidate feasibility is not transferred"
+}

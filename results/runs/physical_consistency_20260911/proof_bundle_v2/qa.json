@@ -1,0 +1,226 @@
+{
+  "pages": 33,
+  "source_count": 15,
+  "all_chapter_titles_present": true,
+  "chapter_pages": [
+    {
+      "source": "results/evidence/ANALYTIC_CARDINAL_FINITE_PROOFS_20260911.md",
+      "title": "解析cardinal有限原型：独立推导归档",
+      "pages_matching_title": [
+        1,
+        3
+      ],
+      "bookmark_pages": [
+        3
+      ]
+    },
+    {
+      "source": "results/evidence/ANALYTIC_TAIL_UNITARITY_20260911.md",
+      "title": "有限解析族的领先高能幺正条件",
+      "pages_matching_title": [
+        1,
+        9
+      ],
+      "bookmark_pages": [
+        9
+      ]
+    },
+    {
+      "source": "results/evidence/ANALYTIC_THRESHOLD_UNITARITY_20260911.md",
+      "title": "有限解析族的阈值幺正必要条件",
+      "pages_matching_title": [
+        1,
+        11
+      ],
+      "bookmark_pages": [
+        11
+      ]
+    },
+    {
+      "source": "results/evidence/IR_ZERO_CONSTANT_SUPPORT_PROOF_20260911.md",
+      "title": "同一解析模型的IR截面、可行中心与原式支持证明",
+      "pages_matching_title": [
+        1,
+        13
+      ],
+      "bookmark_pages": [
+        13
+      ]
+    },
+    {
+      "source": "results/evidence/FINITE_CURRENT_MOMENT_PROJECTION_20260911.md",
+      "title": "给定S和FF时，有限电流谱存在性的完整判据",
+      "pages_matching_title": [
+        1,
+        15
+      ],
+      "bookmark_pages": [
+        15
+      ]
+    },
+    {
+      "source": "results/evidence/GLOBAL_IR_SEED_AND_UV_OBSTRUCTION_20260911.md",
+      "title": "从闭式振幅证明全能区IR非空，以及UV约束的非平凡性",
+      "pages_matching_title": [
+        1,
+        17
+      ],
+      "bookmark_pages": [
+        17
+      ]
+    },
+    {
+      "source": "results/evidence/UV_FORCED_P_WAVE_ABSORPTION_20260911.md",
+      "title": "不借助输出曲线的UV→P波必要下界",
+      "pages_matching_title": [
+        2,
+        20
+      ],
+      "bookmark_pages": [
+        20
+      ]
+    },
+    {
+      "source": "results/evidence/REGULARIZATION_VALUE_PROOF_20260911.md",
+      "title": "有限正则化的充分结论与实测非平凡依赖",
+      "pages_matching_title": [
+        2,
+        21
+      ],
+      "bookmark_pages": [
+        21
+      ]
+    },
+    {
+      "source": "results/evidence/RHO_SIGNAL_PEAK_EXISTENCE_20260911.md",
+      "title": "ρ式信号：峰存在的严格弱结论及其限度",
+      "pages_matching_title": [
+        2,
+        23
+      ],
+      "bookmark_pages": [
+        23
+      ]
+    },
+    {
+      "source": "results/evidence/SAME_MODEL_IR_UV_EXCLUSION_20260911.md",
+      "title": "同模型IR→UV的严格分离：复用已有对偶，不另作优化",
+      "pages_matching_title": [
+        2,
+        24
+      ],
+      "bookmark_pages": [
+        24
+      ]
+    },
+    {
+      "source": "results/evidence/GRAM_DISK_AND_INELASTICITY_20260911.md",
+      "title": "电流Gram为什么允许90°上穿而没有正确的近弹性ρ",
+      "pages_matching_title": [
+        2,
+        26
+      ],
+      "bookmark_pages": [
+        26
+      ]
+    },
+    {
+      "source": "results/evidence/FINITE_FAMILY_INELASTIC_THRESHOLD_SCOPE_20260911.md",
+      "title": "暂缓问题：有限解析族不能精确表达“先弹性、后非弹性”的阈值切换",
+      "pages_matching_title": [
+        2,
+        28
+      ],
+      "bookmark_pages": [
+        28
+      ]
+    },
+    {
+      "source": "results/evidence/WATSONIAN_DIAGNOSTIC_SCOPE_20260911.md",
+      "title": "Watsonian 后续诊断：能够证明什么，不能证明什么",
+      "pages_matching_title": [
+        2,
+        29
+      ],
+      "bookmark_pages": [
+        29
+      ]
+    },
+    {
+      "source": "results/evidence/INEXACT_NEWTON_AND_SAVED_CENTER_20260911.md",
+      "title": "不精确下降步骤与被检查中心的区分",
+      "pages_matching_title": [
+        2,
+        31
+      ],
+      "bookmark_pages": [
+        31
+      ]
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/FINE_SIGNAL_PEAK_PROOF_ZH.md",
+      "title": "3582盘三点：ρ式信号峰存在，但正确ρ仍未复现",
+      "pages_matching_title": [
+        2,
+        33
+      ],
+      "bookmark_pages": [
+        33
+      ]
+    }
+  ],
+  "layout_or_glyph_errors": [],
+  "tex_warnings": [
+    "Package amsmath Warning: Foreign command \\over;",
+    "Package amsmath Warning: Foreign command \\atopwithdelims;",
+    "LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right."
+  ],
+  "snapshots_match_source_manifest": true,
+  "old_pdf_unchanged": true,
+  "used_font_sha256": {},
+  "all_local_link_targets_exist": true,
+  "visual_QA_candidate_pages": [
+    1,
+    2,
+    29,
+    30,
+    31,
+    32,
+    33
+  ],
+  "visual_QA_pages": [
+    1,
+    2,
+    29,
+    30,
+    31,
+    32,
+    33
+  ],
+  "visual_QA": "Cover/TOC and all three added sources visually inspected, including corrected Gram PSD terminology, actual SOC/density Schur barrier and peak table; no missing glyph, clipped formula or overlap observed.",
+  "final_render_matches_inspected_pages": {
+    "1": true,
+    "2": true,
+    "29": true,
+    "30": true,
+    "31": true,
+    "32": true,
+    "33": true
+  },
+  "reference_QA": "All fifteen chapter bookmark targets match body chapter pages; TOC pages 1–2 visually inspected; all 25 local link targets exist.",
+  "bookmark_targets_match_body_chapter_pages": true,
+  "all_sources_match_recorded_hashes": true,
+  "authorized_source_corrections": [
+    {
+      "source": "results/evidence/WATSONIAN_DIAGNOSTIC_SCOPE_20260911.md",
+      "before_sha256": "4c47819cc252474c490f454a4fd821eb8bf6c510ab4c27736901e7ad23e3824c",
+      "authorized_changes": [
+        "Section 3 title: Gram 正定 -> Gram 半正定",
+        "Rank-two example: 满足原 Gram 正定 -> 满足原 Gram 半正定"
+      ],
+      "scope": "Explicit terminology correction requested by root; no model, equation or conclusion changed",
+      "after_sha256": "5633af95512d781edbbc6d18980d6f575bb0ecd05215b48c78eb2efc048682be"
+    }
+  ],
+  "pages_requiring_final_visual_recheck": []
+}

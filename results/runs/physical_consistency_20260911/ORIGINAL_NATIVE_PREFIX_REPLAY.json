@@ -1,0 +1,14 @@
+{
+  "native_H_prefix_identical": true,
+  "native_error_prefix_identical": true,
+  "same_analytic_family": true,
+  "inputs": {
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/sequential_reproduction_20260910/A2_M50_L10/amplitude.npz": {
+      "sha256": "94defd8fe5eaedc5b3d8111365b7980c34e468100c604ebf691c04e503725a75"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/interlaced_prepare/amplitude.npz": {
+      "sha256": "8edc550f906b34addd37a7b3f3dee5c22aa74fb8e9cfbe5384e6f6ae254fdc92"
+    }
+  },
+  "scope": "Original native rows and all eleven auxiliary rows, not a transfer between PV and analytic prescriptions"
+}

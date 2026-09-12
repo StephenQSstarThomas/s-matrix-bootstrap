@@ -1,0 +1,14 @@
+{
+  "scope": "Numerical warm-start choice only; approximate floating geometry, no phase data or physical-input change",
+  "tip": "fine_tip_analytic",
+  "ref": "fine_UV_ref_analytic",
+  "fixed_x": 0.08324656218297921,
+  "tip_weight": 0.49999999968514747,
+  "predicted_seed_y": -0.005167078382049963,
+  "known_plane_objective_gap": 0.04279388310772303,
+  "previous_center_gap_per_mu": 9191.919628420635,
+  "estimated_barrier_mu": 4.655598051076075e-06,
+  "chosen_start_mu": 6.25e-06,
+  "reason": "Use a nearby power-of-two continuation level above the scale estimated from the existing support plane and full convex seed; final acceptance unchanged",
+  "seed_requires_its_own_primal_audit": true
+}

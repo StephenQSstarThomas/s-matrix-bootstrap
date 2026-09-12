@@ -1,0 +1,117 @@
+{
+  "stage": "D1",
+  "status": "independent_operator_controls_passed",
+  "optimization_performed": false,
+  "joint_feasibility_claimed": false,
+  "checks": {
+    "kernel_M1": {
+      "eq367_difference_contains_zero": true,
+      "max_arb_upper": 0.0,
+      "mode1_and_nyquist_verified": true,
+      "F_at_zero_exact": true
+    },
+    "kernel_M3": {
+      "eq367_difference_contains_zero": true,
+      "max_arb_upper": 1.5331959575918885e-76,
+      "mode1_and_nyquist_verified": true,
+      "F_at_zero_exact": true
+    },
+    "kernel_M5": {
+      "eq367_difference_contains_zero": true,
+      "max_arb_upper": 1.6857918727714243e-76,
+      "mode1_and_nyquist_verified": true,
+      "F_at_zero_exact": true
+    },
+    "kernel_M50": {
+      "eq367_difference_contains_zero": true,
+      "max_arb_upper": 9.97669614084085e-76,
+      "mode1_and_nyquist_verified": true,
+      "F_at_zero_exact": true
+    },
+    "real_gram_closed_cases": [
+      {
+        "eta": 1.0,
+        "spectral_minimum_rule": "rho=2*k_squared*abs(F)^2/(1+eta), phase(F)=delta",
+        "max_congruence_error": 4.441246522349743e-16,
+        "minimum_eigenvalue_rounding": -2.775388288529687e-16,
+        "half_spectrum_negative_eigenvalue": -5.753395675750565e-06
+      },
+      {
+        "eta": 0.6,
+        "spectral_minimum_rule": "rho=2*k_squared*abs(F)^2/(1+eta), phase(F)=delta",
+        "max_congruence_error": 4.441642439017297e-16,
+        "minimum_eigenvalue_rounding": -6.4296687231826805e-18,
+        "half_spectrum_negative_eigenvalue": -7.191721320399489e-06
+      }
+    ],
+    "moment_assembly_passed": true,
+    "squared_rescaled_FF_cap_assembly_passed": true,
+    "M5_shapes": {
+      "gram_linear": [
+        60,
+        71
+      ],
+      "moment_linear": [
+        4,
+        71
+      ],
+      "ff_cap_linear": [
+        6,
+        71
+      ]
+    },
+    "M50_layout_control": {
+      "amplitude_rows": "synthetic zero rows for layout only; no physical solution claimed",
+      "total_variables": 4076,
+      "variable_slices": {
+        "C_flat": [
+          0,
+          3876
+        ],
+        "ImF0": [
+          3876,
+          3926
+        ],
+        "ImF1": [
+          3926,
+          3976
+        ],
+        "rho_current0": [
+          3976,
+          4026
+        ],
+        "rho_current1": [
+          4026,
+          4076
+        ]
+      },
+      "gram_blocks": 100,
+      "ff_cap_blocks": 14,
+      "high_nodes": [
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "matrix_shapes": {
+        "gram_linear": [
+          600,
+          4076
+        ],
+        "moment_linear": [
+          4,
+          4076
+        ],
+        "ff_cap_linear": [
+          42,
+          4076
+        ]
+      }
+    }
+  },
+  "source": "src/smatrix_bootstrap/operators.py:current_operators",
+  "scope": "Exact kernel identities and independent algebraic controls; source finite prescription remains conditional."
+}

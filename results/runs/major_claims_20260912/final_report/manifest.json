@@ -1,0 +1,853 @@
+{
+  "created_utc": "2026-09-12T05:03:34.136640+00:00",
+  "status": "final_report_delivered",
+  "scientific_inputs_pending": [
+    "MAJOR_CLAIMS_ZH.md",
+    "LOCAL_DESCENT_PROOF_ZH.md"
+  ],
+  "scientific_text_copied": true,
+  "scientific_computations_performed": false,
+  "production_source_modified": false,
+  "active_build_py_created": false,
+  "style": "Plain academic Chinese layout; no red frame, decorative cover or warning design",
+  "figures": [
+    {
+      "source": "results/runs/major_claims_20260912/refined_regions/regions.pdf",
+      "snapshot": "results/runs/major_claims_20260912/final_report/figures/fig8_regions.pdf",
+      "sha256": "e1c20450fe2e1123e9d4393e111b9df9955b039d8ebfd97766b554cd0ef10b95",
+      "bytes": 23107,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          864.0,
+          345.6000061035156
+        ]
+      ],
+      "mode": "0444",
+      "role": "current-run figure"
+    },
+    {
+      "source": "results/runs/major_claims_20260912/refined_phases/fig9.pdf",
+      "snapshot": "results/runs/major_claims_20260912/final_report/figures/fig9.pdf",
+      "sha256": "33b783deee6d0b3447e8124afdfbef65cd977547d6c03b6374d7685e7ebbc4d4",
+      "bytes": 22490,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          504.0,
+          345.6000061035156
+        ]
+      ],
+      "mode": "0444",
+      "role": "current-run figure"
+    },
+    {
+      "source": "results/runs/major_claims_20260912/refined_phases/fig10.pdf",
+      "snapshot": "results/runs/major_claims_20260912/final_report/figures/fig10.pdf",
+      "sha256": "9fb38bb9077cd30c11730a2d697def2ff6d9f62ca0483cf95de72caf52c9755e",
+      "bytes": 28511,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1008.0,
+          345.6000061035156
+        ]
+      ],
+      "mode": "0444",
+      "role": "current-run figure"
+    },
+    {
+      "source": "results/runs/major_claims_20260912/refined_phases/inelasticities.pdf",
+      "snapshot": "results/runs/major_claims_20260912/final_report/figures/inelasticities.pdf",
+      "sha256": "cbd31e6228d0a73213351194b64eb4cc91d844c575846461697b8a683e20604f",
+      "bytes": 23988,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1008.0,
+          302.3999938964844
+        ]
+      ],
+      "mode": "0444",
+      "role": "current-run figure"
+    },
+    {
+      "source": "results/runs/major_claims_20260912/refined_phases/rho_mechanism.pdf",
+      "snapshot": "results/runs/major_claims_20260912/final_report/figures/rho_mechanism.pdf",
+      "sha256": "2a38950c858a94f11c25e6f99fc1b5031155001853ebd6320f028b3cee7e06ac",
+      "bytes": 30755,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1080.0,
+          309.6000061035156
+        ]
+      ],
+      "mode": "0444",
+      "role": "current-run figure"
+    },
+    {
+      "source": "results/runs/major_claims_20260912/F_refined/fig11.pdf",
+      "snapshot": "results/runs/major_claims_20260912/final_report/figures/fig11.pdf",
+      "sha256": "234a7d3de2b77201252fe540223a4e430de11cce4dc349a5908d6792ebab9e1a",
+      "bytes": 55187,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          864.0,
+          936.0
+        ]
+      ],
+      "mode": "0444",
+      "role": "current-run figure"
+    },
+    {
+      "source": "results/runs/major_claims_20260912/F_refined/fig11_eta.pdf",
+      "snapshot": "results/runs/major_claims_20260912/final_report/figures/fig11_eta.pdf",
+      "sha256": "d878d115992caed8516a47bc599eabff425b83c5d54c8b22fe942ce90323b23e",
+      "bytes": 28342,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1008.0,
+          302.3999938964844
+        ]
+      ],
+      "mode": "0444",
+      "role": "current-run figure"
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_C3_fig7/profiles.pdf",
+      "snapshot": "results/runs/major_claims_20260912/final_report/figures/fig7_IR.pdf",
+      "sha256": "32a5796817e91eca07ee770d0995fc5fccc9bd1b470d62fce46e8b73523ae185",
+      "bytes": 32878,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1008.0,
+          288.0
+        ]
+      ],
+      "mode": "0444",
+      "role": "unchanged previous IR control"
+    }
+  ],
+  "header_sha256": "cdc397f00c1796f9fd9c19e33350dac97fac682b0df8d446f56ca12abc83ed0e",
+  "layout_recipe": {
+    "paper": "A4",
+    "font_size": "10pt",
+    "margins_mm": 18,
+    "mainfont": "DejaVu Serif",
+    "CJKfont": "Droid Sans Fallback",
+    "wide_figures": "landscape pages",
+    "commands": "inline Pandoc/TeX only, single-thread environment, nice19",
+    "PDF_filename": "REPORT_ZH.pdf"
+  },
+  "sources": [
+    {
+      "source": "results/runs/major_claims_20260912/MAJOR_CLAIMS_ZH.md",
+      "snapshot": "results/runs/major_claims_20260912/final_report/sources/MAJOR_CLAIMS_ZH.md",
+      "sha256": "edb1d5cf0910358a61247aca14000b44107b5b20c11f23f2157c6660401879ef",
+      "bytes": 21723,
+      "mode": "0444",
+      "heading": "# 稳健定量核心的严格复验",
+      "local_links": [
+        {
+          "source_target": "../stage_B_pv_M50_L10_prepare_20260907/report.json",
+          "rendered_target": "../../stage_B_pv_M50_L10_prepare_20260907/report.json",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907/report.json",
+          "exists": true
+        },
+        {
+          "source_target": "../mainline_alignment_20260909/D1_hard_M50/report.json",
+          "rendered_target": "../../mainline_alignment_20260909/D1_hard_M50/report.json",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/D1_hard_M50/report.json",
+          "exists": true
+        },
+        {
+          "source_target": "PLAN_ZH.md",
+          "rendered_target": "../PLAN_ZH.md",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/PLAN_ZH.md",
+          "exists": true
+        },
+        {
+          "source_target": "refined_phases/phases.json",
+          "rendered_target": "../refined_phases/phases.json",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/refined_phases/phases.json",
+          "exists": true
+        },
+        {
+          "source_target": "REFINEMENT_SUMMARY.json",
+          "rendered_target": "../REFINEMENT_SUMMARY.json",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/REFINEMENT_SUMMARY.json",
+          "exists": true
+        },
+        {
+          "source_target": "SUPPORT_PROBE_DESIGN_ZH.md",
+          "rendered_target": "../SUPPORT_PROBE_DESIGN_ZH.md",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/SUPPORT_PROBE_DESIGN_ZH.md",
+          "exists": true
+        },
+        {
+          "source_target": "tip_S0_certificate_final/probe.json",
+          "rendered_target": "../tip_S0_certificate_final/probe.json",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/tip_S0_certificate_final/probe.json",
+          "exists": true
+        },
+        {
+          "source_target": "ref_P1_certificate_final/probe.json",
+          "rendered_target": "../ref_P1_certificate_final/probe.json",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/ref_P1_certificate_final/probe.json",
+          "exists": true
+        },
+        {
+          "source_target": "ref_P1_exact_section/probe.json",
+          "rendered_target": "../ref_P1_exact_section/probe.json",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/ref_P1_exact_section/probe.json",
+          "exists": true
+        },
+        {
+          "source_target": "HIGH_GRAM_DUAL_SCOPE.json",
+          "rendered_target": "../HIGH_GRAM_DUAL_SCOPE.json",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/HIGH_GRAM_DUAL_SCOPE.json",
+          "exists": true
+        },
+        {
+          "source_target": "refined_regions/regions.json",
+          "rendered_target": "../refined_regions/regions.json",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/refined_regions/regions.json",
+          "exists": true
+        },
+        {
+          "source_target": "F_refined/resolution.json",
+          "rendered_target": "../F_refined/resolution.json",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/F_refined/resolution.json",
+          "exists": true
+        },
+        {
+          "source_target": "SOURCE_CHOICE_REPLAY_RULE_ZH.md",
+          "rendered_target": "../SOURCE_CHOICE_REPLAY_RULE_ZH.md",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/SOURCE_CHOICE_REPLAY_RULE_ZH.md",
+          "exists": true
+        },
+        {
+          "source_target": "B_half_upper/report.json",
+          "rendered_target": "../B_half_upper/report.json",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/B_half_upper/report.json",
+          "exists": true
+        },
+        {
+          "source_target": "chi_combined_replay/report.json",
+          "rendered_target": "../chi_combined_replay/report.json",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/chi_combined_replay/report.json",
+          "exists": true
+        },
+        {
+          "source_target": "chi_witness_replay/report.json",
+          "rendered_target": "../chi_witness_replay/report.json",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/chi_witness_replay/report.json",
+          "exists": true
+        },
+        {
+          "source_target": "L12_refine_02/report.json",
+          "rendered_target": "../L12_refine_02/report.json",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/L12_refine_02/report.json",
+          "exists": true
+        },
+        {
+          "source_target": "LOCAL_DESCENT_PROOF_ZH.md",
+          "rendered_target": "../LOCAL_DESCENT_PROOF_ZH.md",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/LOCAL_DESCENT_PROOF_ZH.md",
+          "exists": true
+        },
+        {
+          "source_target": "LOCAL_DESCENT_IMPLEMENTATION_REVIEW.md",
+          "rendered_target": "../LOCAL_DESCENT_IMPLEMENTATION_REVIEW.md",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/major_claims_20260912/LOCAL_DESCENT_IMPLEMENTATION_REVIEW.md",
+          "exists": true
+        },
+        {
+          "source_target": "../../../references/2309.12402v3.pdf",
+          "rendered_target": "../../../../references/2309.12402v3.pdf",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/references/2309.12402v3.pdf",
+          "exists": true
+        },
+        {
+          "source_target": "../physical_consistency_20260911/PV_CORE_CLAIM_AUDIT_ZH.md",
+          "rendered_target": "../../physical_consistency_20260911/PV_CORE_CLAIM_AUDIT_ZH.md",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_CORE_CLAIM_AUDIT_ZH.md",
+          "exists": true
+        },
+        {
+          "source_target": "../../evidence/MAJOR_SOURCE_NORM_AUDIT_20260912/AUDIT_ZH.md",
+          "rendered_target": "../../../evidence/MAJOR_SOURCE_NORM_AUDIT_20260912/AUDIT_ZH.md",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/evidence/MAJOR_SOURCE_NORM_AUDIT_20260912/AUDIT_ZH.md",
+          "exists": true
+        },
+        {
+          "source_target": "../../evidence/MAJOR_SOURCE_NORM_AUDIT_20260912/ITERATION_SCOPE_ADDENDUM_ZH.md",
+          "rendered_target": "../../../evidence/MAJOR_SOURCE_NORM_AUDIT_20260912/ITERATION_SCOPE_ADDENDUM_ZH.md",
+          "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/evidence/MAJOR_SOURCE_NORM_AUDIT_20260912/ITERATION_SCOPE_ADDENDUM_ZH.md",
+          "exists": true
+        }
+      ],
+      "formatting_changes": [
+        {
+          "source": "p(q)=(x,y)",
+          "typeset": "\\(p(q)=(x,y)\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "O(q)=a·C+c",
+          "typeset": "\\(O(q)=a\\cdot C+c\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": ".02/(Uanchor−Lanchor)",
+          "typeset": "\\(.02/(U_{\\rm anchor}-L_{\\rm anchor})\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "Uγ",
+          "typeset": "\\(U_\\gamma\\)",
+          "occurrences": 2,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "UO",
+          "typeset": "\\(U_O\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "D_L",
+          "typeset": "\\(D_L\\)",
+          "occurrences": 3,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "x(qin)=xref",
+          "typeset": "\\(x(q_{\\rm in})=x_{\\rm ref}\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "yin=y(qin)≈−.004314436318219435",
+          "typeset": "\\(y_{\\rm in}=y(q_{\\rm in})\\approx-.004314436318219435\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "n0 xref+n1 yin",
+          "typeset": "\\(n_0x_{\\rm ref}+n_1y_{\\rm in}\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "|n0|<36",
+          "typeset": "\\(|n_0|<36\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "n1=500",
+          "typeset": "\\(n_1=500\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "γ<1041",
+          "typeset": "\\(\\gamma<1041\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "1041(36×10⁻¹⁰+500×10⁻⁸)=.0052087476",
+          "typeset": "\\(1041(36\\times10^{-10}+500\\times10^{-8})=.0052087476\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "A=SA*",
+          "typeset": "\\(A=SA^*\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "S=√(1−ε)",
+          "typeset": "\\(S=\\sqrt{1-\\epsilon}\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "R=2a²/(1−S)",
+          "typeset": "\\(R=2a^2/(1-S)\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "[^paper]: He–Kruczenski, 2309.12402v3，[原PDF](../../../../references/2309.12402v3.pdf)，§3–4及Appendix A。基础公式与前轮完整推导见[前轮主线审计](../../physical_consistency_20260911/PV_CORE_CLAIM_AUDIT_ZH.md)。",
+          "typeset": "\\phantomsection\\label{source-paper}\n\n1. He–Kruczenski, 2309.12402v3，[原PDF](../../../../references/2309.12402v3.pdf)，§3–4及Appendix A。基础公式与前轮完整推导见[前轮主线审计](../../physical_consistency_20260911/PV_CORE_CLAIM_AUDIT_ZH.md)。",
+          "occurrences": 1,
+          "application": "literal",
+          "kind": "footnote definition rendered as numbered endnote"
+        },
+        {
+          "source": "[^norm]: [本轮一手版本/出版/最早代码审计](../../../evidence/MAJOR_SOURCE_NORM_AUDIT_20260912/AUDIT_ZH.md)及其SHA manifest。官方来源包含[2309v3](https://arxiv.org/abs/2309.12402v3)、[正式PRD](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.110.096001)和[2403v1](https://arxiv.org/abs/2403.10772v1)。",
+          "typeset": "\\phantomsection\\label{source-norm}\n\n2. [本轮一手版本/出版/最早代码审计](../../../evidence/MAJOR_SOURCE_NORM_AUDIT_20260912/AUDIT_ZH.md)及其SHA manifest。官方来源包含[2309v3](https://arxiv.org/abs/2309.12402v3)、[正式PRD](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.110.096001)和[2403v1](https://arxiv.org/abs/2403.10772v1)。",
+          "occurrences": 1,
+          "application": "literal",
+          "kind": "footnote definition rendered as numbered endnote"
+        },
+        {
+          "source": "[^iteration]: [2403v1步骤身份补充](../../../evidence/MAJOR_SOURCE_NORM_AUDIT_20260912/ITERATION_SCOPE_ADDENDUM_ZH.md)，对应[官方§8.5](https://arxiv.org/html/2403.10772v1#S8.SS5)。",
+          "typeset": "\\phantomsection\\label{source-iteration}\n\n3. [2403v1步骤身份补充](../../../evidence/MAJOR_SOURCE_NORM_AUDIT_20260912/ITERATION_SCOPE_ADDENDUM_ZH.md)，对应[官方§8.5](https://arxiv.org/html/2403.10772v1#S8.SS5)。",
+          "occurrences": 1,
+          "application": "literal",
+          "kind": "footnote definition rendered as numbered endnote"
+        },
+        {
+          "source": "[^paper]",
+          "typeset": "\\textsuperscript{\\hyperref[source-paper]{1}}",
+          "occurrences": 1,
+          "application": "literal",
+          "kind": "numbered endnote cross reference"
+        },
+        {
+          "source": "[^norm]",
+          "typeset": "\\textsuperscript{\\hyperref[source-norm]{2}}",
+          "occurrences": 2,
+          "application": "literal",
+          "kind": "numbered endnote cross reference"
+        },
+        {
+          "source": "[^iteration]",
+          "typeset": "\\textsuperscript{\\hyperref[source-iteration]{3}}",
+          "occurrences": 1,
+          "application": "literal",
+          "kind": "numbered endnote cross reference"
+        },
+        {
+          "source": ".00068127837914；",
+          "typeset": ".00068127837914；\\newline ",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "line break only"
+        },
+        {
+          "source": "**本轮可修补的实际数值问题已完成修补；",
+          "typeset": "\\clearpage\n\n**本轮可修补的实际数值问题已完成修补；",
+          "occurrences": 1,
+          "application": "literal",
+          "kind": "page break before the final verdict paragraph"
+        }
+      ]
+    },
+    {
+      "source": "results/runs/major_claims_20260912/LOCAL_DESCENT_PROOF_ZH.md",
+      "snapshot": "results/runs/major_claims_20260912/final_report/sources/LOCAL_DESCENT_PROOF_ZH.md",
+      "sha256": "cb4f61bbec57c94ae296d5810d19896bd04f9f3ed84281d1ab89e20024309e06",
+      "bytes": 4518,
+      "mode": "0444",
+      "heading": "# 近中心差分抵消：局部下降的充分证明",
+      "local_links": [],
+      "formatting_changes": [
+        {
+          "source": "|φ'''|≤2(φ'')^(3/2)",
+          "typeset": "\\(|\\phi'''|\\le2(\\phi'')^{3/2}\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "w≤w^(3/2)",
+          "typeset": "\\(w\\le w^{3/2}\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "ℓ3范数",
+          "typeset": "\\(\\ell_3\\)范数",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "ℓ2范数",
+          "typeset": "\\(\\ell_2\\)范数",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "v_i−ρ_i²",
+          "typeset": "\\(v_i-\\rho_i^2\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "F_v=0",
+          "typeset": "\\(F_v=0\\)",
+          "occurrences": 2,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "F_vρρ'+F_vvv'=0",
+          "typeset": "\\(F_{v\\rho}\\rho'+F_{vv}v'=0\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "w=(ρ',v')",
+          "typeset": "\\(w=(\\rho',v')\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "ρ(t)",
+          "typeset": "\\(\\rho(t)\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "a_i=ρ_i²",
+          "typeset": "\\(a_i=\\rho_i^2\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "δ=1−Σv_i²",
+          "typeset": "\\(\\delta=1-\\sum_i v_i^2\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "r=1−Σρ_i⁴>0",
+          "typeset": "\\(r=1-\\sum_i\\rho_i^4>0\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "[r/(1+N),r/(1+N/2)]",
+          "typeset": "\\([r/(1+N),r/(1+N/2)]\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "d_i=δ/(2v_i)",
+          "typeset": "\\(d_i=\\delta/(2v_i)\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "q_i=δ+2d_i²",
+          "typeset": "\\(q_i=\\delta+2d_i^2\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "4ρ_iv_i/δ",
+          "typeset": "\\(4\\rho_iv_i/\\delta\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "D=−Ψ'(0)>0",
+          "typeset": "\\(D=-\\Psi'(0)>0\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "h=Ψ''(0)≥0",
+          "typeset": "\\(h=\\Psi''(0)\\ge0\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "r=t√h<1",
+          "typeset": "\\(r=t\\sqrt h<1\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "source": "−r−log(1−r)≤r²/[2(1−r)]",
+          "typeset": "\\(-r-\\log(1-r)\\le r^2/[2(1-r)]\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "equivalent mathematical notation"
+        },
+        {
+          "application": "heading_levels_plus_one",
+          "kind": "appendix subsection hierarchy"
+        },
+        {
+          "source": "v'''",
+          "typeset": "\\(v'''\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "derivative primes in math mode"
+        },
+        {
+          "source": "v''",
+          "typeset": "\\(v''\\)",
+          "occurrences": 1,
+          "application": "outside_math_and_code",
+          "kind": "derivative primes in math mode"
+        }
+      ]
+    }
+  ],
+  "frozen_utc": "2026-09-12T05:22:20.171813+00:00",
+  "plain_academic_title": "稳健定量核心的严格复验",
+  "figure_order": [
+    "fig7_IR.pdf",
+    "fig8_regions.pdf",
+    "fig9.pdf",
+    "fig10.pdf",
+    "inelasticities.pdf",
+    "rho_mechanism.pdf",
+    "fig11.pdf",
+    "fig11_eta.pdf"
+  ],
+  "layout_only_additions": [
+    "Main title uses the original H1",
+    "Opening scientific paragraphs retained before a compact contents list",
+    "Source footnotes rendered as numbered endnotes without changing their contents",
+    "Full numerical proof appended with subsection hierarchy",
+    "Eight unchanged PDF figures appended; wide figures landscape",
+    "Compact contents typography to prevent a nearly empty spill page",
+    "Disable automatic smart punctuation; derivative primes explicitly placed in math mode",
+    "Printed contents and PDF bookmarks list main sections; every subsection is retained in the full text",
+    "Final verdict starts on the existing references page instead of splitting a sentence across pages"
+  ],
+  "commands": [
+    [
+      "/tmp/he_report_pandoc/pandoc",
+      "REPORT_ZH.md",
+      "--from",
+      "markdown+tex_math_single_backslash-smart",
+      "--to",
+      "json",
+      "-o",
+      "document_ast.json"
+    ],
+    [
+      "/tmp/he_report_pandoc/pandoc",
+      "document_ast.json",
+      "--from",
+      "json",
+      "--standalone",
+      "--to",
+      "latex",
+      "--toc-depth=1",
+      "--shift-heading-level-by=-1",
+      "--include-in-header",
+      "header.tex",
+      "-V",
+      "mainfont=DejaVu Serif",
+      "-V",
+      "sansfont=DejaVu Sans",
+      "-V",
+      "monofont=DejaVu Sans Mono",
+      "-V",
+      "papersize=a4",
+      "-V",
+      "fontsize=10pt",
+      "-V",
+      "geometry:margin=18mm",
+      "-V",
+      "colorlinks=true",
+      "-o",
+      "REPORT_ZH.tex"
+    ],
+    [
+      "/home/shiqiu/.local/bin/tectonic",
+      "--keep-logs",
+      "--keep-intermediates",
+      "--reruns",
+      "2",
+      "REPORT_ZH.tex"
+    ]
+  ],
+  "build_attempts": [
+    {
+      "tag": 1,
+      "compile_exit": 0,
+      "log": "logs/compile_1.log"
+    },
+    {
+      "tag": 2,
+      "compile_exit": 0,
+      "log": "logs/compile_2.log"
+    },
+    {
+      "tag": 3,
+      "compile_exit": 0,
+      "log": "logs/compile_3.log"
+    },
+    {
+      "tag": 4,
+      "compile_exit": 0,
+      "log": "logs/compile_4.log"
+    }
+  ],
+  "table_column_widths": [
+    [
+      0.1,
+      0.2,
+      0.26,
+      0.14,
+      0.3
+    ],
+    [
+      0.15,
+      0.27,
+      0.37,
+      0.21
+    ],
+    [
+      0.13,
+      0.435,
+      0.435
+    ]
+  ],
+  "compile_exit": 0,
+  "thread_environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "RAYON_NUM_THREADS": "1"
+  },
+  "nice": 19,
+  "markdown_reader": "markdown+tex_math_single_backslash-smart",
+  "PDF": "REPORT_ZH.pdf",
+  "PDF_sha256": "9da5a65cb9a3e7b4a526948a1d35c7049301f0e722df7a7588be86bc9401bb4b",
+  "pages": 17,
+  "verification": "verification.json",
+  "final_compile_log": "logs/compile_4.log",
+  "sources_unchanged": true,
+  "full_scientific_texts_preserved": true,
+  "visual_QA_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "completed_utc": "2026-09-12T05:39:50.326366+00:00",
+  "technical_provenance": {
+    "source": "results/runs/major_claims_20260912/FINAL_VERIFICATION.json",
+    "snapshot": "results/runs/major_claims_20260912/final_report/sources/FINAL_VERIFICATION.json",
+    "sha256": "47f7a0f3ca9c70fd8170eb53952dc08546ece2038be845487f36d68e6fb035aa",
+    "status": "scientific_audit_verified; full_quantitative_paper_reproduction_not_claimed",
+    "tests_passed": 107,
+    "test_log": "final_verified_pytest.log",
+    "core_modules": 23,
+    "test_files": 3,
+    "CLI_reports": 31,
+    "declared_input_hashes": 161,
+    "all_recorded_input_pairs_match": true,
+    "aggregate_provenance_repair": "Initial refined_selected/refined_regions input lists were empty. CLI now captures explicit support inputs; selection_replay/regions_replay reproduce identical full points/section with input hashes. Originals retained.",
+    "selection_replay_identity": [
+      {
+        "role": "tip",
+        "complete_C_ImF_R_byte_identity": true
+      },
+      {
+        "role": "mid",
+        "complete_C_ImF_R_byte_identity": true
+      },
+      {
+        "role": "ref",
+        "complete_C_ImF_R_byte_identity": true
+      }
+    ],
+    "geometry_replay_identical": true,
+    "M50_three_refined_other_M_reused": true,
+    "all_original_parameter_implementations_excluded": false,
+    "read_only_reference_not_a_new_test_or_scientific_run": true
+  },
+  "font_sha256": {},
+  "artifact_sha256": {
+    "REPORT_ZH.md": "5b4130be6def04aa49c296d33b3b3ecf07515c2d9926d03acee744aa3369595d",
+    "REPORT_ZH.tex": "f8e02633d3757ebbccc8e28610ff532a27e8f2123b70c729b6b3ec9f1a0a2904",
+    "header.tex": "cdc397f00c1796f9fd9c19e33350dac97fac682b0df8d446f56ca12abc83ed0e",
+    "document_ast.json": "2c212b4704e931d1ec86f500316ea733d68ca853f0b835fad7d570846a3fc4ec",
+    "verification.json": "76c09bf14ef7e4f47cb99fcdbb9c5e7468bf682c8ec47824416f69dbd5154b1a",
+    "QA_ZH.md": "ddda3837b0a9c4c311e40ffc37555e525e33c78a86355a9a258ce2df463ad78f"
+  },
+  "log_sha256": {
+    "logs/commands_3.json": "4d950ade24193e81f48c76e3ae8b465aa749bd09a28d608157cbf39037e13543",
+    "logs/pandoc_ast_4.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/pandoc_2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/pandoc_ast_3.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/pandoc_ast_1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/BUILD_COMMANDS.txt": "2ef102a127bb56aa077ede9f123661ffc8b0ccc82eb97191a99a94bcd04424cf",
+    "logs/pandoc_4.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/REPORT_ZH_2.tex.txt": "d3bc6afe34d98f4299915a2519cd4e208b4e0252b3e1825c7145506312934a4e",
+    "logs/pandoc_ast_2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/pandoc_3.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/commands_1.json": "d532d3086ba509abb77c78c8f8965236916866f100b141702d134a830a090907",
+    "logs/compile_3.log": "17df931cf537f4b7eb51f73392ccc03100e603368402d4b496d35bbcdc40cf3d",
+    "logs/pandoc_1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/commands_2.json": "4d950ade24193e81f48c76e3ae8b465aa749bd09a28d608157cbf39037e13543",
+    "logs/REPORT_ZH_1.tex.txt": "a10691b1371780e415b2e990639cdab28425d7de74d913aa1cb6d333f28cc87d",
+    "logs/commands_4.json": "4d950ade24193e81f48c76e3ae8b465aa749bd09a28d608157cbf39037e13543",
+    "logs/compile_4.log": "29e176cb5c52be839ab07572f9c6512af556cc608519c1b5a500bbae5bacb2c7",
+    "logs/compile_2.log": "be38270435af23359eb373c3b79b8792324c287437a09146334325ca61d1aad9",
+    "logs/REPORT_ZH_3.tex.txt": "6a5a0310a5f1e0c1ac4f11bcebb5fa24afee60523d719843540b62a008fff3a3",
+    "logs/compile_1.log": "b52aff5b9f51b5523b86c66eda189f5cc594951224c9d8bac37a5d8980cfaa0b",
+    "REPORT_ZH.log": "2e32c1bd733d82a4864dd0244b77e84821ce13a83de6da4118baa66551f0cb56"
+  },
+  "tool_binary_sha256": {
+    "/tmp/he_report_pandoc/pandoc": "decd3dd11a3fe0c16ce56443343ec53adde6fbed6f97d7f56f06b1c424248e7b",
+    "/home/shiqiu/.local/bin/tectonic": "4df19452c202c5bef9f7c7e4a01a3f2b9d5199f0a1f73b70b4fe1bffbc9837f6"
+  }
+}

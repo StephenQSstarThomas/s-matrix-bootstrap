@@ -1,0 +1,94 @@
+{
+  "recorded_at": "2026-09-07T21:41:51.385065+00:00",
+  "scope": "PV M50/L10, sampled/free, B377500, two separate four-vector chiral L2 balls; named conditional model, regulator not accepted",
+  "reference": "results/runs/stage_B3_PV_B377500_region_20260907/partial_10/regions.json",
+  "dispatch_paused": true,
+  "geometry_tolerance": 0.01,
+  "regions": [
+    {
+      "epsilon": 0.006,
+      "geometry_distance_upper": 0.520131612682999,
+      "geometry_ready": false,
+      "outer_closed": true,
+      "distinct_physical_normals": 4,
+      "distinct_normals_metric_gap_le_0025": 2,
+      "retained_points": 4
+    },
+    {
+      "epsilon": 0.004,
+      "geometry_distance_upper": 0.5301104019639713,
+      "geometry_ready": false,
+      "outer_closed": true,
+      "distinct_physical_normals": 4,
+      "distinct_normals_metric_gap_le_0025": 3,
+      "retained_points": 4
+    },
+    {
+      "epsilon": 0.002,
+      "geometry_distance_upper": 0.5556047492078103,
+      "geometry_ready": false,
+      "outer_closed": true,
+      "distinct_physical_normals": 4,
+      "distinct_normals_metric_gap_le_0025": 2,
+      "retained_points": 4
+    },
+    {
+      "epsilon": 0.001,
+      "geometry_distance_upper": 0.5793642672100439,
+      "geometry_ready": false,
+      "outer_closed": true,
+      "distinct_physical_normals": 4,
+      "distinct_normals_metric_gap_le_0025": 2,
+      "retained_points": 4
+    },
+    {
+      "epsilon": 0.0006,
+      "geometry_distance_upper": 0.6476290017371023,
+      "geometry_ready": false,
+      "outer_closed": true,
+      "distinct_physical_normals": 4,
+      "distinct_normals_metric_gap_le_0025": 2,
+      "retained_points": 4
+    },
+    {
+      "epsilon": 0.0002,
+      "geometry_distance_upper": 0.6173265743368944,
+      "geometry_ready": false,
+      "outer_closed": true,
+      "distinct_physical_normals": 3,
+      "distinct_normals_metric_gap_le_0025": 2,
+      "retained_points": 5
+    }
+  ],
+  "completed_conditional_geometries": 0,
+  "active_queries": [
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps0006_adaptive_002_20260907",
+      "solver_seconds": 1200,
+      "start_mu": 0.01
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps001_adaptive_002_20260907",
+      "solver_seconds": 1200,
+      "start_mu": 0.01
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps002_adaptive_002_20260907",
+      "solver_seconds": 1200,
+      "start_mu": 0.01
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps004_adaptive_002_20260907",
+      "solver_seconds": 1200,
+      "start_mu": 0.01
+    },
+    {
+      "run": "results/runs/stage_B3_pv_M50_eps006_adaptive_002_20260907",
+      "solver_seconds": 1200,
+      "start_mu": 0.01
+    }
+  ],
+  "completion_time_estimate": null,
+  "reason": "No demonstrated stable geometric convergence rate. First five300-second changed-normal warm queries yielded very loose upper bounds and only modest inner-hull improvements; current cold queries have not finished.",
+  "interpretation": "Closed outer polygons do not imply region completion. Query counts and existing+x proofs do not replace whole-region convergence or the common-regulator/source assessment."
+}

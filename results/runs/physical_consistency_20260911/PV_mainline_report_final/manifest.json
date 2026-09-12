@@ -1,0 +1,686 @@
+{
+  "created_utc": "2026-09-12T02:39:59.176051+00:00",
+  "status": "final_report_delivered",
+  "title_contract": "有限链已完成；论文定量核心仍有major差异",
+  "scientific_text_copied": true,
+  "scientific_calculation_performed": false,
+  "author_programs_executed": false,
+  "active_python_build_entry_created": false,
+  "figure8_pending": false,
+  "figures": [
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_C3_fig7/profiles.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/fig7_IR.pdf",
+      "sha256": "32a5796817e91eca07ee770d0995fc5fccc9bd1b470d62fce46e8b73523ae185",
+      "bytes": 32878,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1008.0,
+          288.0
+        ]
+      ],
+      "snapshot_mode": "0444"
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_native_phases/fig9.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/fig9.pdf",
+      "sha256": "1776ebe29179f46584cfacaf42fbd7a492409d294e97a35bd4f1429fdb4eaad3",
+      "bytes": 24286,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          504.0,
+          345.6000061035156
+        ]
+      ],
+      "snapshot_mode": "0444"
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_native_phases/fig10.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/fig10.pdf",
+      "sha256": "d5f343c66d128cdf19169b3f205aee46747205b3cf18496d0269fdfbc2920a6f",
+      "bytes": 32708,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1008.0,
+          345.6000061035156
+        ]
+      ],
+      "snapshot_mode": "0444"
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_native_phases/rho_mechanism.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/rho_mechanism.pdf",
+      "sha256": "0b24cc05319addc871dfc9fc104c30fbc1fd532689866efd18f03db7f9f014f5",
+      "bytes": 30977,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1080.0,
+          309.6000061035156
+        ]
+      ],
+      "snapshot_mode": "0444"
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_native_phases/inelasticities.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/inelasticities.pdf",
+      "sha256": "a99e5a863b005f4266abc7cfe1fb27ce8c4a94a67a285637d93b65cde77cb046",
+      "bytes": 25061,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1008.0,
+          302.3999938964844
+        ]
+      ],
+      "snapshot_mode": "0444"
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_F_five_complete/fig11.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/fig11.pdf",
+      "sha256": "ed703aa48a91ffb04f44020e528a60208660c31d9a62963a6cc37788af89f26b",
+      "bytes": 55201,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          864.0,
+          936.0
+        ]
+      ],
+      "snapshot_mode": "0444"
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_F_five_complete/fig11_eta.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/fig11_eta.pdf",
+      "sha256": "14d9bafaa82391733cf141148e1abaa10d3db5538c02a1369842c008ac7cf96c",
+      "bytes": 29519,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          1008.0,
+          302.3999938964844
+        ]
+      ],
+      "snapshot_mode": "0444"
+    },
+    {
+      "source": "results/runs/physical_consistency_20260911/PV_E1_regions_complete/regions.pdf",
+      "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/figures/fig8_regions.pdf",
+      "sha256": "1c266f676a08fbcfe66a475f753bbbc1de9ed989a08d4dce38850005506acd4d",
+      "bytes": 23106,
+      "pages": 1,
+      "page_sizes_points": [
+        [
+          864.0,
+          345.6000061035156
+        ]
+      ],
+      "snapshot_mode": "0444"
+    }
+  ],
+  "header_sha256": "6bb5d842f11471cedeb3e4e0aa274d4af552688073ea513c612b5e907094c8f6",
+  "layout_recipe": {
+    "mainfont": "DejaVu Serif",
+    "sansfont": "DejaVu Sans",
+    "monofont": "DejaVu Sans Mono",
+    "CJKfont": "Droid Sans Fallback",
+    "paper": "A4",
+    "margins_mm": 18,
+    "font_size_pt": 10,
+    "wide_figures": "landscape pages",
+    "build_policy": "Explicit inline Pandoc/TeX commands only; single-thread environment; nice19"
+  },
+  "source": {
+    "path": "results/runs/physical_consistency_20260911/PV_CORE_CLAIM_AUDIT_ZH.md",
+    "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/sources/PV_CORE_CLAIM_AUDIT_ZH.md",
+    "sha256": "4ba7d903c94155799bc4e29f208aee1d5548ed08cd3cb2fc9a77b7ff92c487f8",
+    "bytes": 32597,
+    "frozen_by_parent": true,
+    "snapshot_utc": "2026-09-12T02:42:00.825362+00:00"
+  },
+  "scientific_source_heading": "# 原文约束下的有限原型：IR→UV→ρ主线审计",
+  "formatting_changes": [
+    {
+      "source": "K_ki=(2/M) Σ_{n=1}^{M−1} cos(nφ_k) sin(nφ_i)\n     =(1/M) Σ_{n=1}^{M−1} [sin(n(φ_i+φ_k))+sin(n(φ_i−φ_k))]。",
+      "typeset": "\\[\n\\begin{aligned}\nK_{ki}&=\\frac{2}{M}\\sum_{n=1}^{M-1}\\cos(n\\phi_k)\\sin(n\\phi_i)\\\\\n&=\\frac{1}{M}\\sum_{n=1}^{M-1}\\left[\\sin\\bigl(n(\\phi_i+\\phi_k)\\bigr)+\\sin\\bigl(n(\\phi_i-\\phi_k)\\bigr)\\right].\n\\end{aligned}\n\\]",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "D_i=2/d_i+8a_i/(δ+2d_i²)>0",
+      "typeset": "\\(D_i=2/d_i+8a_i/(\\delta+2d_i^2)>0\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "a_n=(2/M)Σ_j v_j sin(nφ_j)",
+      "typeset": "\\(a_n=(2/M)\\sum_j v_j\\sin(n\\phi_j)\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "a_M=(1/M)Σ_j v_j sin(Mφ_j)",
+      "typeset": "\\(a_M=(1/M)\\sum_j v_j\\sin(M\\phi_j)\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "F(z)=1+Σ_{n=1}^M a_n z^n",
+      "typeset": "\\(F(z)=1+\\sum_{n=1}^M a_n z^n\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "ImF(e^{iφ_j})=v_j",
+      "typeset": "\\(\\operatorname{Im}F(e^{i\\phi_j})=v_j\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "ReF(e^{iφ_j})=1+ΣK_jk v_k",
+      "typeset": "\\(\\operatorname{Re}F(e^{i\\phi_j})=1+\\sum_k K_{jk}v_k\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "K_ki=K̃_{k+i+1}−K̃_{k−i}",
+      "typeset": "\\(K_{ki}=\\widetilde K_{k+i+1}-\\widetilde K_{k-i}\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "Σ_{n=1}^{M−1}sin(nmπ/M)",
+      "typeset": "\\(\\sum_{n=1}^{M-1}\\sin(nm\\pi/M)\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "cos(Mφ_k)=0",
+      "typeset": "\\(\\cos(M\\phi_k)=0\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "φ_j=(j+1/2)π/M",
+      "typeset": "\\(\\phi_j=(j+1/2)\\pi/M\\)",
+      "occurrences": 2,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "s_j=8/(1+cosφ_j)",
+      "typeset": "\\(s_j=8/(1+\\cos\\phi_j)\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "K̃_{i+j+1}−K̃_{i−j}",
+      "typeset": "\\(\\widetilde K_{i+j+1}-\\widetilde K_{i-j}\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "b_j=s′_j/(M s_j)",
+      "typeset": "\\(b_j=s_j^{\\prime}/(M s_j)\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "(π/M)s′_j s_jⁿ",
+      "typeset": "\\((\\pi/M)s_j^{\\prime}s_j^n\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "s′_j/M",
+      "typeset": "\\(s_j^{\\prime}/M\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "s0ⁿ⁺²",
+      "typeset": "\\(s_0^{n+2}\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "s=s_phys/mπ²",
+      "typeset": "\\(s=s_{\\mathrm{phys}}/m_\\pi^2\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "a=⌊M/2⌋",
+      "typeset": "\\(a=\\lfloor M/2\\rfloor\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "tr(G⁻¹δG G⁻¹δG)",
+      "typeset": "\\(\\operatorname{tr}(G^{-1}\\delta G\\,G^{-1}\\delta G)\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "区间[.09902001731987253,.09911230962662303]",
+      "typeset": "区间\\([.09902001731987253,\\allowbreak .09911230962662303]\\)",
+      "occurrences": 1,
+      "kind": "equivalent notation with an allowed line break"
+    },
+    {
+      "source": "\\allowbreak .09911230962662303]\\)，gap=9.22923×10⁻⁵",
+      "typeset": "\\allowbreak .09911230962662303]\\)，\\newline gap=9.22923×10⁻⁵",
+      "occurrences": 1,
+      "kind": "explicit line break only"
+    },
+    {
+      "source": "A=|A|e^{iα}",
+      "typeset": "\\(A=|A|e^{i\\alpha}\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "S=ηe^{2iδ}",
+      "typeset": "\\(S=\\eta e^{2i\\delta}\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "|A|²[1+η²−2ηcos2(α−δ)]",
+      "typeset": "\\(|A|^2[1+\\eta^2-2\\eta\\cos 2(\\alpha-\\delta)]\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "|A|²(1−η)/(1+η)",
+      "typeset": "\\(|A|^2(1-\\eta)/(1+\\eta)\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "A=SA*",
+      "typeset": "\\(A=SA^*\\)",
+      "occurrences": 3,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "R=|A|²",
+      "typeset": "\\(R=|A|^2\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "A=𝓕=kF",
+      "typeset": "\\(A=\\mathcal F=kF\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "G+τI≻0",
+      "typeset": "\\(G+\\tau I\\succ0\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "|F|²<1+τ",
+      "typeset": "\\(|F|^2<1+\\tau\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "|m|<1+τ",
+      "typeset": "\\(|m|<1+\\tau\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "F±(0)=1",
+      "typeset": "\\(F_\\pm(0)=1\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "|F±|=1/a",
+      "typeset": "\\(|F_\\pm|=1/a\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "|z±a|=|1±az|",
+      "typeset": "\\(|z\\pm a|=|1\\pm az|\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "B||rρ||4/3",
+      "typeset": "\\(B\\|r_\\rho\\|_{4/3}\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "n·(x_IR,y_IR)−U>0",
+      "typeset": "\\(n\\cdot(x_{\\rm IR},y_{\\rm IR})-U>0\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "n·(x,y)≤U",
+      "typeset": "\\(n\\cdot(x,y)\\le U\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "I_b−I_a>0",
+      "typeset": "\\(I_b-I_a>0\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    },
+    {
+      "source": "I_b−I_c>0",
+      "typeset": "\\(I_b-I_c>0\\)",
+      "occurrences": 1,
+      "kind": "equivalent mathematical notation"
+    }
+  ],
+  "local_links": [
+    {
+      "source_target": "PROGRESS.json",
+      "rendered_target": "../PROGRESS.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PROGRESS.json",
+      "exists": true
+    },
+    {
+      "source_target": "../../../references/2309.12402v3.pdf",
+      "rendered_target": "../../../../references/2309.12402v3.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/references/2309.12402v3.pdf",
+      "exists": true
+    },
+    {
+      "source_target": "../../../references/2309.12402v3-source/prd_submission_2.tex",
+      "rendered_target": "../../../../references/2309.12402v3-source/prd_submission_2.tex",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/references/2309.12402v3-source/prd_submission_2.tex",
+      "exists": true
+    },
+    {
+      "source_target": "PV_SAME_INPUTS_INVENTORY.md",
+      "rendered_target": "../PV_SAME_INPUTS_INVENTORY.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_SAME_INPUTS_INVENTORY.md",
+      "exists": true
+    },
+    {
+      "source_target": "MAINLINE_SOURCE_REVIEW.md",
+      "rendered_target": "../MAINLINE_SOURCE_REVIEW.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/MAINLINE_SOURCE_REVIEW.md",
+      "exists": true
+    },
+    {
+      "source_target": "PV_tip_support_01/report.json",
+      "rendered_target": "../PV_tip_support_01/report.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_tip_support_01/report.json",
+      "exists": true
+    },
+    {
+      "source_target": "verification_PV_bounded_coordinates.json",
+      "rendered_target": "../verification_PV_bounded_coordinates.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/verification_PV_bounded_coordinates.json",
+      "exists": true
+    },
+    {
+      "source_target": "PV_REPRESENTATIVE_RULE.json",
+      "rendered_target": "../PV_REPRESENTATIVE_RULE.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_REPRESENTATIVE_RULE.json",
+      "exists": true
+    },
+    {
+      "source_target": "PV_FIXED_COORDINATES.json",
+      "rendered_target": "../PV_FIXED_COORDINATES.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_FIXED_COORDINATES.json",
+      "exists": true
+    },
+    {
+      "source_target": "PV_F_five_complete/resolution.json",
+      "rendered_target": "../PV_F_five_complete/resolution.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_F_five_complete/resolution.json",
+      "exists": true
+    },
+    {
+      "source_target": "PV_F_five_complete/fig11.pdf",
+      "rendered_target": "../PV_F_five_complete/fig11.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_F_five_complete/fig11.pdf",
+      "exists": true
+    },
+    {
+      "source_target": "PV_F_five_complete/fig11_eta.pdf",
+      "rendered_target": "../PV_F_five_complete/fig11_eta.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_F_five_complete/fig11_eta.pdf",
+      "exists": true
+    },
+    {
+      "source_target": "../../evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/AUDIT_ZH.md",
+      "rendered_target": "../../../evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/AUDIT_ZH.md",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/evidence/PV_PRIMARY_SOURCE_AUDIT_20260911/AUDIT_ZH.md",
+      "exists": true
+    },
+    {
+      "source_target": "PV_E1_regions_complete/regions.json",
+      "rendered_target": "../PV_E1_regions_complete/regions.json",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_E1_regions_complete/regions.json",
+      "exists": true
+    },
+    {
+      "source_target": "PV_E1_regions_complete/regions.pdf",
+      "rendered_target": "../PV_E1_regions_complete/regions.pdf",
+      "resolved_path": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_E1_regions_complete/regions.pdf",
+      "exists": true
+    }
+  ],
+  "figure_order": [
+    "fig7_IR.pdf",
+    "fig8_regions.pdf",
+    "fig9.pdf",
+    "fig10.pdf",
+    "inelasticities.pdf",
+    "rho_mechanism.pdf",
+    "fig11.pdf",
+    "fig11_eta.pdf"
+  ],
+  "layout_only_additions": [
+    "First-page verdict and navigation repeat frozen scientific scope",
+    "Separate contents page",
+    "Table column widths matched to their headers",
+    "Eight byte-identical PDF assets appended; wide plots on landscape pages"
+  ],
+  "commands": [
+    [
+      "/tmp/he_report_pandoc/pandoc",
+      "REPORT_ZH.md",
+      "--from",
+      "markdown+tex_math_single_backslash",
+      "--to",
+      "json",
+      "-o",
+      "document_ast.json"
+    ],
+    [
+      "/tmp/he_report_pandoc/pandoc",
+      "document_ast.json",
+      "--from",
+      "json",
+      "--standalone",
+      "--to",
+      "latex",
+      "--toc-depth=1",
+      "--shift-heading-level-by=-1",
+      "--include-in-header",
+      "header.tex",
+      "-V",
+      "mainfont=DejaVu Serif",
+      "-V",
+      "sansfont=DejaVu Sans",
+      "-V",
+      "monofont=DejaVu Sans Mono",
+      "-V",
+      "papersize=a4",
+      "-V",
+      "fontsize=10pt",
+      "-V",
+      "geometry:margin=18mm",
+      "-V",
+      "colorlinks=true",
+      "-o",
+      "REPORT_ZH.tex"
+    ],
+    [
+      "/home/shiqiu/.local/bin/tectonic",
+      "--keep-logs",
+      "--keep-intermediates",
+      "--reruns",
+      "2",
+      "REPORT_ZH.tex"
+    ]
+  ],
+  "build_attempts": [
+    {
+      "tag": 1,
+      "compile_exit": 1,
+      "log": "logs/compile_1.log"
+    },
+    {
+      "tag": 2,
+      "compile_exit": 0,
+      "log": "logs/compile_2.log",
+      "formatting_fix": "Defer PDF metadata until hyperref has loaded"
+    }
+  ],
+  "production_source_modified": false,
+  "table_column_widths": [
+    {
+      "header": "环节原文内容与当前实现",
+      "widths": [
+        0.16,
+        0.84
+      ]
+    },
+    {
+      "header": "代表原生90°描述性读数MeVminηP1P1严格离散主峰MeV末层P1最大相移变化",
+      "widths": [
+        0.09,
+        0.26,
+        0.14,
+        0.26,
+        0.25
+      ]
+    },
+    {
+      "header": "M,Lx支持下界x支持上界P1首次90°读数MeVminηP1",
+      "widths": [
+        0.105,
+        0.225,
+        0.225,
+        0.265,
+        0.18
+      ]
+    },
+    {
+      "header": "xref截面量严格下界严格上界",
+      "widths": [
+        0.32,
+        0.34,
+        0.34
+      ]
+    },
+    {
+      "header": "步骤本轮结论及范围",
+      "widths": [
+        0.09,
+        0.91
+      ]
+    }
+  ],
+  "compile_exit": 0,
+  "thread_environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "RAYON_NUM_THREADS": "1"
+  },
+  "nice": 19,
+  "completed_utc": "2026-09-12T02:49:57.395643+00:00",
+  "PDF": "REPORT_ZH.pdf",
+  "PDF_sha256": "1a0361352682665879605ea42bacf2d83e68407c94a201bab90eea6a6f9e98c4",
+  "pages": 18,
+  "final_compile_log": "logs/compile_2.log",
+  "verification": "verification.json",
+  "visual_QA_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "font_sha256": {},
+  "technical_provenance": {
+    "source": "results/runs/physical_consistency_20260911/PV_FINAL_VERIFICATION.json",
+    "snapshot": "results/runs/physical_consistency_20260911/PV_mainline_report_final/sources/PV_FINAL_VERIFICATION.json",
+    "sha256": "2f66378bd3a5c658b8315e5a1874a542bdd50ba2028b50627c74a88af86de0c5",
+    "status": "passed_with_explicit_aggregator_provenance_scope",
+    "full_tests": 107,
+    "current_core_identical_to_tested_source": true,
+    "core_module_count": 21,
+    "test_file_count": 3,
+    "completed_CLI_report_count": 27,
+    "declared_input_hash_count": 142,
+    "upstream_IR_report_count": 29,
+    "all_recorded_input_checks_passed": true,
+    "aggregation_producer_absence": [
+      "PV_IR_regions"
+    ],
+    "provenance_scope": "Expected source.json at PV_IR_regions, but regions aggregation does not capture it; no scientific run failed. Final collection records absence rather than fabricating producer identity.",
+    "verification_read_not_recomputed": true,
+    "tests_not_rerun_by_typesetter": true
+  },
+  "scientific_source_unchanged": true,
+  "scientific_body_preserved": true,
+  "source_local_links_verified": 15,
+  "PDF_local_links_verified": 23,
+  "PDF_bookmarks": 27,
+  "artifact_sha256": {
+    "REPORT_ZH.md": "a55fcaf65e351f02707ce18a437828985d1f08a2ae4c6709e8d2dd597d76bd26",
+    "REPORT_ZH.tex": "7371aef87f5278d64766a6f78919a877fa7bc14bb82c007f90a66b3d0b08ec9e",
+    "header.tex": "3bbc5f06fcb502a1bb92a841f530772f4722ff3005f4b5a6fe603f0fa0da2792",
+    "document_ast.json": "0e8eadd3a93d953e1f0e6daf7f21189edc46e9794d698d4b68f2593b58b36307",
+    "verification.json": "83ed01e597d7b63ddb10d2acd3c858db565655393fd0d28513470c8d03860271",
+    "QA_ZH.md": "f3a48de7fd4ad651d2d7552362a7e40e30b57bf26b078788f5f5d639e61688a0"
+  },
+  "log_sha256": {
+    "logs/pandoc_2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/pandoc_ast_1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/BUILD_COMMANDS.txt": "41fa6dac7e19d38fb89b6d07fd0b79f07f16b9e65db13aff215aa53feb9b698c",
+    "logs/commands_1.json": "d532d3086ba509abb77c78c8f8965236916866f100b141702d134a830a090907",
+    "logs/pandoc_1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/commands_2.json": "6fdffd2e59f9865eb1df6fd3b59945c0b0130b77b4f1c1dedd70ea3699bfe568",
+    "logs/REPORT_ZH_1.tex.txt": "e56aeaeb14c0b962f0e8e176a4bc62ad0d1ce19414dab4f797733c2020bf5024",
+    "logs/compile_2.log": "97b6f4874058c4b1c769077860f5e94e07c4a677348d98bd5ceb21292c03ed8e",
+    "logs/compile_1.log": "befa8275460d4e7c15ca0d1317a9fd4f497986ccf0c11932c142cfb55e5b43bf",
+    "REPORT_ZH.log": "ac949fd1bf311d659b7987b06b3cd3cd1d1958b849fdd725b03c2b1bd69e9ef9"
+  },
+  "tool_binary_sha256": {
+    "/tmp/he_report_pandoc/pandoc": "decd3dd11a3fe0c16ce56443343ec53adde6fbed6f97d7f56f06b1c424248e7b",
+    "/home/shiqiu/.local/bin/tectonic": "4df19452c202c5bef9f7c7e4a01a3f2b9d5199f0a1f73b70b4fe1bffbc9837f6"
+  }
+}

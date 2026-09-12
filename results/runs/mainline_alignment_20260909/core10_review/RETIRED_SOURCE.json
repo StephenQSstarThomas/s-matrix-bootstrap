@@ -1,0 +1,258 @@
+[
+  {
+    "file": "src/smatrix_bootstrap/kernels.py",
+    "name": "conformal_z",
+    "lines": [
+      108,
+      120
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/kernels.py",
+    "name": "SineCardinalBasis",
+    "lines": [
+      121,
+      154
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/kernels.py",
+    "name": "angular_samples",
+    "lines": [
+      155,
+      174
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/kernels.py",
+    "name": "sine_angular_blocks",
+    "lines": [
+      175,
+      213
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/kernels.py",
+    "name": "unitarity_separation",
+    "lines": [
+      318,
+      340
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/model.py",
+    "name": "projection_precision",
+    "lines": [
+      234,
+      241
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/model.py",
+    "name": "evaluate_amplitude",
+    "lines": [
+      248,
+      288
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/model.py",
+    "name": "polynomial_cut_dual",
+    "lines": [
+      317,
+      331
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/operators.py",
+    "name": "SineSourceRows",
+    "lines": [
+      11,
+      113
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/operators.py",
+    "name": "asymptotic_rows",
+    "lines": [
+      177,
+      198
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/operators.py",
+    "name": "asymptotic_margins",
+    "lines": [
+      200,
+      205
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/operators.py",
+    "name": "high_spin_rows",
+    "lines": [
+      232,
+      249
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/operators.py",
+    "name": "regulator_study",
+    "lines": [
+      319,
+      350
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/imaginary.py",
+    "name": "high_spin_polynomials",
+    "lines": [
+      5,
+      16
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/imaginary.py",
+    "name": "high_spin_diagnostic",
+    "lines": [
+      19,
+      47
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/imaginary.py",
+    "name": "convex_high_spin_repair",
+    "lines": [
+      50,
+      64
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/imaginary.py",
+    "name": "polynomial_cut_rows",
+    "lines": [
+      67,
+      74
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/imaginary.py",
+    "name": "polynomial_cut_dual",
+    "lines": [
+      77,
+      79
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/imaginary.py",
+    "name": "conic_support",
+    "lines": [
+      81,
+      238
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/__init__.py",
+    "name": "native_row_scales",
+    "lines": [
+      149,
+      171
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/__init__.py",
+    "name": "affine_conic_data",
+    "lines": [
+      173,
+      194
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/quotient.py",
+    "name": "polynomial_coefficient_rows",
+    "lines": [
+      6,
+      23
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/quotient.py",
+    "name": "polynomial_gram_map",
+    "lines": [
+      25,
+      58
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/quotient.py",
+    "name": "_moment_array",
+    "lines": [
+      60,
+      67
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/quotient.py",
+    "name": "_toeplitz_ldl",
+    "lines": [
+      69,
+      92
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/quotient.py",
+    "name": "verify_moment_dual",
+    "lines": [
+      94,
+      102
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/quotient.py",
+    "name": "repair_moment_dual",
+    "lines": [
+      104,
+      134
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/quotient.py",
+    "name": "resample_coefficients",
+    "lines": [
+      202,
+      217
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/quotient.py",
+    "name": "whiten_conic_columns",
+    "lines": [
+      325,
+      335
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/io.py",
+    "name": "require_physical_row_prefix",
+    "lines": [
+      69,
+      75
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/io.py",
+    "name": "merge_constraints",
+    "lines": [
+      316,
+      319
+    ]
+  },
+  {
+    "file": "src/smatrix_bootstrap/io.py",
+    "name": "regulator_study",
+    "lines": [
+      321,
+      323
+    ]
+  }
+]

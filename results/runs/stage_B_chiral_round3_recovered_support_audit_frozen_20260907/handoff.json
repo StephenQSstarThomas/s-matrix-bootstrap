@@ -1,0 +1,222 @@
+{
+  "support_report": "results/runs/stage_B_chiral_round3_recovered_support_M50_20260907/report.json",
+  "finite_support_gap": 9.259211412809831e-05,
+  "dense_audit_status": "violated",
+  "samples": 52962,
+  "violation_count": 1841,
+  "violations_at_original_constraint_pairs": 0,
+  "worst": {
+    "margin": -0.2971276338269616,
+    "energy": 26336.186114613665,
+    "isospin": 2,
+    "ell": 2
+  },
+  "violations_by_wave": [
+    {
+      "isospin": 0,
+      "ell": 0,
+      "count": 29
+    },
+    {
+      "isospin": 0,
+      "ell": 2,
+      "count": 33
+    },
+    {
+      "isospin": 0,
+      "ell": 4,
+      "count": 43
+    },
+    {
+      "isospin": 0,
+      "ell": 6,
+      "count": 86
+    },
+    {
+      "isospin": 0,
+      "ell": 8,
+      "count": 39
+    },
+    {
+      "isospin": 0,
+      "ell": 10,
+      "count": 45
+    },
+    {
+      "isospin": 0,
+      "ell": 12,
+      "count": 35
+    },
+    {
+      "isospin": 0,
+      "ell": 14,
+      "count": 31
+    },
+    {
+      "isospin": 0,
+      "ell": 16,
+      "count": 7
+    },
+    {
+      "isospin": 0,
+      "ell": 18,
+      "count": 9
+    },
+    {
+      "isospin": 0,
+      "ell": 20,
+      "count": 1
+    },
+    {
+      "isospin": 0,
+      "ell": 22,
+      "count": 3
+    },
+    {
+      "isospin": 0,
+      "ell": 24,
+      "count": 142
+    },
+    {
+      "isospin": 0,
+      "ell": 26,
+      "count": 120
+    },
+    {
+      "isospin": 1,
+      "ell": 1,
+      "count": 53
+    },
+    {
+      "isospin": 1,
+      "ell": 3,
+      "count": 8
+    },
+    {
+      "isospin": 1,
+      "ell": 5,
+      "count": 40
+    },
+    {
+      "isospin": 1,
+      "ell": 7,
+      "count": 70
+    },
+    {
+      "isospin": 1,
+      "ell": 9,
+      "count": 41
+    },
+    {
+      "isospin": 1,
+      "ell": 11,
+      "count": 37
+    },
+    {
+      "isospin": 1,
+      "ell": 13,
+      "count": 31
+    },
+    {
+      "isospin": 1,
+      "ell": 15,
+      "count": 24
+    },
+    {
+      "isospin": 1,
+      "ell": 17,
+      "count": 24
+    },
+    {
+      "isospin": 1,
+      "ell": 19,
+      "count": 16
+    },
+    {
+      "isospin": 1,
+      "ell": 21,
+      "count": 4
+    },
+    {
+      "isospin": 1,
+      "ell": 23,
+      "count": 2
+    },
+    {
+      "isospin": 1,
+      "ell": 25,
+      "count": 130
+    },
+    {
+      "isospin": 1,
+      "ell": 27,
+      "count": 134
+    },
+    {
+      "isospin": 2,
+      "ell": 0,
+      "count": 5
+    },
+    {
+      "isospin": 2,
+      "ell": 2,
+      "count": 9
+    },
+    {
+      "isospin": 2,
+      "ell": 4,
+      "count": 6
+    },
+    {
+      "isospin": 2,
+      "ell": 6,
+      "count": 93
+    },
+    {
+      "isospin": 2,
+      "ell": 8,
+      "count": 71
+    },
+    {
+      "isospin": 2,
+      "ell": 10,
+      "count": 84
+    },
+    {
+      "isospin": 2,
+      "ell": 12,
+      "count": 59
+    },
+    {
+      "isospin": 2,
+      "ell": 14,
+      "count": 30
+    },
+    {
+      "isospin": 2,
+      "ell": 16,
+      "count": 30
+    },
+    {
+      "isospin": 2,
+      "ell": 20,
+      "count": 2
+    },
+    {
+      "isospin": 2,
+      "ell": 22,
+      "count": 7
+    },
+    {
+      "isospin": 2,
+      "ell": 24,
+      "count": 131
+    },
+    {
+      "isospin": 2,
+      "ell": 26,
+      "count": 77
+    }
+  ],
+  "scope": "Support gap closes only for the original finite grid. This point fails independent denser physical unitarity; no continuum certification or full physical acceptance."
+}

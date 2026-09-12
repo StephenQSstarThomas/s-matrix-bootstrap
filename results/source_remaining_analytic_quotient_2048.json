@@ -1,0 +1,54 @@
+{
+  "schema": "smatrix-complete-remaining-analytic-quotient-v1",
+  "status": "completed",
+  "shape": [
+    1511,
+    2376
+  ],
+  "working_bits": 2048,
+  "batch_size": 16,
+  "completed_rows": 1511,
+  "completed_batches": 95,
+  "export_containment_checks": 3590136,
+  "all1511_rows_enclosed": true,
+  "all2376_quotient_coordinates_retained": true,
+  "all_exports_contain_calculated_balls": true,
+  "all_exact_constant_anchors_verified": true,
+  "all_control_inputs_shared_unchanged": true,
+  "elapsed_supervisor_seconds": 1155.5403443760006,
+  "hard_timeout_occurred": false,
+  "source_files_changed_during_run": [],
+  "input_files_changed_during_run": [],
+  "control_report_changed_during_run": false,
+  "scope": "Complete enclosed quotient of the true analytic imaginary projector; no remaining-rank or feasibility claim.",
+  "timestamp_utc": "2026-09-06T10:42:19.746356+00:00",
+  "report_path": "results/analytic_source_storage/source_remaining_quotient_2048_attempt01/report.json",
+  "report_sha256": "504eb1ad2ab1d1230046a60498b1855bf74a7d0346f3b7fa1a0eb1ec8434c996",
+  "source_snapshot_path": "results/analytic_source_storage/source_remaining_quotient_2048_attempt01/source_snapshot.json",
+  "source_snapshot_sha256": "eba596c2d9a02ceb80ae11ed022d321e20258ac0a6a968f8d257793826a592b8",
+  "artifact_count": 98,
+  "artifact_bytes": 895001664,
+  "root_all98_artifact_hashes_rechecked": true,
+  "root_artifact_hash_mismatches": [],
+  "maximum_observed_row_relative_radius": {
+    "ball": "[1.514916964543623128667716e-129 +/- 2.70e-154]",
+    "exact_ball": [
+      [
+        "0x86696282e9e2373ec4d71b4ceaa99944c8ebd8658b6f663aaa0b62a578436ffdacc93d7398964d02f1dd9b6dc7802b934b1631048ca66d647d0906f1a35dcd80ab7a17200034f8c5f6f8f84ef6b622b8e2df054239492c7e2bdfadf34dc1bab460e1b74673a7d8c8dbc60044933575dc6822cf37d4b3bc73bd505d33b9db9325b61ce6ee60ebc71a18380809327f38795d7dc608e6c2577e746c93b423bda39233a6fb7266af43fa1bfef7e77de12dc72df9bf20a373bdd88cd9191b4eb52aa758eec64e3eaad04ca47e658ac1534fd5343c31829bdbf5280c9859ea866f4cef501b95e9b379926e3c29f896c72262b13ac3dd1e0054a2c18ffac21d912cbaf1",
+        -2475
+      ],
+      [
+        "0x0",
+        0
+      ]
+    ]
+  },
+  "worst_row_canonical_id": 29,
+  "remaining_rank_claimed": false,
+  "original_complete_source_coefficients": 3876,
+  "exact_coordinate_family_sizes": [
+    1,
+    1205,
+    1170
+  ]
+}

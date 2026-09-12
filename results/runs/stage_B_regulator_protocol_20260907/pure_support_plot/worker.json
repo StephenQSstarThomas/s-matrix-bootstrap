@@ -1,0 +1,187 @@
+{
+  "command": "regulators",
+  "status": "requires_review",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "regulators",
+    "support_runs": [
+      "results/runs/stage_B_pv_pure_M50_reg100_barrier_20260907",
+      "results/runs/stage_B_pv_pure_M50_reg1000_barrier_20260907",
+      "results/runs/stage_B_pv_pure_reg10000_reused_bound_20260907",
+      "results/runs/stage_B_pv_pure_M50_reg100000_finish_20260907",
+      "results/runs/stage_B_pv_pure_M50_barrier_20260907"
+    ],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_regulator_protocol_20260907/pure_support_plot",
+    "density_limit": null,
+    "preparation": "results/runs/stage_A_M50_L10_20260906",
+    "prescription": "auto",
+    "solver": "barrier",
+    "unitarity_scope": "strengthened",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "constraint_generation": false,
+    "working_state": null,
+    "density_cone": "soc",
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": null,
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "seconds": 60.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "8"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Supplied fixed finite problem only; no claim outside the supplied sequence or for other directions",
+  "prescription": "pv-midpoint",
+  "identity": [
+    50,
+    10,
+    "pv-midpoint",
+    "sampled",
+    "free",
+    "pure",
+    null,
+    "results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    [
+      1.0,
+      0.0
+    ],
+    null
+  ],
+  "rows": [
+    {
+      "B": 100.0,
+      "lower": 2.187806427225126,
+      "upper": 2.1895697675025008,
+      "report": "results/runs/stage_B_pv_pure_M50_reg100_barrier_20260907/report.json"
+    },
+    {
+      "B": 1000.0,
+      "lower": 2.216215368507176,
+      "upper": 2.2179802137156193,
+      "report": "results/runs/stage_B_pv_pure_M50_reg1000_barrier_20260907/report.json"
+    },
+    {
+      "B": 10000.0,
+      "lower": 2.2263697222565235,
+      "upper": 2.2320946365900056,
+      "report": "results/runs/stage_B_pv_pure_reg10000_reused_bound_20260907/report.json"
+    },
+    {
+      "B": 100000.0,
+      "lower": 2.2319670327652625,
+      "upper": 2.2320143935397634,
+      "report": "results/runs/stage_B_pv_pure_M50_reg100000_finish_20260907/report.json"
+    },
+    {
+      "B": 377500,
+      "lower": 2.2348893985478404,
+      "upper": 2.236231782346892,
+      "report": "results/runs/stage_B_pv_pure_M50_barrier_20260907/report.json"
+    }
+  ],
+  "windows": [
+    {
+      "B_interval": [
+        100.0,
+        10000.0
+      ],
+      "growth_interval": [
+        0.016806934083675285,
+        0.020243202878351484
+      ],
+      "status": "excluded"
+    },
+    {
+      "B_interval": [
+        100.0,
+        100000.0
+      ],
+      "growth_interval": [
+        0.01936328583451422,
+        0.02020652547890531
+      ],
+      "status": "excluded"
+    },
+    {
+      "B_interval": [
+        100.0,
+        377500
+      ],
+      "growth_interval": [
+        0.020697961635190453,
+        0.02213420461662385
+      ],
+      "status": "excluded"
+    },
+    {
+      "B_interval": [
+        1000.0,
+        100000.0
+      ],
+      "growth_interval": [
+        0.006306106322838733,
+        0.0071288310951609125
+      ],
+      "status": "resolved"
+    },
+    {
+      "B_interval": [
+        1000.0,
+        377500
+      ],
+      "growth_interval": [
+        0.007623686057998881,
+        0.009031799943341587
+      ],
+      "status": "resolved"
+    }
+  ],
+  "relative_budget": 0.01,
+  "minimum_decades": 2,
+  "regulator_selected": false,
+  "elapsed_seconds": 0.7042570300400257
+}

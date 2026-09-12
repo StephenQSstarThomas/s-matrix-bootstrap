@@ -1,0 +1,20 @@
+{
+  "checked_at_utc": "2026-09-11T05:42:14.528373+00:00",
+  "mode": "primary-source read-only inspection; no author code executed; no optimization",
+  "original_inputs": [
+    {
+      "path": "references/2309.12402v3.pdf",
+      "sha256": "be8214741f8fb3f330473be94172c5e1dde15befb515f745ab4e35839c8982e2",
+      "bytes": 2131549
+    },
+    {
+      "path": "references/2309.12402v3-source/prd_submission_2.tex",
+      "sha256": "39ec9e10da96f9c09c8db9e7d3ac63f342b1214df592896281adda727fb6be84",
+      "bytes": 105871
+    }
+  ],
+  "report_sha256": "dcef7cab12c088a067dc6d33b9180d80bf1c037d327faaf7886085a1e0049046",
+  "download_manifest": "downloads.json",
+  "local_link_check_missing": [],
+  "published_pdf_download": "Direct HTTP fetch returned 403; no local PDF claimed. Browser exposed first-page bibliographic metadata; publication content inspected via saved official HTML."
+}

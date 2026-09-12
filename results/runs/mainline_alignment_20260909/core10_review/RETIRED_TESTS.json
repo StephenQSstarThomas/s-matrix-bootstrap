@@ -1,0 +1,260 @@
+[
+  {
+    "file": "tests/test_mainline.py",
+    "name": "test_analytic_tail_matches_independent_physical_large_energy_limit",
+    "lines": [
+      15,
+      30
+    ]
+  },
+  {
+    "file": "tests/test_mainline.py",
+    "name": "test_high_spin_threshold_projection_resolves_positive_seed",
+    "lines": [
+      31,
+      39
+    ]
+  },
+  {
+    "file": "tests/test_mainline.py",
+    "name": "_parabolic_support_control",
+    "lines": [
+      40,
+      48
+    ],
+    "pv_correspondence": "_disk_support_control",
+    "old_sine_tail_CG_proof_preserved_only_in_baseline": true
+  },
+  {
+    "file": "tests/test_mainline.py",
+    "name": "test_tail_support_matches_closed_parabolic_bound_and_checks_primal",
+    "lines": [
+      49,
+      66
+    ]
+  },
+  {
+    "file": "tests/test_mainline.py",
+    "name": "test_tail_duals_with_infinite_support_are_rejected",
+    "lines": [
+      67,
+      72
+    ]
+  },
+  {
+    "file": "tests/test_mainline.py",
+    "name": "test_tail_barrier_and_saved_duals_recover_the_closed_support",
+    "lines": [
+      73,
+      82
+    ]
+  },
+  {
+    "file": "tests/test_mainline.py",
+    "name": "test_density_refinement_preserves_the_analytic_amplitude",
+    "lines": [
+      83,
+      90
+    ]
+  },
+  {
+    "file": "tests/test_mainline.py",
+    "name": "test_high_spin_cut_rows_match_global_polynomials",
+    "lines": [
+      91,
+      99
+    ]
+  },
+  {
+    "file": "tests/test_mainline.py",
+    "name": "test_convex_high_spin_repair_uses_one_true_coefficient_mixture",
+    "lines": [
+      100,
+      109
+    ]
+  },
+  {
+    "file": "tests/test_mainline.py",
+    "name": "test_native_conic_duals_enclose_independent_closed_support",
+    "lines": [
+      119,
+      127
+    ]
+  },
+  {
+    "file": "tests/test_mainline.py",
+    "name": "test_native_density_cones_allow_negative_rho_with_closed_support",
+    "lines": [
+      129,
+      138
+    ]
+  },
+  {
+    "file": "tests/test_mainline.py",
+    "name": "test_primal_recovery_is_one_certified_coefficient_segment",
+    "lines": [
+      140,
+      160
+    ],
+    "pv_correspondence": "test_pv_candidate_recovery_keeps_one_exact_full_coefficient_segment",
+    "old_sine_tail_CG_proof_preserved_only_in_baseline": true
+  },
+  {
+    "file": "tests/test_mainline.py",
+    "name": "test_boundary_checkpoints_keep_only_the_selected_polynomial_dual",
+    "lines": [
+      162,
+      185
+    ]
+  },
+  {
+    "file": "tests/test_mainline.py",
+    "name": "test_joint_qr_changes_coordinates_not_constraints_or_objective",
+    "lines": [
+      254,
+      258
+    ]
+  },
+  {
+    "file": "tests/test_kernels.py",
+    "name": "test_sine_cardinal_cauchy_transform_nyquist_and_two_physical_lips",
+    "lines": [
+      120,
+      145
+    ]
+  },
+  {
+    "file": "tests/test_kernels.py",
+    "name": "test_coherent_rows_against_independent_full_amplitude_integral",
+    "lines": [
+      149,
+      181
+    ]
+  },
+  {
+    "file": "tests/test_kernels.py",
+    "name": "test_sine_source_free_constant_threshold_and_original_coordinate_change",
+    "lines": [
+      183,
+      201
+    ],
+    "pv_correspondence": "test_pv_source_free_constant_threshold_and_original_coordinate_change",
+    "old_sine_tail_CG_proof_preserved_only_in_baseline": true
+  },
+  {
+    "file": "tests/test_kernels.py",
+    "name": "test_full_sine_density_coordinate_change_preserves_amplitude_and_density_norm",
+    "lines": [
+      203,
+      226
+    ],
+    "pv_correspondence": "test_full_pv_density_coordinate_change_preserves_amplitude_and_density_norm",
+    "old_sine_tail_CG_proof_preserved_only_in_baseline": true
+  },
+  {
+    "file": "tests/test_kernels.py",
+    "name": "test_direct_amplitude_matches_full_rows_threshold_parity_and_precision",
+    "lines": [
+      229,
+      247
+    ]
+  },
+  {
+    "file": "tests/test_kernels.py",
+    "name": "test_sine_rank_one_seed_imaginary_waves_follow_positive_stieltjes_projection",
+    "lines": [
+      249,
+      262
+    ]
+  },
+  {
+    "file": "tests/test_kernels.py",
+    "name": "test_high_spin_polynomial_positive_seed_and_interior_negative_minimum",
+    "lines": [
+      312,
+      328
+    ]
+  },
+  {
+    "file": "tests/test_kernels.py",
+    "name": "test_polynomial_support_dual_retains_analytic_rounding_residual_and_primal_scope",
+    "lines": [
+      330,
+      350
+    ]
+  },
+  {
+    "file": "tests/test_linear.py",
+    "name": "test_gram_map_matches_independent_quadratic_forms",
+    "lines": [
+      73,
+      88
+    ]
+  },
+  {
+    "file": "tests/test_linear.py",
+    "name": "test_M50_gram_sizes_keep_the_full_polynomial_degree",
+    "lines": [
+      89,
+      90
+    ]
+  },
+  {
+    "file": "tests/test_linear.py",
+    "name": "test_exact_Cflat_polynomial_map_matches_the_independent_U_polynomial",
+    "lines": [
+      92,
+      106
+    ]
+  },
+  {
+    "file": "tests/test_linear.py",
+    "name": "test_constant_polynomial_map_has_the_physical_isospin_signs",
+    "lines": [
+      107,
+      108
+    ]
+  },
+  {
+    "file": "tests/test_linear.py",
+    "name": "test_moment_dual_checks_zero_atomic_and_negative_functionals",
+    "lines": [
+      109,
+      118
+    ]
+  },
+  {
+    "file": "tests/test_linear.py",
+    "name": "test_moment_repair_changes_only_the_mass_and_is_Arb_verified",
+    "lines": [
+      119,
+      126
+    ]
+  },
+  {
+    "file": "tests/test_linear.py",
+    "name": "test_toeplitz_positive_moments_give_positive_Gram_duals",
+    "lines": [
+      128,
+      138
+    ]
+  },
+  {
+    "file": "tests/test_linear.py",
+    "name": "test_unitarity_separation_orders_extreme_ratios_without_saturation",
+    "lines": [
+      255,
+      261
+    ]
+  },
+  {
+    "file": "tests/test_linear.py",
+    "name": "test_recovery_cflat_inputs_require_declared_coordinates_and_matching_physical_rows",
+    "lines": [
+      262,
+      280
+    ],
+    "pv_correspondence": "test_pv_full_coefficient_json_preserves_declared_coordinates_and_rejects_old_cg",
+    "old_sine_tail_CG_proof_preserved_only_in_baseline": true
+  }
+]

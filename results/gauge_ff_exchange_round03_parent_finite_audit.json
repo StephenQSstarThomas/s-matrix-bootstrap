@@ -1,0 +1,30 @@
+{
+  "candidate": "results/gauge_ff_exchange_round03.json",
+  "candidate_sha256": "f37a991aae440a677226235a3876d98356c8b88978102af21c5ca86d873c3564",
+  "stage": null,
+  "repaired": false,
+  "passes_parent_finite_numerical_audit": true,
+  "values": {
+    "min_training_unitarity_circle_margin": 5.451155103016582e-90,
+    "min_training_unitarity_relative_margin": 4.884283251121581e-05,
+    "min_current_gram_eigenvalue": 1.7734511834902537e-11,
+    "min_conditioned_current_gram_eigenvalue": 9.071915196596204e-07,
+    "chiral_residual": 0.001999997375036926,
+    "chiral_tolerance": 0.002,
+    "selected_moment_residual_norm": 0.0019995598257230222,
+    "moment_tolerance": 0.002,
+    "max_current_high_FF_ratio": 0.9999001110515512,
+    "amplitude_at_infinity": -9.173434581399853e-16,
+    "vector_F_at_infinity": 1.5612511283791264e-17,
+    "max_extra_high_FF_ratio": 0.9999879905982025,
+    "vector_endpoint_parameterization": "Exact affine elimination; full stored coefficient array is its rounded reconstruction.",
+    "scalar_FF_endpoint_ratio": 0.9998373167750804,
+    "vector_FF_endpoint_derivative_ratio": 0.9802984667215612,
+    "fixed_f00_target": 0.075329811,
+    "fixed_f00_residual": -5.867566632219989e-17
+  },
+  "scope": "Finite scattering/current/chi/moment/FF, configured FF-endpoint constraints and optional fixed-f00 equality; numerical eigenvalues and double-generated quadrature. Extra global edge certificates audited separately.",
+  "angular_points": 160,
+  "summation": "numpy clongdouble/longdouble; eigvalsh float64",
+  "script_sha256": "042fe871aa0eb4ca47f7164bf32a7f044e933ca64a1d5444038fbef3056a8098"
+}

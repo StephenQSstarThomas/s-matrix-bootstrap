@@ -1,0 +1,83 @@
+[
+  {
+    "run": "D3_joint_001",
+    "native_status": "MaxTime",
+    "iterations": 26,
+    "solver_seconds": 316.900093209,
+    "total_seconds": 323.7612810700666,
+    "joint_feasible": false,
+    "amplitude_feasible": false
+  },
+  {
+    "run": "D3_joint_002",
+    "native_status": "MaxTime",
+    "iterations": 25,
+    "solver_seconds": 320.359679744,
+    "total_seconds": 327.3039021641016,
+    "joint_feasible": false,
+    "amplitude_feasible": false
+  },
+  {
+    "run": "D3_joint_003",
+    "native_status": "NumericalError",
+    "iterations": 1,
+    "solver_seconds": 135.17810064,
+    "total_seconds": 154.85449541616254,
+    "joint_feasible": false,
+    "amplitude_feasible": true
+  },
+  {
+    "run": "D3_feasibility_004",
+    "native_status": "NumericalError",
+    "iterations": 1,
+    "solver_seconds": 3.6451159520000003,
+    "total_seconds": 11.240220013074577,
+    "joint_feasible": false,
+    "amplitude_feasible": false
+  },
+  {
+    "run": "D3_feasibility_005",
+    "native_status": "NumericalError",
+    "iterations": 1,
+    "solver_seconds": 16.1446214,
+    "total_seconds": 33.590211940929294,
+    "joint_feasible": false,
+    "amplitude_feasible": false
+  },
+  {
+    "run": "D3_feasibility_006",
+    "native_status": "NumericalError",
+    "iterations": 1,
+    "solver_seconds": 15.529086789,
+    "total_seconds": 32.78652062593028,
+    "joint_feasible": false,
+    "amplitude_feasible": false
+  },
+  {
+    "run": "D3_feasibility_007",
+    "native_status": "MaxTime",
+    "iterations": 15,
+    "solver_seconds": 202.859321256,
+    "total_seconds": 209.95354168815538,
+    "joint_feasible": false,
+    "amplitude_feasible": false
+  },
+  {
+    "run": "D3_hull_008",
+    "native_status": "NumericalError",
+    "iterations": 30,
+    "solver_seconds": 0.294383964,
+    "total_seconds": 4.678418930154294,
+    "joint_feasible": false,
+    "amplitude_feasible": true
+  },
+  {
+    "run": "D3_hull_009",
+    "native_status": "AlmostSolved",
+    "iterations": 23,
+    "solver_seconds": 0.263038915,
+    "total_seconds": 5.779212708817795,
+    "joint_feasible": true,
+    "amplitude_feasible": true
+  }
+]

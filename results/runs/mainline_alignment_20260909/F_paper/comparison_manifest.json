@@ -1,0 +1,292 @@
+{
+  "comparisons": [
+    {
+      "id": "F_M50L8_S0",
+      "group": "F_partial",
+      "label": "M50L8",
+      "wave": "S0",
+      "profiles_json": "results/runs/mainline_alignment_20260909/F_paper/fig11_partial/resolution_partial.json",
+      "profile_filter": {
+        "M": 50,
+        "L": 8
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure11_s0_phases.csv",
+      "reference_filter": {
+        "model_M": "50",
+        "model_L": "8"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "F_M50L8_S2",
+      "group": "F_partial",
+      "label": "M50L8",
+      "wave": "S2",
+      "profiles_json": "results/runs/mainline_alignment_20260909/F_paper/fig11_partial/resolution_partial.json",
+      "profile_filter": {
+        "M": 50,
+        "L": 8
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure11_s2_phases.csv",
+      "reference_filter": {
+        "model_M": "50",
+        "model_L": "8"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "F_M50L8_P1",
+      "group": "F_partial",
+      "label": "M50L8",
+      "wave": "P1",
+      "profiles_json": "results/runs/mainline_alignment_20260909/F_paper/fig11_partial/resolution_partial.json",
+      "profile_filter": {
+        "M": 50,
+        "L": 8
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure11_p1_phases.csv",
+      "reference_filter": {
+        "model_M": "50",
+        "model_L": "8"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "F_M50L10_S0",
+      "group": "F_partial",
+      "label": "M50L10",
+      "wave": "S0",
+      "profiles_json": "results/runs/mainline_alignment_20260909/F_paper/fig11_partial/resolution_partial.json",
+      "profile_filter": {
+        "M": 50,
+        "L": 10
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure11_s0_phases.csv",
+      "reference_filter": {
+        "model_M": "50",
+        "model_L": "10"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "F_M50L10_S2",
+      "group": "F_partial",
+      "label": "M50L10",
+      "wave": "S2",
+      "profiles_json": "results/runs/mainline_alignment_20260909/F_paper/fig11_partial/resolution_partial.json",
+      "profile_filter": {
+        "M": 50,
+        "L": 10
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure11_s2_phases.csv",
+      "reference_filter": {
+        "model_M": "50",
+        "model_L": "10"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "F_M50L10_P1",
+      "group": "F_partial",
+      "label": "M50L10",
+      "wave": "P1",
+      "profiles_json": "results/runs/mainline_alignment_20260909/F_paper/fig11_partial/resolution_partial.json",
+      "profile_filter": {
+        "M": 50,
+        "L": 10
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure11_p1_phases.csv",
+      "reference_filter": {
+        "model_M": "50",
+        "model_L": "10"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 50,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "F_M45L10_S0",
+      "group": "F_partial",
+      "label": "M45L10",
+      "wave": "S0",
+      "profiles_json": "results/runs/mainline_alignment_20260909/F_paper/fig11_partial/resolution_partial.json",
+      "profile_filter": {
+        "M": 45,
+        "L": 10
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure11_s0_phases.csv",
+      "reference_filter": {
+        "model_M": "45",
+        "model_L": "10"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 45,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "F_M45L10_S2",
+      "group": "F_partial",
+      "label": "M45L10",
+      "wave": "S2",
+      "profiles_json": "results/runs/mainline_alignment_20260909/F_paper/fig11_partial/resolution_partial.json",
+      "profile_filter": {
+        "M": 45,
+        "L": 10
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure11_s2_phases.csv",
+      "reference_filter": {
+        "model_M": "45",
+        "model_L": "10"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 45,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "F_M45L10_P1",
+      "group": "F_partial",
+      "label": "M45L10",
+      "wave": "P1",
+      "profiles_json": "results/runs/mainline_alignment_20260909/F_paper/fig11_partial/resolution_partial.json",
+      "profile_filter": {
+        "M": 45,
+        "L": 10
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure11_p1_phases.csv",
+      "reference_filter": {
+        "model_M": "45",
+        "model_L": "10"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 45,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "F_M60L10_S0",
+      "group": "F_partial",
+      "label": "M60L10",
+      "wave": "S0",
+      "profiles_json": "results/runs/mainline_alignment_20260909/F_paper/fig11_partial/resolution_partial.json",
+      "profile_filter": {
+        "M": 60,
+        "L": 10
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure11_s0_phases.csv",
+      "reference_filter": {
+        "model_M": "60",
+        "model_L": "10"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 60,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "F_M60L10_S2",
+      "group": "F_partial",
+      "label": "M60L10",
+      "wave": "S2",
+      "profiles_json": "results/runs/mainline_alignment_20260909/F_paper/fig11_partial/resolution_partial.json",
+      "profile_filter": {
+        "M": 60,
+        "L": 10
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure11_s2_phases.csv",
+      "reference_filter": {
+        "model_M": "60",
+        "model_L": "10"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 60,
+      "model_mpi_gev": 0.14
+    },
+    {
+      "id": "F_M60L10_P1",
+      "group": "F_partial",
+      "label": "M60L10",
+      "wave": "P1",
+      "profiles_json": "results/runs/mainline_alignment_20260909/F_paper/fig11_partial/resolution_partial.json",
+      "profile_filter": {
+        "M": 60,
+        "L": 10
+      },
+      "profile_x": "energy_gev",
+      "profile_y": "phase_degrees",
+      "value_kind": "phase",
+      "reference_csv": "references/figure11_p1_phases.csv",
+      "reference_filter": {
+        "model_M": "60",
+        "model_L": "10"
+      },
+      "reference_x": "energy_gev",
+      "reference_y": "phase_deg",
+      "correspondence": "Nominal role/configuration; no recovery of unpublished author coefficients or precise selection rule claimed",
+      "reference_native_M": 60,
+      "model_mpi_gev": 0.14
+    }
+  ]
+}

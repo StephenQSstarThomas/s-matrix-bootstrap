@@ -1,0 +1,46 @@
+"""Typeset the frozen PV draft only; no scientific calculations."""
+from pathlib import Path
+import json
+import os
+import subprocess
+import sys
+
+out = Path(__file__).resolve().parent
+tag = sys.argv[1] if len(sys.argv) > 1 else "rebuild"
+env = os.environ.copy()
+for name in ("OPENBLAS_NUM_THREADS", "OMP_NUM_THREADS", "MKL_NUM_THREADS", "RAYON_NUM_THREADS"):
+    env[name] = "1"
+pandoc = "/tmp/he_report_pandoc/pandoc"
+tectonic = "/home/shiqiu/.local/bin/tectonic"
+commands = []
+
+def run(command, stem):
+    commands.append(command)
+    with (out / f"{stem}_{tag}.log").open("w") as log:
+        result = subprocess.run(command, cwd=out, env=env, stdout=log, stderr=subprocess.STDOUT)
+    if result.returncode:
+        raise SystemExit(result.returncode)
+
+run([pandoc, "REVIEW_ZH.md", "--from", "markdown+tex_math_single_backslash", "--to", "json", "-o", "document_ast.json"], "pandoc_ast")
+ast = json.loads((out / "document_ast.json").read_text())
+
+def table_widths(value):
+    if isinstance(value, dict):
+        if value.get("t") == "Table":
+            columns = value["c"][2]
+            widths = [.13, .87] if len(columns) == 2 else [.09, .26, .14, .26, .25]
+            assert len(columns) == len(widths)
+            for column, width in zip(columns, widths):
+                column[1] = {"t": "ColWidth", "c": width}
+        for item in value.values():
+            table_widths(item)
+    elif isinstance(value, list):
+        for item in value:
+            table_widths(item)
+
+table_widths(ast)
+(out / "document_ast.json").write_text(json.dumps(ast, ensure_ascii=False))
+run([pandoc, "document_ast.json", "--from", "json", "--standalone", "--to", "latex", "--toc", "--toc-depth=1", "--shift-heading-level-by=-1", "--include-in-header", "header.tex", "-V", "mainfont=DejaVu Serif", "-V", "sansfont=DejaVu Sans", "-V", "monofont=DejaVu Sans Mono", "-V", "papersize=a4", "-V", "fontsize=10pt", "-V", "geometry:margin=18mm", "-V", "colorlinks=true", "-o", "REVIEW_ZH.tex"], "pandoc")
+run([tectonic, "--keep-logs", "--keep-intermediates", "--reruns", "2", "REVIEW_ZH.tex"], "compile")
+(out / f"commands_{tag}.json").write_text(json.dumps(commands, indent=2) + "\n")
+print(f"Build {tag} completed.")

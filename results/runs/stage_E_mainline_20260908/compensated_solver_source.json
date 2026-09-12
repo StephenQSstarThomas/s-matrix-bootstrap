@@ -1,0 +1,4 @@
+{
+  "frozen_source": "/tmp/smatrix_E_compensated_2qdxx_s5",
+  "change": "Preserve the accumulated constraint values when forming duals, as in the verified B solver; original independent audit remains"
+}

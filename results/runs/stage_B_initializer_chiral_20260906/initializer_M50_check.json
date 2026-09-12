@@ -1,0 +1,34 @@
+{
+  "initialization_only": true,
+  "transferred_optimality": false,
+  "small_run_status": "candidate saved before final report JSON longdouble serialization failure",
+  "source_preparation": "results/runs/stage_B_initializer_M10_20260906",
+  "full_preparation": "results/runs/stage_B_unitarity150_20260906",
+  "embedding": "E[j,k]=sum_{n=1}^{10} sin(n phi50_j) (T10^-1)[n,k]; sigma50=E sigma10; rho50=E rho10 E^T; unsubtracted T0=0; overall factor=.99",
+  "M": 50,
+  "L": 10,
+  "sampling_nodes": 150,
+  "scattering_constraints": 4500,
+  "infinity": "zero",
+  "chiral_tolerance": 0.002,
+  "density_limit": 377500,
+  "full_model_sampled_feasible": true,
+  "targets": [
+    0.023117667798179403,
+    -0.0012856881643319303
+  ],
+  "minimum_scattering_margin": 1.5867664382049963e-103,
+  "negative_margin_count": 0,
+  "chiral_norms": [
+    0.0019799999796964686,
+    0.0007110094647195526
+  ],
+  "density_norm": 11754.105892162657,
+  "infinity_coefficient": 0.0,
+  "same_energy_set": true,
+  "maximum_embedding_amplitude_difference": 1.2672397162118328e-11,
+  "preparation_seconds": 7.181694653816521,
+  "small_optimization_supervisor_seconds": 34.550039945868775,
+  "data_conversion_seconds": 1.9413465459365398,
+  "validation_arithmetic": "longdouble accumulation of saved float64 full M50/K150 operator; finite sampling only"
+}

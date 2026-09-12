@@ -1,0 +1,291 @@
+"""Physical inputs, observables and finite-region statistics."""
+from flint import acb, acb_mat, arb
+from fractions import Fraction
+from math import isfinite
+from pathlib import Path
+import csv
+import numpy as np
+from . import UVConfig, read_json, write_json, workspace, resolution_comparison_record
+FESR_CHANNELS = ('S0','S0','P1','P1')
+FESR_POWERS = (0,1,-1,0)
+CHIRAL_ENERGIES = (Fraction(1,2),Fraction(1),Fraction(3,2),Fraction(2))
+CHIRAL_NORM = 'combined-l2'
+CHIRAL_TOLERANCES = (.006,.004,.002,.001,.0006,.0002)
+TARGET_ENERGY = Fraction(3)
+
+def chiral_slices(chiral_norm='separate-l2'):
+    if chiral_norm=='separate-l2':return (slice(0,4),slice(4,8))
+    if chiral_norm=='combined-l2':return (slice(0,8),)
+    raise ValueError('Chiral norm must be separate-l2 or combined-l2')
+
+def declared_chiral_norm(args):
+    """Optimization must name its uncertainty set; never infer it from plots."""
+    required=(args.command in ('boundary','dual') and args.mode!='pure' or
+              args.command=='regions' or args.command=='resolution' and not args.profile_runs)
+    if args.chiral_norm is None and required:
+        raise ValueError('Declare --chiral-norm explicitly; the paper does not identify a unique norm')
+    return args.chiral_norm or 'separate-l2'
+
+def weinberg_waves(s,fpi_over_mpi=92/140):
+    s=np.asarray(s,dtype=float)
+    return np.stack((2*s-1,2-s,(s-4)/3),axis=-1)/(16*np.pi**2*fpi_over_mpi**2)
+
+def phase_space(s):
+    s = arb(s)
+    if not s.is_finite() or not s >= 4:
+        raise ValueError('Physical scattering energy must be finite and at least 4')
+    return (1-4/s).sqrt()
+
+def scattering_matrix(f, s):
+    f = acb(f)
+    if not f.is_finite():
+        raise ValueError('A finite partial wave is required')
+    return 1 + acb(0, 1)*arb.pi()*phase_space(s)*f
+
+def unitarity_margin(f, s):
+    f = acb(f)
+    if not f.is_finite():
+        raise ValueError('A finite partial wave is required')
+    kappa = arb.pi()*phase_space(s)
+    return kappa*(2*f.imag-kappa*(f.real*f.real+f.imag*f.imag))
+
+def scattering_gram(f, s):
+    S = scattering_matrix(f, s)
+    return acb_mat([[1, S], [S.conjugate(), 1]])
+
+def current_kinematic_squares(s):
+    beta = phase_space(s)
+    return 3*beta/(256*arb.pi()**5), (s-4)*beta/(384*arb.pi()**5)
+
+def current_gram(S, F, rho, k_squared):
+    if not k_squared > 0:
+        raise ValueError('The current kinematic factor must be positive')
+    S, F = acb(S), acb(F)
+    return acb_mat([[1, S, F], [S.conjugate(), 1, F.conjugate()],
+                    [F.conjugate(), F, rho/k_squared]])
+
+def chiral_bound(mode, tolerance):
+    if mode not in ('pure', 'chiral'):
+        raise ValueError('Support mode must be pure or chiral')
+    if mode == 'pure':
+        return None
+    if not isfinite(tolerance) or tolerance <= 0:
+        raise ValueError('A finite positive chiral tolerance is required')
+    return float(tolerance)
+
+def fesr_weights(M, config=UVConfig(), *, normalized=True):
+    from .quotient import _fesr_grid
+    s, widths, jacobian = _fesr_grid(M, config)
+    powers = np.array(FESR_POWERS)[:, None]
+    weights = widths*jacobian*s**powers
+    return weights/config.s0**(powers+2) if normalized else weights
+
+def fesr_data(M, config=UVConfig()):
+    from .quotient import _fesr_grid, fesr_targets
+    from dataclasses import asdict
+    s, widths, _ = _fesr_grid(M, config)
+    scales = config.s0**(np.array(FESR_POWERS)+2)
+    errors = np.full(4, config.sr_tolerance)
+    raw_errors = errors if config.sr_error == 'raw-absolute' else errors*scales
+    return dict(config=asdict(config), s0=config.s0, nodes=s.tolist(),
+        channels=list(FESR_CHANNELS), powers=list(FESR_POWERS),
+        spectral_density_gev_powers={'S0': 4, 'P1': 2}, raw_moment_gev_powers=[6, 8, 2, 4],
+        form_factor_gev_powers={'S0': 2, 'P1': 0}, units='divide physical GeV quantities by m_pi to the stated power',
+        targets_normalized=fesr_targets(config).tolist(),
+        targets_raw=fesr_targets(config, normalized=False).tolist(),
+        weights_raw=fesr_weights(M, config, normalized=False).tolist(),
+        weights_normalized=fesr_weights(M, config).tolist(),
+        tolerances_raw=raw_errors.tolist(), tolerances_normalized=(raw_errors/scales).tolist(),
+        error_grouping='four independent absolute scalar residuals',
+        cell_phi_widths=widths.tolist(), high_energy_mask=(s > config.s0).tolist(),
+        form_factors_at_zero=[1., 1.], mq_squared=config.mq_squared,
+        rescaled_ff_caps_squared=[2*config.mq_squared*config.ff_tolerance, config.ff_tolerance/2],
+        ff_cap_variable='abs(mathcal F)^2 = k_squared * abs(F)^2',
+        finite_prescription_is_conditional=True)
+
+def current_operators(H,kappa,energies,waves,M,config=None,bits=256):
+    from scipy.sparse import lil_matrix
+    from flint import ctx
+    from .operators import midpoint_grid
+    from .kernels import pv_matrix, density_labels
+    config=UVConfig() if config is None else config
+    p=len(density_labels(M));N=len(kappa);total=p+4*M
+    H=np.asarray(H);kap=np.asarray(kappa,float);ss=np.asarray(energies,float);ww=np.asarray(waves)
+    if H.shape!=(2*N+11,p) or kap.shape!=(N,) or ss.shape!=(N,) or ww.shape!=(N,2):
+        raise ValueError('Complete original amplitude rows and matching physical metadata required')
+    if type(bits) is not int or bits<64:raise ValueError('Explicit current arithmetic precision >=64 required')
+    with ctx.workprec(bits):
+        nodes=np.array([float(x) for x in midpoint_grid(M)[0]])
+        kernel=pv_matrix(M);K=np.array([[float(kernel[i,j]) for j in range(M)] for i in range(M)])
+        indices=np.empty((2,M),dtype=int)
+        for channel in range(2):
+            for j,s in enumerate(nodes):
+                matches=np.flatnonzero(np.isclose(ss,s,rtol=64*np.finfo(float).eps,atol=0)&
+                    (ww[:,0]==channel)&(ww[:,1]==channel))
+                if not len(matches):raise ValueError('Every native S0/P1 node must be present in the same amplitude')
+                indices[channel,j]=matches[0]
+        actual=ss[indices[0]]
+        factors=[current_kinematic_squares(float(s)) for s in actual]
+        k2=np.array([[float(pair[ch]) for pair in factors] for ch in range(2)])
+        k=np.array([[float(pair[ch].sqrt()) for pair in factors] for ch in range(2)])
+    selected=np.r_[indices.ravel(),N+indices.ravel()]
+    if not np.isfinite(H[selected]).all() or not np.isfinite(k).all() or not np.all(k>0):
+        raise ValueError('Finite current rows strictly above threshold required')
+    expected=np.pi*np.sqrt(1-4/ss[indices])
+    if not np.allclose(kap[indices],expected,rtol=64*np.finfo(float).eps,atol=0):
+        raise ValueError('Current blocks require the original kappa=pi*sqrt(1-4/s)')
+    gram=lil_matrix((12*M,total));constant=np.zeros(12*M);uv=fesr_data(M,config)
+    for ch in range(2):
+        start=p+ch*M;rho=p+(2+ch)*M
+        for j,index in enumerate(indices[ch]):
+            r=6*(ch*M+j);ki=k[ch,j];kapj=kap[index]
+            gram[r,:p]=-kapj*H[N+index];gram[r+1,:p]=np.sqrt(2.)*kapj*H[index]
+            gram[r+2,:p]=kapj*H[N+index];gram[r+3,start:start+M]=2*ki*K[j]
+            gram[r+4,start+j]=2*ki;gram[r+5,rho+j]=1
+            constant[r]=2;constant[r+3]=2*ki
+    moments=lil_matrix((4,total));weights=np.asarray(uv['weights_raw'])
+    for a in range(4):moments[a,p+(2+a//2)*M:p+(3+a//2)*M]=weights[a]
+    high=np.flatnonzero(uv['high_energy_mask']);count=2*len(high)
+    caps=lil_matrix((3*count,total));cap_constant=np.zeros(3*count)
+    for ch in range(2):
+        for a,j in enumerate(high):
+            r=3*(ch*len(high)+a);start=p+ch*M;ki=k[ch,j]
+            caps[r+1,start:start+M]=ki*K[j];caps[r+2,start+j]=ki
+            cap_constant[r]=np.sqrt(uv['rescaled_ff_caps_squared'][ch]);cap_constant[r+1]=ki
+    slices={'C_flat':[0,p],**{name:[p+a*M,p+(a+1)*M] for a,name in
+        enumerate(('ImF0','ImF1','rho_current0','rho_current1'))}}
+    return dict(matrices=dict(gram_linear=gram.tocsr(),moment_linear=moments.tocsr(),ff_cap_linear=caps.tocsr()),
+        arrays=dict(gram_constant=constant,ff_cap_constant=cap_constant,hilbert_kernel=K,nodes=actual,
+            k_squared=k2,k=k,native_scattering_indices=indices,high_energy_indices=high,
+            moment_targets_raw=np.asarray(uv['targets_raw']),moment_errors_raw=np.asarray(uv['tolerances_raw']),
+            form_factors_at_zero=np.asarray(uv['form_factors_at_zero']),ff_caps_squared=np.asarray(uv['rescaled_ff_caps_squared'])),
+        metadata=dict(M=M,amplitude_coefficients=p,total_variables=total,variable_slices=slices,bits=bits,
+            affine_convention='slack=constant+linear@variables; conic A=-linear, b=constant',
+            gram_svec_order=['G11','sqrt(2)*G12','G22','sqrt(2)*G13','sqrt(2)*G23','G33'],
+            gram_block_sizes=[3]*(2*M),current_order='S0 nodes, then P1 nodes',ff_cap_cone_sizes=[3]*count,
+            source_physical_rows=N,ordinary_scattering_rows_outside_current=N-2*M,
+            scattering_policy='All scattering rows retained; current principal blocks imply S0/P1 disks',
+            form_factor_rule='F=1+q(s)@ImF; q uses all sine-cardinal modes and q(0)=0; native ReF=1+K@ImF',
+            spectrum_rule='Independent current spectra at M nodes; no off-node interpolation',
+            source='v3 Eq.(2.33),(2.35)-(2.41),(3.65)-(3.75); K is Eq.(3.67)',uv=uv,
+            scope='D1/D2 operators only; no joint feasibility/support claim',
+            arithmetic='Arb K/k rounded to float64; amplitude rows unchanged'))
+
+def compare_selected_profiles(args):
+    manifest=read_json(args.comparison_manifest);records=[];cache={};tables={}
+    def matches(row,filters):return all(str(row.get(k))==str(v) for k,v in filters.items())
+    def difference(x,ours,reference,phase):
+        d=ours-reference;result=dict(count=len(x),x=x.tolist(),ours=ours.tolist(),reference=reference.tolist(),
+            difference=d.tolist(),rms=float(np.sqrt(np.mean(d*d))),max_abs=float(max(abs(d))),bias=float(np.mean(d)))
+        if phase:
+            wrapped=(d+90)%180-90
+            result.update(modulo_180_rms=float(np.sqrt(np.mean(wrapped*wrapped))),modulo_180_max_abs=float(max(abs(wrapped))))
+        return result
+    for spec in manifest['comparisons']:
+        path=spec['profiles_json'];refpath=spec['reference_csv']
+        if path not in cache:cache[path]=read_json(path)
+        if refpath not in tables:
+            with Path(refpath).open() as stream:tables[refpath]=list(csv.DictReader(stream))
+        candidates=[p for p in cache[path]['profiles'] if matches(p,spec.get('profile_filter',{}))]
+        if len(candidates)!=1:raise ValueError('Comparison needs one saved profile: '+spec['id'])
+        p=candidates[0];wave=('S0','S2','P1').index(spec['wave']);phase=spec['value_kind']=='phase'
+        x=np.asarray(p[spec['profile_x']],float);y=np.asarray(p[spec['profile_y']],float)[:,wave]
+        rows=[r for r in tables[refpath] if matches(r,spec.get('reference_filter',{}))]
+        xy=np.array(sorted((float(r[spec['reference_x']]),float(r[spec['reference_y']])) for r in rows))
+        if len(xy)<2 or np.any(np.diff(x)<=0) or np.any(np.diff(xy[:,0])<=0):raise ValueError('Ordered distinct curve coordinates required')
+        common=(xy[:,0]>=x[0])&(xy[:,0]<=x[-1]);xx=xy[common,0]
+        if len(xx)<2:raise ValueError('Insufficient common range: '+spec['id'])
+        record=dict(spec,selection=p.get('selection'),direct_coordinate=difference(xx,np.interp(xx,x,y),xy[common,1],phase),
+            interpolation_scope='Linear display comparison on common range; no off-node amplitude/error bound')
+        M=spec.get('reference_native_M')
+        if M is not None:
+            # The manifest declares a complete native prefix; infer display scale from x only.
+            sqrt_s=2/np.cos((np.arange(len(xy))+.5)*np.pi/(2*M));m=xy[:,0]/sqrt_s;median=float(np.median(m))
+            model_m=spec['model_mpi_gev'];native=model_m*sqrt_s
+            indices=np.array([np.argmin(abs(x-e)) for e in native]);distance=abs(x[indices]-native)
+            recognized=bool(np.ptp(m)/median<1e-3 and np.all(distance<1e-9))
+            record['native_coordinate_mapping']=dict(M=M,inferred_display_mpi_gev=median,display_mpi_range=[float(min(m)),float(max(m))],
+                recognized=recognized,recognition_rule='Declared native prefix; display-scale spread <0.1%; saved native E distance <1e-9 GeV',
+                changes_physical_inputs=False,inference_only=True)
+            if recognized:record['same_native_s']=difference(sqrt_s**2,y[indices],xy[:,1],phase)
+        if phase:
+            record['eta_min']=float(np.min(np.asarray(p['eta'])[:,wave]))
+            def crossing(a,b):
+                for j in range(len(a)-1):
+                    if b[j]<90<=b[j+1]:return float(a[j]+(90-b[j])*(a[j+1]-a[j])/(b[j+1]-b[j]))
+                return None
+            if spec['wave']=='P1':record['P1_90_gev']=dict(ours=crossing(x,y),reference=crossing(xy[:,0],xy[:,1]))
+        records.append(record)
+    out=Path(args.output)
+    result=dict(status='compared_saved_profiles',manifest=str(args.comparison_manifest),comparisons=records,
+        prescription='from_each_saved_profile',unitarity_scope='comparison_only',
+        scope='Source-curve differences; no statistical-error or author-amplitude identity claim',
+        parameter_fitting=False,phase_branch_adjustment=False,optimization_performed=False,continuum_certified=False)
+    write_json(out/'comparison.json',result)
+    fields=['id','group','wave','kind','count','rms','max_abs','bias','modulo_180_rms','modulo_180_max_abs']
+    with (out/'summary.csv').open('w') as stream:
+        writer=csv.DictWriter(stream,fieldnames=fields);writer.writeheader()
+        for r in records:
+            for key in ('direct_coordinate','same_native_s'):
+                if key in r:writer.writerow(dict(id=r['id'],group=r['group'],wave=r['wave'],kind=key,**{k:r[key].get(k,'') for k in fields[4:]}))
+    return result
+
+def resolution_compare(args):
+    from .io import CONFIGURATIONS, plot_resolution_profiles
+    from .analysis import phase_shifts
+    def crossing(x,delta):
+        hits=np.flatnonzero((delta[:-1]<90)&(delta[1:]>=90))
+        if not len(hits):return None
+        j=int(hits[0]);return dict(bracket_gev=x[j:j+2],linear_gev=float(x[j]+(90-delta[j])/(delta[j+1]-delta[j])*(x[j+1]-x[j])))
+    rows=[];signatures=[]
+    for path in args.profile_runs:
+        d=read_json(Path(path)/'evaluation.json');sel=d['selection'];sig=sel['model_signature'];key=(sig['M'],sig['L'])
+        if d['waves']!=[[0,0],[2,0],[1,1]] or d['unitarity']['status']!='sampled_passed':raise ValueError('Original native primary-wave checks must pass')
+        f=np.asarray(d['f']);delta,eta=phase_shifts(f[:,:,0]+1j*f[:,:,1],d['energies']);x=.14*np.sqrt(d['energies']);angles=np.degrees(delta)
+        rho=crossing(x,angles[:,2]);proof_path=Path(sel['source_reports'][0]);proof=read_json(proof_path);outer=proof['outer']
+        if not proof.get('support_optimality_certified') or not outer['primal_feasible'] or proof.get('support_direction')!=[1.,0.] or outer['upper']-outer['lower']>min(args.gap,1e-4):raise ValueError('Each curve requires its original full joint +x support audit')
+        center=None
+        if getattr(args,'require_center',False):
+            from .gauge import resolution_profile_center
+            center=resolution_profile_center(proof_path,sel,d['coefficients'])
+        counts=dict(scattering_disks=proof['scattering_samples'],current_grams=len(proof['current_model']['gram_block_sizes']),chiral_balls=len(chiral_slices(sig['chiral_norm'])),density_bounds=1,FESR=4,FF_caps=len(proof['current_model']['ff_cap_cone_sizes']))
+        reduced={k:sig[k] for k in ('chiral_tolerance','chiral_norm','prescription','infinity','unitarity_scope','uv_config')}
+        reduced.update(ff_endpoint_order=sig.get('ff_endpoint_order',0),asymptotic_unitarity=sig.get('tail_conditions_applied',False),additional_sampling=(sig.get('additional_constraints') or {}).get('kind'))
+        if sig['density_limit']!=100*(sig['M']**2+sig['M']*(sig['M']+1)//2):raise ValueError('One declared regulator recipe is required')
+        signatures.append(reduced);rows.append(dict(M=key[0],L=key[1],center_provenance=center,energy_gev=x,phase_degrees=angles,eta=eta,P1_90=rho,selection=sel,evaluation=str(Path(path)/'evaluation.json'),checks=d['unitarity']['samples_checked'],support_bounds=dict(lower=outer['lower'],upper=outer['upper'],gap=outer['upper']-outer['lower']),original_constraint_counts=counts,full_joint_audit=str(proof_path.parent/'joint_audit.json')))
+    provided=[(p['M'],p['L']) for p in rows]
+    if not provided or len(set(provided))!=len(provided) or any(k not in CONFIGURATIONS for k in provided):raise ValueError('Distinct known published configurations required')
+    if any(s!=signatures[0] for s in signatures):raise ValueError('Unchanged physical inputs required')
+    from .certificates import native_rho_certificate
+    for p in rows:
+        d=read_json(p['evaluation']);p['native_rho_certificate']=native_rho_certificate(d,getattr(args,'bits',512)) if 'f_enclosures' in d else dict(status='not_available',reason='Archived evaluation lacks amplitude enclosures')
+    missing=[list(k) for k in CONFIGURATIONS if k not in provided]
+    subcomparisons={}
+    for key,expected in [('fixed_M50',[(50,8),(50,10),(50,12)]),('fixed_L10',[(45,10),(50,10),(60,10)])]:
+        absent=[list(k) for k in expected if k not in provided]
+        subcomparisons[key]=dict(complete=not absent,missing_configurations=absent)
+    ref=next((p for p in rows if (p['M'],p['L'])==(50,10)),None);names=['S0','S2','P1'];comparisons=[];reference_curves={}
+    for wave in names:
+        path=workspace()/'references'/f'figure11_{wave.lower()}_phases.csv'
+        with path.open() as f:reference_curves[wave]=list(csv.DictReader(f))
+    reference_crossings=[]
+    for M,L in CONFIGURATIONS:
+        data=np.asarray([(float(v['energy_gev']),float(v['phase_deg'])) for v in reference_curves['P1'] if (int(v['model_M']),int(v['model_L']))==(M,L)])
+        reference_crossings.append(dict(M=M,L=L,P1_90=crossing(data[:,0],data[:,1])))
+    totals={key:sum(p['original_constraint_counts'][key] for p in rows) for key in rows[0]['original_constraint_counts']};totals['fresh_primary_samples']=sum(p['checks'] for p in rows)
+    comparisons=[] if ref is None else [resolution_difference(p,ref) for p in rows]
+    plot_resolution_profiles(args.output,rows,reference_curves,bool(missing),subcomparisons)
+    result=resolution_comparison_record(CONFIGURATIONS,rows,signatures[0],comparisons,reference_crossings,totals,provided,missing,subcomparisons)
+    result['require_center']=getattr(args,'require_center',False)
+    write_json(args.output/('resolution_partial.json' if missing else 'resolution.json'),result);return result
+
+def resolution_difference(p,ref):
+    key=(p['M'],p['L'])
+    x=p['energy_gev']
+    mask=(x>=ref['energy_gev'][0])&(x<=ref['energy_gev'][-1]);xx=x[mask];rphase=np.column_stack([np.interp(xx,ref['energy_gev'],ref['phase_degrees'][:,j]) for j in range(3)])
+    diff=p['phase_degrees'][mask]-rphase;S=p['eta'][mask]*np.exp(2j*np.radians(p['phase_degrees'][mask]));Sr=ref['eta']*np.exp(2j*np.radians(ref['phase_degrees']))
+    interp=np.column_stack([np.interp(xx,ref['energy_gev'],Sr[:,j].real)+1j*np.interp(xx,ref['energy_gev'],Sr[:,j].imag) for j in range(3)])
+    return dict(M=key[0],L=key[1],common_native_grid=key[0]==50,energy_gev=xx,max_phase_difference_degrees=np.max(abs(diff),axis=0),max_mod_pi_difference_degrees=np.max(abs((diff+90)%180-90),axis=0),max_complex_S_difference=np.max(abs(S-interp),axis=0))
+
+from .spectra import spectral_budget, native_peaks, watson_diagnostics, joint_observable_change
+from .certificates import affine_norm_support

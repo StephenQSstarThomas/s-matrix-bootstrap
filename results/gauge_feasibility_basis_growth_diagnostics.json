@@ -1,0 +1,316 @@
+{
+  "scope": "Three additional solves: N8/F51, N8/F60 combined L2 and N6/F21 L-infinity; N8/F50 is a previously archived matched-control comparison.",
+  "source_truncation_caveat": "Both scalar and vector analytic degrees increase. F_degree+1 with exact vector endpoint restores the previous vector free-mode count and also adds one scalar coefficient. These are explicitly larger truncations.",
+  "unmatched_N6_F20_caveat": "No archived N6/F20 L-infinity run has exactly M64, edges, vector endpoint elimination and FF401 controls. No F20-to-F21 feasibility threshold is inferred from the unmatched older runs.",
+  "records": [
+    {
+      "candidate": "results/gauge_feasibility_N8_F50_edge_FF401_infinity_eliminated.json",
+      "candidate_sha256": "8f345d02dfc224b29633ab40b61274840fe8ab57e84b7b43f528156c38c5d4ec",
+      "scattering_degree": 8,
+      "scalar_form_degree": 50,
+      "vector_form_degree": 50,
+      "independent_scalar_form_coefficients": 50,
+      "independent_vector_form_coefficients": 49,
+      "total_independent_form_coefficients": 99,
+      "scattering_energy_nodes": 64,
+      "waves_per_isospin": 10,
+      "chiral_norm": "combined_l2",
+      "chiral_tolerance": 0.002,
+      "moment_convention": "raw_absolute",
+      "moment_tolerance": 0.002,
+      "nominal_gauge_points": 50,
+      "actual_gauge_points": 51,
+      "quadrature": "clipped_cells",
+      "fixed_f00": null,
+      "vector_endpoint_enforced": true,
+      "vector_endpoint_parameterization": "last vector coefficient exactly eliminated using F_P1(-1)=0",
+      "large_spin_edges": true,
+      "extra_ff_high_nodes": 60,
+      "signed_margin": -0.0009245986080255423,
+      "solver_terminal_status": "AlmostSolved",
+      "finite_numerical_pass": false,
+      "independent_ff_audit": {
+        "full_grid_points": 809,
+        "high_energy_points": 121,
+        "high_validation_nodes_coinciding_with_training": 0,
+        "matching_relative_tolerance": 1e-12,
+        "max_squared_bound_relative_excess_by_channel": [
+          0.15015756483814324,
+          0.07306715813814924
+        ],
+        "worst_s_by_channel": [
+          74.41874524032522,
+          74.41874524032522
+        ],
+        "immediately_above_cutoff_s": 73.92278825419679,
+        "immediately_above_cutoff_squared_bound_ratios": [
+          1.302458671113868,
+          1.1453502560841646
+        ],
+        "warning": "Numerical evaluation at genuinely new energies, not a continuum certificate; positive excess disproves numerical feasibility there."
+      },
+      "P1_phase_diagnostic": {
+        "angular_points": 160,
+        "phase_grid_points": 1004,
+        "energy_GeV": [
+          0.7897,
+          0.8265,
+          0.86176
+        ],
+        "phase_degrees": [
+          -10.476686858671787,
+          -15.975821370344892,
+          -18.72770551259513
+        ],
+        "inelasticity": [
+          0.3780854589696482,
+          0.4371707856882384,
+          0.5101809118736624
+        ],
+        "minimum_phase_degrees": -20.10427169731963,
+        "maximum_phase_degrees": 12.171738452880431,
+        "ninety_degree_crossing_energy_brackets": [],
+        "interpretation": "Threshold-unwrapped arg(S)/2; finite sampled phase diagnostic, not an elastic or resonance claim."
+      }
+    },
+    {
+      "candidate": "results/gauge_feasibility_N8_F51_edge_FF401_infinity_eliminated.json",
+      "candidate_sha256": "5cfbfb39a0dbf44b43f839243565ef590134991bd7cfe2af35920fda0019fa75",
+      "scattering_degree": 8,
+      "scalar_form_degree": 51,
+      "vector_form_degree": 51,
+      "independent_scalar_form_coefficients": 51,
+      "independent_vector_form_coefficients": 50,
+      "total_independent_form_coefficients": 101,
+      "scattering_energy_nodes": 64,
+      "waves_per_isospin": 10,
+      "chiral_norm": "combined_l2",
+      "chiral_tolerance": 0.002,
+      "moment_convention": "raw_absolute",
+      "moment_tolerance": 0.002,
+      "nominal_gauge_points": 50,
+      "actual_gauge_points": 51,
+      "quadrature": "clipped_cells",
+      "fixed_f00": null,
+      "vector_endpoint_enforced": true,
+      "vector_endpoint_parameterization": "last vector coefficient exactly eliminated using F_P1(-1)=0",
+      "large_spin_edges": true,
+      "extra_ff_high_nodes": 60,
+      "signed_margin": null,
+      "solver_terminal_status": "NumericalError",
+      "finite_numerical_pass": false
+    },
+    {
+      "candidate": "results/gauge_feasibility_N8_F60_edge_FF401_infinity_eliminated.json",
+      "candidate_sha256": "f51672b53f727321222611b0d3ec11b879130ccddc1783e81c4f00ed0287ae7c",
+      "scattering_degree": 8,
+      "scalar_form_degree": 60,
+      "vector_form_degree": 60,
+      "independent_scalar_form_coefficients": 60,
+      "independent_vector_form_coefficients": 59,
+      "total_independent_form_coefficients": 119,
+      "scattering_energy_nodes": 64,
+      "waves_per_isospin": 10,
+      "chiral_norm": "combined_l2",
+      "chiral_tolerance": 0.002,
+      "moment_convention": "raw_absolute",
+      "moment_tolerance": 0.002,
+      "nominal_gauge_points": 50,
+      "actual_gauge_points": 51,
+      "quadrature": "clipped_cells",
+      "fixed_f00": null,
+      "vector_endpoint_enforced": true,
+      "vector_endpoint_parameterization": "last vector coefficient exactly eliminated using F_P1(-1)=0",
+      "large_spin_edges": true,
+      "extra_ff_high_nodes": 60,
+      "signed_margin": -0.0007696163226493239,
+      "solver_terminal_status": "AlmostSolved",
+      "finite_numerical_pass": false,
+      "independent_ff_audit": {
+        "full_grid_points": 809,
+        "high_energy_points": 121,
+        "high_validation_nodes_coinciding_with_training": 0,
+        "matching_relative_tolerance": 1e-12,
+        "max_squared_bound_relative_excess_by_channel": [
+          0.16793195380872605,
+          0.0902713995051092
+        ],
+        "worst_s_by_channel": [
+          74.41874524032522,
+          74.41874524032522
+        ],
+        "immediately_above_cutoff_s": 73.92278825419679,
+        "immediately_above_cutoff_squared_bound_ratios": [
+          1.345979941327989,
+          1.18216609437992
+        ],
+        "warning": "Numerical evaluation at genuinely new energies, not a continuum certificate; positive excess disproves numerical feasibility there."
+      },
+      "P1_phase_diagnostic": {
+        "angular_points": 160,
+        "phase_grid_points": 1004,
+        "energy_GeV": [
+          0.7897,
+          0.8265,
+          0.86176
+        ],
+        "phase_degrees": [
+          -9.432686255254987,
+          -14.98449744424313,
+          -17.918851033799765
+        ],
+        "inelasticity": [
+          0.38364672388863075,
+          0.43701082500604954,
+          0.5059381520266261
+        ],
+        "minimum_phase_degrees": -19.619442573403127,
+        "maximum_phase_degrees": 11.923229979683832,
+        "ninety_degree_crossing_energy_brackets": [],
+        "interpretation": "Threshold-unwrapped arg(S)/2; finite sampled phase diagnostic, not an elastic or resonance claim."
+      }
+    },
+    {
+      "candidate": "results/gauge_feasibility_N6_F21_linf_edge_FF401_infinity_eliminated.json",
+      "candidate_sha256": "6ffb8ed096d04cfa8d2386d25b5cd5e941ba8920ff70cb0513b1da25db061829",
+      "scattering_degree": 6,
+      "scalar_form_degree": 21,
+      "vector_form_degree": 21,
+      "independent_scalar_form_coefficients": 21,
+      "independent_vector_form_coefficients": 20,
+      "total_independent_form_coefficients": 41,
+      "scattering_energy_nodes": 64,
+      "waves_per_isospin": 10,
+      "chiral_norm": "linf",
+      "chiral_tolerance": 0.002,
+      "moment_convention": "raw_absolute",
+      "moment_tolerance": 0.002,
+      "nominal_gauge_points": 50,
+      "actual_gauge_points": 51,
+      "quadrature": "clipped_cells",
+      "fixed_f00": null,
+      "vector_endpoint_enforced": true,
+      "vector_endpoint_parameterization": "last vector coefficient exactly eliminated using F_P1(-1)=0",
+      "large_spin_edges": true,
+      "extra_ff_high_nodes": 60,
+      "signed_margin": 7.93515041885202e-06,
+      "solver_terminal_status": "Solved",
+      "finite_numerical_pass": true,
+      "independent_ff_audit": {
+        "full_grid_points": 809,
+        "high_energy_points": 121,
+        "high_validation_nodes_coinciding_with_training": 0,
+        "matching_relative_tolerance": 1e-12,
+        "max_squared_bound_relative_excess_by_channel": [
+          0.04907481607367048,
+          0.03327081869615811
+        ],
+        "worst_s_by_channel": [
+          74.41874524032522,
+          74.41874524032522
+        ],
+        "immediately_above_cutoff_s": 73.92278825419679,
+        "immediately_above_cutoff_squared_bound_ratios": [
+          1.0963147998297245,
+          1.064889352621218
+        ],
+        "warning": "Numerical evaluation at genuinely new energies, not a continuum certificate; positive excess disproves numerical feasibility there."
+      },
+      "P1_phase_diagnostic": {
+        "angular_points": 160,
+        "phase_grid_points": 1004,
+        "energy_GeV": [
+          0.7897,
+          0.8265,
+          0.86176
+        ],
+        "phase_degrees": [
+          -5.706974007828288,
+          -9.038409906795758,
+          -11.612018490515053
+        ],
+        "inelasticity": [
+          0.4738999052393124,
+          0.48739645157774103,
+          0.5119050496798928
+        ],
+        "minimum_phase_degrees": -16.678536593913694,
+        "maximum_phase_degrees": 7.861688698004763,
+        "ninety_degree_crossing_energy_brackets": [],
+        "interpretation": "Threshold-unwrapped arg(S)/2; finite sampled phase diagnostic, not an elastic or resonance claim."
+      },
+      "rational_edge_certificate_shift_1_over_4000": {
+        "arithmetic": "exact rational operations on decimal coefficients and Gram entries as serialized by JSON",
+        "mathematical_input": "Sylvester criterion for Q-delta I; exact weighted Chebyshev Gram identity; |T_k(x)|<=1 on [-1,1]",
+        "scope": "The three crossed-threshold edge polynomials only. No full unitarity, current positivity or continuum feasibility certificate.",
+        "all_three_rigorously_positive": true,
+        "isospins": [
+          {
+            "isospin": 0,
+            "rigorously_positive_on_closed_interval": true,
+            "exact_symmetry": true,
+            "gram_shift": "1/4000",
+            "shifted_leading_principal_minors": [
+              [
+                "10965737077861519/200000000000000",
+                "22105369371308120229659290890579/20000000000000000000000000000",
+                "215149619233459325477143705067691019734938319/50000000000000000000000000000000000000000000"
+              ],
+              [
+                "4602387424235533/1000000000000000000",
+                "2013119068209336357291798017453861/100000000000000000000000000000000000000",
+                "233551759080905572079909765188185391788091644703/20000000000000000000000000000000000000000000000000000000"
+              ]
+            ],
+            "coefficient_residual_l1_exact": "4294804097/20000000000000000000",
+            "uniform_lower_bound_exact": "9999995705195903/20000000000000000000",
+            "uniform_lower_bound_approximate": 0.0004999997852597951
+          },
+          {
+            "isospin": 1,
+            "rigorously_positive_on_closed_interval": true,
+            "exact_symmetry": true,
+            "gram_shift": "1/4000",
+            "shifted_leading_principal_minors": [
+              [
+                "20975712540137377/1000000000000000",
+                "46733393562579797146692423428841/1000000000000000000000000000000",
+                "1090776492561787854183945562900557309647768213/1000000000000000000000000000000000000000000000"
+              ],
+              [
+                "2035144860929109/500000000000000000",
+                "35129011047206666204793805445381/1000000000000000000000000000000000000",
+                "3428585096542844549367689907265053410588569986169/12500000000000000000000000000000000000000000000000000000"
+              ]
+            ],
+            "coefficient_residual_l1_exact": "16862891/200000000000000000",
+            "uniform_lower_bound_exact": "99999983137109/200000000000000000",
+            "uniform_lower_bound_approximate": 0.000499999915685545
+          },
+          {
+            "isospin": 2,
+            "rigorously_positive_on_closed_interval": true,
+            "exact_symmetry": true,
+            "gram_shift": "1/4000",
+            "shifted_leading_principal_minors": [
+              [
+                "1242472005910179/500000000000000",
+                "14819226339870892508877739584119/6250000000000000000000000000000",
+                "446835069216807588446959422077590964569534607/12500000000000000000000000000000000000000000000"
+              ],
+              [
+                "2227772112255927/250000000000000",
+                "2766348338713157166245252460787/200000000000000000000000000000",
+                "50808863840950145191790375009322839142509419/500000000000000000000000000000000000000000000"
+              ]
+            ],
+            "coefficient_residual_l1_exact": "160597927/2500000000000000000",
+            "uniform_lower_bound_exact": "1249999839402073/2500000000000000000",
+            "uniform_lower_bound_approximate": 0.0004999999357608292
+          }
+        ]
+      }
+    }
+  ],
+  "script_source_utf8": "\"\"\"Independent numerical diagnostics for the bounded FF-basis-growth followup.\"\"\"\nfrom fractions import Fraction\nimport hashlib\nimport json\nfrom pathlib import Path\nimport numpy as np\n\nfrom smatrix_bootstrap.amplitudes import energy_grid,partial_wave_matrix,s_matrix\nfrom smatrix_bootstrap.coupled_gauge import CHANNELS,form_factor_basis\nfrom smatrix_bootstrap.feasibility import rational_edge_witness_audit\nfrom smatrix_bootstrap.gauge_inputs import QCDInputs,phase_space_factor_squared\n\nnames=['N8_F50_edge_FF401_infinity_eliminated',\n       'N8_F51_edge_FF401_infinity_eliminated',\n       'N8_F60_edge_FF401_infinity_eliminated',\n       'N6_F21_linf_edge_FF401_infinity_eliminated']\nrecords=[]\nfor name in names:\n    p=Path('results/gauge_feasibility_'+name+'.json')\n    d=json.loads(p.read_text());r=d['solution'];cfg=d['config'];base=cfg['scattering']\n    nf=cfg['form_factor_degree'];inputs=QCDInputs(**cfg['inputs_GeV'])\n    record=dict(candidate=str(p),candidate_sha256=hashlib.sha256(p.read_bytes()).hexdigest(),\n        scattering_degree=base['degree'],scalar_form_degree=nf,vector_form_degree=nf,\n        independent_scalar_form_coefficients=nf,independent_vector_form_coefficients=nf-1,\n        total_independent_form_coefficients=2*nf-1,\n        scattering_energy_nodes=base['energy_points'],waves_per_isospin=base['waves_per_isospin'],\n        chiral_norm=base['chiral_norm'],chiral_tolerance=base['chiral_tolerance'],\n        moment_convention=cfg['moment_convention'],moment_tolerance=cfg['moment_tolerance'],\n        nominal_gauge_points=cfg['nominal_gauge_points'],actual_gauge_points=cfg['actual_gauge_points'],\n        quadrature=cfg['quadrature'],fixed_f00=base['fixed_f00'],\n        vector_endpoint_enforced=cfg['vector_F_at_infinity_zero'],\n        vector_endpoint_parameterization=d['phase_i_config']['vector_endpoint_parameterization'],\n        large_spin_edges=d['phase_i_config']['large_spin_edge_positivity'],\n        extra_ff_high_nodes=len(cfg['extra_form_factor_energies']),\n        signed_margin=r['signed_margin'],solver_terminal_status=r['solver_terminal_status'],\n        finite_numerical_pass=r.get('original_constraint_audit',{}).get(\n            'passes_with_1e_minus_8_absolute_and_normalized_tolerance',False))\n    if 'coefficients' in r:\n        coeff=np.asarray(r['coefficients'])\n        forms=np.array([r['form_factor_coefficients'][c] for c in CHANNELS]).T\n        bounds=np.array([2*inputs.degenerate_quark_mass**2,.5])*cfg['form_factor_tolerance']\n        s=energy_grid(809);s=s[s>inputs.s0]\n        values=1+form_factor_basis(s,nf)@forms\n        k2=np.array([phase_space_factor_squared(c,s) for c in CHANNELS]).T\n        ratios=k2*np.abs(values)**2/bounds\n        training=np.r_[np.asarray(r['samples']['s']),cfg['extra_form_factor_energies']]\n        training=training[training>inputs.s0]\n        coincident=np.any(np.abs(np.log(s[:,None]/training))<1e-12,axis=1)\n        worst=np.argmax(ratios,axis=0)\n        nearcut=np.array([inputs.s0*(1+1e-8)])\n        nearvalues=1+form_factor_basis(nearcut,nf)@forms\n        neark=np.array([phase_space_factor_squared(c,nearcut) for c in CHANNELS]).T\n        record['independent_ff_audit']=dict(full_grid_points=809,high_energy_points=len(s),\n            high_validation_nodes_coinciding_with_training=int(np.sum(coincident)),\n            matching_relative_tolerance=1e-12,\n            max_squared_bound_relative_excess_by_channel=(np.max(ratios,axis=0)-1).tolist(),\n            worst_s_by_channel=s[worst].tolist(),\n            immediately_above_cutoff_s=float(nearcut[0]),\n            immediately_above_cutoff_squared_bound_ratios=(neark*np.abs(nearvalues)**2/bounds)[0].tolist(),\n            warning='Numerical evaluation at genuinely new energies, not a continuum certificate; positive excess disproves numerical feasibility there.')\n        anchors=np.array([.7897,.8265,.86176])\n        energy=np.unique(np.r_[np.linspace(2*inputs.pion_mass_GeV+1e-5,1.2,1001),anchors])\n        scatter_s=(energy/inputs.pion_mass_GeV)**2\n        S=s_matrix(scatter_s,partial_wave_matrix(scatter_s,base['degree'],((1,1),),160)@coeff)[:,0]\n        phase=np.rad2deg(np.unwrap(np.angle(S))/2)\n        index=[int(np.argmin(abs(energy-e))) for e in anchors]\n        crossings=np.where((phase[:-1]-90)*(phase[1:]-90)<=0)[0]\n        record['P1_phase_diagnostic']=dict(angular_points=160,phase_grid_points=len(energy),\n            energy_GeV=anchors.tolist(),phase_degrees=phase[index].tolist(),inelasticity=np.abs(S[index]).tolist(),\n            minimum_phase_degrees=float(np.min(phase)),maximum_phase_degrees=float(np.max(phase)),\n            ninety_degree_crossing_energy_brackets=[[float(energy[i]),float(energy[i+1])] for i in crossings],\n            interpretation='Threshold-unwrapped arg(S)/2; finite sampled phase diagnostic, not an elastic or resonance claim.')\n        if name.startswith('N6'):\n            record['rational_edge_certificate_shift_1_over_4000']=rational_edge_witness_audit(\n                r['coefficients'],base['degree'],[c['grams'] for c in r['large_spin_edge_certificates']],\n                eigenvalue_shift=Fraction(1,4000))\n    records.append(record)\nreport=dict(scope='Three additional solves: N8/F51, N8/F60 combined L2 and N6/F21 L-infinity; N8/F50 is a previously archived matched-control comparison.',\n    source_truncation_caveat='Both scalar and vector analytic degrees increase. F_degree+1 with exact vector endpoint restores the previous vector free-mode count and also adds one scalar coefficient. These are explicitly larger truncations.',\n    unmatched_N6_F20_caveat='No archived N6/F20 L-infinity run has exactly M64, edges, vector endpoint elimination and FF401 controls. No F20-to-F21 feasibility threshold is inferred from the unmatched older runs.',\n    records=records,script_source_utf8=Path(__file__).read_text())\nPath('results/gauge_feasibility_basis_growth_diagnostics.json').write_text(json.dumps(report,indent=2)+'\\n')\nfor row in records:\n    print(Path(row['candidate']).name,row['solver_terminal_status'],row['finite_numerical_pass'],\n        row.get('independent_ff_audit',{}).get('max_squared_bound_relative_excess_by_channel'))\n"
+}

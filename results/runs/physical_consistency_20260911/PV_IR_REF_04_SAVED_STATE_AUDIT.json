@@ -1,0 +1,641 @@
+{
+  "status": "saved_array_identity_audit_completed",
+  "created_utc": "2026-09-11T22:30:07.071914+00:00",
+  "run": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_IR_ref_04",
+  "new_H_products_performed": false,
+  "working_z_reconstruction_performed": false,
+  "Newton_or_QR_performed": false,
+  "optimization_performed": false,
+  "phase_inspection_performed": false,
+  "method": "Only saved arrays compared. kappa recomputed from the already saved native nodes; amplitude rows were not loaded or multiplied.",
+  "alignment": {
+    "hR": "sqrt(t)*cached_x/inverse_kappa",
+    "hI": "t*cached_y/inverse_kappa",
+    "physical_margin": "t*cached_slack/inverse_kappa^2",
+    "native_h": "kappa*saved_native_values",
+    "inverse_kappa_unique": [
+      1.0
+    ],
+    "raw_coordinates": false
+  },
+  "identity": {
+    "center_vs_native_C_exact": true,
+    "native_vs_delivered_candidate_C_exact": true,
+    "native_vs_JSON_C_exact": true
+  },
+  "scattering": {
+    "hR": {
+      "maximum_absolute_difference": 7.282578370643861e-11,
+      "maximum_relative_difference": 5.9493584772493e-10,
+      "relative_reference": "second array"
+    },
+    "hI": {
+      "maximum_absolute_difference": 8.279398122494099e-11,
+      "maximum_relative_difference": 2.174825867764581e-07,
+      "relative_reference": "second array"
+    },
+    "margin": {
+      "maximum_absolute_difference": 1.276660043279072e-10,
+      "maximum_relative_difference": 0.006396409223365639,
+      "relative_reference": "second array"
+    },
+    "relative_margin_counts": {
+      "1e-06": 23,
+      "0.001": 2,
+      "0.01": 0,
+      "0.1": 0,
+      "1.0": 0
+    },
+    "cached_nonpositive_count": 0,
+    "native_nonpositive_count": 0,
+    "minimum_scaled_cached_slack": 7.473404584859645e-12,
+    "t_range": [
+      5.763038590841516e-79,
+      1.0
+    ],
+    "minimum_physical_margin_row": {
+      "row": 19,
+      "node_index": 0,
+      "s": 4.0009871228112965,
+      "wave": [
+        1,
+        19
+      ],
+      "t": 5.763038590841516e-79,
+      "cached_scaled_slack": 1.0175624292847628e-05,
+      "cached_physical_margin": 5.864251548558531e-84,
+      "native_saved_physical_margin": 5.864251548558036e-84,
+      "cached_linear_reconstruction_margin": 5.864251548558531e-84,
+      "native_values_rounding_margin": 5.864251548558036e-84,
+      "relative_margin_difference": 8.434978062182905e-14,
+      "hR_difference": -5.459984577577007e-96,
+      "hI_difference": 2.4710896272128094e-97
+    },
+    "internal_cached_slack_vs_cached_linear_arrays": {
+      "maximum_absolute_difference": 1.328147661294743e-18,
+      "maximum_relative_difference": 4.451145714842782e-09,
+      "relative_reference": "specified positive slack"
+    },
+    "native_margin_vs_margin_from_rounded_native_values": {
+      "maximum_absolute_difference": 2.3375398838787476e-16,
+      "maximum_relative_difference": 3.8070015649435797e-07,
+      "relative_reference": "specified positive slack"
+    },
+    "scatter_barrier_native_minus_cached": 0.010896628968229608,
+    "small_t_below_1e_40": {
+      "rows": 33,
+      "max_relative_margin_difference": 1.627650377439274e-13,
+      "barrier_native_minus_cached": -3.335410832077243e-13
+    },
+    "worst_rows": [
+      {
+        "row": 1000,
+        "node_index": 33,
+        "s": 16.29465347311737,
+        "wave": [
+          1,
+          1
+        ],
+        "t": 1.0,
+        "cached_scaled_slack": 1.4411273559293137e-11,
+        "cached_physical_margin": 1.4411273559293137e-11,
+        "native_saved_physical_margin": 1.4319679032255583e-11,
+        "cached_linear_reconstruction_margin": 1.4411273537773959e-11,
+        "native_values_rounding_margin": 1.4319684483759631e-11,
+        "relative_margin_difference": 0.006396409223365639,
+        "hR_difference": -3.266212170519034e-13,
+        "hI_difference": -1.5580803452443746e-14
+      },
+      {
+        "row": 1060,
+        "node_index": 35,
+        "s": 20.666871033160366,
+        "wave": [
+          1,
+          1
+        ],
+        "t": 1.0,
+        "cached_scaled_slack": 1.0392964355859057e-10,
+        "cached_physical_margin": 1.0392964355859057e-10,
+        "native_saved_physical_margin": 1.0363161969898914e-10,
+        "cached_linear_reconstruction_margin": 1.0392964353960068e-10,
+        "native_values_rounding_margin": 1.0363161554153968e-10,
+        "relative_margin_difference": 0.002875800460005107,
+        "hR_difference": -3.1478763823020173e-13,
+        "hI_difference": 5.5728445675414656e-14
+      },
+      {
+        "row": 1090,
+        "node_index": 36,
+        "s": 23.620549942338062,
+        "wave": [
+          1,
+          1
+        ],
+        "t": 1.0,
+        "cached_scaled_slack": 4.019995551640623e-10,
+        "cached_physical_margin": 4.019995551640623e-10,
+        "native_saved_physical_margin": 4.016022853231721e-10,
+        "cached_linear_reconstruction_margin": 4.019995552472251e-10,
+        "native_values_rounding_margin": 4.01602278045465e-10,
+        "relative_margin_difference": 0.0009892121021436314,
+        "hR_difference": -5.409403393968892e-13,
+        "hI_difference": 5.455888291063665e-15
+      },
+      {
+        "row": 1030,
+        "node_index": 34,
+        "s": 18.26831774679399,
+        "wave": [
+          1,
+          1
+        ],
+        "t": 1.0,
+        "cached_scaled_slack": 7.473404584859645e-12,
+        "cached_physical_margin": 7.473404584859645e-12,
+        "native_saved_physical_margin": 7.469527143240714e-12,
+        "cached_linear_reconstruction_margin": 7.473404551594433e-12,
+        "native_values_rounding_margin": 7.46952642442738e-12,
+        "relative_margin_difference": 0.0005191013493324348,
+        "hR_difference": -3.598130772280647e-13,
+        "hI_difference": -6.822757894135549e-14
+      },
+      {
+        "row": 1120,
+        "node_index": 37,
+        "s": 27.31370849898476,
+        "wave": [
+          1,
+          1
+        ],
+        "t": 1.0,
+        "cached_scaled_slack": 3.6430113936410237e-09,
+        "cached_physical_margin": 3.6430113936410237e-09,
+        "native_saved_physical_margin": 3.642466863793979e-09,
+        "cached_linear_reconstruction_margin": 3.643011393696376e-09,
+        "native_values_rounding_margin": 3.6424668619779404e-09,
+        "relative_margin_difference": 0.00014949479773096775,
+        "hR_difference": -4.0001075368722994e-13,
+        "hI_difference": -2.3508023869536765e-14
+      },
+      {
+        "row": 200,
+        "node_index": 6,
+        "s": 4.171545146004663,
+        "wave": [
+          2,
+          0
+        ],
+        "t": 1.0,
+        "cached_scaled_slack": 1.8125939356391528e-06,
+        "cached_physical_margin": 1.8125939356391528e-06,
+        "native_saved_physical_margin": 1.812607483558617e-06,
+        "cached_linear_reconstruction_margin": 1.8125939356391528e-06,
+        "native_values_rounding_margin": 1.812607483558617e-06,
+        "relative_margin_difference": 7.474270953320843e-06,
+        "hR_difference": -3.6090514088274028e-12,
+        "hI_difference": -6.71532505035577e-12
+      },
+      {
+        "row": 290,
+        "node_index": 9,
+        "s": 4.3785698959534844,
+        "wave": [
+          2,
+          0
+        ],
+        "t": 1.0,
+        "cached_scaled_slack": 2.360282565167856e-06,
+        "cached_physical_margin": 2.360282565167856e-06,
+        "native_saved_physical_margin": 2.3602997565496948e-06,
+        "cached_linear_reconstruction_margin": 2.3602825651678564e-06,
+        "native_values_rounding_margin": 2.3602997565496948e-06,
+        "relative_margin_difference": 7.283558705229893e-06,
+        "hR_difference": -7.481548256824534e-12,
+        "hI_difference": -8.398043387697982e-12
+      },
+      {
+        "row": 260,
+        "node_index": 8,
+        "s": 4.299360085331724,
+        "wave": [
+          2,
+          0
+        ],
+        "t": 1.0,
+        "cached_scaled_slack": 2.145092166283961e-06,
+        "cached_physical_margin": 2.145092166283961e-06,
+        "native_saved_physical_margin": 2.1450766780718008e-06,
+        "cached_linear_reconstruction_margin": 2.145092166283961e-06,
+        "native_values_rounding_margin": 2.1450766780718008e-06,
+        "relative_margin_difference": 7.22035362130565e-06,
+        "hR_difference": -9.476003706685473e-12,
+        "hI_difference": 7.959297474416818e-12
+      },
+      {
+        "row": 350,
+        "node_index": 11,
+        "s": 4.571138448766695,
+        "wave": [
+          2,
+          0
+        ],
+        "t": 1.0,
+        "cached_scaled_slack": 2.8998065314846856e-06,
+        "cached_physical_margin": 2.8998065314846856e-06,
+        "native_saved_physical_margin": 2.8997856990082286e-06,
+        "cached_linear_reconstruction_margin": 2.8998065314846856e-06,
+        "native_values_rounding_margin": 2.8997856990082286e-06,
+        "relative_margin_difference": 7.184143457292558e-06,
+        "hR_difference": 4.602128306398093e-12,
+        "hI_difference": 1.0263207595611731e-11
+      },
+      {
+        "row": 140,
+        "node_index": 4,
+        "s": 4.081021154356971,
+        "wave": [
+          2,
+          0
+        ],
+        "t": 1.0,
+        "cached_scaled_slack": 1.5853744095079334e-06,
+        "cached_physical_margin": 1.5853744095079334e-06,
+        "native_saved_physical_margin": 1.5853842917249206e-06,
+        "cached_linear_reconstruction_margin": 1.5853744095079332e-06,
+        "native_values_rounding_margin": 1.5853842917249206e-06,
+        "relative_margin_difference": 6.233325912788374e-06,
+        "hR_difference": 1.7906383544509454e-12,
+        "hI_difference": -4.961273262102988e-12
+      }
+    ],
+    "by_wave": [
+      {
+        "wave": [
+          1,
+          1
+        ],
+        "maximum_relative_margin_difference": 0.006396409223365639,
+        "scatter_barrier_native_minus_cached": 0.010904923801784702
+      },
+      {
+        "wave": [
+          2,
+          0
+        ],
+        "maximum_relative_margin_difference": 7.474270953320843e-06,
+        "scatter_barrier_native_minus_cached": -6.9573979886973415e-06
+      },
+      {
+        "wave": [
+          0,
+          0
+        ],
+        "maximum_relative_margin_difference": 5.677538686056088e-07,
+        "scatter_barrier_native_minus_cached": -1.331779928614066e-06
+      },
+      {
+        "wave": [
+          2,
+          2
+        ],
+        "maximum_relative_margin_difference": 1.502766497792761e-09,
+        "scatter_barrier_native_minus_cached": -3.4833724466959678e-09
+      },
+      {
+        "wave": [
+          0,
+          2
+        ],
+        "maximum_relative_margin_difference": 2.9776718765273097e-10,
+        "scatter_barrier_native_minus_cached": -1.3783343555973675e-09
+      },
+      {
+        "wave": [
+          1,
+          3
+        ],
+        "maximum_relative_margin_difference": 2.28977316773155e-10,
+        "scatter_barrier_native_minus_cached": -1.6361945301476555e-10
+      },
+      {
+        "wave": [
+          2,
+          4
+        ],
+        "maximum_relative_margin_difference": 1.2441700587482644e-10,
+        "scatter_barrier_native_minus_cached": -2.0719143206493645e-10
+      },
+      {
+        "wave": [
+          0,
+          4
+        ],
+        "maximum_relative_margin_difference": 5.6108334971438845e-11,
+        "scatter_barrier_native_minus_cached": -2.351477645480986e-10
+      },
+      {
+        "wave": [
+          1,
+          5
+        ],
+        "maximum_relative_margin_difference": 4.8047254233265814e-11,
+        "scatter_barrier_native_minus_cached": -7.999768848945968e-11
+      },
+      {
+        "wave": [
+          1,
+          9
+        ],
+        "maximum_relative_margin_difference": 2.1719324629499537e-11,
+        "scatter_barrier_native_minus_cached": -2.8430326452679185e-11
+      },
+      {
+        "wave": [
+          1,
+          7
+        ],
+        "maximum_relative_margin_difference": 1.8412607965305296e-11,
+        "scatter_barrier_native_minus_cached": -3.785979423877599e-11
+      },
+      {
+        "wave": [
+          2,
+          6
+        ],
+        "maximum_relative_margin_difference": 1.6519606420739367e-11,
+        "scatter_barrier_native_minus_cached": 1.5582886380610726e-11
+      },
+      {
+        "wave": [
+          2,
+          8
+        ],
+        "maximum_relative_margin_difference": 1.1636534570414352e-11,
+        "scatter_barrier_native_minus_cached": -9.755880944831881e-12
+      },
+      {
+        "wave": [
+          0,
+          6
+        ],
+        "maximum_relative_margin_difference": 1.0686552780860084e-11,
+        "scatter_barrier_native_minus_cached": -3.72807626785204e-11
+      },
+      {
+        "wave": [
+          2,
+          18
+        ],
+        "maximum_relative_margin_difference": 9.80876533981914e-12,
+        "scatter_barrier_native_minus_cached": -1.1477293670644556e-11
+      },
+      {
+        "wave": [
+          2,
+          10
+        ],
+        "maximum_relative_margin_difference": 8.96621351017374e-12,
+        "scatter_barrier_native_minus_cached": 1.0158403198401948e-11
+      },
+      {
+        "wave": [
+          1,
+          11
+        ],
+        "maximum_relative_margin_difference": 8.247961746999614e-12,
+        "scatter_barrier_native_minus_cached": 1.2595480208959015e-13
+      },
+      {
+        "wave": [
+          0,
+          10
+        ],
+        "maximum_relative_margin_difference": 7.65405680958087e-12,
+        "scatter_barrier_native_minus_cached": 5.7636692727231585e-12
+      },
+      {
+        "wave": [
+          0,
+          8
+        ],
+        "maximum_relative_margin_difference": 6.363024751560671e-12,
+        "scatter_barrier_native_minus_cached": 2.0219792636570724e-12
+      },
+      {
+        "wave": [
+          0,
+          18
+        ],
+        "maximum_relative_margin_difference": 3.911593818562344e-12,
+        "scatter_barrier_native_minus_cached": -6.441488943815215e-12
+      },
+      {
+        "wave": [
+          2,
+          12
+        ],
+        "maximum_relative_margin_difference": 2.760624225867885e-12,
+        "scatter_barrier_native_minus_cached": -3.823893296198344e-12
+      },
+      {
+        "wave": [
+          1,
+          19
+        ],
+        "maximum_relative_margin_difference": 2.7513922747421428e-12,
+        "scatter_barrier_native_minus_cached": 1.9461410564616654e-12
+      },
+      {
+        "wave": [
+          1,
+          13
+        ],
+        "maximum_relative_margin_difference": 2.6881851511893017e-12,
+        "scatter_barrier_native_minus_cached": -3.1439070097320553e-12
+      },
+      {
+        "wave": [
+          1,
+          15
+        ],
+        "maximum_relative_margin_difference": 2.519039629208012e-12,
+        "scatter_barrier_native_minus_cached": -2.9711800511274374e-12
+      },
+      {
+        "wave": [
+          1,
+          17
+        ],
+        "maximum_relative_margin_difference": 6.240701511015482e-13,
+        "scatter_barrier_native_minus_cached": -1.0674580793945146e-12
+      },
+      {
+        "wave": [
+          2,
+          14
+        ],
+        "maximum_relative_margin_difference": 3.698988300238255e-13,
+        "scatter_barrier_native_minus_cached": -1.589752092990091e-13
+      },
+      {
+        "wave": [
+          0,
+          12
+        ],
+        "maximum_relative_margin_difference": 3.5889600151129485e-13,
+        "scatter_barrier_native_minus_cached": -3.77168511266964e-13
+      },
+      {
+        "wave": [
+          0,
+          14
+        ],
+        "maximum_relative_margin_difference": 1.8321017063267318e-13,
+        "scatter_barrier_native_minus_cached": -2.0853875267253688e-13
+      },
+      {
+        "wave": [
+          0,
+          16
+        ],
+        "maximum_relative_margin_difference": 1.7303673788075332e-13,
+        "scatter_barrier_native_minus_cached": -3.8247486774949013e-13
+      },
+      {
+        "wave": [
+          2,
+          16
+        ],
+        "maximum_relative_margin_difference": 1.0007349496638114e-13,
+        "scatter_barrier_native_minus_cached": -1.9453357110943268e-13
+      }
+    ]
+  },
+  "chiral": {
+    "weight": 750.0,
+    "cached_chi": [
+      0.0015870183309007067,
+      -0.0005758176537072377,
+      -0.0009973046794010227,
+      0.00037122180893895746,
+      4.3151236142949725e-05,
+      6.415274396431545e-05,
+      -6.520558157836779e-05,
+      -0.00025602335305209854
+    ],
+    "saved_native_chi": [
+      0.0015870183358855927,
+      -0.0005758176488878664,
+      -0.000997304674680899,
+      0.0003712218137261192,
+      4.315123806206134e-05,
+      6.415274590321207e-05,
+      -6.520557968744956e-05,
+      -0.00025602335112409613
+    ],
+    "chi_difference": {
+      "maximum_absolute_difference": 4.984885980025664e-12,
+      "maximum_relative_difference": 4.4474079928740644e-08,
+      "relative_reference": "second array"
+    },
+    "cached_slacks": [
+      1.7384592077137906e-08,
+      3.924222671084172e-06
+    ],
+    "slacks_from_saved_native_chi": [
+      1.7384587665690615e-08,
+      3.924222671903601e-06
+    ],
+    "slack_difference": {
+      "maximum_absolute_difference": 4.4114472914637346e-15,
+      "maximum_relative_difference": 2.5375622225253893e-07,
+      "relative_reference": "second array"
+    },
+    "internal_cached_slack_vs_cached_chi": {
+      "maximum_absolute_difference": 2.895132143935597e-24,
+      "maximum_relative_difference": 4.851057074850823e-17,
+      "relative_reference": "specified positive slack"
+    },
+    "barrier_native_minus_cached": 0.00019016053274463086
+  },
+  "bookkeeping": {
+    "iterations": 167,
+    "report_center_flag": false,
+    "report_support_flag": false,
+    "report_primal_flag": true,
+    "center_last_has_newton_gradient": false,
+    "center_last_curvature_is_placeholder_NaN": true,
+    "center_last_linear_residual_is_placeholder_NaN": true,
+    "fixed_x_deviation_numerical_coordinates": -8.448032204344536e-12,
+    "fixed_x_deviation_saved_raw_C": -2.725236702971756e-12,
+    "last_progress": {
+      "elapsed_seconds": 905.9808225750457,
+      "stage": "barrier",
+      "mu": 1e-06,
+      "iteration": 167,
+      "objective": -2.116153426854698,
+      "decrement": 10.046905074317465,
+      "step": 1.9909612081144923,
+      "elapsed": 903.2325828371104,
+      "linear_solver": "qr",
+      "directional_gradient": -10.046905078294177,
+      "directional_curvature": 10.046905339958348,
+      "linear_residual": 9.691678425261537e-05,
+      "krylov_iterations": 5,
+      "radial_scale": 1.0,
+      "line_merit_decrease": 10.00024528156236,
+      "inexact_direction": true
+    }
+  },
+  "source_identity": {
+    "scattering.py": {
+      "producer_sha256": "23f5b856a9e14d19b1f085f52aac4508e0bdb5bd3ce166ee2621a3bc779621b7",
+      "current_sha256": "23f5b856a9e14d19b1f085f52aac4508e0bdb5bd3ce166ee2621a3bc779621b7",
+      "same_as_producer": true
+    },
+    "ir.py": {
+      "producer_sha256": "bd6fb3d54b523cbf266da65f677e9364c1393aaae0f29f114bd315e60c6e5c17",
+      "current_sha256": "bd6fb3d54b523cbf266da65f677e9364c1393aaae0f29f114bd315e60c6e5c17",
+      "same_as_producer": true
+    },
+    "quotient.py": {
+      "producer_sha256": "32b669bec9e0b9af1c21bf464f2806411cdca87fffa6ff0593d7bb77dd3428e9",
+      "current_sha256": "32b669bec9e0b9af1c21bf464f2806411cdca87fffa6ff0593d7bb77dd3428e9",
+      "same_as_producer": true
+    },
+    "__init__.py": {
+      "producer_sha256": "eab9d89f9c5aec186369fb48cef62f20db87a20a16512f8c8a6e7349a2a4473a",
+      "current_sha256": "eab9d89f9c5aec186369fb48cef62f20db87a20a16512f8c8a6e7349a2a4473a",
+      "same_as_producer": true
+    }
+  },
+  "input_sha256": {
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_IR_ref_04/report.json": "6ebe48bb76cb3b8d6e071eb3dbd02d6e180ac94e213d9d274d4d614d4186cf64",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_IR_ref_04/progress.jsonl": "33276c2cadaea30fd281c9e853534cdfc007a7a5b39aeb8ecdeb852520ed5f2d",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_IR_ref_04/center_last.npz": "6659c2f9120a0762e492424ac4325112372b57312e5d2e4ef53f57d36d6c5d02",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_IR_ref_04/native_candidate.npz": "4d94d74cb1d517081a6751325a06340bf65917fdeb2398fc44a31a093ef9d6b5",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_IR_ref_04/candidate.npz": "4d94d74cb1d517081a6751325a06340bf65917fdeb2398fc44a31a093ef9d6b5",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_IR_ref_04/coefficients.json": "81dde9ac1c831b664e906640be8e113e0543e6b78aeb28efe3369d0d879d0293",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz": "49ffd2d9e769bd56917ec6a74b752aa423e7563c2ed1d403ff6b94bf4707a0e5",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907/report.json": "05de7c34b29385da3fb3d8d355839daa582b893fc8218aeafffae7fa90ebf6a0"
+  },
+  "producer_registered_hash_checks_for_read_inputs": {
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907/report.json": true,
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz": true
+  },
+  "limits": [
+    "Observed mismatch combines recursive state error, coordinate transform/roundtrip error, raw C rounding, and serialization; saved data alone do not isolate these causes.",
+    "Native values and native margins are separately float64 serialized; margins were formed from extended values before their serialization, so the two roundoff comparisons are kept separate.",
+    "Density barrier was not newly evaluated; the reported value differences cover scattering and chiral terms only.",
+    "The final endpoint barrier difference does not bound errors in earlier step decreases and does not determine the original-model Newton decrement.",
+    "No additional physical constraints or tolerance relaxation is proposed."
+  ],
+  "interpretation": {
+    "local_slack_relative_difference_is_not_amplitude_relative_error": true,
+    "model_inconsistency_or_whole_program_failure_claimed": false,
+    "cached_numerical_center_distinct_from_original_H_primal_and_dual": true,
+    "current_mainline_interruption_or_new_precondition_architecture_requested": false,
+    "new_CLI_diagnostic_only_if_persistent_stall_or_conflicting_evidence": true
+  }
+}

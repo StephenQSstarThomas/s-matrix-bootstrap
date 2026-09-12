@@ -1,0 +1,214 @@
+{
+  "source": {
+    "paper": "He and Kruczenski, Bootstrapping gauge theories, arXiv:2309.12402v3",
+    "figure": "8",
+    "figure_asset": "chiSRplot.pdf",
+    "source_url": "https://arxiv.org/src/2309.12402v3",
+    "paper_url": "https://arxiv.org/html/2309.12402v3#S4.F8",
+    "sha256": "8e8e1cdc722fb71404e702777f6e833057210d53cedbe372815864a892f309cd",
+    "page": 0,
+    "page_size_pt": [
+      1000.0,
+      569.0
+    ]
+  },
+  "extraction": {
+    "method": "Eight-arc filled-marker bounding-box centers; exact inspected RGB discrimination; affine calibration with all black major ticks",
+    "pymupdf_version": "1.27.2.3",
+    "script_sha256": "c3f7fc23e935a3ba1212523b4623333ba62fc3dbf486ae1c863a5609ff339a9e",
+    "path_count": 285,
+    "target_path_counts_by_group": {
+      "chiral_only_green": 113,
+      "gauge_cyan": 111,
+      "chiral_reference_black": 2,
+      "light_pink": 2,
+      "pink": 2,
+      "red": 2
+    },
+    "excluded_path_counts": {
+      "non_axis_stroked_paths": 1
+    },
+    "rgb_by_group": {
+      "chiral_only_green": [
+        0.5601649880409241,
+        0.6915590167045593,
+        0.1948850005865097
+      ],
+      "gauge_cyan": [
+        0.0,
+        0.6666560173034668,
+        0.6666560173034668
+      ],
+      "chiral_reference_black": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "light_pink": [
+        0.9999849796295166,
+        0.5555419921875,
+        0.5555419921875
+      ],
+      "pink": [
+        0.9999849796295166,
+        0.3333280086517334,
+        0.3333280086517334
+      ],
+      "red": [
+        0.9999849796295166,
+        0.0,
+        0.0
+      ]
+    },
+    "axis_lines_pt": [
+      [
+        [
+          48.441001892089844,
+          107.10900115966797
+        ],
+        [
+          912.8400268554688,
+          107.10900115966797
+        ]
+      ],
+      [
+        [
+          65.72699737548828,
+          568.1290283203125
+        ],
+        [
+          65.72699737548828,
+          33.89799880981445
+        ]
+      ]
+    ],
+    "x_axis": {
+      "coordinate_unit": "f00_s3",
+      "offset_pt": 65.72699432373052,
+      "scale_pt_per_unit": 10049.600143432615,
+      "tick_values": [
+        0.0,
+        0.02,
+        0.04,
+        0.06,
+        0.08
+      ],
+      "tick_positions_pt": [
+        65.72699737548828,
+        266.718994140625,
+        467.71099853515625,
+        668.7030029296875,
+        869.6950073242188
+      ],
+      "tick_fit_residuals_pt": [
+        3.051757758498752e-06,
+        -3.051757857974735e-06,
+        -1.5258789289873675e-06,
+        1.1368683772161603e-13,
+        1.5258789289873675e-06
+      ],
+      "max_abs_tick_fit_residual_pt": 3.051757857974735e-06,
+      "coordinate_working_resolution": 9.950644659762878e-07
+    },
+    "y_axis": {
+      "coordinate_unit": "f11_s3",
+      "offset_pt": 107.10909779866529,
+      "scale_pt_per_unit": -79894.62738037106,
+      "tick_values": [
+        0.0,
+        -0.001,
+        -0.002,
+        -0.003,
+        -0.004,
+        -0.005
+      ],
+      "tick_positions_pt": [
+        107.10900115966797,
+        187.00399780273438,
+        266.89801025390625,
+        346.7929992675781,
+        426.68798828125,
+        506.5820007324219
+      ],
+      "tick_fit_residuals_pt": [
+        -9.663899732004211e-05,
+        0.00027262369802372177,
+        -0.00034230550116376435,
+        1.9327799634538678e-05,
+        0.0003809611004612634,
+        -0.00023396809876885527
+      ],
+      "max_abs_tick_fit_residual_pt": 0.0003809611004612634,
+      "coordinate_working_resolution": 1.251648618672556e-07
+    },
+    "max_bbox_vs_endpoint_center_difference_pt": [
+      0.00189971923828125,
+      0.00189208984375
+    ],
+    "rasterization_used_for_data": false
+  },
+  "uncertainty_and_scope": {
+    "status": "Published graphical marker coordinates, not original optimization output",
+    "working_resolution_pt": 0.01,
+    "working_resolution_interpretation": "Practical extraction tolerance, not a statistical interval or a certified solver-error bound",
+    "marker_radius_interpretation": "Graphical footprint, not an error bar on the bootstrap result",
+    "unknown_errors": [
+      "Numerical optimization feasibility and residuals",
+      "Energy, spin and amplitude truncations",
+      "Preprocessing or rounding before figure export",
+      "Unplotted behavior between marker centers"
+    ],
+    "amplitude_convention": "Paper f_l^I normalization, m_pi=1; axes f_0^0(3), f_1^1(3)"
+  },
+  "deduplication": "Four highlighted markers are each drawn twice with identical bounding boxes; one row per center retains both path IDs",
+  "group_correspondence": "Same exact RGB triplets in Figure 8 and all three phase panels, corroborated by the Figure 10 caption and surrounding text",
+  "independent_chiral_black_check": {
+    "literal_rounded_text_inputs": {
+      "m_pi_mev": 140,
+      "f_pi_mev": 92
+    },
+    "lo_chiral_point_at_literal_rounded_text_inputs": [
+      0.07332139057293466,
+      -0.00488809270486231
+    ],
+    "extracted_minus_literal_rounded_text_prediction": [
+      -0.002008353618222436,
+      0.00013388179006338166
+    ],
+    "extracted_f11_plus_f00_over_15": -8.451151447055882e-09,
+    "inferred_f_pi_over_m_pi_from_f00": 0.6663320028608408,
+    "inferred_f_pi_mev_if_m_pi_mev_is_139_57": 92.99995763928754,
+    "interpretation": "Black point is consistent with LO m_pi=139.57 MeV, f_pi=93 MeV; these are graphical inferences, not substituted solver inputs or recovered original author data"
+  },
+  "selected_points_match_cyan_boundary": {
+    "light_pink": {
+      "cyan_pdf_path_index": 161,
+      "distance_between_pdf_centers_pt": 0.001573062007917465
+    },
+    "pink": {
+      "cyan_pdf_path_index": 164,
+      "distance_between_pdf_centers_pt": 0.0
+    },
+    "red": {
+      "cyan_pdf_path_index": 168,
+      "distance_between_pdf_centers_pt": 0.0007124400347856904
+    }
+  },
+  "dataset": {
+    "csv_file": "figure8_selected_points.csv",
+    "csv_sha256": "c5f9616cd934cf88a4f3493ddf4b0353f8c77efd3b99f72c449a5205b5840d92",
+    "row_count": 4,
+    "columns": [
+      "group",
+      "f00_s3",
+      "f11_s3",
+      "duplicate_path_count",
+      "all_pdf_path_indices",
+      "pdf_path_index",
+      "pdf_x_pt",
+      "pdf_y_pt",
+      "pdf_radius_x_pt",
+      "pdf_radius_y_pt"
+    ]
+  }
+}

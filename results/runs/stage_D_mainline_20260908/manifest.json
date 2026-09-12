@@ -1,0 +1,43 @@
+{
+  "D1": "complete",
+  "D2": "complete",
+  "D3": "complete",
+  "current_preparation": "results/runs/stage_D_mainline_20260908/D1_current_M50",
+  "scattering_preparation": "results/runs/stage_B_pv_M50_L10_prepare_20260907",
+  "variables": 4076,
+  "native_unitarity_disks": 1500,
+  "current_grams": 100,
+  "FF_caps": 14,
+  "UV_config": {
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "cutoff": "clipped-phi",
+    "mq_rule": "arithmetic-mean",
+    "pion_mass_gev": 0.14,
+    "matching_energy_gev": 1.2,
+    "up_mass_gev": 0.004,
+    "down_mass_gev": 0.0073,
+    "alpha_s": 0.4,
+    "gluon_condensate_gev4": 0.023,
+    "scalar_condensate_gev4": -0.0001,
+    "sr_tolerance": 0.002,
+    "ff_tolerance": 6e-05
+  },
+  "scientific_concurrency": 1,
+  "scope": "D only; no E region scan",
+  "current_attempt": null,
+  "active_scientific_jobs": 0,
+  "successful_witness": "D3_hull_009",
+  "original_reaudit": "D3_original_audit_768",
+  "fresh_native_check": "D3_fresh_native_768",
+  "result": "D_RESULT_ZH.md",
+  "replay": "REPLAY_ZH.md",
+  "attempt_index": "ATTEMPTS.json",
+  "verification": "verification.json",
+  "support_stage_E1_complete": false,
+  "remaining_stages": [
+    "E",
+    "F"
+  ],
+  "remaining_steps": 6
+}

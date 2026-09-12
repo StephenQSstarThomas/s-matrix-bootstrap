@@ -1,0 +1,295 @@
+{
+  "audit": "D1/D2 source and algebra readiness",
+  "recorded_at": "2026-09-08T06:04:46.962975+00:00",
+  "scope": "Bounded read-only audit plus report writing; no bootstrap optimization, no new quadrature rule, no parameter scan.",
+  "major_algebra_error_found": false,
+  "scope_of_conclusion": "Only the reviewed current/UV helpers and polynomial Gram mapping; not a proof that an M50 joint feasible solution exists.",
+  "source_locations": {
+    "current_operators": {
+      "file": "/home/shiqiu/s-matrix-bootstrap/src/smatrix_bootstrap/model.py",
+      "line": 227
+    },
+    "current_gram": {
+      "file": "/home/shiqiu/s-matrix-bootstrap/src/smatrix_bootstrap/model.py",
+      "line": 72
+    },
+    "current_kinematic_squares": {
+      "file": "/home/shiqiu/s-matrix-bootstrap/src/smatrix_bootstrap/model.py",
+      "line": 67
+    },
+    "fesr_targets": {
+      "file": "/home/shiqiu/s-matrix-bootstrap/src/smatrix_bootstrap/model.py",
+      "line": 84
+    },
+    "fesr_weights": {
+      "file": "/home/shiqiu/s-matrix-bootstrap/src/smatrix_bootstrap/model.py",
+      "line": 117
+    },
+    "fesr_data": {
+      "file": "/home/shiqiu/s-matrix-bootstrap/src/smatrix_bootstrap/model.py",
+      "line": 125
+    },
+    "polynomial_gram_map": {
+      "file": "/home/shiqiu/s-matrix-bootstrap/src/smatrix_bootstrap/quotient.py",
+      "line": 29
+    }
+  },
+  "paper_sources": {
+    "file": "references/2309.12402v3-source/prd_submission_2.tex",
+    "kinematic_factors": [
+      701,
+      704
+    ],
+    "FF_normalization_and_dispersion": [
+      712,
+      725
+    ],
+    "OPE_FESR": [
+      805,
+      835
+    ],
+    "physical_inputs_and_printed_targets": [
+      865,
+      880
+    ],
+    "native_Hilbert_kernel": [
+      967,
+      984
+    ],
+    "current_PSD": [
+      998,
+      1008
+    ],
+    "FESR_quadrature_and_error": [
+      1020,
+      1033
+    ],
+    "squared_rescaled_FF_caps": [
+      1037,
+      1040
+    ],
+    "reported_tolerances": [
+      1139,
+      1141
+    ]
+  },
+  "current_gram_check": {
+    "arithmetic": "float64 random M3 algebra comparison against independent complex Hermitian construction and explicit fixed unitary U",
+    "M": 3,
+    "rng_seed": 51,
+    "synthetic_amplitude_operator": "N=9, p=22; H physical entries normal_rng*.01; not a physical feasible amplitude",
+    "full_variable_count": 34,
+    "comparison": "unpack current_operators svec versus U.conj().T @ B @ U",
+    "max_absolute_entry_error": 6.661356290530013e-16,
+    "positive_k_congruence_max_absolute_error": 2.7755575615628914e-17,
+    "unitary": "columns (1,1,0)/sqrt2, (i,-i,0)/sqrt2, (0,0,1)",
+    "real_Gram": "[[2-kappa*Imf,kappa*Ref,sqrt2*k*ReF],[kappa*Ref,kappa*Imf,sqrt2*k*ImF],[sqrt2*k*ReF,sqrt2*k*ImF,rho_current]]",
+    "svec_order": [
+      "G11",
+      "sqrt2*G12",
+      "G22",
+      "sqrt2*G13",
+      "sqrt2*G23",
+      "G33"
+    ],
+    "F_at_zero": [
+      1,
+      1
+    ],
+    "normalization_note": "Scalar F0(0)=1 is the paper low-energy approximation in pion units; vector F1(0)=1 is charge normalization."
+  },
+  "FESR": {
+    "M": 50,
+    "s0_dimensionless": 73.46938775510203,
+    "matching_energy_GeV": 1.2,
+    "pion_mass_GeV": 0.14,
+    "moment_order": [
+      [
+        "S0",
+        0
+      ],
+      [
+        "S0",
+        1
+      ],
+      [
+        "P1",
+        -1
+      ],
+      [
+        "P1",
+        0
+      ]
+    ],
+    "raw_targets": [
+      0.0023851042065805906,
+      0.11183813873471082,
+      0.004228045714285714,
+      0.1457112069970845
+    ],
+    "normalized_targets": [
+      4.4186999999999997e-07,
+      2.8201399999999997e-07,
+      5.75484e-05,
+      2.6994799999999998e-05
+    ],
+    "raw_errors": [
+      0.002,
+      0.002,
+      0.002,
+      0.002
+    ],
+    "normalized_errors": [
+      3.7052469135802477e-07,
+      5.043252743484227e-09,
+      2.7222222222222226e-05,
+      3.7052469135802477e-07
+    ],
+    "raw_error_fraction_of_target": [
+      0.8385377856791021,
+      0.017882987169020783,
+      0.4730317823296951,
+      0.013725780200558063
+    ],
+    "current_spectral_mass_powers": {
+      "S0": 4,
+      "P1": 2
+    },
+    "raw_moment_mass_powers": [
+      6,
+      8,
+      2,
+      4
+    ],
+    "Jacobian": "Delta_phi * ds/dphi = (pi/M)*s*tan(phi/2); no Cauchy 1/pi",
+    "high_energy_nodes": 7,
+    "rescaled_FF_caps_squared": [
+      1.954438775510204e-07,
+      3e-05
+    ]
+  },
+  "constant_spectrum_diagnostic": {
+    "spectrum": "rho_current(s)=1 in each channel",
+    "same_input": "M50, center0 midpoint nodes, s0=(1.2/.140)^2; only the existing cutoff weight rule differs",
+    "exact_raw_integral_formulas": [
+      "s0-4",
+      "(s0^2-16)/2",
+      "log(s0/4)",
+      "s0-4"
+    ],
+    "exact_raw_integrals": [
+      69.46938775510203,
+      2690.8754685547683,
+      2.910574465213684,
+      69.46938775510203
+    ],
+    "rules": {
+      "hard-midpoint": {
+        "raw_integrals": [
+          79.64072408667728,
+          3467.504834407516,
+          3.04356661181788,
+          79.64072408667728
+        ],
+        "signed_relative_errors": [
+          0.14641465342161775,
+          0.2886158705329698,
+          0.04569274835386561,
+          0.14641465342161775
+        ],
+        "absolute_relative_errors": [
+          0.14641465342161775,
+          0.2886158705329698,
+          0.04569274835386561,
+          0.14641465342161775
+        ],
+        "absolute_relative_error_percent": [
+          14.641465342161775,
+          28.86158705329698,
+          4.569274835386561,
+          14.641465342161775
+        ]
+      },
+      "clipped-phi": {
+        "raw_integrals": [
+          70.10643127955294,
+          2767.698337835042,
+          2.9136696477610897,
+          70.10643127955294
+        ],
+        "signed_relative_errors": [
+          0.009170132990039326,
+          0.028549395978378023,
+          0.0010634266823950078,
+          0.009170132990039326
+        ],
+        "absolute_relative_errors": [
+          0.009170132990039326,
+          0.028549395978378023,
+          0.0010634266823950078,
+          0.009170132990039326
+        ],
+        "absolute_relative_error_percent": [
+          0.9170132990039326,
+          2.8549395978378023,
+          0.10634266823950078,
+          0.9170132990039326
+        ]
+      }
+    },
+    "interpretation": "Diagnostic for quadrature sensitivity. These errors are not bounds or estimates for the unknown optimized physical spectral density; no new integration scheme is proposed."
+  },
+  "UV_input_comparison": {
+    "printed_targets_are_fixed": true,
+    "eq250_arithmetic_mean_relative_to_printed": [
+      -0.0848394152283437,
+      -0.08485698811949194,
+      0.00019837442584402787,
+      0.0007093543004104141
+    ],
+    "eq250_RMS_relative_to_printed": [
+      -0.006790243263716023,
+      -0.006809314853153836,
+      0.00019837442584402787,
+      0.0007093543004104141
+    ],
+    "interpretation": "Named input conventions, not parameter choices tuned to the paper plots."
+  },
+  "tests": {
+    "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=/tmp/collocation_arb:src python -m pytest -q tests/test_linear.py -k 'fesr_raw or fesr_cutoff or eq250 or gram_map_matches or M50_gram_sizes or exact_Cflat_polynomial' -p no:cacheprovider",
+    "passed": 13,
+    "deselected": 16,
+    "reported_seconds": 0.29,
+    "current_operator_test_gap": "None of the three active test files directly calls current_operators/current_gram. Historical independent checks exist; current M3 comparison above was rerun during this audit.",
+    "historical_current_checks": "results/runs/stage_D1_current_design_20260907/independent_checks.json"
+  },
+  "quotient_Gram": {
+    "role": "Nonnegative high-spin polynomial lift, distinct from the D1 current Gram",
+    "implementation": "quotient.py:29-62",
+    "actual_offdiagonal_factor": 2,
+    "M50_block_sizes": [
+      25,
+      25
+    ],
+    "M50_map_shape": [
+      50,
+      650
+    ],
+    "PV_sampled_policy": "Do not add this strengthened-branch cone to the declared PV sampled model."
+  },
+  "D3_readiness": {
+    "joint_solver_implemented": false,
+    "prepare_only": "run.py:126-136 writes affine operators and optimization_performed=False",
+    "amplitude_only_solver": "linear.py:192-193 only accepts free=2M or2M+1; the joint4076-variable layout is not accepted",
+    "joint_primal_and_dual_verifier_implemented": false,
+    "required": "Connect the same full3876 amplitude coefficients to200 current variables,100 real3x3 PSDs,four moment bands,14 FF cones; retain original scattering/chiral/density constraints; validate all current duals and residuals in a joint support certificate."
+  },
+  "recommendation": {
+    "immediately_bounded_steps": [
+      "D1 actual M50 preparation and active independent current-matrix regression",
+      "D2 explicit current/UV units and cutoff diagnostic acceptance"
+    ],
+    "next_gate": "D3 needs a real joint solve and independent joint primal/dual validation before E/F production.",
+    "precision": "No guaranteed physical percent precision follows from the current helper checks. Arb precision controls arithmetic only; declared tolerances, cutoff sensitivity, input convention and M/L effects remain separate."
+  }
+}

@@ -1,0 +1,5796 @@
+===== PDF PAGE 1 =====
+Gauge Theory Bootstrap:
+Pion amplitudes and low energy parameters
+Yifei He1, Martin Kruczenski2 ∗
+1 Laboratoire de Physique de l’´Ecole Normale Sup´erieure, ENS, Universit´e PSL,
+CNRS, Sorbonne Universit´e, Universit´e Paris Cit´e, F-75005 Paris, France
+2 Department of Physics and Astronomy and PQSEI†,
+Purdue University, West Lafayette, IN 47907, USA.
+August 11, 2025
+Abstract
+Following the Gauge Theory Bootstrap method proposed in our previous
+work [1,2], we compute pion scattering phase shifts for all partial waves with
+angular momentum ℓ≤3 up to 2 GeV and calculate the low energy χPT coef-
+ficients ¯ℓ1,2,4,6. The method looks for the most general S-matrix that matches
+at low energy the tree level amplitudes of the non-linear sigma model and at
+high energy, QCD sum rules and form factors. This is a theoretical/numeri-
+cal calculation that uses as only data the pion mass mπ, pion decay constant
+fπ and the QCD parameters Nc = 3, Nf = 2, mq and αs. All results are
+in reasonable agreement with experiment. In particular, we find the ρ(770),
+f2(1270) and ρ(1450) resonances. The interplay between the UV gauge theory
+and low energy pion physics is an example of a general situation where we
+know the microscopic theory as well as the effective theory of long wavelength
+fluctuations but we want to solve the strongly coupled dynamics at intermedi-
+ate energies. The bootstrap builds a bridge between the low and high energy
+by determining the consistent S-matrix that matches both and provides, in
+this case, a new direction to understand the strongly coupled physics of gauge
+theories.
+∗E-mail: yifei.he@ens.fr, markru@purdue.edu.
+†Purdue Quantum Science and Engineering Institute
+1
+arXiv:2403.10772v4  [hep-th]  8 Aug 2025
+
+===== PDF PAGE 2 =====
+Contents
+1
+Introduction
+4
+2
+Summary of the gauge theory bootstrap
+8
+2.1
+S-matrix/form factor bootstrap
+. . . . . . . . . . . . . . . . . . . . .
+8
+2.2
+Chiral symmetry breaking (low energy input)
+. . . . . . . . . . . . .
+10
+2.3
+Sum rules and form factor asymptotics (QCD input)
+. . . . . . . . .
+14
+2.4
+Allowed space and extremal amplitudes . . . . . . . . . . . . . . . . .
+16
+2.5
+Watsonian unitarization
+. . . . . . . . . . . . . . . . . . . . . . . . .
+18
+2.6
+Comment on the condensates
+. . . . . . . . . . . . . . . . . . . . . .
+20
+3
+Phase shifts for I = 0, 1, 2 and ℓ≤3 up to 2 GeV
+21
+3.1
+Forward amplitudes . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+23
+4
+Low energy parameters
+23
+4.1
+Scattering lengths and effective range parameters
+. . . . . . . . . . .
+24
+4.2
+Low energy expansion of form factors . . . . . . . . . . . . . . . . . .
+24
+4.3
+Chiral Lagrangian coefficients . . . . . . . . . . . . . . . . . . . . . .
+25
+5
+Resonances
+27
+5.1
+Scalar form factor . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+27
+5.2
+The ρ meson . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+27
+5.2.1
+Pole in the P1 wave
+. . . . . . . . . . . . . . . . . . . . . . .
+28
+5.2.2
+Vector form factor
+. . . . . . . . . . . . . . . . . . . . . . . .
+28
+5.2.3
+The ρ(1450) . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+32
+5.3
+The gravitational form factor and the f2 meson
+. . . . . . . . . . . .
+33
+6
+Form factors
+35
+6.1
+Definitions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+36
+6.1.1
+Angular momentum ℓ. . . . . . . . . . . . . . . . . . . . . . .
+36
+6.1.2
+The gravitational form factor
+. . . . . . . . . . . . . . . . . .
+37
+6.2
+Asymptotic form
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+37
+6.2.1
+The gravitational form factor
+. . . . . . . . . . . . . . . . . .
+41
+6.2.2
+Scalar form factor . . . . . . . . . . . . . . . . . . . . . . . . .
+43
+7
+Two point functions
+43
+7.1
+Definitions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+43
+7.2
+Asymptotic form
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+44
+2
+
+===== PDF PAGE 3 =====
+7.2.1
+Two quark operators of arbitrary ℓ. . . . . . . . . . . . . . .
+44
+7.2.2
+Energy momentum tensor
+. . . . . . . . . . . . . . . . . . . .
+45
+7.2.3
+Four quark scalar current
+. . . . . . . . . . . . . . . . . . . .
+46
+8
+Numerical method
+49
+8.1
+Kernels for partial wave computations
+. . . . . . . . . . . . . . . . .
+50
+8.2
+Mapping to the circle . . . . . . . . . . . . . . . . . . . . . . . . . . .
+55
+8.3
+Numerical discretization . . . . . . . . . . . . . . . . . . . . . . . . .
+57
+8.3.1
+Interpolation points for amplitudes and form factors . . . . . .
+57
+8.3.2
+BSpline basis functions for spectral density . . . . . . . . . . .
+59
+8.4
+Numerical gauge theory bootstrap . . . . . . . . . . . . . . . . . . . .
+61
+9
+Conclusions
+69
+A Scattering lengths from chiral Lagrangian coefficients
+71
+B Tests on numerical parameters
+72
+B.1 Numerical discretization . . . . . . . . . . . . . . . . . . . . . . . . .
+72
+B.2 Form factor asymptotic bound rI
+ℓ
+. . . . . . . . . . . . . . . . . . . .
+74
+B.3 Sum rules error ϵI
+ℓand number of moments nSR
+. . . . . . . . . . . .
+74
+B.4 Watsonian unitarization
+. . . . . . . . . . . . . . . . . . . . . . . . .
+74
+C Form factors asymptotics
+77
+D Some integrals
+78
+D.1 Feynman type integrals . . . . . . . . . . . . . . . . . . . . . . . . . .
+78
+D.2 Multi-ball integrals . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+78
+3
+
+===== PDF PAGE 4 =====
+1
+Introduction
+We recently proposed the Gauge Theory Bootstrap [1, 2] a method to address the
+important problem of computing pion scattering amplitudes in the strongly coupled
+regime of asymptotically free gauge theories under the assumption that they un-
+dergo confinement and chiral symmetry breaking. In QCD language, ignoring all
+other interactions, the pion and the nucleons are the only stable particles. Pions,
+in particular, can be thought as the pseudo-Goldstone bosons of chiral symmetry
+breaking. Their interactions are severely restricted by symmetry considerations and
+their low energy effective field theory is a non-linear sigma model with coupling fπ
+(pion decay constant) and pion mass mπ. In pion scattering, nucleons can be ignored
+below the nucleon anti-nucleon threshold ∼2 GeV. Thus, we have a UV description
+of the theory in terms of weakly coupled quarks and gluons and a low energy effective
+field theory (EFT) description in terms of weakly coupled pions. However, this is not
+sufficient to compute pion scattering since the effective pion coupling increases with
+the energy and the EFT description breaks down before we reach the asymptotically
+free regime.
+UV fixed point (free gauge theory)
+IR fixed point (trivial)
+ Gauge Theory Bootstrap
+pQCD 
+weakly coupled quarks and gluons
+weakly coupled pions
+strong coupling
+Figure 1: The Gauge Theory Bootstrap builds a (strongly coupled) bridge between
+the weakly coupled QCD at high energies and a weakly coupled EFT of pions at low
+energies.
+In this intermediate regime, both the gauge theory and the theory of pions are
+4
+
+===== PDF PAGE 5 =====
+strongly coupled, making it an ideal target for bootstrap methods. The situation
+is sketched in fig.1. The Gauge Theory Bootstrap [1, 2] addresses this problem by
+looking for the most general S-matrix that matches the low and high energy theories.
+This is done in three steps.
+First we parameterize the space of S-matrices and
+form factors that satisfy the general conditions of analyticity, crossing, unitarity and
+global symmetries.
+In order to do that we use bootstrap ideas [3, 4] as recently
+reformulated for the S-matrix by Paulos, Penedodes, Toledo, van Rees and Vieira
+[5–8] and augmented by Karateev, Kuhn and Penedones [9] to incorporate form
+factors and current spectral densities (or vacuum polarizations).
+Second, we consider that pions are the pseudo-Goldstone of chiral symmetry
+breaking and are described at low energy by a non-linear sigma model (Weinberg
+model [10]). Thus, we require that the partial waves match (within a tolerance)
+the tree level predictions of the non-linear sigma model. This drastically reduces
+the space of S-matrices and produces partial waves that, in some channels, display
+properties similar to experiment. A notable exception is the absence of a ρ meson
+resonance in the P1 channel, showing that pion scattering is not just a result of chiral
+dynamics but requires a deeper understanding of its relation to the high energy gauge
+theory.
+Therefore, the third and final step is to introduce information about the high
+energy gauge theory by using the SVZ sum rules (Shifman, Vainshtein, Zakharov)
+[11–17] together with the high energy behavior of the form factors (from Brodsky
+and Lepage [18,19]).
+All these ingredients together allow to set up a numerical procedure to search for
+the S-matrix and compute the phase shifts of pion scattering. A Schematic of the
+Gauge Theory Bootstrap is depicted in fig. 2.
+It is clear that, if enough conditions are imposed, we should inevitably find, from
+all S-matrices allowed by the basic constraints, the unique S-matrix that corresponds
+to the given UV theory. Perhaps surprisingly in the previous paper [1,2] we found
+that a small set of IR and UV constraints drastically reduce the space of allowed
+S-matrices leading to partial waves that qualitatively and quantitatively match the
+experimental results. Notice that other than symmetries and gauge theory param-
+eters, the only input are the values of mπ and fπ. Since no experimental input on
+pion scattering is used, the bootstrap numerical calculation can be considered a first
+principles calculation from the pion physics point of view.
+It is useful to recall how an effective field theory calculation would address the
+same problem. Initially we can attempt a standard perturbative calculation and start
+by computing tree level amplitudes using the lowest order chiral Lagrangian (sigma
+model). Since tree level amplitudes do not satisfy unitarity we have to incorporate
+5
+
+===== PDF PAGE 6 =====
+chiSB
+S-matrix/form factors
+SVZ
+asymptotics
+Figure 2: Schematic of the Gauge Theory Bootstrap.
+loops. However the theory is non-renormalizable and we also have to add more and
+more counter-terms with new couplings that we do not know. In other words the
+UV completion is not unique. However the ambiguity is removed if we require that
+the theory matches QCD at high energy since the gauge theory provides the UV
+completion. The bootstrap shortcuts this procedure by focusing on the physically
+meaningful S-matrix, and allows us to pick out the one that corresponds to the given
+UV gauge theory. Moreover, the numerical implementation of this idea does not
+require expensive computations, in fact, computing the partial waves requires only
+a few minutes on an average PC.
+In understanding why this method works and how it connects to other approaches,
+it is important to keep in mind that general considerations of analyticity, crossing
+and unitarity have played a significant role in studying pion scattering since the early
+days [3] and have motivated various bootstrap approaches to the problem. Indeed,
+phenomenological studies by Pelaez and Yndurain [20,21] using conformal mapping
+and by Colangelo, Gasser and Leutwyler [22] using Roy equations have shown that
+the experimental phase shifts can be described in terms of analytic functions sat-
+isfying crossing and unitarity. More recently, the low energy effective field theory
+was extensively studied with the S-matrix bootstrap in order to put generic bounds
+on its parameters. In the case of massive and massless pions in [23,24] the allowed
+parameter space was determined using the full constraints of unitarity, crossing and
+6
+
+===== PDF PAGE 7 =====
+analyticity. There is also a number of interesting related work on the large Nc limit
+of the effective theory using bootstrap [25–29]. For example, using the large Nc QCD
+positivity bootstrap, [29] found a point in the space of S-matrices that displays a full
+Regge trajectory. Another related topic is that the hadronic vacuum polarization or
+spectral densities that we consider are related to the g −2 experiment (see e.g. the
+review [30]), although we cannot yet compute them with the required precision to
+compete for example with lattice calculations [31].
+What seems particularly interesting is that, by using UV theory information, our
+method allows to identify the low energy S-matrix corresponding to a specific gauge
+theory, in some sense going back to the roots of the bootstrap program [3] which
+was to compute the S-matrix of the strong interactions. An important consequence
+of having such a method is that it allows a numerical exploration of different gauge
+theories (number of colors, quark masses, etc.) and also of different phenomena in the
+same theory. By including and removing constraints we can determine what physics
+is given by chiral symmetry alone (seemingly the S0 and S2 partial waves) and which
+is a consequence of QCD dynamics (like the ρ meson). For example removing the P1
+sum rules eliminates the ρ meson but removing the D0 sum rule does not completely
+eliminate the f2 resonance in that channel. These naive explorations that the method
+allow may become an important tool in understanding the interplay between the non-
+linear sigma model and the gauge theory.
+Organization of the paper:
+In section 2 we review the main idea of the method and give a short summary of its
+implementation. The main results are described in section 3, namely, the scattering
+phase shifts for partial waves with angular momentum ℓ≤3 up to a center of mass
+energy √s = 2 GeV. Analyzing those results in more detail allow the computation
+of the scattering lengths, effective range parameter, charge radii of the pion and fi-
+nally the chiral Lagrangian coefficients usually denoted as ¯lj following Gasser and
+Leutwyler [32, 33]. The results are presented in section 4. In the following section
+5, we study the resonances that are evident in the phase shifts, i.e. ρ(770), f2(1270)
+and ρ(1450), find their masses and widths as well as couplings to pions and form
+factors. This completes the description of the results. For the reader interested in
+the perturbative QCD calculations, we include section 6 where we review the com-
+putation of the asymptotic form factor pioneered by Brodsky and Lepage [18, 19]
+and section 7 where we review the calculation of the two point functions that we
+use in the SVZ sum rules [11]. For the readers interested in the numerical procedure
+and reproducing the results, we provide a detailed description in section 8 and ac-
+7
+
+===== PDF PAGE 8 =====
+companying Mathematica and Matlab notebooks with this submission.1 Finally we
+give our conclusions in section 9. In the appendices we include a recalculation of the
+scattering lengths based on the χPT parameters ¯lj, a set of tests to understand how
+the solutions depend on the parameters associated with the numerical method (e.g.
+discretization), a more detailed example of a Feynman diagram that contributes to
+the asymptotic form factors and some analytical integrals that are useful in the main
+text.
+2
+Summary of the gauge theory bootstrap
+The basic idea of the gauge theory bootstrap is to find the S-matrix (here we con-
+centrate on the elastic 2 →2 S-matrix) of pion scattering that agrees with lowest
+order chiral perturbation theory at low energy and perturbative QCD at high en-
+ergy. To implement this idea we follow the procedure already described in [1,2] but
+extend it to a larger range of energy and several more partial waves. In this section,
+we describe the main ideas of this approach and give a brief summary of its imple-
+mentation. A more detailed description of the numerical method is given in section
+8.
+2.1
+S-matrix/form factor bootstrap
+We start with the basic setup where we parameterize the scattering amplitudes
+and form factors so that all linear constraints of analyticity, crossing and global
+symmetries are satisfied. Unitarity, a non-linear constraint is imposed later numeri-
+cally. Thus, we consider a scattering amplitude analytic in the Mandelstam variables
+(s, t, u) and assume maximal (or Mandelstam) analyticity which means that we only
+consider singularities required by physical reasons. Those can be poles due to stable
+bound states (that we do not have here) and two-particle (and other multi-particle)
+1The Mathematica program computes the coefficients needed to setup the bootstrap maximiza-
+tion problem. Having those, the matlab program takes ∼20 min on an average laptop to find the
+partial waves.
+8
+
+===== PDF PAGE 9 =====
+cuts. Under this conditions we write the 2 →2 pion scattering amplitude as
+A(s, t, u)
+=
+T0 + 1
+π
+ˆ ∞
+4
+dx σ1(x)
+x −s + 1
+π
+ˆ ∞
+4
+dx σ2(x)
+
+1
+x −t +
+1
+x −u
+
++ 1
+π2
+ˆ ∞
+4
+dx
+ˆ ∞
+4
+dy ρ1(x, y)
+x −s
+
+1
+y −t +
+1
+y −u
+
++ 1
+π2
+ˆ ∞
+4
+dx
+ˆ ∞
+4
+dy
+ρ2(x, y)
+(x −t)(y −u)
+(2.1)
+where s + t + u = 4 (setting mπ = 1). The amplitude is parametrized by a constant
+T0, two single spectral densities σ1,2 and two double spectral densities ρ1,2. It satisfies
+the crossing condition A(s, t, u) = A(s, u, t) by requiring ρ2(x, y) = ρ2(y, x). In each
+isospin channel I = 0, 1, 2 the amplitude reads:
+T I=0(s, t, u)
+=
+3A(s, t, u) + A(t, s, u) + A(u, t, s)
+(2.2a)
+T I=1(s, t, u)
+=
+A(t, s, u) −A(u, t, s)
+(2.2b)
+T I=2(s, t, u)
+=
+A(t, s, u) + A(u, t, s)
+(2.2c)
+Projecting onto fixed angular momentum we find the partial waves
+f I
+ℓ(s) = 1
+4
+ˆ 1
+−1
+d cos θPℓ(cos θ)T I(s, t), ℓ=
+(
+even,
+I = 0, 2
+odd
+I = 1
+(2.3)
+with
+t = −(s −4)(1 −cos θ)
+2
+(2.4)
+The partial waves (2.3) are analytic functions of s with cuts for s ∈(−∞, 0)∪(4, ∞).
+Finally, unitarity is imposed on the partial waves
+SI
+ℓ(s+) = 1 + iπ
+r
+s −4
+s
+f I
+ℓ(s) = ηI
+ℓ(s) e2iδI
+ℓ(s), s ∈R≥4
+(2.5)
+as
+ηI
+ℓ(s) = |SI
+ℓ(s+)| ≤1,
+s ∈R>4, ∀I, ℓ
+(2.6)
+In addition to the scattering amplitudes, we consider the 2-particle form factors
+associated with gauge theory local operators OI
+ℓwith same quantum numbers I, ℓ
+that we are considering for the partial wave (see for e.g. (2.21a), (2.22a), (2.23a)
+with quantum numbers S0, P1, D0). The form factors F I
+ℓ= ⟨ππ|OI
+ℓ|0⟩(see more
+details in section 6.1) are analytic functions of one complex variable with a cut on
+9
+
+===== PDF PAGE 10 =====
+the real axis (4, ∞). Assuming convergence with one subtraction, the form factors
+can be parametrized by their imaginary part on the real axis
+F I
+ℓ(s) = 1 + 1
+π
+ˆ ∞
+4
+dx
+
+1
+x −s −1
+x
+
+ImF I
+ℓ(x)
+(2.7)
+where we use the condition F I
+ℓ(0) = 1 (otherwise we change the constant). The two
+point function, i.e., vacuum polarization ΠI
+ℓ(s) of the operator OI
+ℓitself has the same
+analytic structure with a cut s ≥4 and the discontinuity across the cut defines the
+spectral density ρI
+ℓ(x), x ∈(4, ∞). See section 7.1 for more details.
+As initially discussed by Karateev, Kuhn and Penedones [9] (see also [1,2] in this
+context), the amplitudes SI
+ℓ(s), the rescaled form factors FI
+ℓ(s) (see section 6.1) and
+the spectral densityies ρI
+ℓ(s) obey the positivity condition
+
+
+1
+SI
+ℓ(s)
+FI
+ℓ(s)
+SI∗
+ℓ(s)
+1
+FI∗
+ℓ(s)
+FI∗
+ℓ(s)
+FI
+ℓ(s)
+ρI
+ℓ(s)
+
+⪰0,
+s > 4, ∀ℓ, I
+(2.8)
+Thus, we define the variables of the gauge theory bootstrap procedure:
+{T0, σα=1,2(x), ρα=1,2(x, y), ImFℓ(x), ρI
+ℓ(x)}, x, y ∈(4, ∞), ∀ℓ, I
+(2.9)
+For numerical implementation, we discretize the bootstrap variables (2.9) and use
+a set of M real variables
+[T0, σα=1,2;j, ρα=1,2;j, ImF I
+ℓ;j, ρI
+ℓ;i] ∈RM
+(2.10)
+for some M usually large (∼5, 000 in our numerics). The set of constraints defines
+a convex space in RM of scattering amplitudes, form factors and spectral densities
+that satisfy the most generic constraints; a space that we want to explore. We give
+the detailed numerical method for this implementation in section 8.
+2.2
+Chiral symmetry breaking (low energy input)
+The low energy description of QCD is in terms of a theory of pions, the pseudo Gold-
+stone bosons of chiral symmetry breaking. To understand the results it is useful to
+set up the calculation in the context of the full chiral perturbation theory framework
+initiated by Gasser and Leutwyler [32] even if in our calculation, the only input we
+use is the non-linear sigma model [10] that has only terms with up to two derivatives:
+L2 = f 2
+π
+4 Tr[DµUDµU †] + f 2
+π
+4 Tr(χU † + Uχ†)
+(2.11)
+10
+
+===== PDF PAGE 11 =====
+where U(x) = e
+iπaτa
+fπ
+∈SU(2) parameterizes a 3-sphere, the coset space SU(2)L ×
+SU(2)R/SU(2)V . Therefore, the only low energy parameters we require are the pion
+decay constant fπ and the pion mass mπ that is introduced by taking χ = mπ12×2.
+The pion decay constant fπ is defined in terms of the matrix element of the axial
+current
+⟨0|jI,µ
+5 (x)|πI′(p)⟩= −ipµfπ δII′ e−ipx
+(2.12)
+and can therefore be determined independently from weak pion decay.
+The La-
+grangian (2.11) includes external gauge fields to identify the scalar, vector and axial
+currents. At the next order in the expansion in derivatives and pion mass new terms
+appear:
+L4
+=
+l1
+4
+
+Tr[DµU(DµU)†]
+	2 + l2
+4 Tr[DµU(DνU)†]Tr[DµU(DνU)†]
++ l3
+16[Tr(χU † + Uχ†)]2 + l4
+4 Tr[DµU(Dµχ)† + Dµχ(DµU)†]
++l5
+
+Tr(f R
+µνUf µν
+L U †) −1
+2Tr(f L
+µνf µν
+L + f R
+µνf µν
+R )
+
++il6
+2 Tr[f R
+µνDµU(DνU)† + f L
+µν(DµU)†DνU]
+−l7
+16[Tr(χU † −Uχ†)]2
+(2.13)
+as described in [32,34] that the reader can consult for a more detailed description. Let
+us just note that we omitted contact terms that do not depend on U and that f R,L
+µν
+are
+the field strengths associated with the external spectator gauge fields (sources). In
+the usual approach the couplings l1...7 are determined from experiment, for example
+l1,2 are related to the scattering lengths of the D-waves and l4,6 to the scalar and
+vector charge radius of the pion. More recently, positivity methods have been used
+to put generic bounds on those parameters (see e.g. [25]). On the other hand, in
+our gauge theory bootstrap approach, these parameters are calculable. In this paper
+we determine ¯l1,2,4,6, the renormalized values of the couplings (lj in L4 are divergent
+bare couplings).
+Being able to compute (approximately) the low energy couplings is already quite
+interesting progress. However, the EFT becomes strongly coupled as we increase the
+energy and predictions become unreliable long before we reach the asymptotically
+free regime. For example the ρ resonance in the P1 channel will not appear from the
+EFT. In fact, the main purpose of this and the previous paper [1, 2] is to find the
+phase shifts in that region by using gauge theory input.
+11
+
+===== PDF PAGE 12 =====
+We want to emphasize that, from the point of view of pion physics, the boot-
+strap calculation is a first principles calculation of pion scattering. Usually what
+that means is that we compute pion scattering starting from a given Lagrangian or
+Hamiltonian. In this case the Lagrangian is L2 that contains the pion mass mπ and
+coupling fπ. Using this Lagrangian, however, is not sufficient since it has to be sup-
+plemented by an infinite number of higher derivative terms with unknown couplings
+that have to be measured. Instead of doing that, we use the information that pions
+describe the low-energy dynamics of a gauge theory (QCD). In that way we do not
+require any extra experimental input for the computation.
+Now let’s see how we incorporate the Lagrangian L2 in the bootstrap. At tree
+level L2 determines the function A(s, t, u) in (2.1) to be
+Atree(s, t, u) = s −m2
+π
+8π2 f 2
+π
+(2.14)
+This was already derived by Weinberg [10] and later confirmed by experiment even
+before the advent of QCD [35]. In our case we want to consider amplitudes that
+satisfy the generic constraints of the previous subsection and that match this low
+energy behavior. It turns out to be more convenient to put the constraints in terms
+of the partial waves that we want to compute. We also expect this tree level compu-
+tation (linearized approximation) to be better at small values of s, in particular in
+the unphysical region 0 < s < 4 where the partial waves are real. The only non-zero
+tree level partial waves are (see e.g. [36]):
+f 0
+0,tree(s) = 2
+π
+2s −m2
+π
+32πf 2
+π
+, f 1
+1,tree(s) = 2
+π
+s −4m2
+π
+96πf 2
+π
+, f 2
+0,tree(s) = 2
+π
+2m2
+π −s
+32πf 2
+π
+(2.15)
+To implement this low energy match, we choose a small set of points sj in the
+very low energy unphysical region 0 < s ≤2, and require that
+||f 0
+0(sj) −Rtree
+01 (sj)f 1
+1(sj)|| ≤ϵχ,
+||f 2
+0(sj) −Rtree
+21 (sj)f 1
+1(sj)|| ≤ϵχ,
+Rtree
+01
+= f 0
+0,tree
+f 1
+1,tree
+, Rtree
+21
+=f 2
+0,tree
+f 1
+1,tree
+(2.16)
+with some norm and a tolerance ϵχ. Note that the expressions 2.16 use only the
+ratios of the tree level partial waves which eliminate the fπ so the matching applies
+to arbitrary fπ. For each given tolerance this drastically reduces the convex space of
+amplitudes inside RM defined by the generic constraints in the previous step. Finally,
+12
+
+===== PDF PAGE 13 =====
+we use the physical value of fπ = 92 MeV to choose an appropriate tolerance ϵχ for
+our computation. The precise description of how to implement these constraints is
+given in section 8.
+An important part of the method is to include form factors and spectral densities
+in the bootstrap in order to include information from high energy perturbative QCD
+computations. For that reason we also have to understand their low energy behavior
+from the pion lagrangian.
+The main results that we need can be found in [32]
+where it is important to notice that they are kinematical, namely they follow from
+a free theory of pions.
+The calculation starts by identifying the pion operators
+corresponding to the currents we use:
+S = mq ¯ψAψA = m2
+π
+2 πaπa + O(π4)
+V a
+µ = ¯ψAγµ
+τ a
+AB
+2 ψB = ϵabcπb∂µπc + O(π4)
+Tµν = T g
+µν + T f
+µν
+= ∂µπa∂νπa −1
+2(∂απa∂απa −m2
+ππaπa)ηµν + O(π4)
+(2.17)
+with the gluonic and fermionic parts of the energy momentum begin
+T g
+µν
+=
+−F a
+µαF a α
+ν + F a
+αβF a αβ ηµν
+(2.18)
+T f
+µν
+=
+i
+2
+¯ψA(γµDν + γνDµ)ψA −¯ψA(i /D −mq)ψA ηµν
+(2.19)
+The two point functions of such operators give for ρI
+ℓ:
+ρ0
+0(s)
+≃
+m4
+π
+(2π)4
+3
+16π
+
+1 −4
+s
+ 1
+2
+(2.20a)
+ρ1
+1(s)
+≃
+1
+(2π)4
+s
+24π
+
+1 −4
+s
+ 3
+2
+(2.20b)
+ρ0
+2(s)
+≃
+1
+(2π)4
+s2
+160π
+
+1 −4
+s
+ 5
+2
+(2.20c)
+that we use to constrain the spectral densities numerically.2
+It is also important
+to notice that below the four pion threshold and for operators that create an even
+number of pions, only two pion states can be created leading to the relation ρℓ(s) =
+|Fℓ(s)|2, 4 ≤s ≤16.
+2The spectral densities can be parameterized in a way that incorporates these low energy be-
+havior. This results in a small space of solutions as shown in [37].
+13
+
+===== PDF PAGE 14 =====
+2.3
+Sum rules and form factor asymptotics (QCD input)
+Even after significantly reducing the allowed space using low energy information,
+there is still a large number of allowed S-matrices, each of which may (or may not)
+correspond to (different) consistent UV completions. For our purpose of determining
+the strongly coupled dynamics of the gauge theory, we need to incorporate high
+energy information, and this is done by constraining spectral densities and form
+factors variables in (2.10). In order to do that we choose a scale s0 where we assume
+the theory is properly described at least approximately3 by perturbative QCD. In
+our previous paper we took √s0 = 1.2 GeV and here we take √s0 = 2 GeV. An
+important test of the method is that, below 1.2 GeV the phase shifts agree with the
+previously computed ones. If √s0 were setting the energy scale of all features (e.g.
+resonances), a factor of almost 2 in √s0 should be quite noticeable.
+Having chosen s0, we impose constraints on the spectral density given by a fi-
+nite energy version of the Shifman, Vainshtein, Zakharov (SVZ) sum rules [11] and
+constraints on the asymptotic behavior of the form factors as given by Brodsky and
+Lepage [18].
+Notice that this asymptotic behavior of the form factors should be
+reached at very high energies and therefore we use it for initial guidance as described
+in the numerical section 8. Below, we give a brief summary of the form factors and
+spectral densities with quantum numbers S0 (scalar current), P1 (vector current)
+and D0 (energy momentum tensor) we use in this paper. The relevant quantities
+are properly defined in more detail later in sections 6.1 and 7.1. Here we simply
+present the definitions of the current jI
+ℓ(x), their two-particle form factor F I
+ℓ(s), the
+form factor FI
+ℓfor states with definite angular momentum and isospin, and the low
+energy kinematic behavior of ρI
+ℓ. We also present the large s (short distance) expan-
+sion of the two-point function ΠI
+ℓ(s) leading to the SVZ sum rules on ρI
+ℓas well as
+the asymptotic form of the form factors, all for the case of Nc = 3, Nf = 2. The
+detailed computations are given in sections 6 and 7.4
+S0
+j0
+0
+=
+mq(¯uu + ¯dd)
+(2.21a)
+⟨π+(p1)π−(p2)|j0
+0|0⟩
+=
+F 0
+0 (s)
+(2.21b)
+F 0
+0 (0)
+=
+1
+(2.21c)
+3Since going to very large energies is challenging numerically due to the larger number of inter-
+polation points required, we make a compromise in choosing s0.
+4We were not able to find in the literature the computation of the scalar form factor so we
+include a crude estimate (up to numerical factors).
+14
+
+===== PDF PAGE 15 =====
+⟨I = 0, Pℓσ|j0
+0|0⟩
+=
+δℓ0δσ0F0
+0(s)
+(2.21d)
+F0
+0(s)
+=
+√
+6π
+16π3
+1
+s
+1
+4
+s −4
+4
+ 1
+4
+F 0
+0 (s)
+(2.21e)
+ρ0
+0(s)
+≃
+1
+(2π)4
+3
+16π
+
+1 −4
+s
+ 1
+2
+[low energy]
+(2.21f)
+Π0
+0(s)
+≃
+−Nfm2
+q
+(2π)4
+3
+8π2
+
+1 + 13
+3
+αs
+π
+
+s ln
+
+−s
+µ2
+
+(2.21g)
+1
+sn+2
+0
+ˆ s0
+4
+ρ0
+0(x)xndx
+≃
+Nfm2
+q
+(2π)4
+3
+4π(n + 2)
+
+1 + 13
+3
+αs
+π
+
+, n ≥0 (2.21h)
+|F 0
+0 (s)|
+∼
+4παsf 2
+π
+m2
+q
+s ln
+ s
+m2
+π
+
+,
+(s →∞)
+(2.21i)
+P1
+j1
+1
+=
+1
+2(¯uγ+u −¯dγ+d)
+(2.22a)
+⟨π+(p1)π−(p2)|j1
+1,µ|0⟩
+=
+(p2,µ −p1,µ)F 1
+1 (s)
+(2.22b)
+F 1
+1 (0)
+=
+1
+(2.22c)
+⟨I = 1, Pℓσ|j1
+1|0⟩
+=
+δℓ1δσ1F1
+1(s)
+(2.22d)
+F1
+1(s)
+=
+r
+4π
+3
+1
+8π3
+1
+s
+1
+4
+s −4
+4
+ 3
+4
+F 1
+1 (s)
+(2.22e)
+ρ1
+1(s)
+≃
+1
+(2π)4
+s
+24π
+
+1 −4
+s
+ 3
+2
+[low energy] (2.22f)
+Π1
+1(s)
+≃
+−
+1
+(2π)4
+1
+8π2
+
+1 + αs
+π
+
+s ln
+
+−s
+µ2
+
+(2.22g)
+1
+sn+2
+0
+ˆ s0
+4
+ρ1
+1(x)xndx
+≃
+1
+(2π)4
+1
+4π(n + 2)
+
+1 + αs
+π
+
+,
+n ≥−1 (2.22h)
+|F 1
+1 (s)|
+≃
+16παsf 2
+π
+s
+,
+(s →∞)
+(2.22i)
+D0
+j0
+2
+=
+T ++(0)
+(2.23a)
+15
+
+===== PDF PAGE 16 =====
+⟨π+(p1)π−(p2)|j0
+2|0⟩
+=
+4|⃗p1|2
+r
+2π
+15 Y22(ˆp1) F 0
+2 (s)
+(2.23b)
+F 0
+2 (s)
+=
+1
+(2.23c)
+⟨I = 0, Pℓσ|j0
+2|0⟩
+=
+δℓ2δσ2F0
+2(s)
+(2.23d)
+F0
+2(s)
+=
+1
+4π3
+rπ
+5
+1
+s
+1
+4
+s −4
+4
+ 5
+4
+F 0
+2 (s)
+(2.23e)
+ρ0
+2(s)
+≃
+1
+(2π)4
+s2
+160π
+
+1 −4
+s
+ 5
+2
+[low energy]
+(2.23f)
+Π0
+2(s)
+≃
+−
+1
+(2π)4
+1
+8π2
+11
+10 −17
+18
+αs
+π
+
+s2 ln
+
+−s
+µ2
+
+(2.23g)
+1
+sn+3
+0
+ˆ s0
+4
+ρ0
+2(x)xndx
+≃
+1
+(2π)4
+1
+4π
+1
+n + 3
+11
+10 −17
+18
+αs
+π
+
+, n ≥−2 (2.23h)
+|F 0
+2 (s)|
+≃
+48παsf 2
+π
+s
+, (s →∞)
+(2.23i)
+In these formulas, + indicates the component of a vector v+ =
+1
+√
+2(v1 −iv2), also
+P = p1 + p2 and s = P 2. Equivalently, as we do later, we can contract all currents
+with a vector ∆=
+1
+√
+2(0, 1, i, 0).
+We implement the SVZ sum rules (2.21h), (2.22h), (2.23h) and the low energy
+kinematic behavior (2.21f), (2.22f), (2.23f) as constraints on the spectral densities.
+It is worth noting that the SVZ expansion of the two point functions contains ex-
+pectation values (condensates) of higher order operators that we do not include in
+(2.21g), (2.22g), (2.23g) because they are suppressed by the large energy scale s0.
+We comment on this further in section 2.6. The precise implementation of the sum
+rules is described in section 8.
+For the numerical computation to work we have to take into account that the
+form factors vanish at infinity as predicted by QCD. In practice, we require that the
+form factors above the energy scale s0 are small, with an initial estimate of their
+value following from the asymptotic forms (2.21i), (2.22i) and (2.23i). More details
+of this are given in section 8.
+2.4
+Allowed space and extremal amplitudes
+We started by discretizing the variables and parameterizing the amplitudes/form fac-
+tors by a point in RM for some large M ∼5, 000. After imposing many constraints,
+16
+
+===== PDF PAGE 17 =====
+the dimension and volume of such space is considerably reduced. At this point we
+hope that the set of remaining points describe similar S-matrices but how do we
+focus on one? A common practice of the bootstrap is to project the space onto a
+lower dimensional subspace [38], for example a plane. In that subspace we plot the
+“shadow” or projection of the higher dimensional space. Intuitively, the edges or
+boundaries of the shadow will lift to unique points on the boundary of the higher
+dimensional space. Such a point corresponds to a set of bootstrap variables that de-
+scribe a particular extremal amplitudes/form factors living on the boundary of the
+space. Finding the boundary of the region can be done by maximizing linear func-
+tionals of the bootstrap variables. While this idea was used extensively in the pure
+S-matrix bootstrap to put generic bounds on certain physical quantities, here we do
+not consider these linear functionals to carry specific physical meanings, but we use
+them simply as a way to access scattering amplitudes/form factors on the boundary
+of the allowed space under constraints. The naive belief is that given enough physi-
+cal conditions from low energy and high energy, there is eventually a unique (within
+errors) physical amplitude that matches these physical requirement as well as boot-
+strap consistency conditions. Although, ideally, the specific functional used to find
+this amplitude should be irrelevant, in practice we have to choose functionals that
+include relevant physical information and lead to a well defined numerical problem.
+In this work, we consider two linear functionals (related to the forward amplitudes):
+5
+F0 = 2
+ f 0
+0(s = 3) + 5f 0
+2(s = 3)
+
+,
+F1 = 2
+ 3f 1
+1(s = 3) + 7f 1
+3(s = 3)
+
+(2.24)
+Preliminary tests on other similar functionals give similar results and we hope to
+report on a full exploration of this aspect in the future. The space of amplitudes
+projected out on the two dimensional space characterized by (2.24) is given in figure
+3. The region inside the yellow shape is allowed by the constraints but no specific
+amplitude is associated with the interior points (there are many for each point).
+On the other hand, each yellow dot at the boundary is associated with a particular
+extremal amplitude/form factor and therefore we choose among them the one that
+we expect to represent the correct amplitude. In order to do that we use the physical
+value fπ = 92 MeV as follows: The black line indicates the values of F0, F1 for the
+Weinberg model or χPT tree level amplitudes (2.15) evaluated for different values
+of fπ. The black dot corresponds to fπ = 92 MeV, namely the initial approximation
+we start with.
+Using this input it is then natural to focus on a range of points
+closest to the black dot (the blue, green and red points) and take the corresponding
+5This is a slight modification of the functionals f 0
+0 (s = 3), f 1
+1 (s = 3) we used in previous
+work [1,2] to include some contributions from the D and F partial waves.
+17
+
+===== PDF PAGE 18 =====
+0.05
+0.10
+0.15
+- 0.030
+- 0.025
+- 0.020
+- 0.015
+- 0.010
+- 0.005
+Figure 3: The projected space of amplitudes characterized by two linear functionals
+(2.24) in the gauge theory bootstrap. The black line indicates the two functionals
+evaluated using tree level amplitudes whereas the black dot is for the physical value
+fπ = 92 MeV, the initial approximation we start with. We take three points (blue,
+green and red) on the boundary of the allowed space closest to the black point.
+amplitudes as the result of our computation where the span of the three points give
+a rough estimate of our computational errors.
+It is worth pointing out that the
+points at the lower edge could be alternative candidates but, following the previous
+paper [1, 2] we concentrate on the upper edge. The rest of the results are for the
+three points, or just the red and the blue. Since at this stage we cannot identify
+which exact point corresponds to QCD we use this spread as an estimate of the error
+until a better identification procedure is found.
+2.5
+Watsonian unitarization
+As discussed in [1,2], an important constraint in the Gauge Theory Bootstrap is the
+positivity of the matrix (2.8). When maximizing a linear functional, the maximum is
+obtained at the boundary of the allowed space where one expects the constraints to
+be saturated. In this case it means that the matrices (2.8) have two zero eigenvalues
+18
+
+===== PDF PAGE 19 =====
+implying the conditions:
+|SI
+ℓ(s)| = 1,
+SI
+ℓ(s) = FI
+ℓ(s)
+F∗I
+ℓ(s),
+ρI
+ℓ(s) = |FI
+ℓ(s)|2
+(saturation)
+(2.25)
+This implies Watson’s theorem, namely that the phase-shift and the phase of the form
+factor are equal: δI
+ℓ(s) = αI
+ℓ(s). Here SI
+ℓ(s) = e2iδI
+ℓ(s) and FI
+ℓ(s) = |FI
+ℓ(s)|eiαI
+ℓ(s). Pic-
+torially one can think that the SVZ sum rules and asymptotic values of the form
+factors obtained from the UV theory (QCD) constrain the modulus of FI
+ℓ(s) and,
+through analyticity its phase. Watson’s theorem conveys this information to the
+phase shift thus constraining the partial waves. Physically these saturation condi-
+tions are exact below the four pion threshold for 4 ≤s ≤16. At larger energies our
+numerical procedure tries to get as close as possible to saturation with the underlying
+assumption that particle creation is not important until at least 1GeV.
+Numerically, after the maximum is found, it is convenient to do a further improv-
+ing step by choosing a functional constructed schematically as follows: If the variables
+of the problem are xj and the constraints we want to improve are ΦA(xj) ≤0, we
+maximize
+FP(xj) =
+X
+A,j
+∂ΦA(xj)
+∂xj
+
+old
+xj
+(2.26)
+That is, we find the maximum in the direction of an average of the gradient of the
+constraints evaluated on the old solution. Such maximization increases the value of
+ΦA(x) and gets closer to the boundary. This step can be repeated several times as
+was shown in [39] in the cased of 2D theories where very good results were obtained.
+The main constraints we want to improve are |SI
+ℓ(s)| −1 ≤0. Thus, after the first
+maximization step, we construct a new functional
+FP
+=
+X
+ℓ,I
+ˆ ∞
+4
+ds Re
+
+(SI
+ℓ(s))∗δSI
+ℓ(s)
+δxj
+
+old
+xj
+(2.27)
+=
+X
+ℓ,I
+ˆ ∞
+4
+ds Re
+
+(SI
+ℓ(s))∗
+old (SI
+ℓ(s) −1)
+
+(2.28)
+where we used that the parameterization of the partial waves is linear in the variables
+xj. Alternatively, in this paper we introduce a similar but new type of unitarization
+where we replace the “old” S-matrix by the phase computed from the form factor:
+FW =
+X
+ℓ,I
+ˆ ∞
+4
+ds Re
+h
+e−2iαI
+ℓ(s)
+old (SI
+ℓ(s) −1)
+i
+(2.29)
+19
+
+===== PDF PAGE 20 =====
+Since we do not compute the form factor for all partial waves, whenever αI
+ℓ(s) is not
+available from the previous (old) solution, then we just use the phase-shift. This
+unitarization we call Watsonian unitarization because it leads not only to saturation
+of unitarity but also it is maximized when the phase shift agrees with the phase
+of the form factor. If needed, this Watsonian unitarization can be repeated until
+convergence.6
+Since the high energy information is introduced through the form
+factors and spectral densities the Watsonian unitarization is, at least qualitatively,
+a way to transfer that information into the partial waves.
+Note that, experimentally, elastic pion scattering saturates unitarity up to ener-
+gies of order 1.2 GeV. Although it is not completely clear why this is so, it agrees
+very nicely with the discussion in the last paragraph justifying the last unitarization
+step.
+2.6
+Comment on the condensates
+One important point of the original SVZ proposal was the existence of the quark
+condensate mq⟨0|¯qq|0⟩and gluon condensate or equivalently expectation value of the
+trace of the energy momentum tensor ⟨0|T µ
+µ |0⟩that contribute to the sum rules. This
+was taken into account by using the OPE of the currents:
+T{j(x)j(0)} = C1(x) 1 +
+X
+O
+CO(x) O(0)
+(2.30)
+and realizing that, when taking expectation value in the symmetry broken vacuum,
+other operators contribute. Thus, the SVZ expansion is
+⟨0|T{j(x)j(0)}|0⟩= C1(x) + C¯qq(x) ⟨0|jS(0)|0⟩+ CG2(x) ⟨0|αs
+π Ga
+µνGa µν|0⟩+ . . .
+(2.31)
+where jS = mq(¯uu + ¯dd). The expectation value ⟨0|αs
+π Ga
+µνGa µν|0⟩can be written
+in terms of the quark condensate and the trace of Tµν. These condensates play an
+important role in the SVZ approach similar to the low energy EFT coefficients lj
+do in chiral perturbation theory, they have to be determined from experiment (or
+lattice). However, in the finite energy sum rules that we used in the bootstrap their
+contribution is suppressed by inverse powers of the QCD matching scale s0 and we
+ignore them in the computational setup. The idea is the same as for lj, namely that
+fitting the high energy to the bootstrap we should find that corrections are required
+and thus the condensates should be calculable in the bootstrap. At the moment our
+6When iterated, the Watsonian unitarization converges to a certain GTB solution, see [37]. The
+converged solution is largely independent of the functional chosen to find the initial solution.
+20
+
+===== PDF PAGE 21 =====
+precision is not enough for that so we leave this interesting topic for future work.
+Notice that this is an improvement on paper [1,2] where we used condensate values
+as parameters taken from the literature (although they did not affect the numerics).
+3
+Phase shifts for I = 0, 1, 2 and ℓ≤3 up to 2 GeV
+Now we apply the procedure to QCD. In this case we consider and SU(3) gauge
+theory with two quarks of the same mass much lower than the QCD scale.
+We
+extend the energy range from 1.2 GeV in our previous paper [1,2] to 2 GeV in this
+paper. Keep in mind that at 2 GeV, our input from perturbative QCD for the form
+factors and spectral densities should be more precise. As described in section 2.4, we
+take three points (blue, green and red) in figure 3 spanning around the black dot that
+indicates the Weinberg model (tree level χPT) and examine the corresponding six
+partial waves S0, D0, S2, D2, P1, and F1. The results for the phase shifts δI
+ℓand
+inelasticity ηI
+ℓare plotted in fig.4, where the blue, green and red points correspond
+to the points in fig. 3 of the same color. We also plot together the experimental
+data (gray dots) from [40–42] and phenomenological fits (gray lines) from [20] for
+comparison. In this figure, the horizontal axis indicate the center of mass energy √s
+in GeV.
+In addition to the reasonable overall agreement with experiments, it is worth
+noting several points. First, the experimental data in the S0 channel includes Kaon
+production leading to a rise of the phase shift around 1 GeV which we do not expect
+to reproduce as we are not considering the strange quark. Therefore, the phenomeno-
+logical fit plot for S0 is done using the parametrization [20] with the Kaon production
+removed. Second, note that although the energy range was extended from 1.2 GeV
+to 2 GeV, the SVZ sum rules and the form factor asymptotics still determine the
+ρ(770) meson to be near its physical value. This is further confirmation that our
+framework does not rely on the s0 scale we choose. With this extension to 2 GeV,
+we now see a clear f2(1270) meson resonance in the D0 channel. Moreover, the P1
+channel contains another phase rise at ≃1.6 GeV (the phase shift values are plot-
+ted modulo π) corresponding to another resonance which should be identified with
+ρ(1450). See section 5.2.3 below for more details.
+21
+
+===== PDF PAGE 22 =====
+Figure 4: Phase shifts δI
+ℓand inelasticity ηI
+ℓfrom GTB comparing with experiments
+[40–42] and phenomenological fit [20]. Horizontal axis is √s in GeV. See text.
+22
+
+===== PDF PAGE 23 =====
+3.1
+Forward amplitudes
+The forward amplitudes (zero scattering angle or t = 0) combine all partial waves
+and presumably display Regge behavior at larger energies than the ones considered
+here. In fig. 5 we plot the amplitudes T0+(s, 0), T00(s, 0), T It=1(s, 0) that are s ↔u
+symmetric (or anti–symmetric). In terms of the fixed isospin amplitudes they read
+T0+ ≡T(π0π+ →π0π+)
+=
+1
+2T Is=1 + 1
+2T Is=2
+(3.1a)
+T00 ≡T(π0π0 →π0π0)
+=
+1
+3T Is=0 + 2
+3T Is=2
+(3.1b)
+T It=1
+=
+1
+3T Is=0 + 1
+2T Is=1 −5
+6T Is=2
+(3.1c)
+ReT0+(s,t=0)
+ReT00(s,t=0)
+ReTIt=1(s,t=0)
+0.4
+0.6
+0.8
+1.0
+1.2
+1.4
+s (GeV)
+-1
+0
+1
+2
+(a) Real part
+ImT0+(s,t=0)
+ImT00(s,t=0)
+ImTIt=1(s,t=0)
+0.4
+0.6
+0.8
+1.0
+1.2
+1.4
+s (GeV)
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+(b) Imaginary part
+Figure 5: Real and Imaginary parts of the forward amplitudes corresponding to the
+red point in fig.3 (points and solid interpolating lines) and the phenomenological
+analysis of Pelaez and Yndurain (dashed) [20] with Kaon production removed.
+4
+Low energy parameters
+In the previous section we showed that we find good agreement between the computed
+phase shifts and the experimental ones. Thus we might expect that all quantities
+agree.
+Although this way of thinking is generically correct, low energy parame-
+ters like scattering lengths aI
+ℓ, effective range parameters bI
+ℓand higher order chiral
+Lagrangian coefficients ¯lj have sensitive dependence on the detail structure of the
+amplitudes near threshold and might not necessarily agree with experiment. In this
+section we analyze these quantities in detail. As previously mentioned, we use the
+23
+
+===== PDF PAGE 24 =====
+red and blue points as an estimate of the spread of the results and therefore an
+estimate of the error.
+4.1
+Scattering lengths and effective range parameters
+Near threshold, the scattering is usually characterized by the scattering length and
+the effective range parameters defined through an expansion of the real part of the
+partial waves:
+Ref I
+ℓ(s)
+k→0
+≃k2ℓ aI
+ℓ+ bI
+ℓk2 + . . .
+
+, k =
+p
+s −4m2
+π
+2
+(4.1)
+One success of the Weinberg model (2.14) was that it gave reasonable values for the
+S0, S2 and P1 scattering lengths. However, as explained in section 2.2 the gauge
+theory bootstrap does not impose matching with the Weinberg model very close to
+threshold and therefore, the scattering lengths for those and the other partial waves
+resulting from the computation may or may not agree with experimantal values. We
+displayed the results in table 1 that includes the Weinberg model (W) (2.14), the
+Gauge Theory Bootstrap (GTB), and the phenomenological results of Colangelo,
+Gasser and Leutwyler (CGL) [22], and Pelaez and Yndurain (PY) [20]. The blue
+and red colors correspond to results from the blue and red points depicted in fig.3.
+4.2
+Low energy expansion of form factors
+Since the gauge theory bootstrap also computes the form factors, it is interesting to
+obtain their low energy expansion given by
+F 0
+0 (s)
+=
+F 0
+0 (0)
+
+1 + 1
+6s⟨r2⟩π
+S + . . .
+
+(4.2)
+F 1
+1 (s)
+=
+1 + 1
+6s⟨r2⟩π
+V + . . .
+(4.3)
+F 0
+2 (s)
+=
+1 + 1
+6s⟨r2⟩π
+T + . . .
+(4.4)
+where
+q
+⟨r2⟩π
+S,V,T are the scalar, vector and spin 2 radius of the pion. The spin two
+radius is sometimes called the mechanical radius. Such radii probe the size of the
+pion as seen by the various currents. Also recall that F 0
+0 (0) = 1 in our units where
+mπ = 1. The results for the (squared) radii are displayed in table 2 together with
+the values derived from experiment [22,43,44]. Although (to our knowledge) there
+24
+
+===== PDF PAGE 25 =====
+W
+GTB
+CGL
+PY
+a(0)
+0
+0.16
+0.174, 0.191
+0.220 ± 0.005
+0.230 ± 0.010
+a(2)
+0
+-0.046
+-0.0357, -0.0403
+−0.0444 ± 0.0010
+−0.0422 ± 0.0022
+b(0)
+0
+0.18
+0.285, 0.282
+0.280 ± 0.001
+0.268 ± 0.010
+b(2)
+0
+-0.092
+-0.061, -0.071
+−0.080 ± 0.001
+−0.071 ± 0.004
+a(1)
+1
+31
+28.7, 30.7
+37.0 ± 0.13
+38.1 ± 1.4 (×10−3)
+b(1)
+1
+0
+12.4, 7.28
+5.67 ± 0.13
+4.75 ± 0.16 (×10−3)
+a(0)
+2
+0
+14.6, 14.9
+17.5 ± 0.3
+18.0 ± 0.2 (×10−4)
+a(2)
+2
+0
+3.41, 2.53
+1.70 ± 0.13
+2.2 ± 0.2 (×10−4)
+Table 1: Scattering lengths and effective range parameters in units of mπ. Red and
+blue correspond to the amplitudes at points in fig.3 with the same color and the
+others are phenomenological results as described in the text.
+GTB
+Exp. fits
+⟨r2⟩π
+S
+0.64, 0.55
+0.61 ± 0.04 fm2
+⟨r2⟩π
+V
+0.394, 0.391
+0.439 ± 0.008 fm2
+⟨r2⟩π
+T
+0.153, 0.140
+Table 2: Pion scalar ⟨r2⟩π
+S and vector ⟨r2⟩π
+V (or electromagnetic) radii.
+is no direct determination of the spin 2 radius, recent phenomenological calculations
+based on experimental parton distribution functions give ⟨r2⟩π
+T = 0.67−0.77 fm2 [45]
+and ⟨r2⟩π
+T = 2.1 −2.4 fm2 [46].
+4.3
+Chiral Lagrangian coefficients
+As mentioned in section 2.2, the EFT method provides a compact way to organize the
+results in terms of the coefficients of the most general Lagrangian compatible with
+the symmetries (2.13). Usually, these coefficients are determined by comparison with
+experiment. More recently there has been a large effort in using positivity methods
+25
+
+===== PDF PAGE 26 =====
+to put generic bounds on them. With the gauge theory bootstrap we have a scheme
+to actually compute such coefficients based on self-consistency conditions (bootstrap)
+and gauge theory input. The results are given in table 3. As described in the previous
+subsections, we have obtained the D-waves scattering lengths and the pion scalar and
+vector radii. Therefore, we can obtain the chiral Lagrangian coefficients ¯l1,2,4,6 from
+the formulas [32,34]
+aD0
+=
+1
+1440π3f 4
+π
+
+¯l1 + 4¯l2 −53
+8
+
++ . . .
+(4.5)
+aD2
+=
+1
+1440π3f 4
+π
+
+¯l1 + ¯l2 −103
+40
+
++ . . .
+(4.6)
+F 0
+0 (s)
+=
+1 +
+s
+16π2f 2
+π
+
+¯l4 −13
+12
+
++ . . .
+(4.7)
+F 1
+1 (s)
+=
+1 +
+s
+96π2f 2
+π
+(¯l6 −1) + . . .
+(4.8)
+With the values shown in table 1 and table 2, we find
+GTB
+GL
+Bij
+CGL
+¯l1
+0.96, -0.10
+−2.3 ± 3.7
+−1.7 ± 1.0
+−0.4 ± 0.6
+¯l2
+4.5, 4.8
+6.0 ± 1.3
+6.1 ± 0.5
+4.3 ± 0.1
+¯l4
+4.8, 4.2
+4.3 ± 0.9
+4.4 ± 0.3
+4.4 ± 0.2
+¯l6
+14.6, 14.5
+16.5 ± 1.1
+16.0 ± 0.5 ± 0.7
+Table 3: Low energy parameters computed using gauge theory bootstrap (GTB) and
+phenomenological values (see text). The coefficient ¯l1 is challenging to evaluate and
+very sensitive to the D-wave scattering lengths.
+These values may be used to recompute the scattering lengths and effective range
+parameters to compare with the ones directly extracted in table 1 as a consistency
+check. See appendix A. In table 3, we also displayed the results compiled in [34]
+from Gasser and Leutwyler (GL) [32], Bijnens et al. (Bij) [47–49] and Colangelo et
+al.(CGL) [22]. As we can see, the phenomenological determination of these param-
+eters is also not too precise but there is reasonable agreement except for ¯l1 that is
+challenging to determine. At this stage our procedure is not precise enough to give
+very accurate figures but it is satisfying that it is within expected values. The main
+point is, as we mentioned, that we have a scheme to calculate the EFT parameters.
+26
+
+===== PDF PAGE 27 =====
+5
+Resonances
+As we have seen in section 3 fig.4, the P1, D0 and potentially S0 channels display
+resonances. In this section we study their properties more closely.
+5.1
+Scalar form factor
+In fig. 4, the S0 channel phase shift exhibits a sharp rise starting from threshold
+as also seen in the phenomenological fits. Correspondingly we see, at ∼500 MeV
+a peak in the scalar form factor plotted in fig.6 corresponding to the blue and red
+points in fig. 3.
+0.5
+1.0
+1.5
+2.0
+s (GeV)
+0.5
+1.0
+1.5
+2.0
+|F0
+0|
+Figure 6: Pion scalar form factor.
+This broad peak can be interpreted as the σ resonance but our current numerics
+is not precise enough to see a pole far from the real axis. This resonance seems to be
+due to chiral dynamics and therefore sensitive to the low energy input rather than
+high energy information.
+5.2
+The ρ meson
+In our previous work [1,2], we found the ρ meson as a resonance in the P1 channel.
+In this paper we see that its properties remain largely unchanged after increasing the
+QCD matching energy s0 from √s0 = 1.2 GeV in the previous paper to √s0 = 2 GeV
+in this one. This is a good test of the consistency of the procedure in particular
+27
+
+===== PDF PAGE 28 =====
+because the ρ meson is a signature of QCD and is determined, in this approach, by
+the gauge theory dynamics imposed at s0. Let us now study its properties in more
+detail.
+5.2.1
+Pole in the P1 wave
+The unitarity saturation condition on the 4 < s < 16 region of the real axis (or any
+larger region) for a given partial wave can be written as
+SI
+ℓ(s)(SI
+ℓ(¯s))∗= 1
+(5.1)
+Written in this way, the left hand side is an analytic function of s and therefore,
+if it is equal to 1 in a segment, it is equal to 1 for any value of s. Notice however
+that this means that if s is in the lower half plane, below the cut, ¯s has to be above
+but crossing under the cut, namely on the second sheet. This also explains why
+|S(s)|2 = 1 is not valid on the real axis for s < 4 since s and ¯s are on different sheets
+and neither has to be for s > 16 since a new cut appears there. In any case, what
+(5.1) implies is that a pole in the second sheet appears as a zero in the first sheet.
+In fig.7 we plot the modulus of the scattering amplitude S1
+1(s) analytically continued
+to the second sheet using (5.1). A pole is clearly visible in the plot. We extract the
+position of this pole and the comparison with experiments is given in table (4).
+GTB
+PDG
+Re(√sρ)
+829, 844
+761 −765 ± 0.23 MeV
+Im(√sρ)
+71, 82
+71 −74 ± 0.8 MeV
+Table 4: Position of the ρ meson T-matrix pole sρ in MeV.
+5.2.2
+Vector form factor
+Next, we fit the P1 form factor that we obtained from the bootstrap by assuming it
+is dominated by a ρ-meson pole, namely it is of the Breit-Wigner form [43]:
+F 1
+1 (s) = −
+m2
+ρ
+s −m2
+ρ + imρ Γρ θ(s −4m2
+π)
+(5.2)
+where the function θ(x) = 1 if x > 0 and zero otherwise, ensuring that it is real for
+s < 4 and F 1
+1 (0) = 1. This is a very convenient form since it is given by only two
+28
+
+===== PDF PAGE 29 =====
+Figure 7: S-matrix pole on the second sheet corresponding to the ρ meson.
+parameters (mρ, Γρ) that we can fit. For each of the blue and red points considered
+(in fig. 3) we fit the form factor as shown in figure 8 using a Breit-Wigner shape
+(dashed line). The agreement is reasonable but can be improved. In fact it was noted
+long ago that the ρ is not of the Breit-Wigner type. Using general considerations
+of elastic unitarity and analyticity, a better formula was developed by Gounaris and
+Sakurai [50] resulting in
+F 1
+1 (s) =
+m2
+ρ[1 + dΓρ/mρ]
+(m2
+ρ −s) −imρΓρ(q/qρ)3(mρ/√s)
+(5.3)
+where q =
+q
+s−4
+4
+and
+d = 3
+π
+1
+q2
+ρ
+ln
+mρ + 2qρ
+2
+
++ mρ
+2πqρ
+−mρ
+πq3
+ρ
+.
+(5.4)
+Notice that we still have only two constants (mρ, Γρ) to fit. With this formula we
+fit the form factor again and find a better agreement on the low energy side of the
+peak (the Gounaris-Sakurai form takes into account the correct threshold behavior).
+29
+
+===== PDF PAGE 30 =====
+Breit-Wigner
+Gounaris-Sakurai
+Breit-Wigner
+Gounaris-Sakurai
+0.4
+0.6
+0.8
+1.0
+1.2
+s (GeV)
+2
+4
+6
+8
+|F1
+1|
+Figure 8: ρ resonance in the vector form factor. The peak is fit with a Breit-Wigner
+resonance (dashed line) and a Gounrais-Sakurai shape (solid line) that gives a better
+fit on the low energy side. From here we obtain the mass and width of the ρ meson.
+As a result we obtain for the ρ mass and width for each of the two curves compared
+to the experimental value in table 5. It is interesting to note that the associated
+spectral density is related [51,52] to the so called hadronic ratio R = σ(e+e−→hadrons)
+σ(e+e−→µ+µ−)
+that can be measured very precisely (and for example plays an important role in
+g −2 computations). For completeness we include a plot in fig. 9.
+GTB
+PDG
+mρ
+838, 859
+775 ± 0.23 MeV
+Γρ
+114, 128
+149.1 ± 0.8 MeV
+Table 5: ρ meson mass and width in MeV compared to the data [53].
+Having determined the ρ mass mρ and width Γρ and given that ρ decays into two
+pions, we can use these values to determine the gρππ coupling through the formula
+[35]:
+Γρ = g2
+ρππ
+mρ
+48π
+
+1 −4m2
+π
+m2
+ρ
+ 3
+2
+(5.5)
+30
+
+===== PDF PAGE 31 =====
+GTB
+mρ=770 MeV, Γρ=149 MeV
+0.4
+0.6
+0.8
+1.0
+1.2
+s (GeV)
+2
+4
+6
+8
+10
+12
+14
+Figure 9: We compare one of the fits (blue) in fig.8 with the Gounaris-Sakurai
+form using the PDG data (black). The green curve represents the cross section of
+e+ +e−→hadrons (from PDG) properly rescaled to be compared to the form factor
+of jV . This last one displays two extra narrow peaks, the ω and ϕ resonances that
+do not appear in the P1 channel for SU(2) flavor.
+We find
+gρππ = 4.9,
+5.2
+(5.6)
+compared to the value gρππ = 6 computed similarly from the PDG values mρ =
+775MeV and Γρ = 149MeV. This simply reflects that we have a somewhat narrower
+resonance.
+Another important constant associated with the ρ meson is gρ defined through
+⟨0|jµ
+V |ρ⟩= m2
+ρ
+gρ
+ϵµ
+(5.7)
+where ϵ is the polarization of the ρ meson. It determines the electromagnetic decay
+width for ρ →e+ + e−. We can compute gρ using (the (2π)−4 is because of our
+normalization):
+ˆ
+ρ peak
+dx |F1
+1(x)|2
+x
+≃
+1
+(2π)4
+m2
+ρ
+2
+4π
+g2
+ρ
+(5.8)
+giving 4π
+g2ρ ≃0.61, 0.57 to be compared with 4π
+g2ρ = 0.507 ± 0.011 [54]. Equivalently
+31
+
+===== PDF PAGE 32 =====
+gρ = 4.8 ≃gρππ. Historically [55], an early model of the ρ meson consider it to be a
+gauge boson in which case gρ = gρππ was the universal gauge coupling. Alternatively,
+the same equality can be understood from the Vector Meson Dominance (VMD)
+hypothesis stating that the photon couples to hadrons mainly through the ρ meson
+and therefore the ρ meson pole dominates the electromagnetic form factor of the
+pion even far from the resonance. Our results are in agreement with that hypothesis
+since the fit in fig.8 is good all the way down to threshold.
+5.2.3
+The ρ(1450)
+Although the vector form factor F1
+1 that we obtained (see Fig.8) is dominated by the
+ρ(770) meson resonance, at larger energy ≃1.6 GeV another, smaller, peak becomes
+visible. It is also apparent in fig. 4 as a second rise in the P1 phase shift around the
+same energy. From the PDG meson table [53], it is natural to identify it with the
+ρ(1450) resonance that has the correct quantum numbers. We take this identification
+as preliminary and leave more precise calculations for future work. In fig. 10 we fit
+the form factor we obtained with a a sum of two Breit-Wigner resonances:
+F 1
+1 (s) =
+−A1m2
+1
+s −m2
+1 + im1Γ1θ(s −4m2
+π) +
+A2m2
+2
+s −m2
+2 + im2Γ2θ(s −4m2
+π)
+(5.9)
+where θ(x) is the step function that ensures the form factor is real for s < 4m2
+π. The
+fit parameters are given in table 6, together with the estimate given by PDG. Note
+that the fit parameters give
+A1 −A2 = 1.03, 1.11
+(5.10)
+agreeing nicely with the normalization for the form factor F 1
+1 (0) = 1. Assuming that
+mesons fall into Regge trajectories, we have found the starting point of two distinct
+Regge trajectories one beginning with the ρ(770) and the second with the ρ(1450).
+Asymptotically (s →∞) the form factor (5.9) behaves as
+F 1
+1 (s) ≃−A1m2
+1 + A2m2
+2
+s
+(5.11)
+showing that the asymptotic behavior (2.22i) should be the result of cancellations
+among several resonances.
+32
+
+===== PDF PAGE 33 =====
+0.5
+1.0
+1.5
+2.0 s (GeV)
+0.000
+0.005
+0.010
+0.015
+|ℱ1
+1
+2
+Figure 10: The fit of the bootstrap results of the rescaled form factor |F1
+1(s)|2 up to
+2 GeV with two Breit-Wigner resonances (5.9). In addition to the sharper peak we
+already saw in fig. 8 identified with ρ(770), we find a peak at higher energy which
+we preliminarily identify with ρ(1450).
+GTB
+PDG
+m1
+824, 841
+775 ± 0.23 MeV
+Γ1
+137, 164
+149.1 ± 0.8 MeV
+m2
+1635, 1645
+1465 ± 25 MeV
+Γ2
+248, 272
+400 ± 60 MeV
+A1
+1.29, 1.39
+A2
+0.27, 0.28
+Table 6: the mass and width in MeV of the ρ(770) meson (m1, Γ1) and ρ(1450) meson
+(m2, Γ2) compared to the data [53].
+5.3
+The gravitational form factor and the f2 meson
+The D0 wave has isospin 0 and angular momentum ℓ= 2, the same quantum numbers
+as the energy momentum tensor and the graviton.
+Hypothetically gravity could
+33
+
+===== PDF PAGE 34 =====
+couple to hadrons through the f2 meson resonance in the D0 channel as the photon
+couples through the ρ meson in the P1 channel. In this section we study the form
+factor of the energy momentum tensor a.k.a the gravitational form factor.
+The phase shift and form factor of the D0 wave clearly show a strong resonance
+near 1.2 GeV that we naturally identify with the f2(1270) meson. Fitting the form
+factor with a Breit-Wigner form (fig. 11) we determine the mass and width as in
+table 7.
+GTB
+PDG
+mf2
+1366, 1388
+1275.4 ± 0.6 MeV
+Γf2
+164, 188
+186.6 ± 2.3 MeV
+Table 7: f2 meson mass and width in MeV compared to the data [53].
+It should be noted that the f2(1270) meson decay fraction to ππ is (84.3+2.9
+−0.9)%
+with the rest of the time decaying to ππππ (10.5%) and K ¯K (4.6%). This is in
+constrast to the ρ that decays ∼100% into ππ. Therefore one has particle production
+through the resonance (ππ →f2 →ππππ) but it is not clear how that can be
+incorporated in the bootstrap.
+0.5
+1.0
+1.5
+2.0
+s (GeV)
+2
+4
+6
+8
+|F0
+2|
+Figure 11: Gravitational form factor, fit with a Breit Wigner form (blue and red),
+compared to the Breit-Wigner form using PDG data on f2 (black).
+34
+
+===== PDF PAGE 35 =====
+In any case, using the formula [54]7
+Γ(f2 →π0π0) = 1
+2Γ(f2 →π+π−) = mf2
+960π|gf2ππ|2
+mf2
+M0
+2  
+1 −4m2
+π
+m2
+f2
+! 5
+2
+(5.12)
+we find
+gf2ππ = 8.5,
+8.9
+(5.13)
+close to the value gf2ππ = 9.26 from [54].
+6
+Form factors
+The form factors are an important part of the numerical method. Given that the
+results needed for the numerical computation are available in the literature, this
+section mostly provides some useful definitions and normalizations. It also provides
+some computations that can be useful in further implementations of the gauge theory
+bootstrap with more partial waves. The reader may omit sections 6 and 7 initially.
+To each partial wave we associate a gauge theory operator with the same quantum
+numbers I, ℓ(isospin and angular momentum). The operators we choose for I = 0, 1
+are
+I = 0, ℓ= 0
+jS =mq ¯ψψ
+I = 1, ℓ= 1
+ja
+V =1
+2τ a
+AB ¯ψA /∆ψB
+I = 0, ℓ= 2
+jT =T µν∆µ∆ν
+I = 0, ℓ> 2, even
+jℓ= ¯ψA /∆(D∆)ℓ−1ψA
+I = 1, ℓ> 2, odd
+ja
+ℓ=1
+2τ a
+AB ¯ψA /∆(D∆)ℓ−1ψB
+(6.1)
+where ∆=
+1
+√
+2(0, 1, i, 0) is used to consider the operator with largest projection
+in the direction x+ =
+1
+√
+2(x + iy) and ensure the angular momentum is ℓ.
+The
+Pauli matrices τ a
+AB are used to project to isospin 1.
+The covariant derivative is
+D∆= ∆µ(∂µ −igAµ).
+In the present paper we only use the first three in the
+list: scalar and vector currents and the energy momentum tensor. They have been
+extensively studied in the literature [18,19,31,43,45,56–61] and we only review their
+properties. For recent bootstrap applications of form factors specially in 2d systems
+see [9,62–65]. For the ℓ> 2 case we give computations that we think will be useful in
+7The f2 pion coupling is a dimension five operator of the schematic form L ∼
+gf2ππ
+M0 ϕ∂π∂π.
+In [54] a reference mass M0 = 1 GeV is introduced to define a dimensionless coupling.
+35
+
+===== PDF PAGE 36 =====
+future implementations of the gauge theory bootstrap. Finally, operators with I = 2
+require at least four quarks, we discuss an example in the next section.
+6.1
+Definitions
+6.1.1
+Angular momentum ℓ
+In the center of mass frame where p = (ϵ, ⃗p) and p′ = (ϵ, −⃗p), and then (p+p′)·∆= 0,
+we define the form factor Fℓ(s) for an operator of angular momentum ℓ≥1 as follows
+8.
+Isospin 1:
+⟨πa
+pπb
+p′|jc
+ℓ|0⟩= 2(−ip∆)ℓϵabcF 1
+ℓ(s = (p + p′)2)
+(6.2)
+In the basis of fixed total angular momentum and isospin we find:
+⟨I = 1, I3 = 0, Pℓσ|jc=3
+ℓ
+|0⟩
+=
+δσℓFI=1
+ℓ
+(s)
+(6.3)
+FI=1
+ℓ
+(s)
+=
+i(−i)ℓ2ℓ/2ℓ!
+8π3
+s
+4π
+(2ℓ+ 1)!
+s −4
+4
+ 2ℓ+1
+4
+1
+s
+1
+4 F I=1
+ℓ
+(s)
+To derive this result we used
+(−ip · ∆)ℓ= (−i)ℓ|⃗p|ℓ2
+ℓ
+2ℓ!
+s
+4π
+(2ℓ+ 1)!Yℓℓ(ˆp)
+(6.4)
+where Yℓℓ(ˆp) is a standard spherical harmonic.
+Isospin 0:
+⟨πa
+pπb
+p′|jℓ|0⟩= −2(−ip∆)ℓδabF 0
+ℓ(s = (p + p′)2)
+(6.5)
+and then
+⟨I = 0, I3 = 0, Pℓσ|jℓ|0⟩
+=
+δσℓFI=0
+ℓ
+(s)
+(6.6)
+FI=0
+ℓ
+(s)
+=
+−(−i)ℓ2ℓ/2ℓ!
+8π3
+s
+6π
+(2ℓ+ 1)!
+s −4
+4
+ 2ℓ+1
+4
+1
+s
+1
+4 F I=0
+ℓ
+(s)
+8We can use the same definition for ℓ= 0 but the normalization differs from the one used for
+the scalar current in (2.21b).
+36
+
+===== PDF PAGE 37 =====
+6.1.2
+The gravitational form factor
+In the case of the D0 wave we need an operator with spin 2 and isospin 0. We can
+use O = ¯ψaγ+D+ψa. However that operator mixes with a gluonic one. A particular
+linear combination is the energy momentum tensor that we are going to use in this
+case. From energy momentum conservation we can write (the upper index in the
+form factor is the isospin)
+⟨π+
+p1|T µν(x)|π+
+p2⟩
+=
+ei(p1−p2)x
+1
+2F 0
+2 (t)(p1 + p2)µ(p1 + p2)ν+
+(6.7)
+˜F(t)(t ηµν −(p1 −p2)µ(p1 −p2)ν)
+o
+(6.8)
+with t = (p1 −p2)2. Also given that the Hamiltonian is H =
+´
+d3xT 00(x) and that
+H|π+
+p2⟩= ϵp2|π+
+p2⟩we find
+⟨π+
+p1|
+ˆ
+d3x T 00(x)|π+
+p2⟩= ϵp2⟨π+
+p1|π+
+p2⟩= 2ϵ2
+p1(2π)3δ(3)(⃗p1 −⃗p2)
+(6.9)
+Comparing with (6.7) we find
+F 0
+2 (0) = 1
+(6.10)
+From (6.7) and using crossing symmetry we obtain
+out⟨π+
+p1π−
+p2|T µν(0)|0⟩= 1
+2F 0
+2 (s)(p1 −p2)µ(p1 −p2)ν + ˜F(s)(s ηµν −(p1 +p2)µ(p1 +p2)ν)
+(6.11)
+and in particular
+out⟨π+
+p1π−
+p2|T ++(0)|0⟩= 4|⃗p1|2F 0
+2 (s)
+r
+2π
+15 Y22( ˆp1)
+(6.12)
+where Yℓσ(ˆp1) are the usual spherical harmonics evaluated in the direction of ⃗p1. Now
+it follows that
+⟨Pℓσ|T ++(0)|0⟩= F0
+2(s)δℓ2δσ2
+(6.13)
+F0
+2(s) =
+1
+4π3
+rπ
+5
+1
+s
+1
+4
+s −4
+4
+ 5
+4
+F 0
+2 (s)
+(6.14)
+6.2
+Asymptotic form
+The computation of asymptotic form factors is well known since the pioneering work
+of Brodsky and Lepage [18] on exclusive QCD processes. In this section we give a
+37
+
+===== PDF PAGE 38 =====
+simple presentation of the subject that allows to compute the case of general ℓat
+lowest order. Physically, for large momentum, the form factor is very small since
+it gives the amplitude for a rare process where a (virtual) particle (e.g. photon)
+strikes a pion and the pion absorbs the particle without being destroyed. It can be
+computed in the parton model by considering that the particle strikes a parton that
+has to interchange gluons with the other partons so that all partons move in the
+new direction. The largest contribution comes from the part of the wave function
+with smallest number of partons, in this case 2. The results depend on the parton
+distribution function and are also valid at large energies √s ≫ΛQCD. Since this
+is the only available result from QCD we use it with some caveats as discussed in
+section 8. In this section we describe the computation of the generic ℓcase thinking
+that it might help to extend the method to higher energies and angular momenta.
+We start by considering a generic current contracted with a vector ∆as
+jℓ
+B′A′ = ¯ψB′ /∆Dℓ−1
+∆ψA′
+(6.15)
+where A′ and B′ are flavor indices. We then take a simple “pion state” in QCD as a
+superposition of two free quarks (we follow the normalization in [51])
+|πa(p)⟩=
+ˆ 1
+0
+dx
+ˆ
+d2k⊥Xs1s2ψ(x, k⊥)1
+2τ a
+AB
+√
+2ωk
+p
+2ωp−ka†
+As1,kb†
+Bs2,p−k|0⟩
+(6.16)
+where k = xp+k⊥, k′ = x′p′ +k′
+⊥, the indices s1,2 denote the polarizations, and color
+indices of quark and anti-quark are contracted. When not contracted color indices of
+quark and gluons are denoted with lower-case letters (not to be confused with pion
+isospin indices as in πa(p)). In all calculations we take the large energy limit where
+s = q2 = (p −p′)2 ≃−2pp′ →∞and we drop all terms involving k⊥, k′
+⊥. This is
+explained in more detail in appendix C where we compute one Feynman diagram for
+pedagogical reasons. The wave function ψ(x, k⊥) is a low energy quantity. We sum
+over spin assuming a choice vp = −γ5up such that us
+p¯vs
+p = (/p + mq)γ5 as required to
+match the one piece of information we have from the axial current form factor
+⟨0|ja,5
+µ (0)|πb(p)⟩= −iδab pµ fπ
+(6.17)
+It also requires the normalization
+ˆ 1
+0
+dx
+ˆ
+d2k⊥
+p
+x(1 −x)ψ(x, k⊥) = −i
+2Nc
+fπ
+(6.18)
+From [18] we take, for very high energy, in our normalization
+p
+x(1 −x)ψ(x, k⊥) = −i
+2Nc
+fπ ϕ(x) ˜ψ(k⊥),
+ˆ
+d2k⊥˜ψ(k⊥) = 1
+(6.19)
+38
+
+===== PDF PAGE 39 =====
+where ϕ(x) is usually taken to be ϕ(x) = 6x(1 −x) [18]. The calculation for the
+insertion of a current (6.15) follows, at lowest order in perturbation theory from
+the Feynman diagrams (a) and (b) in fig. 13 using the vertices of fig. 12. For the
+contribution of all four diagrams of type (a),i.e. inserting the current in any of the
+fermion lines, we get (see appendix for one of the diagrams)
+T(a)
+ABCDA′B′ = 16ig2
+s
+C2(Nc)(−ip∆)ℓ
+xℓ−1
+(1 −x)(1 −x′)
+
+δAB′δA′CδBD + (−)ℓδA′BδACδB′D
+
+(6.20)
+with C2(Nc) =
+N2
+c −1
+2
+.
+Similarly we find (two diagrams of type (b) inserting the
+current on the top or bottom lines)
+T(b)
+ABCDA′B′ = 8ig2
+s C2(Nc)(−ip∆)ℓ
+x′ℓ−1 −xℓ−1
+(1 −x)(1 −x′)(x′ −x)
+
+δAB′δA′CδBD + (−)ℓδA′BδACδB′D
+
+(6.21)
+(a)
+(b)
+(c)
+Figure 12: Vertices to compute the current propagators and the asymptotic form
+factors. (a) standard gauge theory vertex (b) Current insertion. (c) Current insertion
+with one gluon from the covariant derivatives.
+resulting in the form factor
+⟨πb
+p′|jℓ
+B′A′|πa
+p⟩= f 2
+π
+4N 2
+c
+ˆ 1
+0
+ˆ 1
+0
+dx dx′ ϕ(x) ϕ∗(x′) 1
+4τ a
+BAτ b
+CD TABCDA′B′
+(6.22)
+where ϕ(x) = 6x(1 −x) and T = T(a) + T(b). We find (αs = g2/(4π).)
+⟨πb
+p′|jℓ
+B′A′|πa
+p⟩=
+(6.23)
+72iπαsf 2
+π
+t
+C2(Nc)
+N 2
+c
+(−ip∆)ℓ
+τ bτ a + (−)ℓτ aτ b
+A′B′
+
+1
+ℓ+ 1 + 2(Hℓ−1)
+ℓ+ 2
+
+39
+
+===== PDF PAGE 40 =====
+where we introduced the harmonic numbers Hℓ= Pℓ
+p=1
+1
+p. Two cases have to be
+considered now.
+Isospin 1:
+We take the current to be
+ja
+ℓ= 1
+2τ a
+B′A′ jℓ
+B′A′
+(6.24)
+We define the form factor F I
+ℓ(s) from the equation:
+⟨πa
+p′|jb
+ℓ|πc
+p⟩= −2(−ip∆)ℓϵabcF 1
+ℓ(t = (p −p′)2)
+(6.25)
+Using (6.22) we obtain (for ℓodd, it vanishes for ℓeven):
+F 1
+ℓ(t) ≃t→∞−72παsf 2
+π
+t
+C2(Nc)
+N 2
+c
+
+1
+ℓ+ 1 + 2(Hℓ−1)
+ℓ+ 2
+
+(6.26)
+with Hℓ= Pℓ
+p=1
+1
+p. Setting ℓ= 1 and Nc = 3 in the previous formula
+
+C2(Nc) = N2
+c −1
+2
+
+we find
+F 1
+1 (t) ≃s→∞−16παsf 2
+π
+t
+(6.27)
+in agreement with Brodsky-Lepage [18, 19]. The higher values of ℓare not used in
+this paper but they could be useful for later reference.
+Isospin 0:
+We take the current to be
+jℓ= δB′A′ jℓ
+B′A′
+(6.28)
+We define the form factor F I
+ℓ(s) from the equation:
+⟨πa
+p′|jℓ|πb
+p⟩= −2(−ip∆)ℓδabF 0
+ℓ(t = (p −p′)2)
+(6.29)
+Using (6.22) we obtain (for ℓeven, it vanishes for ℓodd):
+F 0
+ℓ(t) ≃t→∞−144iπαsf 2
+π
+t
+C2(Nc)
+N 2
+c
+
+1
+ℓ+ 1 + 2(Hℓ−1)
+ℓ+ 2
+
+(6.30)
+with Hℓ= Pℓ
+p=1
+1
+p. The case ℓ= 2, is relevant for the gravitational form factor:
+F 0
+2q(t) ≃t→∞−84iπαsf 2
+π
+t
+C2(Nc)
+N 2
+c
+(6.31)
+where we added the subindex q to indicate it comes from the quark part.
+40
+
+===== PDF PAGE 41 =====
+(a)
+(b)
+Figure 13: Standard Feynman diagrams with on-shell external particles contributing
+to the asymptotic pion form factor in the parton model. The grey blobs represent a
+linear combination of free fermions as in (6.16). The indices A,B,C,D,A′,B′ indicate
+flavor, a, c color, s1, s′
+1 polarization, and ˆD are in the adjoint representation of the
+gauge group.
+6.2.1
+The gravitational form factor
+The gravitational form factor is the form factor associated with the energy momen-
+tum tensor9
+T µν∆µ∆ν = −F aµαF aν
+α∆µ∆ν + ¯ψA /∆iD∆ψA
+(6.32)
+The kernels were computed in [57]. Since in that paper the final integral with the
+parton distribution was not performed, to avoid problems with different normaliza-
+9In this section lowercase indices are in the adjoint of SU(Nc)
+41
+
+===== PDF PAGE 42 =====
+tion we recompute the result here. In fact, up to a factor i the quark part was already
+computed in the previous subsection. The gluonic part can be computed from the
+diagram in fig.14 giving
+TABCD = −8g2
+t C2(Nc)(−ip∆)2
+
+1
+x(1 −x) +
+1
+x′(1 −x′)
+
+δACδBD
+(6.33)
+and thus
+⟨πI3
+p′ | −F aµαF aν
+α∆µ∆ν|π
+I′
+3
+p ⟩≃t→∞−48παsf 2
+π
+t
+C2(Nc)
+N 2
+c
+(−ip∆)2δI3I′
+3
+(6.34)
+and, from (6.29):
+F 0
+2g(t) ≃t→∞
+24παsf 2
+π
+t
+C2(Nc)
+N 2
+c
+(6.35)
+Figure 14: Feynman diagrams contributing energy momentum asymptotic pion form
+factor (gluon contribution).
+Putting both together we find
+F 0
+2 (t) = F 0
+2g(t) + iF 0
+2q(t) ≃t→∞
+108παsf 2
+π
+t
+C2(Nc)
+N 2
+c
+(6.36)
+For the case Nc = 3 of interest here we find
+F 0
+2 (t) ≃t→∞
+48παsf 2
+π
+t
+(6.37)
+As explained more in section 8, it turns out that around s ∼2 GeV this estimate is
+somewhat low due to the f2 resonance so only the order of magnitude is relevant.
+42
+
+===== PDF PAGE 43 =====
+6.2.2
+Scalar form factor
+We were not able to find much information about the asymptotic form of the scalar
+form factor in the literature. A calculation similar to the one for the vector form
+factor vanishes in the chiral limit since one gets the trace of a product of an odd
+number of Dirac matrices. The subleading term contains a power of the quark mass
+mq. Namely, the scalar current changes the chirality of the fermion and we need
+a mass insertion to restore it. The resulting computation has a divergence at the
+ends of the interval x →0, 1. The fermion propagator regulates it at an energy
+p2 = p′2 = m2
+π. These qualitative arguments suggest a behavior
+F 0
+0 (t) ∼t→∞4παsf 2
+π
+m2
+q
+t
+C2(Nc)
+N 2
+c
+ln
+ s
+m2
+π
+
+(6.38)
+up to a numerical factor. The other power of mq is from the definition of the current.
+This is too small for the precision of our numerics where we use another estimate.
+7
+Two point functions
+In this section we consider the two point functions of various currents discussed in
+the previous section. Since the results needed for the numerical computations of the
+paper are available in the literature, this section can be omitted in a first read of
+the paper. It contains calculations that can be useful in future implementaions of
+the bootstrap with more partial waves. The leading term in the expansion of the
+two point functions comes from the free theory, namely the UV fixed point of the
+theory but the results are already not trivial at this order since we are considering
+composite operators and renormalization is required.
+7.1
+Definitions
+Given an arbitrary local operator or current j(x) we define an integrated operator:
+O(P) =
+ˆ
+d4x
+(2π)4e−iPx j(x)
+(7.1)
+The two currents correlator, or vacuum polarization is defined as
+Π(s) = i
+ˆ
+d4x
+(2π)4eiP(x−y)⟨0| ˆT{j(x)†j(y)}|0⟩
+(7.2)
+43
+
+===== PDF PAGE 44 =====
+and the spectral density as
+ρ(s) = 2 ImΠ(s + iϵ) =
+ˆ
+d4x
+(2π)4eiPx⟨0|j(x)†j(0)|0⟩
+(7.3)
+where s = P 2. Notice that
+⟨0|(O(P ′))† O(P)|0⟩= δ(4)(P ′ −P)ρ(s)
+(7.4)
+which is the identity required by the form factor bootstrap.
+7.2
+Asymptotic form
+As in the case of the form factors, the calculation requires the asymptotic form of
+the the two current correlator for |s| →∞. Here |s| = s0 = 2 GeV and we make the
+assumption that the asymptotic form given by the free theory (Feynman diagram in
+fig.15) is already dominant.
+7.2.1
+Two quark operators of arbitrary ℓ
+Consider the current and operator
+jℓ,AB(x)
+=
+¯ψA(x) /∆Dℓ−1
+∆ψB(x)
+(7.5)
+O∆
+q,AB
+=
+ˆ
+d4x
+(2π)4e−iqx jℓ,AB(x)
+(7.6)
+where A, B are flavor indices (color indices are contracted) and ∆=
+1
+√
+2(0, 1, i, 0).
+This implies ∆2 = 0 = ¯∆2, ∆¯∆= −1 and also, in the center of mass where q is
+time-like, q∆= 0 = q ¯∆. A standard one loop diagram (fig.15) using the vertex (b)
+of fig.12 gives, in the free theory:
+Π(s)ℓ,ABCD
+=
+i
+ˆ
+ddx
+(2π)deiP(x−y)⟨0| ˆT{(jℓ,AB(x))†jℓ,CD(y)}|0⟩
+=
+−Nc
+(2π)4
+δACδBD
+2π2
+ℓ+ 1
+2ℓℓB(ℓ+ 1, ℓ+ 1) sℓln(−s
+µ2)
+(7.7)
+Also B(a, b) = Γ(a)Γ(b)
+Γ(a+b) . From here we find
+ρ(s)ℓ,ABCD = 2ImΠ(s + iϵ)ℓ,ABCD =
+Nc
+(2π)4
+δACδBD
+π
+ℓ+ 1
+2ℓℓB(ℓ+ 1, ℓ+ 1) sℓ
+(7.8)
+44
+
+===== PDF PAGE 45 =====
+Figure 15: Standard Feynman diagrams contributing to the two point function of
+the current at lowest order.
+and the generic sum rule
+1
+sn+ℓ+1
+0
+ˆ s0
+4
+ρ(x)ℓ,ABCD xn dx =
+Nc
+(2π)4
+δACδBD
+π
+ℓ+ 1
+2ℓℓ
+B(ℓ+ 1, ℓ+ 1)
+n + ℓ+ 1
+,
+n ≥0
+(7.9)
+It might be interesting to note that for ℓ≫1 a standard Stirling approximation
+shows that the right hand side is very small
+1
+sn+ℓ+1
+0
+ˆ s0
+4
+ρ(x)ℓ,ABCD xn dx ≃
+Nc
+(2π)4
+δACδBD
+π
+rπ
+l
+1
+23ℓ+1
+1
+n + ℓ+ 1,
+n ≥0, ℓ≫1
+(7.10)
+This is a reasonable approximation even if ℓis small.
+7.2.2
+Energy momentum tensor
+The energy momentum tensor is one of the most studied operators in Quantum Field
+Theory. For recent results in QCD see [66] and also the very recent paper [67] that
+uses energy momentum tensor correlators to study glueballs. Now we are interested
+in the vacuum polarization
+Π2(s) = i
+ˆ
+d4x
+(2π)4 eiqx ⟨0| ˆT{T −−(x)T ++(0)}|0⟩
+(7.11)
+From [68] we find
+i
+ˆ
+d4x eiqx ⟨0| ˆT{T µν(x)T ρσ(0)}|0⟩
+≃
+CT
+0 (s)
+
+P µρP νσ + P µσP νρ −2
+3P µνP ρσ
+
++CS
+0 (s) P µνP ρσ
+(7.12)
+with
+P µν
+=
+q2ηµν −qµqν
+(7.13)
+CT
+0 (s)
+=
+1
+16π2
+
+−ng
+10 −1
+20nfdR + αs
+π
+ 1
+18CAng −
+7
+144nfTFng
+
+ln
+
+−s
+µ2
+
+=
+1
+16π2
+
+−11
+10 + 17
+18
+αs
+π
+
+ln
+
+−s
+µ2
+
+(7.14)
+45
+
+===== PDF PAGE 46 =====
+From here, and working in the frame where q = (√s, 0, 0, 0) we obtain
+Π2(s) =
+1
+(2π)4 2s2CT
+0 (s)
+(7.15)
+Notice that the power s2 is determined by the symmetry and conservation law,
+therefore also appears as s →0 implying that
+1
+s2Π2(s) is analytic.
+For SU(Nc)
+gauge theory with nf flavors in the fundamental we have dR = Nc, ng = N 2
+c −1,
+CA = 2TFNc, CF = TF ng
+Nc , TF = 1
+2. If we set nf = 0 these results agree with those
+of [67]. In any case, for Nc = 3 and nf = 2, the results of [68] reduce to
+Π2(s) =
+1
+(2π)4
+1
+8π2
+
+−11
+10 + 17
+18
+αs
+π
+
+s2 ln
+
+−s
+µ2
+
++ . . .
+(7.16)
+namely
+ρ2(s) =s→∞
+1
+(2π)4
+1
+4π
+11
+10 −17
+18
+αs
+π
+
+s2 ln
+
+−s
+µ2
+
+(7.17)
+giving the FESR
+1
+sn+3
+0
+ˆ s0
+4
+ρ2(x)xndx
+=
+1
+(2π)4
+1
+4π
+1
+n + 3
+11
+10 −17
+18
+αs
+π
+
+,
+n ≥−2
+(7.18)
+that we impose for n = −2, −1.
+7.2.3
+Four quark scalar current
+Consider the scalar current relevant for the isospin I = 2 case
+jABCD = ( ¯ψAψB)( ¯ψCψD)
+(7.19)
+where the fields in parenthesis are color singlets. The indices A, B, C, D = 1 . . . Nf
+are flavor indices. We are interested in the correlator
+Π(s) = i
+ˆ
+ddx
+(2π)d e−iPx ⟨0| ˆT
+
+(jA′B′C′D′(x))†jABCD(0)
+	
+(7.20)
+where s = P 2.
+Using Wick’s theorem, in the free theory, namely the Feynman
+diagrams of fig.16 where the blobs represent current insertions, we find
+Π(s) = i
+ˆ
+ddx
+(2π)d e−iPx ×
+
+N 2
+c (δAA′δBB′δCC′δDD′ + δAC′δCA′δBD′δDB′) Tr[∆F(−x)∆F(x)]Tr[∆F(−x)∆F(x)]
+−Nc (δAC′δCA′δBB′δDD′ + δAA′δCC′δBD′δDB′) Tr[∆F(−x)∆F(x)∆F(−x)∆F(x)]}
+(7.21)
+46
+
+===== PDF PAGE 47 =====
+where ∆F(x) is the fermion propagator
+∆F(x) =
+ˆ
+ddk
+(2π)d
+i(/k + m)
+k2 −m2 + iϵ e−ikx = (i/∂x + m)∆(x)
+(7.22)
+where ∆(x) is the scalar propagator. This results in
+Π(s)
+=
+i
+ˆ
+ddx
+(2π)d e−iPx [∂µ∆(x)∂µ∆(x) + m2∆(x)2]2 ×
+
+16N 2
+c (δAA′δBB′δCC′δDD′ + δAC′δCA′δBD′δDB′)
+(7.23)
+−4Nc (δAC′δCA′δBB′δDD′ + δAA′δCC′δBD′δDB′)}
+Since we consider the case of light quarks, we ignore the quark mass and use the
+massless propagator and the general formula
+ˆ
+ddk
+(2π)d
+e−ikx
+(k2 + iϵ)a = iΓ(d
+2 −a)
+Γ(a)
+(−1)a
+4aπ
+d
+2(−x2)
+d
+2 −a
+(7.24)
+we obtain
+ˆ
+ddx
+(2π)d e−iPx [∂µ∆(x)∂µ∆(x)]2 = −iΓ(d
+2)4
+16π2d
+Γ(2 −3
+2d)
+Γ(2d −2)
+1
+42d−2π
+d
+2(−P 2 −iϵ)2−3
+2 d
+(7.25)
+Replacing d = 4 −ϵ, expanding in ϵ and renormalizing we get
+Π(s)
+=
+i
+ˆ
+d4x
+(2π)4 e−iPx ⟨0| ˆT
+
+(jA′B′C′D′(x))†jABCD(0)
+	
+=
+−
+
+16N 2
+c (δAA′δBB′δCC′δDD′ + δAC′δCA′δBD′δDB′)
+−4Nc (δAC′δCA′δBB′δDD′ + δAA′δCC′δBD′δDB′)}
+1
+(2π)4
+1
+218 32 5 π6 s4 ln
+
+−s
+µ2
+
+(7.26)
+One check is that for the currents j± =
+1
+√
+2
+P
+Γ=1,γ5(¯sΓs) (¯uΓu ± ¯dΓd) we get
+Π(s) = −216N 2
+c
+(2π)4
+1
+218 32 5 π6 s4 ln
+
+−s
+µ2
+
+= −
+1
+(2π)4
+1
+40960 π6 s4 ln
+
+−s
+µ2
+
+(7.27)
+in agreement with [66,69]
+47
+
+===== PDF PAGE 48 =====
+(a)
+(b)
+Figure 16: Standard Feynman diagrams contributing to the two point function of
+the four fermion current at lowest order.
+In our case we are interested in
+j(x)
+=
+(¯u(x)d(x)) (¯u(x)d(x))
+(7.28)
+O(P)
+=
+ˆ
+d4x
+(2π)4e−iPx j(x)
+(7.29)
+which gives
+Π(s)
+=
+i
+ˆ
+d4x
+(2π)4e−iqx⟨0| ˆT {j(x)j(0)} |0⟩
+=
+−8Nc(4Nc −1)
+1
+(2π)4
+1
+218 32 5 s4 ln(−s
+µ2)
+=
+−
+1
+(2π)4
+11
+491520 π6 s4 ln(−s
+µ2)
+(7.30)
+and from here
+ρ(s) = 2ImΠ(s + iϵ) =
+1
+(2π)4
+11
+245760 π5 s4
+(7.31)
+One may suspect that the result may have some ambiguity from renormalization, but
+that is not the case since ρ(s) should be finite. To check that, one can alternatively
+compute
+Oq|0⟩=
+ˆ
+4
+Y
+j=1
+d3kj
+(2π)3p2ωj
+δ(4)(
+4
+X
+j=1
+kj−q)
+X
+s1,s2,s3,s4
+(¯us1
+k1vs2
+k2)(¯us3
+k3vs4
+k4)a†
+k1s1ab†
+k2s2aa†
+k3s3bb†
+k4s4b|0⟩
+(7.32)
+where a†
+k1s1a creates a u-quark with momentum k1 polarization s1 and color index a,
+and b†
+k1s1a does the same for an anti d-quark. Notice that the time part of the delta
+48
+
+===== PDF PAGE 49 =====
+function (total energy fixed) implies that |⃗kj| < q0 and therefore the integrals are
+over finite size balls giving a finite value to ρ(s) in
+⟨0|O†(P ′)O(P)|0⟩= ρ(P 2) δ(4)(P ′ −P)
+(7.33)
+Using the “multi-ball integrals” in the appendix one can evaluate ρ(s) from this last
+equation giving
+ρ(s)
+=
+8Nc(4Nc −1)
+(2π)12
+ˆ
+4
+Y
+j=1
+d3kj
+(2π)3 2ωj
+δ(4)(
+4
+X
+j=1
+kj −q)(k1k2)(k3k4)
+=
+1
+(2π)4
+11
+245760 π5 s4
+(7.34)
+in agreement with eq.(7.31). Now, using the value of Π(s) we can write the sum rule
+1
+sn+5
+0
+ˆ s0
+4
+ρS2(x) xn dx =
+1
+(2π)4
+11
+245760 π5
+1
+n + 5,
+n ≥0
+(7.35)
+8
+Numerical method
+In section 2, we have explained the main ideas of the gauge theory bootstrap and
+now we are going to describe the numerical implementation. This section is perhaps
+better read in conjunction with the mathematica and matlab programs provided with
+this paper. Let us briefly recall the steps involved in this framework:
+• We find an (approximate) parameterization of the space of all S-matrices that
+satisfy the constraints of analyticity, crossing and global symmetries in terms
+of a large but finite number of real parameters. Within that space we identify a
+finite volume convex set of all S-matrices that satisfy the unitarity constraints.
+• We require that the partial waves, in the Mandelstam region, approximate the
+Weinberg model (χPT at tree level) within a certain tolerance and the spectral
+density has the correct kinematics at low energy. This reduces the allowed
+space of amplitudes to a much smaller one.
+• We introduce information of the UV gauge theory (QCD) through the sum
+rules and asymptotic form factors. The allowed space of amplitudes is further
+reduced, with the amplitudes on the boundary displaying behaviors (phase
+shifts, form factors) agreeing with experiments.
+49
+
+===== PDF PAGE 50 =====
+To understand the resulting convex space we maximize linear functionals using tools
+of convex optimization, and examine the extremal amplitudes/form factors living on
+the boundary of the allowed space. The idea is that given enough physical constraints
+from low energy and high energy, the allowed space of amplitudes consistent with
+the bootstrap constraints should become a very small set consisting of amplitudes
+with similar behavior, and eventually allowing to identify a unique theory. In princi-
+ple, the maximization functional should be irrelevant in achieving this. In practice,
+we focus on functionals given by linear combinations of partial waves evaluated in
+the unphysical region (Mandelstam triangle) to carry out this projection, and use
+the low energy physical information fπ = 92 MeV to identify the theory that we
+wish to compute. It would however be interesting for future work to check different
+functionals for this purpose.
+In this section, we describe in detail the numerical method to carry out the gauge
+theory bootstrap computation.
+We have also provided a Mathematica notebook
+GTB numerics.nb that implements the numerical computation described in this sec-
+tion, as well as a Matlab notebook GTB numerics.m that contains the optimization
+program for the bootstrap. To carry out the optimization, we use CVX [70–72], a
+package for specifying and solving convex programs [70,71]. Interested readers can
+download the notebooks, install the CVX package10, and run the programs to repro-
+duce the results we present in this paper. The programs can also be found in the
+github repository for this paper: arxiv-2403.10772.
+8.1
+Kernels for partial wave computations
+To impose the unitarity condition (2.6), evaluate the maximization functionals (2.24),
+and imposing the low energy matching (2.15), we need to evaluate the partial waves
+f I
+ℓ(s) from the bootstrap variables {T0, σ1,2, ρ1,2}. In this section, we compute such
+expression:
+f I
+ℓ(s) =ˆΦI
+ℓ(s)T0 +
+ˆ ∞
+4
+dxΦI
+ℓ,1(s, x)σ1(x) +
+ˆ ∞
+4
+dxΦI
+ℓ,2(s, x)σ2(x)
++
+ˆ ∞
+4
+dxdy˜ΦI
+ℓ,1(s, x, y)ρ1(x, y) +
+ˆ ∞
+4
+dxdy˜ΦI
+ℓ,2(s, x, y)ρ2(x, y)
+(8.1)
+where f I
+ℓ(s) is an analytic function of s with cut s > 4, s < 0.
+To arrive at the expression (8.1), the idea is to compute the partial waves pro-
+jection of different parts of the amplitudes (single and double dispersion analytic
+10We use the MOSEK solver [73] for fast numerical optimizations.
+50
+
+===== PDF PAGE 51 =====
+functions of the variables s, t, u) and combine them into the appropriate combina-
+tions with fixed isospins.
+We start by rewriting the Mandelstam representation of the amplitude (2.1) as
+A(s, t, u) = T0 + H1(s) + H2(t) + H2(u) + ˜H1(s, t) + ˜H1(s, u) + ˜H2(t, u)
+(8.2)
+with
+Hi(ν) = 1
+π
+ˆ ∞
+4
+dx
+
+1
+x −ν −
+1
+x −ν0
+
+σi(x)
+˜Hi(ν1, ν2) = 1
+π2
+ˆ ∞
+4
+dxdy
+
+1
+x −ν1
+−
+1
+x −ν0
+
+1
+y −ν2
+−
+1
+y −ν0
+
+ρi(x, y)
+(8.3)
+where we simply subtracted each integration kernel at a point s, t, u = ν0 and
+redefined the bootstrap variables {T0, σ1, σ2, ρ1, ρ2}. Keep in mind the symmetry
+ρ2(x, y) = ρ2(y, x). Neglecting the indices i, let us consider the partial wave pro-
+jection for each part of the amplitude (8.2) and write down the following Froissart-
+Gribov type formula:
+f (s)
+ℓ(s)
+≡
+1
+4
+ˆ 1
+−1
+dµPℓ(µ)H(s)dx = δl0
+2 K(s, x)σ(x)
+(8.4a)
+f (t)
+ℓ(s)
+≡
+1
+4
+ˆ 1
+−1
+dµPℓ(µ)H(t)dx =
+ˆ ∞
+4
+dxA(s, x)σ(x) −δl0
+2
+ˆ
+dxW0(x)σ(x) (8.4b)
+f (u)
+ℓ
+(s)
+≡
+1
+4
+ˆ 1
+−1
+dµPℓ(µ)H(u)dx = (−1)l
+ˆ ∞
+4
+dxA(s, x)σ(x) −δl0
+2
+ˆ
+dxW0(x)σ(x)
+(8.4c)
+51
+
+===== PDF PAGE 52 =====
+and
+f (s,t)
+ℓ
+(s)
+≡
+1
+4
+ˆ 1
+−1
+dµPℓ(µ) ˜H(s, t)dx
+=
+ˆ ∞
+4
+dxdyA(s, y)K(s, x)ρ(x, y) −δl,0
+2 K(s, x)W0(y)ρ(x, y)
+(8.5a)
+f (s,u)
+ℓ
+(s)
+≡
+1
+4
+ˆ 1
+−1
+dµPℓ(µ) ˜H(s, u)dx
+=
+(−1)l
+ˆ ∞
+4
+dxdyA(s, y)K(s, x)ρ(x, y) −δl,0
+2 K(s, x)W0(y)ρ(x, y)
+(8.5b)
+f (t,u)
+ℓ
+(s)
+≡
+1
+4
+ˆ 1
+−1
+dµPℓ(µ) ˜H(t, u)dx
+=
+ˆ ∞
+4
+dxdyA(s, y)W(s, y, x)ρ(y, x) + (−1)l
+ˆ ∞
+4
+dxdyA(s, y)W(s, y, x)ρ(x, y)
++δl,0
+2 W0(x, y)ρ(x, y)
+(8.5c)
+where on the LHS we use the superscripts to indicate the complex variables of the
+analytic functions H, ˜H being projected. In the expressions (8.5) and (8.4), we have
+defined the kernels:
+A(s, x)
+=
+1
+π(s −4)Qℓ
+
+1 +
+2x
+s −4
+
+(8.6a)
+W(s, y, x)
+=
+1
+π
+
+1
+x + y + s −4 −
+1
+x −ν0
+
+(8.6b)
+W00(x, y)
+=
+1
+π2
+1
+(x −ν0)(y −ν0)
+(8.6c)
+W0(x)
+=
+1
+π
+1
+x −ν0
+(8.6d)
+K(s, x)
+=
+1
+π
+
+1
+x −s −
+1
+x −ν0
+
+(8.6e)
+with x, y ∈(4, ∞), s complex and Qℓis the second Legendre function satisfying
+Qℓ(z) = 1
+2
+ˆ 1
+−1
+dµPℓ(µ)
+z −µ
+(8.7)
+Notice that the kernel K in (8.6e) has an imaginary part for s > 4 and therefore will
+give rise to an imaginary part of the partial waves in the physical region.
+52
+
+===== PDF PAGE 53 =====
+The expressions (8.4) and (8.5) allow us to define the kernels
+Φ(s)
+ℓ(s, x) = δl0
+2 K(s, x)
+Φ(t)
+ℓ(s, x) = A(s, x) −δl0
+2 W0(x)
+Φ(u)
+ℓ(s, x) = (−1)lA(s, x) −δl0
+2 W0(x)
+(8.8)
+˜Φ(s,t)
+ℓ
+(s, x, y) = A(s, y)K(s, x) −δl,0
+2 K(s, x)W0(y)
+˜Φ(s,u)
+ℓ
+(s, x, y) = (−1)lA(s, y)K(s, x) −δl,0
+2 K(s, x)W0(y)
+˜Φ(t,u)
+ℓ
+(s, x, y) = A(s, y)W(s, y, x)Tx,y + (−1)lA(s, y)W(s, y, x) + δl,0
+2 W0(x, y)
+(8.9)
+where Tx,y interchanges the variables of a double spectral density ρ(y, x) = Tx,yρ(x, y).
+Namely, integrating the spectral densities σ, ρ with these kernels (8.8), (8.9) give the
+partial waves (8.4) and (8.5) by projecting out different parts of the amplitudes to a
+definite angular momentum ℓ.
+With these basic kernels, we can now make combinations which gives rise to
+kernels to be integrated with the spectral densities σ1,2 and ρ1,2 respectively. We
+have first the kernels for the single spectral densities:
+Φ(s)
+ℓ,1(s, x)
+=
+Φ(s)
+ℓ(s, x)
+(8.10a)
+Φ(t)
+ℓ,1(s, x)
+=
+Φ(t)
+ℓ(s, x)
+(8.10b)
+Φ(u)
+ℓ,1 (s, x)
+=
+Φ(u)
+ℓ(s, x)
+(8.10c)
+Φ(s)
+ℓ,2(s, x)
+=
+Φ(t)
+ℓ(s, x) + Φ(u)
+ℓ(s, x),
+(8.10d)
+Φ(t)
+ℓ,2(s, x)
+=
+Φ(s)
+ℓ(s, x) + Φ(u)
+ℓ(s, x),
+(8.10e)
+Φ(u)
+ℓ,2 (s, x)
+=
+Φ(s)
+ℓ(s, x) + Φ(t)
+ℓ(s, x)
+(8.10f)
+where the subscript 1, 2 indicate the corresponding single spectral density σ1,2. Sim-
+53
+
+===== PDF PAGE 54 =====
+ilarly, we have
+˜Φ(s,t)
+ℓ,1 (s, x, y)
+=
+˜Φ(s,t)
+ℓ
+(s, x, y) + ˜Φ(s,u)
+ℓ
+(s, x, y)
+(8.11a)
+˜Φ(t,s)
+ℓ,1 (s, x, y)
+=
+˜Φ(s,t)
+ℓ
+(s, x, y)Tx,y + ˜Φ(t,u)
+ℓ
+(s, x, y)
+(8.11b)
+˜Φ(u,t)
+ℓ,1 (s, x, y)
+=
+˜Φ(t,u)
+ℓ
+(s, x, y)Tx,y + ˜Φ(s,u)
+ℓ
+(s, x, y)Tx,y
+(8.11c)
+˜Φ(s,t)
+ℓ,2 (s, x, y)
+=
+˜Φ(t,u)
+ℓ
+(s, x, y)
+(8.11d)
+˜Φ(t,s)
+ℓ,2 (s, x, y)
+=
+˜Φ(s,u)
+ℓ
+(s, x, y)
+(8.11e)
+˜Φ(u,t)
+ℓ,2 (s, x, y)
+=
+˜Φ(s,t)
+ℓ
+(s, x, y)Tx,y
+(8.11f)
+where again, the subscript 1, 2 indicate the corresponding double spectral density ρ1,2
+that it should be multiplied with. The superscript indicate the complex variables
+involves in the analytic function ˜H before projecting out to a partial wave.
+For
+example, the superscript (t, s) arises from the integration kernel after projecting out
+a fixed angular momentum for analytic function ˜H(t, s). This switch of complex
+variables in the analytic functions ˜H is due to the interchange of s, t, u variables in
+(2.2) for defining amplitudes of a fixed isospin.
+The final kernels for computing the partial waves of fixed isospin from the spectral
+densities σ1,2, ρ1,2 is given by (we omit the variables s, x, y here)
+˜ΦI
+ℓ,i =
+
+
+˜Φ0
+ℓ,i
+˜Φ1
+ℓ,i
+˜Φ2
+ℓ,i
+
+=
+
+
+3˜Φ(s,t)
+ℓ,i
++ ˜Φ(t,s)
+ℓ,i
++ ˜Φ(u,t)
+ℓ,i
+˜Φ(t,s)
+ℓ,i
++ ˜Φ(u,t)
+ℓ,i
+˜Φ(t,s)
+ℓ,i
+−˜Φ(u,t)
+ℓ,i
+
+, i = 1, 2
+(8.12)
+ΦI
+ℓ,i =
+
+
+Φ0
+ℓ,i
+Φ1
+ℓ,i
+Φ2
+ℓ,i
+
+=
+
+
+3Φ(s)
+ℓ,i + Φ(t)
+ℓ,i + Φ(u)
+ℓ,i
+Φ(t)
+ℓ,i + Φ(u)
+ℓ,i
+Φ(t)
+ℓ,i −Φ(u)
+ℓ,i
+
+, i = 1, 2
+(8.13)
+as well as the coefficient to multiply the constant T0
+ˆΦI
+ℓ=
+
+
+ˆΦ0
+ℓ,i
+ˆΦ1
+ℓ,i
+ˆΦ2
+ℓ,i
+
+= δl0
+2
+
+
+(N + 2)
+0
+2
+
+
+(8.14)
+The combinations here can be understood directly from the combinations in (2.2) for
+defining amplitudes with fixed isopins. Integrating the constant T0, spectral densities
+σ1,2 and ρ1,2 according to (8.1) give the analytic partial waves with definite isospins.
+54
+
+===== PDF PAGE 55 =====
+8.2
+Mapping to the circle
+For numerically computing the above integrals, we map the cut plane of ν (standing
+for s, t, u) onto a unit disk
+z(ν) =
+√4 −ν0 −√4 −ν
+√4 −ν0 + √4 −ν
+(8.15)
+where the point ν = ν0 is mapped to the center of the unit z disk.11 The region
+x ∈(4, ∞) is mapped to the upper half circle of z = eiϕ, ϕ ∈[0, π]:
+x(ϕ) = ν0 +
+8 −2ν0
+1 + cos(ϕ), x ∈(4, ∞)
+(8.16)
+Under this map, the integrals in (8.1) simply become
+ˆ ∞
+4
+dx →
+ˆ π
+0
+x′(ϕ)dϕ
+(8.17)
+where
+x′(ϕ) = 2(4 −ν0) sin ϕ
+(1 + cos ϕ)2
+(8.18)
+The variables x, y in the kernels (8.6) can be simply replaced by x(ϕ1), y(ϕ2). We
+will rename the spectral densities σ1,2(ϕ1), ρ1,2(ϕ1, ϕ2) accordingly.
+Under the map (8.15), the region above the cut is mapped to the upper half circle
+of z and below the cut mapped to the lower half circle of z. Let us now look at the
+kernel K which has a jump across the cut s > 4. Under this map, we can then replace
+ˆ ∞
+4
+dxK(ν, x) →
+ˆ π
+0
+dϕK(z, ϕ)
+(8.19)
+with
+K(z, ϕ) =
+2z sin ϕ
+π + πz2 −2πz cos ϕ
+(8.20)
+where we absorbed (8.18) into the definition of K. The kernel K allows to compute
+analytic functions on the unit disk of z (and vanishes at z = 0) using their imaginary
+part on the upper half circle:
+g(z) =
+ˆ ∞
+0
+dϕK(z, ϕ)Img(ϕ)
+(8.21)
+11this is the same map used in the ρ variable parametrization of the S-matrix bootstrap [7]
+55
+
+===== PDF PAGE 56 =====
+Evaluating the real part Re g(ϕ) on the upper half circle requires computing a prin-
+cipal part integral
+Reg(ϕ) =
+ π
+0
+dϕ1 ˆK(ϕ, ϕ1)Img(ϕ1) = 1
+π
+ π
+0
+dϕ1
+sin ϕ1
+cos ϕ −cos ϕ1
+Img(ϕ1)
+(8.22)
+To perform this integral we extend Img(ϕ1) to the range −π ≤ϕ1 ≤π by assuming
+that it is anti-symmetric Img(−ϕ1) = −Img(ϕ1) so that the integrand is symmet-
+ric. For the spectral densities σ1,2(ϕ1), ρ1,2(ϕ1, ϕ2) this agrees with them being the
+imaginary part of an amplitude that changes sign across the cut.
+The expression (8.1) for computing the physical partial waves now becomes (I =
+0, 1, 2)
+f I
+ℓ(s) =ˆΦI
+ℓ(s)T0 +
+ˆ π
+0
+dϕ1ΦI
+ℓ,1(s, ϕ1)σ1(ϕ1) +
+ˆ π
+0
+dϕ1ΦI
+ℓ,2(s, ϕ1)σ2(ϕ1)
++
+ˆ π
+0
+dϕ1dϕ2 ˜ΦI
+ℓ,1(s, ϕ1, ϕ2)ρ1(ϕ1, ϕ2) +
+ˆ π
+0
+dϕ1dϕ2 ˜ΦI
+ℓ,2(s, ϕ1, ϕ2)ρ2(ϕ1, ϕ2)
+(8.23)
+where we just renamed the kernels as Φ, ˜Φ when using variables ϕ1, ϕ2 and absorb
+the Jacobian (8.18) into the definitions of Φ and ˜Φ.
+Consider now the analytic form factor (2.7) which can be parameterized by its
+imaginary part ImF(x) (neglecting the indices for now) above the cut s > 4. The
+same map (8.15) and (8.16) applies and we can write its real part ReF(s) in the
+physical region s > 4 (denoted as ReF(ϕ)) using the above dispersion relation (8.22)
+ReF(ϕ) = 1 +
+ π
+0
+dϕ1 ˆK(ϕ, ϕ1)ImF(ϕ1) +
+ˆ π
+0
+K0(ϕ1)ImF(ϕ1)
+(8.24)
+with
+K0(ϕ) =
+ν0 sin ϕ
+π(8 −ν0 + ν0 cos ϕ)
+(8.25)
+computing the difference between subtracting at s = 0 and s = ν0. 12 Similarly, the
+spectral density ρI
+ℓcan also be parametrized by the angle ϕ1 as
+ρI
+ℓ(x) →ρI
+ℓ(ϕ) .
+(8.26)
+12recall the normalization F(0) = 1 and that the point s = ν0 is mapped to the center of the disk
+where the kernel (8.20) vanishes
+56
+
+===== PDF PAGE 57 =====
+To summarize, after mapping to the circle, all our bootstrap variables (2.9) are
+parameterized by the angles ϕ1, ϕ2 ∈(0, π): (where ρ2(ϕ1, ϕ2) = ρ2(ϕ2, ϕ1))
+{T0, σα=1,2(ϕ1), ρα=1,2(ϕ1, ϕ2), ImF I
+ℓ(ϕ1), ρI
+ℓ(ϕ1)}
+(8.27)
+which we will discretize in the next subsection.
+8.3
+Numerical discretization
+We consider a hybrid numerical discretization through interpolation points for the
+bootstrap variables {T0, σ1, σ2, ρ1, ρ2, ImF I
+ℓ} and BSpline basis functions for the spec-
+tral density {ρI
+ℓ}. The latter provides a good numerical control of the low energy
+kinematic of the spectral density given in (2.20) which we will describe in subsection
+8.3.2 below.
+8.3.1
+Interpolation points for amplitudes and form factors
+To discretize the bootstrap variables {T0, σ1, σ2, ρ1, ρ2, ImF I
+ℓ}, we choose equally
+spaced M points in the range ϕ ∈(0, π):
+ϕj =
+
+j −1
+2
+
+∆ϕ, j = 1, 2, . . . , M,
+∆ϕ = π
+M
+(8.28)
+The index j is shifted to avoid taking the point exactly at threshold13. This corre-
+sponds, through (8.16), to a set of points in the interval (4, ∞)
+sj = x(ϕj), j = 1, . . . , M
+(8.29)
+which is also the set of points where we will evaluate the partial waves in the physical
+region. We thus have the discrete set of bootstrap variables (where ρ2,j1j2 = ρ2,j2j1)
+{T0, σ1,j1, σ2,j1, ρ1,j1j2, ρ2,j1j2, ImF I
+ℓ,j1}, j1, j2 = 1, 2, . . . , M
+(8.30)
+For the bootstrap procedure, we also have to evaluate the partial waves at an
+unphysical point s∗(can be complex in general) f I
+ℓ(s∗). This will be used for both
+defining functionals of the type (2.24), as well as for the requirement of matching
+with the tree level partial waves (2.16) in the low energy unphysical region s ∈(0, 4).
+13Note that according to the map (8.16), the discrete set of angles (8.28) correspond to different
+distributions of xj ∈(0, 4) depending on the center ν0 for the map. We have tested the convergence
+of the numerics for a few values of ν0 and the results in this paper are obtained using ν0 = −20.
+57
+
+===== PDF PAGE 58 =====
+The partial waves evaluation at a generic point s∗(away from the cut s > 4)
+can be done directly by taking an unphysical point s∗and replacing the integrals in
+(8.23) with sums:
+f I
+ℓ(s∗) = fT0 + f1,j1σ1,j1 + f2,j1σ2,j1 + f1,j1j2ρ1,j1j2 + f2,j1j2ρ2,j1j2
+(8.31)
+where
+f = ˆΦI
+ℓ(s∗), f1,j1 = ∆ϕΦI
+ℓ,1(s∗, ϕj1), f2,j1 = ∆ϕΦI
+ℓ,2(s∗, ϕj1),
+f1,j1j2 = ∆2
+ϕ ˜ΦI
+ℓ,1(s∗, ϕj1, ϕj2), f2,j1j2 = ∆2
+ϕ ˜ΦI
+ℓ,2(s∗, ϕj1, ϕj2)
+(8.32)
+The evaluation of the partial waves in the physical region s > 4 above the cut
+is slightly trickier since the kernel K (or equivalently K in (8.20)) has real and
+imaginary parts in the physical region. In this case, we can write the discretized
+version of the kernel K (8.20) (evaluated on the upper half circle) as
+K(ϕj, ϕj1) = ˆKjj1 + i
+2πδjj1
+(8.33)
+where the principal integral (8.22) becomes the sum
+Reg(ϕj) =
+M
+X
+j1=−M
+ˆKjj1Img(ϕj1)
+(8.34)
+and
+ˆKj1,j2 = −1
+2M (1 −(−)j1−j2) cot
+ π
+2M (j1 −j2)
+
+(8.35)
+namely the discretized kernel that relates the real and imaginary part of an analytic
+function at the boundary of the unit disk.
+With this, we can now evaluate the partial waves in the physical region.
+In
+practice, for imposing the unitarity constraints, we evaluate the rescaled partial
+waves
+hI
+ℓ(s) = π
+r
+s −4
+s
+f I
+ℓ(s)
+(8.36)
+at discrete points sj = x(ϕj) ∈(4, ∞). This is given by
+hI
+ℓ,j = hI
+ℓ,jT0 + hI
+ℓ,1;j,j1σ1,j1 + hI
+ℓ,2;j,j1σ2,j1 + hI
+ℓ,1;j,j1,j2ρ1,j1,j2 + hI
+ℓ,2;j,j1,j2ρ2,j1,j2
+(8.37)
+where
+hI
+ℓ,j = ωj ˆΦI
+ℓ(sj), hI
+ℓ,1;j,j1 = ωj∆ϕΦI
+ℓ,1(sj, ϕj1), hI
+ℓ,2;j,j1 = ωj∆ϕΦI
+ℓ,2(sj, ϕj1),
+hI
+ℓ,1;j,j1,j2 = ωj∆2
+ϕ ˜ΦI
+ℓ,1(sj, ϕj1, ϕj2), hI
+ℓ,2;j,j1,j2 = ωj∆2
+ϕ ˜ΦI
+ℓ,2(sj, ϕj1, ϕj2)
+(8.38)
+58
+
+===== PDF PAGE 59 =====
+with
+ωj = π
+s
+sj −4
+sj
+(8.39)
+from the factor in 8.36. For evaluating the sum (8.37), one simply uses their original
+definition in section 8.1, and take the values of sj at discrete points (8.29) (keep
+in mind that the Jacobian has been absorbed into the redefinitions of Φ, ˜Φ).
+In
+particular, for the kernels that involve K, one has to use the expressions (8.33),
+(8.35) that perform the numerical principal integral which gives rise to the real and
+imaginary part of the partial waves in the physical region s > 4.
+As an additional numerical comment, due to the symmetry of the spectral density
+ρ2,j1j2 = ρ2,j2j1, in practice we symmetrize the numerical matrices that multiply ρ2,
+namely f2,j1j2 and ˜ΦI
+ℓ,2;j,j1,j2 with respect to the j1, j2 indices thus reducing the number
+of variables.
+The numerical computation of the form factors is completely analogous. The
+form factor is parametrized by its imaginary part on the physical region at discretized
+points ImF(sj) →ImF(ϕj). According to (8.24), the real part can be computed with
+ReFj = 1 +
+  ˆKj,j1 + K0,j1
+
+ImFj1
+(8.40)
+where
+K0,j1 = K0(ϕj1)
+(8.41)
+8.3.2
+BSpline basis functions for spectral density
+The spectral densities ρI
+ℓ(s) enter the positive semidefinite matrix (2.8) and are
+subject to the SVZ sum rules up to the energy scale s0.
+As we will describe in
+the next section, in the numerics, we compute the positive matrix for s ∈(4, s0)
+so we will consider the discretization of the functions ρI
+ℓ(s) for s ∈(4, s0).14 This is
+done by expanding the ρI
+ℓ(s) with the BSpline basis functions which allows a minimal
+control the low energy kinematic behavior (2.20). See [37] for an alternative, more
+powerful implementation of this behavior.
+To do this, we first rewrite the bootstrap variables ρI
+ℓ(s) as
+ρI
+ℓ(s) = κℓ(s)ˆρI
+ℓ(s)
+(8.42)
+14According to the finite energy sum rules, the values of ρ above s0 are assumed to take the
+perturbative QCD form (i.e. ignoring the condensates). See section 2.3.
+59
+
+===== PDF PAGE 60 =====
+where the κℓ(s) are the kinematic factors in (2.20):
+κ0(s)
+=
+1
+(2π)4
+3
+16π
+
+1 −4
+s
+ 1
+2
+(8.43a)
+κ1(s)
+=
+1
+(2π)4
+s
+24π
+
+1 −4
+s
+ 3
+2
+(8.43b)
+κ2(s)
+=
+1
+(2π)4
+s2
+160π
+
+1 −4
+s
+ 5
+2
+(8.43c)
+that depend only on s and ℓ. These factors are the square of the rescaling kinematic
+factor between Fℓ(s) and Fℓ(s) (see (2.21e), (2.22e) and (2.23e)) so that the inequality
+ρ ≥|F|2 from the positive matrix (2.8) is equivalent to
+ˆρ(s) ≥|F(s)|2 .
+(8.44)
+Below the four pion threshold (4 ≤s ≤16) we have exact saturation ˆρ(s) = |F(s)|2.
+We can use this to extend the function ˆρ(s) continuously to the region 0 < s < 4 by
+defining it simply as ˆρ(s) = F 2(s), 0 < s < 4. Since F(0) = 1, this extended function
+obeys the boundary condition ˆρ(s = 0) = 1 that we can impose in the bootstrap. It
+implies that, near threshold ˆρ(s) ≃1 and therefore the desired behavior (2.20).
+The (extended) function ˆρ(s) can be expanded using the BSpline basis with degree
+p = 3:
+ˆρI
+ℓ(s) =
+NB
+X
+i=1
+ρI
+ℓ,iBi(s), s ∈[0, sn0]
+(8.45)
+where Bi(s) denotes the BSpline basis functions with degree p = 3. sn0 here denotes
+the last discrete point in (8.29) below s0, namely the last numerical evaluation point
+for the positive matrix computation. See (8.54) below. The BSpline basis Bi(s) can
+be defined using a series of knots which we choose to be equally spaced on [0, sn0].
+So for NB basis functions we have the knots:
+{0, 0, 0, 0, . . . , sn0, sn0, sn0, sn0}
+(8.46)
+where . . . indicates the equally spaced inner knots. The BSpline basis functions thus
+defined are non-negative for the whole range s ∈[0, sn0] and we can impose the
+condition ρI
+ℓ,i ≥0, i = 1, . . . , NB to ensure the positivity of the spectral density ˆρ.
+With this parametrization, the bootstrap numerical variables are now the coeffi-
+cients ρI
+ℓ,i in (8.45) and the boundary condition ˆρ(0) = 1 amounts to setting
+ρI
+ℓ,1 = 1
+(8.47)
+60
+
+===== PDF PAGE 61 =====
+The ˆρ can then be evaluated on the set of points (8.29) up to sn0:
+ˆρI
+ℓ,j ≡ˆρI
+ℓ(ϕj) = Bj,iρI
+ℓ,i, Bj,i = Bi(sj), j = 1, . . . , n0
+(8.48)
+and then enters the positive semidefinite matrices and the sum rules. For implement-
+ing the sum rules, we compute the discrete sum:
+ˆ ϕ0
+0
+x′(ϕ)dϕρI
+ℓ(ϕ)x(ϕ)n →
+X
+j≤n0
+∆ϕ
+
+∂x(ϕ)
+∂ϕ
+
+ϕ=ϕj
+κℓ(sj)ˆρI
+ℓ,jsn
+j
+(8.49)
+The numerical matrices involved in the above computations ((8.32), (8.38), (8.40),
+(8.48), (8.49)) are all included in the Mathematica notebook GTB numerics.nb we
+provide with this paper.
+8.4
+Numerical gauge theory bootstrap
+With the above numerical setup, let us now describe the concrete implementation of
+the gauge theory bootstrap. Together with this submission we provide a matlab code
+GTB numerics.m that implements the procedure. Interested readers can download
+the file, install the CVX package [70,71] together with the MOSEK solver [73] to run
+the program and reproduce the results in this paper. In that case, this section can
+be used as a guide to the numerical code.
+S-matrix/form factor bootstrap
+In the numerical procedure, we have a discrete
+set of variables (ρ2,j1j2 is symmetric in j1 ↔j2)
+va ={T0, σ1,j1, σ2,j1, ρ1,j1j2, ρ2,j1j2, ImF I
+ℓ,j1, ρI
+ℓ,i},
+j1, j2 = 1, . . . , M, i = 1, . . . , NB
+(8.50)
+where j1, j2 label a discrete set of interpolating points and i indexes a discrete
+set of basis functions.
+The index a runs over all variables.
+As described above,
+{T0, σ1,2, ρ1,2} parameterize the amplitude and therefore also the rescaled partial
+waves (8.37) in the physical region that we evaluate at the discrete set of points sj
+(8.29) and up to a maximal spin ℓ= L (L = 19 in our paper). If we introduce an
+index n = (I, ℓ, j) to label the partial waves hn = hI
+ℓ(sj) and take into account that
+the parameterization is linear, we can compute two matrices A and B such that
+Rehn = An,ava, Imhn = Bn,ava
+(8.51)
+61
+
+===== PDF PAGE 62 =====
+Since the unitarity condition is valid for each partial wave and each value of s, the
+discretized version is simply
+Reh2
+n + Imh2
+n ≤2Imhn,
+∀n
+(8.52)
+As for the form factors and spectral densities, in this paper, we consider only the
+quantum numbers
+{ℓ, I} ∈{S0, P1, D0}
+(8.53)
+The form factors are parametrized by the imaginary part ImF(sj). Using (8.40), we
+can compute the real part ReF(sj) on the physical line. To impose (2.8), we take
+s0 = 2 GeV, and require for all sj ∈(4, s0) the positive semidefinite conditions:
+
+
+1
+SI
+ℓ(sj)
+FI
+ℓ(sj)
+SI∗
+ℓ(sj)
+1
+FI∗
+ℓ(sj)
+FI∗
+ℓ(sj)
+FI
+ℓ(sj)
+ρI
+ℓ(sj)
+
+⪰0
+{ℓ, I} ∈{S0, P1, D0}, 4 < sj < 2 GeV
+(8.54)
+In summary, we have a total number of variables
+M = 1 + 2M + M 2 + M(M + 1)
+2
++ 3M + 3NB
+(8.55)
+subject to 3ML
+2
+unitarity constraints (8.52) and positivity constraints (8.54). The
+numerical results given in the main body of the paper, i.e. in section 3. are obtained
+for M = 50, L = 19, NB = 40. In appendix B.1, we consider other values to check
+consistency.
+Let us remark that in the numerical computations, we use the regularization
+procedure we introduced in [74] in the pure S-matrix bootstrap context by bounding
+the norm of the double spectral densities with a large regulator Mreg
+|| [ρ1,j1,j2, ρ2,j1,j2] ||4 ≤Mreg
+(8.56)
+The detail motivation of the regularization is explained in [74]. To summarize briefly,
+the regularization avoids unphysical highly oscillating double spectral densities ρ1,2
+in the primal problem and renders the dual problem feasible. The value of the Mreg
+is tested with the pure S-matrix bootstrap to ensure convergence. In producing the
+results in this paper, we take Mreg = 102 and consider other values in appendix B.1
+to check consistency.
+62
+
+===== PDF PAGE 63 =====
+Rescaling the positive matrix
+In actual numerical computations, we make im-
+provements by rescaling and redefining the positive matrix. Recall that the positive
+semidefinite matrix (2.8) arise from the overlapping of three states:
+|ψ1⟩= |out⟩, |ψ2⟩= |in⟩, |ψ3⟩= O|0⟩
+(8.57)
+|ψ1⟩
+|ψ2⟩
+|ψ3⟩
+⟨ψ1|
+⟨ψ2|
+⟨ψ3|
+
+
+1
+SI
+ℓ(s)
+FI
+ℓ(s)
+SI∗
+ℓ(s)
+1
+FI∗
+ℓ(s)
+FI∗
+ℓ(s)
+FI
+ℓ(s)
+ρO(s)
+
+⪰0
+(8.58)
+We can perform a change of basis
+|ψ2⟩→−i|ψ2⟩+ i|ψ1⟩
+(8.59)
+and rescale the states |ψ2⟩, |ψ3⟩by some ℓ, s-dependent factors to define three new
+states:
+| ˜ψ1⟩= |ψ1⟩,
+| ˜ψ2⟩= Λ−1
+ℓ(s)
+ −i|ψ2⟩+ i|ψ1⟩
+
+,
+| ˜ψ3⟩= κ−1/2
+ℓ
+(s)|ψ3⟩
+(8.60)
+The overlaps of (8.60) define a new positive semidefinite matrix:
+| ˜ψ1⟩
+| ˜ψ2⟩
+| ˜ψ3⟩
+⟨˜ψ1|
+⟨˜ψ2|
+⟨˜ψ3|
+
+
+1
+˜hI
+ℓ(s)
+F I
+ℓ(s)
+˜hI∗
+ℓ(s)
+2ImˆhI
+ℓ(s)
+2Im ˆF I
+ℓ(s)
+F I∗
+ℓ(s)
+2Im ˆF I
+ℓ(s)
+ˆρI
+ℓ(s)
+
+⪰0
+(8.61)
+Here we have taken κℓ(s) to be (8.43) so that after this rescaling, the form factor
+F I
+ℓ(s) and the redefined spectral density ˆρI
+ℓ(s) from (8.42) enter the positive matrix.
+These are order 1 numbers so for machine precision semi-definite programming, the
+new numerical positive matrices (8.61) turn out to be better scaled compared to the
+original matrices (2.8) that involve F, ρ. The other scale factor Λℓ(s) in (8.60) is
+taken to be
+Λℓ(s) =
+√s −2
+√s + 2
+ ℓ
+2
+(8.62)
+that was previously found to be useful in the pure S-matrix bootstrap [74]. The rest
+of the entries in (8.61) are given by
+˜hI
+ℓ(s) = Λ−1
+ℓ(s)hI
+ℓ(s), ImˆhI
+ℓ(s) = Λ−2
+ℓ(s)hI
+ℓ(s),
+Im ˆF I
+ℓ(s) = Λ−1
+ℓ(s)ImF I
+ℓ(s) .
+(8.63)
+63
+
+===== PDF PAGE 64 =====
+The partial waves in (8.51) and the unitarity constraints in (8.52) are similarly
+rescaled resulting in:
+Re˜hn = ˜An,ava, Im˜hn = ˜Bn,ava, Imˆhn = ˆBn,ava,
+˜An,a = Λ−1
+n An,a, ˜Bn,a = Λ−1
+n Bn,a,
+ˆBn,a = Λ−2
+n Bn,a,
+Re˜h2
+n + Im˜h2
+n ≤2Imˆhn,
+∀n
+(8.64)
+In the numerical computations (in GTB numerics.nb), we compute the linear trans-
+formation matrices ˜An,a, ˜Bn,a, ˆBn,a with high precision before importing them into
+the optimization program and multiplying them with the machine precision variables
+va.
+Chiral symmetry breaking
+The implementation of the chiral symmetry breaking
+condition is straightforward. Using (8.37), we can evaluate the first six partial waves
+f 0
+0, f 0
+2, f 2
+0, f 2
+2, f 1
+1, f 1
+3
+(8.65)
+at four unphysical points
+s∗,i = {1/2, 1, 3/2, 2}
+(8.66)
+The tree level partial waves (2.15) define the following ratios of the S0, P1, S2 waves:
+Rtree
+01 (s) = 3 2s −1
+s −4 , Rtree
+21 (s) = 3 2 −s
+s −4
+(8.67)
+while all the higher tree level partial waves vanish. Let us define
+f χ
+01 =f 0
+0(s∗,i) −Rtree
+01 (s∗,i)f 1
+1(s∗,i)
+f χ
+21 =f 2
+0(s∗,i) −Rtree
+21 (s∗,i)f 1
+1(s∗,i)
+f 0
+2 =f 0
+2(s∗,i), f 2
+2 = f 2
+2(s∗,i), f 1
+1 = f 1
+1(s∗,i)
+(8.68)
+where the bold face letter should be interpreted as a vector of four components
+corresponding to the evaluations at the points (8.66). We then require
+||[f χ
+01, f χ
+21]|| ≤ϵχ,
+||[f 0
+2, f 2
+2, f 1
+1]|| ≤ϵχ,
+(8.69)
+Namely we are matching these quantities with the tree level partial waves at very
+low energy (the four points (8.66)) up to a tolerance ϵχ.
+In producing the results of this paper, we take the tolerance to be ϵχ = 2 × 10−3.
+This choice follows from the explorations done in our previous paper [2]. To briefly
+64
+
+===== PDF PAGE 65 =====
+summarize the idea, we have previously tested imposing the constraints (8.69) with
+a series of tolerances ϵχ. Such tolerance for the matching should not be too small or
+too large: if it is too small, the theory we are studying with the physical fπ = 92
+MeV would be excluded; if it is too large, there would be a large deviation from the
+tree level behavior at very low energy, manifested as the disappearance of the chiral
+zero in S0 partial wave. Through such exploration, we numerically fix a tolerance
+ϵχ = 2 × 10−3, namely the minimal tolerance before the tree-level point (black point
+in fig. 3) is excluded. See section 4.2 in our previous paper [2] for discussion. Other
+ways to impose these constraints are possible but we are describing a very specific
+way in case the reader want to reproduce the results of this paper.
+Finally, as mentioned already in section 8.3.2, the kinematic behavior (2.20) of
+the spectral density ρ can be implemented simply by the conditions (8.47) on the
+BSpline basis expansion coefficients ρI
+ℓ,1.
+SVZ sum rules
+To include the QCD information at high energy, we first impose
+the finite energy SVZ sum rules for S0, P1, D0 by constraining the moments of
+the spectral densities ρI
+ℓwith the perturbative QCD calculations as summarized in
+(2.21h), (2.22h) and (2.23h).
+Denoting nSR as the number of moments for each
+spectral density, in this paper, we take nSR = 3 which corresponds to the following
+moments for the S0, P1, D0 spectral densities:
+S0 : n = 0, 1, 2, P1 : n = −1, 0, 1, D0 : n = −2, −1, 0
+(8.70)
+The values from the perturbative QCD calculations (RHS of (2.21h), (2.22h) and
+(2.23h)) are:
+S0 :
+ˆ s0
+4
+ρ0
+0(x)dx
+s2
+0
+≃3.1×10−7,
+ˆ s0
+4
+ρ0
+0(x)xdx
+s3
+0
+≃2.1×10−7,
+ˆ s0
+4
+ρ0
+0(x)x2dx
+s4
+0
+≃1.6×10−7
+P1 :
+ˆ s0
+4
+ρ1
+1(x)dx
+xs2
+0
+≃5.6×10−5,
+ˆ s0
+4
+ρ1
+1(x)dx
+s3
+0
+≃2.8×10−5,
+ˆ s0
+4
+ρ1
+1(x)xdx
+s4
+0
+≃1.8×10−5
+D0 :
+ˆ s0
+4
+ρ0
+2(x)dx
+x2s3
+0
+≃5.1×10−5,
+ˆ s0
+4
+ρ0
+2(x)dx
+xs4
+0
+≃2.6×10−5,
+ˆ s0
+4
+ρ0
+2(x)dx
+s5
+0
+≃1.7×10−5
+(8.71)
+These values come from the identity operator contribution in the SVZ expansion
+up to order αs (see section 7 for the perturbative QCD computations). Since there
+are contributions from higher order αs corrections, we impose the sum rules up to
+corrections estimated from the order αs terms.
+65
+
+===== PDF PAGE 66 =====
+In the concrete numerical implementations, we replace the integrals with discrete
+sums as given above in (8.49) and perform the numerical sum up to the largest15
+sj < s0. Defining difference between the sum rule and the desired value as
+wI
+ℓ,n =
+1
+sn+nℓ
+n0
+X
+j≤n0
+
+∂x(ϕ)
+∂ϕ
+
+ϕ=ϕj
+κℓ(sj)ˆρI
+ℓ,jsn
+j ∆ϕ −RHS of (8.71), nℓ=
+(
+2,
+S0, P1
+3,
+D0
+(8.72)
+we have the following sum rule constraints
+||(w0
+0,n=0, w0
+0,n=1, w0
+0,n=2)|| ≲ϵ0
+0 = 1 × 10−7
+||(w1
+1,n=−1, w1
+1,n=0, w1
+1,n=1)|| ≲ϵ1
+1 = 5 × 10−6
+||(w0
+2,n=−2, w0
+2,n=−1, w0
+2,n=0)|| ≲ϵ0
+2 = 6 × 10−6
+(8.73)
+where the sum rule errors ϵI
+ℓare estimated as described above.
+In appendix B.3, we will examine the bootstrap results for varying number of
+moments nSR and sum rule errors ϵI
+ℓ.
+Form factor asymptotics
+As was already noted in [1,2], it is crucial to require
+that the form factors become small at large momentum transfer as follows from
+generic QCD arguments [18, 19]. The computation of such asymptotic forms is ex-
+plained in section 6.2 and we have summarized the leading order expressions for
+P1, D0 in (2.22i) and (2.23i) and made a rough estimate for the S0 asymptotic form
+factors in (2.21i). Such results are supposed to be valid at very high energy where
+the pion appears as constituted by just two partons (quark and anti-quark). Since
+this is not the case at 2 GeV we use the known asymptotic behavior 1/s, (s →∞)
+for F 1
+1 (s) (P1) and F 0
+2 (s) (D0) but allow a factor of order one to multiply the coef-
+ficient. Such factor is necessary since otherwise the problem becomes unfeasible and
+no solution is found. Somewhat surprisingly, for S0 we have to require a constant
+behavior at infinity instead of 1/s. To be concrete, we consider the discrete points
+sj > s0 and require
+|F 0
+0 (sj)| ≤r0
+0,
+|sjF 1
+1 (sj)| ≤r1
+1
+ 16παsf 2
+π
+
+,
+|sjF 0
+2 (sj)| ≤r0
+2
+ 48παsf 2
+π
+
+,
+(8.74)
+where the parameters rI
+ℓare chosen so that the problem becomes feasible and a
+solution is found. In this paper we take
+r0
+0 = 5 × 10−2, r1
+1 = 2, r0
+2 = 6
+(8.75)
+15In this paper (see table 8), we take the last point to be s39 ∼1.83 GeV.
+66
+
+===== PDF PAGE 67 =====
+The factors r1
+1 and r0
+2 are values of order one that make the problem feasible (it is
+not possible to take r1
+1 = r0
+2 = 1). In the case of r0
+0 we do not have any useful way
+to estimate it so we put a value close to the smallest one that makes the problem
+feasible. In appendix B.2, we show how the results vary as we change rI
+ℓaround the
+values (8.75). A more precise theoretical estimate for these asymptotic values should
+be desirable, especially in the case of S0.
+Maximization and Watsonian unitarization
+The procedure continues by choos-
+ing the two linear functionals defined in (2.24) to study its space of allowed values.
+This is required since we will find concrete S-matrices and form factors only at the
+boundary of the space. In that way we find the allowed region depicted in fig. 3. The
+black dot in that figure indicates the values corresponding to the non-linear sigma
+model that we are trying to extend into a full consistent S-matrix. For that reason
+we examine a range of points (blue, green, red) close to the black dot. In practice,
+the plot in fig. 3 is done by scanning one functional F0 and maximize/minimize the
+other one F1. Evaluating these functionals in the unphysical region can be done as
+described in (8.31).
+As described in section 2.5, we next perform the Watsonian unitarization that
+takes us closer to the boundary of the allowed space and improves the saturation of
+the 3 × 3 matrices (2.8). If we use the saturation conditions (2.25), or better, the
+saturation of the rescaled matrix (8.61), we find
+˜h = Im ˆF
+F ∗
+(8.76)
+which is the Watson relation (2.25) rewritten in terms of the rescaled matrix entries.
+Consider again the rescaled unitarity cone in (8.64):
+Re˜h2
+n + Im˜h2
+n ≤2Imˆhn,
+∀n
+Now, suppose that after an initial maximization of the functionals (2.24), we have
+obtained some extremal form factors Fn, ImˆFn which contains the UV information
+from the sum rules and the asymptotics behavior. We can use them to define some
+new linear functionals acting on the partial waves in the physical region
+F
+h
+{Re˜hn, Im˜hn, Imˆhn}
+i
+= Re˜hnRe˜hn + Im˜hnIm˜hn −
+X
+n
+Imˆhn
+(8.77)
+with
+Re˜hn = ReFnImˆFn
+|Fn|2
+, Im˜hn = ImFnImˆFn
+|Fn|2
+(8.78)
+67
+
+===== PDF PAGE 68 =====
+as follows from (8.76). Maximizing the linear functional (8.77) leads to partial waves
+satisfying the Watson relation with the form factor F from the initial maximiza-
+tion and thus saturating unitarity. In the appendix B.4, we show the effect of the
+Watsonian unitarization for the D0 wave.
+In principle we should apply this procedure for all the channels. In this paper,
+since we only compute the form factors for S0, P1, D0, we define the new functionals
+with (8.78) only for these three channels. As for S2, D2, F1 channels, we also perform
+the unitarization, but with Re˜hn, Im˜hn defined simply with the partial waves from
+the initial maximization.
+Summary of numerical parameters
+Although our input are the values mπ,
+fπ and the gauge theory parameters, the numerical procedure requires, by force
+to choose other parameters such as the number of discretization points, tolerances,
+factors in the asymptotic form factors, etc. We summarize those choices in table 8 and
+in appendix B we explore how some of these choices affect the results to understand
+the precision of our calculation. One parameter that we do not change is the value
+Expressions
+Parameters
+Discretization
+M = 50, L = 19, NB = 40
+Regularization
+Mreg = 102
+Chiral symmetry breaking
+(2.15)
+ϵχ = 2 × 10−3
+Form factor asymptotics
+(2.21i),(2.22i),(2.23i)
+rI
+ℓ(8.75)
+SVZ sum rules
+(2.21h),(2.22h),(2.23h)
+nSR = 3, ϵI
+ℓ(8.73)
+UV scale
+s0 = 2 GeV
+Table 8: Summary of numerical parameters.
+of the UV matching s0 = 2 GeV. The purpose of this paper was to extend the upper
+energy value of the Gauge Theory Bootstrap from s0 = 1.2 GeV in our previous
+paper [1, 2] to s0 = 2 GeV.
+This is non-trivial and required implementing new
+techniques such as the matching of spectral densities near threshold and Watsonian
+unitarization. A further small change in s0 will not affect the results. A large change
+such as going to s0 = 3 GeV or more will, we believe, again require new improved
+techniques that we have not found yet. The other parameter that we keep fixed is
+ϵχ = 0.002, same as used in the previous work [1,2]. Reducing the parameter would
+68
+
+===== PDF PAGE 69 =====
+exclude the non-linear sigma model values and a larger value does not effectively
+impose the low energy constraints, in particular for the S0 wave. The P1 and D0
+wave seem to get most of the input from the UV so the low energy matching is not
+crucial. In the long term we would like to improve the control of the low energy
+region further to better determine, or possibly eliminate this parameter.
+9
+Conclusions
+In a previous paper [1, 2] we proposed the Gauge Theory Bootstrap, a method to
+study the strongly coupled QCD dynamics of pions at energies where the low energy
+effective field theory is no longer applicable. The idea was to find the most general
+S-matrix consistent with bootstrap constraints that matches the low and high energy
+theories. In particular we matched the gauge theory at an energy √s0 = 1.2 GeV.
+The results of [1, 2] were encouraging: we obtained phase shifts in agreement with
+experiment and, in particular, the ρ vector meson. However one obvious question was
+if this agreement would persist if we increased s0. In fact one might have suspected
+that the mass of the ρ and other features of the phase shifts were due to the scale s0.
+In part motivated by this we apply here the same method but using a matching energy
+√s0 = 2 GeV roughly doubling the energy range. We also compute six partial waves
+instead of just three as before. The results are even better. The phase shifts agree
+with the ones found before, showing that s0 is not introducing a scale. Moreover,
+in the new range of energies we find one strong resonance, the f2(1270) in the D0
+channel and a weak new resonance in the P1 channel that we identified with the
+ρ(1450). Overall, the new results are a strong indication that the method works and
+successfully locks into the correct amplitudes. Although this is very encouraging a
+lot of work remains to be done. In QCD we should include axial and pseudoscalar
+currents to introduce more constraints. Improvements need to be done for bettering
+identifying the point corresponding to the low energy QCD S-matrix perhaps even
+computing the value of fπ. Even more interesting could be to start exploring the
+space of gauge theories and see what happens if we change the number of colors or
+flavors, or if we take the pion lighter or more massive. Finally the numerics should
+be simplified and streamlined to make these explorations easier.
+In summary, if we assume chiral symmetry breaking and confinement we can
+argue that the strongly coupled physics of gauge theories is dominated by pions and
+nucleons. However, effective field theory methods based on symmetry considerations
+alone do not allow us to solve the theory since even at moderate energies we need
+a large number of couplings (or Wilson coefficients) that we do not know how to
+compute from the gauge theory. We believe the Gauge Theory Bootstrap we proposed
+69
+
+===== PDF PAGE 70 =====
+is a way to build a bridge between the low and high energy theories and allows to
+solve the strongly coupled QCD dynamics.
+Acknowledgements
+We want to thank all the colleagues that provided us with many comments, sugges-
+tions and encouragement after we published the previous paper and that we tried
+to reflect in this new publication.
+In particular we are grateful to B. Bellazini,
+F. Boudjema, L. C´ordova, C. Delaunay, V. Gorbenko, K. H¨aring, J. Henriksson,
+A. Herderschee, C. Herzog, D. Karateev, Z. Komargodski, L. Lellouch, H. Osborn,
+M. Paulos, J. Pel´aez, J. Penedones, M. Procura, J. Qiao, F. Riva, S. Rychkov, A.
+Shapere, N. Su, P. Tourkine, A. Vainshtein, A. Vichi, S. Zhiboedov, and J.B. Zuber.
+This work was supported in part by DOE through grant DE-SC0007884 and under
+the QuantiSED Fermilab consortium.
+70
+
+===== PDF PAGE 71 =====
+A
+Scattering lengths from chiral Lagrangian coef-
+ficients
+In [32] Gasser and Leutwyler computed the scattering lengths in terms of the low
+energy parameters ¯lj using one-loop chiral perturbation theory obtaining the result:
+a(0)
+0
+=
+7m2
+π
+32πf 2
+π
+
+1 +
+5m2
+π
+84π2f 2
+π
+
+¯l1 + 2¯l2 −3
+8
+¯l3 + 21
+10
+¯l4 + 21
+8
+
+(A.1)
+b(0)
+0
+=
+1
+4πf 2
+π
+
+1 +
+m2
+π
+12π2f 2
+π
+
+2¯l1 + 3¯l2 + 3
+2
+¯l4 −13
+16
+
+(A.2)
+a(2)
+0
+=
+−m2
+π
+16πf 2
+π
+
+1 −
+m2
+π
+12π2f 2
+π
+
+¯l1 + 2¯l2 −3
+8
+¯l3 −3
+2
+¯l4 + 3
+8
+
+(A.3)
+b(2)
+0
+=
+−
+1
+8πf 2
+π
+
+1 −
+m2
+π
+12π2f 2
+π
+
+¯l1 + 3¯l2 −3
+2
+¯l4 −5
+16
+
+(A.4)
+a(1)
+1
+=
+1
+24πf 2
+π
+
+1 −
+m2
+π
+12π2f 2
+π
+
+¯l1 −¯l2 −3
+2
+¯l4 + 65
+48
+
+(A.5)
+b(1)
+1
+=
+1
+288π3f 4
+π
+
+−¯l1 + ¯l2 + 97
+120
+
+(A.6)
+a(0)
+2
+=
+1
+1440π3f 4
+π
+
+¯l1 + 4¯l2 −53
+8
+
+(A.7)
+a(2)
+2
+=
+1
+1440π3f 4
+π
+
+¯l1 + ¯l2 −103
+40
+
+(A.8)
+Notice that we rewrote their formulas in terms of renormalized parameters and used
+the physical pion mass and fπ. It makes sense then to recompute the scattering
+lengths using the low energy parameters obtained in table 3 (we set ¯l3 = 0 since
+we are not able to evaluate it independently). The results are presented in table 9.
+They agree reasonably well with the direct extraction as given in table 1 (denoted
+as GTB here).
+71
+
+===== PDF PAGE 72 =====
+GTB
+GTBII
+PY
+a(0)
+0
+0.174, 0.191
+0.21, 0.21
+0.230 ± 0.010
+a(2)
+0
+-0.0357, -0.0403
+-0.043, -0.043
+−0.0422 ± 0.0022
+b(0)
+0
+0.285, 0.282
+0.26, 0.26
+0.268 ± 0.010
+b(2)
+0
+-0.061, -0.071
+-0.080, -0.079
+−0.071 ± 0.004
+a(1)
+1
+28.7, 30.7
+36.3, 36.7
+38.1 ± 1.4 × 10−3
+b(1)
+1
+12.4, 7.28
+2.62 3.43
+4.75 ± 0.16 × 10−3
+a(0)
+2
+14.6, 14.9
+14.8, 15.0
+18.0 ± 0.2 × 10−4
+a(2)
+2
+3.41, 2.53
+3.4, 2.5
+2.2 ± 0.2 × 10−4
+Table 9: Scattering lengths, units of mπ, consistency check. GTBII are computed
+using in (A.1)–(A.8) the values from table 3. There is reasonable agreement between
+the three columns including phenomenological data from PY [20].
+B
+Tests on numerical parameters
+As we have described in section 8.4 and summarized in table 8, there are several
+numerical parameters introduced for implementing the gauge theory bootstrap pro-
+cedure. In this appendix, we show the numerical tests that explore different values
+for these parameters.
+B.1
+Numerical discretization
+The first set of numerical parameters are for discretizing the bootstrap variables
+parametrizing the amplitudes, form factors and spectral densities.
+This includes
+M, L, NB as well as Mreg for the regularization. In figure 17, we show the changes
+on the phase shifts δI
+ℓand inelasticities ηI
+ℓ(as in fig. 4) when changing each of these
+parameters individually in comparison with the values used in this paper. We focus
+on the green point in fig. 3.
+72
+
+===== PDF PAGE 73 =====
+Figure 17: Phase shifts δI
+ℓand inelasticity ηI
+ℓfrom GTB for varying the numerical
+parameters M, L, NB, Mreg.
+73
+
+===== PDF PAGE 74 =====
+The green dots represent the original results (as shown in fig. 4) using the set of
+numerical parameters M = 50, L = 19, NB = 40, Mreg = 102. We then test the cases
+with L = 23 (orange), NB = 46 (purple), M = 60 (yellow) and Mreg = 5×102 where
+in each case we keep all the other parameters unchanged. The results show a good
+overall stability of the numerics.
+B.2
+Form factor asymptotic bound rI
+ℓ
+To impose the form factor asymptotic behavior, we bound the form factors in the
+high momentum transfer region. To do this, we introduced the relaxation parameter
+rI
+ℓin (8.74) from the perturbative QCD calculations.
+In figure 18, we show the
+modulus |F I
+ℓ| and the phase αI
+ℓfor the S0, P1, D0 form factors for three different
+values of rI
+ℓ: the first one (blue) is the minimal value where the numerical program is
+feasible; second one (orange) is slightly relaxed from the first value and we use in this
+paper, and the third one (green) is a more relaxed one. The results from the three
+values of rI
+ℓhave a good qualitative agreement but small variation quantitatively.
+For example, from fig. 18d one can estimate a ∼80 MeV variation in the ρ(770)
+meson mass for r1
+1 = 1.5 −2.5. This is within the error of our computation (whose
+main source currently is the correct identification of the point corresponding to QCD
+in fig.3) but we expect to improve it in future work.
+B.3
+Sum rules error ϵI
+ℓand number of moments nSR
+For implementing the SVZ sum rules, we take nSR moment for each spectral density
+and characterize the difference with the leading perturbative QCD calculations by
+an error ϵI
+ℓdefined in (8.73) which is around 10 −30% of the values of the moments
+themselves (8.71). In figs. 19 we show the results of |F I
+ℓ| for different number of mo-
+ments nSR = 3, 4, 5 and varying values of ϵI
+ℓaround our estimate in (8.73). It is clear
+that increasing the number of moments does not change the results. Furthermore, a
+small variation of ϵI
+ℓdoes not have significant influence. Of course, the error cannot
+be too big (e.g. bigger than the sum rules themselves). In any case, the sum rules
+implementation shows very good stability.
+B.4
+Watsonian unitarization
+As described in sections 2.5 and 8.4, after an initial maximization, we use a Wat-
+sonian unitarization step to get closer to the boundary of the allowed space and
+improve saturation of the constraints. This step should help imprint UV information
+74
+
+===== PDF PAGE 75 =====
+r 0
+0=2⨯10-2
+r 0
+0=5⨯10-2
+r 0
+0=7⨯10-2
+0.5
+1.0
+1.5
+2.0 s (GeV)
+0.0
+0.5
+1.0
+1.5
+2.0
+|F0
+0|
+(a) |F 0
+0 |
+r 0
+0=2⨯10-2
+r 0
+0=5⨯10-2
+r 0
+0=7⨯10-2
+0.5
+1.0
+1.5
+2.0 s (GeV)
+0
+50
+100
+150
+200
+250
+α 0
+0
+(b) α0
+0
+r 1
+1=1.5
+r 1
+1=2
+r 1
+1=2.5
+0.5
+1.0
+1.5
+2.0 s (GeV)
+0
+1
+2
+3
+4
+5
+6
+7
+|F1
+1|
+(c) |F 1
+1 |
+r 1
+1=1.5
+r 1
+1=2
+r 1
+1=2.5
+0.5
+1.0
+1.5
+2.0 s (GeV)
+0
+50
+100
+150
+200
+250
+300
+350
+α 1
+1
+(d) α1
+1
+r 0
+2=4
+r 0
+2=6
+r 0
+2=8
+0.5
+1.0
+1.5
+2.0
+s (GeV)
+0
+1
+2
+3
+4
+5
+6
+7
+|F0
+2|
+(e) |F 0
+2 |
+r 0
+2=4
+r 0
+2=6
+r 0
+2=8
+0.5
+1.0
+1.5
+2.0
+s (GeV)
+0
+50
+100
+150
+200
+α 0
+2
+(f) α0
+2
+Figure 18: The modulus |F I
+ℓ| and phase αI
+ℓof the S0, P1, D0 form factors for three
+values of rI
+ℓ.
+75
+
+===== PDF PAGE 76 =====
+ϵ 0
+0=5⨯10-8
+ϵ 0
+0=1⨯10-7
+ϵ 0
+0=5⨯10-7
+0.5
+1.0
+1.5
+2.0
+s (GeV)
+0.0
+0.5
+1.0
+1.5
+|F0
+0|
+(a) |F 0
+0 |
+nSR=3
+nSR=4
+nSR=5
+0.5
+1.0
+1.5
+2.0
+s (GeV)
+0.0
+0.5
+1.0
+1.5
+|F0
+0|
+(b) |F 0
+0 |
+ϵ 1
+1=1⨯10-6
+ϵ 1
+1=6⨯10-6
+ϵ 1
+1=1⨯10-5
+0.5
+1.0
+1.5
+2.0
+s (GeV)
+0
+1
+2
+3
+4
+5
+6
+7
+|F1
+1|
+(c) |F 1
+1 |
+nSR=3
+nSR=4
+nSR=5
+0.5
+1.0
+1.5
+2.0
+s (GeV)
+0
+1
+2
+3
+4
+5
+6
+7
+|F1
+1|
+(d) |F 1
+1 |
+ϵ 0
+2=3⨯10-6
+ϵ 0
+2=5⨯10-6
+ϵ 0
+2=7⨯10-6
+0.5
+1.0
+1.5
+2.0
+s (GeV)
+0
+1
+2
+3
+4
+5
+6
+|F0
+2|
+(e) |F 0
+2 |
+nSR=3
+nSR=4
+nSR=5
+0.5
+1.0
+1.5
+2.0
+s (GeV)
+0
+1
+2
+3
+4
+5
+6
+|F0
+2|
+(f) |F 0
+2 |
+Figure 19: The modulus |F I
+ℓ| of the S0, P1, D0 form factors for varying number of
+moments nSR and varying sum rule errors ϵI
+ℓ.
+76
+
+===== PDF PAGE 77 =====
+contained in the form factors into the phase shifts as can be seen, for example, for
+the case of the D0 wave. In fig. 20 we show the D0 phase shift δ0
+2 and elasticity η0
+2
+before (20a) and after (20b) the Watsonian unitarization for the three points (blue,
+green, red) in fig. 3. It is clear that the Watsonian step greatly improves the results.
+(a)
+(b)
+Figure 20: The D0 phase shift δ0
+2(s) and elasticity η0
+2(s) before (20a) and after (20b)
+the Watsonian unitarization.
+C
+Form factors asymptotics
+The computation of asymptotic form factors is standard in QCD. However, for com-
+pleteness we compute in this appendix the Feynman diagram (a) of fig.13.
+The
+diagram is computed as a tree level diagrams with external quark states giving what
+is called the kernel that has to be inserted between pion states:
+T(a)
+1−diag
+=
+(ig)2
+
+¯u
+s′
+1
+k′γµ i(/k + /p′ −/p)
+(k + p′ −p)2 /∆us1
+k
+ 
+¯vs1
+p−kγµv
+s′
+1
+p′−k′
+
+(−i)
+(p −k −p′ + k′)2 ×
+(−ik∆)ℓ−1 t
+ˆD
+cat
+ˆD
+ac δAB′δA′CδBD
+(C.1)
+Writing k = xp + k⊥and k′ = x′p′ + k′
+⊥and taking the high energy limit where
+s = (p −p′)2 ≃−2pp′ →∞is the only term we keep, we perform the replacements
+(k+p′−p)2 →(1−x)s, (p−k−p′+k′)2 →(1−x)(1−x′)s, (k∆) →x(p∆), (C.2)
+77
+
+===== PDF PAGE 78 =====
+¯u
+s′
+1
+k′ →
+√
+x′¯u
+s′
+1
+p′
+us1
+k →√xus1
+p
+¯vs1
+p−k →
+√
+1 −x¯vs1
+p
+v
+s′
+1
+p′−k′ →
+√
+1 −x′vp′
+(C.3)
+We can now further simplify the result with the identities (valid since we choose
+vs
+p = −γ5us
+p):
+vs
+p′¯us
+p′ = −γ5(/p′ + mq),
+us
+p¯vs
+p = (/p + mq)γ5
+(C.4)
+we find, using, t ˆD
+cat ˆD
+ac = C2(Nc) = N2
+c −1
+2
+, the result
+T(a)
+1−diagram =
+p
+x(1 −x)x′(1 −x′) δAB′δA′CδBD
+8ig2C2(Nc)
+s
+(−ip∆)ℓ−1
+xℓ−1
+(1 −x)(1 −x′)
+(C.5)
+which is used in the main text. There we included the other three diagrams of the
+same form where the current is inserted in the other fermionic lines.
+D
+Some integrals
+In this appendix we include some integrals that can be done by standard methods
+and that we find useful in the main text.
+D.1
+Feynman type integrals
+ˆ
+ddk
+(2π)d
+k2ℓ
+(k2 −˜∆+ iϵ)n
+=
+i(−1)ℓ+n
+(4π)
+d
+2
+Γ(d
+2 + ℓ)Γ(n −d
+2 −ℓ)
+Γ(n)Γ(d
+2)( ˜∆−iϵ)n−d
+2 −ℓ
+(D.1)
+ˆ
+ddk
+(2π)d
+(ik∆)ℓ(ik ¯∆)ℓ
+(k2 −˜∆+ iϵ)n
+=
+i (−1)n
+2ℓ(4π)
+d
+2
+ℓ! (∆¯∆)ℓΓ(n −d
+2 −ℓ)
+Γ(n)( ˜∆−iϵ)n−d
+2 −ℓ
+(D.2)
+where ∆2 = 0 = ¯∆2. Thee are useful to compute current correlators.
+D.2
+Multi-ball integrals
+In the case of four particle states it is useful to compute integrals of the form
+ˆ
+4
+Y
+j=1
+d3kj δ(
+4
+X
+j=1
+|⃗kj| −1)δ(3)(
+4
+X
+j=1
+⃗kj)
+=
+11π3
+26880
+(D.3)
+ˆ
+4
+Y
+j=1
+d3kj δ(
+4
+X
+j=1
+|⃗kj| −1)δ(3)(
+4
+X
+j=1
+⃗kj) (1 −ˆk1ˆk2)(1 −ˆk3ˆk4)
+=
+π3
+1440
+(D.4)
+78
+
+===== PDF PAGE 79 =====
+that measures in some way the phase space available to four massless particles at
+given energy and in the center of mass. As an example, one way to compute these
+integrals is (λ > 0 is an arbitrary constant)
+ˆ
+4
+Y
+j=1
+d3kj δ(
+4
+X
+j=1
+|⃗kj| −1)δ(3)(
+4
+X
+j=1
+⃗kj)
+=
+eλ
+ˆ d4x
+(2π)4e−ix0
+4
+Y
+j=1
+d3kj e−(λ−ix0)|⃗kj|+i⃗kj⃗x
+=
+212π4
+ˆ d4x
+(2π)4eλ−ix0
+(λ −ix0)4
+((λ −ix0)2 + x2)8
+=
+212π4Γ(13
+2 )
+Γ(8)(4π)
+3
+2
+ˆ dx0
+2π
+eλ−ix0
+(λ −ix0)9
+=
+11π3
+26880
+(D.5)
+References
+[1] Y. He and M. Kruczenski, “Gauge theory bootstrap,” Phys. Rev. Lett. 133
+(Nov, 2024) 191601.
+https://link.aps.org/doi/10.1103/PhysRevLett.133.191601.
+[2] Y. He and M. Kruczenski, “Bootstrapping gauge theories,” Phys. Rev. D 110
+(Nov, 2024) 096001.
+https://link.aps.org/doi/10.1103/PhysRevD.110.096001.
+[3] G. Chew, The Analytic S Matrix: A Basis for Nuclear Democracy.
+[4] R. J. Eden, P. V. Landshoff, D. I. Olive, and J. C. Polkinghorne, The analytic
+S-matrix. Cambridge Univ. Press, Cambridge, 1966.
+[5] M. F. Paulos, J. Penedones, J. Toledo, B. C. van Rees, and P. Vieira, “The
+S-matrix bootstrap. Part I: QFT in AdS,” JHEP 11 (2017) 133,
+arXiv:1607.06109 [hep-th].
+[6] M. F. Paulos, J. Penedones, J. Toledo, B. C. van Rees, and P. Vieira, “The
+S-matrix bootstrap II: two dimensional amplitudes,” JHEP 11 (2017) 143,
+arXiv:1607.06110 [hep-th].
+79
+
+===== PDF PAGE 80 =====
+[7] M. F. Paulos, J. Penedones, J. Toledo, B. C. van Rees, and P. Vieira, “The
+S-matrix bootstrap. Part III: higher dimensional amplitudes,” JHEP 12 (2019)
+040, arXiv:1708.06765 [hep-th].
+[8] M. Kruczenski, J. Penedones, and B. C. van Rees, “Snowmass White Paper:
+S-matrix Bootstrap,” arXiv:2203.02421 [hep-th].
+[9] D. Karateev, S. Kuhn, and J. a. Penedones, “Bootstrapping Massive Quantum
+Field Theories,” JHEP 07 (2020) 035, arXiv:1912.08940 [hep-th].
+[10] S. Weinberg, “Pion scattering lengths,” Phys. Rev. Lett. 17 (1966) 616–621.
+[11] M. Shifman, A. Vainshtein, and V. Zakharov, “Qcd and resonance physics.
+theoretical foundations,” Nuclear Physics B 147 no. 5, (1979) 385–447.
+[12] M. Shifman, A. Vainshtein, and V. Zakharov, “Qcd and resonance physics.
+applications,” Nuclear Physics B 147 no. 5, (1979) 448–518.
+[13] M. A. Shifman, A. I. Vainshtein, and V. I. Zakharov, “QCD and Resonance
+Physics. The rho-omega Mixing,” Nucl. Phys. B 147 (1979) 519–534.
+[14] V. A. Novikov, L. B. Okun, M. A. Shifman, A. I. Vainshtein, M. B. Voloshin,
+and V. I. Zakharov, “Charmonium and Gluons: Basic Experimental Facts and
+Theoretical Introduction,” Phys. Rept. 41 (1978) 1–133.
+[15] L. J. Reinders, “SPECTROSCOPY WITH QCD SUM RULES,” 9, 1981.
+[16] L. J. Reinders, H. Rubinstein, and S. Yazaki, “Hadron Properties from QCD
+Sum Rules,” Phys. Rept. 127 (1985) 1.
+[17] P. Gubler and D. Satow, “Recent Progress in QCD Condensate Evaluations
+and Sum Rules,” Prog. Part. Nucl. Phys. 106 (2019) 1–67, arXiv:1812.00385
+[hep-ph].
+[18] G. Peter Lepage and S. J. Brodsky, “Exclusive processes in quantum
+chromodynamics: Evolution equations for hadronic wavefunctions and the
+form factors of mesons,” Physics Letters B 87 no. 4, (11, 1979) .
+[19] B. Pire, “Exclusive reactions in QCD,” in Les Houches Summer School on
+Theoretical Physics, Session 66: Trends in Nuclear Physics, 100 Years Later,
+pp. 567–591. 7, 1996. arXiv:nucl-th/9612009.
+80
+
+===== PDF PAGE 81 =====
+[20] J. R. Pelaez and F. J. Yndurain, “The Pion-pion scattering amplitude,” Phys.
+Rev. D 71 (2005) 074016, arXiv:hep-ph/0411334.
+[21] F. J. Yndurain, “Low-energy pion physics,” arXiv:hep-ph/0212282.
+[22] G. Colangelo, J. Gasser, and H. Leutwyler, “ππ scattering,” Nucl. Phys. B
+603 (2001) 125–179, arXiv:hep-ph/0103088.
+[23] A. Guerrieri, J. Penedones, and P. Vieira, “S-matrix Bootstrap for Effective
+Field Theories: Massless Pions,” arXiv:2011.02802 [hep-th].
+[24] A. L. Guerrieri, J. Penedones, and P. Vieira, “Bootstrapping QCD Using Pion
+Scattering Amplitudes,” Phys. Rev. Lett. 122 no. 24, (2019) 241604,
+arXiv:1810.12849 [hep-th].
+[25] J. Albert and L. Rastelli, “Bootstrapping pions at large N,” JHEP 08 (2022)
+151, arXiv:2203.11950 [hep-th].
+[26] C. Fernandez, A. Pomarol, F. Riva, and F. Sciotti, “Cornering large-Nc QCD
+with positivity bounds,” JHEP 06 (2023) 094, arXiv:2211.12488 [hep-th].
+[27] J. Albert and L. Rastelli, “Bootstrapping Pions at Large N. Part II:
+Background Gauge Fields and the Chiral Anomaly,” arXiv:2307.01246
+[hep-th].
+[28] T. Ma, A. Pomarol, and F. Sciotti, “Bootstrapping the chiral anomaly at large
+Nc,” JHEP 11 (2023) 176, arXiv:2307.04729 [hep-th].
+[29] J. Albert, J. Henriksson, L. Rastelli, and A. Vichi, “Bootstrapping mesons at
+large N: Regge trajectory from spin-two maximization,” arXiv:2312.15013
+[hep-th].
+[30] A. Keshavarzi, K. S. Khaw, and T. Yoshioka, “Muon g-2: A review,” Nuclear
+Physics B 975 (2022) 115675.
+[31] M. Davier, Z. Fodor, A. Gerardin, L. Lellouch, B. Malaescu, F. M. Stokes,
+K. K. Szabo, B. C. Toth, L. Varnhorst, and Z. Zhang, “Hadronic vacuum
+polarization: comparing lattice QCD and data-driven results in systematically
+improvable ways,” arXiv:2308.04221 [hep-ph].
+[32] J. Gasser and H. Leutwyler, “Chiral perturbation theory to one loop,” Annals
+of Physics 158 no. 1, (1984) 142–210.
+81
+
+===== PDF PAGE 82 =====
+[33] J. Gasser, “Chiral perturbation theory and effective lagrangians,” Nuclear
+Physics B 279 no. 1, (1987) 65–79.
+[34] S. Scherer, “Introduction to chiral perturbation theory,” Adv. Nucl. Phys. 27
+(2003) 277, arXiv:hep-ph/0210398.
+[35] B. Martin, D. Morgan, and G. Shaw, Pion-Pion Interations in particle physics.
+Academic Press, 1976.
+[36] J. F. Donoghue, E. Golowich, and B. R. Holstein, Dynamics of the Standard
+Model. Cambridge Monographs on Particle Physics, Nuclear Physics and
+Cosmology. Cambridge University Press, 2 ed., 2014.
+[37] Y. He and M. Kruczenski, “The Gauge Theory Bootstrap: Predicting pion
+dynamics from QCD,” arXiv:2505.19332 [hep-th].
+[38] L. C´ordova, Y. He, M. Kruczenski, and P. Vieira, “The O(N) S-matrix
+Monolith,” JHEP 04 (2020) 142, arXiv:1909.06495 [hep-th].
+[39] Y. He, A. Irrgang, and M. Kruczenski, “A note on the S-matrix bootstrap for
+the 2d O(N) bosonic model,” JHEP 11 (2018) 093, arXiv:1805.02812
+[hep-th].
+[40] S. D. Protopopescu, M. Alston-Garnjost, A. Barbaro-Galtieri, S. M. Flatte,
+J. H. Friedman, T. A. Lasinski, G. R. Lynch, M. S. Rabin, and F. T. Solmitz,
+“Pi pi Partial Wave Analysis from Reactions pi+ p —> pi+ pi- Delta++ and
+pi+ p —> K+ K- Delta++ at 7.1-GeV/c,” Phys. Rev. D 7 (1973) 1279.
+[41] M. Losty, V.Chaloupka, A.Ferrando, L.Montanet, E.Paul;, D.Yaffe,
+A.Zieminski, J.Alitti, B.Gandois, and J.Louie., “A study of ππ scattering from
+π −p interactions at 3.93 gev/c,” Nuclear Phsyics B 69 (1974) 185–204.
+[42] B. Hyams et al., “A Study of All the pi pi Phase Shift Solutions in the Mass
+Region 1.0-GeV to 1.8-GeV from pi- p –> pi- pi+ n at 17.2-GeV,” Nucl. Phys.
+B 100 (1975) 205–224.
+[43] J. F. Donoghue, J. Gasser, and H. Leutwyler, “The decay of a light higgs
+boson,” Nuclear Physics B 343 no. 2, (1990) 341–368.
+[44] S. Amendolia and Others, “A measurement of the space-like pion
+electromagnetic form factor,” Nuclear Physics B 277 (1986) 168–196.
+82
+
+===== PDF PAGE 83 =====
+[45] S. Kumano, Q.-T. Song, and O. V. Teryaev, “Hadron tomography by
+generalized distribution amplitudes in the pion-pair production process
+γ∗γ →π0π0 and gravitational form factors for pion,” Phys. Rev. D 97 (Jan,
+2018) 014020.
+[46] Q.-T. Song, “Generalized distribution amplitudes and gravitational form
+factors for pion,” 2018. https://arxiv.org/abs/1808.03422.
+[47] J. Bijnens, G. Colangelo, and P. Talavera, “The Vector and scalar form-factors
+of the pion to two loops,” JHEP 05 (1998) 014, arXiv:hep-ph/9805389.
+[48] J. Bijnens, G. Colangelo, G. Ecker, J. Gasser, and M. E. Sainio, “Pion-pion
+scattering at low energy,” Nucl. Phys. B 508 (1997) 263–310,
+arXiv:hep-ph/9707291.
+[49] J. Bijnens, G. Colangelo, and J. Gasser, “K(l4) decays beyond one loop,”
+Nucl. Phys. B 427 (1994) 427–454, arXiv:hep-ph/9403390.
+[50] G. J. Gounaris and J. J. Sakurai, “Finite width corrections to the vector meson
+dominance prediction for ρ →e+e−,” Phys. Rev. Lett. 21 (1968) 244–247.
+[51] M. E. Peskin and D. V. Schroeder, An Introduction to quantum field theory.
+Addison-Wesley, Reading, USA, 1995.
+[52] F. Halzen and A. Martin, Quarks and Leptons. John Wilet and Sons, New
+York, 1984.
+[53] Particle Data Group Collaboration, R. L. Workman and Others, “Review of
+Particle Physics,” PTEP 2022 (2022) 083C01.
+[54] C. Ewerz, M. Maniatis, and O. Nachtmann, “A model for soft high-energy
+scattering: Tensor pomeron and vector odderon,” Annals of Physics 342
+(2014) 31–77.
+[55] J. Sakurai, current and mesons. The University of Chicago Press, Chicago,
+London, 1973.
+[56] B. Ananthanarayan, I. Caprini, G. Colangelo, J. Gasser, and H. Leutwyler,
+“Scalar form factors of light mesons,” Physics Letters B 602 no. 3-4, (Nov,
+2004) 218–225.
+[57] X.-B. Tong, J.-P. Ma, and F. Yuan, “Gluon gravitational form factors at large
+momentum transfer,” Physics Letters B 823 (Dec., 2021) 136751.
+83
+
+===== PDF PAGE 84 =====
+[58] K. Raya, Z.-F. Cui, L. Chang, J. M. Morgado, C. D. Roberts, and
+J. Rodr´ıguez-Quintero, “Revealing pion and kaon structure via generalised
+parton distributions *,” Chinese Physics C 46 no. 1, (Jan, 2022) 013105.
+[59] X.-B. Tong, J.-P. Ma, and F. Yuan, “Perturbative calculations of gravitational
+form factors at large momentum transfer,” Journal of High Energy Physics
+2022 no. 10, (Oct., 2022) .
+[60] P. Hoodbhoy, X.-d. Ji, and F. Yuan, “Probing quark distribution amplitudes
+through generalized parton distributions at large momentum transfer,” Phys.
+Rev. Lett. 92 (2004) 012003, arXiv:hep-ph/0309085.
+[61] K. Tanaka, “Operator relations for gravitational form factors of a spin-0
+hadron,” Physical Review D 98 no. 3, (Aug., 2018) .
+[62] D. Karateev, “Two-point functions and bootstrap applications in quantum
+field theories,” JHEP 02 (2022) 186, arXiv:2012.08538 [hep-th].
+[63] H. Chen, A. L. Fitzpatrick, and D. Karateev, “Bootstrapping 2d ϕ4 theory
+with Hamiltonian truncation data,” JHEP 02 (2022) 146, arXiv:2107.10286
+[hep-th].
+[64] M. Correia, J. Penedones, and A. Vuignier, “Injecting the UV into the
+bootstrap: Ising Field Theory,” JHEP 08 (2023) 108, arXiv:2212.03917
+[hep-th].
+[65] L. Cordova, M. Correia, A. Georgoudis, and A. Vuignier, “The O(N) monolith
+reloaded: sum rules and Form Factor Bootstrap,” JHEP 01 (2024) 093,
+arXiv:2311.03031 [hep-th].
+[66] S. Narison, QCD as a Theory of Hadrons: From Partons to Confinement.
+Cambridge Monographs on Particle Physics, Nuclear Physics and Cosmology.
+Cambridge University Press, 2004.
+[67] S. Caron-Huot, A. Pokraka, and Z. Zahraee, “Two-point sum-rules in
+three-dimensional Yang-Mills theory,” JHEP 01 (2024) 195,
+arXiv:2309.04472 [hep-th].
+[68] M. F. Zoller and K. G. Chetyrkin, “Ope of the energy-momentum tensor
+correlator in massless qcd,” Journal of High Energy Physics 2012 no. 12,
+(Dec., 2012) .
+84
+
+===== PDF PAGE 85 =====
+[69] J. I. Latorre and P. Pascual, “QCD Sum Rules and the ¯qq¯qq System,” J. Phys.
+G 11 (1985) L231.
+[70] M. Grant and S. Boyd, “CVX: Matlab software for disciplined convex
+programming, version 2.1.” http://cvxr.com/cvx, Mar., 2014.
+[71] M. Grant and S. Boyd, “Graph implementations for nonsmooth convex
+programs,” in Recent Advances in Learning and Control, V. Blondel, S. Boyd,
+and H. Kimura, eds., Lecture Notes in Control and Information Sciences,
+pp. 95–110. Springer-Verlag Limited, 2008.
+[72] S. Boyd, L. Vandenberghe, and C. U. Press, Convex Optimization. No. pt. 1 in
+Berichte ¨uber verteilte messysteme. Cambridge University Press, 2004.
+[73] M. ApS, The MOSEK optimization toolbox for MATLAB manual. Version
+10.1., 2024. http://docs.mosek.com/latest/toolbox/index.html.
+[74] Y. He and M. Kruczenski, “S-matrix bootstrap in 3+1 dimensions:
+regularization and dual convex problem,” JHEP 08 (2021) 125,
+arXiv:2103.11484 [hep-th].
+85

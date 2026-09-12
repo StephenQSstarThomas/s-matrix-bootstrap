@@ -1,0 +1,9 @@
+{
+  "tip_x": 0.09902001731997523,
+  "reference_x": 0.07332139057293466,
+  "mid_x": 0.08617070394645494,
+  "tip_report": "PV_tip_support_01/report.json",
+  "tip_report_sha256": "fac62c2871c57f5398b129f20b753f711312cd5cd4f45045069adb06e808ab39",
+  "predeclared_rule": "PV_REPRESENTATIVE_RULE.json",
+  "new_phase_evaluations_started": false
+}

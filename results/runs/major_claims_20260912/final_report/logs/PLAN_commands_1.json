@@ -1,0 +1,49 @@
+[
+  [
+    "/tmp/he_report_pandoc/pandoc",
+    "PLAN_ZH.md",
+    "--from",
+    "markdown+tex_math_single_backslash-smart",
+    "--to",
+    "json",
+    "-o",
+    "PLAN_ast.json"
+  ],
+  [
+    "/tmp/he_report_pandoc/pandoc",
+    "PLAN_ast.json",
+    "--from",
+    "json",
+    "--standalone",
+    "--to",
+    "latex",
+    "--toc-depth=2",
+    "--shift-heading-level-by=-1",
+    "--include-in-header",
+    "PLAN_header.tex",
+    "-V",
+    "mainfont=DejaVu Serif",
+    "-V",
+    "sansfont=DejaVu Sans",
+    "-V",
+    "monofont=DejaVu Sans Mono",
+    "-V",
+    "papersize=a4",
+    "-V",
+    "fontsize=10pt",
+    "-V",
+    "geometry:margin=18mm",
+    "-V",
+    "colorlinks=true",
+    "-o",
+    "PLAN_ZH.tex"
+  ],
+  [
+    "/home/shiqiu/.local/bin/tectonic",
+    "--keep-logs",
+    "--keep-intermediates",
+    "--reruns",
+    "2",
+    "PLAN_ZH.tex"
+  ]
+]

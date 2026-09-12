@@ -1,0 +1,288 @@
+{
+  "task": "Stage B independent extraction of published Fig.3 and Fig.4 reference geometry",
+  "source": "references/2309.12402v3-source",
+  "paper_pages": {
+    "Fig3": 27,
+    "Fig4": 28
+  },
+  "semantics": "Coordinates of PDF vector marker centers, not original optimization coefficients or exact solver data. Convex hulls of these samples approximate the displayed boundary only.",
+  "curves": {
+    "purSplot": {
+      "source_pdf": "references/2309.12402v3-source/purSplot.pdf",
+      "conversion": "x=(pdf_x-intercept_x)/scale_x; y=(pdf_y-intercept_y)/scale_y",
+      "intercept_x": 518.0595581262727,
+      "scale_x": 168.71944595169222,
+      "intercept_y": 110.76839225383236,
+      "scale_y": -617.495360713994,
+      "axis_tick_fit_max_residual_pdf_points": {
+        "x": 0.0020265389030100778,
+        "y": 0.0019218555052020747
+      },
+      "conservative_rendering_coordinate_resolution": {
+        "x": 5.9269990744654304e-05,
+        "y": 1.6194453652959038e-05
+      },
+      "deduplicated_markers": 498,
+      "series": [
+        {
+          "epsilon": null,
+          "color": "blue",
+          "count": 498,
+          "x_min": -2.901953925935337,
+          "x_max": 2.232886819039312,
+          "y_min": -0.7335887012742578,
+          "y_max": 0.07932269069749306
+        }
+      ],
+      "highlights": []
+    },
+    "chiplot": {
+      "source_pdf": "references/2309.12402v3-source/chiplot.pdf",
+      "conversion": "x=(pdf_x-intercept_x)/scale_x; y=(pdf_y-intercept_y)/scale_y",
+      "intercept_x": 65.72660693000353,
+      "scale_x": 5126.171050352208,
+      "intercept_y": 128.9206210506318,
+      "scale_y": -38834.10005022169,
+      "axis_tick_fit_max_residual_pdf_points": {
+        "x": 0.00044199999638294685,
+        "y": 0.0019235964174413311
+      },
+      "conservative_rendering_coordinate_resolution": {
+        "x": 1.9507737650137372e-06,
+        "y": 2.575056454782686e-07
+      },
+      "deduplicated_markers": 696,
+      "series": [
+        {
+          "epsilon": 0.006,
+          "color": "blue",
+          "count": 117,
+          "x_min": 0.002744424854487674,
+          "x_max": 0.1618803574738662,
+          "y_min": -0.010621989283668578,
+          "y_max": 0.001759011304530197
+        },
+        {
+          "epsilon": 0.004,
+          "color": "orange",
+          "count": 115,
+          "x_min": 0.0021652405225254636,
+          "x_max": 0.1255951855637415,
+          "y_min": -0.008271992511563542,
+          "y_max": 0.0011780013237101834
+        },
+        {
+          "epsilon": 0.002,
+          "color": "green",
+          "count": 113,
+          "x_min": 0.0014493069079627669,
+          "x_max": 0.08257301276510262,
+          "y_min": -0.005435966800058552,
+          "y_max": 0.000582030231882398
+        },
+        {
+          "epsilon": 0.001,
+          "color": "red_orange",
+          "count": 107,
+          "x_min": 0.0010146743880986356,
+          "x_max": 0.054782094917098303,
+          "y_min": -0.003599037138713174,
+          "y_max": 0.00027704049979893454
+        },
+        {
+          "epsilon": 0.0006,
+          "color": "purple",
+          "count": 120,
+          "x_min": 0.0006831401843227223,
+          "x_max": 0.04100124573777742,
+          "y_min": -0.002726016144914012,
+          "y_max": 0.00016296558922422106
+        },
+        {
+          "epsilon": 0.0002,
+          "color": "brown",
+          "count": 120,
+          "x_min": 0.00037345455146233766,
+          "x_max": 0.022362576668828744,
+          "y_min": -0.0014869761174045664,
+          "y_max": 4.3972272098490995e-05
+        }
+      ],
+      "highlights": [
+        {
+          "drawing_index": 693,
+          "epsilon": 0.006,
+          "color": "blue",
+          "role": "highlighted_sample",
+          "x": 0.07956794424750031,
+          "y": -0.0032190104202780056,
+          "pdf_x": 473.6054992675781,
+          "pdf_y": 253.92799377441406,
+          "pdf_marker_radius": 5.5465087890625
+        },
+        {
+          "drawing_index": 695,
+          "epsilon": 0.004,
+          "color": "orange",
+          "role": "highlighted_sample",
+          "x": 0.07579017452733393,
+          "y": -0.003691018315590364,
+          "pdf_x": 454.24000549316406,
+          "pdf_y": 272.25799560546875,
+          "pdf_marker_radius": 5.5449981689453125
+        },
+        {
+          "drawing_index": 697,
+          "epsilon": 0.002,
+          "color": "green",
+          "role": "highlighted_sample",
+          "x": 0.07243308802656126,
+          "y": -0.0042960021639482536,
+          "pdf_x": 437.031005859375,
+          "pdf_y": 295.7519989013672,
+          "pdf_marker_radius": 5.5469970703125
+        },
+        {
+          "drawing_index": 699,
+          "epsilon": "",
+          "color": "black",
+          "role": "reference_marker",
+          "x": 0.07131334281385134,
+          "y": -0.004754181940087461,
+          "pdf_x": 431.29100036621094,
+          "pdf_y": 313.5449981689453,
+          "pdf_marker_radius": 4.3220062255859375
+        }
+      ],
+      "formula_reference_mpi140_fpi92": {
+        "x": 0.07332139057293466,
+        "y": -0.00488809270486231
+      },
+      "pdf_dot_relative_x_difference_from_formula": -0.027386929563015694
+    }
+  },
+  "boundary_method": {
+    "source": "prd_submission_2.tex, paragraph around line 931, section 3.1",
+    "specified_example": "Fix an interior center (a,b), impose x=a+t*cos(alpha), y=b+t*sin(alpha), maximize t, sweep alpha in [0,2pi].",
+    "support_comparison": "Ray and support scans recover the same convex boundary for the same feasible model, but polar angle and outward-normal angle label different points. Compare sets/hulls or h_ref(n)=max_j n dot p_j at common normals, never point index or equal angles.",
+    "Fig4_domain": "Only x>0 is displayed; negative-x extent is not available in this figure."
+  },
+  "comparison_plan": [
+    "Overlay computed and extracted points in original x,y units using identical bounds; keep original reference and reconstruction visually distinct.",
+    "For Fig3 compare extrema and support functions on a common angular grid. h_ref is support of the sampled plotted hull, not certified support of the original feasible set.",
+    "For Fig4 compare six same-epsilon contours on x>=0 and vertical slices y_lower(x), y_upper(x); use z=y+x/15 as a second display to expose width and nesting.",
+    "Report computed primal and outer support gap separately from reference plotting/scan resolution and modeling differences.",
+    "The PDF black dot and the explicit m_pi=140 MeV, f_pi=92 MeV formula point differ; show both without changing physical inputs to fit the graphic."
+  ],
+  "chiral_reference_vertical_slices": [
+    {
+      "reference": "pdf_black_dot",
+      "epsilon": 0.006,
+      "x": 0.07131334281385134,
+      "y": -0.004754181940087461,
+      "sample_hull_lower_y": -0.0069517483074142085,
+      "sample_hull_upper_y": -0.002660898658257987,
+      "inside_displayed_sample_hull": true
+    },
+    {
+      "reference": "pdf_black_dot",
+      "epsilon": 0.004,
+      "x": 0.07131334281385134,
+      "y": -0.004754181940087461,
+      "sample_hull_lower_y": -0.0060242697841160564,
+      "sample_hull_upper_y": -0.0033789746352158095,
+      "inside_displayed_sample_hull": true
+    },
+    {
+      "reference": "pdf_black_dot",
+      "epsilon": 0.002,
+      "x": 0.07131334281385134,
+      "y": -0.004754181940087461,
+      "sample_hull_lower_y": -0.0050386555482959455,
+      "sample_hull_upper_y": -0.004207141093932879,
+      "inside_displayed_sample_hull": true
+    },
+    {
+      "reference": "pdf_black_dot",
+      "epsilon": 0.001,
+      "x": 0.07131334281385134,
+      "y": -0.004754181940087461,
+      "sample_hull_lower_y": null,
+      "sample_hull_upper_y": null,
+      "inside_displayed_sample_hull": false
+    },
+    {
+      "reference": "pdf_black_dot",
+      "epsilon": 0.0006,
+      "x": 0.07131334281385134,
+      "y": -0.004754181940087461,
+      "sample_hull_lower_y": null,
+      "sample_hull_upper_y": null,
+      "inside_displayed_sample_hull": false
+    },
+    {
+      "reference": "pdf_black_dot",
+      "epsilon": 0.0002,
+      "x": 0.07131334281385134,
+      "y": -0.004754181940087461,
+      "sample_hull_lower_y": null,
+      "sample_hull_upper_y": null,
+      "inside_displayed_sample_hull": false
+    },
+    {
+      "reference": "formula_mpi140_fpi92",
+      "epsilon": 0.006,
+      "x": 0.07332139057293466,
+      "y": -0.00488809270486231,
+      "sample_hull_lower_y": -0.007061504334221537,
+      "sample_hull_upper_y": -0.0027959354985304416,
+      "inside_displayed_sample_hull": true
+    },
+    {
+      "reference": "formula_mpi140_fpi92",
+      "epsilon": 0.004,
+      "x": 0.07332139057293466,
+      "y": -0.00488809270486231,
+      "sample_hull_lower_y": -0.006130025804269342,
+      "sample_hull_upper_y": -0.0035188026526008216,
+      "inside_displayed_sample_hull": true
+    },
+    {
+      "reference": "formula_mpi140_fpi92",
+      "epsilon": 0.002,
+      "x": 0.07332139057293466,
+      "y": -0.00488809270486231,
+      "sample_hull_lower_y": -0.005133946917529337,
+      "sample_hull_upper_y": -0.0043677439126740885,
+      "inside_displayed_sample_hull": true
+    },
+    {
+      "reference": "formula_mpi140_fpi92",
+      "epsilon": 0.001,
+      "x": 0.07332139057293466,
+      "y": -0.00488809270486231,
+      "sample_hull_lower_y": null,
+      "sample_hull_upper_y": null,
+      "inside_displayed_sample_hull": false
+    },
+    {
+      "reference": "formula_mpi140_fpi92",
+      "epsilon": 0.0006,
+      "x": 0.07332139057293466,
+      "y": -0.00488809270486231,
+      "sample_hull_lower_y": null,
+      "sample_hull_upper_y": null,
+      "inside_displayed_sample_hull": false
+    },
+    {
+      "reference": "formula_mpi140_fpi92",
+      "epsilon": 0.0002,
+      "x": 0.07332139057293466,
+      "y": -0.00488809270486231,
+      "sample_hull_lower_y": null,
+      "sample_hull_upper_y": null,
+      "inside_displayed_sample_hull": false
+    }
+  ],
+  "paper_embedding_check": "Main PDF page 28 has identical ordered fill colors and drawing counts to source chiplot.pdf; it embeds this graphic."
+}

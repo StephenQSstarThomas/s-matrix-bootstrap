@@ -1,0 +1,10 @@
+{
+  "ref": "refs/tags/arxiv-2403.10772",
+  "node_id": "REF_kwDOPEeQOLpyZWZzL3RhZ3MvYXJ4aXYtMjQwMy4xMDc3Mg",
+  "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/refs/tags/arxiv-2403.10772",
+  "object": {
+    "sha": "c8409331d5df911f592e53e5a43628418a39b213",
+    "type": "commit",
+    "url": "https://api.github.com/repos/hyfysics/gauge-theory-bootstrap/git/commits/c8409331d5df911f592e53e5a43628418a39b213"
+  }
+}

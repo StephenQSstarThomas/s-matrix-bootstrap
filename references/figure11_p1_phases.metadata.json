@@ -1,0 +1,478 @@
+{
+  "source": {
+    "paper": "He–Kruczenski 2309.12402v3",
+    "figure": "11",
+    "panel": "P1",
+    "pdf": "references/2309.12402v3-source/P1ML.pdf",
+    "full_paper_pdf": "references/2309.12402v3.pdf",
+    "full_paper_page_1_based": 37,
+    "source_page_0_based": 0,
+    "pdf_page_size_pt": [
+      831.0,
+      420.0
+    ],
+    "tex": "references/2309.12402v3-source/prd_submission_2.tex",
+    "tex_lines": [
+      1206,
+      1208,
+      1210,
+      1229
+    ]
+  },
+  "extraction": {
+    "method": "Read filled circular vector paths using PyMuPDF; center is the path bounding-box center. Map colors to M,L only using this panel legend; exclude square legend paths. Deduplicate identical PDF centers within a series.",
+    "coordinate_formula": "pdf_x = energy_slope * energy_gev + energy_intercept; pdf_y = phase_slope * phase_deg + phase_intercept",
+    "energy_slope": 626.3085098266602,
+    "energy_intercept": -139.03120880126937,
+    "phase_slope": -1.8995280303955098,
+    "phase_intercept": 394.3161056518556,
+    "printed_energy_ticks": [
+      0.4,
+      0.6,
+      0.8,
+      1.0,
+      1.2
+    ],
+    "energy_tick_pdf_x": [
+      111.49199676513672,
+      236.75399780273438,
+      362.0159912109375,
+      487.2770080566406,
+      612.5390014648438
+    ],
+    "energy_tick_path_indices": [
+      1138,
+      1142,
+      1146,
+      1150,
+      1154
+    ],
+    "printed_phase_ticks": [
+      0,
+      50,
+      100,
+      150
+    ],
+    "phase_tick_pdf_y": [
+      394.3160095214844,
+      299.3399963378906,
+      204.36300659179688,
+      109.38700103759766
+    ],
+    "phase_tick_path_indices": [
+      1157,
+      1162,
+      1167,
+      1172
+    ],
+    "maximum_tick_fit_residual_pdf_pt": {
+      "energy": 0.00039215087872435106,
+      "phase": 0.0002960205077329192
+    },
+    "CSV_format": "12 significant digits preserve the graphical conversion; they are not physical or experimental accuracy."
+  },
+  "groups": [
+    {
+      "model_M": 50,
+      "model_L": 8,
+      "pdf_color_name": "green",
+      "pdf_fill_rgb": [
+        0.0,
+        0.6666560173034668,
+        0.0
+      ],
+      "legend_label": "M=50,L=8",
+      "legend_square_path_index": 1178,
+      "unique_markers": 43,
+      "source_circle_path_indices": [
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225
+      ],
+      "duplicate_center_paths_omitted": [],
+      "csv_data_rows_1_based": [
+        1,
+        43
+      ],
+      "energy_gev_range": [
+        0.2791718550331433,
+        1.1957401172878912
+      ],
+      "phase_deg_range": [
+        -0.00020644648170816562,
+        172.44815560512347
+      ]
+    },
+    {
+      "model_M": 50,
+      "model_L": 10,
+      "pdf_color_name": "red",
+      "pdf_fill_rgb": [
+        0.9999849796295166,
+        0.0,
+        0.0
+      ],
+      "legend_label": "M=50,L=10",
+      "legend_square_path_index": 1182,
+      "unique_markers": 43,
+      "source_circle_path_indices": [
+        410,
+        411,
+        412,
+        413,
+        414,
+        415,
+        416,
+        417,
+        418,
+        419,
+        420,
+        421,
+        422,
+        423,
+        424,
+        425,
+        426,
+        427,
+        428,
+        429,
+        430,
+        431,
+        432,
+        433,
+        434,
+        435,
+        436,
+        437,
+        438,
+        439,
+        440,
+        441,
+        442,
+        443,
+        444,
+        445,
+        446,
+        447,
+        448,
+        449,
+        450,
+        451,
+        452
+      ],
+      "duplicate_center_paths_omitted": [],
+      "csv_data_rows_1_based": [
+        44,
+        86
+      ],
+      "energy_gev_range": [
+        0.2791718550331433,
+        1.1957401172878912
+      ],
+      "phase_deg_range": [
+        -0.00020644648170816562,
+        171.50844756912832
+      ]
+    },
+    {
+      "model_M": 50,
+      "model_L": 12,
+      "pdf_color_name": "blue",
+      "pdf_fill_rgb": [
+        0.0,
+        0.0,
+        0.9999849796295166
+      ],
+      "legend_label": "M=50,L=12",
+      "legend_square_path_index": 1180,
+      "unique_markers": 43,
+      "source_circle_path_indices": [
+        637,
+        638,
+        639,
+        640,
+        641,
+        642,
+        643,
+        644,
+        645,
+        646,
+        647,
+        648,
+        649,
+        650,
+        651,
+        652,
+        653,
+        654,
+        655,
+        656,
+        657,
+        658,
+        659,
+        660,
+        661,
+        662,
+        663,
+        664,
+        665,
+        666,
+        667,
+        668,
+        669,
+        670,
+        671,
+        672,
+        673,
+        674,
+        675,
+        676,
+        677,
+        678,
+        679
+      ],
+      "duplicate_center_paths_omitted": [],
+      "csv_data_rows_1_based": [
+        87,
+        129
+      ],
+      "energy_gev_range": [
+        0.2791718550331433,
+        1.1957401172878912
+      ],
+      "phase_deg_range": [
+        -0.00020644648170816562,
+        174.44075676404012
+      ]
+    },
+    {
+      "model_M": 45,
+      "model_L": 10,
+      "pdf_color_name": "orange",
+      "pdf_fill_rgb": [
+        0.9999849796295166,
+        0.5,
+        0.0
+      ],
+      "legend_label": "M=45,L=10",
+      "legend_square_path_index": 1184,
+      "unique_markers": 38,
+      "source_circle_path_indices": [
+        863,
+        864,
+        865,
+        866,
+        867,
+        868,
+        869,
+        870,
+        871,
+        872,
+        873,
+        874,
+        875,
+        876,
+        877,
+        878,
+        879,
+        880,
+        881,
+        882,
+        883,
+        884,
+        885,
+        886,
+        887,
+        888,
+        889,
+        890,
+        891,
+        892,
+        893,
+        894,
+        895,
+        896,
+        897,
+        898,
+        899,
+        900
+      ],
+      "duplicate_center_paths_omitted": [],
+      "csv_data_rows_1_based": [
+        130,
+        167
+      ],
+      "energy_gev_range": [
+        0.2791838294749823,
+        1.078510356046689
+      ],
+      "phase_deg_range": [
+        -0.00020644648170816562,
+        176.5033730021452
+      ]
+    },
+    {
+      "model_M": 60,
+      "model_L": 10,
+      "pdf_color_name": "purple",
+      "pdf_fill_rgb": [
+        0.5,
+        0.0,
+        0.5
+      ],
+      "legend_label": "M=60,L=10",
+      "legend_square_path_index": 1186,
+      "unique_markers": 51,
+      "source_circle_path_indices": [
+        1084,
+        1085,
+        1086,
+        1087,
+        1088,
+        1089,
+        1090,
+        1091,
+        1092,
+        1093,
+        1094,
+        1095,
+        1096,
+        1097,
+        1098,
+        1099,
+        1100,
+        1101,
+        1102,
+        1103,
+        1104,
+        1105,
+        1106,
+        1107,
+        1108,
+        1109,
+        1110,
+        1111,
+        1112,
+        1113,
+        1114,
+        1115,
+        1116,
+        1117,
+        1118,
+        1119,
+        1120,
+        1121,
+        1122,
+        1123,
+        1124,
+        1125,
+        1126,
+        1127,
+        1128,
+        1129,
+        1130,
+        1131,
+        1132,
+        1133,
+        1134
+      ],
+      "duplicate_center_paths_omitted": [
+        {
+          "path_index": 1135,
+          "same_center_as": 1134
+        }
+      ],
+      "csv_data_rows_1_based": [
+        168,
+        218
+      ],
+      "energy_gev_range": [
+        0.27916546886718796,
+        1.1340069604519023
+      ],
+      "phase_deg_range": [
+        -0.00020644648170816562,
+        181.7841595365714
+      ]
+    }
+  ],
+  "dataset": {
+    "csv_file": "figure11_p1_phases.csv",
+    "fields": [
+      "model_M",
+      "model_L",
+      "energy_gev",
+      "phase_deg"
+    ],
+    "row_count": 218,
+    "series_order": [
+      [
+        50,
+        8
+      ],
+      [
+        50,
+        10
+      ],
+      [
+        50,
+        12
+      ],
+      [
+        45,
+        10
+      ],
+      [
+        60,
+        10
+      ]
+    ]
+  },
+  "scope": [
+    "Graphical readout of original displayed marker centers, not the authors original numerical solution or amplitude coefficients.",
+    "No fit, smoothing, energy rescaling, extrapolation, or invented missing samples; the source energy axes are retained in GeV.",
+    "Grey experimental/phenomenological objects and their error bars are omitted; these CSVs contain only the five bootstrap curves.",
+    "Legend colors identify only the M,L configurations of Fig.11 and do not identify a Fig.8 representative amplitude.",
+    "Tick calibration residual describes PDF coordinate conversion only; it is not a physics uncertainty, convergence bound, or continuum certificate."
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "status": "metadata_link_checker_false_positive",
+  "cause": "The initial regex treated LaTeX bracket/function notation as Markdown links. All source/artifact and explicit input hash checks had passed; no mathematical or numerical computation failed.",
+  "placeholder_outputs_not_completed_certificates": true,
+  "source_script_sha256": "8e95b22fe4d2ecd2cc301a703d7e3a98a8b96977821a30a7c060077fd4e01492",
+  "source_snapshot_path": "results/source_snapshot_20260906T113931Z.tar.gz",
+  "source_snapshot_sha256": "ad75ac32c3797eb11f141144d5402f2d141f2028419ba1f08768556add6d913d",
+  "scientific_input_or_result_changes": false
+}

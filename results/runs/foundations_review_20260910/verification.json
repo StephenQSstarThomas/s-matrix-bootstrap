@@ -1,0 +1,176 @@
+{
+  "status": "review_and_conditional_proofs_verified",
+  "all_paper_claims_achieved": false,
+  "tests": {
+    "result": "........................................................................ [ 80%]\n..................                                                       [100%]\n90 passed in 11.31s",
+    "files": 3,
+    "added_independent_cases": 4
+  },
+  "modules": 13,
+  "module_count_not_a_fixed_requirement": true,
+  "source_files": {
+    "src/smatrix_bootstrap/analysis.py": {
+      "sha256": "9de5452c0c744e4a4f1add58235e312d51da736dc65d3f3f5e054db080708490",
+      "lines": 318,
+      "bytes": 23964
+    },
+    "src/smatrix_bootstrap/model.py": {
+      "sha256": "3d49e6bd122254cc3fbd741bfa5f32f1a70dbd6e20a5ca602571bf1970231715",
+      "lines": 282,
+      "bytes": 18961
+    },
+    "src/smatrix_bootstrap/io.py": {
+      "sha256": "8ac1e9c32df9436952f6412ec4b30c9c9f54e8fbdcd4bcf61a6434d9859636bc",
+      "lines": 290,
+      "bytes": 24313
+    },
+    "src/smatrix_bootstrap/operators.py": {
+      "sha256": "96503ecc411866f4bac174545ba23abefb9b275cb8002691b818f92b36f51c1c",
+      "lines": 346,
+      "bytes": 24505
+    },
+    "src/smatrix_bootstrap/__init__.py": {
+      "sha256": "5e30794fc13676c6295e69fc2ece20f1e839fdbf6c3ab73092592056b2b2d362",
+      "lines": 349,
+      "bytes": 24530
+    },
+    "src/smatrix_bootstrap/quotient.py": {
+      "sha256": "9f49910882d405cb61b500a55a301cc51fc3dbd8e42f33fc46f0707374fe1426",
+      "lines": 334,
+      "bytes": 24547
+    },
+    "src/smatrix_bootstrap/certificates.py": {
+      "sha256": "0f190cf9fb76e1098283bbf10c4bdeffeffba4e64df83515549b88c07b500474",
+      "lines": 128,
+      "bytes": 9065
+    },
+    "src/smatrix_bootstrap/analytic.py": {
+      "sha256": "681f93fee7c2ed31d56e1c5ca0f0db225aee325cd1ef500ce2bc703470837899",
+      "lines": 252,
+      "bytes": 15182
+    },
+    "src/smatrix_bootstrap/kernels.py": {
+      "sha256": "153fd835166f8e5bf8d72212cfb2b26800a352b6e497fe9d186e6420c1eb21de",
+      "lines": 275,
+      "bytes": 18180
+    },
+    "src/smatrix_bootstrap/imaginary.py": {
+      "sha256": "75747ee09285819d1d8d4e7f8fda9f599b69e48a7822a91d9780a5a339ef41be",
+      "lines": 316,
+      "bytes": 23932
+    },
+    "src/smatrix_bootstrap/run.py": {
+      "sha256": "a56d5a4eaa43595efec30517b3bce39c71100bae05b28747783a7d05833e48f9",
+      "lines": 339,
+      "bytes": 24552
+    },
+    "src/smatrix_bootstrap/spectra.py": {
+      "sha256": "4b2570364d0710d6943bcddc2747513420fabffafa52ca2fdd4780ffc3a46a4a",
+      "lines": 123,
+      "bytes": 9271
+    },
+    "src/smatrix_bootstrap/linear.py": {
+      "sha256": "8eb6b2f51541a5fabd762da1fe1a563daf856923fd8952892b79fcbfb4326682",
+      "lines": 343,
+      "bytes": 24574
+    },
+    "tests/test_mainline.py": {
+      "sha256": "ea5cbc59084529a3c24a730fc4356393e233791ac12c74876630a6ef247d8bba",
+      "lines": 308,
+      "bytes": 23717
+    },
+    "tests/test_kernels.py": {
+      "sha256": "bbf39efd2a1cef747321631571ea20b186d6ed5d7f33c31ea38396332dcbff2f",
+      "lines": 269,
+      "bytes": 16457
+    },
+    "tests/test_linear.py": {
+      "sha256": "67dc76684348056de9c949ed67042f1b5fffb2deb5f262a33d4e16558c9156d9",
+      "lines": 254,
+      "bytes": 21787
+    }
+  },
+  "old_inputs_unchanged": true,
+  "independent_PV_integral_matches": 24,
+  "nonzero_residue_certificates": 24,
+  "analytic_lift_high_node_violations": 6,
+  "below_matching_uniform_bounds": {
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/C2_fig6/coefficients.json": {
+      "0": {
+        "f_difference_bound": "[8.08130701920314451427852016341e-6 +/- 6.22e-37]",
+        "S_difference_bound": "[2.53881747629322289584213665446e-5 +/- 2.21e-35]"
+      },
+      "2": {
+        "f_difference_bound": "[3.46041877405610337432954461300e-6 +/- 7.49e-37]",
+        "S_difference_bound": "[1.08712261989188529657896856090e-5 +/- 3.60e-35]"
+      },
+      "1": {
+        "f_difference_bound": "[2.41942152978776882554833465271e-6 +/- 2.77e-36]",
+        "S_difference_bound": "[7.60083690391823365086485783187e-6 +/- 3.77e-36]"
+      }
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/paper_tip_path_02/coefficients.json": {
+      "0": {
+        "f_difference_bound": "[9.96150304256490100687724583518e-6 +/- 3.09e-36]",
+        "S_difference_bound": "[3.12949847772342664183076862488e-5 +/- 4.30e-35]"
+      },
+      "2": {
+        "f_difference_bound": "[3.59179386724712838636785570956e-6 +/- 1.84e-36]",
+        "S_difference_bound": "[1.12839532265524516108149465165e-5 +/- 6.97e-36]"
+      },
+      "1": {
+        "f_difference_bound": "[2.88070316619068851398889551899e-6 +/- 3.81e-36]",
+        "S_difference_bound": "[9.04999590407752428199619844920e-6 +/- 9.24e-37]"
+      }
+    }
+  },
+  "root_certificates": {
+    "C1_orange_root": {
+      "energies": [
+        0.3,
+        0.35
+      ],
+      "f00_enclosures": [
+        "[-0.000290614169243392673529299576862 +/- 4.94e-34]",
+        "[0.000401521179515123322791591832313 +/- 1.38e-34]"
+      ],
+      "existence_proved_by_continuity": true,
+      "uniqueness_proved": false
+    },
+    "C1_green_root": {
+      "energies": [
+        0.4,
+        0.45
+      ],
+      "f00_enclosures": [
+        "[-0.000899465849473401074066503217023 +/- 2.95e-34]",
+        "[0.000206066098597005978387412886159 +/- 1.90e-35]"
+      ],
+      "existence_proved_by_continuity": true,
+      "uniqueness_proved": false
+    }
+  },
+  "monotone_moment_counterexample": true,
+  "phase_values_preserved_after_diagnostic_fixes": true,
+  "finite_tip_support": {
+    "lower": 0.09622922291089535,
+    "upper": 0.09632622091601184
+  },
+  "fixed_C_exclusion": {
+    "bits": 768,
+    "upper": -9.09881296114616,
+    "scope": "Only this C and the declared finite current constraints"
+  },
+  "source_archive": {
+    "path": "results/evidence/foundations_sources_20260910.json.gz",
+    "sha256": "8346ecc3c9047a95f7fb4305e74d7ace4ba1796dcb39979748efe466fc6ceec6"
+  },
+  "report": {
+    "path": "results/runs/foundations_review_20260910/FULL_REVIEW_ZH.pdf",
+    "sha256": "1e35991932a310b6e4af609f8f030fedc00b0c7e9d4d3ac94d192c9138d52998",
+    "pages": 11
+  },
+  "optimization_or_amplitude_refitting_performed": false,
+  "paper_curve_inputs_used_in_new_calculations": false,
+  "final_scope": "All 18 steps reviewed; conditional proofs and structural counterexamples supplied. New consistent-family B-F solves, B3 completeness, E quantitative robustness and F/L12 remain open."
+}

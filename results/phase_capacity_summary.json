@@ -1,0 +1,520 @@
+{
+  "scope": "Explicit source-phase capacity fits, not bootstrap predictions; no rigorous lower bound on achievable fit error",
+  "source_node_phase_threshold_degrees": 0.01,
+  "threshold_interpretation": "Chosen diagnostic threshold, not a source uncertainty bound",
+  "tests": {
+    "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest tests/test_phase_capacity.py -q",
+    "passed": 7
+  },
+  "runs": [
+    {
+      "path": "results/phase_capacity_phase_only.json",
+      "sha256": "b324ffd38c51bd922ccc7c8c7801286de7f7645944099fc5a531753fb61d2ccf",
+      "fit_count": 10,
+      "elapsed_seconds": 12.194865448982455
+    },
+    {
+      "path": "results/phase_capacity_controls.json",
+      "sha256": "a2180249b59e7d11fa7b138259f4b879b4f48d4502e73135576f5caba1d1dd08",
+      "fit_count": 16,
+      "elapsed_seconds": 51.2527519230498
+    }
+  ],
+  "fits": [
+    {
+      "degree": 4,
+      "eta_min": 0.1,
+      "control": "phase_only",
+      "status": "optimal_inaccurate",
+      "solver_objective": 0.0030207649738338304,
+      "max_S_plane_residual": 0.0030207664961666774,
+      "max_wrapped_phase_error_degrees": 0.7146489197819687,
+      "eta_actual_source_min": 0.09782809498194696,
+      "extra_eta_min": 0.09632678994038514,
+      "extra_eta_max": 1.0029121552267513,
+      "max_sampled_unitarity_excess": 25870.31965983562,
+      "retained_controls_pass_numerically": true,
+      "ninety_degree_crossing_brackets_GeV": [
+        [
+          0.8193778666666667,
+          0.8224473999999999
+        ]
+      ]
+    },
+    {
+      "degree": 4,
+      "eta_min": 0.9,
+      "control": "phase_only",
+      "status": "optimal",
+      "solver_objective": 0.3148790566689256,
+      "max_S_plane_residual": 0.31487904534962513,
+      "max_wrapped_phase_error_degrees": 10.236650544789462,
+      "eta_actual_source_min": 0.585913125254314,
+      "extra_eta_min": 0.5544417476968463,
+      "extra_eta_max": 1.355662240575176,
+      "max_sampled_unitarity_excess": 145903.82453182945,
+      "retained_controls_pass_numerically": true,
+      "ninety_degree_crossing_brackets_GeV": [
+        [
+          0.8265,
+          0.8285864666666667
+        ]
+      ]
+    },
+    {
+      "degree": 6,
+      "eta_min": 0.1,
+      "control": "phase_only",
+      "status": "optimal",
+      "solver_objective": 0.0005341080590452375,
+      "max_S_plane_residual": 0.0005341099374800688,
+      "max_wrapped_phase_error_degrees": 0.15301123176765286,
+      "eta_actual_source_min": 0.09953031864351418,
+      "extra_eta_min": 0.01917864374709897,
+      "extra_eta_max": 1.0390643413638654,
+      "max_sampled_unitarity_excess": 94400.11894826805,
+      "retained_controls_pass_numerically": true,
+      "ninety_degree_crossing_brackets_GeV": [
+        [
+          0.8193778666666667,
+          0.8224473999999999
+        ]
+      ]
+    },
+    {
+      "degree": 6,
+      "eta_min": 0.9,
+      "control": "phase_only",
+      "status": "optimal",
+      "solver_objective": 0.15983026912224202,
+      "max_S_plane_residual": 0.1598302512189647,
+      "max_wrapped_phase_error_degrees": 5.095164343581453,
+      "eta_actual_source_min": 0.742958542560312,
+      "extra_eta_min": 0.13337179513839809,
+      "extra_eta_max": 1.2474408305535656,
+      "max_sampled_unitarity_excess": 848869.7697369157,
+      "retained_controls_pass_numerically": true,
+      "ninety_degree_crossing_brackets_GeV": [
+        [
+          0.825732013572895,
+          0.8265
+        ]
+      ]
+    },
+    {
+      "degree": 8,
+      "eta_min": 0.1,
+      "control": "phase_only",
+      "status": "optimal",
+      "solver_objective": 0.00040035632648695557,
+      "max_S_plane_residual": 0.0004002927491145328,
+      "max_wrapped_phase_error_degrees": 0.1146631096040936,
+      "eta_actual_source_min": 0.09981311835879628,
+      "extra_eta_min": 0.025625735693929737,
+      "extra_eta_max": 1.030723537774597,
+      "max_sampled_unitarity_excess": 29336.366604648818,
+      "retained_controls_pass_numerically": true,
+      "ninety_degree_crossing_brackets_GeV": [
+        [
+          0.8193778666666667,
+          0.8224473999999999
+        ]
+      ]
+    },
+    {
+      "degree": 8,
+      "eta_min": 0.9,
+      "control": "phase_only",
+      "status": "optimal",
+      "solver_objective": 0.09861935330833053,
+      "max_S_plane_residual": 0.09862060838024728,
+      "max_wrapped_phase_error_degrees": 3.0939541132668413,
+      "eta_actual_source_min": 0.8023881281994141,
+      "extra_eta_min": 0.7821410195001021,
+      "extra_eta_max": 1.7084483986511838,
+      "max_sampled_unitarity_excess": 435446.90929838235,
+      "retained_controls_pass_numerically": true,
+      "ninety_degree_crossing_brackets_GeV": [
+        [
+          0.8193778666666667,
+          0.8224473999999999
+        ]
+      ]
+    },
+    {
+      "degree": 10,
+      "eta_min": 0.1,
+      "control": "phase_only",
+      "status": "optimal",
+      "solver_objective": 0.0003159188845404445,
+      "max_S_plane_residual": 0.00031741757506637593,
+      "max_wrapped_phase_error_degrees": 0.09064506645244894,
+      "eta_actual_source_min": 0.0997395317845568,
+      "extra_eta_min": 0.04649291516124523,
+      "extra_eta_max": 1.0043068251031315,
+      "max_sampled_unitarity_excess": 49855.99892249882,
+      "retained_controls_pass_numerically": true,
+      "ninety_degree_crossing_brackets_GeV": [
+        [
+          0.8193778666666667,
+          0.8224473999999999
+        ]
+      ]
+    },
+    {
+      "degree": 10,
+      "eta_min": 0.9,
+      "control": "phase_only",
+      "status": "optimal",
+      "solver_objective": 0.05657896398495329,
+      "max_S_plane_residual": 0.05659822811373002,
+      "max_wrapped_phase_error_degrees": 1.791376064969966,
+      "eta_actual_source_min": 0.8440744993060109,
+      "extra_eta_min": 0.5881320601870644,
+      "extra_eta_max": 3.245460067915017,
+      "max_sampled_unitarity_excess": 2213142.78450136,
+      "retained_controls_pass_numerically": true,
+      "ninety_degree_crossing_brackets_GeV": [
+        [
+          0.8224473999999999,
+          0.8255169333333334
+        ]
+      ]
+    },
+    {
+      "degree": 12,
+      "eta_min": 0.1,
+      "control": "phase_only",
+      "status": "optimal",
+      "solver_objective": 0.000251596085839358,
+      "max_S_plane_residual": 0.0005271598080845518,
+      "max_wrapped_phase_error_degrees": 0.1054131338498488,
+      "eta_actual_source_min": 0.09982785501982079,
+      "extra_eta_min": 0.0975865478320338,
+      "extra_eta_max": 1.0165665100093448,
+      "max_sampled_unitarity_excess": 30299.742512358283,
+      "retained_controls_pass_numerically": true,
+      "ninety_degree_crossing_brackets_GeV": [
+        [
+          0.8193778666666667,
+          0.8224473999999999
+        ]
+      ]
+    },
+    {
+      "degree": 12,
+      "eta_min": 0.9,
+      "control": "phase_only",
+      "status": "optimal",
+      "solver_objective": 0.014483144594033949,
+      "max_S_plane_residual": 0.019149764696041127,
+      "max_wrapped_phase_error_degrees": 0.5050121376652541,
+      "eta_actual_source_min": 0.8816849526330924,
+      "extra_eta_min": 0.29756371787719327,
+      "extra_eta_max": 6.93176090712722,
+      "max_sampled_unitarity_excess": 4121125.659779948,
+      "retained_controls_pass_numerically": true,
+      "ninety_degree_crossing_brackets_GeV": [
+        [
+          0.8224473999999999,
+          0.8255169333333334
+        ]
+      ]
+    },
+    {
+      "degree": 6,
+      "eta_min": 0.1,
+      "control": "point",
+      "status": null,
+      "solver_objective": null,
+      "max_S_plane_residual": null,
+      "max_wrapped_phase_error_degrees": null,
+      "eta_actual_source_min": null,
+      "extra_eta_min": null,
+      "extra_eta_max": null,
+      "max_sampled_unitarity_excess": null,
+      "retained_controls_pass_numerically": null,
+      "ninety_degree_crossing_brackets_GeV": null
+    },
+    {
+      "degree": 6,
+      "eta_min": 0.9,
+      "control": "point",
+      "status": null,
+      "solver_objective": null,
+      "max_S_plane_residual": null,
+      "max_wrapped_phase_error_degrees": null,
+      "eta_actual_source_min": null,
+      "extra_eta_min": null,
+      "extra_eta_max": null,
+      "max_sampled_unitarity_excess": null,
+      "retained_controls_pass_numerically": null,
+      "ninety_degree_crossing_brackets_GeV": null
+    },
+    {
+      "degree": 6,
+      "eta_min": 0.1,
+      "control": "unitarity_point",
+      "status": "optimal",
+      "solver_objective": 0.033048868883554565,
+      "max_S_plane_residual": 0.03304886965349146,
+      "max_wrapped_phase_error_degrees": 9.206314947933564,
+      "eta_actual_source_min": 0.06736361166789057,
+      "extra_eta_min": 0.06505406343786443,
+      "extra_eta_max": 1.0000062437506594,
+      "max_sampled_unitarity_excess": -9.158760994344357e-39,
+      "retained_controls_pass_numerically": true,
+      "ninety_degree_crossing_brackets_GeV": [
+        [
+          0.825732013572895,
+          0.8265
+        ]
+      ]
+    },
+    {
+      "degree": 6,
+      "eta_min": 0.9,
+      "control": "unitarity_point",
+      "status": "optimal",
+      "solver_objective": 0.529354960506807,
+      "max_S_plane_residual": 0.5293549608716371,
+      "max_wrapped_phase_error_degrees": 17.34162883477379,
+      "eta_actual_source_min": 0.37341861860718206,
+      "extra_eta_min": 0.34563694253145233,
+      "extra_eta_max": 1.0004945580227491,
+      "max_sampled_unitarity_excess": 2.327880028414886e-12,
+      "retained_controls_pass_numerically": true,
+      "ninety_degree_crossing_brackets_GeV": [
+        [
+          0.825732013572895,
+          0.8265
+        ]
+      ]
+    },
+    {
+      "degree": 6,
+      "eta_min": 0.1,
+      "control": "unitarity_point_chiral_linf",
+      "status": "optimal_inaccurate",
+      "solver_objective": 0.33622122987197517,
+      "max_S_plane_residual": 0.3362212310435523,
+      "max_wrapped_phase_error_degrees": 58.21899438389062,
+      "eta_actual_source_min": 0.20535072567050577,
+      "extra_eta_min": 0.20504331746890755,
+      "extra_eta_max": 1.0001348331585245,
+      "max_sampled_unitarity_excess": 1.9601475585431626e-08,
+      "retained_controls_pass_numerically": false,
+      "ninety_degree_crossing_brackets_GeV": []
+    },
+    {
+      "degree": 6,
+      "eta_min": 0.9,
+      "control": "unitarity_point_chiral_linf",
+      "status": "optimal_inaccurate",
+      "solver_objective": 0.9321925359841072,
+      "max_S_plane_residual": 0.9321925344420853,
+      "max_wrapped_phase_error_degrees": 65.89577248757058,
+      "eta_actual_source_min": 0.04730496338660565,
+      "extra_eta_min": 0.04363145484216212,
+      "extra_eta_max": 1.0002158282303217,
+      "max_sampled_unitarity_excess": 6.356476891289809e-09,
+      "retained_controls_pass_numerically": true,
+      "ninety_degree_crossing_brackets_GeV": []
+    },
+    {
+      "degree": 6,
+      "eta_min": 0.1,
+      "control": "unitarity_point_chiral_l2",
+      "status": "infeasible",
+      "solver_objective": null,
+      "max_S_plane_residual": null,
+      "max_wrapped_phase_error_degrees": null,
+      "eta_actual_source_min": null,
+      "extra_eta_min": null,
+      "extra_eta_max": null,
+      "max_sampled_unitarity_excess": null,
+      "retained_controls_pass_numerically": null,
+      "ninety_degree_crossing_brackets_GeV": null
+    },
+    {
+      "degree": 6,
+      "eta_min": 0.9,
+      "control": "unitarity_point_chiral_l2",
+      "status": "infeasible",
+      "solver_objective": null,
+      "max_S_plane_residual": null,
+      "max_wrapped_phase_error_degrees": null,
+      "eta_actual_source_min": null,
+      "extra_eta_min": null,
+      "extra_eta_max": null,
+      "max_sampled_unitarity_excess": null,
+      "retained_controls_pass_numerically": null,
+      "ninety_degree_crossing_brackets_GeV": null
+    },
+    {
+      "degree": 10,
+      "eta_min": 0.1,
+      "control": "point",
+      "status": "optimal",
+      "solver_objective": 0.0003171969967656076,
+      "max_S_plane_residual": 0.0003173321790116608,
+      "max_wrapped_phase_error_degrees": 0.09088805871869184,
+      "eta_actual_source_min": 0.099697015854577,
+      "extra_eta_min": 0.03757502698536132,
+      "extra_eta_max": 1.009977918657926,
+      "max_sampled_unitarity_excess": 590.5256818408997,
+      "retained_controls_pass_numerically": false,
+      "ninety_degree_crossing_brackets_GeV": [
+        [
+          0.8193778666666667,
+          0.8224473999999999
+        ]
+      ]
+    },
+    {
+      "degree": 10,
+      "eta_min": 0.9,
+      "control": "point",
+      "status": "optimal",
+      "solver_objective": 0.0573135848414091,
+      "max_S_plane_residual": 0.057331358937132565,
+      "max_wrapped_phase_error_degrees": 1.8258477409773224,
+      "eta_actual_source_min": 0.8431829377969335,
+      "extra_eta_min": 0.7938329745960331,
+      "extra_eta_max": 2.0720616815610704,
+      "max_sampled_unitarity_excess": 63597.97133762863,
+      "retained_controls_pass_numerically": false,
+      "ninety_degree_crossing_brackets_GeV": [
+        [
+          0.8224473999999999,
+          0.8255169333333334
+        ]
+      ]
+    },
+    {
+      "degree": 10,
+      "eta_min": 0.1,
+      "control": "unitarity_point",
+      "status": "optimal_inaccurate",
+      "solver_objective": 0.009536155572882185,
+      "max_S_plane_residual": 0.009536386864868749,
+      "max_wrapped_phase_error_degrees": 2.264114158442991,
+      "eta_actual_source_min": 0.0925104368441544,
+      "extra_eta_min": 0.08868071310420844,
+      "extra_eta_max": 1.0001473843417836,
+      "max_sampled_unitarity_excess": 2.6666712102972645e-10,
+      "retained_controls_pass_numerically": false,
+      "ninety_degree_crossing_brackets_GeV": [
+        [
+          0.8193778666666667,
+          0.8224473999999999
+        ]
+      ]
+    },
+    {
+      "degree": 10,
+      "eta_min": 0.9,
+      "control": "unitarity_point",
+      "status": "optimal_inaccurate",
+      "solver_objective": 0.29611578410198397,
+      "max_S_plane_residual": 0.2961160883118505,
+      "max_wrapped_phase_error_degrees": 9.604006972259091,
+      "eta_actual_source_min": 0.6038919424302874,
+      "extra_eta_min": 0.5591779461097545,
+      "extra_eta_max": 1.0091295970886855,
+      "max_sampled_unitarity_excess": 5.234338913980252e-08,
+      "retained_controls_pass_numerically": false,
+      "ninety_degree_crossing_brackets_GeV": [
+        [
+          0.825732013572895,
+          0.8265
+        ]
+      ]
+    },
+    {
+      "degree": 10,
+      "eta_min": 0.1,
+      "control": "unitarity_point_chiral_linf",
+      "status": "optimal_inaccurate",
+      "solver_objective": 0.01609967643182626,
+      "max_S_plane_residual": 0.01609978832168414,
+      "max_wrapped_phase_error_degrees": 4.044659400579977,
+      "eta_actual_source_min": 0.0879769259428424,
+      "extra_eta_min": 0.07967035595125313,
+      "extra_eta_max": 1.0000024684673292,
+      "max_sampled_unitarity_excess": 2.599023566205452e-09,
+      "retained_controls_pass_numerically": true,
+      "ninety_degree_crossing_brackets_GeV": [
+        [
+          0.8163083333333334,
+          0.8193778666666667
+        ]
+      ]
+    },
+    {
+      "degree": 10,
+      "eta_min": 0.9,
+      "control": "unitarity_point_chiral_linf",
+      "status": "optimal_inaccurate",
+      "solver_objective": 0.3147826816320454,
+      "max_S_plane_residual": 0.31478271798289825,
+      "max_wrapped_phase_error_degrees": 10.189961921219245,
+      "eta_actual_source_min": 0.5854076657286067,
+      "extra_eta_min": 0.5450586050644415,
+      "extra_eta_max": 1.0143781531692404,
+      "max_sampled_unitarity_excess": 1.603408435822009e-09,
+      "retained_controls_pass_numerically": true,
+      "ninety_degree_crossing_brackets_GeV": [
+        [
+          0.825732013572895,
+          0.8265
+        ]
+      ]
+    },
+    {
+      "degree": 10,
+      "eta_min": 0.1,
+      "control": "unitarity_point_chiral_l2",
+      "status": "optimal_inaccurate",
+      "solver_objective": 0.017757228891909078,
+      "max_S_plane_residual": 0.017757240257319243,
+      "max_wrapped_phase_error_degrees": 4.4291671612377534,
+      "eta_actual_source_min": 0.08685972208085369,
+      "extra_eta_min": 0.07804075410945638,
+      "extra_eta_max": 1.0000024661527176,
+      "max_sampled_unitarity_excess": 4.639242473079979e-10,
+      "retained_controls_pass_numerically": true,
+      "ninety_degree_crossing_brackets_GeV": [
+        [
+          0.8163083333333334,
+          0.8193778666666667
+        ]
+      ]
+    },
+    {
+      "degree": 10,
+      "eta_min": 0.9,
+      "control": "unitarity_point_chiral_l2",
+      "status": "optimal_inaccurate",
+      "solver_objective": 0.3160744425785372,
+      "max_S_plane_residual": 0.3160745501494229,
+      "max_wrapped_phase_error_degrees": 10.237725386932313,
+      "eta_actual_source_min": 0.5840799101667946,
+      "extra_eta_min": 0.5431482731465803,
+      "extra_eta_max": 1.0147551459066948,
+      "max_sampled_unitarity_excess": 6.878068104941941e-09,
+      "retained_controls_pass_numerically": true,
+      "ninety_degree_crossing_brackets_GeV": [
+        [
+          0.825732013572895,
+          0.8265
+        ]
+      ]
+    }
+  ],
+  "current_code_sha256": {
+    "src/smatrix_bootstrap/phase_capacity.py": "6bf1885639863de8a2378f82079696131903014cf8bf48af39b9a1cdbe32d375",
+    "scripts/diagnose_phase_capacity.py": "329313d2c404079d474d97a0740bebd2d7c1f4dd025de7f63d37777c1296c557",
+    "tests/test_phase_capacity.py": "e3046ded3bd82b51021338e5fda462074f2f67921a9cfb7a287013efb3e5f78b"
+  }
+}

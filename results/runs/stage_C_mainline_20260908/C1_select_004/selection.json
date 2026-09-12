@@ -1,0 +1,170 @@
+{
+  "rule": "Upper feasible-hull edge at fixed Weinberg f00(3), before evaluating phases",
+  "reference": [
+    0.07332139057293466,
+    -0.00488809270486231
+  ],
+  "target": [
+    0.07332139057541026,
+    -0.0033850135105766496
+  ],
+  "epsilon": 0.004,
+  "source_coefficients": [
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_012_20260907/coefficients.json",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_strip_plus_20260907/coefficients.json"
+  ],
+  "weights": [
+    0.6442401373374516,
+    0.35575986266254844
+  ],
+  "source_reports": [
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_adaptive_012_20260907/report.json",
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps004_strip_plus_20260907/report.json"
+  ],
+  "vertices": [
+    [
+      0.14685220885861863,
+      -0.009665699726896087
+    ],
+    [
+      0.14749075580901577,
+      -0.009526834695232142
+    ],
+    [
+      0.1470373214188309,
+      -0.009344149564710838
+    ],
+    [
+      0.14563130478412797,
+      -0.009100296646506049
+    ],
+    [
+      0.1433065282233138,
+      -0.008801666311357287
+    ],
+    [
+      0.14015569654543483,
+      -0.008458775459146252
+    ],
+    [
+      0.131321665310039,
+      -0.00763385722148698
+    ],
+    [
+      0.11993830783424368,
+      -0.006698825812741656
+    ],
+    [
+      0.10733849096342875,
+      -0.005749148663122799
+    ],
+    [
+      0.0908397960682702,
+      -0.004575035677530646
+    ],
+    [
+      0.04159757586887575,
+      -0.0012300204247619412
+    ],
+    [
+      -0.0023748001431779615,
+      0.0016329711088480638
+    ],
+    [
+      -0.045265544482564965,
+      0.004287376058430472
+    ],
+    [
+      -0.11424054800168833,
+      0.008156971726667869
+    ],
+    [
+      -0.06924385934958986,
+      0.0033999446307116992
+    ],
+    [
+      -0.0303940202605935,
+      0.0002956534146272278
+    ],
+    [
+      -0.00929309512757622,
+      -0.001248826345028111
+    ],
+    [
+      0.01327943154493833,
+      -0.0027978295814366267
+    ],
+    [
+      0.017440272914168095,
+      -0.003067651947037675
+    ],
+    [
+      0.03847186523862888,
+      -0.0044277109550314355
+    ],
+    [
+      0.05962962215584642,
+      -0.005714373051452651
+    ],
+    [
+      0.0786315327535764,
+      -0.006789710030911717
+    ],
+    [
+      0.09736197588333742,
+      -0.007763705883383936
+    ],
+    [
+      0.11802862193272153,
+      -0.008736179360374888
+    ],
+    [
+      0.13725319010093484,
+      -0.009534208796257734
+    ],
+    [
+      0.14172568436701083,
+      -0.009669105698722907
+    ],
+    [
+      0.1449228665446944,
+      -0.009712832805638425
+    ]
+  ],
+  "boundary_approximation": true,
+  "region_metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)",
+  "regional_distance_upper": 0.009729681547872668,
+  "exact_extremizer_claimed": false,
+  "original_H_feasibility": {
+    "upper": 5e-324,
+    "enclosure": "0",
+    "disk": 0.0,
+    "chiral": 0.0,
+    "density_residual": 0.0,
+    "tail_support": 0.0,
+    "scope": "exact saved float64 operator and supplied tail maps; angular quadrature error excluded",
+    "primal_feasible": true,
+    "lower": -5e-324,
+    "minimum_margin_enclosure": "[6.5298400913126104766e-84 +/- 1.88e-104]",
+    "density_norm": 372977.95195444155,
+    "targets": [
+      "[0.07332139057533441243603128 +/- 2.25e-27]",
+      "[-0.003385013510577010041087990 +/- 1.70e-28]"
+    ],
+    "tail_margin_enclosures": []
+  },
+  "model_signature": {
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "free",
+    "unitarity_scope": "sampled",
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": false,
+    "prescription": "pv-midpoint",
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    "additional_constraints": null,
+    "sampling_nodes": 50,
+    "scattering_samples": 1500
+  }
+}

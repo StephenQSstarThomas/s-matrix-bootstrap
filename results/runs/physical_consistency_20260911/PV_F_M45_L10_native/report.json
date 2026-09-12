@@ -1,0 +1,782 @@
+{
+  "command": "evaluate",
+  "status": "evaluated",
+  "artifacts": {},
+  "inputs": {
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_F_M45_L10_selected/coefficients.json": {
+      "sha256": "f690a2aab9df2a6f154757fa8341e7dc4c956c6e81a3efd8592c8007327ab8f7"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_F_M45_L10_selected/selection.json": {
+      "sha256": "fdbcbbc2daf15f705998fb3d1359b684915797d40be70a1525115ab80ea9d802"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_F_mainline_20260909/M45_L10_prepare/report.json": {
+      "sha256": "6d3b3c840ff61441af086322d3e8047253e1a95e6e665dad5547315531b5097c"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_F_mainline_20260909/M45_L10_prepare/amplitude.npz": {
+      "sha256": "751e2380555f31c2dbd6b59be2e4d8053e9e005cc098fb8af36e899df979170e"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M45_L10_current_hard/report.json": {
+      "sha256": "3e3aeb82c55a20dd7caa42d7c2f90c25771b7e957c51bb299057398779e2572b"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M45_L10_current_hard/current_data.npz": {
+      "sha256": "20ef66dddd07453ed340ff18630417d7f387ec564c38c7fa4efea53cc076e919"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M45_L10_current_hard/gram_linear.npz": {
+      "sha256": "fc2d504d9b9541fad96b18acaae3ba1a3679436fe8c4075712fddb0d0d9fd4af"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M45_L10_current_hard/moment_linear.npz": {
+      "sha256": "7468c9cddbcc4e2a833af54d6ad624934fda1d67cae68ef638a79c8f6d82ded4"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/mainline_alignment_20260909/F_paper/M45_L10_current_hard/ff_cap_linear.npz": {
+      "sha256": "b8c63a1f57b8e31bd62453190a407922fd84ec2373852d42e07b6906f95d2b04"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_F_M45_L10_selected/report.json": {
+      "sha256": "871730a728a9b951231c7ab049de7e9181cf62b460d9a60f6e7ee66779f85d9d"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_F_M45_L10_selected/joint.npz": {
+      "sha256": "8892ad6948fc739b25fc6bb61fea381f82727a55f5972c0f67cee510ec79a44c"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_F_M45_L10_selected/current.json": {
+      "sha256": "197904517173796e137d18e753ac3ecdf49222c3ff1ed8a2c95cd7388434022d"
+    }
+  },
+  "parameters": {
+    "command": "evaluate",
+    "comparison_manifest": null,
+    "region_summary": "results/runs/stage_B_delivery_20260907/regions/regions.json",
+    "primary_waves": true,
+    "profile_runs": [],
+    "profile_kind": "subthreshold",
+    "phase_reference": null,
+    "baseline_profile": null,
+    "selection_reference": null,
+    "support_runs": [],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_F_M45_L10_native",
+    "density_limit": 306000.0,
+    "preparation": "results/runs/stage_F_mainline_20260909/M45_L10_prepare",
+    "prescription": "pv-midpoint",
+    "source_registry": null,
+    "solver": "barrier",
+    "unitarity_scope": "sampled",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "current_preparation": "results/runs/mainline_alignment_20260909/F_paper/M45_L10_current_hard",
+    "joint_feasibility": false,
+    "fixed_amplitude": false,
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "unit_newton_step": false,
+    "gap": 0.0001,
+    "nodes": 45,
+    "processes": 1,
+    "waves": 10,
+    "bits": 768,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "free",
+    "asymptotic_zeros": false,
+    "asymptotic_unitarity": false,
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": "results/runs/physical_consistency_20260911/PV_F_M45_L10_selected/coefficients.json",
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      4.0,
+      4.001218717166593,
+      4.01098630131752,
+      4.030617064982209,
+      4.060304193584476,
+      4.100342523747666,
+      4.1511348183219,
+      4.213200486694358,
+      4.287187078897963,
+      4.373884998340707,
+      4.474246021095029,
+      4.589406389574684,
+      4.720715478384711,
+      4.869771328215996,
+      5.038464734729999,
+      5.2290340980898735,
+      5.444133933992733,
+      5.6869208884103335,
+      5.961162386262809,
+      6.271374825705298,
+      6.62300072167029,
+      7.0226377301727085,
+      7.4783375434973225,
+      8.0,
+      8.599898600960007,
+      9.29338988932881,
+      10.099883948873421,
+      11.044191834358184,
+      12.1584269166459,
+      13.484736427134747,
+      15.079304781491631,
+      17.018353213199454,
+      19.40735998527673,
+      22.39563972845356,
+      26.200161478229493,
+      31.145956139948904,
+      37.737763288042295,
+      46.79390740737824,
+      59.712812921102035
+    ],
+    "scan_nodes": 0,
+    "mode": "gauge",
+    "chiral_tolerance": 0.002,
+    "chiral_norm": "separate-l2",
+    "chiral_barrier_weight": 675.0,
+    "objective": "projection",
+    "resume_objective": false,
+    "require_center": false,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "fixed_x": null,
+    "ray": false,
+    "seconds": 300.0,
+    "start_mu_provenance": {
+      "kind": "new_problem_default"
+    }
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "1"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Finite model; regions/phases require verification.",
+  "amplitude_model": {
+    "prescription": "pv-midpoint",
+    "M": 45,
+    "L": 10,
+    "bits": 768,
+    "coordinate_system": "unsubtracted PV-midpoint C_flat",
+    "coefficient_count": 3151,
+    "physical_samples": 1350,
+    "nu0": 0,
+    "nyquist_retained": null,
+    "infinity_equality_imposed": false,
+    "density_limit_imposed": false,
+    "quadrature_order_per_panel": null,
+    "arithmetic": "Arb",
+    "integral_enclosures": false,
+    "authors_implementation_recovered": false,
+    "analytic_function_family_defined": false,
+    "angular_projection": "analytic exterior Legendre Q",
+    "spectral_quadrature": "midpoint in phi; native PV cot map and nodal jump",
+    "physical_evaluation": "native nodes only; no off-grid continuation specified",
+    "analyticity_status": "Mixed collocation approximation; native jumps and rational off-cut rows are not one exact analytic family",
+    "residue_identity": "Res[f_offcut,s_i] = -w_i Im[f_PV(s_i)]",
+    "infinity_row_meaning": "unsubtracted constant coordinate; not a certified high-energy limit"
+  },
+  "unitarity": {
+    "criterion": "Eq.(2.12): 1-|S|^2 = kappa*(2 Im f-kappa*|f|^2) >= 0",
+    "samples_checked": 117,
+    "status": "sampled_passed",
+    "margin_intervals": [
+      [
+        [
+          -5e-324,
+          5e-324
+        ],
+        [
+          -5e-324,
+          5e-324
+        ],
+        [
+          -5e-324,
+          5e-324
+        ]
+      ],
+      [
+        [
+          1.123058788671463e-06,
+          1.1230587886714634e-06
+        ],
+        [
+          7.393848187111962e-08,
+          7.393848187111965e-08
+        ],
+        [
+          1.2575059981006138e-10,
+          1.2575059981006143e-10
+        ]
+      ],
+      [
+        [
+          1.241415239361461e-06,
+          1.2414152393614614e-06
+        ],
+        [
+          7.470780954767309e-08,
+          7.470780954767311e-08
+        ],
+        [
+          2.0305477818700505e-09,
+          2.0305477818700513e-09
+        ]
+      ],
+      [
+        [
+          1.2150863241625932e-06,
+          1.2150863241625937e-06
+        ],
+        [
+          7.725718999323659e-08,
+          7.725718999323662e-08
+        ],
+        [
+          3.769420954231117e-09,
+          3.769420954231119e-09
+        ]
+      ],
+      [
+        [
+          1.324975308747533e-06,
+          1.3249753087475335e-06
+        ],
+        [
+          8.071131494181308e-08,
+          8.07113149418131e-08
+        ],
+        [
+          9.639299865996126e-09,
+          9.63929986599613e-09
+        ]
+      ],
+      [
+        [
+          1.3791116709925308e-06,
+          1.3791116709925312e-06
+        ],
+        [
+          8.576576558841417e-08,
+          8.57657655884142e-08
+        ],
+        [
+          1.3766635058166882e-08,
+          1.3766635058166885e-08
+        ]
+      ],
+      [
+        [
+          1.5318968663281481e-06,
+          1.5318968663281486e-06
+        ],
+        [
+          9.19575463111573e-08,
+          9.195754631115733e-08
+        ],
+        [
+          2.523122330503797e-08,
+          2.5231223305037976e-08
+        ]
+      ],
+      [
+        [
+          1.6496239428045226e-06,
+          1.649623942804523e-06
+        ],
+        [
+          9.990822969545927e-08,
+          9.99082296954593e-08
+        ],
+        [
+          3.2748103825535575e-08,
+          3.274810382553559e-08
+        ]
+      ],
+      [
+        [
+          1.8704979134297782e-06,
+          1.8704979134297787e-06
+        ],
+        [
+          1.0925234550739772e-07,
+          1.0925234550739775e-07
+        ],
+        [
+          5.2723376077558204e-08,
+          5.272337607755822e-08
+        ]
+      ],
+      [
+        [
+          2.06304324617101e-06,
+          2.063043246171011e-06
+        ],
+        [
+          1.2077739098484424e-07,
+          1.207773909848443e-07
+        ],
+        [
+          6.531558337730618e-08,
+          6.53155833773062e-08
+        ]
+      ],
+      [
+        [
+          2.3840860225487622e-06,
+          2.384086022548763e-06
+        ],
+        [
+          1.3420494399432555e-07,
+          1.342049439943256e-07
+        ],
+        [
+          9.873802999187743e-08,
+          9.873802999187745e-08
+        ]
+      ],
+      [
+        [
+          2.67558514754647e-06,
+          2.6755851475464708e-06
+        ],
+        [
+          1.5018158682219135e-07,
+          1.501815868221914e-07
+        ],
+        [
+          1.1904204846956001e-07,
+          1.1904204846956004e-07
+        ]
+      ],
+      [
+        [
+          3.1476051420569612e-06,
+          3.147605142056962e-06
+        ],
+        [
+          1.6889771377169635e-07,
+          1.688977137716964e-07
+        ],
+        [
+          1.7429208592734086e-07,
+          1.742920859273409e-07
+        ]
+      ],
+      [
+        [
+          3.5764433725474518e-06,
+          3.5764433725474526e-06
+        ],
+        [
+          1.9076097130856055e-07,
+          1.907609713085606e-07
+        ],
+        [
+          2.0645427964079073e-07,
+          2.0645427964079078e-07
+        ]
+      ],
+      [
+        [
+          4.284292751267709e-06,
+          4.284292751267711e-06
+        ],
+        [
+          2.167085255882215e-07,
+          2.1670852558822156e-07
+        ],
+        [
+          2.9817228707287576e-07,
+          2.9817228707287587e-07
+        ]
+      ],
+      [
+        [
+          4.9090721431884195e-06,
+          4.909072143188421e-06
+        ],
+        [
+          2.4641260892733414e-07,
+          2.4641260892733424e-07
+        ],
+        [
+          3.4881527504090564e-07,
+          3.4881527504090574e-07
+        ]
+      ],
+      [
+        [
+          5.995400450561868e-06,
+          5.99540045056187e-06
+        ],
+        [
+          2.8241052126536757e-07,
+          2.824105212653677e-07
+        ],
+        [
+          5.036003910632893e-07,
+          5.036003910632895e-07
+        ]
+      ],
+      [
+        [
+          6.906398148348247e-06,
+          6.906398148348248e-06
+        ],
+        [
+          3.2287049988899177e-07,
+          3.228704998889919e-07
+        ],
+        [
+          5.834429085750918e-07,
+          5.83442908575092e-07
+        ]
+      ],
+      [
+        [
+          8.610605452617267e-06,
+          8.61060545261727e-06
+        ],
+        [
+          3.728905565451171e-07,
+          3.728905565451172e-07
+        ],
+        [
+          8.520176944268107e-07,
+          8.520176944268109e-07
+        ]
+      ],
+      [
+        [
+          9.952672931970252e-06,
+          9.952672931970256e-06
+        ],
+        [
+          4.286677953738341e-07,
+          4.286677953738342e-07
+        ],
+        [
+          9.785227641508278e-07,
+          9.785227641508282e-07
+        ]
+      ],
+      [
+        [
+          1.2665675987274113e-05,
+          1.2665675987274117e-05
+        ],
+        [
+          4.986043929579542e-07,
+          4.986043929579544e-07
+        ],
+        [
+          1.4636551895150194e-06,
+          1.4636551895150198e-06
+        ]
+      ],
+      [
+        [
+          1.4688126793501151e-05,
+          1.4688126793501155e-05
+        ],
+        [
+          5.773777636075474e-07,
+          5.773777636075476e-07
+        ],
+        [
+          1.6649498605598246e-06,
+          1.664949860559825e-06
+        ]
+      ],
+      [
+        [
+          1.899731926023965e-05,
+          1.8997319260239655e-05
+        ],
+        [
+          6.756892094027101e-07,
+          6.756892094027104e-07
+        ],
+        [
+          2.5917331413040937e-06,
+          2.5917331413040945e-06
+        ]
+      ],
+      [
+        [
+          2.2182482126545696e-05,
+          2.2182482126545703e-05
+        ],
+        [
+          7.901034962852134e-07,
+          7.901034962852136e-07
+        ],
+        [
+          2.9100285245637582e-06,
+          2.910028524563759e-06
+        ]
+      ],
+      [
+        [
+          2.8754926126706153e-05,
+          2.875492612670616e-05
+        ],
+        [
+          9.297608613619789e-07,
+          9.297608613619791e-07
+        ],
+        [
+          4.825220120669595e-06,
+          4.825220120669597e-06
+        ]
+      ],
+      [
+        [
+          3.423191135769704e-05,
+          3.423191135769706e-05
+        ],
+        [
+          1.1019851460193063e-06,
+          1.1019851460193067e-06
+        ],
+        [
+          5.304363759358048e-06,
+          5.30436375935805e-06
+        ]
+      ],
+      [
+        [
+          4.3036352525719024e-05,
+          4.303635252571904e-05
+        ],
+        [
+          1.3040500427329477e-06,
+          1.3040500427329482e-06
+        ],
+        [
+          9.742341841955715e-06,
+          9.742341841955719e-06
+        ]
+      ],
+      [
+        [
+          5.403563647091878e-05,
+          5.4035636470918795e-05
+        ],
+        [
+          1.572983632366229e-06,
+          1.5729836323662295e-06
+        ],
+        [
+          1.0293909245532874e-05,
+          1.0293909245532877e-05
+        ]
+      ],
+      [
+        [
+          6.190535344185944e-05,
+          6.190535344185946e-05
+        ],
+        [
+          1.8763234002532109e-06,
+          1.8763234002532113e-06
+        ],
+        [
+          2.2624404166455493e-05,
+          2.26244041664555e-05
+        ]
+      ],
+      [
+        [
+          8.873121814710636e-05,
+          8.873121814710639e-05
+        ],
+        [
+          2.3123245734259525e-06,
+          2.3123245734259533e-06
+        ],
+        [
+          2.19376362810786e-05,
+          2.1937636281078607e-05
+        ]
+      ],
+      [
+        [
+          8.437461801881352e-05,
+          8.437461801881355e-05
+        ],
+        [
+          2.799611365223033e-06,
+          2.799611365223034e-06
+        ],
+        [
+          7.044285976369396e-05,
+          7.044285976369398e-05
+        ]
+      ],
+      [
+        [
+          0.0001629767746640851,
+          0.00016297677466408516
+        ],
+        [
+          3.529722233844834e-06,
+          3.529722233844835e-06
+        ],
+        [
+          5.3968190254731954e-05,
+          5.396819025473197e-05
+        ]
+      ],
+      [
+        [
+          0.00011402908630411663,
+          0.00011402908630411666
+        ],
+        [
+          4.417605120580123e-06,
+          4.417605120580125e-06
+        ],
+        [
+          0.0008118765052855518,
+          0.000811876505285552
+        ]
+      ],
+      [
+        [
+          0.00037973412477869167,
+          0.0003797341247786918
+        ],
+        [
+          5.677704942589435e-06,
+          5.677704942589437e-06
+        ],
+        [
+          0.00016957123352721,
+          0.00016957123352721005
+        ]
+      ],
+      [
+        [
+          0.0002207881429737565,
+          0.00022078814297375656
+        ],
+        [
+          7.644109397809913e-06,
+          7.644109397809916e-06
+        ],
+        [
+          0.6137066903482136,
+          0.6137066903482138
+        ]
+      ],
+      [
+        [
+          0.0001952050127386142,
+          0.00019520501273861425
+        ],
+        [
+          1.0076012416462877e-05,
+          1.007601241646288e-05
+        ],
+        [
+          0.7249311513671092,
+          0.7249311513671094
+        ]
+      ],
+      [
+        [
+          0.5296153460850697,
+          0.5296153460850699
+        ],
+        [
+          1.5212684086357798e-05,
+          1.5212684086357801e-05
+        ],
+        [
+          0.11692638501657025,
+          0.11692638501657028
+        ]
+      ],
+      [
+        [
+          9.633286067129835e-05,
+          9.633286067129838e-05
+        ],
+        [
+          2.2867545495429494e-05,
+          2.28675454954295e-05
+        ],
+        [
+          0.0007224369662067223,
+          0.0007224369662067225
+        ]
+      ],
+      [
+        [
+          0.00016505470708890935,
+          0.0001650547070889094
+        ],
+        [
+          3.819243718196543e-05,
+          3.8192437181965444e-05
+        ],
+        [
+          0.0001709343580469724,
+          0.00017093435804697244
+        ]
+      ]
+    ],
+    "minimum_margin": 0.0,
+    "scope": "Declared sampled pairs; discretization errors excluded",
+    "continuum_certified": false,
+    "omitted_spins_checked": false,
+    "high_energy_tail_certified": false,
+    "analytic_tail": {
+      "status": "not_applicable"
+    },
+    "high_spin_necessary": {
+      "status": "not_applicable",
+      "violations": []
+    }
+  },
+  "elapsed_seconds": 1.8996847178786993,
+  "prescription": "pv-midpoint",
+  "core_sources": {
+    "__init__.py": "eab9d89f9c5aec186369fb48cef62f20db87a20a16512f8c8a6e7349a2a4473a",
+    "analysis.py": "91e1d1bf0013a8ac4030112a3191a32daed7641b391180a97c10a16e1b57c606",
+    "analytic.py": "f7b6ffb9bd6b520f00dec8653ff0864da6fe46eaa0ed5814bef7bd3c5c22a727",
+    "basis.py": "5eda7c08a5cea679958b47980c9972ada51358f6352698d8db10db91bd5abec3",
+    "certificates.py": "72314f97c4039bf52c42cba9fc5d4164973595f7d57f37737080a8ab3b56ffe6",
+    "conic.py": "750741dbe9b45584c24176cbdeb2cfafc585361d5b23cff5d79a501a247abf01",
+    "endpoints.py": "6b4dacd438e750ca61f285744cc0a152d16e3090581e22c77962f23b867005db",
+    "gauge.py": "ad822bb6461cbe93f459d8df85cc209d962904a6a9a926c30bad4f8bbbdc628e",
+    "imaginary.py": "9ad338b253d2941310401d245a24cba4ab546926e5c9c630f80c7bd647c1828c",
+    "io.py": "328af2216f66e6782df6aae1ab273eb6d43c7c7a938d9eb9c5603a3630e2e143",
+    "ir.py": "bd6fb3d54b523cbf266da65f677e9364c1393aaae0f29f114bd315e60c6e5c17",
+    "kernels.py": "790ebcdba291c80f17c4909a31ddf77ad6373748c2af41c7ce1a0c28b309172a",
+    "linear.py": "f0b21a627cae43bdf768fdfa5562e971544b33179c8b10caa464993817e5da6f",
+    "model.py": "6e4d8da2f6126156f385a33d30084feb558aeb9a75616f3ca1df535e77534995",
+    "operators.py": "ced094909dcad6d0dcd083ca54990bdecabf3e85e11c06e3f01b8dd6143a17a8",
+    "quadrature.py": "7ec2a6b9336cd6035db06fdf8a028368ccd22e4d106cc5e16900c878b8d40fad",
+    "quotient.py": "32b669bec9e0b9af1c21bf464f2806411cdca87fffa6ff0593d7bb77dd3428e9",
+    "run.py": "7785590055bdd8d8bec61aecae7426d521017886bf989e06212adf9bd1890174",
+    "sampling.py": "1721242b79f55cc44cfd6667cd21f49e6a51c888263e4ca623b97383a340f4c9",
+    "scattering.py": "23f5b856a9e14d19b1f085f52aac4508e0bdb5bd3ce166ee2621a3bc779621b7",
+    "spectra.py": "10b7bc464cb216b00674c95fa4d1218543a7f8737a0707b20ea7e2b55d53de95"
+  },
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 300.0,
+  "supervisor_seconds": 2.82105090492405
+}

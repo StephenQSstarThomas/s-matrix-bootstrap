@@ -1,0 +1,2409 @@
+{
+  "command": "regions",
+  "status": "incomplete",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "regions",
+    "support_runs": [
+      "results/runs/stage_B_pv_pure_M50_barrier_20260907",
+      "results/runs/stage_B2_PV_B377500_region_20260907/support_001_minus_x",
+      "results/runs/stage_B2_PV_B377500_region_20260907/support_002_plus_y",
+      "results/runs/stage_B2_PV_B377500_region_20260907/support_003_minus_y",
+      "results/runs/stage_B2_PV_B377500_region_20260907/support_004_minus_x_cold",
+      "results/runs/stage_B2_PV_B377500_region_20260907/support_005_plus_y_refine",
+      "results/runs/stage_B2_PV_B377500_region_20260907/support_006_adaptive",
+      "results/runs/stage_B2_PV_B377500_region_20260907/support_007_adaptive",
+      "results/runs/stage_B2_PV_B377500_region_20260907/support_008_adaptive",
+      "results/runs/stage_B2_PV_B377500_region_20260907/support_009_adaptive",
+      "results/runs/stage_B2_PV_B377500_region_20260907/support_010_adaptive",
+      "results/runs/stage_B2_PV_B377500_region_20260907/support_011_adaptive",
+      "results/runs/stage_B2_PV_B377500_region_20260907/support_012_adaptive",
+      "results/runs/stage_B2_PV_B377500_region_20260907/support_013_adaptive",
+      "results/runs/stage_B2_PV_B377500_region_20260907/support_014_adaptive",
+      "results/runs/stage_B2_PV_B377500_region_20260907/support_015_adaptive",
+      "results/runs/stage_B2_PV_B377500_region_20260907/support_016_adaptive",
+      "results/runs/stage_B2_PV_B377500_region_20260907/support_017_adaptive",
+      "results/runs/stage_B2_PV_B377500_region_20260907/support_018_adaptive",
+      "results/runs/stage_B2_PV_B377500_region_20260907/support_019_adaptive",
+      "results/runs/stage_B2_PV_B377500_region_20260907/support_020_adaptive"
+    ],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/aggregate_015",
+    "density_limit": null,
+    "preparation": "results/runs/stage_A_M50_L10_20260906",
+    "prescription": "auto",
+    "solver": "barrier",
+    "unitarity_scope": "strengthened",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "constraint_generation": false,
+    "working_state": null,
+    "density_cone": "soc",
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 384,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "zero",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": null,
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "seconds": null
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "8"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Finite model only; separate physical diagnostics; no continuum certificate.",
+  "requested_nodes": 50,
+  "model_signature": {
+    "M": 50,
+    "L": 10,
+    "density_limit": 377500.0,
+    "infinity": "free",
+    "unitarity_scope": "sampled",
+    "global_high_spin_enforced": false,
+    "tail_conditions_applied": false,
+    "prescription": "pv-midpoint",
+    "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    "additional_constraints": null,
+    "sampling_nodes": 50,
+    "scattering_samples": 1500
+  },
+  "regions": [
+    {
+      "mode": "pure",
+      "epsilon": null,
+      "points": [
+        {
+          "target": [
+            2.2348893985478413,
+            -0.018873680775901167
+          ],
+          "target_enclosures": [
+            [
+              [
+                "0x11e10db167854d27ba893fdc3c273",
+                -111
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x9a9cfa36012461a418ae3f35ee989",
+                -121
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            1.0,
+            0.0
+          ],
+          "lower": 2.2348893985478404,
+          "upper": 2.236231782346892,
+          "gap": 0.0013423837990513834,
+          "pointwise_tolerance_met": false,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_pure_M50_barrier_20260907/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_pure_M50_barrier_20260907/coefficients.json"
+        },
+        {
+          "target": [
+            -0.5303702845458692,
+            -0.06994807134376296
+          ],
+          "target_enclosures": [
+            [
+              [
+                "-0x21f19634b94322e4a603f7e75bc43",
+                -114
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x11e81de6d6f8fbea179d829bcc6db5",
+                -120
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            -1.0,
+            0.0
+          ],
+          "lower": 0.530370284545869,
+          "upper": 12478.643305110298,
+          "gap": 12478.112934825753,
+          "pointwise_tolerance_met": false,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_001_minus_x/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_001_minus_x/coefficients.json"
+        },
+        {
+          "target": [
+            -1.0490616604265806,
+            0.0772546023077756
+          ],
+          "target_enclosures": [
+            [
+              [
+                "-0x10c8f4e130505e289df9e26b747cf9",
+                -116
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "0x9e37a93304e1098ae2c22e811756c9",
+                -123
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            0.0,
+            1.0
+          ],
+          "lower": 0.07725460230777557,
+          "upper": 0.09423059470046934,
+          "gap": 0.016975992392693765,
+          "pointwise_tolerance_met": false,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_002_plus_y/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_002_plus_y/coefficients.json"
+        },
+        {
+          "target": [
+            -0.12381826752021925,
+            -0.7341874510146442
+          ],
+          "target_enclosures": [
+            [
+              [
+                "-0x3f651ba34b1ef9eba1b61c8a7613",
+                -113
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x5df9dab99ee970ec2db871ac3032e9",
+                -119
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            0.0,
+            -1.0
+          ],
+          "lower": 0.734187451014644,
+          "upper": 0.7346134547155557,
+          "gap": 0.00042600370091172573,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_003_minus_y/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_003_minus_y/coefficients.json"
+        },
+        {
+          "target": [
+            -2.9025173125294828,
+            -0.4481796607393603
+          ],
+          "target_enclosures": [
+            [
+              [
+                "-0x5ce16bfcac6a0077454d074a62e7",
+                -109
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0xe577cdf337424657e7c414780dae89",
+                -121
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            -1.0,
+            0.0
+          ],
+          "lower": 2.902517312529482,
+          "upper": 2.918466830202308,
+          "gap": 0.015949517672825934,
+          "pointwise_tolerance_met": false,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_004_minus_x_cold/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_004_minus_x_cold/coefficients.json"
+        },
+        {
+          "target": [
+            -1.0851087243125586,
+            0.07946458317167251
+          ],
+          "target_enclosures": [
+            [
+              [
+                "-0x8ae4d7b9c36b8652c1820a49e25",
+                -107
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "0xa2be53cf4d040e447f8ac6e7c2009",
+                -119
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            0.0,
+            1.0
+          ],
+          "lower": 0.07946458317167249,
+          "upper": 0.0798697416568516,
+          "gap": 0.00040515848517910796,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_005_plus_y_refine/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_005_plus_y_refine/coefficients.json"
+        },
+        {
+          "target": [
+            1.6999673144488805,
+            -0.5676081759121536
+          ],
+          "target_enclosures": [
+            [
+              [
+                "0xd9988769e9d784564f1d776a3c5b",
+                -111
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x914ec4f87c235d6236a3e33970b331",
+                -120
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            0.29021320288767954,
+            -0.9569620143295524
+          ],
+          "lower": 1.0365324225013937,
+          "upper": 1.0369456633693033,
+          "gap": 0.0004132408679096145,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_006_adaptive/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_006_adaptive/coefficients.json"
+        },
+        {
+          "target": [
+            -2.526567495128275,
+            0.03284801959700548
+          ],
+          "target_enclosures": [
+            [
+              [
+                "-0x14366904d5b35cdb9b6f5559f359d9",
+                -115
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "0x868ba51e85249ceefbf65ca6ad9f",
+                -116
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            -0.2788148209138379,
+            0.9603448836948029
+          ],
+          "lower": 0.7359898912404046,
+          "upper": 0.7515359978219088,
+          "gap": 0.01554610658150424,
+          "pointwise_tolerance_met": false,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_007_adaptive/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_007_adaptive/coefficients.json"
+        },
+        {
+          "target": [
+            -2.292294731382802,
+            -0.668112617315334
+          ],
+          "target_enclosures": [
+            [
+              [
+                "-0x495a7a7b02a1b3aefdc878534ad0e5",
+                -117
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x15612db62d4221944c9cb61ce33d2f1",
+                -121
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            -0.1023877327794028,
+            -0.9947445662964406
+          ],
+          "lower": 0.8993042561569767,
+          "upper": 0.8997685798413849,
+          "gap": 0.00046432368440818555,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_008_adaptive/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_008_adaptive/coefficients.json"
+        },
+        {
+          "target": [
+            2.090570877883346,
+            -0.3569036667347004
+          ],
+          "target_enclosures": [
+            [
+              [
+                "0x10b97d3973d4f3e8f5b1ee978fc3f9",
+                -115
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x16d7827a1cac61f228d9b1757ca267",
+                -118
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            0.7160614807703349,
+            -0.6980372165987967
+          ],
+          "lower": 1.7461093205938822,
+          "upper": 1.7465411140858653,
+          "gap": 0.0004317934919830791,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_009_adaptive/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_009_adaptive/coefficients.json"
+        },
+        {
+          "target": [
+            -2.8134007449744085,
+            -0.18830787642724175
+          ],
+          "target_enclosures": [
+            [
+              [
+                "-0xb40ec1ff8d417aa6bac7a32ada141",
+                -114
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x181a78f56ac77b562308dad1c75f47",
+                -119
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            -0.787907592340341,
+            0.6157934929279839
+          ],
+          "lower": 2.1007410422903248,
+          "upper": 2.101229872306408,
+          "gap": 0.0004888300160832416,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_010_adaptive/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_010_adaptive/coefficients.json"
+        },
+        {
+          "target": [
+            -2.746955042459354,
+            -0.5843488262150563
+          ],
+          "target_enclosures": [
+            [
+              [
+                "-0x57e70e42de3f36432fad6485a8649",
+                -113
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x2565f89e832d8a59fbb0fd2b4dc9a5",
+                -118
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            -0.3390645029413561,
+            -0.9407631279153809
+          ],
+          "lower": 1.4811287756174898,
+          "upper": 1.4816105183770623,
+          "gap": 0.00048174275957246776,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_011_adaptive/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_011_adaptive/coefficients.json"
+        },
+        {
+          "target": [
+            1.0690553749490577,
+            -0.6920642298337345
+          ],
+          "target_enclosures": [
+            [
+              [
+                "0x2235b39e209d74b24ca8f615893501",
+                -117
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0xb12b1f11de087f0650b384125fba409",
+                -124
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            0.09095847307227618,
+            -0.9958546862752417
+          ],
+          "lower": 0.7864350510184661,
+          "upper": 0.7868327140601684,
+          "gap": 0.0003976630417023009,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_012_adaptive/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_012_adaptive/coefficients.json"
+        },
+        {
+          "target": [
+            2.0542126576701873,
+            0.040821183547964796
+          ],
+          "target_enclosures": [
+            [
+              [
+                "0x20de0e177b902b42207eebc18b7427",
+                -116
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "0x539a0e82948671359f14ae01a40013",
+                -123
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            0.02960699087244769,
+            0.9995616169558926
+          ],
+          "lower": 0.10162234363896469,
+          "upper": 0.1040108750263434,
+          "gap": 0.002388531387378712,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_013_adaptive/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_013_adaptive/coefficients.json"
+        },
+        {
+          "target": [
+            2.197266562882546,
+            -0.1986588737008838
+          ],
+          "target_enclosures": [
+            [
+              [
+                "0x1194007de1661e4c0d30b0333ed067",
+                -115
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x196da76acd80b625367d9bebfd4bf9",
+                -119
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            0.9196874073130734,
+            -0.39265133748627035
+          ],
+          "lower": 2.098802060855324,
+          "upper": 2.0992309452390265,
+          "gap": 0.000428884383702588,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_014_adaptive/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_014_adaptive/coefficients.json"
+        },
+        {
+          "target": [
+            -2.8716673547741545,
+            -0.5186436057776909
+          ],
+          "target_enclosures": [
+            [
+              [
+                "-0x2df25977dbeee388afad6f6fce0e5",
+                -112
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x4262e9e68c1f199ece8a218bc70555",
+                -119
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            -0.658647542299935,
+            -0.752451603109632
+          ],
+          "lower": 2.281670858134935,
+          "upper": 2.2821621130115965,
+          "gap": 0.0004912548766613513,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_015_adaptive/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_015_adaptive/coefficients.json"
+        },
+        {
+          "target": [
+            -2.671161610890001,
+            -0.04676006061927602
+          ],
+          "target_enclosures": [
+            [
+              [
+                "-0x155e89fa88d36a83f6395918b2898d",
+                -115
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0xbf877a31e679445cedceb2f454b77",
+                -120
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            -0.6106035708543127,
+            0.7919364111214752
+          ],
+          "lower": 1.59398982334774,
+          "upper": 1.5944761184848621,
+          "gap": 0.00048629513712206146,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_016_adaptive/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_016_adaptive/coefficients.json"
+        },
+        {
+          "target": [
+            -2.878166373020223,
+            -0.3081174638872706
+          ],
+          "target_enclosures": [
+            [
+              [
+                "-0xb833e0bb246721e2a53a492191961",
+                -114
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x2770649f5c73f2e22721e08e2bfddbd",
+                -123
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            -0.9459262116817017,
+            0.32438187688818976
+          ],
+          "lower": 2.6225852925829,
+          "upper": 2.623076796770216,
+          "gap": 0.0004915041873161386,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_017_adaptive/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_017_adaptive/coefficients.json"
+        },
+        {
+          "target": [
+            1.9266758811169913,
+            -0.4785568320907634
+          ],
+          "target_enclosures": [
+            [
+              [
+                "0xf69d50b5b1d9e0375aa8b75226933",
+                -115
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x1ea0acd5c6dc3bccd0d6c6b54f8e05f",
+                -122
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            0.47476260709051654,
+            -0.8801138942822206
+          ],
+          "lower": 1.335898181464285,
+          "upper": 1.3363201197996812,
+          "gap": 0.00042193833539627695,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_018_adaptive/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_018_adaptive/coefficients.json"
+        },
+        {
+          "target": [
+            2.2300738622368224,
+            0.031507193497752196
+          ],
+          "target_enclosures": [
+            [
+              [
+                "0x11d730f70fc5c1fc36e99c2096a27d",
+                -115
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "0x4086d7ed4aef730996335a79766533",
+                -123
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            0.3137164781093967,
+            0.9495167040987939
+          ],
+          "lower": 0.7295275245101441,
+          "upper": 0.7298994481044194,
+          "gap": 0.0003719235942752919,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_019_adaptive/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_019_adaptive/coefficients.json"
+        },
+        {
+          "target": [
+            -1.331130561634675,
+            -0.7125832356156913
+          ],
+          "target_enclosures": [
+            [
+              [
+                "-0x154c4f8f4ed5290070f7e3f694983",
+                -112
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x16cd7b5b94b652daf17d2e1a722e5b3d",
+                -125
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          "direction": [
+            -0.03045648973178859,
+            -0.9995360935119939
+          ],
+          "lower": 0.7527942279115409,
+          "upper": 0.7532319714315986,
+          "gap": 0.0004377435200576541,
+          "pointwise_tolerance_met": true,
+          "diagnostics": {
+            "high_spin": {
+              "status": "not_applicable",
+              "violations": []
+            },
+            "tail_passed": null,
+            "physical_unitarity_accepted": false
+          },
+          "feasible": true,
+          "report": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_020_adaptive/report.json",
+          "coefficients": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B2_PV_B377500_region_20260907/support_020_adaptive/coefficients.json"
+        }
+      ],
+      "published_positive_x": false,
+      "geometry": {
+        "geometry_ready": false,
+        "outer_closed": true,
+        "max_distance_upper": 0.04356435823981332,
+        "published_positive_x": false,
+        "inner_vertices": [
+          [
+            2.2348893985478413,
+            -0.018873680775901167
+          ],
+          [
+            -0.5303702845458692,
+            -0.06994807134376296
+          ],
+          [
+            -1.0490616604265806,
+            0.0772546023077756
+          ],
+          [
+            -0.12381826752021925,
+            -0.7341874510146442
+          ],
+          [
+            -2.9025173125294828,
+            -0.4481796607393603
+          ],
+          [
+            -1.0851087243125586,
+            0.07946458317167251
+          ],
+          [
+            1.6999673144488805,
+            -0.5676081759121536
+          ],
+          [
+            -2.526567495128275,
+            0.03284801959700548
+          ],
+          [
+            -2.292294731382802,
+            -0.668112617315334
+          ],
+          [
+            2.090570877883346,
+            -0.3569036667347004
+          ],
+          [
+            -2.8134007449744085,
+            -0.18830787642724175
+          ],
+          [
+            -2.746955042459354,
+            -0.5843488262150563
+          ],
+          [
+            1.0690553749490577,
+            -0.6920642298337345
+          ],
+          [
+            2.0542126576701873,
+            0.040821183547964796
+          ],
+          [
+            2.197266562882546,
+            -0.1986588737008838
+          ],
+          [
+            -2.8716673547741545,
+            -0.5186436057776909
+          ],
+          [
+            -2.671161610890001,
+            -0.04676006061927602
+          ],
+          [
+            -2.878166373020223,
+            -0.3081174638872706
+          ],
+          [
+            1.9266758811169913,
+            -0.4785568320907634
+          ],
+          [
+            2.2300738622368224,
+            0.031507193497752196
+          ],
+          [
+            -1.331130561634675,
+            -0.7125832356156913
+          ]
+        ],
+        "inner_vertex_enclosures": [
+          [
+            [
+              [
+                "0x11e10db167854d27ba893fdc3c273",
+                -111
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x9a9cfa36012461a418ae3f35ee989",
+                -121
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0x21f19634b94322e4a603f7e75bc43",
+                -114
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x11e81de6d6f8fbea179d829bcc6db5",
+                -120
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0x10c8f4e130505e289df9e26b747cf9",
+                -116
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "0x9e37a93304e1098ae2c22e811756c9",
+                -123
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0x3f651ba34b1ef9eba1b61c8a7613",
+                -113
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x5df9dab99ee970ec2db871ac3032e9",
+                -119
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0x5ce16bfcac6a0077454d074a62e7",
+                -109
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0xe577cdf337424657e7c414780dae89",
+                -121
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0x8ae4d7b9c36b8652c1820a49e25",
+                -107
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "0xa2be53cf4d040e447f8ac6e7c2009",
+                -119
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "0xd9988769e9d784564f1d776a3c5b",
+                -111
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x914ec4f87c235d6236a3e33970b331",
+                -120
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0x14366904d5b35cdb9b6f5559f359d9",
+                -115
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "0x868ba51e85249ceefbf65ca6ad9f",
+                -116
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0x495a7a7b02a1b3aefdc878534ad0e5",
+                -117
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x15612db62d4221944c9cb61ce33d2f1",
+                -121
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "0x10b97d3973d4f3e8f5b1ee978fc3f9",
+                -115
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x16d7827a1cac61f228d9b1757ca267",
+                -118
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0xb40ec1ff8d417aa6bac7a32ada141",
+                -114
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x181a78f56ac77b562308dad1c75f47",
+                -119
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0x57e70e42de3f36432fad6485a8649",
+                -113
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x2565f89e832d8a59fbb0fd2b4dc9a5",
+                -118
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "0x2235b39e209d74b24ca8f615893501",
+                -117
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0xb12b1f11de087f0650b384125fba409",
+                -124
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "0x20de0e177b902b42207eebc18b7427",
+                -116
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "0x539a0e82948671359f14ae01a40013",
+                -123
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "0x1194007de1661e4c0d30b0333ed067",
+                -115
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x196da76acd80b625367d9bebfd4bf9",
+                -119
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0x2df25977dbeee388afad6f6fce0e5",
+                -112
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x4262e9e68c1f199ece8a218bc70555",
+                -119
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0x155e89fa88d36a83f6395918b2898d",
+                -115
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0xbf877a31e679445cedceb2f454b77",
+                -120
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0xb833e0bb246721e2a53a492191961",
+                -114
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x2770649f5c73f2e22721e08e2bfddbd",
+                -123
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "0xf69d50b5b1d9e0375aa8b75226933",
+                -115
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x1ea0acd5c6dc3bccd0d6c6b54f8e05f",
+                -122
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "0x11d730f70fc5c1fc36e99c2096a27d",
+                -115
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "0x4086d7ed4aef730996335a79766533",
+                -123
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0x154c4f8f4ed5290070f7e3f694983",
+                -112
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x16cd7b5b94b652daf17d2e1a722e5b3d",
+                -125
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ]
+        ],
+        "inner_mixtures": null,
+        "metric": "q=(x,y)",
+        "epsilon": null,
+        "budgets": {
+          "distance": 0.01,
+          "metric_support": 0.0025
+        },
+        "distance_witnesses": [
+          {
+            "endpoints": [
+              5,
+              7
+            ],
+            "alpha": 0.925345693879302,
+            "distance_upper": 0.04356435823981332
+          },
+          {
+            "endpoints": [
+              11,
+              8
+            ],
+            "alpha": 0.32548001031621077,
+            "distance_upper": 0.025348039926545794
+          },
+          {
+            "endpoints": [
+              3,
+              12
+            ],
+            "alpha": 0.6123627643175066,
+            "distance_upper": 0.02623703891700273
+          },
+          {
+            "endpoints": [
+              12,
+              6
+            ],
+            "alpha": 0.4902343796232222,
+            "distance_upper": 0.03320270015261721
+          },
+          {
+            "endpoints": [
+              13,
+              5
+            ],
+            "alpha": 0.3943326387901885,
+            "distance_upper": 0.02381200819414221
+          },
+          {
+            "endpoints": [
+              14,
+              0
+            ],
+            "alpha": 0.523973818666447,
+            "distance_upper": 0.019668860623826237
+          },
+          {
+            "endpoints": [
+              9,
+              14
+            ],
+            "alpha": 0.514237131313179,
+            "distance_upper": 0.018239553996017354
+          },
+          {
+            "endpoints": [
+              4,
+              15
+            ],
+            "alpha": 0.2759148726456292,
+            "distance_upper": 0.026703145772239506
+          },
+          {
+            "endpoints": [
+              15,
+              11
+            ],
+            "alpha": 0.36933680607679875,
+            "distance_upper": 0.012921625266324906
+          },
+          {
+            "endpoints": [
+              7,
+              16
+            ],
+            "alpha": 0.16147513237164374,
+            "distance_upper": 0.021912788325458996
+          },
+          {
+            "endpoints": [
+              16,
+              10
+            ],
+            "alpha": 0.496624496877048,
+            "distance_upper": 0.013127955460801562
+          },
+          {
+            "endpoints": [
+              17,
+              4
+            ],
+            "alpha": 0.8524922199655419,
+            "distance_upper": 0.01983460834985033
+          },
+          {
+            "endpoints": [
+              10,
+              17
+            ],
+            "alpha": 0.4960781112481866,
+            "distance_upper": 0.011941689787731687
+          },
+          {
+            "endpoints": [
+              6,
+              18
+            ],
+            "alpha": 0.6021768805115577,
+            "distance_upper": 0.012149184034859905
+          },
+          {
+            "endpoints": [
+              18,
+              9
+            ],
+            "alpha": 0.5265731292245022,
+            "distance_upper": 0.015993269387706843
+          },
+          {
+            "endpoints": [
+              0,
+              19
+            ],
+            "alpha": 0.9561094895094019,
+            "distance_upper": 0.005973666019980964
+          },
+          {
+            "endpoints": [
+              19,
+              13
+            ],
+            "alpha": 0.11718557090749791,
+            "distance_upper": 0.006012515275303814
+          },
+          {
+            "endpoints": [
+              20,
+              3
+            ],
+            "alpha": 0.587083473269022,
+            "distance_upper": 0.009348237636287473
+          },
+          {
+            "endpoints": [
+              8,
+              20
+            ],
+            "alpha": 0.21819114442293838,
+            "distance_upper": 0.012304240963035238
+          }
+        ],
+        "next_support": {
+          "action": "add_direction",
+          "direction": [
+            -0.03232295385934025,
+            0.9994774768116623
+          ],
+          "gap": 0.0024999999999999996,
+          "normal_units": "unit normal in declared region metric"
+        },
+        "metric_support_gap_upper": 12478.112934825753,
+        "raw_support_gap_upper": 12478.112934825753,
+        "outer_vertices": [
+          [
+            -2.420364519532731,
+            0.0798697416568516
+          ],
+          [
+            -2.6035648730478056,
+            -0.636540773178981
+          ],
+          [
+            0.6075790491439289,
+            -0.7346134547155557
+          ],
+          [
+            1.3847759557988626,
+            -0.6636265478102539
+          ],
+          [
+            0.8165688642296224,
+            0.0798697416568516
+          ],
+          [
+            2.236231782346892,
+            -0.10848488497205232
+          ],
+          [
+            2.1605608870311355,
+            -0.2857250033109851
+          ],
+          [
+            -2.918466830202308,
+            -0.47833123954754103
+          ],
+          [
+            -2.8316295290370954,
+            -0.5543430052957403
+          ],
+          [
+            -2.5604843198041616,
+            0.039189067783883536
+          ],
+          [
+            -2.7510612746474625,
+            -0.10775072121391155
+          ],
+          [
+            -2.918466830202308,
+            -0.4241219551521925
+          ],
+          [
+            -2.85603460239344,
+            -0.24206406306333444
+          ],
+          [
+            1.840927799544777,
+            -0.525291602854922
+          ],
+          [
+            2.022510833978928,
+            -0.42733969527633253
+          ],
+          [
+            2.236231782346892,
+            0.029864339392709844
+          ],
+          [
+            2.2097834567349963,
+            0.038602759187788147
+          ],
+          [
+            -0.6225047216808257,
+            -0.7346134547155557
+          ],
+          [
+            -2.0831458987486737,
+            -0.690106804780697
+          ]
+        ],
+        "outer_vertex_enclosures": [
+          [
+            [
+              [
+                "-0x4d73a04af956b1a85fed5c90caef694cf88f52e5739a171bd5305e95e45092947dc4df31e4f1095f7a3c31942f9737db",
+                -381
+              ],
+              [
+                "0x1",
+                -382
+              ]
+            ],
+            [
+              [
+                "0xa392bf42d9635",
+                -55
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0x53506747d826a540055f851aa175c8e3ae3ddbe7f31e4d3ee0f615604dc6172c69009477a7900e642ba0cdede176b251",
+                -381
+              ],
+              [
+                "0x1",
+                -382
+              ]
+            ],
+            [
+              [
+                "-0x517a2b05afe8518e0cb3a555d767b50fdf72191f45714153eac65a48cc78e19b4eb8cc949a9031278d116fa746e0b8f7",
+                -383
+              ],
+              [
+                "0x1",
+                -384
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "0x1371499e39dabd4aac17c5c4745d53e29bd6e96d70555fc30301aeabd3cf54d9d9c0c17e5d3f1bee1f21502a71ec1fdf",
+                -381
+              ],
+              [
+                "0x1",
+                -384
+              ]
+            ],
+            [
+              [
+                "-0x1781f413668e73",
+                -53
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "0x16280ad52717941d6c98e9966cf4d01d30fd3dcd596855bf1ed078bd56bcd7e7a1cd4dfe20b4bf11ae4cbe0738aa6c77",
+                -380
+              ],
+              [
+                "0x1",
+                -383
+              ]
+            ],
+            [
+              [
+                "-0x2a78db7be68e1080bf2993fbb89f037dac5e6ad118179bed5230de52f59b1591a4fe36116da7ad5abe0ec9046dd2e21b",
+                -382
+              ],
+              [
+                "0x1",
+                -384
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "0x6885541b6627e43c338cc02c3f936b0d93d920bd17266f86cde6224ec981faeb05ecfc438b3bccf0f1de0cf1d4f8f467",
+                -383
+              ],
+              [
+                "0x1",
+                -384
+              ]
+            ],
+            [
+              [
+                "0xa392bf42d9635",
+                -55
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "0x11e3cd7d1ba541",
+                -51
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x1bc5aa5910b69ea8de6ee6962188590745e0b5b51555eb4a22e811571a0b69d43fd86fcb1030a8975ddebc72360e3667",
+                -384
+              ],
+              [
+                "0x1",
+                -387
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "0x2291a84aed0c32a1623eabb68b1801630764031481e8bda0a3e9c7bcda2b0da6f4924464d8019be15add07cec86862b",
+                -376
+              ],
+              [
+                "0x1",
+                -382
+              ]
+            ],
+            [
+              [
+                "-0x924a8c31bd8749bf060a07bb00a6e0700f1def3f4a9e469ee9b73e3c9310130e4d0cb6e7c6b4be02a678f1ea21486fbd",
+                -385
+              ],
+              [
+                "0x1",
+                -385
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0x17590523317005",
+                -51
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x1e9cfaa1a0c1d52d3473262c7091101a2594e92049baa4ad173d1fd98e32a90e4367c97cc5fef9df10dfd34fd824d787",
+                -382
+              ],
+              [
+                "0x1",
+                -385
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0xb5396b0f668a90cb360329d3f2f1f96886d14bcf50af38f092aae1d7c98d2d3a7079396a6cc6a7009214a92026e6843d",
+                -382
+              ],
+              [
+                "0x1",
+                -382
+              ]
+            ],
+            [
+              [
+                "-0x8de96c5682f5927a304729132a2d7771ff8b3310668d894126e36522c293df437f9a59945b6e96a0d4e6f879821e45ed",
+                -384
+              ],
+              [
+                "0x1",
+                -384
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0x147bdf33fbd662745c3f77755f13583f6c46978828b2d2b4879ffa761b6909cafc4d115b0e45e597811e9b9f2b0fce77",
+                -379
+              ],
+              [
+                "0x1",
+                -382
+              ]
+            ],
+            [
+              [
+                "0x28212dd1f853c042ca4e1091b5c35c5f75597cb9096f8c7a6601c55ba1ec0a4a9e64b5ee9d020e276d8f22e1bdc61bf5",
+                -386
+              ],
+              [
+                "0x1",
+                -388
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0x2c0458d3be7262eb96c290ccca59f42856884f7fbb1cee75f16f2f3c71f739cd03e64c086d8dbc8de7bfde84334430bb",
+                -380
+              ],
+              [
+                "0x1",
+                -382
+              ]
+            ],
+            [
+              [
+                "-0x372b1a3f77e448f602f4a7211db1c541a0d86ab0bb744ae77fa7df74f973f776b6e415744cfbb761b5e1fb9ec9845743",
+                -385
+              ],
+              [
+                "0x1",
+                -387
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0x17590523317005",
+                -51
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "-0x6c9341a6e4ed435544e2a07e5a5f7da32d18c099fb71df33d5eda7cea2d0ddb4a56dd96415937610d58e97c3a4cf8d5f",
+                -384
+              ],
+              [
+                "0x1",
+                -385
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0x2db25156d863132ec05db2ce9262a13a909343c24782ed9c4b28c368426763e4b29e80d2c8484c47ca675b7d4f073bcd",
+                -380
+              ],
+              [
+                "0x1",
+                -382
+              ]
+            ],
+            [
+              [
+                "-0x7befd224c9ada8b822a5f341901b5d960c2e5db908a13e9f6d8276734ac5a9292e86adb21e23f6260fb247e42bc00e89",
+                -385
+              ],
+              [
+                "0x1",
+                -386
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "0x3ae8e16aaaf229dfcb66c2142959913fdb2541f41cea92a8b331d48f40c15bb7a4e62d70d54077cacfb960ce64dbc0e3",
+                -381
+              ],
+              [
+                "0x1",
+                -383
+              ]
+            ],
+            [
+              [
+                "-0x219e60abc8051584bc86e143a4c7631e96e2807eb8a5b4452ec73db7d137848f898e64ce56cb3201c6f658ce0b9ea77d",
+                -382
+              ],
+              [
+                "0x1",
+                -384
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "0x40b868a3f7d886385904c185a0bfd3db378ed0e081a6a1ac241296efe39a4821db2ae19d7f07ebbf22698f5c7375aaeb",
+                -381
+              ],
+              [
+                "0x1",
+                -382
+              ]
+            ],
+            [
+              [
+                "-0xdacc44befd2911cffe4788716049e5bc9b840c060e48135fac32268d78280547a8fd794be4b64dca332d12ad3b0e23fb",
+                -385
+              ],
+              [
+                "0x1",
+                -385
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "0x11e3cd7d1ba541",
+                -51
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ],
+            [
+              [
+                "0xf4a60f20444425d21cbad41b38630791353230476aab1b7c07fdd15d2d360f935c500cea380eea4e6d17d4b07a45caad",
+                -389
+              ],
+              [
+                "0x1",
+                -389
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "0x8d6d17977acaff8b4b5064c44519a2b9dec2d1c01d1cc5c6d566670e428082e852cd9e2c0aebaf99b2b6daed2c7794db",
+                -382
+              ],
+              [
+                "0x1",
+                -382
+              ]
+            ],
+            [
+              [
+                "0x9e1ded43f35bb1cb726465f67e54c414ccbdfe980fea5a9af38dc43b6867c48d59a27b9d1cdb266fecb3a658eb9d5b5f",
+                -388
+              ],
+              [
+                "0x1",
+                -388
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0x9f5c782d3987cecd5d25e351d92a9b01e9ecbd1b5348941f4a133a122c9494dd93d9d65a3f9ad522f92760c967794c2b",
+                -384
+              ],
+              [
+                "0x1",
+                -384
+              ]
+            ],
+            [
+              [
+                "-0x1781f413668e73",
+                -53
+              ],
+              [
+                "0x0",
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                "-0x8552432cfb035c2320964edb8dab4f5a82fbef25f4303c931e6792e1b3ea2a702b7fa0747ef16a759668db6650f95faf",
+                -382
+              ],
+              [
+                "0x1",
+                -382
+              ]
+            ],
+            [
+              [
+                "-0xb0aad6ed47b7eb90ea9dd6ba18e2228639a96143fe99b5637e6eff34ac262de512026248df327fcbe9b47d3aa36e33a5",
+                -384
+              ],
+              [
+                "0x1",
+                -384
+              ]
+            ]
+          ]
+        ],
+        "direction_coverage": {
+          "unique_normals": 19,
+          "angles_degrees": [
+            0.0,
+            71.71665386818373,
+            88.3033964509372,
+            90.0,
+            106.18948225469533,
+            127.6331578727691,
+            141.99040045261677,
+            161.07186959892033,
+            180.0,
+            228.80319192975685,
+            250.18011121021388,
+            264.1233165863573,
+            268.25470178618235,
+            270.0,
+            275.2187497310838,
+            286.87072059717883,
+            298.34389452663396,
+            315.73025903151336,
+            336.8804257210241
+          ],
+          "largest_gap_degrees": 71.71665386818373,
+          "positive_span": true,
+          "domain_half_planes": 0
+        },
+        "geometry_scope": "Arb vertex/mixture bounds; float hull selects segments only. Finite H; no continuum or quadrature certificate."
+      },
+      "direction_coverage": {
+        "unique_normals": 19,
+        "angles_degrees": [
+          0.0,
+          71.71665386818373,
+          88.3033964509372,
+          90.0,
+          106.18948225469533,
+          127.6331578727691,
+          141.99040045261677,
+          161.07186959892033,
+          180.0,
+          228.80319192975685,
+          250.18011121021388,
+          264.1233165863573,
+          268.25470178618235,
+          270.0,
+          275.2187497310838,
+          286.87072059717883,
+          298.34389452663396,
+          315.73025903151336,
+          336.8804257210241
+        ],
+        "largest_gap_degrees": 71.71665386818373,
+        "positive_span": true,
+        "domain_half_planes": 0
+      },
+      "outer_closed": true
+    }
+  ],
+  "rejected": [],
+  "qualified_support_points": 21,
+  "nesting": {
+    "six_chiral_present": false,
+    "contradictions": [],
+    "status": "no_observed_contradiction"
+  },
+  "B2_geometry_ready": false,
+  "B3_geometry_ready": false,
+  "plots_created": true,
+  "completion_claimed": false,
+  "finite_only": true,
+  "comparison_policy": "Same prescription, scope, constraints and input paths.",
+  "elapsed_seconds": 2.256894528865814,
+  "prescription": "pv-midpoint",
+  "core_sources": {},
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 60,
+  "supervisor_seconds": 2.6711764400824904
+}

@@ -1,0 +1,1116 @@
+{
+  "task": "Fig3/Fig4 comparison to convex hulls of extracted display samples",
+  "created_utc": "2026-09-07T23:53:39.043185+00:00",
+  "snapshots": [
+    "results/runs/stage_B2_PV_B377500_region_20260907/aggregate_020/regions.json",
+    "results/runs/stage_B3_PV_B377500_region_20260907/partial_30/regions.json"
+  ],
+  "results": [
+    {
+      "mode": "pure",
+      "epsilon": null,
+      "snapshot": "results/runs/stage_B2_PV_B377500_region_20260907/aggregate_020/regions.json",
+      "manifest": "results/runs/stage_B2_PV_B377500_region_20260907/manifest.json",
+      "model_signature": {
+        "M": 50,
+        "L": 10,
+        "density_limit": 377500.0,
+        "infinity": "free",
+        "unitarity_scope": "sampled",
+        "global_high_spin_enforced": false,
+        "tail_conditions_applied": false,
+        "prescription": "pv-midpoint",
+        "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+        "additional_constraints": null,
+        "sampling_nodes": 50,
+        "scattering_samples": 1500
+      },
+      "metric": "q=(x,y)",
+      "computed_inner_vertices": 25,
+      "display_samples": 498,
+      "display_hull_vertices": 201,
+      "zero_augmented_display_hull_vertices": 201,
+      "zero_policy": {
+        "computed_inner_kept_exactly_as_saved": true,
+        "zero_explicit_in_saved_vertices": false,
+        "zero_inside_computed_hull": true,
+        "zero_inside_display_hull": true,
+        "strict_comparison_adds_zero_to_display": false,
+        "secondary_comparison_adds_only_the_known_zero_amplitude": true
+      },
+      "strict_display_hull": {
+        "inner_to_display": {
+          "distance_interval": [
+            0.015991902590260208,
+            0.015991902590260218
+          ],
+          "witness": {
+            "source_xy": [
+              2.2300738622368224,
+              0.031507193497752196
+            ],
+            "nearest_edge_xy": [
+              [
+                2.23204230125737,
+                0.007237936917109083
+              ],
+              [
+                2.204155669320522,
+                0.0344591909982318
+              ]
+            ],
+            "edge_fraction": 0.4711603013890103,
+            "distance_interval": [
+              0.015991902590260208,
+              0.015991902590260218
+            ]
+          }
+        },
+        "display_to_inner": {
+          "distance_interval": [
+            0.0072275599598730835,
+            0.007227559959873086
+          ],
+          "witness": {
+            "source_xy": [
+              2.221726305828476,
+              -0.1170609752701549
+            ],
+            "nearest_edge_xy": [
+              [
+                2.197266562882546,
+                -0.1986588737008838
+              ],
+              [
+                2.2348893985478413,
+                -0.018873680775901167
+              ]
+            ],
+            "edge_fraction": 0.4620976184236366,
+            "distance_interval": [
+              0.0072275599598730835,
+              0.007227559959873086
+            ]
+          }
+        },
+        "hausdorff_interval": [
+          0.015991902590260208,
+          0.015991902590260218
+        ]
+      },
+      "display_hull_plus_zero": {
+        "inner_to_display": {
+          "distance_interval": [
+            0.015991902590260208,
+            0.015991902590260218
+          ],
+          "witness": {
+            "source_xy": [
+              2.2300738622368224,
+              0.031507193497752196
+            ],
+            "nearest_edge_xy": [
+              [
+                2.23204230125737,
+                0.007237936917109083
+              ],
+              [
+                2.204155669320522,
+                0.0344591909982318
+              ]
+            ],
+            "edge_fraction": 0.4711603013890103,
+            "distance_interval": [
+              0.015991902590260208,
+              0.015991902590260218
+            ]
+          }
+        },
+        "display_to_inner": {
+          "distance_interval": [
+            0.0072275599598730835,
+            0.007227559959873086
+          ],
+          "witness": {
+            "source_xy": [
+              2.221726305828476,
+              -0.1170609752701549
+            ],
+            "nearest_edge_xy": [
+              [
+                2.197266562882546,
+                -0.1986588737008838
+              ],
+              [
+                2.2348893985478413,
+                -0.018873680775901167
+              ]
+            ],
+            "edge_fraction": 0.4620976184236366,
+            "distance_interval": [
+              0.0072275599598730835,
+              0.007227559959873086
+            ]
+          }
+        },
+        "hausdorff_interval": [
+          0.015991902590260208,
+          0.015991902590260218
+        ]
+      },
+      "self_inner_outer_error_upper": 0.021912788325458996,
+      "self_geometry_ready": false,
+      "existing_geometry_budget": 0.01,
+      "source_csv": "results/runs/stage_B_reference_20260906/purSplot_points.csv"
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.006,
+      "snapshot": "results/runs/stage_B3_PV_B377500_region_20260907/partial_30/regions.json",
+      "manifest": "results/runs/stage_B3_PV_B377500_region_20260907/manifest.json",
+      "model_signature": {
+        "M": 50,
+        "L": 10,
+        "density_limit": 377500.0,
+        "infinity": "free",
+        "unitarity_scope": "sampled",
+        "global_high_spin_enforced": false,
+        "tail_conditions_applied": false,
+        "prescription": "pv-midpoint",
+        "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+        "additional_constraints": null,
+        "sampling_nodes": 50,
+        "scattering_samples": 1500
+      },
+      "metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)",
+      "computed_inner_vertices": 10,
+      "display_samples": 117,
+      "display_hull_vertices": 94,
+      "zero_augmented_display_hull_vertices": 95,
+      "zero_policy": {
+        "computed_inner_kept_exactly_as_saved": true,
+        "zero_explicit_in_saved_vertices": true,
+        "zero_inside_computed_hull": true,
+        "zero_inside_display_hull": false,
+        "strict_comparison_adds_zero_to_display": false,
+        "secondary_comparison_adds_only_the_known_zero_amplitude": true
+      },
+      "strict_display_hull": {
+        "inner_to_display": {
+          "distance_interval": [
+            0.2840471789835937,
+            0.28404717898359383
+          ],
+          "witness": {
+            "source_xy": [
+              0.1825201798903248,
+              -0.011757752421207147
+            ],
+            "nearest_edge_xy": [
+              [
+                0.15913698066090132,
+                -0.010600976577813954
+              ],
+              [
+                0.1618803574738662,
+                -0.01015394636862435
+              ]
+            ],
+            "edge_fraction": 1.0,
+            "distance_interval": [
+              0.2840471789835937,
+              0.28404717898359383
+            ]
+          }
+        },
+        "display_to_inner": {
+          "distance_interval": [
+            0.02114285489869634,
+            0.021142854898696394
+          ],
+          "witness": {
+            "source_xy": [
+              0.002744424854487674,
+              0.001759011304530197
+            ],
+            "nearest_edge_xy": [
+              [
+                0.06123465195612447,
+                -0.0018376308012031117
+              ],
+              [
+                1.2591217105819181e-17,
+                0.0017944251844982577
+              ]
+            ],
+            "edge_fraction": 0.9529161935615681,
+            "distance_interval": [
+              0.02114285489869634,
+              0.021142854898696394
+            ]
+          }
+        },
+        "hausdorff_interval": [
+          0.2840471789835937,
+          0.28404717898359383
+        ]
+      },
+      "display_hull_plus_zero": {
+        "inner_to_display": {
+          "distance_interval": [
+            0.2840471789835937,
+            0.28404717898359383
+          ],
+          "witness": {
+            "source_xy": [
+              0.1825201798903248,
+              -0.011757752421207147
+            ],
+            "nearest_edge_xy": [
+              [
+                0.15913698066090132,
+                -0.010600976577813954
+              ],
+              [
+                0.1618803574738662,
+                -0.01015394636862435
+              ]
+            ],
+            "edge_fraction": 1.0,
+            "distance_interval": [
+              0.2840471789835937,
+              0.28404717898359383
+            ]
+          }
+        },
+        "display_to_inner": {
+          "distance_interval": [
+            0.02114285489869634,
+            0.021142854898696394
+          ],
+          "witness": {
+            "source_xy": [
+              0.002744424854487674,
+              0.001759011304530197
+            ],
+            "nearest_edge_xy": [
+              [
+                0.06123465195612447,
+                -0.0018376308012031117
+              ],
+              [
+                1.2591217105819181e-17,
+                0.0017944251844982577
+              ]
+            ],
+            "edge_fraction": 0.9529161935615681,
+            "distance_interval": [
+              0.02114285489869634,
+              0.021142854898696394
+            ]
+          }
+        },
+        "hausdorff_interval": [
+          0.2840471789835937,
+          0.28404717898359383
+        ]
+      },
+      "self_inner_outer_error_upper": 0.15173925847535794,
+      "self_geometry_ready": false,
+      "existing_geometry_budget": 0.01,
+      "source_csv": "results/runs/stage_B_reference_20260906/chiplot_points.csv"
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.004,
+      "snapshot": "results/runs/stage_B3_PV_B377500_region_20260907/partial_30/regions.json",
+      "manifest": "results/runs/stage_B3_PV_B377500_region_20260907/manifest.json",
+      "model_signature": {
+        "M": 50,
+        "L": 10,
+        "density_limit": 377500.0,
+        "infinity": "free",
+        "unitarity_scope": "sampled",
+        "global_high_spin_enforced": false,
+        "tail_conditions_applied": false,
+        "prescription": "pv-midpoint",
+        "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+        "additional_constraints": null,
+        "sampling_nodes": 50,
+        "scattering_samples": 1500
+      },
+      "metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)",
+      "computed_inner_vertices": 10,
+      "display_samples": 115,
+      "display_hull_vertices": 99,
+      "zero_augmented_display_hull_vertices": 100,
+      "zero_policy": {
+        "computed_inner_kept_exactly_as_saved": true,
+        "zero_explicit_in_saved_vertices": true,
+        "zero_inside_computed_hull": true,
+        "zero_inside_display_hull": false,
+        "strict_comparison_adds_zero_to_display": false,
+        "secondary_comparison_adds_only_the_known_zero_amplitude": true
+      },
+      "strict_display_hull": {
+        "inner_to_display": {
+          "distance_interval": [
+            0.3011307748955283,
+            0.3011307748955284
+          ],
+          "witness": {
+            "source_xy": [
+              0.14749075580901577,
+              -0.009526834695232142
+            ],
+            "nearest_edge_xy": [
+              [
+                0.12342903965976017,
+                -0.008259979694029352
+              ],
+              [
+                0.1255951855637415,
+                -0.007912050809119452
+              ]
+            ],
+            "edge_fraction": 1.0,
+            "distance_interval": [
+              0.3011307748955283,
+              0.3011307748955284
+            ]
+          }
+        },
+        "display_to_inner": {
+          "distance_interval": [
+            0.008142142032424308,
+            0.008142142032424363
+          ],
+          "witness": {
+            "source_xy": [
+              0.0021652405225254636,
+              0.0011780013237101834
+            ],
+            "nearest_edge_xy": [
+              [
+                0.04159757586887575,
+                -0.0012300204247619412
+              ],
+              [
+                1.247778920051298e-17,
+                0.0012756316486932295
+              ]
+            ],
+            "edge_fraction": 0.9462677086478685,
+            "distance_interval": [
+              0.008142142032424308,
+              0.008142142032424363
+            ]
+          }
+        },
+        "hausdorff_interval": [
+          0.3011307748955283,
+          0.3011307748955284
+        ]
+      },
+      "display_hull_plus_zero": {
+        "inner_to_display": {
+          "distance_interval": [
+            0.3011307748955283,
+            0.3011307748955284
+          ],
+          "witness": {
+            "source_xy": [
+              0.14749075580901577,
+              -0.009526834695232142
+            ],
+            "nearest_edge_xy": [
+              [
+                0.12342903965976017,
+                -0.008259979694029352
+              ],
+              [
+                0.1255951855637415,
+                -0.007912050809119452
+              ]
+            ],
+            "edge_fraction": 1.0,
+            "distance_interval": [
+              0.3011307748955283,
+              0.3011307748955284
+            ]
+          }
+        },
+        "display_to_inner": {
+          "distance_interval": [
+            0.008142142032424308,
+            0.008142142032424363
+          ],
+          "witness": {
+            "source_xy": [
+              0.0021652405225254636,
+              0.0011780013237101834
+            ],
+            "nearest_edge_xy": [
+              [
+                0.04159757586887575,
+                -0.0012300204247619412
+              ],
+              [
+                1.247778920051298e-17,
+                0.0012756316486932295
+              ]
+            ],
+            "edge_fraction": 0.9462677086478685,
+            "distance_interval": [
+              0.008142142032424308,
+              0.008142142032424363
+            ]
+          }
+        },
+        "hausdorff_interval": [
+          0.3011307748955283,
+          0.3011307748955284
+        ]
+      },
+      "self_inner_outer_error_upper": 0.15787947537864389,
+      "self_geometry_ready": false,
+      "existing_geometry_budget": 0.01,
+      "source_csv": "results/runs/stage_B_reference_20260906/chiplot_points.csv"
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.002,
+      "snapshot": "results/runs/stage_B3_PV_B377500_region_20260907/partial_30/regions.json",
+      "manifest": "results/runs/stage_B3_PV_B377500_region_20260907/manifest.json",
+      "model_signature": {
+        "M": 50,
+        "L": 10,
+        "density_limit": 377500.0,
+        "infinity": "free",
+        "unitarity_scope": "sampled",
+        "global_high_spin_enforced": false,
+        "tail_conditions_applied": false,
+        "prescription": "pv-midpoint",
+        "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+        "additional_constraints": null,
+        "sampling_nodes": 50,
+        "scattering_samples": 1500
+      },
+      "metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)",
+      "computed_inner_vertices": 7,
+      "display_samples": 113,
+      "display_hull_vertices": 79,
+      "zero_augmented_display_hull_vertices": 80,
+      "zero_policy": {
+        "computed_inner_kept_exactly_as_saved": true,
+        "zero_explicit_in_saved_vertices": true,
+        "zero_inside_computed_hull": true,
+        "zero_inside_display_hull": false,
+        "strict_comparison_adds_zero_to_display": false,
+        "secondary_comparison_adds_only_the_known_zero_amplitude": true
+      },
+      "strict_display_hull": {
+        "inner_to_display": {
+          "distance_interval": [
+            0.3187629650385584,
+            0.3187629650385585
+          ],
+          "witness": {
+            "source_xy": [
+              0.10588509849925654,
+              -0.006854817981383333
+            ],
+            "nearest_edge_xy": [
+              [
+                0.08112514904822518,
+                -0.005435966800058552
+              ],
+              [
+                0.08257301276510262,
+                -0.005255004802000082
+              ]
+            ],
+            "edge_fraction": 1.0,
+            "distance_interval": [
+              0.3187629650385584,
+              0.3187629650385585
+            ]
+          }
+        },
+        "display_to_inner": {
+          "distance_interval": [
+            0.17440861345525174,
+            0.17440861345525183
+          ],
+          "witness": {
+            "source_xy": [
+              0.0014493069079627669,
+              0.000582030231882398
+            ],
+            "nearest_edge_xy": [
+              [
+                0.020848394943177882,
+                -0.0005532706138851372
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            "edge_fraction": 0.4232061092585763,
+            "distance_interval": [
+              0.17440861345525174,
+              0.17440861345525183
+            ]
+          }
+        },
+        "hausdorff_interval": [
+          0.3187629650385584,
+          0.3187629650385585
+        ]
+      },
+      "display_hull_plus_zero": {
+        "inner_to_display": {
+          "distance_interval": [
+            0.3187629650385584,
+            0.3187629650385585
+          ],
+          "witness": {
+            "source_xy": [
+              0.10588509849925654,
+              -0.006854817981383333
+            ],
+            "nearest_edge_xy": [
+              [
+                0.08112514904822518,
+                -0.005435966800058552
+              ],
+              [
+                0.08257301276510262,
+                -0.005255004802000082
+              ]
+            ],
+            "edge_fraction": 1.0,
+            "distance_interval": [
+              0.3187629650385584,
+              0.3187629650385585
+            ]
+          }
+        },
+        "display_to_inner": {
+          "distance_interval": [
+            0.17440861345525174,
+            0.17440861345525183
+          ],
+          "witness": {
+            "source_xy": [
+              0.0014493069079627669,
+              0.000582030231882398
+            ],
+            "nearest_edge_xy": [
+              [
+                0.020848394943177882,
+                -0.0005532706138851372
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            "edge_fraction": 0.4232061092585763,
+            "distance_interval": [
+              0.17440861345525174,
+              0.17440861345525183
+            ]
+          }
+        },
+        "hausdorff_interval": [
+          0.3187629650385584,
+          0.3187629650385585
+        ]
+      },
+      "self_inner_outer_error_upper": 0.23541074782853152,
+      "self_geometry_ready": false,
+      "existing_geometry_budget": 0.01,
+      "source_csv": "results/runs/stage_B_reference_20260906/chiplot_points.csv"
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.001,
+      "snapshot": "results/runs/stage_B3_PV_B377500_region_20260907/partial_30/regions.json",
+      "manifest": "results/runs/stage_B3_PV_B377500_region_20260907/manifest.json",
+      "model_signature": {
+        "M": 50,
+        "L": 10,
+        "density_limit": 377500.0,
+        "infinity": "free",
+        "unitarity_scope": "sampled",
+        "global_high_spin_enforced": false,
+        "tail_conditions_applied": false,
+        "prescription": "pv-midpoint",
+        "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+        "additional_constraints": null,
+        "sampling_nodes": 50,
+        "scattering_samples": 1500
+      },
+      "metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)",
+      "computed_inner_vertices": 7,
+      "display_samples": 107,
+      "display_hull_vertices": 55,
+      "zero_augmented_display_hull_vertices": 56,
+      "zero_policy": {
+        "computed_inner_kept_exactly_as_saved": true,
+        "zero_explicit_in_saved_vertices": true,
+        "zero_inside_computed_hull": true,
+        "zero_inside_display_hull": false,
+        "strict_comparison_adds_zero_to_display": false,
+        "secondary_comparison_adds_only_the_known_zero_amplitude": true
+      },
+      "strict_display_hull": {
+        "inner_to_display": {
+          "distance_interval": [
+            0.347699680407555,
+            0.3476996804075551
+          ],
+          "witness": {
+            "source_xy": [
+              0.08027466037399904,
+              -0.005216993976238207
+            ],
+            "nearest_edge_xy": [
+              [
+                0.0537671067556459,
+                -0.003599037138713174
+              ],
+              [
+                0.054782094917098303,
+                -0.003514034657162735
+              ]
+            ],
+            "edge_fraction": 1.0,
+            "distance_interval": [
+              0.347699680407555,
+              0.3476996804075551
+            ]
+          }
+        },
+        "display_to_inner": {
+          "distance_interval": [
+            0.09061178377056221,
+            0.09061178377056224
+          ],
+          "witness": {
+            "source_xy": [
+              0.0010146743880986356,
+              0.00027704049979893454
+            ],
+            "nearest_edge_xy": [
+              [
+                0.011116796060960901,
+                -0.0002610610949761886
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            "edge_fraction": 0.338838792332778,
+            "distance_interval": [
+              0.09061178377056221,
+              0.09061178377056224
+            ]
+          }
+        },
+        "hausdorff_interval": [
+          0.347699680407555,
+          0.3476996804075551
+        ]
+      },
+      "display_hull_plus_zero": {
+        "inner_to_display": {
+          "distance_interval": [
+            0.347699680407555,
+            0.3476996804075551
+          ],
+          "witness": {
+            "source_xy": [
+              0.08027466037399904,
+              -0.005216993976238207
+            ],
+            "nearest_edge_xy": [
+              [
+                0.0537671067556459,
+                -0.003599037138713174
+              ],
+              [
+                0.054782094917098303,
+                -0.003514034657162735
+              ]
+            ],
+            "edge_fraction": 1.0,
+            "distance_interval": [
+              0.347699680407555,
+              0.3476996804075551
+            ]
+          }
+        },
+        "display_to_inner": {
+          "distance_interval": [
+            0.09061178377056221,
+            0.09061178377056224
+          ],
+          "witness": {
+            "source_xy": [
+              0.0010146743880986356,
+              0.00027704049979893454
+            ],
+            "nearest_edge_xy": [
+              [
+                0.011116796060960901,
+                -0.0002610610949761886
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            "edge_fraction": 0.338838792332778,
+            "distance_interval": [
+              0.09061178377056221,
+              0.09061178377056224
+            ]
+          }
+        },
+        "hausdorff_interval": [
+          0.347699680407555,
+          0.3476996804075551
+        ]
+      },
+      "self_inner_outer_error_upper": 0.15113070957413371,
+      "self_geometry_ready": false,
+      "existing_geometry_budget": 0.01,
+      "source_csv": "results/runs/stage_B_reference_20260906/chiplot_points.csv"
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.0006,
+      "snapshot": "results/runs/stage_B3_PV_B377500_region_20260907/partial_30/regions.json",
+      "manifest": "results/runs/stage_B3_PV_B377500_region_20260907/manifest.json",
+      "model_signature": {
+        "M": 50,
+        "L": 10,
+        "density_limit": 377500.0,
+        "infinity": "free",
+        "unitarity_scope": "sampled",
+        "global_high_spin_enforced": false,
+        "tail_conditions_applied": false,
+        "prescription": "pv-midpoint",
+        "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+        "additional_constraints": null,
+        "sampling_nodes": 50,
+        "scattering_samples": 1500
+      },
+      "metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)",
+      "computed_inner_vertices": 7,
+      "display_samples": 120,
+      "display_hull_vertices": 41,
+      "zero_augmented_display_hull_vertices": 42,
+      "zero_policy": {
+        "computed_inner_kept_exactly_as_saved": true,
+        "zero_explicit_in_saved_vertices": true,
+        "zero_inside_computed_hull": true,
+        "zero_inside_display_hull": false,
+        "strict_comparison_adds_zero_to_display": false,
+        "secondary_comparison_adds_only_the_known_zero_amplitude": true
+      },
+      "strict_display_hull": {
+        "inner_to_display": {
+          "distance_interval": [
+            0.3723218007546036,
+            0.3723218007546037
+          ],
+          "witness": {
+            "source_xy": [
+              0.06827327440306558,
+              -0.004450210014175769
+            ],
+            "nearest_edge_xy": [
+              [
+                0.04100124573777742,
+                -0.002726016144914012
+              ],
+              [
+                0.04100124573777742,
+                -0.0026420305466193375
+              ]
+            ],
+            "edge_fraction": 1.0,
+            "distance_interval": [
+              0.3723218007546036,
+              0.3723218007546037
+            ]
+          }
+        },
+        "display_to_inner": {
+          "distance_interval": [
+            0.054511178233603845,
+            0.054511178233603894
+          ],
+          "witness": {
+            "source_xy": [
+              0.0006831401843227223,
+              0.00016296558922422106
+            ],
+            "nearest_edge_xy": [
+              [
+                0.007599943527619193,
+                -0.00017296765390263104
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            "edge_fraction": 0.39311142229523083,
+            "distance_interval": [
+              0.054511178233603845,
+              0.054511178233603894
+            ]
+          }
+        },
+        "hausdorff_interval": [
+          0.3723218007546036,
+          0.3723218007546037
+        ]
+      },
+      "display_hull_plus_zero": {
+        "inner_to_display": {
+          "distance_interval": [
+            0.3723218007546036,
+            0.3723218007546037
+          ],
+          "witness": {
+            "source_xy": [
+              0.06827327440306558,
+              -0.004450210014175769
+            ],
+            "nearest_edge_xy": [
+              [
+                0.04100124573777742,
+                -0.002726016144914012
+              ],
+              [
+                0.04100124573777742,
+                -0.0026420305466193375
+              ]
+            ],
+            "edge_fraction": 1.0,
+            "distance_interval": [
+              0.3723218007546036,
+              0.3723218007546037
+            ]
+          }
+        },
+        "display_to_inner": {
+          "distance_interval": [
+            0.054511178233603845,
+            0.054511178233603894
+          ],
+          "witness": {
+            "source_xy": [
+              0.0006831401843227223,
+              0.00016296558922422106
+            ],
+            "nearest_edge_xy": [
+              [
+                0.007599943527619193,
+                -0.00017296765390263104
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            "edge_fraction": 0.39311142229523083,
+            "distance_interval": [
+              0.054511178233603845,
+              0.054511178233603894
+            ]
+          }
+        },
+        "hausdorff_interval": [
+          0.3723218007546036,
+          0.3723218007546037
+        ]
+      },
+      "self_inner_outer_error_upper": 0.1335734034037246,
+      "self_geometry_ready": false,
+      "existing_geometry_budget": 0.01,
+      "source_csv": "results/runs/stage_B_reference_20260906/chiplot_points.csv"
+    },
+    {
+      "mode": "chiral",
+      "epsilon": 0.0002,
+      "snapshot": "results/runs/stage_B3_PV_B377500_region_20260907/partial_30/regions.json",
+      "manifest": "results/runs/stage_B3_PV_B377500_region_20260907/manifest.json",
+      "model_signature": {
+        "M": 50,
+        "L": 10,
+        "density_limit": 377500.0,
+        "infinity": "free",
+        "unitarity_scope": "sampled",
+        "global_high_spin_enforced": false,
+        "tail_conditions_applied": false,
+        "prescription": "pv-midpoint",
+        "preparation": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907",
+        "additional_constraints": null,
+        "sampling_nodes": 50,
+        "scattering_samples": 1500
+      },
+      "metric": "q=(x/(5/(16*pi^2*(92/140)^2)),(y+x/15)/epsilon)",
+      "computed_inner_vertices": 9,
+      "display_samples": 120,
+      "display_hull_vertices": 31,
+      "zero_augmented_display_hull_vertices": 32,
+      "zero_policy": {
+        "computed_inner_kept_exactly_as_saved": true,
+        "zero_explicit_in_saved_vertices": true,
+        "zero_inside_computed_hull": true,
+        "zero_inside_display_hull": false,
+        "strict_comparison_adds_zero_to_display": false,
+        "secondary_comparison_adds_only_the_known_zero_amplitude": true
+      },
+      "strict_display_hull": {
+        "inner_to_display": {
+          "distance_interval": [
+            0.6812142674802193,
+            0.6812142674802195
+          ],
+          "witness": {
+            "source_xy": [
+              0.004297821488577467,
+              -0.0005074623280968642
+            ],
+            "nearest_edge_xy": [
+              [
+                0.00037345455146233766,
+                -0.00011001619034044882
+              ],
+              [
+                0.0014916385141116035,
+                -0.000183958887717152
+              ]
+            ],
+            "edge_fraction": 0.0,
+            "distance_interval": [
+              0.6812142674802193,
+              0.6812142674802195
+            ]
+          }
+        },
+        "display_to_inner": {
+          "distance_interval": [
+            0.03874806875659378,
+            0.03874806875659388
+          ],
+          "witness": {
+            "source_xy": [
+              0.00037345455146233766,
+              4.3972272098490995e-05
+            ],
+            "nearest_edge_xy": [
+              [
+                0.007344626719140031,
+                -0.000333417932893911
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            "edge_fraction": 0.5654728205912047,
+            "distance_interval": [
+              0.03874806875659378,
+              0.03874806875659388
+            ]
+          }
+        },
+        "hausdorff_interval": [
+          0.6812142674802193,
+          0.6812142674802195
+        ]
+      },
+      "display_hull_plus_zero": {
+        "inner_to_display": {
+          "distance_interval": [
+            0.6812142674802193,
+            0.6812142674802195
+          ],
+          "witness": {
+            "source_xy": [
+              0.004297821488577467,
+              -0.0005074623280968642
+            ],
+            "nearest_edge_xy": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.00037345455146233766,
+                -0.00011001619034044882
+              ]
+            ],
+            "edge_fraction": 1.0,
+            "distance_interval": [
+              0.6812142674802193,
+              0.6812142674802195
+            ]
+          }
+        },
+        "display_to_inner": {
+          "distance_interval": [
+            0.03874806875659378,
+            0.03874806875659388
+          ],
+          "witness": {
+            "source_xy": [
+              0.00037345455146233766,
+              4.3972272098490995e-05
+            ],
+            "nearest_edge_xy": [
+              [
+                0.007344626719140031,
+                -0.000333417932893911
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ],
+            "edge_fraction": 0.5654728205912047,
+            "distance_interval": [
+              0.03874806875659378,
+              0.03874806875659388
+            ]
+          }
+        },
+        "hausdorff_interval": [
+          0.6812142674802193,
+          0.6812142674802195
+        ]
+      },
+      "self_inner_outer_error_upper": 0.17109335757742197,
+      "self_geometry_ready": false,
+      "existing_geometry_budget": 0.01,
+      "source_csv": "results/runs/stage_B_reference_20260906/chiplot_points.csv"
+    }
+  ],
+  "method": "Exact rational convex hull/containment for saved dyadic points; Euclidean point-to-segment distances in the existing metric with 384-bit Arb bounds. Convexity reduces directed maxima to hull vertices. Float projection proposals have an explicit norm(edge)*projection_error enclosure.",
+  "scope": "Numerical comparison to displayed boundary-sample convex hulls, not to a certified true paper region. Saved inner vertices and their known zero amplitude are retained. No new optimizer, criterion, module or physical constraint.",
+  "reference_uncertainty": "CSV center coordinates are treated as the input data. The author did not provide a boundary interpolation/solver error bound; these arithmetic distance intervals do not include that missing error.",
+  "zero_policy": "Primary reference hull uses only displayed boundary_sample markers; a separately labelled comparison augments that hull with the known zero amplitude. This augmentation is not a paper-data point or a paper outer bound.",
+  "new_optimization": false,
+  "source_status_manifest_modified": false,
+  "update_rule": "After geometry completion, repeat this same comparison using B2 geometry_history[-1].output and B3 latest_summary; retain the same metrics, reference selection and zero policy."
+}

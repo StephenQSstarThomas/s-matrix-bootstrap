@@ -1,0 +1,106 @@
+{
+  "candidate": "results/primal_barrier_N10_centering_physical_candidate.json",
+  "candidate_sha256": "a85ca9641300d9b1fe169f6d010dc04da2155495fa0a646e94a040f6aec9eef8",
+  "coefficient_source": "exact_physical_coefficients, exact rationals",
+  "degree": 10,
+  "isospin": 0,
+  "ell": 2,
+  "rationalization_identities_exact": true,
+  "example_primitive_derivative_exact": true,
+  "example_integrand": "(-12*y**16 - 14*y**15 + 860*y**14 - 821*y**13 - 9240*y**12 + 9515*y**11 + 30514*y**10 - 23760*y**9 - 38764*y**8 + 21340*y**7 + 18744*y**6 - 8041*y**5 - 2960*y**4 + 1031*y**3 + 90*y**2 - 18*y)/(24*y**17 + 32*y**16 + 128*y**15 + 208*y**14 + 224*y**13 + 560*y**12 + 784*y**10 - 560*y**9 + 560*y**8 - 896*y**7 + 112*y**6 - 672*y**5 - 112*y**4 - 256*y**3 - 80*y**2 - 40*y - 16)",
+  "example_primitive": "-log(y - 1)/8 + log(y + 1/3)/8 - log(y + 2)/2 - 11*atan(y)/64 - (-185*y**11 + 6480*y**10 - 10235*y**9 + 1360*y**8 + 14782*y**7 + 14320*y**6 - 11198*y**5 + 6960*y**4 + 1435*y**3 + 1984*y**2 + 25*y + 384)/(320*y**12 + 1920*y**10 + 4800*y**8 + 6400*y**6 + 4800*y**4 + 1920*y**2 + 320)",
+  "example_primitive_transcendental_coefficients": {
+    "atan(y)": "-11/64",
+    "log(y + 2)": "-1/2",
+    "log(y - 1)": "-1/8",
+    "log(y + 1/3)": "1/8"
+  },
+  "example_compact_transcendental_coefficients_at_k_half": {
+    "log_one_minus_k": "-1/4",
+    "log_one_plus_k_squared": "-3/8",
+    "atan_k": "-11/64"
+  },
+  "endpoint_coefficients": {
+    "B": "544485318850339020960676918012650975048517183882024390994613350142778159/135560258246411587711900814966646763545789994695341513001861326594637824",
+    "D": "107296906334531240534039310781696973398736470305335579007346688501969444263/1084482065971292701695206519733174108366319957562732104014890612757102592",
+    "A2": "72619659442733156979148851519407845266187302570652248274373039717630330966923/2168964131942585403390413039466348216732639915125464208029781225514205184",
+    "M": "14036575494356038955564169952529619886092541243722490981132121799852334258663839/1084482065971292701695206519733174108366319957562732104014890612757102592",
+    "M12": "457236549536855785528305475642255357063872848779073093487144162691979432598503/4337928263885170806780826078932696433465279830250928416059562451028410368",
+    "M2": "55688636240261961911766238177233097399412697180229669488725313649963349724279801/4337928263885170806780826078932696433465279830250928416059562451028410368",
+    "C": "8085365244266830482458762677205028730582797281414260223941566644844703547471449/271120516492823175423801629933293527091579989390683026003722653189275648",
+    "h0": "804852467998243933521015035146969210293829372066093873968889177483785187/416441113332976397450959303577538857612666863704089127941717995298727395328",
+    "h1": "2394232858109700710126679735821408194758842396885119928321691102187036319/260275695833110248406849564735961786007916789815055704963573747061704622080",
+    "BA": "2228827505289747568980104496203780855161091134693696567064987821616244882993/1084482065971292701695206519733174108366319957562732104014890612757102592"
+  },
+  "fixed_spin_margin": {
+    "ball": "[88.8019006032096027560320626136943014261040418393581538449 +/- 4.31e-56]",
+    "lower_rational": "4354832534234707271748973286527965572985993154160675188429/49039857307708443467467104868809893875799651909875269632",
+    "upper_rational": "4354832534234707271748973286527965572985993154160675188433/49039857307708443467467104868809893875799651909875269632"
+  },
+  "large_energy": {
+    "P": "134217728",
+    "s_start": "18014398509481984",
+    "R0": {
+      "ball": "[1163689188.42245366612362318277653686744248369591823752747 +/- 5.28e-48]",
+      "lower_rational": "3401467308447371257854788597033476245415232326942040227307/2923003274661805836407369665432566039311865085952",
+      "upper_rational": "3401467308447371257854788597033476245415232326942040227313/2923003274661805836407369665432566039311865085952"
+    },
+    "R1": {
+      "ball": "[1428619.59229522468551500316939783531656188162476198263243 +/- 2.96e-51]",
+      "lower_rational": "4276080380441554651661180167597114963814035924388778889137/2993155353253689176481146537402947624255349848014848",
+      "upper_rational": "4276080380441554651661180167597114963814035924388778889145/2993155353253689176481146537402947624255349848014848"
+    },
+    "I0": {
+      "ball": "[1643221192.22371831561645933978908960947563849023126541205 +/- 5.60e-48]",
+      "lower_rational": "2401570462931802676261304522347164272413187652294654180213/1461501637330902918203684832716283019655932542976",
+      "upper_rational": "300196307866475334532663065293395534051648456536831772527/182687704666362864775460604089535377456991567872"
+    },
+    "I1": {
+      "ball": "[17997453.4038042682690057211485617068993326969232394967235 +/- 2.18e-50]",
+      "lower_rational": "1683411687516580477074732209787534574661858235854826914009/93536104789177786765035829293842113257979682750464",
+      "upper_rational": "420852921879145119268683052446883643665464558963706728503/23384026197294446691258957323460528314494920687616"
+    },
+    "normalized_margin_lower": {
+      "ball": "[1576.7329323350658368725880353063631576819708886820289726 +/- 4.45e-53]",
+      "lower_rational": "4832672375879771318658455404242088137000901757927746952137/3064991081731777716716694054300618367237478244367204352",
+      "upper_rational": "4832672375879771318658455404242088137000901757927746952193/3064991081731777716716694054300618367237478244367204352"
+    },
+    "tail_positive": true
+  },
+  "threshold": {
+    "analytic_w_radius": "1/2",
+    "W": "1/131072",
+    "s_minus_four_end": "1/17179869184",
+    "G_modulus_bound": {
+      "ball": "[22056459.9888174083414715668678998841572427683130021888389 +/- 4.20e-50]",
+      "lower_rational": "4126150705584664442969682447221348966266788813020341802797/187072209578355573530071658587684226515959365500928",
+      "upper_rational": "4126150705584664442969682447221348966266788813020341802805/187072209578355573530071658587684226515959365500928"
+    },
+    "R_over_w6_lower": {
+      "ball": "[0.0083556611745184550410726195488945671550311522628529355553 +/- 4.42e-59]",
+      "lower_rational": "209797341035491621492609128071174534953610793494720121809/25108406941546723055343157692830665664409421777856138051584",
+      "upper_rational": "839189364141966485970436512284698139814443173978880487245/100433627766186892221372630771322662657637687111424552206336"
+    },
+    "tail_positive": true
+  },
+  "finite_violation_transfer": {
+    "certificate": "results/primal_barrier_N10_centering_finite_unitarity_certificate.json",
+    "certificate_sha256": "eec46a019b93675dcaa2bc705bc1c3e9a180bf6ab261b25a100f38dca98e6509",
+    "decimal_to_exact_amplitude_modulus_error_bound": "10731308707798879779943446343252740920293608829599306550028582384277473/103424269292001028222580577824895296894676204448960504914750157619200000000000000000",
+    "S_modulus_error_bound": {
+      "ball": "[8.14929629926633126286976119819164215132392197348066399037e-13 +/- 7.78e-70]",
+      "lower_rational": "5624437596237526282161297032782106523649639470116490462757/6901746346790563787434755862277025452451108972170386555162524223799296",
+      "upper_rational": "5624437596237526282161297032782106523649639470116490462763/6901746346790563787434755862277025452451108972170386555162524223799296"
+    },
+    "exact_rational_candidate_absS_minus_one_lower": {
+      "ball": "[0.00717396550145878900132623031613983867972709989686330482414 +/- 5.35e-60]",
+      "lower_rational": "1441014761561956605793903496035704104074267273800367514439/200867255532373784442745261542645325315275374222849104412672",
+      "upper_rational": "180126845195244575724237937004463013009283409225045939305/25108406941546723055343157692830665664409421777856138051584"
+    },
+    "transferred_violation_certified": true
+  },
+  "scope": "Two sufficient I0 D-wave endpoint-tail bounds only; the finite middle interval is NOT certified and contains a separately proved violation.",
+  "no_optimization_performed": true,
+  "no_all_energy_oracle_implemented": true,
+  "script_source_utf8": "\"\"\"Bounded symbolic and endpoint-tail checks for docs/37_finite_spin_energy.md.\n\nThis does not construct an all-energy oracle or run any optimization.\n\"\"\"\nimport argparse\nfrom collections import defaultdict\nfrom fractions import Fraction as F\nimport hashlib\nimport json\nimport math\nfrom pathlib import Path\nimport sys\n\nfrom smatrix_bootstrap.amplitudes import basis_labels\n\n\ndef main():\n    parser=argparse.ArgumentParser(description=__doc__)\n    parser.add_argument('--candidate',type=Path,default=Path('results/primal_barrier_N10_centering_physical_candidate.json'))\n    parser.add_argument('--output',type=Path,default=Path('results/finite_spin_representation_tail_sanity.json'))\n    parser.add_argument('--arb-path',default='/tmp/collocation_arb')\n    args=parser.parse_args();sys.path.insert(0,args.arb_path)\n    from flint import arb,ctx\n    import sympy as sp\n    from sympy.integrals.rationaltools import ratint\n    k,y=sp.symbols('k y',real=True);p=2*(1+k)/(1-k)\n    a=(2*(1-y*y)+2*p*y)/(1+y*y);b=(p*(1-y*y)-4*y)/(1+y*y)\n    zt=y*(2*y-p)/(2+p*y);zu=(y-k)*(y+1)/((1-y)*(1+k*y))\n    identities=[a*a+b*b-(p*p+4),(2-a)/(2+a)-zt,(2-b)/(2+b)-zu,a.subs(y,k)-p,b.subs(y,k)-2]\n    assert all(sp.factor(v)==0 for v in identities)\n    mu=1-2*(a*a-4)/(p*p-4)\n    integrand=sp.cancel((sp.legendre(2,mu)*2*a*b*zt*zu/((p*p-4)*(1+y*y))).subs(k,sp.Rational(1,2)))\n    primitive=ratint(integrand,y)\n    assert sp.cancel(sp.diff(primitive,y)-integrand)==0\n    trans={str(t):str(primitive.expand().coeff(t)) for t in primitive.atoms(sp.log,sp.atan)}\n    assert trans=={'log(y + 1/3)':'1/8','log(y - 1)':'-1/8','log(y + 2)':'-1/2','atan(y)':'-11/64'}\n    # Real log absolute values give the same primitive derivative on0<y<1/2.\n    # At the endpoints the resulting transcendental coefficients are\n    # -1/4 log(1-k)-3/8 log(1+k\u00b2)-11/64 atan(k), evaluated at k=1/2.\n    raw=args.candidate.read_bytes();report=json.loads(raw,parse_float=str);degree=report['config']['scattering']['degree']\n    coefficients=list(map(F,report['exact_physical_coefficients']))\n    assert len(coefficients)==len(basis_labels(degree))\n    rounded=list(map(F,report['solution']['coefficients']))\n    delta_bound=sum(abs(v-u)*(2 if kind in ('single_tu','double_s_tu') else 1)\n                    for v,u,(kind,_,_) in zip(coefficients,rounded,basis_labels(degree)))\n    amplitude=defaultdict(F)\n    for value,(kind,n,m) in zip(coefficients,basis_labels(degree)):\n        if kind=='constant':amplitude[0,0,0]+=value\n        elif kind=='single_s':amplitude[n,0,0]+=value\n        elif kind=='single_tu':amplitude[0,n,0]+=value;amplitude[0,0,n]+=value\n        elif kind=='double_s_tu':amplitude[n,m,0]+=value;amplitude[n,0,m]+=value\n        else:amplitude[0,n,m]+=value/2;amplitude[0,m,n]+=value/2\n    isospin=defaultdict(F)\n    for (i,j,l),value in amplitude.items():\n        isospin[i,j,l]+=3*value;isospin[j,i,l]+=value;isospin[l,j,i]+=value\n    shifted=defaultdict(F)\n    for powers,value in isospin.items():\n        for i in range(powers[0]+1):\n            for j in range(powers[1]+1):\n                for l in range(powers[2]+1):\n                    shifted[i,j,l]+=value*math.comb(powers[0],i)*math.comb(powers[1],j)*math.comb(powers[2],l)*(-1 if (sum(powers)-i-j-l)%2 else 1)\n    assert all(value==shifted[i,l,j] for (i,j,l),value in shifted.items())\n    B,D=shifted[0,1,0],shifted[1,1,0]\n    A2=sum(abs(shifted[0,j,0]) for j in range(2,degree+1))\n    M=sum(abs(shifted[i,j,0]) for i in range(1,degree+1) for j in range(1,degree+1))\n    M12=sum(abs(shifted[1,j,0]) for j in range(2,degree+1))\n    M2=sum(abs(shifted[i,j,0]) for i in range(2,degree+1) for j in range(1,degree+1))\n    C=sum(abs(shifted[0,j,l]) for j in range(1,degree+1) for l in range(1,degree+1))\n    h0=(sum(4*(isospin[i,1,0]+isospin[i,0,1])+2*(isospin[i,2,0]+isospin[i,0,2]) for i in range(degree+1))-2*isospin[0,1,1])/30720\n    h1=sum(i*(4*(isospin[i,1,0]+isospin[i,0,1])+2*(isospin[i,2,0]+isospin[i,0,2])) for i in range(degree+1))/30720\n    BA=sum(abs(value) for value in amplitude.values())\n    old=ctx.prec\n    try:\n        ctx.prec=192\n        def ball(value):\n            value=F(value);return arb(value.numerator)/value.denominator\n        def interval(value):return dict(ball=str(value),lower_rational=str(value.lower().fmpq()),upper_rational=str(value.upper().fmpq()))\n        pi=arb.pi();bb,dd=ball(B),ball(D);margin=dd-pi*bb*bb/5\n        R0=16*abs(bb)+32*ball(M)+8*pi*ball(C);R1=(64*abs(bb)+128*ball(A2))/3\n        I0=(64+arb(32)/5)*abs(dd)+128*ball(M2);I1=(256*abs(dd)+512*ball(M12))/3\n        lead=64*pi*margin/5;a0=8*bb/5;b0=32*dd/5\n        P=2**27;pp=arb(P);rP=(R0+R1*pp.log())/pp;iP=(I0+I1*pp.log())/pp\n        error=8*pi*b0/(pp*pp)+2*pi*iP+pi*pi*(2*abs(a0)*rP+rP*rP+((b0+iP)/pp)*((b0+iP)/pp))\n        radius=F(1,2);W=F(1,2**17)\n        MF=ball(5*BA*F(5,3)**degree/2)\n        MG=pi*MF/(ball(radius**4)*(4-ball(radius*radius)).sqrt())\n        threshold=pi*ball(h1)-2*MG*ball(W*W)/(ball(radius**3)*(1-ball(W*W/radius**2)))-ball(W**4)*MG*MG\n        finite_path=Path('results/primal_barrier_N10_centering_finite_unitarity_certificate.json')\n        finite_raw=finite_path.read_bytes();finite=json.loads(finite_raw)\n        assert finite['candidate_sha256']==hashlib.sha256(raw).hexdigest()\n        assert finite['isospin']==0 and finite['ell']==2\n        transferred=ball(F(finite['abs_S_minus_one']['lower_rational']))-5*pi*ball(delta_bound)/2\n        output=dict(candidate=str(args.candidate),candidate_sha256=hashlib.sha256(raw).hexdigest(),\n            coefficient_source='exact_physical_coefficients, exact rationals',degree=degree,isospin=0,ell=2,\n            rationalization_identities_exact=True,example_primitive_derivative_exact=True,\n            example_integrand=str(integrand),example_primitive=str(primitive),example_primitive_transcendental_coefficients=trans,\n            example_compact_transcendental_coefficients_at_k_half=dict(log_one_minus_k='-1/4',log_one_plus_k_squared='-3/8',atan_k='-11/64'),\n            endpoint_coefficients={name:str(v) for name,v in dict(B=B,D=D,A2=A2,M=M,M12=M12,M2=M2,C=C,h0=h0,h1=h1,BA=BA).items()},\n            fixed_spin_margin=interval(margin),large_energy=dict(P=str(P),s_start=str(P*P),\n                R0=interval(R0),R1=interval(R1),I0=interval(I0),I1=interval(I1),\n                normalized_margin_lower=interval(lead-error),tail_positive=bool(lead-error>0)),\n            threshold=dict(analytic_w_radius=str(radius),W=str(W),s_minus_four_end=str(W*W),\n                G_modulus_bound=interval(MG),R_over_w6_lower=interval(threshold),tail_positive=bool(threshold>0)),\n            finite_violation_transfer=dict(certificate=str(finite_path),certificate_sha256=hashlib.sha256(finite_raw).hexdigest(),\n                decimal_to_exact_amplitude_modulus_error_bound=str(delta_bound),\n                S_modulus_error_bound=interval(5*pi*ball(delta_bound)/2),\n                exact_rational_candidate_absS_minus_one_lower=interval(transferred),\n                transferred_violation_certified=bool(transferred>0)),\n            scope='Two sufficient I0 D-wave endpoint-tail bounds only; the finite middle interval is NOT certified and contains a separately proved violation.',\n            no_optimization_performed=True,no_all_energy_oracle_implemented=True,\n            script_source_utf8=Path(__file__).read_text())\n    finally:ctx.prec=old\n    args.output.write_text(json.dumps(output,indent=2)+'\\n')\n    print(json.dumps(dict(threshold=output['threshold']['tail_positive'],infinity=output['large_energy']['tail_positive'],\n        W=str(W),s_start=str(P*P),scope=output['scope'])))\n\n\nif __name__=='__main__':main()\n"
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "source": "src/smatrix_bootstrap/linear.py",
+    "snapshot": "results/runs/major_claims_20260912/probe_replay_before/linear.py.txt",
+    "sha256": "0930793ae7afd139ee2c41c535c183c5b876e1f494a2202d9dbc1cd5ff1d031b"
+  },
+  {
+    "source": "src/smatrix_bootstrap/probes.py",
+    "snapshot": "results/runs/major_claims_20260912/probe_replay_before/probes.py.txt",
+    "sha256": "142e2a13109cbea04356be175cd7125412c2c13c73d698379739ab78ff4510a7"
+  }
+]

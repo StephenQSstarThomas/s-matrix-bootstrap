@@ -1,0 +1,153 @@
+{
+  "name": "round2",
+  "coefficients": "results/runs/stage_B_strong_pure_M50_round2_20260907/coefficients.json",
+  "audit": "results/runs/stage_B_strong_pure_M50_round2_audit_20260907/report.json",
+  "initialization_only": true,
+  "support_optimality_certified": false,
+  "continuum_certified": false,
+  "targets": [
+    0.8258859259482103,
+    0.01204843905090736
+  ],
+  "M": 50,
+  "L": 14,
+  "bits": 832,
+  "angular_order": 40,
+  "infinity": "zero",
+  "mode": "pure",
+  "density_limit": 377500,
+  "actual_density_l4_float": 10.857856695999386,
+  "unitarity_status": "sampled_passed",
+  "physical_energy_count": 1261,
+  "samples_checked": 52962,
+  "original_additional_rows_covered": true,
+  "original_additional_row_count": 2209,
+  "analytic_tail_status": "necessary_conditions_passed",
+  "high_spin_status": "nonnegative_certified",
+  "high_spin_global_lower": [
+    "[6.20633269224617832051190632695e-5 +/- 7.21e-36]",
+    "[0.000325776985075261439556625074190 +/- 3.03e-34]",
+    "[5.69850159280143374129888993976e-10 +/- 2.31e-41]"
+  ],
+  "audit_seconds": 220.2980404989794,
+  "small_model_outer": {
+    "upper": 0.8977149356098775,
+    "enclosure": "[0.8977149356098774122559767 +/- 2.27e-26]",
+    "disk": 0.8977143994141642,
+    "chiral": 0.0,
+    "density_residual": 1.0214867918624011e-07,
+    "tail_support": 4.340470340551529e-07,
+    "scope": "stored finite H and supplied tail maps plus analytic global high-spin cone; angular quadrature error excluded",
+    "polynomial_dual_verification": {
+      "passed": true,
+      "channels": [
+        {
+          "isospin": 0,
+          "passed": true,
+          "positive_definite": true,
+          "status": "positive_definite",
+          "failed_pivot": null,
+          "minimum_pivot_lower": "[1.90487507374780122748083167168e-6 +/- 1.62e-36]",
+          "zero_pivots": 0
+        },
+        {
+          "isospin": 1,
+          "passed": true,
+          "positive_definite": true,
+          "status": "positive_definite",
+          "failed_pivot": null,
+          "minimum_pivot_lower": "[0.00409828519472094507877029703082 +/- 4.05e-33]",
+          "zero_pivots": 0
+        },
+        {
+          "isospin": 2,
+          "passed": true,
+          "positive_definite": true,
+          "status": "positive_definite",
+          "failed_pivot": null,
+          "minimum_pivot_lower": "[4.07979370374069487384711076024e-6 +/- 2.19e-36]",
+          "zero_pivots": 0
+        }
+      ],
+      "bits": 832,
+      "arithmetic": "Arb LDL on exact float64 moments",
+      "basis": "Chebyshev T_0,...,T_(M-1)",
+      "pairing": "sum nu_k * p_T,k; no factor two",
+      "scope": "Positive functional on degree <= M-1 polynomials nonnegative on [-1,1]"
+    },
+    "high_spin_necessary": {
+      "status": "nonnegative_certified",
+      "channels": [
+        {
+          "isospin": 0,
+          "coefficients": [
+            "[19.6043096301381749302351900657 +/- 6.37e-30]",
+            "[4.25591270315331018151874278438 +/- 2.04e-30]",
+            "[19.3704795685439903504327074751 +/- 3.87e-29]"
+          ],
+          "coefficient_basis": "U_0,...,U_(M-1)",
+          "global_lower": "[6.20633269224033913558486429303e-5 +/- 3.33e-35]",
+          "global_nonnegative_certified": true,
+          "roots_certified": true,
+          "root_error": null,
+          "candidate_minimum": {
+            "cosine": -0.054927817972877525,
+            "polynomial_value": "[6.20633269224033913558486429310e-5 +/- 1.55e-35]"
+          }
+        },
+        {
+          "isospin": 1,
+          "coefficients": [
+            "[0.302092914573223696840074332285 +/- 4.86e-32]",
+            "[0.268096625603896241763979853067 +/- 3.91e-31]",
+            "[0.0816239040028899299360674143988 +/- 3.83e-32]"
+          ],
+          "coefficient_basis": "U_0,...,U_(M-1)",
+          "global_lower": "[0.000325776985075091286561937391968 +/- 3.98e-34]",
+          "global_nonnegative_certified": true,
+          "roots_certified": true,
+          "root_error": null,
+          "candidate_minimum": {
+            "cosine": -0.8211339217320583,
+            "polynomial_value": "[0.000325776985075091286561937391968 +/- 1.43e-34]"
+          }
+        },
+        {
+          "isospin": 2,
+          "coefficients": [
+            "[7.14830261954879878906294068924 +/- 1.61e-31]",
+            "[3.18586229781571884264696285523 +/- 8.89e-32]",
+            "[6.77370251832555282712190368509 +/- 2.33e-30]"
+          ],
+          "coefficient_basis": "U_0,...,U_(M-1)",
+          "global_lower": "[5.69850116505238972952771858427e-10 +/- 3.87e-40]",
+          "global_nonnegative_certified": true,
+          "roots_certified": true,
+          "root_error": null,
+          "candidate_minimum": {
+            "cosine": -0.11758201254028713,
+            "polynomial_value": "[5.69850116505238972952772034138e-10 +/- 6.33e-41]"
+          }
+        }
+      ],
+      "violations": [],
+      "scope": "Leading large-spin necessary polynomials on [-1,1]; positivity is not full partial-wave unitarity."
+    },
+    "primal_feasible": true,
+    "lower": 0.8258859259482109,
+    "minimum_margin_enclosure": "[5.5245728115892663736e-147 +/- 3.08e-167]",
+    "density_norm": 3.39298246635585,
+    "targets": [
+      "[0.8258859259482109983398494 +/- 1.11e-27]",
+      "[0.01204843905090735801006544 +/- 1.53e-27]"
+    ],
+    "tail_margin_enclosures": [
+      "[60.860382144137179212 +/- 2.20e-19]",
+      "[25.791648405279829217 +/- 2.32e-19]",
+      "[0.098229838165168152930 +/- 4.09e-22]",
+      "[0.0040781444225185993907 +/- 4.59e-24]",
+      "[0.56008023946469345555 +/- 1.81e-21]"
+    ]
+  },
+  "scope": "Exact sine-mode embedding supplies a candidate only; physical values recomputed at M50 on the recorded 1261-energy L14 grid. Arb evaluation excludes angular quadrature error. No small-model optimality or continuum certificate is transferred."
+}

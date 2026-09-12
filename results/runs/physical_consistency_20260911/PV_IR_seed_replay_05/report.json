@@ -1,0 +1,242 @@
+{
+  "command": "dual",
+  "status": "candidate",
+  "artifacts": {},
+  "inputs": {
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907/report.json": {
+      "sha256": "05de7c34b29385da3fb3d8d355839daa582b893fc8218aeafffae7fa90ebf6a0"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_M50_L10_prepare_20260907/amplitude.npz": {
+      "sha256": "49ffd2d9e769bd56917ec6a74b752aa423e7563c2ed1d403ff6b94bf4707a0e5"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_parallel_003_20260907/coefficients.json": {
+      "sha256": "91f34da651b2ad8dc67fae744d704b3f174b6b15f042803eac88633fdbecd57b"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_parallel_003_20260907/candidate.npz": {
+      "sha256": "6b4c6c57716c3489d988788728dc6e830fbc7f2a400ecea0cc7be0bbdfabbf14"
+    },
+    "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B3_pv_M50_eps002_parallel_003_20260907/report.json": {
+      "sha256": "265d55a145c22b0f85302263ec0946ccf5aa9b459f8c517cd7e353527debef34"
+    }
+  },
+  "parameters": {
+    "command": "dual",
+    "comparison_manifest": null,
+    "region_summary": "results/runs/stage_B_delivery_20260907/regions/regions.json",
+    "primary_waves": false,
+    "profile_runs": [],
+    "profile_kind": "subthreshold",
+    "phase_reference": null,
+    "baseline_profile": null,
+    "selection_reference": null,
+    "support_runs": [],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/physical_consistency_20260911/PV_IR_seed_replay_05",
+    "density_limit": 377500.0,
+    "preparation": "results/runs/stage_B_pv_M50_L10_prepare_20260907",
+    "prescription": "pv-midpoint",
+    "source_registry": null,
+    "solver": "barrier",
+    "unitarity_scope": "sampled",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "current_preparation": null,
+    "joint_feasibility": false,
+    "fixed_amplitude": false,
+    "solver_seconds": 300.0,
+    "dual_seconds": 0.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "unit_newton_step": false,
+    "gap": 0.0001,
+    "nodes": 50,
+    "processes": 1,
+    "waves": 10,
+    "bits": 512,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "free",
+    "asymptotic_zeros": false,
+    "asymptotic_unitarity": false,
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": "results/runs/stage_B3_pv_M50_eps002_parallel_003_20260907/coefficients.json",
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "chiral_norm": "separate-l2",
+    "chiral_barrier_weight": null,
+    "objective": "projection",
+    "resume_objective": false,
+    "require_center": false,
+    "direction": [
+      0.0,
+      0.0
+    ],
+    "fixed_x": null,
+    "ray": false,
+    "seconds": 240.0,
+    "start_mu_provenance": {
+      "kind": "new_problem_default"
+    }
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "1"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Finite model; regions/phases require verification.",
+  "solver": {
+    "solver": "normal dual only",
+    "tail_weights": {
+      "kR": [],
+      "kI": []
+    },
+    "coefficient_input": {
+      "path": "results/runs/stage_B3_pv_M50_eps002_parallel_003_20260907/coefficients.json",
+      "key": "coefficients",
+      "format": "declared_JSON_C_flat",
+      "coordinates": "unsubtracted PV-midpoint C_flat",
+      "prescription": "pv-midpoint",
+      "sha256": "91f34da651b2ad8dc67fae744d704b3f174b6b15f042803eac88633fdbecd57b",
+      "legacy_data_only": false,
+      "target_prescription": "pv-midpoint",
+      "coordinate_transform": "identity",
+      "explicit_legacy_replay": false,
+      "old_feasibility_or_bound_transferred": false,
+      "purpose": "Numerical C only; recompute feasibility and support on the prepared target H"
+    },
+    "candidate_covectors": {
+      "path": "results/runs/stage_B3_pv_M50_eps002_parallel_003_20260907/candidate.npz",
+      "sha256": "6b4c6c57716c3489d988788728dc6e830fbc7f2a400ecea0cc7be0bbdfabbf14",
+      "input_prescription": "pv-midpoint",
+      "target_prescription": "pv-midpoint",
+      "scattering_rows": 1500,
+      "identity_source": "checkpoint tag",
+      "old_feasibility_or_bound_transferred": false,
+      "old_values_and_margins_used": false,
+      "purpose": "Arbitrary candidate covectors; fresh target-H residual and support calculation"
+    }
+  },
+  "support_direction": [
+    0.0,
+    0.0
+  ],
+  "fixed_x": null,
+  "normal_dual": {
+    "status": "not_requested",
+    "reason": "disabled"
+  },
+  "outer": {
+    "upper": 3393004.822405325,
+    "enclosure": "[3393004.822405324509835339 +/- 3.15e-19]",
+    "disk": 61.653891910375826,
+    "chiral": 0.39133775896975076,
+    "density_residual": 3392942.777175655,
+    "tail_support": 0.0,
+    "chiral_norm": "separate-l2",
+    "objective_kind": "target_plane",
+    "scope": "Exact saved float64 H; angular quadrature error excluded",
+    "primal_feasible": true,
+    "lower": -5e-324,
+    "minimum_margin_enclosure": "[4.0620297641501063464e-85 +/- 4.79e-106]",
+    "density_norm": 375485.7582631696,
+    "targets": [
+      "[0.07591083375216748460705505 +/- 3.65e-27]",
+      "[-0.004298756479815578982430918 +/- 4.05e-28]"
+    ],
+    "tail_margin_enclosures": [],
+    "asymptotic_margin_enclosures": [],
+    "endpoint_equalities": 0,
+    "asymptotic_inequalities": 0
+  },
+  "M": 50,
+  "L": 10,
+  "sampling_nodes": 50,
+  "scattering_samples": 1500,
+  "infinity": "free",
+  "mode": "chiral",
+  "chiral_tolerance": 0.002,
+  "chiral_norm": "separate-l2",
+  "density_limit": 377500.0,
+  "targets": [
+    0.07591083375219798,
+    -0.004298756479816646
+  ],
+  "objective": 0.0,
+  "minimum_scattering_margin": 4.0620297641501077e-85,
+  "chiral_norms": [
+    0.001999999462412827,
+    0.0002835714839927271
+  ],
+  "density_norm": 375485.7582631696,
+  "radial_shrink": 1.0,
+  "sampled_feasible": true,
+  "support_optimality_certified": false,
+  "global_high_spin_enforced": false,
+  "support_scope": "Exactly declared constraints",
+  "prescription": "pv-midpoint",
+  "coefficient_input_prescription": "pv-midpoint",
+  "unitarity_coverage": "All declared rows; no continuum certificate",
+  "analytic_tail_conditions_passed": null,
+  "analytic_tail_status": "not_applicable",
+  "analytic_tail_margins": [],
+  "high_spin_necessary": {
+    "status": "not_applicable",
+    "violations": []
+  },
+  "high_spin_cut_count": 0,
+  "tail_conditions_applied": false,
+  "operator_scope": "Saved float64 operator",
+  "elapsed_seconds": 4.9440749660134315,
+  "core_sources": {
+    "__init__.py": "eab9d89f9c5aec186369fb48cef62f20db87a20a16512f8c8a6e7349a2a4473a",
+    "analysis.py": "7c858a1c763d7543dc7dbd167c495bcb8a156e69b7cf5e08de4e80c8153395ec",
+    "analytic.py": "f7b6ffb9bd6b520f00dec8653ff0864da6fe46eaa0ed5814bef7bd3c5c22a727",
+    "basis.py": "5eda7c08a5cea679958b47980c9972ada51358f6352698d8db10db91bd5abec3",
+    "certificates.py": "aedcd1b65d0e1908c84e129e570a119214994c2b38d4e325b543beb9b27a9ad3",
+    "conic.py": "750741dbe9b45584c24176cbdeb2cfafc585361d5b23cff5d79a501a247abf01",
+    "endpoints.py": "6b4dacd438e750ca61f285744cc0a152d16e3090581e22c77962f23b867005db",
+    "gauge.py": "9ef8f15e028e5de19dd5571892b392038ff3fd096885c11f8b8d7334ccdfe580",
+    "imaginary.py": "9ad338b253d2941310401d245a24cba4ab546926e5c9c630f80c7bd647c1828c",
+    "io.py": "328af2216f66e6782df6aae1ab273eb6d43c7c7a938d9eb9c5603a3630e2e143",
+    "ir.py": "bd6fb3d54b523cbf266da65f677e9364c1393aaae0f29f114bd315e60c6e5c17",
+    "kernels.py": "790ebcdba291c80f17c4909a31ddf77ad6373748c2af41c7ce1a0c28b309172a",
+    "linear.py": "f0b21a627cae43bdf768fdfa5562e971544b33179c8b10caa464993817e5da6f",
+    "model.py": "be73b782a40652cf099e4f5ed480f56cb4d00e0f86aaddfe9698ccf83ea3b975",
+    "operators.py": "74cb905a1e9e881e3f3e5f7843d44e7e096e8c57e672f8f7abdbae336b78fc4e",
+    "quadrature.py": "7ec2a6b9336cd6035db06fdf8a028368ccd22e4d106cc5e16900c878b8d40fad",
+    "quotient.py": "32b669bec9e0b9af1c21bf464f2806411cdca87fffa6ff0593d7bb77dd3428e9",
+    "run.py": "7785590055bdd8d8bec61aecae7426d521017886bf989e06212adf9bd1890174",
+    "sampling.py": "1721242b79f55cc44cfd6667cd21f49e6a51c888263e4ca623b97383a340f4c9",
+    "scattering.py": "23f5b856a9e14d19b1f085f52aac4508e0bdb5bd3ce166ee2621a3bc779621b7",
+    "spectra.py": "10b7bc464cb216b00674c95fa4d1218543a7f8737a0707b20ea7e2b55d53de95"
+  },
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 240.0,
+  "supervisor_seconds": 5.872178781079128
+}

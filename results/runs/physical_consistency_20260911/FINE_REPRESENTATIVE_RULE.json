@@ -1,0 +1,10 @@
+{
+  "scattering_samples": 3582,
+  "tip_source": "fine_tip_support_02/report.json",
+  "tip_x": 0.09317173379302376,
+  "xref": 0.07332139057293466,
+  "mid_x": 0.08324656218297921,
+  "rule": "Same +x tip and upper fixed-x ref/mid as the previous model; no physical input changes",
+  "new_phase_evaluations_started": false,
+  "selection_uses_phase_data": false
+}

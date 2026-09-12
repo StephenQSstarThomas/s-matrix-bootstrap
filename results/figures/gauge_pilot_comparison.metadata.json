@@ -1,0 +1,19 @@
+{
+  "pilot_point": [
+    0.07131338189585197,
+    -0.004588028150358744
+  ],
+  "pilot_status": "optimal_inaccurate",
+  "scope": "Graphical comparison of an unverified pilot with three distinct published selections; not a matched-boundary-amplitude comparison.",
+  "source_sha256": {
+    "results/gauge_pilot_N6_F20_raw_physical_gram_scaled.json": "f4fa430d5ba572eea2be26c4e34454f0346784c8300fcfaa4893130de3a2937d",
+    "references/figure10_s0_phases.csv": "cf00529547f064a2d8c3d7d2dd9efa76a16ea68821365b4f04a4b68fdd644ea9",
+    "references/figure9_p1_phases.csv": "66d946d57787f26ec7db4c850eedd9b801eedfd935f4c65d55c090bc43c2be90",
+    "references/figure10_s2_phases.csv": "10bbe92d5ee7ae2541b7bd9a1156913e7530e7e2df84abff5fbaf4e526c5a251",
+    "/home/shiqiu/s-matrix-bootstrap/scripts/plot_gauge_pilot.py": "3a7567e18b7eeebbbd603720ee53441a72f960ccb8e3937ca130526b2eec383d"
+  },
+  "output_sha256": {
+    "results/figures/gauge_pilot_comparison.pdf": "990ef47487d773a5ccdbb2406360165859562dfda9db17baf3be57858845b628",
+    "results/figures/gauge_pilot_comparison.png": "ae701c7f80cca017f4d34049a114be008dee0b08dbe6bc0c2a121ddfa16eae42"
+  }
+}

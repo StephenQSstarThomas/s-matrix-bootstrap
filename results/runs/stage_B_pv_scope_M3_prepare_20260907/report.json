@@ -1,0 +1,278 @@
+{
+  "command": "prepare",
+  "status": "prepared",
+  "artifacts": {},
+  "inputs": {},
+  "parameters": {
+    "command": "prepare",
+    "support_runs": [],
+    "reference_directory": "results/runs/stage_B_reference_20260906",
+    "output": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_scope_M3_prepare_20260907",
+    "density_limit": null,
+    "preparation": "results/runs/stage_A_M50_L10_20260906",
+    "prescription": "pv-midpoint",
+    "solver": "barrier",
+    "unitarity_scope": "sampled",
+    "native_backend": "auto",
+    "native_coordinates": "unsubtracted",
+    "constraint_generation": false,
+    "working_state": null,
+    "density_cone": "soc",
+    "solver_seconds": 300.0,
+    "dual_seconds": 120.0,
+    "dual_method": "highs-ds",
+    "additional_constraints": null,
+    "start_mu": 0.01,
+    "gap": 0.0001,
+    "nodes": 3,
+    "processes": 1,
+    "waves": 2,
+    "bits": 256,
+    "angular_order": 24,
+    "sampling_factor": 1,
+    "unitarity_energies": [],
+    "subtracted": false,
+    "infinity": "free",
+    "moment_source": "printed",
+    "sr_error": "raw-absolute",
+    "fesr_cutoff": "hard-midpoint",
+    "mq_rule": "arithmetic-mean",
+    "coefficients": null,
+    "coefficient_key": "coefficients",
+    "interior_coefficients": null,
+    "energies": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      4.0,
+      9.0,
+      25.0
+    ],
+    "scan_nodes": 0,
+    "mode": "chiral",
+    "chiral_tolerance": 0.002,
+    "direction": [
+      1.0,
+      0.0
+    ],
+    "seconds": 60.0
+  },
+  "environment": {
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "flint": "0.9.0",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "blas_threads": "8"
+  },
+  "unitarity_scope": "sampled",
+  "physical_unitarity_accepted": false,
+  "scope": "Declared finite prescription; published regions/phases unverified.",
+  "prescription": "pv-midpoint",
+  "amplitude_model": {
+    "prescription": "pv-midpoint",
+    "M": 3,
+    "L": 2,
+    "bits": 256,
+    "coordinate_system": "unsubtracted PV-midpoint C_flat",
+    "coefficient_count": 22,
+    "physical_samples": 18,
+    "nyquist_retained": null,
+    "infinity_equality_imposed": false,
+    "density_limit_imposed": false,
+    "quadrature_order_per_panel": null,
+    "arithmetic": "Arb",
+    "integral_enclosures": false,
+    "authors_implementation_recovered": false,
+    "analytic_function_family_defined": false,
+    "nu0": 0,
+    "angular_projection": "analytic exterior Legendre Q",
+    "spectral_quadrature": "midpoint in phi; native PV cot map and nodal jump",
+    "physical_evaluation": "native nodes only; no off-grid continuation specified",
+    "infinity_row_meaning": "unsubtracted constant coordinate; not a certified high-energy limit",
+    "sampling_nodes": 3
+  },
+  "restrictions": {
+    "infinity": "free",
+    "density_limit": 1500,
+    "asymptotic_necessary_conditions": false,
+    "density_rule": "100*number_of_double_densities",
+    "density_norm": "ordinary l4 of actual rho1 matrix and rho2 upper triangle; off C_flat/2",
+    "chiral_norm": "two separate l2 four-vectors",
+    "chiral_tolerance": 0.002
+  },
+  "operator": {
+    "path": "/home/shiqiu/s-matrix-bootstrap/results/runs/stage_B_pv_scope_M3_prepare_20260907/amplitude.npz",
+    "shape": [
+      47,
+      22
+    ],
+    "storage": "float64 Arb PV-midpoint discrete rows",
+    "rows": "Re f, Im f, chi01[4], chi21[4], T0_unsub diagnostic, f00(3), f11(3)"
+  },
+  "uv": {
+    "config": {
+      "moment_source": "printed",
+      "sr_error": "raw-absolute",
+      "cutoff": "hard-midpoint",
+      "mq_rule": "arithmetic-mean",
+      "pion_mass_gev": 0.14,
+      "matching_energy_gev": 1.2,
+      "up_mass_gev": 0.004,
+      "down_mass_gev": 0.0073,
+      "alpha_s": 0.4,
+      "gluon_condensate_gev4": 0.023,
+      "scalar_condensate_gev4": -0.0001,
+      "sr_tolerance": 0.002,
+      "ff_tolerance": 6e-05
+    },
+    "s0": 73.46938775510203,
+    "nodes": [
+      4.287187078897963,
+      7.999999999999998,
+      59.71281292110194
+    ],
+    "channels": [
+      "S0",
+      "S0",
+      "P1",
+      "P1"
+    ],
+    "powers": [
+      0,
+      1,
+      -1,
+      0
+    ],
+    "spectral_density_gev_powers": {
+      "S0": 4,
+      "P1": 2
+    },
+    "raw_moment_gev_powers": [
+      6,
+      8,
+      2,
+      4
+    ],
+    "form_factor_gev_powers": {
+      "S0": 2,
+      "P1": 0
+    },
+    "units": "divide physical GeV quantities by m_pi to the stated power",
+    "targets_normalized": [
+      4.4186999999999997e-07,
+      2.8201399999999997e-07,
+      5.75484e-05,
+      2.6994799999999998e-05
+    ],
+    "targets_raw": [
+      0.0023851042065805906,
+      0.11183813873471082,
+      0.004228045714285714,
+      0.1457112069970845
+    ],
+    "weights_raw": [
+      [
+        1.202966423029005,
+        8.377580409572777,
+        233.36928504500833
+      ],
+      [
+        5.157342105158051,
+        67.0206432765822,
+        13935.136459423895
+      ],
+      [
+        0.2805957381589776,
+        1.0471975511965974,
+        3.90819446662741
+      ],
+      [
+        1.202966423029005,
+        8.377580409572777,
+        233.36928504500833
+      ]
+    ],
+    "weights_normalized": [
+      [
+        0.00022286438130344455,
+        0.001552050197791994,
+        0.04323454115687231
+      ],
+      [
+        1.3004889860462529e-05,
+        0.00016900102153735044,
+        0.035139207589908315
+      ],
+      [
+        0.0038192197693860844,
+        0.014253522224620355,
+        0.05319486912909531
+      ],
+      [
+        0.00022286438130344455,
+        0.001552050197791994,
+        0.04323454115687231
+      ]
+    ],
+    "tolerances_raw": [
+      0.002,
+      0.002,
+      0.002,
+      0.002
+    ],
+    "tolerances_normalized": [
+      3.7052469135802477e-07,
+      5.043252743484227e-09,
+      2.7222222222222226e-05,
+      3.7052469135802477e-07
+    ],
+    "error_grouping": "four independent absolute scalar residuals",
+    "cell_phi_widths": [
+      1.0471975511965976,
+      1.0471975511965976,
+      1.0471975511965976
+    ],
+    "high_energy_mask": [
+      false,
+      false,
+      false
+    ],
+    "form_factors_at_zero": [
+      1.0,
+      1.0
+    ],
+    "mq_squared": 0.0016286989795918367,
+    "rescaled_ff_caps_squared": [
+      1.954438775510204e-07,
+      3e-05
+    ],
+    "ff_cap_variable": "abs(mathcal F)^2 = k_squared * abs(F)^2",
+    "finite_prescription_is_conditional": true
+  },
+  "quadrature_comparison": [],
+  "quadrature_comparison_is_certificate": false,
+  "angular_order_comparison_applicable": false,
+  "optimization_performed": false,
+  "stage_A_scope": "Conditional model; author implementation unresolved",
+  "elapsed_seconds": 0.039163084933534265,
+  "core_sources": {
+    "__init__.py": "6089ac8c323923c8ae08fd484b4a086283cb4b0b0e980a702719312e70988703",
+    "analysis.py": "0a1018b1806e7139e0495ef74f58bda84a288e4964eb8e9c8ea5dba1f143529a",
+    "imaginary.py": "72104fc146f2e185c99f098d6801faa522a30a466a88ed16f105735521152afc",
+    "io.py": "d0104fff710c23132e6dedc9ece7a4a5527776421a4c1afff4a09d1ef8eb61ac",
+    "kernels.py": "46df7b2c237f240d9f9ae2c3f6407920614ed647c1b88f350c36d95b0a144a12",
+    "linear.py": "8b8a7d212e6549b7ec44b5089326add17b228b7a43bc8f1b3cb837c02eefa82b",
+    "model.py": "74d9fb96db5c6bdaa0dca194557ba1b9f26c1ace7d0b8ae2ed95a17a97a71c45",
+    "operators.py": "37e9d85a22a76352ca2d5d861bea8c3d47b7936ea0b14a39b5204a6b2630a83f",
+    "quotient.py": "42bd19fcc1ab6281c3ab8a3209d4b650f838289024397637a89cf09131718dca",
+    "run.py": "85fd87b53e675cf9b258fae59e439f40e8d61c3c43e1a1d26f4cc2b10695e08e"
+  },
+  "source_changes": [],
+  "input_changes": [],
+  "exit_code": 0,
+  "timeout": false,
+  "cap_seconds": 60.0,
+  "supervisor_seconds": 0.3176886080764234
+}

@@ -1,0 +1,56 @@
+{
+  "status": "sizes_only_no_products",
+  "matrices": {
+    "R0": {
+      "path": "/tmp/source_imaginary_rank_stage/minor_residual_1024_2048_attempt01/R0_exact_dyadic.json.gz",
+      "shape": [
+        450,
+        450
+      ],
+      "midpoint": {
+        "nonzero_entries": 202500,
+        "zero_entries": 0,
+        "common_exponent": -1023,
+        "maximum_stored_exponent": -926,
+        "exponent_spread": 97,
+        "maximum_integer_bits_after_uniform_lift": 1116,
+        "dense_integer_payload_upper_bytes": 28350000
+      },
+      "radius": {
+        "nonzero_entries": 0,
+        "zero_entries": 202500,
+        "common_exponent": 0,
+        "maximum_stored_exponent": 0,
+        "exponent_spread": 0,
+        "maximum_integer_bits_after_uniform_lift": 0,
+        "dense_integer_payload_upper_bytes": 0
+      }
+    },
+    "B4096": {
+      "path": "/tmp/source_imaginary_rank_stage/minor_4096_attempt01/selected_minor_B.json.gz",
+      "shape": [
+        450,
+        450
+      ],
+      "midpoint": {
+        "nonzero_entries": 202500,
+        "zero_entries": 0,
+        "common_exponent": -4517,
+        "maximum_stored_exponent": -4080,
+        "exponent_spread": 437,
+        "maximum_integer_bits_after_uniform_lift": 4517,
+        "dense_integer_payload_upper_bytes": 114412500
+      },
+      "radius": {
+        "nonzero_entries": 202500,
+        "zero_entries": 0,
+        "common_exponent": -3986,
+        "maximum_stored_exponent": -3224,
+        "exponent_spread": 762,
+        "maximum_integer_bits_after_uniform_lift": 779,
+        "dense_integer_payload_upper_bytes": 19845000
+      }
+    }
+  },
+  "elapsed_seconds": 3.7867998930159956
+}
