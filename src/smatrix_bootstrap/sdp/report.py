@@ -224,6 +224,26 @@ def render(root: str, verdicts: dict | None = None) -> str:
         except Exception as exc:
             A(f"(C1 表未能生成: {exc})")
     A(f"\n## 7. 能量轴口径\n\n- {ENERGY_AXIS_NOTE}\n")
+    for lad, title in (("ladder_pure.json", "纯幺正 max f00(3)"),
+                       ("ladder_chiral.json", "手征 (eps=2e-3, chi-b) max f00(3)")):
+        lp = os.path.join(root, lad)
+        if not os.path.exists(lp):
+            continue
+        with open(lp) as fh:
+            L_ = json.load(fh)
+        A("\n## 6b. 分辨率阶梯 — %s（对照 %s = %s）\n"
+          % (title, L_["paper_reference"], L_["paper_value"]))
+        A("| M | L | 状态 | 认证 | 目标值 | 相对论文 | 施加圆盘 | 轮数 | \\|\\|c\\|\\|_inf | 秒 |")
+        A("|---|---|---|---|---|---|---|---|---|---|")
+        for r in L_["rows"]:
+            A("| {M} | {L} | {st} | {c} | {o} | {rel} | {d} | {n} | {cn} | {s} |".format(
+                M=r["M"], L=r["L"], st=r["status"], c=r.get("certified", "—"),
+                o="—" if r.get("objective") is None else "%.6f" % r["objective"],
+                rel="—" if r.get("rel_to_paper") is None else "%+.2f%%" % (100 * r["rel_to_paper"]),
+                d=r.get("n_disks_imposed", "—"), n=r["rounds"],
+                cn="—" if r.get("c_norm_inf") is None else "%.2e" % r["c_norm_inf"],
+                s="%.0f" % r["seconds"]))
+        A("")
     st_path = os.path.join(root, "solver_study_M20.json")
     if os.path.exists(st_path):
         with open(st_path) as fh:

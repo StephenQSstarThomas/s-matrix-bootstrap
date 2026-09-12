@@ -64,9 +64,10 @@ def stage_jobs(stage: str, root: str, args) -> list[tuple[str, list[str]]]:
                                     "--x-tip", str(args.x_tip),
                                     "--out", f"{root}/points/{chi}_{sr}"]))
     elif stage == "fig11":
+        base = [x for x in BASE if x not in ("--M", "--L", str(args.M), str(args.L))]
         for M, L in ((50, 8), (50, 10), (50, 12), (45, 10), (60, 10)):
             out.append((f"ml_{M}_{L}",
-                        BASE + ["--chiral", "--uv", "--M", str(M), "--L", str(L),
+                        base + ["--chiral", "--uv", "--M", str(M), "--L", str(L),
                                 "--points", "tip", "ref", "mid",
                                 "--x-tip", str(args.x_tip),
                                 "--out", f"{root}/fig11/M{M}L{L}"]))
@@ -82,6 +83,8 @@ def main() -> int:
     p.add_argument("--jobs", type=int, default=8)
     p.add_argument("--ndir", type=int, default=24)
     p.add_argument("--threads", type=int, default=8)
+    p.add_argument("--M", type=int, default=50)
+    p.add_argument("--L", type=int, default=10)
     p.add_argument("--x-tip", type=float, default=0.0826)
     p.add_argument("--dry-run", action="store_true")
     a = p.parse_args()
@@ -93,6 +96,8 @@ def main() -> int:
     for k in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS",
               "RAYON_NUM_THREADS"):
         env[k] = str(a.threads)
+    global BASE
+    BASE = BASE + ["--M", str(a.M), "--L", str(a.L)]
     jobs = stage_jobs(a.stage, a.root, a)
     print(f"{len(jobs)} worker(s), {a.threads} BLAS threads each")
     if a.dry_run:
