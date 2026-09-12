@@ -63,6 +63,22 @@ def main() -> int:
     rows.append(one(a.M, a.L, "no B, exact basis reduction",
                     B=None, reduce_basis=True, basis_tol=1e-12))
     rows.append(one(a.M, a.L, "no B, full space", B=None))
+    # the certified reference: constraint generation over the unitarity disks
+    from smatrix_bootstrap.sdp.runner import solve_generated
+    sp = ModelSpec(M=a.M, L=a.L, cone_scaling="rownorm", B=3.775e5, B_norm="l4")
+    res, model, rounds = solve_generated(sp, (1.0, 0.0), max_iter=1000, time_limit=900.0)
+    cert = {"tag": "B=377500 l4, CONSTRAINT GENERATION (certified)",
+            "status": res["status"], "seconds": res["seconds"],
+            "iterations": res.get("iterations"), "B": 3.775e5, "B_norm": "l4",
+            "reduce_basis": False, "certified": res.get("certified"),
+            "rounds": len(rounds), "n_disks": res.get("n_disks_imposed"),
+            "relaxation_upper_bounds": [r.get("objective") for r in rounds]}
+    if res.get("f00_3") is not None:
+        v = full_report(model, model.solution())
+        cert.update({"f00_3": res["f00_3"], "feasible": v["unitarity"]["feasible"],
+                     "max_rel_violation": v["unitarity"]["max_relative_violation_active"],
+                     "rho_l4": v["rho_l4"], "rho_l2": v["rho_l2"]})
+    rows.append(cert)
 
     fine = [r for r in rows if r.get("feasible")]
     best = max(fine, key=lambda r: r["f00_3"]) if fine else None
@@ -72,7 +88,13 @@ def main() -> int:
           and r["tag"].startswith("B=")]
     l4.sort(key=lambda r: r["B"])
     mono = all(l4[i]["f00_3"] <= l4[i + 1]["f00_3"] + 1e-9 for i in range(len(l4) - 1))
+    plain = [r for r in rows if r.get("B") == 3.775e5 and r.get("B_norm") == "l4"
+             and r.get("f00_3") is not None and not r.get("certified")]
     doc = {"M": a.M, "L": a.L, "rows": rows,
+           "certified_value": cert.get("f00_3"),
+           "plain_solve_error_vs_certified": (
+               None if not plain or cert.get("f00_3") is None
+               else abs(plain[0]["f00_3"] / cert["f00_3"] - 1.0)),
            "monotonicity_series": [{"B": r["B"], "f00_3": r["f00_3"]} for r in l4],
            "best_verified_feasible": best,
            "objective_is_monotone_in_B": mono,

@@ -87,7 +87,11 @@ def main() -> int:
     a = p.parse_args()
 
     env = dict(os.environ)
-    for k in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
+    # Clarabel's default linear-algebra backend (faer) threads with rayon, which
+    # ignores OMP_NUM_THREADS; without RAYON_NUM_THREADS each worker grabs the
+    # whole machine and the workers thrash each other.
+    for k in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS",
+              "RAYON_NUM_THREADS"):
         env[k] = str(a.threads)
     jobs = stage_jobs(a.stage, a.root, a)
     print(f"{len(jobs)} worker(s), {a.threads} BLAS threads each")
