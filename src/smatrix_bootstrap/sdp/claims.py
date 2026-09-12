@@ -105,6 +105,13 @@ def c2(records, eps_ladder: dict | None = None) -> dict:
         q = boundary_points(rs, want="dir")
         if len(q):
             ends[eps] = float(q[:, 0].max())
+    # (2.15): the sliver lies along f11(3) = -f00(3)/15.  Fit the slope through
+    # the origin over the verified points of the main tolerance.
+    if len(pts) >= 4:
+        sl = float((pts[:, 0] @ pts[:, 1]) / (pts[:, 0] @ pts[:, 0]))
+        rows.append({"quantity": "slope f11/f00 of the sliver", "ours": sl,
+                     "paper": -1.0 / 15.0, "rel_diff": sl / (-1.0 / 15.0) - 1.0,
+                     "pass": abs(sl / (-1.0 / 15.0) - 1) <= 0.10})
     w = section_width(records, chiral=True, uv=False, eps=C.EPS_CHI_MAIN)
     if w:
         rows.append({"quantity": "x_ref section width", "ours": w["width"],

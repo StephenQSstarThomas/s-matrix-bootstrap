@@ -1,13 +1,13 @@
 # REPORT_SDP_ZH — He–Kruczenski 2309.12402v3, SDP 直解路线
 
-生成时间 (UTC): 2026-09-12T09:58:28.959210+00:00
+生成时间 (UTC): 2026-09-12T10:00:27.218017+00:00
 
 结果根目录: `/playpen1/shiqiu/sdp-work/runs/sdp_reproduction_20260912`
 
 
 ## 0. 一句话结论
 
-8 条 claim 中：**2 条复现、1 条不通过、5 条未运行**。
+8 条 claim 中：**1 条复现、1 条不通过、6 条未运行**。
 未运行的原因不是论文，而是本轮的求解阶段——M=50（论文分辨率）在所有试过的配置下都不收敛，UV 扇区（Gram + FESR + 形状因子渐近同时开启）也没能给出一个认证点。按任务书第 8 节，这属于结论 (c)：技术性失败，附完整诊断（见 §8、§9、§11）。已复现的部分是在 M<=40 上**认证**的（约束生成：松弛极值 + 返回点满足全部 3LM 个圆盘），并附分辨率阶梯说明小 M 的数字为何可引用。
 
 
@@ -16,7 +16,7 @@
 | # | claim | 判定 | 依据 |
 |---|---|---|---|
 | C1 | Pure-unitarity region shape (Fig. 3) | not run | 0/24 verified-feasible directions; the +x tip alone, from the resolution ladder: M=20 1.9279 (-13.7%), M=25 2.0061 (-10.2%), M=30 2.0661 (-7.5%), M=35 2.1140 (-5.3%) |
-| C2 | Chiral constraints collapse the region onto f11 = -f00/15 (Fig. 4) | pass | +x end 0.082598 vs 0.082573 (+0.03%) at M=[30]; eps ladder {0.006: 0.160924, 0.004: 0.125504, 0.002: 0.082598} |
+| C2 | Chiral constraints collapse the region onto f11 = -f00/15 (Fig. 4) | not run | no verified-feasible eps=2e-3 chi-b +x end |
 | C3 | Subthreshold partial waves near-linear, S0 chiral zero moves (Fig. 5) | pass | eps=0.002: S0 zero 0.42585550990952303 |
 | C4 | Chiral only: S0/S2 agree with experiment, P1 has no rho (Fig. 7) | FAIL | tip: d00(0.9)=68.4, d11(1.2)=126.3; ref: d00(0.9)=84.7, d11(1.2)=27.0; mid: d00(0.9)=32.8, d11(1.2)=131.0 |
 | C5 | FESR+FF shrink the upper boundary, not the lower (Fig. 8) | not run | need both chiral and chiral+UV sweeps |
@@ -26,14 +26,14 @@
 
 ## 2. 求解器统计
 
-- 求解次数: 50
-- 状态分布: {'optimal': 46, 'SolverError': 4}
-- 迭代中位数: 59.0, 单次秒数中位数: 40.477346658706665
-- 机器时间合计: 2016 s
+- 求解次数: 53
+- 状态分布: {'optimal': 49, 'SolverError': 4}
+- 迭代中位数: 60.0, 单次秒数中位数: 37.74271273612976
+- 机器时间合计: 2091 s
 
 ## 3. 密度正则化 B 的活跃性
 
-- 带 B 的求解: 46；**任一活跃: False**
+- 带 B 的求解: 49；**任一活跃: False**
 
 | job | B | 范数 | \|\|rho\|\|_2 | \|\|rho\|\|_4 | 活跃 |
 |---|---|---|---|---|---|
@@ -46,6 +46,7 @@
 | dir009 | 3.775e+05 | l4 | 1.110e+04 | 3.473e+03 | False |
 | dir000 | 3.775e+05 | l4 | 2.850e+04 | 9.813e+03 | False |
 | dir001 | 3.775e+05 | l4 | 3.001e+04 | 1.032e+04 | False |
+| dir002 | 3.775e+05 | l4 | 2.790e+04 | 8.919e+03 | False |
 | dir003 | 3.775e+05 | l4 | 6.929e+04 | 1.968e+04 | False |
 | dir004 | 3.775e+05 | l4 | 4.223e+03 | 1.314e+03 | False |
 | dir005 | 3.775e+05 | l4 | 8.727e+02 | 2.327e+02 | False |
@@ -54,14 +55,13 @@
 | dir008 | 3.775e+05 | l4 | 1.189e+04 | 4.028e+03 | False |
 | dir009 | 3.775e+05 | l4 | 4.804e+03 | 1.172e+03 | False |
 | dir010 | 3.775e+05 | l4 | 2.810e+04 | 9.297e+03 | False |
-| dir003 | 3.775e+05 | l4 | 1.642e+03 | 5.415e+02 | False |
-| dir006 | 3.775e+05 | l4 | 1.046e+03 | 2.741e+02 | False |
-| dir009 | 3.775e+05 | l4 | 1.707e+03 | 4.944e+02 | False |
+| dir011 | 3.775e+05 | l4 | 3.602e+03 | 9.280e+02 | False |
+| dir000 | 3.775e+05 | l4 | 2.033e+03 | 6.699e+02 | False |
 
 ## 4. 幺正性事后复验（未经任何重缩放的原式）
 
-- 通过事后可行性检验的解: 25 个，其中最大 `max eta - 1` = 1.015e-09，位置: {'job': 'dir002', 'file': 'fig4/eps6e-03_chi-b/000/report.json', 'wave': {'isospin': 2, 'ell': 0, 'node': 18, 's': 12.468205094073321}, 'certified': True}
-- 未通过的解: 21 个（约束生成中途失败时返回的最后一个可解迭代，标记为未认证；所有 claim 判定都把它们过滤掉），其中最大 `max eta - 1` = 3.208e-02，位置: {'job': 'dir003', 'file': 'fig4/eps2e-03_chi-b/003/report.json', 'wave': {'isospin': 0, 'ell': 2, 'node': 4, 's': 4.230551242245793}, 'certified': False}
+- 通过事后可行性检验的解: 26 个，其中最大 `max eta - 1` = 1.015e-09，位置: {'job': 'dir002', 'file': 'fig4/eps6e-03_chi-b/000/report.json', 'wave': {'isospin': 2, 'ell': 0, 'node': 18, 's': 12.468205094073321}, 'certified': True}
+- 未通过的解: 23 个（约束生成中途失败时返回的最后一个可解迭代，标记为未认证；所有 claim 判定都把它们过滤掉），其中最大 `max eta - 1` = 3.208e-02，位置: {'job': 'dir003', 'file': 'fig4/eps2e-03_chi-b/003/report.json', 'wave': {'isospin': 0, 'ell': 2, 'node': 4, 's': 4.230551242245793}, 'certified': False}
 
 ## 5. FESR 目标值独立重算 (5a.9)
 
@@ -107,9 +107,7 @@ _reconstructed from the ladder log of the same script; ||c||_inf and rho_l4 are 
 
 | eps^chi | 状态 | 认证 | 事后可行 | +x 端 | 施加圆盘 | 轮数 | 秒 |
 |---|---|---|---|---|---|---|---|
-| 6.0e-03 | optimal | True | True | 0.160924 | 707 | 7 | 118 |
-| 4.0e-03 | optimal | True | True | 0.125504 | 720 | 8 | 176 |
-| 2.0e-03 | optimal | True | True | 0.082598 | 717 | 7 | 74 |
+| 6.0e-03 | optimal | True | True | 0.161054 | 709 | 12 | 618 |
 
 论文 Fig.8 手征边界（eps=2e-3）的 +x 端数字化值 = 0.082573
 
