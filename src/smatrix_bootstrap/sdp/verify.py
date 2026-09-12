@@ -25,17 +25,20 @@ def unitarity_report(ops, c: np.ndarray) -> dict:
     """Worst violation of |h|^2 <= 2 Im h over all (I, ell, i), unrescaled."""
     hre, him = ops.h_re @ c, ops.h_im @ c
     margin = 2.0 * him - (hre ** 2 + him ** 2)
-    scale = np.maximum(ops.nu_measured * np.abs(c).sum(), 1e-300)
+    # The primary metric is eta = |S| <= 1 of (2.12): it is scale free, so it is
+    # not swamped by the centrifugally suppressed rows where both |h|^2 and
+    # Im h are ~1e-40 and the margin is meaninglessly small either way.
+    eta = np.sqrt(hre ** 2 + (him - 1.0) ** 2)
+    scale = np.maximum(np.maximum(hre ** 2 + him ** 2, 2.0 * np.abs(him)), 1e-300)
     rel = margin / scale
-    k = int(np.argmin(margin))
-    kr = int(np.argmin(rel))
     nw = len(ops.index)
-    return {"min_margin": float(margin.min()),
-            "min_margin_wave": _label(ops, k, nw),
+    return {"max_eta_minus_1": float(eta.max() - 1.0),
+            "max_eta_wave": _label(ops, int(np.argmax(eta)), nw),
+            "n_rows_eta_above_1p1e_minus_8": int((eta > 1 + 1e-8).sum()),
+            "min_margin": float(margin.min()),
+            "min_margin_wave": _label(ops, int(np.argmin(margin)), nw),
             "min_margin_relative": float(rel.min()),
-            "min_margin_relative_wave": _label(ops, kr, nw),
-            "max_abs_S_minus_1": float(np.max(np.sqrt(np.maximum(
-                (hre ** 2 + (him - 1.0) ** 2), 0.0))) - 1.0),
+            "min_margin_relative_wave": _label(ops, int(np.argmin(rel)), nw),
             "n_rows": int(margin.size)}
 
 
