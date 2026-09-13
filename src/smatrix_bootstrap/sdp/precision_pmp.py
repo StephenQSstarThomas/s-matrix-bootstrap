@@ -52,7 +52,10 @@ def restore(cls, source_report, direction, fix_f00):
     w.n_a,w.n_vars,w.i_a = source['pmp']['n_a'],source['pmp']['n_vars'],1
     w.i_ImF = 1+w.n_a if w.spec.uv else None
     w.i_rho = w.i_ImF+2*w.spec.M if w.spec.uv else None
-    if w.n_vars != 1+w.n_a+(4*w.spec.M if w.spec.uv else 0):
+    w.n_rho = w.ops.lay.r2.stop-w.ops.lay.r1.start
+    w.n_aux = {None:0,'linf':0,'l2':w.n_rho,'l4':2*w.n_rho}[w.spec.reg_norm]
+    w.i_aux = w.n_vars-w.n_aux
+    if w.n_vars != 1+w.n_a+(4*w.spec.M if w.spec.uv else 0)+w.n_aux or source['pmp'].get('n_aux',0)!=w.n_aux:
         raise ValueError('Saved variable layout is inconsistent')
     w.keep = np.load(root/'disk_mask.npy')
     if w.keep.shape != (3*w.spec.L*w.spec.M,) or w.keep.dtype != np.bool_:
@@ -217,10 +220,11 @@ def verify(w, sol, tolerance=1e-8):
         'rho_l4':float(sum((v**4 for v in rho),arb(0)).root(4).upper()),
         'scope':'upper bounds of Arb enclosures of the double-density node values'}
     if spec.reg_norm is not None:
-        checks['regulariser'] = linf <= spec.reg_bound*(1+tolerance)
-        out['regulariser'] = {'norm':spec.reg_norm,'bound':spec.reg_bound,'rho_linf':linf,
-            'active_fraction':float(np.mean([float(v.abs_upper()) >= .99*spec.reg_bound for v in rho])),
-            'active':bool(linf >= .99*spec.reg_bound)}
+        used = out['density_norms']['rho_'+spec.reg_norm]
+        checks['regulariser'] = used <= spec.reg_bound*(1+tolerance)
+        out['regulariser'] = {'norm':spec.reg_norm,'bound':spec.reg_bound,'norm_used':used,'rho_linf':linf,
+            'active_fraction':float(np.mean([float(v.abs_upper()) >= .99*spec.reg_bound for v in rho])) if spec.reg_norm=='linf' else None,
+            'active':bool(used >= .99*spec.reg_bound)}
     if spec.chiral:
         scale = arb(str(spec.eps_chi))
         budget = scale*arb(str(tolerance)) if spec.chi_caliber=='chi-a' else scale**2*arb(str(2*tolerance+tolerance**2))

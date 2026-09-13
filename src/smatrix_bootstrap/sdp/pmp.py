@@ -64,7 +64,7 @@ class Pmp:
             raise ValueError("l4 density ball is not expressible as a degree-0 PMP "
                              "block of reasonable size; use B_norm='l2' or B=None")
         if spec.reg_norm is not None:
-            if spec.reg_norm != "linf":
+            if spec.reg_norm not in ("linf", "l2", "l4"):
                 raise ValueError(f"Unsupported regulariser norm: {spec.reg_norm}")
             if (spec.reg_bound is None or not np.isfinite(spec.reg_bound)
                     or spec.reg_bound <= 0):
@@ -119,6 +119,13 @@ class Pmp:
         else:
             self.i_ImF = self.i_rho = None
             self.n_vars = self.i_a + self.n_a
+        # ---- auxiliary variables of the l2/l4 regulariser, appended last so
+        # every index above is unchanged: t_i >= r_i^2 (l2, l4) and u_i >= t_i^2 (l4)
+        lay = self.ops.lay
+        self.n_rho = (lay.r1.stop - lay.r1.start) + (lay.r2.stop - lay.r2.start)
+        self.n_aux = {None: 0, "linf": 0, "l2": self.n_rho, "l4": 2 * self.n_rho}[spec.reg_norm]
+        self.i_aux = self.n_vars
+        self.n_vars += self.n_aux
 
         self.n_blocks = 0
 
@@ -139,6 +146,9 @@ class Pmp:
             ell, vec = parts["rho"]
             off = self.i_rho + ell * self.spec.M
             v[off:off + self.spec.M] = vec
+        if "aux" in parts:
+            index, value = parts["aux"]
+            v[self.i_aux + index] = value
         return v
 
     # ---------------------------------------------------------------- blocks
@@ -257,18 +267,31 @@ class Pmp:
         initial primal objective carries ``7550 * initialScale * Mreg`` and SDPB
         diverged (maxComplementarity) at Mreg = 1e6 in the first gate run.
         """
-        lay, bound = self.ops.lay, float(self.spec.reg_bound)
+        lay, bound, norm = self.ops.lay, float(self.spec.reg_bound), self.spec.reg_norm
         idx = list(range(lay.r1.start, lay.r1.stop)) + list(range(lay.r2.start, lay.r2.stop))
-        for i in idx:
-            row = np.zeros(self.n_vars)
+        one = np.zeros(self.n_vars); one[0] = 1.0
+        for k, i in enumerate(idx):
+            row = np.zeros(self.n_vars)                # r_i = rho_i / bound
             if self.basis is not None:
                 row[self.i_a:self.i_a + self.n_a] = self.basis[i] / bound
             else:
                 row[self.i_a + i] = 1.0 / bound
-            upper, lower = -row, row.copy()        # 1 - rho_i/Mreg >= 0, 1 + rho_i/Mreg >= 0
-            upper[0] = lower[0] = 1.0
-            yield [[upper]]
-            yield [[lower]]
+            if norm == "linf":
+                upper, lower = -row, row.copy()        # 1 - r_i >= 0, 1 + r_i >= 0
+                upper[0] = lower[0] = 1.0
+                yield [[upper]]
+                yield [[lower]]
+                continue
+            t = np.zeros(self.n_vars); t[self.i_aux + k] = 1.0
+            yield [[t, row], [row, one]]              # t_i >= r_i^2
+            if norm == "l4":
+                u = np.zeros(self.n_vars); u[self.i_aux + self.n_rho + k] = 1.0
+                yield [[u, t], [t, one]]              # u_i >= t_i^2  (=> u_i >= r_i^4)
+        if norm in ("l2", "l4"):
+            total = one.copy()                        # 1 - sum_i (t_i or u_i) >= 0
+            off = self.i_aux + (self.n_rho if norm == "l4" else 0)
+            total[off:off + self.n_rho] = -1.0
+            yield [[total]]
 
     def _arrow(self, rows, e: float):
         """``||v||_2 <= e``  ->  [[e y0, v^T], [v, e y0 I]] >= 0."""
@@ -317,7 +340,7 @@ class Pmp:
                 "n_blocks": nb, "block_sizes": sizes,
                 "n_unitarity_disks": int(self.keep.sum()),
                 "reduce_basis": self.basis is not None,
-                "n_a": self.n_a, "digits": self.digits,
+                "n_a": self.n_a, "n_aux": self.n_aux, "digits": self.digits,
                 "operator_precision": getattr(self,"precision_info", {"source_dps":17})}
 
     def _num_vec(self, v: np.ndarray) -> list[str]:

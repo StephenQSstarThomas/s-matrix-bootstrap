@@ -145,10 +145,12 @@ def full_report(model, sol: dict) -> dict:
     rho = np.concatenate([c[ops.lay.r1], c[ops.lay.r2]])
     out["rho_linf"] = float(np.abs(rho).max())
     if spec.reg_norm is not None:
-        out["regulariser"] = {"norm": spec.reg_norm, "bound": spec.reg_bound,
+        used = out["rho_" + spec.reg_norm]
+        out["regulariser"] = {"norm": spec.reg_norm, "bound": spec.reg_bound, "norm_used": used,
                               "rho_linf": out["rho_linf"],
-                              "active_fraction": float(np.mean(np.abs(rho) >= 0.99 * spec.reg_bound)),
-                              "active": bool(out["rho_linf"] >= 0.99 * spec.reg_bound)}
+                              "active_fraction": (float(np.mean(np.abs(rho) >= 0.99 * spec.reg_bound))
+                                                  if spec.reg_norm == "linf" else None),
+                              "active": bool(used >= 0.99 * spec.reg_bound)}
     if spec.B is not None:
         out["B"] = spec.B
         out["B_norm"] = spec.B_norm
@@ -187,7 +189,7 @@ def solution_report(model, sol, tolerance=1e-8):
     if spec.B is not None:
         checks["density"] = out["rho_" + spec.B_norm] <= spec.B * (1 + tolerance)
     if spec.reg_norm is not None:
-        checks["regulariser"] = out["rho_linf"] <= spec.reg_bound * (1 + tolerance)
+        checks["regulariser"] = out["rho_" + spec.reg_norm] <= spec.reg_bound * (1 + tolerance)
     if spec.uv:
         checks["rho_nonnegative"] = bool(np.min(sol["rho_hat"]) >= -tolerance)
         if "gram" in spec.uv_parts:

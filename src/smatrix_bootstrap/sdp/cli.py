@@ -27,9 +27,10 @@ def main(argv=None):
     p.add_argument("--eps-ff", type=float, default=C.EPS_FF)
     p.add_argument("--mq", choices=["mean", "rms"], default="mean")
     p.add_argument("--ff-factor", choices=["frozen", "node"], default="node")
-    p.add_argument("--reg-norm", choices=["none", "linf"], default="none",
-                   help="M-regularisation of 2103.11484 sec. 3 on the double spectral density; "
-                        "linf caps every |rho_{a,ij}| by --reg-bound")
+    p.add_argument("--reg-norm", choices=["none", "linf", "l2", "l4"], default="none",
+                   help="M-regularisation of 2103.11484 sec. 3 on the double spectral density: "
+                        "linf caps every |rho_{a,ij}| by --reg-bound (no extra variables); "
+                        "l2/l4 bound the norm with one/two auxiliary variables per density value")
     p.add_argument("--reg-bound", type=float, default=None,
                    help="Mreg for --reg-norm; fixed by the plateau rule, never by output curves")
     p.add_argument("--cone-scaling", choices=["rownorm", "centrifugal", "none"], default="rownorm")

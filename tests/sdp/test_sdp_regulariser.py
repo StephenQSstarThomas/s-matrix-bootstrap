@@ -83,7 +83,7 @@ def test_regulariser_spec_validation():
     with pytest.raises(ValueError):
         Pmp(ModelSpec(M=4, L=1, reg_norm="linf"))
     with pytest.raises(ValueError):
-        Pmp(ModelSpec(M=4, L=1, reg_norm="l4", reg_bound=1.0))
+        Pmp(ModelSpec(M=4, L=1, reg_norm="l7", reg_bound=1.0))
     with pytest.raises(ValueError):
         Pmp(ModelSpec(M=4, L=1, reg_bound=1.0))
     with pytest.raises(ValueError):
@@ -97,3 +97,50 @@ def test_cli_defaults_follow_the_authors_conventions():
     assert 'default="chi-b"' in src
     assert "default='mixed-pv'" in src
     assert "no density regulator" not in src
+
+
+@pytest.mark.parametrize("norm,per_value,extra", [("l2", 1, 1), ("l4", 2, 1)])
+def test_l2_l4_regulariser_blocks_and_layout(tmp_path, norm, per_value, extra):
+    w = Pmp(ModelSpec(M=4, L=1, reg_norm=norm, reg_bound=2.0, reduce_basis=True))
+    info = w.write(str(tmp_path / "pmp.json"))
+    n_rho = w.n_rho
+    assert w.n_aux == per_value * n_rho and info["n_aux"] == w.n_aux
+    assert w.n_vars == 1 + w.n_a + w.n_aux
+    blocks = json.load(open(tmp_path / "pmp.json"))["PositiveMatrixWithPrefactorArray"]
+    twos = [b for b in blocks if len(b["polynomials"]) == 2]
+    ones = [b for b in blocks if len(b["polynomials"]) == 1]
+    assert len(twos) == per_value * n_rho and len(ones) == extra
+    # first 2x2 block: [[t_0, r_0], [r_0, 1]] with r_0 = rho_0 / bound in basis coordinates
+    b0 = twos[0]["polynomials"]
+    t0 = [float(v[0]) for v in b0[0][0]]
+    r0 = [float(v[0]) for v in b0[0][1]]
+    one = [float(v[0]) for v in b0[1][1]]
+    assert t0[w.i_aux] == 1.0 and sum(x != 0 for x in t0) == 1
+    np.testing.assert_array_equal(np.array(r0[1:1 + w.n_a]), w.basis[w.ops.lay.r1.start] / 2.0)
+    assert one[0] == 1.0 and sum(x != 0 for x in one) == 1
+    # the summed block: 1 - sum of the last n_rho auxiliaries
+    total = [float(v[0]) for v in ones[0]["polynomials"][0][0]]
+    assert total[0] == 1.0 and total[-n_rho:] == [-1.0] * n_rho
+    if norm == "l4":
+        b1 = twos[1]["polynomials"]          # [[u_0, t_0], [t_0, 1]]
+        u0 = [float(v[0]) for v in b1[0][0]]
+        assert u0[w.i_aux + n_rho] == 1.0 and sum(x != 0 for x in u0) == 1
+
+
+@pytest.mark.parametrize("norm", ["l2", "l4"])
+def test_l2_l4_verification_uses_the_matching_norm(norm):
+    w = Pmp(ModelSpec(M=4, L=1, reg_norm=norm, reg_bound=2.0))
+    c = np.zeros(w.ops.lay.n)
+    c[w.ops.lay.r1.start:w.ops.lay.r1.start + 4] = 1.5      # linf 1.5 < 2, l2 3.0 > 2, l4 2.12 > 2
+    rep = w.verify({"a": c, "c": c})
+    assert rep["regulariser"]["norm"] == norm and not rep["constraint_checks"]["regulariser"]
+    c[:] = 0; c[w.ops.lay.r1.start] = 1.9
+    assert w.verify({"a": c, "c": c})["constraint_checks"]["regulariser"]
+
+
+def test_read_solution_ignores_auxiliaries_and_restores_layout(tmp_path):
+    w = Pmp(ModelSpec(M=4, L=1, reg_norm="l4", reg_bound=2.0, reduce_basis=True))
+    y = np.arange(1, w.n_vars, dtype=float)
+    (tmp_path / "y.txt").write_text(f"{w.n_vars - 1} 1\n" + "\n".join(f"{v}" for v in y))
+    sol = w.read_solution(str(tmp_path / "y.txt"))
+    assert sol["a"].shape == (w.n_a,) and np.array_equal(sol["a"], y[:w.n_a])
