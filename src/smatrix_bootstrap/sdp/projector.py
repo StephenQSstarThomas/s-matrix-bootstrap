@@ -43,12 +43,11 @@ from .grid import dsdphi, n_amplitude_vars, s_nodes, sym_pack_index
 from .hilbert import cauchy_offcut_row, cauchy_oncut_real
 from .legendreq import QCache
 
-ELLS = {0: tuple(range(0, 20, 2)), 1: tuple(range(1, 20, 2)), 2: tuple(range(0, 20, 2))}
-
-
 def ells_for(isospin: int, L: int) -> tuple[int, ...]:
     """First ``L`` allowed angular momenta for the given isospin (2.9)."""
-    return ELLS[isospin][:L]
+    if isospin not in (0, 1, 2) or L < 1:
+        raise ValueError("isospin must be 0,1,2 and L positive")
+    return tuple(range(isospin % 2, 2 * L, 2))
 
 
 class Layout:
@@ -103,7 +102,7 @@ class PartialWaveOperator:
         """``Qc_ell`` on the grid and ``Dc_ell`` on the grid squared."""
         a = 0.5 * (s - 4.0)
         zeta = 1.0 + self.s / a
-        q = self.qc.get(zeta, 19)[ell]
+        q = self.qc.get(zeta, max(19, ell))[ell]
         Qc = (2.0 / a) * q
         sgn = 1.0 if ell % 2 == 0 else -1.0
         denom = (s - 4.0) + self.s[:, None] + self.s[None, :]

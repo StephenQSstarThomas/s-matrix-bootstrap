@@ -1,0 +1,407 @@
+{
+  "source": {
+    "paper": "He and Kruczenski, Bootstrapping gauge theories, arXiv:2309.12402v3",
+    "figure": "7b",
+    "figure_asset": "chiS2plot.pdf",
+    "source_url": "https://arxiv.org/src/2309.12402v3",
+    "paper_url": "https://arxiv.org/html/2309.12402v3#S4.F7",
+    "sha256": "35f90dc6b06fb720676d77b4155c4271895cc24847cc5fbc9ea5cd1b67b0909c",
+    "page": 0,
+    "page_size_pt": [
+      720.0,
+      384.0
+    ],
+    "source_tex_file": "2309.12402v3-source/prd_submission_2.tex",
+    "source_tex_sha256": "39ec9e10da96f9c09c8db9e7d3ac63f342b1214df592896281adda727fb6be84",
+    "caption_lines": [
+      1114,
+      1133
+    ],
+    "caption_identification": "only chiral constraints = magenta points; experiments and fit = gray"
+  },
+  "extraction": {
+    "method": "Eight-cubic-arc filled-marker bounding-box centers; exact inspected RGB; affine least-squares calibration from every explicitly numbered black major tick",
+    "pymupdf_version": "1.27.2.3",
+    "numpy_version": "2.4.4",
+    "script_sha256": "fab2bb851b0370a9e42712c6cf75f427a3007a2235c0f39e21da3122aa7a12a5",
+    "script_evidence": "extraction_source.txt",
+    "path_count": 156,
+    "target_path_counts_by_group": {
+      "ir_magenta": 43
+    },
+    "rgb_by_group": {
+      "ir_magenta": [
+        0.9999849796295166,
+        0.0,
+        0.9999849796295166
+      ]
+    },
+    "excluded_path_counts": {
+      "gray_filled_experimental_paths": 9,
+      "non_axis_stroked_paths": 55,
+      "black_axis_and_tick_paths": 49
+    },
+    "axis_lines_pt": [
+      [
+        [
+          21.09000015258789,
+          112.33599853515625
+        ],
+        [
+          590.18798828125,
+          112.33599853515625
+        ]
+      ],
+      [
+        [
+          32.472999572753906,
+          383.16400146484375
+        ],
+        [
+          32.472999572753906,
+          31.44099998474121
+        ]
+      ]
+    ],
+    "x_axis": {
+      "coordinate_unit": "GeV",
+      "offset_pt": -133.13901214599596,
+      "scale_pt_per_unit": 593.2890243530275,
+      "tick_values": [
+        0.4,
+        0.6,
+        0.8,
+        1.0,
+        1.2
+      ],
+      "tick_positions_pt": [
+        104.1760025024414,
+        222.83599853515625,
+        341.49200439453125,
+        460.14801025390625,
+        578.8090209960938
+      ],
+      "tick_fit_residuals_pt": [
+        -0.000595092773636452,
+        0.0015960693357328637,
+        -0.00020294189482683578,
+        -0.0020019531252728484,
+        0.001203918456781139
+      ],
+      "max_abs_tick_fit_residual_pt": 0.0020019531252728484,
+      "coordinate_working_resolution": 1.6855191297200967e-05,
+      "tick_evidence": [
+        {
+          "value": 0.4,
+          "path_index": 109,
+          "position_pt": 104.1760025024414,
+          "line_pt": [
+            [
+              104.1760025024414,
+              112.33599853515625
+            ],
+            [
+              104.1760025024414,
+              108.33599853515625
+            ]
+          ],
+          "label": "0.4",
+          "label_bbox_pt": [
+            92.16588592529297,
+            114.50077819824219,
+            116.16780853271484,
+            133.78524780273438
+          ],
+          "label_center_distance_pt": 0.0091552734375
+        },
+        {
+          "value": 0.6,
+          "path_index": 113,
+          "position_pt": 222.83599853515625,
+          "line_pt": [
+            [
+              222.83599853515625,
+              112.33599853515625
+            ],
+            [
+              222.83599853515625,
+              108.33599853515625
+            ]
+          ],
+          "label": "0.6",
+          "label_bbox_pt": [
+            210.823486328125,
+            114.50077819824219,
+            234.82540893554688,
+            133.78524780273438
+          ],
+          "label_center_distance_pt": 0.0115509033203125
+        },
+        {
+          "value": 0.8,
+          "path_index": 117,
+          "position_pt": 341.49200439453125,
+          "line_pt": [
+            [
+              341.49200439453125,
+              112.33599853515625
+            ],
+            [
+              341.49200439453125,
+              108.33599853515625
+            ]
+          ],
+          "label": "0.8",
+          "label_bbox_pt": [
+            329.4810791015625,
+            114.50077819824219,
+            353.48297119140625,
+            133.78524780273438
+          ],
+          "label_center_distance_pt": 0.009979248046875
+        },
+        {
+          "value": 1.0,
+          "path_index": 121,
+          "position_pt": 460.14801025390625,
+          "line_pt": [
+            [
+              460.14801025390625,
+              112.33599853515625
+            ],
+            [
+              460.14801025390625,
+              108.33599853515625
+            ]
+          ],
+          "label": "1.0",
+          "label_bbox_pt": [
+            448.1387023925781,
+            114.50077819824219,
+            472.140625,
+            133.78524780273438
+          ],
+          "label_center_distance_pt": 0.0083465576171875
+        },
+        {
+          "value": 1.2,
+          "path_index": 125,
+          "position_pt": 578.8090209960938,
+          "line_pt": [
+            [
+              578.8090209960938,
+              112.33599853515625
+            ],
+            [
+              578.8090209960938,
+              108.33599853515625
+            ]
+          ],
+          "label": "1.2",
+          "label_bbox_pt": [
+            566.7963256835938,
+            114.50077819824219,
+            590.7982177734375,
+            133.78524780273438
+          ],
+          "label_center_distance_pt": 0.011749267578125
+        }
+      ],
+      "fit_scope": "all explicitly numbered major ticks; unlabelled zero tick withheld"
+    },
+    "y_axis": {
+      "coordinate_unit": "degree",
+      "offset_pt": 112.3362847405511,
+      "scale_pt_per_unit": -6.33101750966665,
+      "tick_values": [
+        -40.0,
+        -30.0,
+        -20.0,
+        -10.0,
+        10.0
+      ],
+      "tick_positions_pt": [
+        365.5780029296875,
+        302.2659912109375,
+        238.95700073242188,
+        175.64500427246094,
+        49.027000427246094
+      ],
+      "tick_fit_residuals_pt": [
+        0.0010178024703861865,
+        -0.0008188196131015957,
+        0.00036579853777141125,
+        -0.0014555647566609764,
+        0.0008907833615054983
+      ],
+      "max_abs_tick_fit_residual_pt": 0.0014555647566609764,
+      "coordinate_working_resolution": 0.0015795249317714388,
+      "tick_evidence": [
+        {
+          "value": -40,
+          "path_index": 128,
+          "position_pt": 365.5780029296875,
+          "line_pt": [
+            [
+              32.472999572753906,
+              365.5780029296875
+            ],
+            [
+              36.472999572753906,
+              365.5780029296875
+            ]
+          ],
+          "label": "-40",
+          "label_bbox_pt": [
+            0.0,
+            355.9285888671875,
+            30.29184341430664,
+            375.4549865722656
+          ],
+          "label_center_distance_pt": 0.1137847900390625
+        },
+        {
+          "value": -30,
+          "path_index": 133,
+          "position_pt": 302.2659912109375,
+          "line_pt": [
+            [
+              32.472999572753906,
+              302.2659912109375
+            ],
+            [
+              36.472999572753906,
+              302.2659912109375
+            ]
+          ],
+          "label": "-30",
+          "label_bbox_pt": [
+            0.0,
+            292.6184997558594,
+            30.29184341430664,
+            312.1448974609375
+          ],
+          "label_center_distance_pt": 0.1157073974609375
+        },
+        {
+          "value": -20,
+          "path_index": 138,
+          "position_pt": 238.95700073242188,
+          "line_pt": [
+            [
+              32.472999572753906,
+              238.95700073242188
+            ],
+            [
+              36.472999572753906,
+              238.95700073242188
+            ]
+          ],
+          "label": "-20",
+          "label_bbox_pt": [
+            0.0,
+            229.3084259033203,
+            30.29184341430664,
+            248.83482360839844
+          ],
+          "label_center_distance_pt": 0.1146240234375
+        },
+        {
+          "value": -10,
+          "path_index": 143,
+          "position_pt": 175.64500427246094,
+          "line_pt": [
+            [
+              32.472999572753906,
+              175.64500427246094
+            ],
+            [
+              36.472999572753906,
+              175.64500427246094
+            ]
+          ],
+          "label": "-10",
+          "label_bbox_pt": [
+            0.0,
+            165.99835205078125,
+            30.29184341430664,
+            185.52474975585938
+          ],
+          "label_center_distance_pt": 0.116546630859375
+        },
+        {
+          "value": 10,
+          "path_index": 153,
+          "position_pt": 49.027000427246094,
+          "line_pt": [
+            [
+              32.472999572753906,
+              49.027000427246094
+            ],
+            [
+              36.472999572753906,
+              49.027000427246094
+            ]
+          ],
+          "label": "10",
+          "label_bbox_pt": [
+            11.0912504196167,
+            39.378204345703125,
+            30.30661392211914,
+            58.66268539428711
+          ],
+          "label_center_distance_pt": 0.0065555572509765625
+        }
+      ],
+      "fit_scope": "all explicitly numbered major ticks; unlabelled zero tick withheld"
+    },
+    "withheld_unlabelled_zero_axis_residual_pt": -0.00028620539484336405,
+    "max_bbox_vs_endpoint_center_difference_pt": [
+      0.0016269683837890625,
+      0.0016269683837890625
+    ],
+    "rasterization_used_for_data": false,
+    "fit_coordinates": "PDF points, origin top-left, y increases downward"
+  },
+  "uncertainty_and_scope": {
+    "status": "Published IR graphical marker coordinates; not original optimization output",
+    "working_resolution_pt": 0.01,
+    "working_resolution_interpretation": "Conservative practical extraction tolerance; not a statistical interval or certified solver bound",
+    "marker_radius_interpretation": "Graphical footprint, not a bootstrap error bar",
+    "unknown_errors": [
+      "Original solver residuals",
+      "Energy/spin/amplitude truncations",
+      "Rounding before PDF export",
+      "Unplotted behavior between marker centers"
+    ],
+    "phase_convention": "S_l^I=eta_l^I exp(2i delta_l^I); phase in degrees; energy taken directly from the GeV tick labels",
+    "energy_conversion": "No pion mass assumption, node snapping or fitted rescaling used",
+    "interpretation": "Single chiral-only magenta representative from Fig.6; no UV color/selection mapping transferred"
+  },
+  "order": "Original PDF path order within exact RGB group; all 43 markers retained, including overlaps; no smoothing or resampling",
+  "evidence_directory": "results/runs/sdpb_mainline_20260912/figure7_reference_extraction_20260913",
+  "evidence_sha256": {
+    "s2_overlay.pdf": "d662d5e136cdc1fd521fde25f8d46d62f1ce9b7ec0cffc5a52c84259b902c839",
+    "s2_text.json": "2ce9b7d36c75182289d40a00a59ddadd3120cd525890fe9bb356628c766183f0",
+    "s2_paths.json": "09594a18b1b67d5b14da99acd69c76f888542d6a09815527e15feafd8b179c95",
+    "s2_overlay.png": "983e405ecd0156f264f73066ded92d90fe4844c606345038b4864b55654089d8",
+    "s2_original.png": "ffa888ec522e6154abd8f727d6314dbefa0e07c1831c5a18cb8691373cca2c78",
+    "s2_threshold_overlay.png": "b1400af94c5f8aca6a01153db4025d9e6d1c2b8b0fb16c113ef340cc2dc1ca12"
+  },
+  "dataset": {
+    "csv_file": "figure7_s2_phases.csv",
+    "csv_sha256": "8f865a979ffd5ddd24d8f8d326bbd4f34ce6334720ac24da8a7f3a7bc657fa82",
+    "row_count": 43,
+    "columns": [
+      "group",
+      "group_path_index",
+      "energy_gev",
+      "phase_deg",
+      "pdf_path_index",
+      "pdf_x_pt",
+      "pdf_y_pt",
+      "pdf_radius_x_pt",
+      "pdf_radius_y_pt"
+    ]
+  }
+}

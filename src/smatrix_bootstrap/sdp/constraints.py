@@ -8,7 +8,7 @@ phi that (3.61) induces, restricted to the nodes below ``s_0``,
 Targets.  The paper prints normalised values in (2.56); the raw targets are
 those times ``s0^{n+2}``.  :func:`recomputed_targets` redoes them from (2.50)
 with the QCD inputs of (2.53)-(2.54), which is how the quark-mass convention is
-pinned down (see ``fesr_target_audit``): the printed S0 numbers correspond to
+pinned down only approximately (see ``fesr_target_audit``): the printed S0 numbers are closer to
 ``m_q = sqrt((m_u^2+m_d^2)/2)`` (the combination that actually appears in
 ``N_f m_q^2 -> sum_f m_f^2``), not to the arithmetic mean.
 
@@ -110,16 +110,12 @@ def ff_asymptotic_bounds(M: int, m_q: float = M_Q, eps_ff: float = EPS_FF,
     """(3.75): indices above ``s_0`` and the bound on ``|cF_ell(s_i)|``.
 
     The paper writes the bound on the rescaled current ``cF`` of (2.33), but the
-    sentence fixing the numerical value says the factor between ``F`` and ``cF``
-    is the one "which we evaluate at ``s = s_0``".  That matters: ``k_1`` grows
-    like sqrt(s), so between ``s_0`` and the last node it rises by a factor 15,
-    and reading (3.75) with the factor taken at each node makes the paper's
-    ``eps_FF = 6e-5`` *infeasible* -- the smallest attainable value in this
-    implementation is about 1.0e-3, i.e. 17 times larger (measured at M=20,
-    L=6, with the chiral, Gram and FESR constraints on).  Freezing the factor at
-    ``s_0``, the paper's literal parenthetical, weakens the P1 bound by exactly
-    the sqrt(s_i/s_0) that caused the clash.  ``frozen_at_s0=False`` recovers the
-    per-node reading for the sensitivity table.
+    numerical implementation explicitly evaluates its factors at each s_i.
+    The later at-s0 parenthetical estimates epsilon; it does not establish a
+    frozen factor in the inequality. The CLI therefore passes False.
+    True is retained only to replay the historical, weaker finite problem.
+    That choice was motivated by an old numerical feasibility result which
+    cannot establish infeasibility of the corrected source model.
 
     Returns ``(indices, bound_on_cF, kinematic_factor_to_use)``.
     """

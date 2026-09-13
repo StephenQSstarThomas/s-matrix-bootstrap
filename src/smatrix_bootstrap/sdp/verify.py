@@ -155,3 +155,64 @@ def full_report(model, sol: dict) -> dict:
         out["form_factor"] = ff_report(ops, sol["ImF"], spec.m_q, spec.eps_ff,
                                        spec.ff_frozen_at_s0)
     return out
+
+
+def solution_report(model, sol, tolerance=1e-8):
+    """Numerical original-coordinate feasibility; never an optimality certificate.
+
+    Residuals for small chiral, moment and FF constraints are divided by their
+    own tolerance/cap before acceptance. The Gram is also checked after its
+    invertible charge-factor congruence to avoid hiding tiny spectral errors.
+    """
+    spec, ops, c = model.spec, model.ops, sol["c"]
+    finite = all(np.all(np.isfinite(sol.get(key, np.nan))) for key in
+                 (("c", "ImF", "rho_hat") if spec.uv else ("c",)))
+    out = {"certified": False, "primal_feasible": False,
+           "scope": "numerical native-node feasibility; no rigorous dual certificate",
+           "constraint_checks": {"finite": bool(finite)}}
+    if not finite:
+        return out
+    out.update(full_report(model, sol))
+    checks = out["constraint_checks"]
+    checks["unitarity"] = out["unitarity"]["feasible"]
+    if spec.chiral:
+        checks["chiral"] = out["chiral"]["violation"] <= tolerance * spec.eps_chi
+    if spec.B is not None:
+        checks["density"] = out["rho_" + spec.B_norm] <= spec.B * (1 + tolerance)
+    if spec.uv:
+        checks["rho_nonnegative"] = bool(np.min(sol["rho_hat"]) >= -tolerance)
+        if "gram" in spec.uv_parts:
+            worst = np.inf
+            K = FFM.hilbert_kernel(spec.M)
+            for ell in (0, 1):
+                re, im = ops.gram_rows[ell]
+                S = 1 - im @ c + 1j * (re @ c)
+                F = 1 + K @ sol["ImF"][ell] + 1j * sol["ImF"][ell]
+                for i in range(spec.M):
+                    G = FFM.gram_block(S[i], F[i], sol["rho_hat"][ell, i])
+                    scale = np.sqrt(np.maximum(np.abs(np.diag(G)), 1.))
+                    worst = min(worst, float(np.linalg.eigvalsh(
+                        G / scale[:, None] / scale[None, :]).min()))
+            out["gram"]["min_equilibrated_eigenvalue"] = worst
+            checks["gram"] = worst >= -tolerance
+        if "fesr" in spec.uv_parts:
+            v = max(row["violation"] / row["tolerance"] for row in out["fesr"]["rows"])
+            out["fesr"]["max_violation_over_tolerance"] = v
+            checks["fesr"] = v <= tolerance
+        if "ff" in spec.uv_parts:
+            idx, cap, kin = C.ff_asymptotic_bounds(spec.M, spec.m_q, spec.eps_ff,
+                                                  spec.ff_frozen_at_s0)
+            K = FFM.hilbert_kernel(spec.M)
+            v = max(float(np.max(np.abs(kin[e] * (1 + K @ sol["ImF"][e]
+                    + 1j * sol["ImF"][e])[idx]) / cap[e] - 1)) for e in (0, 1))
+            out["form_factor"]["max_relative_violation"] = v
+            checks["ff"] = v <= tolerance
+    if model.fix_f00 is not None:
+        residual = abs(out["f00_3"] - model.fix_f00)
+        out["section_residual"] = residual
+        checks["section"] = residual <= tolerance * max(1, abs(model.fix_f00))
+    out["objective_recomputed"] = float(np.dot(model.direction,
+                                               [out["f00_3"], out["f11_3"]]))
+    out["primal_feasible"] = bool(all(checks.values()))
+    out["verification_tolerance"] = tolerance
+    return out

@@ -1,5 +1,24 @@
 # Scientific mainline — He–Kruczenski 2309.12402v3
 
+> ## ⚠ 读之前：这个仓库有两条平行主线
+>
+> **(1) Newton 主线**（`results/runs/mainline_alignment_20260909/`、`major_claims_20260912/`）——
+> 本文件描述的就是它。它已被 `REVISED_CLAIMS_ZH.md` 的只读审计判定为
+> **"解的是一个自建的近似模型，不是论文的问题"**（论文没有的密度正则化 B、比字面更紧的 L2 手征球、
+> 以障碍中心而非极值点作代表、自研 barrier–Newton 求解器）。它的 P0–P5 计划已不再执行。
+>
+> **(2) SDP 直解路线**（`src/smatrix_bootstrap/sdp/`）——当前在做的。求解器已改为 **SDPB-only**
+> （任意精度），MOSEK/MATLAB/CVX 都不在链路上。
+>
+> **当前进度、运行方法、精度判断与待补缺口的唯一入口是
+> [`HANDOFF_PHYSICS_AUDIT_ZH.md`](HANDOFF_PHYSICS_AUDIT_ZH.md)。**
+> 本文件保留为历史记录，其中与下列事实冲突的陈述以 handoff 为准：
+>
+> - The solver stack changed on this branch: **SDPB only** (arbitrary precision).  MOSEK, MATLAB and
+>   CVX are off the path.  Run methods, licence setup and every adopted SDPB parameter with its
+>   measured justification are in the handoff, part 2.
+>
+
 ## Scientific progression and lessons from B
 
 - Follow the paper's principles, constraints and scientific comparisons.

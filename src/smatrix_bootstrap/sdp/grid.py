@@ -62,18 +62,25 @@ def kappa(s: np.ndarray) -> np.ndarray:
     return np.pi * np.sqrt((s - 4.0) / s)
 
 
-def lambda_rescale(s: np.ndarray, ell: int, floor: float = 1e-8) -> np.ndarray:
-    """Centrifugal rescaling factor Lambda_ell(s) = ((sqrt(s)-2)/(sqrt(s)+2))^(ell/2).
+def lambda_rescale(s: np.ndarray, ell: int, floor: float = 0.0) -> np.ndarray:
+    """Centrifugal factor Lambda_ell(s) = ((sqrt(s)-2)/(sqrt(s)+2))^(ell/2).
 
-    Used only as a *solver-side* reversible reparametrisation of the unitarity
-    cone (see :mod:`smatrix_bootstrap.sdp.problem`); floored to avoid dividing
-    by an underflowed number at the first node where s - 4 ~ 1e-3.
+    The exact value spans an enormous range -- Lambda_19(s_1)^2 ~ 1e-80 at M=50,
+    because s_1 - 4 ~ 1e-3 -- but it stays far above the double-precision
+    underflow threshold (min normal ~2.2e-308), so ``floor`` defaults to 0 and
+    the value returned is the true one.  Pass a positive ``floor`` only where a
+    *division* by Lambda would otherwise be unbounded; do not use a floored
+    Lambda to report the analytic row scale, which is what it means.
+
+    This removes the angular momentum threshold order, not all node/column
+    normalization differences. Without clipping it leaves 6.24 decades in
+    the M50 cone rows, versus 1.25 for rownorm. Both are valid congruences.
     """
     s = np.asarray(s, dtype=float)
     r = (np.sqrt(s) - 2.0) / (np.sqrt(s) + 2.0)
     with np.errstate(under="ignore"):
         lam = r ** (0.5 * ell)
-    return np.maximum(lam, floor)
+    return lam if floor <= 0.0 else np.maximum(lam, floor)
 
 
 def n_amplitude_vars(M: int) -> int:

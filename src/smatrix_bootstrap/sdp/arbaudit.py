@@ -4,8 +4,8 @@ UV checks rebuild all seven principal minors per current Gram block, four raw
 FESR moments and the high-node squared FF bounds from the paper. Each UV slack
 has a certified pass/fail/inconclusive verdict and exact rational endpoints.
 These are finite-node checks, not continuum or optimization certificates.
-The older scattering summary and float chiral rows remain outside this A4
-repair; their absence-of-violation flags are not rigorous feasibility claims.
+Scattering and chiral checks also require each whole slack ball, with the
+subthreshold functions rebuilt independently in Arb.
 """
 from __future__ import annotations
 
@@ -52,13 +52,20 @@ def _legendre_q(ell: int, z: arb) -> arb:
 
 
 class ArbAudit:
-    def __init__(self, M: int, L: int, bits: int = 384) -> None:
+    def __init__(self, M: int, L: int, bits: int = 384, prescription='mixed-pv', source_dps=40) -> None:
         ctx.prec = bits
         self.M, self.L, self.bits = M, L, bits
         self.x, self.w = _grid(M)
         self.K = _kernel(M)
         self.b = [wj / xj for xj, wj in zip(self.x, self.w)]     # C[.](nu=0) row
         self.lay = Layout(M)
+        self.prescription=prescription
+        self.family=None
+        if prescription=='sine-cardinal':
+            from .sine import SineFamily
+            self.family=SineFamily(M,L,source_dps)
+        elif prescription!='mixed-pv':raise ValueError(prescription)
+        ctx.prec=self.bits
 
     # ------------------------------------------------------------------
     def _cauchy(self, dens, k):
@@ -67,22 +74,31 @@ class ArbAudit:
         re += sum((self.b[i] * dens[i] for i in range(self.M)), arb(0))
         return acb(re, dens[k])
 
-    def _angular(self, ell: int, k: int):
-        d = self.x[k] - 4
+    def _angular(self, ell: int, k: int, point=None):
+        d = (self.x[k] if point is None else arb(point)) - 4
         Qc = [4 * _legendre_q(ell, 1 + 2 * xi / d) / d for xi in self.x]
         return d, Qc
 
-    def partial_wave(self, dens, isospin: int, ell: int, k: int) -> acb:
+    def partial_wave(self, dens, isospin: int, ell: int, k: int, point=None) -> acb:
         """f^I_ell(s_k + i0) from the Arb operators of section 5a."""
+        ctx.prec = self.bits
+        if self.family is not None:
+            c=[dens['T0']]+dens['sigma1']+dens['sigma2']+[v for row in dens['rho1'] for v in row]
+            c += [dens['rho2'][i][j] for i,j in zip(*self.lay.triu)]
+            return self.family.wave(c,isospin,ell,point=point,node=k if point is None else None,error_target='1e-22')[0]
         M = self.M
         T0, s1, s2, r1, r2 = (dens["T0"], dens["sigma1"], dens["sigma2"],
                               dens["rho1"], dens["rho2"])
         eps = arb((-1) ** ell)
         P0 = arb(2) if ell == 0 else arb(0)
-        d, Qc = self._angular(ell, k)
+        d, Qc = self._angular(ell, k, point)
+        def cauchy(v):
+            if point is None:
+                return self._cauchy(v, k)
+            return acb(sum((self.w[j]*v[j]/(self.x[j]-arb(point)) for j in range(M)), arb(0)))
         wQ = [self.w[j] * Qc[j] for j in range(M)]
-        cr = self._cauchy(s1, k)
-        cr2 = self._cauchy(s2, k)
+        cr = cauchy(s1)
+        cr2 = cauchy(s2)
         # contractions with the double spectral densities
         v1 = [sum((wQ[j] * r1[i][j] for j in range(M)), arb(0)) for i in range(M)]
         u1 = [sum((wQ[i] * r1[i][j] for i in range(M)), arb(0)) for j in range(M)]
@@ -95,11 +111,11 @@ class ArbAudit:
                    for i in range(M) for j in range(M)), arb(0))
         sQ1 = sum((wQ[j] * s1[j] for j in range(M)), arb(0))
         sQ2 = sum((wQ[j] * s2[j] for j in range(M)), arb(0))
-        A = P0 * T0 + P0 * cr + (1 + eps) * sQ2 + (1 + eps) * self._cauchy(v1, k) + ww2
+        A = P0 * T0 + P0 * cr + (1 + eps) * sQ2 + (1 + eps) * cauchy(v1) + ww2
         B = (P0 * T0 + sQ1 + P0 * cr2 + eps * sQ2
-             + self._cauchy(u1, k) + ww1 + eps * self._cauchy(u2, k))
+             + cauchy(u1) + ww1 + eps * cauchy(u2))
         Cc = (P0 * T0 + eps * sQ1 + sQ2 + P0 * cr2
-              + eps * ww1 + eps * self._cauchy(u1, k) + self._cauchy(u2, k))
+              + eps * ww1 + eps * cauchy(u1) + cauchy(u2))
         T = {0: 3 * A + B + Cc, 1: B - Cc, 2: B + Cc}[isospin]
         return T / 4
 
@@ -109,21 +125,33 @@ class ArbAudit:
               m_q=None, ff_frozen_at_s0=True) -> dict:
         ctx.prec = self.bits
         M = self.M
-        v = self.lay.unpack(c)
-        dens = {"T0": arb(float(v["T0"])),
-                "sigma1": [arb(float(t)) for t in v["sigma1"]],
-                "sigma2": [arb(float(t)) for t in v["sigma2"]],
-                "rho1": [[arb(float(v["rho1"][i][j])) for j in range(M)] for i in range(M)],
-                "rho2": [[arb(float(v["rho2"][i][j])) for j in range(M)] for i in range(M)]}
+        ca = [arb(t) if isinstance(t, arb) else arb(float(t)) for t in c]
+        if len(ca) != self.lay.n:
+            raise ValueError("Incomplete amplitude coefficients")
+        r2 = [[arb(0) for _ in range(M)] for _ in range(M)]
+        for (i, j), t in zip(zip(*self.lay.triu), ca[self.lay.r2]):
+            r2[i][j] = r2[j][i] = t
+        r1 = ca[self.lay.r1]
+        dens = {"T0": ca[0], "sigma1": ca[self.lay.s1], "sigma2": ca[self.lay.s2],
+                "rho1": [r1[i*M:(i+1)*M] for i in range(M)], "rho2": r2}
+        self.last_dens = dens
+        self.last_primary = {"S0":[],"S2":[],"P1":[]}
         worst_lo, worst_hi, worst_where = arb(-1), arb(-1), None
         worst_active, active_where = arb(-1), None
         S_store = {}
+        unitarity_rows = []
         for I in (0, 1, 2):
             for ell in ells_for(I, self.L):
                 for k in range(M):
                     f = self.partial_wave(dens, I, ell, k)
                     kap = arb.pi() * ((self.x[k] - 4) / self.x[k]).sqrt()
-                    S = 1 + acb(0, 1) * kap * f
+                    h = kap * f
+                    S = 1 + acb(0, 1) * h
+                    unitarity_rows.append(_constraint_row(
+                        2*h.imag-(h*h.conjugate()).real, h_squared=_enclosure((h*h.conjugate()).real),
+                        isospin=I, ell=ell, node=k))
+                    if (I,ell) in ((0,0),(1,1),(2,0)):
+                        self.last_primary[{(0,0):"S0",(1,1):"P1",(2,0):"S2"}[I,ell]].append(S)
                     lo, hi = S.abs_lower(), S.abs_upper()
                     if (I, ell) in ((0, 0), (1, 1)):
                         S_store[(ell, k)] = S
@@ -136,6 +164,7 @@ class ArbAudit:
                         worst_active = lo
                         active_where = {"isospin": I, "ell": ell, "node": k}
         out = {"bits": self.bits,
+               'scattering_prescription':self.prescription,
                # a certified violation needs the *lower* end of the ball above 1
                "max_eta_lower_end": float(worst_lo.str(20, radius=False)),
                "max_eta_upper_end": float(worst_hi.str(20, radius=False)),
@@ -144,10 +173,34 @@ class ArbAudit:
                "max_eta_active_at": active_where,
                "unitarity_no_certified_violation": bool(worst_lo <= 1),
                "n_disks": 3 * self.L * M}
+        counts = {v: sum(r["verdict"] == v for r in unitarity_rows) for v in
+                  ("certified_pass", "certified_fail", "inconclusive")}
+        out["unitarity"] = unitarity_rows
+        out["unitarity_counts"] = counts
+        out["unitarity_no_certified_violation"] = counts["certified_fail"] == 0
+        out["unitarity_verdict"] = ("certified_fail" if counts["certified_fail"] else
+                                    "inconclusive" if counts["inconclusive"] else "certified_pass")
+        out["unitarity_ok"] = out["unitarity_verdict"] == "certified_pass"
+        out["projection_at_3"] = {name: _enclosure(self.partial_wave(dens, I, ell, 0, point=arb(3)).real)
+                                  for name, I, ell in (("f00", 0, 0), ("f11", 1, 1))}
         if chi_caliber is not None:
-            r = [sum((arb(float(x)) * y for x, y in zip(row, c)), arb(0))
-                 for row in _chiral_rows_float(self)]
-            out["chiral"] = _chiral_summary(r, chi_caliber, eps_chi)
+            r = []
+            for sj in (arb(1)/2, arb(1), arb(3)/2, arb(2)):
+                f0 = self.partial_wave(dens, 0, 0, 0, point=sj).real
+                f1 = self.partial_wave(dens, 1, 1, 0, point=sj).real
+                f2 = self.partial_wave(dens, 2, 0, 0, point=sj).real
+                r.extend([f0-3*(2*sj-1)/(sj-4)*f1, f2-3*(2-sj)/(sj-4)*f1])
+            e = arb(str(eps_chi))
+            if chi_caliber == "chi-a":
+                slacks = [e-abs(v) for v in r]
+            else:
+                groups = [r] if chi_caliber == "chi-b" else [r[0::2], r[1::2]]
+                slacks = [e*e-sum((v*v for v in group), arb(0)) for group in groups]
+            rows = [_constraint_row(v) for v in slacks]
+            out["chiral"] = {**_chiral_summary(r, chi_caliber, eps_chi), "constraints": rows,
+                             "scope": "independent exact-source subthreshold functions"}
+            out["chiral_verdict"] = ("certified_fail" if any(v["verdict"] == "certified_fail" for v in rows)
+                else "certified_pass" if all(v["verdict"] == "certified_pass" for v in rows) else "inconclusive")
         if ImF is not None:
             out.update(self._uv_audit(S_store, ImF, rho_hat, sr_caliber, eps_ff,
                                       C.M_Q if m_q is None else m_q,
@@ -183,8 +236,9 @@ class ArbAudit:
             cap = 2 * mq * mq * eps if ell == 0 else eps / 2
             for i in range(M):
                 F, S = acb(ReFa[i], ImFa[i]), S_store[(ell, i)]
-                modF2 = ReFa[i] ** 2 + ImFa[i] ** 2
-                m12 = 1 - S.real ** 2 - S.imag ** 2
+                # Arb's generic power can be NaN for a ball straddling zero.
+                modF2 = ReFa[i]*ReFa[i] + ImFa[i]*ImFa[i]
+                m12 = 1 - S.real*S.real - S.imag*S.imag
                 m13 = k2[i] * (rhat[i] - modF2)
                 # Positive k² congruence gives original (unscaled) minors.
                 minors = (arb(1), arb(1), rho[i], m12, m13, m13,
@@ -279,17 +333,6 @@ def _det3(S: acb, F: acb, rho: arb) -> arb:
     mod_F2 = (F * F.conjugate()).real
     cross = (S * F.conjugate() * F.conjugate()).real
     return rho * (1 - mod_S2) - 2 * mod_F2 + 2 * cross
-
-
-def _chiral_rows_float(self):
-    from .projector import PartialWaveOperator
-    op = PartialWaveOperator(self.M)
-    rows = []
-    for sj in C.CHIRAL_POINTS:
-        r01, r21 = C.chiral_ratios(sj)
-        rows.append(op.rows(0, 0, sj)[0] - r01 * op.rows(1, 1, sj)[0])
-        rows.append(op.rows(2, 0, sj)[0] - r21 * op.rows(1, 1, sj)[0])
-    return rows
 
 
 def _chiral_summary(r, caliber, eps):

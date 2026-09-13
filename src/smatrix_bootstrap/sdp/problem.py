@@ -40,7 +40,6 @@ from __future__ import annotations
 
 import hashlib
 import time
-from dataclasses import dataclass
 
 import cvxpy as cp
 import numpy as np
@@ -51,30 +50,7 @@ from .assembly import PROJECTION_S, Operators
 from .grid import M_Q
 
 
-@dataclass
-class ModelSpec:
-    M: int = 50
-    L: int = 10
-    chiral: bool = False
-    chi_caliber: str = "chi-b"          # chi-a | chi-b | chi-c
-    eps_chi: float = C.EPS_CHI_MAIN
-    uv: bool = False                    # Gram + FESR + form-factor asymptotics
-    uv_parts: tuple = ("gram", "fesr", "ff")   # for diagnosing infeasibility
-    sr_caliber: str = "SR-b"            # SR-a | SR-b | SR-c
-    eps_ff: float = C.EPS_FF
-    ff_frozen_at_s0: bool = True        # (3.75) factor taken at s0, per the paper text
-    m_q: float = M_Q
-    B: float | None = None              # bound on (rho1, rho2); None = absent
-    B_norm: str = "l2"                  # l2 (stronger, cheap) | l4 (pre-registered)
-    cone_scaling: str = "none"          # none | centrifugal | rownorm (all exact)
-    sparsify: float = 0.0               # zero entries below this fraction of their row scale
-    reduce_basis: bool = False          # exact projection onto span(all rows)
-    basis_tol: float = 1e-12
-    tag: str = ""
-    disk_mask: object = None             # bool array over (wave, node): which disks to impose
-
-    def key(self) -> str:
-        return hashlib.sha256(repr(sorted(self.__dict__.items())).encode()).hexdigest()[:16]
+from .spec import ModelSpec
 
 
 class Model:

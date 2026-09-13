@@ -1,6 +1,25 @@
 # He–Kruczenski pion / gauge bootstrap reproduction
 
-复现[2309.12402v3](references/2309.12402v3.pdf)的Fig.3–11：有限散射约束 → 手征对照 → 电流与QCD求和规则 → ρ相移 → 分辨率。先读[STATUS](STATUS.md)、[SCIENCE](SCIENCE.md)、[运行路线](REPRODUCTION_GUIDE_ZH.md)。
+> ## ⚠ 读之前：这个仓库有两条平行主线
+>
+> **(1) Newton 主线**（`results/runs/mainline_alignment_20260909/`、`major_claims_20260912/`）——
+> 本文件描述的就是它。它已被 `REVISED_CLAIMS_ZH.md` 的只读审计判定为
+> **"解的是一个自建的近似模型，不是论文的问题"**（论文没有的密度正则化 B、比字面更紧的 L2 手征球、
+> 以障碍中心而非极值点作代表、自研 barrier–Newton 求解器）。它的 P0–P5 计划已不再执行。
+>
+> **(2) SDP 直解路线**（`src/smatrix_bootstrap/sdp/`）——当前在做的。求解器已改为 **SDPB-only**
+> （任意精度），MOSEK/MATLAB/CVX 都不在链路上。
+>
+> **当前进度、运行方法、精度判断与待补缺口的唯一入口是
+> [`HANDOFF_PHYSICS_AUDIT_ZH.md`](HANDOFF_PHYSICS_AUDIT_ZH.md)。**
+> 本文件保留为历史记录，其中与下列事实冲突的陈述以 handoff 为准：
+>
+> - 本文件的「当前统一设置 combined-l2 + hard-midpoint / B=377500」属于 Newton 主线，**不是** SDP 路线的设置。
+> - SDP 路线采用 2309 的**字面设定：无密度正则化 B**。实测：删掉从 2403.10772 搬来的 `‖ρ‖₄ ≤ 377500`
+>   之后，M=50 纯幺正才第一次拿到认证点（带着它会在 981 个圆盘处求解失败并返回高 60% 的值）。
+>
+
+复现[2309.12402v3](references/2309.12402v3.pdf)的Fig.3–11：有限散射约束 → 手征对照 → 电流与QCD求和规则 → ρ相移 → 分辨率。**SDP 直解路线（当前在做的）先读 [HANDOFF](HANDOFF_PHYSICS_AUDIT_ZH.md)。** Newton 主线的历史记录见 [STATUS](STATUS.md)、[SCIENCE](SCIENCE.md)、[运行路线](REPRODUCTION_GUIDE_ZH.md)。
 
 当前统一设置为[combined-l2 + hard-midpoint](results/runs/mainline_alignment_20260909/PAPER_MAINLINE.json)，物理输入与选点先于新相移固定。C三步及D联合见证已完成；E三点支持与相移已生成，三条均有P1上穿，但三点稳健性和部分弹性/形态差异尚未闭合。B区域精度及F缺项按STATUS如实保留；E1已证明两侧收缩，但未复现强非对称。旧separate/clipped的完成状态不转移。
 

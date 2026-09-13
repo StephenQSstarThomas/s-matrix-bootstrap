@@ -10,10 +10,12 @@ from __future__ import annotations
 
 import csv
 import glob
+import hashlib
 import json
 import os
 
 import numpy as np
+from .assembly import basis_identity, recorded_basis_key
 
 REF = os.path.join(os.path.dirname(__file__), "..", "..", "..", "references")
 ENERGY_AXIS_NOTE = ("digitised figures use m_pi = 139.57 MeV, the paper's text "
@@ -40,15 +42,67 @@ def _isnum(x):
         return False
 
 
-def load_reports(root: str) -> list[dict]:
+def load_reports(root: str, subthreshold_reports=()) -> list[dict]:
     out = []
     for f in sorted(glob.glob(os.path.join(root, "**", "report.json"), recursive=True)):
         with open(f) as fh:
             doc = json.load(fh)
+        # Only leaf solve reports, not aggregate copies of the same amplitudes.
+        if doc.get("solver") == "SDPB" and "spec" in doc:
+            v = doc.get("verification", {})
+            job = os.path.basename(os.path.dirname(f))
+            if job.startswith("round_"):
+                job = os.path.basename(os.path.dirname(os.path.dirname(f)))
+            if job == "support" and doc.get("fix_f00") is None:
+                job = "dir_support"
+            out.append({"job": job, "spec": doc["spec"], "solver": "SDPB",
+                "fix_f00": doc.get("fix_f00"),
+                "accepted": doc.get("accepted", False), "verification": v,
+                "convergence": doc.get("convergence", {}),
+                "basis":doc.get('basis'),"basis_identity":basis_identity(doc,f),
+                "source_sha256":doc.get('source_sha256',{}),
+                "result": {"objective": v.get("objective_recomputed"),
+                           "f00_3": v.get("f00_3"), "f11_3": v.get("f11_3"),
+                           "direction": doc.get("direction")},
+                "observables": doc.get("observables", {}),
+                "subthreshold": doc.get("subthreshold", {}),
+                "_file": os.path.relpath(f, root), "_source_report":os.path.realpath(f)})
         for r in doc.get("records", []):
             r["_file"] = os.path.relpath(f, root)
             out.append(r)
+    if subthreshold_reports:
+        from .evaluation import attach_subthreshold_overlays
+        out = attach_subthreshold_overlays(out,subthreshold_reports)
     return out
+
+
+def accepted_support(record):
+    """Complete SDPB numerical acceptance; historical inner points are not extrema."""
+    return (record.get("solver") == "SDPB" and record.get("accepted", False) and
+            recorded_basis_key(record) is not None and
+            record.get("verification", {}).get("primal_feasible", False) and
+            record.get("convergence", {}).get("solver_optimal", False))
+
+
+def model_key(record):
+    spec = {k: v for k, v in record["spec"].items() if k not in ("tag", "disk_mask")}
+    basis=recorded_basis_key(record)
+    if basis is None:raise ValueError('Reduced finite problem has no authenticated basis identity')
+    return hashlib.sha256(json.dumps({'spec':spec,'basis':basis}, sort_keys=True).encode()).hexdigest()[:16]
+
+
+def unique_supports(records):
+    """Deduplicate repeated supports, never merge distinct finite model contracts."""
+    out = {}
+    for r in records:
+        if not accepted_support(r) or r.get("fix_f00") is not None:
+            continue
+        d = np.asarray(r.get("result", {}).get("direction"), dtype=float)
+        if d.shape != (2,) or not np.all(np.isfinite(d)) or np.linalg.norm(d) == 0:
+            continue
+        key = (model_key(r), tuple(np.round(d/np.linalg.norm(d), 12)))
+        out[key] = r
+    return list(out.values())
 
 
 def boundary_points(records, want=None, verified_only: bool = True) -> np.ndarray:
@@ -68,8 +122,7 @@ def boundary_points(records, want=None, verified_only: bool = True) -> np.ndarra
         if res.get("f00_3") is None:
             continue
         if verified_only:
-            u = r.get("verification", {}).get("unitarity", {})
-            if not u.get("feasible", False):
+            if not accepted_support(r):
                 continue
         pts.append((res["f00_3"], res["f11_3"]))
     return np.array(pts) if pts else np.zeros((0, 2))
@@ -80,8 +133,7 @@ def best_support(records) -> dict:
     out = {}
     for r in records:
         res = r.get("result", {})
-        u = r.get("verification", {}).get("unitarity", {})
-        if res.get("objective") is None or not u.get("feasible", False):
+        if res.get("objective") is None or not accepted_support(r):
             continue
         d = tuple(np.round(res.get("direction", [np.nan, np.nan]), 9))
         if d not in out or res["objective"] > out[d]["objective"]:
@@ -104,7 +156,15 @@ def support_values(records) -> dict:
 
 def c1_table(records) -> dict:
     """C1: extrema of the pure-unitarity region against the digitised Fig. 3."""
+    records = unique_supports(records)
+    if len({model_key(r) for r in records}) > 1:
+        return {"claim": "C1", "status": "mixed_models", "pass": False, "rows": [],
+                "n_directions": 0, "reason": "Different model contracts require separate comparisons"}
     pts = boundary_points(records)
+    if len(pts) < 24:
+        return {"claim": "C1", "status": "incomplete", "pass": False,
+                "n_directions": len(pts), "rows": [],
+                "reason": "24 accepted directions required by the registered comparison"}
     ref = load_csv("figure3_boundary.csv")
     got = {"f00_min": float(pts[:, 0].min()), "f00_max": float(pts[:, 0].max()),
            "f11_min": float(pts[:, 1].min()), "f11_max": float(pts[:, 1].max())}
@@ -144,16 +204,29 @@ def phase_comparison(ours: dict, csv_name: str, group: str | None = None) -> dic
             "E_range": [float(E[m].min()), float(E[m].max())]}
 
 
-def build_all(root: str) -> dict:
+def build_all(root: str, subthreshold_reports=()) -> dict:
     """Assemble every table the report needs and write ``tables.json``."""
-    recs = load_reports(root)
+    recs = load_reports(root,subthreshold_reports)
     out = {"n_records": len(recs), "energy_axis_note": ENERGY_AXIS_NOTE}
+    from .evaluation import subthreshold_claim_tables
+    out['C3_by_source_objective'] = subthreshold_claim_tables(recs)
     pure = [r for r in recs if not r["spec"]["chiral"] and not r["spec"]["uv"]]
     if pure:
         out["C1"] = c1_table(pure)
+        groups = {}
+        for r in pure:
+            if accepted_support(r):groups.setdefault(model_key(r), []).append(r)
+        out["C1_by_model"] = {k: c1_table(rs) for k, rs in groups.items()}
     with open(os.path.join(root, "tables.json"), "w") as fh:
         json.dump(out, fh, indent=1, default=float)
-    _plots(root, recs)
+    groups = {}
+    for r in recs:
+        if accepted_support(r):
+            groups.setdefault(model_key(r), []).append(r)
+    for key, records in groups.items():
+        path = os.path.join(root, "by_model", key)
+        os.makedirs(path, exist_ok=True)
+        _plots(path, unique_supports(records))
     return out
 
 
@@ -187,8 +260,7 @@ def _plots(root: str, recs) -> None:
         plt.close(fig)
 
     # ---- chiral region(s) against the digitised Fig. 8 boundaries
-    chi = [r for r in recs if r["spec"]["chiral"] and not r["spec"]["uv"]
-           and r["spec"]["chi_caliber"] == "chi-b"]
+    chi = [r for r in recs if r["spec"]["chiral"] and not r["spec"]["uv"]]
     if chi:
         by_eps = {}
         for r in chi:
@@ -220,3 +292,32 @@ def _plots(root: str, recs) -> None:
         fig.tight_layout()
         fig.savefig(os.path.join(fig_dir, "fig4_chiral_region.pdf"))
         plt.close(fig)
+
+
+def ir_profile_artifacts(outdir,record):
+    """Saved subthreshold profiles and the data behind a selected IR comparison."""
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    from pathlib import Path
+    dest=Path(outdir);data=record['subthreshold'];s=np.asarray(data['s'],float)
+    x=record['verification']['f00_3']
+    lines={'S0':(2*s-1)*x/5,'S2':(2-s)*x/5,'P1':(s-4)*x/15}
+    fig,axes=plt.subplots(1,3,figsize=(12,3.6));subrows=[];phaserows=[]
+    for ax,wave in zip(axes,('S0','S2','P1')):
+        values=np.asarray(data[wave],float)
+        ax.plot(s,values,label='selected IR');ax.plot(s,lines[wave],'k--',label='same-x Weinberg line')
+        ax.axhline(0,color='.7',lw=.6);ax.set(title=wave,xlabel='s / m_pi^2',ylabel='partial wave f')
+        ax.grid(alpha=.15)
+        subrows.extend([wave,float(q),float(v),float(w)] for q,v,w in zip(s,values,lines[wave]))
+        obs=record['observables'][wave]
+        phaserows.extend(['selected_IR',wave,e,d,eta] for e,d,eta in zip(obs['E_GeV'],obs['delta_deg'],obs['eta']))
+        ref=load_csv(f'figure7_{wave.lower()}_phases.csv');m=ref['group']=='ir_magenta'
+        phaserows.extend(['paper_Fig7',wave,float(e),float(d),''] for e,d in zip(ref['energy_gev'][m],ref['phase_deg'][m]))
+    axes[0].legend(frameon=False,fontsize=8)
+    fig.suptitle(f"Selected IR subthreshold curves; epsilon_chi={record['spec']['eps_chi']:g}")
+    fig.tight_layout();fig.savefig(dest/'subthreshold.pdf');fig.savefig(dest/'subthreshold.png',dpi=180);plt.close(fig)
+    for filename,header,rows in [('subthreshold.csv',['wave','s','f','Weinberg_same_x'],subrows),
+                                  ('phase_eta.csv',['source','wave','energy_GeV','phase_deg','eta'],phaserows)]:
+        with (dest/filename).open('w',newline='') as stream:
+            writer=csv.writer(stream);writer.writerow(header);writer.writerows(rows)

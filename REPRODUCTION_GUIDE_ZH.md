@@ -1,5 +1,24 @@
 # 2309.12402v3：复现路线与运行接口
 
+> ## ⚠ 读之前：这个仓库有两条平行主线
+>
+> **(1) Newton 主线**（`results/runs/mainline_alignment_20260909/`、`major_claims_20260912/`）——
+> 本文件描述的就是它。它已被 `REVISED_CLAIMS_ZH.md` 的只读审计判定为
+> **"解的是一个自建的近似模型，不是论文的问题"**（论文没有的密度正则化 B、比字面更紧的 L2 手征球、
+> 以障碍中心而非极值点作代表、自研 barrier–Newton 求解器）。它的 P0–P5 计划已不再执行。
+>
+> **(2) SDP 直解路线**（`src/smatrix_bootstrap/sdp/`）——当前在做的。求解器已改为 **SDPB-only**
+> （任意精度），MOSEK/MATLAB/CVX 都不在链路上。
+>
+> **当前进度、运行方法、精度判断与待补缺口的唯一入口是
+> [`HANDOFF_PHYSICS_AUDIT_ZH.md`](HANDOFF_PHYSICS_AUDIT_ZH.md)。**
+> 本文件保留为历史记录，其中与下列事实冲突的陈述以 handoff 为准：
+>
+> - 当前SDP路线同样通过统一入口：`python -m smatrix_bootstrap.run sdp ...`。
+>   下文旧Newton命令及 `scripts/sdp/pmp_run.py` 不作为当前生产入口。
+>   Mathematica用于独立公式检查，SDPB用于优化；自包含运行、精度理由和真实资源范围见handoff。
+>
+
 ## 2026-09-12当前入口与下一阶段
 
 [完整严格审计](results/runs/major_claims_20260912/final_report/REPORT_ZH.pdf)、[六项未闭合工作、A1–F3台账及P0–P5计划](results/runs/major_claims_20260912/CORE_CLAIM_LEDGER_AND_PLAN_ZH.md)。当前定性IR→UV→共振链及五组有限计算已完成；稳健定量ρ、S0、L比较及原文区域/数值身份仍按台账保留，不以代码/图齐备宣称物理成功。

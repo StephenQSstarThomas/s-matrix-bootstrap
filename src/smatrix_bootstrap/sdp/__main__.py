@@ -1,172 +1,218 @@
-"""Entry point:  ``python -m smatrix_bootstrap.sdp <command> [options]``.
-
-Commands
-    selfcheck   run the section 5a mathematical self-checks and cross-checks
-    prereg      write preregistration.json (must precede P3)
-    solve       one or more boundary directions / representative points
-    figures     build the PDF figures and the comparison tables from report.json
-
-A ``solve`` invocation writes exactly one ``report.json`` into ``--out``; every
-number in the final report cites one of those files.
-"""
+"""Public SDPB-only calculation entry, checks and figure delivery."""
 from __future__ import annotations
 
 import argparse
 import json
 import os
-
-import numpy as np
+import sys
 
 from . import constraints as C
-from .problem import ModelSpec
-from .runner import run_job, sweep_directions
-
-POINTS = ("tip", "ref", "mid")
-
-
-def _spec(a) -> ModelSpec:
-    return ModelSpec(M=a.M, L=a.L, chiral=a.chiral, chi_caliber=a.chi, eps_chi=a.eps_chi,
-                     uv=a.uv, sr_caliber=a.sr, eps_ff=a.eps_ff, B=a.B, B_norm=a.B_norm,
-                     cone_scaling=a.cone_scaling, sparsify=a.sparsify,
-                     reduce_basis=a.reduce_basis, tag=a.tag)
-
-
-def _jobs(a, x_tip: float | None):
-    """Build the (name, direction, extra) list for this invocation."""
-    if a.points:
-        x_ref, _ = C.chiral_reference_point()
-        out = []
-        for p in sorted(a.points, key=lambda q: {"tip": 0, "ref": 1, "mid": 2}[q]):
-            if p == "tip":
-                out.append(("tip", (1.0, 0.0), None))
-            elif p == "ref":
-                out.append(("ref", (0.0, 1.0), _fix_f00(lambda ctx: x_ref)))
-            else:
-                # the mid section needs the tip of *this* feasible set; take it
-                # from the tip solve in this process, else from --x-tip
-                def _mid(ctx, _xt=x_tip, _xr=x_ref):
-                    xt = ctx["tip"]["f00_3"] if "tip" in ctx and ctx["tip"].get("f00_3") \
-                        is not None else _xt
-                    if xt is None:                       # tip solve failed
-                        raise _SkipJob("mid needs a tip solve or --x-tip")
-                    return 0.5 * (xt + _xr)
-                out.append(("mid", (0.0, 1.0), _fix_f00(_mid)))
-        return out
-    if a.section is not None:
-        # the width of the allowed region on the vertical section f00(3) = x:
-        # max f11 (direction +y) and min f11 (direction -y)
-        x = C.chiral_reference_point()[0] if a.section == "xref" else float(a.section)
-        return [("section_hi", (0.0, 1.0), _fix_f00(lambda ctx, _x=x: _x)),
-                ("section_lo", (0.0, -1.0), _fix_f00(lambda ctx, _x=x: _x))]
-    dirs = sweep_directions(a.ndir, half=a.half)
-    lo, hi = (a.slice or "0:%d" % len(dirs)).split(":")
-    sel = list(range(len(dirs)))[int(lo):int(hi)]
-    return [("dir%03d" % i, dirs[i], None) for i in sel]
-
-
-class _SkipJob(Exception):
-    """Raised when a chained job cannot be set up (e.g. its tip solve failed)."""
-
-
-def _fix_f00(x):
-    """``x`` may be a number or a callable of the accumulated results."""
-    def extra(model, ctx):
-        v = x(ctx) if callable(x) else x
-        return [model.f00 == v]
-    return extra
 
 
 def main(argv=None) -> int:
+    argv = list(sys.argv[1:] if argv is None else argv)
+    if argv[:1] in (["solve"], ["sdpb"]):
+        from .cli import main as sdpb_main
+        return sdpb_main(argv[1:])
     p = argparse.ArgumentParser("smatrix_bootstrap.sdp")
-    p.add_argument("command", choices=["selfcheck", "prereg", "solve", "figures", "audit-a1", "audit-phases", "audit-uv"])
-    p.add_argument("--out", default=None)
-    p.add_argument("--source-report", default=None)
+    p.add_argument("command", choices=["selfcheck", "prereg", "figures", "ir-figures", "mma-audit", "audit-run", "angle-audit", "currents", "subthreshold", "amplitude-export", "precision-probe", "contrast", "ir-select", "uv-plan", "uv-select", "support", "refine", "sine-replay", "sine-check"])
+    p.add_argument("--out")
     p.add_argument("--M", type=int, default=50)
-    p.add_argument("--L", type=int, default=10)
-    p.add_argument("--chiral", action="store_true")
-    p.add_argument("--chi", default="chi-b", choices=["chi-a", "chi-b", "chi-c"])
-    p.add_argument("--eps-chi", type=float, default=C.EPS_CHI_MAIN)
-    p.add_argument("--uv", action="store_true")
-    p.add_argument("--sr", default="SR-b", choices=["SR-a", "SR-b", "SR-c"])
-    p.add_argument("--eps-ff", type=float, default=C.EPS_FF)
-    p.add_argument("--B", type=float, default=None)
-    p.add_argument("--B-norm", default="l2", choices=["l2", "l4"])
-    p.add_argument("--cone-scaling", default="rownorm",
-                   choices=["none", "centrifugal", "rownorm"])
-    p.add_argument("--sparsify", type=float, default=0.0)
-    p.add_argument("--reduce-basis", action="store_true")
-    p.add_argument("--ndir", type=int, default=24)
-    p.add_argument("--half", action="store_true")
-    p.add_argument("--slice", default=None)
-    p.add_argument("--points", nargs="*", choices=list(POINTS))
-    p.add_argument("--x-tip", type=float, default=None)
-    p.add_argument("--section", default=None,
-                   help="'xref' or a number: solve max/min f11 on f00(3) = x")
-    p.add_argument("--solver", default="CLARABEL")
-    p.add_argument("--max-iter", type=int, default=500)
-    p.add_argument("--time-limit", type=float, default=7200.0)
-    p.add_argument("--tag", default="")
-    p.add_argument("--objective", default="plane", choices=["plane", "lambda"])
-    p.add_argument("--generate", action="store_true",
-                   help="constraint generation over the unitarity disks")
-    p.add_argument("--start-tol", type=float, default=1e-6)
-    p.add_argument("--arb-audit", action="store_true",
-                   help="re-verify each solution in Arb ball arithmetic")
+    p.add_argument("--source-report")
+    p.add_argument("--compare-report")
+    p.add_argument('--ref-report',help='uv-select: completed upper support at physical x_ref')
+    p.add_argument('--near-report',help='uv-select: completed upper support at the frozen nearby x')
+    p.add_argument("--source-snapshot", help="authenticated non-executable source JSON.gz for historical family checks")
+    p.add_argument("--angle-row", nargs=3, type=int, action="append", metavar=("I","ELL","NODE"))
+    p.add_argument("--angle-midpoint", nargs=3, type=int, action="append", metavar=("I","ELL","LEFT_NODE"))
+    p.add_argument("--angle-point", nargs=3, action="append", metavar=("I","ELL","S"))
+    p.add_argument("--bits", type=int, default=384)
+    p.add_argument('--precision',type=int,help='refine: SDPB arithmetic bits; input coefficients are unchanged')
+    p.add_argument("--error-target", default="1e-12", help="currents: absolute angular tail target")
+    p.add_argument("--timeout", type=float, default=600, help="diagnostic runtime budget; explicit support values override its saved solver budget")
+    p.add_argument('--resume',action='store_true',help='refine: resume a terminal checkpoint with exactly the same PMP, precision and local rank layout')
+    p.add_argument('--warm-start',action='store_true',help='support: initialize from the accepted source checkpoint; same block structure, precision and local rank layout required')
+    p.add_argument("--basis")
+    p.add_argument("--operator-dps", type=int, default=40)
+    p.add_argument("--digits", type=int, default=30)
+    p.add_argument("--ir-report")
+    p.add_argument("--uv-report")
+    p.add_argument('--ir-selection-report',help='contrast: revalidate a geometry-only IR endpoint selection receipt')
+    p.add_argument('--subthreshold-replay',action='append',help='figures: verified post-solve evaluation overlay; repeat for multiple source amplitudes')
+    p.add_argument("--reference-only",action="store_true",help="contrast: compare accepted ref leaves; registered three-point chain remains incomplete")
+    p.add_argument("--point",choices=['tip','ref','mid'],help='support: registered point; ref by default')
+    p.add_argument('--direction',type=float,nargs=2,help='support: arbitrary nonzero finite linear direction')
+    p.add_argument('--fix-f00',type=float,help='support: optional fixed f00(3), requires --direction')
+    p.add_argument("--duality-gap",type=float)
     a = p.parse_args(argv)
-
-    if a.command == "audit-uv":
-        if not a.out:
-            raise SystemExit("--out is required")
-        from .audit import current_witness
-        print(json.dumps(current_witness(a.M, a.out, solver=a.solver), indent=2))
-        return 0
-
-    if a.command == "audit-phases":
-        if not a.out or not a.source_report:
-            raise SystemExit("--out and --source-report are required")
-        from .audit import phase_replay
-        print(json.dumps(phase_replay(a.source_report, a.out), indent=2))
-        return 0
-
-    if a.command == "audit-a1":
-        if not a.out:
-            raise SystemExit("--out is required")
-        from .audit import constant_identity
-        print(json.dumps(constant_identity(a.out), indent=2))
-        return 0
-
+    if a.resume and a.command!='refine':p.error('--resume is supported only by refine')
+    if a.warm_start and a.command!='support':p.error('--warm-start is supported only by support')
+    if a.command!='uv-select' and (a.ref_report or a.near_report):
+        p.error('--ref-report and --near-report are supported only by uv-select')
+    if a.command!='support' and (a.direction is not None or a.fix_f00 is not None):
+        p.error('--direction and --fix-f00 are supported only by support')
+    if a.command not in ('contrast','ir-figures') and a.ir_selection_report is not None:
+        p.error('--ir-selection-report is supported only by contrast or ir-figures')
+    if a.command!='figures' and a.subthreshold_replay:
+        p.error('--subthreshold-replay is supported only by figures')
     if a.command == "selfcheck":
         import subprocess
-        import sys
         here = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+        try:threads=int(os.environ.get('SDP_TEST_THREADS','1'))
+        except ValueError:p.error('SDP_TEST_THREADS must be a positive integer')
+        if threads<1:p.error('SDP_TEST_THREADS must be a positive integer')
+        env=dict(os.environ,**{name:str(threads) for name in
+                 ('OPENBLAS_NUM_THREADS','OMP_NUM_THREADS','MKL_NUM_THREADS')})
         return subprocess.call([sys.executable, "-m", "pytest", "-q",
-                                os.path.join(here, "tests", "sdp")])
-
+                                os.path.join(here, "tests", "sdp")],env=env)
+    if not a.out:
+        p.error("--out is required")
+    os.environ.setdefault("SDP_CACHE", os.path.join(a.out, "operator-cache"))
+    if a.command=='ir-figures':
+        if not a.source_report or not a.ir_selection_report:p.error('ir-figures requires --source-report and --ir-selection-report')
+        if a.source_snapshot or any(t.split('=')[0] in ('--bits','--precision','--digits','--operator-dps') for t in argv):
+            p.error('ir-figures uses the authenticated saved amplitude; precision overrides do not apply')
+        from .delivery import deliver_ir
+        r=deliver_ir(a.source_report,a.ir_selection_report,a.out)
+        print(json.dumps({'report':os.path.join(a.out,'report.json'),'C4_source':r['C4_source']['verdict'],
+                          'selected':r['selected'],'complete_C3':False}))
+        return 0
+    if a.command in ('uv-plan','uv-select'):
+        if not a.source_report:p.error('--source-report must select the completed UV tip or frozen UV plan')
+        if a.source_snapshot or any(t.split('=')[0] in ('--bits','--precision','--digits','--operator-dps') for t in argv):
+            p.error('UV selection inherits authenticated source data; precision overrides do not apply')
+        from .uv_selection import plan_uv,select_uv
+        if a.command=='uv-plan':
+            r=plan_uv(a.source_report,a.out)
+            summary={k:r['plan'][k] for k in ('x_ref','x_near','x_tip','rule')}
+        else:
+            if not a.ref_report or not a.near_report:p.error('uv-select requires --ref-report and --near-report')
+            r=select_uv(a.source_report,a.ref_report,a.near_report,a.out)
+            summary={'role_mapping':r['selection']['role_mapping'],'legacy_registered_chain_complete':False}
+        print(json.dumps({'report':os.path.join(a.out,'report.json'),'schema':r['schema'],**summary}))
+        return 0
+    if a.command == "mma-audit":
+        from .mma import audit
+        return 0 if audit(a.M, a.out)["passed"] else 1
+    if a.command=='refine':
+        if not a.source_report or a.precision is None or a.precision<64:
+            p.error('refine requires --source-report and --precision >=64')
+        from pathlib import Path
+        from .sdpb import run_once,Settings
+        from .spec import ModelSpec
+        source=json.loads(Path(a.source_report).read_text())
+        if source.get('status') not in ('numerically_accepted','not_accepted','solver_failed','readback_failed','preprocess_failed') or 'pmp' not in source:
+            p.error('Select a terminal leaf with a complete saved PMP; do not duplicate a live run')
+        if a.resume and a.precision!=source['settings']['precision']:p.error('resume cannot change checkpoint precision')
+        cfg=Settings(**source['settings']);cfg.precision=a.precision;cfg.checkpoint_interval=300
+        if any(t.split('=')[0]=='--timeout' for t in argv):
+            if a.timeout<=0 or not a.timeout.is_integer():p.error('refine --timeout must be a positive whole number of seconds')
+            cfg.timeout=int(a.timeout)
+        if a.duality_gap is not None:cfg.duality_gap=a.duality_gap
+        r,_,_=run_once(ModelSpec(**source['spec']),a.out,source['direction'],source.get('fix_f00'),cfg,
+                       prepared=a.source_report,exact_input=True,**({'resume':True} if a.resume else {}))
+        return 0 if r['accepted'] else 1
+    if a.command == "support":
+        if not a.source_report:p.error('--source-report is required')
+        if a.point is not None and (a.direction is not None or a.fix_f00 is not None):
+            p.error('--point conflicts with --direction/--fix-f00')
+        if a.direction is None and a.fix_f00 is not None:p.error('--fix-f00 requires --direction')
+        from .sdpb import support_from_saved
+        extra={'warm_start':True} if a.warm_start else {}
+        if any(t.split('=')[0]=='--timeout' for t in argv):
+            if a.timeout<=0 or not a.timeout.is_integer():p.error('support --timeout must be a positive whole number of seconds')
+            extra['timeout']=int(a.timeout)
+        r=support_from_saved(a.source_report,a.out,a.point,a.duality_gap,direction=a.direction,fix_f00=a.fix_f00,**extra)
+        return 0 if r['accepted'] else 1
+    if a.command == 'sine-replay':
+        if not a.source_report:p.error('--source-report is required')
+        from .sine import replay
+        print(json.dumps(replay(a.source_report,a.out,a.operator_dps),indent=2))
+        return 0
+    if a.command == 'sine-check':
+        from .sine import mma_check
+        r=mma_check(a.out);print(json.dumps(r,indent=2));return 0 if r['passed'] else 1
+    if a.command == "contrast":
+        if not a.ir_report or not a.uv_report:
+            p.error("--ir-report and --uv-report must contain accepted chains or --reference-only ref leaves")
+        from .delivery import deliver
+        print(json.dumps(deliver(a.ir_report,a.uv_report,a.out,reference_only=a.reference_only,ir_selection_report=a.ir_selection_report),indent=2))
+        return 0
+    if a.command=='ir-select':
+        if not a.source_report or not a.compare_report:p.error('ir-select requires upper --source-report and lower --compare-report')
+        from .ir_selection import select_ir
+        receipt=select_ir(a.source_report,a.compare_report,a.out);selection=receipt['selection']
+        print(json.dumps({'receipt':os.path.join(a.out,'report.json'),'status':selection['status'],
+                          'selected':selection['selected'],'scope':selection['rule']}))
+        return 0 if selection['status']=='selected' else 1
+    if a.command == "precision-probe":
+        if not a.basis:
+            p.error("--basis must select a saved coordinate basis")
+        from .precision import benchmark
+        print(json.dumps(benchmark(a.M, a.basis, a.out, a.operator_dps, a.digits), indent=2))
+        return 0
+    if a.command == "audit-run":
+        if not a.source_report:
+            p.error("--source-report must select a completed leaf SDPB report")
+        from .accuracy import audit_saved_run
+        audit_saved_run(a.source_report, a.out, a.bits, a.compare_report)
+        return 0
+    if a.command == 'amplitude-export':
+        if not a.source_report:p.error('--source-report is required')
+        if a.source_snapshot or any(t.split('=')[0] in ('--bits','--precision','--digits','--operator-dps') for t in argv):
+            p.error('amplitude-export converts saved coefficients exactly; precision overrides do not apply')
+        from .amplitude_export import export_amplitude
+        r=export_amplitude(a.source_report,a.out,a.timeout)
+        print(json.dumps({'report':os.path.join(a.out,'report.json'),'status':r['status'],
+                          'n_c':r['n_c'],'seconds':r['seconds'],'representation_error':r['representation_error']}))
+        return 0
+    if a.command == 'subthreshold':
+        if not a.source_report:p.error('--source-report is required')
+        if a.source_snapshot or any(t.split('=')[0] in ('--bits','--precision','--digits','--operator-dps') for t in argv):
+            p.error('subthreshold requires matching source kernels and inherits the recorded source precision')
+        from .evaluation import evaluate_subthreshold
+        r=evaluate_subthreshold(a.source_report,a.out,a.timeout)
+        print(json.dumps({'report':os.path.join(a.out,'report.json'),'status':r['status'],
+                          'points_per_wave':len(r['subthreshold']['s']),'seconds':r['seconds'],
+                          'optimization_performed':False}))
+        return 0
+    if a.command == "angle-audit":
+        if not a.source_report:p.error('--source-report is required')
+        from .crosscheck import audit_angles
+        rows=(a.angle_row or [])+[(I,ell,k+.5) for I,ell,k in (a.angle_midpoint or [])]
+        points=[(int(I),int(ell),s) for I,ell,s in (a.angle_point or [])]
+        r=audit_angles(a.source_report,a.out,a.bits,a.timeout,a.source_snapshot,rows or None,points)
+        print(json.dumps(_angle_summary(r,a.out)))
+        return 0 if r['passed'] else 1
+    if a.command == "currents":
+        if not a.source_report:
+            p.error("--source-report must select a completed precise sine-cardinal UV leaf")
+        from .accuracy import audit_saved_currents
+        r = audit_saved_currents(a.source_report, a.out, a.bits, a.error_target, a.timeout,snapshot=a.source_snapshot)
+        print(json.dumps({"report":os.path.join(a.out, "report.json"), "nodes":len(r["nodes"]),
+                          "uv_ok":r["uv_checks"]["uv_ok"], "scope":r["scope"]}, indent=2))
+        return 0
     if a.command == "prereg":
-        doc = preregistration()
         os.makedirs(a.out, exist_ok=True)
-        with open(os.path.join(a.out, "preregistration.json"), "w") as fh:
-            json.dump(doc, fh, indent=1)
-        print(json.dumps(doc, indent=1))
+        with open(os.path.join(a.out, "preregistration.json"), "x") as fh:
+            json.dump(preregistration(), fh, indent=1)
         return 0
-
-    if a.command == "solve":
-        if not a.out:
-            raise SystemExit("--out is required")
-        kw = {"max_iter": a.max_iter, "time_limit": a.time_limit}
-        if a.solver == "SCS":
-            kw = {"eps": 1e-7, "max_iters": 200000, "time_limit": a.time_limit}
-        if a.generate:
-            kw["start_tol"] = a.start_tol
-        run_job(_spec(a), _jobs(a, a.x_tip), a.out, solver=a.solver,
-                objective=a.objective, generate=a.generate,
-                arb_audit=a.arb_audit, **kw)
-        print("wrote", os.path.join(a.out, "report.json"))
-        return 0
-
     from .figures import build_all
-    build_all(a.out)
+    build_all(a.out,subthreshold_reports=a.subthreshold_replay or ())
     return 0
+
+
+def _angle_summary(report,outdir):
+    counts={name:0 for name in ('pass','fail','inconclusive','not_applicable')}
+    for row in report.get('results',[]):
+        verdict=row.get('unitarity_verdict')
+        if isinstance(verdict,str) and verdict.startswith('not_applicable'):verdict='not_applicable'
+        if verdict in counts:counts[verdict]+=1
+    selected=len(report.get('selected_rows',[]))+len(report.get('selected_points',[]))
+    return {'report':os.path.join(outdir,'report.json'),'status':report['status'],
+            'integrators_agree':report['passed'],'selected_unitarity_counts':counts,
+            'selected_unitarity_not_evaluated':max(0,selected-sum(counts.values())),
+            'scope':'Exit status reports numerical integration agreement; selected-row unitarity is separate and does not establish full physical acceptance.'}
 
 
 def preregistration() -> dict:

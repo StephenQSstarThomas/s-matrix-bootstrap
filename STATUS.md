@@ -1,5 +1,26 @@
 # He–Kruczenski 2309.12402v3 复现状态
 
+> ## ⚠ 读之前：这个仓库有两条平行主线
+>
+> **(1) Newton 主线**（`results/runs/mainline_alignment_20260909/`、`major_claims_20260912/`）——
+> 本文件描述的就是它。它已被 `REVISED_CLAIMS_ZH.md` 的只读审计判定为
+> **"解的是一个自建的近似模型，不是论文的问题"**（论文没有的密度正则化 B、比字面更紧的 L2 手征球、
+> 以障碍中心而非极值点作代表、自研 barrier–Newton 求解器）。它的 P0–P5 计划已不再执行。
+>
+> **(2) SDP 直解路线**（`src/smatrix_bootstrap/sdp/`）——当前在做的。求解器已改为 **SDPB-only**
+> （任意精度），MOSEK/MATLAB/CVX 都不在链路上。
+>
+> **当前进度、运行方法、精度判断与待补缺口的唯一入口是
+> [`HANDOFF_PHYSICS_AUDIT_ZH.md`](HANDOFF_PHYSICS_AUDIT_ZH.md)。**
+> 本文件保留为历史记录，其中与下列事实冲突的陈述以 handoff 为准：
+>
+> - 本文件的「当前仍为原 PV H/current、M50/L10、两个 separate-L2、**B377500**、printed 四 raw 矩盒、
+>   hard-midpoint」是 Newton 主线的合同。SDP 路线**不用** B，也不用 separate-L2。
+> - 本文件的「23 模块、107 项通过」是 Newton 主线的计数。SDP 子包的自检是
+>   `python -m smatrix_bootstrap.sdp selfcheck` → **155 passed**。
+> - 本文件引用的 `CORE_CLAIM_LEDGER_AND_PLAN_ZH.md`（P0–P5 计划）已被 2026-09-12 审计判为不再执行。
+>
+
 更新：2026-09-12。**本轮细致审计、数值修补与计划已完成；论文稳健定量核心仍未复现成功。** [17页严格审计](results/runs/major_claims_20260912/final_report/REPORT_ZH.pdf)、[未完成核心claim及P0–P5计划](results/runs/major_claims_20260912/CORE_CLAIM_LEDGER_AND_PLAN_ZH.md)、[A1–F3机器台账](results/runs/major_claims_20260912/CLAIM_LEDGER.json)。
 
 当前仍为原PV H/current、M50/L10、两个separate-L2(.002)、B377500、printed四raw矩盒(.002)、hard-midpoint及原FF界；物理输入未为曲线调节。三代表进一步收紧后90°读数为803.391/701.034/696.485 MeV；全部中心、原式primal/支撑及同C求值通过。
