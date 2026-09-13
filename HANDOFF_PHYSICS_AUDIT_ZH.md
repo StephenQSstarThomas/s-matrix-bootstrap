@@ -1,5 +1,17 @@
 # SDPB-only 主线交接：2309.12402v3
 
+> ## ⚠ 本文件是历史记录（2026-09-13 起）
+>
+> 现行入口只有 [`PLAN_SDPB_2309_ZH.md`](PLAN_SDPB_2309_ZH.md) 与 [`TRIAGE_ZH.md`](TRIAGE_ZH.md)。
+> 本文件中以下说法已被证伪（证据与正确版本见 TRIAGE §1）：
+> "2309 没有正则化、密度界 B 应删除"；"去掉 B 后 M=50 才认证、失败是精度或截断问题"；
+> "M=50 不收敛、双精度结果只是下界"；"mixed-PV 需换成 sine-cardinal"；
+> "chi-c、SR-a 是 2309 字面合同"。当前主线：mixed-pv、chi-b、ε^χ=0.002、
+> 正则化 |ρ_ij|≤10²（物理判据定），SDPB 192 bit；门槛已通过，端点与论文差 0.22%。
+> 本文件其余内容保留作证据，其中的数值、结论与"当前"等措辞不再代表项目状态。
+>
+
+
 当前主线未完成论文复现。唯一有效入口为 `python -m smatrix_bootstrap.run sdp`。Newton、MOSEK、MATLAB/CVX 优化均不在当前计算链路；历史结果不能跨解析族移植。
 
 [有限离散化解释更正](results/runs/sdpb_mainline_20260912/FINITE_DISCRETIZATION_SCOPE_CORRECTION_ZH.md)：不以“有限M下不是同一个精确函数”单独否定混合配点近似；sine-only是当前已验证路线的身份约束，非论文唯一要求。既有数值和物理失败保持原记录。

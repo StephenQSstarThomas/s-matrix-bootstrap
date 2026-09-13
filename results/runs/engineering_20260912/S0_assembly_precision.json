@@ -1,0 +1,40 @@
+{
+  "question": "Is the M=50 failure caused by loss of precision in double-precision assembly?",
+  "answer": "No.  Measured, not argued.",
+  "evidence": {
+    "rows_total": 1500,
+    "row_magnitude_min": 5.104915039841554e-85,
+    "row_magnitude_max": 33.509314399878114,
+    "rows_exactly_zero": 0,
+    "rows_below_1e-300": 0,
+    "rows_below_1e-16": 358,
+    "note": "No row underflows.  Q_ell is computed in mpmath at adaptive precision inside legendreq.q_table and only then cast to float64, so each row entry carries full double *relative* accuracy at its own tiny scale. The centrifugally suppressed rows are slack, not degenerate: the disk |h|^2 <= 2 Im h has radius ~1 while |h| ~ 1e-60 there."
+  },
+  "lambda_rescale_defect_found_and_fixed": {
+    "was": "floor=1e-8, so lambda_analytic was clipped at 1e-16 and did not mean what it says",
+    "now": "floor=0 by default; the returned value is the true Lambda_ell",
+    "exact_Lambda19_squared_by_node": {
+      "0": "1.0321786e-80",
+      "1": "1.4030643e-62",
+      "2": "3.8261504e-54",
+      "4": "2.0051595e-44",
+      "9": "5.3603376e-32"
+    },
+    "double_Lambda19_squared_by_node": {
+      "0": 1.0321785509877483e-80,
+      "1": 1.403064273293322e-62,
+      "2": 3.826150438151857e-54,
+      "4": 2.0051595423446887e-44,
+      "9": 5.360337594756127e-32
+    }
+  },
+  "centrifugal_scaling_is_the_wrong_prescription": {
+    "measured_over_analytic_ratio_on_rows_with_Lambda2_gt_1e-7": {
+      "n": 857,
+      "min": 0.00029489053521152166,
+      "median": 0.00691251031292908,
+      "max": 33.509314399878114
+    },
+    "conclusion": "The analytic Lambda_ell(s)^2 does not describe the assembled row magnitudes: the ratio spans five decades with median 6.9e-3.  cone_scaling='centrifugal' is therefore mis-specified; 'rownorm' (the measured magnitude) is the one that works."
+  }
+}

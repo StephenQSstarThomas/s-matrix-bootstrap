@@ -1,60 +1,39 @@
-# He–Kruczenski pion / gauge bootstrap reproduction
+# He–Kruczenski 2309.12402 复现（SDPB 路线）
 
-> ## ⚠ 读之前：这个仓库有两条平行主线
->
-> **(1) Newton 主线**（`results/runs/mainline_alignment_20260909/`、`major_claims_20260912/`）——
-> 本文件描述的就是它。它已被 `REVISED_CLAIMS_ZH.md` 的只读审计判定为
-> **"解的是一个自建的近似模型，不是论文的问题"**（论文没有的密度正则化 B、比字面更紧的 L2 手征球、
-> 以障碍中心而非极值点作代表、自研 barrier–Newton 求解器）。它的 P0–P5 计划已不再执行。
->
-> **(2) SDP 直解路线**（`src/smatrix_bootstrap/sdp/`）——当前在做的。求解器已改为 **SDPB-only**
-> （任意精度），MOSEK/MATLAB/CVX 都不在链路上。
->
-> **当前进度、运行方法、精度判断与待补缺口的唯一入口是
-> [`HANDOFF_PHYSICS_AUDIT_ZH.md`](HANDOFF_PHYSICS_AUDIT_ZH.md)。**
-> 本文件保留为历史记录，其中与下列事实冲突的陈述以 handoff 为准：
->
-> - 本文件的「当前统一设置 combined-l2 + hard-midpoint / B=377500」属于 Newton 主线，**不是** SDP 路线的设置。
-> - SDP 路线采用 2309 的**字面设定：无密度正则化 B**。实测：删掉从 2403.10772 搬来的 `‖ρ‖₄ ≤ 377500`
->   之后，M=50 纯幺正才第一次拿到认证点（带着它会在 981 个圆盘处求解失败并返回高 60% 的值）。
->
+目标：用 SDPB 严谨复现 [Bootstrapping gauge theories, arXiv:2309.12402v3](references/2309.12402v3.pdf) 的 Fig.3–11，即八条 claim C1–C8。分支 `sdpb-2309-regularised`。
 
-复现[2309.12402v3](references/2309.12402v3.pdf)的Fig.3–11：有限散射约束 → 手征对照 → 电流与QCD求和规则 → ρ相移 → 分辨率。**SDP 直解路线（当前在做的）先读 [HANDOFF](HANDOFF_PHYSICS_AUDIT_ZH.md)。** Newton 主线的历史记录见 [STATUS](STATUS.md)、[SCIENCE](SCIENCE.md)、[运行路线](REPRODUCTION_GUIDE_ZH.md)。
+**入口文档（只有这两份是现行的）**
 
-当前统一设置为[combined-l2 + hard-midpoint](results/runs/mainline_alignment_20260909/PAPER_MAINLINE.json)，物理输入与选点先于新相移固定。C三步及D联合见证已完成；E三点支持与相移已生成，三条均有P1上穿，但三点稳健性和部分弹性/形态差异尚未闭合。B区域精度及F缺项按STATUS如实保留；E1已证明两侧收缩，但未复现强非对称。旧separate/clipped的完成状态不转移。
+- [`PLAN_SDPB_2309_ZH.md`](PLAN_SDPB_2309_ZH.md)：主线合同、预登记裁决规则、精度预算、七个阶段的流水线与验收、门槛结果。
+- [`TRIAGE_ZH.md`](TRIAGE_ZH.md)：代码、结果目录、参考资料、旧文档的四级分类，以及五条已被证伪命题的正确版本。
 
-| 当前数据 | 入口 |
-|---|---|
-| Fig.5–7 | [C结果](results/runs/mainline_alignment_20260909/C_RESULT_ZH.md) |
-| 电流/QCD共同见证 | [D结果](results/runs/mainline_alignment_20260909/D_RESULT_ZH.md) |
-| Fig.9–10 | [E三点与差异](results/runs/mainline_alignment_20260909/E3_PAPER_RESULT_ZH.md) |
-| Fig.11四组已完成及L12缺项 | [F部分交付](results/runs/mainline_alignment_20260909/F_paper/F_RESULT_ZH.md) |
-| 求解器为何这样选择 | [原文、后续实现和实测依据](results/runs/mainline_alignment_20260909/SOLVER_DECISION_ZH.md) |
+其余顶层文档（STATUS、SCIENCE、HANDOFF、REPORT_SDP、REVISED_CLAIMS、REPRODUCTION_GUIDE、AGENTS）是历史记录，顶部横幅说明其失效之处；与 PLAN 冲突时以 PLAN 为准。
 
-唯一计算入口：
+**主线合同一句话**：论文的有限问题（M=50、L=10、mixed-pv 节点离散、chi-b 合并 8 维手征范数、ε^χ=0.002、两个流、四个 FESR 矩、(3.75) 形状因子界）加上作者方法论文 2103.11484 §3 要求的双谱密度正则化 |ρ_ij| ≤ Mreg，Mreg 由物理判据（未施加分波幺正、L=8/10/12 稳定）定为 10²；SDPB 192 bit，gap 10⁻⁶，全部原约束用 Arb 复验。
+
+**当前状态（2026-09-13）**：门槛已通过。ε=0.002 的 +x 端 0.08276 对论文 0.08257（+0.22%），L=8/10/12 端点跨 0.18%，M=30/50 差 0.1%，ℓ∞ 与 ℓ2 正则化差 0.20%。正在进行阶段 2（Fig.3/4 区域）与阶段 0b 的 ℓ4 对照。结果根目录 `results/runs/sdpb_regularised_20260913`（符号链接到 `/playpen1`），其中 `GATE_RESULT.md`、`GATE_LOG.md` 是门槛的判定与全过程记录。
+
+**运行**
 
 ```bash
-export PYTHONPATH=/tmp/collocation_arb:src
-export SMATRIX_BLAS_THREADS=2
-/home/shiqiu/miniconda3/bin/python -m smatrix_bootstrap.run --help
-/home/shiqiu/miniconda3/bin/python -m pytest -q -p no:cacheprovider
+# 安装（可编辑）
+python -m pip install -e '.[test]'
+# 一次求解：M50/L10、手征 ε=0.002、正则化 Mreg=1e2、+x 端
+PYTHONPATH=src python -m smatrix_bootstrap.run sdp solve --workdir RUNS/tip \
+  --M 50 --L 10 --chiral --chi chi-b --eps-chi 0.002 \
+  --scattering-prescription mixed-pv --reduce-basis --reg-norm linf --reg-bound 1e2 \
+  --operator-dps 40 --digits 30 --precision 192 --nproc 8 --duality-gap 1e-6 \
+  --points tip --mma-reference <已通过的 M=50 Mathematica 核对 report.json>
+# 复用同一 PMP 只换目标（截面、方向扫描）
+PYTHONPATH=src python -m smatrix_bootstrap.run sdp support --source-report RUNS/tip/tip/report.json \
+  --direction 0 1 --fix-f00 0.07332139057293464 --out RUNS/section_hi
+# 未施加分波的幺正性诊断
+PYTHONPATH=src python scripts/sdp/omitted_waves.py RUNS/tip/tip/report.json
+# 测试
+python -m pytest -q tests/sdp        # SDPB 路线，约 240 项
+python -m pytest -q legacy/tests     # 退役 Newton 包自己的 107 项
 ```
 
-生产数据写入新的`results/runs`目录，具体argv保存在各report.json。PV支持显式使用`--prescription pv-midpoint --unitarity-scope sampled --infinity free`；χ默认combined-l2，历史两球复放必须显式指定separate-l2。原式可行性、支持误差、物理曲线及分辨率分别判定。
+依赖：SDPB 3.1.0（Docker 镜像 `bootstrapcollaboration/sdpb:3.1.0`，启动器 `scripts/sdpb/sdpb.sh`）、Wolfram Engine 15（仅独立公式核对，`scripts/mma/`）、python-flint、mpmath。不使用 MOSEK/CVX。
 
-| 文件 | 当前职责 |
-|---|---|
-| `__init__.py` | 公共类型、数值运输和结果序列化 |
-| `model.py` | 物理归一化、电流算子、观测量及原图数值比较 |
-| `kernels.py` | 独立PV振幅、解析核与联合原式审计 |
-| `operators.py` | 网格/算子、联合状态及分辨率运输 |
-| `imaginary.py` | 散射支持编排、原式外界与PSD工具 |
-| `linear.py` | B/E完整Newton与CG求解 |
-| `quotient.py` | 密度障碍、FESR目标、换元、B对偶与D初始化 |
-| `analysis.py` | C/E选点、区域/相移与Phase I启动 |
-| `io.py` | 区域记录及Fig.3–11/η图 |
-| `run.py` | 单一CLI及联合计算派发 |
-
-十个活跃模块均≤350行/24KiB；三个测试文件保留79项独立数学/实现检查。原始Newton数学循环、联合约束与数据格式保留，sine/FG/五尾、旧全空间conic/CG/embed等执行分支已退休；[整理审查](results/runs/mainline_alignment_20260909/core10_review/REVIEW_ZH.md)和[原源码/测试证据](results/evidence/core_before_ten_modules_20260910.json.gz)完整保留来源。额外差值/FF-lift/Watson调试图停止自动生成，对应数值与诊断仍在。
-
-[整理前README](results/runs/mainline_alignment_20260909/README_BEFORE_CONSOLIDATION.md)保存历轮交付与旧接口说明；历史源码和证明输入留在原位置。完整计算或测试通过不等于原论文全部物理主张通过，有限节点幺正性也不等于连续认证。
+**代码布局**：`src/smatrix_bootstrap/sdp/` 是全部现行代码；`src/smatrix_bootstrap/run.py` 只分发 `sdp`。退役的 Newton 包在 `legacy/smatrix_bootstrap_newton/`（见 `legacy/README.md`），只作历史结果的复验与 `sdp/crosscheck.py` 的独立对照。`references/` 存论文源码、数字化图数据、作者 2403/2505 代码快照（提交 801684d）与 Córdoba 2511.11513 快照。

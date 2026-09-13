@@ -1,0 +1,30 @@
+{
+  "question": "Why does the interior-point method fail once enough unitarity disks are imposed?",
+  "answer": "The KKT/Schur-complement system is conditioned at ~1e35.  Double precision carries ~1e16.  The failure is solve-time conditioning, not operator assembly and not the Watson degeneracy by itself.",
+  "source": "SDPB's own per-iteration diagnostics on the M=20, L=6, chiral+Gram problem written by smatrix_bootstrap.sdp.pmp and solved at 512 bits.",
+  "iterations": 27,
+  "Q_cond_number": {
+    "first": 2.166962275627839e+29,
+    "max": 6.005916019353699e+34,
+    "last": 5.829047860966766e+34
+  },
+  "max_block_cond_number": {
+    "first": 2.0,
+    "max": 3.1364182422159097e+24,
+    "last": 3.1364182422159097e+24
+  },
+  "mu": {
+    "first": 1e+40,
+    "last": 8.764758505500204e+34
+  },
+  "iterations_above_double_reach": 27,
+  "decimal_digits_required": 34.8,
+  "decimal_digits_in_double": 15.95,
+  "consequence": [
+    "a one-shot solve of all 3LM disks returns SolverError at every M tried",
+    "constraint generation dies once the disk count grows (M=50: solver failed at 981 disks)",
+    "MOSEK reports Problem status UNKNOWN with iterate norm 3e10 on the UV triple",
+    "tightening MOSEK's conic relative gap from 1e-8 to 1e-10 makes it fail on round 1 of problems it otherwise solves and certifies"
+  ],
+  "why_SDPB_is_the_right_tool": "512 bits is ~154 decimal digits, an order of magnitude more than the ~35 the problem needs; SDPB carries the conditioning instead of being defeated by it."
+}

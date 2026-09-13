@@ -1,0 +1,20 @@
+[
+  {
+    "m_q": "arith-5.650",
+    "status": "optimal",
+    "cert": false,
+    "f00": 0.8893156781903689,
+    "rounds": 4,
+    "stopped": "solver failed at 327 disks",
+    "s": 25.0
+  },
+  {
+    "m_q": "rms-5.886",
+    "status": "optimal",
+    "cert": false,
+    "f00": 0.9382173120624976,
+    "rounds": 4,
+    "stopped": "solver failed at 325 disks",
+    "s": 22.2
+  }
+]

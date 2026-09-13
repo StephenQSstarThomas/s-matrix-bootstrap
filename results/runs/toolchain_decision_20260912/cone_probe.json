@@ -1,0 +1,28 @@
+{
+  "purpose": "verify the four non-trivial CVX constructs in the author's optimize_core.m all exist in CVXPY and solve under MOSEK",
+  "mosek_python_version": "11.2.4",
+  "cvxpy_version": "1.9.2",
+  "python": "3.13.12",
+  "checks": {
+    "hermitian_psd_3x3": {
+      "status": "optimal",
+      "obj": 0.4999999999981605
+    },
+    "rotated_soc_unitarity": {
+      "status": "optimal",
+      "obj": 1.9999999997235132,
+      "exact": 2.0
+    },
+    "pnorm4_ball": {
+      "status": "optimal",
+      "obj": 3.343701521276136,
+      "exact": 3.34370152488211
+    },
+    "cp_SOC": {
+      "status": "optimal",
+      "obj": 5.0,
+      "exact": 5.0
+    }
+  },
+  "all_optimal": true
+}

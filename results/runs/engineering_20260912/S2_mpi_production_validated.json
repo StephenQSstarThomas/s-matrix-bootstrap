@@ -1,0 +1,37 @@
+{
+  "question": "Does SDPB's MPI parallelism work on this problem, and does it change the answer?",
+  "earlier_wrong_claim": "'-n 16 = 330 s/iteration, MPI is negative scaling'.  That was measured while the SHARED machine was at load 132 with other users' jobs; it is contention, not a property of SDPB or of the problem.",
+  "clean_production_measurement": {
+    "problem": "M=20 chiral+Gram, B=None, 192 bit, dualityGap 1e-3, back to back",
+    "results": [
+      {
+        "n": 1,
+        "iters": 48,
+        "wall_s": 508.9,
+        "s_per_iter": 10.4,
+        "objective": "7907.10061077180049119"
+      },
+      {
+        "n": 8,
+        "iters": 48,
+        "wall_s": 127.2,
+        "s_per_iter": 2.35,
+        "objective": "7907.10061077180049085"
+      },
+      {
+        "n": 16,
+        "iters": 48,
+        "wall_s": 134.4,
+        "s_per_iter": 2.48,
+        "objective": "7907.10061077180049104"
+      }
+    ],
+    "answer_agreement": "identical to 19 of 21 significant digits",
+    "speedup": "4.0x at n=8; saturates by n=16 for this problem size"
+  },
+  "guidance": [
+    "use -n 8 per solve at M=20-scale problems",
+    "on one shared box, prefer many concurrent single-rank solves for THROUGHPUT; use -n 8 when single-solve LATENCY matters",
+    "on a cluster, one node per boundary direction with -n 8..16 inside the node: the directions are independent, so node-level scaling is exact"
+  ]
+}

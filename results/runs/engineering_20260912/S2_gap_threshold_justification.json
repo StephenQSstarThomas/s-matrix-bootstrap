@@ -1,0 +1,54 @@
+{
+  "question": "Is dualityGap=1e-3 a defensible precision limit for this paper?",
+  "answer": "No.  1e-6 is.  The correction is cheap: 1.9x the iterations.",
+  "why": "SDPB defines dualityGap = |p-d| / max(1, |p+d|).  For a target value below 0.5 the denominator saturates at 1 and the gap becomes an ABSOLUTE error bound, not a relative one.",
+  "per_claim": [
+    {
+      "claim": "C1 f00 extremes",
+      "magnitude": 2.233,
+      "band": "+-2%",
+      "acceptable_error": 0.0149,
+      "gap_1e-3_error": 0.00447,
+      "sufficient_at_1e-3": true
+    },
+    {
+      "claim": "C2 chiral +x end",
+      "magnitude": 0.0826,
+      "band": "+-5%",
+      "acceptable_error": 0.00138,
+      "gap_1e-3_error": 0.001,
+      "sufficient_at_1e-3": true
+    },
+    {
+      "claim": "C2 x_ref section width",
+      "magnitude": 0.00076,
+      "band": "+-20%",
+      "acceptable_error": 5.07e-05,
+      "gap_1e-3_error": 0.001,
+      "sufficient_at_1e-3": false
+    },
+    {
+      "claim": "C5 Fig.8 upper shrink",
+      "magnitude": 0.00023,
+      "band": "+-25%",
+      "acceptable_error": 1.92e-05,
+      "gap_1e-3_error": 0.001,
+      "sufficient_at_1e-3": false
+    },
+    {
+      "claim": "C5 lower-boundary bound",
+      "magnitude": 0.0001,
+      "band": "<=1e-4",
+      "acceptable_error": 8.33e-06,
+      "gap_1e-3_error": 0.001,
+      "sufficient_at_1e-3": false
+    }
+  ],
+  "adopted": {
+    "dualityGapThreshold": 1e-06,
+    "iterations": 121,
+    "vs_1e-3": "1.9x",
+    "vs_SDPB_default_1e-30": "4.7x cheaper"
+  },
+  "note": "A section width is a DIFFERENCE of two boundary solves, so its error is ~2x the per-solve gap; 1e-6 still leaves a factor 25 on the tightest band."
+}

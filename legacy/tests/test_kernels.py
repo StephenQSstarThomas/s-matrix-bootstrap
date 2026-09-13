@@ -3,8 +3,8 @@ import pytest
 flint=pytest.importorskip('flint')
 import mpmath as mp
 from flint import arb,acb,ctx
-from smatrix_bootstrap.kernels import density_labels, pv_matrix, physical_node_row, offcut_row
-from smatrix_bootstrap.operators import midpoint_grid, angular_kernels
+from smatrix_bootstrap_newton.kernels import density_labels, pv_matrix, physical_node_row, offcut_row
+from smatrix_bootstrap_newton.operators import midpoint_grid, angular_kernels
 def as_arb(value):
     value=Fraction(value);return arb(value.numerator)/value.denominator
 def inside(answer,reference):
@@ -105,7 +105,7 @@ def test_rational_subtraction_matches_full_density_coordinate_change():
                 if physical:assert difference.real.contains(0) and difference.imag.contains(0)
                 else:assert difference.contains(0)
 def test_pv_source_free_constant_threshold_and_original_coordinate_change():
-    from smatrix_bootstrap.kernels import PVSourceRows
+    from smatrix_bootstrap_newton.kernels import PVSourceRows
     with ctx.workprec(ctx.prec):
         original = PVSourceRows(2, 2, bits=256, order=24)
         subtracted = PVSourceRows(2, 2, bits=256, order=24, subtracted=True)
@@ -125,9 +125,9 @@ def test_pv_source_free_constant_threshold_and_original_coordinate_change():
         assert max(float(abs(v).upper()) for v in original.row(4, 3, 1)) == 0
 def test_full_pv_density_coordinate_change_preserves_amplitude_and_density_norm():
     import numpy as np
-    from smatrix_bootstrap.quotient import convert_subtraction
-    from smatrix_bootstrap.kernels import PVSourceRows; from smatrix_bootstrap.quotient import subtraction_rows, subtract_amplitude_coordinates
-    from smatrix_bootstrap.imaginary import density_fourth_power
+    from smatrix_bootstrap_newton.quotient import convert_subtraction
+    from smatrix_bootstrap_newton.kernels import PVSourceRows; from smatrix_bootstrap_newton.quotient import subtraction_rows, subtract_amplitude_coordinates
+    from smatrix_bootstrap_newton.imaginary import density_fourth_power
     with ctx.workprec(ctx.prec):
         original,other=[PVSourceRows(3,2,bits=256,order=24,subtracted=sub) for sub in (False,True)]
         c=[arb((-1)**i)/2**(i+1) for i in range(original.coefficient_count)]
@@ -149,7 +149,7 @@ def test_full_pv_density_coordinate_change_preserves_amplitude_and_density_norm(
         assert shifted[0]!=0 and abs(subtract_amplitude_coordinates(shifted,3,False)[0])<np.longdouble('5e-19')
 def test_eliminated_density_barrier_gradient_and_hessian_by_variation():
     import numpy as np
-    from smatrix_bootstrap.quotient import barrier_terms
+    from smatrix_bootstrap_newton.quotient import barrier_terms
     z = np.array([.2,.4,.1,-.2])
     R=np.array([[1.,0,0,0]]); I=np.array([[0.,1,0,0]])
     t=np.ones(1); C=np.zeros((8,4))
@@ -167,7 +167,7 @@ def test_eliminated_density_barrier_gradient_and_hessian_by_variation():
     np.testing.assert_allclose(hessian,curvature,rtol=1e-7,atol=1e-8)
 @pytest.mark.parametrize('eta', ['1', '.6', '1.1'])
 def test_unitarity_from_independent_elastic_inelastic_and_violating_phase(eta):
-    from smatrix_bootstrap.model import scattering_matrix, unitarity_margin, scattering_gram
+    from smatrix_bootstrap_newton.model import scattering_matrix, unitarity_margin, scattering_gram
     with ctx.workprec(256):
         eta = arb(eta); phase = arb(2)/3; s = arb(9)
         expected_S = eta*acb(phase.cos(), phase.sin())
@@ -183,7 +183,7 @@ def test_unitarity_from_independent_elastic_inelastic_and_violating_phase(eta):
         elif eta > 1: assert margin < 0 and gram.det().real < 0
         else: assert margin.contains(0) and gram.det().contains(0)
 def test_unitarity_finite_partial_wave_threshold_limit_and_domain():
-    from smatrix_bootstrap.model import phase_space, scattering_matrix, unitarity_margin, scattering_gram
+    from smatrix_bootstrap_newton.model import phase_space, scattering_matrix, unitarity_margin, scattering_gram
     f = acb(2, 3)
     assert phase_space(4).is_zero() and scattering_matrix(f, 4) == 1
     assert unitarity_margin(f, 4).is_zero() and scattering_gram(f, 4).det().is_zero()
@@ -195,8 +195,8 @@ def test_unitarity_finite_partial_wave_threshold_limit_and_domain():
 def test_pv_provider_is_independent_and_preparation_keeps_the_native_rows(tmp_path):
     import numpy as np
     from types import SimpleNamespace
-    from smatrix_bootstrap.kernels import PVSourceRows
-    from smatrix_bootstrap.operators import prepare_amplitude
+    from smatrix_bootstrap_newton.kernels import PVSourceRows
+    from smatrix_bootstrap_newton.operators import prepare_amplitude
     assert PVSourceRows.__bases__==(object,)
     args=SimpleNamespace(nodes=2,waves=1,bits=256,angular_order=24,subtracted=False,prescription='pv-midpoint',sampling_factor=1,unitarity_energies=[],density_limit=100.,
         moment_source='printed',sr_error='raw-absolute',fesr_cutoff='hard-midpoint',mq_rule='arithmetic-mean',processes=1,output=tmp_path,infinity='free',chiral_tolerance=.002)
@@ -207,7 +207,7 @@ def test_pv_provider_is_independent_and_preparation_keeps_the_native_rows(tmp_pa
     assert H.shape==(23,12) and report['prescription']=='pv-midpoint' and report['amplitude_model']['physical_evaluation'].startswith('native nodes')
     with pytest.raises(ValueError,match='native nodes'):source.row(9,0,0)
 def test_cardinal_reconstruction_from_continuous_dispersion_and_midpoint_aliases():
-    from smatrix_bootstrap.analytic import cardinal_transform,modes,reconstruction_identity,_complex_record
+    from smatrix_bootstrap_newton.analytic import cardinal_transform,modes,reconstruction_identity,_complex_record
     from flint import arb_mat,acb_mat
     with ctx.workprec(256),mp.workdps(90):
         M=3;z=arb(1)/3;D=cardinal_transform(M);x,w=midpoint_grid(M)
@@ -234,8 +234,8 @@ def test_cardinal_reconstruction_from_continuous_dispersion_and_midpoint_aliases
                 error=(abs(zz)**(2*N-n)+abs(zz)**(2*N+n))/(1-abs(zz)**(2*N))
                 assert (value-expected).contains(0) and abs(value-zz**n)<error
 def test_rational_circle_projection_against_direct_angle_and_native_PV():
-    from smatrix_bootstrap.analytic import CardinalAmplitude
-    from smatrix_bootstrap.kernels import PVSourceRows
+    from smatrix_bootstrap_newton.analytic import CardinalAmplitude
+    from smatrix_bootstrap_newton.kernels import PVSourceRows
     with ctx.workprec(192):
         M=2;source=PVSourceRows(M,1,192);coeff=[arb((-1)**j)/(j+2) for j in range(source.coefficient_count)]
         A=CardinalAmplitude(coeff,M);s=source.x[0];angle=arb(1)/(2*M);zs=acb(angle.cos_pi(),angle.sin_pi())
@@ -253,17 +253,17 @@ def test_rational_circle_projection_against_direct_angle_and_native_PV():
             pv=sum((x*y for x,y in zip(source.row(s,ell,I,node=0),coeff)),acb(0))
             assert (A.partial_wave(s,0,I,ell,True)-pv).contains(0)
             assert abs(continuous-pv)<A.uniform_error_bound(9)[I]
-            from smatrix_bootstrap.quadrature import polynomial_rows
+            from smatrix_bootstrap_newton.quadrature import polynomial_rows
             rows,_=polynomial_rows(s,M,[(I,ell)],node=0)
             quadrature=sum((x*y for x,y in zip(rows[I,ell],coeff)),acb(0))
             assert (quadrature-continuous).contains(0)
-        from smatrix_bootstrap.analytic import quadrature_repair_bound
+        from smatrix_bootstrap_newton.analytic import quadrature_repair_bound
         budget=quadrature_repair_bound(A,9)
         assert all(arb(v)<arb('1e-6') for v in budget['S_bounds'].values())
         with pytest.raises(ValueError,match='Quadrature'):
             A.uniform_error_bound(9,M-1)
 def test_local_gram_boundary_and_Watson_non_equivalence():
-    from smatrix_bootstrap.analytic import local_logic_counterexamples
+    from smatrix_bootstrap_newton.analytic import local_logic_counterexamples
     from flint import fmpq_mat
     data=local_logic_counterexamples();item=data['PSD_boundary_not_rank_one']
     G=fmpq_mat(item['gram']);B=fmpq_mat(item['factor_B'])
@@ -278,8 +278,8 @@ def test_local_gram_boundary_and_Watson_non_equivalence():
     replaced=abs(h)*F/abs(F)
     assert replaced.real==arb(1)/2 and Q.imag==0
 def test_complete_cardinal_dual_transform_on_independent_monomials(tmp_path):
-    from smatrix_bootstrap.basis import mode_row_to_cardinal
-    from smatrix_bootstrap.analytic import CardinalAmplitude
+    from smatrix_bootstrap_newton.basis import mode_row_to_cardinal
+    from smatrix_bootstrap_newton.analytic import CardinalAmplitude
     with ctx.workprec(256):
         M=3;zs,zt,zu=map(acb,('0.2','-0.1','0.3'))
         p,q,r=([z**n for n in range(1,M+1)] for z in (zs,zt,zu))
@@ -291,7 +291,7 @@ def test_complete_cardinal_dual_transform_on_independent_monomials(tmp_path):
         exact=CardinalAmplitude(c,M).amplitude(zs,zt,zu)
         assert (sum((a*b for a,b in zip(row,c)),acb(0))-exact).contains(0)
         from types import SimpleNamespace
-        from smatrix_bootstrap.basis import prepare_cardinal,CardinalSourceRows;from smatrix_bootstrap import write_json
+        from smatrix_bootstrap_newton.basis import prepare_cardinal,CardinalSourceRows;from smatrix_bootstrap_newton import write_json
         args=SimpleNamespace(nodes=M,waves=1,bits=256,angular_order=64,subtracted=False,source_registry=None,output=tmp_path,density_limit=1.)
         report=prepare_cardinal(args,lambda **kw:None);write_json(tmp_path/'report.json',report)
         args.preparation=tmp_path;args.output=tmp_path/'extended';args.output.mkdir();args.waves=2
@@ -305,13 +305,13 @@ def test_complete_cardinal_dual_transform_on_independent_monomials(tmp_path):
         wide=arb(src.x[0],1e-10);assert src.exact_energy(wide) is wide
         with pytest.raises(ValueError,match='native'):src.row(wide,0,2,node=0)
         assert max(v.imag.rad() for v in src.row(wide,0,2))>arb('1e-12')
-        from smatrix_bootstrap.quadrature import angular_mode_blocks
+        from smatrix_bootstrap_newton.quadrature import angular_mode_blocks
         for bad in (arb('inf'),arb(4,.01)):
             with pytest.raises(ValueError,match='Finite'):angular_mode_blocks(bad,M,[0])
 @pytest.mark.parametrize('indices',[[0],[0,0]])
 def test_analytic_prepare_rejects_missing_or_duplicate_rows(tmp_path,monkeypatch,indices):
     from types import SimpleNamespace
-    import smatrix_bootstrap.basis as basis
+    import smatrix_bootstrap_newton.basis as basis
     fake=SimpleNamespace(M=1,L=1,physical_count=3,shape=(17,5),
         iter_rows=lambda:iter((j,dict(node_zero_based=0),[arb(0)]*5) for j in indices))
     monkeypatch.setattr(basis,'CardinalSourceRows',lambda *a,**kw:fake)
@@ -320,8 +320,8 @@ def test_analytic_prepare_rejects_missing_or_duplicate_rows(tmp_path,monkeypatch
     with pytest.raises(ValueError,match='[Dd]uplicate|Incomplete'):
         basis.prepare_cardinal(args,lambda **kw:None)
 def test_watson_replay_keeps_fixed_goal_current_center_and_direct_inputs(tmp_path):
-    import json,numpy as np;from types import SimpleNamespace;from smatrix_bootstrap import write_json,read_json,digest,zero_joint_duals,watson_lineage
-    from smatrix_bootstrap.sampling import replay_support_data;from smatrix_bootstrap.run import calculation_inputs
+    import json,numpy as np;from types import SimpleNamespace;from smatrix_bootstrap_newton import write_json,read_json,digest,zero_joint_duals,watson_lineage
+    from smatrix_bootstrap_newton.sampling import replay_support_data;from smatrix_bootstrap_newton.run import calculation_inputs
     seed,src,out=[tmp_path/name for name in ('seed','src','out')]
     for path in (seed,src,out):path.mkdir()
     args=SimpleNamespace(preparation=tmp_path/'H',current_preparation=tmp_path/'J',coefficients=src/'center_last_coefficients.json',interior_coefficients=None,output=out,density_limit=1.,chiral_tolerance=.002,chiral_norm='separate-l2')
@@ -339,7 +339,7 @@ def test_watson_replay_keeps_fixed_goal_current_center_and_direct_inputs(tmp_pat
     for path in [args.coefficients,seed/'center_last_coefficients.json',src/'barrier_state.npz',src/'objective.npz',src/'selection.json',src/'current.json',*(seed/name for name in ('coefficients.json','joint.npz','current.json','selection.json','report.json'))]:assert snapshot[str(path.resolve())]['sha256']==digest(path)
     write_json(tmp_path/'evaluation.json',dict(coefficients=str(args.coefficients)));profile_args=SimpleNamespace(**(vars(args)|dict(coefficients=None,current_preparation=None,profile_runs=[tmp_path])))
     assert set(snapshot)<=set(calculation_inputs(profile_args))
-    from smatrix_bootstrap import _phase_data;from smatrix_bootstrap.spectra import direct_profiles,plot_profiles;import matplotlib.pyplot as plt
+    from smatrix_bootstrap_newton import _phase_data;from smatrix_bootstrap_newton.spectra import direct_profiles,plot_profiles;import matplotlib.pyplot as plt
     ev=dict(coefficients=str(out/'coefficients.json'),coefficient_sha256=digest(out/'coefficients.json'),selection=read_json(out/'selection.json'),energies=[4.,5.,6.],waves=[[0,0],[2,0],[1,1]],unitarity=dict(status='sampled_passed'),f=np.zeros((3,3,2)));write_json(tmp_path/'evaluation.json',ev)
     consumers=[_phase_data,lambda p:direct_profiles(SimpleNamespace(profile_runs=[p],output=p)),lambda p:plot_profiles(SimpleNamespace(profile_runs=[p],profile_kind='phase'))]
     for name in ('coefficients.json','current.json','joint.npz'):

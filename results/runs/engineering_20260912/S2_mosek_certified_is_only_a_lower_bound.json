@@ -1,0 +1,29 @@
+{
+  "finding": "The MOSEK arm's 'certified' label is unsound: it proves feasibility of the returned point, not optimality.  Optimality additionally requires that the solver returned the RELAXATION's optimum, and MOSEK does not always do so on this problem.",
+  "evidence_M8_pure_unitarity_B_none": {
+    "MOSEK via solve_generated": {
+      "status": "optimal",
+      "certified": true,
+      "f00_3": 1.7338263156068776
+    },
+    "SDPB-only generation, 192 bit, gap 1e-3": {
+      "certified": true,
+      "f00_3": 1.891902556,
+      "rounds": 4,
+      "seconds": 118
+    },
+    "independent re-verification of the SDPB point on the UNSCALED operator": {
+      "max_relative_violation_active": -1.0971e-05,
+      "max_absolute_violation_all": 7.157e-12,
+      "max_eta_minus_1": 3.578e-12,
+      "feasible": true
+    },
+    "conclusion": "the SDPB point is feasible, so the true maximum is >= 1.891903; MOSEK's 1.733826 is 9.1% low while being labelled certified"
+  },
+  "consequences": [
+    "Every MOSEK 'certified' number in this project is a LOWER bound on the optimum, not the optimum.",
+    "That includes the M=50 headline f00(3) = 2.216110 reported as -0.75% from the digitised 2.2329.  The true value may be higher; the agreement figure must be re-derived with SDPB before it is quoted.",
+    "It is an independent argument for making SDPB the only solver on the path, which is what the adopted plan now does."
+  ],
+  "note": "The previous round's report already saw this for Clarabel on the l2 ball family ('\u90a3\u91cc\u6c42\u89e3\u5668\u786e\u5b9e\u8fd4\u56de\u4e86\u6b21\u4f18\u70b9').  What is new is that it happens to MOSEK on the main configuration, and that a high-precision solver exposes it."
+}

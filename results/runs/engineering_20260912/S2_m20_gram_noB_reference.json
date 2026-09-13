@@ -1,0 +1,21 @@
+{
+  "spec": "M=20 L=6 chiral chi-b uv=gram B=None rownorm",
+  "results": {
+    "MOSEK": {
+      "status": "SolverError",
+      "certified": null,
+      "f00_3": null,
+      "rounds": 1,
+      "disks": null,
+      "seconds": 5.1
+    },
+    "CLARABEL": {
+      "status": "optimal",
+      "certified": false,
+      "f00_3": 1.1533010051234702,
+      "rounds": 2,
+      "disks": null,
+      "seconds": 4.1
+    }
+  }
+}

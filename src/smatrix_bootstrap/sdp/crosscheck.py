@@ -42,9 +42,28 @@ def to_cflat(row: np.ndarray, lay) -> np.ndarray:
 _SRC: dict = {}
 
 
+def _legacy(name: str):
+    """Import a module of the retired Newton package from ``legacy/`` (comparison target only).
+
+    The package is not installed; it is found relative to the repository root.  A
+    missing package raises a clear error rather than silently skipping the check.
+    """
+    import importlib
+    import sys
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[3] / "legacy"
+    if str(root) not in sys.path:
+        sys.path.append(str(root))
+    try:
+        return importlib.import_module(f"smatrix_bootstrap_newton.{name}")
+    except ImportError as exc:
+        raise ImportError("the retired Newton package (legacy/smatrix_bootstrap_newton) is required "
+                          "as the independent comparison target of this check") from exc
+
+
 def _src(M, L, bits):
     if (M, L, bits) not in _SRC:
-        from ..kernels import PVSourceRows
+        PVSourceRows = _legacy("kernels").PVSourceRows
         _SRC[(M, L, bits)] = PVSourceRows(M=M, L=L, bits=bits, subtracted=False)
     return _SRC[(M, L, bits)]
 
@@ -77,7 +96,7 @@ def compare_rows(new_op, M: int, L: int, cases) -> list[dict]:
 
 def compare_hilbert_kernel(M: int) -> float:
     """New (3.67) vs the historical ``kernels.pv_matrix`` (Arb)."""
-    from ..kernels import pv_matrix
+    pv_matrix = _legacy("kernels").pv_matrix
     from .hilbert import hilbert_kernel
     old = pv_matrix(M)
     o = np.array([[float(old[i, j].str(20, radius=False)) for j in range(M)] for i in range(M)])
@@ -86,7 +105,7 @@ def compare_hilbert_kernel(M: int) -> float:
 
 def compare_kinematic_squares(s_values) -> float:
     """New (2.33)^2 vs the historical ``model.current_kinematic_squares``."""
-    from ..model import current_kinematic_squares
+    current_kinematic_squares = _legacy("model").current_kinematic_squares
     from .formfactor import kinematic_factor
     worst = 0.0
     for s in s_values:
@@ -100,7 +119,7 @@ def compare_kinematic_squares(s_values) -> float:
 
 def compare_grid(M: int) -> dict:
     """New (3.60)-(3.61) grid and weights vs ``operators.midpoint_grid`` (Arb)."""
-    from ..operators import midpoint_grid
+    midpoint_grid = _legacy("operators").midpoint_grid
     from .grid import dsdphi, s_nodes
     x, w = midpoint_grid(M)
     xo = np.array([float(v.str(25, radius=False)) for v in x])

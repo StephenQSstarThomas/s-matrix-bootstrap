@@ -1,0 +1,31 @@
+{
+  "question": "Does 192-bit working precision give the same answer as 768-bit?",
+  "status": "VALIDATED",
+  "problem": "M=20 chiral+Gram, B=None, dualityGap 1e-3, initialMatrixScale 1e4, -n 1",
+  "results": {
+    "192_bit": {
+      "iters": 48,
+      "wall_s": 522.8,
+      "terminate": "found primal-dual optimal solution",
+      "primalObjective": "7907.1006107718004911953",
+      "dualObjective": "7896.1821873853971539896"
+    },
+    "768_bit": {
+      "iters": 48,
+      "wall_s": 1683.1,
+      "terminate": "found primal-dual optimal solution",
+      "primalObjective": "7907.1006107718004909477",
+      "dualObjective": "7896.1821873853971541363"
+    }
+  },
+  "agreement": "identical to 19 significant digits; they first differ at the 20th",
+  "iteration_count": "identical (48) -- precision does not change the convergence path, only the cost per iteration",
+  "speedup": "3.22x",
+  "cost_per_iteration": {
+    "192_bit": 10.8,
+    "768_bit": 30.4,
+    "64_bit": "aborts"
+  },
+  "basis_for_192": "Schur condition number measured at 6.0e34 ~ 2^116; 192 bits ~ 57 decimal digits leaves ~22 digits of margin",
+  "still_open": "the condition number has NOT been measured in the UV sector (Gram + FESR + form-factor asymptotics together); if it is materially higher there, 192 bits would need re-checking.  See HANDOFF section 3.1(c)."
+}

@@ -87,7 +87,7 @@
 
 ## 4. `references/`
 
-CORE：`2309.12402v3.*`、`figure*_*.csv` 与 metadata、`manifest.json`、`upstream-gauge-theory-bootstrap/`（作者 2403/2505 代码，事实 a/e 的出处，目前被 `.gitignore` 排除，阶段 1 改为记录其提交哈希并保留副本）、`cordoba-discrete-gtb-2511.11513/` 与 `2511.11513v1.pdf`。EVIDENCE：`1708.06765`、`2203.02421`、两篇 SDP 数值参考。
+CORE：`2309.12402v3.*`、`figure*_*.csv` 与 metadata、`manifest.json`、`upstream-gauge-theory-bootstrap/`（作者 2403/2505 代码，事实 a/e 的出处；是嵌套 git 克隆，提交 `801684d9ece3de2918a20145178f569459081098`，仓库 `hyfysics/gauge-theory-bootstrap`，保持 ignore 但以此哈希锁定）、`cordoba-discrete-gtb-2511.11513/` 与 `2511.11513v1.pdf`。EVIDENCE：`1708.06765`、`2203.02421`、两篇 SDP 数值参考。
 
 ## 5. 顶层文档
 
@@ -108,5 +108,5 @@ CORE：`2309.12402v3.*`、`figure*_*.csv` 与 metadata、`manifest.json`、`upst
 1. 顶层横幅统一替换；README 重写；HANDOFF 降级。
 2. 旧包与旧测试迁入 `legacy/`；`crosscheck.py` 引用改可选；`pyproject` 依赖收缩；全部 sdp 测试通过。
 3. `sine.py` 与 `problem.py`/`runner.py` 保留但从 CLI 默认与文档主线移出。
-4. `references/upstream-gauge-theory-bootstrap` 记录提交哈希并取消 ignore，`engineering_20260912`、`toolchain_decision_20260912` 纳入 git。
+4. `references/upstream-gauge-theory-bootstrap` 以提交哈希 801684d 锁定（嵌套克隆不入库）；`engineering_20260912`、`toolchain_decision_20260912` 已强制纳入 git。
 5. 不删除任何结果目录；DISPOSABLE 清单交课题组决定。

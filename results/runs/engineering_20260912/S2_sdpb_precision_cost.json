@@ -1,0 +1,21 @@
+[
+  {
+    "precision": 64,
+    "pmp2sdp_s": 9.7,
+    "error": "primalErrorThreshold         = 1e-30"
+  },
+  {
+    "precision": 192,
+    "pmp2sdp_s": 10.9,
+    "iters": 10,
+    "sdpb_s": 118.2,
+    "s_per_iter": 10.8
+  },
+  {
+    "precision": 768,
+    "pmp2sdp_s": 16.1,
+    "iters": 10,
+    "sdpb_s": 316.3,
+    "s_per_iter": 30.4
+  }
+]

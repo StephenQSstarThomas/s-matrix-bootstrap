@@ -1,0 +1,476 @@
+{
+  "records": [
+    {
+      "M": 20,
+      "L": 6,
+      "uv_parts": [
+        "gram"
+      ],
+      "chiral": true,
+      "solver": "MOSEK",
+      "mode": "feasibility",
+      "build_seconds": 0.16,
+      "solve_seconds": 9.33,
+      "status": "optimal",
+      "error": null,
+      "objective": 0.0,
+      "n_unitarity_cones": 320,
+      "n_constraints": 43,
+      "iterations": 19,
+      "f00_3": -0.0005422542838441271,
+      "f11_3": -1.2851476192611274e-05,
+      "watson": {
+        "S0": {
+          "max_absS": 0.9975821708444202,
+          "n_nodes_absS_gt_0.999": 0,
+          "n_nodes_absS_gt_0.99": 6,
+          "min_1_minus_absS": 0.0024178291555797538,
+          "watson_residual_rel_max": 0.11132835669426985,
+          "watson_residual_rel_at_most_saturated": 6.647809887125855e-06,
+          "rho_hat_min": 905.9243114596088
+        },
+        "P1": {
+          "max_absS": 0.9999887556670986,
+          "n_nodes_absS_gt_0.999": 9,
+          "n_nodes_absS_gt_0.99": 14,
+          "min_1_minus_absS": 1.1244332901449994e-05,
+          "watson_residual_rel_max": 0.05709663072746712,
+          "watson_residual_rel_at_most_saturated": 1.7080730301716625e-07,
+          "rho_hat_min": 905.9286095924728
+        }
+      }
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "uv_parts": [
+        "gram"
+      ],
+      "chiral": true,
+      "solver": "MOSEK",
+      "mode": "extremal",
+      "build_seconds": 0.02,
+      "solve_seconds": 9.89,
+      "status": "optimal",
+      "error": null,
+      "objective": 0.08533422574577214,
+      "n_unitarity_cones": 320,
+      "n_constraints": 43,
+      "iterations": 31,
+      "f00_3": 0.08533422574577214,
+      "f11_3": -0.005517323506873865,
+      "watson": {
+        "S0": {
+          "max_absS": 0.9999994407570293,
+          "n_nodes_absS_gt_0.999": 18,
+          "n_nodes_absS_gt_0.99": 20,
+          "min_1_minus_absS": 5.592429707101942e-07,
+          "watson_residual_rel_max": 0.06787997835477051,
+          "watson_residual_rel_at_most_saturated": 3.233745550270452e-07,
+          "rho_hat_min": 3714.517581637261
+        },
+        "P1": {
+          "max_absS": 0.9999999997855389,
+          "n_nodes_absS_gt_0.999": 19,
+          "n_nodes_absS_gt_0.99": 19,
+          "min_1_minus_absS": 2.1446111553302671e-10,
+          "watson_residual_rel_max": 0.12151996261013125,
+          "watson_residual_rel_at_most_saturated": 9.86763440865558e-10,
+          "rho_hat_min": 3714.3982386193425
+        }
+      }
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "uv_parts": [
+        "gram"
+      ],
+      "chiral": true,
+      "solver": "CLARABEL",
+      "mode": "feasibility",
+      "build_seconds": 0.02,
+      "solve_seconds": 1.87,
+      "status": "optimal",
+      "error": null,
+      "objective": 0.0,
+      "n_unitarity_cones": 320,
+      "n_constraints": 43,
+      "iterations": 17,
+      "f00_3": 0.013833194624421171,
+      "f11_3": -0.0008971889094060572,
+      "watson": {
+        "S0": {
+          "max_absS": 0.9962744804602952,
+          "n_nodes_absS_gt_0.999": 0,
+          "n_nodes_absS_gt_0.99": 6,
+          "min_1_minus_absS": 0.0037255195397047913,
+          "watson_residual_rel_max": 0.1598811997883186,
+          "watson_residual_rel_at_most_saturated": 0.008135200611591127,
+          "rho_hat_min": 1164.3001009631394
+        },
+        "P1": {
+          "max_absS": 0.9999983397618604,
+          "n_nodes_absS_gt_0.999": 8,
+          "n_nodes_absS_gt_0.99": 12,
+          "min_1_minus_absS": 1.660238139633563e-06,
+          "watson_residual_rel_max": 0.9937872699685221,
+          "watson_residual_rel_at_most_saturated": 2.0367295174012037e-06,
+          "rho_hat_min": 1.2163249922032915
+        }
+      }
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "uv_parts": [
+        "gram"
+      ],
+      "chiral": true,
+      "solver": "CLARABEL",
+      "mode": "extremal",
+      "build_seconds": 0.02,
+      "solve_seconds": 4.02,
+      "status": "optimal",
+      "error": null,
+      "objective": 0.08378052370649765,
+      "n_unitarity_cones": 320,
+      "n_constraints": 43,
+      "iterations": 53,
+      "f00_3": 0.08378052370649765,
+      "f11_3": -0.005422461283613335,
+      "watson": {
+        "S0": {
+          "max_absS": 0.9999999868592362,
+          "n_nodes_absS_gt_0.999": 20,
+          "n_nodes_absS_gt_0.99": 20,
+          "min_1_minus_absS": 1.3140763810426392e-08,
+          "watson_residual_rel_max": 0.6938820854682997,
+          "watson_residual_rel_at_most_saturated": 6.515315788113667e-07,
+          "rho_hat_min": 12145.227182347882
+        },
+        "P1": {
+          "max_absS": 0.9999999999951634,
+          "n_nodes_absS_gt_0.999": 19,
+          "n_nodes_absS_gt_0.99": 20,
+          "min_1_minus_absS": 4.836575584477032e-12,
+          "watson_residual_rel_max": 0.19131292064312552,
+          "watson_residual_rel_at_most_saturated": 6.661645698164336e-13,
+          "rho_hat_min": 8.214229424100136
+        }
+      }
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "uv_parts": [
+        "gram",
+        "fesr",
+        "ff"
+      ],
+      "chiral": true,
+      "solver": "MOSEK",
+      "mode": "feasibility",
+      "build_seconds": 0.02,
+      "solve_seconds": 8.75,
+      "status": null,
+      "error": "SolverError: Solver 'MOSEK' failed. Try another solver, or solve with verbose=True for more information.",
+      "objective": null,
+      "n_unitarity_cones": 320,
+      "n_constraints": 57
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "uv_parts": [
+        "gram",
+        "fesr",
+        "ff"
+      ],
+      "chiral": true,
+      "solver": "MOSEK",
+      "mode": "extremal",
+      "build_seconds": 0.02,
+      "solve_seconds": 9.03,
+      "status": null,
+      "error": "SolverError: Solver 'MOSEK' failed. Try another solver, or solve with verbose=True for more information.",
+      "objective": null,
+      "n_unitarity_cones": 320,
+      "n_constraints": 57
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "uv_parts": [
+        "gram",
+        "fesr",
+        "ff"
+      ],
+      "chiral": true,
+      "solver": "CLARABEL",
+      "mode": "feasibility",
+      "build_seconds": 0.02,
+      "solve_seconds": 1.98,
+      "status": null,
+      "error": "SolverError: Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.",
+      "objective": null,
+      "n_unitarity_cones": 320,
+      "n_constraints": 57
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "uv_parts": [
+        "gram",
+        "fesr",
+        "ff"
+      ],
+      "chiral": true,
+      "solver": "CLARABEL",
+      "mode": "extremal",
+      "build_seconds": 0.02,
+      "solve_seconds": 2.19,
+      "status": null,
+      "error": "SolverError: Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.",
+      "objective": null,
+      "n_unitarity_cones": 320,
+      "n_constraints": 57
+    },
+    {
+      "M": 30,
+      "L": 6,
+      "uv_parts": [
+        "gram"
+      ],
+      "chiral": true,
+      "solver": "MOSEK",
+      "mode": "feasibility",
+      "build_seconds": 1.06,
+      "solve_seconds": 33.88,
+      "status": "optimal",
+      "error": null,
+      "objective": 0.0,
+      "n_unitarity_cones": 480,
+      "n_constraints": 63,
+      "iterations": 18,
+      "f00_3": -0.00017740119282910245,
+      "f11_3": 3.442808975799393e-05,
+      "watson": {
+        "S0": {
+          "max_absS": 0.9972357472502439,
+          "n_nodes_absS_gt_0.999": 0,
+          "n_nodes_absS_gt_0.99": 8,
+          "min_1_minus_absS": 0.002764252749756113,
+          "watson_residual_rel_max": 0.161371570421778,
+          "watson_residual_rel_at_most_saturated": 0.0009938066025024029,
+          "rho_hat_min": 597.2837848614415
+        },
+        "P1": {
+          "max_absS": 0.9999995401461962,
+          "n_nodes_absS_gt_0.999": 12,
+          "n_nodes_absS_gt_0.99": 20,
+          "min_1_minus_absS": 4.5985380381363683e-07,
+          "watson_residual_rel_max": 0.09731720949584549,
+          "watson_residual_rel_at_most_saturated": 3.6852129320283824e-07,
+          "rho_hat_min": 597.2954762713503
+        }
+      }
+    },
+    {
+      "M": 30,
+      "L": 6,
+      "uv_parts": [
+        "gram"
+      ],
+      "chiral": true,
+      "solver": "MOSEK",
+      "mode": "extremal",
+      "build_seconds": 0.04,
+      "solve_seconds": 40.67,
+      "status": "optimal",
+      "error": null,
+      "objective": 0.085062915999907,
+      "n_unitarity_cones": 480,
+      "n_constraints": 63,
+      "iterations": 38,
+      "f00_3": 0.085062915999907,
+      "f11_3": -0.0055134962612796165,
+      "watson": {
+        "S0": {
+          "max_absS": 0.9999994096190687,
+          "n_nodes_absS_gt_0.999": 27,
+          "n_nodes_absS_gt_0.99": 29,
+          "min_1_minus_absS": 5.903809312535202e-07,
+          "watson_residual_rel_max": 0.5223518911865689,
+          "watson_residual_rel_at_most_saturated": 5.301347758229199e-07,
+          "rho_hat_min": 1936.07399672918
+        },
+        "P1": {
+          "max_absS": 0.9999999999154322,
+          "n_nodes_absS_gt_0.999": 29,
+          "n_nodes_absS_gt_0.99": 29,
+          "min_1_minus_absS": 8.456779720944496e-11,
+          "watson_residual_rel_max": 0.5012696422096663,
+          "watson_residual_rel_at_most_saturated": 3.3605410824756147e-10,
+          "rho_hat_min": 1935.7133614472136
+        }
+      }
+    },
+    {
+      "M": 30,
+      "L": 6,
+      "uv_parts": [
+        "gram"
+      ],
+      "chiral": true,
+      "solver": "CLARABEL",
+      "mode": "feasibility",
+      "build_seconds": 0.03,
+      "solve_seconds": 5.08,
+      "status": "optimal",
+      "error": null,
+      "objective": 0.0,
+      "n_unitarity_cones": 480,
+      "n_constraints": 63,
+      "iterations": 16,
+      "f00_3": 0.01694981304731618,
+      "f11_3": -0.0010368817679331417,
+      "watson": {
+        "S0": {
+          "max_absS": 0.9970349755012078,
+          "n_nodes_absS_gt_0.999": 0,
+          "n_nodes_absS_gt_0.99": 9,
+          "min_1_minus_absS": 0.0029650244987922125,
+          "watson_residual_rel_max": 0.12673868725362247,
+          "watson_residual_rel_at_most_saturated": 0.004259176309228154,
+          "rho_hat_min": 1007.4406877094079
+        },
+        "P1": {
+          "max_absS": 0.999999485028486,
+          "n_nodes_absS_gt_0.999": 12,
+          "n_nodes_absS_gt_0.99": 19,
+          "min_1_minus_absS": 5.149715139873834e-07,
+          "watson_residual_rel_max": 0.9984017409817837,
+          "watson_residual_rel_at_most_saturated": 8.270712467631176e-07,
+          "rho_hat_min": 1.1918062393680569
+        }
+      }
+    },
+    {
+      "M": 30,
+      "L": 6,
+      "uv_parts": [
+        "gram"
+      ],
+      "chiral": true,
+      "solver": "CLARABEL",
+      "mode": "extremal",
+      "build_seconds": 0.03,
+      "solve_seconds": 13.53,
+      "status": "optimal",
+      "error": null,
+      "objective": 0.08435925287831397,
+      "n_unitarity_cones": 480,
+      "n_constraints": 63,
+      "iterations": 53,
+      "f00_3": 0.08435925287831397,
+      "f11_3": -0.00546429283606828,
+      "watson": {
+        "S0": {
+          "max_absS": 0.9999999927077463,
+          "n_nodes_absS_gt_0.999": 29,
+          "n_nodes_absS_gt_0.99": 30,
+          "min_1_minus_absS": 7.292253689783479e-09,
+          "watson_residual_rel_max": 0.78144777722831,
+          "watson_residual_rel_at_most_saturated": 3.699321533092655e-08,
+          "rho_hat_min": 10379.647422039312
+        },
+        "P1": {
+          "max_absS": 0.9999999999987406,
+          "n_nodes_absS_gt_0.999": 30,
+          "n_nodes_absS_gt_0.99": 30,
+          "min_1_minus_absS": 1.2594369991347776e-12,
+          "watson_residual_rel_max": 0.386938105800199,
+          "watson_residual_rel_at_most_saturated": 2.6862726370170834e-14,
+          "rho_hat_min": 7.457484648101284
+        }
+      }
+    },
+    {
+      "M": 30,
+      "L": 6,
+      "uv_parts": [
+        "gram",
+        "fesr",
+        "ff"
+      ],
+      "chiral": true,
+      "solver": "MOSEK",
+      "mode": "feasibility",
+      "build_seconds": 0.09,
+      "solve_seconds": 31.9,
+      "status": null,
+      "error": "SolverError: Solver 'MOSEK' failed. Try another solver, or solve with verbose=True for more information.",
+      "objective": null,
+      "n_unitarity_cones": 480,
+      "n_constraints": 79
+    },
+    {
+      "M": 30,
+      "L": 6,
+      "uv_parts": [
+        "gram",
+        "fesr",
+        "ff"
+      ],
+      "chiral": true,
+      "solver": "MOSEK",
+      "mode": "extremal",
+      "build_seconds": 0.04,
+      "solve_seconds": 31.6,
+      "status": null,
+      "error": "SolverError: Solver 'MOSEK' failed. Try another solver, or solve with verbose=True for more information.",
+      "objective": null,
+      "n_unitarity_cones": 480,
+      "n_constraints": 79
+    },
+    {
+      "M": 30,
+      "L": 6,
+      "uv_parts": [
+        "gram",
+        "fesr",
+        "ff"
+      ],
+      "chiral": true,
+      "solver": "CLARABEL",
+      "mode": "feasibility",
+      "build_seconds": 0.05,
+      "solve_seconds": 7.18,
+      "status": null,
+      "error": "SolverError: Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.",
+      "objective": null,
+      "n_unitarity_cones": 480,
+      "n_constraints": 79
+    },
+    {
+      "M": 30,
+      "L": 6,
+      "uv_parts": [
+        "gram",
+        "fesr",
+        "ff"
+      ],
+      "chiral": true,
+      "solver": "CLARABEL",
+      "mode": "extremal",
+      "build_seconds": 0.07,
+      "solve_seconds": 7.37,
+      "status": null,
+      "error": "SolverError: Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.",
+      "objective": null,
+      "n_unitarity_cones": 480,
+      "n_constraints": 79
+    }
+  ]
+}

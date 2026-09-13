@@ -1,0 +1,64 @@
+{
+  "question": "Do the currently adopted parameters let the paper's mainstream claim run end to end?",
+  "answer": "NO.  Links (1)-(4) run; link (5) -- the claim itself -- does not.",
+  "the_claim": "Same operators, same resolution, same representative points, one input different: chiral only -> P1 has no rho (Fig.7);  + UV -> P1 acquires a rho (Fig.9).  TASK_SDP_AUDIT_AND_CLOSE_ZH.md section 0.",
+  "blockers": [
+    {
+      "id": "B-1",
+      "what": "link (5) certifies under NO adopted setting",
+      "evidence": {
+        "M=20 B=None": {
+          "cert": false,
+          "f00": 0.8893,
+          "stopped": "solver failed at 327 disks"
+        },
+        "M=20 B=377500": {
+          "cert": false,
+          "f00": 0.5114
+        },
+        "M=20 B=None m_q=rms": {
+          "cert": false,
+          "f00": 0.9382,
+          "stopped": "solver failed at 325 disks"
+        }
+      },
+      "note": "The uncertified values 0.51-0.94 are relaxation upper bounds, an order of magnitude above the paper's ~0.08; they are not results.  Root cause is the ~1e35 conditioning, the same one that kills every high-disk-count solve.",
+      "owner": "engineering (SDPB on the full disk set) + physics Q1/Q4"
+    },
+    {
+      "id": "B-2",
+      "what": "the rho criterion is not usable as implemented",
+      "evidence": "On a chiral-only CERTIFIED point -- where the paper says there is no rho -- crossing_90_GeV returns 1.497 GeV, while delta_11(0.77 GeV) = 19.8 deg and min eta = 0.9997 (fully elastic).  crossing_90 alone reports a rho where there is none.",
+      "note": "Even a certified link (5) could not settle the contrast without a real criterion.",
+      "owner": "physics Q8"
+    },
+    {
+      "id": "B-3",
+      "what": "caliber_grid.py solves only the +x tip",
+      "note": "The contrast is defined at tip / ref / mid; the driver must be extended.",
+      "owner": "engineering"
+    }
+  ],
+  "inconsistencies": [
+    {
+      "id": "I-1",
+      "what": "m_q default is the arithmetic mean 5.650 MeV",
+      "evidence": "(2.56) is reproduced to 0.7% only by the rms 5.886 MeV (arithmetic gives 9.3%).  (3.75) bounds |F|^2 by 2 m_q^2 eps_FF, so the adopted default makes that bound 7.9% TIGHTER than the paper's own moments imply.",
+      "tested": "does NOT change link (5)'s feasibility, but it does bias the final numbers",
+      "status": "left as physics Q6 -- a caliber decision, not the engineer's to make"
+    },
+    {
+      "id": "I-2",
+      "what": "ModelSpec.cone_scaling defaulted to 'none'",
+      "evidence": "'none' spans 85.8 decades of row norm at M=50; no solver survives it",
+      "status": "FIXED -> 'rownorm' (rows land in [0.33, 5.8]); 155 selfcheck tests still pass"
+    }
+  ],
+  "verified_clean": [
+    "every paper constant matches: eps_chi 2e-3, eps_FF 6e-5, s0 73.4694, f_pi 0.657143, chiral points (1/2,1,3/2,2), x_ref 0.073321, y_ref = -x_ref/15",
+    "PMP encoding is block-identical to problem.Model across 4 configurations (scripts/sdp/pmp_verify_blocks.py, all blocks accounted for)",
+    "B=None is correct and sufficient for link (1) (M=50 certified, -0.75%) and link (4)"
+  ],
+  "what_runs_today": "links (1) pure unitarity, (2) chiral collapse, (3) subthreshold, (4) chiral-only",
+  "what_does_not": "link (5), i.e. the paper's actual claim"
+}

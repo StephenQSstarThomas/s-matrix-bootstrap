@@ -1,0 +1,72 @@
+{
+  "question": "How long does an end-to-end SDPB reproduction take at the accuracy the paper's claims actually need?",
+  "earlier_wrong_estimate": {
+    "value": "~1 year",
+    "why_wrong": "stacked three pessimistic and unnecessary assumptions: the full 1500-disk set, the full N=1779 basis, and ~200 iterations to a duality gap (1e-15/1e-30) no claim in the paper uses."
+  },
+  "the_paper_s_tolerance": {
+    "tightest": "C1, +-2%",
+    "others": [
+      "C2 +-5% / +-20%",
+      "C3 <=8%",
+      "C5 +-25%",
+      "C7 <=10 deg",
+      "C6/C8 <=20 MeV"
+    ],
+    "implication": "a relative duality gap of 1e-3 leaves a factor 20 on the tightest band"
+  },
+  "four_measured_levers": [
+    {
+      "lever": "duality gap 1e-30 -> 1e-3",
+      "measured": {
+        "iterations": {
+          "1e-30": 570,
+          "1e-15": 290,
+          "1e-4": 84,
+          "1e-3": 65
+        },
+        "fit": "gap falls x0.8842 per iteration, 45-iteration fit at M=20"
+      },
+      "gain": 8.8
+    },
+    {
+      "lever": "constraint generation: 1500 -> 450 disks",
+      "gain": "P falls 3.3x"
+    },
+    {
+      "lever": "rebuild the basis on the imposed rows only: N 1779 -> 795",
+      "measured": "directly, via build_basis(mask=...)",
+      "combined_with_previous": 14.7
+    },
+    {
+      "lever": "working precision 768 -> 192 bits",
+      "measured": {
+        "192_bit_s_per_iter": 10.8,
+        "768_bit_s_per_iter": 30.4,
+        "64_bit": "aborts"
+      },
+      "why_safe": "Schur condition ~6e34 ~ 2^116; 192 bits ~ 57 digits leaves ~22 of margin",
+      "gain": 2.81
+    }
+  ],
+  "per_point_M50": {
+    "full disks, full basis, 768 bit, gap 1e-30": "112 h",
+    "450 disks + masked basis, 768 bit, gap 1e-3": "52 min",
+    "450 disks + masked basis, 192 bit, gap 1e-3": "19 min"
+  },
+  "end_to_end": {
+    "main claim only: (4)/(5) contrast x 3 points x 9 calibers": {
+      "solves": 54,
+      "single_stream_h": 16.7,
+      "16_concurrent_h": 1.0,
+      "100_nodes_h": 0.17
+    },
+    "all figures: Fig.3/4/8/9/11 + representative points": {
+      "solves": 155,
+      "single_stream_h": 48.0,
+      "16_concurrent_h": 3.0,
+      "100_nodes_h": 0.48
+    }
+  },
+  "parallelism": "The right level is ACROSS independent solves -- every boundary direction and every representative point is independent, so 100 nodes give 100x with no MPI efficiency question at all.  Whether SDPB's own MPI helps within one solve is a separate and smaller question; the earlier -n 1/4/16 measurement was taken while the shared machine was at load 132 and is being redone."
+}

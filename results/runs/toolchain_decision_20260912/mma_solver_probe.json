@@ -1,0 +1,31 @@
+{
+	"SDO_WP":"$Failed",
+	"Conic_WP":"$Failed",
+	"SDO_plain":"{x -> -0.500003, y -> 0.250003}",
+	"scale":[
+		{
+			"n":50,
+			"k":30,
+			"seconds":0.276097,
+			"ok":false
+		},
+		{
+			"n":200,
+			"k":120,
+			"seconds":9.7081e-2,
+			"ok":false
+		},
+		{
+			"n":500,
+			"k":300,
+			"seconds":0.494551,
+			"ok":false
+		},
+		{
+			"n":1000,
+			"k":600,
+			"seconds":1.103352,
+			"ok":false
+		}
+	]
+}

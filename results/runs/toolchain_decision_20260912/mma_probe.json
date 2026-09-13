@@ -1,0 +1,12 @@
+{
+	"MachineID":"6503-44442-37175",
+	"Version":"15.0.0 for Linux x86 (64-bit) (May 26, 2026)",
+	"LicenseExpirationDate":"{Infinity, 0, 0, 0, 0, 0}",
+	"LicenseType":"Professional",
+	"ProcessorCount":40,
+	"symbolic_integrate_1_over_x_minus_3_4_to_10":"1.9459101490553133051",
+	"LegendreQ_2_of_3p5":"0.003343317562688636 - 28.077984341458777069 I",
+	"pi_40_digits":"3.141592653589793238462643383279502884197",
+	"author_gen_matrices_input_cells":82,
+	"author_2403_input_cells":71
+}

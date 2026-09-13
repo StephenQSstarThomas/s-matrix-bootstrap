@@ -1,0 +1,886 @@
+{
+  "records": [
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-a",
+      "sr": null,
+      "B": 377500.0,
+      "eps_ff_mult": null,
+      "sector": "chiral",
+      "solver": "MOSEK",
+      "status": "optimal",
+      "certified": false,
+      "objective": 1.2616693777234065,
+      "generation_rounds": 2,
+      "n_disks_imposed": null,
+      "max_violation_at_return": 1.0684949239868724e+21,
+      "stopped_because": "solver failed at 230 disks",
+      "f00_3": 1.2616693777234065,
+      "f11_3": -0.08149731145959656,
+      "resonance": {
+        "S0": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 0.2802160364088395,
+          "min_eta_below_1p2GeV": 0.7284953749663052,
+          "first_zero_node": null,
+          "delta_at_0.9GeV": -90.41795758451312
+        },
+        "S2": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 0.5039866849563929,
+          "min_eta_below_1p2GeV": 0.9925736877665909,
+          "first_zero_node": null,
+          "delta_at_1.196GeV": -211.48603846792278
+        },
+        "P1": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 0.5730409900768608,
+          "min_eta_below_1p2GeV": 0.9460703335938597,
+          "first_zero_node": null,
+          "delta_at_1.2GeV": 16.139445951704268
+        }
+      },
+      "seconds": 3.5
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-a",
+      "sr": null,
+      "B": null,
+      "eps_ff_mult": null,
+      "sector": "chiral",
+      "solver": "MOSEK",
+      "status": "SolverError",
+      "certified": null,
+      "objective": null,
+      "generation_rounds": 1,
+      "n_disks_imposed": null,
+      "max_violation_at_return": null,
+      "stopped_because": null,
+      "seconds": 0.7
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-b",
+      "sr": null,
+      "B": 377500.0,
+      "eps_ff_mult": null,
+      "sector": "chiral",
+      "solver": "MOSEK",
+      "status": "optimal",
+      "certified": true,
+      "objective": 0.08431402683227411,
+      "generation_rounds": 8,
+      "n_disks_imposed": 359,
+      "max_violation_at_return": null,
+      "stopped_because": null,
+      "f00_3": 0.08431402683227411,
+      "f11_3": -0.005457256288682743,
+      "resonance": {
+        "S0": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 0.6688008778846761,
+          "min_eta_below_1p2GeV": 0.9995109225989659,
+          "first_zero_node": null,
+          "delta_at_0.9GeV": 55.06630775664445
+        },
+        "S2": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 7.131974375995954,
+          "min_eta_below_1p2GeV": 0.9999471017416629,
+          "first_zero_node": null,
+          "delta_at_1.196GeV": -44.62440261286991
+        },
+        "P1": {
+          "crossing_90_GeV": 1.4972915399222737,
+          "modulus_peak_GeV": 1.4352326507352435,
+          "min_eta_below_1p2GeV": 0.9997380986433594,
+          "first_zero_node": null,
+          "delta_at_1.2GeV": 67.69926778100395
+        }
+      },
+      "seconds": 12.5
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-b",
+      "sr": null,
+      "B": null,
+      "eps_ff_mult": null,
+      "sector": "chiral",
+      "solver": "MOSEK",
+      "status": "optimal",
+      "certified": true,
+      "objective": 0.08622410715699962,
+      "generation_rounds": 6,
+      "n_disks_imposed": 353,
+      "max_violation_at_return": null,
+      "stopped_because": null,
+      "f00_3": 0.08622410715699962,
+      "f11_3": -0.005555479896253865,
+      "resonance": {
+        "S0": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 0.6688008778846761,
+          "min_eta_below_1p2GeV": 0.9999581691853384,
+          "first_zero_node": null,
+          "delta_at_0.9GeV": 58.55604443407716
+        },
+        "S2": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 2.382220519221891,
+          "min_eta_below_1p2GeV": 0.999989767004432,
+          "first_zero_node": null,
+          "delta_at_1.196GeV": -53.255080882001394
+        },
+        "P1": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 2.382220519221891,
+          "min_eta_below_1p2GeV": 0.9998786388881187,
+          "first_zero_node": null,
+          "delta_at_1.2GeV": 64.51402082281118
+        }
+      },
+      "seconds": 3.8
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-c",
+      "sr": null,
+      "B": 377500.0,
+      "eps_ff_mult": null,
+      "sector": "chiral",
+      "solver": "MOSEK",
+      "status": "optimal",
+      "certified": true,
+      "objective": 0.08658448668571121,
+      "generation_rounds": 7,
+      "n_disks_imposed": 359,
+      "max_violation_at_return": null,
+      "stopped_because": null,
+      "f00_3": 0.08658448668571121,
+      "f11_3": -0.005653907643973398,
+      "resonance": {
+        "S0": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 0.6688008778846761,
+          "min_eta_below_1p2GeV": 0.9997408582770749,
+          "first_zero_node": null,
+          "delta_at_0.9GeV": 52.182539863710836
+        },
+        "S2": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 7.131974375995954,
+          "min_eta_below_1p2GeV": 0.9999847646321884,
+          "first_zero_node": null,
+          "delta_at_1.196GeV": -43.797994894674524
+        },
+        "P1": {
+          "crossing_90_GeV": 1.3657293875664005,
+          "modulus_peak_GeV": 1.4352326507352435,
+          "min_eta_below_1p2GeV": 0.9994792226306272,
+          "first_zero_node": null,
+          "delta_at_1.2GeV": 75.20548270316303
+        }
+      },
+      "seconds": 9.8
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-c",
+      "sr": null,
+      "B": null,
+      "eps_ff_mult": null,
+      "sector": "chiral",
+      "solver": "MOSEK",
+      "status": "optimal",
+      "certified": true,
+      "objective": 0.091349092115958,
+      "generation_rounds": 6,
+      "n_disks_imposed": 357,
+      "max_violation_at_return": null,
+      "stopped_because": null,
+      "f00_3": 0.091349092115958,
+      "f11_3": -0.0059275681400760725,
+      "resonance": {
+        "S0": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 0.8089748663768113,
+          "min_eta_below_1p2GeV": 0.9999895582674312,
+          "first_zero_node": null,
+          "delta_at_0.9GeV": 56.898431000752375
+        },
+        "S2": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 1.4352326507352435,
+          "min_eta_below_1p2GeV": 0.9999974067570044,
+          "first_zero_node": null,
+          "delta_at_1.196GeV": -54.93192063144475
+        },
+        "P1": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 2.382220519221891,
+          "min_eta_below_1p2GeV": 0.9999746792481795,
+          "first_zero_node": null,
+          "delta_at_1.2GeV": 66.74438289958681
+        }
+      },
+      "seconds": 5.0
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-a",
+      "sr": "SR-a",
+      "B": 377500.0,
+      "eps_ff_mult": 1.0,
+      "sector": "chiral+UV",
+      "solver": "MOSEK",
+      "status": "optimal",
+      "certified": true,
+      "objective": 0.11175903936638687,
+      "generation_rounds": 8,
+      "n_disks_imposed": 356,
+      "max_violation_at_return": null,
+      "stopped_because": null,
+      "f00_3": 0.11175903936638687,
+      "f11_3": -0.00726071801301043,
+      "resonance": {
+        "S0": {
+          "crossing_90_GeV": 0.768278628628364,
+          "modulus_peak_GeV": 0.6688008778846761,
+          "min_eta_below_1p2GeV": 0.6280107626387209,
+          "first_zero_node": null,
+          "delta_at_0.9GeV": 123.06636946409421
+        },
+        "S2": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 7.131974375995954,
+          "min_eta_below_1p2GeV": 0.9999804027965682,
+          "first_zero_node": null,
+          "delta_at_1.196GeV": -45.077531065288944
+        },
+        "P1": {
+          "crossing_90_GeV": 1.1384489417632797,
+          "modulus_peak_GeV": 1.4352326507352435,
+          "min_eta_below_1p2GeV": 0.8140008110933199,
+          "first_zero_node": null,
+          "delta_at_1.2GeV": 92.94266759899787
+        }
+      },
+      "seconds": 70.1
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-a",
+      "sr": "SR-a",
+      "B": null,
+      "eps_ff_mult": 1.0,
+      "sector": "chiral+UV",
+      "solver": "MOSEK",
+      "status": "SolverError",
+      "certified": null,
+      "objective": null,
+      "generation_rounds": 1,
+      "n_disks_imposed": null,
+      "max_violation_at_return": null,
+      "stopped_because": null,
+      "seconds": 4.2
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-a",
+      "sr": "SR-b",
+      "B": 377500.0,
+      "eps_ff_mult": 1.0,
+      "sector": "chiral+UV",
+      "solver": "MOSEK",
+      "status": "SolverError",
+      "certified": null,
+      "objective": null,
+      "generation_rounds": 1,
+      "n_disks_imposed": null,
+      "max_violation_at_return": null,
+      "stopped_because": null,
+      "seconds": 8.6
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-a",
+      "sr": "SR-b",
+      "B": null,
+      "eps_ff_mult": 1.0,
+      "sector": "chiral+UV",
+      "solver": "MOSEK",
+      "status": "SolverError",
+      "certified": null,
+      "objective": null,
+      "generation_rounds": 1,
+      "n_disks_imposed": null,
+      "max_violation_at_return": null,
+      "stopped_because": null,
+      "seconds": 4.6
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-a",
+      "sr": "SR-c",
+      "B": 377500.0,
+      "eps_ff_mult": 1.0,
+      "sector": "chiral+UV",
+      "solver": "MOSEK",
+      "status": "optimal",
+      "certified": false,
+      "objective": 0.9435228457057724,
+      "generation_rounds": 4,
+      "n_disks_imposed": null,
+      "max_violation_at_return": 1.2426735101727268e+16,
+      "stopped_because": "solver failed at 337 disks",
+      "f00_3": 0.9435228457057724,
+      "f11_3": -0.06292377829003871,
+      "resonance": {
+        "S0": {
+          "crossing_90_GeV": 0.6597492337092777,
+          "modulus_peak_GeV": 0.2802160364088395,
+          "min_eta_below_1p2GeV": 0.22489965981624038,
+          "first_zero_node": null,
+          "delta_at_0.9GeV": 105.28203903760367
+        },
+        "S2": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 0.5730409900768608,
+          "min_eta_below_1p2GeV": 0.9993227153672506,
+          "first_zero_node": null,
+          "delta_at_1.196GeV": -189.34035178821046
+        },
+        "P1": {
+          "crossing_90_GeV": 1.394675454834198,
+          "modulus_peak_GeV": 1.031533804704422,
+          "min_eta_below_1p2GeV": 0.8623947464807853,
+          "first_zero_node": null,
+          "delta_at_1.2GeV": 84.94456898677348
+        }
+      },
+      "seconds": 32.7
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-a",
+      "sr": "SR-c",
+      "B": null,
+      "eps_ff_mult": 1.0,
+      "sector": "chiral+UV",
+      "solver": "MOSEK",
+      "status": "SolverError",
+      "certified": null,
+      "objective": null,
+      "generation_rounds": 1,
+      "n_disks_imposed": null,
+      "max_violation_at_return": null,
+      "stopped_because": null,
+      "seconds": 4.2
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-b",
+      "sr": "SR-a",
+      "B": 377500.0,
+      "eps_ff_mult": 1.0,
+      "sector": "chiral+UV",
+      "solver": "MOSEK",
+      "status": "optimal",
+      "certified": true,
+      "objective": 0.08148047209049511,
+      "generation_rounds": 5,
+      "n_disks_imposed": 357,
+      "max_violation_at_return": null,
+      "stopped_because": null,
+      "f00_3": 0.08148047209049511,
+      "f11_3": -0.005189242227565902,
+      "resonance": {
+        "S0": {
+          "crossing_90_GeV": 0.7279925230100905,
+          "modulus_peak_GeV": 0.6688008778846761,
+          "min_eta_below_1p2GeV": 0.9403449323214204,
+          "first_zero_node": null,
+          "delta_at_0.9GeV": 129.7378576684931
+        },
+        "S2": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 7.131974375995954,
+          "min_eta_below_1p2GeV": 0.9999701603186992,
+          "first_zero_node": null,
+          "delta_at_1.196GeV": -38.53909971023041
+        },
+        "P1": {
+          "crossing_90_GeV": 1.4180641451547604,
+          "modulus_peak_GeV": 1.4352326507352435,
+          "min_eta_below_1p2GeV": 0.3795867890824793,
+          "first_zero_node": null,
+          "delta_at_1.2GeV": 68.28652832016675
+        }
+      },
+      "seconds": 45.9
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-b",
+      "sr": "SR-a",
+      "B": null,
+      "eps_ff_mult": 1.0,
+      "sector": "chiral+UV",
+      "solver": "MOSEK",
+      "status": "optimal",
+      "certified": false,
+      "objective": 0.08172463832041213,
+      "generation_rounds": 6,
+      "n_disks_imposed": 357,
+      "max_violation_at_return": 367.5454088636791,
+      "stopped_because": "max_rounds = 24 reached",
+      "f00_3": 0.08172463832041213,
+      "f11_3": -0.005218863764522667,
+      "resonance": {
+        "S0": {
+          "crossing_90_GeV": 0.7326309415241615,
+          "modulus_peak_GeV": 0.6688008778846761,
+          "min_eta_below_1p2GeV": 0.8783576996866078,
+          "first_zero_node": null,
+          "delta_at_0.9GeV": 127.5462138737667
+        },
+        "S2": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 2.382220519221891,
+          "min_eta_below_1p2GeV": 0.9999939638007341,
+          "first_zero_node": null,
+          "delta_at_1.196GeV": -42.23481050057828
+        },
+        "P1": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 1.4352326507352435,
+          "min_eta_below_1p2GeV": 0.4562595952407348,
+          "first_zero_node": null,
+          "delta_at_1.2GeV": 66.15078664493262
+        }
+      },
+      "seconds": 31.5
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-b",
+      "sr": "SR-b",
+      "B": 377500.0,
+      "eps_ff_mult": 1.0,
+      "sector": "chiral+UV",
+      "solver": "MOSEK",
+      "status": "optimal",
+      "certified": false,
+      "objective": 0.5114443040455382,
+      "generation_rounds": 3,
+      "n_disks_imposed": null,
+      "max_violation_at_return": 3.5481053450075974e+17,
+      "stopped_because": "solver failed at 290 disks",
+      "f00_3": 0.5114443040455382,
+      "f11_3": -0.03327771191153631,
+      "resonance": {
+        "S0": {
+          "crossing_90_GeV": 0.8533536355918365,
+          "modulus_peak_GeV": 0.2802160364088395,
+          "min_eta_below_1p2GeV": 0.9696740721218415,
+          "first_zero_node": null,
+          "delta_at_0.9GeV": 104.02047632391147
+        },
+        "S2": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 0.6688008778846761,
+          "min_eta_below_1p2GeV": 0.9931013399157728,
+          "first_zero_node": null,
+          "delta_at_1.196GeV": -133.30059688433658
+        },
+        "P1": {
+          "crossing_90_GeV": 4.8809550095120695,
+          "modulus_peak_GeV": 2.382220519221891,
+          "min_eta_below_1p2GeV": 0.8328368125413896,
+          "first_zero_node": null,
+          "delta_at_1.2GeV": 32.00078965330423
+        }
+      },
+      "seconds": 26.3
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-b",
+      "sr": "SR-b",
+      "B": null,
+      "eps_ff_mult": 1.0,
+      "sector": "chiral+UV",
+      "solver": "MOSEK",
+      "status": "optimal",
+      "certified": false,
+      "objective": 0.8893156781903689,
+      "generation_rounds": 4,
+      "n_disks_imposed": null,
+      "max_violation_at_return": 8.465608177013292e+20,
+      "stopped_because": "solver failed at 327 disks",
+      "f00_3": 0.8893156781903689,
+      "f11_3": -0.056030267521950665,
+      "resonance": {
+        "S0": {
+          "crossing_90_GeV": 0.8780750997741323,
+          "modulus_peak_GeV": 0.2802160364088395,
+          "min_eta_below_1p2GeV": 0.2626078139432886,
+          "first_zero_node": null,
+          "delta_at_0.9GeV": 93.57243760842539
+        },
+        "S2": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 0.5039866849563929,
+          "min_eta_below_1p2GeV": 0.9658104924752021,
+          "first_zero_node": null,
+          "delta_at_1.196GeV": -194.64409352133657
+        },
+        "P1": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 0.8089748663768113,
+          "min_eta_below_1p2GeV": 0.8806286371636349,
+          "first_zero_node": null,
+          "delta_at_1.2GeV": -118.6274782531537
+        }
+      },
+      "seconds": 18.8
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-b",
+      "sr": "SR-c",
+      "B": 377500.0,
+      "eps_ff_mult": 1.0,
+      "sector": "chiral+UV",
+      "solver": "MOSEK",
+      "status": "optimal",
+      "certified": false,
+      "objective": 0.931568657819583,
+      "generation_rounds": 5,
+      "n_disks_imposed": null,
+      "max_violation_at_return": 1018188462661873.2,
+      "stopped_because": "solver failed at 352 disks",
+      "f00_3": 0.931568657819583,
+      "f11_3": -0.059058775960359716,
+      "resonance": {
+        "S0": {
+          "crossing_90_GeV": 0.6362343295035715,
+          "modulus_peak_GeV": 0.2802160364088395,
+          "min_eta_below_1p2GeV": 0.6783148518353611,
+          "first_zero_node": null,
+          "delta_at_0.9GeV": 97.60362584237693
+        },
+        "S2": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 0.6688008778846761,
+          "min_eta_below_1p2GeV": 0.9389753073909768,
+          "first_zero_node": null,
+          "delta_at_1.196GeV": -233.27650073271926
+        },
+        "P1": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 7.131974375995954,
+          "min_eta_below_1p2GeV": 0.7671560543607229,
+          "first_zero_node": null,
+          "delta_at_1.2GeV": 35.912678705735765
+        }
+      },
+      "seconds": 46.2
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-b",
+      "sr": "SR-c",
+      "B": null,
+      "eps_ff_mult": 1.0,
+      "sector": "chiral+UV",
+      "solver": "MOSEK",
+      "status": "optimal",
+      "certified": false,
+      "objective": 1.0174354411994915,
+      "generation_rounds": 4,
+      "n_disks_imposed": null,
+      "max_violation_at_return": 2.54262903603795e+25,
+      "stopped_because": "solver failed at 325 disks",
+      "f00_3": 1.0174354411994915,
+      "f11_3": -0.06306904763181548,
+      "resonance": {
+        "S0": {
+          "crossing_90_GeV": 0.6496234131834636,
+          "modulus_peak_GeV": 0.2802160364088395,
+          "min_eta_below_1p2GeV": 0.5842583496193161,
+          "first_zero_node": null,
+          "delta_at_0.9GeV": 93.11810302146789
+        },
+        "S2": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 1.4352326507352435,
+          "min_eta_below_1p2GeV": 0.9973237265444153,
+          "first_zero_node": null,
+          "delta_at_1.196GeV": -56.85096981821104
+        },
+        "P1": {
+          "crossing_90_GeV": 0.6998338116796086,
+          "modulus_peak_GeV": 0.5730409900768608,
+          "min_eta_below_1p2GeV": 0.9060182731223178,
+          "first_zero_node": null,
+          "delta_at_1.2GeV": 82.46649118973068
+        }
+      },
+      "seconds": 19.3
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-c",
+      "sr": "SR-a",
+      "B": 377500.0,
+      "eps_ff_mult": 1.0,
+      "sector": "chiral+UV",
+      "solver": "MOSEK",
+      "status": "optimal",
+      "certified": false,
+      "objective": 0.9974423718275907,
+      "generation_rounds": 3,
+      "n_disks_imposed": null,
+      "max_violation_at_return": 158298944727108.44,
+      "stopped_because": "solver failed at 290 disks",
+      "f00_3": 0.9974423718275907,
+      "f11_3": -0.06310768261673902,
+      "resonance": {
+        "S0": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 0.2802160364088395,
+          "min_eta_below_1p2GeV": 0.6249609863308339,
+          "first_zero_node": null,
+          "delta_at_0.9GeV": -71.57587297381164
+        },
+        "S2": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 0.5039866849563929,
+          "min_eta_below_1p2GeV": 0.9438487485046609,
+          "first_zero_node": null,
+          "delta_at_1.196GeV": -235.21733502831898
+        },
+        "P1": {
+          "crossing_90_GeV": 6.344003489445726,
+          "modulus_peak_GeV": 7.131974375995954,
+          "min_eta_below_1p2GeV": 0.7886652814427639,
+          "first_zero_node": null,
+          "delta_at_1.2GeV": 37.415298422900435
+        }
+      },
+      "seconds": 26.0
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-c",
+      "sr": "SR-a",
+      "B": null,
+      "eps_ff_mult": 1.0,
+      "sector": "chiral+UV",
+      "solver": "MOSEK",
+      "status": "optimal",
+      "certified": false,
+      "objective": 0.4404948680493839,
+      "generation_rounds": 3,
+      "n_disks_imposed": null,
+      "max_violation_at_return": 8.492263576506418e+20,
+      "stopped_because": "solver failed at 290 disks",
+      "f00_3": 0.4404948680493839,
+      "f11_3": -0.02950650692717199,
+      "resonance": {
+        "S0": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 0.29092262101634386,
+          "min_eta_below_1p2GeV": 0.5869845008362705,
+          "first_zero_node": null,
+          "delta_at_0.9GeV": 35.99738065802356
+        },
+        "S2": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 1.4352326507352435,
+          "min_eta_below_1p2GeV": 0.9995484377139698,
+          "first_zero_node": null,
+          "delta_at_1.196GeV": -67.8456783699319
+        },
+        "P1": {
+          "crossing_90_GeV": 0.5694900388724963,
+          "modulus_peak_GeV": 0.5730409900768608,
+          "min_eta_below_1p2GeV": 0.9572046482618702,
+          "first_zero_node": null,
+          "delta_at_1.2GeV": 102.89199009272713
+        }
+      },
+      "seconds": 15.3
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-c",
+      "sr": "SR-b",
+      "B": 377500.0,
+      "eps_ff_mult": 1.0,
+      "sector": "chiral+UV",
+      "solver": "MOSEK",
+      "status": "optimal",
+      "certified": false,
+      "objective": 0.4164593810126592,
+      "generation_rounds": 4,
+      "n_disks_imposed": null,
+      "max_violation_at_return": 1.134276053995576e+18,
+      "stopped_because": "solver failed at 329 disks",
+      "f00_3": 0.4164593810126592,
+      "f11_3": -0.027805308067749033,
+      "resonance": {
+        "S0": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 0.2802160364088395,
+          "min_eta_below_1p2GeV": 0.647759362573536,
+          "first_zero_node": null,
+          "delta_at_0.9GeV": 42.9714284255186
+        },
+        "S2": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 1.031533804704422,
+          "min_eta_below_1p2GeV": 0.9973383044879708,
+          "first_zero_node": null,
+          "delta_at_1.196GeV": -99.74543334566067
+        },
+        "P1": {
+          "crossing_90_GeV": 0.6262031509272765,
+          "modulus_peak_GeV": 0.5730409900768608,
+          "min_eta_below_1p2GeV": 0.7438494573993776,
+          "first_zero_node": null,
+          "delta_at_1.2GeV": 181.09847834671336
+        }
+      },
+      "seconds": 34.2
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-c",
+      "sr": "SR-b",
+      "B": null,
+      "eps_ff_mult": 1.0,
+      "sector": "chiral+UV",
+      "solver": "MOSEK",
+      "status": "optimal",
+      "certified": false,
+      "objective": 0.4301758852943341,
+      "generation_rounds": 4,
+      "n_disks_imposed": null,
+      "max_violation_at_return": 7.237541540989857e+20,
+      "stopped_because": "solver failed at 327 disks",
+      "f00_3": 0.4301758852943341,
+      "f11_3": -0.02860957610615774,
+      "resonance": {
+        "S0": {
+          "crossing_90_GeV": 0.845563251163371,
+          "modulus_peak_GeV": 0.29092262101634386,
+          "min_eta_below_1p2GeV": 0.7386589760769882,
+          "first_zero_node": null,
+          "delta_at_0.9GeV": 111.48727547497457
+        },
+        "S2": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 2.382220519221891,
+          "min_eta_below_1p2GeV": 0.999794830676702,
+          "first_zero_node": null,
+          "delta_at_1.196GeV": -62.329443273995594
+        },
+        "P1": {
+          "crossing_90_GeV": 0.5472754536757958,
+          "modulus_peak_GeV": 0.5039866849563929,
+          "min_eta_below_1p2GeV": 0.9989175367213295,
+          "first_zero_node": null,
+          "delta_at_1.2GeV": 111.16878636153658
+        }
+      },
+      "seconds": 18.0
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-c",
+      "sr": "SR-c",
+      "B": 377500.0,
+      "eps_ff_mult": 1.0,
+      "sector": "chiral+UV",
+      "solver": "MOSEK",
+      "status": "optimal",
+      "certified": false,
+      "objective": 0.9785781174497747,
+      "generation_rounds": 5,
+      "n_disks_imposed": null,
+      "max_violation_at_return": 96012178473055.44,
+      "stopped_because": "solver failed at 356 disks",
+      "f00_3": 0.9785781174497747,
+      "f11_3": -0.061813478130130675,
+      "resonance": {
+        "S0": {
+          "crossing_90_GeV": 0.6389807716845807,
+          "modulus_peak_GeV": 0.2802160364088395,
+          "min_eta_below_1p2GeV": 0.7365488810192172,
+          "first_zero_node": null,
+          "delta_at_0.9GeV": 101.39060857681716
+        },
+        "S2": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 0.5039866849563929,
+          "min_eta_below_1p2GeV": 0.9616902498413337,
+          "first_zero_node": null,
+          "delta_at_1.196GeV": -157.06226738341604
+        },
+        "P1": {
+          "crossing_90_GeV": null,
+          "modulus_peak_GeV": 7.131974375995954,
+          "min_eta_below_1p2GeV": 0.7587233591880714,
+          "first_zero_node": null,
+          "delta_at_1.2GeV": 38.05219506418292
+        }
+      },
+      "seconds": 48.7
+    },
+    {
+      "M": 20,
+      "L": 6,
+      "chi": "chi-c",
+      "sr": "SR-c",
+      "B": null,
+      "eps_ff_mult": 1.0,
+      "sector": "chiral+UV",
+      "solver": "MOSEK",
+      "status": "SolverError",
+      "certified": null,
+      "objective": null,
+      "generation_rounds": 1,
+      "n_disks_imposed": null,
+      "max_violation_at_return": null,
+      "stopped_because": null,
+      "seconds": 4.1
+    }
+  ]
+}

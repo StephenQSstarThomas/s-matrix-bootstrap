@@ -1,0 +1,27 @@
+{
+  "question": "Why did SDPB appear not to solve the M=20 / M=50 problems?",
+  "answer": "Two separate mis-configurations on my side, both measured.  Neither is a property of the problem.",
+  "finding_1_mpi_hurts": {
+    "measured_seconds_per_iteration": {
+      "-n 1, 512 bit": 15,
+      "-n 4, 768 bit": 57,
+      "-n 16, 768 bit": 330
+    },
+    "why": "M=20 chiral+Gram has 401 blocks, 360 of them 3x3, and only 732 free variables.  There is almost no work per block, so the cross-rank reduction that builds Q dominates: more ranks is monotonically slower.  SDPB's scaling paper assumes big blocks; this problem is the opposite regime.",
+    "rule": "use -n 1 (or 2) for this block structure; do not scale out"
+  },
+  "finding_2_initial_scale": {
+    "sdpb_default": "initialMatrixScalePrimal/Dual = 1e20, i.e. mu starts at 1e40",
+    "measured_convergence": "mu falls by a factor 1.565 per iteration (27-iteration fit)",
+    "iterations_needed_to_reach_mu_1e-30": {
+      "from mu0 = 1e40 (default)": 360,
+      "from mu0 = 1e8  (scale 1e4)": 195
+    },
+    "note": "The initial scale does NOT change the rate -- the 2-iteration drop is 1.93x at both 1e20 and 1e4 -- it only starts you 32 decades closer.  On the M=8 model all four scales (1e20/1e4/1e2/1e0) give the identical correct answer, so the small model cannot diagnose this."
+  },
+  "combined_budget_M20": {
+    "wrong config (-n 16, default scale)": "~360 iters x 330 s = 33 hours",
+    "right config (-n 1, scale 1e4)": "~195 iters x 15 s  = 50 minutes"
+  },
+  "status": "the right-configuration M=20 run is in flight; MOSEK's certified value is 0.084623"
+}

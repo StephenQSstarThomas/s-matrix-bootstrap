@@ -1,11 +1,11 @@
 """Independent UV/FESR, support, Gram-polynomial and moment-cone checks."""
 import numpy as np;import pytest
 pytest.importorskip("flint");from flint import arb,arb_mat,ctx
-from smatrix_bootstrap import write_json,read_json,decode_real_ball,encode_real_ball,UVConfig,read_cflat
-from smatrix_bootstrap.io import summarize_regions;from smatrix_bootstrap.imaginary import support_outer,density_fourth_power
-from smatrix_bootstrap.kernels import region_geometry,density_labels,joint_audit
-from smatrix_bootstrap.model import fesr_data,current_kinematic_squares,fesr_weights,current_operators
-from smatrix_bootstrap.operators import midpoint_grid;from smatrix_bootstrap.quotient import normal_dual,fesr_targets,barrier_terms
+from smatrix_bootstrap_newton import write_json,read_json,decode_real_ball,encode_real_ball,UVConfig,read_cflat
+from smatrix_bootstrap_newton.io import summarize_regions;from smatrix_bootstrap_newton.imaginary import support_outer,density_fourth_power
+from smatrix_bootstrap_newton.kernels import region_geometry,density_labels,joint_audit
+from smatrix_bootstrap_newton.model import fesr_data,current_kinematic_squares,fesr_weights,current_operators
+from smatrix_bootstrap_newton.operators import midpoint_grid;from smatrix_bootstrap_newton.quotient import normal_dual,fesr_targets,barrier_terms
 def test_fesr_raw_and_normalized_constraint_units_and_squared_form_factor_caps():
     from dataclasses import replace
     config = UVConfig();data = fesr_data(50, config);s0 = 3600/49;scales = np.array([s0**2, s0**3, s0, s0**2])
@@ -56,11 +56,11 @@ def test_disk_support_bound_eliminates_the_free_amplitude_coordinates():
         H[-2]=real*H[0]+imag*H[3];result=support_outer(H,[1.],np.zeros(3),np.zeros(3),np.zeros(8),[1.,0.],3.)
         assert result['upper']>=truth-1e-15 and abs(result['upper']-truth)<1e-13
     H[-2]=[0,0,0,1,0];assert support_outer(H,[1.],np.zeros(3),np.zeros(3),np.zeros(8),[1.,0.],3.)['upper']==pytest.approx(3.)
-    from smatrix_bootstrap.probes import anchored_upper
+    from smatrix_bootstrap_newton.probes import anchored_upper
     tight=anchored_upper(arb(5)/4,arb(3)/4,arb(3)/5,-1);assert tight>=(-arb(1)/5).upper() and tight+arb(1)/5<arb("1e-60")  # Exact disk cap x>=3/5: max(y-1)=-1/5.
     with pytest.raises(ValueError):anchored_upper(1,-1,0,0)
 def test_native_primal_simplex_keeps_a_feasible_basis_at_time_limit():
-    from scipy.sparse import csc_matrix;from smatrix_bootstrap import solve_feasible_basis_lp
+    from scipy.sparse import csc_matrix;from smatrix_bootstrap_newton import solve_feasible_basis_lp
     A=csc_matrix([[1.,1.,1.,0.],[1.,-1.,0.,1.]]);b=np.array([1.,0.])
     cost=np.array([-1.,0.,0.,0.]);initial=np.array([0.,0.,1.,0.])
     result=solve_feasible_basis_lp(cost,A,b,[2,3],initial,1.)
@@ -69,7 +69,7 @@ def test_native_primal_simplex_keeps_a_feasible_basis_at_time_limit():
     stopped=solve_feasible_basis_lp(cost,A,b,[2,3],initial,0.);assert not stopped.success and np.all(stopped.x>=0)
     np.testing.assert_allclose(A@stopped.x,b,atol=1e-12)
 def test_absorptive_coordinates_preserve_the_full_analytic_amplitude():
-    from smatrix_bootstrap.kernels import PVSourceRows; from smatrix_bootstrap.quotient import subtraction_rows, subtract_amplitude_coordinates, absorptive_change
+    from smatrix_bootstrap_newton.kernels import PVSourceRows; from smatrix_bootstrap_newton.quotient import subtraction_rows, subtract_amplitude_coordinates, absorptive_change
     M,L=3,2;source=PVSourceRows(M,L,256,12);n=3*M*L;free=1+2*M
     H=np.empty(source.shape)
     for index,_,row in source.iter_rows():H[index]=[float(v.mid()) for v in row]
@@ -102,11 +102,11 @@ def _region_fixture(directory,name,*,M=50,mode='pure',epsilon=None,direction=(1.
     write_json(path/'coefficients.json',dict(coordinates='unsubtracted PV-midpoint C_flat' if report.get('prescription')=='pv-midpoint' else 'unsubtracted sine-cardinal C_flat',prescription=report.get('prescription','finite-sine-cardinal'),coefficients=vector.tolist()))
     return path
 def test_regions_reject_small_and_uncertified_runs_without_reference_plot(tmp_path,monkeypatch):
-    from smatrix_bootstrap import io
+    from smatrix_bootstrap_newton import io
     small=_region_fixture(tmp_path,'small',M=3);failed=_region_fixture(tmp_path,'failed',outer=dict(lower=1.,upper=1.000001,primal_feasible=True))
     output=tmp_path/'output';output.mkdir()
     monkeypatch.setattr(io,'plot_regions',lambda *a:pytest.fail('Unverified supports must not plot'))
-    import smatrix_bootstrap as core
+    import smatrix_bootstrap_newton as core
     monkeypatch.setattr(core,'digest',lambda *a:pytest.fail('Aggregation must not calculate new hashes'))
     result=summarize_regions(output,[small,failed],tmp_path/'missing_reference')
     assert result['status']=='incomplete' and result['qualified_support_points']==0
@@ -115,7 +115,7 @@ def test_regions_reject_small_and_uncertified_runs_without_reference_plot(tmp_pa
     assert 'unverified_outer_bound' in result['rejected'][1]['reasons'][0]
     assert not list(output.glob('*.png')) and not list(output.glob('*.pdf'))
 def test_regions_keep_model_identity_direction_coverage_and_negative_x(tmp_path,monkeypatch):
-    from smatrix_bootstrap import io;import matplotlib
+    from smatrix_bootstrap_newton import io;import matplotlib
     matplotlib.use('Agg')
     from matplotlib.figure import Figure
     reference=tmp_path/'reference';reference.mkdir()
@@ -235,7 +235,7 @@ def test_chiral_group_barrier_curvature_matches_independent_log_ball(norm,width)
 @pytest.mark.parametrize('target_M',[3,4,6])
 def test_resolution_projection_preserves_low_modes_and_actual_density_packing(target_M):
     """Nodal initialization only: no PV amplitude identity or feasibility transfer."""
-    from smatrix_bootstrap.operators import project_coefficients
+    from smatrix_bootstrap_newton.operators import project_coefficients
     def exact(M):
         phi=(np.arange(M)+.5)*np.pi/M;u,v=np.sin(phi),np.sin(2*phi)
         r1=np.outer(u,v);r2=np.outer(u,u)+(np.outer(u,v)+np.outer(v,u))/2
@@ -246,9 +246,9 @@ def test_resolution_projection_preserves_low_modes_and_actual_density_packing(ta
     else:np.testing.assert_allclose(projected,exact(target_M),rtol=3e-14,atol=3e-14)
     np.testing.assert_array_equal(original,exact(4))
 def test_joint_figures_reject_identical_samples_from_different_UV_models(tmp_path,monkeypatch):
-    from smatrix_bootstrap import io, model
+    from smatrix_bootstrap_newton import io, model
     from types import SimpleNamespace
-    from smatrix_bootstrap.analysis import gauge_regions, gauge_phases
+    from smatrix_bootstrap_newton.analysis import gauge_regions, gauge_phases
     sig=dict(M=1,L=1,density_limit=1.,infinity='free',unitarity_scope='sampled',prescription='pv-midpoint',
         preparation=str(tmp_path/'H'),scattering_samples=3,chiral_norm='combined-l2')
     square=[[-1.,-1.],[1.,-1.],[1.,1.],[-1.,1.]];baseline=tmp_path/'IR.json'
@@ -281,10 +281,10 @@ def test_joint_figures_reject_identical_samples_from_different_UV_models(tmp_pat
 def test_extra_analytic_rows_keep_native_current_identity_and_match_full_integral(tmp_path):
     # Omitting a new row, its imaginary offset, or its true energy breaks this comparison.
     from types import SimpleNamespace
-    from smatrix_bootstrap.basis import prepare_cardinal,CardinalSourceRows
-    from smatrix_bootstrap.sampling import prepared_sampling
-    from smatrix_bootstrap.analytic import CardinalAmplitude
-    from smatrix_bootstrap.run import support_data
+    from smatrix_bootstrap_newton.basis import prepare_cardinal,CardinalSourceRows
+    from smatrix_bootstrap_newton.sampling import prepared_sampling
+    from smatrix_bootstrap_newton.analytic import CardinalAmplitude
+    from smatrix_bootstrap_newton.run import support_data
     from flint import acb
     base=tmp_path/'base';extra=tmp_path/'extra';base.mkdir();extra.mkdir()
     a=SimpleNamespace(nodes=3,waves=1,bits=256,angular_order=24,subtracted=False,source_registry=None,preparation=None,
@@ -304,8 +304,8 @@ def test_extra_analytic_rows_keep_native_current_identity_and_match_full_integra
             assert (value-amp.partial_wave(arb('9.5'),None,int(I),int(ell))).contains(0)
     source=CardinalSourceRows(3,1,256);source.attach_preparation(extra)
     assert len(source.row(source.x[0],0,0,node=0))==22
-    from smatrix_bootstrap.operators import PhaseOneProblem
-    from smatrix_bootstrap.endpoints import configure_endpoint_coordinates
+    from smatrix_bootstrap_newton.operators import PhaseOneProblem
+    from smatrix_bootstrap_newton.endpoints import configure_endpoint_coordinates
     v=np.sin((np.arange(3)+.5)*np.pi/3);c=np.r_[0.,v/8,v/8,np.outer(v,v).ravel(),[v[i]*v[j]/(2 if i==j else 1) for i in range(3) for j in range(i,3)]]*1e-4
     cur=current_operators(H,out[1],ss,ww,3,UVConfig(moment_source='eq250',matching_energy_gev=.8));P=PhaseOneProblem(H,out[1],cur,3,1,1500.,.002,np.r_[c,np.zeros(6),np.ones(6)],[0,0],absorptive=True)
     configure_endpoint_coordinates(P);z=P.initial;raw=P.raw(z)
@@ -314,22 +314,22 @@ def test_extra_analytic_rows_keep_native_current_identity_and_match_full_integra
     D=P.congruence[P.keep];scale=np.column_stack((D[:,0]**2,D[:,0]*D[:,1],D[:,1]**2,D[:,0]*D[:,2],D[:,1]*D[:,2],D[:,2]**2));physical=(cur['arrays']['gram_constant']+cur['matrices']['gram_linear']@raw).reshape(6,6)[P.keep]
     np.testing.assert_allclose((P.values(z)['gram']/scale),physical,rtol=1e-9,atol=1e-12)
     cur['metadata'].update(ff_endpoint_order=2,asymptotic_unitarity=True);_,audit=joint_audit(H,out[1],cur,raw,3,1,1500.,.002,[0,0]);assert audit['amplitude_primal_feasible'] and len(audit['asymptotic_margin_enclosures'])==5
-    from smatrix_bootstrap.ir import zero_constant_coordinates,audit_ir;from smatrix_bootstrap.scattering import barrier_support
+    from smatrix_bootstrap_newton.ir import zero_constant_coordinates,audit_ir;from smatrix_bootstrap_newton.scattering import barrier_support
     ir=zero_constant_coordinates(H,out[1],c,3,1,1500.,asymptotic=True,bits=256)
     np.testing.assert_allclose(ir.A@ir.initial,H@c,atol=1e-13);np.testing.assert_allclose(ir.raw(ir.initial),c,atol=1e-13)
     zi,kr,ki,yy,method=barrier_support(ir.A,out[1],3,1,1500.,[1,0],.002,ir.initial,lambda **kw:None,seconds=10,start_mu=1e-6,gap=1e-4,asymptotic=ir)
     ci=ir.raw(zi);outer=audit_ir(H,out[1],ci,3,1,1500.,.002,method['support_direction'],dict(kR=kr,kI=ki,y=yy,**method['asymptotic_duals']),zero=True,asymptotic=True)
     assert ci[0]==0 and outer['primal_feasible'] and outer['upper']>=outer['lower'] and len(outer['asymptotic_margin_enclosures'])==5
-    from smatrix_bootstrap.ir import recover_ir; trial=c.copy();trial[0]=1e-10;check=lambda q:audit_ir(H,out[1],q,3,1,1500.,.002,[0,0]);assert check(trial)['primal_feasible']
+    from smatrix_bootstrap_newton.ir import recover_ir; trial=c.copy();trial[0]=1e-10;check=lambda q:audit_ir(H,out[1],q,3,1,1500.,.002,[0,0]);assert check(trial)['primal_feasible']
     kept,proof,info=recover_ir(H,out[1],trial,c,3,1500.,.002,'separate-l2',lambda q:[],check);assert np.array_equal(kept,trial) and proof['primal_feasible'] and not info['repaired']
-    from smatrix_bootstrap.ir import bounded_ir_coordinates;box=bounded_ir_coordinates(H,out[1],trial,3,1);T=np.column_stack([box.raw(v) for v in np.eye(22)]);np.testing.assert_allclose(box.A,H@T,atol=1e-12);np.testing.assert_allclose(box.raw(box.initial),trial,atol=1e-14);assert box.raw(box.initial)[0]!=0
+    from smatrix_bootstrap_newton.ir import bounded_ir_coordinates;box=bounded_ir_coordinates(H,out[1],trial,3,1);T=np.column_stack([box.raw(v) for v in np.eye(22)]);np.testing.assert_allclose(box.A,H@T,atol=1e-12);np.testing.assert_allclose(box.raw(box.initial),trial,atol=1e-14);assert box.raw(box.initial)[0]!=0
     anchors=np.r_[np.arange(3)*3,np.arange(3)*3+2];np.testing.assert_allclose((out[1][anchors,None]*box.A[12+anchors]),np.eye(22)[:6],atol=1e-17);np.testing.assert_allclose(out[1][3]*box.A[3],np.eye(22)[6],atol=1e-17);np.testing.assert_array_equal(T[7:],np.diag(np.r_[np.ones(7),[2 if f=='rho2' and i!=j else 1 for f,i,j in density_labels(3)[7:]]])[7:])
     zb,rb,ib,yb,mb=barrier_support(box.A,out[1],3,1,1500.,[0,1],.002,box.initial,lambda **kw:None,seconds=10,start_mu=1e-6,gap=1e-4,asymptotic=box,fixed_x=float(H[-2]@trial));ab=audit_ir(H,out[1],box.raw(zb),3,1,1500.,.002,mb['support_direction'],dict(kR=rb,kI=ib,y=yb));assert ab['primal_feasible'] and ab['upper']>=ab['lower']
     with np.load(extra/'amplitude.npz') as q:bad={k:q[k] for k in q.files}
     bad['sample_energies']=ss.copy();bad['sample_energies'][0]=9.5
     with pytest.raises(ValueError,match='native'):prepared_sampling(bad,3,1)
 def test_center_acceptance_rejects_activity_changes_but_allows_free_spectral_lift(tmp_path):
-    from smatrix_bootstrap.gauge import center_acceptance;from scipy.sparse import csr_matrix;from smatrix_bootstrap.ir import center_identity
+    from smatrix_bootstrap_newton.gauge import center_acceptance;from scipy.sparse import csr_matrix;from smatrix_bootstrap_newton.ir import center_identity
     original=np.arange(9,dtype=float);current={'arrays':{'high_energy_indices':np.array([0])},'matrices':{'moment_linear':csr_matrix((4,9))}}
     lifted=original.copy();lifted[-2:]+=1;assert center_acceptance(original,lifted,1,current)['eligible']
     for slot in [0,4,5,6]:
@@ -338,7 +338,7 @@ def test_center_acceptance_rejects_activity_changes_but_allows_free_spectral_lif
     np.savez(tmp_path/'center_converged.npz',has_newton_gradient=True,coefficients=original[:5],mu=1e-7);assert center_identity(tmp_path,original[:5],1,np.ones(2))['full_C_identical']
     with pytest.raises(ValueError,match='differs'):center_identity(tmp_path,original[:5]*(1-1e-8),1,np.ones(2))
 def test_exact_form_factor_endpoint_and_dual_constant_identity():
-    from smatrix_bootstrap.endpoints import complete_imf,endpoint_residual,asymptotic_audit,asymptotic_margins
+    from smatrix_bootstrap_newton.endpoints import complete_imf,endpoint_residual,asymptotic_audit,asymptotic_margins
     with ctx.workprec(256):
         b=[(arb(2*j+1)/8).tan_pi()/2 for j in range(2)]
         v=complete_imf([arb(2),arb(999)],True)

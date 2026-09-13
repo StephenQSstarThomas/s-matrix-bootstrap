@@ -1,0 +1,26 @@
+[
+  {
+    "n": 1,
+    "iters": 48,
+    "wall_s": 508.9,
+    "s_per_iter": 10.4,
+    "terminate": "found primal-dual optimal solution",
+    "objective": "7907.10061077180049119"
+  },
+  {
+    "n": 8,
+    "iters": 48,
+    "wall_s": 127.2,
+    "s_per_iter": 2.35,
+    "terminate": "found primal-dual optimal solution",
+    "objective": "7907.10061077180049085"
+  },
+  {
+    "n": 16,
+    "iters": 48,
+    "wall_s": 134.4,
+    "s_per_iter": 2.48,
+    "terminate": "found primal-dual optimal solution",
+    "objective": "7907.10061077180049104"
+  }
+]

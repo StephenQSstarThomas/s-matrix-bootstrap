@@ -1,0 +1,19 @@
+{
+  "symptom": "SDPB rounds inside generate() stop after ~2 iterations reporting 'maxIterations exceeded'",
+  "not_the_cause": [
+    "the parameters -- the container echoes maxIterations = 500, dualityGapThreshold = 1e-06, initialMatrixScale = 10000",
+    "SDPB being slow -- a direct run on the SAME sdp directory with the SAME parameters reaches iteration 42 in 273 s (6.5 s/iter) with the gap down to 1.6e-3 and still falling"
+  ],
+  "root_cause": "The early-round RELAXATIONS are not bounded.  With B = None -- the paper's literal setting -- a small subset of the unitarity disks does not bound f00(3).  The relaxation optimum is therefore enormous and climbing (round 0: 133, round 1: 778), the interior-point iterate runs away (primal 2.56e7 against dual -974, primalError 9.2e2, dualError 1.8e3, Solver runtime 8 s) and SDPB reports the divergence as 'maxIterations exceeded'.",
+  "the_tell": "A relaxation optimum must DECREASE as constraints are added.  133 -> 778 is increasing, which is only possible if the rounds are not returning the relaxation's optimum.",
+  "second_consequence": "This is the same mechanism behind 'MOSEK certified is only a lower bound' (S2_mosek_certified_is_only_a_lower_bound.json): on a weakly bounded relaxation MOSEK returns a suboptimal interior point instead of diverging, and solve_generated then labels that feasible point 'certified'.  One mechanism explains both.",
+  "fix_designed_not_run": [
+    "seed constraint generation with a far larger disk set (loosen --start-tol by orders of magnitude, or start from the full set for M <= 30) so every round is bounded",
+    "or carry a temporary bounding ball during generation and verify at the end that it is inactive, so it cannot change the answer",
+    "either way, ASSERT monotone non-increase of the relaxation optimum across rounds and abort the loop if it is violated -- that check would have caught this in round 1"
+  ],
+  "measured_cost_datum": {
+    "M50_scale_problem": "6.5 s/iteration at -n 8, 192 bit",
+    "note": "measured on the round-2 SDP (~680 disks); the full 1500-disk problem scales to ~28 s/iter"
+  }
+}

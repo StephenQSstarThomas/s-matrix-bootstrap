@@ -1,24 +1,15 @@
 # 2309.12402v3：复现路线与运行接口
 
-> ## ⚠ 读之前：这个仓库有两条平行主线
+> ## ⚠ 本文件是历史记录（2026-09-13 起）
 >
-> **(1) Newton 主线**（`results/runs/mainline_alignment_20260909/`、`major_claims_20260912/`）——
-> 本文件描述的就是它。它已被 `REVISED_CLAIMS_ZH.md` 的只读审计判定为
-> **"解的是一个自建的近似模型，不是论文的问题"**（论文没有的密度正则化 B、比字面更紧的 L2 手征球、
-> 以障碍中心而非极值点作代表、自研 barrier–Newton 求解器）。它的 P0–P5 计划已不再执行。
+> 现行入口只有 [`PLAN_SDPB_2309_ZH.md`](PLAN_SDPB_2309_ZH.md) 与 [`TRIAGE_ZH.md`](TRIAGE_ZH.md)。
+> 本文件中以下说法已被证伪（证据与正确版本见 TRIAGE §1）：
+> "2309 没有正则化、密度界 B 应删除"；"去掉 B 后 M=50 才认证、失败是精度或截断问题"；
+> "M=50 不收敛、双精度结果只是下界"；"mixed-PV 需换成 sine-cardinal"；
+> "chi-c、SR-a 是 2309 字面合同"。当前主线：mixed-pv、chi-b、ε^χ=0.002、
+> 正则化 |ρ_ij|≤10²（物理判据定），SDPB 192 bit；门槛已通过，端点与论文差 0.22%。
+> 本文件其余内容保留作证据，其中的数值、结论与"当前"等措辞不再代表项目状态。
 >
-> **(2) SDP 直解路线**（`src/smatrix_bootstrap/sdp/`）——当前在做的。求解器已改为 **SDPB-only**
-> （任意精度），MOSEK/MATLAB/CVX 都不在链路上。
->
-> **当前进度、运行方法、精度判断与待补缺口的唯一入口是
-> [`HANDOFF_PHYSICS_AUDIT_ZH.md`](HANDOFF_PHYSICS_AUDIT_ZH.md)。**
-> 本文件保留为历史记录，其中与下列事实冲突的陈述以 handoff 为准：
->
-> - 当前SDP路线同样通过统一入口：`python -m smatrix_bootstrap.run sdp ...`。
->   下文旧Newton命令及 `scripts/sdp/pmp_run.py` 不作为当前生产入口。
->   Mathematica用于独立公式检查，SDPB用于优化；自包含运行、精度理由和真实资源范围见handoff。
->
-
 ## 2026-09-12当前入口与下一阶段
 
 [完整严格审计](results/runs/major_claims_20260912/final_report/REPORT_ZH.pdf)、[六项未闭合工作、A1–F3台账及P0–P5计划](results/runs/major_claims_20260912/CORE_CLAIM_LEDGER_AND_PLAN_ZH.md)。当前定性IR→UV→共振链及五组有限计算已完成；稳健定量ρ、S0、L比较及原文区域/数值身份仍按台账保留，不以代码/图齐备宣称物理成功。

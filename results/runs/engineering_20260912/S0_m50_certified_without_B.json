@@ -1,0 +1,51 @@
+{
+  "headline": "M=50, L=10, pure unitarity, NO density regulariser: certified, f00(3) = 2.216110, -0.75% from the digitised Fig.3 tip 2.2329.",
+  "why_it_matters": [
+    "This is the first certified point at the paper's own resolution in this project.",
+    "The previous round's best was M=40, uncertified, -3.6%.",
+    "C1's +x end (task spec acceptance: +-2%) is met.",
+    "It was obtained by REMOVING a constraint, not by adding precision."
+  ],
+  "the_constraint_removed": {
+    "what": "||rho||_4 <= 377500  (B_norm='l4', B=100*Mrho with Mrho=M^2+M(M+1)/2)",
+    "provenance": "NOT in arXiv:2309.12402v3 -- the paper contains no regularisation of any kind.  It was carried over from the author's later code for arXiv:2403.10772 (`norm(rho/Mrho,4) <= 1e2` in GTB_numerics.m).",
+    "measured_effect_at_M50_pure_unitarity": {
+      "B=377500 l4": {
+        "status": "optimal",
+        "certified": false,
+        "f00_3": 3.5736,
+        "rounds": 10,
+        "stopped": "solver failed at 981 disks",
+        "seconds": 777.3
+      },
+      "B=377500 l2": {
+        "status": "SolverError",
+        "certified": null,
+        "rounds": 1,
+        "seconds": 20.6
+      },
+      "B absent": {
+        "status": "optimal",
+        "certified": true,
+        "f00_3": 2.21611,
+        "rounds": 22,
+        "n_disks": 1428,
+        "seconds": 619.6
+      },
+      "B=377500 l2 + exact basis reduction": {
+        "status": "optimal",
+        "certified": false,
+        "f00_3": 4.7412,
+        "stopped": "solver failed at 681 disks",
+        "max_violation_at_return": 8.43e+39,
+        "seconds": 312.2
+      }
+    }
+  },
+  "conclusion": "The regulariser imported from the 2403 code was itself a major part of the numerical obstruction.  Dropping it -- i.e. running the 2309 paper's own specification -- both removes the obstruction and lands within the acceptance band.  This is direct evidence for the rule that 2309 settings are the only source of truth and 2403 settings must not enter the mainline.",
+  "open": [
+    "the -x end and the other 22 directions of Fig.3 are running",
+    "no UV-sector point is certified yet at any M",
+    "the l2/l4 asymmetry at M=50 is unexplained"
+  ]
+}

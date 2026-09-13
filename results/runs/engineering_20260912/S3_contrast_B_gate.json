@@ -1,0 +1,42 @@
+[
+  {
+    "B": null,
+    "sector": "chiral",
+    "status": "optimal",
+    "cert": true,
+    "f00": 0.08622410715699962,
+    "rho_GeV": null,
+    "rounds": 6,
+    "s": 5.0
+  },
+  {
+    "B": null,
+    "sector": "chiral+UV",
+    "status": "optimal",
+    "cert": false,
+    "f00": 0.8893156781903689,
+    "rho_GeV": null,
+    "rounds": 4,
+    "s": 26.1
+  },
+  {
+    "B": 377500.0,
+    "sector": "chiral",
+    "status": "optimal",
+    "cert": true,
+    "f00": 0.08431402683227411,
+    "rho_GeV": 1.4972915399222737,
+    "rounds": 8,
+    "s": 14.4
+  },
+  {
+    "B": 377500.0,
+    "sector": "chiral+UV",
+    "status": "optimal",
+    "cert": false,
+    "f00": 0.5114443040455382,
+    "rho_GeV": null,
+    "rounds": 3,
+    "s": 38.0
+  }
+]

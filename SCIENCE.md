@@ -1,27 +1,15 @@
 # Scientific contract — He–Kruczenski 2309.12402v3
 
-> ## ⚠ 读之前：这个仓库有两条平行主线
+> ## ⚠ 本文件是历史记录（2026-09-13 起）
 >
-> **(1) Newton 主线**（`results/runs/mainline_alignment_20260909/`、`major_claims_20260912/`）——
-> 本文件描述的就是它。它已被 `REVISED_CLAIMS_ZH.md` 的只读审计判定为
-> **"解的是一个自建的近似模型，不是论文的问题"**（论文没有的密度正则化 B、比字面更紧的 L2 手征球、
-> 以障碍中心而非极值点作代表、自研 barrier–Newton 求解器）。它的 P0–P5 计划已不再执行。
+> 现行入口只有 [`PLAN_SDPB_2309_ZH.md`](PLAN_SDPB_2309_ZH.md) 与 [`TRIAGE_ZH.md`](TRIAGE_ZH.md)。
+> 本文件中以下说法已被证伪（证据与正确版本见 TRIAGE §1）：
+> "2309 没有正则化、密度界 B 应删除"；"去掉 B 后 M=50 才认证、失败是精度或截断问题"；
+> "M=50 不收敛、双精度结果只是下界"；"mixed-PV 需换成 sine-cardinal"；
+> "chi-c、SR-a 是 2309 字面合同"。当前主线：mixed-pv、chi-b、ε^χ=0.002、
+> 正则化 |ρ_ij|≤10²（物理判据定），SDPB 192 bit；门槛已通过，端点与论文差 0.22%。
+> 本文件其余内容保留作证据，其中的数值、结论与"当前"等措辞不再代表项目状态。
 >
-> **(2) SDP 直解路线**（`src/smatrix_bootstrap/sdp/`）——当前在做的。求解器已改为 **SDPB-only**
-> （任意精度），MOSEK/MATLAB/CVX 都不在链路上。
->
-> **当前进度、运行方法、精度判断与待补缺口的唯一入口是
-> [`HANDOFF_PHYSICS_AUDIT_ZH.md`](HANDOFF_PHYSICS_AUDIT_ZH.md)。**
-> 本文件保留为历史记录，其中与下列事实冲突的陈述以 handoff 为准：
->
-> - The "unchanged nominal contract" in this file (PV-midpoint M50/L10, separate-L2 chiral balls,
->   actual-density L4 bound 377500, four printed raw .002 FESR boxes, hard-midpoint) is the **Newton
->   mainline's** contract.  The SDP route drops the density bound entirely, because 2309 contains no
->   regularisation of any kind and because dropping it is what let M=50 certify for the first time.
-> - "23 modules, three test files and 107 passing tests" counts the Newton mainline.  The SDP
->   subpackage's own suite is `python -m smatrix_bootstrap.sdp selfcheck` -> **155 passed**.
->
-
 Updated: 2026-09-12. **The declared finite prototype is operational and extensively certified; the paper's robust quantitative core is not reproduced.** [Scientific audit](results/runs/major_claims_20260912/final_report/REPORT_ZH.pdf), [claim ledger and completion plan](results/runs/major_claims_20260912/CORE_CLAIM_LEDGER_AND_PLAN_ZH.md), [A1–F3 records](results/runs/major_claims_20260912/CLAIM_LEDGER.json).
 
 The unchanged nominal contract is PV-midpoint M50/L10,1500 disks, separate-L2 chiral balls(.002), actual-density L4 bound377500, four printed raw .002 FESR boxes, hard-midpoint and the original FF constraints. All refined nominal representatives pass numerical centers and original primal/support checks; P1 descriptive90-degree readings remain803.391/701.034/696.485 MeV.

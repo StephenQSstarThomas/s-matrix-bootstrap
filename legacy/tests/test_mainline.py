@@ -2,10 +2,10 @@ import json;from pathlib import Path
 import pytest;flint=pytest.importorskip('flint')
 from flint import arb,ctx,fmpq;import numpy as np
 from types import SimpleNamespace
-from smatrix_bootstrap.imaginary import support_outer, density_fourth_power; from smatrix_bootstrap.operators import midpoint_grid
-from smatrix_bootstrap.kernels import density_labels, density_row_to_cflat
-from smatrix_bootstrap.model import unitarity_margin, weinberg_waves, current_operators, current_gram; from smatrix_bootstrap.analysis import phase_shifts; from smatrix_bootstrap import UVConfig
-from smatrix_bootstrap.linear import barrier_support
+from smatrix_bootstrap_newton.imaginary import support_outer, density_fourth_power; from smatrix_bootstrap_newton.operators import midpoint_grid
+from smatrix_bootstrap_newton.kernels import density_labels, density_row_to_cflat
+from smatrix_bootstrap_newton.model import unitarity_margin, weinberg_waves, current_operators, current_gram; from smatrix_bootstrap_newton.analysis import phase_shifts; from smatrix_bootstrap_newton import UVConfig
+from smatrix_bootstrap_newton.linear import barrier_support
 def test_exact_half_conversion_affects_only_rho2_offdiagonals():
     row=[fmpq(i+1) for i in range(22)];converted=density_row_to_cflat(row,3); assert all(converted[i]==(row[i]/2 if i in (17,18,20) else row[i]) for i in range(22))
 def test_density_norm_counts_actual_upper_density_entries_once():
@@ -17,13 +17,13 @@ def _disk_support_control():  # Independent native disks: max Re f00=1 for kappa
 @pytest.mark.parametrize('packed',[False,True])
 def test_parallel_extended_products_preserve_cancellation_and_adjoint(packed):
     from concurrent.futures import ThreadPoolExecutor
-    from smatrix_bootstrap import extended_product, extended_sparse_blocks
+    from smatrix_bootstrap_newton import extended_product, extended_sparse_blocks
     A=np.array([[2**54,1,-2**54],[2**53,-1,-2**53]],dtype=np.longdouble);A=extended_sparse_blocks(A) if packed else A
     with ThreadPoolExecutor(2) as pool:
         assert np.array_equal(extended_product(A,np.ones(3,np.longdouble),pool=pool),[1,-1])
         assert np.array_equal(extended_product(A,np.array([1,-2],np.longdouble),True,pool),[0,3,0])
 def test_zero_native_candidate_keeps_the_verified_nontrivial_incumbent():
-    from smatrix_bootstrap.imaginary import recover_candidate_segment
+    from smatrix_bootstrap_newton.imaginary import recover_candidate_segment
     H=_disk_support_control();initial=np.array([.1/2.5,1/3,.5,.1,.01])
     def certify(c):
         return support_outer(H,[1.],np.zeros(3),np.zeros(3),np.zeros(8),(1.,0.),.25, coefficients=c)
@@ -90,8 +90,8 @@ def test_current_operator_connects_complex_gram_moments_and_high_FF(zero_imagina
 @pytest.mark.parametrize("extra",[False,True])
 def test_joint_hull_imposes_chiral_balls_on_a_common_full_coefficient_mix(tmp_path,extra):
     """Non-QCD toy: ordinary-feasible parents individually violate both chi balls."""
-    from smatrix_bootstrap.quotient import joint_hull_candidate
-    from smatrix_bootstrap.kernels import joint_audit;from smatrix_bootstrap import write_json
+    from smatrix_bootstrap_newton.quotient import joint_hull_candidate
+    from smatrix_bootstrap_newton.kernels import joint_audit;from smatrix_bootstrap_newton import write_json
     H=_disk_support_control();H[6,0]=1;H[10,0]=2
     if extra:H=np.vstack((H[:3],H[:3]/2,H[3:6],H[3:6]/2,H[6:]))
     ss=np.repeat([8.,16.] if extra else [8.],3);n=len(ss);kap=np.pi*np.sqrt(1-4/ss)
@@ -119,8 +119,8 @@ def test_joint_hull_imposes_chiral_balls_on_a_common_full_coefficient_mix(tmp_pa
 @pytest.mark.parametrize('chiral_weight',[1.,7.,750.])
 @pytest.mark.parametrize('phase_one',[False,True])
 def test_joint_barrier_gradient_and_curvature_by_independent_variation(tmp_path,chiral_weight,chiral_norm,phase_one):
-    from smatrix_bootstrap.operators import JointProblem;M=4;p=len(density_labels(M));n=3*M;free=1+2*M
-    if phase_one:from smatrix_bootstrap.operators import PhaseOneProblem as JointProblem
+    from smatrix_bootstrap_newton.operators import JointProblem;M=4;p=len(density_labels(M));n=3*M;free=1+2*M
+    if phase_one:from smatrix_bootstrap_newton.operators import PhaseOneProblem as JointProblem
     with ctx.workprec(256):ss=np.repeat([float(s) for s in midpoint_grid(M)[0]],3)
     kap=np.pi*np.sqrt(1-4/ss);waves=np.tile([[0,0],[1,1],[2,0]],(M,1));H=np.zeros((2*n+11,p));c=np.zeros(p)
     v=np.sin((np.arange(M)+.5)*np.pi/M);c[1:free]=np.tile(v/8,2);c[free:free+M*M]=np.outer(v,v).ravel()
@@ -130,13 +130,13 @@ def test_joint_barrier_gradient_and_curvature_by_independent_variation(tmp_path,
     current=current_operators(H,kap,ss,waves,M);a=current['arrays'];point=np.r_[c,np.zeros(2*M),3*a['k_squared'].ravel()]
     a['moment_targets_raw']=current['matrices']['moment_linear']@point;a['moment_errors_raw']=np.full(4,.01);a['ff_caps_squared']=4*a['k_squared'][:,-1]
     if phase_one and chiral_weight==7:point[-2*M]=-a['k_squared'][0,0];point[-M]=0
-    from smatrix_bootstrap.operators import positive_spectral_reference;prior=point.copy();point,replaced=positive_spectral_reference(point,a['k_squared']);assert np.array_equal(point[:p+2*M],prior[:p+2*M]) and np.all(point[-2*M:]>0) and np.array_equal(point[-2*M:][prior[-2*M:]>0],prior[-2*M:][prior[-2*M:]>0])
+    from smatrix_bootstrap_newton.operators import positive_spectral_reference;prior=point.copy();point,replaced=positive_spectral_reference(point,a['k_squared']);assert np.array_equal(point[:p+2*M],prior[:p+2*M]) and np.all(point[-2*M:]>0) and np.array_equal(point[-2*M:][prior[-2*M:]>0],prior[-2*M:][prior[-2*M:]>0])
     problem=JointProblem(H,kap,current,M,1,10.,.002,point,[1,0],chiral_norm=chiral_norm,**({'retain_free_spectra':True} if chiral_weight==750 else {}));problem.chiral_weight=chiral_weight;z=problem.initial;s=problem.state(z,hessian=True)
     if phase_one and chiral_weight==750:
-        from smatrix_bootstrap.endpoints import configure_endpoint_coordinates,configure_asymptotic_constraints
+        from smatrix_bootstrap_newton.endpoints import configure_endpoint_coordinates,configure_asymptotic_constraints
         configure_endpoint_coordinates(problem);configure_asymptotic_constraints(problem);z=problem.initial;s=problem.state(z,hessian=True)
     if chiral_weight==750 and chiral_norm=='separate-l2':
-        from smatrix_bootstrap.conic import compile_joint_cones,scs_layout,solve_joint_cones
+        from smatrix_bootstrap_newton.conic import compile_joint_cones,scs_layout,solve_joint_cones
         Q=compile_joint_cones(problem);assert sorted(scs_layout(Q)[0])==list(range(len(Q['b'])));nv=len(problem.active);assert nv==p+4*M;rho=z[problem.free:problem.p]/problem.bound;ext=np.r_[z[:nv],rho*rho];u=((ext-Q['offset'])/Q['scale'])[Q['columns']]
         slack=Q['b']-Q['A']@u;block={k:slack[slice(*v)] for k,v in Q['blocks'].items()};disk=block['scattering'].reshape(-1,4);values=problem.values(z)
         np.testing.assert_allclose(disk[:,0]**2-np.sum(disk[:,1:]**2,axis=1),2*s['amplitude']['slack'],rtol=1e-10,atol=1e-12)
@@ -156,19 +156,19 @@ def test_joint_barrier_gradient_and_curvature_by_independent_variation(tmp_path,
     assert float((plus['value']-minus['value'])/(2*h))==pytest.approx(float(g@d),rel=2e-6,abs=1e-7)
     assert float((plus['value']+minus['value']-2*s['value'])/h**2)==pytest.approx(float(quadratic),rel=2e-5,abs=1e-5)
     if not phase_one and 'asymptotic' not in s:
-        from smatrix_bootstrap.merit import certified_local_decrease
+        from smatrix_bootstrap_newton.merit import certified_local_decrease
         cost=problem.cost.copy();problem.cost[:]=0;sd=-d if plus['value']>minus['value'] else d;proof=certified_local_decrease(problem,z,s,sd,problem.delta(sd),1.,h);problem.cost[:]=cost
         assert proof['certified_descent'] and 0<float(arb(proof['decrease_lower']))<=float(s['value']-min(plus['value'],minus['value']))+1e-8
 @pytest.mark.parametrize("section",[False,True])
 def test_stiff_coordinates_and_inexact_descent_do_not_weaken_center_acceptance(section):
-    from smatrix_bootstrap import radial_coordinates;from smatrix_bootstrap.linear import joint_direction_status; rng=np.random.default_rng(72);F=rng.normal(size=(25,12)).astype(np.longdouble);F[[3,8]]*=np.array([1e12,1e8])[:,None];c=rng.normal(size=12).astype(np.longdouble)
+    from smatrix_bootstrap_newton import radial_coordinates;from smatrix_bootstrap_newton.linear import joint_direction_status; rng=np.random.default_rng(72);F=rng.normal(size=(25,12)).astype(np.longdouble);F[[3,8]]*=np.array([1e12,1e8])[:,None];c=rng.normal(size=12).astype(np.longdouble)
     full,fullc=F.copy(),c.copy();v=rng.normal(size=11).astype(np.longdouble);F,c=(F[:,1:]+F[:,0,None]*v,c[1:]+c[0]*v) if section else (F,c);free=5-int(section)
     A,q,restore=radial_coordinates(F,c,[3,8],free);w=rng.normal(size=len(c)).astype(np.longdouble);z=restore(w);dz=np.r_[v@z,z] if section else z;assert np.linalg.norm(full@dz-A@w)<1e-16*np.linalg.norm(full@dz) and abs(fullc@dz-q@w)<1e-15 and np.array_equal(z[free:],w[free:])
     H=np.diag([1.,1e-8]);g=np.array([1.,1e-4]);d=np.array([.99999,1e4]);gd=g@d;curvature=d@H@d;step=gd/curvature;status=joint_direction_status(1e-5,gd,gd,curvature);assert status['usable'] and not status['centered'] and .5*step**2*curvature-step*gd<0
     assert not joint_direction_status(1e-5,1e-12,1e-12,1e-12)['centered'] and not joint_direction_status(1e-5,1.,-1.,1.)['usable'] and joint_direction_status(0.,0.,0.,0.)['centered'] and not joint_direction_status(1e-7,3.34e-11,3.34e-11,3.34e-11)['centered'] and joint_direction_status(1e-7,1e-17,1e-17,1e-17)['centered']
-    from smatrix_bootstrap.linear import self_concordant_decrease; e=np.longdouble('1e-7'); lower=self_concordant_decrease(1,e*e,e*e)
+    from smatrix_bootstrap_newton.linear import self_concordant_decrease; e=np.longdouble('1e-7'); lower=self_concordant_decrease(1,e*e,e*e)
     with ctx.workprec(192): truth=(1+arb('1e-7')).log()-(1-arb('1e-7'))*arb('1e-7'); assert truth>float(lower)>0 and np.longdouble(1e6)-np.longdouble(np.longdouble(1e6)-np.longdouble(float(truth)))==0
-    from smatrix_bootstrap.merit import certified_local_decrease
+    from smatrix_bootstrap_newton.merit import certified_local_decrease
     xx=np.longdouble('.25');dd=np.longdouble('1e-9');cc=np.longdouble(8)/15+np.longdouble('1e-8');P=SimpleNamespace(free=1,p=1,bound=1.,groups=(),chiral_weight=1.,t=np.ones(1),cost=np.array([cc]))
     vals=dict(x=np.array([xx]),y=np.ones(1),chi=np.empty(0),gram=np.empty((0,6)),ff=np.empty((0,2)),moment=np.empty(0))
     state=dict(values=vals,amplitude=dict(slack=np.array([1-xx*xx]),chiral_slack=np.empty(0)),ffslack=np.empty(0))
@@ -177,7 +177,7 @@ def test_stiff_coordinates_and_inexact_descent_do_not_weaken_center_acceptance(s
         A=lambda v:arb(v.as_integer_ratio()[0])/arb(v.as_integer_ratio()[1]);X,D,C=map(A,(xx,dd,cc));exact=C*D+((-2*X*D-D*D)/(1-X*X)).log1p();assert proof['certified_descent'] and 0<arb(proof['decrease_lower'])<exact
     dv['x']*=-1;assert not certified_local_decrease(P,np.array([xx]),state,np.array([-dd]),dv,1.,1.)['certified_descent']
 def test_watsonian_functional_matches_physical_complex_S_identity():
-    from smatrix_bootstrap.imaginary import watsonian_objective; rng=np.random.default_rng(54);M=4;p=len(density_labels(M));n=3*M;H=rng.normal(size=(2*n+11,p))*.01
+    from smatrix_bootstrap_newton.imaginary import watsonian_objective; rng=np.random.default_rng(54);M=4;p=len(density_labels(M));n=3*M;H=rng.normal(size=(2*n+11,p))*.01
     nodes=np.array([float(x) for x in midpoint_grid(M)[0]]);ss=np.repeat(nodes,3);kap=np.pi*np.sqrt(1-4/ss);ww=np.tile([[0,0],[1,1],[2,0]],(M,1))
     current=current_operators(H,kap,ss,ww,M);old=rng.normal(size=p+4*M)*.1;new=rng.normal(size=p+4*M)*.1
     c,duals,meta=watsonian_objective(H,kap,current,old,M,1);im=old[p:p+2*M].reshape(2,M);F=1+im@current['arrays']['hilbert_kernel'].T+1j*im
@@ -189,7 +189,7 @@ def test_watsonian_functional_matches_physical_complex_S_identity():
     assert c@new[:p]==pytest.approx(truth/count,abs=1e-12) and meta['ideal_disk_ceiling']==pytest.approx(upper/count,abs=1e-12)
 @pytest.mark.parametrize('lo,hi,verdict',[(-.875,.5,True),(-.5,.875,False),(-.75,.75,None)])
 def test_certified_reference_section_uses_feasible_segments_and_true_supports(lo,hi,verdict):
-    from smatrix_bootstrap.kernels import certify_reference_section;from smatrix_bootstrap.run import encode_real_ball
+    from smatrix_bootstrap_newton.kernels import certify_reference_section;from smatrix_bootstrap_newton.run import encode_real_ball
     def box(low,high,label):
         vertices=[(-1,low),(1,low),(1,high),(-1,high)];directions=[(-1,0),(0,-1),(1,0),(0,1)]
         return [dict(target_enclosures=[encode_real_ball(arb(v)) for v in p],direction=d,upper=float(max(np.dot(d,q) for q in vertices)),coefficients=label+str(i),report=label+str(i)) for i,(p,d) in enumerate(zip(vertices,directions))]
@@ -198,13 +198,13 @@ def test_certified_reference_section_uses_feasible_segments_and_true_supports(lo
         a,b=result[name];assert a<=value<=b and b-a<1e-14
     assert result['upper_change_larger'] is verdict
 def test_ff_guided_lift_preserves_S_and_records_native_aliasing():
-    from smatrix_bootstrap.analysis import ff_guided_phase
+    from smatrix_bootstrap_newton.analysis import ff_guided_phase
     d=np.array([.1,1.9,2.8]);S=np.array([.9,.8,.7])*np.exp(2j*d);F=np.exp(1j*d)
     for sign in (1.,-1.):
         lift=ff_guided_phase(S,sign*F,sign);np.testing.assert_allclose(lift,d,atol=1e-14);np.testing.assert_allclose(abs(S)*np.exp(2j*lift),S,atol=1e-14)
 def test_original_zero_objective_farkas_bound_from_nonnegative_current_spectrum():
     """PSD rho0>=0 contradicts a negative upper bound on its positive weighted moment."""
-    from smatrix_bootstrap.kernels import joint_audit;H=_disk_support_control();kap=np.full(3,np.pi/np.sqrt(2))
+    from smatrix_bootstrap_newton.kernels import joint_audit;H=_disk_support_control();kap=np.full(3,np.pi/np.sqrt(2))
     current=current_operators(H,kap,np.full(3,8.),np.array([[0,0],[1,1],[2,0]]),1);a=current['arrays']
     a['moment_targets_raw'][0]=-1.;a['moment_errors_raw'][0]=.25
     weight=float(current['matrices']['moment_linear'][0,7]);assert weight>0
@@ -214,7 +214,7 @@ def test_original_zero_objective_farkas_bound_from_nonnegative_current_spectrum(
     assert not audit['primal_feasible'] and audit['lower'] is None
     assert -.75<=audit['upper']<0 and arb(audit['enclosure'])<0
 def test_pv_candidate_recovery_keeps_one_exact_full_coefficient_segment():
-    from smatrix_bootstrap.imaginary import recover_candidate_segment
+    from smatrix_bootstrap_newton.imaginary import recover_candidate_segment
     H=_disk_support_control();initial=np.array([.04,1/3,.5,.1,.01]);candidate=np.array([.8,1/3,.5,.1,.01])
     def certify(c):return support_outer(H,[1.],np.zeros(3),np.zeros(3),np.zeros(8),(1.,0.),1.,coefficients=c)
     c,outer,meta=recover_candidate_segment(H,np.ones(3),1,1.,None,candidate,initial,None,(1.,0.),certify)
@@ -222,7 +222,7 @@ def test_pv_candidate_recovery_keeps_one_exact_full_coefficient_segment():
     np.testing.assert_allclose(c,meta['candidate_weight']*candidate+meta['interior_fraction']*initial,atol=2e-16)
     assert .9999999<outer['lower']<=1<=outer['upper']<1.00000001
 def test_full_C_json_keeps_data_identity_and_rejects_old_CG(tmp_path):
-    from smatrix_bootstrap import read_cflat, write_json
+    from smatrix_bootstrap_newton import read_cflat, write_json
     c=np.arange(22.);path=tmp_path/'coefficients.json'
     write_json(path,dict(coordinates='unsubtracted PV-midpoint C_flat',prescription='pv-midpoint',coefficients=c))
     result,record=read_cflat(path,3);np.testing.assert_array_equal(result,c);assert record['prescription']=='pv-midpoint'
@@ -231,7 +231,7 @@ def test_full_C_json_keeps_data_identity_and_rejects_old_CG(tmp_path):
     result,record=read_cflat(path,3);assert record['prescription']=='finite-sine-cardinal' and np.array_equal(result,c)
     with pytest.raises(ValueError,match='CG'):read_cflat(tmp_path/'old.npz',3,'raw_candidate')
 def test_joint_report_helpers_keep_complete_dimensions_and_phase_one_scope():
-    from smatrix_bootstrap import center_report,phase_one_report
+    from smatrix_bootstrap_newton import center_report,phase_one_report
     P=SimpleNamespace(p=3876,M=50,chiral_weight=750)
     center=center_report(P,np.array([2.,500.]),.07,np.longdouble(0),False,[],3,2,7,1.5)
     phase=phase_one_report(P,np.r_[np.zeros(4062),.1],4,2.,.001,False)
@@ -239,11 +239,11 @@ def test_joint_report_helpers_keep_complete_dimensions_and_phase_one_scope():
     assert center['support_direction']==[2.,500.] and center['fixed_x']==.07 and center['chiral_barrier_weight']==750
     assert phase['solver_variables']==4063 and phase['phase_I'] and phase['tau']==.1 and phase['chiral_barrier_weight']==750
     assert phase['scattering_chiral_density_always_hard'] and not phase['physical_constraints_relaxed_at_acceptance']
-    from smatrix_bootstrap.certificates import model_signature
+    from smatrix_bootstrap_newton.certificates import model_signature
     r=dict(M=1,L=1,density_limit=1.,infinity='zero',unitarity_scope='sampled',prescription='analytic-cardinal',chiral_tolerance=.002,scattering_samples=3,parameters=dict(preparation='H',current_preparation='K'),current_model=dict(uv=dict(config={}),ff_endpoint_order=2,asymptotic_unitarity=True));sig=model_signature(r)
     assert sig['tail_conditions_applied'] and sig['ff_endpoint_order']==2
 def test_spectral_floor_from_independent_complex_schur_complement():
-    from smatrix_bootstrap.model import spectral_budget
+    from smatrix_bootstrap_newton.model import spectral_budget
     S=np.array([.3+.4j,-.8+.1j]);F=np.array([1.+2j,-.4+.7j]);k2=np.array([.01,.03]);floor=[]
     for s,f,k in zip(S,F,k2):
         A=np.array([[1,s],[s.conjugate(),1]]);v=np.array([f,f.conjugate()])
@@ -257,17 +257,17 @@ def test_spectral_floor_from_independent_complex_schur_complement():
         assert b['determinant_slack'][j]==pytest.approx(np.linalg.det(G).real,rel=1e-13)
         G[2,2]=floor[j]-.01;assert np.linalg.eigvalsh(G).min()<0
 def test_spectral_diagnostic_does_not_divide_through_elastic_zero_or_violation():
-    from smatrix_bootstrap.model import spectral_budget
+    from smatrix_bootstrap_newton.model import spectral_budget
     b=spectral_budget(np.array([1.,1.+1e-13,0.]),np.array([1.,1.,0.]),np.ones(3),np.ones(3))
     assert b['phase_penalty']==[None,None,0.] and b['rho_minimum']==[None,None,0.]
     assert b['determinant_slack'][1]<0 and b['spectral_excess'][2]==1.
 def test_native_peak_reporting_distinguishes_interior_peak_and_endpoint_maximum():
-    from smatrix_bootstrap.model import native_peaks;from smatrix_bootstrap.certificates import native_peak_bounds,native_rho_certificate;x=np.array([.3,.5,.7,.9,1.1]);r=native_peaks(x,[0.,.8,.2,.9,.3])
+    from smatrix_bootstrap_newton.model import native_peaks;from smatrix_bootstrap_newton.certificates import native_peak_bounds,native_rho_certificate;x=np.array([.3,.5,.7,.9,1.1]);r=native_peaks(x,[0.,.8,.2,.9,.3])
     assert [v['index'] for v in r['local']]==[1,3] and not r['maximum']['endpoint'];assert len(native_peak_bounds([1,2,3],[arb(0),arb(1,.1),arb(0)])['strict_peaks'])==1 and native_peak_bounds([1,2,3],[arb(0),arb(0,1),arb(0)])['strict_peaks']==[]
     r=native_peaks(x,[0.,.1,.2,.3,.4]);assert r['local']==[] and r['maximum']['endpoint'] and not r['pole_determined'];nodes=midpoint_grid(2)[0];d=dict(amplitude_model=dict(prescription='pv-midpoint'),selection=dict(model_signature=dict(M=2)),energies=[4,float(nodes[0])*(1+1e-14),float(nodes[1])],waves=[[0,0],[2,0],[1,1]],f_enclosures=[[[None,None]]*3]*3)
     with pytest.raises(ValueError,match='native physical nodes'):native_rho_certificate(d)
 def test_current_residual_bound_dominates_independent_exact_ellipsoid_support():
-    from smatrix_bootstrap.model import affine_norm_support
+    from smatrix_bootstrap_newton.model import affine_norm_support
     from flint import arb_mat
     K=np.array([[.3,-.2],[.5,.1]]);d=np.array([.2,.7]);r=np.array([.4,-.8]);D=np.diag(d)
     C=K.T@D@K+D;g=K.T@d;center=-np.linalg.solve(C,g)
@@ -280,7 +280,7 @@ def test_current_residual_bound_dominates_independent_exact_ellipsoid_support():
 @pytest.mark.parametrize('excluded',[False,True])
 def test_fixed_current_fiber_certificate_excludes_only_the_frozen_amplitude(tmp_path,excluded,extra):
     """Independent toy: rho=3k² permits S0>0, but cannot accommodate S0=-.9."""
-    from smatrix_bootstrap.quotient import joint_hull_candidate;from smatrix_bootstrap.kernels import joint_audit;from smatrix_bootstrap import write_json
+    from smatrix_bootstrap_newton.quotient import joint_hull_candidate;from smatrix_bootstrap_newton.kernels import joint_audit;from smatrix_bootstrap_newton import write_json
     H=_disk_support_control();c=np.array([0.,.1,.2,.1,.25])
     if extra:H=np.vstack((H[:3],H[:3]/2,H[3:6],H[3:6]/2,H[6:]))
     ss=np.repeat([8.,16.] if extra else [8.],3);n=len(ss);kap=np.pi*np.sqrt(1-4/ss)
@@ -301,7 +301,7 @@ def test_fixed_current_fiber_certificate_excludes_only_the_frozen_amplitude(tmp_
     assert audit['amplitude_primal_feasible'] and audit['fixed_amplitude'] and (audit['upper']<0)==excluded
     if not excluded:assert audit['primal_feasible']
 def test_gram_dual_repair_respects_unequal_diagonal_scales():
-    from smatrix_bootstrap.kernels import joint_audit;H=_disk_support_control();kap=np.full(3,np.pi/np.sqrt(2))
+    from smatrix_bootstrap_newton.kernels import joint_audit;H=_disk_support_control();kap=np.full(3,np.pi/np.sqrt(2))
     current=current_operators(H,kap,np.full(3,8.),np.array([[0,0],[1,1],[2,0]]),1)
     point=np.r_[[0.,.1,.2,.1,.25],np.zeros(2),3*current['arrays']['k_squared'].ravel()]
     v=np.array([1e8,1.,1e-4]);B=np.outer(v,v)-1e-8*np.diag(v*v);Z=np.array([[B],[B]])
@@ -317,12 +317,12 @@ def test_dual_rejects_a_layout_with_a_truly_unbounded_free_objective():
     with pytest.raises(ValueError,match='native imaginary'):
         support_outer(H,[1.],np.zeros(3),np.zeros(3),np.zeros(8),[1,0],1.,coefficients=c)
 def test_paper_marker_outputs_cannot_drive_new_scientific_selection():
-    from smatrix_bootstrap.analysis import select_gauge
+    from smatrix_bootstrap_newton.analysis import select_gauge
     with pytest.raises(ValueError,match='comparison outputs'):
         select_gauge(SimpleNamespace(selection_reference=Path('unread_paper_markers.csv')))
 @pytest.mark.parametrize('epsilon,expected',[(None,(1+np.sqrt(.75))/1.5),(1.,1.)])
 def test_fixed_section_extrema(epsilon,expected):
-    from smatrix_bootstrap.scattering import barrier_support
+    from smatrix_bootstrap_newton.scattering import barrier_support
     H=np.zeros((17,5));H[0,0]=H[1,4]=H[2,4]=1;H[3,1:3]=[1.5,1];H[4,3]=H[5,2]=1
     H[-2,0]=H[-1,1]=1;H[6,1]=1
     z,kr,ki,y,r=barrier_support(H,np.ones(3),1,1,1.,[0,1],epsilon,np.array([.5,.1,.5,.1,.1]),lambda **kw:None,raw=True,fixed_x=.5,require_center=True,chiral_weight=750,seconds=3,gap=1e-6)
@@ -331,7 +331,7 @@ def test_fixed_section_extrema(epsilon,expected):
     a=support_outer(H,np.ones(3),kr,ki,y,r['support_direction'],1.,epsilon,coefficients=z,waves_per_isospin=1)
     assert a['primal_feasible'] and a['upper']-a['lower']<2e-6
 def test_joint_resume_uses_checkpoint_mu_only_for_same_problem(tmp_path):
-    from smatrix_bootstrap import resolve_start_mu,write_json
+    from smatrix_bootstrap_newton import resolve_start_mu,write_json
     base=dict(command='boundary',mode='gauge',objective='projection',start_mu=None, coefficients=tmp_path/'coefficients.json',interior_coefficients=None,joint_feasibility=False,resume_objective=False,
         chiral_norm='separate-l2',chiral_tolerance=.002,infinity='free',unitarity_scope='sampled',fixed_x=None,ray=False, preparation=tmp_path/'H',current_preparation=tmp_path/'J',direction=[1.,0.],density_limit=None,chiral_barrier_weight=None)
     old={k:str(v) if isinstance(v,Path) else v for k,v in base.items()}
@@ -344,7 +344,7 @@ def test_joint_resume_uses_checkpoint_mu_only_for_same_problem(tmp_path):
         args=SimpleNamespace(**(base|change));resolve_start_mu(args);assert args.start_mu==.01
     args=SimpleNamespace(**(base|dict(start_mu=.001)));resolve_start_mu(args);assert args.start_mu==.001
 def test_joint_audit_rejects_incomplete_energy_metadata_before_using_current_rows():
-    from smatrix_bootstrap.certificates import joint_audit
+    from smatrix_bootstrap_newton.certificates import joint_audit
     current={'arrays':{},'metadata':{}}
     with pytest.raises(ValueError,match='scattering metadata'):
         joint_audit(np.zeros((19,5)),np.ones(3),current,np.zeros(9),1,1,1.,.002,[0,0])

@@ -1,0 +1,176 @@
+{
+  "records": [
+    {
+      "spec": {
+        "M": 8,
+        "L": 4,
+        "chiral": true,
+        "chi_caliber": "chi-b",
+        "eps_chi": 0.002,
+        "uv": false,
+        "uv_parts": [],
+        "sr_caliber": "SR-b",
+        "eps_ff": 6e-05,
+        "ff_frozen_at_s0": true,
+        "m_q": 0.040357142857142855,
+        "B": null,
+        "B_norm": "l2",
+        "cone_scaling": "rownorm",
+        "sparsify": 0.0,
+        "reduce_basis": false,
+        "basis_tol": 1e-12,
+        "tag": ""
+      },
+      "n_blocks": 97,
+      "mismatches": [],
+      "checked": {
+        "unitarity_disks": {
+          "n": 96,
+          "mismatch": 0
+        },
+        "chiral_arrow": {
+          "size": 9,
+          "ok": true
+        }
+      },
+      "all_blocks_consumed": true,
+      "blocks_accounted": 97,
+      "ok": true
+    },
+    {
+      "spec": {
+        "M": 8,
+        "L": 4,
+        "chiral": true,
+        "chi_caliber": "chi-b",
+        "eps_chi": 0.002,
+        "uv": true,
+        "uv_parts": [
+          "gram"
+        ],
+        "sr_caliber": "SR-b",
+        "eps_ff": 6e-05,
+        "ff_frozen_at_s0": true,
+        "m_q": 0.040357142857142855,
+        "B": null,
+        "B_norm": "l2",
+        "cone_scaling": "rownorm",
+        "sparsify": 0.0,
+        "reduce_basis": false,
+        "basis_tol": 1e-12,
+        "tag": ""
+      },
+      "n_blocks": 113,
+      "mismatches": [],
+      "checked": {
+        "unitarity_disks": {
+          "n": 80,
+          "mismatch": 0
+        },
+        "chiral_arrow": {
+          "size": 9,
+          "ok": true
+        },
+        "gram_and_rho_hat": {
+          "n": 32,
+          "mismatch": 0,
+          "ff_blocks_skipped": 0
+        }
+      },
+      "all_blocks_consumed": true,
+      "blocks_accounted": 113,
+      "ok": true
+    },
+    {
+      "spec": {
+        "M": 8,
+        "L": 4,
+        "chiral": true,
+        "chi_caliber": "chi-b",
+        "eps_chi": 0.002,
+        "uv": true,
+        "uv_parts": [
+          "gram",
+          "fesr"
+        ],
+        "sr_caliber": "SR-b",
+        "eps_ff": 6e-05,
+        "ff_frozen_at_s0": true,
+        "m_q": 0.040357142857142855,
+        "B": null,
+        "B_norm": "l2",
+        "cone_scaling": "rownorm",
+        "sparsify": 0.0,
+        "reduce_basis": false,
+        "basis_tol": 1e-12,
+        "tag": ""
+      },
+      "n_blocks": 121,
+      "mismatches": [],
+      "checked": {
+        "unitarity_disks": {
+          "n": 80,
+          "mismatch": 0
+        },
+        "chiral_arrow": {
+          "size": 9,
+          "ok": true
+        },
+        "gram_and_rho_hat": {
+          "n": 32,
+          "mismatch": 0,
+          "ff_blocks_skipped": 0
+        }
+      },
+      "all_blocks_consumed": true,
+      "blocks_accounted": 121,
+      "ok": true
+    },
+    {
+      "spec": {
+        "M": 8,
+        "L": 4,
+        "chiral": true,
+        "chi_caliber": "chi-b",
+        "eps_chi": 0.002,
+        "uv": true,
+        "uv_parts": [
+          "gram",
+          "fesr",
+          "ff"
+        ],
+        "sr_caliber": "SR-b",
+        "eps_ff": 6e-05,
+        "ff_frozen_at_s0": true,
+        "m_q": 0.040357142857142855,
+        "B": null,
+        "B_norm": "l2",
+        "cone_scaling": "rownorm",
+        "sparsify": 0.0,
+        "reduce_basis": false,
+        "basis_tol": 1e-12,
+        "tag": ""
+      },
+      "n_blocks": 123,
+      "mismatches": [],
+      "checked": {
+        "unitarity_disks": {
+          "n": 80,
+          "mismatch": 0
+        },
+        "chiral_arrow": {
+          "size": 9,
+          "ok": true
+        },
+        "gram_and_rho_hat": {
+          "n": 32,
+          "mismatch": 0,
+          "ff_blocks_skipped": 2
+        }
+      },
+      "all_blocks_consumed": true,
+      "blocks_accounted": 123,
+      "ok": true
+    }
+  ]
+}

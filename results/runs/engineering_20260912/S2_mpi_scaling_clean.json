@@ -1,0 +1,28 @@
+[
+  {
+    "case": "M20",
+    "n": 1,
+    "iters": 8,
+    "s_per_iter": 30.6,
+    "wall": 256.2
+  },
+  {
+    "case": "M20",
+    "n": 4,
+    "fail": "primalErrorThreshold         = 1e-30"
+  },
+  {
+    "case": "M20",
+    "n": 16,
+    "iters": 8,
+    "s_per_iter": 3.8,
+    "wall": 49.3
+  },
+  {
+    "case": "M20",
+    "n": 32,
+    "iters": 8,
+    "s_per_iter": 4.0,
+    "wall": 50.4
+  }
+]
