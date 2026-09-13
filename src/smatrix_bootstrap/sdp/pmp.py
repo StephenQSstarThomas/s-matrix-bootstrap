@@ -248,19 +248,25 @@ class Pmp:
         change the partial waves at the collocation nodes, so unitarity there
         does not bound them; a cap on the primal variables removes them.  The
         rows are exact: with a coordinate basis ``V`` they are the binary64
-        rows of ``V`` on the double-density slots, printed at full precision,
-        so the blocks are identical in the float and Arb assembly paths.
+        rows of ``V`` on the double-density slots, so the blocks are identical
+        in the float and Arb assembly paths.
+
+        Each block is divided by ``Mreg`` -- ``1 -/+ rho_i / Mreg >= 0`` -- which
+        is the same inequality (a positive scaling of a 1x1 block) but keeps the
+        constant entry at 1 like every other block.  With the unscaled form the
+        initial primal objective carries ``7550 * initialScale * Mreg`` and SDPB
+        diverged (maxComplementarity) at Mreg = 1e6 in the first gate run.
         """
         lay, bound = self.ops.lay, float(self.spec.reg_bound)
         idx = list(range(lay.r1.start, lay.r1.stop)) + list(range(lay.r2.start, lay.r2.stop))
         for i in idx:
             row = np.zeros(self.n_vars)
             if self.basis is not None:
-                row[self.i_a:self.i_a + self.n_a] = self.basis[i]
+                row[self.i_a:self.i_a + self.n_a] = self.basis[i] / bound
             else:
-                row[self.i_a + i] = 1.0
-            upper, lower = -row, row.copy()        # Mreg - rho_i >= 0, Mreg + rho_i >= 0
-            upper[0] = lower[0] = bound
+                row[self.i_a + i] = 1.0 / bound
+            upper, lower = -row, row.copy()        # 1 - rho_i/Mreg >= 0, 1 + rho_i/Mreg >= 0
+            upper[0] = lower[0] = 1.0
             yield [[upper]]
             yield [[lower]]
 

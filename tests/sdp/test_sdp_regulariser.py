@@ -25,11 +25,11 @@ def test_linf_regulariser_emits_two_unit_blocks_per_density_value(tmp_path):
     ones = _unit_blocks(tmp_path / "pmp.json")
     assert info["block_sizes"][1] == 2 * n_rho == len(ones)
     upper, lower = _coeffs(ones[0]), _coeffs(ones[1])
-    assert upper[0] == 7.5 and upper[1 + lay.r1.start] == -1.0
-    assert lower[0] == 7.5 and lower[1 + lay.r1.start] == 1.0
+    assert upper[0] == 1.0 and upper[1 + lay.r1.start] == -1.0 / 7.5
+    assert lower[0] == 1.0 and lower[1 + lay.r1.start] == 1.0 / 7.5
     assert sum(x != 0 for x in upper) == 2 and sum(x != 0 for x in lower) == 2
     last = _coeffs(ones[-1])
-    assert last[0] == 7.5 and last[1 + lay.r2.stop - 1] == 1.0
+    assert last[0] == 1.0 and last[1 + lay.r2.stop - 1] == 1.0 / 7.5
 
 
 def test_linf_regulariser_uses_exact_basis_rows_when_reduced(tmp_path):
@@ -37,8 +37,8 @@ def test_linf_regulariser_uses_exact_basis_rows_when_reduced(tmp_path):
     w.write(str(tmp_path / "pmp.json"))
     lay = w.ops.lay
     row = _coeffs(_unit_blocks(tmp_path / "pmp.json")[0])
-    assert row[0] == 3.0
-    np.testing.assert_array_equal(np.array(row[1:1 + w.n_a]), -w.basis[lay.r1.start])
+    assert row[0] == 1.0
+    np.testing.assert_array_equal(np.array(row[1:1 + w.n_a]), -w.basis[lay.r1.start] / 3.0)
 
 
 def test_precise_assembly_prints_the_same_regulariser_blocks(tmp_path):
@@ -49,7 +49,8 @@ def test_precise_assembly_prints_the_same_regulariser_blocks(tmp_path):
     n_rho = (lay.r1.stop - lay.r1.start) + (lay.r2.stop - lay.r2.start)
     assert info["block_sizes"][1] == 2 * n_rho
     row = _coeffs(_unit_blocks(tmp_path / "pmp.json")[0])
-    np.testing.assert_array_equal(np.array(row[1:1 + w.n_a]), -w.basis[lay.r1.start])
+    assert row[0] == 1.0
+    np.testing.assert_array_equal(np.array(row[1:1 + w.n_a]), -w.basis[lay.r1.start] / 2.0)
 
 
 def test_float_verification_reports_norms_and_flags_a_violation():
