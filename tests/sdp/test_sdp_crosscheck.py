@@ -36,7 +36,9 @@ def test_cli_default_follows_source_tolerances(tmp_path, monkeypatch):
         return {'accepted': False}, None, None
     monkeypatch.setattr(cli, 'run_once', capture)
     cli.main(['--workdir', str(tmp_path), '--skip-mma-audit', '--chiral', '--uv'])
-    assert (seen[0].chi_caliber, seen[0].sr_caliber, seen[0].ff_frozen_at_s0) == ('chi-c', 'SR-a', False)
+    # chi-b (one combined 8-dim norm) and mixed-pv are the authors' released conventions.
+    assert (seen[0].chi_caliber, seen[0].sr_caliber, seen[0].ff_frozen_at_s0) == ('chi-b', 'SR-a', False)
+    assert (seen[0].scattering_prescription, seen[0].reg_norm) == ('mixed-pv', None)
 CASES = [(0, 0, 3.0, None), (1, 1, 3.0, None), (2, 0, 1.5, None), (0, 2, 0.5, None),
          (2, 4, 2.0, None), (0, 0, S[10], 10), (1, 1, S[10], 10), (2, 0, S[25], 25),
          (0, 4, S[30], 30), (1, 3, S[5], 5), (0, 0, S[44], 44), (1, 9, S[20], 20),

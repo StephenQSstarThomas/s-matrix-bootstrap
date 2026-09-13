@@ -21,8 +21,15 @@ class ModelSpec:
     eps_ff: float = C.EPS_FF
     ff_frozen_at_s0: bool = True        # historical replay; CLI uses the per-node (3.75) factors
     m_q: float = M_Q
-    B: float | None = None              # bound on (rho1, rho2); None = absent
+    B: float | None = None              # legacy l2 arrow on (rho1, rho2); retired, see reg_*
     B_norm: str = "l2"                  # l2 (stronger, cheap) | l4 (pre-registered)
+    # M-regularisation of He-Kruczenski 2103.11484 section 3: a cap on the
+    # double-spectral-density node values, which unitarity at finitely many
+    # nodes leaves unconstrained.  'linf' imposes |rho_{a,ij}| <= reg_bound as
+    # two 1x1 SDPB blocks per value; the bound is fixed by the plateau rule of
+    # that paper's section 3.3, never by any output curve.
+    reg_norm: str | None = None         # None | 'linf'
+    reg_bound: float | None = None      # Mreg for reg_norm
     # M50 spans: none 85.8, unclipped centrifugal 6.24, rownorm 1.25 decades.
     # The old 70-decade result clipped Lambda² at 1e-16; that bug is removed.
     cone_scaling: str = "rownorm"       # none | centrifugal | rownorm (all exact)

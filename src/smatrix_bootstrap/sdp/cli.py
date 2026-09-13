@@ -17,8 +17,9 @@ def main(argv=None):
     p.add_argument("--M", type=int, default=50)
     p.add_argument("--L", type=int, default=10)
     p.add_argument("--chiral", action="store_true")
-    p.add_argument("--chi", choices=["chi-a", "chi-b", "chi-c"], default="chi-c",
-                   help="two separate L2 norms by default; the paper leaves the norm unspecified")
+    p.add_argument("--chi", choices=["chi-a", "chi-b", "chi-c"], default="chi-b",
+                   help="chi-b: one combined 8-dim L2 norm (the authors' released convention); "
+                        "chi-a: per-residual box; chi-c: two separate 4-dim L2 norms")
     p.add_argument("--eps-chi", type=float, default=C.EPS_CHI_MAIN)
     p.add_argument("--uv", action="store_true")
     p.add_argument("--uv-parts", nargs="+", choices=["gram", "fesr", "ff"], default=["gram", "fesr", "ff"])
@@ -26,14 +27,19 @@ def main(argv=None):
     p.add_argument("--eps-ff", type=float, default=C.EPS_FF)
     p.add_argument("--mq", choices=["mean", "rms"], default="mean")
     p.add_argument("--ff-factor", choices=["frozen", "node"], default="node")
-    p.add_argument("--B", type=float, default=None)
-    p.add_argument("--B-norm", choices=["l2"], default="l2")
+    p.add_argument("--reg-norm", choices=["none", "linf"], default="none",
+                   help="M-regularisation of 2103.11484 sec. 3 on the double spectral density; "
+                        "linf caps every |rho_{a,ij}| by --reg-bound")
+    p.add_argument("--reg-bound", type=float, default=None,
+                   help="Mreg for --reg-norm; fixed by the plateau rule, never by output curves")
     p.add_argument("--cone-scaling", choices=["rownorm", "centrifugal", "none"], default="rownorm")
     p.add_argument("--reduce-basis", action="store_true")
     p.add_argument("--basis-tol", type=float, default=1e-12)
     p.add_argument('--basis-source-report',help='use exactly an accepted source basis; assemble and verify fresh constraints')
     p.add_argument("--operator-dps", type=int, default=40)
-    p.add_argument('--scattering-prescription',choices=['sine-cardinal','mixed-pv'],default='sine-cardinal')
+    p.add_argument('--scattering-prescription',choices=['sine-cardinal','mixed-pv'],default='mixed-pv',
+                   help="mixed-pv is the authors' nodal discretisation (cot kernel, midpoint rule, "
+                        "Legendre-Q); sine-cardinal is a declared alternative interpolation")
     p.add_argument("--direction", type=float, nargs=2, default=[1., 0.])
     p.add_argument("--fix-f00", type=float)
     p.add_argument("--points", nargs="+", choices=["tip", "ref", "mid"])
@@ -59,8 +65,10 @@ def main(argv=None):
     a = p.parse_args(argv)
     if a.M < 2 or a.L < 1 or a.nproc < 1 or a.max_rounds < 1 or a.add_per_round < 1:
         p.error("M>=2, L>=1 and positive process/round counts required")
-    if a.B is not None:
-        p.error("The 2309 mainline has no density regulator B")
+    if a.reg_norm != "none" and (a.reg_bound is None or not a.reg_bound > 0):
+        p.error("--reg-norm needs a positive --reg-bound (Mreg)")
+    if a.reg_norm == "none" and a.reg_bound is not None:
+        p.error("--reg-bound given without --reg-norm")
     if a.basis_source_report and not a.reduce_basis:p.error('--basis-source-report requires --reduce-basis')
     if a.points and a.fix_f00 is not None:
         p.error("--points and --fix-f00 are distinct selection rules")
@@ -72,7 +80,8 @@ def main(argv=None):
         eps_ff=a.eps_ff, m_q=C.M_Q if a.mq == "mean" else C.M_Q_RMS,
         ff_frozen_at_s0=a.ff_factor == "frozen", cone_scaling=a.cone_scaling,
         reduce_basis=a.reduce_basis, basis_tol=a.basis_tol, operator_dps=a.operator_dps,
-        scattering_prescription=a.scattering_prescription)
+        scattering_prescription=a.scattering_prescription,
+        reg_norm=None if a.reg_norm == "none" else a.reg_norm, reg_bound=a.reg_bound)
     if a.basis_source_report:
         from .assembly import load_saved_basis
         load_saved_basis(spec,a.basis_source_report)
@@ -86,7 +95,8 @@ def main(argv=None):
         "basis_source_report":str(Path(a.basis_source_report).resolve()) if a.basis_source_report else None,
         "ref": C.chiral_reference_point()[0], "mid_rule": "(this-set tip + ref)/2",
         "frozen_before_solving": True,
-        "source_reading": "2309v3: raw SR tolerance and per-node FF; separate-L2 is a declared norm",
+        "source_reading": "2309v3 inputs; chiral norm, FESR packaging and the 2103.11484 "
+                          "regulariser are declared conventions recorded in spec",
         "selection_scope": "registered section rule; not proof of nearest boundary point to physical f_pi"})
     if not a.skip_mma_audit:
         from .mma import audit, reuse_audit

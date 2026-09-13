@@ -63,6 +63,14 @@ class Pmp:
         if spec.B is not None and spec.B_norm == "l4":
             raise ValueError("l4 density ball is not expressible as a degree-0 PMP "
                              "block of reasonable size; use B_norm='l2' or B=None")
+        if spec.reg_norm is not None:
+            if spec.reg_norm != "linf":
+                raise ValueError(f"Unsupported regulariser norm: {spec.reg_norm}")
+            if (spec.reg_bound is None or not np.isfinite(spec.reg_bound)
+                    or spec.reg_bound <= 0):
+                raise ValueError("reg_bound must be a positive finite Mreg")
+        elif spec.reg_bound is not None:
+            raise ValueError("reg_bound given without reg_norm")
         self.spec, self.direction, self.fix_f00, self.digits = spec, direction, fix_f00, digits
         saved=load_saved_basis(spec,basis_source_report) if basis_source_report is not None else None
         self.basis_source=None if saved is None else saved[1]
@@ -165,6 +173,10 @@ class Pmp:
             else:
                 raise ValueError(spec.chi_caliber)
 
+        # ---- double-spectral-density regulariser (2103.11484 section 3)
+        if spec.reg_norm is not None:
+            yield from self._regulariser_blocks()
+
         # ---- density ball (l2 only; see __init__)
         if spec.B is not None:
             lay = self.ops.lay
@@ -227,6 +239,30 @@ class Pmp:
             r = self._row(a=self.f00)
             yield [[self._row(y0=self.fix_f00) - r]]
             yield [[r - self._row(y0=self.fix_f00)]]
+
+    def _regulariser_blocks(self):
+        """``|rho_{a,ij}| <= Mreg`` as two 1x1 blocks per double-density value.
+
+        This is the M-regularisation of He-Kruczenski 2103.11484 section 3:
+        the nodal Mandelstam parametrisation contains directions that barely
+        change the partial waves at the collocation nodes, so unitarity there
+        does not bound them; a cap on the primal variables removes them.  The
+        rows are exact: with a coordinate basis ``V`` they are the binary64
+        rows of ``V`` on the double-density slots, printed at full precision,
+        so the blocks are identical in the float and Arb assembly paths.
+        """
+        lay, bound = self.ops.lay, float(self.spec.reg_bound)
+        idx = list(range(lay.r1.start, lay.r1.stop)) + list(range(lay.r2.start, lay.r2.stop))
+        for i in idx:
+            row = np.zeros(self.n_vars)
+            if self.basis is not None:
+                row[self.i_a:self.i_a + self.n_a] = self.basis[i]
+            else:
+                row[self.i_a + i] = 1.0
+            upper, lower = -row, row.copy()        # Mreg - rho_i >= 0, Mreg + rho_i >= 0
+            upper[0] = lower[0] = bound
+            yield [[upper]]
+            yield [[lower]]
 
     def _arrow(self, rows, e: float):
         """``||v||_2 <= e``  ->  [[e y0, v^T], [v, e y0 I]] >= 0."""

@@ -208,7 +208,19 @@ def verify(w, sol, tolerance=1e-8):
         'verification_tolerance':tolerance,'scope':'independent Arb source evaluation with unchanged numerical tolerances',
         'canonical_solution':'full SDPB y text and saved coordinate basis; float c is a convenience copy'}
     if spec.B is not None:
-        raise ValueError('Precise mainline verification has no density regulator')
+        raise ValueError('Precise mainline verification has no legacy density ball B')
+    lay = w.ops.lay
+    rho = [c[i] for i in list(range(lay.r1.start,lay.r1.stop))+list(range(lay.r2.start,lay.r2.stop))]
+    linf = max(float(v.abs_upper()) for v in rho)
+    out['density_norms'] = {'rho_linf':linf,
+        'rho_l2':float(sum((v*v for v in rho),arb(0)).sqrt().upper()),
+        'rho_l4':float(sum((v**4 for v in rho),arb(0)).root(4).upper()),
+        'scope':'upper bounds of Arb enclosures of the double-density node values'}
+    if spec.reg_norm is not None:
+        checks['regulariser'] = linf <= spec.reg_bound*(1+tolerance)
+        out['regulariser'] = {'norm':spec.reg_norm,'bound':spec.reg_bound,'rho_linf':linf,
+            'active_fraction':float(np.mean([float(v.abs_upper()) >= .99*spec.reg_bound for v in rho])),
+            'active':bool(linf >= .99*spec.reg_bound)}
     if spec.chiral:
         scale = arb(str(spec.eps_chi))
         budget = scale*arb(str(tolerance)) if spec.chi_caliber=='chi-a' else scale**2*arb(str(2*tolerance+tolerance**2))
