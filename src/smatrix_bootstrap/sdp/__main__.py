@@ -236,6 +236,7 @@ def preregistration() -> dict:
                 "SR-a": "raw absolute: |M_n - T_n| <= 2e-3 per moment",
                 "SR-b": "relative 10%: |M_n - T_n| <= 0.10 |T_n|",
                 "SR-c": "relative 20%",
+                "SR-d": "raw per-wave L2: ||(M_n - T_n)_n||_2 <= 2e-3 per wave",
             },
             "density_regularisation_B": {
                 "source": "absent from the paper; present in the authors' 2403 code as "

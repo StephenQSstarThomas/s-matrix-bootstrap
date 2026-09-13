@@ -91,12 +91,21 @@ def fesr_report(ops, rho_hat, caliber: str) -> dict:
     rows = []
     for ell, wave in ((0, "S0"), (1, "P1")):
         rho = rho_hat[ell] * FFM.gram_scale(ell, ops.s) ** 2
+        wave_rows = []
         for n in C.MOMENTS[ell]:
             m = float(C.moment_row(M, n) @ rho)
-            rows.append({"wave": wave, "n": n, "moment": m, "target": tgt[(wave, n)],
-                         "residual": m - tgt[(wave, n)], "tolerance": tol[(wave, n)],
-                         "violation": max(0.0, abs(m - tgt[(wave, n)]) - tol[(wave, n)])})
+            wave_rows.append({"wave": wave, "n": n, "moment": m, "target": tgt[(wave, n)],
+                              "residual": m - tgt[(wave, n)], "tolerance": tol[(wave, n)],
+                              "violation": max(0.0, abs(m - tgt[(wave, n)]) - tol[(wave, n)])})
+        if caliber == "SR-d":
+            # per-wave L2 packaging: one ball of radius eps_SR over both moments
+            norm = float(np.sqrt(sum(r["residual"] ** 2 for r in wave_rows)))
+            for r in wave_rows:
+                r["wave_l2_residual"] = norm
+                r["violation"] = max(0.0, norm - C.EPS_SR)
+        rows += wave_rows
     return {"caliber": caliber, "rows": rows,
+            "packaging": "per-wave L2 ball" if caliber == "SR-d" else "per-moment box",
             "max_violation": max(r["violation"] for r in rows)}
 
 

@@ -23,7 +23,9 @@ def main(argv=None):
     p.add_argument("--eps-chi", type=float, default=C.EPS_CHI_MAIN)
     p.add_argument("--uv", action="store_true")
     p.add_argument("--uv-parts", nargs="+", choices=["gram", "fesr", "ff"], default=["gram", "fesr", "ff"])
-    p.add_argument("--sr", choices=["SR-a", "SR-b", "SR-c"], default="SR-a")
+    p.add_argument("--sr", choices=["SR-a", "SR-b", "SR-c", "SR-d"], default="SR-a",
+                   help="FESR tolerance packaging: SR-a per-moment box 2e-3 (literal), SR-d per-wave L2 ball 2e-3 "
+                        "(authors' code structure with the 2309 value), SR-b/SR-c relative 10%%/20%%")
     p.add_argument("--eps-ff", type=float, default=C.EPS_FF)
     p.add_argument("--mq", choices=["mean", "rms"], default="mean")
     p.add_argument("--ff-factor", choices=["frozen", "node"], default="node")

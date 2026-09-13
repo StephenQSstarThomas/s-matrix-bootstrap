@@ -212,7 +212,7 @@ class ArbAudit:
         """Replay the original UV inequalities without float operator exports."""
         ctx.prec = self.bits
         M, s0, pi = self.M, arb(3600) / 49, arb.pi()
-        if sr_caliber not in ("SR-a", "SR-b", "SR-c"):
+        if sr_caliber not in ("SR-a", "SR-b", "SR-c", "SR-d"):
             raise ValueError(sr_caliber)
         idx_lo, idx_hi = [], []
         for i, x in enumerate(self.x):
@@ -253,17 +253,25 @@ class ArbAudit:
                                                used_squared=_enclosure(used), cap=_enclosure(cap)))
                     ff_values.append(cap - used)
             wave = "S0" if ell == 0 else "P1"
+            pending = []
             for n in ((0, 1) if ell == 0 else (-1, 0)):
                 target = _printed_target(ell, n, s0)
-                tol = (arb(".002") if sr_caliber == "SR-a" else
+                tol = (arb(".002") if sr_caliber in ("SR-a", "SR-d") else
                        arb(".1" if sr_caliber == "SR-b" else ".2") * abs(target))
                 mom = pi * sum((self.w[i] * self.x[i] ** n * rho[i] for i in idx_lo), arb(0))
                 residual = mom - target
-                slack = tol - abs(residual)
+                pending.append((n, target, tol, mom, residual))
+            if sr_caliber == "SR-d":
+                # per-wave L2 ball: one slack shared by both moment rows of the wave
+                l2 = sum((r * r for _, _, _, _, r in pending), arb(0)).sqrt()
+                shared = arb(".002") - l2
+            for n, target, tol, mom, residual in pending:
+                slack = shared if sr_caliber == "SR-d" else tol - abs(residual)
                 fesr.append(_constraint_row(slack, wave=wave, n=n, moment=float(mom.mid()),
                             moment_interval=_enclosure(mom), target=_enclosure(target),
                             tolerance=_enclosure(tol), residual=_enclosure(residual),
-                            violation=float((-slack).mid())))
+                            violation=float((-slack).mid()),
+                            packaging="per-wave L2" if sr_caliber == "SR-d" else "per-moment"))
         out = {"gram": gram, "fesr": fesr, "form_factor": ff,
                "n_gram_blocks": 2 * M, "n_gram_minors": 14 * M,
                "n_ff_bounds": len(ff), "bits": self.bits,

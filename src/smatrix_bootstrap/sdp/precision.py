@@ -99,7 +99,7 @@ class PrecisionRows:
                 value = (arb('3.09e-8')*(arb('27.38')/(n+2)+(arb('.61') if n==0 else 0))
                          if e==0 else -arb('4.34e-6')*(-arb('13.26')/(n+2)+(arb('.41') if n==0 else 0)))
                 target[wave,n] = value*s0**(n+2)
-                tol[wave,n] = (arb('.002') if spec.sr_caliber=='SR-a' else
+                tol[wave,n] = (arb('.002') if spec.sr_caliber in ('SR-a','SR-d') else
                                 abs(target[wave,n])*arb('.1' if spec.sr_caliber=='SR-b' else '.2'))
                 moments[e,n] = np.array([pi*self.w[i]*s**n*g[e][i]**2 if s<=s0 else arb(0)
                                           for i,s in enumerate(self.s)],dtype=object)

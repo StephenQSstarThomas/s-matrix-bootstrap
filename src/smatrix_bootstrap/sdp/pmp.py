@@ -237,12 +237,19 @@ class Pmp:
                 # FESR (3.73)
                 if "fesr" in spec.uv_parts:
                     wave = "S0" if ell == 0 else "P1"
+                    residuals = []
                     for n in C.MOMENTS[ell]:
                         mr = moments[ell,n] if self.precise else C.moment_row(M,n)*g**2
                         mom = self._row(rho=(ell, mr))
                         t, d = tgt[(wave, n)], tol[(wave, n)]
-                        yield [[self._row(y0=t + d) - mom]]
-                        yield [[mom - self._row(y0=t - d)]]
+                        if spec.sr_caliber == "SR-d":
+                            residuals.append(mom - self._row(y0=t))
+                        else:
+                            yield [[self._row(y0=t + d) - mom]]
+                            yield [[mom - self._row(y0=t - d)]]
+                    if spec.sr_caliber == "SR-d":
+                        # per-wave L2 ball of radius eps_SR over the two moments
+                        yield self._arrow(residuals, C.EPS_SR)
 
         # ---- optional section constraint f00(3) = x
         if self.fix_f00 is not None:

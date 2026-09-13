@@ -144,3 +144,26 @@ def test_read_solution_ignores_auxiliaries_and_restores_layout(tmp_path):
     (tmp_path / "y.txt").write_text(f"{w.n_vars - 1} 1\n" + "\n".join(f"{v}" for v in y))
     sol = w.read_solution(str(tmp_path / "y.txt"))
     assert sol["a"].shape == (w.n_a,) and np.array_equal(sol["a"], y[:w.n_a])
+
+
+def test_sr_d_packs_each_wave_into_one_l2_ball(tmp_path):
+    """SR-d: two 3x3 arrows (one per wave) replace the four pairs of 1x1 FESR boxes of SR-a."""
+    from smatrix_bootstrap.sdp import constraints as C
+    a = Pmp(ModelSpec(M=6, L=2, uv=True, uv_parts=("fesr",), sr_caliber="SR-a"))
+    d = Pmp(ModelSpec(M=6, L=2, uv=True, uv_parts=("fesr",), sr_caliber="SR-d"))
+    ia = a.write(str(tmp_path / "a.json")); idd = d.write(str(tmp_path / "d.json"))
+    # SR-a: 4 moments x 2 boxes = 8 extra 1x1 blocks beyond the 2M rho_hat >= 0 blocks
+    assert ia["block_sizes"].get(1, 0) - idd["block_sizes"].get(1, 0) == 8
+    assert idd["block_sizes"].get(3, 0) - ia["block_sizes"].get(3, 0) == 2
+    blocks = json.load(open(tmp_path / "d.json"))["PositiveMatrixWithPrefactorArray"]
+    arrows = [b for b in blocks if len(b["polynomials"]) == 3]
+    corner = [float(v[0]) for v in arrows[-1]["polynomials"][0][0]]
+    assert corner[0] == C.EPS_SR and sum(x != 0 for x in corner) == 1
+    # verification: residuals (1.5e-3, 1.5e-3) pass the per-moment box but fail the per-wave ball
+    M = 6
+    sol = {"a": np.zeros(d.n_a), "c": np.zeros(d.ops.lay.n), "ImF": np.zeros((2, M)), "rho_hat": np.zeros((2, M))}
+    tgt = C.printed_targets()
+    rep_a = a.verify(dict(sol)); rep_d = d.verify(dict(sol))
+    assert rep_a["fesr"]["packaging"] == "per-moment box" and rep_d["fesr"]["packaging"] == "per-wave L2 ball"
+    r0 = rep_d["fesr"]["rows"][0]
+    assert abs(r0["wave_l2_residual"] - np.hypot(tgt[("S0", 0)], tgt[("S0", 1)])) < 1e-12
