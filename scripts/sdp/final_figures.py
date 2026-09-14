@@ -239,7 +239,8 @@ def fig9_10(root, png, out, info):
 
 
 def fig11(root, png, out, info):
-    models = [(50, 10, "uv_SRa_tip/tip"), (50, 8, "uv_M50_L8_tip/tip"), (50, 12, "uv_M50_L12_tip/tip"), (45, 10, "uv_M45_L10_tip/tip"), (60, 10, "uv_M60_L10_tip/tip")]
+    models = [(50, 10, "uv_SRa_tip/tip"), (50, 8, "uv_M50_L8_tip/tip"), (50, 12, "uv_M50_L12_tip/tip"), (45, 10, "uv_M45_L10_tip/tip"),
+              (60, 10, "uv_M60_L10_tip_resume" if leaf(root, "uv_M60_L10_tip_resume") else "uv_M60_L10_tip/tip")]
     fig = plt.figure(figsize=(12, 4.6)); fig.suptitle("Fig.11 dependence on M and L (UV tip, ours vs paper)", fontsize=10); used = []
     for j, (wave, name, csvn) in enumerate((("S0", "S0ML", "figure11_s0_phases.csv"), ("P1", "P1ML", "figure11_p1_phases.csv"), ("S2", "S2ML", "figure11_s2_phases.csv"))):
         axp = fig.add_axes([0.01 + 0.155 * j, 0.08, 0.15, 0.8]); p = png / f"{name}.png"

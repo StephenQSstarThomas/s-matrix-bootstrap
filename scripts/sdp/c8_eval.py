@@ -24,6 +24,9 @@ def main(argv=None) -> int:
     by_ml, rows = {}, []
     for ml, rel in RUNS.items():
         path = Path(a.root) / rel / "report.json"
+        alt = Path(a.root) / (rel.split("/")[0] + "_resume") / "report.json"      # checkpoint resume of a timed-out leaf
+        if alt.exists() and json.loads(alt.read_text()).get("accepted"):
+            path, rel = alt, alt.parent.name
         if not path.exists(): continue
         r = json.loads(path.read_text())
         if not r.get("accepted"): continue
