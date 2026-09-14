@@ -221,7 +221,7 @@ In each figure the left (or upper) panel is the paper's figure rendered from the
             "\\item Y.~He and M.~Kruczenski, \\emph{Bootstrapping gauge theories}, \\href{https://arxiv.org/abs/2309.12402}{arXiv:2309.12402} (the paper reproduced here).\n"
             "\\item Y.~He and M.~Kruczenski, \\emph{Gauge Theory Bootstrap: Pion amplitudes and low energy parameters}, \\href{https://arxiv.org/abs/2403.10772}{arXiv:2403.10772} (the follow-up paper; its released code was read, not run).\n"
             "\\item Y.~He and M.~Kruczenski, \\emph{The Gauge Theory Bootstrap: Predicting pion dynamics from QCD}, \\href{https://arxiv.org/abs/2505.19332}{arXiv:2505.19332} (current code of the repository \\texttt{gauge-theory-bootstrap}).\n"
-            "\\item Y.~He, A.~Irrgang and M.~Kruczenski, \\href{https://arxiv.org/abs/2103.11484}{arXiv:2103.11484} (the earlier method paper whose Section~3 introduces the regularisation of the double spectral density).\n"
+            "\\item Y.~He and M.~Kruczenski, \\emph{S-matrix bootstrap in 3+1 dimensions: regularization and dual convex problem}, JHEP 08 (2021) 125, \\href{https://arxiv.org/abs/2103.11484}{arXiv:2103.11484} (the earlier method paper whose Section~3 introduces the regularisation of the double spectral density).\n"
             "\\end{itemize}\n\\end{document}\n")
     tex = re.sub(r"^(Fig\.~\d+ & .*\\\\)$", r"\1\\addlinespace", tex, flags=re.M)
     D = D.resolve(); tex_path = D / "REPRODUCTION_COMPARISON_EN.tex"; tex_path.write_text(tex)

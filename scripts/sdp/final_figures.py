@@ -286,9 +286,9 @@ def diagnostics(root, out, info):
             else:
                 ax.plot([lo, hi], [y, y], "-", lw=7, color="C0", alpha=0.65, solid_capstyle="butt")
             labels.append(f"{SRC.get(name, name)}: {FN.get(fn, fn)}"); y += 1
-    ax.axvline(1.0, color="r", ls="--", lw=1, label="floor 1 - Re S = 1 required by the paper's P1 phases at 0.792 and 0.864 GeV, for every |S|")
+    ax.axvline(1.0, color="r", ls="--", lw=1, label="1 - Re S = 1: floor required by the paper's P1 phases (0.792, 0.864 GeV) for every |S|")
     ax.axvline(0.0, color="0.6", lw=0.6)
-    ax.set_yticks(range(len(labels))); ax.set_yticklabels(labels, fontsize=8); ax.set_xlabel("range over the near-optimal face (slab margin 2e-6); bars = [min, max], triangles = max only")
+    ax.set_yticks(range(len(labels))); ax.set_yticklabels(labels, fontsize=8); ax.set_xlabel("range over the near-optimal face (slab margin 2e-6): bars [min, max]; triangles: max only")
     ax.legend(frameon=False, fontsize=7, loc="lower right"); ax.invert_yaxis(); fig.tight_layout()
     fig.savefig(out / "face_ranges.png", dpi=110); plt.close(fig); info["face_ranges"] = labels
 
