@@ -173,7 +173,16 @@ def fig8(root, png, out, info):
     for g, mk in (("chiral_reference_black", "k*"), ("red", "r^"), ("pink", "v"), ("light_pink", "s")):
         mm = sel["group"] == g
         if mm.sum(): ax.plot(sel["f00_s3"][mm], sel["f11_s3"][mm], mk, ms=7, label=f"paper {g}")
-    ax.set_xlabel("$f_0^0(3)$"); ax.set_ylabel("$f_1^1(3)$"); ax.legend(frameon=False, fontsize=6, ncol=2)
+    ax.set_xlabel("$f_0^0(3)$"); ax.set_ylabel("$f_1^1(3)$"); ax.legend(frameon=False, fontsize=6, ncol=2, loc="upper right")
+    ins = ax.inset_axes([0.08, 0.08, 0.42, 0.5])
+    for g, col in (("chiral_only_green", "g"), ("gauge_cyan", "c")):
+        m = ref["group"] == g; ins.plot(ref["f00_s3"][m], ref["f11_s3"][m], ".", ms=3, color=col, alpha=0.5)
+    if chi: ins.plot(C[:, 0], C[:, 1], "s", ms=5, color="g")
+    if uv: ins.plot(U[:, 0], U[:, 1], "^", ms=6, color="c", markeredgecolor="k")
+    for g, mk in (("chiral_reference_black", "k*"), ("red", "r^"), ("pink", "v"), ("light_pink", "s")):
+        mm = sel["group"] == g
+        if mm.sum(): ins.plot(sel["f00_s3"][mm], sel["f11_s3"][mm], mk, ms=7)
+    ins.set_xlim(0.069, 0.083); ins.set_ylim(-0.0056, -0.0040); ins.tick_params(labelsize=6); ins.set_title("zoom: x_ref region", fontsize=7)
     fig.savefig(out / "fig8.png", dpi=110); plt.close(fig); info["fig8"] = {"n_chi": len(chi), "n_uv": len(uv)}
 
 
@@ -192,8 +201,12 @@ def fig9_10(root, png, out, info):
     for k, (rel, lab) in enumerate(pts):
         r = leaf(root, rel)
         if not r: continue
-        o = r["observables"]["P1"]; E = np.array(o["E_GeV"]); m = E <= 1.3
-        ax.plot(E[m], np.array(o["delta_deg"])[m], "o-", ms=3, lw=1, color=f"C{k}", label=f"ours {lab}")
+        o = r["observables"]["P1"]; E = np.array(o["E_GeV"]); m = E <= 1.3; d = np.array(o["delta_deg"]); eta = np.array(o["eta"])
+        ax.plot(E[m], d[m], "o-", ms=3, lw=1, color=f"C{k}", label=f"ours {lab}")
+        i = int(np.argmin(eta[30:45])) + 30
+        if d[i] < d[i - 1] and eta[i] < 0.6:      # |S| dip with a downward jump: the +180 deg branch is equally consistent
+            alt = d.copy(); alt[i:] += 180
+            ax.plot(E[m], alt[m], "--", lw=0.9, color=f"C{k}", alpha=0.7, label=f"ours {lab}, +180° branch")
         used.append({"leaf": rel, "crossing_90_GeV": o["crossing_90_GeV"], "min_eta": o["min_eta_below_1p2GeV"]})
     ax.axhline(90, color=GREY, lw=0.5, ls=":"); ax.set_xlabel("E (GeV)"); ax.set_ylabel("$\\delta_{P1}$ (deg)"); ax.set_xlim(0.28, 1.3); ax.legend(frameon=False, fontsize=6)
     ax2 = fig.add_axes([0.93, 0.13, 0.05, 0.77]); ax2.axis("off")
