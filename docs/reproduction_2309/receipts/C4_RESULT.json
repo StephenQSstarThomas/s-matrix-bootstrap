@@ -1,0 +1,43 @@
+{
+ "claim": "C4 Fig.7: chiral-only phases of the representative near the Weinberg point",
+ "verdict": "PASS",
+ "rule": "RMS and endpoint difference vs the digitised Fig.7 curve <= 10 deg per wave; no P1 90-degree crossing below 1.2 GeV",
+ "representative": {
+  "run": "fig4_eps002_section_hi",
+  "x": 0.07332139057293464,
+  "y": -0.004372515663060449,
+  "distance_to_P": 0.0005155770418018603
+ },
+ "rows": [
+  {
+   "wave": "S0",
+   "rms_deg": 0.38789513079689486,
+   "endpoint_diff_deg": 0.9840379046603971,
+   "endpoint_E_GeV": 1.0611163210367387,
+   "n_nodes": 42,
+   "delta_0p9": 83.4645524253613,
+   "paper_0p9": 82.57271805218913
+  },
+  {
+   "wave": "S2",
+   "rms_deg": 0.14413915076215222,
+   "endpoint_diff_deg": 0.6638322925266777,
+   "endpoint_E_GeV": 1.0611163210367387,
+   "n_nodes": 42,
+   "delta_0p9": -23.073769198611082,
+   "paper_0p9": -23.471709044934826
+  },
+  {
+   "wave": "P1",
+   "rms_deg": 0.45554149455072146,
+   "endpoint_diff_deg": 2.025155006144594,
+   "endpoint_E_GeV": 1.0611163210367387,
+   "n_nodes": 42,
+   "delta_0p9": 13.170148627909164,
+   "paper_0p9": 11.947815762316282
+  }
+ ],
+ "P1_90deg_GeV": 7.7680041994691535,
+ "min_eta_P1_below_1p2": 0.9999759881037067,
+ "recorded_utc": "2026-09-13T21:55:03Z"
+}

@@ -39,6 +39,8 @@ python -m pytest -q tests/sdp        # SDPB 路线，约 240 项
 python -m pytest -q legacy/tests     # 退役 Newton 包自己的 107 项
 ```
 
+**复现结论与审核包**：`REPORT_SDPB_2309_ZH.md`（叙述性报告）与 `docs/reproduction_2309/`（自足 HTML 台账、原图 vs 我们的并排图、八条 claim 的裁决收据与全过程日志）。
+
 依赖：SDPB 3.1.0（Docker 镜像 `bootstrapcollaboration/sdpb:3.1.0`，启动器 `scripts/sdpb/sdpb.sh`）、Wolfram Engine 15（仅独立公式核对，`scripts/mma/`）、python-flint、mpmath。不使用 MOSEK/CVX。
 
 **代码布局**：`src/smatrix_bootstrap/sdp/` 是全部现行代码；`src/smatrix_bootstrap/run.py` 只分发 `sdp`。退役的 Newton 包在 `legacy/smatrix_bootstrap_newton/`（见 `legacy/README.md`），只作历史结果的复验与 `sdp/crosscheck.py` 的独立对照。`references/` 存论文源码、数字化图数据、作者 2403/2505 代码快照（提交 801684d）与 Córdoba 2511.11513 快照。

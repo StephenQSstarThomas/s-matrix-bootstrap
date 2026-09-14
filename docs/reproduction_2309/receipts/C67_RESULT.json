@@ -1,0 +1,75 @@
+{
+ "packaging": "SR-a raw box, node FF factor, frozen representative rule",
+ "points": {
+  "tip": {
+   "x": 0.07601290785157157,
+   "y": -0.004943630293921897,
+   "leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/uv_SRa_tip/tip/report.json"
+  },
+  "ref": {
+   "x": 0.07332139057293464,
+   "y": -0.004649834718035525,
+   "leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/uv_SRa_section_hi/report.json"
+  },
+  "mid": {
+   "x": 0.07432139057293465,
+   "y": -0.004737737996914951,
+   "leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/uv_SRa_section_xp001_hi/report.json"
+  }
+ },
+ "C6": {
+  "verdict": "FAIL",
+  "rows": [
+   {
+    "point": "tip",
+    "crossing_MeV": 772.73753161382,
+    "modulus_peak_MeV": 5943.9842268286975,
+    "min_eta": 0.5851751156924997
+   },
+   {
+    "point": "ref",
+    "crossing_MeV": null,
+    "modulus_peak_MeV": 680.4136821594831,
+    "min_eta": 0.2444321964723594
+   },
+   {
+    "point": "mid",
+    "crossing_MeV": 738.8988001420806,
+    "modulus_peak_MeV": 731.6752603307709,
+    "min_eta": 0.07657427826645341
+   }
+  ],
+  "evidence": "some representative points have no 90-degree crossing"
+ },
+ "C7": {
+  "verdict": "FAIL",
+  "rows": [
+   {
+    "point": "tip",
+    "delta00_1.196": 180.82118238314303,
+    "delta20_1.196": -32.21747894042643,
+    "rms00_deg": 16.60813248270096,
+    "rms20_deg": 0.9770363915535741,
+    "pass": false
+   },
+   {
+    "point": "ref",
+    "delta00_1.196": 191.8102787809092,
+    "delta20_1.196": -27.875111890533933,
+    "rms00_deg": 5.695534538009649,
+    "rms20_deg": 1.4391554767899803,
+    "pass": false
+   },
+   {
+    "point": "mid",
+    "delta00_1.196": 189.0296852153223,
+    "delta20_1.196": -29.398367820774727,
+    "rms00_deg": 10.713401830323603,
+    "rms20_deg": 0.3540019904981236,
+    "pass": false
+   }
+  ],
+  "evidence": "tip: d00=180.8, d20=-32.2; ref: d00=191.8, d20=-27.9; mid: d00=189.0, d20=-29.4"
+ },
+ "recorded_utc": "2026-09-14T09:42:09Z"
+}

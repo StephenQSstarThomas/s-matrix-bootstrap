@@ -81,5 +81,5 @@ Fig.3 24 方向因 SR-d 提交改动 precision.py 一行触发源哈希校验失
 
 ## 7. 产物
 
-- HTML 台账（论文原文斜体灰字 + 我们的设置/数字 + 原图 vs 我们并排图）：`reports/2309_ledger/index.html`，生成脚本 `scripts/sdp/final_report_html.py`、`scripts/sdp/final_figures.py`。
+- HTML 台账（论文原文斜体灰字 + 我们的设置/数字 + 原图 vs 我们并排图）：`docs/reproduction_2309/index.html`（审核包 `docs/reproduction_2309/`，含图与收据副本），生成脚本 `scripts/sdp/final_report_html.py`、`scripts/sdp/final_figures.py`。
 - 结果根目录 `results/runs/sdpb_regularised_20260913`：`C1–C8_RESULT*.json`、`FACE_RESULT.json`、`UV_REPRESENTATIVE_SELECTION.json`、`GATE_LOG.md`、`final_figures/`。

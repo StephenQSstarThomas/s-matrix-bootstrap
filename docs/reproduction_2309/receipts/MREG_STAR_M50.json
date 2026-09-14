@@ -1,0 +1,8 @@
+{
+ "candidates": {
+  "1e2": 1.0105586969072728,
+  "3e2": 1.0462295853468893
+ },
+ "rule": "largest scanned Mreg with six first-omitted-wave max eta <= 1.02; L=8/10/12 agreement <= 2% still required",
+ "choice": "1e2"
+}

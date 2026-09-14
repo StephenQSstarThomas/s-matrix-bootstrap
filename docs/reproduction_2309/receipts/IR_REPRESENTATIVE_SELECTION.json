@@ -1,0 +1,47 @@
+{
+ "rule": "frozen 2026-09-13 15:10 (PLAN 2.2): upper-branch endpoints of the vertical sections at x_ref+{-0.002,-0.001,0,+0.001,+0.002}; representative = nearest to P in 2-D; near points = its two neighbours; tip = +x end",
+ "P": [
+  0.07332139057293464,
+  -0.004888092704862309
+ ],
+ "points": {
+  "xm002": {
+   "run": "fig4_eps002_section_xm002_hi",
+   "x": 0.07132139057293464,
+   "y": -0.004210831533139527,
+   "distance_to_P": 0.0021115593040981167
+  },
+  "xm001": {
+   "run": "fig4_eps002_section_xm001_hi",
+   "x": 0.07232139057293464,
+   "y": -0.004291081770204606,
+   "distance_to_P": 0.0011646553379008168
+  },
+  "x0": {
+   "run": "fig4_eps002_section_hi",
+   "x": 0.07332139057293464,
+   "y": -0.004372515663060449,
+   "distance_to_P": 0.0005155770418018603
+  },
+  "xp001": {
+   "run": "fig4_eps002_section_xp001_hi",
+   "x": 0.07432139057293465,
+   "y": -0.004455337355189384,
+   "distance_to_P": 0.0010896225000753873
+  },
+  "xp002": {
+   "run": "fig4_eps002_section_xp002_hi",
+   "x": 0.07532139057293465,
+   "y": -0.004539820838297436,
+   "distance_to_P": 0.002030096867895862
+  }
+ },
+ "representative": "x0",
+ "near_points": [
+  "xm001",
+  "xp001"
+ ],
+ "tip_run": "gate_tip_linf_1e2_unit/tip",
+ "recorded_utc": "2026-09-13T21:55:03Z",
+ "phases_read_before_selection": false
+}

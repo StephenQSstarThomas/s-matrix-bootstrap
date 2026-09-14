@@ -1,0 +1,645 @@
+{
+ "rules": "GATE_LOG 2026-09-14 02:25Z F1-F5 and 04:40Z F1'/F3'/F6",
+ "bw_reference": {
+  "37": {
+   "delta_deg": 39.71182808115918,
+   "ImKH": 0.8164544973579537,
+   "ImS": 0.9830112148189758
+  },
+  "38": {
+   "delta_deg": 68.26447799554474,
+   "ImKH": 1.725722157198716,
+   "ImS": 0.6879879000032211
+  },
+  "39": {
+   "delta_deg": 119.48092333936432,
+   "ImKH": 1.515608749306188,
+   "ImS": -0.8568241462744315
+  }
+ },
+ "paper_fig9_phases_deg": {
+  "light_pink": {
+   "37": 32.76002848301043,
+   "38": 76.23550734350731,
+   "39": 124.07833474016519
+  },
+  "pink": {
+   "37": 31.273208600475005,
+   "38": 69.8606293024923,
+   "39": 114.50086812278106
+  },
+  "red": {
+   "37": 32.4604880774597,
+   "38": 68.72758075910065,
+   "39": 112.79751547083684
+  }
+ },
+ "sources": {
+  "/playpen1/shiqiu/sdpb_regularised_20260913/uv_SRa_ffs0_tip/tip/report.json": {
+   "source_point": {
+    "f00_3": 0.07962280609785734,
+    "f11_3": -0.005086502950275804,
+    "direction": [
+     1.0,
+     0.0
+    ],
+    "fix_f00": null
+   },
+   "source_observables": {
+    "S0": {
+     "delta_deg_at_38": 109.8826154654308,
+     "eta_at_38": 0.8861254259930094,
+     "crossing_90_GeV": 0.7016391937625603
+    },
+    "P1": {
+     "delta_deg_at_38": 23.04631452145776,
+     "eta_at_38": 0.9999998620104412,
+     "crossing_90_GeV": 1.4871990492749454
+    }
+   },
+   "functionals": {
+    "ImKH_P1_38": {
+     "max": {
+      "leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/face_SRa_ffs0_tip_ImKH_P1_38_max/report.json",
+      "status": "numerically_accepted",
+      "accepted": true,
+      "value": 0.32496895979779616,
+      "f00_3": 0.07962080609786518,
+      "f11_3": -0.005087036015284663,
+      "face": {
+       "direction": [
+        1.0,
+        0.0
+       ],
+       "value": 0.07962280609785734,
+       "margin": 2e-06,
+       "floor": 0.07962080609785734,
+       "value_here": 0.07962080609786518,
+       "slack": 7.840950111415168e-15
+      },
+      "seconds": 5024.686387551017,
+      "terminate": "found primal-dual optimal solution"
+     },
+     "min": null,
+     "range_hi": 0.32496895979779616,
+     "range_lo": null,
+     "width": null,
+     "delta_deg_at_eta1": {
+      "hi": 23.771719649714022,
+      "lo": null
+     },
+     "bw_reference": {
+      "delta_deg": 68.26447799554474,
+      "ImKH": 1.725722157198716,
+      "ImS": 0.6879879000032211
+     }
+    },
+    "ImKH_P1_39": {
+     "max": {
+      "leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/face_SRa_ffs0_tip_ImKH_P1_39_max/report.json",
+      "status": "numerically_accepted",
+      "accepted": true,
+      "value": 0.6451906572812994,
+      "f00_3": 0.07962080609786885,
+      "f11_3": -0.00508753728851897,
+      "face": {
+       "direction": [
+        1.0,
+        0.0
+       ],
+       "value": 0.07962280609785734,
+       "margin": 2e-06,
+       "floor": 0.07962080609785734,
+       "value_here": 0.07962080609786885,
+       "slack": 1.1518563880485999e-14
+      },
+      "seconds": 4918.258887086995,
+      "terminate": "found primal-dual optimal solution"
+     },
+     "min": null,
+     "range_hi": 0.6451906572812994,
+     "range_lo": null,
+     "width": null,
+     "delta_deg_at_eta1": {
+      "hi": 34.60912005404689,
+      "lo": null
+     },
+     "bw_reference": {
+      "delta_deg": 119.48092333936432,
+      "ImKH": 1.515608749306188,
+      "ImS": -0.8568241462744315
+     }
+    }
+   },
+   "verdicts": {
+    "F1_prime_eta_free_node_38": {
+     "max_ImKH": 0.32496895979779616,
+     "paper_delta_deg": {
+      "light_pink": 76.23550734350731,
+      "pink": 69.8606293024923,
+      "red": 68.72758075910065
+     },
+     "excluded_for_every_eta": true,
+     "reading": "Re S_P1 > 0.675 on the whole near-optimal face; paper needs Re S < 0 there"
+    },
+    "F1_exclusion": {
+     "max_ImKH_P1_38": 0.32496895979779616,
+     "threshold": 1.5,
+     "paper_shape_excluded_from_face": true,
+     "reading": "Re S_P1(0.792 GeV) > 0.675 on the whole near-optimal face"
+    },
+    "F3_prime_eta_free_node_39": {
+     "max_ImKH": 0.6451906572812994,
+     "paper_delta_deg": {
+      "light_pink": 124.07833474016519,
+      "pink": 114.50086812278106,
+      "red": 112.79751547083684
+     },
+     "excluded_for_every_eta": true,
+     "reading": "Re S_P1 > 0.355 on the whole near-optimal face; paper needs Re S < 0 there"
+    },
+    "F3_post_resonance": {
+     "max_ImKH_P1_39": 0.6451906572812994,
+     "threshold": 1.4,
+     "necessary_condition_met": false
+    }
+   }
+  },
+  "/playpen1/shiqiu/sdpb_regularised_20260913/uv_SRa_tip/tip/report.json": {
+   "source_point": {
+    "f00_3": 0.07601290785157157,
+    "f11_3": -0.004943630293921897,
+    "direction": [
+     1.0,
+     0.0
+    ],
+    "fix_f00": null
+   },
+   "source_observables": {
+    "S0": {
+     "delta_deg_at_38": 111.14229935090064,
+     "eta_at_38": 0.893576848197303,
+     "crossing_90_GeV": 0.6935797679890792
+    },
+    "P1": {
+     "delta_deg_at_38": 108.3057968788905,
+     "eta_at_38": 0.5851751156924997,
+     "crossing_90_GeV": 0.77273753161382
+    }
+   },
+   "functionals": {
+    "ImKH_P1_38": {
+     "max": {
+      "leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/face_SRa_tip_ImKH_P1_38_max/report.json",
+      "status": "numerically_accepted",
+      "accepted": true,
+      "value": 1.4934942408662615,
+      "f00_3": 0.07601090785160321,
+      "f11_3": -0.004944225202710319,
+      "face": {
+       "direction": [
+        1.0,
+        0.0
+       ],
+       "value": 0.07601290785157157,
+       "margin": 2e-06,
+       "floor": 0.07601090785157157,
+       "value_here": 0.07601090785160321,
+       "slack": 3.164135620181696e-14
+      },
+      "seconds": 6078.556913716951,
+      "terminate": "found primal-dual optimal solution"
+     },
+     "min": {
+      "leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/face_SRa_tip_ImKH_P1_38_min/report.json",
+      "status": "numerically_accepted",
+      "accepted": true,
+      "value": 1.4411234854012653,
+      "f00_3": 0.0760109078515881,
+      "f11_3": -0.0049427660472631686,
+      "face": {
+       "direction": [
+        1.0,
+        0.0
+       ],
+       "value": 0.07601290785157157,
+       "margin": 2e-06,
+       "floor": 0.07601090785157157,
+       "value_here": 0.0760109078515881,
+       "slack": 1.6528445279107018e-14
+      },
+      "seconds": 5621.807659143116,
+      "terminate": "found primal-dual optimal solution"
+     },
+     "range_hi": 1.4934942408662615,
+     "range_lo": 1.4411234854012653,
+     "width": 0.052370755464996144,
+     "delta_deg_at_eta1": {
+      "hi": 59.78525390113665,
+      "lo": 58.08779295763055
+     },
+     "bw_reference": {
+      "delta_deg": 68.26447799554474,
+      "ImKH": 1.725722157198716,
+      "ImS": 0.6879879000032211
+     }
+    },
+    "ImKH_P1_39": {
+     "max": {
+      "leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/face_SRa_tip_ImKH_P1_39_max/report.json",
+      "status": "numerically_accepted",
+      "accepted": true,
+      "value": 0.6345745193273375,
+      "f00_3": 0.07601090785157667,
+      "f11_3": -0.004943931945667168,
+      "face": {
+       "direction": [
+        1.0,
+        0.0
+       ],
+       "value": 0.07601290785157157,
+       "margin": 2e-06,
+       "floor": 0.07601090785157157,
+       "value_here": 0.07601090785157667,
+       "slack": 5.10702591327572e-15
+      },
+      "seconds": 4761.4063317859545,
+      "terminate": "found primal-dual optimal solution"
+     },
+     "min": null,
+     "range_hi": 0.6345745193273375,
+     "range_lo": null,
+     "width": null,
+     "delta_deg_at_eta1": {
+      "hi": 34.28311507391312,
+      "lo": null
+     },
+     "bw_reference": {
+      "delta_deg": 119.48092333936432,
+      "ImKH": 1.515608749306188,
+      "ImS": -0.8568241462744315
+     }
+    },
+    "ImKH_S0_38": {
+     "max": {
+      "leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/face_SRa_tip_ImKH_S0_38_max/report.json",
+      "status": "numerically_accepted",
+      "accepted": true,
+      "value": 1.7263839578967992,
+      "f00_3": 0.0760109078515817,
+      "f11_3": -0.004943104532937414,
+      "face": {
+       "direction": [
+        1.0,
+        0.0
+       ],
+       "value": 0.07601290785157157,
+       "margin": 2e-06,
+       "floor": 0.07601090785157157,
+       "value_here": 0.0760109078515817,
+       "slack": 1.0130785099704553e-14
+      },
+      "seconds": 4921.279981552856,
+      "terminate": "found primal-dual optimal solution"
+     },
+     "min": {
+      "leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/face_SRa_tip_ImKH_S0_38_min/report.json",
+      "status": "numerically_accepted",
+      "accepted": true,
+      "value": 1.5897462377007643,
+      "f00_3": 0.07601090785157785,
+      "f11_3": -0.004943736515858157,
+      "face": {
+       "direction": [
+        1.0,
+        0.0
+       ],
+       "value": 0.07601290785157157,
+       "margin": 2e-06,
+       "floor": 0.07601090785157157,
+       "value_here": 0.07601090785157785,
+       "slack": 6.286637876939949e-15
+      },
+      "seconds": 4957.707437899895,
+      "terminate": "found primal-dual optimal solution"
+     },
+     "range_hi": 1.7263839578967992,
+     "range_lo": 1.5897462377007643,
+     "width": 0.13663772019603493,
+     "delta_deg_at_eta1": {
+      "hi": 68.29204944709606,
+      "lo": 63.06950126341777
+     },
+     "bw_reference": {
+      "delta_deg": 68.26447799554474,
+      "ImKH": 1.725722157198716,
+      "ImS": 0.6879879000032211
+     }
+    },
+    "ImS_P1_38": {
+     "max": {
+      "leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/face_SRa_tip_ImS_P1_38_max/report.json",
+      "status": "numerically_accepted",
+      "accepted": true,
+      "value": -0.2760451235890227,
+      "f00_3": 0.07601090785157424,
+      "f11_3": -0.004943771103726683,
+      "face": {
+       "direction": [
+        1.0,
+        0.0
+       ],
+       "value": 0.07601290785157157,
+       "margin": 2e-06,
+       "floor": 0.07601090785157157,
+       "value_here": 0.07601090785157424,
+       "slack": 2.67841304690819e-15
+      },
+      "seconds": 4963.696959284134,
+      "terminate": "found primal-dual optimal solution"
+     },
+     "min": null,
+     "range_hi": -0.2760451235890227,
+     "range_lo": null,
+     "width": null
+    }
+   },
+   "verdicts": {
+    "F1_prime_eta_free_node_38": {
+     "max_ImKH": 1.4934942408662615,
+     "paper_delta_deg": {
+      "light_pink": 76.23550734350731,
+      "pink": 69.8606293024923,
+      "red": 68.72758075910065
+     },
+     "excluded_for_every_eta": false,
+     "reading": "Re S_P1 > -0.493 on the whole near-optimal face; paper needs Re S < 0 there"
+    },
+    "F1_exclusion": {
+     "max_ImKH_P1_38": 1.4934942408662615,
+     "threshold": 1.5,
+     "paper_shape_excluded_from_face": true,
+     "reading": "Re S_P1(0.792 GeV) > -0.493 on the whole near-optimal face"
+    },
+    "F3_prime_eta_free_node_39": {
+     "max_ImKH": 0.6345745193273375,
+     "paper_delta_deg": {
+      "light_pink": 124.07833474016519,
+      "pink": 114.50086812278106,
+      "red": 112.79751547083684
+     },
+     "excluded_for_every_eta": true,
+     "reading": "Re S_P1 > 0.365 on the whole near-optimal face; paper needs Re S < 0 there"
+    },
+    "F3_post_resonance": {
+     "max_ImKH_P1_39": 0.6345745193273375,
+     "threshold": 1.4,
+     "necessary_condition_met": false
+    },
+    "F4_S0_range_deg_at_eta1": {
+     "hi": 68.29204944709606,
+     "lo": 63.06950126341777
+    },
+    "F6_sign_node_38": {
+     "max_ImS_P1_38": -0.2760451235890227,
+     "paper_pre_resonance_sign_excluded": true,
+     "reading": "Im S_P1(0.792 GeV) <= -0.276 on the face; the paper's curves cross 90 deg above 0.81 GeV, so Im S > 0 there"
+    }
+   }
+  },
+  "/playpen1/shiqiu/sdpb_regularised_20260913/uv_SRa_section_hi/report.json": {
+   "source_point": {
+    "f00_3": 0.07332139057293464,
+    "f11_3": -0.004649834718035525,
+    "direction": [
+     0.0,
+     1.0
+    ],
+    "fix_f00": 0.07332139057293464
+   },
+   "source_observables": {
+    "S0": {
+     "delta_deg_at_38": 103.51485508542378,
+     "eta_at_38": 0.9999593498083724,
+     "crossing_90_GeV": 0.683606960006003
+    },
+    "P1": {
+     "delta_deg_at_38": -25.912203194439503,
+     "eta_at_38": 0.7063271575231123,
+     "crossing_90_GeV": null
+    }
+   },
+   "functionals": {
+    "ImF_P1_38": {
+     "max": {
+      "leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/face_SRa_xrefhi_ImF_P1_38_max/report.json",
+      "status": "numerically_accepted",
+      "accepted": true,
+      "value": 3.709905557621793,
+      "f00_3": 0.07332139057293464,
+      "f11_3": -0.004651834718034676,
+      "face": {
+       "direction": [
+        0.0,
+        1.0
+       ],
+       "value": -0.004649834718035525,
+       "margin": 2e-06,
+       "floor": -0.004651834718035526,
+       "value_here": -0.004651834718034676,
+       "slack": 8.500145032286355e-16
+      },
+      "seconds": 5030.57309631817,
+      "terminate": "found primal-dual optimal solution"
+     },
+     "min": {
+      "leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/face_SRa_xrefhi_ImF_P1_38_min/report.json",
+      "status": "numerically_accepted",
+      "accepted": true,
+      "value": 0.07843092605161156,
+      "f00_3": 0.07332139057293464,
+      "f11_3": -0.0046518347180354615,
+      "face": {
+       "direction": [
+        0.0,
+        1.0
+       ],
+       "value": -0.004649834718035525,
+       "margin": 2e-06,
+       "floor": -0.004651834718035526,
+       "value_here": -0.0046518347180354615,
+       "slack": 6.418476861114186e-17
+      },
+      "seconds": 5152.370457971934,
+      "terminate": "found primal-dual optimal solution"
+     },
+     "range_hi": 3.709905557621793,
+     "range_lo": 0.07843092605161156,
+     "width": 3.631474631570182
+    },
+    "ImKH_P1_38": {
+     "max": {
+      "leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/face_SRa_xrefhi_ImKH_P1_38_max/report.json",
+      "status": "numerically_accepted",
+      "accepted": true,
+      "value": 0.9355895343369417,
+      "f00_3": 0.07332139057293464,
+      "f11_3": -0.004651834718034843,
+      "face": {
+       "direction": [
+        0.0,
+        1.0
+       ],
+       "value": -0.004649834718035525,
+       "margin": 2e-06,
+       "floor": -0.004651834718035526,
+       "value_here": -0.004651834718034843,
+       "slack": 6.826136877968736e-16
+      },
+      "seconds": 6224.097635518992,
+      "terminate": "found primal-dual optimal solution"
+     },
+     "min": {
+      "leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/face_SRa_xrefhi_ImKH_P1_38_min/report.json",
+      "status": "numerically_accepted",
+      "accepted": true,
+      "value": 0.022793986262885108,
+      "f00_3": 0.07332139057293464,
+      "f11_3": -0.004651834718035334,
+      "face": {
+       "direction": [
+        0.0,
+        1.0
+       ],
+       "value": -0.004649834718035525,
+       "margin": 2e-06,
+       "floor": -0.004651834718035526,
+       "value_here": -0.004651834718035334,
+       "slack": 1.9168694409543718e-16
+      },
+      "seconds": 5536.979041675106,
+      "terminate": "found primal-dual optimal solution"
+     },
+     "range_hi": 0.9355895343369417,
+     "range_lo": 0.022793986262885108,
+     "width": 0.9127955480740566,
+     "delta_deg_at_eta1": {
+      "hi": 43.153497810083266,
+      "lo": 6.128387057469474
+     },
+     "bw_reference": {
+      "delta_deg": 68.26447799554474,
+      "ImKH": 1.725722157198716,
+      "ImS": 0.6879879000032211
+     }
+    },
+    "ImKH_P1_39": {
+     "max": {
+      "leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/face_SRa_xrefhi_ImKH_P1_39_max/report.json",
+      "status": "numerically_accepted",
+      "accepted": true,
+      "value": 0.7009811646986064,
+      "f00_3": 0.07332139057293464,
+      "f11_3": -0.004651834718035119,
+      "face": {
+       "direction": [
+        0.0,
+        1.0
+       ],
+       "value": -0.004649834718035525,
+       "margin": 2e-06,
+       "floor": -0.004651834718035526,
+       "value_here": -0.004651834718035119,
+       "slack": 4.0679265511656126e-16
+      },
+      "seconds": 5052.728847794933,
+      "terminate": "found primal-dual optimal solution"
+     },
+     "min": null,
+     "range_hi": 0.7009811646986064,
+     "range_lo": null,
+     "width": null,
+     "delta_deg_at_eta1": {
+      "hi": 36.30065918210625,
+      "lo": null
+     },
+     "bw_reference": {
+      "delta_deg": 119.48092333936432,
+      "ImKH": 1.515608749306188,
+      "ImS": -0.8568241462744315
+     }
+    },
+    "ImS_P1_38": {
+     "max": {
+      "leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/face_SRa_xrefhi_ImS_P1_38_max/report.json",
+      "status": "numerically_accepted",
+      "accepted": true,
+      "value": 0.12405014634550285,
+      "f00_3": 0.07332139057293464,
+      "f11_3": -0.004651834718035175,
+      "face": {
+       "direction": [
+        0.0,
+        1.0
+       ],
+       "value": -0.004649834718035525,
+       "margin": 2e-06,
+       "floor": -0.004651834718035526,
+       "value_here": -0.004651834718035175,
+       "slack": 3.5041414214731503e-16
+      },
+      "seconds": 5015.89419044205,
+      "terminate": "found primal-dual optimal solution"
+     },
+     "min": null,
+     "range_hi": 0.12405014634550285,
+     "range_lo": null,
+     "width": null
+    }
+   },
+   "verdicts": {
+    "F5_ImF1_38_range": [
+     0.07843092605161156,
+     3.709905557621793
+    ],
+    "F1_prime_eta_free_node_38": {
+     "max_ImKH": 0.9355895343369417,
+     "paper_delta_deg": {
+      "light_pink": 76.23550734350731,
+      "pink": 69.8606293024923,
+      "red": 68.72758075910065
+     },
+     "excluded_for_every_eta": true,
+     "reading": "Re S_P1 > 0.064 on the whole near-optimal face; paper needs Re S < 0 there"
+    },
+    "F1_exclusion": {
+     "max_ImKH_P1_38": 0.9355895343369417,
+     "threshold": 1.5,
+     "paper_shape_excluded_from_face": true,
+     "reading": "Re S_P1(0.792 GeV) > 0.064 on the whole near-optimal face"
+    },
+    "F3_prime_eta_free_node_39": {
+     "max_ImKH": 0.7009811646986064,
+     "paper_delta_deg": {
+      "light_pink": 124.07833474016519,
+      "pink": 114.50086812278106,
+      "red": 112.79751547083684
+     },
+     "excluded_for_every_eta": true,
+     "reading": "Re S_P1 > 0.299 on the whole near-optimal face; paper needs Re S < 0 there"
+    },
+    "F3_post_resonance": {
+     "max_ImKH_P1_39": 0.7009811646986064,
+     "threshold": 1.4,
+     "necessary_condition_met": false
+    },
+    "F6_sign_node_38": {
+     "max_ImS_P1_38": 0.12405014634550285,
+     "paper_pre_resonance_sign_excluded": false,
+     "reading": "Im S_P1(0.792 GeV) <= 0.124 on the face; the paper's curves cross 90 deg above 0.81 GeV, so Im S > 0 there"
+    }
+   }
+  }
+ },
+ "recorded_utc": "2026-09-14T08:43:48Z"
+}

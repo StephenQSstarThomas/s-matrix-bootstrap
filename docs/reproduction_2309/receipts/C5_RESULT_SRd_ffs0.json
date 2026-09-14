@@ -1,0 +1,60 @@
+{
+ "claim": "C5 Fig.8",
+ "packaging": "SR-d per-wave L2 2e-3, FF factor frozen at s0",
+ "verdict": "FAIL",
+ "rows": [
+  {
+   "quantity": "UV +x end",
+   "ours": 0.07954066893123715,
+   "paper": 0.0811249,
+   "rel": -0.019528296105916332,
+   "pass": true
+  },
+  {
+   "quantity": "upper shrink at x_ref",
+   "ours": 5.35111076653853e-05,
+   "paper": 0.0002324,
+   "rel": -0.7697456640904248,
+   "pass": false
+  },
+  {
+   "quantity": "lower rise at x_ref",
+   "ours": 0.0002498684824283892,
+   "paper": 3.687e-05,
+   "pass": false
+  },
+  {
+   "quantity": "upper/lower ratio",
+   "ours": 0.21415709234445468,
+   "paper": 6.303227556278818,
+   "pass": false
+  }
+ ],
+ "sections": {
+  "chi_hi": -0.004372515663060449,
+  "chi_lo": -0.005134310611347067,
+  "uv_hi": -0.004426026770725834,
+  "uv_lo": -0.004884442128918678
+ },
+ "paper_sections": {
+  "chi_hi": -0.0043678,
+  "chi_lo": -0.0051276,
+  "uv_hi": -0.0046002,
+  "uv_lo": -0.0050907
+ },
+ "uv_tip_phase_summary": {
+  "S0": {
+   "crossing_90_GeV": 0.6995979820684046,
+   "min_eta_below_1p2": 0.8742727189781679
+  },
+  "S2": {
+   "crossing_90_GeV": null,
+   "min_eta_below_1p2": 0.99999989088151
+  },
+  "P1": {
+   "crossing_90_GeV": 1.4888447737028878,
+   "min_eta_below_1p2": 0.024015061628156625
+  }
+ },
+ "recorded_utc": "2026-09-14T03:48:00Z"
+}

@@ -1,0 +1,43 @@
+{
+ "rule": "frozen 2026-09-13 15:10 (PLAN 2.2), applied to the UV (SR-a node) model: upper-branch endpoints of the vertical sections at x_ref+{-0.002,-0.001,0,+0.001,+0.002}; representative = nearest to P in 2-D; mid = its neighbour on the tip side; tip = +x end",
+ "P": [
+  0.07332139057293464,
+  -0.004888092704862309
+ ],
+ "points": {
+  "xm002": {
+   "run": "uv_SRa_section_xm002_hi",
+   "x": 0.07132139057293464,
+   "y": -0.004485131492854125,
+   "distance_to_P": 0.0020401906132474757
+  },
+  "xm001": {
+   "run": "uv_SRa_section_xm001_hi",
+   "x": 0.07232139057293464,
+   "y": -0.004566144682215373,
+   "distance_to_P": 0.0010505477282286007
+  },
+  "x0": {
+   "run": "uv_SRa_section_hi",
+   "x": 0.07332139057293464,
+   "y": -0.004649834718035525,
+   "distance_to_P": 0.00023825798682678388
+  },
+  "xp001": {
+   "run": "uv_SRa_section_xp001_hi",
+   "x": 0.07432139057293465,
+   "y": -0.004737737996914951,
+   "distance_to_P": 0.0010112400991861116
+  },
+  "xp002": {
+   "run": "uv_SRa_section_xp002_hi",
+   "x": 0.07532139057293465,
+   "y": -0.004836260741044407,
+   "distance_to_P": 0.0020006715253817224
+  }
+ },
+ "representative": "x0",
+ "mid": "xp001",
+ "tip": "uv_SRa_tip/tip",
+ "recorded_utc": "2026-09-14T09:42:09Z"
+}

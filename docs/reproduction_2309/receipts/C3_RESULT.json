@@ -1,0 +1,52 @@
+{
+ "claim": "C3 Fig.5 subthreshold partial waves and S0 chiral zero",
+ "verdict": "PASS",
+ "rule": "same-eps digitised Fig.5 curve RMS <= 8% of f00(3); S0 zero within 0.15 of 0.425 / 0.305 / absent",
+ "representatives": "upper-branch x_ref section at each eps (frozen rule of 15:10), Mreg=1e2",
+ "rows": [
+  {
+   "eps": 0.002,
+   "run": "fig4_eps002_section_hi",
+   "f00_3": 0.07332139057293464,
+   "f11_3": -0.004372515663060449,
+   "rms_over_f00": {
+    "S0": 0.009595273598382192,
+    "S2": 0.0026771557953887246,
+    "P1": 0.0019105045937285881
+   },
+   "S0_zero": [
+    0.42622482496755565
+   ],
+   "paper_zero": 0.425
+  },
+  {
+   "eps": 0.004,
+   "run": "fig4_eps004_section_hi",
+   "f00_3": 0.07332139057293464,
+   "f11_3": -0.0035180257149229122,
+   "rms_over_f00": {
+    "S0": 0.026134432479630022,
+    "S2": 0.007490893485874416,
+    "P1": 0.005063312145800886
+   },
+   "S0_zero": [
+    0.2928668878065958
+   ],
+   "paper_zero": 0.305
+  },
+  {
+   "eps": 0.006,
+   "run": "fig4_eps006_section_hi",
+   "f00_3": 0.07332139057293464,
+   "f11_3": -0.002795266138828216,
+   "rms_over_f00": {
+    "S0": 0.06427980894369077,
+    "S2": 0.019336889312379545,
+    "P1": 0.01283374933551571
+   },
+   "S0_zero": [],
+   "paper_zero": null
+  }
+ ],
+ "recorded_utc": "2026-09-13T21:01:12Z"
+}
