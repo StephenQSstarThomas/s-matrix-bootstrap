@@ -4,6 +4,8 @@
 
 | 路径 | 内容 |
 |---|---|
+| `REPRODUCTION_COMPARISON_EN.pdf` | **给作者的英文对照文件（LaTeX 编译）**：方法与工具链、五个论文未定项及读法、八张图的逐图对照（论文原文灰色斜体 + 我们的数字 + 并排图）、退化面与 SR-1 诊断、给作者的五个问题。同内容的 `.tex`（可重编译）、`.md`、自足 `.html` 并列 |
+| `gtb2309_sdpb_reproduction_code.zip` | **给作者的代码包**：`src/`（算子推导与 PMP 写出）、`scripts/`（求解驱动、评估、图与文档）、`tests/`、数字化参考曲线、英文推导笔记、启动脚本示例；含英文 `OVERVIEW.md`（流水线与运行方法）与 `DERIVATIONS.md`（论文方程 → 代码映射）。不含任何运行输出 |
 | `index.html` | 最终台账页（自足 HTML，图已内嵌）：两句话结论、八条 claim 台账、每张论文图的原文（斜体灰字）/我们的设置/数字/原图 vs 我们并排图、退化面与 SR-1 证明、2309 正文 · 我们 · 2403 代码 · 2505 代码的设置对照表。在线副本：https://claude.ai/code/artifact/db9c21c9-6e7e-44c8-9d59-370cbdca79e4 |
 | `figures/fig3.png … fig11.png, fig9_eta.png, face_ranges.png` | 并排对照图（左/上为论文 PDF 渲染，右/下为我们的验收叶 + 数字化论文曲线）；`figures.json` 为图中数字 |
 | `receipts/C1_RESULT.json … C8_RESULT.json` | 八条 claim 的预登记规则裁决（C5 三种读法、C6/C7 合于 `C67_RESULT.json`） |

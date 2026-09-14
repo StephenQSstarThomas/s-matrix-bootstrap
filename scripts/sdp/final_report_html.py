@@ -49,7 +49,7 @@ def main(argv=None):
     C67 = J(R / "C67_RESULT.json") or J(R / "C67_PREVIEW_SRa.json")
     C8 = J(R / "C8_RESULT.json"); C1 = J(R / "C1_RESULT.json")
     FACE = J(R / "FACE_RESULT.json") or J(R / "FACE_RESULT_partial.json") or {"sources": {}}
-    srmom = leaf(R, "srmom_SRb_free_S0n0_min/support"); mreg = leaf(R, "uv_SRa_mreg1e3_tip/tip"); tip = leaf(R, "uv_SRa_tip/tip"); chi_tip = leaf(R, "fig4_eps002_tip/tip")
+    srmom = leaf(R, "srmom_SRb_free_S0n0_min/support"); mreg = leaf(R, "uv_SRa_mreg1e3_tip/tip"); tip = leaf(R, "uv_SRa_tip/tip"); chi_tip = leaf(R, "gate_tip_linf_1e2_unit/tip")
     fig3v2 = leaf(R, "fig3_pure_linf_1e3_tip_v2/tip")
     n_fig3 = len([1 for d in glob.glob(str(R / "fig3_dir??")) if leaf(R, Path(d).name)])
 

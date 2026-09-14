@@ -171,7 +171,7 @@ def fig8(root, png, out, info):
             if r: chi.append((r["verification"]["f00_3"], r["verification"]["f11_3"]))
             r = leaf(root, f"uv_SRa_section_{tag + '_' if tag else ''}{side}")
             if r: uv.append((r["verification"]["f00_3"], r["verification"]["f11_3"]))
-    r = leaf(root, "fig4_eps002_tip/tip"); chi.append((r["verification"]["f00_3"], r["verification"]["f11_3"])) if r else None
+    r = leaf(root, "gate_tip_linf_1e2_unit/tip"); chi.append((r["verification"]["f00_3"], r["verification"]["f11_3"])) if r else None
     r = leaf(root, "uv_SRa_tip/tip"); uv.append((r["verification"]["f00_3"], r["verification"]["f11_3"])) if r else None
     if chi: C = np.array(chi); ax.plot(C[:, 0], C[:, 1], "s", ms=5, color="g", label="ours chiral (sections + tip)")
     if uv: U = np.array(uv); ax.plot(U[:, 0], U[:, 1], "^", ms=6, color="c", markeredgecolor="k", label="ours chiral+UV (sections + tip)")
@@ -225,11 +225,15 @@ def fig9_10(root, png, out, info):
         ax.plot(E[m], np.array(o["eta"])[m], "s-", ms=3, lw=1, color=f"C{k}", label=lab)
     ax.set_xlabel("E (GeV)"); ax.set_ylabel(r"$\eta_{P1}=|S_{P1}|$ (ours; not shown in the paper)"); ax.set_ylim(0, 1.05); ax.legend(frameon=False, fontsize=7); fig.tight_layout()
     fig.savefig(out / "fig9_eta.png", dpi=110); plt.close(fig)
-    fig = plt.figure(figsize=(12, 4.6)); fig.suptitle("Fig.10 S0 and S2 phase shifts at the same points", fontsize=10)
-    for j, (wave, name, csvn) in enumerate((("S0", "S0ps", "figure10_s0_phases.csv"), ("S2", "S2ps", "figure10_s2_phases.csv"))):
-        axp = fig.add_axes([0.01 + 0.24 * j, 0.08, 0.23, 0.8]); p = png / f"{name}.png"
-        if p.exists(): axp.imshow(mpimg.imread(p))
-        axp.axis("off"); ax = fig.add_axes([0.53 + 0.24 * j, 0.14, 0.21, 0.72]); ax.set_title(wave, fontsize=9)
+    fig = plt.figure(figsize=(12, 7.6)); fig.suptitle("Fig.10 S0 and S2 phase shifts at the same points: paper (top) vs ours (bottom)", fontsize=10)
+    for j, name in enumerate(("S0ps", "S2ps")):
+        axp = fig.add_axes([0.03 + 0.48 * j, 0.53, 0.46, 0.40]); pth = png / f"{name}.png"
+        if pth.exists(): axp.imshow(mpimg.imread(pth))
+        axp.axis("off")
+        if j == 0: axp.set_title("paper (2309.12402 v3)", fontsize=9, color=GREY, loc="left")
+    for j, (wave, csvn) in enumerate((("S0", "figure10_s0_phases.csv"), ("S2", "figure10_s2_phases.csv"))):
+        ax = fig.add_axes([0.07 + 0.48 * j, 0.08, 0.40, 0.38]); ax.set_title(wave, fontsize=9)
+        if j == 0: ax.text(0.0, 1.04, "ours", transform=ax.transAxes, fontsize=9, ha="left", va="bottom")
         ref = load_csv(csvn)
         for g, col in (("red", "r"), ("pink", "orchid"), ("light_pink", "pink")):
             m = ref["group"] == g; ax.plot(ref["energy_gev"][m], ref["phase_deg"][m], ".", ms=3, color=col, alpha=0.8, label=f"paper {g}" if j == 0 else None)
@@ -238,7 +242,7 @@ def fig9_10(root, png, out, info):
             if not r: continue
             o = r["observables"][wave]; E = np.array(o["E_GeV"]); m = E <= 1.3
             ax.plot(E[m], np.array(o["delta_deg"])[m], "o-", ms=3, lw=1, color=f"C{k}", label=f"ours {lab}" if j == 0 else None)
-        ax.set_xlabel("E (GeV)"); ax.set_xlim(0.28, 1.3)
+        ax.set_xlabel("E (GeV)"); ax.set_ylabel("phase shift (deg)"); ax.set_xlim(0.28, 1.3)
         if j == 0: ax.legend(frameon=False, fontsize=6)
     fig.savefig(out / "fig10.png", dpi=110); plt.close(fig)
 
