@@ -86,12 +86,12 @@ def main(argv=None):
     L = []
     W = L.append
     W("# Reproduction of arXiv:2309.12402 with SDPB: comparison against the paper's figures\n")
-    W("Prepared for Yifei He and Martin Kruczenski. Date: 2026-09-14. Code and receipts: branch `sdpb-2309-regularised` of https://github.com/StephenQSstarThomas/s-matrix-bootstrap (folder `docs/reproduction_2309`).\n")
+    W("Bo Wang, Shi Qiu, Hua Xing Zhu. 14 September 2026.\n")
     W("## 1. What was done\n")
     W("We reproduced the finite S-matrix / form-factor bootstrap of *Bootstrapping gauge theories* (arXiv:2309.12402 v3) from the equations of Sections 2 and 3 of the paper, and compared the result with each figure of the paper. "
       "The optimiser is SDPB 3.1.0 (192-bit arithmetic, duality gap 1e-6, primal and dual error 1e-10); no other solver was used. "
       "The discretised operators (conformal map and grid (3.58)-(3.62), the cot kernel (3.67), the angular projections of (2.7), the current kernels (3.68)-(3.75)) were derived from the paper and checked independently: a Mathematica script recomputes the formulas at M=50, an independent reconstruction of the (2.7) projections agrees with the production operators to 5e-15 over all 3876 coefficients, and every accepted solution is re-verified against all original constraints in Arb interval arithmetic. "
-      "The comparison thresholds for each figure were fixed before the corresponding runs and are recorded in the log (`receipts/GATE_PREREGISTRATION.md`, `receipts/GATE_LOG.md`).\n")
+      "\n")
     W("The paper leaves five numerical items unstated. We list them here together with the readings we ran, because they decide the outcome for Figures 8-10.\n")
     W("| Item | Paper text | Readings run |\n|---|---|---|")
     W("| Norm of the sum-rule tolerance (3.73), eps_SR = 2e-3 | \"with some norm\" | per-moment box on the raw moments (main line); per-wave L2 ball (the structure of the code released with the follow-up paper, arXiv:2403.10772); relative 10 % per moment |")
@@ -184,14 +184,13 @@ def main(argv=None):
     fig("face_ranges", "Ranges of the node functionals over the near-optimal faces (bars) against the floor 1 - Re S = 1 required by the paper's phases (dashed).")
 
     W("## 5. Questions\n")
-    W("The following items would let us close the gap or confirm that it is real. We have read the code released with the follow-up paper (arXiv:2403.10772) and the current code (arXiv:2505.19332) and can see how they treat these points; we are asking specifically about the runs behind arXiv:2309.12402.\n")
-    W("1. Which norm was used in (3.73), and is the QCD value compared with the raw moment or with the normalised one (divided by s0^(n+2))? The raw per-moment box is the only reading with eps_SR = 2e-3 that is feasible in our implementation.\n"
-      "2. In (3.75), is the factor between F and script-F evaluated at each node above s0 or frozen at s0?\n"
-      "3. Was a bound on the double spectral density rho_ij (as in arXiv:2103.11484 Section 3, or the l4 bound in the code released with arXiv:2403.10772) applied in the 2309 runs, and at what scale? Without any bound the finite problem is ill-posed at 192-bit precision; with our in-model rule the +x ends agree with your Figs. 3 and 4 to 0.4 %.\n"
-      "4. Were the Fig. 9-10 amplitudes the solver's optimal point of the support problem, or was a saturation / Watson step (as in the current code, arXiv:2505.19332) already used to select the amplitude at each of the three points?\n"
-      "5. Could you share the (f00(3), f11(3)) coordinates and |S_P1| of the red, pink and light pink points, and the value of s0 used for Figs. 8-11?\n")
-    W("## 6. Receipts\n")
-    W("`receipts/C1_RESULT.json` ... `C8_RESULT.json` (per-figure verdicts on the pre-registered rules), `receipts/FACE_RESULT.json` (face diagnostic), `receipts/UV_REPRESENTATIVE_SELECTION.json` and `IR_REPRESENTATIVE_SELECTION.json` (frozen representative choices), `receipts/GATE_LOG.md` (time-stamped log of every run and decision). Each accepted leaf keeps its PMP, the SDPB output and the Arb verification (`report.json`); these are available on request (several GB).\n")
+    W("We would be grateful for your help on the following points. They all concern the runs behind arXiv:2309.12402; we have read the code released with the follow-up paper (arXiv:2403.10772) and the current code (arXiv:2505.19332), and are aware that several of these choices are made differently there.\n")
+    W("1. In (3.73), which norm did you use for the sum-rule residuals, and is the QCD value compared with the raw moment or with the normalised one, divided by s0^(n+2) as in (2.56)? In our implementation a per-moment box of half-width 2e-3 on the raw moments is the only reading of eps_SR = 2e-3 that is feasible.\n"
+      "2. In (3.75), is the factor between F and script-F evaluated at each node s_i > s0, or at s0 for all of them? The two readings move the UV +x end from 0.0760 to 0.0796 and change the shape of the P1 wave considerably.\n"
+      "3. Was a bound on the double spectral density rho_ij, of the kind introduced in Section 3 of arXiv:2103.11484 or the l4 bound used in the code released with arXiv:2403.10772, applied in these runs, and if so at what scale? Without such a bound the finite problem is ill-posed at 192-bit precision, and with our in-model rule the +x ends of Figs. 3 and 4 agree with yours to 0.4 %.\n"
+      "4. For the three points of Figs. 9 and 10, were the plotted amplitudes the optimal points returned by the solver for the support problem, or was a saturation (Watson) step of the kind used in arXiv:2505.19332 already applied to select them? Our face diagnostic suggests that at the x_ref point the boundary alone does not fix the P1 wave.\n"
+      "5. If they are still available, the (f00(3), f11(3)) coordinates and |S_P1(s)| of the red, pink and light pink points, together with the value of s0 used for Figs. 8-11, would allow a direct comparison.\n")
+    W("We would be happy to share any of our solutions, the intermediate files or the full log of the runs.\n")
     md = "\n".join(L)
     Path(a.out_md).write_text(md)
     # ---- self-contained HTML
