@@ -10,11 +10,11 @@ The paper leaves five numerical items unstated. We list them here together with 
 
 | Item | Paper text | Readings run |
 |---|---|---|
-| Norm of the sum-rule tolerance (3.73), eps_SR = 2e-3 | "with some norm" | per-moment box on the raw moments (main line); per-wave L2 ball (structure of your 2403 code); relative 10 % per moment |
+| Norm of the sum-rule tolerance (3.73), eps_SR = 2e-3 | "with some norm" | per-moment box on the raw moments (main line); per-wave L2 ball (the structure of the code released with the follow-up paper, arXiv:2403.10772); relative 10 % per moment |
 | Evaluation point of the factor between F and script-F in (3.75) | "which we evaluate at s = s0" appears in the estimate of eps_FF | factor at each node s_i > s0 (main line); factor frozen at s0 |
-| Regularisation of the double spectral density | not mentioned in 2309; your 2103.11484 Section 3 and your 2403 code use an M-bound | |rho_ij| <= Mreg with Mreg fixed by an in-model rule (omitted-wave unitarity and L-stability), Mreg = 1e2 for the chiral and UV stages, 1e3 for the pure stage; l2 and l4 controls; Mreg x 10 control |
+| Regularisation of the double spectral density | not mentioned in 2309; the earlier method paper arXiv:2103.11484 (Section 3) and the code released with arXiv:2403.10772 use an M-bound | |rho_ij| <= Mreg with Mreg fixed by an in-model rule (omitted-wave unitarity and L-stability), Mreg = 1e2 for the chiral and UV stages, 1e3 for the pure stage; l2 and l4 controls; Mreg x 10 control |
 | Selection of the amplitude at a boundary point | "only points at the boundary have partial waves associated with them" | the solver's optimal point, plus a diagnostic of the whole near-optimal face (Section 4) |
-| Chiral norm in (3.64) | "with some norm" | one combined 8-dimensional L2 norm (as in your 2403 code); two separate 4-dimensional norms as a control |
+| Chiral norm in (3.64) | "with some norm" | one combined 8-dimensional L2 norm (as in the code released with arXiv:2403.10772); two separate 4-dimensional norms as a control |
 
 Everything else is taken as printed: M = 50, phi_i = (i - 1/2) pi / M, nu_0 = 0, L = 10 waves per isospin, s0 = (1.2 GeV)^2, alpha_s = 0.4, m_u = 4 MeV, m_d = 7.3 MeV, the condensates (2.54), m_pi = 140 MeV, f_pi = 92 MeV, the printed sum-rule numbers (2.56) times s0^(n+2), eps_chi = 2e-3, eps_FF = 6e-5, chiral points s = 1/2, 1, 3/2, 2, moments n = 0, 1 (S0) and -1, 0 (P1).
 
@@ -48,7 +48,7 @@ Ours: 24 support directions at 15-degree steps, all accepted, M=50, L=10, Mreg =
 
 Paper: "restricted by the chiral constraints (3.64) with tolerances 6e-3, 4e-3, 2e-3, 1e-3, 6e-4, 2e-4 (from the outer shape inward) ... with some norm".
 
-Ours: one combined 8-dimensional L2 norm on the four-point residuals (the packaging of your 2403 code), Mreg = 1e2. At eps_chi = 2e-3 the +x end is 0.082757 (paper 0.0825728, +0.2 %) and the vertical section at x_ref has width 0.0007618 (paper 0.0007598); the +x ends of the six tolerances decrease monotonically (0.1608, 0.1255, 0.0828, 0.0551, 0.0411, 0.0223 for eps_chi = 6e-3 ... 2e-4). The two-norm control (chi-c) moves the +x end by less than the ladder spacing.
+Ours: one combined 8-dimensional L2 norm on the four-point residuals (the packaging of the code released with arXiv:2403.10772), Mreg = 1e2. At eps_chi = 2e-3 the +x end is 0.082757 (paper 0.0825728, +0.2 %) and the vertical section at x_ref has width 0.0007618 (paper 0.0007598); the +x ends of the six tolerances decrease monotonically (0.1608, 0.1255, 0.0828, 0.0551, 0.0411, 0.0223 for eps_chi = 6e-3 ... 2e-4). The two-norm control (chi-c) moves the +x end by less than the ladder spacing.
 
 ![Fig. 4: paper (left) and our six +x ends plus the eps_chi = 2e-3 sections with the digitised eps_chi = 2e-3 boundary (right).](figures/fig4.png)
 *Fig. 4: paper (left) and our six +x ends plus the eps_chi = 2e-3 sections with the digitised eps_chi = 2e-3 boundary (right).*
@@ -152,12 +152,12 @@ The tip face is rigid in the P1 observables and does not contain your P1 shape; 
 
 ## 5. Questions
 
-The following items would let us close the gap or confirm that it is real. We have your 2403 and 2505 codes and can see how they treat these points, but we are asking specifically about the 2309 runs.
+The following items would let us close the gap or confirm that it is real. We have read the code released with the follow-up paper (arXiv:2403.10772) and the current code (arXiv:2505.19332) and can see how they treat these points; we are asking specifically about the runs behind arXiv:2309.12402.
 
 1. Which norm was used in (3.73), and is the QCD value compared with the raw moment or with the normalised one (divided by s0^(n+2))? The raw per-moment box is the only reading with eps_SR = 2e-3 that is feasible in our implementation.
 2. In (3.75), is the factor between F and script-F evaluated at each node above s0 or frozen at s0?
-3. Was a bound on the double spectral density rho_ij (as in 2103.11484 Section 3, or the l4 bound of your 2403 code) applied in the 2309 runs, and at what scale? Without any bound the finite problem is ill-posed at 192-bit precision; with our in-model rule the +x ends agree with your Figs. 3 and 4 to 0.4 %.
-4. Were the Fig. 9-10 amplitudes the solver's optimal point of the support problem, or was a saturation / Watson step (as in your later code) already used to select the amplitude at each of the three points?
+3. Was a bound on the double spectral density rho_ij (as in arXiv:2103.11484 Section 3, or the l4 bound in the code released with arXiv:2403.10772) applied in the 2309 runs, and at what scale? Without any bound the finite problem is ill-posed at 192-bit precision; with our in-model rule the +x ends agree with your Figs. 3 and 4 to 0.4 %.
+4. Were the Fig. 9-10 amplitudes the solver's optimal point of the support problem, or was a saturation / Watson step (as in the current code, arXiv:2505.19332) already used to select the amplitude at each of the three points?
 5. Could you share the (f00(3), f11(3)) coordinates and |S_P1| of the red, pink and light pink points, and the value of s0 used for Figs. 8-11?
 
 ## 6. Receipts

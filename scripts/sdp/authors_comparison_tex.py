@@ -6,6 +6,7 @@ Writes REPRODUCTION_COMPARISON_EN.tex next to the figures/ folder and compiles R
 from __future__ import annotations
 
 import argparse
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -21,13 +22,13 @@ def f(x, d=4):
     ax = abs(x)
     if ax != 0 and ax < 1e-2:
         m, e = f"{x:.{max(d-1,2)}e}".split("e")
-        return f"\\ensuremath{{{float(m):.{max(d-2,2)}g}\\times10^{{{int(e)}}}}}"
+        return f"\\ensuremath{{{float(m):.{max(d-1,2)}g}\\times10^{{{int(e)}}}}}"
     t = f"{x:.{d}g}"
     return f"\\ensuremath{{{t}}}" if t.startswith("-") else t
 
 
 def pct(a, b):
-    return f"{(a / b - 1) * 100:+.1f}\\,\\%"
+    return f"\\ensuremath{{{(a / b - 1) * 100:+.1f}\\,\\%}}"
 
 
 def esc(s):
@@ -70,9 +71,17 @@ def main(argv=None):
 \titleformat{\subsection}{\normalsize\bfseries\color{ink}}{\thesubsection}{0.6em}{}
 \titlespacing*{\section}{0pt}{16pt}{6pt}\titlespacing*{\subsection}{0pt}{12pt}{4pt}
 \newcommand{\paper}[1]{{\color{quote}\itshape #1}}
+\newcommand{\note}[1]{{\color{quote}\itshape (#1)}}
+\newcommand{\fup}{the follow-up paper \href{https://arxiv.org/abs/2403.10772}{[arXiv:2403.10772]}}
+\newcommand{\fupc}{the code released with \href{https://arxiv.org/abs/2403.10772}{[arXiv:2403.10772]}}
+\newcommand{\cur}{the current code of \href{https://arxiv.org/abs/2505.19332}{[arXiv:2505.19332]}}
+\newcommand{\meth}{the earlier method paper \href{https://arxiv.org/abs/2103.11484}{[arXiv:2103.11484]}}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
-\setlength{\parskip}{4pt}\setlength{\parindent}{0pt}\setlength{\emergencystretch}{2.5em}
-\renewcommand{\arraystretch}{1.15}
+\linespread{1.18}
+\setlength{\parskip}{7pt}\setlength{\parindent}{0pt}\setlength{\emergencystretch}{2.5em}
+\renewcommand{\arraystretch}{1.28}
+\setlength{\tabcolsep}{5pt}
+\captionsetup[table]{labelformat=simple,labelfont=bf,skip=6pt}
 \begin{document}
 {\LARGE\bfseries Reproduction of arXiv:2309.12402 with SDPB}\\[4pt]
 {\large Comparison against the paper's figures}\\[6pt]
@@ -81,32 +90,60 @@ Code and receipts: branch \texttt{sdpb-2309-regularised}, folder \texttt{docs/re
 \vspace{6pt}\hrule\vspace{8pt}
 
 \section{What was done}
-We reproduced the finite S-matrix / form-factor bootstrap of \emph{Bootstrapping gauge theories} (arXiv:2309.12402 v3) from the equations of Sections~2 and~3 of the paper and compared the result with each figure. The optimiser is SDPB 3.1.0 (192-bit arithmetic, duality gap $10^{-6}$, primal and dual error $10^{-10}$); no other solver was used. The discretised operators---the conformal map and grid (3.58)--(3.62), the cot kernel (3.67), the angular projections of (2.7), the current kernels (3.68)--(3.75)---were derived from the paper and checked independently: a Mathematica script recomputes the formulas at $M=50$; an independent reconstruction of the (2.7) projections agrees with the production operators to $5\times10^{-15}$ over all 3876 coefficients; every accepted solution is re-verified against all original constraints in Arb interval arithmetic. The comparison thresholds for each figure were fixed before the corresponding runs (files \texttt{receipts/GATE\_PREREGISTRATION.md}, \texttt{receipts/GATE\_LOG.md}).
+This document compares our reproduction with \emph{Bootstrapping gauge theories} by Yifei He and Martin Kruczenski \note{arXiv:2309.12402, version 3} figure by figure.
 
-The paper leaves five numerical items unstated. They decide the outcome for Figures~8--10, so we list them with the readings we ran.
+We use SDPB 3.1.0 as the only optimiser \note{192-bit arithmetic, duality gap $10^{-6}$, primal and dual error $10^{-10}$}. The finite problem is written directly as an SDPB polynomial-matrix program; no other solver was involved at any stage.
 
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.27\textwidth}>{\raggedright\arraybackslash}p{0.27\textwidth}Y@{}}
+The discretised operators were derived from Sections~2 and~3 of the paper \note{conformal map and grid (3.58)--(3.62), cot kernel (3.67), angular projections of (2.7), current kernels (3.68)--(3.75)}.
+
+Three independent checks are applied. A Mathematica script recomputes the formulas at $M=50$. An independent reconstruction of the (2.7) projections agrees with the production operators to $5\times10^{-15}$ over all 3876 coefficients. Every accepted solution is re-verified against all original constraints in Arb interval arithmetic.
+
+The comparison threshold for each figure was fixed before the corresponding runs \note{files \texttt{receipts/GATE\_PREREGISTRATION.md} and \texttt{receipts/GATE\_LOG.md}}.
+
+Table~\ref{tab:inputs} lists the inputs taken as printed. The paper leaves five numerical items unstated; they decide the outcome for Figures~8--10, and Table~\ref{tab:open} lists them with the readings we ran.
+
+\begin{table}[H]\small
+\caption{Inputs taken as printed in the paper.}\label{tab:inputs}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.30\textwidth}Y@{}}
+\toprule
+Discretisation & $M=50$, $\phi_i=(i-\tfrac12)\pi/M$, $\nu_0=0$; unitarity for $L=10$ waves per isospin \\
+Matching scale and QCD inputs & $s_0=(1.2\,\text{GeV})^2$, $\alpha_s=0.4$, $m_u=4$\,MeV, $m_d=7.3$\,MeV, condensates (2.54), $m_\pi=140$\,MeV, $f_\pi=92$\,MeV \\
+Sum rules & printed numbers (2.56) times $s_0^{\,n+2}$; moments $n=0,1$ (S0) and $n=-1,0$ (P1); $\epsilon^{SR}=2\times10^{-3}$ \\
+Form factors & $\epsilon^{FF}=6\times10^{-5}$ in (3.75) \\
+Chiral matching & points $s=\tfrac12,1,\tfrac32,2$; $\epsilon^\chi=2\times10^{-3}$ \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[H]\small
+\caption{Items the paper leaves unstated, and the readings we ran.}\label{tab:open}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.26\textwidth}>{\raggedright\arraybackslash}p{0.25\textwidth}Y@{}}
 \toprule
 Item & Paper text & Readings run \\
 \midrule
-Norm of the sum-rule tolerance (3.73), $\epsilon^{SR}=2\times10^{-3}$ & \paper{with some norm} & per-moment box on the raw moments (main line); per-wave $L^2$ ball (the structure of your 2403 code); relative 10\,\% per moment \\
-Evaluation point of the factor between $F$ and $\mathcal F$ in (3.75) & \paper{which we evaluate at $s=s_0$} (in the estimate of $\epsilon^{FF}$) & factor at each node $s_i>s_0$ (main line); factor frozen at $s_0$ \\
-Regularisation of the double spectral density & not mentioned in 2309; 2103.11484 Section~3 and your 2403 code use an $M$-bound & $|\rho_{ij}|\le M_{\rm reg}$ with $M_{\rm reg}$ fixed by an in-model rule (omitted-wave unitarity and $L$-stability): $10^2$ for the chiral and UV stages, $10^3$ for the pure stage; $\ell^2$, $\ell^4$ and $M_{\rm reg}\times10$ controls \\
-Amplitude at a boundary point & \paper{only points at the boundary have partial waves associated with them} & the solver's optimal point, plus a diagnostic of the whole near-optimal face (Section~4) \\
-Chiral norm in (3.64) & \paper{with some norm} & one combined 8-dimensional $L^2$ norm (as in your 2403 code); two separate 4-dimensional norms as a control \\
+Norm of the sum-rule tolerance (3.73), $\epsilon^{SR}=2\times10^{-3}$ & \paper{with some norm} & per-moment box on the raw moments \note{main line}; per-wave $L^2$ ball \note{the structure of \fupc}; relative 10\,\% per moment \\
+\addlinespace
+Evaluation point of the factor between $F$ and $\mathcal F$ in (3.75) & \paper{which we evaluate at $s=s_0$} \note{in the estimate of $\epsilon^{FF}$} & factor at each node $s_i>s_0$ \note{main line}; factor frozen at $s_0$ \\
+\addlinespace
+Regularisation of the double spectral density & not mentioned in the paper; \meth, Section~3, and \fupc\ use an $M$-bound & $|\rho_{ij}|\le M_{\rm reg}$ with $M_{\rm reg}$ fixed by an in-model rule \note{omitted-wave unitarity and $L$-stability}: $10^2$ for the chiral and UV stages, $10^3$ for the pure stage; $\ell^2$, $\ell^4$ and $M_{\rm reg}\times10$ controls \\
+\addlinespace
+Amplitude at a boundary point & \paper{only points at the boundary have partial waves associated with them} & the solver's optimal point, plus a diagnostic of the whole near-optimal face \note{Section~4} \\
+\addlinespace
+Chiral norm in (3.64) & \paper{with some norm} & one combined 8-dimensional $L^2$ norm \note{as in \fupc}; two separate 4-dimensional norms as a control \\
 \bottomrule
 \end{tabularx}
-
-Everything else is taken as printed: $M=50$, $\phi_i=(i-\tfrac12)\pi/M$, $\nu_0=0$, $L=10$ waves per isospin, $s_0=(1.2\,\text{GeV})^2$, $\alpha_s=0.4$, $m_u=4$\,MeV, $m_d=7.3$\,MeV, the condensates (2.54), $m_\pi=140$\,MeV, $f_\pi=92$\,MeV, the printed sum-rule numbers (2.56) times $s_0^{\,n+2}$, $\epsilon^\chi=2\times10^{-3}$, $\epsilon^{FF}=6\times10^{-5}$, chiral points $s=\tfrac12,1,\tfrac32,2$, moments $n=0,1$ (S0) and $n=-1,0$ (P1).
+\end{table}
 
 \section{Summary}
-\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}p{0.24\textwidth}Y>{\raggedright\arraybackslash}p{0.22\textwidth}@{}}
+\begin{table}[H]\small
+\caption{Figure-by-figure summary. Details and the side-by-side figures follow in Section~3.}\label{tab:summary}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}p{0.23\textwidth}Y>{\raggedright\arraybackslash}p{0.21\textwidth}@{}}
 \toprule
 Figure & Paper statement & Our result & Agreement \\
 \midrule
 """
-    tex += (f"Fig.~3 & pure-unitarity region, $M=50$, $L=10$ & $+x$ end {f(c1['f00_max']['ours'],6)} vs {f(c1['f00_max']['paper'],6)} ({pct(c1['f00_max']['ours'],c1['f00_max']['paper'])}); $-x$ end {f(c1['f00_min']['ours'],5)} vs {f(c1['f00_min']['paper'],5)}; $f_1^1$ range $[{f(c1['f11_min']['ours'],4)},{f(c1['f11_max']['ours'],4)}]$ vs $[{f(c1['f11_min']['paper'],4)},{f(c1['f11_max']['paper'],4)}]$ & $+x$ end agrees; our region lies inside yours on the $-x$ and $\\pm y$ sides \\\\\n"
-            f"Fig.~4 & chiral constraints collapse the region onto $f_1^1=-f_0^0/15$ & $\\epsilon^\\chi=2\\times10^{{-3}}$: $+x$ end {f(c2['x_end_eps002']['ours'],6)} vs {f(c2['x_end_eps002']['paper'],6)} ({pct(c2['x_end_eps002']['ours'],c2['x_end_eps002']['paper'])}); $x_{{\\rm ref}}$ section width {f(c2['xref_width_eps002']['width'],4)} vs {f(c2['xref_width_eps002']['paper'],4)}; six-tolerance ladder monotone & agrees \\\\\n"
+    tex += (f"Fig.~3 & pure-unitarity region, $M=50$, $L=10$ & $+x$ end {f(c1['f00_max']['ours'],6)} vs {f(c1['f00_max']['paper'],6)} ({pct(c1['f00_max']['ours'],c1['f00_max']['paper'])}); $-x$ end {f(c1['f00_min']['ours'],5)} vs {f(c1['f00_min']['paper'],5)}; $f_1^1$ range $[{f(c1['f11_min']['ours'],4)},{f(c1['f11_max']['ours'],4)}]$ vs $[{f(c1['f11_min']['paper'],4)},{f(c1['f11_max']['paper'],4)}]$ & $+x$ end agrees; our region lies inside yours on the $-x$ and $\\pm y$ sides \\\\\\addlinespace\n"
+            f"Fig.~4 & chiral constraints collapse the region onto $f_1^1=-f_0^0/15$ & $\\epsilon^\\chi=2\\times10^{{-3}}$: $+x$ end {f(c2['x_end_eps002']['ours'],6)} vs {f(c2['x_end_eps002']['paper'],6)} ({pct(c2['x_end_eps002']['ours'],c2['x_end_eps002']['paper'])}); $x_{{\\rm ref}}$ section width {f(c2['xref_width_eps002']['width'],5)} vs {f(c2['xref_width_eps002']['paper'],5)}; six-tolerance ladder monotone & agrees \\\\\n"
             f"Fig.~5 & subthreshold waves nearly linear; the S0 chiral zero moves with $\\epsilon^\\chi$ & RMS $\\le 6.4\\,\\%$ of $f_0^0(3)$ against the digitised curves at $\\epsilon^\\chi=2,4,6\\times10^{{-3}}$; S0 zero at $s=0.426$, $0.293$, absent & agrees \\\\\n"
             f"Fig.~7 & chiral-only phases: S0, S2 agree with experiment, P1 has no $\\rho$ & RMS against the digitised curves S0 {f(c4['S0']['rms_deg'],3)}$^\\circ$, S2 {f(c4['S2']['rms_deg'],3)}$^\\circ$, P1 {f(c4['P1']['rms_deg'],3)}$^\\circ$; no P1 crossing below 1.2\\,GeV & agrees \\\\\n"
             f"Fig.~8 & with the sum rules the upper boundary shrinks much more than the lower & upper shrink / lower rise at $x_{{\\rm ref}}$: {f(ra['upper shrink at x_ref']['ours'],3)} / {f(ra['lower rise at x_ref']['ours'],3)} (node factor), {f(rf['upper shrink at x_ref']['ours'],3)} / {f(rf['lower rise at x_ref']['ours'],3)} (frozen factor); paper $2.32\\times10^{{-4}}$ / $3.7\\times10^{{-5}}$. $+x$ end {f(ra['UV +x end']['ours'],5)} / {f(rf['UV +x end']['ours'],5)} vs 0.08112 & the asymmetry does not appear in any feasible reading \\\\\n"
@@ -115,6 +152,7 @@ Figure & Paper statement & Our result & Agreement \\
             f"Fig.~11 & good convergence in $L$; the $\\rho$ peak shifts with $M$ & P1 crossing at $M=50$, $L=8/10/12$: {f(c8[(50,8)]['P1_crossing_MeV'],4)} / {f(c8[(50,10)]['P1_crossing_MeV'],4)} / {f(c8[(50,12)]['P1_crossing_MeV'],4)}\\,MeV; $L=10$, $M=45/50/60$: {f(c8[(45,10)]['P1_crossing_MeV'],4)} / {f(c8[(50,10)]['P1_crossing_MeV'],4)} / {f(c8[(60,10)]['P1_crossing_MeV'],4)}\\,MeV; S0 at 1\\,GeV 150--165$^\\circ$ (paper about 95$^\\circ$) & $L$-stability agrees; the $M$ shift is 37\\,MeV; the S0 level differs \\\\\n")
     tex += r"""\bottomrule
 \end{tabularx}
+\end{table}
 
 \section{Figure-by-figure comparison}
 In each figure the left (or upper) panel is the paper's figure rendered from the arXiv source; the right (or lower) panel shows our accepted solutions with the digitised paper curve or boundary overlaid. Paper statements are quoted in \paper{grey italics}.
@@ -126,7 +164,7 @@ In each figure the left (or upper) panel is the paper's figure rendered from the
     tex += (f"Ours: 24 support directions at 15$^\\circ$ steps, all accepted, $M=50$, $L=10$, $M_{{\\rm reg}}=10^3$ (the six first omitted waves stay within $|S|\\le1.02$ at every node and the $L=8/10/12$ endpoints agree to 2\\,\\%). Extrema against the digitised figure: $f_0^0$ max {f(c1['f00_max']['ours'],6)} vs {f(c1['f00_max']['paper'],6)} ({pct(c1['f00_max']['ours'],c1['f00_max']['paper'])}), $f_0^0$ min {f(c1['f00_min']['ours'],5)} vs {f(c1['f00_min']['paper'],5)}, $f_1^1$ min {f(c1['f11_min']['ours'],4)} vs {f(c1['f11_min']['paper'],4)}, $f_1^1$ max {f(c1['f11_max']['ours'],4)} vs {f(c1['f11_max']['paper'],4)}. The $+x$ end is insensitive to $M_{{\\rm reg}}$ (2.2116 / 2.2245 / 2.2305 at $10^2$ / $10^3$ / $10^4$). The three other extrema lie inside your region by 15--23\\,\\%; these are the directions where the amplitudes are large and the $|\\rho_{{ij}}|$ bound is active. We read this as a measurement of the unstated regulariser rather than of the model; an $M_{{\\rm reg}}=10^4$ control for these three directions is running.\n\n"
             "\\begin{figure}[H]\\centering\\includegraphics[width=\\textwidth]{figures/fig3.png}\\caption{Fig.~3: paper (left) and our 24 support points with the digitised boundary (right).}\\end{figure}\n\n"
             "\\subsection{Fig.~4, chiral constraints}\n\\paper{``restricted by the chiral constraints (3.64) with tolerances $6\\times10^{-3}$, $4\\times10^{-3}$, $2\\times10^{-3}$, $1\\times10^{-3}$, $6\\times10^{-4}$, $2\\times10^{-4}$ (from the outer shape inward) \\dots\\ with some norm''}\n\n"
-            f"Ours: one combined 8-dimensional $L^2$ norm on the four-point residuals (the packaging of your 2403 code), $M_{{\\rm reg}}=10^2$. At $\\epsilon^\\chi=2\\times10^{{-3}}$ the $+x$ end is {f(c2['x_end_eps002']['ours'],6)} (paper {f(c2['x_end_eps002']['paper'],6)}, {pct(c2['x_end_eps002']['ours'],c2['x_end_eps002']['paper'])}) and the vertical section at $x_{{\\rm ref}}$ has width {f(c2['xref_width_eps002']['width'],4)} (paper {f(c2['xref_width_eps002']['paper'],4)}). The $+x$ ends of the six tolerances decrease monotonically: {ladder} for $\\epsilon^\\chi=6\\times10^{{-3}}\\dots2\\times10^{{-4}}$. The two-norm control moves the $+x$ end by less than the ladder spacing.\n\n"
+            f"Ours: one combined 8-dimensional $L^2$ norm on the four-point residuals (the packaging of \fupc), $M_{{\\rm reg}}=10^2$. At $\\epsilon^\\chi=2\\times10^{{-3}}$ the $+x$ end is {f(c2['x_end_eps002']['ours'],6)} (paper {f(c2['x_end_eps002']['paper'],6)}, {pct(c2['x_end_eps002']['ours'],c2['x_end_eps002']['paper'])}) and the vertical section at $x_{{\\rm ref}}$ has width {f(c2['xref_width_eps002']['width'],5)} (paper {f(c2['xref_width_eps002']['paper'],5)}). The $+x$ ends of the six tolerances decrease monotonically: {ladder} for $\\epsilon^\\chi=6\\times10^{{-3}}\\dots2\\times10^{{-4}}$. The two-norm control moves the $+x$ end by less than the ladder spacing.\n\n"
             "\\begin{figure}[H]\\centering\\includegraphics[width=\\textwidth]{figures/fig4.png}\\caption{Fig.~4: paper (left); our six $+x$ ends and the $\\epsilon^\\chi=2\\times10^{-3}$ sections with the digitised $\\epsilon^\\chi=2\\times10^{-3}$ boundary (right).}\\end{figure}\n\n"
             "\\subsection{Fig.~5, subthreshold partial waves}\n\\paper{``For the larger tolerances the partial waves are not approximately linear \\dots\\ the chiral zero of the amplitude disappears for the blue points. \\dots\\ The value $\\epsilon^\\chi=0.002$ \\dots\\ allows the physical value of $f_\\pi$.''}\n\n"
             "Ours: the curves are evaluated from the Arb coefficients of the accepted leaves on $0.05\\le s\\le3.95$ at the upper-branch $x_{\\rm ref}$ representative of each tolerance. The RMS against your digitised curves is at most 6.4\\,\\% of $f_0^0(3)$ (threshold 8\\,\\%); the S0 zero sits at $s=0.426$ ($2\\times10^{-3}$), $0.293$ ($4\\times10^{-3}$) and is absent at $6\\times10^{-3}$, as in the figure.\n\n"
@@ -170,16 +208,22 @@ In each figure the left (or upper) panel is the paper's figure rendered from the
             "The tip face is rigid in the P1 observables and does not contain your P1 shape. The $x_{\\rm ref}$ face is degenerate---the premise that a boundary point carries one set of partial waves does not hold there---and it still excludes your P1 phase at both nodes. Choosing a different point on these faces, or a different solver, cannot reproduce Fig.~9 from this constraint set.\n\n"
             f"\\textbf{{Regulariser scale.}} Raising $M_{{\\rm reg}}$ from $10^2$ to $10^3$ moves the UV $+x$ end by {mreg_x}, the P1 crossing by {mreg_dm}\\,MeV and $\\min|S_{{P1}}|$ by {mreg_de}; the Fig.~8 asymmetry does not appear at either scale.\n\n"
             "\\begin{figure}[H]\\centering\\includegraphics[width=0.8\\textwidth]{figures/face_ranges.png}\\caption{Ranges of the node functionals over the near-optimal faces (bars) against the floor $1-\\operatorname{Re}S=1$ required by the paper's phases (dashed).}\\end{figure}\n\n"
-            "\\section{Questions}\nThe following items would let us close the gap or confirm that it is real. We have your 2403 and 2505 codes and can see how they treat these points; we are asking specifically about the 2309 runs.\n"
+            "\\section{Questions}\nThe following items would let us close the gap or confirm that it is real. We have read the code released with \fup\ and \cur\ and can see how they treat these points; we are asking specifically about the runs behind arXiv:2309.12402.\n"
             "\\begin{enumerate}[leftmargin=*,itemsep=2pt]\n"
             "\\item Which norm was used in (3.73), and is the QCD value compared with the raw moment or with the normalised one (divided by $s_0^{\\,n+2}$)? The raw per-moment box is the only reading with $\\epsilon^{SR}=2\\times10^{-3}$ that is feasible in our implementation.\n"
             "\\item In (3.75), is the factor between $F$ and $\\mathcal F$ evaluated at each node above $s_0$ or frozen at $s_0$?\n"
-            "\\item Was a bound on the double spectral density $\\rho_{ij}$ (as in 2103.11484 Section~3, or the $\\ell^4$ bound of your 2403 code) applied in the 2309 runs, and at what scale? Without any bound the finite problem is ill-posed at 192-bit precision; with our in-model rule the $+x$ ends agree with your Figs.~3 and~4 to 0.4\\,\\%.\n"
-            "\\item Were the Fig.~9--10 amplitudes the solver's optimal point of the support problem, or was a saturation / Watson step (as in your later code) already used to select the amplitude at each of the three points?\n"
+            "\\item Was a bound on the double spectral density $\\rho_{ij}$ (as in \\meth, Section~3, or the $\\ell^4$ bound in \\fupc) applied in the 2309 runs, and at what scale? Without any bound the finite problem is ill-posed at 192-bit precision; with our in-model rule the $+x$ ends agree with your Figs.~3 and~4 to 0.4\\,\\%.\n"
+            "\\item Were the Fig.~9--10 amplitudes the solver's optimal point of the support problem, or was a saturation / Watson step (as in \\cur) already used to select the amplitude at each of the three points?\n"
             "\\item Could you share the $(f_0^0(3),f_1^1(3))$ coordinates and $|S_{P1}|$ of the red, pink and light pink points, and the value of $s_0$ used for Figs.~8--11?\n"
             "\\end{enumerate}\n\n"
             "\\section{Receipts}\n\\texttt{receipts/C1\\_RESULT.json} \\dots\\ \\texttt{C8\\_RESULT.json} (per-figure verdicts on the pre-registered rules), \\texttt{receipts/FACE\\_RESULT.json} (face diagnostic), \\texttt{receipts/UV\\_REPRESENTATIVE\\_SELECTION.json} and \\texttt{IR\\_REPRESENTATIVE\\_SELECTION.json} (frozen representative choices), \\texttt{receipts/GATE\\_LOG.md} (time-stamped log of every run and decision). Each accepted leaf keeps its PMP, the SDPB output and the Arb verification (\\texttt{report.json}); these are available on request (several GB).\n"
-            "\\end{document}\n")
+            "\\section*{References}\n\\begin{itemize}[leftmargin=*,itemsep=2pt]\n"
+            "\\item Y.~He and M.~Kruczenski, \\emph{Bootstrapping gauge theories}, \\href{https://arxiv.org/abs/2309.12402}{arXiv:2309.12402} (the paper reproduced here).\n"
+            "\\item Y.~He and M.~Kruczenski, \\emph{Gauge Theory Bootstrap: Pion amplitudes and low energy parameters}, \\href{https://arxiv.org/abs/2403.10772}{arXiv:2403.10772} (the follow-up paper; its released code was read, not run).\n"
+            "\\item Y.~He and M.~Kruczenski, \\emph{The Gauge Theory Bootstrap: Predicting pion dynamics from QCD}, \\href{https://arxiv.org/abs/2505.19332}{arXiv:2505.19332} (current code of the repository \\texttt{gauge-theory-bootstrap}).\n"
+            "\\item Y.~He, A.~Irrgang and M.~Kruczenski, \\href{https://arxiv.org/abs/2103.11484}{arXiv:2103.11484} (the earlier method paper whose Section~3 introduces the regularisation of the double spectral density).\n"
+            "\\end{itemize}\n\\end{document}\n")
+    tex = re.sub(r"^(Fig\.~\d+ & .*\\\\)$", r"\1\\addlinespace", tex, flags=re.M)
     D = D.resolve(); tex_path = D / "REPRODUCTION_COMPARISON_EN.tex"; tex_path.write_text(tex)
     r = subprocess.run(["tectonic", "-o", str(D), str(tex_path)], capture_output=True, text=True, cwd=str(D))
     print(r.stdout[-600:], r.stderr[-1500:])
