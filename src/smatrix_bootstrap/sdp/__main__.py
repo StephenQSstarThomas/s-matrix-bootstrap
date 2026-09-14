@@ -43,6 +43,9 @@ def main(argv=None) -> int:
     p.add_argument("--point",choices=['tip','ref','mid'],help='support: registered point; ref by default')
     p.add_argument('--direction',type=float,nargs=2,help='support: arbitrary nonzero finite linear direction')
     p.add_argument('--fix-f00',type=float,help='support: optional fixed f00(3), requires --direction')
+    p.add_argument('--face-margin',type=float,help='support: face diagnostic; slab d.(f00,f11) >= source value - margin, keeping the source direction and section')
+    p.add_argument('--functional',nargs=4,metavar=('KIND','WAVE','NODE','SENSE'),
+                   help='support: secondary objective on the face, e.g. ImKH P1 38 max (kinds ImKH ImS ImF rho; waves S0 P1)')
     p.add_argument("--duality-gap",type=float)
     a = p.parse_args(argv)
     if a.resume and a.command!='refine':p.error('--resume is supported only by refine')
@@ -51,6 +54,8 @@ def main(argv=None) -> int:
         p.error('--ref-report and --near-report are supported only by uv-select')
     if a.command!='support' and (a.direction is not None or a.fix_f00 is not None):
         p.error('--direction and --fix-f00 are supported only by support')
+    if a.command!='support' and (a.face_margin is not None or a.functional is not None):
+        p.error('--face-margin and --functional are supported only by support')
     if a.command not in ('contrast','ir-figures') and a.ir_selection_report is not None:
         p.error('--ir-selection-report is supported only by contrast or ir-figures')
     if a.command!='figures' and a.subthreshold_replay:
@@ -117,8 +122,16 @@ def main(argv=None) -> int:
         if a.point is not None and (a.direction is not None or a.fix_f00 is not None):
             p.error('--point conflicts with --direction/--fix-f00')
         if a.direction is None and a.fix_f00 is not None:p.error('--fix-f00 requires --direction')
+        if a.face_margin is not None and a.functional is None:p.error('--face-margin needs --functional')
+        if a.functional is not None and (a.point is not None or a.direction is not None or a.fix_f00 is not None):
+            p.error('a functional run keeps the source direction and section; drop --point/--direction/--fix-f00')
         from .sdpb import support_from_saved
         extra={'warm_start':True} if a.warm_start else {}
+        if a.functional is not None:
+            kind,wave,node,sense=a.functional
+            if not node.lstrip('-').isdigit():p.error('--functional NODE must be an integer node index')
+            extra.update(functional={'kind':kind,'wave':wave,'node':int(node),'sense':sense})
+            if a.face_margin is not None:extra['face_margin']=a.face_margin
         if any(t.split('=')[0]=='--timeout' for t in argv):
             if a.timeout<=0 or not a.timeout.is_integer():p.error('support --timeout must be a positive whole number of seconds')
             extra['timeout']=int(a.timeout)

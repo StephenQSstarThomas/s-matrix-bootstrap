@@ -26,6 +26,11 @@ def main(argv=None):
     p.add_argument("--sr", choices=["SR-a", "SR-b", "SR-c", "SR-d"], default="SR-a",
                    help="FESR tolerance packaging: SR-a per-moment box 2e-3 (literal), SR-d per-wave L2 ball 2e-3 "
                         "(authors' code structure with the 2309 value), SR-b/SR-c relative 10%%/20%%")
+    p.add_argument("--sr-free", nargs=2, action="append", metavar=("WAVE", "N"), default=[],
+                   help="moment-range diagnostic: do not impose the FESR box of this (wave, n); repeatable")
+    p.add_argument("--functional", nargs=4, metavar=("KIND", "WAVE", "NODE", "SENSE"),
+                   help="replace the support objective by +-one linear functional (kinds ImKH ImS ImF rho SRmom); "
+                        "with --sr-free this gives the achievable range of a freed moment")
     p.add_argument("--eps-ff", type=float, default=C.EPS_FF)
     p.add_argument("--mq", choices=["mean", "rms"], default="mean")
     p.add_argument("--ff-factor", choices=["frozen", "node"], default="node")
@@ -75,6 +80,19 @@ def main(argv=None):
     if a.basis_source_report and not a.reduce_basis:p.error('--basis-source-report requires --reduce-basis')
     if a.points and a.fix_f00 is not None:
         p.error("--points and --fix-f00 are distinct selection rules")
+    if a.sr_free and not (a.uv and "fesr" in a.uv_parts):
+        p.error("--sr-free needs --uv with the fesr part")
+    for w, n in a.sr_free:
+        if w not in ("S0", "P1") or not n.lstrip("-").isdigit():
+            p.error("--sr-free takes WAVE in {S0,P1} and an integer N")
+    functional = None
+    if a.functional is not None:
+        if a.points or a.generate:
+            p.error("--functional replaces the objective; it takes no --points and no --generate")
+        kind, wave, node, sense = a.functional
+        if not node.lstrip("-").isdigit():
+            p.error("--functional NODE must be an integer")
+        functional = {"kind": kind, "wave": wave, "node": int(node), "sense": sense}
     if a.points and "mid" in a.points and "tip" not in a.points and a.x_tip is None:
         p.error("mid needs this model's accepted tip or an explicitly supplied --x-tip")
     cfg = Settings(**{key: getattr(a, key) for key in asdict(Settings())})
@@ -84,7 +102,8 @@ def main(argv=None):
         ff_frozen_at_s0=a.ff_factor == "frozen", cone_scaling=a.cone_scaling,
         reduce_basis=a.reduce_basis, basis_tol=a.basis_tol, operator_dps=a.operator_dps,
         scattering_prescription=a.scattering_prescription,
-        reg_norm=None if a.reg_norm == "none" else a.reg_norm, reg_bound=a.reg_bound)
+        reg_norm=None if a.reg_norm == "none" else a.reg_norm, reg_bound=a.reg_bound,
+        sr_free=tuple((w, int(n)) for w, n in a.sr_free))
     if a.basis_source_report:
         from .assembly import load_saved_basis
         load_saved_basis(spec,a.basis_source_report)
@@ -94,7 +113,7 @@ def main(argv=None):
     root.mkdir(parents=True, exist_ok=True)
     os.environ.setdefault("SDP_CACHE", str(root / "operator-cache"))
     write_json(root / "selection_rule.json", {"spec": asdict(spec), "points": a.points,
-        "direction": a.direction, "fix_f00": a.fix_f00, "x_tip_input": a.x_tip,
+        "direction": a.direction, "fix_f00": a.fix_f00, "x_tip_input": a.x_tip, "functional": functional,
         "basis_source_report":str(Path(a.basis_source_report).resolve()) if a.basis_source_report else None,
         "ref": C.chiral_reference_point()[0], "mid_rule": "(this-set tip + ref)/2",
         "frozen_before_solving": True,
@@ -122,7 +141,8 @@ def main(argv=None):
             rec = generate(spec, root / label, direction, fixed, cfg,
                            a.start_tol, a.max_rounds, a.add_per_round,basis_source_report=a.basis_source_report)
         else:
-            rec, _, _ = run_once(spec, root / label, direction, fixed, cfg,basis_source_report=a.basis_source_report)
+            rec, _, _ = run_once(spec, root / label, direction, fixed, cfg,basis_source_report=a.basis_source_report,
+                                 functional=functional)
         reports[label] = rec
         write_json(root / "report.json", {"solver": "SDPB", "reports": reports,
                    "accepted": all(r["accepted"] for r in reports.values()) and len(reports)==len(jobs)})

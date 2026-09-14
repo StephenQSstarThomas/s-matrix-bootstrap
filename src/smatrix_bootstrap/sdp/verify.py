@@ -216,7 +216,11 @@ def solution_report(model, sol, tolerance=1e-8):
             out["gram"]["min_equilibrated_eigenvalue"] = worst
             checks["gram"] = worst >= -tolerance
         if "fesr" in spec.uv_parts:
-            v = max(row["violation"] / row["tolerance"] for row in out["fesr"]["rows"])
+            free = {(str(w), int(n)) for w, n in (spec.sr_free or ())}
+            for row in out["fesr"]["rows"]:
+                row["free"] = (row["wave"], row["n"]) in free
+            imposed = [row for row in out["fesr"]["rows"] if not row["free"]]
+            v = max((row["violation"] / row["tolerance"] for row in imposed), default=0.0)
             out["fesr"]["max_violation_over_tolerance"] = v
             checks["fesr"] = v <= tolerance
         if "ff" in spec.uv_parts:
@@ -231,8 +235,27 @@ def solution_report(model, sol, tolerance=1e-8):
         residual = abs(out["f00_3"] - model.fix_f00)
         out["section_residual"] = residual
         checks["section"] = residual <= tolerance * max(1, abs(model.fix_f00))
-    out["objective_recomputed"] = float(np.dot(model.direction,
-                                               [out["f00_3"], out["f11_3"]]))
+    if getattr(model, "functional", None) is not None:
+        f = model.functional
+        if f["kind"] in ("ImKH", "ImS"):
+            from .observables import _wave_h
+            h = _wave_h(ops, c, f["wave"])[f["node"]]
+            raw = float(h.imag) if f["kind"] == "ImKH" else float(h.real)
+        elif f["kind"] == "SRmom":
+            raw = float(C.moment_row(spec.M, f["node"]) * FFM.gram_scale(f["ell"], ops.s) ** 2
+                        @ sol["rho_hat"][f["ell"]])
+        else:
+            raw = float(sol["ImF" if f["kind"] == "ImF" else "rho_hat"][f["ell"]][f["node"]])
+        out["functional"] = dict(f, value=raw)
+        out["objective_recomputed"] = raw if f["sense"] == "max" else -raw
+    else:
+        out["objective_recomputed"] = float(np.dot(model.direction,
+                                                   [out["f00_3"], out["f11_3"]]))
+    if getattr(model, "face", None) is not None:
+        d0, d1 = model.face["direction"]; floor = model.face["value"] - model.face["margin"]
+        here = d0 * out["f00_3"] + d1 * out["f11_3"]
+        out["face"] = dict(model.face, floor=floor, value_here=here, slack=here - floor)
+        checks["face"] = here >= floor - tolerance * max(1.0, abs(floor))
     out["primal_feasible"] = bool(all(checks.values()))
     out["verification_tolerance"] = tolerance
     return out

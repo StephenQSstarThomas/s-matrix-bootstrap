@@ -38,6 +38,62 @@ from .spec import ModelSpec
 
 _PRE = '{"DampedRational":{"base":"1","constant":"1","poles":[]}'
 
+# Secondary linear functionals for the degenerate-face diagnostic.  Each is a
+# single node value that is exactly linear in the PMP variables.
+FUNCTIONAL_KINDS = {
+    "ImKH": "Im(kappa h) = 1 - Re S at one node",
+    "ImS": "Im S = Re(kappa h) at one node",
+    "ImF": "Im F_ell at one node (UV-sector primal variable)",
+    "rho": "rho_hat_ell at one node (UV-sector primal variable)",
+    "SRmom": "one FESR moment (3.73) of wave S0/P1; 'node' carries n (S0: 0,1; P1: -1,0)",
+}
+
+
+def free_moments(spec):
+    return {(str(w), int(n)) for w, n in (spec.sr_free or ())}
+
+
+def check_face(face):
+    """``d.(f00, f11) >= value - margin``: the near-optimal slab of a completed support."""
+    if face is None:
+        return None
+    d = np.asarray(face["direction"], dtype=float)
+    value, margin = float(face["value"]), float(face["margin"])
+    if d.shape != (2,) or not np.all(np.isfinite(d)) or not np.any(d != 0):
+        raise ValueError("face direction must be a nonzero finite pair")
+    if not (np.isfinite(value) and np.isfinite(margin) and margin > 0):
+        raise ValueError("face margin must be a positive finite number")
+    return {"direction": d.tolist(), "value": value, "margin": margin}
+
+
+def check_functional(functional, spec):
+    """Validate ``{kind, wave, node, sense}`` against the model; adds ``ell``."""
+    if functional is None:
+        return None
+    kind, wave, node, sense = (functional[k] for k in ("kind", "wave", "node", "sense"))
+    if kind not in FUNCTIONAL_KINDS:
+        raise ValueError(f"Unknown functional kind {kind!r}; known: {sorted(FUNCTIONAL_KINDS)}")
+    if wave not in ("S0", "P1"):
+        raise ValueError("functional wave must be S0 or P1")
+    ell = 0 if wave == "S0" else 1
+    if isinstance(node, bool) or not isinstance(node, (int, np.integer)):
+        raise ValueError("functional node must be an integer")
+    if kind == "SRmom":
+        if not (spec.uv and "fesr" in spec.uv_parts):
+            raise ValueError("SRmom needs the UV sector with the FESR part")
+        if node not in C.MOMENTS[ell]:
+            raise ValueError(f"SRmom n must be one of {C.MOMENTS[ell]} for {wave}")
+    elif not 0 <= node < spec.M:
+        raise ValueError(f"functional node must be an integer in [0, {spec.M})")
+    if sense not in ("max", "min"):
+        raise ValueError("functional sense must be max or min")
+    if kind in ("ImF", "rho") and not spec.uv:
+        raise ValueError(f"{kind} is a UV-sector variable; this model has no UV sector")
+    if kind in ("ImKH", "ImS") and spec.scattering_prescription != "mixed-pv":
+        raise ValueError("node functionals are defined for the nodal (mixed-pv) prescription")
+    return {"kind": kind, "wave": wave, "node": int(node), "sense": sense,
+            "ell": 0 if wave == "S0" else 1}
+
 
 def _num(x: float, digits: int = 17) -> str:
     """Coefficient as a JSON string.  Exact zero is printed as "0"."""
@@ -54,12 +110,12 @@ class Pmp:
     """Assemble and stream one PMP file for a ``ModelSpec`` and a direction."""
 
     @classmethod
-    def from_saved(cls, source_report, direction, fix_f00=None):
+    def from_saved(cls, source_report, direction, fix_f00=None, face=None, functional=None):
         from .precision_pmp import restore
-        return restore(cls,source_report,direction,fix_f00)
+        return restore(cls,source_report,direction,fix_f00,face,functional)
 
     def __init__(self, spec: ModelSpec, direction=(1.0, 0.0), fix_f00=None,
-                 digits: int = 17, basis_source_report=None) -> None:
+                 digits: int = 17, basis_source_report=None, face=None, functional=None) -> None:
         if spec.B is not None and spec.B_norm == "l4":
             raise ValueError("l4 density ball is not expressible as a degree-0 PMP "
                              "block of reasonable size; use B_norm='l2' or B=None")
@@ -72,6 +128,7 @@ class Pmp:
         elif spec.reg_bound is not None:
             raise ValueError("reg_bound given without reg_norm")
         self.spec, self.direction, self.fix_f00, self.digits = spec, direction, fix_f00, digits
+        self.face, self.functional = check_face(face), check_functional(functional, spec)
         saved=load_saved_basis(spec,basis_source_report) if basis_source_report is not None else None
         self.basis_source=None if saved is None else saved[1]
         if spec.scattering_prescription=='sine-cardinal' and spec.operator_dps<=17:
@@ -239,6 +296,8 @@ class Pmp:
                     wave = "S0" if ell == 0 else "P1"
                     residuals = []
                     for n in C.MOMENTS[ell]:
+                        if (wave, n) in free_moments(spec):
+                            continue                      # moment-range diagnostic: box not imposed
                         mr = moments[ell,n] if self.precise else C.moment_row(M,n)*g**2
                         mom = self._row(rho=(ell, mr))
                         t, d = tgt[(wave, n)], tol[(wave, n)]
@@ -247,7 +306,7 @@ class Pmp:
                         else:
                             yield [[self._row(y0=t + d) - mom]]
                             yield [[mom - self._row(y0=t - d)]]
-                    if spec.sr_caliber == "SR-d":
+                    if spec.sr_caliber == "SR-d" and residuals:
                         # per-wave L2 ball of radius eps_SR over the two moments
                         yield self._arrow(residuals, C.EPS_SR)
 
@@ -256,6 +315,10 @@ class Pmp:
             r = self._row(a=self.f00)
             yield [[self._row(y0=self.fix_f00) - r]]
             yield [[r - self._row(y0=self.fix_f00)]]
+
+        # ---- optional near-optimal slab of a completed support (face diagnostic)
+        if self.face is not None:
+            yield [[self.face_row()]]
 
     def _regulariser_blocks(self):
         """``|rho_{a,ij}| <= Mreg`` as two 1x1 blocks per double-density value.
@@ -309,8 +372,51 @@ class Pmp:
             blk.append([rows[i]] + [d if j == i else zero for j in range(n)])
         return blk
 
+    # ------------------------------------------------- face diagnostic rows
+    def node_rows(self, wave: str, k: int):
+        """``(Re kappa*h, Im kappa*h)`` coefficient rows of ``wave`` at node ``k``.
+
+        The same rows enter the unitarity disk and the Gram block at that node
+        (``S = 1 + i kappa h``), so ``Im kappa*h = 1 - Re S`` and
+        ``Re kappa*h = Im S`` are exactly linear in the model coordinates.
+        """
+        I, ell = {"S0": (0, 0), "P1": (1, 1)}[wave]
+        if self.precise:
+            ctx.prec = self.precise.bits
+            rows = self.precise.rows(I, ell, node=k) * self.precise.kap[k]
+            proj = self.precise.projected(rows, self.precise_basis)
+            return proj[0], proj[1]
+        re_rows, im_rows = self.gram[ell]
+        return re_rows[k], im_rows[k]
+
+    def functional_row(self) -> np.ndarray:
+        """Unsigned coefficient row of the registered secondary functional."""
+        f = self.functional
+        if f["kind"] == "SRmom":
+            ell, n, M = f["ell"], f["node"], self.spec.M
+            if self.precise:
+                mr = self.precise.uv_data(self.spec)[6][ell, n]
+            else:
+                mr = C.moment_row(M, n) * FFM.gram_scale(ell, self.ops.s) ** 2
+            return self._row(rho=(ell, mr))
+        if f["kind"] in ("ImF", "rho"):
+            unit = np.zeros(self.spec.M); unit[f["node"]] = 1.0
+            return self._row(**{"rho" if f["kind"] == "rho" else "ImF": (f["ell"], unit)})
+        re_row, im_row = self.node_rows(f["wave"], f["node"])
+        return self._row(a=im_row if f["kind"] == "ImKH" else re_row)
+
+    def face_row(self) -> np.ndarray:
+        """``d.(f00, f11) - (value - margin) >= 0`` as one 1x1 block row."""
+        d = ([arb(str(v)) for v in self.face["direction"]] if self.precise
+             else np.asarray(self.face["direction"], dtype=float))
+        floor = self.face["value"] - self.face["margin"]
+        return self._row(a=d[0] * self.f00 + d[1] * self.f11) - self._row(y0=floor)
+
     # ----------------------------------------------------------------- write
     def objective(self) -> np.ndarray:
+        if self.functional is not None:
+            row = self.functional_row()
+            return row if self.functional["sense"] == "max" else -row
         d = ([arb(str(v)) for v in self.direction] if self.precise else np.asarray(self.direction, dtype=float))
         return self._row(a=d[0] * self.f00 + d[1] * self.f11)
 

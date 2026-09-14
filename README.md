@@ -27,6 +27,11 @@ PYTHONPATH=src python -m smatrix_bootstrap.run sdp solve --workdir RUNS/tip \
 # 复用同一 PMP 只换目标（截面、方向扫描）
 PYTHONPATH=src python -m smatrix_bootstrap.run sdp support --source-report RUNS/tip/tip/report.json \
   --direction 0 1 --fix-f00 0.07332139057293464 --out RUNS/section_hi
+# 退化面诊断：保留源叶的方向与截面，加板 d·(f00,f11) ≥ v*−margin，把目标换成一个节点泛函
+# （ImKH = 1−Re S、ImS、ImF、rho；波 S0/P1；节点 0..M−1；max/min），泛函值由 Arb 从节点 S 复算
+PYTHONPATH=src python -m smatrix_bootstrap.run sdp support --source-report RUNS/section_hi/report.json \
+  --face-margin 2e-6 --functional ImKH P1 38 max --out RUNS/face_hi_ImKH_P1_38_max
+PYTHONPATH=src python scripts/sdp/face_eval.py --root RUNS --out RUNS/FACE_RESULT.json   # 规则 F1–F5
 # 未施加分波的幺正性诊断
 PYTHONPATH=src python scripts/sdp/omitted_waves.py RUNS/tip/tip/report.json
 # 测试

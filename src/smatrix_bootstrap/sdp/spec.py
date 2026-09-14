@@ -18,6 +18,7 @@ class ModelSpec:
     uv: bool = False                    # Gram + FESR + form-factor asymptotics
     uv_parts: tuple = ("gram", "fesr", "ff")   # for diagnosing infeasibility
     sr_caliber: str = "SR-b"            # SR-a | SR-b | SR-c
+    sr_free: tuple = ()                 # (wave, n) moments whose FESR box is NOT imposed (moment-range diagnostic)
     eps_ff: float = C.EPS_FF
     ff_frozen_at_s0: bool = True        # historical replay; CLI uses the per-node (3.75) factors
     m_q: float = M_Q

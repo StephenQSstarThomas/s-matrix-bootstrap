@@ -122,7 +122,7 @@ class ArbAudit:
     # ------------------------------------------------------------------
     def audit(self, c: np.ndarray, ImF=None, rho_hat=None, *, chi_caliber="chi-b",
               eps_chi=C.EPS_CHI_MAIN, sr_caliber="SR-b", eps_ff=C.EPS_FF,
-              m_q=None, ff_frozen_at_s0=True) -> dict:
+              m_q=None, ff_frozen_at_s0=True, sr_free=()) -> dict:
         ctx.prec = self.bits
         M = self.M
         ca = [arb(t) if isinstance(t, arb) else arb(float(t)) for t in c]
@@ -204,13 +204,14 @@ class ArbAudit:
         if ImF is not None:
             out.update(self._uv_audit(S_store, ImF, rho_hat, sr_caliber, eps_ff,
                                       C.M_Q if m_q is None else m_q,
-                                      frozen_at_s0=ff_frozen_at_s0))
+                                      frozen_at_s0=ff_frozen_at_s0, sr_free=sr_free))
         return out
 
     def _uv_audit(self, S_store, ImF, rho_hat, sr_caliber, eps_ff, m_q,
-                  frozen_at_s0=True):
+                  frozen_at_s0=True, sr_free=()):
         """Replay the original UV inequalities without float operator exports."""
         ctx.prec = self.bits
+        free = {(str(w), int(n)) for w, n in (sr_free or ())}
         M, s0, pi = self.M, arb(3600) / 49, arb.pi()
         if sr_caliber not in ("SR-a", "SR-b", "SR-c", "SR-d"):
             raise ValueError(sr_caliber)
@@ -262,16 +263,19 @@ class ArbAudit:
                 residual = mom - target
                 pending.append((n, target, tol, mom, residual))
             if sr_caliber == "SR-d":
-                # per-wave L2 ball: one slack shared by both moment rows of the wave
-                l2 = sum((r * r for _, _, _, _, r in pending), arb(0)).sqrt()
+                # per-wave L2 ball: one slack shared by both imposed moment rows of the wave
+                l2 = sum((r * r for n, _, _, _, r in pending if (wave, n) not in free), arb(0)).sqrt()
                 shared = arb(".002") - l2
             for n, target, tol, mom, residual in pending:
                 slack = shared if sr_caliber == "SR-d" else tol - abs(residual)
-                fesr.append(_constraint_row(slack, wave=wave, n=n, moment=float(mom.mid()),
+                row = _constraint_row(slack, wave=wave, n=n, moment=float(mom.mid()),
                             moment_interval=_enclosure(mom), target=_enclosure(target),
                             tolerance=_enclosure(tol), residual=_enclosure(residual),
                             violation=float((-slack).mid()),
-                            packaging="per-wave L2" if sr_caliber == "SR-d" else "per-moment"))
+                            packaging="per-wave L2" if sr_caliber == "SR-d" else "per-moment")
+                if (wave, n) in free:
+                    row.update(free=True, verdict="not_imposed")
+                fesr.append(row)
         out = {"gram": gram, "fesr": fesr, "form_factor": ff,
                "n_gram_blocks": 2 * M, "n_gram_minors": 14 * M,
                "n_ff_bounds": len(ff), "bits": self.bits,
@@ -285,6 +289,7 @@ class ArbAudit:
                    "current_inputs": "Stored binary64 values are exact dyadics; supplied Arb balls retain uncertainty.",
                    "normalization": "F(0)=1; ReF=1+K ImF; rho=k(s)^2 rho_hat"}}
         for family, rows in (("gram", gram), ("fesr", fesr), ("form_factor", ff)):
+            rows = [r for r in rows if not r.get("free")]
             counts = {v: sum(r["verdict"] == v for r in rows) for v in
                       ("certified_pass", "certified_fail", "inconclusive")}
             verdict = ("certified_fail" if counts["certified_fail"] else

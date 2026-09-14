@@ -14,10 +14,11 @@ from .precision import PrecisionRows
 _CACHE = {}
 
 
-def restore(cls, source_report, direction, fix_f00):
+def restore(cls, source_report, direction, fix_f00, face=None, functional=None):
     """Reuse a completed precise PMP's constraints and coordinate basis."""
     from .assembly import Operators
     from .spec import ModelSpec
+    from .pmp import check_face, check_functional
     root = Path(source_report).resolve().parent
     source = json.loads(Path(source_report).read_text())
     if source.get('solver') != 'SDPB' or source['spec'].get('operator_dps',17)<=17:
@@ -37,6 +38,9 @@ def restore(cls, source_report, direction, fix_f00):
     w = cls.__new__(cls)
     w.spec = ModelSpec(**source['spec'])
     w.direction,w.fix_f00,w.digits = direction,fix_f00,source['pmp']['digits']
+    if source.get('face') is not None or source.get('functional') is not None:
+        raise ValueError('A face-diagnostic leaf is terminal; chain supports from its own source leaf')
+    w.face,w.functional = check_face(face),check_functional(functional,w.spec)
     w.basis = np.load(root/'basis.npy') if w.spec.reduce_basis else None
     if w.basis is not None and hashlib.sha256((root/'basis.npy').read_bytes()).hexdigest()!=source['basis']['sha256']:
         raise ValueError('Source coordinate basis hash mismatch')
@@ -114,6 +118,11 @@ def write_prepared(w, path):
                        'polynomials':[[[[v] for v in w._num_vec(sign*row)]]]}
                 stream.write(',' if n else '');stream.write(json.dumps(block,separators=(',',':')));n+=1
             sizes[1]=sizes.get(1,0)+2
+        if w.face is not None:
+            block={'DampedRational':{'base':'1','constant':'1','poles':[]},
+                   'polynomials':[[[[v] for v in w._num_vec(w.face_row())]]]}
+            stream.write(',' if n else '');stream.write(json.dumps(block,separators=(',',':')));n+=1
+            sizes[1]=sizes.get(1,0)+1
         stream.write(']}')
     info = dict(source['pmp'])
     info.update(path=str(path),bytes=Path(path).stat().st_size,n_blocks=n,block_sizes=sizes,
@@ -196,7 +205,7 @@ def verify(w, sol, tolerance=1e-8):
     rh = [y[w.n_a+2*M+e*M:w.n_a+2*M+(e+1)*M] for e in (0,1)] if spec.uv else None
     audit = checker.audit(c,im,rh,chi_caliber=spec.chi_caliber if spec.chiral else None,
         eps_chi=spec.eps_chi,sr_caliber=spec.sr_caliber,eps_ff=spec.eps_ff,
-        m_q=spec.m_q,ff_frozen_at_s0=spec.ff_frozen_at_s0)
+        m_q=spec.m_q,ff_frozen_at_s0=spec.ff_frozen_at_s0,sr_free=spec.sr_free)
     lower = lambda value: arb(value['lower'])
     midpoint = lambda value: float((arb(value['lower'])+arb(value['upper']))/2)
     violations = [-lower(r['slack']) for r in audit['unitarity']]
@@ -245,20 +254,40 @@ def verify(w, sol, tolerance=1e-8):
             checks['gram'] = minimum >= -tolerance
             out['gram'] = {'min_equilibrated_eigenvalue':minimum,'strict_counts':audit['gram_counts']}
         if 'fesr' in spec.uv_parts:
-            checks['fesr'] = all(lower(r['slack']) >= -lower(r['tolerance'])*arb(str(tolerance)) for r in audit['fesr'])
+            checks['fesr'] = all(lower(r['slack']) >= -lower(r['tolerance'])*arb(str(tolerance))
+                                 for r in audit['fesr'] if not r.get('free'))
             out['fesr'] = {'rows':audit['fesr']}
         if 'ff' in spec.uv_parts:
             checks['ff'] = all(lower(r['slack']) >= -lower(r['cap'])*arb(str(2*tolerance+tolerance**2)) for r in audit['form_factor'])
             out['form_factor'] = {'rows':audit['form_factor']}
     for name in ('f00','f11'):
         out[name+'_3'] = midpoint(audit['projection_at_3'][name])
-    obj = sum((arb(str(d))*(arb(audit['projection_at_3'][name]['lower'])+arb(audit['projection_at_3'][name]['upper']))/2
-               for d,name in zip(w.direction,('f00','f11'))),arb(0))
+    if w.functional is None:
+        obj = sum((arb(str(d))*(arb(audit['projection_at_3'][name]['lower'])+arb(audit['projection_at_3'][name]['upper']))/2
+                   for d,name in zip(w.direction,('f00','f11'))),arb(0))
+    else:
+        f = w.functional
+        if f['kind'] in ('ImKH','ImS'):
+            S = checker.last_primary[f['wave']][f['node']]
+            raw = 1-S.real if f['kind']=='ImKH' else S.imag
+        elif f['kind']=='SRmom':
+            row = next(r for r in audit['fesr'] if r['wave']==f['wave'] and r['n']==f['node'])
+            raw = (arb(row['moment_interval']['lower'])+arb(row['moment_interval']['upper']))/2
+        else:
+            raw = y[w.n_a+(2*M if f['kind']=='rho' else 0)+f['ell']*M+f['node']]
+        out['functional'] = dict(f,value=float(raw.mid()),
+            scope='Arb re-evaluation of the registered node functional from the same y')
+        obj = raw if f['sense']=='max' else -raw
     out['objective_recomputed'] = float(obj.mid())
     out['c_norm_inf'] = max(float(v.abs_upper()) for v in c)
     if w.fix_f00 is not None:
         out['section_residual'] = abs(out['f00_3']-w.fix_f00)
         checks['section'] = out['section_residual'] <= tolerance*max(1,abs(w.fix_f00))
+    if w.face is not None:
+        d0,d1 = w.face['direction']; floor = w.face['value']-w.face['margin']
+        here = d0*out['f00_3']+d1*out['f11_3']
+        out['face'] = dict(w.face,floor=floor,value_here=here,slack=here-floor)
+        checks['face'] = here >= floor-tolerance*max(1.,abs(floor))
     out['primal_feasible'] = bool(all(checks.values()))
     out['observables'] = {}
     for wave in WAVES:

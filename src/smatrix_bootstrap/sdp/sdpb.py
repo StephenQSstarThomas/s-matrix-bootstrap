@@ -138,8 +138,10 @@ def execute(workdir, stage, args, cfg, mpi=False):
                {"pid": proc.pid, "command": cmd, "returncode": rc, "terminal": True})
     return {"returncode": rc, "seconds": time.monotonic()-start, "command": cmd}
 
-def run_once(spec, workdir, direction=(1., 0.), fix_f00=None, settings=None, prepared=None,basis_source_report=None,exact_input=False,warm_start=False,resume=False):
+def run_once(spec, workdir, direction=(1., 0.), fix_f00=None, settings=None, prepared=None,basis_source_report=None,exact_input=False,warm_start=False,resume=False,face=None,functional=None):
     if prepared and basis_source_report:raise ValueError('Prepared constraints and transferred basis are distinct reuse modes')
+    if (face is not None or functional is not None) and (exact_input or warm_start):
+        raise ValueError('The face diagnostic adds a block and changes the objective; no exact-input or warm-start reuse')
     if warm_start and (not prepared or exact_input):raise ValueError('Warm start requires the same accepted prepared support source')
     if resume and (not prepared or not exact_input or warm_start):raise ValueError('Resume requires a distinct exact-input refinement')
     origin=json.loads(Path(prepared).read_text()) if exact_input and prepared else None
@@ -153,13 +155,15 @@ def run_once(spec, workdir, direction=(1., 0.), fix_f00=None, settings=None, pre
     if any(dest.iterdir()):
         raise FileExistsError(f"Use a fresh result directory; preserving {dest}")
     rec = {"spec": asdict(spec), "settings": asdict(cfg), "direction": list(direction),
-           "fix_f00": fix_f00, "status": "assembling", "accepted": False,
-           "certified": False, "solver": "SDPB", "pmp_degree": 0}
+           "fix_f00": fix_f00, "face": face, "functional": functional, "status": "assembling",
+           "accepted": False, "certified": False, "solver": "SDPB", "pmp_degree": 0}
     report_path = dest / "report.json"
     write_json(report_path, rec)
     start = time.monotonic()
-    w = (Pmp.from_saved(prepared,direction,fix_f00) if prepared else
-         Pmp(spec, direction=direction, fix_f00=fix_f00, digits=cfg.digits,basis_source_report=basis_source_report))
+    w = (Pmp.from_saved(prepared,direction,fix_f00,face,functional) if prepared else
+         Pmp(spec, direction=direction, fix_f00=fix_f00, digits=cfg.digits,basis_source_report=basis_source_report,
+             face=face, functional=functional))
+    rec['face'],rec['functional'] = w.face,w.functional
     if prepared:
         if any(not np.array_equal(getattr(spec,k),getattr(w.spec,k)) for k in asdict(spec)):
             raise ValueError('Prepared constraints do not match the requested model')
@@ -270,10 +274,25 @@ def run_once(spec, workdir, direction=(1., 0.), fix_f00=None, settings=None, pre
           f"termination={rec['convergence']['terminate_reason']}", flush=True)
     return rec, w, sol
 
-def support_from_saved(source_report, outdir, point=None, gap=None,*,direction=None,fix_f00=None,warm_start=False,timeout=None):
-    """Registered or arbitrary support; reuse base constraints and exact saved basis."""
+def support_from_saved(source_report, outdir, point=None, gap=None,*,direction=None,fix_f00=None,warm_start=False,timeout=None,
+                       face_margin=None,functional=None):
+    """Registered or arbitrary support; reuse base constraints and exact saved basis.
+
+    With ``face_margin`` and ``functional`` the run keeps the source direction and
+    section, adds the slab ``d.(f00,f11) >= source value - margin`` and optimises
+    the registered node functional over that near-optimal face instead.
+    """
     from .spec import ModelSpec
     from .constraints import chiral_reference_point
+    if face_margin is not None and functional is None:
+        raise ValueError('A face slab needs a functional to optimise over it')
+    if functional is not None:
+        if point is not None or direction is not None or fix_f00 is not None:
+            raise ValueError('A functional run keeps the source direction and section')
+        if warm_start:raise ValueError('Warm start is not available for functional runs')
+        if face_margin is not None and (isinstance(face_margin,bool) or not isinstance(face_margin,(int,float))
+                                        or not np.isfinite(face_margin) or face_margin<=0):
+            raise ValueError('face margin must be a positive finite number')
     if point is not None and (direction is not None or fix_f00 is not None):
         raise ValueError('Registered point conflicts with an arbitrary direction or section')
     if direction is None and fix_f00 is not None:raise ValueError('A custom section requires a direction')
@@ -288,8 +307,12 @@ def support_from_saved(source_report, outdir, point=None, gap=None,*,direction=N
             or source.get('verification',{}).get('primal_feasible') is not True
             or source.get('convergence',{}).get('solver_optimal') is not True):
         raise ValueError('Supports require a completed numerically accepted source leaf')
-    fixed=fix_f00
-    if direction is None:
+    fixed,face=fix_f00,None
+    if functional is not None:
+        direction=tuple(float(v) for v in source['direction']);fixed=source.get('fix_f00')
+        if face_margin is not None:
+            face={'direction':list(direction),'value':source['verification']['objective_recomputed'],'margin':float(face_margin)}
+    elif direction is None:
         point=point or 'ref';xr=chiral_reference_point()[0]
         if point not in ('tip','ref','mid'):raise ValueError('Unknown registered point')
         if point=='mid' and (source.get('fix_f00') is not None or source['direction']!=[1.,0.]):
@@ -301,7 +324,8 @@ def support_from_saved(source_report, outdir, point=None, gap=None,*,direction=N
     if timeout is not None:
         if type(timeout) is not int or timeout<=0:raise ValueError('timeout must be a positive integer number of seconds')
         cfg.timeout=timeout
-    result,_,_ = run_once(ModelSpec(**source['spec']),outdir,direction,fixed,cfg,prepared=source_report,warm_start=warm_start)
+    result,_,_ = run_once(ModelSpec(**source['spec']),outdir,direction,fixed,cfg,prepared=source_report,warm_start=warm_start,
+                          face=face,functional=functional)
     return result
 
 def generate(spec, workdir, direction=(1., 0.), fix_f00=None, settings=None,
