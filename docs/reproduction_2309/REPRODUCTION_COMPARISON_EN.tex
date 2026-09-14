@@ -36,13 +36,11 @@
 \vspace{6pt}\hrule\vspace{8pt}
 
 \section{What was done}
-This note compares our reproduction of the finite S-matrix / form-factor bootstrap of \emph{Bootstrapping gauge theories} \note{arXiv:2309.12402, version 3} with the figures of that paper.
+These are the results of our attempt to reproduce \emph{Bootstrapping gauge theories} \note{arXiv:2309.12402, v3}, compared figure by figure with the paper.
 
-The optimisation was carried out with SDPB 3.1.0 \note{192-bit arithmetic, duality-gap threshold $10^{-6}$, primal and dual error thresholds $10^{-10}$}, with the finite problem written directly as a polynomial-matrix program. No other solver was used at any stage.
+We set the finite problem of Section~3 up directly as a polynomial matrix program and solved it with SDPB, at high precision; no other solver was involved. The discretised operators \note{grid and conformal map, cot kernel, angular projections of the Mandelstam representation, current kernels} were rederived from Sections~2 and~3 rather than taken from any existing code, and cross-checked with a Mathematica script. Every solution quoted below was re-verified against the original constraints in interval arithmetic (Arb) after the solve.
 
-The discretised operators were derived from Sections~2 and~3 of the paper \note{the conformal map and collocation grid (3.58)--(3.62), the cot kernel (3.67), the angular projections of the Mandelstam representation (2.7), and the current kernels (3.68)--(3.75)} and were checked in three independent ways: a Mathematica script recomputes the formulas at $M=50$, an independent reconstruction of the (2.7) projections agrees with the production operators to $5\times10^{-15}$ over all 3876 coefficients, and every accepted solution is re-verified against all of the original constraints in Arb interval arithmetic.
-
-Table~\ref{tab:inputs} collects the inputs we took as printed. Five numerical choices are not specified in the paper and turn out to decide the outcome for Figures~8--10; Table~\ref{tab:open} lists them together with the readings we ran.
+Table~\ref{tab:inputs} lists the inputs we took as printed. There are five numerical choices the paper does not spell out, and they turn out to matter for Figs.~8--10; Table~\ref{tab:open} lists them with the readings we tried.
 
 \begin{table}[H]\small
 \caption{Inputs taken as printed in the paper.}\label{tab:inputs}
@@ -58,7 +56,7 @@ Chiral matching & points $s=\tfrac12,1,\tfrac32,2$; $\epsilon^\chi=2\times10^{-3
 \end{table}
 
 \begin{table}[H]\small
-\caption{Choices the paper leaves unspecified, and the readings we ran.}\label{tab:open}
+\caption{Choices the paper does not spell out, and the readings we tried.}\label{tab:open}
 \begin{tabularx}{\textwidth}{@{}P{0.26\textwidth}P{0.25\textwidth}Y@{}}
 \toprule
 Item & Paper text & Readings run \\
@@ -78,7 +76,7 @@ Chiral norm in (3.64) & \paper{with some norm} & one combined 8-dimensional $L^2
 
 \section{Summary}
 \begin{table}[H]\small
-\caption{Figure-by-figure summary; the details and the side-by-side figures follow in Section~3.}\label{tab:summary}
+\caption{Summary; details and figures in Section~3.}\label{tab:summary}
 \begin{tabularx}{\textwidth}{@{}lP{0.23\textwidth}YP{0.21\textwidth}@{}}
 \toprule
 Figure & Paper statement & Our result & Agreement \\
@@ -97,40 +95,40 @@ Fig.~11 & good convergence in $L$; the $\rho$ peak shifts with $M$ & P1 crossing
 \end{table}
 
 \section{Figure-by-figure comparison}
-For each figure, the panel on the left (or top) reproduces the figure from the arXiv source of the paper, and the panel on the right (or bottom) shows our accepted solutions together with the digitised curve or boundary from the paper. Quotations from the paper are set in \paper{grey italics}.
+Left (or top) panels are the figures from the arXiv source; right (or bottom) panels are our solutions with the digitised curves or boundaries overlaid. Quotations from the paper are in \paper{grey italics}.
 
 \subsection{Fig.~3, pure unitarity region}
 \paper{``we have used $M=50$ in (3.61) for discretization and imposed unitarity for 10 partial waves per isospin.''}
 
-We computed 24 support directions in steps of 15$^\circ$, all of which were accepted, at $M=50$, $L=10$ and $M_{\rm reg}=10^3$ \note{at this scale the six lowest omitted waves stay within $|S|\le1.02$ at every node and the $L=8/10/12$ endpoints agree to 2\,\%}. Against the digitised figure the extrema are $f_0^0$ max 2.22445 vs 2.23289 (\ensuremath{-0.4\,\%}), $f_0^0$ min \ensuremath{-2.247} vs \ensuremath{-2.902}, $f_1^1$ min \ensuremath{-0.6243} vs \ensuremath{-0.7336} and $f_1^1$ max 0.06629 vs 0.07932. The $+x$ end hardly depends on $M_{\rm reg}$ (2.2116, 2.2245 and 2.2305 at $10^2$, $10^3$ and $10^4$), whereas the other three extrema lie inside your region by 15--23\,\%; these are the directions in which the amplitudes are largest and the $|\rho_{ij}|$ bound is active, so we regard them as measuring the unspecified regulariser rather than the model itself. A control at $M_{\rm reg}=10^4$ for these three directions is still running.
+We ran 24 support directions, 15$^\circ$ apart, at $M=50$, $L=10$ and $M_{\rm reg}=10^3$ \note{the scale at which the first omitted waves stay unitary to 2\,\% and the $L=8/10/12$ endpoints agree}. Against the digitised figure the extrema are $f_0^0$ max 2.22445 vs 2.23289 (\ensuremath{-0.4\,\%}), $f_0^0$ min \ensuremath{-2.247} vs \ensuremath{-2.902}, $f_1^1$ min \ensuremath{-0.6243} vs \ensuremath{-0.7336} and $f_1^1$ max 0.06629 vs 0.07932. The $+x$ end hardly moves with $M_{\rm reg}$ (2.2116, 2.2245, 2.2305 at $10^2$, $10^3$, $10^4$). The other three extrema come out inside your region by 15--23\,\%; these are the directions where the amplitudes get large and the $|\rho_{ij}|$ bound bites, so we read them as a measure of the regulariser rather than of the model. A run at $M_{\rm reg}=10^4$ in these directions is still going.
 
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{figures/fig3.png}\caption{Fig.~3: the paper (left) and our 24 support points with the digitised boundary (right).}\end{figure}
 
 \subsection{Fig.~4, chiral constraints}
 \paper{``restricted by the chiral constraints (3.64) with tolerances $6\times10^{-3}$, $4\times10^{-3}$, $2\times10^{-3}$, $1\times10^{-3}$, $6\times10^{-4}$, $2\times10^{-4}$ (from the outer shape inward) \dots\ with some norm''}
 
-The chiral constraints are imposed as one combined 8-dimensional $L^2$ norm on the four-point residuals, the packaging used in \fupc, with $M_{\rm reg}=10^2$. At $\epsilon^\chi=2\times10^{-3}$ the $+x$ end is 0.082757 (paper 0.0825728, \ensuremath{+0.2\,\%}) and the vertical section at $x_{\rm ref}$ has width \ensuremath{7.618\times10^{-4}} (paper \ensuremath{7.598\times10^{-4}}); the $+x$ ends of the six tolerances decrease monotonically, 0.1608, 0.1255, 0.0828, 0.0551, 0.0411, 0.0223 for $\epsilon^\chi=6\times10^{-3}$ down to $2\times10^{-4}$. A control with two separate 4-dimensional norms moves the $+x$ end by less than the spacing of this ladder.
+We impose the chiral constraints as a single $L^2$ norm over the eight residuals at the four points, which is what \fupc\ does, with $M_{\rm reg}=10^2$. At $\epsilon^\chi=2\times10^{-3}$ the $+x$ end is 0.082757 (paper 0.0825728, \ensuremath{+0.2\,\%}) and the vertical section at $x_{\rm ref}$ has width \ensuremath{7.618\times10^{-4}} (paper \ensuremath{7.598\times10^{-4}}). The $+x$ ends for the six tolerances are 0.1608, 0.1255, 0.0828, 0.0551, 0.0411, 0.0223 (from $6\times10^{-3}$ down to $2\times10^{-4}$). Splitting the norm into two separate ones moves the $+x$ end by less than the spacing of this ladder.
 
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{figures/fig4.png}\caption{Fig.~4: the paper (left); our six $+x$ ends and the $\epsilon^\chi=2\times10^{-3}$ sections, with the digitised $\epsilon^\chi=2\times10^{-3}$ boundary (right).}\end{figure}
 
 \subsection{Fig.~5, subthreshold partial waves}
 \paper{``For the larger tolerances the partial waves are not approximately linear \dots\ the chiral zero of the amplitude disappears for the blue points. \dots\ The value $\epsilon^\chi=0.002$ \dots\ allows the physical value of $f_\pi$.''}
 
-The subthreshold curves are evaluated from the Arb coefficients of the accepted solutions on $0.05\le s\le3.95$, at the upper-branch $x_{\rm ref}$ representative of each tolerance. Their RMS deviation from your digitised curves is at most 6.4\,\% of $f_0^0(3)$, and the S0 zero sits at $s=0.426$ for $2\times10^{-3}$, at $0.293$ for $4\times10^{-3}$, and is absent at $6\times10^{-3}$, as in the figure.
+The subthreshold curves are evaluated from the accepted solutions at the upper-branch $x_{\rm ref}$ point of each tolerance. They deviate from your digitised curves by at most 6.4\,\% of $f_0^0(3)$ (RMS), and the S0 zero sits at $s=0.426$ for $2\times10^{-3}$, at $0.293$ for $4\times10^{-3}$, and disappears at $6\times10^{-3}$, as in the figure.
 
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{figures/fig5.png}\caption{Fig.~5: the three panels of the paper (top) and ours (bottom).}\end{figure}
 
 \subsection{Fig.~7, chiral-only phase shifts}
 \paper{``We choose a point closest to the black dot \dots\ The partial waves at the magenta point and other nearby agree very well with experimental values for the S0 and S2 waves but not for the P1.''}
 
-The representative point was fixed by a rule chosen before any phase shift was read: among the upper-branch endpoints of the vertical sections at $x_{\rm ref}+\{-0.002,-0.001,0,+0.001,+0.002\}$ we take the one nearest to the black dot. The RMS deviations from your digitised curves are S0 0.388$^\circ$, S2 0.144$^\circ$ and P1 0.456$^\circ$, and P1 shows no 90$^\circ$ crossing below 1.2\,GeV.
+For the representative point we took, among the upper-branch endpoints of the vertical sections at $x_{\rm ref}+\{-0.002,-0.001,0,+0.001,+0.002\}$, the one nearest to the black dot (the rule was fixed before we looked at any phase shift). The RMS deviations from your digitised curves are S0 0.388$^\circ$, S2 0.144$^\circ$ and P1 0.456$^\circ$, and P1 shows no 90$^\circ$ crossing below 1.2\,GeV.
 
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{figures/fig7.png}\caption{Fig.~7: the paper (top) and ours (bottom).}\end{figure}
 
 \subsection{Fig.~8, the region after the sum rules and the form-factor bounds}
 \paper{``the plots are produced by taking $\epsilon^{SR}=2\times10^{-3}$ in (3.73) and $\epsilon^{FF}=6\times10^{-5}$''}; caption: \paper{``The upper boundary shrinks notable but the lower not so much.''}
 
-We ran three readings of $\epsilon^{SR}$ and two of the (3.75) factor. The table gives the values at the $x_{\rm ref}$ section, with the paper values read from the digitised figure.
+We tried three readings of $\epsilon^{SR}$ and two of the (3.75) factor; the table gives the values at the $x_{\rm ref}$ section, with your values read off the digitised figure.
 
 \begin{table}[H]\small\begin{tabularx}{\textwidth}{@{}Yrrrr@{}}\toprule Reading & UV $+x$ end & upper shrink & lower rise & ratio \\\midrule
 raw box $2\times10^{-3}$ per moment, factor at each node & 0.076013 & \ensuremath{2.8\times10^{-4}} & \ensuremath{2.8\times10^{-4}} & 1 \\
@@ -138,14 +136,14 @@ raw box, factor frozen at $s_0$ & 0.079623 & \ensuremath{5.3\times10^{-5}} & \en
 per-wave $L^2$ ball $2\times10^{-3}$, factor frozen at $s_0$ & 0.079541 & \ensuremath{5.3\times10^{-5}} & \ensuremath{2.5\times10^{-4}} & 0.214 \\
 paper (digitised) & 0.08112 & $2.32\times10^{-4}$ & $3.7\times10^{-5}$ & 6.3 \\\bottomrule\end{tabularx}\end{table}
 
-The relative reading, 10\,\% of each moment, turned out to be infeasible in this model. To establish this we removed the box on the S0 $n=0$ moment, kept the other three 10\,\% boxes and every other constraint, and minimised that moment; the minimum is \ensuremath{3.745\times10^{-3}}, 1.57 times the QCD value, so no point of the feasible set lies within 10\,\% of it. In the raw-box reading the accepted solutions sit at the upper edge of three of the four boxes (S0 $n=0$ at $+84\,\%$ of its target, S0 $n=1$ at $+1.8\,\%$, P1 $n=0$ at $+1.4\,\%$), which shows that the sum rules do bind, in the direction of larger spectral integrals.
+The relative reading (10\,\% of each moment) is infeasible in this model: dropping the box on the S0 $n=0$ moment, keeping the other three 10\,\% boxes and everything else, and minimising that moment gives \ensuremath{3.745\times10^{-3}}, 1.57 times the QCD value, so nothing in the feasible set gets within 10\,\% of it. With the raw boxes the solutions sit at the upper edge of three of the four (S0 $n=0$ at $+84\,\%$ of its target, S0 $n=1$ at $+1.8\,\%$, P1 $n=0$ at $+1.4\,\%$): the sum rules do bind, and they push towards larger spectral integrals.
 
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{figures/fig8.png}\caption{Fig.~8: the paper (left); our chiral and chiral+UV boundary points with the digitised boundaries, and a zoom on the $x_{\rm ref}$ region (right).}\end{figure}
 
 \subsection{Fig.~9, P1 phase shift}
 \paper{``The resonance energy where the phase shift crosses $\pi/2$ is slightly shifted from the real world data on the mass of the rho at 770 MeV by roughly 6\,\%.''} The digitised crossings are at 0.827, 0.824 and 0.813\,GeV.
 
-At the three representatives of the same frozen rule (the tip is the $+x$ end, the reference point is the upper-branch point nearest to the black dot, and the mid point is its neighbour towards the tip) we find the following. At the tip the phase crosses 90$^\circ$ at 772.7\,MeV with $|S_{P1}|=0.585$ at 0.79\,GeV; at the mid point it crosses at 738.9\,MeV with $|S_{P1}|$ dropping to 0.077; at the reference point $|S_{P1}|$ falls to 0.24 at 0.73\,GeV and the node values admit two phase branches, the nearest-node lift swinging to $-47^\circ$ while the $+180^\circ$ branch crosses 90$^\circ$ at 708\,MeV. Since the chiral constraints alone (Fig.~7) give no crossing below 1.2\,GeV, the resonance is produced by the sum rules and the form-factor bounds, as in the paper; it appears 40--110\,MeV below yours and the wave is far from elastic there. The paper does not show $|S|$, which we add in the second panel.
+We use the same three points as before (tip $=$ $+x$ end; reference $=$ the upper-branch point nearest the black dot; mid $=$ its neighbour towards the tip). At the tip the phase crosses 90$^\circ$ at 772.7\,MeV with $|S_{P1}|=0.585$ at 0.79\,GeV; at the mid point it crosses at 738.9\,MeV with $|S_{P1}|$ dropping to 0.077; at the reference point $|S_{P1}|$ falls to 0.24 at 0.73\,GeV and the node values admit two phase branches, the nearest-node lift swinging to $-47^\circ$ while the $+180^\circ$ branch crosses 90$^\circ$ at 708\,MeV. With the chiral constraints alone (Fig.~7) there is no crossing below 1.2\,GeV, so the resonance does come from the sum rules and the form-factor bounds, as in the paper. It sits 40--110\,MeV below yours, and the wave is far from elastic there; the paper does not show $|S|$, so we add it in the second panel.
 
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{figures/fig9.png}\caption{Fig.~9: the paper (left) and our P1 phases at the representatives, with the three digitised curves (right).}\end{figure}
 \begin{figure}[H]\centering\includegraphics[width=0.62\textwidth]{figures/fig9_eta.png}\caption{$|S_{P1}|$ at the same points (not shown in the paper).}\end{figure}
@@ -153,7 +151,7 @@ At the three representatives of the same frozen rule (the tip is the $+x$ end, t
 \subsection{Fig.~10, S0 and S2 phase shifts}
 \paper{``the three bootstrap (red, pink, light pink) curves \dots\ coincide at low energy but they spread at high energy.''}
 
-S2 agrees with your curves (RMS 0.354--1.44$^\circ$, endpoints $-28$ to $-32^\circ$ at 1.196\,GeV against your $-18$ to $-36^\circ$). S0 agrees below about 0.6\,GeV and then rises faster, crossing 90$^\circ$ at 0.69\,GeV and reaching 181--192$^\circ$ at 1.196\,GeV, where your curves are at 87--106$^\circ$; since with the chiral constraints alone our S0 matches your Fig.~7 to 0.4$^\circ$, this difference is introduced by the UV constraints.
+S2 agrees with your curves (RMS 0.354--1.44$^\circ$, endpoints $-28$ to $-32^\circ$ at 1.196\,GeV against your $-18$ to $-36^\circ$). S0 agrees below about 0.6\,GeV and then rises faster than yours, crossing 90$^\circ$ at 0.69\,GeV and reaching 181--192$^\circ$ at 1.196\,GeV where your curves are at 87--106$^\circ$. With the chiral constraints alone our S0 matches your Fig.~7 to 0.4$^\circ$, so this is something the UV constraints do.
 
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{figures/fig10.png}\caption{Fig.~10: the paper (top) and ours (bottom).}\end{figure}
 
@@ -169,14 +167,14 @@ S2 agrees with your curves (RMS 0.354--1.44$^\circ$, endpoints $-28$ to $-32^\ci
 (60, 10) & 0.075097 & 738.8 & 0.597 & 156 \\
 \bottomrule\end{tabularx}\end{table}
 
-The $L$ dependence amounts to 1.5\,MeV in the crossing and 0.3\,\% in the endpoint. The $M$ dependence is 37\,MeV, with both $M=45$ and $M=60$ below $M=50$, whereas in your figure the ordering is $M=60<M=45<M=50$; the S0 level at 1\,GeV is 150--165$^\circ$ at every configuration, against about 95$^\circ$ in your figure.
+In $L$ the crossing moves by 1.5\,MeV and the endpoint by 0.3\,\%. In $M$ it moves by 37\,MeV, with both $M=45$ and $M=60$ below $M=50$ (in your figure the order is $M=60<M=45<M=50$). The S0 phase at 1\,GeV is 150--165$^\circ$ for every configuration, against about 95$^\circ$ in yours.
 
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{figures/fig11.png}\caption{Fig.~11: the paper (top) and ours (bottom).}\end{figure}
 
 \section{Why the fine features of Figs.~8--10 do not follow from the stated problem}
-Two diagnostics were applied to the accepted UV solutions, both exact up to the solver tolerance.
+Two more checks on the UV solutions, both exact up to solver tolerance.
 
-\textbf{Near-optimal face.} At a boundary point with support direction $d$ and optimal value $v^*$ we add the constraint $d\cdot(f_0^0,f_1^1)\ge v^*-2\times10^{-6}$ (twice the duality-gap threshold), keep the section, and maximise or minimise one node functional that is linear in the primal variables: $1-\operatorname{Re}S(s_i)$, $\operatorname{Im}S(s_i)$ or $\operatorname{Im}F(s_i)$. The range of the functional over this slab measures how far the amplitude at that boundary point is determined by the extremal problem. Your Fig.~9 phases at the nodes 0.792\,GeV (68.7--76.2$^\circ$) and 0.864\,GeV (112.8--124.1$^\circ$) have $\cos2\delta<0$, so an amplitude with those phases has $1-\operatorname{Re}S>1$ whatever the value of $|S|$.
+\textbf{Near-optimal face.} At a boundary point with support direction $d$ and optimal value $v^*$ we add the constraint $d\cdot(f_0^0,f_1^1)\ge v^*-2\times10^{-6}$ (twice the duality-gap threshold), keep the section, and maximise or minimise one node functional that is linear in the primal variables: $1-\operatorname{Re}S(s_i)$, $\operatorname{Im}S(s_i)$ or $\operatorname{Im}F(s_i)$. The range of the functional over this slab tells us how much of the amplitude at that boundary point is actually fixed by the extremal problem. Your Fig.~9 phases at the nodes 0.792\,GeV (68.7--76.2$^\circ$) and 0.864\,GeV (112.8--124.1$^\circ$) have $\cos2\delta<0$, so any amplitude with those phases has $1-\operatorname{Re}S>1$, whatever $|S|$ is.
 
 \begin{table}[H]\small\begin{tabularx}{\textwidth}{@{}P{0.17\textwidth}P{0.2\textwidth}P{0.17\textwidth}Y@{}}\toprule Representative & Functional & Range over the face & Consequence \\\midrule
 tip ($+x$ end) & $1-\operatorname{Re}S_{P1}$ (0.792\,GeV) & $[1.441,\,1.493]$ & pinned to $\pm0.03$ around the tip's own value 1.470, below the 1.72--1.85 of your curves at $|S|=1$ \\
@@ -187,22 +185,14 @@ $x_{\rm ref}$ upper & $1-\operatorname{Re}S_{P1}$ (0.864\,GeV) & $\le 0.701$ & b
 $x_{\rm ref}$ upper & $\operatorname{Im}F_1$ (0.792\,GeV) & $[0.07843,\,3.71]$ & the vector form factor is essentially free at this point \\
 tip & $1-\operatorname{Re}S_{S0}$ (0.792\,GeV) & $[1.59,\,1.726]$ & the S0 phase is fixed at 111$^\circ$ on the face and only $|S|$ varies (0.79--0.99) \\\bottomrule\end{tabularx}\end{table}
 
-The tip face is rigid in the P1 observables and does not contain your P1 shape. The $x_{\rm ref}$ face is degenerate, in the sense that a boundary point there does not carry a single set of partial waves, and it still excludes your P1 phase at both nodes. A different point on these faces, or a different solver, therefore cannot reproduce Fig.~9 from this constraint set.
+The tip face is rigid in the P1 observables and does not contain your P1 shape. The $x_{\rm ref}$ face is degenerate (a boundary point there does not carry a single set of partial waves) but still excludes your P1 phase at both nodes. So picking a different point on these faces, or a different solver, would not get Fig.~9 out of this constraint set.
 
 \textbf{Regulariser scale.} Raising $M_{\rm reg}$ from $10^2$ to $10^3$ moves the UV $+x$ end by \ensuremath{+0.9\,\%}, the P1 crossing by \ensuremath{-3.6}\,MeV and $\min|S_{P1}|$ by \ensuremath{-0.025}; the Fig.~8 asymmetry does not appear at either scale.
 
 \begin{figure}[H]\centering\includegraphics[width=0.85\textwidth]{figures/face_ranges.png}\caption{Ranges of the node functionals over the near-optimal faces: bars give $[\min,\max]$, triangles the maximum where only that was computed; the dashed line is the floor $1-\operatorname{Re}S=1$ that the phases of the paper require.}\end{figure}
 
-\section{Questions}
-We would be grateful for your help on the following points. They all concern the runs behind arXiv:2309.12402; we have read the code released with \fup\ and \cur, and are aware that several of these choices are made differently there.
-\begin{enumerate}[leftmargin=*,itemsep=4pt]
-\item In (3.73), which norm did you use for the sum-rule residuals, and is the QCD value compared with the raw moment $\int_4^{s_0}\rho(x)x^n\,dx$ or with the normalised one, divided by $s_0^{\,n+2}$ as in (2.56)? In our implementation a per-moment box of half-width $2\times10^{-3}$ on the raw moments is the only reading of $\epsilon^{SR}=2\times10^{-3}$ that is feasible.
-\item In (3.75), is the factor between $F$ and $\mathcal F$ evaluated at each node $s_i>s_0$, or at $s_0$ for all of them? The two readings move the UV $+x$ end from 0.0760 to 0.0796 and change the shape of the P1 wave considerably.
-\item Was a bound on the double spectral density $\rho_{ij}$, of the kind introduced in Section~3 of \meth\ or the $\ell^4$ bound used in \fupc, applied in these runs, and if so at what scale? Without such a bound the finite problem is ill-posed at 192-bit precision, and with our in-model rule the $+x$ ends of Figs.~3 and~4 agree with yours to 0.4\,\%.
-\item For the three points of Figs.~9 and~10, were the plotted amplitudes the optimal points returned by the solver for the support problem, or was a saturation (Watson) step of the kind used in \cur\ already applied to select them? Our face diagnostic suggests that at the $x_{\rm ref}$ point the boundary alone does not fix the P1 wave.
-\item If they are still available, the $(f_0^0(3),f_1^1(3))$ coordinates and $|S_{P1}(s)|$ of the red, pink and light pink points, together with the value of $s_0$ used for Figs.~8--11, would allow a direct comparison.
-\end{enumerate}
-We would be happy to share any of our solutions, the intermediate files or the full log of the runs.
+\section{A request}
+It would help us a great deal to see the code or notebooks behind the 2309 runs, in particular the parts that implement (3.73) and (3.75) and the way the three points of Figs.~9 and~10 were selected. With that we could tell which of the readings above you used and settle the remaining differences; we are happy to share any of our solutions and the full log of our runs in return.
 
 \section*{References}
 \begin{itemize}[leftmargin=*,itemsep=2pt]
