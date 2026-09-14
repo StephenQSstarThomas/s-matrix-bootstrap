@@ -52,6 +52,19 @@ def two_panel(paper_png, title):
     return fig, axr
 
 
+def three_by_two(paper_names, png, suptitle):
+    """Row 1: the paper's three panels; row 2: three axes for our curves.  Returns (fig, axes)."""
+    fig = plt.figure(figsize=(12, 7.6)); fig.suptitle(suptitle, fontsize=10)
+    for j, name in enumerate(paper_names):
+        axp = fig.add_axes([0.02 + 0.325 * j, 0.53, 0.31, 0.40]); pth = png / f"{name}.png"
+        if pth.exists(): axp.imshow(mpimg.imread(pth))
+        axp.axis("off")
+        if j == 0: axp.set_title("paper (2309.12402 v3)", fontsize=9, color=GREY, loc="left")
+    axes = [fig.add_axes([0.06 + 0.325 * j, 0.08, 0.27, 0.38]) for j in range(3)]
+    axes[0].set_title("ours", fontsize=9, loc="left")
+    return fig, axes
+
+
 def polygon_order(pts):
     c = pts.mean(axis=0)
     return np.argsort(np.arctan2(pts[:, 1] - c[1], pts[:, 0] - c[0]))
@@ -107,21 +120,16 @@ def fig4(root, png, out, info):
 
 def fig5(root, png, out, info):
     ref = load_csv("figure5_subthreshold.csv")
-    fig = plt.figure(figsize=(12, 4.6)); fig.suptitle("Fig.5 subthreshold partial waves: paper (left, three panels) vs ours (right)", fontsize=10)
-    for j, name in enumerate(("lin1", "lin2", "lin3")):
-        axp = fig.add_axes([0.01 + 0.155 * j, 0.08, 0.15, 0.8]); p = png / f"{name}.png"
-        if p.exists(): axp.imshow(mpimg.imread(p))
-        axp.axis("off")
-    axes = [fig.add_axes([0.50 + 0.165 * j, 0.14, 0.15, 0.72]) for j in range(3)]
+    fig, axes = three_by_two(("lin1", "lin2", "lin3"), png, "Fig.5 subthreshold partial waves f(s), 0 < s < 4: paper (top) vs ours (bottom)")
     rows = {}
     for j, wave in enumerate(("S0", "P1", "S2")):
         ax = axes[j]
         for k, (tag, eps) in enumerate((("002", 0.002), ("004", 0.004), ("006", 0.006))):
             m = (ref["wave"] == wave) & (np.isclose(ref["epsilon"], eps))
-            ax.plot(ref["s"][m], ref["f"][m], "-", lw=2.2, color=f"C{k}", alpha=0.35, label=f"paper $\\epsilon$={eps}" if j == 0 else None)
+            ax.plot(ref["s"][m], ref["f"][m], "-", lw=2.4, color=f"C{k}", alpha=0.3, label=f"paper $\\epsilon^\\chi$={eps}" if j == 0 else None)
             r = leaf(root, f"fig4_eps{tag}_section_hi")
             if r:
-                sub = r["subthreshold"]; ax.plot(sub["s"], sub[wave], "-", lw=1, color=f"C{k}", label=f"ours $\\epsilon$={eps}" if j == 0 else None)
+                sub = r["subthreshold"]; ax.plot(sub["s"], sub[wave], "-", lw=1, color=f"C{k}", label=f"ours $\\epsilon^\\chi$={eps}" if j == 0 else None)
                 rows[f"{wave}_{eps}"] = True
         ax.set_title(wave, fontsize=9); ax.set_xlabel("s"); ax.set_xlim(0, 4)
     axes[0].legend(frameon=False, fontsize=6)
@@ -142,12 +150,9 @@ def phases_panel(ax, r, wave, csv_name, groups, label_ours, eta=False):
 
 def fig7(root, png, out, info):
     r = leaf(root, "fig4_eps002_section_hi")
-    fig = plt.figure(figsize=(12, 4.6)); fig.suptitle("Fig.7 chiral-only phase shifts at the representative near the black dot", fontsize=10)
-    for j, (wave, name, csvn) in enumerate((("S0", "chiS0plot", "figure7_s0_phases.csv"), ("S2", "chiS2plot", "figure7_s2_phases.csv"), ("P1", "chiP1plot", "figure7_p1_phases.csv"))):
-        axp = fig.add_axes([0.01 + 0.155 * j, 0.08, 0.15, 0.8]); p = png / f"{name}.png"
-        if p.exists(): axp.imshow(mpimg.imread(p))
-        axp.axis("off")
-        ax = fig.add_axes([0.50 + 0.165 * j, 0.14, 0.15, 0.72]); ax.set_title(wave, fontsize=9)
+    fig, axes = three_by_two(("chiS0plot", "chiS2plot", "chiP1plot"), png, "Fig.7 chiral-only phase shifts at the representative near the black dot: paper (top) vs ours (bottom)")
+    for j, (wave, csvn) in enumerate((("S0", "figure7_s0_phases.csv"), ("S2", "figure7_s2_phases.csv"), ("P1", "figure7_p1_phases.csv"))):
+        ax = axes[j]; ax.set_title(wave, fontsize=9)
         if r and (REF / csvn).exists():
             phases_panel(ax, r, wave, csvn, [("ir_magenta", "m")], "ours (x_ref upper)")
         if j == 0: ax.legend(frameon=False, fontsize=6)
@@ -241,15 +246,13 @@ def fig9_10(root, png, out, info):
 def fig11(root, png, out, info):
     models = [(50, 10, "uv_SRa_tip/tip"), (50, 8, "uv_M50_L8_tip/tip"), (50, 12, "uv_M50_L12_tip/tip"), (45, 10, "uv_M45_L10_tip/tip"),
               (60, 10, "uv_M60_L10_tip_resume" if leaf(root, "uv_M60_L10_tip_resume") else "uv_M60_L10_tip/tip")]
-    fig = plt.figure(figsize=(12, 4.6)); fig.suptitle("Fig.11 dependence on M and L (UV tip, ours vs paper)", fontsize=10); used = []
-    for j, (wave, name, csvn) in enumerate((("S0", "S0ML", "figure11_s0_phases.csv"), ("P1", "P1ML", "figure11_p1_phases.csv"), ("S2", "S2ML", "figure11_s2_phases.csv"))):
-        axp = fig.add_axes([0.01 + 0.155 * j, 0.08, 0.15, 0.8]); p = png / f"{name}.png"
-        if p.exists(): axp.imshow(mpimg.imread(p))
-        axp.axis("off"); ax = fig.add_axes([0.50 + 0.165 * j, 0.14, 0.15, 0.72]); ax.set_title(wave, fontsize=9)
+    fig, axes = three_by_two(("S0ML", "P1ML", "S2ML"), png, "Fig.11 dependence on M and L at the UV tip: paper (top) vs ours (bottom)"); used = []
+    for j, (wave, csvn) in enumerate((("S0", "figure11_s0_phases.csv"), ("P1", "figure11_p1_phases.csv"), ("S2", "figure11_s2_phases.csv"))):
+        ax = axes[j]; ax.set_title(wave, fontsize=9)
         if (REF / csvn).exists():
             ref = load_csv(csvn)
             for (M, L) in sorted(set(zip(ref["model_M"].astype(int), ref["model_L"].astype(int)))):
-                m = (ref["model_M"] == M) & (ref["model_L"] == L); ax.plot(ref["energy_gev"][m], ref["phase_deg"][m], ".", ms=2, alpha=0.5, label=f"paper M{M} L{L}" if j == 0 else None)
+                m = (ref["model_M"] == M) & (ref["model_L"] == L); ax.plot(ref["energy_gev"][m], ref["phase_deg"][m], ".", ms=2.5, alpha=0.6, label=f"paper M{M} L{L}" if j == 0 else None)
         for k, (M, L, rel) in enumerate(models):
             r = leaf(root, rel)
             if not r: continue
@@ -257,7 +260,7 @@ def fig11(root, png, out, info):
             ax.plot(E[m], np.array(o["delta_deg"])[m], "-", lw=1.2, color=f"C{k}", label=f"ours M{M} L{L}" if j == 0 else None)
             if j == 1: used.append({"M": M, "L": L, "P1_crossing_GeV": o["crossing_90_GeV"], "x_tip": r["verification"]["f00_3"]})
         ax.set_xlabel("E (GeV)"); ax.set_xlim(0.28, 1.3)
-        if j == 0: ax.legend(frameon=False, fontsize=5, ncol=2)
+        if j == 0: ax.legend(frameon=False, fontsize=5.5, ncol=2)
     fig.savefig(out / "fig11.png", dpi=110); plt.close(fig); info["fig11"] = used
 
 
