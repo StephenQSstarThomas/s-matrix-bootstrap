@@ -28,6 +28,22 @@ def bw_reference(node):
     return {"delta_deg": math.degrees(d), "ImKH": 1 - math.cos(2 * d), "ImS": math.sin(2 * d)}
 
 
+def paper_phases():
+    """Digitised Fig.9 P1 phases (deg) per curve at the node energies, by linear interpolation."""
+    import csv, collections
+    path = Path(__file__).resolve().parents[2] / "references" / "figure9_p1_phases.csv"
+    if not path.exists():
+        return {}
+    by = collections.defaultdict(list)
+    for r in csv.DictReader(open(path)):
+        by[r["group"]].append((float(r["energy_gev"]), float(r["phase_deg"])))
+    out = {}
+    for g, v in by.items():
+        v.sort(); E = [a for a, _ in v]; D = [b for _, b in v]
+        out[g] = {n: float(__import__("numpy").interp(e, E, D)) for n, e in NODE_E.items()}
+    return out
+
+
 def delta_at_eta1(v):
     """delta from 1 - Re S = v for an elastic wave (eta = 1), in degrees; None outside [0, 2]."""
     return None if not 0 <= v <= 2 else math.degrees(math.acos(1 - v) / 2)
@@ -52,7 +68,8 @@ def main(argv=None) -> int:
                "terminate": r.get("convergence", {}).get("terminate_reason")}
         key = (f["kind"], f["wave"], f["node"])
         leaves.setdefault(src, {}).setdefault("%s_%s_%d" % key, {})[f["sense"]] = rec
-    out = {"rules": "GATE_LOG 2026-09-14 02:25Z F1-F5", "bw_reference": {n: bw_reference(n) for n in NODE_E},
+    out = {"rules": "GATE_LOG 2026-09-14 02:25Z F1-F5 and 04:40Z F1'/F3'/F6", "bw_reference": {n: bw_reference(n) for n in NODE_E},
+           "paper_fig9_phases_deg": paper_phases(),
            "sources": {}, "recorded_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
     for src, funcs in leaves.items():
         s = json.loads(Path(src).read_text()) if Path(src).exists() else {}
@@ -76,11 +93,21 @@ def main(argv=None) -> int:
                                             "lo": delta_at_eta1(lo) if lo is not None else None}
                 row["bw_reference"] = bw_reference(node) if node in NODE_E else None
             entry["functionals"][name] = row
+            if kind == "ImKH" and wave == "P1" and node in (38, 39) and hi is not None:
+                paper = {g: d[node] for g, d in paper_phases().items()}
+                # eta-free necessary condition: cos(2 delta_paper) < 0 at both nodes => 1 - Re S > 1 for every eta > 0
+                anyeta = all(math.cos(math.radians(2 * d)) < 0 for d in paper.values()) and hi < 1.0
+                entry["verdicts"]["F%s_prime_eta_free_node_%d" % ("1" if node == 38 else "3", node)] = {
+                    "max_ImKH": hi, "paper_delta_deg": paper, "excluded_for_every_eta": anyeta,
+                    "reading": "Re S_P1 > %.3f on the whole near-optimal face; paper needs Re S < 0 there" % (1 - hi)}
             if kind == "ImKH" and wave == "P1" and node == 38:
                 if hi is not None:
                     entry["verdicts"]["F1_exclusion"] = {"max_ImKH_P1_38": hi, "threshold": 1.5,
                         "paper_shape_excluded_from_face": hi < 1.5,
                         "reading": "Re S_P1(0.792 GeV) > %.3f on the whole near-optimal face" % (1 - hi)}
+            if kind == "ImS" and wave == "P1" and node == 38 and hi is not None:
+                entry["verdicts"]["F6_sign_node_38"] = {"max_ImS_P1_38": hi, "paper_pre_resonance_sign_excluded": hi < 0,
+                    "reading": "Im S_P1(0.792 GeV) <= %.3f on the face; the paper's curves cross 90 deg above 0.81 GeV, so Im S > 0 there" % hi}
                 if row["width"] is not None:
                     w = row["width"]
                     entry["verdicts"]["F2_width"] = {"width": w, "verdict":
