@@ -114,8 +114,15 @@
   }
  ],
  "face_ranges": [
-  "uv_SRa_tip: ImKH_P1_38",
-  "uv_SRa_tip: ImKH_P1_39",
-  "uv_SRa_section_hi: ImKH_P1_38"
+  "frozen-factor tip: 1 - Re S_P1 (0.792 GeV)",
+  "frozen-factor tip: 1 - Re S_P1 (0.864 GeV)",
+  "tip (+x end): 1 - Re S_P1 (0.792 GeV)",
+  "tip (+x end): 1 - Re S_P1 (0.864 GeV)",
+  "tip (+x end): 1 - Re S_S0 (0.792 GeV)",
+  "tip (+x end): Im S_P1 (0.792 GeV)",
+  "x_ref upper: Im F_1 (0.792 GeV)",
+  "x_ref upper: 1 - Re S_P1 (0.792 GeV)",
+  "x_ref upper: 1 - Re S_P1 (0.864 GeV)",
+  "x_ref upper: Im S_P1 (0.792 GeV)"
  ]
 }

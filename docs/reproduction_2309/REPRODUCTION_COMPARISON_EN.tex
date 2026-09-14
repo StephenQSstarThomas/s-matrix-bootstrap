@@ -110,7 +110,7 @@ Ours: 24 support directions at 15$^\circ$ steps, all accepted, $M=50$, $L=10$, $
 \subsection{Fig.~4, chiral constraints}
 \paper{``restricted by the chiral constraints (3.64) with tolerances $6\times10^{-3}$, $4\times10^{-3}$, $2\times10^{-3}$, $1\times10^{-3}$, $6\times10^{-4}$, $2\times10^{-4}$ (from the outer shape inward) \dots\ with some norm''}
 
-Ours: one combined 8-dimensional $L^2$ norm on the four-point residuals (the packaging of upc), $M_{\rm reg}=10^2$. At $\epsilon^\chi=2\times10^{-3}$ the $+x$ end is 0.082757 (paper 0.0825728, \ensuremath{+0.2\,\%}) and the vertical section at $x_{\rm ref}$ has width \ensuremath{7.618\times10^{-4}} (paper \ensuremath{7.598\times10^{-4}}). The $+x$ ends of the six tolerances decrease monotonically: 0.1608, 0.1255, 0.0828, 0.0551, 0.0411, 0.0223 for $\epsilon^\chi=6\times10^{-3}\dots2\times10^{-4}$. The two-norm control moves the $+x$ end by less than the ladder spacing.
+Ours: one combined 8-dimensional $L^2$ norm on the four-point residuals (the packaging of \fupc), $M_{\rm reg}=10^2$. At $\epsilon^\chi=2\times10^{-3}$ the $+x$ end is 0.082757 (paper 0.0825728, \ensuremath{+0.2\,\%}) and the vertical section at $x_{\rm ref}$ has width \ensuremath{7.618\times10^{-4}} (paper \ensuremath{7.598\times10^{-4}}). The $+x$ ends of the six tolerances decrease monotonically: 0.1608, 0.1255, 0.0828, 0.0551, 0.0411, 0.0223 for $\epsilon^\chi=6\times10^{-3}\dots2\times10^{-4}$. The two-norm control moves the $+x$ end by less than the ladder spacing.
 
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{figures/fig4.png}\caption{Fig.~4: paper (left); our six $+x$ ends and the $\epsilon^\chi=2\times10^{-3}$ sections with the digitised $\epsilon^\chi=2\times10^{-3}$ boundary (right).}\end{figure}
 
@@ -194,7 +194,7 @@ The tip face is rigid in the P1 observables and does not contain your P1 shape. 
 \begin{figure}[H]\centering\includegraphics[width=0.8\textwidth]{figures/face_ranges.png}\caption{Ranges of the node functionals over the near-optimal faces (bars) against the floor $1-\operatorname{Re}S=1$ required by the paper's phases (dashed).}\end{figure}
 
 \section{Questions}
-The following items would let us close the gap or confirm that it is real. We have read the code released with up\ and \cur\ and can see how they treat these points; we are asking specifically about the runs behind arXiv:2309.12402.
+The following items would let us close the gap or confirm that it is real. We have read the code released with \fup\ and \cur\ and can see how they treat these points; we are asking specifically about the runs behind arXiv:2309.12402.
 \begin{enumerate}[leftmargin=*,itemsep=2pt]
 \item Which norm was used in (3.73), and is the QCD value compared with the raw moment or with the normalised one (divided by $s_0^{\,n+2}$)? The raw per-moment box is the only reading with $\epsilon^{SR}=2\times10^{-3}$ that is feasible in our implementation.
 \item In (3.75), is the factor between $F$ and $\mathcal F$ evaluated at each node above $s_0$ or frozen at $s_0$?

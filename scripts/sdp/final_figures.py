@@ -269,19 +269,27 @@ def fig11(root, png, out, info):
 
 
 def diagnostics(root, out, info):
-    face = Path(root) / "FACE_RESULT_partial.json"
+    face = Path(root) / "FACE_RESULT.json"
+    if not face.exists(): face = Path(root) / "FACE_RESULT_partial.json"
     if not face.exists(): return
-    F = json.loads(face.read_text()); fig, ax = plt.subplots(figsize=(8, 3.6)); y = 0; labels = []
+    SRC = {"uv_SRa_tip": "tip (+x end)", "uv_SRa_section_hi": "x_ref upper", "uv_SRa_ffs0_tip": "frozen-factor tip"}
+    FN = {"ImKH_P1_38": "1 - Re S_P1 (0.792 GeV)", "ImKH_P1_39": "1 - Re S_P1 (0.864 GeV)", "ImS_P1_38": "Im S_P1 (0.792 GeV)",
+          "ImKH_S0_38": "1 - Re S_S0 (0.792 GeV)", "ImF_P1_38": "Im F_1 (0.792 GeV)"}
+    F = json.loads(face.read_text()); fig, ax = plt.subplots(figsize=(8.5, 4.6)); y = 0; labels = []
     for src, e in F["sources"].items():
         name = Path(src).parent.parent.name if Path(src).parent.name == "tip" else Path(src).parent.name
         for fn, row in e["functionals"].items():
             lo, hi = row["range_lo"], row["range_hi"]
             if hi is None: continue
-            lo = hi if lo is None else lo
-            ax.plot([lo, hi], [y, y], "-", lw=6, color="C0", alpha=0.6); ax.plot([hi], [y], "|", color="k")
-            labels.append(f"{name}: {fn}"); y += 1
-    ax.axvline(1.0, color="r", ls="--", lw=1, label="1 - Re S = 1: floor required by the paper's phase for every eta (nodes 38, 39)")
-    ax.set_yticks(range(len(labels))); ax.set_yticklabels(labels, fontsize=7); ax.set_xlabel("range over the near-optimal face (margin 2e-6)"); ax.legend(frameon=False, fontsize=7); fig.tight_layout()
+            if lo is None:
+                ax.plot([hi], [y], "<", color="C0", ms=7); ax.plot([ax.get_xlim()[0] if False else min(hi, 0) - 0.02, hi], [y, y], ":", color="C0", lw=1)
+            else:
+                ax.plot([lo, hi], [y, y], "-", lw=7, color="C0", alpha=0.65, solid_capstyle="butt")
+            labels.append(f"{SRC.get(name, name)}: {FN.get(fn, fn)}"); y += 1
+    ax.axvline(1.0, color="r", ls="--", lw=1, label="floor 1 - Re S = 1 required by the paper's P1 phases at 0.792 and 0.864 GeV, for every |S|")
+    ax.axvline(0.0, color="0.6", lw=0.6)
+    ax.set_yticks(range(len(labels))); ax.set_yticklabels(labels, fontsize=8); ax.set_xlabel("range over the near-optimal face (slab margin 2e-6); bars = [min, max], triangles = max only")
+    ax.legend(frameon=False, fontsize=7, loc="lower right"); ax.invert_yaxis(); fig.tight_layout()
     fig.savefig(out / "face_ranges.png", dpi=110); plt.close(fig); info["face_ranges"] = labels
 
 
