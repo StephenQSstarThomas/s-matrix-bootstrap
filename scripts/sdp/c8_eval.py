@@ -35,6 +35,8 @@ def main(argv=None) -> int:
         rows.append({"M": ml[0], "L": ml[1], "x_tip": r["verification"]["f00_3"], "P1_crossing_MeV": None if o["P1"]["crossing_90_GeV"] is None else 1000 * o["P1"]["crossing_90_GeV"],
                      "min_eta_P1": o["P1"]["min_eta_below_1p2GeV"], "S0_at_1GeV_deg": claims._at(o["S0"], 1.0), "leaf": rel})
     res = claims.c8(by_ml)
+    if isinstance(res.get("rho_MeV"), dict):
+        res["rho_MeV"] = {f"M{k[0]}_L{k[1]}": v for k, v in res["rho_MeV"].items()}
     res.update(rows=rows, recorded_utc=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), claim="C8 Fig.11 M/L stability of the UV tip")
     Path(a.out).write_text(json.dumps(res, indent=1, default=float))
     print("C8:", res["verdict"], "|", res.get("evidence"))
