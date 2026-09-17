@@ -46,6 +46,7 @@ def main(argv=None) -> int:
     p.add_argument('--face-margin',type=float,help='support: face diagnostic; slab d.(f00,f11) >= source value - margin, keeping the source direction and section')
     p.add_argument('--watson-keep-section',action='store_true',help='support --functional watson: keep the source section f00(3)=x (default releases it, as in the authors\' block 2)')
     p.add_argument('--watson-targets',help='support --functional watson: take the saturation targets from this leaf report instead of --source-report (pinned-point iterations)')
+    p.add_argument('--watson-weights',choices=['unit','authors'],default='unit',help="support --functional watson: node weights, unit (default) or the authors' 1/Lambda_l^2")
     p.add_argument('--functional',nargs=4,metavar=('KIND','WAVE','NODE','SENSE'),
                    help='support: secondary objective on the face, e.g. ImKH P1 38 max (kinds ImKH ImS ImF rho; waves S0 P1)')
     p.add_argument("--duality-gap",type=float)
@@ -134,7 +135,7 @@ def main(argv=None) -> int:
             if kind=='watson':
                 waves=('S0','P1','S2') if wave in ('all','S0+P1+S2') else tuple(wave.split('+'))
                 extra.update(functional={'kind':'watson','waves':list(waves),'sense':'max','keep_section':a.watson_keep_section,
-                                         'targets_from':a.watson_targets})
+                                         'targets_from':a.watson_targets,'weighting':a.watson_weights})
                 if a.face_margin is not None:extra['face_margin']=a.face_margin
             else:
                 if not node.lstrip('-').isdigit():p.error('--functional NODE must be an integer node index')

@@ -239,11 +239,12 @@ def solution_report(model, sol, tolerance=1e-8):
         f = model.functional
         if f["kind"] == "watson":
             from .observables import _wave_h
+            from .watson import weight_of
             raw = 0.0
             for wave in f["waves"]:
                 h = _wave_h(ops, c, wave)
-                for (tr, ti), k in zip(f["targets"][wave], f["nodes"]):
-                    raw += float(tr) * float(h[k].real) + (float(ti) - 1.0) * float(h[k].imag)
+                for i, ((tr, ti), k) in enumerate(zip(f["targets"][wave], f["nodes"])):
+                    raw += weight_of(f, wave, i) * (float(tr) * float(h[k].real) + (float(ti) - 1.0) * float(h[k].imag))
         elif f["kind"] in ("ImKH", "ImS"):
             from .observables import _wave_h
             h = _wave_h(ops, c, f["wave"])[f["node"]]

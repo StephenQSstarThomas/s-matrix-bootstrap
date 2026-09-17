@@ -269,11 +269,12 @@ def verify(w, sol, tolerance=1e-8):
     else:
         f = w.functional
         if f['kind']=='watson':
+            from .watson import weight_of
             raw = arb(0)
             for wave in f['waves']:
-                for (tr,ti),k in zip(f['targets'][wave],f['nodes']):
+                for i,((tr,ti),k) in enumerate(zip(f['targets'][wave],f['nodes'])):
                     S = checker.last_primary[wave][k]
-                    raw = raw + arb(str(tr))*S.imag + arb(str(ti-1.0))*(1-S.real)
+                    raw = raw + arb(str(weight_of(f,wave,i)))*(arb(str(tr))*S.imag + arb(str(ti-1.0))*(1-S.real))
         elif f['kind'] in ('ImKH','ImS'):
             S = checker.last_primary[f['wave']][f['node']]
             raw = 1-S.real if f['kind']=='ImKH' else S.imag

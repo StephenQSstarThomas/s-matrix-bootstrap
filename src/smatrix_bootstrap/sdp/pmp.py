@@ -90,6 +90,10 @@ def check_functional(functional, spec):
             for pair in targets[w]:
                 if len(pair) != 2 or not all(np.isfinite(float(v)) for v in pair):
                     raise ValueError("watson targets must be finite (re, im) pairs")
+        weights = functional.get("weights")
+        if weights is not None:
+            if any(len(weights.get(w, [])) != len(nodes) or any((not np.isfinite(float(v))) or float(v) <= 0 for v in weights[w]) for w in waves):
+                raise ValueError("watson weights must be positive finite numbers, one per node and wave")
         out = dict(functional); out.update(kind="watson", sense="max", wave="all", node=0, ell=None,
                                           waves=list(waves), nodes=[int(k) for k in nodes])
         return out
@@ -418,14 +422,16 @@ class Pmp:
     def watson_row(self) -> np.ndarray:
         """``sum_k Re(t_k) Re h_k + (Im t_k - 1) Im h_k`` over the registered waves and nodes (unsigned)."""
         f = self.functional
+        from .watson import weight_of
         total = np.zeros(self.n_vars, dtype=object if self.precise else float)
         for wave in f["waves"]:
-            for (tr, ti), k in zip(f["targets"][wave], f["nodes"]):
+            for i, ((tr, ti), k) in enumerate(zip(f["targets"][wave], f["nodes"])):
                 re_row, im_row = self.node_rows(wave, k)
+                wk = weight_of(f, wave, i)
                 if self.precise:
-                    total = total + self._row(a=arb(str(tr)) * re_row + arb(str(ti - 1.0)) * im_row)
+                    total = total + self._row(a=arb(str(wk)) * (arb(str(tr)) * re_row + arb(str(ti - 1.0)) * im_row))
                 else:
-                    total = total + self._row(a=float(tr) * re_row + float(ti - 1.0) * im_row)
+                    total = total + self._row(a=wk * (float(tr) * re_row + float(ti - 1.0) * im_row))
         return total
 
     def functional_row(self) -> np.ndarray:

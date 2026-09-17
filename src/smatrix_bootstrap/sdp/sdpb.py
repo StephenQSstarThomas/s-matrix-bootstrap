@@ -316,7 +316,8 @@ def support_from_saved(source_report, outdir, point=None, gap=None,*,direction=N
         from .watson import functional_from_leaf
         keep=bool(functional.get('keep_section',False)) or face_margin is not None
         tsrc=functional.get('targets_from') or source_report
-        functional=functional_from_leaf(tsrc,tuple(functional.get('waves') or ('S0','P1','S2')),keep_section=keep)
+        functional=functional_from_leaf(tsrc,tuple(functional.get('waves') or ('S0','P1','S2')),keep_section=keep,
+                                        weighting=functional.get('weighting') or 'unit')
         functional['constraint_source']=str(Path(source_report).resolve())
         direction=tuple(float(v) for v in source['direction']);fixed=source.get('fix_f00') if keep else None
         if face_margin is not None:

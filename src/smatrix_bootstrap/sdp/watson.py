@@ -29,6 +29,13 @@ Re(conj(t) h) - Im h = Re[(conj(t) + i) h] = Re[(sin 2alpha + i cos 2alpha) h] =
 so the node functional here is (2.29) evaluated at the collocation nodes below s0, as in their released code
 (node sums, no ds weights).  The S2 target (radial projection of the old S) gives alpha = old delta, their rule for
 waves without a current.
+
+Variable mapping to the released code (from the notebook: h-tilde = h / Lambda_l, Im h-hat = Im h / Lambda_l^2,
+Lambda_l(s) = ((sqrt s - 2)/(sqrt s + 2))^(l/2), and F-hat = F / Lambda): their per-node term
+Re(conj(fnl) h-tilde) - Im h-hat with fnl = 2 Im F-hat F/|F|^2 = t/Lambda equals (1/Lambda_l^2) [Re(conj(t) h) - Im h],
+i.e. our term with the node weight 1/Lambda_l(s_k)^2 (1 for the even waves, (sqrt s + 2)/(sqrt s - 2) for P1).  Positive
+weights do not move the per-node maximiser, so the fixed point is the same; they change the compromise where the
+saturated amplitude is not feasible.  `weighting="authors"` reproduces their weights; the default is unit weights.
 """
 from __future__ import annotations
 
@@ -97,24 +104,45 @@ def targets_from_leaf(report_path, waves=DEFAULT_WAVES):
     return out
 
 
-def functional_from_leaf(report_path, waves=DEFAULT_WAVES, keep_section=False):
+def node_weights(nodes, wave, M, weighting="unit"):
+    """Node weights of the functional: 1 (unit) or the authors' 1/Lambda_l(s_k)^2 (authors)."""
+    if weighting == "unit":
+        return [1.0] * len(nodes)
+    if weighting != "authors":
+        raise ValueError("weighting must be 'unit' or 'authors'")
+    ell = WAVE_INDEX[wave][1]
+    s = s_nodes(M)
+    return [float(((np.sqrt(s[k]) + 2.0) / (np.sqrt(s[k]) - 2.0)) ** ell) for k in nodes]
+
+
+def functional_from_leaf(report_path, waves=DEFAULT_WAVES, keep_section=False, weighting="unit"):
     """The registered ``functional`` dict for one Watson step."""
     t = targets_from_leaf(report_path, waves)
-    return {"kind": "watson", "waves": list(waves), "sense": "max", "node": 0, "wave": "all",
-            "nodes": t["nodes"], "targets": t["targets"], "linearisation_source": t["source"],
-            "source_saturation": t["source_saturation"], "keep_section": bool(keep_section),
-            "convention": "maximise sum_k Re(conj(t_k) h_k) - Im h_k over the nodes with s_k <= s0 of the listed waves; "
-                          "t from the previous leaf (S0/P1: F/F*, S2: radial projection of the previous S); "
-                          "unit node weights; section released unless keep_section"}
+    M = json.loads(Path(report_path).read_text())["spec"]["M"]
+    out = {"kind": "watson", "waves": list(waves), "sense": "max", "node": 0, "wave": "all",
+           "nodes": t["nodes"], "targets": t["targets"], "linearisation_source": t["source"],
+           "source_saturation": t["source_saturation"], "keep_section": bool(keep_section), "weighting": weighting,
+           "convention": "maximise sum_k w_k [Re(conj(t_k) h_k) - Im h_k] over the nodes with s_k <= s0 of the listed waves; "
+                         "t from the previous leaf (S0/P1: F/F*, S2: radial projection of the previous S); "
+                         f"weights: {weighting}; section released unless keep_section"}
+    if weighting != "unit":
+        out["weights"] = {w: node_weights(t["nodes"], w, M, weighting) for w in waves}
+    return out
+
+
+def weight_of(functional, wave, i):
+    """Weight of the i-th registered node of ``wave`` (1 when the functional carries no weights)."""
+    w = functional.get("weights")
+    return 1.0 if not w else float(w[wave][i])
 
 
 def objective_value(functional, S_by_wave):
     """The functional evaluated on node S-matrix values ``S_by_wave[wave][k]`` (any float/complex-like)."""
     total = 0.0
     for wave in functional["waves"]:
-        for (tr, ti), k in zip(functional["targets"][wave], functional["nodes"]):
+        for i, ((tr, ti), k) in enumerate(zip(functional["targets"][wave], functional["nodes"])):
             S = S_by_wave[wave][k]
-            total += tr * float(np.imag(S)) + (ti - 1.0) * (1.0 - float(np.real(S)))
+            total += weight_of(functional, wave, i) * (tr * float(np.imag(S)) + (ti - 1.0) * (1.0 - float(np.real(S))))
     return total
 
 

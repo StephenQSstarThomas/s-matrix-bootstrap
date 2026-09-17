@@ -124,7 +124,7 @@ def test_cli_watson_flags(tmp_path, monkeypatch):
     seen = []
     monkeypatch.setattr(sdpb, "support_from_saved", lambda *a, **k: seen.append((a, k)) or {"accepted": True})
     assert entry.main(["support", "--source-report", "r", "--out", "o", "--functional", "watson", "all", "0", "max", "--watson-keep-section"]) == 0
-    assert seen[0][1]["functional"] == {"kind": "watson", "waves": ["S0", "P1", "S2"], "sense": "max", "keep_section": True, "targets_from": None}
+    assert seen[0][1]["functional"] == {"kind": "watson", "waves": ["S0", "P1", "S2"], "sense": "max", "keep_section": True, "targets_from": None, "weighting": "unit"}
     assert entry.main(["support", "--source-report", "r", "--out", "o", "--functional", "watson", "S0+P1", "0", "max"]) == 0
     assert seen[1][1]["functional"]["waves"] == ["S0", "P1"] and seen[1][1]["functional"]["keep_section"] is False
     with pytest.raises(SystemExit):
@@ -172,3 +172,31 @@ def test_cli_watson_targets_and_face(tmp_path, monkeypatch):
     assert entry.main(["support", "--source-report", "r", "--out", "o", "--functional", "watson", "all", "0", "max",
                        "--face-margin", "2e-6", "--watson-targets", "prev.json"]) == 0
     assert seen[0][1]["face_margin"] == 2e-6 and seen[0][1]["functional"]["targets_from"] == "prev.json"
+
+
+def test_authors_weights_scale_the_row_per_node(tmp_path):
+    path = _fake_leaf(tmp_path)
+    f_unit = watson.functional_from_leaf(path)
+    f_auth = watson.functional_from_leaf(path, weighting="authors")
+    s = C.s_nodes(4)
+    for w in ("S0", "S2"):
+        assert all(v == 1.0 for v in f_auth["weights"][w])
+    expect = [((np.sqrt(s[k]) + 2) / (np.sqrt(s[k]) - 2)) for k in f_auth["nodes"]]
+    np.testing.assert_allclose(f_auth["weights"]["P1"], expect)
+    wf_u = Pmp(ModelSpec(M=4, L=1, uv=True), functional=f_unit); wf_a = Pmp(ModelSpec(M=4, L=1, uv=True), functional=f_auth)
+    manual = np.zeros(wf_a.n_vars)
+    for w in f_auth["waves"]:
+        I, ell = watson.WAVE_INDEX[w]
+        for i, ((tr, ti), k) in enumerate(zip(f_auth["targets"][w], f_auth["nodes"])):
+            a0 = wf_a.ops.index.index((I, ell)) * 4 + k
+            manual[wf_a.i_a:wf_a.i_a + wf_a.n_a] += f_auth["weights"][w][i] * (tr * wf_a.ops.h_re[a0] + (ti - 1) * wf_a.ops.h_im[a0])
+    np.testing.assert_allclose(wf_a.objective(), manual, rtol=1e-12, atol=1e-14)
+    assert not np.allclose(wf_a.objective(), wf_u.objective())
+    S = {w: [1 + 1j * complex(a, b) for a, b in f_auth["targets"][w]] for w in f_auth["waves"]}
+    S = {w: [S[w][f_auth["nodes"].index(k)] if k in f_auth["nodes"] else 1.0 for k in range(4)] for w in f_auth["waves"]}
+    assert watson.objective_value(f_auth, S) == pytest.approx(sum(wk * b for w in f_auth["waves"] for wk, (a, b) in zip(f_auth["weights"][w], f_auth["targets"][w])))
+    wp = Pmp(ModelSpec(M=4, L=1, uv=True, operator_dps=30), functional=f_auth, digits=20)
+    np.testing.assert_allclose(np.array([float(v) for v in wp.objective()]), wf_a.objective(), rtol=1e-11, atol=1e-13)
+    with pytest.raises(ValueError):
+        bad = dict(f_auth); bad["weights"] = {w: [-1.0] * len(f_auth["nodes"]) for w in f_auth["waves"]}
+        check_functional(bad, ModelSpec(M=4, L=1, uv=True))

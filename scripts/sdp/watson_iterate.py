@@ -60,13 +60,14 @@ def main(argv=None) -> int:
     p.add_argument("--rounds", type=int, default=5); p.add_argument("--waves", default="S0+P1+S2")
     p.add_argument("--keep-section", action="store_true"); p.add_argument("--timeout", type=int, default=7200)
     p.add_argument("--tol", type=float, default=0.02)
+    p.add_argument("--weights", choices=["unit", "authors"], default="unit")
     p.add_argument("--pin", type=float, default=None, help="pinned-point control: keep the start leaf's section and add the slab "
                    "d.(f00,f11) >= v* - PIN; constraints always from the start leaf, targets from the previous round")
     a = p.parse_args(argv)
     out = Path(a.out).resolve(); out.mkdir(parents=True, exist_ok=True)
     waves = tuple(a.waves.split("+"))
     log_path = out / "WATSON_ITER.json"
-    log = {"start": str(Path(a.start).resolve()), "waves": list(waves), "keep_section": a.keep_section, "tol": a.tol, "pin": a.pin,
+    log = {"start": str(Path(a.start).resolve()), "waves": list(waves), "keep_section": a.keep_section, "tol": a.tol, "pin": a.pin, "weights": a.weights,
            "rounds": [], "started_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
     src = Path(a.start).resolve()
     m0 = watson.iteration_metrics(src, waves); m0["distance_to_own_targets"] = distance_to_targets(src, waves)
@@ -80,6 +81,8 @@ def main(argv=None) -> int:
                "--functional", "watson", a.waves, "0", "max", "--timeout", str(a.timeout)]
         if a.pin is not None:
             cmd += ["--face-margin", str(a.pin), "--watson-targets", str(src)]
+        if a.weights != "unit":
+            cmd += ["--watson-weights", a.weights]
         if a.keep_section:
             cmd.append("--watson-keep-section")
         t0 = time.time()
