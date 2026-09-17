@@ -309,12 +309,21 @@ def support_from_saved(source_report, outdir, point=None, gap=None,*,direction=N
         raise ValueError('Supports require a completed numerically accepted source leaf')
     fixed,face=fix_f00,None
     if functional is not None and functional.get('kind')=='watson':
-        # authors' block 2: every constraint kept, projection equalities released, objective replaced
-        if face_margin is not None:raise ValueError('The Watson step takes no face slab')
+        # authors' block 2: every constraint kept, projection equalities released, objective replaced.
+        # Targets come from `targets_from` (a previous round) or from the source leaf itself.  With a face margin
+        # the run is the pinned-point control: section kept and the slab d.(f00,f11) >= v* - margin added, so the
+        # amplitude stays at the source's boundary point while the Watson functional is maximised.
         from .watson import functional_from_leaf
-        keep=bool(functional.get('keep_section',False))
-        functional=functional_from_leaf(source_report,tuple(functional.get('waves') or ('S0','P1','S2')),keep_section=keep)
+        keep=bool(functional.get('keep_section',False)) or face_margin is not None
+        tsrc=functional.get('targets_from') or source_report
+        functional=functional_from_leaf(tsrc,tuple(functional.get('waves') or ('S0','P1','S2')),keep_section=keep)
+        functional['constraint_source']=str(Path(source_report).resolve())
         direction=tuple(float(v) for v in source['direction']);fixed=source.get('fix_f00') if keep else None
+        if face_margin is not None:
+            if isinstance(face_margin,bool) or not isinstance(face_margin,(int,float)) or not np.isfinite(face_margin) or face_margin<=0:
+                raise ValueError('face margin must be a positive finite number')
+            face={'direction':list(direction),'value':source['verification']['objective_recomputed'],'margin':float(face_margin)}
+            functional['pinned']=True
     elif functional is not None:
         direction=tuple(float(v) for v in source['direction']);fixed=source.get('fix_f00')
         if face_margin is not None:

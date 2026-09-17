@@ -113,8 +113,10 @@ def test_support_driver_releases_the_section_and_records_targets(tmp_path, monke
     assert set(kw["functional"]["targets"]) == {"S0", "P1", "S2"} and kw["functional"]["keep_section"] is False
     sdpb.support_from_saved(path, tmp_path / "out2", functional={"kind": "watson", "waves": ["S0", "P1"], "sense": "max", "keep_section": True})
     assert seen[1][0][3] == 0.07 and seen[1][1]["functional"]["waves"] == ["S0", "P1"]
+    sdpb.support_from_saved(path, tmp_path / "out3", functional={"kind": "watson", "waves": ["S0"], "sense": "max"}, face_margin=1e-6)
+    assert seen[2][0][3] == 0.07 and seen[2][1]["face"]["margin"] == 1e-6      # a face margin pins the point: section kept
     with pytest.raises(ValueError):
-        sdpb.support_from_saved(path, tmp_path / "out3", functional={"kind": "watson", "waves": ["S0"], "sense": "max"}, face_margin=1e-6)
+        sdpb.support_from_saved(path, tmp_path / "out4", functional={"kind": "watson", "waves": ["S0"], "sense": "max"}, face_margin=-1.0)
 
 
 def test_cli_watson_flags(tmp_path, monkeypatch):
@@ -122,11 +124,11 @@ def test_cli_watson_flags(tmp_path, monkeypatch):
     seen = []
     monkeypatch.setattr(sdpb, "support_from_saved", lambda *a, **k: seen.append((a, k)) or {"accepted": True})
     assert entry.main(["support", "--source-report", "r", "--out", "o", "--functional", "watson", "all", "0", "max", "--watson-keep-section"]) == 0
-    assert seen[0][1]["functional"] == {"kind": "watson", "waves": ["S0", "P1", "S2"], "sense": "max", "keep_section": True}
+    assert seen[0][1]["functional"] == {"kind": "watson", "waves": ["S0", "P1", "S2"], "sense": "max", "keep_section": True, "targets_from": None}
     assert entry.main(["support", "--source-report", "r", "--out", "o", "--functional", "watson", "S0+P1", "0", "max"]) == 0
     assert seen[1][1]["functional"]["waves"] == ["S0", "P1"] and seen[1][1]["functional"]["keep_section"] is False
     with pytest.raises(SystemExit):
-        entry.main(["support", "--source-report", "r", "--out", "o", "--functional", "watson", "all", "0", "max", "--face-margin", "1e-6"])
+        entry.main(["support", "--source-report", "r", "--out", "o", "--functional", "watson", "all", "0", "max", "--point", "tip"])
 
 
 def test_vanishing_form_factor_falls_back_to_the_old_phase(tmp_path):
@@ -147,3 +149,26 @@ def test_vanishing_form_factor_falls_back_to_the_old_phase(tmp_path):
     St = np.where(phase_ok, F / np.where(phase_ok, np.conj(F), 1.0), 1.0)
     tt = np.where(phase_ok, -1j * (St - 1.0), radial)
     assert tt[1] == radial[1] and np.isfinite(tt).all()
+
+
+def test_pinned_control_keeps_the_point_and_takes_targets_elsewhere(tmp_path, monkeypatch):
+    (tmp_path / "base").mkdir(); (tmp_path / "prev").mkdir()
+    base = _fake_leaf(tmp_path / "base"); prev = _fake_leaf(tmp_path / "prev")
+    seen = []
+    monkeypatch.setattr(sdpb, "run_once", lambda *a, **k: seen.append((a, k)) or ({"accepted": False}, None, None))
+    sdpb.support_from_saved(base, tmp_path / "out", functional={"kind": "watson", "waves": ["S0", "P1", "S2"], "sense": "max",
+                                                                  "targets_from": str(prev)}, face_margin=2e-6)
+    args, kw = seen[0]
+    assert args[3] == 0.07                                   # section kept
+    assert kw["face"] == {"direction": [1., 0.], "value": .2, "margin": 2e-6}
+    assert kw["functional"]["linearisation_source"] == str(prev.resolve()) and kw["functional"]["pinned"] is True
+    assert kw["functional"]["constraint_source"] == str(base.resolve())
+
+
+def test_cli_watson_targets_and_face(tmp_path, monkeypatch):
+    from smatrix_bootstrap.sdp import __main__ as entry
+    seen = []
+    monkeypatch.setattr(sdpb, "support_from_saved", lambda *a, **k: seen.append((a, k)) or {"accepted": True})
+    assert entry.main(["support", "--source-report", "r", "--out", "o", "--functional", "watson", "all", "0", "max",
+                       "--face-margin", "2e-6", "--watson-targets", "prev.json"]) == 0
+    assert seen[0][1]["face_margin"] == 2e-6 and seen[0][1]["functional"]["targets_from"] == "prev.json"
