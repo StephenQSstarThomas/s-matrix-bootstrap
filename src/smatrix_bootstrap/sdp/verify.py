@@ -237,7 +237,14 @@ def solution_report(model, sol, tolerance=1e-8):
         checks["section"] = residual <= tolerance * max(1, abs(model.fix_f00))
     if getattr(model, "functional", None) is not None:
         f = model.functional
-        if f["kind"] in ("ImKH", "ImS"):
+        if f["kind"] == "watson":
+            from .observables import _wave_h
+            raw = 0.0
+            for wave in f["waves"]:
+                h = _wave_h(ops, c, wave)
+                for (tr, ti), k in zip(f["targets"][wave], f["nodes"]):
+                    raw += float(tr) * float(h[k].real) + (float(ti) - 1.0) * float(h[k].imag)
+        elif f["kind"] in ("ImKH", "ImS"):
             from .observables import _wave_h
             h = _wave_h(ops, c, f["wave"])[f["node"]]
             raw = float(h.imag) if f["kind"] == "ImKH" else float(h.real)

@@ -308,7 +308,14 @@ def support_from_saved(source_report, outdir, point=None, gap=None,*,direction=N
             or source.get('convergence',{}).get('solver_optimal') is not True):
         raise ValueError('Supports require a completed numerically accepted source leaf')
     fixed,face=fix_f00,None
-    if functional is not None:
+    if functional is not None and functional.get('kind')=='watson':
+        # authors' block 2: every constraint kept, projection equalities released, objective replaced
+        if face_margin is not None:raise ValueError('The Watson step takes no face slab')
+        from .watson import functional_from_leaf
+        keep=bool(functional.get('keep_section',False))
+        functional=functional_from_leaf(source_report,tuple(functional.get('waves') or ('S0','P1','S2')),keep_section=keep)
+        direction=tuple(float(v) for v in source['direction']);fixed=source.get('fix_f00') if keep else None
+    elif functional is not None:
         direction=tuple(float(v) for v in source['direction']);fixed=source.get('fix_f00')
         if face_margin is not None:
             face={'direction':list(direction),'value':source['verification']['objective_recomputed'],'margin':float(face_margin)}

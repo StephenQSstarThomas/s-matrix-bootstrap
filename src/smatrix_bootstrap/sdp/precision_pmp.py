@@ -38,8 +38,9 @@ def restore(cls, source_report, direction, fix_f00, face=None, functional=None):
     w = cls.__new__(cls)
     w.spec = ModelSpec(**source['spec'])
     w.direction,w.fix_f00,w.digits = direction,fix_f00,source['pmp']['digits']
-    if source.get('face') is not None or source.get('functional') is not None:
-        raise ValueError('A face-diagnostic leaf is terminal; chain supports from its own source leaf')
+    if source.get('face') is not None:
+        raise ValueError('A face-diagnostic leaf is terminal (it carries an extra slab block); chain supports from its own source leaf')
+    # a functional-only leaf (Watson step, node functional without a slab) has exactly the base blocks and may be chained
     w.face,w.functional = check_face(face),check_functional(functional,w.spec)
     w.basis = np.load(root/'basis.npy') if w.spec.reduce_basis else None
     if w.basis is not None and hashlib.sha256((root/'basis.npy').read_bytes()).hexdigest()!=source['basis']['sha256']:
@@ -267,7 +268,13 @@ def verify(w, sol, tolerance=1e-8):
                    for d,name in zip(w.direction,('f00','f11'))),arb(0))
     else:
         f = w.functional
-        if f['kind'] in ('ImKH','ImS'):
+        if f['kind']=='watson':
+            raw = arb(0)
+            for wave in f['waves']:
+                for (tr,ti),k in zip(f['targets'][wave],f['nodes']):
+                    S = checker.last_primary[wave][k]
+                    raw = raw + arb(str(tr))*S.imag + arb(str(ti-1.0))*(1-S.real)
+        elif f['kind'] in ('ImKH','ImS'):
             S = checker.last_primary[f['wave']][f['node']]
             raw = 1-S.real if f['kind']=='ImKH' else S.imag
         elif f['kind']=='SRmom':
@@ -277,6 +284,10 @@ def verify(w, sol, tolerance=1e-8):
             raw = y[w.n_a+(2*M if f['kind']=='rho' else 0)+f['ell']*M+f['node']]
         out['functional'] = dict(f,value=float(raw.mid()),
             scope='Arb re-evaluation of the registered node functional from the same y')
+        if f['kind']=='watson':
+            from .watson import objective_value
+            Sf = {wave:[complex(float(v.real.mid()),float(v.imag.mid())) for v in checker.last_primary[wave]] for wave in f['waves']}
+            out['functional']['value_float_check'] = objective_value(f,Sf)
         obj = raw if f['sense']=='max' else -raw
     out['objective_recomputed'] = float(obj.mid())
     out['c_norm_inf'] = max(float(v.abs_upper()) for v in c)

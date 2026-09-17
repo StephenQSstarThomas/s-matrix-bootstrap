@@ -46,6 +46,7 @@ FUNCTIONAL_KINDS = {
     "ImF": "Im F_ell at one node (UV-sector primal variable)",
     "rho": "rho_hat_ell at one node (UV-sector primal variable)",
     "SRmom": "one FESR moment (3.73) of wave S0/P1; 'node' carries n (S0: 0,1; P1: -1,0)",
+    "watson": "linearised unitarity-saturation step (see watson.py): sum over nodes below s0 of Re(t* h) - Im h",
 }
 
 
@@ -73,6 +74,25 @@ def check_functional(functional, spec):
     kind, wave, node, sense = (functional[k] for k in ("kind", "wave", "node", "sense"))
     if kind not in FUNCTIONAL_KINDS:
         raise ValueError(f"Unknown functional kind {kind!r}; known: {sorted(FUNCTIONAL_KINDS)}")
+    if kind == "watson":
+        if sense != "max":
+            raise ValueError("the Watson step is a maximisation")
+        if spec.scattering_prescription != "mixed-pv":
+            raise ValueError("node functionals are defined for the nodal (mixed-pv) prescription")
+        waves, nodes, targets = functional.get("waves"), functional.get("nodes"), functional.get("targets")
+        if not waves or any(w not in ("S0", "P1", "S2") for w in waves):
+            raise ValueError("watson waves must be a non-empty subset of S0, P1, S2")
+        if not nodes or any((not isinstance(k, (int, np.integer))) or not 0 <= k < spec.M for k in nodes):
+            raise ValueError("watson nodes must be node indices of this model")
+        if not isinstance(targets, dict) or any(len(targets.get(w, [])) != len(nodes) for w in waves):
+            raise ValueError("watson targets must give one (re, im) pair per node for every listed wave")
+        for w in waves:
+            for pair in targets[w]:
+                if len(pair) != 2 or not all(np.isfinite(float(v)) for v in pair):
+                    raise ValueError("watson targets must be finite (re, im) pairs")
+        out = dict(functional); out.update(kind="watson", sense="max", wave="all", node=0, ell=None,
+                                          waves=list(waves), nodes=[int(k) for k in nodes])
+        return out
     if wave not in ("S0", "P1"):
         raise ValueError("functional wave must be S0 or P1")
     ell = 0 if wave == "S0" else 1
@@ -380,18 +400,39 @@ class Pmp:
         (``S = 1 + i kappa h``), so ``Im kappa*h = 1 - Re S`` and
         ``Re kappa*h = Im S`` are exactly linear in the model coordinates.
         """
-        I, ell = {"S0": (0, 0), "P1": (1, 1)}[wave]
+        I, ell = {"S0": (0, 0), "P1": (1, 1), "S2": (2, 0)}[wave]
         if self.precise:
             ctx.prec = self.precise.bits
             rows = self.precise.rows(I, ell, node=k) * self.precise.kap[k]
             proj = self.precise.projected(rows, self.precise_basis)
             return proj[0], proj[1]
-        re_rows, im_rows = self.gram[ell]
-        return re_rows[k], im_rows[k]
+        if wave in ("S0", "P1"):
+            re_rows, im_rows = self.gram[ell]
+            return re_rows[k], im_rows[k]
+        a0 = self.ops.index.index((I, ell)) * self.spec.M + k
+        re_row, im_row = self.ops.h_re[a0], self.ops.h_im[a0]
+        if self.basis is not None:
+            re_row, im_row = re_row @ self.basis, im_row @ self.basis
+        return re_row, im_row
+
+    def watson_row(self) -> np.ndarray:
+        """``sum_k Re(t_k) Re h_k + (Im t_k - 1) Im h_k`` over the registered waves and nodes (unsigned)."""
+        f = self.functional
+        total = np.zeros(self.n_vars, dtype=object if self.precise else float)
+        for wave in f["waves"]:
+            for (tr, ti), k in zip(f["targets"][wave], f["nodes"]):
+                re_row, im_row = self.node_rows(wave, k)
+                if self.precise:
+                    total = total + self._row(a=arb(str(tr)) * re_row + arb(str(ti - 1.0)) * im_row)
+                else:
+                    total = total + self._row(a=float(tr) * re_row + float(ti - 1.0) * im_row)
+        return total
 
     def functional_row(self) -> np.ndarray:
         """Unsigned coefficient row of the registered secondary functional."""
         f = self.functional
+        if f["kind"] == "watson":
+            return self.watson_row()
         if f["kind"] == "SRmom":
             ell, n, M = f["ell"], f["node"], self.spec.M
             if self.precise:
