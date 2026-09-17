@@ -27,15 +27,30 @@ PY = sys.executable
 REPO = Path(__file__).resolve().parents[2]
 
 
-def distance_to_targets(report_path, waves):
-    """max_k |h_k - t_k| where t is the target that THIS leaf would define (i.e. how far from its own fixed point)."""
+def distance_to_targets(report_path, waves, saturated_only=False):
+    """max_k |h_k - t_k| where t is the target that THIS leaf would define (how far from its own fixed point).
+
+    With ``saturated_only`` the maximum runs over the nodes where the current is two-pion saturated
+    (|F|^2 / rho_hat >= 0.5) or, for waves without a current, over all nodes: at nodes where rho_hat >> |F|^2 the
+    form-factor phase is not constrained by anything physical and the target built from it is noise (seen at the
+    threshold node of P1, where |F| = 18 with |F|^2/rho_hat = 0 after the first round).
+    """
     t = watson.targets_from_leaf(report_path, waves)
     r = json.loads(Path(report_path).read_text())
+    sol = np.load(Path(report_path).parent / "solution.npz")
+    M = r["spec"]["M"]; nodes = np.array(t["nodes"])
     worst = 0.0
     for w in waves:
         S = watson.node_S(r, w); h = -1j * (S - 1.0)
         tt = np.array([complex(a, b) for a, b in t["targets"][w]])
-        worst = max(worst, float(np.max(np.abs(h[t["nodes"]] - tt))))
+        keep = np.ones(len(nodes), dtype=bool)
+        if saturated_only and w in ("S0", "P1") and r["spec"].get("uv"):
+            ell = watson.WAVE_INDEX[w][1]
+            F = watson.form_factor(sol, ell, M); rh = np.asarray(sol["rho_hat"][ell], dtype=float)
+            frac = np.abs(F[nodes]) ** 2 / np.where(rh[nodes] > 0, rh[nodes], np.inf)
+            keep = frac >= 0.5
+        if keep.any():
+            worst = max(worst, float(np.max(np.abs(h[nodes][keep] - tt[keep]))))
     return worst
 
 
@@ -55,6 +70,7 @@ def main(argv=None) -> int:
            "rounds": [], "started_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
     src = Path(a.start).resolve()
     m0 = watson.iteration_metrics(src, waves); m0["distance_to_own_targets"] = distance_to_targets(src, waves)
+    m0["distance_to_own_targets_saturated_nodes"] = distance_to_targets(src, waves, saturated_only=True)
     log["rounds"].append({"round": 0, "leaf": str(src), "accepted": True, "metrics": m0})
     log_path.write_text(json.dumps(log, indent=1, default=float))
     for r in range(1, a.rounds + 1):
@@ -75,6 +91,7 @@ def main(argv=None) -> int:
                  "seconds": time.time() - t0, "returncode": proc.returncode, "stderr_tail": proc.stderr[-600:]}
         if rep.get("accepted"):
             m = watson.iteration_metrics(rep_path, waves); m["distance_to_own_targets"] = distance_to_targets(rep_path, waves)
+            m["distance_to_own_targets_saturated_nodes"] = distance_to_targets(rep_path, waves, saturated_only=True)
             m["objective_value"] = rep["verification"].get("functional", {}).get("value")
             entry["metrics"] = m
         log["rounds"].append(entry); log_path.write_text(json.dumps(log, indent=1, default=float))
@@ -82,8 +99,9 @@ def main(argv=None) -> int:
         if not rep.get("accepted"):
             log["stopped"] = f"round {r} not accepted"; break
         src = rep_path
-        if entry["metrics"]["distance_to_own_targets"] < a.tol:
-            log["stopped"] = f"converged at round {r} (max |h - t| = {entry['metrics']['distance_to_own_targets']:.4f} < {a.tol})"; break
+        if entry["metrics"]["distance_to_own_targets_saturated_nodes"] < a.tol:
+            log["stopped"] = (f"converged at round {r} (max |h - t| over two-pion-saturated nodes = "
+                              f"{entry['metrics']['distance_to_own_targets_saturated_nodes']:.4f} < {a.tol})"); break
     log["finished_utc"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
     log_path.write_text(json.dumps(log, indent=1, default=float))
     print("done:", log.get("stopped", "rounds exhausted"))
