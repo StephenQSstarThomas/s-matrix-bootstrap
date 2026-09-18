@@ -288,10 +288,15 @@ class Pmp:
                 K,idx_hi,ffb,ffk,tgt,tol,moments = self.precise.uv_data(spec)
                 if spec.sr_caliber in ("SR-a", "SR-d"):      # adjustable eps_SR; the operator module keeps the 2309 value
                     tol = {k: arb(str(spec.eps_sr)) for k in tol}
+                if spec.eps_ff_s0 is not None or spec.eps_ff_p1 is not None:   # per-current caps (sensitivity study)
+                    mq = (arb(113)/2800 if spec.m_q == C.M_Q else arb(str(spec.m_q)))
+                    e0 = arb(str(spec.eps_ff if spec.eps_ff_s0 is None else spec.eps_ff_s0))
+                    e1 = arb(str(spec.eps_ff if spec.eps_ff_p1 is None else spec.eps_ff_p1))
+                    ffb = {0: (2*mq*mq*e0).sqrt(), 1: (e1/2).sqrt()}
                 rt2 = arb(2).sqrt()
             else:
                 K = FFM.hilbert_kernel(M)
-                idx_hi, ffb, ffk = C.ff_asymptotic_bounds(M, spec.m_q, spec.eps_ff, spec.ff_frozen_at_s0)
+                idx_hi, ffb, ffk = C.ff_asymptotic_bounds(M, spec.m_q, spec.eps_ff, spec.ff_frozen_at_s0, spec.eps_ff_s0, spec.eps_ff_p1)
                 tgt, tol = C.printed_targets(), C.sr_tolerances(spec.sr_caliber, spec.eps_sr)
                 rt2 = np.sqrt(2.0)
             for ell in (0, 1):

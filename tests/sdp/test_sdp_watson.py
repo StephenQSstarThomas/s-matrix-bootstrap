@@ -227,3 +227,18 @@ def test_solve_cli_passes_eps_sr(tmp_path, monkeypatch):
     monkeypatch.setattr(cli, "run_once", lambda spec, *a, **k: seen.append(spec) or ({"accepted": True, "verification": {"f00_3": 0.}}, None, None))
     assert cli.main(["--workdir", str(tmp_path / "w"), "--M", "4", "--L", "1", "--uv", "--sr", "SR-a", "--eps-sr", "0.01", "--points", "tip", "--skip-mma-audit", "--operator-dps", "17"]) == 0
     assert seen[0].eps_sr == 0.01
+
+
+def test_per_current_ff_caps(tmp_path):
+    from smatrix_bootstrap.sdp import constraints as C2
+    idx, b, kin = C2.ff_asymptotic_bounds(4, eps_ff=6e-5, eps_ff_p1=2e-4)
+    assert b[0] == pytest.approx(np.sqrt(2 * C2.M_Q ** 2 * 6e-5)) and b[1] == pytest.approx(np.sqrt(0.5 * 2e-4))
+    a = Pmp(ModelSpec(M=4, L=1, uv=True)); c = Pmp(ModelSpec(M=4, L=1, uv=True, eps_ff_p1=2e-4))
+    a.write(str(tmp_path / "a.json")); c.write(str(tmp_path / "c.json"))
+    ba = json.load(open(tmp_path / "a.json"))["PositiveMatrixWithPrefactorArray"]; bc = json.load(open(tmp_path / "c.json"))["PositiveMatrixWithPrefactorArray"]
+    assert len(ba) == len(bc) and any(x != y for x, y in zip(json.dumps(ba), json.dumps(bc)))
+    p = Pmp(ModelSpec(M=4, L=1, uv=True, eps_ff_s0=2e-4, operator_dps=30), digits=20)
+    rep = p.verify({"y_text": ["0"] * (p.n_vars - 1), "a": np.zeros(p.n_vars - 1), "c": np.zeros(p.ops.lay.n)})
+    from fractions import Fraction
+    caps = {r["ell"]: float(Fraction(r["cap"]["lower"])) for r in rep["form_factor"]["rows"]}
+    assert caps[0] == pytest.approx(2 * C2.M_Q ** 2 * 2e-4, rel=1e-9) and caps[1] == pytest.approx(0.5 * 6e-5, rel=1e-9)

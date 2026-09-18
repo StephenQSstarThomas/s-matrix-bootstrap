@@ -110,7 +110,7 @@ def sr_tolerances(caliber: str, eps_sr: float = EPS_SR) -> dict[tuple[str, int],
 
 
 def ff_asymptotic_bounds(M: int, m_q: float = M_Q, eps_ff: float = EPS_FF,
-                         frozen_at_s0: bool = True):
+                         frozen_at_s0: bool = True, eps_ff_s0=None, eps_ff_p1=None):
     """(3.75): indices above ``s_0`` and the bound on ``|cF_ell(s_i)|``.
 
     The paper writes the bound on the rescaled current ``cF`` of (2.33), but the
@@ -125,8 +125,10 @@ def ff_asymptotic_bounds(M: int, m_q: float = M_Q, eps_ff: float = EPS_FF,
     """
     from .formfactor import kinematic_factor
     idx = np.flatnonzero(~below_s0(M))
-    bound = {0: float(np.sqrt(2.0 * m_q ** 2 * eps_ff)),
-             1: float(np.sqrt(0.5 * eps_ff))}
+    e0 = eps_ff if eps_ff_s0 is None else eps_ff_s0
+    e1 = eps_ff if eps_ff_p1 is None else eps_ff_p1
+    bound = {0: float(np.sqrt(2.0 * m_q ** 2 * e0)),
+             1: float(np.sqrt(0.5 * e1))}
     s = s_nodes(M)
     kin = {ell: (np.full(idx.size, float(kinematic_factor(ell, np.array([S0]))[0]))
                  if frozen_at_s0 else kinematic_factor(ell, s[idx]))

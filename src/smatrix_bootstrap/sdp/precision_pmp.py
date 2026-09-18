@@ -210,7 +210,8 @@ def verify(w, sol, tolerance=1e-8):
     rh = [y[w.n_a+2*M+e*M:w.n_a+2*M+(e+1)*M] for e in (0,1)] if spec.uv else None
     audit = checker.audit(c,im,rh,chi_caliber=spec.chi_caliber if spec.chiral else None,
         eps_chi=spec.eps_chi,sr_caliber=spec.sr_caliber,eps_ff=spec.eps_ff,
-        m_q=spec.m_q,ff_frozen_at_s0=spec.ff_frozen_at_s0,sr_free=spec.sr_free,eps_sr=spec.eps_sr)
+        m_q=spec.m_q,ff_frozen_at_s0=spec.ff_frozen_at_s0,sr_free=spec.sr_free,eps_sr=spec.eps_sr,
+        eps_ff_s0=spec.eps_ff_s0,eps_ff_p1=spec.eps_ff_p1)
     lower = lambda value: arb(value['lower'])
     midpoint = lambda value: float((arb(value['lower'])+arb(value['upper']))/2)
     violations = [-lower(r['slack']) for r in audit['unitarity']]

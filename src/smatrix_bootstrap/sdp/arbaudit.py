@@ -122,7 +122,7 @@ class ArbAudit:
     # ------------------------------------------------------------------
     def audit(self, c: np.ndarray, ImF=None, rho_hat=None, *, chi_caliber="chi-b",
               eps_chi=C.EPS_CHI_MAIN, sr_caliber="SR-b", eps_ff=C.EPS_FF,
-              m_q=None, ff_frozen_at_s0=True, sr_free=(), eps_sr=None) -> dict:
+              m_q=None, ff_frozen_at_s0=True, sr_free=(), eps_sr=None, eps_ff_s0=None, eps_ff_p1=None) -> dict:
         ctx.prec = self.bits
         M = self.M
         ca = [arb(t) if isinstance(t, arb) else arb(float(t)) for t in c]
@@ -204,11 +204,12 @@ class ArbAudit:
         if ImF is not None:
             out.update(self._uv_audit(S_store, ImF, rho_hat, sr_caliber, eps_ff,
                                       C.M_Q if m_q is None else m_q,
-                                      frozen_at_s0=ff_frozen_at_s0, sr_free=sr_free, eps_sr=eps_sr))
+                                      frozen_at_s0=ff_frozen_at_s0, sr_free=sr_free, eps_sr=eps_sr,
+                                      eps_ff_s0=eps_ff_s0, eps_ff_p1=eps_ff_p1))
         return out
 
     def _uv_audit(self, S_store, ImF, rho_hat, sr_caliber, eps_ff, m_q,
-                  frozen_at_s0=True, sr_free=(), eps_sr=None):
+                  frozen_at_s0=True, sr_free=(), eps_sr=None, eps_ff_s0=None, eps_ff_p1=None):
         """Replay the original UV inequalities without float operator exports."""
         ctx.prec = self.bits
         free = {(str(w), int(n)) for w, n in (sr_free or ())}
@@ -235,7 +236,8 @@ class ArbAudit:
             rhat = [arb(t) if isinstance(t, arb) else arb(float(t)) for t in rho_hat[ell]]
             k2 = [_kinematic_square(ell, x) for x in self.x]
             rho = [k2[i] * rhat[i] for i in range(M)]
-            cap = 2 * mq * mq * eps if ell == 0 else eps / 2
+            eps_ell = eps if (eps_ff_s0 if ell == 0 else eps_ff_p1) is None else arb(str(eps_ff_s0 if ell == 0 else eps_ff_p1))
+            cap = 2 * mq * mq * eps_ell if ell == 0 else eps_ell / 2
             for i in range(M):
                 F, S = acb(ReFa[i], ImFa[i]), S_store[(ell, i)]
                 # Arb's generic power can be NaN for a ball straddling zero.

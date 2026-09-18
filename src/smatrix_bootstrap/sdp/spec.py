@@ -21,6 +21,8 @@ class ModelSpec:
     sr_free: tuple = ()                 # (wave, n) moments whose FESR box is NOT imposed (moment-range diagnostic)
     eps_ff: float = C.EPS_FF
     eps_sr: float = C.EPS_SR            # half-width of the SR-a box / radius of the SR-d ball (2309: 2e-3)
+    eps_ff_s0: float | None = None      # sensitivity study: eps_FF for the S0 current only (None -> eps_ff)
+    eps_ff_p1: float | None = None      # sensitivity study: eps_FF for the P1 current only (None -> eps_ff)
     ff_frozen_at_s0: bool = True        # historical replay; CLI uses the per-node (3.75) factors
     m_q: float = M_Q
     B: float | None = None              # legacy l2 arrow on (rho1, rho2); retired, see reg_*

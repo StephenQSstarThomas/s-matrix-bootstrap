@@ -33,6 +33,8 @@ def main(argv=None):
                         "with --sr-free this gives the achievable range of a freed moment")
     p.add_argument("--eps-ff", type=float, default=C.EPS_FF)
     p.add_argument("--eps-sr", type=float, default=C.EPS_SR, help="SR-a box half-width / SR-d ball radius (2309: 2e-3)")
+    p.add_argument("--eps-ff-s0", type=float, default=None, help="sensitivity study: eps_FF for the S0 current only")
+    p.add_argument("--eps-ff-p1", type=float, default=None, help="sensitivity study: eps_FF for the P1 current only")
     p.add_argument("--mq", choices=["mean", "rms"], default="mean")
     p.add_argument("--ff-factor", choices=["frozen", "node"], default="node")
     p.add_argument("--reg-norm", choices=["none", "linf", "l2", "l4"], default="none",
@@ -99,7 +101,7 @@ def main(argv=None):
     cfg = Settings(**{key: getattr(a, key) for key in asdict(Settings())})
     spec = ModelSpec(M=a.M, L=a.L, chiral=a.chiral, chi_caliber=a.chi,
         eps_chi=a.eps_chi, uv=a.uv, uv_parts=tuple(a.uv_parts), sr_caliber=a.sr,
-        eps_ff=a.eps_ff, eps_sr=a.eps_sr, m_q=C.M_Q if a.mq == "mean" else C.M_Q_RMS,
+        eps_ff=a.eps_ff, eps_sr=a.eps_sr, eps_ff_s0=a.eps_ff_s0, eps_ff_p1=a.eps_ff_p1, m_q=C.M_Q if a.mq == "mean" else C.M_Q_RMS,
         ff_frozen_at_s0=a.ff_factor == "frozen", cone_scaling=a.cone_scaling,
         reduce_basis=a.reduce_basis, basis_tol=a.basis_tol, operator_dps=a.operator_dps,
         scattering_prescription=a.scattering_prescription,

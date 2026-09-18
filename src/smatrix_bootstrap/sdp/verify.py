@@ -225,7 +225,7 @@ def solution_report(model, sol, tolerance=1e-8):
             checks["fesr"] = v <= tolerance
         if "ff" in spec.uv_parts:
             idx, cap, kin = C.ff_asymptotic_bounds(spec.M, spec.m_q, spec.eps_ff,
-                                                  spec.ff_frozen_at_s0)
+                                                  spec.ff_frozen_at_s0, spec.eps_ff_s0, spec.eps_ff_p1)
             K = FFM.hilbert_kernel(spec.M)
             v = max(float(np.max(np.abs(kin[e] * (1 + K @ sol["ImF"][e]
                     + 1j * sol["ImF"][e])[idx]) / cap[e] - 1)) for e in (0, 1))
