@@ -286,11 +286,13 @@ class Pmp:
         if spec.uv:
             if self.precise:
                 K,idx_hi,ffb,ffk,tgt,tol,moments = self.precise.uv_data(spec)
+                if spec.sr_caliber in ("SR-a", "SR-d"):      # adjustable eps_SR; the operator module keeps the 2309 value
+                    tol = {k: arb(str(spec.eps_sr)) for k in tol}
                 rt2 = arb(2).sqrt()
             else:
                 K = FFM.hilbert_kernel(M)
                 idx_hi, ffb, ffk = C.ff_asymptotic_bounds(M, spec.m_q, spec.eps_ff, spec.ff_frozen_at_s0)
-                tgt, tol = C.printed_targets(), C.sr_tolerances(spec.sr_caliber)
+                tgt, tol = C.printed_targets(), C.sr_tolerances(spec.sr_caliber, spec.eps_sr)
                 rt2 = np.sqrt(2.0)
             for ell in (0, 1):
                 g = np.ones(M) if self.precise else FFM.gram_scale(ell, self.ops.s)
@@ -332,7 +334,7 @@ class Pmp:
                             yield [[mom - self._row(y0=t - d)]]
                     if spec.sr_caliber == "SR-d" and residuals:
                         # per-wave L2 ball of radius eps_SR over the two moments
-                        yield self._arrow(residuals, C.EPS_SR)
+                        yield self._arrow(residuals, spec.eps_sr)
 
         # ---- optional section constraint f00(3) = x
         if self.fix_f00 is not None:

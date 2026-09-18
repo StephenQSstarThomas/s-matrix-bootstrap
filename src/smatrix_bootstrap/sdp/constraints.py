@@ -93,7 +93,7 @@ def fesr_target_audit() -> dict:
             "rows": rows}
 
 
-def sr_tolerances(caliber: str) -> dict[tuple[str, int], float]:
+def sr_tolerances(caliber: str, eps_sr: float = EPS_SR) -> dict[tuple[str, int], float]:
     """Half-width of the FESR box for each pre-registered caliber (task section 4)."""
     t = printed_targets()
     if caliber in ("SR-a", "SR-d"):
@@ -101,7 +101,7 @@ def sr_tolerances(caliber: str) -> dict[tuple[str, int], float]:
         # ||(M_n - T_n)_n||_2 <= eps_SR over the two moments of each wave -- the
         # packaging of the authors' released code (norm(wS0) <= eS0) with the
         # 2309 value eps_SR = 2e-3; the per-moment entry here is the ball radius.
-        return {k: EPS_SR for k in t}
+        return {k: float(eps_sr) for k in t}
     if caliber == "SR-b":
         return {k: 0.10 * abs(v) for k, v in t.items()}
     if caliber == "SR-c":

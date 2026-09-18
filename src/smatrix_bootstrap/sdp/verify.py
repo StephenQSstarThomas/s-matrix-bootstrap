@@ -85,9 +85,9 @@ def gram_report(ops, c, ImF, rho_hat) -> dict:
     return {"min_eigenvalue": worst, "at": where}
 
 
-def fesr_report(ops, rho_hat, caliber: str) -> dict:
+def fesr_report(ops, rho_hat, caliber: str, eps_sr: float = C.EPS_SR) -> dict:
     M = ops.M
-    tgt, tol = C.printed_targets(), C.sr_tolerances(caliber)
+    tgt, tol = C.printed_targets(), C.sr_tolerances(caliber, eps_sr)
     rows = []
     for ell, wave in ((0, "S0"), (1, "P1")):
         rho = rho_hat[ell] * FFM.gram_scale(ell, ops.s) ** 2
@@ -102,7 +102,7 @@ def fesr_report(ops, rho_hat, caliber: str) -> dict:
             norm = float(np.sqrt(sum(r["residual"] ** 2 for r in wave_rows)))
             for r in wave_rows:
                 r["wave_l2_residual"] = norm
-                r["violation"] = max(0.0, norm - C.EPS_SR)
+                r["violation"] = max(0.0, norm - eps_sr)
         rows += wave_rows
     return {"caliber": caliber, "rows": rows,
             "packaging": "per-wave L2 ball" if caliber == "SR-d" else "per-moment box",
@@ -169,7 +169,7 @@ def full_report(model, sol: dict) -> dict:
         out["chiral"] = chiral_report(ops, c, spec.chi_caliber, spec.eps_chi)
     if spec.uv and "ImF" in sol:
         out["gram"] = gram_report(ops, c, sol["ImF"], sol["rho_hat"])
-        out["fesr"] = fesr_report(ops, sol["rho_hat"], spec.sr_caliber)
+        out["fesr"] = fesr_report(ops, sol["rho_hat"], spec.sr_caliber, spec.eps_sr)
         out["form_factor"] = ff_report(ops, sol["ImF"], spec.m_q, spec.eps_ff,
                                        spec.ff_frozen_at_s0)
     return out

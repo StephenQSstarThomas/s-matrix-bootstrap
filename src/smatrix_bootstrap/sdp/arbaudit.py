@@ -122,7 +122,7 @@ class ArbAudit:
     # ------------------------------------------------------------------
     def audit(self, c: np.ndarray, ImF=None, rho_hat=None, *, chi_caliber="chi-b",
               eps_chi=C.EPS_CHI_MAIN, sr_caliber="SR-b", eps_ff=C.EPS_FF,
-              m_q=None, ff_frozen_at_s0=True, sr_free=()) -> dict:
+              m_q=None, ff_frozen_at_s0=True, sr_free=(), eps_sr=None) -> dict:
         ctx.prec = self.bits
         M = self.M
         ca = [arb(t) if isinstance(t, arb) else arb(float(t)) for t in c]
@@ -204,14 +204,15 @@ class ArbAudit:
         if ImF is not None:
             out.update(self._uv_audit(S_store, ImF, rho_hat, sr_caliber, eps_ff,
                                       C.M_Q if m_q is None else m_q,
-                                      frozen_at_s0=ff_frozen_at_s0, sr_free=sr_free))
+                                      frozen_at_s0=ff_frozen_at_s0, sr_free=sr_free, eps_sr=eps_sr))
         return out
 
     def _uv_audit(self, S_store, ImF, rho_hat, sr_caliber, eps_ff, m_q,
-                  frozen_at_s0=True, sr_free=()):
+                  frozen_at_s0=True, sr_free=(), eps_sr=None):
         """Replay the original UV inequalities without float operator exports."""
         ctx.prec = self.bits
         free = {(str(w), int(n)) for w, n in (sr_free or ())}
+        eps_sr_arb = arb(".002") if eps_sr is None else arb(str(eps_sr))
         M, s0, pi = self.M, arb(3600) / 49, arb.pi()
         if sr_caliber not in ("SR-a", "SR-b", "SR-c", "SR-d"):
             raise ValueError(sr_caliber)
@@ -257,7 +258,7 @@ class ArbAudit:
             pending = []
             for n in ((0, 1) if ell == 0 else (-1, 0)):
                 target = _printed_target(ell, n, s0)
-                tol = (arb(".002") if sr_caliber in ("SR-a", "SR-d") else
+                tol = (eps_sr_arb if sr_caliber in ("SR-a", "SR-d") else
                        arb(".1" if sr_caliber == "SR-b" else ".2") * abs(target))
                 mom = pi * sum((self.w[i] * self.x[i] ** n * rho[i] for i in idx_lo), arb(0))
                 residual = mom - target
@@ -265,7 +266,7 @@ class ArbAudit:
             if sr_caliber == "SR-d":
                 # per-wave L2 ball: one slack shared by both imposed moment rows of the wave
                 l2 = sum((r * r for n, _, _, _, r in pending if (wave, n) not in free), arb(0)).sqrt()
-                shared = arb(".002") - l2
+                shared = eps_sr_arb - l2
             for n, target, tol, mom, residual in pending:
                 slack = shared if sr_caliber == "SR-d" else tol - abs(residual)
                 row = _constraint_row(slack, wave=wave, n=n, moment=float(mom.mid()),

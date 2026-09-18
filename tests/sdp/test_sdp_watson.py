@@ -200,3 +200,30 @@ def test_authors_weights_scale_the_row_per_node(tmp_path):
     with pytest.raises(ValueError):
         bad = dict(f_auth); bad["weights"] = {w: [-1.0] * len(f_auth["nodes"]) for w in f_auth["waves"]}
         check_functional(bad, ModelSpec(M=4, L=1, uv=True))
+
+
+def test_eps_sr_is_adjustable_without_touching_the_operator_module(tmp_path):
+    from smatrix_bootstrap.sdp import constraints as C2
+    a = Pmp(ModelSpec(M=4, L=1, uv=True, sr_caliber="SR-a")); b = Pmp(ModelSpec(M=4, L=1, uv=True, sr_caliber="SR-a", eps_sr=5e-3))
+    ia = a.write(str(tmp_path / "a.json")); ib = b.write(str(tmp_path / "b.json"))
+    assert ia["n_blocks"] == ib["n_blocks"]
+    blocks_a = json.load(open(tmp_path / "a.json"))["PositiveMatrixWithPrefactorArray"]
+    blocks_b = json.load(open(tmp_path / "b.json"))["PositiveMatrixWithPrefactorArray"]
+    consts_a = sorted(float(bl["polynomials"][0][0][0][0]) for bl in blocks_a if len(bl["polynomials"]) == 1)
+    consts_b = sorted(float(bl["polynomials"][0][0][0][0]) for bl in blocks_b if len(bl["polynomials"]) == 1)
+    assert consts_a != consts_b                                    # the FESR box constants moved
+    z = np.zeros(b.ops.lay.n); rep = b.verify({"a": z, "c": z, "ImF": np.zeros((2, 4)), "rho_hat": np.zeros((2, 4))})
+    assert all(r["tolerance"] == 5e-3 for r in rep["fesr"]["rows"])
+    p = Pmp(ModelSpec(M=4, L=1, uv=True, sr_caliber="SR-a", eps_sr=5e-3, operator_dps=30), digits=20)
+    rep = p.verify({"y_text": ["0"] * (p.n_vars - 1), "a": np.zeros(p.n_vars - 1), "c": np.zeros(p.ops.lay.n)})
+    from fractions import Fraction
+    assert all(abs(float(Fraction(r["tolerance"]["lower"])) - 5e-3) < 1e-15 for r in rep["fesr"]["rows"])
+    assert C2.sr_tolerances("SR-a")[("S0", 0)] == 2e-3 and C2.sr_tolerances("SR-d", 1e-2)[("P1", 0)] == 1e-2
+
+
+def test_solve_cli_passes_eps_sr(tmp_path, monkeypatch):
+    from smatrix_bootstrap.sdp import cli
+    seen = []
+    monkeypatch.setattr(cli, "run_once", lambda spec, *a, **k: seen.append(spec) or ({"accepted": True, "verification": {"f00_3": 0.}}, None, None))
+    assert cli.main(["--workdir", str(tmp_path / "w"), "--M", "4", "--L", "1", "--uv", "--sr", "SR-a", "--eps-sr", "0.01", "--points", "tip", "--skip-mma-audit", "--operator-dps", "17"]) == 0
+    assert seen[0].eps_sr == 0.01
