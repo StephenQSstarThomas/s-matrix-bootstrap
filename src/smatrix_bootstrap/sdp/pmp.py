@@ -134,9 +134,9 @@ class Pmp:
     """Assemble and stream one PMP file for a ``ModelSpec`` and a direction."""
 
     @classmethod
-    def from_saved(cls, source_report, direction, fix_f00=None, face=None, functional=None):
+    def from_saved(cls, source_report, direction, fix_f00=None, face=None, functional=None, allow_face_source=False):
         from .precision_pmp import restore
-        return restore(cls,source_report,direction,fix_f00,face,functional)
+        return restore(cls,source_report,direction,fix_f00,face,functional,allow_face_source=allow_face_source)
 
     def __init__(self, spec: ModelSpec, direction=(1.0, 0.0), fix_f00=None,
                  digits: int = 17, basis_source_report=None, face=None, functional=None) -> None:

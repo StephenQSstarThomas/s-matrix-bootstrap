@@ -42,7 +42,8 @@ def main(argv=None) -> int:
                    "seconds": out_txt.stat().st_mtime - proc.get("started_unix", out_txt.stat().st_mtime),
                    "scope": ("driver wall clock expired after SDPB had terminated optimally and written out.txt and y.txt" if wall_clock
                              else "driver died after SDPB wrote out.txt and y.txt; return code not recorded, outputs complete")}
-    w = Pmp.from_saved(str(report), tuple(rec["direction"]), rec.get("fix_f00"), rec.get("face"), rec.get("functional"))
+    w = Pmp.from_saved(str(report), tuple(rec["direction"]), rec.get("fix_f00"), rec.get("face"), rec.get("functional"),
+                       allow_face_source=True)
     rec["sdpb_result"] = read_out(out_txt)
     sol = w.read_solution(yp)
     rec["y_sha256"] = hashlib.sha256(yp.read_bytes()).hexdigest()

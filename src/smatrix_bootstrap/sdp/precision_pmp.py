@@ -14,8 +14,12 @@ from .precision import PrecisionRows
 _CACHE = {}
 
 
-def restore(cls, source_report, direction, fix_f00, face=None, functional=None):
-    """Reuse a completed precise PMP's constraints and coordinate basis."""
+def restore(cls, source_report, direction, fix_f00, face=None, functional=None, allow_face_source=False):
+    """Reuse a completed precise PMP's constraints and coordinate basis.
+
+    ``allow_face_source`` re-opens a face-diagnostic leaf for its own post-processing (readback and verification of
+    the same PMP); chaining a new support from such a leaf stays refused because its PMP carries the extra slab block.
+    """
     from .assembly import Operators
     from .spec import ModelSpec
     from .pmp import check_face, check_functional
@@ -38,7 +42,7 @@ def restore(cls, source_report, direction, fix_f00, face=None, functional=None):
     w = cls.__new__(cls)
     w.spec = ModelSpec(**source['spec'])
     w.direction,w.fix_f00,w.digits = direction,fix_f00,source['pmp']['digits']
-    if source.get('face') is not None:
+    if source.get('face') is not None and not allow_face_source:
         raise ValueError('A face-diagnostic leaf is terminal (it carries an extra slab block); chain supports from its own source leaf')
     # a functional-only leaf (Watson step, node functional without a slab) has exactly the base blocks and may be chained
     w.face,w.functional = check_face(face),check_functional(functional,w.spec)
