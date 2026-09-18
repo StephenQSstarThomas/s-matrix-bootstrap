@@ -93,7 +93,7 @@ B2纯S全区域是基线旁路。C代表点只需对应截面的已证明上侧�
 所有生产计算使用`python -m smatrix_bootstrap.run`，数据与运行参数写到新的`results/runs`目录。当前环境：
 
 ```bash
-export PYTHONPATH=/tmp/collocation_arb:src
+export PYTHONPATH=src   # python-flint 0.9.0 已装在 miniconda 环境；缺失时 pip install python-flint==0.9.0
 export SMATRIX_BLAS_THREADS=2
 /home/shiqiu/miniconda3/bin/python -m smatrix_bootstrap.run --help
 ```

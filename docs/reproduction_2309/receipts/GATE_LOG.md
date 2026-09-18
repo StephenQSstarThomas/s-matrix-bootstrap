@@ -836,3 +836,13 @@ run in at least two readings with the controls recorded above.
   15 pages, no overfull boxes.  Verdicts and main-line inputs unchanged.
 - TODO_ZH.md created at the repository root (s0 sensitivity, the three answers awaited from the authors, share pin of the
   online ledger, o/operator-cache); linked from REPORT_SDPB_2309_ZH.md section 6 and the docs README.
+
+## 2026-09-18 14:05Z  (operator-18) Housekeeping: /tmp staging directories of the source-operator derivation removed after byte-for-byte comparison
+
+- Every /tmp/<stage> directory referenced by results/*.json (source_full_grid_stage 2.5 GB, source_imaginary_rank_stage,
+  universal_source_stage, the threshold / subthreshold / registry / local-block / integer-residual stages, the operator
+  bundle tar) was diff -rq identical to results/analytic_source_storage/<stage>; four scripts present only in /tmp and the
+  Clarabel export canonical_seed_reduced.json were copied into the archive first (cmp-verified).  Mapping recorded in
+  results/analytic_source_storage/README_TMP_CLEANUP.md.  /tmp/collocation_arb (python-flint 0.9.0) removed; the same
+  version is installed in the miniconda environment and REPRODUCTION_GUIDE_ZH.md no longer points at /tmp.
+- Nothing under the results root or the SDPB leaves was touched.  /tmp: 1.7 GB free -> 9.8 GB free.
