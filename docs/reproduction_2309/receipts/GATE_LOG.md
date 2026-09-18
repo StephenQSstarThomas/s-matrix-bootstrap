@@ -535,3 +535,292 @@ run in at least two readings with the controls recorded above.
   fig3_pure_linf_1e4_tip_v2 (fresh source, current hashes), then -x/+y/-y supports at Mreg = 1e4, to report how far
   the extrema move per decade of Mreg.  C1 stays FAIL under the pre-registered rule; the control is a sensitivity
   annotation, not a re-tuning.
+
+## 2026-09-17 18:05Z  (operator-18) C1 Mreg = 1e4 control landed on 2026-09-14 (recorded now)
+
+- fig3_pure_linf_1e4_tip_v2 accepted, +x end 2.23046 (paper 2.23289, -0.11 %).  Supports from it: -x end -2.6927
+  (paper -2.9020; at Mreg = 1e3 it was -2.2470), +y 0.07562 (paper 0.07932; 1e3: 0.06629), -y -0.71764 (paper
+  -0.73359; 1e3: -0.62430).  Per decade of Mreg the three failing extrema move from 15-23 % inside the paper's region
+  to 2-7 % inside; the +x end moves by 0.3 %.  The paper's Fig.3 therefore corresponds to a larger effective
+  regulariser (or none, i.e. whatever the double-precision solver tolerated).  C1 verdict unchanged (rule fixed at
+  Mreg* = 1e3); this is the sensitivity annotation promised in the comparison document.
+
+## 2026-09-17 18:40Z  (operator-18) Watson / unitarity-saturation iteration: pre-registration
+
+- Trigger: the authors' reply of 2026-09-17 -- "|S| does not saturate unitarity. We have an iterative procedure that
+  improves saturation of unitarity ... Our results are always shown after that."  The 2309 text does not describe this
+  step; the released 2403 code does (block 2).  It was deliberately not applied in our main line (PLAN 2.1).
+- Implementation (src/smatrix_bootstrap/sdp/watson.py, `support --functional watson`): every constraint of the finite
+  model kept; the section f00(3)=x released (as in the authors' block 2; `--watson-keep-section` as a control); the
+  objective replaced by  max sum_{waves S0,P1,S2} sum_{s_k <= s0} [Re(conj(t_k) h_k) - Im h_k]  with h = kappa f
+  (S = 1 + i h) and targets from the previous accepted leaf: S0/P1 t_k = -i(F_k/conj(F_k) - 1) (Watson's theorem at
+  |S| = 1, F the previous form factor), S2 t_k = radial projection of the previous h_k onto |S| = 1.  On the unitarity
+  disc |h|^2 <= 2 Im h this functional is maximised exactly at h = t, so the fixed point is the saturated,
+  Watson-aligned amplitude; the functional value at the fixed point is sum Im t_k.  Unit node weights; no weights,
+  no D0 current, no s0 = 2 GeV: only the 2309 model with a different selection of the amplitude.
+- Verification unchanged: SDPB optimal + Arb feasibility; the functional is re-evaluated in Arb from the node S.
+- Runs: two chains, from the accepted SR-a node-reading leaves uv_SRa_tip/tip (tip) and uv_SRa_section_hi (x_ref
+  upper), 5 rounds each, stop earlier if max_k |h_k - t_k| < 0.02 or a round is not accepted.  Start distances:
+  see WATSON_ITER.json round 0.
+- Readings, fixed now: per round, (f00, f11) drift, min |S_P1| below 1.2 GeV, P1 90-degree crossing, S0 phase at 0.792
+  and 1.0 GeV, Watson residual and two-pion fraction.  Afterwards C6/C7 are re-evaluated on the final round of each
+  chain as a separately labelled "post-Watson" reading (the original verdicts stand for the text-only model).  The
+  face-diagnostic conclusions are unaffected (they concern the boundary points themselves).
+- Equivalence checked against the authors' text (arXiv:2403.10772 Section 2.5, eq. 2.29, F_W = sum int ds
+  Re[e^{-2 i alpha}|old (S-1)], alpha = old form-factor phase, or the old phase shift for waves without a current):
+  with S - 1 = i h and t = 2 sin(alpha) e^{i alpha}, Re(conj(t) h) - Im h = Re[e^{-2 i alpha}(S - 1)] identically, so
+  our per-node term IS (2.29) at the node; the released 2403 code likewise sums nodes up to s0 without ds weights,
+  keeps every constraint and drops the F0 fix.  Their 2505 code differs only in the target magnitude (|h_old| instead
+  of 2 sin alpha), which does not change the maximiser on the unitarity disc.  Declared differences: waves S0, P1, S2
+  (the ones 2309 plots) instead of their six; no D0 current; s0 = 1.2 GeV; unit weights in the physical h.
+
+## 2026-09-17 19:50Z  (operator-18) Watson chains: the keep-section control was vacuous at the tip; replaced by pinned-point controls
+
+- watson_tip_keepsec stopped after 40 minutes: the tip leaf has no section (it is a +x support), so "keep section"
+  changed nothing and the chain duplicated watson_tip iteration for iteration (identical SDPB trajectories).  Directory
+  moved to stale_watson_tip_keepsec_vacuous/.
+- The question it was meant to answer -- does the plotted amplitude stay at the boundary point? -- is answered by a
+  pinned-point control instead: constraints and section from the start leaf plus the near-optimal slab
+  d.(f00,f11) >= v* - 2e-6 (the face-diagnostic slab), Watson targets from the previous round.  Two such chains were
+  launched at 19:50Z: watson_ref_pinned (x_ref upper, whose face is wide) and watson_tip_pinned (tip, whose face is
+  rigid).  If saturation improves little under pinning while the released chains saturate, the authors' plotted
+  amplitudes cannot be the boundary-point amplitudes.  Released chains watson_tip / watson_ref / watson_mid continue
+  (round 1 at SDPB iteration ~45 of an expected ~85).
+
+## 2026-09-17 20:35Z  (operator-18) Watson chain, tip, round 1 (released section)
+
+- Accepted (gap < 1e-6, Arb feasible).  The amplitude left the tip: (f00, f11) = (0.076013, -0.004944) ->
+  (0.073874, -0.004857), i.e. inward by 2.8 % in f00, to the x_ref neighbourhood.  S0 became elastic at all 43 nodes
+  below s0 (Watson residual 0, two-pion fraction >= 0.996); S2 unchanged (elastic); P1 elastic everywhere except the
+  0.792 GeV node, where |S| rose from 0.585 to 0.932 (|F|^2/rho_hat 0.80 there).  P1 crossing 773 -> 770 MeV,
+  delta_P1(0.792) 108 -> 111 deg; S0 crossing 694 -> 688 MeV, S0(1 GeV) 150 -> 148 deg: the fast S0 rise is not a
+  saturation effect.  FESR: S0 n=0 still at the upper edge (+84 %), P1 n=-1 moved from +13 % to +34 %.
+- Artefact noted: after the round the P1 form factor at the threshold node (0.280 GeV) is |F| = 18 with phase 75 deg
+  while |F|^2/rho_hat = 0 there -- a free direction the objective does not see.  The target built from that phase for
+  the next round is noise, but the node has kappa ~ 0.15 and cannot move S; its only effect is on the raw convergence
+  metric.  The driver now also records max |h - t| over the two-pion-saturated nodes (|F|^2/rho_hat >= 0.5) and uses
+  that for the stop rule in future launches (tip: 0.418 -> 0.183); the running chains keep their 5-round budget.
+
+## 2026-09-17 20:50Z  (operator-18) Watson chain, x_ref upper (ref), round 1 (released section)
+
+- Accepted.  (f00, f11): (0.073321, -0.004650) -> (0.069295, -0.004497), inward by 5.5 % in f00.  S0 elastic at all
+  nodes below s0 (was |S| = 0.52 at 1.2 GeV); S0 crossing 684 -> 686 MeV, S0(1 GeV) 131 deg.  P1: the |S| = 0.24 dip
+  at 0.73 GeV became a clean, nearly elastic resonance (|S| = 0.883 at 0.73 GeV, 1.000 elsewhere) with the phase rising
+  14 -> 49 -> 117 -> 157 deg over 0.60-0.79 GeV and the 90-degree crossing at 711 MeV (the +180-degree branch of the
+  round-0 amplitude had given 708 MeV).  Distance to the fixed point over two-pion-saturated nodes 0.856 -> 0.377.
+- Reading so far: one round of the authors' selection removes the inelasticity almost completely at both points, but
+  the rho position it leaves (770 MeV at the tip chain, 711 MeV at the ref chain) is below the paper's 813-827 MeV, and
+  the two chains do not (yet) agree with each other.  The authors' statement that the iteration converges to a solution
+  independent of the starting functional is what the remaining rounds test.
+
+## 2026-09-17 21:30Z  (operator-18) Pinned-point controls, round 1
+
+- watson_ref_pinned (x_ref upper, section kept + slab 2e-6, Watson objective): accepted, point unchanged
+  ((0.073321, -0.004652), slab active).  Saturation improves only partly: P1 min |S| 0.244 -> 0.367 at 0.73 GeV
+  (0.625 at 0.68 GeV, 0.889 at 0.79 GeV), mean(1-|S|^2) over the nodes below s0 0.050 -> 0.039; S0 min |S| 0.52 -> 0.88.
+  The released chain from the same start reached P1 min |S| 0.883 and S0 fully elastic in one round.
+- watson_tip_pinned (tip, slab 2e-6): accepted, point unchanged; P1 min |S| 0.585 -> 0.593, essentially nothing --
+  as the face diagnostic predicted (the tip face is rigid in the P1 observables).
+- Reading: at the boundary points themselves the saturation the authors describe is not available; the iteration
+  saturates only because it leaves the boundary (2.8 % inward at the tip, 5.5 % at x_ref after one round).  Whatever
+  coordinates the paper's dots mark, the amplitudes it plots after the iteration cannot be the boundary-point
+  amplitudes of this finite problem.
+
+## 2026-09-17 23:05Z  (operator-18) Correspondence with the released code re-checked; first-round inputs verified; weighted control launched
+
+- Variable mapping (audit of the 2403 notebook, PV_PRIMARY_SOURCE_AUDIT_20260911): h-tilde = h/Lambda_l, Im h-hat =
+  Im h/Lambda_l^2, F-hat = F/Lambda, Lambda_l(s) = ((sqrt s - 2)/(sqrt s + 2))^(l/2); phase shifts read as arg(h-tilde)
+  for the current waves, i.e. S = 1 + i h-tilde with h-tilde = h -- our convention.  Their block-2 term
+  Re(conj(fnl) h-tilde) - Im h-hat with fnl = 2 Im F-hat F/|F|^2 equals (1/Lambda_l^2)[Re(conj(t) h) - Im h] with our
+  t = 2 sin(alpha) e^{i alpha}: our functional with node weights 1/Lambda_l^2 (1 for S0, S2; (sqrt s+2)/(sqrt s-2) for
+  P1, ~1800 at the threshold node, 2.2 at the rho).  Same per-node maximiser, hence the same fixed point when the
+  saturated amplitude is feasible; a different compromise otherwise.  Not a transcription: our objective is built from
+  our own physical-h rows and Arb-verified; theirs from their scaled kernels.
+- Inputs of the first rounds verified on watson_tip/round_01, watson_ref/round_01, watson_ref_pinned/round_01,
+  watson_tip/round_02: recorded targets identical to a recomputation from the linearisation source; released leaves
+  carry the base blocks only (ref 9175 -> 9173, section removed; tip 9173), pinned leaf 9176 (section + slab, slab
+  active); the objective row in pmp.json equals an independent float construction from the unscaled operator rows
+  projected on the saved basis to 1e-11 (row scale 1e2); SDPB dual objective = Arb recomputation = float check.
+- Control launched: watson_ref_authorsweights (released, weights 1/Lambda_l^2), to measure how much the node weighting
+  moves the compromise at the rho node where full saturation is not feasible.
+
+## 2026-09-18 00:50Z  (operator-18) watson_tip_pinned stopped at its fixed point
+
+- Rounds 2 and 3 of the pinned tip chain are identical to 1e-6 in every recorded quantity (f00 0.0760109, f11
+  -0.0049434, P1 min |S| 0.5926, W 25.4888): the pinned iteration has converged, without saturating, to the tip
+  face's own amplitude.  Further rounds would repeat it; the chain was stopped and its round-4 directory (just
+  started) removed.  Result on record: at the tip the authors' step cannot saturate unless the point is released.
+
+## 2026-09-18 01:55Z  (operator-18) Sensitivity runs pre-registered (the authors' "depends on the parameters")
+
+- Five UV tips (SR-a node reading, Mreg 1e2, M50 L10), everything else as the main line:
+  eps_SR = 5e-3 and 1e-2 (main line 2e-3); the S0 n=0 box dropped (all other boxes kept); eps_FF = 2e-4 and 1e-3
+  (main line 6e-5).  s0 variation is deferred until the Watson chains finish, because s0 lives in the hash-checked
+  operator module and editing it would break the chains' restore step.
+- Readings (no verdict changes; annotation of the "parameter dependence" the authors accept): UV +x end, P1 90-degree
+  crossing, min |S_P1| below 1.2 GeV, S0 phase at 1 GeV, the FESR moments relative to their targets.  If loosening the
+  S0 n=0 box (or dropping it) slows the S0 rise and/or moves the rho towards 820 MeV, the sum-rule tolerance is the
+  parameter behind both discrepancies; if not, the FF caps are tested next by the eps_FF pair.
+- Watson chains: after their 5 rounds each released chain is continued for 4 more rounds from its last leaf, to see
+  whether the inward drift in (f00, f11) stops and whether the three chains approach one solution.
+
+## 2026-09-18 04:00Z  (operator-18) Sensitivity: eps_SR at the tip (SR-a node reading)
+
+- eps_SR 2e-3 -> 5e-3 -> 1e-2: UV +x end 0.07601 -> 0.07631 -> 0.07672 (+0.9 %); P1 crossing 773 -> 779 -> 785 MeV
+  (+12 MeV); min |S_P1| 0.585 -> 0.571 -> 0.567; S0 crossing 694 -> 696 -> 706 MeV, S0(1 GeV) 150 -> 155 -> 154 deg.
+  FESR moments: S0 n=0 +84 % -> +89 % -> +92 % of its target -- at 5e-3 and 1e-2 the box is no longer active (its edges
+  would be +210 % and +419 %); the amplitude settles near +90 % on its own.  S0 n=1 +2 -> +4 -> +9 %, P1 n=-1 +13 ->
+  +14 -> +17 %, P1 n=0 +1 -> +3 -> +7 %.
+- Reading: the sum-rule tolerance is not the parameter behind either discrepancy: a five-fold loosening moves the rho
+  by 12 MeV (towards the paper, but 30-40 MeV short) and leaves the S0 rise unchanged.  The S0 n=0 moment wants to be
+  1.9 times the QCD value in this model whatever the box; with the 2e-3 box it is merely clipped at +84 %.
+  Pending: the box dropped altogether, and the two eps_FF values.
+
+## 2026-09-18 05:05Z  (operator-18) Pinned-point control at x_ref completed (5 rounds)
+
+- P1 min |S| below 1.2 GeV by round: 0.244, 0.367, 0.409, 0.455, 0.505, 0.493 -- a plateau near 0.5 at the point
+  (0.073321, -0.004652); the released chain from the same start reached 0.975 by round 5 while drifting to
+  (0.06534, -0.00431).  Round 5's driver wall clock expired 250 s after SDPB's optimal termination (machine load ~120);
+  the leaf was post-processed from its complete outputs (finish_leaf, note in report.json) and is accepted.
+- Together with the tip control (fixed point at |S| = 0.593): at the boundary points of this finite problem the
+  saturation the authors describe cannot be reached; it needs the point released.
+
+## 2026-09-18 05:20Z  (operator-18) Sensitivity: S0 n=0 box dropped (tip)
+
+- Accepted.  x_tip 0.07603 (main line 0.07601); P1 crossing 774 MeV (773), min |S_P1| 0.583 (0.585); S0 crossing
+  unchanged, S0(1 GeV) 155 deg (150).  The freed S0 n=0 moment settles at about +90 % of the QCD value, the same value
+  the loosened boxes gave.  The S0 n=0 sum rule is therefore inactive in effect: neither the rho position nor the S0
+  rise depends on it.  What remains of the "parameter dependence" is eps_FF (two values queued) and s0.
+
+## 2026-09-18 06:00Z  (operator-18) Sensitivity: eps_FF = 2e-4 at the tip -- the sensitive parameter
+
+- eps_FF 6e-5 (paper's value) -> 2e-4, everything else the main line: UV +x end 0.07601 -> 0.08078 (paper 0.0811,
+  now -0.4 %); S0 phases at 0.68/0.79/0.86/0.95/1.06/1.20 GeV 86/111/126/145/157/181 deg -> 63/73/82/88/111/152 deg
+  against the paper's red curve 67/76/83/86/98/100 deg: the S0 wave now follows the paper to within 3-5 deg up to
+  1 GeV (S0 crossing 694 -> 960 MeV).  P1: the rho moves from 773 to 972 MeV and becomes nearly elastic (min |S| 0.973);
+  the paper has 813-827 MeV.  FESR: S0 n=0 +84 % -> +42 %, P1 n=-1 +13 % -> -22 %.
+- Reading: the form-factor cap is the parameter behind both discrepancies.  The paper's stated 6e-5 with the factor at
+  each node gives the fast S0 and a low rho; a 3.3 times looser cap gives the paper's S0 and +x end but a rho that is
+  too high.  The paper's figures sit between the two, so its effective constraint on the form factors above s0 is
+  looser than our node reading of (3.75) with 6e-5 and tighter than 2e-4 -- possibly with a different balance between
+  the S0 and P1 caps (the ratio 2 m_q^2 : 1/2 in (3.75)).  Next: eps_FF 1e-4 and 1.4e-4 (both currents), and 2e-4 on
+  one current at a time; eps_FF 1e-3 is already queued and will show the overshoot direction.  This is a sensitivity
+  study, recorded as such: the main-line inputs and verdicts are not changed.
+
+## 2026-09-18 08:50Z  (operator-18) Watson chain from the tip converged (8 rounds)
+
+- Stop rule met at round 8 (watson_tip_cont round 3): max |h - t| over the two-pion-saturated nodes 0.0194 < 0.02.
+  Trajectory (f00, f11): (0.07601, -0.00494) -> ... -> (0.06782, -0.00449), inward steps shrinking 2.8, 1.9, 1.6, 1.4,
+  1.2, 1.0, 0.8, 0.6 %; P1 min |S| 0.585 -> 0.998; P1 crossing 773 -> 775 MeV; S0 crossing 694 -> 676 MeV.
+  The converged amplitude is saturated and Watson-aligned, has the rho at 775 MeV (paper 813-827) and the S0 wave as
+  fast as before.  The authors' weighting (ref start) gave the same rho (714 MeV) as the unit weighting (713).
+
+## 2026-09-18 08:55Z  (operator-18) eps_FF scan: 1e-4 lands the rho just above the paper's; S0 needs a looser cap
+
+- eps_FF 1e-4 (both currents): x_tip 0.07835; rho 849 MeV (paper 813-827), min |S_P1| 0.785; S0 at 0.79/0.86/0.95/
+  1.06 GeV 93/107/123/146 deg (paper light pink 99/103/104/109, red 76/83/86/98), S0 crossing 776 MeV; FESR S0 n=0
+  +66 %, P1 n=-1 -1 %.  Sequence so far (6e-5 / 1e-4 / 2e-4 / 1e-3): rho 773 / 849 / 972 / 1604 MeV, x_tip 0.0760 /
+  0.0784 / 0.0808 / 0.0828, S0(0.95 GeV) 145 / 123 / 88 / (no crossing) deg.  By interpolation the paper's rho needs
+  eps_FF about 8e-5 on the P1 current, while the paper's S0 needs about 2e-4 on the S0 current: no common value fits
+  both, so the effective constraint of the paper differs between the two currents from the 2 m_q^2 : 1/2 split of (3.75).
+- Pre-registered follow-up (hypothesis test, not a tuning of the main line): after the one-current runs (S0-only and
+  P1-only 2e-4, queued) confirm that the two caps act separately, run the tip with eps_FF_S0 = 2e-4 and eps_FF_P1 = 8e-5.
+  Reading: the hypothesis "the paper's effective caps are ~2e-4 (S0) and ~8e-5 (P1)" is supported if that run gives
+  x_tip within 1 % of 0.0811, the rho crossing within 813-827 MeV and S0 within 10 deg of the paper's curves up to
+  1 GeV -- all three at once; then the x_ref sections with the same pair test whether Fig.8's asymmetry appears.
+  If not all three, the sensitivity study ends with the table above.
+
+## 2026-09-18 10:15Z  (operator-18) eps_FF 1.4e-4 (recovered after a driver wall-clock expiry; SDPB optimal at 6523 s)
+
+- x_tip 0.07964; rho 905 MeV, min |S_P1| 0.845; S0 at 0.79/0.86/0.95/1.06 GeV 82/92/105/130 deg; FESR S0 n=0 +53 %,
+  P1 n=-1 -14 %.  The scan 6e-5 / 1e-4 / 1.4e-4 / 2e-4 / 1e-3 is monotone in every quantity: rho 773 / 849 / 905 /
+  972 / 1604 MeV; x_tip 0.0760 / 0.0784 / 0.0796 / 0.0808 / 0.0828; S0(0.95 GeV) 145 / 123 / 105 / 88 / -- deg.
+  (Correction: the two one-current tips had already started with the 7200 s budget when this was written; a
+  wall-clock expiry after an optimal termination is recovered with finish_leaf, as above.)
+
+## 2026-09-18 10:50Z  (operator-18) One-current cap: loosening the S0 cap alone fixes the S0 wave and leaves the rho untouched
+
+- eps_FF_S0 = 2e-4 with eps_FF_P1 = 6e-5 (main line): x_tip 0.07758; rho 775 MeV, min |S_P1| 0.585 -- identical to the
+  main line's P1; S0 at 0.79/0.86/0.95/1.06 GeV 75/84/90/111 deg against the paper's red curve 76/83/86/98 deg (within
+  3 deg up to 0.95 GeV), S0 crossing 951 MeV; FESR S0 n=0 +44 %, P1 n=-1 +13 % (unchanged).
+- The two caps act independently: the S0 form-factor cap sets the S0 rise (and the S0 n=0 moment), the P1 cap sets the
+  rho position and its inelasticity.  The matched-pair test (S0 2e-4, P1 8e-5) is queued as pre-registered; the
+  P1-only 2e-4 run is still solving.
+
+## 2026-09-18 10:55Z  (operator-18) One-current cap, the other direction: loosening the P1 cap alone moves the rho and leaves S0 untouched
+
+- eps_FF_P1 = 2e-4 with eps_FF_S0 = 6e-5: x_tip 0.07891; rho 967 MeV (both-currents 2e-4 gave 972), min |S_P1| 0.956;
+  S0 at 0.79/0.86/0.95/1.06 GeV 110/125/148/164 deg -- the main line's fast S0, essentially unchanged.  Decoupling confirmed in
+  both directions: S0 cap <-> S0 wave, P1 cap <-> rho position and inelasticity; x_tip responds to both
+  (+0.0016 from the S0 cap, +0.0029 from the P1 cap at 2e-4).
+
+## 2026-09-18 11:05Z  (operator-18) Comparison document extended (interim; chains still running)
+
+- REPRODUCTION_COMPARISON_EN.{tex,pdf} regenerated with two new sections, both data-driven from the results root:
+  "After the unitarity-saturation iteration" (Table tab:watson: last accepted round per chain, min|S_P1|, rho, S0 at 1 GeV,
+  S2 at 1.2 GeV; pinned-control sentence; fig9_watson) and "Sensitivity to the form-factor cap" (Table tab:epsff: eps_FF scan,
+  one-current rows, paper row; fig_epsff).  The request paragraph now asks how the caps on F0, F1 above s0 were normalised
+  and for the iteration details.  15 pages, no overfull boxes.  Committed (branch sdpb-2309-regularised) and pushed.
+- Tables will be regenerated once watson_ref_cont round 4, watson_mid_cont3 round 2 and the matched-pair tip
+  (eps_FF S0 2e-4 / P1 8e-5) land; verdicts are not touched by these annotations.
+- Status at 11:00Z: watson_ref_cont/round_04 SDPB at iteration 52 (gap 0.55, 3985 s of the 7200 s budget, load ~400);
+  watson_mid_cont3/round_02 in the early iterations (9000 s budget); sens_epsFF_S0_2e-4_P1_8e-5_tip solving since 10:47Z.
+
+## 2026-09-18 11:50Z  (operator-18) watson_ref_cont round 4: optimal at 6212 s, driver wall clock expired during the solution write; finish_leaf recovery started
+
+- SDPB: "found primal-dual optimal solution", gap 6.2e-7, primal error 3e-22, dual error 1e-46, 81 iterations, 6212 s
+  (load ~450; round 3 needed 6078 s at lower load).  Driver marked the leaf solver_failed at 11:49Z (wall clock 7260 s
+  passed while the 9179 solution files were being written).  Same pattern as watson_ref_pinned round 5 and the
+  watson_mid_cont rounds; recovered with scripts/sdp/finish_leaf.py (no re-solve; hash-checked restore, identical
+  readback / Arb verification / acceptance logic).  Result is logged when the verification finishes.
+
+## 2026-09-18 11:53Z  (operator-18) watson_ref_cont round 4 recovered and accepted; the x_ref chain ends after 9 rounds (5 + 4)
+
+- round 4 (9th overall): f00 0.06266, f11 -0.00416 (round 0 of the chain 0.07332 / -0.00465: -14.5 % / -10.5 % in total,
+  -0.9 % in this round); Watson objective 25.1117 (SDPB dual = Arb = float check); min |S_P1| 0.991; rho crossing 714 MeV
+  (unchanged over the whole chain, paper 813-827); S0 at 1 GeV 135.8 deg; S2 at 1.2 GeV -18.1 deg.
+- Convergence metric max |h - t| over two-pion-saturated nodes: 0.194 -> 0.172 -> 0.153 -> 0.137 -> 0.122 over the four
+  rounds (about -11 % per round; the pre-registered tolerance 0.02 is not reached, extrapolation needs ~15 more rounds),
+  so the chain is stopped by the round budget, not by convergence.  All-node metric stays 1.66 (the threshold node of P1,
+  as noted on 09-17).  WATSON_ITER.json round-4 entry updated from the recovered leaf (accepted, metrics, note).
+- No change to the picture: saturation is reached by moving inwards, the rho does not move, S0 stays fast.
+
+## 2026-09-18 12:12Z  (operator-18) watson_mid_cont3 round 2 accepted; all three chains finished; post-Watson C6/C7 recorded
+
+- x_ref+0.001 chain, 9th round overall: f00 0.06292, f11 -0.00419 (chain start 0.07432 / -0.00474); objective 24.9487;
+  min |S_P1| 0.913; rho 741 MeV; S0 at 1 GeV 138 deg; S2 at 1.2 GeV -18.0 deg.  Saturated-node metric 0.119 -> 0.112 -> 0.112
+  over the last three rounds: this chain has stopped improving its saturation while still drifting inwards (~ -0.9 %/round).
+- Final leaves: tip watson_tip_cont/round_03 (8 rounds), x_ref watson_ref_cont/round_04 (9), mid watson_mid_cont3/round_02 (9).
+- C67_POSTWATSON.json (scripts/sdp/c67_eval.py on the three final leaves, label post-Watson):
+     C6 FAIL: crossings 775 / 714 / 741 MeV, spread 61 MeV, band [795, 845] not met; min eta >= 0.9 now TRUE at all three
+              (0.998 / 0.991 / 0.913) -- the unitarity half of the rule is what the iteration fixes.
+     C7 FAIL: S0 r.m.s. vs the paper's red curve 16.5 / 8.3 / 13.1 deg (before: 16.6 / 5.7 / 10.7); S2 r.m.s. 3.3 / 1.6 / 3.0
+              (before 1.0 / 1.4 / 0.4); delta00(1.196) = 180.3 / 180.3 / 180.2 deg at all three points.
+  Annotation only: C6/C7 main-line verdicts (C67_RESULT.json) unchanged, as pre-registered on 09-17 18:40Z.
+- Remaining: the matched-pair tip (eps_FF S0 2e-4, P1 8e-5) is at iteration ~50; documents are regenerated once it lands.
+
+## 2026-09-18 12:25Z  (operator-18) Matched-pair tip (eps_FF S0 2e-4, P1 8e-5) accepted: pre-registered criteria NOT all met (2 of 3)
+
+- sens_epsFF_S0_2e-4_P1_8e-5_tip/tip: SDPB optimal, Arb verified.  x_tip 0.07855 (paper 0.0811: -3.15 %), f11 -0.00515;
+  rho crossing 816.9 MeV (band 813-827: MET); min |S_P1| below 1.2 GeV 0.751 (unsaturated at the rho, before any iteration);
+  S0 vs the paper's red curve up to 1 GeV: r.m.s. 1.9 deg, max 4.1 deg (criterion 10 deg: MET); S0 at 0.79/0.86/0.95/1.06 GeV
+  74/83/90/111 (paper 76/83/86/98); S2 vs red: r.m.s. 0.3 deg, max 1.1 deg; S2 at 1.2 GeV -35.4 deg.
+- Rule pre-registered on 09-18 (x_tip within 1 % of 0.0811 AND rho in 813-827 AND S0 within 10 deg up to 1 GeV, all three):
+  NOT MET -- the +x end misses by 3 %.  Consequence as pre-registered: the x_ref sections with the same pair (Fig. 8 asymmetry
+  test) are NOT run.  Reading: with the two caps decoupled, the pair reproduces the paper's Fig. 9 (red) and Fig. 10 (red)
+  curves at the tip within digitisation accuracy, while the region's +x end stays 3 % short; since x_tip rises with either
+  cap and the rho rises with the P1 cap, no pair of caps gives all three at once under our reading (per-node factor,
+  everything else main line).  The residual 3 % therefore sits elsewhere (the eps_SR reading, the (3.75) normalisation
+  above s0, or the authors' iteration acting on the region itself).  Annotation only: main-line inputs and verdicts unchanged.
+
+## 2026-09-18 12:40Z  (operator-18) Post-reply programme complete; documents regenerated
+
+- Done since the authors' reply of 09-17: saturation iteration implemented (eq. 2.29 form, unit and authors' weights, released
+  and pinned), three chains of 8-9 rounds each finished, post-Watson C6/C7 recorded (both FAIL, unitarity half now passes),
+  eps_SR scan (inactive), eps_FF scan and one-current tests (decisive, decoupled), matched pair (2 of 3 criteria; follow-up
+  not triggered).  Verdicts C1-C8 unchanged; all main-line inputs unchanged.
+- Regenerated from the results root: final_figures (fig9_watson, fig_epsff), REPRODUCTION_COMPARISON_EN.{tex,pdf,md,html}
+  (sections 5-6 new, request renumbered 7; 15 pages), index.html (new section "作者回复后的补充"), REPORT_SDPB_2309_ZH.md
+  section 8, docs README; receipts refreshed (C67_POSTWATSON.json, GATE_LOG.md, queue.log).
+- Still open, deliberately: s0 sensitivity (requires editing the hash-checked operator module; nothing is running now, so it
+  can be scheduled), and the authors' answers on the (3.75) normalisation and the eps_SR norm.

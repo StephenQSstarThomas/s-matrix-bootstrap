@@ -113,6 +113,69 @@
    "x_tip": 0.07509650354607847
   }
  ],
+ "fig9_watson": {
+  "tip": {
+   "rounds": 8,
+   "final_leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/watson_tip_cont/round_03/report.json",
+   "crossing_GeV": 0.7751610817696806,
+   "min_eta": 0.9978693468610036,
+   "f00_3": 0.06782213752311855,
+   "f11_3": -0.004491530847072891
+  },
+  "x_ref upper (ref)": {
+   "rounds": 9,
+   "final_leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/watson_ref_cont/round_04/report.json",
+   "crossing_GeV": 0.7140521420366419,
+   "min_eta": 0.990836994697527,
+   "f00_3": 0.06265768024753161,
+   "f11_3": -0.0041634061320866
+  },
+  "x_ref+0.001 upper (mid)": {
+   "rounds": 9,
+   "final_leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/watson_mid_cont3/round_02/report.json",
+   "crossing_GeV": 0.7408210756679702,
+   "min_eta": 0.9128146515401624,
+   "f00_3": 0.06292321150997376,
+   "f11_3": -0.004186116494467631
+  }
+ },
+ "fig_epsff": [
+  {
+   "eps_ff": 6e-05,
+   "x_tip": 0.07601290785157157,
+   "crossing_GeV": 0.77273753161382,
+   "min_eta": 0.5851751156924997,
+   "S0_at_0p95": 144.69793543756646
+  },
+  {
+   "eps_ff": 0.0001,
+   "x_tip": 0.07835101194945701,
+   "crossing_GeV": 0.8491122557214443,
+   "min_eta": 0.7847243784495765,
+   "S0_at_0p95": 122.8496259946547
+  },
+  {
+   "eps_ff": 0.00014,
+   "x_tip": 0.07963737621677833,
+   "crossing_GeV": 0.9052812538087163,
+   "min_eta": 0.8453325022173888,
+   "S0_at_0p95": 104.66317275943591
+  },
+  {
+   "eps_ff": 0.0002,
+   "x_tip": 0.08077947001206165,
+   "crossing_GeV": 0.9722612222478009,
+   "min_eta": 0.9732058309793471,
+   "S0_at_0p95": 88.36008224857048
+  },
+  {
+   "eps_ff": 0.001,
+   "x_tip": 0.08275274568755812,
+   "crossing_GeV": 1.6041018082362208,
+   "min_eta": 0.9870498499008556,
+   "S0_at_0p95": 60.28483528355323
+  }
+ ],
  "face_ranges": [
   "frozen-factor tip: 1 - Re S_P1 (0.792 GeV)",
   "frozen-factor tip: 1 - Re S_P1 (0.864 GeV)",

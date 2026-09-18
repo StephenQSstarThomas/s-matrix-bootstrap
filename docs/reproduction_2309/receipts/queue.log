@@ -95,3 +95,41 @@
 2026-09-14T15:36:03Z launching fig3_pure_linf_1e4_tip_v2 (live=0)
 2026-09-14T15:36:04Z operator-18: queued fig3_pure_linf_1e4_tip_v2 (C1 regulariser-sensitivity control: -x/+y/-y supports follow once accepted); runner restarted
 2026-09-14T15:37:33Z queue empty, exiting
+2026-09-14T16:27:12Z operator-18: Mreg=1e4 tip accepted; queued fig3_1e4_dir12/06/18 supports
+2026-09-14T16:27:12Z launching fig3_1e4_dir12 (live=0)
+2026-09-14T16:28:42Z launching fig3_1e4_dir06 (live=1)
+2026-09-14T16:30:12Z launching fig3_1e4_dir18 (live=2)
+2026-09-14T16:31:43Z queue empty, exiting
+2026-09-17T18:46:25Z operator-18: launched watson_tip from /playpen1/shiqiu/sdpb_regularised_20260913/uv_SRa_tip/tip/report.json 
+2026-09-17T18:46:45Z operator-18: launched watson_ref from /playpen1/shiqiu/sdpb_regularised_20260913/uv_SRa_section_hi/report.json 
+2026-09-17T18:47:05Z operator-18: launched watson_mid from /playpen1/shiqiu/sdpb_regularised_20260913/uv_SRa_section_xp001_hi/report.json 
+2026-09-17T18:47:25Z operator-18: launched watson_tip_keepsec from /playpen1/shiqiu/sdpb_regularised_20260913/uv_SRa_tip/tip/report.json --keep-section
+2026-09-17T19:35:28Z operator-18: stopped watson_tip_keepsec (vacuous: the tip leaf has no section, so the chain duplicated watson_tip); replaced by pinned-face Watson controls
+2026-09-17T19:36:52Z operator-18: launched watson_ref_pinned (pinned-point control: section kept + slab margin 2e-6, targets from the previous round) from /playpen1/shiqiu/sdpb_regularised_20260913/uv_SRa_section_hi/report.json
+2026-09-17T19:37:07Z operator-18: launched watson_tip_pinned (pinned-point control: section kept + slab margin 2e-6, targets from the previous round) from /playpen1/shiqiu/sdpb_regularised_20260913/uv_SRa_tip/tip/report.json
+2026-09-17T22:48:04Z operator-18: launched watson_ref_authorsweights (released section, node weights 1/Lambda_l^2 as in the authors' scaled variables)
+2026-09-18T00:43:31Z operator-18: stopped watson_tip_pinned after round 3 (fixed point reached: rounds 2-3 identical, P1 min|S| 0.593; slot freed)
+2026-09-18T01:54:37Z launching sens_epsSR_5e-3_tip (live=5)
+2026-09-18T01:54:39Z operator-18: queued 5 sensitivity tips (eps_SR 5e-3, 1e-2; S0 n=0 box dropped; eps_FF 2e-4, 1e-3); runner MAXJOBS=7 alongside the Watson chains
+2026-09-18T01:56:08Z launching sens_epsSR_1e-2_tip (live=6)
+2026-09-18T02:49:41Z launching sens_noS0n0_tip (live=6)
+2026-09-18T02:50:04Z operator-18: watson_tip finished 5 rounds; continuation watson_tip_cont launched from round_05 (4 more rounds)
+2026-09-18T03:00:36Z operator-18: watson_ref finished 5 rounds; continuation watson_ref_cont launched from round_05 (4 more rounds)
+2026-09-18T03:43:34Z operator-18: watson_mid finished 5 rounds; continuation watson_mid_cont launched from round_05 (4 more rounds)
+2026-09-18T03:55:16Z launching sens_epsFF_2e-4_tip (live=6)
+2026-09-18T04:30:49Z launching sens_epsFF_1e-3_tip (live=6)
+2026-09-18T04:31:46Z queue empty, exiting
+2026-09-18T04:31:47Z operator-18: watson_ref_pinned round 5 hit the driver's 7260 s wall clock under load ~120 (SDPB had just written its solution); runner restarted with MAXJOBS=5 to protect the chain rounds
+2026-09-18T05:42:06Z operator-18: watson_mid_cont round 1 recovered from an MPI tear-down exit (SDPB optimal at 6317 s); watson_mid_cont2 launched for 3 more rounds
+2026-09-18T05:53:55Z operator-18: queued eps_FF scan tips 1e-4, 1.4e-4 and the one-current-only 2e-4 pair (S0-only, P1-only)
+2026-09-18T06:44:11Z launching sens_epsFF_1e-4_tip (live=4)
+2026-09-18T07:51:46Z launching sens_epsFF_1.4e-4_tip (live=4)
+2026-09-18T07:53:26Z operator-18: watson_mid_cont2 round 1 recovered (tear-down exit after optimal termination); watson_mid_cont3 launched for the last 2 rounds
+2026-09-18T07:53:49Z operator-18: watson_mid_cont3 relaunched with --timeout 9000 (rounds take ~6500 s under load)
+2026-09-18T08:47:20Z launching sens_epsFF_S0only_2e-4_tip (live=3)
+2026-09-18T08:48:50Z launching sens_epsFF_P1only_2e-4_tip (live=4)
+2026-09-18T08:50:20Z queue empty, exiting
+2026-09-18T10:07:36Z operator-18: note -- the one-current tips were already running with 7200 s; finish_leaf recovers wall-clock expiries after optimal termination
+2026-09-18T10:47:10Z launching sens_epsFF_S0_2e-4_P1_8e-5_tip (live=3)
+2026-09-18T10:47:12Z operator-18: queued the matched-pair tip (eps_FF S0 2e-4, P1 8e-5, timeout 9000)
+2026-09-18T10:48:40Z queue empty, exiting

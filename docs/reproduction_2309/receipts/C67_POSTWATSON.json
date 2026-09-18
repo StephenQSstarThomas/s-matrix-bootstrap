@@ -1,0 +1,75 @@
+{
+ "packaging": "post-Watson: last accepted round of each saturation chain (tip 8, x_ref upper 9, x_ref+0.001 upper 8 rounds); annotation, main-line verdicts unchanged",
+ "points": {
+  "tip": {
+   "x": 0.06782213752311855,
+   "y": -0.004491530847072891,
+   "leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/watson_tip_cont/round_03/report.json"
+  },
+  "ref": {
+   "x": 0.06265768024753161,
+   "y": -0.0041634061320866,
+   "leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/watson_ref_cont/round_04/report.json"
+  },
+  "mid": {
+   "x": 0.06292321150997376,
+   "y": -0.004186116494467631,
+   "leaf": "/playpen1/shiqiu/sdpb_regularised_20260913/watson_mid_cont3/round_02/report.json"
+  }
+ },
+ "C6": {
+  "verdict": "FAIL",
+  "rows": [
+   {
+    "point": "tip",
+    "crossing_MeV": 775.1610817696805,
+    "modulus_peak_MeV": 792.1355788896207,
+    "min_eta": 0.9978693468610036
+   },
+   {
+    "point": "ref",
+    "crossing_MeV": 714.052142036642,
+    "modulus_peak_MeV": 731.6752603307709,
+    "min_eta": 0.990836994697527
+   },
+   {
+    "point": "mid",
+    "crossing_MeV": 740.8210756679701,
+    "modulus_peak_MeV": 731.6752603307709,
+    "min_eta": 0.9128146515401624
+   }
+  ],
+  "evidence": "crossings ['775', '714', '741'] MeV, spread 61 MeV, band [795,845] False, min eta >= 0.9 True"
+ },
+ "C7": {
+  "verdict": "FAIL",
+  "rows": [
+   {
+    "point": "tip",
+    "delta00_1.196": 180.26779395790632,
+    "delta20_1.196": -24.5945643192707,
+    "rms00_deg": 16.4589747221794,
+    "rms20_deg": 3.2884051421938363,
+    "pass": false
+   },
+   {
+    "point": "ref",
+    "delta00_1.196": 180.344671604216,
+    "delta20_1.196": -17.96795235885692,
+    "rms00_deg": 8.285088536816536,
+    "rms20_deg": 1.5561464488968022,
+    "pass": false
+   },
+   {
+    "point": "mid",
+    "delta00_1.196": 180.22889611765427,
+    "delta20_1.196": -17.84896951975954,
+    "rms00_deg": 13.121008245058446,
+    "rms20_deg": 2.9650636220969893,
+    "pass": false
+   }
+  ],
+  "evidence": "tip: d00=180.3, d20=-24.6; ref: d00=180.3, d20=-18.0; mid: d00=180.2, d20=-17.8"
+ },
+ "recorded_utc": "2026-09-18T12:08:24Z"
+}

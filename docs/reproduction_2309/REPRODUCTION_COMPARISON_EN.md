@@ -152,6 +152,64 @@ The tip face is rigid in the P1 observables and does not contain your P1 shape; 
 ![Ranges of the node functionals over the near-optimal faces (bars) against the floor 1 - Re S = 1 required by the paper's phases (dashed).](figures/face_ranges.png)
 *Ranges of the node functionals over the near-optimal faces (bars) against the floor 1 - Re S = 1 required by the paper's phases (dashed).*
 
-## 5. A request
+## 5. After the unitarity-saturation iteration
 
-It would help us a great deal to see the code or notebooks behind the 2309 runs, in particular the parts that implement (3.73) and (3.75) and the way the three points of Figs. 9 and 10 were selected. With that we could tell which of the readings above you used and settle the remaining differences; we are happy to share any of our solutions and the full log of our runs in return.
+*"One thing we noticed, as you are saying, is that unitarity tends to be unsaturated near the resonance. The rho meson decays primarily to two pions so we used the iterations to correct that. ... Our results are always shown after that."* (your message of 17 September)
+
+We implemented the step in the form of eq. (2.29) of the follow-up paper: every constraint of the finite problem is kept, the section f00(3) = x is released, and the objective is replaced by sum_k Re[e^{-2i alpha_k}(S_k - 1)] over the nodes below s0 of S0, P1 and S2, with alpha_k the phase of the previous form factor (the previous phase shift for S2); each round is a full SDPB solve with the same verification as before. We ran it from the three representatives of Fig. 9, for eight or nine rounds each, and as a control with the point held at its boundary position.
+
+| Start | Rounds | (f00, f11) start -> end | min abs S_P1 | rho (MeV) | S0 at 1 GeV | S2 at 1.2 GeV |
+|---|---|---|---|---|---|---|
+
+| tip | 8 | (0.0760, -0.00494) -> (0.0678, -0.00449) | 0.585 -> 0.998 | 773 -> 775 | 150 -> 145 deg | -32.3 -> -24.8 deg |
+
+| x_ref upper | 9 | (0.0733, -0.00465) -> (0.0627, -0.00416) | 0.244 -> 0.991 | none -> 714 | 128 -> 136 deg | -28 -> -18.1 deg |
+
+| x_ref+0.001 upper | 9 | (0.0743, -0.00474) -> (0.0629, -0.00419) | 0.0766 -> 0.913 | 739 -> 741 | 132 -> 138 deg | -29.5 -> -18 deg |
+
+
+The iteration does what it is meant to do: |S| reaches 0.90-1.00 at every node below s0 and the phases of F and S line up. It does so by leaving the boundary point (the amplitudes drift inwards by 11-15 % in f00 over eight or nine rounds and had not stopped; our convergence measure falls by about 10 % per round), and when the point is held fixed instead the same objective saturates very little: min |S_P1| goes 0.585 -> 0.593 at the tip and 0.244 -> 0.493 at x_ref. What it does not change is the rest of the picture: the rho crossings stay at 775, 714, 741 MeV (your 813-827), the S0 wave stays fast, the three chains do not approach one amplitude, and the S2 wave moves away from your curves. Your node weights 1/Lambda^2 change the drift, not the rho (714 against 713 MeV).
+
+Re-applying our pre-registered rules for Figs. 9 and 10 to the iterated amplitudes: C6 FAIL (crossings ['775', '714', '741'] MeV, spread 61 MeV, band [795,845] False, min eta >= 0.9 True); C7 FAIL (S0 r.m.s. from your red curve 16.5, 8.29, 13.1 deg). Both verdicts remain as in Section 3.
+
+![Figs. 9 and 10 of the paper (top) and our amplitudes before (dotted) and after (solid) the saturation iteration (bottom).](figures/fig9_watson.png)
+*Figs. 9 and 10 of the paper (top) and our amplitudes before (dotted) and after (solid) the saturation iteration (bottom).*
+
+## 6. Sensitivity to the form-factor cap
+
+*"The faster (or sometimes slower) rise of S0 happens, I believe, depending on the parameters. Also changes in the rho mass."* (same message)
+
+The only continuous parameters of the UV stage are eps_SR and eps_FF. eps_SR does not matter: loosening the raw box from 2e-3 to 1e-2, or dropping the S0 n=0 box, moves the rho by at most 12 MeV and leaves S0 unchanged. eps_FF in (3.75) matters a great deal, and the two currents act independently.
+
+| eps_FF | +x end | rho (MeV) | min abs S_P1 | S0 at 0.79/0.86/0.95/1.06 GeV |
+|---|---|---|---|---|
+
+| 6e-05 (both currents) | 0.076013 | 772.7 | 0.585 | 111/126/145/157 |
+
+| 0.0001 (both currents) | 0.078351 | 849.1 | 0.785 | 92.5/107/123/146 |
+
+| 0.00014 (both currents) | 0.079637 | 905.3 | 0.845 | 81.8/91.9/105/130 |
+
+| 0.0002 (both currents) | 0.080779 | 972.3 | 0.973 | 73/81.7/88.3/111 |
+
+| 0.001 (both currents) | 0.082753 | 1604 | 0.987 | 59.5/59.7/60.3/57.7 |
+
+| S0 cap 2e-4, P1 cap 6e-5 | 0.077579 | 775.3 | 0.585 | 74.9/84/90.1/111 |
+
+| S0 cap 6e-5, P1 cap 2e-4 | 0.07891 | 966.6 | 0.956 | 110/125/148/164 |
+
+| S0 cap 2e-4, P1 cap 8e-5 | 0.078545 | 816.9 | 0.751 | 74.4/83.3/89.5/111 |
+
+| paper | 0.0811 | 813-827 | - | 76/83/86/98 (red), 99/103/104/109 (light pink) |
+
+
+With your stated 6e-5 the S0 wave is too fast and the rho too low. Loosening the S0 cap alone to 2e-4 puts S0 on your red curve to within 3 deg up to 0.95 GeV without touching the rho; loosening the P1 cap alone moves the rho up (about 850 MeV at 1e-4, 970 at 2e-4) without touching S0. Your figures therefore correspond to an effective constraint on the form factors above s0 that is looser than our reading of (3.75) with 6e-5, and looser for the scalar current than for the vector one. We have not retuned anything on the strength of this.
+
+The pair this interpolation points to (S0 cap 2e-4, P1 cap 8e-5) was run as a pre-registered test (all three at once: +x end within 1 % of 0.0811, rho in 813-827 MeV, S0 within 10 deg of your red curve up to 1 GeV). It puts the rho at 817 MeV, S0 within 4 deg of your red curve up to 1 GeV (r.m.s. 1.9 deg) and S2 within 1 deg -- your Figs. 9 and 10 at the tip, before any iteration, with min |S_P1| = 0.75 at the rho -- but the +x end is 0.0785, 3 % below your 0.0811, so it does not meet the rule. No pair of caps gives all three at once under our reading; the remaining 3 % must sit elsewhere (the eps_SR norm, the normalisation of (3.75) above s0, or your iteration acting on the region).
+
+![Tip amplitude against eps_FF (both currents); grey bands are the paper's values, the dotted line its stated 6e-5.](figures/fig_epsff.png)
+*Tip amplitude against eps_FF (both currents); grey bands are the paper's values, the dotted line its stated 6e-5.*
+
+## 7. A request
+
+It would help us a great deal to see the code or notebooks behind the 2309 runs, in particular the parts that implement (3.73) and (3.75) -- how the caps on F0 and F1 above s0 were normalised -- and the saturation iteration with the way the three points of Figs. 9 and 10 were selected. With that we could tell which of the readings above you used and settle the remaining differences; we are happy to share any of our solutions and the full log of our runs in return.

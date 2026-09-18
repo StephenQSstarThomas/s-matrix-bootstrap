@@ -12,6 +12,10 @@ import json
 from pathlib import Path
 
 import numpy as np
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from authors_comparison_en import gather_watson, matched_pair_summary  # noqa: E402
 
 
 def J(path):
@@ -137,6 +141,53 @@ def main(argv=None):
         "diag": "退化面诊断：在验收的支撑叶上加板 d·(f00,f11) ≥ v*−2×10⁻⁶，目标换成节点泛函 1−Re S、Im S 的 ±；论文 Fig.9 在 0.792/0.864 GeV 的相移 cos 2δ<0，故对任意 η 要求 1−Re S>1。SR-1：去掉 S0 n=0 的盒，极小化该矩。",
     }
     ledger_rows = "".join(f"<tr><td class='id'>{c}</td><td>{html.escape(t)}</td><td>{chip(v)}</td><td>{html.escape(n)}</td></tr>" for c, t, v, n in ledger)
+
+    # ---- post-reply annotations: unitarity-saturation iteration and the eps_FF / eps_SR sensitivity (verdicts untouched)
+    gw = gather_watson(a.root); PW = J(R / "C67_POSTWATSON.json")
+    def g(x, d=3):
+        return "—" if x is None else (f"{x:.{d}f}" if isinstance(x, float) else str(x))
+    ZH = {"tip": "tip（+x 端）", "x_ref upper": "x_ref 上支", "x_ref+0.001 upper": "x_ref+0.001 上支"}
+    ctr = ""
+    for lab, rows in gw["chains"].items():
+        if len(rows) < 2: continue
+        r0, rl = rows[0], rows[-1]
+        ctr += (f"<tr><td>{ZH.get(lab, lab)}</td><td class='num'>{rl['round']}</td><td class='num'>({r0['f00']:.4f}, {r0['f11']:.5f}) → ({rl['f00']:.4f}, {rl['f11']:.5f})</td>"
+                f"<td class='num'>{g(r0['min_eta_P1'])} → {g(rl['min_eta_P1'])}</td><td class='num'>{g(r0['rho_MeV'],0)} → {g(rl['rho_MeV'],0)}</td>"
+                f"<td class='num'>{g(r0['S0_at_1GeV'],0)}° → {g(rl['S0_at_1GeV'],0)}°</td><td class='num'>{g(r0['S2_at_1p2'],1)}° → {g(rl['S2_at_1p2'],1)}°</td></tr>")
+    pin = "；".join(f"{ZH.get(k,k)} {g(v[0])} → {g(v[-1])}（{len(v)-1} 轮）" for k, v in gw["pinned"].items() if len(v) > 1)
+    ftr = "".join(f"<tr><td>{r['eps_ff']:g}（两流同值）</td><td class='num'>{r['x_tip']:.5f}</td><td class='num'>{g(r['rho_MeV'],0) if r['rho_MeV'] else '1.2 GeV 以下无'}</td><td class='num'>{g(r['min_eta_P1'])}</td><td class='num'>{'/'.join(g(v,0) for v in r['S0_deg'])}</td></tr>" for r in gw["epsff"])
+    ftr += "".join(f"<tr><td>{r['label'].replace('S0 cap','S0 上限').replace('P1 cap','P1 上限')}</td><td class='num'>{r['x_tip']:.5f}</td><td class='num'>{g(r['rho_MeV'],0) if r['rho_MeV'] else '1.2 GeV 以下无'}</td><td class='num'>{g(r['min_eta_P1'])}</td><td class='num'>{'/'.join(g(v,0) for v in r['S0_deg'])}</td></tr>" for r in gw["one_current"])
+    ftr += "<tr><td>论文</td><td class='num'>0.0811</td><td class='num'>813–827</td><td class='num'>—</td><td class='num'>76/83/86/98（红）；99/103/104/109（浅粉）</td></tr>"
+    str_ = "".join(f"<tr><td>{'去掉 S0 n=0 盒' if isinstance(r['eps_sr'], str) else format(r['eps_sr'],'g')}</td><td class='num'>{r['x_tip']:.5f}</td><td class='num'>{g(r['rho_MeV'],0) if r['rho_MeV'] else '—'}</td><td class='num'>{g(r['min_eta_P1'])}</td><td class='num'>{g(r['S0_at_0p95'],0)}°</td></tr>" for r in gw["epssr"])
+    mp = matched_pair_summary(a.root); mpl = ""
+    if mp:
+        ok = lambda b: "满足" if b else "不满足"
+        c = mp["criteria"]
+        mpl = (f"<p class='note'><b>配对试验结果</b>（S0 上限 2×10⁻⁴、P1 上限 8×10⁻⁵，其余同主线，未迭代）：+x 端 {mp['x_tip']:.5f}（与 0.0811 差 {mp['x_dev_pct']:+.1f}%，{ok(c['x_tip_within_1pct'])}）；"
+               f"ρ {mp['rho_MeV']:.0f} MeV（{ok(c['rho_in_band'])}）；S0 到 1 GeV 与论文红线最大差 {mp['S0_max_1GeV']:.1f}°、RMS {mp['S0_rms_1GeV']:.1f}°（{ok(c['S0_within_10deg_to_1GeV'])}）；"
+               f"S2 最大差 {mp['S2_max']:.1f}°；ρ 处 min|S<sub>P1</sub>| {mp['min_eta_P1']:.2f}。预登记判据（三者同时）<b>{'满足' if mp['met'] else '不满足'}</b>——"
+               f"这一对上限在 tip 处给出论文 Fig.9、Fig.10 的红线，但区域 +x 端仍差 3%；+x 端随两个上限都升、ρ 随 P1 上限升，故按我们的读法没有一对上限能同时给出三者，剩余差别在别处（ε^SR 的范数、(3.75) 在 s₀ 以上的归一化，或作者的迭代对区域本身的作用）。按预登记，x_ref 截面的同参数试验不再运行。</p>")
+    pw = ""
+    if PW:
+        c6 = PW.get("C6", {}); c7 = PW.get("C7", {})
+        pw = ("<p class='note'><b>迭代后的 C6/C7 复评（标签 post-Watson，不改主线裁决）</b>：C6 " + html.escape(str(c6.get("verdict"))) + "，ρ 穿越 "
+              + "、".join(f"{r['point']} {g(r['crossing_MeV'],0)} MeV（min|S| {g(r['min_eta'])}）" for r in c6.get("rows", [])) + "；C7 " + html.escape(str(c7.get("verdict")))
+              + "，" + html.escape(str(c7.get("evidence", ""))) + "。</p>")
+    wsec = f"""
+<section id="watson"><header><h2>作者回复后的补充：幺正饱和迭代与 ε^FF 敏感性</h2>{chip("注释（裁决不变）")}</header>
+  <p class="quote">“|S| does not saturate unitarity. We have an iterative procedure that improves saturation of unitarity … Our results are always shown after that.” “Unitarity tends to be unsaturated near the resonance … we used the iterations to correct that. … The faster (or sometimes slower) rise of S0 happens, I believe, depending on the parameters. Also changes in the rho mass.”（作者 2026-09-17 来信）</p>
+  <p class="setting"><b>我们的做法</b> 按 follow-up 论文 (arXiv:2403.10772) 式 (2.29) 实现饱和迭代：保留有限问题的全部约束，放开截面 f₀⁰(3)=x，目标改为 Σ<sub>k</sub> Re[e<sup>−2iα<sub>k</sub></sup>(S<sub>k</sub>−1)]（k 取 s₀ 以下 S0、P1、S2 的全部节点，α<sub>k</sub> 为上一轮形状因子相位，无流的分波取上一轮相移）；每轮都是一次完整的 192 bit SDPB 求解 + Arb 复验，目标行用独立浮点构造核对到 1e−11。从 Fig.9 的三个代表点各跑若干轮；另以“钉住边界点”（保留截面 + 2e−6 近优板）作对照。作者代码（2403 / 2505 版）读过未运行：变量按 h̃=h/Λ<sub>ℓ</sub> 缩放，相当于把我们的节点权 1 换成 1/Λ<sub>ℓ</sub>²，两种权都跑了。</p>
+  <div class="cmp"><table><thead><tr><th>起点</th><th>轮数</th><th>(f₀⁰, f₁¹) 起 → 终</th><th>min|S<sub>P1</sub>|</th><th>ρ (MeV)</th><th>S0 @ 1 GeV</th><th>S2 @ 1.2 GeV</th></tr></thead><tbody>{ctr}</tbody></table></div>
+  <p class="note">钉住边界点的对照（min|S<sub>P1</sub>|）：{pin}。结论：迭代确实把 s₀ 以下每个节点的 |S| 推到 0.90–1.00 并使 F 与 S 的相位对齐，但只有离开边界点才做得到（f₀⁰ 每轮内缩 1–2%，未停）；钉住时几乎不饱和。ρ 位置不随迭代改变（论文 813–827 MeV），S0 仍快，S2 偏离论文曲线，三条链也不收敛到同一振幅；作者权重给出同样的 ρ。</p>
+  {img(F / "fig9_watson.png")}
+  {pw}
+  <p class="setting"><b>ε^FF 与 ε^SR 敏感性</b> UV 阶段仅有的两个连续参数。ε^SR 从 2×10⁻³ 放到 10⁻²、或整个去掉 S0 n=0 盒，ρ 至多移动 12 MeV，S0 不变（放开的 S0 n=0 矩落在 QCD 值的 1.9 倍附近）。ε^FF 则很敏感，且两条流互不干扰：只放 S0 上限到 2×10⁻⁴ 把 S0 放到论文红线上（0.95 GeV 以下 3° 内）而 ρ 不动；只放 P1 上限则 ρ 上移（10⁻⁴ 约 850、2×10⁻⁴ 约 970 MeV）而 S0 不动。内插给出论文有效上限约 S0 2×10⁻⁴、P1 8×10⁻⁵；配对试验按预登记判据（x_tip 与 0.0811 差 1% 内、ρ 在 813–827、S0 到 1 GeV 差 10° 内，三者同时）评判。</p>
+  <div class="cmp"><table><thead><tr><th>ε^FF</th><th>+x 端</th><th>ρ (MeV)</th><th>min|S<sub>P1</sub>|</th><th>δ<sub>S0</sub> @ 0.79/0.86/0.95/1.06 GeV</th></tr></thead><tbody>{ftr}</tbody></table></div>
+  <div class="cmp"><table><thead><tr><th>ε^SR（SR-a 盒）</th><th>+x 端</th><th>ρ (MeV)</th><th>min|S<sub>P1</sub>|</th><th>δ<sub>S0</sub> @ 0.95 GeV</th></tr></thead><tbody>{str_}</tbody></table></div>
+  {mpl}
+  {img(F / "fig_epsff.png")}
+</section>
+"""
     body = f"""
 <title>2309.12402 复现台账</title>
 <style>
@@ -188,6 +239,7 @@ figure{{margin:18px 0 0;background:var(--card);border:1px solid var(--line);padd
 <tr><td>代表振幅</td><td>“边界点自带分波”</td><td>支撑点的解 + 退化面诊断</td><td>定 F0 极大 F1，再在整个可行集上极大化 Watson 泛函</td><td>纯可行性起步 + 5 轮 Watson；无支撑泛函</td></tr>
 <tr><td>求解器</td><td>未说明</td><td>SDPB 192 bit，gap 1e−6，Arb 复验</td><td>MOSEK</td><td>MOSEK</td></tr>
 </tbody></table></div></section>
+{wsec}
 <section id="limits"><header><h2>未完成项与记录在案的事故</h2></header>
 <p class="note">事故：Fig.3 方向扫描因源哈希校验失败重解（端点逐位相同）；SR-b 两驱动在复验阶段因运行中改源码而崩溃，SDPB 输出完整，用 finish_leaf.py 只重跑读回/复验；/tmp 卷被占满，大文件改到 /playpen1。全部记录在 GATE_LOG.md。</p>
 </section>

@@ -67,6 +67,28 @@ ONE_CURRENT = [("S0 cap 2e-4, P1 cap 6e-5", "sens_epsFF_S0only_2e-4_tip/tip"), (
 EPSSR_SCAN = [(2e-3, "uv_SRa_tip/tip"), (5e-3, "sens_epsSR_5e-3_tip/tip"), (1e-2, "sens_epsSR_1e-2_tip/tip"), ("box dropped", "sens_noS0n0_tip/tip")]
 
 
+MATCHED_PAIR = ("S0 cap 2e-4, P1 cap 8e-5", "sens_epsFF_S0_2e-4_P1_8e-5_tip/tip")
+
+
+def matched_pair_summary(root):
+    """The pre-registered matched-pair test (GATE_LOG 09-18): x_tip within 1 % of 0.0811, rho in 813-827 MeV, S0 within
+    10 deg of the paper's red curve up to 1 GeV -- all three required.  Returns None while the leaf is not accepted."""
+    from smatrix_bootstrap.sdp.figures import phase_comparison
+    r = leaf(Path(root), MATCHED_PAIR[1])
+    if not r: return None
+    o = r["observables"]; v = r["verification"]; s0 = o["S0"]
+    E = np.asarray(s0["E_GeV"]); d = np.asarray(s0["delta_deg"]); m = E <= 1.0
+    c0 = phase_comparison({"E_GeV": E[m], "delta_deg": d[m]}, "figure10_s0_phases.csv", "red")
+    c2 = phase_comparison(o["S2"], "figure10_s2_phases.csv", "red")
+    x = v["f00_3"]; rho = None if o["P1"]["crossing_90_GeV"] is None else 1000 * o["P1"]["crossing_90_GeV"]
+    crit = {"x_tip_within_1pct": abs(x / 0.0811 - 1) <= 0.01, "rho_in_band": rho is not None and 813 <= rho <= 827,
+            "S0_within_10deg_to_1GeV": c0["max_abs_deg"] <= 10}
+    return {"label": MATCHED_PAIR[0], "x_tip": x, "x_dev_pct": 100 * (x / 0.0811 - 1), "f11": v["f11_3"], "rho_MeV": rho,
+            "min_eta_P1": o["P1"]["min_eta_below_1p2GeV"], "S0_rms_1GeV": c0["rms_deg"], "S0_max_1GeV": c0["max_abs_deg"],
+            "S2_rms": c2["rms_deg"], "S2_max": c2["max_abs_deg"], "S0_deg": [float(d[k]) for k in (38, 39, 40, 41)],
+            "criteria": crit, "met": all(crit.values())}
+
+
 def _chain_leaves(root, dirs):
     out = []
     for d in dirs:
@@ -238,8 +260,39 @@ def main(argv=None):
     W(f"(b) Regulariser scale. Raising Mreg from 1e2 to 1e3 moves the UV +x end by {pct(mreg['verification']['f00_3'], tip['verification']['f00_3']) if mreg and tip else '—'}, the P1 crossing by {f(1000*(mreg['observables']['P1']['crossing_90_GeV']-tip['observables']['P1']['crossing_90_GeV']),2) if mreg and tip else '—'} MeV and min |S_P1| by {f(mreg['observables']['P1']['min_eta_below_1p2GeV']-tip['observables']['P1']['min_eta_below_1p2GeV'],2) if mreg and tip else '—'}; the Fig. 8 asymmetry does not appear at either scale.\n")
     fig("face_ranges", "Ranges of the node functionals over the near-optimal faces (bars) against the floor 1 - Re S = 1 required by the paper's phases (dashed).")
 
-    W("## 5. A request\n")
-    W("It would help us a great deal to see the code or notebooks behind the 2309 runs, in particular the parts that implement (3.73) and (3.75) and the way the three points of Figs. 9 and 10 were selected. With that we could tell which of the readings above you used and settle the remaining differences; we are happy to share any of our solutions and the full log of our runs in return.\n")
+    # ---- sections 5-6: the unitarity-saturation iteration and the eps_FF sensitivity (data-driven; same content as the PDF)
+    gw = gather_watson(a.root); mp = matched_pair_summary(a.root)
+    W("## 5. After the unitarity-saturation iteration\n")
+    W("*\"One thing we noticed, as you are saying, is that unitarity tends to be unsaturated near the resonance. The rho meson decays primarily to two pions so we used the iterations to correct that. ... Our results are always shown after that.\"* (your message of 17 September)\n")
+    W("We implemented the step in the form of eq. (2.29) of the follow-up paper: every constraint of the finite problem is kept, the section f00(3) = x is released, and the objective is replaced by sum_k Re[e^{-2i alpha_k}(S_k - 1)] over the nodes below s0 of S0, P1 and S2, with alpha_k the phase of the previous form factor (the previous phase shift for S2); each round is a full SDPB solve with the same verification as before. We ran it from the three representatives of Fig. 9, for eight or nine rounds each, and as a control with the point held at its boundary position.\n")
+    W("| Start | Rounds | (f00, f11) start -> end | min abs S_P1 | rho (MeV) | S0 at 1 GeV | S2 at 1.2 GeV |\n|---|---|---|---|---|---|---|\n")
+    for lab, rows in gw["chains"].items():
+        if len(rows) < 2: continue
+        r0, rl = rows[0], rows[-1]
+        W(f"| {lab} | {rl['round']} | ({r0['f00']:.4f}, {r0['f11']:.5f}) -> ({rl['f00']:.4f}, {rl['f11']:.5f}) | {f(r0['min_eta_P1'],3)} -> {f(rl['min_eta_P1'],3)} | {f(r0['rho_MeV'],3) if r0['rho_MeV'] else 'none'} -> {f(rl['rho_MeV'],3)} | {f(r0['S0_at_1GeV'],3)} -> {f(rl['S0_at_1GeV'],3)} deg | {f(r0['S2_at_1p2'],3)} -> {f(rl['S2_at_1p2'],3)} deg |\n")
+    pt, pr = gw["pinned"].get("tip", []), gw["pinned"].get("x_ref upper", [])
+    rhos = ", ".join(f(rows[-1]["rho_MeV"], 3) for rows in gw["chains"].values() if len(rows) > 1)
+    W(f"\nThe iteration does what it is meant to do: |S| reaches 0.90-1.00 at every node below s0 and the phases of F and S line up. It does so by leaving the boundary point (the amplitudes drift inwards by 11-15 % in f00 over eight or nine rounds and had not stopped; our convergence measure falls by about 10 % per round), and when the point is held fixed instead the same objective saturates very little: min |S_P1| goes {f(pt[0],3) if pt else '-'} -> {f(pt[-1],3) if pt else '-'} at the tip and {f(pr[0],3) if pr else '-'} -> {f(pr[-1],3) if pr else '-'} at x_ref. What it does not change is the rest of the picture: the rho crossings stay at {rhos} MeV (your 813-827), the S0 wave stays fast, the three chains do not approach one amplitude, and the S2 wave moves away from your curves. Your node weights 1/Lambda^2 change the drift, not the rho (714 against 713 MeV).\n")
+    PW = J(Path(a.root) / "C67_POSTWATSON.json")
+    if PW:
+        c6, c7 = PW["C6"], PW["C7"]
+        W(f"Re-applying our pre-registered rules for Figs. 9 and 10 to the iterated amplitudes: C6 {c6['verdict']} ({c6.get('evidence')}); C7 {c7['verdict']} (S0 r.m.s. from your red curve {', '.join(f(r['rms00_deg'],3) for r in c7['rows'])} deg). Both verdicts remain as in Section 3.\n")
+    fig("fig9_watson", "Figs. 9 and 10 of the paper (top) and our amplitudes before (dotted) and after (solid) the saturation iteration (bottom).")
+    W("## 6. Sensitivity to the form-factor cap\n")
+    W("*\"The faster (or sometimes slower) rise of S0 happens, I believe, depending on the parameters. Also changes in the rho mass.\"* (same message)\n")
+    W("The only continuous parameters of the UV stage are eps_SR and eps_FF. eps_SR does not matter: loosening the raw box from 2e-3 to 1e-2, or dropping the S0 n=0 box, moves the rho by at most 12 MeV and leaves S0 unchanged. eps_FF in (3.75) matters a great deal, and the two currents act independently.\n")
+    W("| eps_FF | +x end | rho (MeV) | min abs S_P1 | S0 at 0.79/0.86/0.95/1.06 GeV |\n|---|---|---|---|---|\n")
+    for r in gw["epsff"]:
+        W(f"| {r['eps_ff']:g} (both currents) | {f(r['x_tip'],5)} | {f(r['rho_MeV'],4) if r['rho_MeV'] else 'none below 1.2'} | {f(r['min_eta_P1'],3)} | {'/'.join(f(v,3) for v in r['S0_deg'])} |\n")
+    for r in gw["one_current"]:
+        W(f"| {r['label']} | {f(r['x_tip'],5)} | {f(r['rho_MeV'],4) if r['rho_MeV'] else 'none below 1.2'} | {f(r['min_eta_P1'],3)} | {'/'.join(f(v,3) for v in r['S0_deg'])} |\n")
+    W("| paper | 0.0811 | 813-827 | - | 76/83/86/98 (red), 99/103/104/109 (light pink) |\n\n")
+    W("With your stated 6e-5 the S0 wave is too fast and the rho too low. Loosening the S0 cap alone to 2e-4 puts S0 on your red curve to within 3 deg up to 0.95 GeV without touching the rho; loosening the P1 cap alone moves the rho up (about 850 MeV at 1e-4, 970 at 2e-4) without touching S0. Your figures therefore correspond to an effective constraint on the form factors above s0 that is looser than our reading of (3.75) with 6e-5, and looser for the scalar current than for the vector one. We have not retuned anything on the strength of this.\n")
+    if mp:
+        W(f"The pair this interpolation points to (S0 cap 2e-4, P1 cap 8e-5) was run as a pre-registered test (all three at once: +x end within 1 % of 0.0811, rho in 813-827 MeV, S0 within 10 deg of your red curve up to 1 GeV). It puts the rho at {mp['rho_MeV']:.0f} MeV, S0 within {mp['S0_max_1GeV']:.0f} deg of your red curve up to 1 GeV (r.m.s. {mp['S0_rms_1GeV']:.1f} deg) and S2 within {mp['S2_max']:.0f} deg -- your Figs. 9 and 10 at the tip, before any iteration, with min |S_P1| = {mp['min_eta_P1']:.2f} at the rho -- but the +x end is {mp['x_tip']:.4f}, {abs(mp['x_dev_pct']):.0f} % below your 0.0811, so it {'meets' if mp['met'] else 'does not meet'} the rule. No pair of caps gives all three at once under our reading; the remaining 3 % must sit elsewhere (the eps_SR norm, the normalisation of (3.75) above s0, or your iteration acting on the region).\n")
+    fig("fig_epsff", "Tip amplitude against eps_FF (both currents); grey bands are the paper's values, the dotted line its stated 6e-5.")
+    W("## 7. A request\n")
+    W("It would help us a great deal to see the code or notebooks behind the 2309 runs, in particular the parts that implement (3.73) and (3.75) -- how the caps on F0 and F1 above s0 were normalised -- and the saturation iteration with the way the three points of Figs. 9 and 10 were selected. With that we could tell which of the readings above you used and settle the remaining differences; we are happy to share any of our solutions and the full log of our runs in return.\n")
     md = "\n".join(L)
     Path(a.out_md).write_text(md)
     # ---- self-contained HTML

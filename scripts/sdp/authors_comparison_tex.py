@@ -12,7 +12,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from authors_comparison_en import gather, gather_watson  # noqa: E402
+from authors_comparison_en import gather, gather_watson, matched_pair_summary  # noqa: E402
 
 
 def f(x, d=4):
@@ -62,6 +62,32 @@ PREAMBLE = r"""\documentclass[11pt,a4paper]{article}
 \captionsetup[table]{labelformat=simple,labelfont=bf,skip=6pt}
 \begin{document}
 """
+
+
+def pair_paragraph(root):
+    mp = matched_pair_summary(root)
+    if not mp: return ""
+    verdict = "meets" if mp["met"] else "does not meet"
+    return (f"The pair this interpolation points to (S0 cap $2\\times10^{{-4}}$, P1 cap $8\\times10^{{-5}}$) was then run as a pre-registered test "
+            f"(all three at once: $+x$ end within 1\\,\\% of 0.0811, $\\rho$ in 813--827\\,MeV, S0 within 10$^\\circ$ of your red curve up to 1\\,GeV). "
+            f"It puts the $\\rho$ at {mp['rho_MeV']:.0f}\\,MeV, S0 within {mp['S0_max_1GeV']:.0f}$^\\circ$ of your red curve up to 1\\,GeV (r.m.s.\\ {mp['S0_rms_1GeV']:.1f}$^\\circ$) "
+            f"and S2 within {mp['S2_max']:.0f}$^\\circ$ -- your Figs.~9 and~10 at the tip, before any iteration, with $\\min|S_{{P1}}| = {mp['min_eta_P1']:.2f}$ at the $\\rho$ -- "
+            f"but the $+x$ end is {mp['x_tip']:.4f}, {abs(mp['x_dev_pct']):.0f}\\,\\% below your 0.0811, so it {verdict} the rule. "
+            f"Since the $+x$ end rises with either cap and the $\\rho$ rises with the P1 cap, no pair of caps gives all three at once under our reading; "
+            f"the remaining 3\\,\\% must sit in something else (the $\\epsilon^{{SR}}$ norm, the normalisation of (3.75) above $s_0$, or your iteration acting on the region).\n\n")
+
+
+def pw_sentence(root):
+    """One sentence on the pre-registered Fig. 9/10 rules re-applied to the iterated amplitudes (C67_POSTWATSON.json)."""
+    import json
+    pth = Path(root) / "C67_POSTWATSON.json"
+    if not pth.exists(): return ""
+    d = json.loads(pth.read_text()); c6 = d["C6"]; c7 = d["C7"]
+    cr = ", ".join(f"{r['crossing_MeV']:.0f}" for r in c6["rows"]); eta = min(r["min_eta"] for r in c6["rows"])
+    rms = ", ".join(f"{r['rms00_deg']:.0f}" for r in c7["rows"])
+    return (f" Re-applying our pre-registered rules for Figs.~9 and~10 to the iterated amplitudes: the unitarity part now passes "
+            f"($\\min|S_{{P1}}| \\ge {eta:.2f}$ at all three points) but the $\\rho$ crossings ({cr}\\,MeV) stay outside the 795--845\\,MeV band and the S0 curves stay "
+            f"{rms}$^\\circ$ r.m.s.\\ from yours, so both verdicts remain as in Section~3.")
 
 
 def main(argv=None):
@@ -212,7 +238,7 @@ Left (or top) panels are the figures from the arXiv source; right (or bottom) pa
     W(r"""\section{After the unitarity-saturation iteration}
 \paper{``One thing we noticed, as you are saying, is that unitarity tends to be unsaturated near the resonance. The rho meson decays primarily to two pions so we used the iterations to correct that. \dots\ Our results are always shown after that.''} \note{your message of 17 September}
 
-We implemented the step in the form of eq.~(2.29) of the follow-up paper: every constraint of the finite problem is kept, the section $f_0^0(3)=x$ is released, and the objective is replaced by $\sum_k \mathrm{Re}[e^{-2i\alpha_k}(S_k-1)]$ over the nodes below $s_0$ of S0, P1 and S2, with $\alpha_k$ the phase of the previous form factor (the previous phase shift for S2); each round is a full SDPB solve with the same verification as before. We ran it from the three representatives of Fig.~9, for eight rounds each, and as a control with the point held at its boundary position.
+We implemented the step in the form of eq.~(2.29) of the follow-up paper: every constraint of the finite problem is kept, the section $f_0^0(3)=x$ is released, and the objective is replaced by $\sum_k \mathrm{Re}[e^{-2i\alpha_k}(S_k-1)]$ over the nodes below $s_0$ of S0, P1 and S2, with $\alpha_k$ the phase of the previous form factor (the previous phase shift for S2); each round is a full SDPB solve with the same verification as before. We ran it from the three representatives of Fig.~9, for eight or nine rounds each, and as a control with the point held at its boundary position.
 
 \begin{table}[H]\small
 \caption{Saturation chains, last accepted round (round 0 is the representative of Fig.~9 with the values of Section~3).}\label{tab:watson}
@@ -227,7 +253,7 @@ Start & Rounds & $(f_0^0,f_1^1)$ at the end & $\min|S_{P1}|$ & $\rho$ (MeV) & S0
     pt, pr = gw["pinned"].get("tip", []), gw["pinned"].get("x_ref upper", [])
     rhos = ", ".join(f(rows[-1]["rho_MeV"], 3) for rows in gw["chains"].values() if len(rows) > 1)
     W(r"\bottomrule\end{tabularx}\end{table}" + "\n\n")
-    W(f"The iteration does what it is meant to do: $|S|$ reaches 0.90--1.00 at every node below $s_0$ and the phases of $F$ and $S$ line up. It does so by leaving the boundary point -- the amplitudes drift inwards by 10--15\\,\\% in $f_0^0$ over eight rounds and had not stopped -- and when the point is held fixed instead (section kept, near-optimal slab added) the same objective saturates very little: $\\min|S_{{P1}}|$ goes {f(pt[0],3) if pt else '--'} $\\to$ {f(pt[-1],3) if pt else '--'} at the tip and {f(pr[0],3) if pr else '--'} $\\to$ {f(pr[-1],3) if pr else '--'} at $x_{{\\rm ref}}$. What the iteration does not change is the rest of the picture: the $\\rho$ crossings stay at {rhos}\\,MeV (your 813--827), the S0 wave stays fast, and the three chains do not approach one amplitude. Using your node weights $1/\\Lambda_\\ell^2$ instead of unit weights changes the drift, not the $\\rho$ position (714 against 713\\,MeV from the same start). The S2 wave, which agreed with yours before, moves away from your curves during the iteration.\n\n")
+    W(f"The iteration does what it is meant to do: $|S|$ reaches 0.90--1.00 at every node below $s_0$ and the phases of $F$ and $S$ line up. It does so by leaving the boundary point -- the amplitudes drift inwards by 11--15\\,\\% in $f_0^0$ over eight or nine rounds and had not stopped (our convergence measure, $\\max|h-t|$ over the two-pion-saturated nodes, falls by about 10\\,\\% per round) -- and when the point is held fixed instead (section kept, near-optimal slab added) the same objective saturates very little: $\\min|S_{{P1}}|$ goes {f(pt[0],3) if pt else '--'} $\\to$ {f(pt[-1],3) if pt else '--'} at the tip and {f(pr[0],3) if pr else '--'} $\\to$ {f(pr[-1],3) if pr else '--'} at $x_{{\\rm ref}}$. What the iteration does not change is the rest of the picture: the $\\rho$ crossings stay at {rhos}\\,MeV (your 813--827), the S0 wave stays fast, and the three chains do not approach one amplitude. Using your node weights $1/\\Lambda_\\ell^2$ instead of unit weights changes the drift, not the $\\rho$ position (714 against 713\\,MeV from the same start). The S2 wave, which agreed with yours before, moves away from your curves during the iteration." + pw_sentence(a.root) + "\n\n")
     W(r"\begin{figure}[H]\centering\includegraphics[width=\textwidth]{figures/fig9_watson.png}\caption{Figs.~9 and~10 of the paper (top) and our amplitudes before (dotted) and after (solid) the saturation iteration (bottom).}\end{figure}" + "\n\n")
     W(r"""\section{Sensitivity to the form-factor cap}
 \paper{``The faster (or sometimes slower) rise of S0 happens, I believe, depending on the parameters. Also changes in the rho mass.''} \note{same message}
@@ -245,6 +271,7 @@ $\epsilon^{FF}$ & $+x$ end & $\rho$ (MeV) & $\min|S_{P1}|$ & $\delta_{S0}$ at 0.
         W(f"{r['label']} & {f(r['x_tip'],5)} & {f(r['rho_MeV'],4) if r['rho_MeV'] else 'none below 1.2'} & {f(r['min_eta_P1'],3)} & {'/'.join(f(v,3) for v in r['S0_deg'])} \\\\")
     W(r"paper & 0.0811 & 813--827 & -- & 76/83/86/98 (red), 99/103/104/109 (light pink) \\\bottomrule\end{tabularx}\end{table}" + "\n\n")
     W("With your stated $6\\times10^{-5}$ the S0 wave is too fast and the $\\rho$ too low. Loosening the S0 cap alone to $2\\times10^{-4}$ puts S0 on your red curve to within 3$^\\circ$ up to 0.95\\,GeV without touching the $\\rho$; loosening the P1 cap alone moves the $\\rho$ up (to about 850\\,MeV at $10^{-4}$ and 970 at $2\\times10^{-4}$) without touching S0. Your figures therefore correspond to an effective constraint on the form factors above $s_0$ that is looser than our reading of (3.75) with $6\\times10^{-5}$, and looser for the scalar current than for the vector one; the same change carries the $+x$ end of Fig.~8 from our 0.0760 towards your 0.0811. We have not retuned anything on the strength of this -- the table is a scan -- but it does say where the remaining difference sits.\n\n")
+    W(pair_paragraph(a.root))
     W(r"\begin{figure}[H]\centering\includegraphics[width=\textwidth]{figures/fig_epsff.png}\caption{Tip amplitude against $\epsilon^{FF}$ (both currents); the grey bands are the paper's values, the dotted line its stated $6\times10^{-5}$.}\end{figure}" + "\n\n")
     W("\\section{A request}\n"
       "It would help us a great deal to see the code or notebooks behind the 2309 runs, in particular the parts that implement (3.73) and (3.75) -- how the caps on $\\mathcal F_0$ and $\\mathcal F_1$ above $s_0$ were normalised -- and the saturation iteration with the way the three points of Figs.~9 and~10 were selected. With that we could tell which of the readings above you used and settle the remaining differences; we are happy to share any of our solutions and the full log of our runs in return.\n\n"
