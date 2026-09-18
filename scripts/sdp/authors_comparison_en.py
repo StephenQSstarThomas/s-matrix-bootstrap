@@ -58,6 +58,63 @@ def gather(root):
     return g
 
 
+WATSON_CHAINS = [("tip", ["watson_tip", "watson_tip_cont"]), ("x_ref upper", ["watson_ref", "watson_ref_cont"]),
+                 ("x_ref+0.001 upper", ["watson_mid", "watson_mid_cont", "watson_mid_cont2", "watson_mid_cont3"])]
+PINNED = [("tip", "watson_tip_pinned"), ("x_ref upper", "watson_ref_pinned")]
+EPSFF_SCAN = [(6e-5, "uv_SRa_tip/tip"), (1e-4, "sens_epsFF_1e-4_tip/tip"), (1.4e-4, "sens_epsFF_1.4e-4_tip/tip"), (2e-4, "sens_epsFF_2e-4_tip/tip"), (1e-3, "sens_epsFF_1e-3_tip/tip")]
+ONE_CURRENT = [("S0 cap 2e-4, P1 cap 6e-5", "sens_epsFF_S0only_2e-4_tip/tip"), ("S0 cap 6e-5, P1 cap 2e-4", "sens_epsFF_P1only_2e-4_tip/tip"),
+               ("S0 cap 2e-4, P1 cap 8e-5", "sens_epsFF_S0_2e-4_P1_8e-5_tip/tip")]
+EPSSR_SCAN = [(2e-3, "uv_SRa_tip/tip"), (5e-3, "sens_epsSR_5e-3_tip/tip"), (1e-2, "sens_epsSR_1e-2_tip/tip"), ("box dropped", "sens_noS0n0_tip/tip")]
+
+
+def _chain_leaves(root, dirs):
+    out = []
+    for d in dirs:
+        log = Path(root) / d / "WATSON_ITER.json"
+        if not log.exists():
+            continue
+        for r in json.loads(log.read_text())["rounds"]:
+            if r.get("accepted") and r.get("metrics"):
+                if r["round"] == 0 and out:
+                    continue
+                out.append(r["leaf"])
+    return out
+
+
+def _tip_row(r):
+    o = r["observables"]; s0 = o["S0"]
+    return {"x_tip": r["verification"]["f00_3"], "f11": r["verification"]["f11_3"], "rho_MeV": None if o["P1"]["crossing_90_GeV"] is None else 1000 * o["P1"]["crossing_90_GeV"],
+            "min_eta_P1": o["P1"]["min_eta_below_1p2GeV"], "S0_deg": [float(s0["delta_deg"][k]) for k in (38, 39, 40, 41)],
+            "S0_at_0p95": float(np.interp(0.9523, s0["E_GeV"], s0["delta_deg"]))}
+
+
+def gather_watson(root):
+    """Trajectories of the saturation chains, the pinned controls and the sensitivity tips."""
+    R = Path(root); g = {"chains": {}, "pinned": {}, "epsff": [], "one_current": [], "epssr": []}
+    for lab, dirs in WATSON_CHAINS:
+        leaves = _chain_leaves(R, dirs); rows = []
+        for i, lf in enumerate(leaves):
+            r = json.loads(Path(lf).read_text()); o = r["observables"]
+            rows.append({"round": i, "f00": r["verification"]["f00_3"], "f11": r["verification"]["f11_3"],
+                         "rho_MeV": None if o["P1"]["crossing_90_GeV"] is None else 1000 * o["P1"]["crossing_90_GeV"],
+                         "min_eta_P1": o["P1"]["min_eta_below_1p2GeV"], "S0_at_1GeV": float(np.interp(1.0, o["S0"]["E_GeV"], o["S0"]["delta_deg"])),
+                         "P1_at_0p792": float(o["P1"]["delta_deg"][38]), "S2_at_1p2": float(o["S2"]["delta_deg"][42])})
+        g["chains"][lab] = rows
+    for lab, d in PINNED:
+        leaves = _chain_leaves(R, [d])
+        g["pinned"][lab] = [json.loads(Path(lf).read_text())["observables"]["P1"]["min_eta_below_1p2GeV"] for lf in leaves]
+    for e, rel in EPSFF_SCAN:
+        r = leaf(R, rel)
+        if r: g["epsff"].append(dict(_tip_row(r), eps_ff=e))
+    for lab, rel in ONE_CURRENT:
+        r = leaf(R, rel)
+        if r: g["one_current"].append(dict(_tip_row(r), label=lab))
+    for e, rel in EPSSR_SCAN:
+        r = leaf(R, rel)
+        if r: g["epssr"].append(dict(_tip_row(r), eps_sr=e))
+    return g
+
+
 def main(argv=None):
     p = argparse.ArgumentParser()
     p.add_argument("--root", required=True); p.add_argument("--figures", required=True)

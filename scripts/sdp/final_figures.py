@@ -293,10 +293,82 @@ def diagnostics(root, out, info):
     fig.savefig(out / "face_ranges.png", dpi=110); plt.close(fig); info["face_ranges"] = labels
 
 
+# ---------------------------------------------------------------- Watson iteration and eps_FF sensitivity (2026-09-18)
+WATSON_CHAINS = [("tip", ["watson_tip", "watson_tip_cont"]), ("x_ref upper (ref)", ["watson_ref", "watson_ref_cont"]),
+                 ("x_ref+0.001 upper (mid)", ["watson_mid", "watson_mid_cont", "watson_mid_cont2", "watson_mid_cont3"])]
+
+
+def watson_rounds(root, dirs):
+    """Accepted rounds of a chain in order: [(label, report path)], starting with round 0 of the first directory."""
+    out = []
+    for d in dirs:
+        log = Path(root) / d / "WATSON_ITER.json"
+        if not log.exists():
+            continue
+        L = json.loads(log.read_text())
+        for r in L["rounds"]:
+            if r.get("accepted") and r.get("metrics"):
+                if r["round"] == 0 and out:
+                    continue                                  # a continuation's round 0 is the previous chain's last leaf
+                out.append(r["leaf"])
+    return out
+
+
+def fig9_watson(root, png, out, info):
+    """Fig.9 / Fig.10 after the saturation iteration: last accepted round of each chain against the paper's curves."""
+    fig = plt.figure(figsize=(12, 7.6)); fig.suptitle("After the unitarity-saturation (Watson) iteration: paper (top) vs the converged amplitudes (bottom)", fontsize=10)
+    for j, name in enumerate(("P1ps", "S0ps", "S2ps")):
+        axp = fig.add_axes([0.02 + 0.325 * j, 0.53, 0.31, 0.40]); pth = png / f"{name}.png"
+        if pth.exists(): axp.imshow(mpimg.imread(pth))
+        axp.axis("off")
+        if j == 0: axp.set_title("paper (2309.12402 v3), Figs. 9 and 10", fontsize=9, color=GREY, loc="left")
+    axes = [fig.add_axes([0.06 + 0.325 * j, 0.08, 0.27, 0.38]) for j in range(3)]
+    axes[0].set_title("ours, after the iteration", fontsize=9, loc="left"); used = {}
+    for j, (wave, csvn) in enumerate((("P1", "figure9_p1_phases.csv"), ("S0", "figure10_s0_phases.csv"), ("S2", "figure10_s2_phases.csv"))):
+        ax = axes[j]; ax.set_title(wave, fontsize=9)
+        ref = load_csv(csvn)
+        for g, col in (("red", "r"), ("pink", "orchid"), ("light_pink", "pink")):
+            m = ref["group"] == g; ax.plot(ref["energy_gev"][m], ref["phase_deg"][m], ".", ms=3, color=col, alpha=0.8, label=f"paper {g}" if j == 0 else None)
+        for k, (lab, dirs) in enumerate(WATSON_CHAINS):
+            rounds = watson_rounds(root, dirs)
+            if len(rounds) < 2: continue
+            r0 = json.loads(Path(rounds[0]).read_text()); rl = json.loads(Path(rounds[-1]).read_text())
+            for r, ls, alpha, tag in ((r0, ":", 0.6, "before"), (rl, "-", 1.0, f"after {len(rounds) - 1} rounds")):
+                o = r["observables"][wave]; E = np.array(o["E_GeV"]); m = E <= 1.3
+                ax.plot(E[m], np.array(o["delta_deg"])[m], ls, lw=1.2, color=f"C{k}", alpha=alpha, label=f"{lab}, {tag}" if j == 0 else None)
+            if wave == "P1":
+                used[lab] = {"rounds": len(rounds) - 1, "final_leaf": rounds[-1], "crossing_GeV": rl["observables"]["P1"]["crossing_90_GeV"],
+                             "min_eta": rl["observables"]["P1"]["min_eta_below_1p2GeV"], "f00_3": rl["verification"]["f00_3"], "f11_3": rl["verification"]["f11_3"]}
+        ax.set_xlabel("E (GeV)"); ax.set_xlim(0.28, 1.3)
+        if j == 0: ax.legend(frameon=False, fontsize=5.5)
+    fig.savefig(out / "fig9_watson.png", dpi=110); plt.close(fig); info["fig9_watson"] = used
+
+
+def fig_epsff(root, png, out, info):
+    """Sensitivity of the tip amplitude to the form-factor cap eps_FF of (3.75)."""
+    runs = [(6e-5, "uv_SRa_tip/tip"), (1e-4, "sens_epsFF_1e-4_tip/tip"), (1.4e-4, "sens_epsFF_1.4e-4_tip/tip"), (2e-4, "sens_epsFF_2e-4_tip/tip"), (1e-3, "sens_epsFF_1e-3_tip/tip")]
+    pts = []
+    for e, rel in runs:
+        r = leaf(root, rel)
+        if not r: continue
+        o = r["observables"]; s0 = o["S0"]
+        pts.append((e, r["verification"]["f00_3"], o["P1"]["crossing_90_GeV"], o["P1"]["min_eta_below_1p2GeV"], float(np.interp(0.9523, s0["E_GeV"], s0["delta_deg"]))))
+    if not pts: return
+    P = np.array(pts); fig, axes = plt.subplots(1, 3, figsize=(12, 3.8))
+    axes[0].semilogx(P[:, 0], P[:, 1], "o-", color="C0"); axes[0].axhline(0.0811249, color=GREY, ls="--", lw=1, label="paper Fig.8 tip"); axes[0].set_ylabel("UV +x end $f_0^0(3)$")
+    axes[1].semilogx(P[:, 0], 1000 * P[:, 2], "o-", color="C0"); axes[1].axhspan(813, 827, color=GREY, alpha=0.3, label="paper Fig.9 crossings"); axes[1].set_ylabel("P1 90° crossing (MeV)")
+    axes[2].semilogx(P[:, 0], P[:, 4], "o-", color="C0"); axes[2].axhspan(86, 104, color=GREY, alpha=0.3, label="paper Fig.10 at 0.95 GeV"); axes[2].set_ylabel("$\\delta_{S0}$ at 0.95 GeV (deg)")
+    for ax in axes:
+        ax.axvline(6e-5, color="C3", ls=":", lw=1); ax.set_xlabel("$\\epsilon^{FF}$ (both currents)"); ax.legend(frameon=False, fontsize=7)
+    fig.suptitle("Tip amplitude versus the form-factor cap; dotted red = the paper's stated value 6e-5", fontsize=10); fig.tight_layout()
+    fig.savefig(out / "fig_epsff.png", dpi=110); plt.close(fig)
+    info["fig_epsff"] = [{"eps_ff": e, "x_tip": x, "crossing_GeV": c, "min_eta": me, "S0_at_0p95": d} for e, x, c, me, d in pts]
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(); p.add_argument("--root", required=True); p.add_argument("--paper-png", required=True); p.add_argument("--out", required=True)
     a = p.parse_args(argv); out = Path(a.out); out.mkdir(parents=True, exist_ok=True); png = Path(a.paper_png); info = {}
-    for fn in (fig3, fig4, fig5, fig7, fig8, fig9_10, fig11):
+    for fn in (fig3, fig4, fig5, fig7, fig8, fig9_10, fig11, fig9_watson, fig_epsff):
         try:
             fn(a.root, png, out, info)
         except Exception as exc:  # keep going; record the failure
