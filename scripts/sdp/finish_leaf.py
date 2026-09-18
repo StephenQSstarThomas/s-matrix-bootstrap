@@ -26,16 +26,22 @@ def main(argv=None) -> int:
     a = p.parse_args(argv)
     dest = Path(a.leaf).resolve(); report = dest / "report.json"
     rec = json.loads(report.read_text())
-    if rec.get("status") not in ("solving",) or "verification" in rec:
-        raise SystemExit(f"{dest}: status {rec.get('status')!r}; only an unfinished 'solving' leaf is post-processed")
     out_txt, yp = dest / "out/out.txt", dest / "out/y.txt"
+    wall_clock = (rec.get("status") == "solver_failed" and rec.get("sdpb", {}).get("returncode") == 124
+                  and out_txt.exists() and "found primal-dual optimal solution" in out_txt.read_text())
+    if (rec.get("status") not in ("solving",) and not wall_clock) or "verification" in rec:
+        raise SystemExit(f"{dest}: status {rec.get('status')!r}; only an unfinished 'solving' leaf, or one whose driver "
+                         "wall clock expired after SDPB had terminated optimally, is post-processed")
     if not (out_txt.exists() and yp.exists() and yp.stat().st_size):
         raise SystemExit("SDPB outputs incomplete; nothing to post-process")
+    if wall_clock:
+        rec.pop("solver_failure", None); rec.pop("failure_trace", None); rec.pop("untrusted_partial_output", None)
     cfg = Settings(**rec["settings"])
     proc = json.loads((dest / "sdpb_process.json").read_text())
     rec["sdpb"] = {"returncode": None, "command": proc.get("command"),
                    "seconds": out_txt.stat().st_mtime - proc.get("started_unix", out_txt.stat().st_mtime),
-                   "scope": "driver died after SDPB wrote out.txt and y.txt; return code not recorded, outputs complete"}
+                   "scope": ("driver wall clock expired after SDPB had terminated optimally and written out.txt and y.txt" if wall_clock
+                             else "driver died after SDPB wrote out.txt and y.txt; return code not recorded, outputs complete")}
     w = Pmp.from_saved(str(report), tuple(rec["direction"]), rec.get("fix_f00"), rec.get("face"), rec.get("functional"))
     rec["sdpb_result"] = read_out(out_txt)
     sol = w.read_solution(yp)
