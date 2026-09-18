@@ -27,7 +27,9 @@ def main(argv=None) -> int:
     dest = Path(a.leaf).resolve(); report = dest / "report.json"
     rec = json.loads(report.read_text())
     out_txt, yp = dest / "out/out.txt", dest / "out/y.txt"
-    wall_clock = (rec.get("status") == "solver_failed" and rec.get("sdpb", {}).get("returncode") == 124
+    # a driver wall-clock expiry (rc 124) or an MPI tear-down error (non-zero rc) AFTER SDPB terminated optimally and
+    # wrote its solution: the solve itself is complete and is post-processed with the same acceptance rules
+    wall_clock = (rec.get("status") == "solver_failed" and rec.get("sdpb", {}).get("returncode") not in (None, 0)
                   and out_txt.exists() and "found primal-dual optimal solution" in out_txt.read_text())
     if (rec.get("status") not in ("solving",) and not wall_clock) or "verification" in rec:
         raise SystemExit(f"{dest}: status {rec.get('status')!r}; only an unfinished 'solving' leaf, or one whose driver "
@@ -40,7 +42,7 @@ def main(argv=None) -> int:
     proc = json.loads((dest / "sdpb_process.json").read_text())
     rec["sdpb"] = {"returncode": None, "command": proc.get("command"),
                    "seconds": out_txt.stat().st_mtime - proc.get("started_unix", out_txt.stat().st_mtime),
-                   "scope": ("driver wall clock expired after SDPB had terminated optimally and written out.txt and y.txt" if wall_clock
+                   "scope": (f"driver saw a non-zero container exit ({rec.get('sdpb', {}).get('returncode')}) after SDPB had terminated optimally and written out.txt and y.txt" if wall_clock
                              else "driver died after SDPB wrote out.txt and y.txt; return code not recorded, outputs complete")}
     w = Pmp.from_saved(str(report), tuple(rec["direction"]), rec.get("fix_f00"), rec.get("face"), rec.get("functional"),
                        allow_face_source=True)
