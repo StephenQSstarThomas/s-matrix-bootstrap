@@ -1,8 +1,10 @@
 # Reproduction of arXiv:2309.12402 with SDPB: comparison against the paper's figures
 
-Bo Wang, Shi Qiu, Hua Xing Zhu. 14 September 2026.
+Bo Wang, Shi Qiu, Hua Xing Zhu. 18 September 2026 (second version; the first was dated 14 September).
 
 ## 1. What was done
+
+This is the second version of the document. Since the first one we have read the code released with the follow-up paper (arXiv:2403.10772) and the current code of the repository (arXiv:2505.19332), and after Martin's replies of 17 September we added three things: the unitarity-saturation iteration in the form of eq. (2.29) of the follow-up paper, run from the three representative points of Figs. 9 and 10 (Section 5); a scan of the two continuous parameters of the UV stage, eps_SR and eps_FF, with the caps on the two currents varied separately (Section 6); and a pre-registered test of the pair of caps that the scan points to (end of Section 6). Sections 1-4 are as before. Nothing in the main line was retuned; the verdicts of Section 3 are unchanged.
 
 These are the results of our attempt to reproduce *Bootstrapping gauge theories* (arXiv:2309.12402, v3), compared figure by figure with the paper.
 
@@ -212,4 +214,4 @@ The pair this interpolation points to (S0 cap 2e-4, P1 cap 8e-5) was run as a pr
 
 ## 7. A request
 
-It would help us a great deal to see the code or notebooks behind the 2309 runs, in particular the parts that implement (3.73) and (3.75) -- how the caps on F0 and F1 above s0 were normalised -- and the saturation iteration with the way the three points of Figs. 9 and 10 were selected. With that we could tell which of the readings above you used and settle the remaining differences; we are happy to share any of our solutions and the full log of our runs in return.
+It would help us a great deal to see the code or notebooks behind the 2309 runs. The parts that would settle the remaining differences are the implementation of (3.73) and (3.75) -- the norm behind eps_SR, and how the caps on F0 and F1 above s0 were normalised, in particular whether the two currents were capped separately -- together with the saturation iteration and the (f00, f11) of the three points of Figs. 9 and 10 before and after it. With those we could run the same problem and compare number by number rather than figure by figure. Everything on our side (operators, drivers, tests, the scripts that produce this document) is in the code package that accompanies it.

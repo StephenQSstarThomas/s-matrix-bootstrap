@@ -824,3 +824,15 @@ run in at least two readings with the controls recorded above.
   section 8, docs README; receipts refreshed (C67_POSTWATSON.json, GATE_LOG.md, queue.log).
 - Still open, deliberately: s0 sensitivity (requires editing the hash-checked operator module; nothing is running now, so it
   can be scheduled), and the authors' answers on the (3.75) normalisation and the eps_SR norm.
+
+## 2026-09-18 13:20Z  (operator-18) Comparison document, second version (replaces the first, not incremental)
+
+- REPRODUCTION_COMPARISON_EN.{tex,pdf,md,html} regenerated as a second version dated 18 September: "What was done" now
+  states plainly that, after reading the 2403 / 2505 code and after Martin's replies of 17 September, three things were
+  added (saturation iteration, eps_SR / eps_FF scan with separate caps, matched-pair test); Table 2 rows on (3.75) and on
+  the boundary-point amplitude updated; a data-driven paragraph after the summary table; one sentence each in the Fig. 9
+  and Fig. 10 subsections on the iterated amplitudes; Section 5 says what was taken from the two code versions and how it
+  was adapted; Section 6 closes with the joint reading; the request names the three items that would settle the rest.
+  15 pages, no overfull boxes.  Verdicts and main-line inputs unchanged.
+- TODO_ZH.md created at the repository root (s0 sensitivity, the three answers awaited from the authors, share pin of the
+  online ledger, o/operator-cache); linked from REPORT_SDPB_2309_ZH.md section 6 and the docs README.

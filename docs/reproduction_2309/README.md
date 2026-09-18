@@ -19,4 +19,4 @@
 
 生成脚本：`scripts/sdp/final_figures.py`（图）、`scripts/sdp/final_report_html.py`（台账页）、`scripts/sdp/c1_eval.py … c8_eval.py`、`scripts/sdp/face_eval.py`（裁决）。叙述性报告：仓库根 `REPORT_SDPB_2309_ZH.md`；计划与预登记：`PLAN_SDPB_2309_ZH.md`；代码分级：`TRIAGE_ZH.md`。
 
-已补齐：C1 的 Mreg=10⁴ 敏感性注释（GATE_LOG 09-17 18:05Z）。迭代与敏感性的全部叶子在结果根目录 `watson_*`、`sens_*`；`REPORT_SDPB_2309_ZH.md` §8 为中文叙述。s₀ 敏感性待全部链跑完后再做（需改动哈希校验的算子模块）。
+已补齐：C1 的 Mreg=10⁴ 敏感性注释（GATE_LOG 09-17 18:05Z）。迭代与敏感性的全部叶子在结果根目录 `watson_*`、`sens_*`；`REPORT_SDPB_2309_ZH.md` §8 为中文叙述。s₀ 敏感性等剩余事项列在仓库根 `TODO_ZH.md`。

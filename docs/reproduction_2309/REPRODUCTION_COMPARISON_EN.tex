@@ -32,11 +32,13 @@
 {\LARGE\bfseries Reproduction of arXiv:2309.12402 with SDPB}\\[4pt]
 {\large A comparison with the figures of the paper}\\[8pt]
 {Bo Wang, Shi Qiu, Hua Xing Zhu}\\[2pt]
-{\color{quote}14 September 2026}
+{\color{quote}18 September 2026 \note{second version; the first was dated 14 September}}
 \vspace{6pt}\hrule\vspace{8pt}
 
 \section{What was done}
 These are the results of our attempt to reproduce \emph{Bootstrapping gauge theories} \note{arXiv:2309.12402, v3}, compared figure by figure with the paper.
+
+This is the second version of the document. Since the first one we have read \fupc\ and \cur, and after Martin's replies of 17 September we added three things: the unitarity-saturation iteration in the form of eq.~(2.29) of \fup, run from the three representative points of Figs.~9 and~10 \note{Section~5}; a scan of the two continuous parameters of the UV stage, $\epsilon^{SR}$ and $\epsilon^{FF}$, with the caps on the two currents varied separately \note{Section~6}; and a pre-registered test of the pair of caps that the scan points to \note{end of Section~6}. Sections~1--4 are as before, and where the new runs bear on a figure we say so in its subsection. Nothing in the main line was retuned; the verdicts of Section~3 are unchanged.
 
 We set the finite problem of Section~3 up directly as a polynomial matrix program and solved it with SDPB, at high precision; no other solver was involved. The discretised operators \note{grid and conformal map, cot kernel, angular projections of the Mandelstam representation, current kernels} were rederived from Sections~2 and~3 rather than taken from any existing code, and cross-checked with a Mathematica script. Every solution quoted below was re-verified against the original constraints in interval arithmetic (Arb) after the solve.
 
@@ -63,11 +65,11 @@ Item & Paper text & Readings run \\
 \midrule
 Norm of the sum-rule tolerance (3.73), $\epsilon^{SR}=2\times10^{-3}$ & \paper{with some norm} & a per-moment box on the raw moments \note{main line}; a per-wave $L^2$ ball \note{the structure used in \fupc}; a relative 10\,\% box per moment \\
 \addlinespace
-Evaluation point of the factor between $F$ and $\mathcal F$ in (3.75) & \paper{which we evaluate at $s=s_0$} \note{in the estimate of $\epsilon^{FF}$} & the factor at each node $s_i>s_0$ \note{main line}; the factor frozen at $s_0$ \\
+Evaluation point of the factor between $F$ and $\mathcal F$ in (3.75) & \paper{which we evaluate at $s=s_0$} \note{in the estimate of $\epsilon^{FF}$} & the factor at each node $s_i>s_0$ \note{main line}; the factor frozen at $s_0$; one common $\epsilon^{FF}$ for both currents \note{main line} or separate caps on $\mathcal F_0$ and $\mathcal F_1$ \note{Section~6} \\
 \addlinespace
 Regularisation of the double spectral density & not mentioned in the paper; \meth, Section~3, and \fupc\ use an $M$-bound & $|\rho_{ij}|\le M_{\rm reg}$, with $M_{\rm reg}$ fixed by an in-model rule \note{omitted-wave unitarity and $L$-stability}: $10^2$ for the chiral and UV stages, $10^3$ for the pure stage; $\ell^2$, $\ell^4$ and $M_{\rm reg}\times10$ controls \\
 \addlinespace
-Amplitude at a boundary point & \paper{only points at the boundary have partial waves associated with them} & the solver's optimal point, together with a diagnostic of the whole near-optimal face \note{Section~4} \\
+Amplitude at a boundary point & \paper{only points at the boundary have partial waves associated with them} & the solver's optimal point, together with a diagnostic of the whole near-optimal face \note{Section~4}; after your reply, the saturation iteration of \fup\ from that point \note{Section~5} \\
 \addlinespace
 Chiral norm in (3.64) & \paper{with some norm} & one combined 8-dimensional $L^2$ norm \note{as in \fupc}; two separate 4-dimensional norms as a control \\
 \bottomrule
@@ -93,6 +95,10 @@ Fig.~11 & good convergence in $L$; the $\rho$ peak shifts with $M$ & P1 crossing
 \bottomrule
 \end{tabularx}
 \end{table}
+
+
+What the second version adds, in one paragraph. After the saturation iteration \note{Section~5} $\min|S_{P1}|$ at the three points goes from 0.59/0.24/0.08 to 1.00/0.99/0.91, while the 90$^\circ$ crossings sit at 775/714/741\,MeV and S0 at 1\,GeV at 145/136/138$^\circ$: the iteration removes the inelasticity and leaves the two disagreements where they were. Of the two UV tolerances, $\epsilon^{SR}$ does nothing to either; $\epsilon^{FF}$ does everything, and the two currents act separately \note{Section~6}. With the cap on $\mathcal F_0$ at $2\times10^{-4}$ and on $\mathcal F_1$ at $8\times10^{-5}$ the tip alone gives the $\rho$ at 817\,MeV and your S0 and S2 curves within 4$^\circ$ and 1$^\circ$, with no iteration, at a $+x$ end of 0.0785 against your 0.0811.
+
 
 \section{Figure-by-figure comparison}
 Left (or top) panels are the figures from the arXiv source; right (or bottom) panels are our solutions with the digitised curves or boundaries overlaid. Quotations from the paper are in \paper{grey italics}.
@@ -145,6 +151,8 @@ The relative reading (10\,\% of each moment) is infeasible in this model: droppi
 
 We use the same three points as before (tip $=$ $+x$ end; reference $=$ the upper-branch point nearest the black dot; mid $=$ its neighbour towards the tip). At the tip the phase crosses 90$^\circ$ at 772.7\,MeV with $|S_{P1}|=0.585$ at 0.79\,GeV; at the mid point it crosses at 738.9\,MeV with $|S_{P1}|$ dropping to 0.077; at the reference point $|S_{P1}|$ falls to 0.24 at 0.73\,GeV and the node values admit two phase branches, the nearest-node lift swinging to $-47^\circ$ while the $+180^\circ$ branch crosses 90$^\circ$ at 708\,MeV. With the chiral constraints alone (Fig.~7) there is no crossing below 1.2\,GeV, so the resonance does come from the sum rules and the form-factor bounds, as in the paper. It sits 40--110\,MeV below yours, and the wave is far from elastic there; the paper does not show $|S|$, so we add it in the second panel.
 
+After the saturation iteration of Section~5 the same three points have $|S_{P1}|\ge 0.91$ and crossings at 775/714/741\,MeV: the iteration removes the inelasticity, not the shift.
+
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{figures/fig9.png}\caption{Fig.~9: the paper (left) and our P1 phases at the representatives, with the three digitised curves (right).}\end{figure}
 \begin{figure}[H]\centering\includegraphics[width=0.62\textwidth]{figures/fig9_eta.png}\caption{$|S_{P1}|$ at the same points (not shown in the paper).}\end{figure}
 
@@ -152,6 +160,8 @@ We use the same three points as before (tip $=$ $+x$ end; reference $=$ the uppe
 \paper{``the three bootstrap (red, pink, light pink) curves \dots\ coincide at low energy but they spread at high energy.''}
 
 S2 agrees with your curves (RMS 0.354--1.44$^\circ$, endpoints $-28$ to $-32^\circ$ at 1.196\,GeV against your $-18$ to $-36^\circ$). S0 agrees below about 0.6\,GeV and then rises faster than yours, crossing 90$^\circ$ at 0.69\,GeV and reaching 181--192$^\circ$ at 1.196\,GeV where your curves are at 87--106$^\circ$. With the chiral constraints alone our S0 matches your Fig.~7 to 0.4$^\circ$, so this is something the UV constraints do.
+
+After the iteration of Section~5 S0 at 1\,GeV is 145/136/138$^\circ$ at the three points, still above yours, and S2 at 1.2\,GeV moves to -25/-18/-18$^\circ$.
 
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{figures/fig10.png}\caption{Fig.~10: the paper (top) and ours (bottom).}\end{figure}
 
@@ -193,9 +203,9 @@ The tip face is rigid in the P1 observables and does not contain your P1 shape. 
 
 
 \section{After the unitarity-saturation iteration}
-\paper{``One thing we noticed, as you are saying, is that unitarity tends to be unsaturated near the resonance. The rho meson decays primarily to two pions so we used the iterations to correct that. \dots\ Our results are always shown after that.''} \note{your message of 17 September}
+\paper{``$|S|$ does not saturate unitarity. We have an iterative procedure that improves saturation of unitarity \dots\ Our results are always shown after that.''} \note{Martin, 17 September} \paper{``One thing we noticed, as you are saying, is that unitarity tends to be unsaturated near the resonance. The rho meson decays primarily to two pions so we used the iterations to correct that.''} \note{same day}
 
-We implemented the step in the form of eq.~(2.29) of the follow-up paper: every constraint of the finite problem is kept, the section $f_0^0(3)=x$ is released, and the objective is replaced by $\sum_k \mathrm{Re}[e^{-2i\alpha_k}(S_k-1)]$ over the nodes below $s_0$ of S0, P1 and S2, with $\alpha_k$ the phase of the previous form factor (the previous phase shift for S2); each round is a full SDPB solve with the same verification as before. We ran it from the three representatives of Fig.~9, for eight or nine rounds each, and as a control with the point held at its boundary position.
+The paper does not mention this step and the repository \texttt{gauge-theory-bootstrap} has no 2309 code, so we took it from the two versions that are there. In \fupc\ the representative amplitude is chosen in two stages: with $\mathcal F_0$ fixed, $\mathcal F_1$ is maximised, and the Watsonian functional (2.29) is then maximised over the whole feasible set. In \cur\ the run starts from a pure feasibility point and applies five rounds of the same functional, with no support functional at all. Neither can be transplanted as it stands \note{different $s_0$, currents, moments and tolerances}, so we implemented the step for the 2309 problem: every constraint of the finite problem is kept, the section $f_0^0(3)=x$ is released, and the objective becomes $\sum_k \operatorname{Re}[e^{-2i\alpha_k}(S_k-1)]$ over the nodes below $s_0$ of S0, P1 and S2, with $\alpha_k$ the phase of the previous round's form factor \note{the previous phase shift for S2, which has no current}. Written as $\operatorname{Re}(\bar t_k h_k)-\operatorname{Im}h_k$ with $t=2\sin\alpha\,e^{i\alpha}$ and $S=1+ih$ this is the functional of your code, and its fixed point is an amplitude whose phases line up with the form factors and whose $|S|$ saturates. Your code scales the variables by $\Lambda_\ell$, which amounts to node weights $1/\Lambda_\ell^2$ instead of 1; we ran both. Each round is a full SDPB solve with the same Arb verification as before, and the objective row was checked against an independent construction to $10^{-11}$. We started from the three representatives of Fig.~9, ran eight or nine rounds each, and as a control held the point at its boundary position \note{section kept, near-optimal slab of $2\times10^{-6}$ added} with the same objective.
 
 \begin{table}[H]\small
 \caption{Saturation chains, last accepted round (round 0 is the representative of Fig.~9 with the values of Section~3).}\label{tab:watson}
@@ -208,7 +218,7 @@ $x_{\rm ref}+0.001$ upper & 9 & $(0.0629, -0.00419)$ & 0.913 & 741 & 138$^\circ$
 \bottomrule\end{tabularx}\end{table}
 
 
-The iteration does what it is meant to do: $|S|$ reaches 0.90--1.00 at every node below $s_0$ and the phases of $F$ and $S$ line up. It does so by leaving the boundary point -- the amplitudes drift inwards by 11--15\,\% in $f_0^0$ over eight or nine rounds and had not stopped (our convergence measure, $\max|h-t|$ over the two-pion-saturated nodes, falls by about 10\,\% per round) -- and when the point is held fixed instead (section kept, near-optimal slab added) the same objective saturates very little: $\min|S_{P1}|$ goes 0.585 $\to$ 0.593 at the tip and 0.244 $\to$ 0.493 at $x_{\rm ref}$. What the iteration does not change is the rest of the picture: the $\rho$ crossings stay at 775, 714, 741\,MeV (your 813--827), the S0 wave stays fast, and the three chains do not approach one amplitude. Using your node weights $1/\Lambda_\ell^2$ instead of unit weights changes the drift, not the $\rho$ position (714 against 713\,MeV from the same start). The S2 wave, which agreed with yours before, moves away from your curves during the iteration. Re-applying our pre-registered rules for Figs.~9 and~10 to the iterated amplitudes: the unitarity part now passes ($\min|S_{P1}| \ge 0.91$ at all three points) but the $\rho$ crossings (775, 714, 741\,MeV) stay outside the 795--845\,MeV band and the S0 curves stay 16, 8, 13$^\circ$ r.m.s.\ from yours, so both verdicts remain as in Section~3.
+The iteration does what it is meant to do: $|S|$ reaches 0.90--1.00 at every node below $s_0$ and the phases of $F$ and $S$ line up. It does so by leaving the boundary point -- the amplitudes drift inwards by 11--15\,\% in $f_0^0$ over eight or nine rounds and had not stopped \note{our convergence measure, $\max|h-t|$ over the two-pion-saturated nodes, falls by about 10\,\% per round} -- and when the point is held fixed instead the same objective saturates very little: $\min|S_{P1}|$ goes 0.585 $\to$ 0.593 at the tip and 0.244 $\to$ 0.493 at $x_{\rm ref}$. What the iteration does not change is the rest of the picture: the $\rho$ crossings stay at 775, 714, 741\,MeV \note{your 813--827}, the S0 wave stays fast, and the three chains do not approach one amplitude, whereas your three curves lie close together. Your node weights $1/\Lambda_\ell^2$ change the drift, not the $\rho$ position \note{714 against 713\,MeV from the same start}. The S2 wave, which agreed with yours before, moves away from your curves during the iteration. Re-applying our pre-registered rules for Figs.~9 and~10 to the iterated amplitudes: the unitarity part now passes ($\min|S_{P1}| \ge 0.91$ at all three points) but the $\rho$ crossings (775, 714, 741\,MeV) stay outside the 795--845\,MeV band and the S0 curves stay 16, 8, 13$^\circ$ r.m.s.\ from yours, so both verdicts remain as in Section~3.
 
 
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{figures/fig9_watson.png}\caption{Figs.~9 and~10 of the paper (top) and our amplitudes before (dotted) and after (solid) the saturation iteration (bottom).}\end{figure}
@@ -217,7 +227,7 @@ The iteration does what it is meant to do: $|S|$ reaches 0.90--1.00 at every nod
 \section{Sensitivity to the form-factor cap}
 \paper{``The faster (or sometimes slower) rise of S0 happens, I believe, depending on the parameters. Also changes in the rho mass.''} \note{same message}
 
-The only continuous parameters of the UV stage are $\epsilon^{SR}$ and $\epsilon^{FF}$. $\epsilon^{SR}$ turns out not to matter: loosening the raw box from $2\times10^{-3}$ to $10^{-2}$, or dropping the S0 $n=0$ box altogether, moves the $\rho$ by at most 12\,MeV and leaves S0 unchanged (the freed S0 $n=0$ moment settles near 1.9 times the QCD value on its own). $\epsilon^{FF}$ in (3.75) matters a great deal, and the two currents act independently.
+The only continuous parameters of the UV stage are $\epsilon^{SR}$ and $\epsilon^{FF}$. $\epsilon^{SR}$ turns out not to matter: loosening the raw box from $2\times10^{-3}$ to $10^{-2}$, or dropping the S0 $n=0$ box altogether, moves the $\rho$ by at most 12\,MeV and leaves S0 unchanged \note{the freed S0 $n=0$ moment settles near 1.9 times the QCD value on its own}. $\epsilon^{FF}$ in (3.75) matters a great deal, and the two currents act independently.
 
 \begin{table}[H]\small
 \caption{Tip of the UV region against the form-factor cap (factor at each node, everything else as in the main line).}\label{tab:epsff}
@@ -229,13 +239,13 @@ $\epsilon^{FF}$ & $+x$ end & $\rho$ (MeV) & $\min|S_{P1}|$ & $\delta_{S0}$ at 0.
 \ensuremath{1.4\times10^{-4}} (both currents) & 0.079637 & 905.3 & 0.845 & 81.8/91.9/105/130 \\
 \ensuremath{2\times10^{-4}} (both currents) & 0.080779 & 972.3 & 0.973 & 73/81.7/88.3/111 \\
 \ensuremath{1\times10^{-3}} (both currents) & 0.082753 & 1604 & 0.987 & 59.5/59.7/60.3/57.7 \\
-S0 cap 2e-4, P1 cap 6e-5 & 0.077579 & 775.3 & 0.585 & 74.9/84/90.1/111 \\
-S0 cap 6e-5, P1 cap 2e-4 & 0.07891 & 966.6 & 0.956 & 110/125/148/164 \\
-S0 cap 2e-4, P1 cap 8e-5 & 0.078545 & 816.9 & 0.751 & 74.4/83.3/89.5/111 \\
+S0 cap $2\times10^{-4}$, P1 cap $6\times10^{-5}$ & 0.077579 & 775.3 & 0.585 & 74.9/84/90.1/111 \\
+S0 cap $6\times10^{-5}$, P1 cap $2\times10^{-4}$ & 0.07891 & 966.6 & 0.956 & 110/125/148/164 \\
+S0 cap $2\times10^{-4}$, P1 cap $8\times10^{-5}$ & 0.078545 & 816.9 & 0.751 & 74.4/83.3/89.5/111 \\
 paper & 0.0811 & 813--827 & -- & 76/83/86/98 (red), 99/103/104/109 (light pink) \\\bottomrule\end{tabularx}\end{table}
 
 
-With your stated $6\times10^{-5}$ the S0 wave is too fast and the $\rho$ too low. Loosening the S0 cap alone to $2\times10^{-4}$ puts S0 on your red curve to within 3$^\circ$ up to 0.95\,GeV without touching the $\rho$; loosening the P1 cap alone moves the $\rho$ up (to about 850\,MeV at $10^{-4}$ and 970 at $2\times10^{-4}$) without touching S0. Your figures therefore correspond to an effective constraint on the form factors above $s_0$ that is looser than our reading of (3.75) with $6\times10^{-5}$, and looser for the scalar current than for the vector one; the same change carries the $+x$ end of Fig.~8 from our 0.0760 towards your 0.0811. We have not retuned anything on the strength of this -- the table is a scan -- but it does say where the remaining difference sits.
+With your stated $6\times10^{-5}$ the S0 wave is too fast and the $\rho$ too low. Loosening the S0 cap alone to $2\times10^{-4}$ puts S0 on your red curve to within 3$^\circ$ up to 0.95\,GeV without touching the $\rho$; loosening the P1 cap alone moves the $\rho$ up \note{to about 850\,MeV at $10^{-4}$ and 970 at $2\times10^{-4}$} without touching S0. Your figures therefore correspond to an effective constraint on the form factors above $s_0$ that is looser than our reading of (3.75) with $6\times10^{-5}$, and looser for the scalar current than for the vector one; the same change carries the $+x$ end of Fig.~8 from our 0.0760 towards your 0.0811. We have not retuned anything on the strength of this -- the table is a scan -- but it does say where the remaining difference sits.
 
 
 The pair this interpolation points to (S0 cap $2\times10^{-4}$, P1 cap $8\times10^{-5}$) was then run as a pre-registered test (all three at once: $+x$ end within 1\,\% of 0.0811, $\rho$ in 813--827\,MeV, S0 within 10$^\circ$ of your red curve up to 1\,GeV). It puts the $\rho$ at 817\,MeV, S0 within 4$^\circ$ of your red curve up to 1\,GeV (r.m.s.\ 1.9$^\circ$) and S2 within 1$^\circ$ -- your Figs.~9 and~10 at the tip, before any iteration, with $\min|S_{P1}| = 0.75$ at the $\rho$ -- but the $+x$ end is 0.0785, 3\,\% below your 0.0811, so it does not meet the rule. Since the $+x$ end rises with either cap and the $\rho$ rises with the P1 cap, no pair of caps gives all three at once under our reading; the remaining 3\,\% must sit in something else (the $\epsilon^{SR}$ norm, the normalisation of (3.75) above $s_0$, or your iteration acting on the region).
@@ -244,8 +254,11 @@ The pair this interpolation points to (S0 cap $2\times10^{-4}$, P1 cap $8\times1
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{figures/fig_epsff.png}\caption{Tip amplitude against $\epsilon^{FF}$ (both currents); the grey bands are the paper's values, the dotted line its stated $6\times10^{-5}$.}\end{figure}
 
 
+Taken together, Sections~5 and~6 say this. The saturation step does what your message describes, and it moves neither the $\rho$ nor the S0 wave, so it is not where the difference between our Figs.~9--10 and yours comes from. That difference is carried by the form-factor caps: a looser cap on the scalar current than on the vector one gives your two figures at the tip without any iteration. What the caps cannot do is give your $+x$ end at the same time, so one more input differs between the two calculations, and we cannot tell which from the paper.
+
+
 \section{A request}
-It would help us a great deal to see the code or notebooks behind the 2309 runs, in particular the parts that implement (3.73) and (3.75) -- how the caps on $\mathcal F_0$ and $\mathcal F_1$ above $s_0$ were normalised -- and the saturation iteration with the way the three points of Figs.~9 and~10 were selected. With that we could tell which of the readings above you used and settle the remaining differences; we are happy to share any of our solutions and the full log of our runs in return.
+It would help us a great deal to see the code or notebooks behind the 2309 runs. The parts that would settle the remaining differences are the implementation of (3.73) and (3.75) -- the norm behind $\epsilon^{SR}$, and how the caps on $\mathcal F_0$ and $\mathcal F_1$ above $s_0$ were normalised, in particular whether the two currents were capped separately -- together with the saturation iteration and the $(f_0^0,f_1^1)$ of the three points of Figs.~9 and~10 before and after it. With those we could run the same problem and compare number by number rather than figure by figure. Everything on our side \note{operators, drivers, tests, the scripts that produce this document} is in the code package that accompanies it.
 
 \section*{References}
 \begin{itemize}[leftmargin=*,itemsep=2pt]
