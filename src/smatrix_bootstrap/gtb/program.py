@@ -249,8 +249,9 @@ class Program:
     def _fesr(self):
         ks, n0, out = self.ks, self.n0, []
         for k, (ch, ints) in enumerate(zip(CHANNELS, (ks.intS0, ks.intP1, ks.intD0))):
-            g = ints @ ks.BSpline3[k * n0:(k + 1) * n0]            # 3 x 120 (block diagonal in channels)
-            w = [self.c_form(g[i]) - self.const(ks.SVZSR[3 * k + i]) for i in range(3)]
+            nsr = ints.shape[0]                                    # n_SR moments per channel (3 in the paper)
+            g = ints @ ks.BSpline3[k * n0:(k + 1) * n0]            # n_SR x 120 (block diagonal in channels)
+            w = [self.c_form(g[i]) - self.const(ks.SVZSR[nsr * k + i]) for i in range(nsr)]
             out.append(self.arrow(f"fesr:{ch}", w, self.num(self.spec.eps_sr[k]), self.const(1.0)))
         return out
 

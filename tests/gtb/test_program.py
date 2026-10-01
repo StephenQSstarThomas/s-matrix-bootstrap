@@ -325,3 +325,28 @@ def test_custom_objective_row_over_raw_variables(sense):
     y = rng.normal(size=prog.n_vars - 1)
     sign = 1 if sense == "custom_max" else -1
     assert abs(prog.objective() @ np.r_[1.0, y] - sign * row @ prog.lift(y)) < 1e-9 * max(1, abs(row @ prog.lift(y)))
+
+
+@needs_ks10
+def test_fesr_blocks_follow_the_number_of_exported_moments():
+    from smatrix_bootstrap.gtb import kernels
+    from smatrix_bootstrap.gtb.program import Program
+    from smatrix_bootstrap.gtb.spec import GtbSpec
+    ks = kernels.load(KS10)
+
+    class Ks4:                                   # an n_SR = 4 export: one more moment row and target per channel
+        def __getattr__(self, name):
+            if name in ("intS0", "intP1", "intD0"):
+                a = getattr(ks, name)
+                return np.vstack([a, 2 * a[-1:]])
+            if name == "SVZSR":
+                s = ks.SVZSR.reshape(3, 3)
+                return np.hstack([s, 7 * s[:, -1:]]).ravel()
+            return getattr(ks, name)
+    k4 = Ks4()
+    p = Program(GtbSpec(M=10), k4)
+    fesr = [b for b in p.blocks() if b.name.startswith("fesr:")]
+    assert [b.size for b in fesr] == [5, 5, 5]
+    g = k4.intD0 @ ks.BSpline3[2 * p.n0:3 * p.n0]
+    want = (p.c_form(g[3]) - p.const(k4.SVZSR[11])) / p.num(p.spec.eps_sr[2])
+    assert np.allclose(fesr[2].forms[(0, 4)], want)

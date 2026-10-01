@@ -18,9 +18,9 @@ GTBIndexRho1::usage = "GTBIndexRho1[g, m, n]: position of rho1(x_m, y_n) in the 
 GTBIndexRho2::usage = "GTBIndexRho2[g, a, b]: position of the symmetric rho2(x_a, y_b) in the amplitude vector.";
 GTBFormFactorKernel::usage = "GTBFormFactorKernel[g]: KFF3 = I3 (x) (K + 1 K0^T).";
 GTBBSplineBasis::usage = "GTBBSplineBasis[g, nb:40]: function s -> {B_1(s), .., B_nb(s)} (cubic, clamped on [0, x_n0], nb-3 equal intervals).";
-GTBMoments::usage = "GTBMoments[g] -> {intS0, intP1, intD0}, each 3 x n0, normalised by x_n0^(n + n_l).";
-GTBSVZ::usage = "GTBSVZ[] -> the nine O(alpha_s) identity-operator FESR targets {S0(0,1,2), P1(-1,0,1), D0(-2,-1,0)}.";
-GTBBuildAll::usage = "GTBBuildAll[M, nu0, prec, L:20, nb:40] -> association of every exported matrix.";
+GTBMoments::usage = "GTBMoments[g, nsr:3] -> {intS0, intP1, intD0}, each nsr x n0, normalised by x_n0^(n + n_l).";
+GTBSVZ::usage = "GTBSVZ[nsr:3] -> the 3 nsr O(alpha_s) identity-operator FESR targets {S0(0..), P1(-1..), D0(-2..)}.";
+GTBBuildAll::usage = "GTBBuildAll[M, nu0, prec, L:20, nb:40, nsr:3] -> association of every exported matrix.";
 GTBExport::usage = "GTBExport[all, dir, digits]: manifest.json + one gzip text file per matrix.";
 
 Begin["`Private`"];
@@ -107,20 +107,20 @@ GTBBSplineBasis[g_, nb_Integer : 40] := With[{e = g["x"][[g["n0"]]]},
 kap[0, x_] := 3 Sqrt[x - 4]/(256 Pi^5 Sqrt[x]);
 kap[1, x_] := (x - 4)^(3/2)/(384 Pi^5 Sqrt[x]);
 kap[2, x_] := (x - 4)^(5/2)/(2560 Pi^5 Sqrt[x]);
-GTBMoments[g_] := Module[{n0 = g["n0"], x, xp, d = g["Delta"], e, mom},
+GTBMoments[g_, nsr_Integer : 3] := Module[{n0 = g["n0"], x, xp, d = g["Delta"], e, mom},
   x = Take[g["x"], n0]; xp = Take[g["xp"], n0]; e = x[[n0]];
   mom[l_, n_, nl_] := kap[l, x] d xp x^n/e^(n + nl);
-  {Table[mom[0, n, 2], {n, 0, 2}], Table[mom[1, n, 2], {n, -1, 1}], Table[mom[2, n, 3], {n, -2, 0}]}];
+  {Table[mom[0, n, 2], {n, 0, nsr - 1}], Table[mom[1, n, 2], {n, -1, nsr - 2}], Table[mom[2, n, 3], {n, -2, nsr - 3}]}];
 
-GTBSVZ[] := N[Join[
-   Table[(mu^2 + md^2)/(2 Pi)^4 3/(4 Pi (n + 2)) (1 + 13/3 alphaS/Pi), {n, 0, 2}],
-   Table[1/(2 Pi)^4 1/(4 Pi (n + 2)) (1 + alphaS/Pi), {n, -1, 1}],
-   Table[1/(2 Pi)^4 1/(4 Pi (n + 3)) (11/10 - 17/18 alphaS/Pi), {n, -2, 0}]], 60];
+GTBSVZ[nsr_Integer : 3] := N[Join[
+   Table[(mu^2 + md^2)/(2 Pi)^4 3/(4 Pi (n + 2)) (1 + 13/3 alphaS/Pi), {n, 0, nsr - 1}],
+   Table[1/(2 Pi)^4 1/(4 Pi (n + 2)) (1 + alphaS/Pi), {n, -1, nsr - 2}],
+   Table[1/(2 Pi)^4 1/(4 Pi (n + 3)) (11/10 - 17/18 alphaS/Pi), {n, -2, nsr - 3}]], 60];
 
 waves[g_] := Join[Table[{0, l}, {l, 0, g["L"] - 2, 2}], Table[{2, l}, {l, 0, g["L"] - 2, 2}],
    Table[{1, l}, {l, 1, g["L"] - 1, 2}]];
 
-GTBBuildAll[M_Integer, nu0_, prec_Integer, L_Integer : 20, nb_Integer : 40] :=
+GTBBuildAll[M_Integer, nu0_, prec_Integer, L_Integer : 20, nb_Integer : 40, nsr_Integer : 3] :=
  Module[{g, ws, keep, phys, chi, ff, bs, mom},
   g = Append[GTBGrid[M, nu0, prec, L], "nb" -> nb]; ws = waves[g]; keep = N[#, Min[prec, 60]] &;
   (* slots depend on (l, where) only; I=0 and I=2 share the even-l slots *)
@@ -129,7 +129,7 @@ GTBBuildAll[M_Integer, nu0_, prec_Integer, L_Integer : 20, nb_Integer : 40] :=
   chi = Table[With[{sl = slots[g, w[[2]], {"point", s}]}, keep[rowFromSlots[g, w[[1]], sl, 1][[1]]]],
      {w, ws}, {s, {1/2, 1, 3/2, 2}}];
   ff = Table[With[{sl = slots[g, w[[2]], {"point", 3}]}, keep[rowFromSlots[g, w[[1]], sl, 1][[1]]]], {w, ws}];
-  phys = Flatten[phys, 1]; bs = GTBBSplineBasis[g, nb]; mom = GTBMoments[g];
+  phys = Flatten[phys, 1]; bs = GTBBSplineBasis[g, nb]; mom = GTBMoments[g, nsr];
   <|"grid" -> g,
     "x" -> keep[g["x"]], "xp" -> keep[g["xp"]], "K" -> keep[g["K"]], "K0" -> keep[GTBK0[g]],
     "Lam" -> keep[Flatten[Table[GTBLambda[w[[2]], g["x"][[j]]], {w, ws}, {j, M}]]],
@@ -140,7 +140,7 @@ GTBBuildAll[M_Integer, nu0_, prec_Integer, L_Integer : 20, nb_Integer : 40] :=
     "Lambda3" -> keep[Flatten[Table[GTBLambda[l, g["x"][[j]]], {l, 0, 2}, {j, g["n0"]}]]],
     "KFF3" -> keep[GTBFormFactorKernel[g]],
     "BSpline3" -> keep[KroneckerProduct[IdentityMatrix[3], Table[bs[g["x"][[j]]], {j, g["n0"]}]]],
-    "intS0" -> keep[mom[[1]]], "intP1" -> keep[mom[[2]]], "intD0" -> keep[mom[[3]]], "SVZSR" -> GTBSVZ[]|>];
+    "intS0" -> keep[mom[[1]]], "intP1" -> keep[mom[[2]]], "intD0" -> keep[mom[[3]]], "SVZSR" -> GTBSVZ[nsr]|>];
 
 fmt[v_, digits_] := If[v == 0, "0", Module[{m, e, d},
    {m, e} = MantissaExponent[v]; d = Round[m 10^digits];

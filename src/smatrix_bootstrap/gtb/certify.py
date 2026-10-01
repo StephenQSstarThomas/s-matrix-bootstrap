@@ -168,7 +168,9 @@ def primal(leaf_dir, kernels_dir, perturb=None) -> dict:
     for k, (ch, nm) in enumerate(zip(CHANNELS, ("intS0", "intP1", "intD0"))):
         ints = _mat(ks, nm)
         rhat = [_dot(bs[k * n0 + j], c) for j in range(n0)]
-        w = [_dot(ints[i], rhat) - svz[3 * k + i] for i in range(3)]
+        nsr = len(ints)
+        assert 3 * nsr == len(svz), "moment rows and SVZ targets disagree"
+        w = [_dot(ints[i], rhat) - svz[nsr * k + i] for i in range(nsr)]
         e = arb(repr(spec["eps_sr"][k]))
         fam["fesr"].add(e ** 2 - sum((v * v for v in w), arb(0)), ch)
     r = [arb(repr(v)) for v in spec["r"]]

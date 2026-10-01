@@ -81,5 +81,15 @@ check["L=24 rows", Dimensions[allv["Re_rho"]] == {3*12*10, 100 + 55}];
 check["N_B=46 columns", Dimensions[allv["BSpline3"]] == {3*allv["grid"]["n0"], 3*46}];
 check["N_B=46 partition of unity", Max[Abs[Total /@ allv["BSpline3"][[1 ;; allv["grid"]["n0"], 1 ;; 46]] - 1]] < 10^-50];
 
+(* App. B.3: n_SR = 5 extends every channel upward in n; the first three moments are the n_SR = 3 ones *)
+svz5 = GTBSVZ[5]; mom3 = GTBMoments[g]; mom5 = GTBMoments[g, 5];
+check["n_SR=5 SVZ keeps the n_SR=3 targets", Length[svz5] == 15 && svz5[[{1, 2, 3, 6, 7, 8, 11, 12, 13}]] == GTBSVZ[]];
+check["n_SR=5 S0 n=4 SVZ by hand", close[svz5[[5]], (36^2 + 65^2)/1395.7^2/(2 Pi)^4 3/(4 Pi 6) (1 + 13/3 0.314588744/Pi), 10^-12]];
+check["n_SR=5 moments keep n_SR=3 rows", Dimensions[mom5] == {3, 5, 39} && mom5[[All, 1 ;; 3]] == mom3];
+check["n_SR=5 D0 n=2 moment by hand", close[mom5[[3, 5, 7]], (x[[7]] - 4)^(5/2)/(2560 Pi^5 Sqrt[x[[7]]]) Pi/50 *
+    g["xp"][[7]] x[[7]]^2/x[[39]]^5, 10^-40]];
+check["n_SR=5 build shapes", With[{a5 = GTBBuildAll[10, -20, 80, 20, 40, 5]},
+    Dimensions[a5["intP1"]] == {5, a5["grid"]["n0"]} && Length[a5["SVZSR"]] == 15]];
+
 Print["failed: ", fails];
 Exit[fails];

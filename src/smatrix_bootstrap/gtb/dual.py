@@ -160,10 +160,12 @@ def free_variable_bounds(prog) -> list:
     nb, chans = prog.nb, ("S0", "P1", "D0")
     cbar = [arb(0)] * (3 * nb)
     for k, nm in enumerate(("intS0", "intP1", "intD0")):
-        mom = getattr(ks, nm) @ ks.BSpline3[k * n0:(k + 1) * n0]           # 3 x 120, nonnegative entries
+        mom = getattr(ks, nm) @ ks.BSpline3[k * n0:(k + 1) * n0]           # n_SR x 120, nonnegative entries
+        nsr = len(mom)
+        assert 3 * nsr == len(ks.SVZSR), "moment rows and SVZ targets disagree"
         eps = prog.num(sp.eps_sr[k])
         for i in range(k * nb, (k + 1) * nb):
-            cands = [(ks.SVZSR[3 * k + q] + eps) / mom[q][i] for q in range(3) if mom[q][i] > 0]
+            cands = [(ks.SVZSR[nsr * k + q] + eps) / mom[q][i] for q in range(nsr) if mom[q][i] > 0]
             cbar[i] = min(cands, key=lambda z: float(z.upper())) if cands else arb(0)
     for j, i in enumerate(prog.c_free):
         ybar[prog.o_c - 1 + j] = cbar[i]
