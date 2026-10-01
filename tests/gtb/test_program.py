@@ -265,3 +265,21 @@ def test_m10_watson_leaf_saturates_unitarity_better_than_its_seed():
     seed_prog = Program(GtbSpec(M=10), kernels.load(KS10))
     seed_eta = solve._observables(seed_prog, np.load(seed / "solution.npz")["v"])["min_eta_P1"]
     assert rep["observables"]["min_eta_P1"] >= seed_eta - 1e-9
+
+
+@needs_ks10
+def test_watson_program_accepts_a_reduced_basis():
+    from dataclasses import replace
+    from smatrix_bootstrap.gtb import kernels
+    from smatrix_bootstrap.gtb.program import Program, WATSON_WAVES
+    from smatrix_bootstrap.gtb.spec import GtbSpec
+    ks = kernels.load(KS10)
+    n0 = ks.manifest["n0"]
+    rng = np.random.default_rng(7)
+    V = np.linalg.qr(rng.normal(size=(176, 60)))[0]
+    targets = {w: (rng.normal(size=n0), rng.normal(size=n0)) for w in WATSON_WAVES}
+    prog = Program(replace(GtbSpec(M=10), objective="watson"), ks, basis=V, watson_targets=targets)
+    assert prog.n_af == 60 and prog.pivot is None
+    y = rng.normal(size=prog.n_vars - 1) * 1e-2
+    v = prog.lift(y)
+    assert np.allclose(v[prog.groups["amp"]], V @ y[:60])

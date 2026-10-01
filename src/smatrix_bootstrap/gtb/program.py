@@ -82,11 +82,12 @@ class Program:
     # ------------------------------------------------------------------ parametrisation
     def _amplitude_map(self, n_amp, basis):
         if self.watson:                                        # F0 is released in the Watson step
-            if basis is not None:
-                raise ValueError("Watson leaves are full space")
-            self.basis, self.pivot, self.n_af = None, None, n_amp
-            self.a0 = self.zeros(n_amp)
-            self.Ea = None if self.exact else np.eye(n_amp)
+            self.pivot, self.a0 = None, self.zeros(n_amp)
+            if basis is None:
+                self.basis, self.n_af = None, n_amp
+                self.Ea = None if self.exact else np.eye(n_amp)
+            else:                                              # reduced basis: amp = V z, every z free
+                self.basis, self.Ea, self.n_af = np.asarray(basis), np.asarray(basis), basis.shape[1]
             return
         if basis is None:
             p = 0                                              # T0: F0 row coefficient 5
@@ -129,7 +130,7 @@ class Program:
         v = np.asarray(v, dtype=float)
         amp = v[self.groups["amp"]]
         if self.pivot is None:
-            ya = amp.copy()
+            ya = amp.copy() if self.basis is None else self.basis.T @ amp
         elif self.basis is None:
             ya = np.delete(amp, self.pivot[1])
         else:
@@ -145,7 +146,7 @@ class Program:
         rows = np.atleast_2d(rows)
         out = self.zeros((rows.shape[0], self.n_vars))
         if self.pivot is None:                     # no equality eliminated: the amplitude variables are free
-            out[:, 1:1 + self.n_af] = rows
+            out[:, 1:1 + self.n_af] = rows if self.basis is None else rows @ self.Ea
         elif self.basis is None:                   # rank-one pivot update: identity on the free variables
             p = self.pivot[1]
             out[:, 0] = rows[:, p] * self.a0[p]

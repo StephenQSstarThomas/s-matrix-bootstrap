@@ -110,3 +110,12 @@ def test_cli_certify_writes_a_certificate():
     cert = json.loads((LEAF10 / "certificate.json").read_text())
     assert cert["lower"]["certified"] and cert["upper"]["certified"]
     assert set(cert) >= {"lower", "upper", "regulariser", "l4_feasible", "families"}
+
+
+@pytest.mark.skipif(not Path("/playpen1/shiqiu/gtb2403_runs/scratch_tests/leaf_M10_watson/solution.npz").exists(),
+                    reason="M=10 Watson leaf missing")
+def test_primal_certifies_the_m10_watson_leaf():
+    from smatrix_bootstrap.gtb.certify import primal
+    rep = primal(Path("/playpen1/shiqiu/gtb2403_runs/scratch_tests/leaf_M10_watson"), KS10)
+    for fam, r in rep["families"].items():
+        assert r["certified_fail"] == 0 and r["inconclusive"] == 0, (fam, r)

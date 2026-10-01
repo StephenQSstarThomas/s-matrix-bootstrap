@@ -76,7 +76,14 @@ def _lift(prog_info, ks, y_text, basis, rows, perturb):
     n_amp = 1 + 2 * M + M * M + M * (M + 1) // 2
     F0row = rows["F0"]
     f0fix = arb(spec["f0_ni"]) / 50 * arb(repr(spec["f0_max"]))
-    if basis is None:
+    if prog_info["pivot"] is None:            # Watson leaf: F0 released, no equality to solve
+        if basis is None:
+            amp, n_af = y[:n_amp], n_amp
+        else:
+            V = [[arb(repr(float(x))) for x in row] for row in basis]
+            k = len(V[0])
+            amp, n_af = [_dot(V[i], y[:k]) for i in range(n_amp)], k
+    elif basis is None:
         rest = y[:n_amp - 1]
         t0 = (f0fix - _dot(F0row[1:], rest)) / F0row[0]
         amp = [t0] + rest
