@@ -88,3 +88,11 @@ amendments with the reason; the original text is never edited.
   unwrapped from threshold, as frozen in §0.
 - Every claim rule is first run with the paper's own extracted curves in place of ours; a rule that rejects the paper
   itself is a defect of the rule and is amended (with this record) before our leaves are evaluated.
+
+## Amendment 4 (2026-10-01, before any C2 solve exists): compute budget for the Fig. 3 scan
+- C2 is evaluated on k ∈ {2, 6, 10, …, 50} (13 values of 𝔉₀ = k/50 × 0.163108) × {max, min} 𝔉₁ = 26 solves, compared
+  with the paper's dot at the same k (the paper's Fig. 3 dots exist for every k). Rule unchanged otherwise: RMS of the
+  𝔉₁ differences over these 26 dots ≤ 3e-4; tip 𝔉₀ within 1 % (k = 50 feasible and k = 51 infeasible is not required);
+  tree-level dot inside. Reason: ~2 h per reduced-basis solve on the shared machine (load ~100 on 80 cores).
+- These scan solves use the reduced basis (an inner approximation: max values are lower bounds, min values upper bounds);
+  the encoding is the one selected at G2. They are reported as inner bounds, never as V2-certified boundaries.
