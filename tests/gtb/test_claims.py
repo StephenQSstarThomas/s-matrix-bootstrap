@@ -76,3 +76,30 @@ def test_forward_and_watson_rules_accept_the_papers_own_curves():
     before = {ni: paper_stage_as_analysis(ni, "before") for ni in (44, 46, 48)}
     after = {ni: paper_stage_as_analysis(ni, "after") for ni in (44, 46, 48)}
     assert c21(before, after)["verdict"] == "PASS"
+
+
+@needs_paper
+def test_cli_claims_on_leaves_made_of_the_papers_own_data(tmp_path):
+    import json, os, subprocess, sys
+    from smatrix_bootstrap.gtb.claims import paper_as_analysis, paper_forward_as_analysis, paper_stage_as_analysis
+    args = []
+    for ni, colour in ((44, 0), (46, None), (48, 1)):
+        an = paper_as_analysis(ni)
+        if colour is not None:
+            an.update(_paper_numbers_as_analysis(colour))
+        if ni == 48:
+            an.update(paper_forward_as_analysis())
+        an["phases"]["D0"] = paper_stage_as_analysis(ni, "after")["phases"]["D0"]
+        w, i = tmp_path / f"w{ni}", tmp_path / f"i{ni}"
+        w.mkdir(); i.mkdir()
+        (w / "analysis.json").write_text(json.dumps(an, default=float))
+        (i / "analysis.json").write_text(json.dumps(paper_stage_as_analysis(ni, "before"), default=float))
+        args += ["--point", f"{ni}:{i}:{w}"]
+    out = subprocess.run([sys.executable, "-m", "smatrix_bootstrap.run", "gtb", "claims", *args, "--out",
+                          str(tmp_path / "claims.json")], capture_output=True, text=True, env={**os.environ, "PYTHONPATH": "src"})
+    assert out.returncode == 0, out.stderr[-2000:]
+    res = json.loads((tmp_path / "claims.json").read_text())
+    for cid in ("C4", "C5", "C6", "C7", "C8", "C9", "C10", "C11", "C12", "C13", "C14", "C15", "C16", "C17", "C18",
+                "C19", "C20", "C21"):
+        assert res[cid]["verdict"] == "PASS", (cid, res[cid])
+    assert res["C1"]["verdict"] == "MISSING"

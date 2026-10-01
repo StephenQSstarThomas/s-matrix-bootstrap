@@ -100,3 +100,13 @@ def test_gtbii_reproduces_table_9_from_table_3():
     for got, want in ((blue, want_b), (red, want_r)):
         for k, w in want.items():
             assert abs(got[k] - w) <= 0.06 * abs(w), (k, got[k], w)
+
+
+@pytest.mark.skipif(not (LEAF10W / "solution.npz").exists(), reason="M=10 Watson leaf missing")
+def test_cli_analyze_writes_analysis_json():
+    import json, os, subprocess, sys
+    out = subprocess.run([sys.executable, "-m", "smatrix_bootstrap.run", "gtb", "analyze", "--leaf", str(LEAF10W),
+                          "--kernels", str(KS10)], capture_output=True, text=True, env={**os.environ, "PYTHONPATH": "src"})
+    assert out.returncode == 0, out.stderr[-2000:]
+    an = json.loads((LEAF10W / "analysis.json").read_text())
+    assert {"phases", "threshold", "fits", "forward", "pole"} <= set(an)

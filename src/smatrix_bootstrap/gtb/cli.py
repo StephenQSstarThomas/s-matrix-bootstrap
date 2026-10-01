@@ -29,6 +29,46 @@ def _certify(a):
     return 0 if cert["lower"]["certified"] else 1
 
 
+def _analyze(a):
+    from pathlib import Path
+    from .leafanalysis import analyze
+    res = analyze(a.leaf, a.kernels, pole=not a.no_pole)
+    Path(a.leaf, "analysis.json").write_text(json.dumps(res, default=float) + "\n")
+    print(json.dumps({k: res[k] for k in ("crossings_GeV", "threshold", "radii_fm2", "lbar", "pole")}, default=float))
+    return 0
+
+
+def _claims(a):
+    from pathlib import Path
+    from . import claims as K
+    load = lambda d: json.loads(Path(d, "analysis.json").read_text())
+    init, wat = {}, {}
+    for spec in a.point:
+        ni, i, w = spec.split(":")
+        init[int(ni)], wat[int(ni)] = load(i), load(w)
+    res = {}
+    c1 = {}
+    for spec in a.c1 or []:
+        ni, lo, hi = spec.split(":")
+        lo_c, hi_c = json.loads(Path(lo).read_text()), json.loads(Path(hi).read_text())
+        ok = lo_c["lower"]["certified"] and lo_c["l4_feasible"] == "certified_pass" and hi_c["upper"]["certified"]
+        lower, upper = float(lo_c["lower"]["value"]), float(hi_c["upper"]["value"])
+        c1[int(ni)] = {"lower": lower, "upper": upper, "paper": K.C1_PAPER[int(ni)],
+                       "verdict": K.c1_verdict(lower, upper, K.C1_PAPER[int(ni)]) if ok else "UNCERTIFIED"}
+    verdicts = {v["verdict"] for v in c1.values()}
+    res["C1"] = {"verdict": "MISSING" if not c1 else ("PASS" if verdicts == {"PASS"} else
+                 "FAIL" if "FAIL" in verdicts else "INCONCLUSIVE"), "points": c1}
+    res.update(K.phase_claims(wat))
+    if 44 in wat and 48 in wat:
+        res.update(K.table_claims(wat[44], wat[48]))
+    if 48 in wat:
+        res["C20"] = K.c20(wat[48])
+    res["C21"] = K.c21(init, wat)
+    Path(a.out).write_text(json.dumps(res, indent=1, default=float) + "\n")
+    print(json.dumps({k: v["verdict"] for k, v in res.items() if isinstance(v, dict) and "verdict" in v}))
+    return 0
+
+
 def main(argv=None) -> int:
     p = argparse.ArgumentParser(prog="smatrix_bootstrap.run gtb")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -54,5 +94,15 @@ def main(argv=None) -> int:
     c.add_argument("--leaf", required=True)
     c.add_argument("--kernels", required=True)
     c.set_defaults(func=_certify)
+    n = sub.add_parser("analyze", help="phases, threshold parameters, radii, fits, forward amplitudes, rho pole")
+    n.add_argument("--leaf", required=True)
+    n.add_argument("--kernels", required=True)
+    n.add_argument("--no-pole", action="store_true")
+    n.set_defaults(func=_analyze)
+    k = sub.add_parser("claims", help="pre-registered verdicts from analysed points and certificates")
+    k.add_argument("--point", action="append", required=True, help="NI:INITIAL_LEAF:WATSON_LEAF")
+    k.add_argument("--c1", action="append", help="NI:LOWER_CERTIFICATE_JSON:UPPER_CERTIFICATE_JSON")
+    k.add_argument("--out", required=True)
+    k.set_defaults(func=_claims)
     a = p.parse_args(argv)
     return a.func(a)
