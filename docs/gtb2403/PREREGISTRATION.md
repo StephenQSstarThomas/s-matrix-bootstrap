@@ -112,3 +112,10 @@ visible; their feasible-side objective was ≈ 1e-3 above the paper's C1 values.
       η = max over all M nodes of |1 + i h| for ℓ = 20…23 (from the L = 24 export of the same kernels).
       M_reg* = the largest rung with η ≤ 1.02 whose L = 24 re-solve gives 𝔉₁ within 2 % of the L = 20 value.
   For each variant: initial + Watson leaves at ni 44/46/48 and claims C4–C21. The C2 scan (amendment 4) uses (A).
+
+## Amendment 6 (2026-10-01 23:25Z, after C1 = FAIL and the rung-100 omitted-wave η, before any other rung is solved)
+- Seen when written: C1 FAIL (V1-certified inner leaves 1.5–1.8e-3 above the paper at ni 44/46/48); omitted-wave η at
+  M_reg = 100: 2.14 (inner, ni 46) and 2.83 (relax, ni 46), maximum at node 47.
+- Variant (B) ladder: if no rung of {100, 30, 10, 3, 1} has η ≤ 1.02, it continues with the same factor
+  (0.3, 0.1, 0.03, …) until a rung passes or the problem becomes infeasible; infeasible before passing = variant (B)
+  does not exist and is reported so. η is evaluated at every node (no energy cut), exactly as in 2309.
