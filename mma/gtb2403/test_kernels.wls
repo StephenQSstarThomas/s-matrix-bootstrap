@@ -75,5 +75,11 @@ back = ToExpression /@ StringReplace[Import["/out/test_M10/Re_rho.txt.gz", {"GZI
 check["export shapes", man["matrices"]["Re_rho"]["shape"] == {300, 100 + 55}];
 check["export round trip", Max[Abs[back - Flatten[all10["Re_rho"]]]] <= 10^-38 Max[1, Max[Abs[back]]]];
 
+(* App. B variations: L = 24 (12 waves per isospin) and N_B = 46 *)
+allv = GTBBuildAll[10, -20, 80, 24, 46];
+check["L=24 rows", Dimensions[allv["Re_rho"]] == {3*12*10, 100 + 55}];
+check["N_B=46 columns", Dimensions[allv["BSpline3"]] == {3*allv["grid"]["n0"], 3*46}];
+check["N_B=46 partition of unity", Max[Abs[Total /@ allv["BSpline3"][[1 ;; allv["grid"]["n0"], 1 ;; 46]] - 1]] < 10^-50];
+
 Print["failed: ", fails];
 Exit[fails];
