@@ -43,3 +43,48 @@ def lbar(a02, a22, r2S_fm2, r2V_fm2, fpi=F_PI_MEV / M_PI_MEV):
     l4 = 16 * np.pi ** 2 * fpi ** 2 * r2S_fm2 * to_mpi / 6 + 13 / 12
     l6 = 96 * np.pi ** 2 * fpi ** 2 * r2V_fm2 * to_mpi / 6 + 1
     return {"l1": float(l1), "l2": float(l2), "l4": float(l4), "l6": float(l6)}
+
+
+# ------------------------------------------------------------------------------------------ resonance fits
+def _bw(s, m, g):
+    """v4 (5.2): F = -m^2 / (s - m^2 + i m Gamma theta(s - 4))."""
+    s = np.asarray(s, float)
+    return -m ** 2 / (s - m ** 2 + 1j * m * g * (s > 4))
+
+
+def _gs(s, m, g):
+    """v4 (5.3) as printed: F = m^2 (1 + d Gamma/m) / ((m^2 - s) - i m Gamma (q/q_m)^3 (m/sqrt s))."""
+    s = np.asarray(s, float)
+    q, qm = np.sqrt(np.maximum(s - 4, 0) / 4), np.sqrt((m ** 2 - 4) / 4)
+    d = 3 / np.pi / qm ** 2 * np.log((m + 2 * qm) / 2) + m / (2 * np.pi * qm) - m / (np.pi * qm ** 3)
+    return m ** 2 * (1 + d * g / m) / ((m ** 2 - s) - 1j * m * g * (q / qm) ** 3 * (m / np.sqrt(s)))
+
+
+FF_FORMS = {"bw": _bw, "gs": _gs}
+
+
+def _lsq(fun, p0):
+    from scipy.optimize import least_squares
+    return least_squares(fun, p0, xtol=1e-15, ftol=1e-15, gtol=1e-15, max_nfev=20000).x
+
+
+def fit_rho(s, absF, form, guess):
+    """Unweighted least squares of |F(s)| with the BW or GS form -> (m, Gamma) in m_pi units."""
+    f = FF_FORMS[form]
+    return tuple(float(v) for v in _lsq(lambda p: np.abs(f(s, *p)) - absF, guess))
+
+
+def two_bw(s, m1, g1, m2, g2, A1, A2):
+    """v4 (5.9): F = -A1 m1^2/(s - m1^2 + i m1 G1) + A2 m2^2/(s - m2^2 + i m2 G2) (theta(s-4) on the widths)."""
+    s = np.asarray(s, float)
+    th = s > 4
+    return -A1 * m1 ** 2 / (s - m1 ** 2 + 1j * m1 * g1 * th) + A2 * m2 ** 2 / (s - m2 ** 2 + 1j * m2 * g2 * th)
+
+
+def fit_two_bw(s, absF2, guess):
+    return tuple(float(v) for v in _lsq(lambda p: np.abs(two_bw(s, *p)) ** 2 - absF2, guess))
+
+
+def g_rho_pi_pi(m, g):
+    """Gamma = g^2 m/(48 pi) (1 - 4/m^2)^(3/2)  (m_pi = 1)."""
+    return float(np.sqrt(48 * np.pi * g / (m * (1 - 4 / m ** 2) ** 1.5)))

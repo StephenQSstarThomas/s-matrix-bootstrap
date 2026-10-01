@@ -38,3 +38,29 @@ def test_radius_units():
     from smatrix_bootstrap.gtb.analysis import radius_fm2
     # <r^2> = 6 F'(0) in m_pi^-2; 1 m_pi^-2 = (197.327/139.57)^2 fm^2
     assert abs(radius_fm2(1.0 / 6.0) - (197.327 / 139.57) ** 2) < 1e-12
+
+
+MEV = 1 / 139.57                      # MeV -> m_pi units
+
+
+@pytest.mark.parametrize("form", ["bw", "gs"])
+def test_rho_fits_recover_known_mass_and_width(form):
+    from smatrix_bootstrap.gtb.analysis import FF_FORMS, fit_rho
+    m, g = 838 * MEV, 114 * MEV
+    s = np.linspace((500 * MEV) ** 2, (1100 * MEV) ** 2, 30)
+    data = np.abs(FF_FORMS[form](s, m, g))
+    fm, fg = fit_rho(s, data, form, guess=(800 * MEV, 150 * MEV))
+    assert abs(fm - m) < 1e-8 and abs(fg - g) < 1e-8
+
+
+def test_two_bw_fit_recovers_known_parameters():
+    from smatrix_bootstrap.gtb.analysis import fit_two_bw, two_bw
+    p = (824 * MEV, 137 * MEV, 1635 * MEV, 248 * MEV, 1.29, 0.27)
+    s = np.linspace((500 * MEV) ** 2, (1830 * MEV) ** 2, 40)
+    got = fit_two_bw(s, np.abs(two_bw(s, *p)) ** 2, guess=(800 * MEV, 150 * MEV, 1600 * MEV, 300 * MEV, 1.2, 0.2))
+    assert np.allclose(got, p, rtol=1e-7)
+
+
+def test_g_rho_pi_pi_from_pdg_mass_and_width_is_6():
+    from smatrix_bootstrap.gtb.analysis import g_rho_pi_pi
+    assert abs(g_rho_pi_pi(775 * MEV, 149 * MEV) - 6.0) < 0.05
