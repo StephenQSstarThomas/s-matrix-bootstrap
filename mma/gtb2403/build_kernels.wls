@@ -6,6 +6,6 @@ args = Rest[$ScriptCommandLine];
 m = ToExpression[args[[1]]]; name = args[[2]]; prec = If[Length[args] >= 3, ToExpression[args[[3]]], 120];
 {t1, all} = AbsoluteTiming[GTBBuildAll[m, -20, prec]];
 Print["build M=", m, " prec=", prec, ": ", t1, " s"];
-{t2, _} = AbsoluteTiming[GTBExport[all, FileNameJoin[{"/out", name}], 40]];
+t2 = First@AbsoluteTiming[GTBExport[all, FileNameJoin[{"/out", name}], 40]];
 Print["export: ", t2, " s"];
 Exit[0];

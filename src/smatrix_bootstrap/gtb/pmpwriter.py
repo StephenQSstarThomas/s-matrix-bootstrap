@@ -10,6 +10,8 @@ import json
 import os
 from pathlib import Path
 
+import numpy as np
+
 _PRE = '{"DampedRational":{"base":"1","constant":"1","poles":[]}'
 
 
@@ -34,6 +36,9 @@ def _cell(form, n_vars, digits):
         return "[" + ",".join(['["0"]'] * n_vars) + "]"
     if len(form) != n_vars:
         raise ValueError(f"form has {len(form)} coefficients, expected {n_vars}")
+    if isinstance(form, np.ndarray) and form.dtype == np.float64:
+        # repr of a float64 is the shortest string that round-trips; exact zeros print as "0"
+        return '[["' + '"],["'.join(["0" if v == 0.0 else repr(v) for v in form.tolist()]) + '"]]'
     return "[" + ",".join('["%s"]' % num(v, digits) for v in form) + "]"
 
 
