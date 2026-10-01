@@ -32,14 +32,16 @@ def amplitude_basis(prog_rows, tol=1e-12):
 
 def _observables(prog, v):
     amp, rho = v[prog.groups["amp"]], v[prog.groups["rho"]]
+    S = 1 + 1j * (prog.Rre @ amp + 1j * (prog.Rim @ amp))                # S = 1 + i h at every node and wave
+    eta = {w: float(np.abs(S[[prog.row_index(w, j) for j in range(prog.n0)]]).min()) for w in ("S0", "P1", "D0", "S2")}
     return {"F0": float(prog.F0row @ amp), "F1": float(prog.F1row @ amp),
             "rho_linf": float(np.abs(rho).max()), "rho_l4": float((rho ** 4).sum() ** 0.25),
-            "rho_l2": float(np.sqrt((rho ** 2).sum()))}
+            "rho_l2": float(np.sqrt((rho ** 2).sum())), **{f"min_eta_{w}": e for w, e in eta.items()}}
 
 
 def run_leaf(spec, kernels_path, workdir, *, reg="linf-relax", reduce_basis=False, basis_tol=1e-12,
              precision=192, nproc=8, timeout=7200, duality_gap=1e-6, primal_error=1e-10, dual_error=1e-10,
-             initial_scale=1e4, max_iterations=500, keep_pmp=True):
+             initial_scale=1e4, max_iterations=500, keep_pmp=True, watson_from=None):
     work = Path(workdir)
     work.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
@@ -50,12 +52,24 @@ def run_leaf(spec, kernels_path, workdir, *, reg="linf-relax", reduce_basis=Fals
         lam = ks.Lam[:, None]
         basis, basis_info = amplitude_basis([probe.Rre / lam, probe.Rim / lam, probe.Rim / lam ** 2, probe.Fchi,
                                              probe.F0row[None], probe.F1row[None]], basis_tol)
-    prog = Program(spec, ks, reg=reg, basis=basis)
+    targets = None
+    if watson_from is not None:                      # Watson step seeded by a previous leaf (same kernels)
+        from dataclasses import replace
+        from .watson import targets_from_solution
+        prev = json.loads((Path(watson_from) / "report.json").read_text())
+        pspec = replace(spec, f0_ni=prev["spec"]["f0_ni"], objective=prev["spec"]["objective"])
+        pprog = Program(pspec, ks, reg=prev["regulariser"])
+        targets = targets_from_solution(pprog, np.load(Path(watson_from) / "solution.npz")["v"])
+        np.savez(work / "watson_targets.npz", **{f"{w}_{p}": t[i] for w, t in targets.items()
+                                                  for i, p in enumerate(("re", "im"))})
+        spec = replace(spec, objective="watson", f0_ni=prev["spec"]["f0_ni"])
+    prog = Program(spec, ks, reg=reg, basis=basis, watson_targets=targets)
     if basis is not None:
         np.save(work / "basis.npy", basis)
     rep = {"spec": asdict(spec), "spec_key": spec.key(), "kernels": str(kernels_path),
            "kernels_manifest": ks.manifest.get("generator"), "regulariser": reg, "reduce_basis": reduce_basis,
-           "basis": basis_info, "f0fix": prog.f0fix, "n_vars": prog.n_vars, "pivot": list(prog.pivot),
+           "basis": basis_info, "f0fix": prog.f0fix, "n_vars": prog.n_vars, "pivot": list(prog.pivot) if prog.pivot else None,
+           "watson_from": str(watson_from) if watson_from else None,
            "c_dropped": [int(i) for i in prog.c_dropped],
            "settings": {"precision": precision, "nproc": nproc, "timeout": timeout, "duality_gap": duality_gap,
                         "primal_error": primal_error, "dual_error": dual_error, "initial_scale": initial_scale},

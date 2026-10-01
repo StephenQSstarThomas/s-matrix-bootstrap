@@ -18,6 +18,7 @@ import numpy as np
 CHANNELS = ("S0", "P1", "D0")                 # Gram / form factor / B-spline order (authors' code)
 WAVES = {"S0": (0, 0), "D0": (0, 1), "S2": (1, 0), "D2": (1, 1), "P1": (2, 0), "F1": (2, 1)}  # (isospin block, wave)
 CHI_POINTS = (0.5, 1.0, 1.5, 2.0)
+WATSON_WAVES = ("S0", "P1", "D0", "S2", "D2", "F1")    # the six waves of the authors' Watson functional
 
 
 @dataclass
@@ -31,7 +32,7 @@ class Block:
 
 
 class Program:
-    def __init__(self, spec, ks, reg: str = "linf-relax", basis=None):
+    def __init__(self, spec, ks, reg: str = "linf-relax", basis=None, watson_targets=None):
         from . import regulariser
         M, nw, nb = spec.M, spec.L // 2, spec.n_b
         self.spec, self.ks, self.M, self.nw, self.nb = spec, ks, M, nw, nb
@@ -48,6 +49,10 @@ class Program:
         self.F0row = 2 * (fF[0] + 5 * fF[1])
         self.F1row = 2 * (3 * fF[2 * nw] + 7 * fF[2 * nw + 1])
         self.f0fix = self.num(spec.f0_ni) / 50 * self.num(spec.f0_max)
+        self.watson = spec.objective == "watson"
+        if self.watson and watson_targets is None:
+            raise ValueError("the Watson objective needs targets (watson.targets_from_solution)")
+        self.watson_targets = watson_targets
         self._amplitude_map(n_amp, basis)
         self.c_first = np.array([0, nb, 2 * nb])
         # coefficients of B-splines with no node in their support enter no constraint: fixed to 0, removed
@@ -76,6 +81,13 @@ class Program:
 
     # ------------------------------------------------------------------ parametrisation
     def _amplitude_map(self, n_amp, basis):
+        if self.watson:                                        # F0 is released in the Watson step
+            if basis is not None:
+                raise ValueError("Watson leaves are full space")
+            self.basis, self.pivot, self.n_af = None, None, n_amp
+            self.a0 = self.zeros(n_amp)
+            self.Ea = None if self.exact else np.eye(n_amp)
+            return
         if basis is None:
             p = 0                                              # T0: F0 row coefficient 5
             free = np.arange(1, n_amp)
@@ -116,7 +128,9 @@ class Program:
         """Free variables y for a raw v that satisfies the eliminated equalities (aux variables set to 0)."""
         v = np.asarray(v, dtype=float)
         amp = v[self.groups["amp"]]
-        if self.basis is None:
+        if self.pivot is None:
+            ya = amp.copy()
+        elif self.basis is None:
             ya = np.delete(amp, self.pivot[1])
         else:
             ya = np.delete(self.basis.T @ amp, self.pivot[1])
@@ -130,7 +144,9 @@ class Program:
         """Forms of linear functionals of the amplitude (rows: k x n_amp) -> k x n_vars."""
         rows = np.atleast_2d(rows)
         out = self.zeros((rows.shape[0], self.n_vars))
-        if self.basis is None:                     # rank-one pivot update: identity on the free variables
+        if self.pivot is None:                     # no equality eliminated: the amplitude variables are free
+            out[:, 1:1 + self.n_af] = rows
+        elif self.basis is None:                   # rank-one pivot update: identity on the free variables
             p = self.pivot[1]
             out[:, 0] = rows[:, p] * self.a0[p]
             out[:, 1:1 + self.n_af] = rows[:, self.free_amp] + rows[:, [p]] * self.coef_p[None, :]
@@ -253,4 +269,14 @@ class Program:
         return out
 
     def objective(self):
-        return self.amp_forms(self.F1row)[0]
+        if not self.watson:
+            return self.amp_forms(self.F1row)[0]
+        lam = self.ks.Lam
+        row = self.zeros(self.Rre.shape[1])
+        for w in WATSON_WAVES:
+            tre, tim = self.watson_targets[w]
+            for j in range(self.n0):
+                n = self.row_index(w, j)
+                row = row + (self.num(float(tre[j])) * self.Rre[n] + self.num(float(tim[j])) * self.Rim[n]) / lam[n] \
+                    - self.Rim[n] / lam[n] ** 2
+        return self.amp_forms(row)[0]

@@ -200,3 +200,68 @@ def test_bsplines_without_a_node_are_eliminated():
     v = prog.lift(np.random.default_rng(4).normal(size=prog.n_vars - 1))
     assert np.all(v[prog.groups["c"]][empty] == 0)
     assert len(prog.c_free) == 3 * 40 - 3 - empty.size
+
+
+@needs_ks10
+def test_watson_program_frees_f0_and_its_objective_is_the_linearised_saturation():
+    from dataclasses import replace
+    from smatrix_bootstrap.gtb import kernels
+    from smatrix_bootstrap.gtb.program import Program, WATSON_WAVES
+    from smatrix_bootstrap.gtb.spec import GtbSpec
+    ks = kernels.load(KS10)
+    rng = np.random.default_rng(5)
+    n0 = ks.manifest["n0"]
+    targets = {w: (rng.normal(size=n0), rng.normal(size=n0)) for w in WATSON_WAVES}
+    prog = Program(replace(GtbSpec(M=10), objective="watson"), ks, watson_targets=targets)
+    assert prog.pivot is None and prog.n_af == prog.groups["amp"].stop
+    y = rng.normal(size=prog.n_vars - 1) * 1e-2
+    v = prog.lift(y)
+    sig, rho = v[prog.groups["sig"]], v[prog.groups["rho"]]
+    hre = (ks.Re_sig @ sig + ks.Re_rho @ rho) / ks.Lam
+    him = (ks.Im_sig @ sig + ks.Im_rho @ rho) / ks.Lam
+    hhat = (ks.Im_sig @ sig + ks.Im_rho @ rho) / ks.Lam ** 2
+    want = sum(targets[w][0][j] * hre[prog.row_index(w, j)] + targets[w][1][j] * him[prog.row_index(w, j)]
+               - hhat[prog.row_index(w, j)] for w in WATSON_WAVES for j in range(n0))
+    assert abs(prog.objective() @ np.r_[1.0, y] - want) < 1e-9 * max(1, abs(want))
+
+
+@needs_ks10
+def test_watson_targets_follow_the_authors_code():
+    """S2/D2/F1: previous h-tilde; S0/P1/D0: 2 ImF-hat F/|F|^2 with ImF-hat = ImF/Lambda_l (factor 2, code reading)."""
+    from smatrix_bootstrap.gtb import kernels
+    from smatrix_bootstrap.gtb.program import Program
+    from smatrix_bootstrap.gtb.spec import GtbSpec
+    from smatrix_bootstrap.gtb.watson import targets_from_solution
+    ks = kernels.load(KS10)
+    prog = Program(GtbSpec(M=10), ks)
+    v = prog.lift(np.random.default_rng(6).normal(size=prog.n_vars - 1) * 1e-2)
+    t = targets_from_solution(prog, v)
+    n0, M = ks.manifest["n0"], 10
+    sig, rho, imf = v[prog.groups["sig"]], v[prog.groups["rho"]], v[prog.groups["ImF"]]
+    n = prog.row_index("D2", 3)
+    assert np.isclose(t["D2"][0][3], (ks.Re_sig[n] @ sig + ks.Re_rho[n] @ rho) / ks.Lam[n])
+    F = 1 + ks.KFF3[M + 2] @ imf + 1j * imf[M + 2]                    # P1 (channel 1) at node 2
+    th = 2 * (imf[M + 2] / ks.Lambda3[n0 + 2]) * F / abs(F) ** 2
+    assert np.isclose(t["P1"][0][2], th.real) and np.isclose(t["P1"][1][2], th.imag)
+
+
+@needs_ks10
+@pytest.mark.skipif(not _docker_ok(), reason="SDPB docker image unavailable")
+def test_m10_watson_leaf_saturates_unitarity_better_than_its_seed():
+    import json
+    from smatrix_bootstrap.gtb import solve
+    from smatrix_bootstrap.gtb.spec import GtbSpec
+    seed = SCRATCH / "leaf_M10"
+    if not (seed / "solution.npz").exists():
+        pytest.skip("seed leaf missing")
+    work = SCRATCH / "leaf_M10_watson"
+    shutil.rmtree(work, ignore_errors=True)
+    rep = solve.run_leaf(GtbSpec(M=10), KS10, work, reg="linf-relax", precision=128, nproc=2, timeout=1800,
+                         watson_from=seed)
+    assert rep["sdpb_result"]["terminateReason"] == "found primal-dual optimal solution"
+    assert (work / "watson_targets.npz").exists() and rep["spec"]["objective"] == "watson"
+    from smatrix_bootstrap.gtb import kernels
+    from smatrix_bootstrap.gtb.program import Program
+    seed_prog = Program(GtbSpec(M=10), kernels.load(KS10))
+    seed_eta = solve._observables(seed_prog, np.load(seed / "solution.npz")["v"])["min_eta_P1"]
+    assert rep["observables"]["min_eta_P1"] >= seed_eta - 1e-9
