@@ -142,3 +142,61 @@ def test_cell_formats_float_arrays_exactly():
 def test_cell_prints_zero_at_either_end():
     from smatrix_bootstrap.gtb.pmpwriter import _cell
     assert _cell(np.array([-0.0, 2.0, 0.0]), 3, 40) == '[["0"],["2.0"],["0"]]'
+
+
+@needs_ks10
+@pytest.mark.skipif(not _docker_ok(), reason="SDPB docker image unavailable")
+def test_m10_leaf_end_to_end():
+    """A full M=10 leaf: optimal termination, F0 = F0fix on the lifted solution, objective read back."""
+    from smatrix_bootstrap.gtb import solve
+    from smatrix_bootstrap.gtb.spec import GtbSpec
+    work = SCRATCH / "leaf_M10"
+    shutil.rmtree(work, ignore_errors=True)
+    rep = solve.run_leaf(GtbSpec(M=10), KS10, work, reg="linf-relax", precision=128, nproc=2, timeout=1800)
+    assert rep["sdpb_result"]["terminateReason"] == "found primal-dual optimal solution"
+    obs = rep["observables"]
+    assert abs(obs["F0"] - rep["f0fix"]) < 1e-9
+    assert abs(obs["F1"] - rep["sdpb_result"]["primalObjective"]) < 1e-6 * max(1.0, abs(obs["F1"]))
+    assert (work / "report.json").exists() and (work / "solution.npz").exists()
+
+
+def test_cli_dispatches_gtb_solve():
+    import subprocess, sys
+    out = subprocess.run([sys.executable, "-m", "smatrix_bootstrap.run", "gtb", "solve", "--help"],
+                         capture_output=True, text=True, env={**__import__("os").environ, "PYTHONPATH": "src"})
+    assert out.returncode == 0, out.stderr
+    for flag in ("--kernels", "--workdir", "--ni", "--reg", "--reduce-basis", "--precision", "--nproc"):
+        assert flag in out.stdout
+
+
+@needs_ks10
+@pytest.mark.parametrize("scale, feasible", [(0.99, True), (1.01, False)])
+def test_l4_exact_encoding_is_the_l4_ball(scale, feasible):
+    """With u = (rho/T)^2 and w = u^2 (the tightest auxiliaries) the blocks are PSD iff ||rho||_4 <= T."""
+    prog, ks = _prog(reg="l4-exact")
+    T = prog.reg.bound
+    rng = np.random.default_rng(3)
+    y = rng.normal(size=prog.n_vars - 1)
+    v = prog.lift(y)
+    rho = v[prog.groups["rho"]]
+    rho_target = rho / (np.sum(rho ** 4) ** 0.25) * T * scale
+    na = prog.n_af
+    rho_idx = np.arange(prog.groups["rho"].start, prog.groups["rho"].stop)
+    # rho variables are free amplitude variables in the full-space map (T0 is the pivot): rho_i = y[rho_i - 1]
+    y[rho_idx - 1] = rho_target
+    u = (rho_target / T) ** 2
+    y[prog.o_aux - 1:prog.o_aux - 1 + u.size] = u
+    y[prog.o_aux - 1 + u.size:prog.o_aux - 1 + 2 * u.size] = u ** 2
+    yfull = np.r_[1.0, y]
+    worst = min(np.linalg.eigvalsh(_matrix(b, yfull)).min() for b in prog.reg.blocks())
+    assert (worst >= -1e-12) == feasible
+
+
+@needs_ks10
+def test_bsplines_without_a_node_are_eliminated():
+    prog, ks = _prog()
+    empty = np.setdiff1d(np.flatnonzero(~np.any(ks.BSpline3 != 0, axis=0)), prog.c_first)
+    assert empty.size > 0 and set(empty) == set(prog.c_dropped)
+    v = prog.lift(np.random.default_rng(4).normal(size=prog.n_vars - 1))
+    assert np.all(v[prog.groups["c"]][empty] == 0)
+    assert len(prog.c_free) == 3 * 40 - 3 - empty.size

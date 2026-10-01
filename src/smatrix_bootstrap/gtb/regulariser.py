@@ -31,6 +31,29 @@ class _Linf:
         return out
 
 
+class _L4Exact(_Linf):
+    """||rho||_4 <= T exactly:  u_i >= (rho_i/T)^2,  w_i >= u_i^2,  sum w_i <= 1  (2 auxiliaries per value)."""
+
+    def __init__(self, prog, bound):
+        super().__init__(prog, bound, "l4-exact")
+        self.n_rho = prog.groups["rho"].stop - prog.groups["rho"].start
+        self.n_aux = 2 * self.n_rho
+
+    def blocks(self):
+        from .program import Block
+        p, T, n = self.prog, self.bound, self.n_rho
+        one, out = p.const(1.0), []
+        last = p.const(1.0)
+        for i, f in enumerate(self.rho_forms()):
+            u = np.zeros(p.n_vars); u[p.o_aux + i] = 1.0
+            w = np.zeros(p.n_vars); w[p.o_aux + n + i] = 1.0
+            out.append(Block(f"reg:l4:{i}:u", 2, {(0, 0): one, (0, 1): f / T, (1, 1): u}))
+            out.append(Block(f"reg:l4:{i}:w", 2, {(0, 0): one, (0, 1): u, (1, 1): w}))
+            last = last - w
+        out.append(Block("reg:l4:sum", 1, {(0, 0): last}))
+        return out
+
+
 class _NoReg:
     n_aux = 0
 
@@ -49,6 +72,8 @@ def make(kind: str, spec, prog):
         return _Linf(prog, R, "linf-relax")
     if kind == "linf-inner":
         return _Linf(prog, R / n_rho ** 0.25, "linf-inner")
+    if kind == "l4-exact":
+        return _L4Exact(prog, R)
     if kind == "none":
         return _NoReg()
     raise ValueError(f"unknown regulariser encoding {kind!r}")

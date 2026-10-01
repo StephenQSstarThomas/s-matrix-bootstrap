@@ -49,7 +49,9 @@ class Program:
         self.f0fix = spec.f0_ni / 50 * spec.f0_max
         self._amplitude_map(n_amp, basis)
         self.c_first = np.array([0, nb, 2 * nb])
-        self.c_free = np.setdiff1d(np.arange(3 * nb), self.c_first)
+        # coefficients of B-splines with no node in their support enter no constraint: fixed to 0, removed
+        self.c_dropped = np.setdiff1d(np.flatnonzero(~np.any(ks.BSpline3 != 0, axis=0)), self.c_first)
+        self.c_free = np.setdiff1d(np.arange(3 * nb), np.r_[self.c_first, self.c_dropped])
         self.o_imf = 1 + self.n_af
         self.o_c = self.o_imf + 3 * M
         self.o_aux = self.o_c + len(self.c_free)

@@ -12,7 +12,10 @@ def main(argv=None) -> int:
     if argv[:1] == ["sdp"]:
         from .sdp.__main__ import main as sdp_main
         return sdp_main(argv[1:])
-    sys.stderr.write("usage: python -m smatrix_bootstrap.run sdp <subcommand> ...\n"
+    if argv[:1] == ["gtb"]:
+        from .gtb.cli import main as gtb_main
+        return gtb_main(argv[1:])
+    sys.stderr.write("usage: python -m smatrix_bootstrap.run {sdp|gtb} <subcommand> ...\n"
                      "The Newton mainline was retired to legacy/smatrix_bootstrap_newton (see legacy/README.md).\n")
     return 2
 
