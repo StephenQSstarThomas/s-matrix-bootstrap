@@ -186,3 +186,7 @@ def primal(leaf_dir, kernels_dir, perturb=None) -> dict:
             "objective_F1": {"mid": f1.mid().str(30, radius=False), "radius": float(f1.rad())},
             "l4_feasible": l4_verdict, "rho_l4": float(l4.root(4).mid()), "l4_bound": float(R.mid()),
             "F0_check": float((_dot(F0row, amp)).mid())}
+
+
+# V2 lives in dual.py (size limit); re-exported here.
+from .dual import ExactKernels, certify_leaf, dual_bound, psd_shift, read_dual_matrices  # noqa: E402,F401

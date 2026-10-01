@@ -35,6 +35,7 @@ class Program:
         from . import regulariser
         M, nw, nb = spec.M, spec.L // 2, spec.n_b
         self.spec, self.ks, self.M, self.nw, self.nb = spec, ks, M, nw, nb
+        self.exact = bool(getattr(ks, "exact_mode", False))   # Arb balls in object arrays (certification)
         self.n0 = int(ks.manifest["n0"])
         n_amp = 1 + 2 * M + M * M + M * (M + 1) // 2
         self.groups = {"amp": slice(0, n_amp), "sig": slice(0, 2 * M + 1), "rho": slice(2 * M + 1, n_amp),
@@ -46,7 +47,7 @@ class Program:
         fF = np.hstack([ks.fF_sig, ks.fF_rho])
         self.F0row = 2 * (fF[0] + 5 * fF[1])
         self.F1row = 2 * (3 * fF[2 * nw] + 7 * fF[2 * nw + 1])
-        self.f0fix = spec.f0_ni / 50 * spec.f0_max
+        self.f0fix = self.num(spec.f0_ni) / 50 * self.num(spec.f0_max)
         self._amplitude_map(n_amp, basis)
         self.c_first = np.array([0, nb, 2 * nb])
         # coefficients of B-splines with no node in their support enter no constraint: fixed to 0, removed
@@ -59,16 +60,35 @@ class Program:
         self.n_vars = self.o_aux + self.reg.n_aux
         self._blocks = None
 
+    # ------------------------------------------------------------------ numbers
+    def num(self, x):
+        """A spec constant: the float itself, or (exact mode) the Arb value of its decimal repr."""
+        if not self.exact:
+            return float(x)
+        from flint import arb
+        return arb(repr(x)) if isinstance(x, float) else arb(x)
+
+    def zeros(self, shape):
+        if not self.exact:
+            return np.zeros(shape)
+        from flint import arb
+        return np.full(shape, arb(0), dtype=object)
+
     # ------------------------------------------------------------------ parametrisation
     def _amplitude_map(self, n_amp, basis):
         if basis is None:
             p = 0                                              # T0: F0 row coefficient 5
             free = np.arange(1, n_amp)
+            self.free_amp, self.coef_p = free, -self.F0row[free] / self.F0row[p]
+            a0 = self.zeros(n_amp); a0[p] = self.f0fix / self.F0row[p]
+            self.basis, self.pivot = None, ("amplitude", p)
+            self.n_af = n_amp - 1
+            if self.exact:
+                self.a0, self.Ea = a0, None
+                return
             Ea = np.zeros((n_amp, n_amp - 1))
             Ea[free, np.arange(n_amp - 1)] = 1.0
-            Ea[p] = -self.F0row[free] / self.F0row[p]
-            a0 = np.zeros(n_amp); a0[p] = self.f0fix / self.F0row[p]
-            self.basis, self.pivot = None, ("amplitude", p)
+            Ea[p] = self.coef_p
         else:
             V = np.asarray(basis)
             g = self.F0row @ V
@@ -104,18 +124,28 @@ class Program:
 
     # ------------------------------------------------------------------ affine forms over [y0, y]
     def _empty(self):
-        return np.zeros(self.n_vars)
+        return self.zeros(self.n_vars)
 
     def amp_forms(self, rows):
         """Forms of linear functionals of the amplitude (rows: k x n_amp) -> k x n_vars."""
         rows = np.atleast_2d(rows)
-        out = np.zeros((rows.shape[0], self.n_vars))
-        out[:, 0] = rows @ self.a0
-        out[:, 1:1 + self.n_af] = rows @ self.Ea
+        out = self.zeros((rows.shape[0], self.n_vars))
+        if self.basis is None:                     # rank-one pivot update: identity on the free variables
+            p = self.pivot[1]
+            out[:, 0] = rows[:, p] * self.a0[p]
+            out[:, 1:1 + self.n_af] = rows[:, self.free_amp] + rows[:, [p]] * self.coef_p[None, :]
+        else:
+            out[:, 0] = rows @ self.a0
+            out[:, 1:1 + self.n_af] = rows @ self.Ea
         return out
 
+    def unit(self, k):
+        """Form of the free variable y_k (k >= 1 in [y0, y...] numbering)."""
+        f = self._empty(); f[k] = self.num(1)
+        return f
+
     def const(self, value):
-        f = self._empty(); f[0] = value
+        f = self._empty(); f[0] = self.num(value) if isinstance(value, (int, float)) else value
         return f
 
     def ff_forms(self, ch, j):
@@ -123,7 +153,7 @@ class Program:
         M, k = self.M, CHANNELS.index(ch)
         re = self.const(1.0)
         re[self.o_imf + k * M:self.o_imf + (k + 1) * M] = self.ks.KFF3[k * M + j, k * M:(k + 1) * M]
-        im = self._empty(); im[self.o_imf + k * M + j] = 1.0
+        im = self.unit(self.o_imf + k * M + j)
         return re, im
 
     def c_form(self, row):
@@ -187,7 +217,7 @@ class Program:
         return Block(name, len(forms) + 1, f)
 
     def _chiral(self):
-        F, eps, one = self.Fchi, self.spec.eps_chi, self.const(1.0)
+        F, eps, one = self.Fchi, self.num(self.spec.eps_chi), self.const(1.0)
         r01 = [F[self.chi_index("S0", a)] - 3 * (2 * s - 1) / (s - 4) * F[self.chi_index("P1", a)]
                for a, s in enumerate(CHI_POINTS)]
         r21 = [F[self.chi_index("S2", a)] - 3 * (2 - s) / (s - 4) * F[self.chi_index("P1", a)]
@@ -201,13 +231,13 @@ class Program:
         for k, (ch, ints) in enumerate(zip(CHANNELS, (ks.intS0, ks.intP1, ks.intD0))):
             g = ints @ ks.BSpline3[k * n0:(k + 1) * n0]            # 3 x 120 (block diagonal in channels)
             w = [self.c_form(g[i]) - self.const(ks.SVZSR[3 * k + i]) for i in range(3)]
-            out.append(self.arrow(f"fesr:{ch}", w, self.spec.eps_sr[k], self.const(1.0)))
+            out.append(self.arrow(f"fesr:{ch}", w, self.num(self.spec.eps_sr[k]), self.const(1.0)))
         return out
 
     def _ff(self):
-        sp, x, one, out = self.spec, self.ks.x, self.const(1.0), []
-        caps = {"S0": lambda j: sp.r[0], "P1": lambda j: sp.r[1] * sp.fp1asym / x[j],
-                "D0": lambda j: sp.r[2] * sp.fd0asym / x[j]}
+        sp, x, one, out, n = self.spec, self.ks.x, self.const(1.0), [], self.num
+        caps = {"S0": lambda j: n(sp.r[0]), "P1": lambda j: n(sp.r[1]) * n(sp.fp1asym) / x[j],
+                "D0": lambda j: n(sp.r[2]) * n(sp.fd0asym) / x[j]}
         for ch in CHANNELS:
             for j in range(self.n0, self.M):
                 fre, fim = self.ff_forms(ch, j)
@@ -219,8 +249,7 @@ class Program:
     def _cpos(self):
         out = []
         for k, i in enumerate(self.c_free):
-            f = self._empty(); f[self.o_c + k] = 1.0
-            out.append(Block(f"cpos:{i}", 1, {(0, 0): f}))
+            out.append(Block(f"cpos:{i}", 1, {(0, 0): self.unit(self.o_c + k)}))
         return out
 
     def objective(self):

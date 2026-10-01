@@ -17,6 +17,8 @@ class _Linf:
     def rho_forms(self):
         p = self.prog
         rho = np.arange(p.groups["rho"].start, p.groups["rho"].stop)
+        if p.basis is None:                        # rho_i is the free variable y_{rho_i} (T0 is the pivot)
+            return [p.unit(int(i)) for i in rho]
         out = np.zeros((rho.size, p.n_vars))
         out[:, 0] = p.a0[rho]
         out[:, 1:1 + p.n_af] = p.Ea[rho]
@@ -45,8 +47,7 @@ class _L4Exact(_Linf):
         one, out = p.const(1.0), []
         last = p.const(1.0)
         for i, f in enumerate(self.rho_forms()):
-            u = np.zeros(p.n_vars); u[p.o_aux + i] = 1.0
-            w = np.zeros(p.n_vars); w[p.o_aux + n + i] = 1.0
+            u, w = p.unit(p.o_aux + i), p.unit(p.o_aux + n + i)
             out.append(Block(f"reg:l4:{i}:u", 2, {(0, 0): one, (0, 1): f / T, (1, 1): u}))
             out.append(Block(f"reg:l4:{i}:w", 2, {(0, 0): one, (0, 1): u, (1, 1): w}))
             last = last - w
