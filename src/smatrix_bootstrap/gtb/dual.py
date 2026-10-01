@@ -60,23 +60,24 @@ def dual_bound(blocks, objective, Z, tau, ybar, refine: int = 8) -> dict:
     ctx.prec = 256
     n = len(objective)
     b = [_to_arb(v) for v in objective]
-    ents = []                                     # (block, r, c, weight, exact coefficients, float coefficients)
+    ents = []                       # (block, r, c, weight, nonzero indices, exact values there, float coefficients)
     for j, blk in enumerate(blocks):
         for (r, c), f in blk.forms.items():
-            ex = [_to_arb(v) for v in f]
-            ents.append((j, r, c, 1 if r == c else 2, ex, np.array([float(x.mid()) for x in ex])))
+            ex = np.array([_to_arb(v) for v in f], dtype=object)
+            nz = np.array([k for k in range(n) if ex[k] != 0], dtype=int)
+            fl = np.zeros(n)
+            fl[nz] = [float(x.mid()) for x in ex[nz]]
+            ents.append((j, r, c, 1 if r == c else 2, nz, ex[nz], fl))
     Zc = [[[_to_arb(x) for x in row] for row in z] for z in Z]
 
     def residual():
-        r = [b[k] for k in range(n)]
-        for j, rr, cc, w, ex, _ in ents:
-            zw = w * Zc[j][rr][cc]
-            for k in range(n):
-                if ex[k] != 0:
-                    r[k] += zw * ex[k]
-        return r
+        r = np.array(b, dtype=object)
+        for j, rr, cc, w, nz, vals, _ in ents:
+            if nz.size:
+                r[nz] = r[nz] + (w * Zc[j][rr][cc]) * vals
+        return list(r)
 
-    C = np.array([fl[1:] for *_, fl in ents])
+    C = np.array([e[6][1:] for e in ents])
     G = C.T @ (np.array([e[3] for e in ents], dtype=float)[:, None] * C)
     dg = np.sqrt(np.diag(G))
     D = 1.0 / np.where(dg > 0, dg, 1.0)                 # Jacobi scaling: cond(G) ~ 1e13 at M = 10
@@ -92,7 +93,7 @@ def dual_bound(blocks, objective, Z, tau, ybar, refine: int = 8) -> dict:
             lam = D * np.linalg.solve(Gs, rhs)
         except np.linalg.LinAlgError:
             lam = D * np.linalg.lstsq(Gs, rhs, rcond=1e-18)[0]
-        for j, rr, cc, w, _, fl in ents:
+        for j, rr, cc, w, _, _, fl in ents:
             d = arb(float(fl[1:] @ lam))
             Zc[j][rr][cc] += d
             if rr != cc:
