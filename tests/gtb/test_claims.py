@@ -15,3 +15,32 @@ def test_g3_rule_on_brackets():
         raise AssertionError("an inverted bracket must be rejected")
     except ValueError:
         pass
+
+
+import copy
+from pathlib import Path
+
+import pytest
+
+PAPER = Path("/playpen1/shiqiu/gtb2403_runs/paper_data")
+needs_paper = pytest.mark.skipif(not (PAPER / "index.json").exists(), reason="paper extraction missing")
+
+
+@needs_paper
+def test_phase_rules_accept_the_papers_own_curves():
+    from smatrix_bootstrap.gtb.claims import paper_as_analysis, phase_claims
+    an = {ni: paper_as_analysis(ni) for ni in (44, 46, 48)}
+    res = phase_claims(an)
+    for cid in ("C4", "C5", "C6", "C7", "C12"):
+        assert res[cid]["verdict"] == "PASS", (cid, res[cid])
+
+
+@needs_paper
+def test_phase_rules_reject_a_shifted_p1_wave():
+    import numpy as np
+    from smatrix_bootstrap.gtb.claims import paper_as_analysis, phase_claims
+    an = {ni: paper_as_analysis(ni) for ni in (44, 46, 48)}
+    bad = copy.deepcopy(an)
+    for ni in bad:
+        bad[ni]["phases"]["P1"]["delta_deg"] = (np.array(bad[ni]["phases"]["P1"]["delta_deg"]) + 15).tolist()
+    assert phase_claims(bad)["C4"]["verdict"] == "FAIL"
