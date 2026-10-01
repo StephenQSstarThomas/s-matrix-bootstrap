@@ -96,3 +96,19 @@ amendments with the reason; the original text is never edited.
   tree-level dot inside. Reason: ~2 h per reduced-basis solve on the shared machine (load ~100 on 80 cores).
 - These scan solves use the reduced basis (an inner approximation: max values are lower bounds, min values upper bounds);
   the encoding is the one selected at G2. They are reported as inner bounds, never as V2-certified boundaries.
+
+## Amendment 5 (2026-10-01 22:55Z, before any M = 50 certificate, omitted-wave η or phase result exists)
+State when written: the unconverged SDPB iterates of the three ℓ∞-inner leaves (ni 44/46/48, reduced basis) were
+visible; their feasible-side objective was ≈ 1e-3 above the paper's C1 values. Nothing below changes a tolerance.
+- C1 by one-sided certificates: a V1-certified, ℓ4-feasible leaf with 𝔉₁ > paper + 1e-4 is FAIL at that ni whatever
+  the upper bound (the bracket [lower, ∞) is disjoint from the band); a V2 bound below paper − 1e-4 is FAIL likewise.
+  This only makes explicit that no full-space V2 solve is needed for such a verdict.
+- On a C1 FAIL, Phase B is computed for two regulariser variants and both are reported side by side, never chosen by
+  agreement with the paper:
+  (A) the authors' scale M_reg = 1e2: representative = the ℓ∞-inner leaf (|ρ_i| ≤ R/3775^{1/4}, inside the ℓ4 ball),
+      control = the ℓ∞-relax leaf (|ρ_i| ≤ R); their spread is reported as the encoding uncertainty of (A).
+  (B) the physics-selected scale, the 2309 rule transferred unchanged: ladder M_reg ∈ {100, 30, 10, 3, 1}
+      (R = M_reg · Mrho), ℓ∞-relax box |ρ_i| ≤ R, ni = 46 pre-Watson 𝔉₁ max, reduced basis, 128 bit. Omitted-wave
+      η = max over all M nodes of |1 + i h| for ℓ = 20…23 (from the L = 24 export of the same kernels).
+      M_reg* = the largest rung with η ≤ 1.02 whose L = 24 re-solve gives 𝔉₁ within 2 % of the L = 20 value.
+  For each variant: initial + Watson leaves at ni 44/46/48 and claims C4–C21. The C2 scan (amendment 4) uses (A).
