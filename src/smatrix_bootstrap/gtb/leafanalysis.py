@@ -58,6 +58,28 @@ def _threshold(prog, amp, grid):
     return out, ctrl
 
 
+def s_abs(grid, amp, wave, where, prescription="interp") -> float:
+    """|S^I_l| = |1 + i pi sqrt((s-4)/s) f^I_l(s)| at a node or a real point on the cut."""
+    from flint import acb
+    from .evaluate import _s_and_z, f_row, value
+    I, ell = WAVE_IL[wave]
+    s = _s_and_z(grid, where)[0]
+    f = value(f_row(grid, I, ell, where, prescription), amp)
+    return float(abs(1 + acb(0, 1) * acb.pi() * ((s - 4) / s).sqrt() * f).mid())
+
+
+def between_nodes(grid, amp, n0, prescription="interp") -> dict:
+    """Unitarity between the nodes (Phase B, Task B7): |S| at phi = (k+1) pi/M, halfway in angle between nodes k
+    and k+1, for the six waves below s0.  The program imposes |S| <= 1 only at the nodes."""
+    from flint import arb
+    M, out = grid.M, {}
+    pts = [arb(grid.nu0) + (8 - 2 * arb(grid.nu0)) / (1 + (arb.pi() * (k + 1) / M).cos()) for k in range(n0 - 1)]
+    for w in WAVE_IL:
+        a = [s_abs(grid, amp, w, ("cut", s), prescription) for s in pts]
+        out[w] = {"s": [float(s.mid()) for s in pts], "abs_S": a, "max_abs_S": max(a)}
+    return out
+
+
 def analyze(leaf, kernels_dir, pole=True) -> dict:
     from .arbkernels import Grid
     rep, ks, prog, v = _load(leaf, kernels_dir)
@@ -81,6 +103,7 @@ def analyze(leaf, kernels_dir, pole=True) -> dict:
     res["radii_fm2"] = {"S": A.radius_fm2(fp["S0"]), "V": A.radius_fm2(fp["P1"]), "T": A.radius_fm2(fp["D0"])}
     grid = Grid(M, prec_bits=192)
     res["threshold"], res["threshold_control"] = _threshold(prog, amp, grid)
+    res["between_nodes"] = between_nodes(grid, amp, n0)
     res["lbar"] = A.lbar(res["threshold"]["a02"], res["threshold"]["a22"], res["radii_fm2"]["S"], res["radii_fm2"]["V"])
     s = x[:n0]
     win = lambda lo, hi: (E[:n0] >= lo) & (E[:n0] <= hi)

@@ -75,3 +75,32 @@ def test_constant_amplitude_everywhere(grid):
         for where in (("point", acb(25, -3)), ("cut", arb(17)), ("node", 2)):
             ell = 1 if I == 1 else 0
             assert _close(f_row(grid, I, ell, where, "interp")[0].mid(), c if ell == 0 else 0.0, 1e-30)
+
+
+LEAF10 = Path("/playpen1/shiqiu/gtb2403_runs/scratch_tests/leaf_M10")
+needs_leaf = pytest.mark.skipif(not (LEAF10 / "solution.npz").exists(), reason="M=10 leaf missing")
+
+
+@needs_leaf
+def test_s_matrix_at_a_node_equals_the_program_row():
+    from smatrix_bootstrap.gtb.arbkernels import Grid
+    from smatrix_bootstrap.gtb.leafanalysis import _load, s_abs
+    _, _, prog, v = _load(LEAF10, KS10)
+    amp, g = v[prog.groups["amp"]], Grid(10, prec_bits=192)
+    h = prog.Rre @ amp + 1j * (prog.Rim @ amp)
+    for w, k in (("P1", 0), ("S0", 3), ("F1", 5)):
+        want = abs(1 + 1j * h[prog.row_index(w, k)])
+        assert abs(s_abs(g, amp, w, ("node", k)) - want) < 1e-12, (w, k)
+
+
+@needs_leaf
+def test_between_node_scan_covers_every_gap_below_s0():
+    from smatrix_bootstrap.gtb.arbkernels import Grid
+    from smatrix_bootstrap.gtb.leafanalysis import WAVE_IL, _load, between_nodes
+    _, _, prog, v = _load(LEAF10, KS10)
+    res = between_nodes(Grid(10, prec_bits=192), v[prog.groups["amp"]], prog.n0)
+    assert set(res) == set(WAVE_IL)
+    for w, r in res.items():
+        assert len(r["s"]) == len(r["abs_S"]) == prog.n0 - 1
+        assert np.all(np.diff(r["s"]) > 0) and np.all(np.isfinite(r["abs_S"]))
+        assert r["max_abs_S"] == max(r["abs_S"])
