@@ -103,3 +103,17 @@ def forward(f_by_wave_isospin):
     """T^I(s,0) = 2 sum_l (2l+1) f^I_l(s) and the s<->u (anti)symmetric combinations of v4 section 3.1."""
     T = {I: 2 * sum((2 * l + 1) * f for l, f in waves.items()) for I, waves in f_by_wave_isospin.items()}
     return {"T0+": (T[1] + T[2]) / 2, "T00": T[0] / 3 + 2 * T[2] / 3, "TIt1": T[0] / 3 + T[1] / 2 - 5 * T[2] / 6}
+
+
+def gtbii(lb, l3=0.0, fpi=F_PI_MEV / M_PI_MEV):
+    """v4 (A.1)-(A.8): one-loop scattering lengths from lbar (m_pi = 1, lbar_3 = 0 as in the paper)."""
+    l1, l2, l4 = lb["l1"], lb["l2"], lb["l4"]
+    e = 1 / (12 * np.pi ** 2 * fpi ** 2)
+    c = 1440 * np.pi ** 3 * fpi ** 4
+    return {"a00": 7 / (32 * np.pi * fpi ** 2) * (1 + 5 / (84 * np.pi ** 2 * fpi ** 2) * (l1 + 2 * l2 - 3 / 8 * l3 + 21 / 10 * l4 + 21 / 8)),
+            "b00": 1 / (4 * np.pi * fpi ** 2) * (1 + e * (2 * l1 + 3 * l2 + 1.5 * l4 - 13 / 16)),
+            "a20": -1 / (16 * np.pi * fpi ** 2) * (1 - e * (l1 + 2 * l2 - 3 / 8 * l3 - 1.5 * l4 + 3 / 8)),
+            "b20": -1 / (8 * np.pi * fpi ** 2) * (1 - e * (l1 + 3 * l2 - 1.5 * l4 - 5 / 16)),
+            "a11": 1 / (24 * np.pi * fpi ** 2) * (1 - e * (l1 - l2 - 1.5 * l4 + 65 / 48)),
+            "b11": (-l1 + l2 + 97 / 120) / (288 * np.pi ** 3 * fpi ** 4),
+            "a02": (l1 + 4 * l2 - 53 / 8) / c, "a22": (l1 + l2 - 103 / 40) / c}

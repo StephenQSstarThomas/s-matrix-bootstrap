@@ -89,3 +89,14 @@ def test_analyze_runs_end_to_end_on_the_m10_watson_leaf():
     assert set(r["radii_fm2"]) == {"S", "V", "T"} and set(r["lbar"]) == {"l1", "l2", "l4", "l6"}
     if r["pole"]["interp"] is not None:
         assert r["pole"]["interp"]["sqrt_s_MeV"][1] < 0
+
+
+def test_gtbii_reproduces_table_9_from_table_3():
+    from smatrix_bootstrap.gtb.analysis import gtbii
+    blue = gtbii({"l1": 0.96, "l2": 4.5, "l4": 4.8, "l6": 14.6})
+    red = gtbii({"l1": -0.10, "l2": 4.8, "l4": 4.2, "l6": 14.5})
+    want_b = {"a00": 0.21, "a20": -0.043, "b00": 0.26, "b20": -0.080, "a11": 36.3e-3, "b11": 2.62e-3, "a02": 14.8e-4, "a22": 3.4e-4}
+    want_r = {"a00": 0.21, "a20": -0.043, "b00": 0.26, "b20": -0.079, "a11": 36.7e-3, "b11": 3.43e-3, "a02": 15.0e-4, "a22": 2.5e-4}
+    for got, want in ((blue, want_b), (red, want_r)):
+        for k, w in want.items():
+            assert abs(got[k] - w) <= 0.06 * abs(w), (k, got[k], w)

@@ -115,7 +115,9 @@ TABLES = {   # v4 Tables 1-7 and inline numbers: (blue, red)
     "l1": (0.96, -0.10), "l2": (4.5, 4.8), "l4": (4.8, 4.2), "l6": (14.6, 14.5),
     "pole_re": (829, 844), "pole_im": (71, 82), "m_rho": (838, 859), "G_rho": (114, 128), "g_rho": (4.9, 5.2),
     "4pi_grho2": (0.61, 0.57), "m1": (824, 841), "G1": (137, 164), "m2": (1635, 1645), "G2": (248, 272),
-    "A1": (1.29, 1.39), "A2": (0.27, 0.28), "m_f2": (1366, 1388), "G_f2": (164, 188), "g_f2": (8.5, 8.9)}
+    "A1": (1.29, 1.39), "A2": (0.27, 0.28), "m_f2": (1366, 1388), "G_f2": (164, 188), "g_f2": (8.5, 8.9),
+    "ii_a00": (0.21, 0.21), "ii_a20": (-0.043, -0.043), "ii_b00": (0.26, 0.26), "ii_b20": (-0.080, -0.079),
+    "ii_a11": (36.3e-3, 36.7e-3), "ii_b11": (2.62e-3, 3.43e-3), "ii_a02": (14.8e-4, 15.0e-4), "ii_a22": (3.4e-4, 2.5e-4)}
 
 
 def _table_tol(key):
@@ -141,10 +143,14 @@ def _get(an, key):
               "4pi_grho2": fi.get("four_pi_over_g_rho2"), "m1": tb.get("m1_MeV"), "G1": tb.get("G1_MeV"),
               "m2": tb.get("m2_MeV"), "G2": tb.get("G2_MeV"), "A1": tb.get("A1"), "A2": tb.get("A2"),
               "m_f2": f2.get("m_MeV"), "G_f2": f2.get("Gamma_MeV"), "g_f2": f2.get("g_f2_pi_pi")})
+    if key.startswith("ii_") and lb:
+        from .analysis import gtbii
+        return gtbii(lb)[key[3:]]
     return m.get(key)
 
 
 CLAIM_KEYS = {
+    "C11": {k: _table_tol(k) for k in ("ii_a00", "ii_a20", "ii_b00", "ii_b20", "ii_a11", "ii_b11", "ii_a02", "ii_a22")},
     "C8": {k: _table_tol(k) for k in ("a00", "a20", "b00", "b20", "a11", "b11", "a02", "a22")},
     "C9": {k: _table_tol(k) for k in ("r2S", "r2V", "r2T")},
     "C10": {k: _table_tol(k) for k in ("l1", "l2", "l4", "l6")},
