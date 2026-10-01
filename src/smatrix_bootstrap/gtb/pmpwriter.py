@@ -70,20 +70,34 @@ class _Cfg:
         self.nproc, self.timeout = nproc, timeout
 
 
+def sdpb_args(*, precision, timeout, duality_gap, primal_error, dual_error, initial_scale, max_iterations,
+              checkpoint_interval, write_solution, initial_checkpoint=None) -> list:
+    """The sdpb command line.  A hot start loads x, X, y, Y from ``initial_checkpoint`` (a neighbouring problem with
+    the same block structure) instead of the scaled identity; checkpoints still go to sdp.ck."""
+    args = ["sdpb", f"--precision={precision}", "-s", "sdp", "-o", "out", f"--maxIterations={max_iterations}",
+            f"--maxRuntime={timeout}", f"--checkpointInterval={checkpoint_interval}",
+            f"--dualityGapThreshold={duality_gap}", f"--primalErrorThreshold={primal_error}",
+            f"--dualErrorThreshold={dual_error}", f"--writeSolution={write_solution}"]
+    if initial_checkpoint:
+        return args + ["-i", str(initial_checkpoint), "-c", "sdp.ck"]
+    return args + [f"--initialMatrixScalePrimal={initial_scale}", f"--initialMatrixScaleDual={initial_scale}"]
+
+
 def solve(workdir, precision: int = 192, nproc: int = 8, timeout: int = 7200, duality_gap: float = 1e-6,
           primal_error: float = 1e-10, dual_error: float = 1e-10, initial_scale: float = 1e4,
-          max_iterations: int = 500, checkpoint_interval: int = 300, write_solution: str = "x,y,X,Y") -> dict:
-    """pmp2sdp + sdpb in ``workdir`` (which holds pmp.json) through the 2309 launcher; returns out/out.txt."""
+          max_iterations: int = 500, checkpoint_interval: int = 300, write_solution: str = "x,y,X,Y",
+          initial_checkpoint=None) -> dict:
+    """pmp2sdp + sdpb in ``workdir`` (which holds pmp.json) through the 2309 launcher; returns out/out.txt.
+    ``initial_checkpoint`` is a directory name inside ``workdir``."""
     from ..sdp.sdpb import execute, read_out
     work, cfg = Path(workdir), _Cfg(nproc, timeout)
     pre = execute(work, "pmp2sdp", ["pmp2sdp", f"--precision={precision}", "--input=pmp.json", "--output=sdp"], cfg)
     if pre["returncode"]:
         return {"terminateReason": "pmp2sdp failed", "pmp2sdp": pre}
-    args = ["sdpb", f"--precision={precision}", "-s", "sdp", "-o", "out", f"--maxIterations={max_iterations}",
-            f"--maxRuntime={timeout}", f"--checkpointInterval={checkpoint_interval}",
-            f"--dualityGapThreshold={duality_gap}", f"--primalErrorThreshold={primal_error}",
-            f"--dualErrorThreshold={dual_error}", f"--initialMatrixScalePrimal={initial_scale}",
-            f"--initialMatrixScaleDual={initial_scale}", f"--writeSolution={write_solution}"]
+    args = sdpb_args(precision=precision, timeout=timeout, duality_gap=duality_gap, primal_error=primal_error,
+                     dual_error=dual_error, initial_scale=initial_scale, max_iterations=max_iterations,
+                     checkpoint_interval=checkpoint_interval, write_solution=write_solution,
+                     initial_checkpoint=initial_checkpoint)
     run = execute(work, "sdpb", args, cfg, mpi=nproc > 1)
     out = read_out(work / "out/out.txt")
     out.update({"pmp2sdp": pre, "sdpb": run})

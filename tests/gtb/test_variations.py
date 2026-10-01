@@ -57,3 +57,27 @@ def test_cli_spec_follows_the_export_and_the_overrides():
     assert sp.eps_chi == 1e-3 and sp.r == (0.02, 2.0, 6.0) and sp.reg_bound == 500.0 and sp.f0_max == 0.145743
     with pytest.raises(ValueError):
         spec_from_args(argparse.Namespace(**{**vars(a), "set": ["no_such_field=1"]}))
+
+
+def test_sdpb_arguments_for_a_cold_and_a_hot_start():
+    from smatrix_bootstrap.gtb.pmpwriter import sdpb_args
+    cold = sdpb_args(precision=128, timeout=60, duality_gap=1e-6, primal_error=1e-10, dual_error=1e-10,
+                     initial_scale=1e4, max_iterations=500, checkpoint_interval=300, write_solution="x,y")
+    hot = sdpb_args(precision=128, timeout=60, duality_gap=1e-6, primal_error=1e-10, dual_error=1e-10,
+                    initial_scale=1e4, max_iterations=500, checkpoint_interval=300, write_solution="x,y",
+                    initial_checkpoint="init.ck")
+    assert "--initialMatrixScalePrimal=10000.0" in cold and "-i" not in cold
+    assert hot[hot.index("-i") + 1] == "init.ck" and hot[hot.index("-c") + 1] == "sdp.ck"
+    assert not any(a.startswith("--initialMatrixScale") for a in hot)
+
+
+@needs_ks10
+def test_hot_start_refuses_a_seed_with_another_structure(tmp_path):
+    import json
+    from smatrix_bootstrap.gtb.solve import run_leaf
+    from smatrix_bootstrap.gtb.spec import GtbSpec
+    seed = tmp_path / "seed"
+    (seed / "sdp.ck").mkdir(parents=True)
+    (seed / "report.json").write_text(json.dumps({"n_vars": 7, "reduce_basis": False, "regulariser": "linf-relax"}))
+    with pytest.raises(ValueError, match="hot start"):
+        run_leaf(GtbSpec(M=10), KS10, tmp_path / "leaf", hot_start=seed)

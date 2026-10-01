@@ -40,7 +40,8 @@ def _solve(a):
     rep = solve.run_leaf(spec, a.kernels, a.workdir, reg=a.reg, reduce_basis=a.reduce_basis, basis_tol=a.basis_tol,
                          precision=a.precision, nproc=a.nproc, timeout=a.timeout, duality_gap=a.duality_gap,
                          primal_error=a.primal_error, dual_error=a.dual_error, initial_scale=a.initial_scale,
-                         keep_pmp=not a.drop_pmp, watson_from=a.watson_from, objective_row=row)
+                         keep_pmp=not a.drop_pmp, watson_from=a.watson_from, objective_row=row,
+                         hot_start=a.hot_start)
     print(json.dumps({k: rep.get(k) for k in ("sdpb_result", "observables", "n_vars", "seconds_total")},
                      indent=1, default=str))
     return 0 if rep.get("sdpb_result", {}).get("terminateReason") == "found primal-dual optimal solution" else 1
@@ -117,6 +118,7 @@ def main(argv=None) -> int:
     s.add_argument("--initial-scale", type=float, default=1e4)
     s.add_argument("--watson-from", default=None, help="Watson step seeded by this leaf (F0 released)")
     s.add_argument("--drop-pmp", action="store_true", help="delete pmp.json after an optimal termination")
+    s.add_argument("--hot-start", default=None, help="start SDPB from this leaf's final checkpoint (same SDP structure)")
     s.add_argument("--set", action="append", metavar="FIELD=VALUE",
                    help="override a GtbSpec field (App. B variations), e.g. eps_chi=1e-3, r=0.02,2,6, reg_bound=500")
     s.set_defaults(func=_solve)
