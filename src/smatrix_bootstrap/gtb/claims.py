@@ -105,3 +105,70 @@ def phase_claims(analyses: dict) -> dict:
         out[cid] = {"verdict": "PASS" if ok else "FAIL"}
     out["rows"] = rows
     return out
+
+
+# ------------------------------------------------------------------ table claims (C8-C10, C13-C19), blue = 44, red = 48
+TABLES = {   # v4 Tables 1-7 and inline numbers: (blue, red)
+    "a00": (0.174, 0.191), "a20": (-0.0357, -0.0403), "b00": (0.285, 0.282), "b20": (-0.061, -0.071),
+    "a11": (28.7e-3, 30.7e-3), "b11": (12.4e-3, 7.28e-3), "a02": (14.6e-4, 14.9e-4), "a22": (3.41e-4, 2.53e-4),
+    "r2S": (0.64, 0.55), "r2V": (0.394, 0.391), "r2T": (0.153, 0.140),
+    "l1": (0.96, -0.10), "l2": (4.5, 4.8), "l4": (4.8, 4.2), "l6": (14.6, 14.5),
+    "pole_re": (829, 844), "pole_im": (71, 82), "m_rho": (838, 859), "G_rho": (114, 128), "g_rho": (4.9, 5.2),
+    "4pi_grho2": (0.61, 0.57), "m1": (824, 841), "G1": (137, 164), "m2": (1635, 1645), "G2": (248, 272),
+    "A1": (1.29, 1.39), "A2": (0.27, 0.28), "m_f2": (1366, 1388), "G_f2": (164, 188), "g_f2": (8.5, 8.9)}
+
+
+def _table_tol(key):
+    b, r = TABLES[key]
+    return lambda colour: max(0.05 * abs(TABLES[key][colour]), 0.5 * abs(b - r))
+
+
+def _abs_tol(x):
+    return lambda colour: x
+
+
+def _rel_tol(f):
+    return lambda key: (lambda colour: f * abs(TABLES[key][colour]))
+
+
+def _get(an, key):
+    th, ra, lb, fi = an.get("threshold", {}), an.get("radii_fm2", {}), an.get("lbar", {}), an.get("fits", {})
+    pole = (an.get("pole") or {}).get("interp")
+    m = {**th, "r2S": ra.get("S"), "r2V": ra.get("V"), "r2T": ra.get("T"), **lb,
+         "pole_re": pole["sqrt_s_MeV"][0] if pole else None, "pole_im": -pole["sqrt_s_MeV"][1] if pole else None}
+    gs, tb, f2 = fi.get("rho_gs", {}), fi.get("two_bw", {}), fi.get("f2_bw", {})
+    m.update({"m_rho": gs.get("m_MeV"), "G_rho": gs.get("Gamma_MeV"), "g_rho": gs.get("g_rho_pi_pi"),
+              "4pi_grho2": fi.get("four_pi_over_g_rho2"), "m1": tb.get("m1_MeV"), "G1": tb.get("G1_MeV"),
+              "m2": tb.get("m2_MeV"), "G2": tb.get("G2_MeV"), "A1": tb.get("A1"), "A2": tb.get("A2"),
+              "m_f2": f2.get("m_MeV"), "G_f2": f2.get("Gamma_MeV"), "g_f2": f2.get("g_f2_pi_pi")})
+    return m.get(key)
+
+
+CLAIM_KEYS = {
+    "C8": {k: _table_tol(k) for k in ("a00", "a20", "b00", "b20", "a11", "b11", "a02", "a22")},
+    "C9": {k: _table_tol(k) for k in ("r2S", "r2V", "r2T")},
+    "C10": {k: _table_tol(k) for k in ("l1", "l2", "l4", "l6")},
+    "C13": {"pole_re": _abs_tol(20), "pole_im": _abs_tol(15)},
+    "C14": {"m_rho": _abs_tol(20), "G_rho": _rel_tol(0.20)("G_rho")},
+    "C15": {"g_rho": _rel_tol(0.05)("g_rho")},
+    "C16": {"4pi_grho2": _rel_tol(0.10)("4pi_grho2")},
+    "C17": {"m1": _abs_tol(20), "m2": _abs_tol(40), "G1": _rel_tol(0.25)("G1"), "G2": _rel_tol(0.25)("G2"),
+            "A1": _rel_tol(0.15)("A1"), "A2": _rel_tol(0.15)("A2")},
+    "C18": {"m_f2": _abs_tol(25), "G_f2": _rel_tol(0.25)("G_f2")},
+    "C19": {"g_f2": _rel_tol(0.05)("g_f2")},
+}
+
+
+def table_claims(blue: dict, red: dict) -> dict:
+    out = {}
+    for cid, keys in CLAIM_KEYS.items():
+        rows, ok = {}, True
+        for key, tol in keys.items():
+            for colour, an in ((0, blue), (1, red)):
+                v = _get(an, key)
+                good = v is not None and abs(v - TABLES[key][colour]) <= tol(colour)
+                rows[f"{key}:{'blue' if colour == 0 else 'red'}"] = {"ours": v, "paper": TABLES[key][colour],
+                                                                    "tol": tol(colour), "pass": good}
+                ok &= good
+        out[cid] = {"verdict": "PASS" if ok else "FAIL", "rows": rows}
+    return out
