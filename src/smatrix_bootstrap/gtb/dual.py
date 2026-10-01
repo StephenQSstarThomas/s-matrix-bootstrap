@@ -136,15 +136,18 @@ def free_variable_bounds(prog) -> list:
     """|y_n| <= ybar_n for every free variable of a full-space exact program (DERIVATION section 12, B0-B6)."""
     ks, M, n0, sp = prog.ks, prog.M, prog.n0, prog.spec
     n_rho = prog.groups["rho"].stop - prog.groups["rho"].start
-    R = prog.reg.bound if hasattr(prog.reg, "bound") else None
+    R = getattr(prog.reg, "bound", None)
     if R is None:
         raise ValueError("V2 needs a regularised program (a-priori bound on rho)")
-    rbar = arb(repr(float(R))) if not isinstance(R, arb) else R
+    rb = [arb(repr(float(r))) for r in R]              # |rho_i| <= radius_i (uniform for linf-relax)
     ybar = [arb(0)] * (prog.n_vars - 1)
     rho0 = prog.groups["rho"].start
     for i in range(n_rho):
-        ybar[rho0 + i - 1] = rbar
-    beta = [sum((_abs_upper(v) for v in row), arb(0)) * rbar for row in ks.Im_rho]   # |Im_rho . rho|
+        ybar[rho0 + i - 1] = rb[i]
+    if all(float(r) == float(R[0]) for r in R):
+        beta = [sum((_abs_upper(v) for v in row), arb(0)) * rb[0] for row in ks.Im_rho]   # |Im_rho . rho|
+    else:
+        beta = [sum((_abs_upper(v) * r for v, r in zip(row, rb)), arb(0)) for row in ks.Im_rho]
     row = prog.row_index
     s2, s1 = [None] * M, [None] * M
     for m in range(M):                     # Im h^{I=2}_0 = c2 sigma2_m + rho terms, 0 <= Im h <= 2 (B2)

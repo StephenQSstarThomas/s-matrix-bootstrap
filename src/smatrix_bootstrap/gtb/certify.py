@@ -185,10 +185,16 @@ def primal(leaf_dir, kernels_dir, perturb=None) -> dict:
     rho = amp[1 + 2 * M:]
     R = arb(repr(spec["reg_bound"])) * (len(rho) if spec["reg_divide_by_mrho"] else 1)
     l4 = sum((v ** 4 for v in rho), arb(0))
-    if rep["regulariser"].startswith("linf"):
-        bound = R if rep["regulariser"] == "linf-relax" else R / arb(len(rho)).root(4)
+    from .regulariser import linf_data
+    radii, cuts = linf_data(rep["regulariser"], float(R.mid()), len(rho))
+    if radii is not None:                    # the encoding's own constraints: exact R for the two uniform boxes
+        kind = rep["regulariser"]
+        bnd = ([R] * len(rho) if kind.startswith("linf-relax") else [R / arb(len(rho)).root(4)] * len(rho)
+               if kind == "linf-inner" else [arb(repr(float(b))) for b in radii])
         for i, v in enumerate(rho):
-            fam["regulariser"].add(bound - abs(v), f"rho{i}")
+            fam["regulariser"].add(bnd[i] - abs(v), f"rho{i}")
+        for k, g in enumerate(cuts if cuts is not None else []):
+            fam["regulariser"].add(1 - sum((arb(repr(float(w))) * x for w, x in zip(g, rho)), arb(0)), f"cut{k}")
     l4_verdict = verdict(R ** 4 - l4)
     f1 = _dot(F1row, amp)
     extra = {}

@@ -115,7 +115,8 @@ def main(argv=None) -> int:
     s.add_argument("--ni", type=int, default=46, help="F0 = ni/50 * 0.163108; 44/46/48 = blue/green/red")
     s.add_argument("--objective", default="F1max", choices=["F1max", "F1min", "custom_max", "custom_min"])
     s.add_argument("--lec", default=None, help="with custom_max/min: a00 a20 a11 b00 b20 b11 a02 a22 r2S r2V r2T")
-    s.add_argument("--reg", default="linf-relax", choices=["linf-relax", "linf-inner", "none", "l4-exact"])
+    s.add_argument("--reg", default="linf-relax",
+                   help="linf-relax | linf-inner | box-inner:RADII.npy | linf-relax+cuts:POINTS.npy | l4-exact | none")
     s.add_argument("--reduce-basis", action="store_true")
     s.add_argument("--basis-tol", type=float, default=1e-12)
     s.add_argument("--precision", type=int, default=192)

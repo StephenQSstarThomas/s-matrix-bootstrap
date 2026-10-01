@@ -44,7 +44,8 @@ def _hot_start_seed(seed, prog, reg, reduce_basis, basis, work):
     """Copy a neighbouring leaf's final checkpoint to work/init.ck after checking that the SDP has its structure."""
     import shutil
     s = json.loads((Path(seed) / "report.json").read_text())
-    if ((s.get("n_vars"), s.get("reduce_basis"), s.get("regulariser")) != (prog.n_vars, reduce_basis, reg)
+    kind = lambda r: (r or "").split(":")[0]                  # box radii / cut points may differ, the encoding not
+    if ((s.get("n_vars"), s.get("reduce_basis"), kind(s.get("regulariser"))) != (prog.n_vars, reduce_basis, kind(reg))
             or not (Path(seed) / "sdp.ck").is_dir()
             or basis is not None and not np.array_equal(np.load(Path(seed) / "basis.npy"), basis)):
         raise ValueError(f"hot start from {seed}: the seed's SDP has another structure or no checkpoint")

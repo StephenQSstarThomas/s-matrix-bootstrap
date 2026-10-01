@@ -81,3 +81,41 @@ def test_hot_start_refuses_a_seed_with_another_structure(tmp_path):
     (seed / "report.json").write_text(json.dumps({"n_vars": 7, "reduce_basis": False, "regulariser": "linf-relax"}))
     with pytest.raises(ValueError, match="hot start"):
         run_leaf(GtbSpec(M=10), KS10, tmp_path / "leaf", hot_start=seed)
+
+
+@needs_ks10
+def test_box_inner_regulariser_uses_per_value_radii_inside_the_l4_ball(tmp_path):
+    from smatrix_bootstrap.gtb import kernels
+    from smatrix_bootstrap.gtb.program import Program
+    from smatrix_bootstrap.gtb.spec import GtbSpec
+    ks, R, n = kernels.load(KS10), 100.0 * 155, 155
+    b = np.linspace(1.0, 2.0, n)
+    b *= R / (b ** 4).sum() ** 0.25                              # on the l4 sphere: allowed
+    np.save(tmp_path / "b.npy", b)
+    p = Program(GtbSpec(M=10), ks, reg=f"box-inner:{tmp_path / 'b.npy'}")
+    hi = [blk for blk in p.blocks() if blk.name.startswith("reg:") and blk.name.endswith(":hi")]
+    assert len(hi) == n and np.isclose(hi[7].forms[(0, 0)][1 + p.groups["rho"].start - 1 + 7], -1 / b[7])
+    np.save(tmp_path / "big.npy", b * 1.001)                     # outside the l4 ball: refused
+    with pytest.raises(ValueError):
+        Program(GtbSpec(M=10), ks, reg=f"box-inner:{tmp_path / 'big.npy'}")
+
+
+@needs_ks10
+def test_l4_cuts_are_supporting_hyperplanes(tmp_path):
+    from smatrix_bootstrap.gtb import kernels
+    from smatrix_bootstrap.gtb.program import Program
+    from smatrix_bootstrap.gtb.spec import GtbSpec
+    ks, R, n = kernels.load(KS10), 100.0 * 155, 155
+    rb = np.sin(np.arange(n) + 1.0)
+    rb *= R / (rb ** 4).sum() ** 0.25
+    np.save(tmp_path / "cuts.npy", rb[None])
+    p = Program(GtbSpec(M=10), ks, reg=f"linf-relax+cuts:{tmp_path / 'cuts.npy'}")
+    cut = [blk for blk in p.blocks() if blk.name.startswith("reg:cut:")]
+    assert len(cut) == 1
+    f = np.asarray(cut[0].forms[(0, 0)])
+    v = np.zeros(p.n_raw); v[p.groups["rho"]] = rb
+    assert abs(f @ np.r_[1.0, p.unlift(v)]) < 1e-9               # rho on the sphere at the cut point: equality
+    assert abs(f[0] - 1.0) < 1e-12                               # rho = 0 (and every other amplitude 0): value 1
+    np.save(tmp_path / "off.npy", 1.01 * rb[None])
+    with pytest.raises(ValueError):
+        Program(GtbSpec(M=10), ks, reg=f"linf-relax+cuts:{tmp_path / 'off.npy'}")

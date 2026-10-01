@@ -145,3 +145,28 @@ def test_shadow_price_of_eps_chi_matches_two_independent_solves():
     fd = (f1("cold46_echi204") - f1("cold46")) / 0.04e-3                    # two SDPB solves, eps_chi +2 %
     sp = shadow_prices(HOT / "cold46", KS10, which={"eps_chi"})["eps_chi"]["dopt_dtheta"]
     assert fd > 1 and abs(sp - fd) < 0.05 * fd, (sp, fd)
+
+
+def _relabelled_leaf(tmp_path, reg):
+    import json, shutil
+    d = tmp_path / "leaf"
+    d.mkdir(parents=True)
+    shutil.copy(LEAF10 / "solution.npz", d)
+    rep = json.loads((LEAF10 / "report.json").read_text())
+    rep["regulariser"] = reg
+    (d / "report.json").write_text(json.dumps(rep))
+    return d
+
+
+@needs_leaf10
+def test_primal_checks_l4_cuts_and_box_radii(tmp_path):
+    from smatrix_bootstrap.gtb.certify import primal
+    v = np.load(LEAF10 / "solution.npz")["v"]
+    rho, R = v[1 + 20:176], 100.0 * 155                    # M = 10: rho after T0, sigma1, sigma2; R = Mreg Mrho
+    assert (rho ** 4).sum() ** 0.25 > R                     # the M = 10 relax leaf is outside the l4 ball
+    np.save(tmp_path / "cut.npy", (R * rho / (rho ** 4).sum() ** 0.25)[None])   # its own cut excludes it
+    rep = primal(_relabelled_leaf(tmp_path, f"linf-relax+cuts:{tmp_path / 'cut.npy'}"), KS10)
+    assert rep["families"]["regulariser"]["certified_fail"] == 1
+    np.save(tmp_path / "b.npy", np.full(rho.size, R / rho.size ** 0.25))
+    rep = primal(_relabelled_leaf(tmp_path / "x", f"box-inner:{tmp_path / 'b.npy'}"), KS10)
+    assert rep["families"]["regulariser"]["certified_fail"] == int((np.abs(rho) > R / rho.size ** 0.25).sum())
