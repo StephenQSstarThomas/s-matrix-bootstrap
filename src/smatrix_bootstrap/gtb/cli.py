@@ -10,7 +10,7 @@ from .spec import GtbSpec
 
 def _solve(a):
     from . import solve
-    spec = replace(GtbSpec(), M=a.M, f0_ni=a.ni)
+    spec = replace(GtbSpec(), M=a.M, f0_ni=a.ni, objective=a.objective)
     rep = solve.run_leaf(spec, a.kernels, a.workdir, reg=a.reg, reduce_basis=a.reduce_basis, basis_tol=a.basis_tol,
                          precision=a.precision, nproc=a.nproc, timeout=a.timeout, duality_gap=a.duality_gap,
                          primal_error=a.primal_error, dual_error=a.dual_error, initial_scale=a.initial_scale,
@@ -76,7 +76,8 @@ def main(argv=None) -> int:
     s.add_argument("--kernels", required=True, help="kernel export directory (manifest.json + *.txt.gz)")
     s.add_argument("--workdir", required=True)
     s.add_argument("--M", type=int, default=50)
-    s.add_argument("--ni", type=int, default=46, help="44/46/48 = blue/green/red")
+    s.add_argument("--ni", type=int, default=46, help="F0 = ni/50 * 0.163108; 44/46/48 = blue/green/red")
+    s.add_argument("--objective", default="F1max", choices=["F1max", "F1min"])
     s.add_argument("--reg", default="linf-relax", choices=["linf-relax", "linf-inner", "none", "l4-exact"])
     s.add_argument("--reduce-basis", action="store_true")
     s.add_argument("--basis-tol", type=float, default=1e-12)

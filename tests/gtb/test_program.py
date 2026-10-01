@@ -283,3 +283,15 @@ def test_watson_program_accepts_a_reduced_basis():
     y = rng.normal(size=prog.n_vars - 1) * 1e-2
     v = prog.lift(y)
     assert np.allclose(v[prog.groups["amp"]], V @ y[:60])
+
+
+@needs_ks10
+def test_f1min_objective_is_minus_f1():
+    from dataclasses import replace
+    from smatrix_bootstrap.gtb import kernels
+    from smatrix_bootstrap.gtb.program import Program
+    from smatrix_bootstrap.gtb.spec import GtbSpec
+    ks = kernels.load(KS10)
+    pmax = Program(GtbSpec(M=10), ks)
+    pmin = Program(replace(GtbSpec(M=10), objective="F1min"), ks)
+    assert np.allclose(pmin.objective(), -pmax.objective()) and pmin.pivot == pmax.pivot

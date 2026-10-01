@@ -271,7 +271,8 @@ class Program:
 
     def objective(self):
         if not self.watson:
-            return self.amp_forms(self.F1row)[0]
+            sign = -1 if self.spec.objective == "F1min" else 1
+            return self.amp_forms(sign * self.F1row)[0]
         lam = self.ks.Lam
         row = self.zeros(self.Rre.shape[1])
         for w in WATSON_WAVES:
