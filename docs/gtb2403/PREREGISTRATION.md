@@ -61,3 +61,14 @@ amendments with the reason; the original text is never edited.
 - **G2**: a production encoding with a measured cost; the choice is recorded before G3 runs.
 - **G3** = C1. On FAIL: stop production; diagnose (regulariser scale, full space vs reduced, ‖ρ‖₄ at the optimum,
   omitted-wave unitarity) without changing any input; report.
+
+## Amendment 1 (2026-10-01, before any 2403 analysis quantity is evaluated): analysis prescriptions
+
+
+- Off-node and complex-s evaluation of the amplitude uses the disk interpolant w_j(z) = (i/2M)(1 − (z/z_j)^M)(z_j + z)/(z_j − z) − (same with z_j → 1/z_j), z_j = e^{iφ_j}, for every s-channel discontinuity (σ and the s-index of ρ); it satisfies Im w_j(z_k) = δ_jk and Re w_j(z_k) = K_kj, i.e. it is the unique band-limited analytic function that the authors' K represents at the nodes. Crossed channels use Q_ℓ at the same (real or complex) s. Control: the authors' midpoint sum (Δ/π) x'_m [1/(x_m − s) − 1/(x_m − ν₀)] for the s-channel; the difference is reported for every quantity that uses off-node evaluation.
+- Threshold parameters (C8): a and b from a least-squares fit of Re f^I_ℓ(s)/k^{2ℓ} = a + b k² + c k⁴ on 12 evenly spaced k² ∈ (0, 0.25] using the interpolant evaluation; the same fit on the first 4 nodes is the control.
+- Radii (C9): F′(0) = Σ_m (Δ/π) x'_m Im F_m / x_m² (the authors' midpoint construction of K₀, differentiated); ⟨r²⟩ = 6 F′(0)/m_π² in fm² with ħc = 197.327 MeV fm; control: derivative of the interpolant at s = 0.
+- ρ pole (C13): zero of S¹₁(s) = 1 + iπ√((s−4)/s) f¹₁(s) (S = 1 + ih, h = π√((s−4)/s) f) continued to complex s in the lower half plane of the first sheet (equivalently the pole of S on the second sheet, since S_II = 1/S_I), found by Newton from √s = 0.83 − 0.04i GeV; reported as √s_p in MeV.
+- Fits (C14, C17, C18): windows as in PREREGISTRATION.md; Gounaris–Sakurai and Breit–Wigner forms of (5.2), (5.3), (5.9) of v4; unweighted least squares on node values.
+- Forward amplitudes (C20): T^I(s, 0) = 2 Σ_{ℓ≤19} (2ℓ+1) f^I_ℓ(s) at the nodes; T₀₊ = (T¹ + T²)/2, T₀₀ = (T⁰ + 2T²)/3, T^{I_t=1} = T⁰/3 + T¹/2 − 5T²/6.
+
