@@ -104,6 +104,12 @@ def analyze(leaf, kernels_dir, pole=True) -> dict:
     grid = Grid(M, prec_bits=192)
     res["threshold"], res["threshold_control"] = _threshold(prog, amp, grid)
     res["between_nodes"] = between_nodes(grid, amp, n0)
+    from .watson import residual, targets_from_solution
+    res["watson_self_residual"] = residual(prog, v, targets_from_solution(prog, v))
+    if (Path(leaf) / "watson_targets.npz").exists():
+        z = np.load(Path(leaf) / "watson_targets.npz")
+        seed = {w: (z[f"{w}_re"], z[f"{w}_im"]) for w in {k.rsplit("_", 1)[0] for k in z.files}}
+        res["watson_seed_residual"] = residual(prog, v, seed)
     res["lbar"] = A.lbar(res["threshold"]["a02"], res["threshold"]["a22"], res["radii_fm2"]["S"], res["radii_fm2"]["V"])
     s = x[:n0]
     win = lambda lo, hi: (E[:n0] >= lo) & (E[:n0] <= hi)

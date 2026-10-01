@@ -124,3 +124,15 @@ def test_lec_rows_reproduce_the_leaf_analysis():
         assert abs(rows[key] @ v - an["threshold"][key]) <= 1e-10 * max(1, abs(an["threshold"][key])), key
     for key, ch in (("r2S", "S"), ("r2V", "V"), ("r2T", "T")):
         assert abs(rows[key] @ v - an["radii_fm2"][ch]) <= 1e-12 * max(1, abs(an["radii_fm2"][ch])), key
+
+
+@pytest.mark.skipif(not (LEAF10W / "solution.npz").exists(), reason="M=10 Watson leaf missing")
+def test_watson_residual_is_zero_at_own_targets_and_sees_a_shifted_target():
+    from smatrix_bootstrap.gtb.leafanalysis import _load
+    from smatrix_bootstrap.gtb.watson import residual, targets_from_solution
+    _, _, prog, v = _load(LEAF10W, KS10)
+    t = targets_from_solution(prog, v)
+    r = residual(prog, v, t)
+    assert all(r[w] == 0.0 for w in ("S2", "D2", "F1"))
+    t["F1"][1][2] += 0.125
+    assert abs(residual(prog, v, t)["F1"] - 0.125) < 1e-12

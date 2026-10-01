@@ -30,3 +30,14 @@ def targets_from_solution(prog, v) -> dict:
             rows = [prog.row_index(w, j) for j in range(n0)]
             out[w] = (hre[rows].copy(), him[rows].copy())
     return out
+
+
+def residual(prog, v, targets) -> dict:
+    """{wave: max_n |h~_n - t_n|}: distance of a solution from the Watson fixed point h~ = t (Phase B, Task B7)."""
+    amp = v[prog.groups["amp"]]
+    hre, him = (prog.Rre @ amp) / prog.ks.Lam, (prog.Rim @ amp) / prog.ks.Lam
+    out = {}
+    for w, (tre, tim) in targets.items():
+        rows = [prog.row_index(w, j) for j in range(prog.n0)]
+        out[w] = float(np.max(np.abs((hre[rows] - tre) + 1j * (him[rows] - tim))))
+    return out
