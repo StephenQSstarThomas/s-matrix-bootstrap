@@ -132,3 +132,16 @@ def test_primal_reports_a_custom_objective_when_the_leaf_has_one(tmp_path):
     np.save(leaf / "objective_row.npy", row)
     rep = primal(leaf, KS10)
     assert abs(float(rep["objective_custom"]["mid"]) - row @ v) < 1e-9 * max(1, abs(row @ v))
+
+
+HOT = Path("/playpen1/shiqiu/gtb2403_runs/scratch_hot")
+
+
+@pytest.mark.skipif(not (HOT / "cold46_echi204" / "report.json").exists(), reason="M=10 eps_chi pair missing")
+def test_shadow_price_of_eps_chi_matches_two_independent_solves():
+    import json
+    from smatrix_bootstrap.gtb.sensitivity import shadow_prices
+    f1 = lambda d: json.loads((HOT / d / "report.json").read_text())["sdpb_result"]["dualObjective"]
+    fd = (f1("cold46_echi204") - f1("cold46")) / 0.04e-3                    # two SDPB solves, eps_chi +2 %
+    sp = shadow_prices(HOT / "cold46", KS10, which={"eps_chi"})["eps_chi"]["dopt_dtheta"]
+    assert fd > 1 and abs(sp - fd) < 0.05 * fd, (sp, fd)

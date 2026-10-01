@@ -65,6 +65,15 @@ def _analyze(a):
     return 0
 
 
+def _sensitivity(a):
+    from pathlib import Path
+    from .sensitivity import shadow_prices
+    res = shadow_prices(a.leaf, a.kernels)
+    Path(a.leaf, "sensitivity.json").write_text(json.dumps(res, indent=1) + "\n")
+    print(json.dumps({k: round(v["elasticity"], 9) for k, v in res.items()}))
+    return 0
+
+
 def _claims(a):
     from pathlib import Path
     from . import claims as K
@@ -131,6 +140,10 @@ def main(argv=None) -> int:
     n.add_argument("--kernels", required=True)
     n.add_argument("--no-pole", action="store_true")
     n.set_defaults(func=_analyze)
+    e = sub.add_parser("sensitivity", help="shadow prices d opt/d theta of the tolerances from SDPB's multipliers")
+    e.add_argument("--leaf", required=True)
+    e.add_argument("--kernels", required=True)
+    e.set_defaults(func=_sensitivity)
     k = sub.add_parser("claims", help="pre-registered verdicts from analysed points and certificates")
     k.add_argument("--point", action="append", required=True, help="NI:INITIAL_LEAF:WATSON_LEAF")
     k.add_argument("--c1", action="append", help="NI:LOWER_CERTIFICATE_JSON:UPPER_CERTIFICATE_JSON")
