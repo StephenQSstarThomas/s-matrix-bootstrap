@@ -6,7 +6,7 @@ set -u
 Q=$1; MAXJOBS=${2:-4}; LOG=${Q%.txt}.log
 echo $$ > ${Q%.txt}.pid
 while true; do
-  live=$(ps -eo args | grep -c "[g]tb solve")
+  live=$(ps -eo args | grep -c "^python3 -m smatrix_bootstrap.run gtb solve")
   if [ "$live" -lt "$MAXJOBS" ] && [ -s "$Q" ]; then
     cmd=$(head -n1 "$Q"); tail -n +2 "$Q" > "$Q.tmp" && mv "$Q.tmp" "$Q"
     wd=$(echo "$cmd" | grep -oE -- "--workdir [^ ]+" | awk '{print $2}')
