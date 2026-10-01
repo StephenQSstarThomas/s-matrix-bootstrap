@@ -79,27 +79,32 @@ def _claims(a):
     from . import claims as K
     load = lambda d: json.loads(Path(d, "analysis.json").read_text())
     init, wat = {}, {}
-    for spec in a.point:
+    for spec in a.point or []:
         ni, i, w = spec.split(":")
         init[int(ni)], wat[int(ni)] = load(i), load(w)
     res = {}
     c1 = {}
-    for spec in a.c1 or []:
-        ni, lo, hi = spec.split(":")
-        lo_c, hi_c = json.loads(Path(lo).read_text()), json.loads(Path(hi).read_text())
-        ok = lo_c["lower"]["certified"] and lo_c["l4_feasible"] == "certified_pass" and hi_c["upper"]["certified"]
-        lower, upper = float(lo_c["lower"]["value"]), float(hi_c["upper"]["value"])
+    for spec in a.c1 or []:                  # NI:LOWER[:UPPER]; a missing upper certificate means +inf (amendment 5)
+        ni, lo, *hi = spec.split(":")
+        lo_c = json.loads(Path(lo).read_text())
+        hi_c = json.loads(Path(hi[0]).read_text()) if hi else None
+        ok = lo_c["lower"]["certified"] and lo_c["l4_feasible"] == "certified_pass" and (
+            hi_c is None or hi_c["upper"]["certified"])
+        lower = float(lo_c["lower"]["value"])
+        upper = float(hi_c["upper"]["value"]) if hi_c else None
         c1[int(ni)] = {"lower": lower, "upper": upper, "paper": K.C1_PAPER[int(ni)],
-                       "verdict": K.c1_verdict(lower, upper, K.C1_PAPER[int(ni)]) if ok else "UNCERTIFIED"}
+                       "verdict": K.c1_verdict(lower, float("inf") if upper is None else upper, K.C1_PAPER[int(ni)])
+                       if ok else "UNCERTIFIED"}
     verdicts = {v["verdict"] for v in c1.values()}
     res["C1"] = {"verdict": "MISSING" if not c1 else ("PASS" if verdicts == {"PASS"} else
                  "FAIL" if "FAIL" in verdicts else "INCONCLUSIVE"), "points": c1}
-    res.update(K.phase_claims(wat))
+    if wat:
+        res.update(K.phase_claims(wat))
+        res["C21"] = K.c21(init, wat)
     if 44 in wat and 48 in wat:
         res.update(K.table_claims(wat[44], wat[48]))
     if 48 in wat:
         res["C20"] = K.c20(wat[48])
-    res["C21"] = K.c21(init, wat)
     Path(a.out).write_text(json.dumps(res, indent=1, default=float) + "\n")
     print(json.dumps({k: v["verdict"] for k, v in res.items() if isinstance(v, dict) and "verdict" in v}))
     return 0
@@ -147,8 +152,8 @@ def main(argv=None) -> int:
     e.add_argument("--kernels", required=True)
     e.set_defaults(func=_sensitivity)
     k = sub.add_parser("claims", help="pre-registered verdicts from analysed points and certificates")
-    k.add_argument("--point", action="append", required=True, help="NI:INITIAL_LEAF:WATSON_LEAF")
-    k.add_argument("--c1", action="append", help="NI:LOWER_CERTIFICATE_JSON:UPPER_CERTIFICATE_JSON")
+    k.add_argument("--point", action="append", help="NI:INITIAL_LEAF:WATSON_LEAF")
+    k.add_argument("--c1", action="append", help="NI:LOWER_CERTIFICATE_JSON[:UPPER_CERTIFICATE_JSON]")
     k.add_argument("--out", required=True)
     k.set_defaults(func=_claims)
     a = p.parse_args(argv)

@@ -112,3 +112,14 @@ def test_phases_figure_renders(tmp_path):
     an = {ni: paper_as_analysis(ni) for ni in (44, 46, 48)}
     p = phases_figure(an, an, tmp_path / "phases.png")
     assert p.stat().st_size > 20000
+
+
+def test_c1_from_a_lower_certificate_alone(tmp_path):
+    import json
+    from smatrix_bootstrap.gtb.cli import main
+    cert = {"lower": {"value": "-0.0271602", "certified": True}, "l4_feasible": "certified_pass",
+            "upper": {"value": None, "certified": False}}
+    (tmp_path / "c.json").write_text(json.dumps(cert))
+    assert main(["claims", "--c1", f"46:{tmp_path / 'c.json'}", "--out", str(tmp_path / "o.json")]) == 0
+    c1 = json.loads((tmp_path / "o.json").read_text())["C1"]
+    assert c1["verdict"] == "FAIL" and c1["points"]["46"]["upper"] is None
