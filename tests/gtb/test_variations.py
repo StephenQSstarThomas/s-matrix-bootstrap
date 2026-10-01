@@ -119,3 +119,20 @@ def test_l4_cuts_are_supporting_hyperplanes(tmp_path):
     np.save(tmp_path / "off.npy", 1.01 * rb[None])
     with pytest.raises(ValueError):
         Program(GtbSpec(M=10), ks, reg=f"linf-relax+cuts:{tmp_path / 'off.npy'}")
+
+
+@needs_ks10
+def test_hot_started_reduced_solve_reuses_the_seed_basis(tmp_path):
+    import json
+    from smatrix_bootstrap.gtb import kernels
+    from smatrix_bootstrap.gtb.solve import leaf_basis
+    from smatrix_bootstrap.gtb.spec import GtbSpec
+    ks = kernels.load(KS10)
+    fresh, _ = leaf_basis(ks, GtbSpec(M=10), True, 1e-12, None)
+    seed = tmp_path / "seed"
+    seed.mkdir()
+    np.save(seed / "basis.npy", -fresh)                        # same span, other signs (as another BLAS gives)
+    (seed / "report.json").write_text(json.dumps({"basis": {"rank": fresh.shape[1], "from": "test"}}))
+    got, info = leaf_basis(ks, GtbSpec(M=10), True, 1e-12, seed)
+    assert np.array_equal(got, -fresh) and info["reused_from"] == str(seed)
+    assert leaf_basis(ks, GtbSpec(M=10), False, 1e-12, seed) == (None, None)

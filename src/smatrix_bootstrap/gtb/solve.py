@@ -30,6 +30,20 @@ def amplitude_basis(prog_rows, tol=1e-12):
     return vt[:k].T, {"rank": k, "n_rows": int(R.shape[0]), "tol": tol, "s_max": float(s[0]), "s_min_kept": float(s[k - 1])}
 
 
+def leaf_basis(ks, spec, reduce_basis, basis_tol, hot_start=None):
+    """The reduced amplitude basis: a hot-started solve reuses its seed's (the SVD's vectors depend on the BLAS
+    thread count, the span does not, and SDPB's checkpoint is tied to the vectors)."""
+    if not reduce_basis:
+        return None, None
+    if hot_start is not None:
+        info = json.loads((Path(hot_start) / "report.json").read_text()).get("basis") or {}
+        return np.load(Path(hot_start) / "basis.npy"), {**info, "reused_from": str(hot_start)}
+    probe = Program(spec, ks, reg="none")
+    lam = ks.Lam[:, None]
+    return amplitude_basis([probe.Rre / lam, probe.Rim / lam, probe.Rim / lam ** 2, probe.Fchi,
+                            probe.F0row[None], probe.F1row[None]], basis_tol)
+
+
 def watson_targets_from_leaf(leaf, ks):
     """Targets from any previous leaf (initial or Watson): only its rows and lifted solution are used."""
     from .spec import GtbSpec
@@ -70,12 +84,7 @@ def run_leaf(spec, kernels_path, workdir, *, reg="linf-relax", reduce_basis=Fals
     work.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     ks = kernels.load(kernels_path)
-    basis, basis_info = None, None
-    if reduce_basis:
-        probe = Program(spec, ks, reg="none")
-        lam = ks.Lam[:, None]
-        basis, basis_info = amplitude_basis([probe.Rre / lam, probe.Rim / lam, probe.Rim / lam ** 2, probe.Fchi,
-                                             probe.F0row[None], probe.F1row[None]], basis_tol)
+    basis, basis_info = leaf_basis(ks, spec, reduce_basis, basis_tol, hot_start)
     targets = None
     if watson_from is not None:                      # Watson step seeded by a previous leaf (same kernels)
         from dataclasses import replace
