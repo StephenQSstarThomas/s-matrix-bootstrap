@@ -206,20 +206,27 @@ def certify_leaf(leaf_dir, kernels_dir) -> dict:
     from .spec import GtbSpec
     leaf = Path(leaf_dir)
     rep = json.loads((leaf / "report.json").read_text())
-    if rep.get("reduce_basis"):
-        raise ValueError("V2 certifies full-space leaves only")
+    full_space = not rep.get("reduce_basis")
     spec = GtbSpec(**{f.name: (tuple(rep["spec"][f.name]) if isinstance(rep["spec"][f.name], list) else rep["spec"][f.name])
                       for f in fields(GtbSpec)})
     p1 = primal(leaf, kernels_dir)
     ok1 = all(v["certified_fail"] == 0 and v["inconclusive"] == 0 for v in p1["families"].values())
-    prog = Program(spec, ExactKernels(load(kernels_dir)), reg=rep["regulariser"])
-    blocks = prog.blocks()
-    Z = read_dual_matrices(leaf / "out", [b.size for b in blocks])
-    ybar = free_variable_bounds(prog)
-    res = dual_bound(blocks, list(prog.objective()), Z, trace_bounds(blocks, ybar), ybar)
-    ub = res["bound"]
     lower = {"value": p1["objective_F1"]["mid"], "radius": p1["objective_F1"]["radius"], "certified": ok1}
-    upper = {"value": ub.upper().str(30, radius=False) if ub.is_finite() else "inf",
-             "certified": bool(ub.is_finite()), "residual_history": res.get("residual_history"),
-             "max_shift": res.get("max_shift")}
-    return {"lower": lower, "upper": upper, "regulariser": rep["regulariser"], "l4_feasible": p1["l4_feasible"]}
+    upper = {"value": None, "certified": False, "reason": "reduced basis: V2 needs the full-space problem"}
+    if full_space:
+        targets = None
+        if (leaf / "watson_targets.npz").exists():
+            z = np.load(leaf / "watson_targets.npz")
+            targets = {w: (z[f"{w}_re"], z[f"{w}_im"]) for w in ("S0", "P1", "D0", "S2", "D2", "F1")}
+        prog = Program(spec, ExactKernels(load(kernels_dir)), reg=rep["regulariser"], watson_targets=targets)
+        blocks = prog.blocks()
+        Z = read_dual_matrices(leaf / "out", [b.size for b in blocks])
+        ybar = free_variable_bounds(prog)
+        res = dual_bound(blocks, list(prog.objective()), Z, trace_bounds(blocks, ybar), ybar)
+        ub = res["bound"]
+        upper = {"value": ub.upper().str(30, radius=False) if ub.is_finite() else "inf",
+                 "certified": bool(ub.is_finite()), "residual_history": res.get("residual_history"),
+                 "max_shift": res.get("max_shift")}
+    return {"lower": lower, "upper": upper, "regulariser": rep["regulariser"], "l4_feasible": p1["l4_feasible"],
+            "families": p1["families"], "rho_l4": p1["rho_l4"], "l4_bound": p1["l4_bound"],
+            "objective": rep["spec"]["objective"], "f0_ni": rep["spec"]["f0_ni"]}

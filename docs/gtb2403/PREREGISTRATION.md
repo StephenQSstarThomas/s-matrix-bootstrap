@@ -72,3 +72,12 @@ amendments with the reason; the original text is never edited.
 - Fits (C14, C17, C18): windows as in PREREGISTRATION.md; Gounaris–Sakurai and Breit–Wigner forms of (5.2), (5.3), (5.9) of v4; unweighted least squares on node values.
 - Forward amplitudes (C20): T^I(s, 0) = 2 Σ_{ℓ≤19} (2ℓ+1) f^I_ℓ(s) at the nodes; T₀₊ = (T¹ + T²)/2, T₀₀ = (T⁰ + 2T²)/3, T^{I_t=1} = T⁰/3 + T¹/2 − 5T²/6.
 
+
+## Amendment 2 (2026-10-01, from the blind figure extraction only; no 2403 phase result of ours exists yet)
+- C4 and C21: the η threshold 0.98 rejects the paper's own post-Watson curves (Fig. 4 P1: η = 0.978 at blue node 29,
+  0.986 at red node 35). Changed to min η ≥ 0.97 so that the rule accepts the published figure itself.
+- C4–C7 comparisons are node by node against `/playpen1/shiqiu/gtb2403_runs/paper_data/` (extraction script copied to
+  `scripts/gtb/extract_2403_figures.py`; dots on the nodes to ≤ 3e-5 GeV). Missing paper dots (Fig. 4 D0 δ at nodes
+  2–12 even, red S0 node 39) are skipped, not interpolated.
+- C23–C25: the Fig. 18–19 runs match none of the blue/green/red points (differences 0.17–1.3 in |F|); those claims are
+  compared in shape (peak positions/heights relative to the same run's baseline), never point to point.

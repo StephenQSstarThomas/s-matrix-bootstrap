@@ -99,3 +99,14 @@ def test_dual_residual_is_driven_below_1e_30():
     from smatrix_bootstrap.gtb.certify import certify_leaf
     res = certify_leaf(LEAF10, KS10)
     assert res["upper"]["residual_history"][-1] < 1e-30
+
+
+@needs_leaf10
+def test_cli_certify_writes_a_certificate():
+    import json, subprocess, sys, os
+    out = subprocess.run([sys.executable, "-m", "smatrix_bootstrap.run", "gtb", "certify", "--leaf", str(LEAF10),
+                          "--kernels", str(KS10)], capture_output=True, text=True, env={**os.environ, "PYTHONPATH": "src"})
+    assert out.returncode == 0, out.stderr[-2000:]
+    cert = json.loads((LEAF10 / "certificate.json").read_text())
+    assert cert["lower"]["certified"] and cert["upper"]["certified"]
+    assert set(cert) >= {"lower", "upper", "regulariser", "l4_feasible", "families"}

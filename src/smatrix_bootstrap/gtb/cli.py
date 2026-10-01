@@ -20,6 +20,15 @@ def _solve(a):
     return 0 if rep.get("sdpb_result", {}).get("terminateReason") == "found primal-dual optimal solution" else 1
 
 
+def _certify(a):
+    from pathlib import Path
+    from .dual import certify_leaf
+    cert = certify_leaf(a.leaf, a.kernels)
+    Path(a.leaf, "certificate.json").write_text(json.dumps(cert, indent=1, default=str) + "\n")
+    print(json.dumps({k: cert[k] for k in ("lower", "upper", "l4_feasible")}, indent=1, default=str))
+    return 0 if cert["lower"]["certified"] else 1
+
+
 def main(argv=None) -> int:
     p = argparse.ArgumentParser(prog="smatrix_bootstrap.run gtb")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -41,5 +50,9 @@ def main(argv=None) -> int:
     s.add_argument("--watson-from", default=None, help="Watson step seeded by this leaf (F0 released)")
     s.add_argument("--drop-pmp", action="store_true", help="delete pmp.json after an optimal termination")
     s.set_defaults(func=_solve)
+    c = sub.add_parser("certify", help="V1 (Arb primal) and, for full-space leaves, V2 (dual bound)")
+    c.add_argument("--leaf", required=True)
+    c.add_argument("--kernels", required=True)
+    c.set_defaults(func=_certify)
     a = p.parse_args(argv)
     return a.func(a)
