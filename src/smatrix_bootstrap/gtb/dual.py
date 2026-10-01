@@ -219,7 +219,9 @@ def certify_leaf(leaf_dir, kernels_dir) -> dict:
         if (leaf / "watson_targets.npz").exists():
             z = np.load(leaf / "watson_targets.npz")
             targets = {w: (z[f"{w}_re"], z[f"{w}_im"]) for w in ("S0", "P1", "D0", "S2", "D2", "F1")}
-        prog = Program(spec, ExactKernels(load(kernels_dir)), reg=rep["regulariser"], watson_targets=targets)
+        orow = np.load(leaf / "objective_row.npy") if (leaf / "objective_row.npy").exists() else None
+        prog = Program(spec, ExactKernels(load(kernels_dir)), reg=rep["regulariser"], watson_targets=targets,
+                       objective_row=orow)
         blocks = prog.blocks()
         Z = read_dual_matrices(leaf / "out", [b.size for b in blocks])
         ybar = free_variable_bounds(prog)

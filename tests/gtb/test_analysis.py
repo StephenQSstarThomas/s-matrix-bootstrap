@@ -110,3 +110,17 @@ def test_cli_analyze_writes_analysis_json():
     assert out.returncode == 0, out.stderr[-2000:]
     an = json.loads((LEAF10W / "analysis.json").read_text())
     assert {"phases", "threshold", "fits", "forward", "pole"} <= set(an)
+
+
+@pytest.mark.skipif(not (LEAF10W / "solution.npz").exists(), reason="M=10 Watson leaf missing")
+def test_lec_rows_reproduce_the_leaf_analysis():
+    import json
+    from smatrix_bootstrap.gtb.lec import lec_rows
+    from smatrix_bootstrap.gtb.leafanalysis import _load, analyze
+    rep, ks, prog, v = _load(LEAF10W, KS10)
+    rows = lec_rows(prog)
+    an = analyze(LEAF10W, KS10, pole=False)
+    for key in ("a00", "a20", "a11", "b00", "a02", "a22"):
+        assert abs(rows[key] @ v - an["threshold"][key]) <= 1e-10 * max(1, abs(an["threshold"][key])), key
+    for key, ch in (("r2S", "S"), ("r2V", "V"), ("r2T", "T")):
+        assert abs(rows[key] @ v - an["radii_fm2"][ch]) <= 1e-12 * max(1, abs(an["radii_fm2"][ch])), key

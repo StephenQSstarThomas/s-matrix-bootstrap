@@ -11,10 +11,16 @@ from .spec import GtbSpec
 def _solve(a):
     from . import solve
     spec = replace(GtbSpec(), M=a.M, f0_ni=a.ni, objective=a.objective)
+    row = None
+    if a.lec:
+        from .kernels import load
+        from .lec import lec_rows
+        from .program import Program
+        row = lec_rows(Program(replace(GtbSpec(), M=a.M), load(a.kernels), reg="none"))[a.lec]
     rep = solve.run_leaf(spec, a.kernels, a.workdir, reg=a.reg, reduce_basis=a.reduce_basis, basis_tol=a.basis_tol,
                          precision=a.precision, nproc=a.nproc, timeout=a.timeout, duality_gap=a.duality_gap,
                          primal_error=a.primal_error, dual_error=a.dual_error, initial_scale=a.initial_scale,
-                         keep_pmp=not a.drop_pmp, watson_from=a.watson_from)
+                         keep_pmp=not a.drop_pmp, watson_from=a.watson_from, objective_row=row)
     print(json.dumps({k: rep.get(k) for k in ("sdpb_result", "observables", "n_vars", "seconds_total")},
                      indent=1, default=str))
     return 0 if rep.get("sdpb_result", {}).get("terminateReason") == "found primal-dual optimal solution" else 1
@@ -77,7 +83,8 @@ def main(argv=None) -> int:
     s.add_argument("--workdir", required=True)
     s.add_argument("--M", type=int, default=50)
     s.add_argument("--ni", type=int, default=46, help="F0 = ni/50 * 0.163108; 44/46/48 = blue/green/red")
-    s.add_argument("--objective", default="F1max", choices=["F1max", "F1min"])
+    s.add_argument("--objective", default="F1max", choices=["F1max", "F1min", "custom_max", "custom_min"])
+    s.add_argument("--lec", default=None, help="with custom_max/min: a00 a20 a11 b00 b20 b11 a02 a22 r2S r2V r2T")
     s.add_argument("--reg", default="linf-relax", choices=["linf-relax", "linf-inner", "none", "l4-exact"])
     s.add_argument("--reduce-basis", action="store_true")
     s.add_argument("--basis-tol", type=float, default=1e-12)

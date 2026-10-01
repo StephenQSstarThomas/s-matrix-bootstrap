@@ -50,7 +50,7 @@ def _observables(prog, v):
 
 def run_leaf(spec, kernels_path, workdir, *, reg="linf-relax", reduce_basis=False, basis_tol=1e-12,
              precision=192, nproc=8, timeout=7200, duality_gap=1e-6, primal_error=1e-10, dual_error=1e-10,
-             initial_scale=1e4, max_iterations=500, keep_pmp=True, watson_from=None):
+             initial_scale=1e4, max_iterations=500, keep_pmp=True, watson_from=None, objective_row=None):
     work = Path(workdir)
     work.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
@@ -69,7 +69,9 @@ def run_leaf(spec, kernels_path, workdir, *, reg="linf-relax", reduce_basis=Fals
         np.savez(work / "watson_targets.npz", **{f"{w}_{p}": t[i] for w, t in targets.items()
                                                   for i, p in enumerate(("re", "im"))})
         spec = replace(spec, objective="watson", f0_ni=prev["spec"]["f0_ni"])
-    prog = Program(spec, ks, reg=reg, basis=basis, watson_targets=targets)
+    if objective_row is not None:
+        np.save(work / "objective_row.npy", np.asarray(objective_row, dtype=float))
+    prog = Program(spec, ks, reg=reg, basis=basis, watson_targets=targets, objective_row=objective_row)
     if basis is not None:
         np.save(work / "basis.npy", basis)
     rep = {"spec": asdict(spec), "spec_key": spec.key(), "kernels": str(kernels_path),

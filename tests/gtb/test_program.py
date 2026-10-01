@@ -308,3 +308,20 @@ def test_watson_targets_can_be_taken_from_a_watson_leaf():
     from smatrix_bootstrap.gtb import kernels
     t = watson_targets_from_leaf(seed, kernels.load(KS10))
     assert set(t) == {"S0", "P1", "D0", "S2", "D2", "F1"} and len(t["P1"][0]) == kernels.load(KS10).manifest["n0"]
+
+
+@needs_ks10
+@pytest.mark.parametrize("sense", ["custom_max", "custom_min"])
+def test_custom_objective_row_over_raw_variables(sense):
+    from dataclasses import replace
+    from smatrix_bootstrap.gtb import kernels
+    from smatrix_bootstrap.gtb.program import Program
+    from smatrix_bootstrap.gtb.spec import GtbSpec
+    ks = kernels.load(KS10)
+    probe = Program(GtbSpec(M=10), ks)
+    rng = np.random.default_rng(8)
+    row = rng.normal(size=probe.n_raw)
+    prog = Program(replace(GtbSpec(M=10), objective=sense), ks, objective_row=row)
+    y = rng.normal(size=prog.n_vars - 1)
+    sign = 1 if sense == "custom_max" else -1
+    assert abs(prog.objective() @ np.r_[1.0, y] - sign * row @ prog.lift(y)) < 1e-9 * max(1, abs(row @ prog.lift(y)))

@@ -32,7 +32,7 @@ class Block:
 
 
 class Program:
-    def __init__(self, spec, ks, reg: str = "linf-relax", basis=None, watson_targets=None):
+    def __init__(self, spec, ks, reg: str = "linf-relax", basis=None, watson_targets=None, objective_row=None):
         from . import regulariser
         M, nw, nb = spec.M, spec.L // 2, spec.n_b
         self.spec, self.ks, self.M, self.nw, self.nb = spec, ks, M, nw, nb
@@ -53,6 +53,9 @@ class Program:
         if self.watson and watson_targets is None:
             raise ValueError("the Watson objective needs targets (watson.targets_from_solution)")
         self.watson_targets = watson_targets
+        self.objective_row = objective_row
+        if spec.objective.startswith("custom") and objective_row is None:
+            raise ValueError("a custom objective needs objective_row over the raw variables")
         self._amplitude_map(n_amp, basis)
         self.c_first = np.array([0, nb, 2 * nb])
         # coefficients of B-splines with no node in their support enter no constraint: fixed to 0, removed
@@ -270,6 +273,11 @@ class Program:
         return out
 
     def objective(self):
+        if self.spec.objective.startswith("custom"):
+            row = np.asarray(self.objective_row, dtype=float) * (-1 if self.spec.objective == "custom_min" else 1)
+            f = self.amp_forms(row[self.groups["amp"]])[0]
+            f[self.o_imf:self.o_imf + 3 * self.M] += row[self.groups["ImF"]]
+            return f + self.c_form(row[self.groups["c"]])
         if not self.watson:
             sign = -1 if self.spec.objective == "F1min" else 1
             return self.amp_forms(sign * self.F1row)[0]
