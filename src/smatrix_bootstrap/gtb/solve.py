@@ -35,7 +35,8 @@ def watson_targets_from_leaf(leaf, ks):
     from .spec import GtbSpec
     from .watson import targets_from_solution
     prev = json.loads((Path(leaf) / "report.json").read_text())
-    pprog = Program(GtbSpec(M=prev["spec"]["M"]), ks, reg="none")
+    sp = prev["spec"]
+    pprog = Program(GtbSpec(M=sp["M"], L=sp.get("L", 20), n_b=sp.get("n_b", 40)), ks, reg="none")
     return targets_from_solution(pprog, np.load(Path(leaf) / "solution.npz")["v"])
 
 

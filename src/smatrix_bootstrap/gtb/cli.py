@@ -8,15 +8,35 @@ from dataclasses import replace
 from .spec import GtbSpec
 
 
+def spec_from_args(a) -> GtbSpec:
+    """M, L and N_B from the export's manifest; F0 point and objective from the flags; FIELD=VALUE overrides."""
+    from dataclasses import fields
+    from pathlib import Path
+    man = json.loads(Path(a.kernels, "manifest.json").read_text())
+    kw = {"M": int(man["M"]), "L": int(man["L"]), "n_b": man["matrices"]["BSpline3"]["shape"][1] // 3,
+          "f0_ni": a.ni, "objective": a.objective}
+    types = {f.name: type(f.default) for f in fields(GtbSpec)}
+    for item in getattr(a, "set", None) or []:
+        name, val = item.split("=", 1)
+        if name not in types or name in kw:
+            raise ValueError(f"--set {name}: not an overridable GtbSpec field")
+        t = types[name]
+        if t is tuple:
+            kw[name] = tuple(val.split(",") if name == "chi_second_norm_waves" else map(float, val.split(",")))
+        else:
+            kw[name] = val.lower() in ("1", "true", "yes") if t is bool else t(val)
+    return replace(GtbSpec(), **kw)
+
+
 def _solve(a):
     from . import solve
-    spec = replace(GtbSpec(), M=a.M, f0_ni=a.ni, objective=a.objective)
+    spec = spec_from_args(a)
     row = None
     if a.lec:
         from .kernels import load
         from .lec import lec_rows
         from .program import Program
-        row = lec_rows(Program(replace(GtbSpec(), M=a.M), load(a.kernels), reg="none"))[a.lec]
+        row = lec_rows(Program(replace(spec, objective="F1max"), load(a.kernels), reg="none"))[a.lec]
     rep = solve.run_leaf(spec, a.kernels, a.workdir, reg=a.reg, reduce_basis=a.reduce_basis, basis_tol=a.basis_tol,
                          precision=a.precision, nproc=a.nproc, timeout=a.timeout, duality_gap=a.duality_gap,
                          primal_error=a.primal_error, dual_error=a.dual_error, initial_scale=a.initial_scale,
@@ -81,7 +101,7 @@ def main(argv=None) -> int:
     s = sub.add_parser("solve", help="one leaf: maximise F1 at F0 = ni/50 * 0.163108")
     s.add_argument("--kernels", required=True, help="kernel export directory (manifest.json + *.txt.gz)")
     s.add_argument("--workdir", required=True)
-    s.add_argument("--M", type=int, default=50)
+    s.add_argument("--M", type=int, default=50, help="ignored: M, L and N_B are read from the export's manifest")
     s.add_argument("--ni", type=int, default=46, help="F0 = ni/50 * 0.163108; 44/46/48 = blue/green/red")
     s.add_argument("--objective", default="F1max", choices=["F1max", "F1min", "custom_max", "custom_min"])
     s.add_argument("--lec", default=None, help="with custom_max/min: a00 a20 a11 b00 b20 b11 a02 a22 r2S r2V r2T")
@@ -97,6 +117,8 @@ def main(argv=None) -> int:
     s.add_argument("--initial-scale", type=float, default=1e4)
     s.add_argument("--watson-from", default=None, help="Watson step seeded by this leaf (F0 released)")
     s.add_argument("--drop-pmp", action="store_true", help="delete pmp.json after an optimal termination")
+    s.add_argument("--set", action="append", metavar="FIELD=VALUE",
+                   help="override a GtbSpec field (App. B variations), e.g. eps_chi=1e-3, r=0.02,2,6, reg_bound=500")
     s.set_defaults(func=_solve)
     c = sub.add_parser("certify", help="V1 (Arb primal) and, for full-space leaves, V2 (dual bound)")
     c.add_argument("--leaf", required=True)

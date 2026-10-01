@@ -37,6 +37,10 @@ class Program:
         M, nw, nb = spec.M, spec.L // 2, spec.n_b
         self.spec, self.ks, self.M, self.nw, self.nb = spec, ks, M, nw, nb
         self.exact = bool(getattr(ks, "exact_mode", False))   # Arb balls in object arrays (certification)
+        man = ks.manifest
+        if (int(man["M"]), int(man["L"]), man["matrices"]["BSpline3"]["shape"][1]) != (M, spec.L, 3 * nb):
+            raise ValueError(f"spec (M, L, n_b) = {(M, spec.L, nb)} does not match the export "
+                             f"(M, L, 3 n_b) = {(man['M'], man['L'], man['matrices']['BSpline3']['shape'][1])}")
         self.n0 = int(ks.manifest["n0"])
         n_amp = 1 + 2 * M + M * M + M * (M + 1) // 2
         self.groups = {"amp": slice(0, n_amp), "sig": slice(0, 2 * M + 1), "rho": slice(2 * M + 1, n_amp),
