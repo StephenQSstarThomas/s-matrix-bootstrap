@@ -80,7 +80,29 @@ def between_nodes(grid, amp, n0, prescription="interp") -> dict:
     return out
 
 
-def analyze(leaf, kernels_dir, pole=True) -> dict:
+def omitted_waves(amp, big, L_leaf, include_kept=False) -> dict:
+    """|S| = |1 + i h| of the partial waves l >= L_leaf at every node, from a larger-L export of the same kernels
+    (the amplitude variables depend on M only).  Unitarity is imposed only for l < L_leaf (2309 rule: eta <= 1.02)."""
+    M, nw = int(big.manifest["M"]), int(big.manifest["L"]) // 2
+    re, im = np.hstack([big.Re_sig, big.Re_rho]), np.hstack([big.Im_sig, big.Im_rho])
+    out, kept = {"eta_max": {}, "eta": {}}, {}
+    names = {(0, 0): "S0", (0, 2): "D0", (2, 0): "S2", (2, 2): "D2", (1, 1): "P1", (1, 3): "F1"}
+    for b, I in enumerate((0, 2, 1)):
+        for w in range(nw):
+            ell = 2 * w + (1 if I == 1 else 0)
+            rows = slice((b * nw + w) * M, (b * nw + w + 1) * M)
+            eta = np.abs(1 + 1j * (re[rows] @ amp + 1j * (im[rows] @ amp)))
+            if ell >= L_leaf:
+                out["eta_max"][f"I{I}_l{ell}"] = float(eta.max())
+                out["eta"][f"I{I}_l{ell}"] = eta.tolist()
+            elif (I, ell) in names:
+                kept[names[(I, ell)]] = eta.tolist()
+    if include_kept:
+        out["kept"] = kept
+    return out
+
+
+def analyze(leaf, kernels_dir, pole=True, omitted_kernels=None) -> dict:
     from .arbkernels import Grid
     rep, ks, prog, v = _load(leaf, kernels_dir)
     M, n0, x = prog.M, prog.n0, ks.x
@@ -138,6 +160,9 @@ def analyze(leaf, kernels_dir, pole=True) -> dict:
             rows = [(b * prog.nw + wi) * M + j for j in range(n0)]
             f_all[nw][ell] = h[rows] / (np.pi * np.sqrt((s - 4) / s))
     res["forward"] = {k: {"re": v_.real.tolist(), "im": v_.imag.tolist()} for k, v_ in A.forward(f_all).items()}
+    if omitted_kernels:
+        from .kernels import load
+        res["omitted_waves"] = omitted_waves(amp, load(omitted_kernels), prog.spec.L)
     res["pole"] = {}
     if pole:
         from .pole import find_zero, s_matrix_p1, sqrt_s_mev

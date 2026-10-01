@@ -59,7 +59,7 @@ def _certify(a):
 def _analyze(a):
     from pathlib import Path
     from .leafanalysis import analyze
-    res = analyze(a.leaf, a.kernels, pole=not a.no_pole)
+    res = analyze(a.leaf, a.kernels, pole=not a.no_pole, omitted_kernels=a.omitted_kernels)
     Path(a.leaf, "analysis.json").write_text(json.dumps(res, default=float) + "\n")
     print(json.dumps({k: res[k] for k in ("crossings_GeV", "threshold", "radii_fm2", "lbar", "pole")}, default=float))
     return 0
@@ -140,6 +140,7 @@ def main(argv=None) -> int:
     n.add_argument("--leaf", required=True)
     n.add_argument("--kernels", required=True)
     n.add_argument("--no-pole", action="store_true")
+    n.add_argument("--omitted-kernels", default=None, help="larger-L export of the same M: |S| of the omitted waves")
     n.set_defaults(func=_analyze)
     e = sub.add_parser("sensitivity", help="shadow prices d opt/d theta of the tolerances from SDPB's multipliers")
     e.add_argument("--leaf", required=True)

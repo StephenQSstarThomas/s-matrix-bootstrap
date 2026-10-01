@@ -136,3 +136,21 @@ def test_watson_residual_is_zero_at_own_targets_and_sees_a_shifted_target():
     assert all(r[w] == 0.0 for w in ("S2", "D2", "F1"))
     t["F1"][1][2] += 0.125
     assert abs(residual(prog, v, t)["F1"] - 0.125) < 1e-12
+
+
+KS10_L24 = Path("/playpen1/shiqiu/gtb2403_runs/kernels/ours_M10_L24")
+
+
+@pytest.mark.skipif(not (KS10_L24 / "manifest.json").exists() or not (LEAF10W / "solution.npz").exists(),
+                    reason="M=10 L=24 export or leaf missing")
+def test_omitted_waves_come_from_a_larger_export_of_the_same_amplitude():
+    from smatrix_bootstrap.gtb import kernels
+    from smatrix_bootstrap.gtb.leafanalysis import _load, omitted_waves
+    _, _, prog, v = _load(LEAF10W, KS10)
+    amp = v[prog.groups["amp"]]
+    big = kernels.load(KS10_L24)
+    res = omitted_waves(amp, big, 20, include_kept=True)
+    S = 1 + 1j * (prog.Rre @ amp + 1j * (prog.Rim @ amp))
+    assert abs(res["kept"]["P1"][3] - abs(S[prog.row_index("P1", 3)])) < 1e-12      # same rows, same S
+    assert set(res["eta_max"]) == {"I0_l20", "I0_l22", "I2_l20", "I2_l22", "I1_l21", "I1_l23"}
+    assert all(np.isfinite(x) for x in res["eta_max"].values())
