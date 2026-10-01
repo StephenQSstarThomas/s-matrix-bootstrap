@@ -56,6 +56,15 @@ def _certify(a):
     return 0 if cert["lower"]["certified"] else 1
 
 
+def _infeasible(a):
+    from pathlib import Path
+    from .dual import certify_infeasible
+    res = certify_infeasible(a.leaf, a.kernels)
+    Path(a.leaf, "infeasibility.json").write_text(json.dumps(res, indent=1, default=str) + "\n")
+    print(json.dumps({k: res[k] for k in ("certified_infeasible", "bound")}))
+    return 0 if res["certified_infeasible"] else 1
+
+
 def _analyze(a):
     from pathlib import Path
     from .leafanalysis import analyze
@@ -141,6 +150,10 @@ def main(argv=None) -> int:
     c.add_argument("--leaf", required=True)
     c.add_argument("--kernels", required=True)
     c.set_defaults(func=_certify)
+    f = sub.add_parser("infeasible", help="V2 infeasibility certificate from a diverging leaf's multipliers")
+    f.add_argument("--leaf", required=True)
+    f.add_argument("--kernels", required=True)
+    f.set_defaults(func=_infeasible)
     n = sub.add_parser("analyze", help="phases, threshold parameters, radii, fits, forward amplitudes, rho pole")
     n.add_argument("--leaf", required=True)
     n.add_argument("--kernels", required=True)

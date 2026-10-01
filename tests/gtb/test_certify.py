@@ -170,3 +170,12 @@ def test_primal_checks_l4_cuts_and_box_radii(tmp_path):
     np.save(tmp_path / "b.npy", np.full(rho.size, R / rho.size ** 0.25))
     rep = primal(_relabelled_leaf(tmp_path / "x", f"box-inner:{tmp_path / 'b.npy'}"), KS10)
     assert rep["families"]["regulariser"]["certified_fail"] == int((np.abs(rho) > R / rho.size ** 0.25).sum())
+
+
+@pytest.mark.skipif(not (HOT / "infeas_ni60" / "out").exists(), reason="M=10 infeasible run missing")
+def test_infeasibility_is_certified_beyond_the_tip_and_not_inside():
+    from smatrix_bootstrap.gtb.dual import certify_infeasible
+    bad = certify_infeasible(HOT / "infeas_ni60", KS10)          # F0 = 1.2 x 0.163108, beyond the allowed region
+    assert bad["certified_infeasible"] and float(bad["bound"]) < 0
+    ok = certify_infeasible(HOT / "cold46", KS10)                # a feasible problem cannot be proven infeasible
+    assert not ok["certified_infeasible"]

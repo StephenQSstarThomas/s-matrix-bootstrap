@@ -238,3 +238,32 @@ def certify_leaf(leaf_dir, kernels_dir) -> dict:
     return {"lower": lower, "upper": upper, "regulariser": rep["regulariser"], "l4_feasible": p1["l4_feasible"],
             "families": p1["families"], "rho_l4": p1["rho_l4"], "l4_bound": p1["l4_bound"],
             "objective": rep["spec"]["objective"], "f0_ni": rep["spec"]["f0_ni"]}
+
+
+def certify_infeasible(leaf_dir, kernels_dir) -> dict:
+    """V2 infeasibility certificate from SDPB's multipliers of a (diverging) leaf.
+
+    For every feasible y:  0 <= sum_j <Z_j, M_j(y)> = sum_j <Z_j, C_j> + sum_n y_n r_n,  r_n = sum_j <Z_j, A_jn>.
+    dual_bound with a zero objective returns  sum<Z, C> + sum |r_n| ybar_n + PSD shifts  (Z repaired so that r is
+    tiny); a value below 0 proves that no feasible y exists.  A ray has no scale: Z is normalised to max entry 1.
+    """
+    import json
+    from dataclasses import fields
+    from .kernels import load
+    from .program import Program
+    from .spec import GtbSpec
+    leaf = Path(leaf_dir)
+    rep = json.loads((leaf / "report.json").read_text())
+    spec = GtbSpec(**{f.name: (tuple(rep["spec"][f.name]) if isinstance(rep["spec"][f.name], list) else rep["spec"][f.name])
+                      for f in fields(GtbSpec)})
+    prog = Program(spec, ExactKernels(load(kernels_dir)), reg=rep["regulariser"])
+    blocks = prog.blocks()
+    Z = read_dual_matrices(leaf / "out", [b.size for b in blocks])
+    scale = max(abs(float(x)) for z in Z for row in z for x in row) or 1.0
+    Z = [[[arb(x) / arb(repr(scale)) for x in row] for row in z] for z in Z]
+    ybar = free_variable_bounds(prog)
+    res = dual_bound(blocks, [0] * prog.n_vars, Z, trace_bounds(blocks, ybar), ybar)
+    b = res["bound"]
+    return {"certified_infeasible": bool(b.is_finite() and b < 0),
+            "bound": b.upper().str(20, radius=False) if b.is_finite() else "inf",
+            "residual_history": res.get("residual_history"), "max_shift": res.get("max_shift")}
