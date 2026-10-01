@@ -81,3 +81,10 @@ amendments with the reason; the original text is never edited.
   2–12 even, red S0 node 39) are skipped, not interpolated.
 - C23–C25: the Fig. 18–19 runs match none of the blue/green/red points (differences 0.17–1.3 in |F|); those claims are
   compared in shape (peak positions/heights relative to the same run's baseline), never point to point.
+
+## Amendment 3 (2026-10-01, before any 2403 phase result of ours exists)
+- Phase comparisons (C4, C7, C21) use d = ((δ_ours − δ_paper + 90°) mod 180°) − 90°: S = η e^{2iδ} fixes δ only modulo
+  180°, and the authors' plotting notebook applies hand-made branch shifts (P5 #8). Crossings (C5, C6) use our δ
+  unwrapped from threshold, as frozen in §0.
+- Every claim rule is first run with the paper's own extracted curves in place of ours; a rule that rejects the paper
+  itself is a defect of the rule and is amended (with this record) before our leaves are evaluated.
