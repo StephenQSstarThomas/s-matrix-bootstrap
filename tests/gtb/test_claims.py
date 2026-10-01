@@ -103,3 +103,12 @@ def test_cli_claims_on_leaves_made_of_the_papers_own_data(tmp_path):
                 "C19", "C20", "C21"):
         assert res[cid]["verdict"] == "PASS", (cid, res[cid])
     assert res["C1"]["verdict"] == "MISSING"
+
+
+@needs_paper
+def test_phases_figure_renders(tmp_path):
+    from smatrix_bootstrap.gtb.claims import paper_as_analysis
+    from smatrix_bootstrap.gtb.figures import phases_figure
+    an = {ni: paper_as_analysis(ni) for ni in (44, 46, 48)}
+    p = phases_figure(an, an, tmp_path / "phases.png")
+    assert p.stat().st_size > 20000
