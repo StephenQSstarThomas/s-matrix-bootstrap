@@ -1,0 +1,3 @@
+[submodule "third_party/gauge-theory-bootstrap"]
+	path = third_party/gauge-theory-bootstrap
+	url = https://github.com/hyfysics/gauge-theory-bootstrap
