@@ -119,3 +119,16 @@ def test_primal_certifies_the_m10_watson_leaf():
     rep = primal(Path("/playpen1/shiqiu/gtb2403_runs/scratch_tests/leaf_M10_watson"), KS10)
     for fam, r in rep["families"].items():
         assert r["certified_fail"] == 0 and r["inconclusive"] == 0, (fam, r)
+
+
+@needs_leaf10
+def test_primal_reports_a_custom_objective_when_the_leaf_has_one(tmp_path):
+    import shutil
+    from smatrix_bootstrap.gtb.certify import primal
+    leaf = tmp_path / "leaf"
+    shutil.copytree(LEAF10, leaf, ignore=shutil.ignore_patterns("pmp.json", "sdp", "sdp.ck", "out"))
+    v = np.load(leaf / "solution.npz")["v"]
+    row = np.zeros(v.size); row[5] = 2.0; row[-1] = -1.0
+    np.save(leaf / "objective_row.npy", row)
+    rep = primal(leaf, KS10)
+    assert abs(float(rep["objective_custom"]["mid"]) - row @ v) < 1e-9 * max(1, abs(row @ v))

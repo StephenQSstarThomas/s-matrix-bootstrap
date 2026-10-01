@@ -189,7 +189,13 @@ def primal(leaf_dir, kernels_dir, perturb=None) -> dict:
             fam["regulariser"].add(bound - abs(v), f"rho{i}")
     l4_verdict = verdict(R ** 4 - l4)
     f1 = _dot(F1row, amp)
-    return {"families": {k: v.report() for k, v in fam.items()},
+    extra = {}
+    if (leaf / "objective_row.npy").exists():               # custom objective: row over the raw variables
+        row = np.load(leaf / "objective_row.npy")
+        raw = amp + imf + c
+        val = sum((arb(repr(float(w))) * x for w, x in zip(row, raw) if w != 0), arb(0))
+        extra["objective_custom"] = {"mid": val.mid().str(30, radius=False), "radius": float(val.rad())}
+    return {**extra, "families": {k: v.report() for k, v in fam.items()},
             "objective_F1": {"mid": f1.mid().str(30, radius=False), "radius": float(f1.rad())},
             "l4_feasible": l4_verdict, "rho_l4": float(l4.root(4).mid()), "l4_bound": float(R.mid()),
             "F0_check": float((_dot(F0row, amp)).mid())}
