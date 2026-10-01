@@ -3,6 +3,7 @@
 # Usage: setsid nohup scripts/gtb/queue.sh QUEUE_FILE [MAXJOBS] > queue_runner.out 2>&1 &
 # Each line is a full shell command; its driver log goes to <workdir>.driver.log when the line has --workdir.
 set -u
+export OPENBLAS_NUM_THREADS=4 OMP_NUM_THREADS=4 MKL_NUM_THREADS=4   # numpy in the drivers; SDPB sets its own in docker
 Q=$1; MAXJOBS=${2:-4}; LOG=${Q%.txt}.log
 echo $$ > ${Q%.txt}.pid
 while true; do
