@@ -178,3 +178,51 @@ def table_claims(blue: dict, red: dict) -> dict:
                 ok &= good
         out[cid] = {"verdict": "PASS" if ok else "FAIL", "rows": rows}
     return out
+
+
+# ------------------------------------------------------------------ C20 forward amplitudes (red), C21 Watson on D0
+FWD = ("T0+", "T00", "TIt1")
+
+
+def paper_forward_as_analysis():
+    E, out = _nodes(), {}
+    for key in FWD:
+        im = _panel("fig05_forwardIm", f"{key}_GTB_red_ni48")
+        out[key] = {"im": [im.get(j, np.nan) for j in range(1, N0 + 1)]}
+    return {"E_GeV": E, "forward": out}
+
+
+def c20(an_red: dict) -> dict:
+    """Im T peaks below 1.5 GeV: position within 30 MeV, height within 10 % of the red paper dots."""
+    E, ref, rows, ok = np.array(_nodes()), paper_forward_as_analysis(), {}, True
+    for key in FWD:
+        o = np.array(an_red["forward"][key]["im"][:N0], float)
+        p = np.array(ref["forward"][key]["im"], float)
+        m = (E <= 1.5) & ~np.isnan(p)
+        jo, jp = int(np.argmax(np.where(m, o, -np.inf))), int(np.argmax(np.where(m, p, -np.inf)))
+        good = abs(E[jo] - E[jp]) <= 0.030 and abs(o[jo] / p[jp] - 1) <= 0.10
+        rows[key] = {"ours_peak_GeV": float(E[jo]), "paper_peak_GeV": float(E[jp]), "ours": float(o[jo]),
+                     "paper": float(p[jp]), "pass": good}
+        ok &= good
+    return {"verdict": "PASS" if ok else "FAIL", "rows": rows}
+
+
+def paper_stage_as_analysis(ni, stage):
+    d = _panel(f"fig20_D0{stage}W_delta", COLOUR[ni])
+    e = _panel(f"fig20_D0{stage}W_eta", COLOUR[ni])
+    return {"E_GeV": _nodes(), "phases": {"D0": {"delta_deg": [d.get(j, np.nan) for j in range(1, N0 + 1)],
+                                                 "eta": [e.get(j, np.nan) for j in range(1, N0 + 1)]}}}
+
+
+def c21(before: dict, after: dict) -> dict:
+    """Before Watson min eta(D0) < 0.7 for >= 2 colours; after: eta(D0) >= 0.97 and the D0 crossing within 30 MeV."""
+    low = sum(float(np.nanmin(b["phases"]["D0"]["eta"][:N0])) < 0.7 for b in before.values())
+    rows, ok = {"before_low_eta_colours": low}, low >= 2
+    for ni, a in after.items():
+        ref = paper_stage_as_analysis(ni, "after")
+        eta = float(np.nanmin(a["phases"]["D0"]["eta"][:N0]))
+        x, y = _cross(a, "D0"), _cross(ref, "D0")
+        good = eta >= 0.97 and x is not None and y is not None and abs(x - y) <= 0.030
+        rows[ni] = {"min_eta_after": eta, "cross_ours": x, "cross_paper": y, "pass": good}
+        ok &= good
+    return {"verdict": "PASS" if ok else "FAIL", "rows": rows}

@@ -67,3 +67,12 @@ def test_table_rules_accept_the_papers_numbers_and_reject_a_wrong_one():
     assert all(v["verdict"] == "PASS" for k, v in res.items() if k.startswith("C")), res
     red["threshold"]["a00"] = 0.30
     assert table_claims(blue, red)["C8"]["verdict"] == "FAIL"
+
+
+@needs_paper
+def test_forward_and_watson_rules_accept_the_papers_own_curves():
+    from smatrix_bootstrap.gtb.claims import c20, c21, paper_forward_as_analysis, paper_stage_as_analysis
+    assert c20(paper_forward_as_analysis())["verdict"] == "PASS"
+    before = {ni: paper_stage_as_analysis(ni, "before") for ni in (44, 46, 48)}
+    after = {ni: paper_stage_as_analysis(ni, "after") for ni in (44, 46, 48)}
+    assert c21(before, after)["verdict"] == "PASS"
