@@ -9,7 +9,7 @@ while true; do
   live=$(ps -eo args | grep -c "^python3 -m smatrix_bootstrap.run gtb solve")
   if [ "$live" -lt "$MAXJOBS" ] && [ -s "$Q" ]; then
     cmd=$(head -n1 "$Q"); tail -n +2 "$Q" > "$Q.tmp" && mv "$Q.tmp" "$Q"
-    wd=$(echo "$cmd" | grep -oE -- "--workdir [^ ]+" | awk '{print $2}')
+    wd=$(echo "$cmd" | grep -oE -- "--workdir [^ ]+" | head -n1 | awk '{print $2}')
     out=${wd:-/playpen1/shiqiu/gtb2403_runs/queue_job_$(date +%s)}.driver.log
     echo "$(date -u +%FT%TZ) launch (live=$live): $cmd" >> "$LOG"
     setsid nohup bash -c "cd /home/shiqiu/s-matrix-bootstrap && $cmd" > "$out" 2>&1 < /dev/null &
