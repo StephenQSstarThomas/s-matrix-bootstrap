@@ -1,0 +1,63 @@
+# Pre-registration: arXiv:2403.10772 v4 reproduction (frozen 2026-10-01, before any 2403 solve)
+
+This file is committed before any SDPB solve of the 2403 model exists. Its git commit and its SHA-256 in
+`/playpen1/shiqiu/gtb2403_runs/GATE_LOG.md` are the freeze record. Changes after the first solve are appended as dated
+amendments with the reason; the original text is never edited.
+
+## 0. Rules that apply to every claim
+
+- **Inputs** are the authors' code values (spec §2, plan Global Constraints). Nothing is tuned to any published curve.
+- **Points**: blue / green / red = ni 44 / 46 / 48, 𝔉₀ = ni/50 × 0.163108, maximise 𝔉₁, then one Watson step
+  (factor-2 target, S2/D2/F1 targets = their own initial waves). No other point selection is used for C4–C21.
+- **Comparison data** come only from the paper: Fig. 3 dots (`fig3_shape_dots_extracted.txt`, vector, ±3e-5), Figs. 4,
+  5, 6, 8, 10, 11, 18, 19, 20 vector paths extracted by a script frozen before it is run on our results, and the tables.
+  The paper's Fig. 4 dots sit on the same 39 nodes as ours (M=50, ν₀=−20), so phase comparisons are node by node.
+- **Phase convention**: S = 1 + iΛ_ℓ h̃ at each node; δ = ½ unwrap(arg S) from threshold, η = |S|; 90° crossings by
+  linear interpolation in √s between adjacent nodes. Branch choices are not tuned per solution.
+- **Verification level** (docs/gtb2403/VERIFICATION_AUDIT_ZH.md): any value is reported with V1 (Arb primal); any
+  statement of an upper bound, exclusion or infeasibility needs V2 on the full-space problem.
+- **Tolerance for tables**: each blue and red value within max(5 %·|q_paper|, ½|q_blue − q_red|_paper).
+- **Regulariser encoding**: a number obtained with a relaxation (ℓ∞, ℓ2 inner/outer) is labelled as such and never
+  used alone for a verdict; verdicts use the exact ℓ4 encoding or a bracket that decides the inequality.
+
+## 1. Claims
+
+| ID | Quantity (paper value: blue, red unless noted) | Rule | Level |
+|---|---|---|---|
+| C1 | 𝔉₁^max pre-Watson at ni 44/46/48: −0.027229 / −0.028770 / −0.030397 | \|Δ𝔉₁\| ≤ 1e-4 for each; a bracket wholly outside the band is FAIL, a bracket straddling it with width > 2e-4 is INCONCLUSIVE | V1 + V2 |
+| C2 | Allowed region (𝔉₀, 𝔉₁): 50 upper + 50 lower boundary dots; tip ≈ (0.1632, −0.0324) | RMS of 𝔉₁ differences over the 100 dots ≤ 3e-4; tip 𝔉₀ within 1 %; tree-level dot (0.145743, −0.0291487) inside | V1 + V2 |
+| C3 | ε^χ = 2e-3 is the minimal tolerance keeping the tree-level point | tree point feasible at 2e-3; bisected exclusion threshold in [1e-3, 2e-3] | V1 (feasible), V2 (infeasible) |
+| C4 | Six phase shifts and η after Watson (Fig. 4) | per-wave RMS ≤ 5° against the same-colour paper dots on nodes below 1.4 GeV for S0, P1, D0, S2, D2, F1; min η ≥ 0.98 below 1.83 GeV for every wave | V1 |
+| C5 | δ¹₁ = 90° at ≈ 0.83–0.85 GeV | crossing within ±20 MeV of the same-colour paper crossing | V1 |
+| C6 | δ⁰₂ = 90° at ≈ 1.35–1.40 GeV | within ±30 MeV of the same-colour paper crossing | V1 |
+| C7 | Second P1 rise (ρ(1450)) | δ¹₁ at the last node below s₀ within ±20° of the same-colour paper dot | V1 |
+| C8 | Table 1 (a⁰₀ 0.174/0.191, a²₀ −0.0357/−0.0403, b⁰₀ 0.285/0.282, b²₀ −0.061/−0.071, a¹₁ 28.7/30.7e-3, b¹₁ 12.4/7.28e-3, a⁰₂ 14.6/14.9e-4, a²₂ 3.41/2.53e-4) | table tolerance; a and b from the representation at threshold (analytic derivative), threshold fit as control | V1 |
+| C9 | Table 2 radii S 0.64/0.55, V 0.394/0.391, T 0.153/0.140 fm² | table tolerance; F′(0) from the discrete dispersion relation | V1 |
+| C10 | Table 3 l̄₁ 0.96/−0.10, l̄₂ 4.5/4.8, l̄₄ 4.8/4.2, l̄₆ 14.6/14.5 | table tolerance (algebra on C8, C9 with (4.5)–(4.8)) | V1 |
+| C11 | Table 9 GTBII | table tolerance (algebra (A.1)–(A.8), l̄₃ = 0) | V1 |
+| C12 | \|F⁰₀\| broad peak ≈ 0.48–0.50 GeV, heights 2.0 / 1.68 | peak node within ±40 MeV; height within 10 % | V1 |
+| C13 | ρ pole Re√s 829/844, Im√s 71/82 MeV (Table 4) | Re within ±20 MeV, Im within ±15 MeV; continuation S(s)S*(s̄)=1 with complex-s kernels | V1 |
+| C14 | m_ρ 838/859, Γ_ρ 114/128 MeV (Table 5) | Gounaris–Sakurai fit of \|F¹₁\| on nodes 0.5–1.1 GeV (BW as control); mass ±20 MeV, width ±20 % | V1 |
+| C15 | g_ρππ 4.9/5.2 | ±5 % (from C14 via (5.5)) | V1 |
+| C16 | 4π/g_ρ² 0.61/0.57 | ±10 %; integration over nodes 0.6–1.0 GeV | V1 |
+| C17 | Two-BW fit of \|𝓕¹₁\|² (Table 6): m₁ 824/841, Γ₁ 137/164, m₂ 1635/1645, Γ₂ 248/272, A₁ 1.29/1.39, A₂ 0.27/0.28 | fit on nodes 0.5–1.83 GeV; m₁ ±20, m₂ ±40 MeV; Γ ±25 %; A ±15 % | V1 |
+| C18 | f₂ BW of \|F⁰₂\| (Table 7): m 1366/1388, Γ 164/188 MeV | fit on nodes 1.0–1.83 GeV; m ±25 MeV; Γ ±25 % | V1 |
+| C19 | g_f₂ππ 8.5/8.9 | ±5 % (from C18 via (5.13)) | V1 |
+| C20 | Forward amplitudes (Fig. 5, red) | Im T₀₊, T₀₀, T^{I_t=1} peak positions within ±30 MeV, heights within 10 % of the red paper curves | V1 |
+| C21 | Watson step fixes D0 (Fig. 20) | before: min η⁰₂ < 0.7 for at least two colours; after: η⁰₂ ≥ 0.98 and δ⁰₂ 90° crossing within ±30 MeV of the paper's | V1 |
+| C22 | Stability at green (Fig. 17): M=60, L=23, N_B=46, M_reg=5×10² | per-wave RMS difference from the base run ≤ 10° for S0, P1, S2 below 1.4 GeV | V1 |
+| C23 | Minimal feasible caps r⁰₀ 2e-2, r¹₁ 1.5, r⁰₂ 4; r¹₁ = r⁰₂ = 1 infeasible | feasible values found feasible (V1); infeasibility certified by a dual ray (V2) | V1 + V2 |
+| C24 | ρ mass varies ≈ 80 MeV for r¹₁ = 1.5–2.5 | spread of the \|F¹₁\| peak node in 80 ± 30 MeV | V1 |
+| C25 | n_SR = 3, 4, 5 give the same \|F\| | peak positions within ±10 MeV, heights within 5 % | V1 |
+| C26 | Below 1.2 GeV the phases agree with the s₀ = 1.2 GeV results of 2309 | S0, P1, S2 at green vs the 2309 paper's Fig. 9/10 red curves: RMS ≤ 10° below 1.2 GeV | V1 |
+| C27 | Removing P1 FESR removes the ρ; removing D0 FESR does not completely remove the f₂ | no δ¹₁ 90° crossing below 1.2 GeV without P1 FESR; max δ⁰₂ ≥ 45° below 1.83 GeV without D0 FESR | V1 |
+| C28 | Uncertainty model = blue–red spread | definitional; our P8 extension reports V2-backed [min, max] ranges alongside | — |
+| C29 | Runtime | informational | — |
+
+## 2. Gates (plan Phase A)
+
+- **G1**: our kernels = authors' reference export to ≤ 1e-30 relative (each exception explained in the derivation), and
+  = Arb rebuild within Arb radii.
+- **G2**: a production encoding with a measured cost; the choice is recorded before G3 runs.
+- **G3** = C1. On FAIL: stop production; diagnose (regulariser scale, full space vs reduced, ‖ρ‖₄ at the optimum,
+  omitted-wave unitarity) without changing any input; report.
