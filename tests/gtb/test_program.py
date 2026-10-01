@@ -295,3 +295,16 @@ def test_f1min_objective_is_minus_f1():
     pmax = Program(GtbSpec(M=10), ks)
     pmin = Program(replace(GtbSpec(M=10), objective="F1min"), ks)
     assert np.allclose(pmin.objective(), -pmax.objective()) and pmin.pivot == pmax.pivot
+
+
+@needs_ks10
+def test_watson_targets_can_be_taken_from_a_watson_leaf():
+    """Iterating the Watson step: the seed may itself be a Watson leaf (its objective needs no targets here)."""
+    import json
+    from smatrix_bootstrap.gtb.solve import watson_targets_from_leaf
+    seed = SCRATCH / "leaf_M10_watson"
+    if not (seed / "solution.npz").exists():
+        pytest.skip("Watson leaf missing")
+    from smatrix_bootstrap.gtb import kernels
+    t = watson_targets_from_leaf(seed, kernels.load(KS10))
+    assert set(t) == {"S0", "P1", "D0", "S2", "D2", "F1"} and len(t["P1"][0]) == kernels.load(KS10).manifest["n0"]

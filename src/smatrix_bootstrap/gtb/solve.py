@@ -30,6 +30,15 @@ def amplitude_basis(prog_rows, tol=1e-12):
     return vt[:k].T, {"rank": k, "n_rows": int(R.shape[0]), "tol": tol, "s_max": float(s[0]), "s_min_kept": float(s[k - 1])}
 
 
+def watson_targets_from_leaf(leaf, ks):
+    """Targets from any previous leaf (initial or Watson): only its rows and lifted solution are used."""
+    from .spec import GtbSpec
+    from .watson import targets_from_solution
+    prev = json.loads((Path(leaf) / "report.json").read_text())
+    pprog = Program(GtbSpec(M=prev["spec"]["M"]), ks, reg="none")
+    return targets_from_solution(pprog, np.load(Path(leaf) / "solution.npz")["v"])
+
+
 def _observables(prog, v):
     amp, rho = v[prog.groups["amp"]], v[prog.groups["rho"]]
     S = 1 + 1j * (prog.Rre @ amp + 1j * (prog.Rim @ amp))                # S = 1 + i h at every node and wave
@@ -55,11 +64,8 @@ def run_leaf(spec, kernels_path, workdir, *, reg="linf-relax", reduce_basis=Fals
     targets = None
     if watson_from is not None:                      # Watson step seeded by a previous leaf (same kernels)
         from dataclasses import replace
-        from .watson import targets_from_solution
         prev = json.loads((Path(watson_from) / "report.json").read_text())
-        pspec = replace(spec, f0_ni=prev["spec"]["f0_ni"], objective=prev["spec"]["objective"])
-        pprog = Program(pspec, ks, reg=prev["regulariser"])
-        targets = targets_from_solution(pprog, np.load(Path(watson_from) / "solution.npz")["v"])
+        targets = watson_targets_from_leaf(watson_from, ks)
         np.savez(work / "watson_targets.npz", **{f"{w}_{p}": t[i] for w, t in targets.items()
                                                   for i, p in enumerate(("re", "im"))})
         spec = replace(spec, objective="watson", f0_ni=prev["spec"]["f0_ni"])
