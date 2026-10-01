@@ -64,3 +64,28 @@ def test_two_bw_fit_recovers_known_parameters():
 def test_g_rho_pi_pi_from_pdg_mass_and_width_is_6():
     from smatrix_bootstrap.gtb.analysis import g_rho_pi_pi
     assert abs(g_rho_pi_pi(775 * MEV, 149 * MEV) - 6.0) < 0.05
+
+
+def test_g_f2_pi_pi_reproduces_the_paper_from_table_7():
+    from smatrix_bootstrap.gtb.analysis import g_f2_pi_pi
+    assert abs(g_f2_pi_pi(1366 * MEV, 164 * MEV) - 8.5) < 0.05
+    assert abs(g_f2_pi_pi(1388 * MEV, 188 * MEV) - 8.9) < 0.05
+
+
+from pathlib import Path
+
+LEAF10W = Path("/playpen1/shiqiu/gtb2403_runs/scratch_tests/leaf_M10_watson")
+KS10 = Path("/playpen1/shiqiu/gtb2403_runs/kernels/ours_M10")
+
+
+@pytest.mark.skipif(not (LEAF10W / "solution.npz").exists(), reason="M=10 Watson leaf missing")
+def test_analyze_runs_end_to_end_on_the_m10_watson_leaf():
+    from smatrix_bootstrap.gtb.leafanalysis import analyze
+    r = analyze(LEAF10W, KS10, pole=True)
+    for w in ("S0", "D0", "S2", "D2", "P1", "F1"):
+        assert len(r["phases"][w]["delta_deg"]) == r["n0"] and max(r["phases"][w]["eta"]) <= 1 + 1e-6
+    assert set(r["threshold"]) == {"a00", "b00", "a20", "b20", "a11", "b11", "a02", "a22"}
+    assert all(np.isfinite(v) for v in r["threshold"].values())
+    assert set(r["radii_fm2"]) == {"S", "V", "T"} and set(r["lbar"]) == {"l1", "l2", "l4", "l6"}
+    if r["pole"]["interp"] is not None:
+        assert r["pole"]["interp"]["sqrt_s_MeV"][1] < 0

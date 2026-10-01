@@ -63,15 +63,18 @@ def _gs(s, m, g):
 FF_FORMS = {"bw": _bw, "gs": _gs}
 
 
-def _lsq(fun, p0):
+def _lsq(fun, p0, bounds=(-np.inf, np.inf)):
     from scipy.optimize import least_squares
-    return least_squares(fun, p0, xtol=1e-15, ftol=1e-15, gtol=1e-15, max_nfev=20000).x
+    return least_squares(fun, p0, bounds=bounds, xtol=1e-15, ftol=1e-15, gtol=1e-15, max_nfev=20000).x
+
+
+_MG = ([2.01, 1e-4], [40.0, 20.0])                       # physical box for (m, Gamma) in m_pi units
 
 
 def fit_rho(s, absF, form, guess):
     """Unweighted least squares of |F(s)| with the BW or GS form -> (m, Gamma) in m_pi units."""
     f = FF_FORMS[form]
-    return tuple(float(v) for v in _lsq(lambda p: np.abs(f(s, *p)) - absF, guess))
+    return tuple(float(v) for v in _lsq(lambda p: np.abs(f(s, *p)) - absF, guess, _MG))
 
 
 def two_bw(s, m1, g1, m2, g2, A1, A2):
@@ -82,9 +85,21 @@ def two_bw(s, m1, g1, m2, g2, A1, A2):
 
 
 def fit_two_bw(s, absF2, guess):
-    return tuple(float(v) for v in _lsq(lambda p: np.abs(two_bw(s, *p)) ** 2 - absF2, guess))
+    lo, hi = [2.01, 1e-4, 2.01, 1e-4, -10, -10], [40, 20, 40, 20, 10, 10]
+    return tuple(float(v) for v in _lsq(lambda p: np.abs(two_bw(s, *p)) ** 2 - absF2, guess, (lo, hi)))
 
 
 def g_rho_pi_pi(m, g):
     """Gamma = g^2 m/(48 pi) (1 - 4/m^2)^(3/2)  (m_pi = 1)."""
     return float(np.sqrt(48 * np.pi * g / (m * (1 - 4 / m ** 2) ** 1.5)))
+
+
+def g_f2_pi_pi(m, g, M0=1000 / M_PI_MEV):
+    """v4 (5.13) with Gamma_pipi = Gamma(pi0 pi0) + Gamma(pi+ pi-) = 3 Gamma(pi0 pi0) taken as the fitted width."""
+    return float(np.sqrt((g / 3) * 960 * np.pi / (m * (m / M0) ** 2 * (1 - 4 / m ** 2) ** 2.5)))
+
+
+def forward(f_by_wave_isospin):
+    """T^I(s,0) = 2 sum_l (2l+1) f^I_l(s) and the s<->u (anti)symmetric combinations of v4 section 3.1."""
+    T = {I: 2 * sum((2 * l + 1) * f for l, f in waves.items()) for I, waves in f_by_wave_isospin.items()}
+    return {"T0+": (T[1] + T[2]) / 2, "T00": T[0] / 3 + 2 * T[2] / 3, "TIt1": T[0] / 3 + T[1] / 2 - 5 * T[2] / 6}

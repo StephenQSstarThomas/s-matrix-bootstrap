@@ -1,0 +1,125 @@
+"""Everything the 2403 claims need from one leaf (PREREGISTRATION amendment 1).  Units m_pi = 1 unless 'MeV'/'GeV'."""
+from __future__ import annotations
+
+import json
+from dataclasses import fields, replace
+from pathlib import Path
+
+import numpy as np
+
+from . import analysis as A
+
+WAVE_IL = {"S0": (0, 0), "D0": (0, 2), "S2": (2, 0), "D2": (2, 2), "P1": (1, 1), "F1": (1, 3)}
+KAPPA = {"S0": lambda s: 3 * np.sqrt(s - 4) / (256 * np.pi ** 5 * np.sqrt(s)),
+         "P1": lambda s: (s - 4) ** 1.5 / (384 * np.pi ** 5 * np.sqrt(s)),
+         "D0": lambda s: (s - 4) ** 2.5 / (2560 * np.pi ** 5 * np.sqrt(s))}
+GEV = A.M_PI_MEV / 1000
+
+
+def _load(leaf, kernels_dir):
+    from .kernels import load
+    from .program import Program
+    from .spec import GtbSpec
+    rep = json.loads((Path(leaf) / "report.json").read_text())
+    sp = {f.name: (tuple(rep["spec"][f.name]) if isinstance(rep["spec"][f.name], list) else rep["spec"][f.name])
+          for f in fields(GtbSpec)}
+    spec = replace(GtbSpec(**sp), objective="F1max")          # analysis needs the rows, not the objective
+    ks = load(kernels_dir)
+    return rep, ks, Program(spec, ks, reg="none"), np.load(Path(leaf) / "solution.npz")["v"]
+
+
+def _form_factors(prog, v):
+    ks, M = prog.ks, prog.M
+    imf = v[prog.groups["ImF"]]
+    out = {}
+    for k, ch in enumerate(("S0", "P1", "D0")):
+        im = imf[k * M:(k + 1) * M]
+        out[ch] = 1 + ks.KFF3[k * M:(k + 1) * M, k * M:(k + 1) * M] @ im + 1j * im
+    return out
+
+
+def _threshold(prog, amp, grid):
+    """a, b from the interpolant on 12 k^2 in (0, 0.25] (mainline) and from the first 4 nodes (control)."""
+    from flint import arb
+    from .evaluate import f_row, value
+    k2 = np.linspace(0.25 / 12, 0.25, 12)
+    out, ctrl = {}, {}
+    x = prog.ks.x
+    for w, key in (("S0", "00"), ("S2", "20"), ("P1", "11"), ("D0", "02"), ("D2", "22")):
+        I, ell = WAVE_IL[w]
+        ref = [float(value(f_row(grid, I, ell, ("cut", arb(repr(float(4 + 4 * q)))), "interp"), amp).real.mid()) for q in k2]
+        a, b = A.threshold_fit(k2, np.array(ref), ell)
+        out["a" + key] = a
+        if ell < 2:
+            out["b" + key] = b
+        rows = [prog.row_index(w, j) for j in range(4)]
+        kn = (x[:4] - 4) / 4
+        ctrl["a" + key] = A.threshold_fit(kn, (prog.Rre[rows] @ amp) / (np.pi * np.sqrt((x[:4] - 4) / x[:4])), ell)[0]
+    return out, ctrl
+
+
+def analyze(leaf, kernels_dir, pole=True) -> dict:
+    from .arbkernels import Grid
+    rep, ks, prog, v = _load(leaf, kernels_dir)
+    M, n0, x = prog.M, prog.n0, ks.x
+    amp = v[prog.groups["amp"]]
+    E = np.sqrt(x) * GEV
+    h = prog.Rre @ amp + 1j * (prog.Rim @ amp)
+    res = {"leaf": str(leaf), "n0": n0, "E_GeV": E[:n0].tolist(), "phases": {}, "crossings_GeV": {}}
+    for w in WAVE_IL:
+        S = 1 + 1j * h[[prog.row_index(w, j) for j in range(n0)]]
+        d, eta = A.phases(S)
+        res["phases"][w] = {"delta_deg": d.tolist(), "eta": eta.tolist()}
+    for w in ("P1", "D0", "S0"):
+        res["crossings_GeV"][w] = A.crossing(E[:n0], np.array(res["phases"][w]["delta_deg"]), 90.0)
+    F = _form_factors(prog, v)
+    res["FF_abs"] = {ch: np.abs(f).tolist() for ch, f in F.items()}
+    d = np.pi / M
+    imf = v[prog.groups["ImF"]]
+    fp = {ch: float(np.sum(d / np.pi * ks.xp * imf[k * M:(k + 1) * M] / x ** 2))
+          for k, ch in enumerate(("S0", "P1", "D0"))}
+    res["radii_fm2"] = {"S": A.radius_fm2(fp["S0"]), "V": A.radius_fm2(fp["P1"]), "T": A.radius_fm2(fp["D0"])}
+    grid = Grid(M, prec_bits=192)
+    res["threshold"], res["threshold_control"] = _threshold(prog, amp, grid)
+    res["lbar"] = A.lbar(res["threshold"]["a02"], res["threshold"]["a22"], res["radii_fm2"]["S"], res["radii_fm2"]["V"])
+    s = x[:n0]
+    win = lambda lo, hi: (E[:n0] >= lo) & (E[:n0] <= hi)
+    fits = {}
+    w1 = win(0.5, 1.1)
+    for form in ("bw", "gs"):
+        m, g = A.fit_rho(s[w1], np.abs(F["P1"][:n0][w1]), form, guess=(0.80 / GEV, 0.15 / GEV))
+        fits[f"rho_{form}"] = {"m_MeV": m * A.M_PI_MEV, "Gamma_MeV": g * A.M_PI_MEV, "g_rho_pi_pi": A.g_rho_pi_pi(m, g)}
+    w2 = win(0.5, 1.83)
+    p = A.fit_two_bw(s[w2], KAPPA["P1"](s[w2]) * np.abs(F["P1"][:n0][w2]) ** 2,
+                     guess=(0.82 / GEV, 0.14 / GEV, 1.6 / GEV, 0.25 / GEV, 1.3, 0.27))
+    fits["two_bw"] = dict(zip(("m1_MeV", "G1_MeV", "m2_MeV", "G2_MeV"), [q * A.M_PI_MEV for q in p[:4]]),
+                          A1=p[4], A2=p[5])
+    w3 = win(1.0, 1.83)
+    m, g = A.fit_rho(s[w3], np.abs(F["D0"][:n0][w3]), "bw", guess=(1.37 / GEV, 0.17 / GEV))
+    fits["f2_bw"] = {"m_MeV": m * A.M_PI_MEV, "Gamma_MeV": g * A.M_PI_MEV, "g_f2_pi_pi": A.g_f2_pi_pi(m, g)}
+    w4 = win(0.6, 1.0)
+    mr = fits["rho_gs"]["m_MeV"] / A.M_PI_MEV
+    integ = np.sum((d * ks.xp[:n0] * KAPPA["P1"](s) * np.abs(F["P1"][:n0]) ** 2 / s)[w4])
+    fits["four_pi_over_g_rho2"] = float(2 * (2 * np.pi) ** 4 * integ / mr ** 2)
+    res["fits"] = fits
+    f_all = {I: {} for I in (0, 1, 2)}
+    for (b, nw) in ((0, 0), (1, 2), (2, 1)):
+        for wi in range(prog.nw):
+            ell = 2 * wi + (1 if nw == 1 else 0)
+            rows = [(b * prog.nw + wi) * M + j for j in range(n0)]
+            f_all[nw][ell] = h[rows] / (np.pi * np.sqrt((s - 4) / s))
+    res["forward"] = {k: {"re": v_.real.tolist(), "im": v_.imag.tolist()} for k, v_ in A.forward(f_all).items()}
+    res["pole"] = {}
+    if pole:
+        from .pole import find_zero, s_matrix_p1, sqrt_s_mev
+        for presc in ("interp", "midpoint"):
+            try:
+                z = find_zero(s_matrix_p1(grid, amp, presc), (0.83 / GEV - 0.04j / GEV) ** 2)
+                r = sqrt_s_mev(z)
+                if not (r.imag < 0 and abs(r - (830 - 40j)) < 400):
+                    raise ValueError(f"zero at {r:.1f} MeV is outside the accepted window")
+                res["pole"][presc] = {"sqrt_s_MeV": [float(r.real), float(r.imag)]}
+            except (RuntimeError, ZeroDivisionError, ValueError) as exc:
+                res["pole"][presc] = None
+                res.setdefault("pole_errors", {})[presc] = str(exc)
+    return res
