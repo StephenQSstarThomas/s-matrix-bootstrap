@@ -33,7 +33,7 @@ class Block:
 
 class Program:
     def __init__(self, spec, ks, reg: str = "linf-relax", basis=None, watson_targets=None, objective_row=None,
-                 extra_unitarity=None):
+                 extra_unitarity=None, psd_margin: float = 0.0):
         from . import regulariser
         M, nw, nb = spec.M, spec.L // 2, spec.n_b
         self.spec, self.ks, self.M, self.nw, self.nb = spec, ks, M, nw, nb
@@ -60,6 +60,7 @@ class Program:
         self.watson_targets = watson_targets
         self.objective_row = objective_row
         self.extra_unitarity = extra_unitarity            # midpoint rows (midpoints.load), WELLPOSED W3
+        self.psd_margin = psd_margin                      # solve M - delta I >= 0: a strictly feasible point for V1
         if spec.objective.startswith("custom") and objective_row is None:
             raise ValueError("a custom objective needs objective_row over the raw variables")
         self._amplitude_map(n_amp, basis)
@@ -202,6 +203,13 @@ class Program:
         if self._blocks is None:
             self._blocks = (self._unitarity() + self._midpoints() + self._gram() + self._chiral() + self._fesr() + self._ff()
                             + self._cpos() + self.reg.blocks())
+            if self.psd_margin:
+                for blk in self._blocks:
+                    for (r, c), f in list(blk.forms.items()):
+                        if r == c:
+                            g = f.copy()
+                            g[0] = g[0] - self.num(self.psd_margin)
+                            blk.forms[(r, c)] = g
         return self._blocks
 
     def _gram_rows(self):

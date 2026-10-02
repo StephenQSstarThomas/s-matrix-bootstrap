@@ -188,3 +188,18 @@ def test_reduced_basis_spans_the_midpoint_rows_when_they_are_imposed(tmp_path):
         resid = R - (R @ V) @ V.T
         assert np.abs(resid).max() <= 1e-9 * np.abs(R).max()
     assert info["n_rows"] > leaf_basis(kernels.load(KS10), GtbSpec(M=10), True, 1e-12, None)[1]["n_rows"]
+
+
+@needs_ks10
+def test_psd_margin_lowers_every_diagonal_constant_by_delta():
+    from smatrix_bootstrap.gtb import kernels
+    from smatrix_bootstrap.gtb.program import Program
+    from smatrix_bootstrap.gtb.spec import GtbSpec
+    ks = kernels.load(KS10)
+    a, b = Program(GtbSpec(M=10), ks).blocks(), Program(GtbSpec(M=10), ks, psd_margin=1e-8).blocks()
+    assert [x.name for x in a] == [x.name for x in b]
+    for x, y in zip(a, b):
+        for (r, c), f in x.forms.items():
+            g = np.asarray(y.forms[(r, c)], dtype=float); f = np.asarray(f, dtype=float)
+            assert np.allclose(g[1:], f[1:], rtol=0, atol=0)
+            assert g[0] == (f[0] - 1e-8 if r == c else f[0])
