@@ -119,3 +119,12 @@ visible; their feasible-side objective was ≈ 1e-3 above the paper's C1 values.
 - Variant (B) ladder: if no rung of {100, 30, 10, 3, 1} has η ≤ 1.02, it continues with the same factor
   (0.3, 0.1, 0.03, …) until a rung passes or the problem becomes infeasible; infeasible before passing = variant (B)
   does not exist and is reported so. η is evaluated at every node (no energy cut), exactly as in 2309.
+
+## Amendment 7 (2026-10-02 04:00Z, before any text-reading solve): the text's regulariser normalisation as a control
+- Seen when written: C1 FAIL; ladder F1(ni 46) for M_reg 100/30/10/3/1 = -0.02546/-0.02651/-0.02732/-0.02793/-0.02823;
+  Fig. 3 dots lie on F0 = k/50 x 0.1632 (the shipped script uses 0.163108; calibration by the tree dot to 6e-6).
+- Control (not a mainline, not a tuning): the text's (8.56) reading ||rho||_4 <= 100 (no division by Mrho), bracketed
+  by l-inf inner (|rho_i| <= 100/3775^(1/4)) and relax (|rho_i| <= 100) at ni 46, reduced basis, 128 bit, V1.
+  Verdict wording fixed now: if the paper's -0.028770 lies inside the certified bracket, "the published point is
+  consistent with the text's normalisation (the figure run differs from the shipped code)"; if outside, "neither the
+  code's nor the text's normalisation reproduces the published point".
