@@ -128,3 +128,15 @@ visible; their feasible-side objective was ≈ 1e-3 above the paper's C1 values.
   Verdict wording fixed now: if the paper's -0.028770 lies inside the certified bracket, "the published point is
   consistent with the text's normalisation (the figure run differs from the shipped code)"; if outside, "neither the
   code's nor the text's normalisation reproduces the published point".
+
+## Amendment 8 (2026-10-02, before any P_W kernel, solve or analysis exists): the well-posed version P_W
+- Definition, principles and gates: `docs/gtb2403/WELLPOSED_ZH.md` (sha256 4c12ec437ae94228), frozen with this amendment.
+- P_W = the authors' code problem with exactly four changes: W1 FESR moments integrated and normalised to the cell
+  boundary x_b = x(n0 pi/M) = 189.16 (both sides); W2 the same unitarity cone for all l < L_u = 40 at all nodes
+  (control L_u = 60 at ni 46; if |dF1| > 1e-4 P_W becomes L_u = 60); W3 the same cone at all M-1 phi-midpoints for
+  l < 20 (interpolant), by constraint generation until the certified max |S| - 1 <= 1e-6; W4 the code's l4 regulariser
+  kept as a technical bound (l-inf relax), required inactive (||rho||_4 <= R at the optimum and |dF1| < 1e-6 for +10 % R),
+  otherwise reported as active. Full space, 128 bit, V1 + V2. No physical input of the paper changes.
+- New prescription (P_W and as a control for variant A): threshold parameters from the interpolant below threshold,
+  12 points s in [2, 3.8], fit of f_l/k^(2l) = a + b k^2 + c k^4 with k^2 = (s-4)/4, extrapolated to k^2 = 0.
+- C1-C27 rules are unchanged; P_W verdicts are reported next to variant A and variant B, never used to pick a setting.
