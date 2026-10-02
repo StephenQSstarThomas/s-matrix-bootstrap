@@ -44,3 +44,15 @@ def test_compare_flags_a_40_digit_difference(tmp_path):
     assert 5e-40 < near["max_rel"] < 2e-39
     zero = compare_exports(a, c)["K"]
     assert zero["zero_mismatch"] == 1 and zero["max_abs_small"] == 1e-50
+
+
+def test_python_export_strings_carry_their_40_digit_precision():
+    from flint import arb, ctx
+    from smatrix_bootstrap.gtb.certify import ball
+    from smatrix_bootstrap.gtb.kernels import fmt
+    ctx.prec = 256
+    for x in (arb(1), arb(2) / 3, arb("1.5e-185"), -arb(10) ** 7):
+        s = fmt(x, 40)
+        b = ball(s)
+        assert b.contains(x), (s, b)
+        assert float(b.rad()) <= 1.01e-39 * abs(float(x.mid())), (s, float(b.rad()))

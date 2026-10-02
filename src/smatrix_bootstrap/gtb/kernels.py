@@ -71,7 +71,8 @@ def load(path) -> KernelSet:
 
 
 def fmt(v, digits: int = 40, stats: dict | None = None) -> str:
-    """An Arb ball as ``<int>e<exp>`` (midpoint, ``digits`` significant), ``0`` if it holds 0."""
+    """An Arb ball as ``<int>e<exp>`` with exactly ``digits`` significant digits (trailing zeros kept, as the WL
+    exporter does), so that certify.ball reads one unit in the last digit as the rounding radius; ``0`` if it holds 0."""
     if 0 in v:
         if stats is not None and not v.is_zero():
             stats["zero_balls"] = stats.get("zero_balls", 0) + 1
@@ -80,8 +81,9 @@ def fmt(v, digits: int = 40, stats: dict | None = None) -> str:
     ip, _, fp = mant.partition(".")
     sign, ip = ("-", ip[1:]) if ip.startswith("-") else ("", ip)
     body = (ip + fp).lstrip("0")
-    digits_ = body.rstrip("0")
-    return f"{sign}{digits_}e{int(ex or 0) - len(fp) + len(body) - len(digits_)}"
+    exp10 = int(ex or 0) - len(fp)                        # value = int(ip + fp) * 10^exp10
+    pad = digits - len(body)
+    return f"{sign}{body + '0' * pad}e{exp10 - pad}" if pad >= 0 else f"{sign}{body}e{exp10}"
 
 
 class _Handle:
