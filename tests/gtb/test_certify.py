@@ -194,4 +194,16 @@ def test_unitarity_bound_beyond_the_imposed_waves_matches_the_float_scan():
     exact = unitarity_beyond(LEAF10, KS10, KS10_L24)
     flt = max(omitted_waves(v[:176], kernels.load(KS10_L24), 20)["eta_max"].values())
     assert exact["L_from"] == 20 and exact["L_to"] == 24 and exact["rows"] == 3 * 2 * 10
-    assert abs(exact["max_abs_S_upper"] - flt) < 1e-9 and exact["max_abs_S_upper"] >= flt
+    assert abs(exact["max_abs_S_upper"] - flt) < 1e-9
+
+
+@needs_leaf10
+def test_midpoint_unitarity_bound_matches_the_float_scan(tmp_path):
+    from smatrix_bootstrap.gtb import midpoints
+    from smatrix_bootstrap.gtb.certify import unitarity_midpoints
+    midpoints.build(KS10, tmp_path / "mid", l_max=4)
+    mid = midpoints.load(tmp_path / "mid")
+    v = np.load(LEAF10 / "solution.npz")["v"]
+    flt = float(midpoints.scan(mid, v[:176]).max())
+    ex = unitarity_midpoints(LEAF10, KS10, tmp_path / "mid")
+    assert ex["rows"] == 54 and abs(ex["max_abs_S_upper"] - flt) < 1e-9

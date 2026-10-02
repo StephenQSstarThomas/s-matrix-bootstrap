@@ -79,7 +79,7 @@ def _observables(prog, v):
 def run_leaf(spec, kernels_path, workdir, *, reg="linf-relax", reduce_basis=False, basis_tol=1e-12,
              precision=192, nproc=8, timeout=7200, duality_gap=1e-6, primal_error=1e-10, dual_error=1e-10,
              initial_scale=1e4, max_iterations=500, keep_pmp=True, watson_from=None, objective_row=None,
-             hot_start=None):
+             hot_start=None, mid_kernels=None, mid_rows=None):
     work = Path(workdir)
     work.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
@@ -95,13 +95,20 @@ def run_leaf(spec, kernels_path, workdir, *, reg="linf-relax", reduce_basis=Fals
         spec = replace(spec, objective="watson", f0_ni=prev["spec"]["f0_ni"])
     if objective_row is not None:
         np.save(work / "objective_row.npy", np.asarray(objective_row, dtype=float))
-    prog = Program(spec, ks, reg=reg, basis=basis, watson_targets=targets, objective_row=objective_row)
+    extra, mid_info = None, None
+    if mid_kernels is not None and mid_rows is not None:      # WELLPOSED W3: selected midpoint cones
+        from . import midpoints
+        rows = json.loads(Path(mid_rows).read_text())["rows"]
+        extra = midpoints.load(mid_kernels, rows) if rows else None
+        mid_info = {"kernels": str(mid_kernels), "rows_file": str(mid_rows), "rows": rows}
+    prog = Program(spec, ks, reg=reg, basis=basis, watson_targets=targets, objective_row=objective_row,
+                   extra_unitarity=extra)
     if basis is not None:
         np.save(work / "basis.npy", basis)
     rep = {"spec": asdict(spec), "spec_key": spec.key(), "kernels": str(kernels_path),
            "kernels_manifest": ks.manifest.get("generator"), "regulariser": reg, "reduce_basis": reduce_basis,
            "basis": basis_info, "f0fix": prog.f0fix, "n_vars": prog.n_vars, "pivot": list(prog.pivot) if prog.pivot else None,
-           "watson_from": str(watson_from) if watson_from else None,
+           "watson_from": str(watson_from) if watson_from else None, "midpoints": mid_info,
            "c_dropped": [int(i) for i in prog.c_dropped],
            "settings": {"precision": precision, "nproc": nproc, "timeout": timeout, "duality_gap": duality_gap,
                         "primal_error": primal_error, "dual_error": dual_error, "initial_scale": initial_scale},

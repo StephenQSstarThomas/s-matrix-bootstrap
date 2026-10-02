@@ -32,7 +32,8 @@ class Block:
 
 
 class Program:
-    def __init__(self, spec, ks, reg: str = "linf-relax", basis=None, watson_targets=None, objective_row=None):
+    def __init__(self, spec, ks, reg: str = "linf-relax", basis=None, watson_targets=None, objective_row=None,
+                 extra_unitarity=None):
         from . import regulariser
         M, nw, nb = spec.M, spec.L // 2, spec.n_b
         self.spec, self.ks, self.M, self.nw, self.nb = spec, ks, M, nw, nb
@@ -58,6 +59,7 @@ class Program:
             raise ValueError("the Watson objective needs targets (watson.targets_from_solution)")
         self.watson_targets = watson_targets
         self.objective_row = objective_row
+        self.extra_unitarity = extra_unitarity            # midpoint rows (midpoints.load), WELLPOSED W3
         if spec.objective.startswith("custom") and objective_row is None:
             raise ValueError("a custom objective needs objective_row over the raw variables")
         self._amplitude_map(n_amp, basis)
@@ -198,7 +200,7 @@ class Program:
     # ------------------------------------------------------------------ blocks
     def blocks(self):
         if self._blocks is None:
-            self._blocks = (self._unitarity() + self._gram() + self._chiral() + self._fesr() + self._ff()
+            self._blocks = (self._unitarity() + self._midpoints() + self._gram() + self._chiral() + self._fesr() + self._ff()
                             + self._cpos() + self.reg.blocks())
         return self._blocks
 
@@ -215,6 +217,17 @@ class Program:
         one, gram = self.const(1.0), self._gram_rows()
         return [Block(f"uni:{n}", 3, {(0, 0): 2 * hhat[n], (0, 1): hre[n], (0, 2): him[n], (1, 1): one, (2, 2): one})
                 for n in range(self.Rre.shape[0]) if n not in gram]
+
+    def _midpoints(self):
+        """The node cone 2 Im h >= |h|^2 (Lambda-rescaled) at selected phi-midpoints (interpolant rows)."""
+        m = self.extra_unitarity
+        if m is None:
+            return []
+        lam = m["Lam"][:, None]
+        hre, him, hhat = self.amp_forms(m["Re"] / lam), self.amp_forms(m["Im"] / lam), self.amp_forms(m["Im"] / lam ** 2)
+        one, idx = self.const(1.0), m.get("rows", range(len(lam)))
+        return [Block(f"mid:{int(r)}", 3, {(0, 0): 2 * hhat[n], (0, 1): hre[n], (0, 2): him[n], (1, 1): one, (2, 2): one})
+                for n, r in enumerate(idx)]
 
     def _gram(self):
         hre, him, hhat = self._h

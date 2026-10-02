@@ -136,3 +136,41 @@ def test_hot_started_reduced_solve_reuses_the_seed_basis(tmp_path):
     got, info = leaf_basis(ks, GtbSpec(M=10), True, 1e-12, seed)
     assert np.array_equal(got, -fresh) and info["reused_from"] == str(seed)
     assert leaf_basis(ks, GtbSpec(M=10), False, 1e-12, seed) == (None, None)
+
+
+LEAF10 = Path("/playpen1/shiqiu/gtb2403_runs/scratch_tests/leaf_M10")
+
+
+@needs_ks10
+def test_midpoint_export_rows_and_scan_agree_with_the_between_node_scan(tmp_path):
+    from smatrix_bootstrap.gtb import midpoints
+    from smatrix_bootstrap.gtb.arbkernels import Grid
+    from smatrix_bootstrap.gtb.leafanalysis import _load, between_nodes
+    midpoints.build(KS10, tmp_path / "mid", l_max=4)
+    mid = midpoints.load(tmp_path / "mid")
+    assert mid["Re"].shape == (3 * 2 * 9, 176) and mid["meta"].shape == (54, 3)
+    _, _, prog, v = _load(LEAF10, KS10)
+    amp = v[prog.groups["amp"]]
+    S = midpoints.scan(mid, amp)
+    ref = between_nodes(Grid(10, prec_bits=192), amp, 10)
+    for w, (I, ell) in {"S0": (0, 0), "P1": (1, 1), "D2": (2, 2)}.items():
+        rows = [n for n, (i, l, k) in enumerate(mid["meta"]) if (i, l) == (I, ell)]
+        assert len(rows) == 9 and np.allclose(S[rows][:len(ref[w]["abs_S"])], ref[w]["abs_S"], atol=1e-9)
+
+
+@needs_ks10
+def test_program_adds_midpoint_unitarity_blocks(tmp_path):
+    from smatrix_bootstrap.gtb import kernels, midpoints
+    from smatrix_bootstrap.gtb.program import Program
+    from smatrix_bootstrap.gtb.spec import GtbSpec
+    midpoints.build(KS10, tmp_path / "mid", l_max=2)
+    mid = midpoints.load(tmp_path / "mid", rows=[3, 7])
+    p = Program(GtbSpec(M=10), kernels.load(KS10), extra_unitarity=mid)
+    blk = [b for b in p.blocks() if b.name.startswith("mid:")]
+    assert len(blk) == 2 and all(b.size == 3 for b in blk)
+    yfree = np.random.default_rng(1).normal(scale=1e-3, size=p.n_vars - 1)
+    y, amp = np.r_[1.0, yfree], p.lift(yfree)[p.groups["amp"]]
+    h = mid["Re"][1] @ amp + 1j * (mid["Im"][1] @ amp)
+    lam = mid["Lam"][1]
+    assert np.isclose(np.asarray(blk[1].forms[(0, 0)]) @ y, 2 * h.imag / lam ** 2, rtol=1e-12, atol=1e-14)
+    assert np.isclose(np.asarray(blk[1].forms[(0, 1)]) @ y, h.real / lam, rtol=1e-12, atol=1e-14)

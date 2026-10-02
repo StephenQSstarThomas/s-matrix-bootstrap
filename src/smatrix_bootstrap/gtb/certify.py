@@ -254,3 +254,18 @@ def unitarity_beyond(leaf_dir, kernels_dir, big_dir) -> dict:
                 if float(s2.upper()) > float(worst.upper()):
                     worst, where = s2, (I, ell, j)
     return {"L_from": L, "L_to": 2 * nw, "rows": n, "max_abs_S_upper": float(worst.sqrt().upper()), "at": where}
+
+
+def unitarity_midpoints(leaf_dir, kernels_dir, mid_dir) -> dict:
+    """Certified upper bound of max |S| over every exported phi-midpoint row (WELLPOSED W3, V1), selected or not."""
+    from .kernels import load
+    amp = exact_amplitude(leaf_dir, kernels_dir)
+    mk = load(mid_dir)
+    re, im, meta = _mat(mk, "Re"), _mat(mk, "Im"), np.asarray(mk.meta, dtype=float).astype(int)
+    worst, where = arb(0), None
+    for r in range(len(re)):
+        hr, hi = _dot(re[r], amp), _dot(im[r], amp)
+        s2 = (1 - hi) ** 2 + hr ** 2
+        if float(s2.upper()) > float(worst.upper()):
+            worst, where = s2, tuple(int(t) for t in meta[r])
+    return {"rows": len(re), "max_abs_S_upper": float(worst.sqrt().upper()), "at (I, l, k)": where}

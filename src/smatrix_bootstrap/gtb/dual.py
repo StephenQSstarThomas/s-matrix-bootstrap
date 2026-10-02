@@ -225,8 +225,12 @@ def certify_leaf(leaf_dir, kernels_dir) -> dict:
             z = np.load(leaf / "watson_targets.npz")
             targets = {w: (z[f"{w}_re"], z[f"{w}_im"]) for w in ("S0", "P1", "D0", "S2", "D2", "F1")}
         orow = np.load(leaf / "objective_row.npy") if (leaf / "objective_row.npy").exists() else None
+        extra = None
+        if rep.get("midpoints") and rep["midpoints"].get("rows"):          # the selected midpoint cones, exactly
+            from .midpoints import load as mload
+            extra = mload(rep["midpoints"]["kernels"], rep["midpoints"]["rows"], exact=True)
         prog = Program(spec, ExactKernels(load(kernels_dir)), reg=rep["regulariser"], watson_targets=targets,
-                       objective_row=orow)
+                       objective_row=orow, extra_unitarity=extra)
         blocks = prog.blocks()
         Z = read_dual_matrices(leaf / "out", [b.size for b in blocks])
         ybar = free_variable_bounds(prog)
