@@ -112,3 +112,25 @@ def c27(no_p1: dict, no_d0: dict) -> dict:
     f2_kept = bool(d0.size and d0.max() >= 45.0)
     return {"verdict": "PASS" if rho_gone and f2_kept else "FAIL", "p1_crossing_GeV": x,
             "max_d0_deg": float(d0.max()) if d0.size else None}
+
+
+def red_2309(ref_dir) -> dict:
+    """{wave: (E_GeV, delta_deg)} of the red series of 2309.12402v3 Figs. 9 (P1) and 10a/b (S0, S2)."""
+    import csv
+    from pathlib import Path
+    files = {"P1": "figure9_p1_phases.csv", "S0": "figure10_s0_phases.csv", "S2": "figure10_s2_phases.csv"}
+    out = {}
+    for w, name in files.items():
+        rows = [r for r in csv.DictReader(open(Path(ref_dir) / name)) if r["group"] == "red"]
+        rows.sort(key=lambda r: float(r["energy_gev"]))
+        out[w] = (np.array([float(r["energy_gev"]) for r in rows]), np.array([float(r["phase_deg"]) for r in rows]))
+    return out
+
+
+def c26(green: dict, ref: dict, emax=1.2, tol=10.0) -> dict:
+    """Our green Watson phases against the 2309 red curves: RMS (mod 180 deg) at the 2309 energies below 1.2 GeV."""
+    rms = {}
+    for w, (E, d) in ref.items():
+        base = {"E_GeV": list(E), "phases": {w: {"delta_deg": list(d)}}}
+        rms[w] = c22(base, green, waves=(w,), emax=emax, tol=tol)["rms_deg"][w]
+    return {"verdict": "PASS" if all(r <= tol for r in rms.values()) else "FAIL", "rms_deg": rms}

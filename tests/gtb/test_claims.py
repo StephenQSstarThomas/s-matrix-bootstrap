@@ -182,3 +182,17 @@ def test_c24_c25_c27_rules():
     noD0 = _an(E, {"P1": list(np.linspace(0, 170, 40)), "D0": list(np.linspace(0, 60, 40))})
     assert c27(noP1, noD0)["verdict"] == "PASS"
     assert c27(noD0, noD0)["verdict"] == "FAIL"
+
+
+REF2309 = Path("/home/shiqiu/s-matrix-bootstrap/references")
+
+
+@pytest.mark.skipif(not (REF2309 / "figure9_p1_phases.csv").exists(), reason="2309 extraction missing")
+def test_c26_accepts_the_2309_red_curves_themselves_and_rejects_a_shift():
+    from smatrix_bootstrap.gtb.appclaims import c26, red_2309
+    ref = red_2309(REF2309)
+    assert set(ref) == {"S0", "P1", "S2"} and all(len(e) > 30 for e, _ in ref.values())
+    as_ours = lambda shift: {"E_GeV": list(ref["P1"][0]), "phases": {w: {"delta_deg": list(
+        np.interp(ref["P1"][0], e, d) + shift)} for w, (e, d) in ref.items()}}
+    assert c26(as_ours(0.0), ref)["verdict"] == "PASS"
+    assert c26(as_ours(15.0), ref)["verdict"] == "FAIL"

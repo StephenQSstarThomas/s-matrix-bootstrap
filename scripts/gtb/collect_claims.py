@@ -65,6 +65,8 @@ def collect(root: Path, a_init: dict, a_wat: dict) -> dict:
         out["C24"] = AC.c24(r24) if all(r24) else {"verdict": "MISSING"}
         r25 = [an("C25_nsr4"), an("C25_nsr5")]
         out["C25"] = AC.c25(base, r25) if all(r25) else {"verdict": "MISSING"}
+    if base:
+        out["C26"] = AC.c26(base, AC.red_2309(Path("/home/shiqiu/s-matrix-bootstrap/references")))
     r27 = (an("C27_noP1SR"), an("C27_noD0SR"))
     out["C27"] = AC.c27(*r27) if all(r27) else {"verdict": "MISSING"}
     caps_ok = _v1(var / "C23_minimal_caps") is not None
