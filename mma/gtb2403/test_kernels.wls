@@ -91,5 +91,16 @@ check["n_SR=5 D0 n=2 moment by hand", close[mom5[[3, 5, 7]], (x[[7]] - 4)^(5/2)/
 check["n_SR=5 build shapes", With[{a5 = GTBBuildAll[10, -20, 80, 20, 40, 5]},
     Dimensions[a5["intP1"]] == {5, a5["grid"]["n0"]} && Length[a5["SVZSR"]] == 15]];
 
+(* P_W (WELLPOSED_ZH.md W1): moments integrated and normalised to the cell boundary x_b of node n0 *)
+xb = -20 + 48/(1 + Cos[39 Pi/50]);
+momc = GTBMoments[g, 3, "cell"];
+check["W1 x_b = 189.16", close[xb, 189.162396037970671646, 10^-15]];
+check["W1 cell = node x (x_n0/x_b)^(n+n_l)", And @@ Flatten[Table[
+    Max[Abs[momc[[c, i]] - mom3[[c, i]] (x[[39]]/xb)^({{0, 1, 2}, {-1, 0, 1}, {-2, -1, 0}}[[c, i]] + {2, 2, 3}[[c]])]]
+      <= 10^-60 Max[Abs[mom3[[c, i]]]],
+    {c, 3}, {i, 3}]]];
+check["W1 build records the normalisation", With[{a5 = GTBBuildAll[10, -20, 80, 20, 40, 3, "cell"]},
+    a5["grid"]["fesr_norm"] == "cell" && GTBBuildAll[10, -20, 80]["grid"]["fesr_norm"] == "node"]];
+
 Print["failed: ", fails];
 Exit[fails];

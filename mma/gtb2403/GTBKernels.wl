@@ -18,9 +18,9 @@ GTBIndexRho1::usage = "GTBIndexRho1[g, m, n]: position of rho1(x_m, y_n) in the 
 GTBIndexRho2::usage = "GTBIndexRho2[g, a, b]: position of the symmetric rho2(x_a, y_b) in the amplitude vector.";
 GTBFormFactorKernel::usage = "GTBFormFactorKernel[g]: KFF3 = I3 (x) (K + 1 K0^T).";
 GTBBSplineBasis::usage = "GTBBSplineBasis[g, nb:40]: function s -> {B_1(s), .., B_nb(s)} (cubic, clamped on [0, x_n0], nb-3 equal intervals).";
-GTBMoments::usage = "GTBMoments[g, nsr:3] -> {intS0, intP1, intD0}, each nsr x n0, normalised by x_n0^(n + n_l).";
+GTBMoments::usage = "GTBMoments[g, nsr:3, norm:\"node\"] -> {intS0, intP1, intD0}, each nsr x n0, normalised by e^(n + n_l) with e = x_n0 (\"node\", authors) or the upper cell boundary x_b of node n0 (\"cell\", P_W W1).";
 GTBSVZ::usage = "GTBSVZ[nsr:3] -> the 3 nsr O(alpha_s) identity-operator FESR targets {S0(0..), P1(-1..), D0(-2..)}.";
-GTBBuildAll::usage = "GTBBuildAll[M, nu0, prec, L:20, nb:40, nsr:3] -> association of every exported matrix.";
+GTBBuildAll::usage = "GTBBuildAll[M, nu0, prec, L:20, nb:40, nsr:3, norm:\"node\"] -> association of every exported matrix.";
 GTBExport::usage = "GTBExport[all, dir, digits]: manifest.json + one gzip text file per matrix.";
 
 Begin["`Private`"];
@@ -107,8 +107,10 @@ GTBBSplineBasis[g_, nb_Integer : 40] := With[{e = g["x"][[g["n0"]]]},
 kap[0, x_] := 3 Sqrt[x - 4]/(256 Pi^5 Sqrt[x]);
 kap[1, x_] := (x - 4)^(3/2)/(384 Pi^5 Sqrt[x]);
 kap[2, x_] := (x - 4)^(5/2)/(2560 Pi^5 Sqrt[x]);
-GTBMoments[g_, nsr_Integer : 3] := Module[{n0 = g["n0"], x, xp, d = g["Delta"], e, mom},
-  x = Take[g["x"], n0]; xp = Take[g["xp"], n0]; e = x[[n0]];
+GTBMoments[g_, nsr_Integer : 3, norm_String : "node"] := Module[{n0 = g["n0"], x, xp, d = g["Delta"], e, mom},
+  x = Take[g["x"], n0]; xp = Take[g["xp"], n0];
+  (* the midpoint sum integrates up to the upper cell boundary of node n0; "cell" normalises there (WELLPOSED W1) *)
+  e = Switch[norm, "node", x[[n0]], "cell", N[g["nu0"] + (8 - 2 g["nu0"])/(1 + Cos[n0 Pi/g["M"]]), g["prec"]]];
   mom[l_, n_, nl_] := kap[l, x] d xp x^n/e^(n + nl);
   {Table[mom[0, n, 2], {n, 0, nsr - 1}], Table[mom[1, n, 2], {n, -1, nsr - 2}], Table[mom[2, n, 3], {n, -2, nsr - 3}]}];
 
@@ -120,16 +122,16 @@ GTBSVZ[nsr_Integer : 3] := N[Join[
 waves[g_] := Join[Table[{0, l}, {l, 0, g["L"] - 2, 2}], Table[{2, l}, {l, 0, g["L"] - 2, 2}],
    Table[{1, l}, {l, 1, g["L"] - 1, 2}]];
 
-GTBBuildAll[M_Integer, nu0_, prec_Integer, L_Integer : 20, nb_Integer : 40, nsr_Integer : 3] :=
+GTBBuildAll[M_Integer, nu0_, prec_Integer, L_Integer : 20, nb_Integer : 40, nsr_Integer : 3, norm_String : "node"] :=
  Module[{g, ws, keep, phys, chi, ff, bs, mom},
-  g = Append[GTBGrid[M, nu0, prec, L], "nb" -> nb]; ws = waves[g]; keep = N[#, Min[prec, 60]] &;
+  g = Join[GTBGrid[M, nu0, prec, L], <|"nb" -> nb, "fesr_norm" -> norm|>]; ws = waves[g]; keep = N[#, Min[prec, 60]] &;
   (* slots depend on (l, where) only; I=0 and I=2 share the even-l slots *)
   phys = Table[With[{sl = slots[g, w[[2]], {"node", j}]},
        keep /@ rowFromSlots[g, w[[1]], sl, g["omega"][[j]]]], {w, ws}, {j, M}];
   chi = Table[With[{sl = slots[g, w[[2]], {"point", s}]}, keep[rowFromSlots[g, w[[1]], sl, 1][[1]]]],
      {w, ws}, {s, {1/2, 1, 3/2, 2}}];
   ff = Table[With[{sl = slots[g, w[[2]], {"point", 3}]}, keep[rowFromSlots[g, w[[1]], sl, 1][[1]]]], {w, ws}];
-  phys = Flatten[phys, 1]; bs = GTBBSplineBasis[g, nb]; mom = GTBMoments[g, nsr];
+  phys = Flatten[phys, 1]; bs = GTBBSplineBasis[g, nb]; mom = GTBMoments[g, nsr, norm];
   <|"grid" -> g,
     "x" -> keep[g["x"]], "xp" -> keep[g["xp"]], "K" -> keep[g["K"]], "K0" -> keep[GTBK0[g]],
     "Lam" -> keep[Flatten[Table[GTBLambda[w[[2]], g["x"][[j]]], {w, ws}, {j, M}]]],
@@ -155,7 +157,7 @@ GTBExport[all_, dir_String, digits_Integer] := Module[{g = all["grid"], names, m
     man[nm] = <|"shape" -> Dimensions[all[nm]], "file" -> nm <> ".txt.gz",
        "sha256" -> FileHash[file, "SHA256", All, "HexString"]|>, {nm, names}];
   Export[FileNameJoin[{dir, "manifest.json"}],
-    <|"M" -> g["M"], "L" -> g["L"], "nb" -> Lookup[g, "nb", 40], "nu0" -> g["nu0"], "n0" -> g["n0"], "digits" -> digits, "precision" -> g["prec"],
+    <|"M" -> g["M"], "L" -> g["L"], "nb" -> Lookup[g, "nb", 40], "nu0" -> g["nu0"], "n0" -> g["n0"], "fesr_norm" -> Lookup[g, "fesr_norm", "node"], "digits" -> digits, "precision" -> g["prec"],
       "generator" -> "ours", "package" -> "mma/gtb2403/GTBKernels.wl", "matrices" -> man|>, "RawJSON"]];
 
 End[];
