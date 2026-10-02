@@ -30,9 +30,10 @@ def amplitude_basis(prog_rows, tol=1e-12):
     return vt[:k].T, {"rank": k, "n_rows": int(R.shape[0]), "tol": tol, "s_max": float(s[0]), "s_min_kept": float(s[k - 1])}
 
 
-def leaf_basis(ks, spec, reduce_basis, basis_tol, hot_start=None):
+def leaf_basis(ks, spec, reduce_basis, basis_tol, hot_start=None, extra=None):
     """The reduced amplitude basis: a hot-started solve reuses its seed's (the SVD's vectors depend on the BLAS
-    thread count, the span does not, and SDPB's checkpoint is tied to the vectors)."""
+    thread count, the span does not, and SDPB's checkpoint is tied to the vectors).  Imposed midpoint rows (extra,
+    WELLPOSED W3) enter the SVD like the node rows, so every constraint row lies in the span."""
     if not reduce_basis:
         return None, None
     if hot_start is not None:
@@ -40,8 +41,11 @@ def leaf_basis(ks, spec, reduce_basis, basis_tol, hot_start=None):
         return np.load(Path(hot_start) / "basis.npy"), {**info, "reused_from": str(hot_start)}
     probe = Program(spec, ks, reg="none")
     lam = ks.Lam[:, None]
-    return amplitude_basis([probe.Rre / lam, probe.Rim / lam, probe.Rim / lam ** 2, probe.Fchi,
-                            probe.F0row[None], probe.F1row[None]], basis_tol)
+    rows = [probe.Rre / lam, probe.Rim / lam, probe.Rim / lam ** 2, probe.Fchi, probe.F0row[None], probe.F1row[None]]
+    if extra is not None:
+        ml = np.asarray(extra["Lam"], dtype=float)[:, None]
+        rows += [extra["Re"] / ml, extra["Im"] / ml, extra["Im"] / ml ** 2]
+    return amplitude_basis(rows, basis_tol)
 
 
 def watson_targets_from_leaf(leaf, ks):
@@ -84,7 +88,13 @@ def run_leaf(spec, kernels_path, workdir, *, reg="linf-relax", reduce_basis=Fals
     work.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     ks = kernels.load(kernels_path)
-    basis, basis_info = leaf_basis(ks, spec, reduce_basis, basis_tol, hot_start)
+    extra, mid_info = None, None
+    if mid_kernels is not None and mid_rows is not None:      # WELLPOSED W3: selected midpoint cones
+        from . import midpoints
+        rows = json.loads(Path(mid_rows).read_text())["rows"]
+        extra = midpoints.load(mid_kernels, rows) if rows else None
+        mid_info = {"kernels": str(mid_kernels), "rows_file": str(mid_rows), "rows": rows}
+    basis, basis_info = leaf_basis(ks, spec, reduce_basis, basis_tol, hot_start, extra=extra)
     targets = None
     if watson_from is not None:                      # Watson step seeded by a previous leaf (same kernels)
         from dataclasses import replace
@@ -95,12 +105,6 @@ def run_leaf(spec, kernels_path, workdir, *, reg="linf-relax", reduce_basis=Fals
         spec = replace(spec, objective="watson", f0_ni=prev["spec"]["f0_ni"])
     if objective_row is not None:
         np.save(work / "objective_row.npy", np.asarray(objective_row, dtype=float))
-    extra, mid_info = None, None
-    if mid_kernels is not None and mid_rows is not None:      # WELLPOSED W3: selected midpoint cones
-        from . import midpoints
-        rows = json.loads(Path(mid_rows).read_text())["rows"]
-        extra = midpoints.load(mid_kernels, rows) if rows else None
-        mid_info = {"kernels": str(mid_kernels), "rows_file": str(mid_rows), "rows": rows}
     prog = Program(spec, ks, reg=reg, basis=basis, watson_targets=targets, objective_row=objective_row,
                    extra_unitarity=extra)
     if basis is not None:

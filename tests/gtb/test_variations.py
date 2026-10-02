@@ -174,3 +174,17 @@ def test_program_adds_midpoint_unitarity_blocks(tmp_path):
     lam = mid["Lam"][1]
     assert np.isclose(np.asarray(blk[1].forms[(0, 0)]) @ y, 2 * h.imag / lam ** 2, rtol=1e-12, atol=1e-14)
     assert np.isclose(np.asarray(blk[1].forms[(0, 1)]) @ y, h.real / lam, rtol=1e-12, atol=1e-14)
+
+
+@needs_ks10
+def test_reduced_basis_spans_the_midpoint_rows_when_they_are_imposed(tmp_path):
+    from smatrix_bootstrap.gtb import kernels, midpoints
+    from smatrix_bootstrap.gtb.solve import leaf_basis
+    from smatrix_bootstrap.gtb.spec import GtbSpec
+    midpoints.build(KS10, tmp_path / "mid", l_max=4)
+    mid = midpoints.load(tmp_path / "mid")
+    V, info = leaf_basis(kernels.load(KS10), GtbSpec(M=10), True, 1e-12, None, extra=mid)
+    for R in (mid["Re"] / mid["Lam"][:, None], mid["Im"] / mid["Lam"][:, None] ** 2):
+        resid = R - (R @ V) @ V.T
+        assert np.abs(resid).max() <= 1e-9 * np.abs(R).max()
+    assert info["n_rows"] > leaf_basis(kernels.load(KS10), GtbSpec(M=10), True, 1e-12, None)[1]["n_rows"]
