@@ -196,3 +196,13 @@ def test_c26_accepts_the_2309_red_curves_themselves_and_rejects_a_shift():
         np.interp(ref["P1"][0], e, d) + shift)} for w, (e, d) in ref.items()}}
     assert c26(as_ours(0.0), ref)["verdict"] == "PASS"
     assert c26(as_ours(15.0), ref)["verdict"] == "FAIL"
+
+
+@pytest.mark.skipif(not FIG3.exists(), reason="Fig. 3 extraction missing")
+def test_region_figure_draws_ours_paper_points_and_tree(tmp_path):
+    from smatrix_bootstrap.gtb.appclaims import fig3_dots
+    from smatrix_bootstrap.gtb.figures import region_figure
+    dots = fig3_dots(FIG3)
+    ours = {k: {"max": dots["edges"][k]["max"] + 1e-3, "min": dots["edges"][k]["min"]} for k in range(2, 51, 4)}
+    out = region_figure(ours, {44: -0.0258, 46: -0.0272, 48: -0.0286}, dots, tmp_path / "fig3.png")
+    assert out.exists() and out.stat().st_size > 10_000

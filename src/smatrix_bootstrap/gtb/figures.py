@@ -49,3 +49,34 @@ def phases_figure(ours: dict, paper: dict, path, quantity="delta_deg", ylabel=r"
     fig.savefig(path, dpi=150)
     plt.close(fig)
     return path
+
+
+def region_figure(ours: dict, c1: dict, dots: dict, path, f0_scale=0.163108):
+    """Fig. 3: allowed region in (F0, F1).  ours: {k: {'max', 'min'}} (V1-certified, reduced basis = inner bounds);
+    c1: {ni: certified F1max}; dots: appclaims.fig3_dots of the paper.  Paper hollow, ours filled."""
+    from pathlib import Path
+    fig, ax = plt.subplots(figsize=(7.5, 5))
+    ks = sorted(dots["edges"])
+    for s, lab in (("max", "paper edges (Fig. 3)"), ("min", None)):
+        ax.plot([k / 50 * 0.1632 for k in ks], [dots["edges"][k][s] for k in ks], ls="none", marker="o", ms=4,
+                mfc="none", mec=MUTED, mew=0.8, label=lab)
+    kk = sorted(k for k in ours if ours[k].get("max") is not None)
+    for s, lab in (("max", "ours: max / min F1 (V1, inner bounds)"), ("min", None)):
+        ax.plot([k / 50 * f0_scale for k in kk], [ours[k][s] for k in kk], lw=1.2, color=INK, marker="o", ms=4,
+                label=lab)
+    for ni, (col, mk, lab) in STYLE.items():
+        p = dots["points"].get({44: "blue", 46: "green", 48: "red"}[ni])
+        if p:
+            ax.plot(*p, ls="none", marker=mk, ms=8, mfc="none", mec=col, mew=1.4, label=f"paper {lab}")
+        if ni in c1:
+            ax.plot(ni / 50 * f0_scale, c1[ni], ls="none", marker=mk, ms=7, color=col, label=f"ours {lab}")
+    if "black" in dots["points"]:
+        ax.plot(*dots["points"]["black"], ls="none", marker="*", ms=11, color=INK, label="tree level")
+    ax.set_xlabel(r"$\mathfrak{F}_0$", color=MUTED)
+    ax.set_ylabel(r"$\mathfrak{F}_1$", color=MUTED)
+    _axes_style(ax)
+    ax.legend(fontsize=7.5, frameon=False, loc="lower left")
+    fig.tight_layout()
+    fig.savefig(path, dpi=150)
+    plt.close(fig)
+    return Path(path)
