@@ -211,3 +211,46 @@ def primal(leaf_dir, kernels_dir, perturb=None) -> dict:
 
 # V2 lives in dual.py (size limit); re-exported here.
 from .dual import ExactKernels, certify_leaf, dual_bound, psd_shift, read_dual_matrices  # noqa: E402,F401
+
+
+def exact_amplitude(leaf_dir, kernels_dir):
+    """The leaf's amplitude variables as Arb balls (exact relift of SDPB's y, F0 pivot solved in Arb)."""
+    from .kernels import load
+    ctx.prec = 256
+    leaf, ks = Path(leaf_dir), load(kernels_dir)
+    rep = json.loads((leaf / "report.json").read_text())
+    spec = rep["spec"]
+    fF = [ra + rb for ra, rb in zip(_mat(ks, "fF_sig"), _mat(ks, "fF_rho"))]
+    bs = _mat(ks, "BSpline3")
+    info = {"spec": spec, "M": spec["M"], "nb": spec["n_b"], "pivot": rep["pivot"],
+            "empty_c": {i for i in range(3 * spec["n_b"]) if all(r[i] == 0 for r in bs)}}
+    basis = np.load(leaf / "basis.npy") if (leaf / "basis.npy").exists() else None
+    amp, _, _ = _lift(info, ks, list(np.load(leaf / "solution.npz")["y_text"]), basis,
+                      {"F0": [2 * (a + 5 * b) for a, b in zip(fF[0], fF[1])]}, None)
+    return amp
+
+
+def unitarity_beyond(leaf_dir, kernels_dir, big_dir) -> dict:
+    """Certified upper bound of max |S| = |1 + i h| over the partial waves l >= L of the leaf (not imposed by the
+    program) at every node, with the rows of a larger-L export of the same kernels (WELLPOSED W2, V1)."""
+    from .kernels import load
+    amp = exact_amplitude(leaf_dir, kernels_dir)
+    big = load(big_dir)
+    L = json.loads((Path(leaf_dir) / "report.json").read_text())["spec"]["L"]
+    M, nw = int(big.manifest["M"]), int(big.manifest["L"]) // 2
+    re = [a + b for a, b in zip(_mat(big, "Re_sig"), _mat(big, "Re_rho"))]
+    im = [a + b for a, b in zip(_mat(big, "Im_sig"), _mat(big, "Im_rho"))]
+    worst, where, n = arb(0), None, 0
+    for blk, I in enumerate((0, 2, 1)):
+        for w in range(nw):
+            ell = 2 * w + (1 if I == 1 else 0)
+            if ell < L:
+                continue
+            for j in range(M):
+                r = (blk * nw + w) * M + j
+                hr, hi = _dot(re[r], amp), _dot(im[r], amp)
+                s2 = (1 - hi) ** 2 + hr ** 2                     # |S|^2
+                n += 1
+                if float(s2.upper()) > float(worst.upper()):
+                    worst, where = s2, (I, ell, j)
+    return {"L_from": L, "L_to": 2 * nw, "rows": n, "max_abs_S_upper": float(worst.sqrt().upper()), "at": where}

@@ -179,3 +179,19 @@ def test_infeasibility_is_certified_beyond_the_tip_and_not_inside():
     assert bad["certified_infeasible"] and float(bad["bound"]) < 0
     ok = certify_infeasible(HOT / "cold46", KS10)                # a feasible problem cannot be proven infeasible
     assert not ok["certified_infeasible"]
+
+
+KS10_L24 = Path("/playpen1/shiqiu/gtb2403_runs/kernels/ours_M10_L24")
+
+
+@needs_leaf10
+@pytest.mark.skipif(not (KS10_L24 / "manifest.json").exists(), reason="M=10 L=24 export missing")
+def test_unitarity_bound_beyond_the_imposed_waves_matches_the_float_scan():
+    from smatrix_bootstrap.gtb import kernels
+    from smatrix_bootstrap.gtb.certify import unitarity_beyond
+    from smatrix_bootstrap.gtb.leafanalysis import omitted_waves
+    v = np.load(LEAF10 / "solution.npz")["v"]
+    exact = unitarity_beyond(LEAF10, KS10, KS10_L24)
+    flt = max(omitted_waves(v[:176], kernels.load(KS10_L24), 20)["eta_max"].values())
+    assert exact["L_from"] == 20 and exact["L_to"] == 24 and exact["rows"] == 3 * 2 * 10
+    assert abs(exact["max_abs_S_upper"] - flt) < 1e-9 and exact["max_abs_S_upper"] >= flt
