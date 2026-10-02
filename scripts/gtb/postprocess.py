@@ -19,6 +19,22 @@ def _log(root, msg):
         f.write(time.strftime("%Y-%m-%dT%H:%M:%S ") + msg + "\n")
 
 
+def _seed_refs(root: Path) -> str:
+    """Text of every queued line and every running command: a leaf named there may still seed a hot start."""
+    txt = "".join(q.read_text() for q in root.glob("queue*.txt"))
+    ps = subprocess.run(["ps", "-eo", "args"], capture_output=True, text=True).stdout
+    return txt + ps
+
+
+def _prune(root: Path, leaf: Path, refs: str):
+    """Delete sdp.ck of a certified leaf that no queued or running command can still use as --hot-start seed."""
+    ck = leaf / "sdp.ck"
+    if ck.is_dir() and (leaf / "certificate.json").exists() and f"--hot-start {leaf} " not in refs + " " \
+            and not refs.rstrip().endswith(f"--hot-start {leaf}"):
+        subprocess.run(["rm", "-rf", str(ck)], check=True)
+        _log(root, f"pruned {ck}")
+
+
 def once(root: Path):
     seeds = set()
     for rep_path in root.rglob("report.json"):
@@ -44,6 +60,8 @@ def once(root: Path):
             r = subprocess.run(RUN + ["analyze", "--leaf", str(leaf), "--kernels", k] + extra,
                                capture_output=True, text=True)
             _log(root, f"analyze {leaf} rc={r.returncode} {r.stdout.strip()[-200:]}")
+        if (leaf / "analysis.json").exists() or not wants:
+            _prune(root, leaf, _seed_refs(root))
 
 
 if __name__ == "__main__":
