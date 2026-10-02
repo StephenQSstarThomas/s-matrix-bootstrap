@@ -58,6 +58,24 @@ def _threshold(prog, amp, grid):
     return out, ctrl
 
 
+def threshold_below(grid, amp, n=12, lo=2.0, hi=3.8) -> dict:
+    """Threshold parameters from the interpolant below threshold (PREREGISTRATION amendment 8): f_l(s) on n points
+    s in [lo, hi] (z inside the disk, where the node-alternating artefacts of the discrete K decay as |z|^M), fit of
+    f/k^(2l) = a + b k^2 + c k^4 with k^2 = (s-4)/4 < 0, read at k^2 = 0."""
+    from flint import arb
+    from .evaluate import f_row, value
+    s_pts = np.linspace(lo, hi, n)
+    out = {}
+    for w, key in (("S0", "00"), ("S2", "20"), ("P1", "11"), ("D0", "02"), ("D2", "22")):
+        I, ell = WAVE_IL[w]
+        f = [float(value(f_row(grid, I, ell, ("point", arb(repr(float(s)))), "interp"), amp).real.mid()) for s in s_pts]
+        a, b = A.threshold_fit((s_pts - 4) / 4, np.array(f), ell)
+        out["a" + key] = a
+        if ell < 2:
+            out["b" + key] = b
+    return out
+
+
 def s_abs(grid, amp, wave, where, prescription="interp") -> float:
     """|S^I_l| = |1 + i pi sqrt((s-4)/s) f^I_l(s)| at a node or a real point on the cut."""
     from flint import acb
@@ -125,6 +143,7 @@ def analyze(leaf, kernels_dir, pole=True, omitted_kernels=None) -> dict:
     res["radii_fm2"] = {"S": A.radius_fm2(fp["S0"]), "V": A.radius_fm2(fp["P1"]), "T": A.radius_fm2(fp["D0"])}
     grid = Grid(M, prec_bits=192)
     res["threshold"], res["threshold_control"] = _threshold(prog, amp, grid)
+    res["threshold_below"] = threshold_below(grid, amp)
     res["between_nodes"] = between_nodes(grid, amp, n0)
     from .watson import residual, targets_from_solution
     res["watson_self_residual"] = residual(prog, v, targets_from_solution(prog, v))

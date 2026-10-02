@@ -104,3 +104,12 @@ def test_between_node_scan_covers_every_gap_below_s0():
         assert len(r["s"]) == len(r["abs_S"]) == prog.n0 - 1
         assert np.all(np.diff(r["s"]) > 0) and np.all(np.isfinite(r["abs_S"]))
         assert r["max_abs_S"] == max(r["abs_S"])
+
+
+def test_threshold_below_on_a_constant_amplitude(grid):
+    from smatrix_bootstrap.gtb.leafanalysis import threshold_below
+    amp = np.zeros(1 + 2 * 10 + 100 + 55)
+    amp[0] = 0.8                                        # T0 only: f^0_0 = 5/2 T0, f^2_0 = T0, every other wave 0
+    t = threshold_below(grid, amp)
+    assert abs(t["a00"] - 2.0) < 1e-12 and abs(t["a20"] - 0.8) < 1e-12
+    assert abs(t["b00"]) < 1e-10 and abs(t["a11"]) < 1e-12 and abs(t["a02"]) < 1e-12 and abs(t["a22"]) < 1e-12
