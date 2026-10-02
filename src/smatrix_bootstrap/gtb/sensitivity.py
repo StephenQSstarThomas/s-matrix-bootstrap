@@ -57,7 +57,12 @@ def shadow_prices(leaf, kernels_dir, h: float = 1e-4, which=None) -> dict:
         z = np.load(leaf / "watson_targets.npz")
         targets = {w: (z[f"{w}_re"], z[f"{w}_im"]) for w in {k.rsplit("_", 1)[0] for k in z.files}}
     orow = np.load(leaf / "objective_row.npy") if (leaf / "objective_row.npy").exists() else None
-    build = lambda sp: Program(sp, ks, reg=rep["regulariser"], basis=basis, watson_targets=targets, objective_row=orow)
+    extra = None
+    if rep.get("midpoints") and rep["midpoints"].get("rows"):        # WELLPOSED W3 cones are part of the program
+        from .midpoints import load as mload
+        extra = mload(rep["midpoints"]["kernels"], rep["midpoints"]["rows"])
+    build = lambda sp: Program(sp, ks, reg=rep["regulariser"], basis=basis, watson_targets=targets, objective_row=orow,
+                               extra_unitarity=extra)
     base = build(spec)
     yfull = np.r_[1.0, read_y(leaf / "out", base.n_vars)["float"]]
     Z = [np.array(z, dtype=float) for z in read_dual_matrices(leaf / "out", [b.size for b in base.blocks()])]
