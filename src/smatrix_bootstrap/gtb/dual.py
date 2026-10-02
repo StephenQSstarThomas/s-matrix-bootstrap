@@ -202,7 +202,7 @@ def trace_bounds(blocks, ybar) -> list:
     return out
 
 
-def certify_leaf(leaf_dir, kernels_dir) -> dict:
+def certify_leaf(leaf_dir, kernels_dir, check_kernels=None, mid_check=None) -> dict:
     """V1 lower bound (certified feasible point) and V2 upper bound for one full-space leaf."""
     import json
     from dataclasses import fields
@@ -239,7 +239,14 @@ def certify_leaf(leaf_dir, kernels_dir) -> dict:
         upper = {"value": ub.upper().str(30, radius=False) if ub.is_finite() else "inf",
                  "certified": bool(ub.is_finite()), "residual_history": res.get("residual_history"),
                  "max_shift": res.get("max_shift")}
-    return {"lower": lower, "upper": upper, "regulariser": rep["regulariser"], "l4_feasible": p1["l4_feasible"],
+    extra = {}
+    if check_kernels is not None:                  # WELLPOSED V1: waves beyond the imposed L, every node
+        from .certify import unitarity_beyond
+        extra["unitarity_beyond"] = unitarity_beyond(leaf, kernels_dir, check_kernels)
+    if mid_check is not None:                      # WELLPOSED V1: every exported phi-midpoint row
+        from .certify import unitarity_midpoints
+        extra["unitarity_midpoints"] = unitarity_midpoints(leaf, kernels_dir, mid_check)
+    return {**extra, "lower": lower, "upper": upper, "regulariser": rep["regulariser"], "l4_feasible": p1["l4_feasible"],
             "families": p1["families"], "rho_l4": p1["rho_l4"], "l4_bound": p1["l4_bound"],
             "objective": rep["spec"]["objective"], "f0_ni": rep["spec"]["f0_ni"]}
 

@@ -207,3 +207,14 @@ def test_midpoint_unitarity_bound_matches_the_float_scan(tmp_path):
     flt = float(midpoints.scan(mid, v[:176]).max())
     ex = unitarity_midpoints(LEAF10, KS10, tmp_path / "mid")
     assert ex["rows"] == 54 and abs(ex["max_abs_S_upper"] - flt) < 1e-9
+
+
+@needs_leaf10
+@pytest.mark.skipif(not (KS10_L24 / "manifest.json").exists(), reason="M=10 L=24 export missing")
+def test_certificate_carries_the_beyond_l_and_midpoint_bounds(tmp_path):
+    from smatrix_bootstrap.gtb import midpoints
+    from smatrix_bootstrap.gtb.dual import certify_leaf
+    midpoints.build(KS10, tmp_path / "mid", l_max=2)
+    c = certify_leaf(LEAF10, KS10, check_kernels=KS10_L24, mid_check=tmp_path / "mid")
+    assert c["unitarity_beyond"]["L_to"] == 24 and c["unitarity_midpoints"]["rows"] == 27
+    assert c["upper"]["certified"]

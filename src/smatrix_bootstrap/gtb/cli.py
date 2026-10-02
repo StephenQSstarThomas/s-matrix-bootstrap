@@ -50,9 +50,10 @@ def _solve(a):
 def _certify(a):
     from pathlib import Path
     from .dual import certify_leaf
-    cert = certify_leaf(a.leaf, a.kernels)
+    cert = certify_leaf(a.leaf, a.kernels, check_kernels=a.check_kernels, mid_check=a.mid_check)
     Path(a.leaf, "certificate.json").write_text(json.dumps(cert, indent=1, default=str) + "\n")
-    print(json.dumps({k: cert[k] for k in ("lower", "upper", "l4_feasible")}, indent=1, default=str))
+    print(json.dumps({k: cert[k] for k in ("lower", "upper", "l4_feasible", "unitarity_beyond", "unitarity_midpoints")
+                      if k in cert}, indent=1, default=str))
     return 0 if cert["lower"]["certified"] else 1
 
 
@@ -151,6 +152,8 @@ def main(argv=None) -> int:
     c = sub.add_parser("certify", help="V1 (Arb primal) and, for full-space leaves, V2 (dual bound)")
     c.add_argument("--leaf", required=True)
     c.add_argument("--kernels", required=True)
+    c.add_argument("--check-kernels", default=None, help="larger-L export: certified max |S| beyond the imposed L")
+    c.add_argument("--mid-check", default=None, help="midpoint export: certified max |S| over every midpoint row")
     c.set_defaults(func=_certify)
     f = sub.add_parser("infeasible", help="V2 infeasibility certificate from a diverging leaf's multipliers")
     f.add_argument("--leaf", required=True)
