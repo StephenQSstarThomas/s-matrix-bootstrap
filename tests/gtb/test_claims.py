@@ -19,6 +19,7 @@ def test_g3_rule_on_brackets():
 
 import copy
 from pathlib import Path
+import numpy as np
 
 import pytest
 
@@ -123,3 +124,61 @@ def test_c1_from_a_lower_certificate_alone(tmp_path):
     assert main(["claims", "--c1", f"46:{tmp_path / 'c.json'}", "--out", str(tmp_path / "o.json")]) == 0
     c1 = json.loads((tmp_path / "o.json").read_text())["C1"]
     assert c1["verdict"] == "FAIL" and c1["points"]["46"]["upper"] is None
+
+
+FIG3 = Path("/playpen1/shiqiu/gtb2403_prep/paper/fig3_shape_dots_extracted.txt")
+
+
+@pytest.mark.skipif(not FIG3.exists(), reason="Fig. 3 extraction missing")
+def test_c2_accepts_the_papers_own_dots_and_rejects_a_shift():
+    from smatrix_bootstrap.gtb.appclaims import c2, fig3_dots
+    dots = fig3_dots(FIG3)
+    ks = range(2, 51, 4)
+    own = {k: dict(dots["edges"][k]) for k in ks}
+    tree = {"max": dots["edges"][45]["max"], "min": dots["edges"][45]["min"]}
+    assert c2(own, tree, FIG3)["verdict"] == "PASS"
+    shifted = {k: {"max": v["max"] + 5e-4, "min": v["min"] - 5e-4} for k, v in own.items()}
+    r = c2(shifted, tree, FIG3)
+    assert r["verdict"] == "FAIL" and abs(r["rms"] - 5e-4) < 1e-9
+
+
+def test_c3_needs_the_tree_inside_at_2e3_and_a_certified_exclusion_at_1e3():
+    from smatrix_bootstrap.gtb.appclaims import c3
+    inside = {"max": -0.027, "min": -0.031}
+    assert c3(inside, {"certified_infeasible": True})["verdict"] == "PASS"
+    assert c3(inside, {"certified_infeasible": False})["verdict"] == "INCONCLUSIVE"
+    assert c3({"max": -0.030, "min": -0.031}, {"certified_infeasible": True},
+              excl2e3={"certified_infeasible": True})["verdict"] == "FAIL"
+    assert c3(inside, {"certified_infeasible": False}, at1e3=inside)["verdict"] == "FAIL"
+
+
+def _an(E, deltas, ff=None):
+    return {"E_GeV": E, "phases": {w: {"delta_deg": d} for w, d in deltas.items()},
+            "FF_abs": ff or {}, "crossings_GeV": {}}
+
+
+def test_c22_rms_below_1p4_gev_modulo_180():
+    from smatrix_bootstrap.gtb.appclaims import c22
+    E = list(np.linspace(0.3, 1.8, 40))
+    base = _an(E, {w: list(np.linspace(0, 170, 40)) for w in ("S0", "P1", "S2")})
+    var = _an(E, {w: list(np.linspace(0, 170, 40) + (180 if w == "S2" else 5)) for w in ("S0", "P1", "S2")})
+    r = c22(base, var)
+    assert r["verdict"] == "PASS" and abs(r["rms_deg"]["P1"] - 5) < 1e-9 and r["rms_deg"]["S2"] < 1e-9
+    far = _an(E, {w: list(np.linspace(0, 170, 40) + 20) for w in ("S0", "P1", "S2")})
+    assert c22(base, far)["verdict"] == "FAIL"
+
+
+def test_c24_c25_c27_rules():
+    from smatrix_bootstrap.gtb.appclaims import c24, c25, c27, peak
+    E = list(np.linspace(0.3, 1.8, 40))
+    bump = lambda m, h: [h / (1 + ((e - m) / 0.1) ** 2) for e in E]
+    an = lambda m: _an(E, {}, {"P1": bump(m, 6.0), "S0": bump(0.5, 2.0), "D0": bump(1.3, 3.0)})
+    assert abs(peak(an(0.8), "P1")[0] - E[int(np.argmax(bump(0.8, 6)))]) < 1e-12
+    assert c24([an(0.76), an(0.80), an(0.84)])["verdict"] == "PASS"            # spread ~ 80 MeV
+    assert c24([an(0.79), an(0.80), an(0.81)])["verdict"] == "FAIL"
+    assert c25(an(0.8), [an(0.8), an(0.8)])["verdict"] == "PASS"
+    assert c25(an(0.8), [an(0.9)])["verdict"] == "FAIL"
+    noP1 = _an(E, {"P1": [10.0] * 40, "D0": list(np.linspace(0, 60, 40))})
+    noD0 = _an(E, {"P1": list(np.linspace(0, 170, 40)), "D0": list(np.linspace(0, 60, 40))})
+    assert c27(noP1, noD0)["verdict"] == "PASS"
+    assert c27(noD0, noD0)["verdict"] == "FAIL"
