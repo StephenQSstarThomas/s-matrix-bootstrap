@@ -1,0 +1,60 @@
+{
+  "archive_only_m10_primal_replay": true,
+  "original_run_directory_cleared": true,
+  "restored_files": 702,
+  "objective_F1": {
+    "mid": "-0.0267254682287410326039616751837",
+    "radius": 6.297036524165243e-38
+  },
+  "families": {
+    "unitarity": {
+      "certified_pass": 276,
+      "certified_fail": 0,
+      "inconclusive": 0,
+      "min_lower_slack": 2.903862779661526e-09,
+      "at": "row 100"
+    },
+    "gram": {
+      "certified_pass": 48,
+      "certified_fail": 0,
+      "inconclusive": 0,
+      "min_lower_slack": 1.0192464730225043e-09,
+      "at": "P1:2:det"
+    },
+    "chiral": {
+      "certified_pass": 2,
+      "certified_fail": 0,
+      "inconclusive": 0,
+      "min_lower_slack": 2.0317490514188037e-12,
+      "at": "ratio"
+    },
+    "fesr": {
+      "certified_pass": 3,
+      "certified_fail": 0,
+      "inconclusive": 0,
+      "min_lower_slack": 4.1334031748401685e-17,
+      "at": "S0"
+    },
+    "ff": {
+      "certified_pass": 6,
+      "certified_fail": 0,
+      "inconclusive": 0,
+      "min_lower_slack": 3.03663849487645e-09,
+      "at": "P1:9"
+    },
+    "c_positive": {
+      "certified_pass": 51,
+      "certified_fail": 0,
+      "inconclusive": 0,
+      "min_lower_slack": 0.2046776845184283,
+      "at": "c10"
+    },
+    "regulariser": {
+      "certified_pass": 155,
+      "certified_fail": 0,
+      "inconclusive": 0,
+      "min_lower_slack": 0.09009673859955683,
+      "at": "rho8"
+    }
+  }
+}

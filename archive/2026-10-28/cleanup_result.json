@@ -1,0 +1,45 @@
+{
+  "started_utc": "2026-10-28T17:29:41Z",
+  "archive_commit": "b875c3552a5e80dfd5f1a3e16bca2d9be156ccb9",
+  "remote_verified_before_deletion": true,
+  "full_local_backup_verified": true,
+  "full_local_backup": "/playpen-hdd2/shiqiu/s-matrix-bootstrap-evidence-2026-10-28",
+  "before": {
+    "utc": "2026-10-28T17:12:43Z",
+    "allocated_bytes": {
+      "/home/shiqiu/s-matrix-bootstrap": 19933753344,
+      "/home/shiqiu/s-matrix-bootstrap/results": 17822040064,
+      "/playpen1/shiqiu/sdpb_regularised_20260913": 616269131776,
+      "/playpen1/shiqiu/sdpb_mainline_20260912": 51935641600,
+      "/playpen1/shiqiu/gtb2403_runs": 103194595328
+    },
+    "filesystem_free_bytes": {
+      "/home": 42837028864,
+      "/playpen1": 341188792320
+    }
+  },
+  "deleted_external_roots": [
+    "/playpen1/shiqiu/sdpb_regularised_20260913",
+    "/playpen1/shiqiu/sdpb_mainline_20260912",
+    "/playpen1/shiqiu/gtb2403_runs"
+  ],
+  "local_untracked_files_deleted": 12775,
+  "local_untracked_apparent_bytes_deleted": 20806453329,
+  "finished_utc": "2026-10-28T17:31:06Z",
+  "after_allocated_bytes": {
+    "/home/shiqiu/s-matrix-bootstrap": 1548103680,
+    "/home/shiqiu/s-matrix-bootstrap/results": 232067072,
+    "/playpen1/shiqiu/sdpb_regularised_20260913": 8192,
+    "/playpen1/shiqiu/sdpb_mainline_20260912": 8192,
+    "/playpen1/shiqiu/gtb2403_runs": 8192
+  },
+  "filesystem_free_bytes_after": {
+    "/home": 61213052928,
+    "/playpen1": 1112430452736
+  },
+  "initial_read_only_assessment_project_allocated_bytes": 18074734592,
+  "full_local_backup_allocated_bytes": 935075840,
+  "runtime_payload_bytes_removed": 788989317120,
+  "net_project_footprint_reduction_bytes": 786990899200,
+  "measurement_note": "Allocated-byte counts, excluding unchanged paper preparation material. First project baseline predates archive creation. Net reduction includes the new full local backup and all remaining local Git objects. Subsequent small receipt/document commits are not included."
+}

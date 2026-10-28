@@ -1,0 +1,10 @@
+{
+  "commit": "b875c3552a5e80dfd5f1a3e16bca2d9be156ccb9",
+  "branch": "archive/paused-2026-10-28",
+  "verified_utc": "2026-10-28T17:28:58Z",
+  "independent_fresh_clone": true,
+  "git_tree_matches": true,
+  "all_archive_parts_match": true,
+  "archive_parts_verified": 4,
+  "archive_checksums_sha256": "b6ef566d2ff73131515ea51d39178b69639c3458355972f0b0fe74607c855d66"
+}
