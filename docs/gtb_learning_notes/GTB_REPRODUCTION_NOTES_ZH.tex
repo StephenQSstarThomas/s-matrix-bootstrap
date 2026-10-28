@@ -1,0 +1,1402 @@
+% 中文学习讲义；从仓库根目录编译：
+% tectonic -o docs/gtb_learning_notes docs/gtb_learning_notes/GTB_REPRODUCTION_NOTES_ZH.tex
+% 只保留本源文件与 PDF。图形由 TikZ/PGFPlots 在文档内绘制，无外部素材依赖。
+\documentclass[UTF8,a4paper,11pt,fontset=fandol]{ctexart}
+\usepackage[left=23mm,right=23mm,top=23mm,bottom=24mm,headheight=16pt]{geometry}
+\usepackage{amsmath,amssymb,mathtools,bm}
+\usepackage{booktabs,tabularx,longtable,array,multirow}
+\usepackage{graphicx,xcolor,tikz,pgfplots}
+\usetikzlibrary{arrows.meta,positioning,calc,fit}
+\pgfplotsset{compat=1.18}
+\usepackage{enumitem,fancyhdr,caption,needspace}
+\usepackage{float,placeins}
+\usepackage[unicode,colorlinks=true,linkcolor=teal,citecolor=teal,urlcolor=teal,bookmarksnumbered=true]{hyperref}
+\usepackage{xurl}
+\usepackage{bookmark}
+\definecolor{ink}{HTML}{24343D}
+\definecolor{teal}{HTML}{176A70}
+\definecolor{rust}{HTML}{B66543}
+\definecolor{muted}{HTML}{65767D}
+\definecolor{wash}{HTML}{EEF4F4}
+\definecolor{line}{HTML}{C9D8D8}
+\color{ink}
+\setmainfont{texgyrepagella}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setsansfont{texgyreheros}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setmonofont{DejaVu Sans Mono}[Scale=0.82]
+\ctexset{section={format=\Large\sffamily\bfseries\color{teal},beforeskip=22pt,afterskip=10pt},
+subsection={format=\large\sffamily\bfseries,beforeskip=15pt,afterskip=7pt},
+subsubsection={format=\normalsize\sffamily\bfseries,beforeskip=11pt,afterskip=5pt}}
+\linespread{1.20}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{4pt}
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+\setlength{\emergencystretch}{2em}
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.25}
+\setlist{topsep=5pt,itemsep=4pt,parsep=0pt,leftmargin=2em}
+\captionsetup{font=small,labelfont=bf,labelsep=quad,skip=7pt}
+\numberwithin{equation}{section}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\ii}{\mathrm i}
+\newcommand{\Ree}{\operatorname{Re}}
+\newcommand{\Imm}{\operatorname{Im}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\GeV}{\,\mathrm{GeV}}
+\newcommand{\MeV}{\,\mathrm{MeV}}
+\newcommand{\eChi}{\epsilon^{\chi}}
+\newcommand{\eSR}{\epsilon^{\mathrm{SR}}}
+\newcommand{\eFF}{\epsilon^{\mathrm{FF}}}
+\newcommand{\Fcal}{\mathcal F}
+\newcommand{\Mreg}{M_{\mathrm{reg}}}
+\newcommand{\ket}[1]{\lvert #1\rangle}
+\newcommand{\bra}[1]{\langle #1\rvert}
+\newcommand{\code}[1]{{\urlstyle{tt}\nolinkurl{#1}}}
+\newcommand{\source}[1]{\par\noindent{\small\color{muted}资料：#1}\par}
+\newcommand{\newchapter}[1]{\FloatBarrier\Needspace{9\baselineskip}\section{#1}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily\color{muted}Gauge Theory Bootstrap · 学习与复现}
+\fancyhead[R]{\small\sffamily\color{muted}\nouppercase{\leftmark}}
+\fancyfoot[L]{\footnotesize\color{muted}资料截至 2026-09-18}
+\fancyfoot[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\sectionmark}[1]{\markboth{\thesection\quad #1}{}}
+\hypersetup{pdftitle={从量子力学到规范理论 Bootstrap：原理、系列工作与 2309 复现},
+pdfauthor={项目学习与汇报资料},pdfsubject={He--Kruczenski 2021--2025 系列；SDPB 复现审阅}}
+
+\begin{document}
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+\thispagestyle{empty}
+\vspace*{14mm}
+{\sffamily\color{teal}\large 研究学习讲义\par}
+\vspace{12mm}
+{\sffamily\bfseries\fontsize{29}{40}\selectfont 从量子力学到\\规范理论 Bootstrap\par}
+\vspace{7mm}
+{\Large 原理、系列工作与 2309 复现\par}
+\vspace{13mm}
+\noindent{\color{teal}\rule{\linewidth}{1pt}}\par
+\vspace{8mm}
+\noindent\begin{minipage}{0.88\linewidth}
+本文面向已经学到量子力学微扰论、正在准备复现汇报的读者。所需的粒子物理、散射理论、复变函数与凸优化知识，随问题逐步引入；公式之后说明各项的含义、使用条件，以及它在本次计算中的位置。
+
+讨论以 He--Kruczenski 的 2021 年方法论文为起点，以 arXiv:2309.12402v3 为复现对象，并对照 2024、2025 年后续论文和公开代码。数值事实来自现有分支、2026 年 9 月 18 日英文对照报告及对应运行记录。
+\end{minipage}\par
+\vfill
+{\small\color{muted}
+复现分支\quad\code{sdpb-2309-regularised}\\[5pt]
+结果基线\quad\code{27f03c4}；作者本地代码\quad\code{801684d}\\[5pt]
+编写日期\quad 2026 年 9 月 18 日\\[5pt]
+用途\quad 自学、组内汇报与后续研究讨论
+}
+\end{titlepage}
+
+\pagenumbering{roman}
+\hypersetup{pageanchor=true}
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+
+\section{阅读范围与资料口径}\label{sec:read}
+这次复现要回答的问题是：已知高能处夸克和胶子的理论，以及极低能处介子的近似理论，能否计算两者之间的强相互作用散射？这里的“散射”指粒子接近、相互作用、再分离的过程。“复现”则要核对同样的物理假设和数值设置，是否产生原论文报告的结果。
+
+本文按知识依赖组织。第\ref{sec:particles}--\ref{sec:bridge}节解释粒子、分波、解析性，以及把高低能信息联系起来的方程；第\ref{sec:convex}--\ref{sec:series}节解释优化方法和系列工作；第\ref{sec:setup}--\ref{sec:diagnosis}节对应本次复现的设置、逐图结果和追加诊断；第\ref{sec:accuracy}--\ref{sec:talk}节讨论误差、后续课题和汇报安排。附录提供较短的推导与符号查询。
+
+学习时可以分三次阅读。第一次读到第\ref{sec:bridge}节，目标是能解释每个未知量代表什么。第二次把数值设置与各幅图联系起来，目标是能解释每一步为什么加约束。第三次读误差和后续课题，目标是能准确说明当前完成范围。汇报前可直接使用第\ref{sec:talk}节的讲述顺序。
+
+文中“2309”“2403”“2505”分别是三篇论文的 arXiv 编号前缀，表示首次投稿的年月；不等同于最终发表年份。本文复现对象固定为 2309 的 v3。介绍后续进展时，查阅了 2403 的 v4 和 2505 的 v3，并使用仓库内冻结的作者代码作实现对照。后续版本提供的设置不能自动追认成 2309 当年的设置。
+
+本次编写没有新增物理优化计算。所有复现数值取自现有结果；本讲义新增的是教学推导、证据范围审阅和研究建议。对于尚未由原始代码确认的作者选择，正文明确保留不确定性。
+
+现有文档包含不同日期的结论。\code{PLAN_SDPB_2309_ZH.md} 与 \code{TRIAGE_ZH.md} 是当前工作入口；实际运行设置以已验收的 \code{report.json} 为准。例如，计划曾列逐流二范数求和规则作为主线候选，9 月 18 日对照 PDF 的名义结果实际使用逐矩绝对误差盒，代码名为 \code{SR-a}。两者不能混写。另有中文报告摘要仍写“C1--C4 通过”，其正式台账和 C1 收据却判 C1 未通过；本文采用收据与逐项台账。
+
+\source{本地英文对照报告第 2 版\cite{comparison}；运行日志与结果收据\cite{local}; 术语和公式遵循 2309\cite{hk23}。}
+
+\newchapter{从量子力学到 π 介子}\label{sec:particles}
+\subsection{量子场论增加了哪些内容}
+量子力学用希尔伯特空间中的态描述系统，用算符描述可观测量。希尔伯特空间是具有内积、允许态叠加的向量空间。量子场论保留这套规则，并允许粒子数改变：一次碰撞可以把两个粒子的能量转成四个粒子的质量和动能。
+
+量子场是依赖时空位置的算符，例如 \(\phi(t,\boldsymbol x)\)。对自由场作傅里叶展开后，每个动量模式都类似量子谐振子；激发一个模式，就增加一个相应动量的粒子。把所有粒子数的态放在一起得到的空间称为 Fock 空间。本文不需要逐步量子化场，只需要使用其中的单粒子态、两粒子态、真空态及它们之间的矩阵元。
+
+真空 \(\ket0\) 是最低能量态。相互作用理论的真空可以有非零的算符期望值，例如 \(\bra0\mathcal O\ket0\neq0\)。这种期望值在本文中称为\textbf{凝聚量}（condensate）；它表达真空的结构，不表示实验容器里装着一团通常意义的粒子。后面的 QCD 求和规则会用到夸克和胶子凝聚量。
+
+微扰论把哈密顿量写成 \(H=H_0+gV\)，再按小参数 \(g\) 展开。场论中的 Feynman 图是这类展开各项的记账方式；树图没有内部闭合回路，对应最低阶过程，圈图包含回路，给出量子修正。强耦合区中，高阶项不再足够小，截断微扰级数就难以控制误差。本文研究的方法正是为这类能区服务。
+
+\subsection{能量、质量与自然单位}
+粒子物理常用自然单位 \(\hbar=c=1\)。于是质量可以直接写成能量，长度具有能量倒数的量纲。MeV 是兆电子伏特，GeV 是十亿电子伏特，\(1\GeV=1000\MeV\)。单粒子的相对论关系是
+\begin{equation}
+E^2=\boldsymbol p^{\,2}+m^2,\qquad p^\mu=(E,\boldsymbol p),\qquad p^2=E^2-\boldsymbol p^{\,2}=m^2.
+\end{equation}
+\(p^\mu\) 是四动量；希腊指标 \(\mu\) 表示时间和三个空间分量。不同惯性系会给出不同的 \(E\) 与 \(\boldsymbol p\)，但 \(p^2\) 不变。
+
+论文还把 π 介子质量设成 1。这是第二次单位选择：数值中的 \(s\) 实际表示物理能量平方除以 \(m_\pi^2\)。本文沿用这套约定，并始终使用
+\begin{equation}\label{eq:energyunits}
+E_{\rm cm}=m_\pi\sqrt{s},\qquad m_\pi=140\MeV,
+\qquad s_0=(1200/140)^2\simeq73.4694.
+\end{equation}
+\(E_{\rm cm}\) 是质心能量，即总动量为零的参考系中的总能量。两π阈值是 \(E_{\rm cm}=2m_\pi=280\MeV\)，对应 \(s=4\)。匹配能量是 \(E_0=1.2\GeV\)，对应物理的 \(s_0=(1.2\GeV)^2\)。原论文有些文字把 \(s_0\) 和 \(\sqrt{s_0}\) 都简写成“1.2 GeV”，实际计算必须区分。
+
+\subsection{QCD、颜色、味与介子}
+\textbf{量子色动力学}（quantum chromodynamics，QCD）是描述夸克与胶子强相互作用的量子场论。夸克具有一种叫作“颜色”的内部标签，胶子传递颜色相互作用。颜色与可见光没有关系。通常的 QCD 有三个颜色，记作 \(N_c=3\)。
+
+QCD 是规范理论（gauge theory）。“规范”表示同一个物理态可以有不同的局部场表示，改变表示不应改变可观测量。其颜色结构用群 \(SU(3)\) 表示；\(SU(N)\) 是行列式为 1 的 \(N\times N\) 幺正矩阵组成的连续变换群。这里知道“允许的内部变换结构决定相互作用形式”就足够了。
+
+\textbf{味}（flavor）区分不同种类的夸克，例如上夸克 \(u\)、下夸克 \(d\)、奇异夸克 \(s\)。本文的 \(N_f=2\) 模型只把 \(u,d\) 当作轻味；没有把奇异夸克引起的所有效应都纳入。因此，和真实实验比较时，还存在模型简化误差。
+
+在低能处，孤立的有色夸克和胶子不能作为自由入射、出射粒子被观测到。这一现象称为\textbf{禁闭}（confinement）。可观测的强作用复合粒子称为强子，其中介子（meson）通常具有夸克--反夸克的主要价夸克结构；重子（baryon），如质子、中子，具有三个价夸克的主要结构。“价夸克”只标记主要量子数，完整态还包含胶子和额外夸克对。
+
+\textbf{π 介子}（pion）有 \(\pi^+,\pi^0,\pi^-\) 三个电荷成员，主要价夸克结构分别是 \(u\bar d\)、\((u\bar u-d\bar d)/\sqrt2\)、\(d\bar u\)。横线表示反夸克。π 的自旋为 0；自旋是粒子自身的角动量，与两粒子相对运动的轨道角动量不同。π 还是赝标量：空间反演 \(\boldsymbol x\to-\boldsymbol x\) 下其场变号，称为内禀宇称为负。忽略弱相互作用和电磁相互作用后，本文把 π 作为稳定的散射外态。
+
+\subsection{同位旋与手征对称性}
+上、下夸克在强相互作用中性质接近。忽略它们的小质量差和电磁效应时，可以在 \(u,d\) 之间作近似对称的内部旋转，称为\textbf{同位旋}（isospin）。它的数学运算与量子力学自旋的角动量加法相同，却不表示空间旋转。π 的三个电荷成员构成 \(I=1\) 的三重态。
+
+两个 \(I=1\) 的 π 可以组成总同位旋 \(I=0,1,2\)，对应熟悉的角动量分解
+\begin{equation}
+1\otimes1=0\oplus1\oplus2.
+\end{equation}
+符号 \(\otimes\) 表示把两个粒子的态空间相乘，\(\oplus\) 表示按总量子数分成互不混合的子空间。把散射分成这些通道后，每个通道都能单独写概率守恒约束。
+
+当 \(u,d\) 质量很小时，QCD 还近似具有\textbf{手征对称性}（chiral symmetry）。左、右手性是相对论费米子场的两部分；在零质量极限，它们可以独立作味旋转。两味情况下，该对称性写作 \(SU(2)_L\times SU(2)_R\)。QCD 真空选择了不保持这种独立旋转的状态，只保留同时旋转左右两部分的 \(SU(2)_V\)。这个剩余的向量味对称性就是上述同位旋对称性。
+
+方程有某种对称性，而最低能量态只保留其中一部分，称为\textbf{自发对称性破缺}。可以用圆形谷底的势能理解：所有方向的最低势能相同，系统选定一个方向后，沿谷底缓慢改变方向几乎不耗能。这些低能集体激发称为 Goldstone 模式。场论里它们成为 Goldstone 玻色子；玻色子是整数自旋、满足对称交换统计的粒子。
+
+轻夸克质量给谷底增加了轻微倾斜，原本无质量的模式获得小质量。π 因此称为\textbf{赝 Goldstone 玻色子}。这解释了它为什么比许多其他强子轻，也解释了它的低能相互作用主要随动量增大而增强。
+
+\subsection{低能有效理论与 pion decay constant}
+\textbf{有效场论}（effective field theory，EFT）只在限定能区内描述相关自由度，把更高能的细节编码成一组系数。低能π的有效理论叫\textbf{手征微扰论}（chiral perturbation theory，\(\chi\)PT）。它利用对称性，按外部动量和轻夸克质量的大小排列允许的相互作用项。
+
+最低阶可以用矩阵场
+\begin{equation}
+U=\exp\left(\ii\,\tau_a\pi_a/f_\pi\right)
+\end{equation}
+描述，其中 \(\tau_a\) 是 Pauli 矩阵，\(\pi_a\) 是三个π场，重复的 \(a=1,2,3\) 表示求和。由于 \(U\) 被限制为群上的矩阵，理论称为\textbf{非线性 sigma 模型}；“sigma”在这里是模型名称，并不表示我们已经加入了一颗 \(\sigma\) 共振粒子。
+
+\(f_\pi\) 称为\textbf{π 衰变常数}（pion decay constant）。它可以由轴矢流与单π态的矩阵元定义：\(\bra0 A^a_\mu\ket{\pi^b(p)}=\ii\delta^{ab}f_\pi p_\mu\)。这里的轴矢流是与左右手性相反旋转相关的局部算符。该定义把 \(f_\pi\) 与π的弱衰变联系起来；在低能强作用理论中，\(f_\pi\) 同时控制π之间的耦合强弱。采用本论文约定时它约为 \(92\MeV\)；其他文献可能把一个 \(\sqrt2\) 吸收进定义。
+
+最低阶π散射振幅随 \(E^2/f_\pi^2\) 增长。量子圈修正的典型展开参数还包含相空间因子，常写作 \(E^2/(4\pi f_\pi)^2\)。能量升高后，这些修正逐渐变大，需要更多高阶系数。这些系数叫低能常数（low-energy constants），记录被省略的较高能动力学。
+
+一个常见关系是 GMOR 关系（Gell-Mann--Oakes--Renner relation）：
+\begin{equation}
+m_\pi^2 f_\pi^2\simeq-m_q\langle\bar u u+\bar d d\rangle.
+\end{equation}
+它在最低阶把π质量、衰变常数与夸克凝聚量联系起来，\(m_q\) 表示简化的平均轻夸克质量。2309 中的凝聚量取值是近似输入，不应要求所有四舍五入后的数字严格满足该式。
+
+\subsection{高能弱耦合与中间能区}
+QCD 的相互作用强度会随探测能标改变，叫\textbf{耦合常数的跑动}。常用 \(\alpha_s=g_s^2/(4\pi)\) 表示强耦合，其中 \(g_s\) 是规范耦合。高能处 \(\alpha_s\) 变小，称为\textbf{渐近自由}；这时可使用微扰 QCD，简称 pQCD。计算中指定的能标 \(\mu\) 叫重整化尺度，它规定跑动耦合、夸克质量等量的定义位置；完整可观测量不应依赖这个人为尺度，截断计算会留下尺度依赖。
+
+低能π理论和高能夸克--胶子理论都各有可用的展开，中间的共振能区却难以用其中任一最低阶展开准确描述。IR（infrared，红外）在本文指低能端，UV（ultraviolet，紫外）指高能端，与真实的红外线、紫外线频段无关。Gauge Theory Bootstrap（规范理论自举，简称 GTB）尝试找出同时满足两端信息及量子一致性条件的散射振幅。
+
+这里的 bootstrap，中文常译为“自举”，指用一组互相约束的一致性条件求解未知量。它与统计学中通过重复抽样估计误差的 bootstrap 是两个不同用法。
+\source{这些背景用于阅读 2309 第 1--2 节\cite{hk23}。继续学习的入口见文末 Tong 讲义\cite{tongqft,tonggauge}。}
+\newchapter{散射振幅、分波与共振}\label{sec:scattering}
+\subsection{S 矩阵与概率守恒}
+散射实验把相距很远的粒子准备成入射态 \(\ket a_{\rm in}\)，再测量相互作用后相距很远的出射态。连接两者的线性算符叫\textbf{S 矩阵}（scattering matrix）：\(S_{ba}={}_{\rm out}\!\langle b|a\rangle_{\rm in}\)。它的矩阵元是从入射通道 \(a\) 变成出射通道 \(b\) 的概率振幅。
+
+如果把所有可能的出射通道都包括，量子力学的概率守恒给出
+\begin{equation}\label{eq:fullunitarity}
+S^\dagger S=1,\qquad \sum_b |S_{ba}|^2=1.
+\end{equation}
+\(\dagger\) 表示复共轭转置。这就是\textbf{幺正性}（unitarity）。我们只显式求两π入、两π出的子块，省略了四π等通道；对子块，概率可以流向被省略的通道，所以相应本征振幅允许模长小于 1。
+
+\(2\to2\) 表示两个粒子入射、两个粒子出射。\textbf{弹性}（elastic）指出射粒子种类与入射相同，在质心系中只有方向等发生改变；\textbf{非弹性}（inelastic）则允许产生其他粒子组合。\(|S|<1\) 是两体通道概率损失的可能表现，本身不违反式\eqref{eq:fullunitarity}。在有限 bootstrap 中，这个损失只是一种被允许的余量，不代表已经构造出了真实的所有多粒子过程。
+
+\subsection{Mandelstam 变量与物理区域}
+考虑 \(\pi(p_1)\pi(p_2)\to\pi(p_3)\pi(p_4)\)。三个 Lorentz 不变量称为 Mandelstam 变量：
+\begin{equation}
+s=(p_1+p_2)^2,\qquad t=(p_1-p_3)^2,\qquad u=(p_1-p_4)^2.
+\end{equation}
+\(s\) 是总能量平方，\(t,u\) 描述动量转移。等质量情况下 \(s+t+u=4m_\pi^2\)，因此只有两个独立变量。取 \(m_\pi=1\) 后，在物理的 \(s\) 道散射区中，
+\begin{equation}\label{eq:kinematics}
+s\ge4,\qquad
+t=-\frac{s-4}{2}(1-\cos\theta),\qquad
+u=-\frac{s-4}{2}(1+\cos\theta),
+\end{equation}
+其中 \(\theta\) 是质心系中的散射角。“道”（channel）在这里指把哪一对粒子看作入射组合；它与后面用同位旋标记的通道需要根据上下文区分。
+
+四动量平方为正称为类时（timelike），为负称为类空（spacelike）。产生真实粒子的总动量在这里是类时的；一颗粒子受到散射时的动量转移则可为类空。后面说“类空形状因子”或“时类实轴”，分别指这两种运动学区域。
+
+图中经常出现 \(s=3\)，它低于物理阈值 \(4\)。这个点不是一次实际碰撞的能量，而是把振幅作为复变量函数延拓后得到的实数值。阈下点远离物理割线，适合表达低能约束和用作区域坐标。
+
+\subsection{从一个振幅到三个同位旋通道}
+用 \(a,b,c,d=1,2,3\) 标记π的内部同位旋分量。对称性允许将振幅写成
+\begin{equation}\label{eq:isospinamp}
+T_{ab,cd}=A(s,t,u)\delta_{ab}\delta_{cd}
++A(t,s,u)\delta_{ac}\delta_{bd}
++A(u,t,s)\delta_{ad}\delta_{bc}.
+\end{equation}
+Kronecker 符号 \(\delta_{ab}\) 在 \(a=b\) 时为 1，否则为 0。一个函数 \(A\)，配上交换后的变量，就描述了相关的电荷过程。在论文约定中 \(A(s,t,u)=A(s,u,t)\)。投影到总同位旋后，得到
+\begin{align}
+T^0&=3A(s,t,u)+A(t,s,u)+A(u,t,s),\\
+T^1&=A(t,s,u)-A(u,t,s),\\
+T^2&=A(t,s,u)+A(u,t,s).
+\end{align}
+这里的 \(T\) 与场论教材常用的散射振幅 \(\mathcal M\) 相差 \(8\pi^2\)：\(T=\mathcal M/(8\pi^2)\)。这是归一化约定，改变它时，分波、幺正关系和求和规则中的系数必须一致改变。
+
+\subsection{分波与符号的逐项解释}
+量子力学中，中心势问题可按球谐函数分离角变量。\textbf{分波展开}（partial-wave expansion）做同样的事：按两π相对运动的轨道角动量 \(\ell\)，把角分布分解成独立成分。π 自旋为零，因此这里的总角动量就是 \(J=\ell\)。
+
+论文定义
+\begin{equation}\label{eq:partialwave}
+f_\ell^I(s)=\frac14\int_{-1}^{1}P_\ell(z)\,T^I(s,t(z),u(z))\dd z,
+\end{equation}
+\(z=\cos\theta\)，\(P_\ell\) 是 Legendre 多项式，例如 \(P_0=1\)、\(P_1=z\)、\(P_2=(3z^2-1)/2\)。正交关系保证这一积分能挑出指定角动量成分。上标 \(I\) 是总同位旋，下标 \(\ell\) 是轨道角动量，\(s\) 是能量变量。由定义反推，\(T^I=2\sum_\ell(2\ell+1)f_\ell^I P_\ell\)。
+
+习惯上用字母 S、P、D、F 表示 \(\ell=0,1,2,3\)。字母后面的数字在本系列论文中表示同位旋，因此有下表。这里大写字母 S 出现在“S0”中时表示角动量零，出现在 \(S_\ell^I\) 中时表示散射矩阵元。
+
+\begin{table}[H]\centering
+\begin{tabularx}{\linewidth}{lccY}
+\toprule
+波的简称 & \(\ell\) & \(I\) & 含义及与共振的关系\\
+\midrule
+S0：\(f_0^0\) & 0 & 0 & 同位旋零的 S 波；包含宽的 \(f_0(500)\)，也称 \(\sigma\)，相关动力学。\\
+S2：\(f_0^2\) & 0 & 2 & 同位旋二的 S 波；本能区通常表现为排斥型相移。\\
+P1：\(f_1^1\) & 1 & 1 & 含 \(\rho(770)\) 矢量共振；“矢量”指自旋 1。\\
+D0：\(f_2^0\) & 2 & 0 & 后续论文加入；含 \(f_2(1270)\) 张量共振，张量在此指自旋 2。\\
+F1：\(f_3^1\) & 3 & 1 & 后续研究的更高角动量波。\\
+\bottomrule
+\end{tabularx}
+\caption{分波符号。\(f_0^0(s)\) 是函数；粒子名称 \(f_0(500)\) 是另一套命名，不能混为一谈。括号里的数字是约略质量，单位 MeV。}
+\end{table}
+
+交换两个相同的玻色子，完整态必须对称。轨道部分产生 \((-1)^\ell\)，同位旋部分在 \(I=0,2\) 时对称，在 \(I=1\) 时反对称。因此 \(I=0,2\) 只允许偶数 \(\ell\)，\(I=1\) 只允许奇数 \(\ell\)。这会直接决定代码中的分波索引。
+
+\subsection{相移、非弹性度与幺正圆盘}
+论文把分波转换为
+\begin{equation}\label{eq:Shf}
+h_\ell^I(s)=\kappa(s)f_\ell^I(s),\quad
+\kappa(s)=\pi\sqrt{1-4/s},\quad
+S_\ell^I=1+\ii h_\ell^I=\eta_\ell^I e^{2\ii\delta_\ell^I}.
+\end{equation}
+\(\kappa\) 含两体运动学因子。\(\delta\) 是\textbf{相移}（phase shift）：相互作用使径向散射波相对于自由波积累的额外相位。\(\eta=|S|\) 称为非弹性度参数，\(\eta=1\) 表示弹性，\(\eta<1\) 允许概率进入其他通道；归一化入射分波留在该两体通道中的概率是 \(\eta^2\)。
+
+把 \(h=a+\ii b\) 代入，\(|S|\le1\) 等价于
+\begin{equation}\label{eq:disk}
+(1-b)^2+a^2\le1
+\quad\Longleftrightarrow\quad |h|^2\le2\Imm h.
+\end{equation}
+所以 \(S\) 必须位于复平面单位圆盘中，\(h\) 则位于以 \(\ii\) 为中心、半径 1 的圆盘中。优化问题保留整个圆盘；严格弹性只保留圆周。圆盘是凸集，圆周不是凸集，后者会使求解困难。
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[scale=2.0,>=Latex,font=\small]
+\fill[wash] (0,0) circle (1);
+\draw[line width=.7pt,teal] (0,0) circle (1);
+\draw[->,muted] (-1.28,0)--(1.4,0) node[right] {\(\Ree S\)};
+\draw[->,muted] (0,-1.22)--(0,1.27) node[above] {\(\Imm S\)};
+\draw[teal,->,thick] (0,0)--(55:.82);
+\draw[rust,thick,dashed] (55:.82)--(55:1);
+\fill[teal] (55:.82) circle (.022) node[above left] {\(\eta e^{2\ii\delta}\)};
+\fill[rust] (55:1) circle (.024);
+\draw[->] (.28,0) arc (0:55:.28);
+\node at (27:.43) {\(2\delta\)};
+\node[below right] at (1,0) {\(1\)};
+\node[below left] at (-1,0) {\(-1\)};
+\node[teal,align=left,anchor=west] at (1.65,.55) {圆盘：满足两体幺正不等式\\圆周：弹性幺正饱和};
+\node[muted,align=left,anchor=west] at (1.65,-.35) {固定相位向外移动可提高 \(\eta\)；\\实际优化还要同时满足其他约束。};
+\end{tikzpicture}
+\caption{幺正圆盘示意图。饱和指达到不等式边界 \(|S|=1\)，不表示把散射概率任意放大。}
+\end{figure}
+
+\subsection{共振与质量的不同读法}
+\textbf{共振}（resonance）是散射中暂时形成、随后衰变的不稳定状态。在能量扫描中，它常表现为强度增强和相位快速变化。与稳定束缚态不同，共振没有无限长寿命；宽度 \(\Gamma\) 与寿命近似满足 \(\tau=1/\Gamma\)。
+
+孤立、近弹性的窄共振附近，示意形式
+\begin{equation}\label{eq:BW}
+S(E)\simeq\frac{m_R-E+\ii\Gamma/2}{m_R-E-\ii\Gamma/2}
+\end{equation}
+在 \(E=m_R\) 给出 \(S=-1\)，相移连续经过 \(90^\circ\)。这解释了复现中为什么用“90° 穿越能量”描述 \(\rho\) 位置。式\eqref{eq:BW}称为 Breit--Wigner 型近似，仅用于说明。
+
+更一般的质量定义来自振幅在复能量平面的\textbf{极点}（pole），即某处函数发散。共振极点通常位于沿物理割线继续延拓后的第二 Riemann sheet；sheet 是多值解析函数的不同分支面。可以写 \(E_{\rm pole}=M_{\rm pole}-\ii\Gamma_{\rm pole}/2\)。宽共振、有背景或有强非弹性时，极点质量、强度峰值、90° 穿越不必相同。
+
+本项目目前主要报告有限能量节点间插值得到的90°穿越，没有完成可靠的复平面极点定位。若 \(\eta\) 很小，\(S\) 接近原点，复数的相位会对微小变化很敏感；分支展开也可能不唯一。此时仅看相移曲线会误判，必须同时看 \(\eta\)。
+\source{2309 式 (2.3)--(2.12) 与 Fig.9\cite{hk23}；复现采用的相位约定见 \code{observables.py}。}
+\newchapter{解析性、交叉对称与低能约束}\label{sec:analyticity}
+\subsection{把能量看成复变量的理由}
+微扰论里常出现 \((E-H_0+\ii0)^{-1}\) 这样的算符。若把能量推广成复数，函数的极点和不连续性会记录可传播的态及其阈值。\textbf{解析函数}是局部可用复变量幂级数表示的函数；在没有奇点的区域，实部、虚部及不同位置的值彼此受约束，不能独立任取。
+
+在相对论散射中，因果性和谱条件为解析结构提供依据。稳定粒子或束缚态可以对应极点；多粒子连续谱从阈值开始，通常产生\textbf{分支点}和\textbf{割线}。割线是为区分多值函数的不同分支而选取的路径。本问题中，从 \(s=4\) 沿正实轴延伸的割线对应两π及更高能的可能中间态。\(s+\ii0\) 表示从复平面的上半侧接近这条实轴。
+
+因果性要求局部操作不能超光速传递影响；此处的谱条件要求物理态的能量有下界，并具有允许的相对论能动量谱。它们对传播与散射函数在复变量中的行为施加限制。把两种条件转换成可用的色散表示，还需要声明函数增长和奇点结构等假设。
+
+解析性允许用边界信息恢复函数。Cauchy 积分公式说，围住一点的闭合路径上函数值能决定路径内部的值。将路径变形到割线两侧，就得到\textbf{色散关系}（dispersion relation）：函数用它在割线上的虚部或不连续性表示。例如在本文的归一化和渐近假设下，形状因子可写成
+\begin{equation}\label{eq:Fdisp}
+F(s)=F(0)+\frac{s}{\pi}\int_4^\infty
+\frac{\Imm F(x)}{x(x-s)}\dd x,\qquad F(0)=1.
+\end{equation}
+这里先以不在割线上的 \(s\) 理解积分。减去 \(F(0)\) 的操作叫\textbf{减除}（subtraction），能改善高能积分的收敛性；减除常数由归一化条件提供。色散关系所需的高能增长假设必须随模型声明。
+
+在物理实轴上，分母 \(x-s\) 经过零点。实部积分应解释为 Cauchy 主值（principal value，PV）：从奇点两边对称挖掉同样小的区间，再取极限；虚部由绕过奇点的规定决定。这就是后面 \code{mixed-pv} 中 PV 的含义。
+
+\subsection{交叉对称与 Mandelstam 表示}
+\textbf{交叉对称}（crossing symmetry）把同一解析振幅在不同物理区域的值，解释为相关的不同散射过程；形式上可把出射粒子移到入射端并视作反粒子。它并非要求每条分波自身在 \(s,t,u\) 下对称，交叉会混合不同同位旋和角动量。式\eqref{eq:isospinamp}正是把这种结构预先编码进一个共同函数 \(A\)。
+
+2309 使用\textbf{Mandelstam 表示}，即在两个独立能量变量上使用单重与双重色散积分。为了让程序中的未知量有明确对应，写出其结构：
+\begin{align}\label{eq:mandelstam}
+A(s,t,u)={}&T_0+\frac1\pi\int_4^\infty\frac{\sigma_1(x)}{x-s}\dd x
++\frac1\pi\int_4^\infty\sigma_2(x)\left(\frac1{x-t}+\frac1{x-u}\right)\dd x\notag\\
+&+\frac1{\pi^2}\int_4^\infty\!\!\int_4^\infty
+\frac{\rho_1(x,y)}{x-s}\left(\frac1{y-t}+\frac1{y-u}\right)\dd x\dd y\notag\\
+&+\frac1{\pi^2}\int_4^\infty\!\!\int_4^\infty
+\frac{\rho_2(x,y)}{(x-t)(y-u)}\dd x\dd y,
+\end{align}
+其中 \(\rho_2(x,y)=\rho_2(y,x)\)。\(T_0\) 是常数项，\(\sigma_{1,2}\) 是单谱密度，\(\rho_{1,2}(x,y)\) 是双谱密度，负责参数化割线不连续性。这些量是构造散射振幅的未知函数，\(T_0\) 与同位旋振幅 \(T^0\) 不是同一对象。
+
+“谱密度”一词稍后还会用于电流的两点函数。两者应分开：这里的双谱密度 \(\rho_a(x,y)\) 不是粒子概率密度，不要求每个系数非负；后面的电流谱密度 \(\rho_\ell^I(s)\) 来自物理态矩阵元的模方和，必须非负。
+
+这个表示把解析性和 crossing 的一大部分要求写进了函数族。它仍带有最大解析性等假设，即在规定的物理奇点之外采用尽可能大的解析区域；不能从“使用了色散表示”直接推出它覆盖所有可能的 QCD 振幅。离散化后，数值实现的性质还要单独检查。
+
+\subsection{手征输入如何产生区域中的斜线}
+在论文归一化下，最低阶 Weinberg 振幅是
+\begin{equation}
+A_{\rm LO}(s,t,u)=\frac{s-1}{8\pi^2\bar f_\pi^2},\qquad
+\bar f_\pi=f_\pi/m_\pi.
+\end{equation}
+LO 是 leading order，即最低阶。把它代入同位旋分解和分波积分，得到
+\begin{equation}\label{eq:LOwaves}
+f_0^0(s)=\frac{2s-1}{16\pi^2\bar f_\pi^2},\quad
+f_1^1(s)=\frac{s-4}{48\pi^2\bar f_\pi^2},\quad
+f_0^2(s)=\frac{2-s}{16\pi^2\bar f_\pi^2}.
+\end{equation}
+例如 S0 的积分取 \(P_0=1\)，只需对 \(T^0\) 作角度平均；P1 的积分多乘 \(z\)，会挑出线性的角依赖。附录\ref{app:chiral}给出短推导。
+
+三个式子的公共系数是 \(1/\bar f_\pi^2\)。取比值后它消失，留下
+\begin{equation}\label{eq:ratios}
+R_{01}^{\chi}(s)=\frac{3(2s-1)}{s-4},\qquad
+R_{21}^{\chi}(s)=\frac{3(2-s)}{s-4}.
+\end{equation}
+所以只要求这些比值接近最低阶值，能够约束具有相同对称性破缺模式的一族理论，还没有固定唯一的 \(f_\pi\)。
+
+区域图选取 \(x=f_0^0(3)\)、\(y=f_1^1(3)\)，代入式\eqref{eq:LOwaves}便有
+\begin{equation}\label{eq:weinbergpoint}
+y=-\frac{x}{15},\qquad
+P_{\chi}=(0.07332139057,-0.00488809270)
+\end{equation}
+其中点 \(P_\chi\) 使用 \(m_\pi=140\MeV\)、\(f_\pi=92\MeV\)。论文的黑线表示改变 \(f_\pi\) 时最低阶预言的轨迹，黑点表示这组物理输入。它不是拿实验相移拟合出来的点。
+
+\subsection{手征容差和阈下零点}
+程序允许低能约束有误差。对四个点 \(s_j=0.5,1,1.5,2\)，定义
+\begin{equation}
+r_{01,j}=f_0^0(s_j)-R_{01}^\chi(s_j)f_1^1(s_j),\qquad
+r_{21,j}=f_0^2(s_j)-R_{21}^\chi(s_j)f_1^1(s_j).
+\end{equation}
+这八个残差组成一个向量 \(r\)。主线条件是
+\begin{equation}\label{eq:chib}
+\|r\|_2=\sqrt{\sum_{j=1}^{4}\big(r_{01,j}^2+r_{21,j}^2\big)}\le\eChi=0.002.
+\end{equation}
+\(\|\cdot\|_2\) 是二范数，即向量的欧氏长度。\(\eChi\) 允许最低阶近似之外的修正，也吸收有限表示的影响；它不是实验标准差，也不是 0.2\% 的统一相对误差。
+
+最低阶 S0 在 \(s=1/2\) 为零，S2 在 \(s=2\) 为零。这类由手征结构引起的阈下振幅零点称为 Adler 零点，本文也称手征零点。加入高阶效应后位置可以移动。复现 Fig.5 检查零点与近线性形状，是在确认小容差确实保留了低能物理，而不只是在四个节点上机械满足代数关系。
+
+如果把容差压得过小，纯最低阶、实数的多项式振幅难以同时满足物理区完整幺正性，允许的相互作用强度会变小。最低阶近似的误差不能靠把 \(\eChi\) 强行设为零消除；需要改进低能展开本身。
+\source{2309 式 (2.7)、(2.16)--(2.18)、(3.63)--(3.64)\cite{hk23}；合并八维二范数的实现见作者 2403 代码第 101--103 行\cite{code24}。}
+\newchapter{2309 中连接高低能的方程}\label{sec:bridge}
+\subsection{电流与形状因子}
+在量子力学里，\(\bra f\hat O\ket i\) 描述一个探针对系统施加算符 \(\hat O\) 后的跃迁。场论中的\textbf{局部电流}（current）也扮演探针算符的角色。这个名字不总表示电荷流：标量算符也常被称为“标量流”。2309 使用
+\begin{equation}
+j_S=m_q(\bar u u+\bar d d),\qquad
+j_V^\mu=\tfrac12(\bar u\gamma^\mu u-\bar d\gamma^\mu d).
+\end{equation}
+\(\bar q\) 是 Dirac 共轭场，\(\gamma^\mu\) 是描述相对论自旋 \(1/2\) 粒子的矩阵；无需在此运算这些矩阵，只需知道两类算符的变换性质。\(j_S\) 是同位旋零、自旋零的探针，连接 S0；\(j_V\) 是同位旋一的矢量探针，连接 P1。
+
+把流作用于真空，再投影到两π态，得到\textbf{形状因子}（form factor，简称 FF）。它衡量该流以给定能量产生两π态的振幅。交叉对称也把同一函数解释为外部探针对一颗π的响应，因而与其内部空间结构相关。去掉已知运动学张量后，剩下两个标量函数 \(F_0(s),F_1(s)\)。
+
+矢量流的电荷归一化给出 \(F_1(0)=1\)。标量情形中，最低阶关系是 \(F_0(0)\simeq m_\pi^2\)，在 \(m_\pi=1\) 的单位中也写作 1。它们通过式\eqref{eq:Fdisp}关联不同能量处的值。\(F\) 含复数相位，不能只用一个实数上限代替整个函数。
+
+为把两π态规范到适合内积矩阵的形式，还要乘上运动学因子：
+\begin{equation}\label{eq:kinff}
+\Fcal_\ell(s)=k_\ell(s)F_\ell(s),\qquad
+\begin{aligned}
+k_0^2(s)&=\frac{3}{16\pi(2\pi)^4}\sqrt{\frac{s-4}{s}},\\
+k_1^2(s)&=\frac{1}{24\pi(2\pi)^4}\frac{(s-4)^{3/2}}{\sqrt{s}}.
+\end{aligned}
+\end{equation}
+\(k_\ell\) 与式\eqref{eq:Shf}中的 \(\kappa\) 不是同一个因子。\(F\) 与花体 \(\Fcal\) 的区别在本次复现里十分实际：高能上限究竟施加在哪个函数上，会改变允许的散射振幅。
+
+\subsection{两点函数与电流谱密度}
+\textbf{两点关联函数}（two-point correlator）描述真空中两个位置的流插入如何相关。对流 \(j\) 作时间排序并傅里叶变换，得到真空极化函数 \(\Pi(s)\)。时间排序让较晚的算符放在较左侧，以对应传播过程。2309 的归一化中，电流谱密度是
+\begin{equation}\label{eq:spectral}
+\rho_\ell^I(s)=2\Imm\Pi_\ell^I(s+\ii0).
+\end{equation}
+在两次流之间插入完备态，谱密度具有如下物理结构：
+\begin{equation}
+\rho(s)\ \sim\ \sum_X\int\dd\Phi_X\,
+\big|\bra X j\ket0\big|^2.
+\end{equation}
+\(X\) 表示所有允许的中间态，\(\dd\Phi_X\) 是满足能动量守恒的多粒子相空间积分，即对这些态的动量作适当加权求和；符号 \(\sim\) 表明此处略去了约定相关系数。这一写法直接说明 \(\rho\ge0\)。
+
+两π只贡献其中一部分。在式\eqref{eq:kinff}的规范下，\(\rho(s)\ge|\Fcal(s)|^2\)。差值代表该流产生其他态的谱权重。它与 \(\pi\pi\to\text{其他态}\) 的概率损失有关联，却不是同一个量：一个描述流的产生能力，一个描述π碰撞的散射概率。
+
+\subsection{Gram 矩阵为什么必须半正定}
+对任意三个态 \(\ket{\psi_1},\ket{\psi_2},\ket{\psi_3}\)，内积组成的 \(G_{ab}=\langle\psi_a|\psi_b\rangle\) 叫\textbf{Gram 矩阵}。任意复数系数 \(v_a\) 都满足
+\begin{equation}
+v^\dagger Gv=\left\|\sum_a v_a\ket{\psi_a}\right\|^2\ge0.
+\end{equation}
+因此 \(G\) 是 Hermitian 半正定矩阵：\(G=G^\dagger\)，且所有本征值非负。记号是 \(G\succeq0\)。这完全来自量子力学中态的范数不能为负。
+
+选取两π的出射态、入射态，以及流作用于真空的态，并去掉共同动量的 delta 函数后，得到
+\begin{equation}\label{eq:gram}
+G(s)=\begin{pmatrix}
+1&S(s)&\Fcal(s)\\
+S^*(s)&1&\Fcal^*(s)\\
+\Fcal^*(s)&\Fcal(s)&\rho(s)
+\end{pmatrix}\succeq0.
+\end{equation}
+星号表示复共轭。前两行的子矩阵给出 \(|S|\le1\)，第一、三行给出 \(\rho\ge|\Fcal|^2\)，整个矩阵还把它们的相位联系起来。这种联合正定性方法来自 Karateev、Kuhn、Penedones 的 form-factor bootstrap；2309 将它与 QCD 的求和规则结合。\cite{kkp,hk23}
+
+消去第一行、第一列，相当于从其余态中扣除沿第一个态的投影。这一代数操作称为 Schur 补，给出一个特别适合物理解释的不等式：
+\begin{equation}\label{eq:schurphysical}
+\big|\Fcal-S\Fcal^*\big|^2
+\le (1-|S|^2)\big(\rho-|\Fcal|^2\big).
+\end{equation}
+左边测量散射与形状因子之间的相位关系偏离；右边是弹性概率缺口与非两π谱权重的乘积。两种缺口都很大时，相位关系可以很松；压小任一缺口，都可能收紧高低能之间的联系。附录\ref{app:gram}推导该式。
+
+\subsection{Watson 定理与两种饱和}
+在弹性区，\(|S|=1\)。由式\eqref{eq:schurphysical}，只要 \(\Fcal\neq0\)，便有
+\begin{equation}\label{eq:watson}
+\Fcal=S\Fcal^*,\qquad S=\Fcal/\Fcal^*,\qquad
+\delta=\arg F\pmod\pi.
+\end{equation}
+这就是此处使用的\textbf{Watson 定理}：具有相同量子数的两体散射相移和产生该两体态的形状因子相位相同，模一个 \(\pi\)。在强作用、同位旋近似和这些通道的选择规则下，低于四π产生阈值时两π描述更受控；阈值以上应用它要使用两π主导近似。
+
+四π阈值为 \(E=4m_\pi\simeq560\MeV\)，低于 \(\rho\) 的质量；通道已经开放，不代表其贡献马上很大。\(\rho\) 附近 P1 的近弹性来自两π衰变占主导这一物理特征。将相同近似延伸到整个 1.2 GeV 以下、特别是 S0 的高端，需要更谨慎；真实 QCD 的额外味和通道也会产生影响。
+
+这里有两种“饱和”。\textbf{弹性幺正饱和}指 \(|S|=1\)；\textbf{两π谱饱和}指 \(\rho=|\Fcal|^2\)。如果二者同时成立，式\eqref{eq:gram}的三个态线性相关，矩阵秩为 1，具有两个零本征值。秩是线性独立方向的数量，零本征向量也称零模。
+
+仅有 \(|S|=1\) 会固定 Watson 相位关系，仍允许 \(\rho>|\Fcal|^2\)。因此，在结果中测到 \(\eta\) 接近 1，并不能直接报告“所有电流谱密度也已由两π完全饱和”。反过来，在这个三态矩阵中，非零 \(\Fcal\) 的谱饱和会迫使 Watson 关系及 \(|S|=1\)。
+
+\subsection{OPE 与有限能量求和规则}
+高能处可以从夸克与胶子计算 \(\Pi\)，低能处 \(\Pi\) 的不连续性由强子态提供。把这两种描述相连的工具是\textbf{算符乘积展开}（operator product expansion，OPE）。当两个算符的位置很接近时，它们的乘积可以展开为局部算符之和：
+\begin{equation}
+T\{j(x)j(0)\}\sim C_{\mathbb1}(x)\mathbb1+
+\sum_{\mathcal O}C_{\mathcal O}(x)\mathcal O(0).
+\end{equation}
+系数 \(C_{\mathcal O}\) 称为 Wilson 系数，编码短距离动力学，可用 pQCD 计算；取真空期望值后，长距离信息进入 \(\langle\mathcal O\rangle\)，包括凝聚量。这种将短距离计算与真空非微扰信息结合的思路构成 SVZ 求和规则，名称来自 Shifman、Vainshtein、Zakharov。
+
+\textbf{有限能量求和规则}（finite-energy sum rule，FESR）用半径 \(|s|=s_0\) 的复平面轮廓积分，把割线上的谱积分与轮廓上的 \(\Pi\) 联系起来。按照 2309 的归一化，
+\begin{equation}\label{eq:FESR}
+M_{\ell,n}\equiv\int_4^{s_0}\rho_\ell(x)x^n\dd x
+=-s_0^{n+1}\int_0^{2\pi}e^{\ii(n+1)\varphi}
+\Pi_\ell(s_0e^{\ii\varphi})\dd\varphi.
+\end{equation}
+左边叫谱密度的\textbf{矩}（moment）。\(n=0\) 测量总谱权重；\(n=1\) 更偏重高能；\(n=-1\) 更偏重低能。它们像一张分布的不同加权平均，少数矩可以限制分布，却通常不能唯一决定每个能量处的细节。
+
+色散等式在条件成立时是精确的；把右边替换成截断的 pQCD/OPE 后得到近似目标 \(Q_{\ell,n}\)。有限能标上，特别是靠近时类实轴的部分，OPE 可能遗漏不能由有限项展开表示的振荡或共振效应，称为\textbf{夸克--强子对偶性违背}（duality violation）。这一“对偶”与优化算法的 primal/dual 是不同概念。
+
+2309 对 S0 使用 \(n=0,1\)，对 P1 使用 \(n=-1,0\)。S0/P1 的量子数和 QCD 系数不同，它们给出不同的高能条件。有限个线性矩约束适合放入凸优化；它们不要求预先假定谱由一个窄 \(\rho\) 峰组成。
+
+\subsection{高能形状因子上限传递什么信息}
+对高能探针而言，让π在大动量转移后仍保持完整，是一个排他过程：只保留指定的少数末态。它比允许产生任意强子的包容过程更受抑制。Brodsky--Lepage 类型的 QCD 计算给出矢量形状因子在渐近区约按 \(\alpha_s f_\pi^2/s\) 下降。具体结果还依赖π内部夸克动量分布。
+
+2309 没有把完整渐近公式作为精确等式，只采用对归一化形状因子的高能平方模上限：
+\begin{equation}\label{eq:FFcap}
+|\Fcal_0(s_i)|^2\le2m_q^2\eFF,\qquad
+|\Fcal_1(s_i)|^2\le\tfrac12\eFF,\qquad s_i>s_0.
+\end{equation}
+\(\eFF=6\times10^{-5}\) 是本文复现的名义值。它控制有限匹配尺度以上允许的排他两π振幅大小。它不是求解器停止容差，也不是通过概率直接定义的百分比误差；把它乘四，允许的 \(|\Fcal|\) 上限只乘二。
+
+代入式\eqref{eq:kinff}和本项目的平均夸克质量，在匹配位置换算出的上限约为 \(|F_0(s_0)|\lesssim0.072\)、\(|F_1(s_0)|\lesssim0.228\)。所以 \(10^{-5}\) 的参数不能脱离归一化直接解释为“物理振幅小到十万分之一”。约束实际从 \(s_i>s_0\) 的节点开始施加，这里在 \(s_0\) 的换算仅帮助理解其尺度。
+
+这一输入为什么会影响低于 \(s_0\) 的共振？式\eqref{eq:Fdisp}要求 \(F(0)=1\)、高能衰减与中间能区的复数变化同时相容。FESR 又给谱权重设定预算，Gram 矩阵把这种变化传递给 \(S\)。为了满足所有要求，允许解可以在中间能区出现快速相位转动和谱权重集中，形成共振结构。只有有限约束时，这个机制不保证共振位置唯一；本次 cap 敏感性正测量了尚未确定的程度。
+
+式\eqref{eq:FFcap}只是高能抑制的有限实现。对有限的七个节点施加小上限，并不证明连续函数在无穷远具有精确的 QCD 幂律；即使把同样的界推广到所有高能，标量的常数上限也不单独保证 \(F_0\to0\)，矢量的运动学因子只给出比 \(1/s\) 更弱的模长界。这是复现原型时应保留的近似范围。
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[>=Latex,node distance=5mm,font=\small,
+box/.style={draw=line,rounded corners=2pt,fill=wash,text width=32mm,minimum height=13mm,align=center},
+arr/.style={->,thick,teal}]
+\node[box] (q) {高能 pQCD／OPE\\计算 \(\Pi(s)\)};
+\node[box,right=7mm of q] (r) {FESR 积分矩\\约束 \(\rho(s)\)};
+\node[box,right=7mm of r] (f) {形状因子 \(F(s)\)\\解析性与高能上限};
+\node[box,below=12mm of r] (g) {Gram 正定性\\联合限制 \(S,F,\rho\)};
+\node[box,left=7mm of g] (c) {低能 \(\chi\)PT\\限制阈下分波};
+\node[box,right=7mm of g] (s) {完整散射振幅\\相移与共振};
+\draw[arr] (q)--(r);\draw[arr] (r)--(g);
+\draw[arr] (f)--(g);\draw[arr] (c)--(g);\draw[arr] (g)--(s);
+\end{tikzpicture}
+\caption{2309 的信息关系。程序联合求解全部未知量，图中的箭头表示约束来源，并不是把 \(\rho\)、\(F\)、\(S\) 分别顺序拟合。}
+\end{figure}
+\source{2309 第 2.3 节与式 (3.70)--(3.75)\cite{hk23}。初始 Gram 方法见\cite{kkp}。}
+\newchapter{凸优化、正则化与 2021 年方法}\label{sec:convex}
+\subsection{把未知函数变成一个凸可行集}
+离散化把未知函数替换为有限个系数，统记为实向量 \(c\)。\textbf{离散化}就是用有限数据近似连续对象；它决定计算所能分辨的结构。色散表示与分波投影对这些系数是线性的，例如
+\begin{equation}
+\Ree h_j=a_j\cdot c,\qquad \Imm h_j=b_j\cdot c.
+\end{equation}
+\(a_j,b_j\) 是预先算好的矩阵行，\(j\) 综合标记同位旋、角动量和能量节点。代码常称它们为“算子”或“核矩阵”：它们负责把密度系数映射到可观测的函数值。
+
+满足全部约束的 \(c\) 组成\textbf{可行集}。如果任意两个可行向量 \(c_1,c_2\) 之间的线段 \(\lambda c_1+(1-\lambda)c_2\)、\(0\le\lambda\le1\)，也全部可行，这个集合就叫\textbf{凸集}。幺正圆盘、范数球、线性矩条件和半正定矩阵条件都具有这种性质。
+
+\textbf{半正定规划}（semidefinite program，SDP）是在由线性等式与矩阵半正定性定义的凸集上优化线性目标。\textbf{二阶锥约束}是 \(\|v\|_2\le t\) 形式的凸约束；式\eqref{eq:disk}可改写成相应的旋转锥，便于数值求解。这里利用的是量子力学与色散理论留下的凸必要条件。凸组合满足这些必要条件，并不自动说明它来自某个完整的局部量子场论。
+
+\subsection{区域边界、支撑泛函与完整振幅}
+把高维可行集投影到 \((x,y)=(f_0^0(3),f_1^1(3))\) 平面，得到论文的允许区域。每个完整系数向量 \(c\) 都有一个投影点，同一个点通常对应许多个 \(c\)。\textbf{投影}在这里就是只保留两个函数值，丢掉其他坐标。
+
+为寻找区域边界，选择方向 \(d=(d_x,d_y)\)，最大化
+\begin{equation}\label{eq:support}
+v(d)=\max_{c\ \text{可行}}\,[d_x x(c)+d_y y(c)].
+\end{equation}
+这个线性目标称为\textbf{支撑泛函}。它将一条垂直于 \(d\) 的直线向外推，直到碰到允许区域。\(d=(1,0)\) 给出最右端，项目中称为 \(+x\) tip；tip 就是端点或尖端。另一种做法是固定 \(x=x_{\rm ref}\)，再分别最大化、最小化 \(y\)，得到该竖直截面的上下端。
+
+边界点能给出一个优化器返回的完整振幅，但数学上不保证这个振幅唯一。\textbf{退化}指多个不同解具有同一个最优值；它们可在未被目标固定的方向上产生不同相移。后面的“近最优面”诊断就是测量这些自由度。将论文的“边界点关联一个振幅”直接读成“边界点唯一决定所有分波”，会漏掉这层区别。
+
+\subsection{原问题与对偶问题}
+直接寻找系数 \(c\)、让式\eqref{eq:support}尽量大的问题叫\textbf{原问题}（primal problem）。任意可行解提供最大值的一个下界。\textbf{对偶问题}（dual problem）寻找约束的加权组合，证明所有可行解的目标值都不超过某个数。
+
+用简单的线性例子说明：如果约束为 \(a_j\cdot c\le b_j\)，找到 \(\lambda_j\ge0\) 使 \(\sum_j\lambda_j a_j=d\)，就有
+\begin{equation}\label{eq:dualexample}
+d\cdot c=\sum_j\lambda_j a_j\cdot c\le\sum_j\lambda_j b_j.
+\end{equation}
+右边是与具体 \(c\) 无关的上界。在 SDP 中，非负权重推广为半正定矩阵乘子，使用矩阵迹 \(\Tr\) 计算相应内积；迹就是对角元素之和。\textbf{对偶间隙}（duality gap）是上、下目标值的差，衡量最优值还有多大不确定性；它通常不控制所有振幅坐标的误差。
+
+He--Kruczenski 2021 年工作的贡献，是为四维时空中的这种散射问题建立正则化后的对偶形式，使原问题的可行振幅与对偶上界相互校验，并将对偶变量联系到散射信息。论文讨论的是 \(3+1\) 维，即三个空间维度加一个时间维度；其中的单标量校准还没有加入 2309 的 QCD 电流和求和规则。\cite{hk21}
+
+\subsection{为什么大密度可以隐藏在小振幅后面}
+用积分核恢复函数时，积分往往会平均掉快速振荡。设 \(A=Kc\)。某个方向 \(v\) 满足 \(Kv\) 很小，即使 \(c\) 沿 \(v\) 改变很多，已检查的 \(A\) 仍变化不大。这样的方向叫\textbf{近零模}。矩阵求逆对误差非常敏感时，问题称为\textbf{病态}（ill-conditioned）；条件数衡量这种敏感程度。
+
+Mandelstam 双谱积分包含平滑的交叉道核，例如 \(1/[(x-s)(y-t)]\)。物理区中 \(t\le0\)，积分却在 \(y\ge4\)，第二个分母始终离奇点很远。双谱密度可以发生很大的振荡与抵消，而有限个分波约束很难识别。这类从平滑积分反推密度的问题称为第一类 Fredholm 积分方程。2021 年论文据此引入密度正则化。\cite{hk21}
+
+\textbf{正则化}（regularization）是在求解问题中限制这些不可控方向。当前主线采用
+\begin{equation}\label{eq:reg}
+|\rho_{a,ij}|\le\Mreg.
+\end{equation}
+它约束的是散射振幅的双谱密度，不是电流谱密度，更不是 \(\rho\) 介子质量。其数值依赖参数化和归一化，没有一个可以从实验直接读出的通用值。
+
+正则化会改变有限可行集。项目通过遗漏分波和 \(L\) 稳定性选择 \(\Mreg\)，并比较不同范数下的可观测量。这给出物理上较稳定的有限近似。它尚不构成“密度界等价于全部遗漏幺正条件”的证明，也不保证正则化误差已经完全消除。
+
+\subsection{正则化与提高浮点精度的关系}
+例如两个数分别为 \(10^{16}+0.1\) 与 \(10^{16}\)，它们相减的目标是 0.1，双精度浮点数却可能已经无法保留这个差。提高位数能改善这种抵消计算；如果优化器仍可沿近零模无限增大系数，单独提高位数还可能让它探索到更极端的方向。
+
+因此本项目先固定有正则化的有限模型，再提高算术精度。\textbf{SVD} 是奇异值分解，它把矩阵作用分成不同强弱的正交方向；程序可据此只保留受约束充分可见的方向。这个降基操作能节省成本，也可能缩小允许的函数空间，必须用不降基计算核对。\textbf{预条件}或缩放则是用可逆变换改善数值尺度；如果只是对矩阵作 \(G\to DGD^\dagger\) 且 \(D\) 可逆，半正定性不变，这称为同余变换。
+
+本项目把约束行归一化到相近尺度，称为 \code{rownorm}。它与把不同节点在目标函数中赋予不同权重有区别：前者可保持同一个有限问题，后者可能改变选中的振幅。
+\newchapter{从 2021 到后续工作的研究演进}\label{sec:series}
+\subsection{2021：建立可控制的散射优化问题}
+2021 年论文\cite{hk21}处理了前一节的两个相连问题：用 Mandelstam 表示自动组织解析性和 crossing 后，密度方向会出现病态；为这个问题构造可用的对偶界，也需要适当正则化。其成果给出一个方法层面的检验方式：可行振幅从内侧接近最优值，对偶泛函从外侧限制最优值。
+
+这篇论文为后来的π问题提供了参数化、正则化和凸优化基础。它本身没有从 QCD 计算 \(\rho(770)\)。其中约 2.6613 的标量耦合上界是校准对象，不能作为 2309 已经复现的替代证据。
+
+\subsection{2309：用 QCD 输入识别允许的π动力学}
+只要求解析性、crossing 和幺正性，会允许许多理论。2309 的推进在于利用第\ref{sec:bridge}节的流，把某个高能规范理论的具体信息放进这个允许集。\(N_c,N_f,m_q,\alpha_s\) 进入两点函数，FESR 限制谱密度，形状因子与 Gram 条件将它们连接到π散射。\cite{hk23}
+
+论文依次展示三种约束集合：只有基本散射条件；再加手征低能关系；再加 QCD 的 FESR 和高能 FF 上限。这一顺序可以检验不同物理信息的作用。低能关系明显限制 S0/S2；所选的手征边界振幅没有低能 \(\rho\)；加入 UV 条件后出现 P1 共振。共振没有被作为 Breit--Wigner 模板或指定质量输入。
+
+这套研究假设所考虑的规范理论发生禁闭与手征对称性破缺，并据此选择π作为低能自由度。当前计算没有从零证明禁闭，也没有独立计算出全部 QCD 真空结构。
+
+需要同时保留论文的近似性质。它采用两味模型、少数电流、少数矩、最低阶手征匹配和有限网格，且若干误差与选解规则未完整说明。展示合理相移说明这条计算路径有可行性；仅凭这些图还不能推出所有给定 QCD 参数的低能振幅已经被唯一确定。
+
+\subsection{2403：扩展通道与可计算的物理量}
+2403 将匹配能量提高到约 \(2\GeV\)，扩展到 \(\ell\le3\) 的六条低分波，加入 D0 电流，并计算低能常数、散射长度和形状因子半径等量。散射长度是阈值附近分波的首个系数，描述极低动量散射强度；形状因子半径由 \(F(s)\) 在零动量转移处的斜率定义。论文还研究多个共振，明确描述 Watsonian 选解。\cite{hk24}
+
+本地公开代码提供了更具体的实现事实：能量映射中心 \(\nu_0=-20\)，谱密度使用 40 个 B 样条基函数，每条流三个矩，误差按逐流二范数打包。B 样条是一组局部、分段多项式函数，用它们的系数组合可以平滑参数化谱密度。代码先在两个阈下线性组合的投影上选点，再释放固定条件求解 Watson 泛函。\cite{code24}
+
+\subsection{2505：限制谱密度并研究迭代选解}
+2505 进一步加入谱密度的低能阈值结构，研究从不同可行初值出发的迭代，并在数值样本中观察到趋向相近解。当前论文还使用改进的求和规则，讨论形状因子高能输入的误差以及把收敛解视作物理解的系统误差。\cite{hk25}
+
+本地代码从一次零目标可行性求解开始，再做五轮迭代。它使用三个流、每流六个矩，以及有系数界的谱密度表示；主线复现没有移植这些物理条件。代码中的 S0/P1/D0 高能放宽因子是 \(8/2.2/8\)，当前论文式 (2.18) 的示例是 \(8/2.2/9\)。这是版本与示例设置需要对齐的具体例子，不能把一组“后续工作设置”当成唯一固定常数。\cite{code25,hk25}
+
+\subsection{借用了什么，哪些仍需单独验证}
+\begin{table}[H]\centering\small
+\begin{tabularx}{\linewidth}{P{27mm}YYY}
+\toprule
+项目 & 2309 复现 & 本地 2403 代码 & 本地 2505 代码\\
+\midrule
+匹配能量 \(E_0\) & 1.2 GeV & 2 GeV & 2 GeV\\
+映射中心 \(\nu_0\) & 0 & \(-20\) & \(-20\)\\
+电流／每流矩数 & S0、P1／2 & S0、P1、D0／3 & S0、P1、D0／6\\
+手征残差 & 合并八维 L2 & 合并 L2，另限制高波 & 合并八维 L2\\
+密度正则化 & 节点 \(\ell_\infty\) 界 & 缩放密度 \(\ell_4\) 界 & 缩放密度 \(\ell_4\) 界\\
+代表振幅 & 投影边界；另做迭代诊断 & 边界初值后 Watson & 可行初值后 Watson\\
+优化工具 & SDPB & CVX + MOSEK & CVX + MOSEK\\
+\bottomrule
+\end{tabularx}
+\caption{实现对照。L2、\(\ell_2\) 均表示二范数；\(\ell_\infty\) 是各分量绝对值的最大值，\(\ell_4=(\sum|c_i|^4)^{1/4}\)。不同范数的同一个数值不表示同等强度的界。}
+\end{table}
+
+本项目从后续代码得到的是可检验的线索：八维手征残差如何打包、正则化确实存在，以及 Watson 选解如何实施。我们保留 2309 的能区、两条流、四个矩和原能量网格。把后续物理输入一并替换，会变成另一项计算，不能继续用“复现 2309”概括。
+
+另有 Córdoba 的离散基实现\cite{cordoba}已研究计算速度、收敛和复平面共振极点。它为将来的交叉核验提供参考；其离散函数族与当前混合配点法不同，已有可行性或极点结果不能不经转换验证直接继承。
+\newchapter{本次复现的参数与计算步骤}\label{sec:setup}
+\subsection{物理输入及其使用位置}
+表\ref{tab:physical}中的数值规定我们研究的理论和单位。它们与后面为数值求解选择的网格、范数及停止阈值性质不同。主线没有根据论文相移或实验 \(\rho\) 质量回调这些输入。
+
+\begin{table}[H]\centering\small
+\begin{tabularx}{\linewidth}{P{27mm}P{38mm}Y}
+\toprule
+输入 & 名义取值 & 在问题中的作用\\
+\midrule
+\(N_c,N_f\) & \(3,2\) & QCD 的颜色数、轻夸克味数；进入流关联函数和对称性。\\
+\(m_\pi\) & \(140\MeV\) & 设定质量单位与两π阈值。\\
+\(f_\pi\) & \(92\MeV\) & 确定低能参考黑点；手征比值约束本身不含其绝对数值。\\
+\(E_0,\ s_0\) & \(1.2\GeV\)，\((1.2\GeV)^2\) & FESR 的积分终点以及高能 FF cap 的起点。\\
+\(\alpha_s(\mu)\) & \(0.4\)，\(\mu=1.2\GeV\) & 截断 QCD 计算的强耦合。\\
+\(m_u,m_d\) & \(4,7.3\MeV\) & 跑动轻夸克质量；标量流归一化及 QCD 目标相关输入。\\
+\(\langle\alpha_sG^2/\pi\rangle\) & \(0.023\GeV^4\) & 胶子场强平方的真空期望值，进入 OPE 修正。\\
+\(\langle j_S\rangle\) & \(-(0.1\GeV)^4\) & 标量夸克凝聚项，进入 OPE 修正。\\
+\bottomrule
+\end{tabularx}
+\caption{2309 的物理输入。\(G^2\) 是胶子场强的缩并，与 Gram 矩阵 \(G\) 无关。所有矩进入程序前都转换到 \(m_\pi=1\) 的单位。}\label{tab:physical}
+\end{table}
+
+还有一处容易遗漏的质量约定：本次 FF cap 中取 \(m_q=(m_u+m_d)/2=5.65\MeV\)，即程序中的 \(m_q=0.0403571\)。FESR 则直接采用论文式 (2.56) 的打印值乘回 \(s_0^{n+2}\)。用 QCD 公式重新算标量目标时，均方根质量 \(\sqrt{(m_u^2+m_d^2)/2}\) 比算术平均更接近打印值，偏差约 0.7\%。这组约定已记录；没有为了让曲线更接近而切换。后续精度提升需要统一它们的源定义。
+
+\subsection{A：构建振幅与电流算子}
+连续能量从 \(4\) 延伸到无穷大，直接均匀取点不方便。\textbf{保角映射}是在复平面上保持局部角度的解析变量变换；这里将有割线的 \(s\) 平面映到单位圆盘：
+\begin{equation}\label{eq:grid}
+z(s)=\frac{2-\sqrt{4-s}}{2+\sqrt{4-s}},\quad
+z(s+\ii0)=e^{\ii\phi},\quad
+s(\phi)=\frac8{1+\cos\phi},\quad
+\phi_i=\frac{(i-\tfrac12)\pi}{M}.
+\end{equation}
+取 \(M=50\)，\(i=1,\ldots,50\)。角变量 \(\phi\) 均匀，物理能量不均匀：靠近阈值密、越高能越疏。\(\nu_0=0\) 表示该映射把 \(s=0\) 放到圆心。
+
+在这些点上记录 \(T_0,\sigma_{1,2,i},\rho_{1,2,ij}\)，其中 \(\rho_2\) 对称。散射未知数有
+\begin{equation}
+1+2M+M^2+\frac{M(M+1)}2=3876\qquad(M=50).
+\end{equation}
+加入两条流的 \(\Imm F\) 和电流谱密度，每条各 \(M\) 个，再增加 \(4M=200\) 个未知数。这是降基和辅助变量之前的计数。
+
+\code{mixed-pv} 表示实际采用的混合数值积分规则：割线上奇异积分用与论文式 (3.67) 对应的余切核；割线外平滑积分在 \(\phi\) 上用中点法；交叉道角积分用第二类 Legendre 函数 \(Q_\ell\) 的闭式表达。\(Q_\ell\) 是对 \(P_\ell(z)/(w-z)\) 这类积分的标准记号。\textbf{配点}（collocation）指在选定节点上施加函数关系与约束。
+
+形状因子实部由固定矩阵 \(K\) 得到：
+\begin{equation}
+\Ree F_i=1+\sum_jK_{ij}\Imm F_j.
+\end{equation}
+这是式\eqref{eq:Fdisp}在节点上的版本。算子用 Python 独立装配，再由 Mathematica 作独立公式核对，并检查归一化、核矩阵和目标矩。高精度算子复算是验证计算式是否一致，不代表连续积分误差自动为零。
+
+\subsection{B：基本幺正约束与正则化门槛}
+取每个同位旋 \(L=10\) 条分波。偶数通道是 \(\ell=0,2,\ldots,18\)，奇数通道是 \(\ell=1,3,\ldots,19\)。因此需要检查 \(3LM=1500\) 个幺正圆盘；\(L=10\) 不表示只保留到角动量 10。
+
+历史上移去密度正则化后，解出现 \(\|\rho\|_4\sim10^{16}\)--\(10^{17}\)、\(\sigma\sim10^{15}\) 的大系数抵消，且未施加约束的高分波出现 \(|S|\sim53\)。改变 \(L\) 时端点明显漂移。这支持“有限模型仍有不可控方向”的判断。相关失败已保存，当前主线恢复密度界。
+
+选择 \(\Mreg\) 的规则预先登记在日志中。先寻找增大界后端点基本不变的平台；若没有合适平台，则采用遗漏波与 \(L\) 稳定性的经验规则：检查 \(I=0,2\) 的 \(\ell=20,22\) 和 \(I=1\) 的 \(\ell=21,23\)，要求节点上 \(\eta\le1.02\)，并要求 \(L=8,10,12\) 的端点差不超过 2\%。1.02 只用于未纳入主约束的诊断，已纳入的 1500 个圆盘仍要求 \(|S|\le1\)。
+
+手征与 UV 阶段选择 \(\Mreg=100\)；纯幺正区域的振幅尺度大得多，单独选择 \(\Mreg=1000\)。在 \(M=30,L=8\) 的对照中，\(\ell_\infty,\ell_2,\ell_4\) 各按相同物理规则定尺度后，端点散布约 0.20\%，0.9 GeV 三波相移差小于 0.7°。这些检查支持该范围内的稳健性，不是对所有参数和全部能量的范数无关性证明。
+
+纯幺正图使用 24 个相隔 15° 的支撑方向。手征图主要使用六个容差的 \(+x\) 端点与若干竖截面。代码复用同一套约束矩阵，换方向时只改目标，减少“名义同模型、实际约束已变”的风险。
+
+\subsection{C：加入手征条件并先选点、后读相移}
+主线使用式\eqref{eq:chib}，代码名 \code{chi-b}。对照 \code{chi-c} 将两类残差分成两个各有四维的二范数球。这不是单纯书写差异：两个独立球允许的总残差可以比一个合并球大。
+
+扫描的六个手征容差为
+\begin{equation}
+\eChi\in\{0.006,0.004,0.002,0.001,0.0006,0.0002\}.
+\end{equation}
+物理相移的名义值采用 \(0.002\)。Fig.5 比较其中 \(0.002,0.004,0.006\) 的阈下函数。
+
+代表点规则在读取相移前固定：在 \(x=x_{\rm ref}+\{-0.002,-0.001,0,0.001,0.002\}\) 的五个竖截面取上端，选离式\eqref{eq:weinbergpoint}的黑点最近者。这里“最近”只指这五个候选中的最近，并非已对连续边界做精确最近点优化。IR 代表为 \(x=x_{\rm ref}=0.07332139057\) 的上端。
+
+每个点都保存完整系数向量，再从它计算 S0、P1、S2。不能把一条振幅的 S0 和另一条振幅的 P1 拼成一个看起来更好的结果。UV 比较使用 tip、同一参考截面的上端，以及 \(x_{\rm ref}+0.001\) 的上端；最后这个邻点在报告中称为 mid，它不是两个点的算术中点。
+
+\subsection{D：Gram、FESR 与高能 FF 约束}
+S0 和 P1 各在全部 50 个节点上施加式\eqref{eq:gram}，共 100 个 \(3\times3\) 复 Hermitian 块。为改善尺度，程序用 \(\widehat\rho_\ell=\rho_\ell/k_\ell^2\) 与 \(F_\ell\) 进入同余变换后的矩阵，物理约束保持等价。
+
+电流谱密度只在 \(s_0\) 以下进入 FESR；高于 \(s_0\) 的值仍参与 Gram 条件，没有另外施加逐点 QCD 谱匹配。日志中这些自由方向可出现很大的 \(\widehat\rho\)。它们帮助完成声明的有限矩阵条件，不应被直接解释为已得到可信的高能谱预测。
+
+FESR 采用中点权重
+\begin{equation}\label{eq:quad}
+M_{\ell,n}^{(M)}=\frac\pi M\sum_{i:s_i\le s_0}
+\left(\frac{\dd s}{\dd\phi}\right)_i s_i^n\rho_{\ell,i},\qquad
+\frac{\dd s}{\dd\phi}=\frac{8\sin\phi}{(1+\cos\phi)^2}.
+\end{equation}
+\(M=50\) 时有 43 个节点位于 \(s_0\) 以下，最后一个约为 \(s=73.40\)；另外 7 个节点接受高能 FF cap。程序采用“节点在界内就整项计入”的硬截止规则，没有裁掉最后一个积分单元越过 \(s_0\) 的部分。
+
+这个规则带有离散误差。日志用光滑测试函数检查时，\(n=0,1\) 的简单积分分别高估约 14.6\%、28.9\%。真实解的谱密度不是常数，不能把这两个百分数直接当成真实 FESR 误差；它们说明改变 \(M\) 或 \(s_0\) 时，应特别检查端点求积行为。
+
+\begin{table}[H]\centering\small
+\begin{tabularx}{\linewidth}{lYY}
+\toprule
+求和规则读法 & 约束 & 状态\\
+\midrule
+\code{SR-a} & 每个原始矩满足 \(|M_{\ell,n}-Q_{\ell,n}|\le0.002\) & 9 月 18 日 PDF 的名义主线。\\
+\code{SR-d} & 每条流的两个原始残差合成 L2 球，半径 0.002 & 范数打包对照。\\
+\code{SR-b} & 每个矩满足 \(|M_{\ell,n}-Q_{\ell,n}|\le0.1|Q_{\ell,n}|\) & 相对 10\% 对照；当前设置下未可行。\\
+\bottomrule
+\end{tabularx}
+\caption{同一个符号 \(\eSR\) 必须同时说明残差归一化和范数。后续论文的归一化矩容差不能直接移植成 2309 原始矩上的同一个数。}
+\end{table}
+
+名义 \(\eFF=6\times10^{-5}\)，式\eqref{eq:kinff}的 \(k_\ell(s_i)\) 在每个节点取值。另做对照，将全部高能节点的因子固定为 \(k_\ell(s_0)\)。2309 式 (3.68)明确按节点定义 \(\Fcal\)，末段又说估算 \(\eFF\) 时在 \(s_0\) 计算换算因子。因此逐节点读法有较直接的公式依据；“冻结因子”应称为待作者确认的实现对照，不能宣称两种读法都同等由原文明示。
+
+\subsection{E--F：求解、复验与分辨率比较}
+程序将上述约束写成 SDPB 所需的 PMP（polynomial matrix program，多项式矩阵规划）文件。当前节点问题的矩阵对辅助多项式变量为零次；使用名为 SDPB 的工具，并不会自动把有限节点约束变成全连续能量的约束。
+
+\begin{table}[H]\centering\small
+\begin{tabularx}{\linewidth}{P{40mm}P{28mm}Y}
+\toprule
+数值设置 & 取值 & 含义\\
+\midrule
+SDPB 版本／工作精度 & 3.1.0／192 bit & 任意精度 SDP 求解；192 个二进制位约相当于 58 位十进制有效数字。\\
+算子／输出数字 & 40／30 位 & 输入矩阵生成和解文本保留位数；不等于物理精度。\\
+duality gap 阈值 & \(10^{-6}\) & 该目标函数的数值最优性标准，具体归一化按 solver 定义。\\
+原／对偶残差阈值 & 各 \(10^{-10}\) & 优化方程残差的停止要求。\\
+SVD 阈值 & \(10^{-12}\) & 降基时丢弃弱方向的阈值；主线有降基。\\
+Arb 复算精度 & 至少 256 bit & 用带误差区间的算术重新检查原式。\\
+有限分辨率 & \((M,L)=(50,10)\) & 主线网格与角动量截断。\\
+分辨率对照 & \((50,8),(50,12),\)\newline\((45,10),(60,10)\) & 改变节点数或分波数，比较相同选解规则下的结果。\\
+\bottomrule
+\end{tabularx}
+\caption{数值设置。bit 是二进制精度位；SDPB 的工作位数、方程残差、观测量误差是三种不同的量。}
+\end{table}
+
+\textbf{Arb} 是使用球区间算术的库：一个数写成“中心值 \(\pm\) 保守误差半径”。若某个约束余量的整个区间都大于零，才在该次复算范围内确认符号。主线同时保存逐约束区间判定和带数值容差的验收，不能把 \code{accepted=true} 单独解释为所有意义上的严格证明。
+
+每个求解叶，即一个独立运行目录，保存 PMP、基矩阵、求解器输出、完整解和 \code{report.json}。散射参数 \(c\)、\(\Imm F\)、\(\widehat\rho\) 都要保留，只有相移图片不够重验。哈希是文件内容的摘要，用来检查算子和输入是否被改动。实际计算入口为 \code{python -m smatrix_bootstrap.run}，数据位于 \code{results/runs}。
+
+全部新增物理运行前先固定问题与判断规则，称为\textbf{预登记}。它可以减少根据看到的曲线事后改变标准的自由度；如果假设本身由前一轮论文曲线引导，预登记也不能把这个来源变成独立预测。
+\source{实际主线 \code{uv_SRa_tip/tip/report.json}；门槛、范数及全空间对照见运行日志\cite{local}。A--F 为原项目的“算子—区域—IR—电流—UV—稳定性”责任划分。}
+\newchapter{逐图结果及其物理含义}\label{sec:results}
+\subsection{比较标准怎样阅读}
+以下“通过”指满足项目事先登记的逐图指标，记作 C1--C8；claim 即要核查的具体陈述。这些阈值是复现验收标准，不是作者给出的统计置信区间。论文曲线通过\textbf{数字化}得到，即从图上的坐标读取数据，存在图像分辨率和读数误差。
+
+曲线误差使用 RMS，即均方根差：\(\sqrt{N^{-1}\sum_i(y_i-y_i^{\rm paper})^2}\)。它衡量同一组横坐标上的典型偏差。逐点最大差、末点差和共振穿越位置则检查可能被平均掩盖的局部差异。比较对象首先是论文的 bootstrap 曲线；实验曲线用于物理背景，不能用“更接近实验”替代“复现论文”。
+
+\begin{table}[H]\centering\small
+\begin{tabularx}{\linewidth}{P{21mm}P{31mm}Y}
+\toprule
+图／指标 & 当前裁决 & 可以据此说明的进展\\
+\midrule
+Fig.3／C1 & 未通过 & \(+x\) 一致，另三个极值有明显正则化依赖。\\
+Fig.4／C2 & 通过 & 手征区域的端点、宽度和容差变化规律得到复现。\\
+Fig.5／C3 & 通过 & 阈下近线性与手征零点的变化得到复现。\\
+Fig.7／C4 & 通过 & 所选仅手征振幅的三波与论文吻合，P1 无低能 \(\rho\)。\\
+Fig.8／C5 & 未通过 & UV 条件收缩区域，但上下边界的收缩不对称不吻合。\\
+Fig.9／C6 & 未通过 & 出现 P1 共振结构；质量、三点一致性及原始弹性不足。\\
+Fig.10／C7 & 未通过 & S2 较一致，S0 在较高能量处上升过快。\\
+Fig.11／C8 & 未通过 & 固定 \(M\) 的 \(L\) 稳定性良好；其余字面指标不全满足。\\
+\bottomrule
+\end{tabularx}
+\caption{完整通过的是 C2、C3、C4。原论文 Fig.6 是选点示意，对应本讲义的代表点规则，不另计一项独立物理验收。}
+\end{table}
+
+\subsection{Fig.3：没有 QCD 和手征信息时的基线}
+纯幺正区域只使用共同散射表示和基本散射约束，并以 \(\Mreg=1000\) 稳定有限问题。在 24 个方向的计算中，四个坐标极值如下。
+\begin{table}[H]\centering\small
+\begin{tabular}{lrrr}
+\toprule
+极值 & 论文数字化值 & 主线 & 相对差的大小\\
+\midrule
+\(x_{\max}\) & 2.23289 & 2.22445 & 0.38\%\\
+\(x_{\min}\) & \(-2.902\) & \(-2.247\) & 22.6\%\\
+\(y_{\min}\) & \(-0.7336\) & \(-0.6243\) & 14.9\%\\
+\(y_{\max}\) & 0.07932 & 0.06629 & 16.4\%\\
+\bottomrule
+\end{tabular}
+\caption{C1 要求四个极值分别在 2\% 内，目前只有 \(+x\) 通过。所测极值位于论文区域内侧，不能仅由有限方向样本证明完整区域的严格包含关系。}
+\end{table}
+
+把 \(\Mreg\) 提高到 \(10^4\)，三个偏差较大的极值移到约 \(-2.693,0.07562,-0.71764\)，偏差缩小为约 2--7\%，\(+x\) 只变化约 0.3\%。这说明大振幅方向对密度界敏感。我们还不知道作者 2309 的有效正则化，因此不能把这张图的全部差异归结为实现错误，也不能由该对照反推出作者确切使用了什么界。
+
+\subsection{Fig.4--5：手征条件限制了什么}
+使用 \(\eChi=0.002\) 后，\(+x\) 端变成 0.082757，论文为 0.0825728，相差 0.22\%。在 \(x=x_{\rm ref}\) 的竖截面，宽度为 \(7.618\times10^{-4}\)，论文为 \(7.598\times10^{-4}\)，相差 0.26\%。“宽度”是上端 \(y\) 减去下端 \(y\)，描述偏离手征直线的余量。
+
+六个容差对应的端点单调变化：
+\begin{center}\small
+\begin{tabular}{crrrrrr}
+\toprule
+\(\eChi\) & .006 & .004 & .002 & .001 & .0006 & .0002\\
+\(x_{\max}\) & .1608 & .1255 & .0828 & .0551 & .0411 & .0223\\
+\bottomrule
+\end{tabular}
+\end{center}
+严格的低能匹配减少了允许的相互作用强度，这与第\ref{sec:analyticity}节的分析相符。C2 的判据是名义端点在论文 5\% 内、截面宽度在 20\% 内，并满足这一单调关系；三个条件都通过。
+
+Fig.5 比较阈下函数。三个容差的曲线 RMS 偏差不超过相应 \(f_0^0(3)\) 的 6.4\%，低于预登记的 8\% 阈值。\(\eChi=0.002,0.004,0.006\) 时，S0 零点分别在 \(s\simeq0.426,0.293\)，最后一个在所检查范围内消失。它说明放宽残差后，允许函数逐渐离开最低阶手征形状，而不仅是区域变宽。
+
+\subsection{Fig.6--7：同一完整振幅上的 IR 检验}
+按照预定的最近参考点规则，Fig.7 三条分波与论文的 RMS 相移差为
+\begin{equation}
+\mathrm{S0}:0.388^\circ,\qquad
+\mathrm{S2}:0.144^\circ,\qquad
+\mathrm{P1}:0.456^\circ.
+\end{equation}
+末点差不超过约 2°，低于 10° 的比较阈值。P1 在 1.2 GeV 以下没有 90° 穿越。S0、S2 的低能趋势由手征动力学组织得很好，选出的 P1 则没有形成论文所讨论的低能 \(\rho\)。
+
+这个对照支持“新增 UV 输入对后续选出的 P1 振幅起作用”。它没有扫描所有仅手征可行振幅，所以还不能证明任何仅手征解都绝无 \(\rho\)。若要提出后者，必须对整个可行集建立相应的排除或存在性问题。
+
+\subsection{Fig.8：UV 条件改变区域的方式}
+在同一 \(x_{\rm ref}\) 截面上，定义上收缩 \(\Delta y_+=y_{\rm IR,upper}-y_{\rm UV,upper}\)，下抬升 \(\Delta y_-=y_{\rm UV,lower}-y_{\rm IR,lower}\)。由于 UV 增加约束，两个量应非负。论文发现上边界变化明显大于下边界。
+
+\begin{table}[H]\centering\small
+\begin{tabularx}{\linewidth}{Yrrrr}
+\toprule
+读法 & \(x_{\max}\) & \(10^4\Delta y_+\) & \(10^4\Delta y_-\) & 比值\\
+\midrule
+SR-a，逐节点 FF 因子 & .076013 & 2.77 & 2.77 & 1.00\\
+SR-a，FF 因子冻结 & .079623 & 0.53 & 2.49 & 0.21\\
+SR-d，FF 因子冻结 & .079541 & 0.535 & 2.50 & 0.21\\
+论文数字化 & .08112 & 2.32 & 0.37 & 6.3\\
+\bottomrule
+\end{tabularx}
+\caption{Fig.8 对比。“比值”是上收缩除以下抬升。冻结读法改善了端点，仍未恢复论文的区域形状。}
+\end{table}
+
+名义端点比论文低约 6.3\%，冻结读法低约 1.9\%。C5 还要求上收缩接近 \(2.3\times10^{-4}\)、下抬升不大于 \(10^{-4}\)、比值至少为 4，因此不能只凭端点接近就判通过。测试过的三种可行配置均未通过这一联合标准。
+
+相对 10\% 的 SR-b 读法存在更直接的张力：移去 S0 的 \(n=0\) 盒，仅保留其余三个相对盒并最小化该矩，得到约 \(3.745\times10^{-3}\)，是 QCD 目标的 1.57 倍，高于允许的 1.1 倍。这是数值最优性精度下的不可行证据，作用范围是当前有限模型与其他固定约束；它没有排除更一般的 QCD 理论，也尚未配备独立区间认证的对偶排除证书。
+
+\subsection{Fig.9--10：共振结构与 S0 偏差}
+名义 UV 问题的 tip、xref、mid 使用同一套约束，只改变代表点选择。结果如下。
+\begin{table}[H]\centering\small
+\begin{tabularx}{\linewidth}{P{25mm}P{32mm}P{30mm}Y}
+\toprule
+代表振幅 & P1 90° 穿越 & \(\min\eta_{P1}\) & 相位读取说明\\
+\midrule
+tip & 772.7 MeV & 0.585 & 在约 0.79 GeV 已明显非弹性。\\
+xref 上端 & 约 708 MeV & 0.244 & 708 来自选取的 \(+180^\circ\) 分支；最近节点连续展开没有相同穿越。\\
+mid 邻点 & 738.9 MeV & 0.077 & 接近 \(S=0\)，相位解读不稳定。\\
+论文三曲线 & 813--827 MeV & 未展示 & 三条穿越较接近。\\
+\bottomrule
+\end{tabularx}
+\caption{这里的 \(\min\eta\) 是 1.2 GeV 以下节点的最小值，不保证恰好在插值穿越点处取得。}
+\end{table}
+
+tip 的 \(\eta=0.585\) 对应留在所考虑两体通道中的概率约 34\%，比两π占主导的物理预期低得多。三条曲线都出现与 UV 加入相伴的共振式结构，质量和弹性仍未达到 C6 的要求：穿越位于 795--845 MeV、三点差不超过 20 MeV，并且 \(\min\eta\ge0.9\)。最后一项是本项目增加的物理诊断门槛，原 Fig.9 没有给出 \(\eta\) 图。
+
+S2 与论文仍较接近，三点 RMS 为 0.354--1.44°。S0 在约 0.6 GeV 以上上升较快：约 0.69 GeV 就经过 90°，在 1.196 GeV 到达 181--192°，论文只有约 87--106°。与 IR-only 的良好结果相比较，这一差异是在当前 UV 条件和选点程序加入之后出现的。
+
+\subsection{Fig.11：节点数与分波数的稳定性}
+\begin{table}[H]\centering\small
+\begin{tabular}{crrrr}
+\toprule
+\((M,L)\) & UV \(+x\) 端 & P1 穿越 / MeV & \(\min\eta_{P1}\) & S0 在 1 GeV\\
+\midrule
+\((50,8)\) & .076176 & 771.4 & .584 & 151°\\
+\((50,10)\) & .076013 & 772.7 & .585 & 150°\\
+\((50,12)\) & .075944 & 772.9 & .585 & 150°\\
+\((45,10)\) & .074275 & 736.1 & .226 & 165°\\
+\((60,10)\) & .075097 & 738.8 & .597 & 156°\\
+\bottomrule
+\end{tabular}
+\caption{所有行使用各自完整的名义 UV tip 振幅，保持相同的节点密度界。}
+\end{table}
+
+固定 \(M=50\) 时，改变 \(L\) 只使穿越变化 1.5 MeV，说明增加这几条高分波对该观测量影响很小。改变 \(M\) 后，穿越变化约 37 MeV，说明能量表示、求积与约束节点仍有可观的影响。增加 \(M\) 同时改变未知数和约束，解集未必嵌套，因此不能仅凭数值顺序作单调收敛外推。
+
+C8 按旧有字面规则要求 \(M\) 引起的质量跨度为 40--70 MeV，且排序与论文一致；37 MeV 因而被记为未通过。较小的跨度本身不是物理失败的证据。应同时报告：\(L\) 稳定性得到复现，\(M\) 的具体走势不一致，S0 高度差异仍显著。预登记判据保留，科学解释则需要这一层限定。
+\source{全部数据来自英文对照报告第 2--3 节及 C1--C8 收据\cite{comparison,local}。本节没有重新拟合论文或实验曲线。}
+\newchapter{退化面、饱和迭代与参数敏感性}\label{sec:diagnosis}
+\subsection{近最优面排除了哪一种解释}
+一条返回的曲线与论文不同，可能只是优化器在许多等价最优解中选了另一条。为检查这种可能，在已知支撑值 \(v^*\) 附近加入
+\begin{equation}\label{eq:slab}
+d\cdot(x,y)\ge v^*-2\times10^{-6},
+\end{equation}
+保留原截面与其他约束，再分别最大化、最小化一个节点观测量。这块允许目标略低于最优值的薄区域称为\textbf{近最优面}，更准确地说是近优薄层。它不要求返回与原解相同的全部系数。
+
+选 \(q(s)=1-\Ree S_{P1}(s)\)，是因为它对优化变量线性，而且可以不用知道 \(\eta\) 就排除一类相位。若 \(45^\circ<\delta<135^\circ\)、\(\eta>0\)，则 \(\cos2\delta<0\)，从而
+\begin{equation}
+q=1-\eta\cos2\delta>1.
+\end{equation}
+例如论文在 \(E=0.864\GeV\) 的相位约为 113--124°。本有限模型的 tip 近优面上 \(q\le0.6346\)，xref 近优面上 \(q\le0.701\)，都小于 1。因此在这些面内，换一个最优振幅也无法得到论文在该节点的相位。
+
+在 0.792 GeV，xref 的 \(q\) 范围约为 \([0.023,0.936]\)，范围很宽，说明这处边界并未固定完整振幅；尽管宽，仍没有包含论文相位所要求的 \(q>1\)。tip 在同一节点的范围 \([1.441,1.493]\) 较窄；这个区间单独只排除论文的近弹性数值，不能对任意 \(\eta\) 都排除，需结合 0.864 GeV 或 \(\Imm S\) 的检查。
+
+这些结论针对指定正则化、UV 读法、网格和近优薄层，并以数值对偶最优性为依据。它们没有排除整个可行集中的所有振幅，更没有排除所有可能的 2309 实现。独立对偶认证尚未完成，因此汇报宜表述为“在已测近优面内，数值界有明显余量地排除了相应相位”。
+
+\subsection{饱和迭代的具体目标}
+作者回复说明，展示曲线是在改进饱和的迭代之后得到的。我们据 2403 式 (2.29) 为现有 2309 模型构造新目标。第 \(n\) 轮，取上一轮形状因子相位
+\begin{equation}
+\alpha_k^{(n)}=\arg F_k^{(n)},\qquad
+S_k^{\rm target}=e^{2\ii\alpha_k^{(n)}},\qquad
+t_k=-\ii(S_k^{\rm target}-1).
+\end{equation}
+对于没有电流的 S2，使用上一轮的散射相移作为 \(\alpha\)。下一轮保持全部物理约束，最大化
+\begin{equation}\label{eq:watsonobjective}
+W_n=\sum_{k}w_k\Ree\!\left[e^{-2\ii\alpha_k^{(n)}}(S_k-1)\right]
+=\sum_k w_k\big[\Ree(t_k^*h_k)-\Imm h_k\big].
+\end{equation}
+\(k\) 包含 \(s_k\le s_0\) 的 S0、P1、S2 节点，\(w_k>0\) 是权重。上一轮的相位在本轮固定，所以新目标对未知变量仍线性，每一步依旧是凸优化。
+
+只考虑一个独立幺正圆盘时，这个目标恰在 \(S=e^{2\ii\alpha}\) 取最大值，因为它测量 \(S\) 沿指定单位方向的投影。所有节点通过色散、crossing、FESR 等条件耦合后，所有目标未必能同时达到；全局最优只能作折中。一个迭代\textbf{固定点}表示再做同样更新不再改变解，不能仅凭此断言所有节点已饱和，更不能推出唯一性。
+
+名义计算取 \(w_k=1\)。对照使用作者 2403 缩放变量产生的 \(w_k=1/\Lambda_\ell(s_k)^2\)，其中
+\begin{equation}
+\Lambda_\ell(s)=\left(\frac{\sqrt s-2}{\sqrt s+2}\right)^{\ell/2}.
+\end{equation}
+两者在独立单节点上目标方向相同；在受耦合约束的问题中，权重可以改变折中和选解。已做的加权 xref 对照给出相近的 \(\rho\) 穿越，不能据此证明所有权重都无影响。
+
+本次程序准确对应 2403 的这种相位目标形式。2505 代码采用 \(|h_{\rm old}|F_{\rm old}/|F_{\rm old}|\) 作为线性化系数；其模长未必等于本式的 \(2\sin\alpha\)。远离弹性条件时，两种更新一般不同。日志中“只改目标模长不改变单节点最大点”的笼统说法需要收窄，附录\ref{app:iteration}给出代数核对。本次迭代是受后续方法启发的 2309 适配，不能称为完整重跑了 2505 算法。
+
+\subsection{放开坐标和钉住坐标的对照}
+\textbf{释放}代表点，指去掉原来的截面或支撑目标，让式\eqref{eq:watsonobjective}在同一个可行集内重新选振幅。\textbf{钉住}对照则保留截面和式\eqref{eq:slab}，要求解留在原支撑点附近。两者的区别是允许改变哪些振幅坐标，没有放松基本幺正性。
+
+\begin{table}[H]\centering\small
+\begin{tabularx}{\linewidth}{lrrrrY}
+\toprule
+起点 & 轮数 & 初始 \(\min\eta\) & 最终 \(\min\eta\) & 最终 \(E_{90}\) & \(x\) 初值→终值\\
+\midrule
+tip & 8 & .585 & .998 & 775 MeV & .07601→.06782\\
+xref & 9 & .244 & .991 & 714 MeV & .07332→.06266\\
+mid & 9 & .077 & .913 & 741 MeV & .07432→.06292\\
+\bottomrule
+\end{tabularx}
+\caption{释放坐标的三条迭代链，\(\eta\) 均指 P1 在 1.2 GeV 以下的节点最小值。\(E_{90}\) 是 90° 穿越能量。}
+\end{table}
+
+释放坐标明显提高弹性程度，同时 \(x\) 下降约 11--15\%。\(\rho\) 穿越保留在约 775、714、741 MeV，三点跨度 61 MeV。S0 在 1 GeV 仍为约 145、136、138°，与论文差异没有消除。钉住 tip 时，\(\min\eta\) 只达到 0.593 并停在固定点；钉住 xref 时仅达到约 0.49。
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}
+\begin{axis}[width=.48\linewidth,height=60mm,title={P1 相移},xlabel={\(E\) / GeV},ylabel={\(\delta\) / 度},
+xmin=.4,xmax=1.2,ymin=0,ymax=190,xtick={.4,.6,.8,1,1.2},ytick={0,45,90,135,180},
+tick label style={font=\footnotesize},label style={font=\small},title style={font=\small},
+grid=major,grid style={line!40},axis lines=left,
+legend style={font=\scriptsize,draw=none,fill=white,at={(.03,.97)},anchor=north west}]
+\addplot[muted,thick] coordinates {(0.40112,1.598)(0.41476,1.937)(0.42981,2.272)(0.44645,2.723)(0.46491,3.275)(0.48546,3.906)(0.50843,4.833)(0.53424,5.844)(0.56340,7.489)(0.59654,9.462)(0.63450,13)(0.67832,18.669)(0.72943,31.098)(0.78970,67.250)(0.86176,111.654)(0.94933,149.629)(1.05786,167.965)(1.19574,173.388)};
+\addlegendentry{论文红线}
+\addplot[rust,thick,dashed,mark=o,mark size=1pt] coordinates {(.40235,1.574)(.41604,1.866)(.43114,2.245)(.44783,2.667)(.46634,3.256)(.48695,3.913)(.51000,4.887)(.53589,6.053)(.56513,7.863)(.59838,10.484)(.63645,14.881)(.68041,25.299)(.73168,51.250)(.79214,108.306)(.86442,147.294)(.95225,165.684)(1.06112,169.553)(1.19942,178.512)};
+\addlegendentry{原 UV tip}
+\addplot[teal,thick,mark=*,mark size=1pt] coordinates {(.40235,1.492)(.41604,1.828)(.43114,1.925)(.44783,2.872)(.46634,2.618)(.48695,4.436)(.51000,3.935)(.53589,6.870)(.56513,6.853)(.59838,11.350)(.63645,14.662)(.68041,24.515)(.73168,49.785)(.79214,105.698)(.86442,149.262)(.95225,155.065)(1.06112,174.258)(1.19942,177.627)};
+\addlegendentry{该起点迭代 8 轮}
+\end{axis}
+\begin{axis}[at={(.51\linewidth,0)},anchor=south west,width=.48\linewidth,height=60mm,
+title={S0 相移},xlabel={\(E\) / GeV},ylabel={\(\delta\) / 度},
+xmin=.4,xmax=1.2,ymin=0,ymax=190,xtick={.4,.6,.8,1,1.2},ytick={0,45,90,135,180},
+tick label style={font=\footnotesize},label style={font=\small},title style={font=\small},
+grid=major,grid style={line!40},axis lines=left]
+\addplot[muted,thick] coordinates {(0.40112,21.665)(0.41476,23.992)(0.42981,27.125)(0.44645,30.027)(0.46491,34.032)(0.48546,37.597)(0.50843,42.504)(0.53424,46.658)(0.56340,52.275)(0.59654,56.668)(0.63450,62.581)(0.67832,66.653)(0.72943,72.588)(0.78970,75.910)(0.86176,82.652)(0.94933,85.358)(1.05786,97.931)(1.19574,99.566)};
+\addplot[rust,thick,dashed,mark=o,mark size=1pt] coordinates {(.40235,20.932)(.41604,23.265)(.43114,26.614)(.44783,29.857)(.46634,34.306)(.48695,38.821)(.51000,44.762)(.53589,50.923)(.56513,58.740)(.59838,66.745)(.63645,76.738)(.68041,86.515)(.73168,100.085)(.79214,111.142)(.86442,126.054)(.95225,144.692)(1.06112,157.165)(1.19942,181.422)};
+\addplot[teal,thick,mark=*,mark size=1pt] coordinates {(.40235,19.270)(.41604,21.026)(.43114,24.773)(.44783,27.551)(.46634,32.518)(.48695,36.903)(.51000,43.658)(.53589,50.358)(.56513,59.486)(.59838,68.857)(.63645,80.181)(.68041,91.330)(.73168,103.339)(.79214,114.854)(.86442,126.434)(.95225,139.493)(1.06112,152.192)(1.19942,180.981)};
+\end{axis}
+\end{tikzpicture}
+\caption{同一 tip 起点的实际节点相移。灰色为论文红色 bootstrap 曲线的数字化值；橙色为原 UV tip，青色为迭代后的完整振幅。折线只连接相邻节点，未拟合平滑函数。迭代提高了表中的弹性度，P1 穿越和 S0 形状仍与论文有差异。数据来自两份运行报告及 \code{figure9_p1_phases.csv}、\code{figure10_s0_phases.csv}。}
+\end{figure}
+
+这说明，在当前模型中，改进饱和需要离开原投影支撑点。它不改变允许区域本身，因而不能直接修复 Fig.8 的真实支撑端点。高维可行集上的饱和边界可以投影到二维图的内部或其他位置，“更接近矩阵约束边界”与“更接近原二维图边界”不是同一几何过程。
+
+三条链的收敛状态也不同。tip 达到了程序设定的停止指标 \(\max|h-t|<0.02\)，终值约 0.0194。xref 最后约 0.122，因为轮数预算用完而停止；mid 约 0.112，改善停滞且坐标仍在漂移。因此不能写“三条链都已收敛”。
+
+这个停止指标只统计“两π比例” \(|F|^2/\widehat\rho\ge0.5\) 的节点。阈值附近某些未受充分约束的 form-factor 相位被排除，指标因此更能反映共振区的变化，却不能代替全节点的固定点判据。tip 的“收敛”也应附上这一限定。
+
+\subsection{求和规则容差的含义与实测灵敏度}
+\(\eSR\) 表达我们容许谱矩偏离截断 QCD 目标多少。2309 用它维持信息约束和可行性之间的折中，并未给出完整统计误差模型。pQCD/OPE 截断、输入误差、有限能标效应及离散求积，都可能贡献偏差；一个统一数字无法把它们分别识别出来。
+
+表\ref{tab:srrelative}将名义原始矩盒翻译成相对量。它说明为何“\(\eSR=0.002\)”不能读成“所有矩精度 0.2\%”。
+\begin{table}[H]\centering\small
+\begin{tabular}{lrrr}
+\toprule
+矩 & QCD 目标 \(Q\) & 允许相对半宽 \(.002/Q\) & tip 实际相对残差\\
+\midrule
+S0，\(n=0\) & .00238510 & 83.85\% & +83.85\%\\
+S0，\(n=1\) & .11183814 & 1.79\% & +1.79\%\\
+P1，\(n=-1\) & .00422805 & 47.30\% & +13.42\%\\
+P1，\(n=0\) & .14571121 & 1.37\% & +1.37\%\\
+\bottomrule
+\end{tabular}
+\caption{相同绝对容差对应很不同的相对误差预算。数值采用 \(m_\pi=1\) 单位；若恢复单位，各矩还具有不同能量量纲。}\label{tab:srrelative}
+\end{table}
+
+三个矩位于允许盒的上沿，称为约束\textbf{活跃}，即误差预算几乎用尽。活跃并不保证它对每个输出都高度敏感：其他约束也可能将同一方向限制住。把全部原始盒半宽从 0.002 放到 0.005、0.01，\(\rho\) 从 773 变到 779、785 MeV，S0 在 1 GeV 从约 150° 变到 155°、154°。单独去掉 S0 的 \(n=0\) 盒，\(\rho\) 约为 774 MeV，释放的谱矩自行停在目标约 1.9 倍附近。
+
+在这些已测配置中，放松 \(\eSR\) 的影响相对较小，不能解释主要差异。这里没有测试所有相关误差模型、所有范数或所有 \(s_0\)，因此“求和规则无关紧要”超出了数据范围。
+
+\subsection{形状因子 cap 的灵敏度}
+对照固定其他设置，把两条流的 \(\eFF\) 同时增加，得到表\ref{tab:epsff}。\(\eFF\) 是平方模上限的比例参数；将 \(6\times10^{-5}\) 增到 \(2\times10^{-4}\)，允许的模长约放宽 \(\sqrt{10/3}=1.83\) 倍。
+
+\begin{table}[H]\centering\small
+\begin{tabular}{crrrr}
+\toprule
+两流共用 \(\eFF\) & \(x_{\max}\) & \(E_{90}\) / MeV & \(\min\eta_{P1}\) & \(\delta_{S0}(0.95\GeV)\)\\
+\midrule
+\(6\times10^{-5}\) & .076013 & 772.7 & .585 & 145°\\
+\(1\times10^{-4}\) & .078351 & 849.1 & .785 & 123°\\
+\(1.4\times10^{-4}\) & .079637 & 905.3 & .845 & 105°\\
+\(2\times10^{-4}\) & .080779 & 972.3 & .973 & 88°\\
+\bottomrule
+\end{tabular}
+\caption{名义 UV tip 的 FF 上限扫描，逐节点换算因子不变。连接这些离散测试点只用于观察趋势，不是已经证明的连续响应函数。}\label{tab:epsff}
+\end{table}
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}
+\begin{axis}[width=.48\linewidth,height=53mm,xlabel={\(10^5\eFF\)},ylabel={\(E_{90}\) / MeV},
+xmin=5,xmax=21,ymin=740,ymax=1000,xtick={6,10,14,20},ytick={750,800,850,900,950,1000},
+tick label style={font=\footnotesize},label style={font=\small},grid=major,grid style={line!50},axis lines=left]
+\addplot[draw=none,fill=rust!13] coordinates {(5,813)(21,813)(21,827)(5,827)}\closedcycle;
+\addplot[teal,thick,mark=*] coordinates {(6,772.7)(10,849.1)(14,905.3)(20,972.3)};
+\node[font=\scriptsize,anchor=south east,rust] at (axis cs:20.5,828) {论文穿越区间};
+\end{axis}
+\begin{axis}[at={(.51\linewidth,0)},anchor=south west,width=.48\linewidth,height=53mm,
+xlabel={\(10^5\eFF\)},ylabel={\(\delta_{S0}(0.95\GeV)\) / 度},
+xmin=5,xmax=21,ymin=75,ymax=155,xtick={6,10,14,20},ytick={80,100,120,140},
+tick label style={font=\footnotesize},label style={font=\small},grid=major,grid style={line!50},axis lines=left]
+\addplot[rust,dashed] coordinates {(5,86)(21,86)};
+\addplot[teal,thick,mark=*] coordinates {(6,145)(10,123)(14,105)(20,88)};
+\node[font=\scriptsize,anchor=south west,rust] at (axis cs:5.5,86) {论文红线约 86°};
+\end{axis}
+\end{tikzpicture}
+\caption{同一组 FF 参数变化对 P1 与 S0 的影响：放宽共同上限会把 \(\rho\) 推高，同时使 S0 变慢。图中横轴是建模参数，不能直接作为误差概率分布。}
+\end{figure}
+
+分流测试更有辨识力。只把 S0 参数提高到 \(2\times10^{-4}\)，P1 保持 \(6\times10^{-5}\)，\(\rho\) 为 775 MeV，S0 在 0.95 GeV 降到约 90°。只把 P1 提高到 \(2\times10^{-4}\)，S0 保持名义值，\(\rho\) 升到约 967 MeV，S0 仍约 148°。这表明在所测 tip 附近，两条流的高能限制分别对相应分波起主要作用；crossing 仍耦合全部振幅，不能称它们数学上完全独立。
+
+另一个极松上限 \(\eFF=10^{-3}\) 的测试，将穿越推到约 1.60 GeV，已超过本次重点验证的 1.2 GeV 区域。它适合表明共振离开了所关注的能区，不适合当作 1.60 GeV 处已受控的预测。
+
+\subsection{配对上限测试及其证据边界}
+上述扫描参照论文曲线提出了候选值
+\begin{equation}
+\eFF_{S0}=2\times10^{-4},\qquad \eFF_{P1}=8\times10^{-5}.
+\end{equation}
+随后预先规定三项联合判断：\(x_{\max}\) 在论文值 1\% 内，\(\rho\) 穿越在 813--827 MeV，S0 到 1 GeV 的最大偏差不超过 10°。测试得到 \(x_{\max}=0.078545\)、\(E_{90}=816.9\MeV\)、S0 RMS 约 1.9°且最大差 4.1°，S2 最大差约 1.1°。前两条相移已经很接近，端点仍低约 3.15\%，联合判断未通过；\(\min\eta_{P1}=0.751\)，也尚未近弹性。
+
+这项测试揭示了一个能解释相移差异的输入方向。候选参数来自已知论文输出，属于输出辅助的诊断假设，不能作为独立的 QCD 质量预测。按照预登记，三条件未同时满足，所以没有继续以这组参数求 xref 截面的 Fig.8 不对称。
+
+现有 PDF 据端点和质量的单调趋势写出“没有任何一对 cap 能同时匹配三者”，证据尚不足。有限的单参数扫描和一个配对点没有穷尽二维参数空间，单调性也未约束所有等质量曲线上的 S0 变化。当前可支持的表述是：\textbf{已测试的配对点未通过联合标准，是否存在其他合适组合尚未证明。} 同理，剩余 3\% 可以提示其他设置也有影响，不能断言它必定完全来自另外某一项。
+
+\subsection{2309 文本已说明与尚未说明的部分}
+2309 已给出饱和的物理预期、Watson 传递相位的论述、\(\eSR\)、\(\eFF\) 的名义数值以及网格。其可复现性缺口在于范数与归一化、密度正则化及展示振幅的选解流程没有全部确定。作者邮件摘要确认曲线经过饱和改进；我们看到的是项目保存的引用和记录，尚未取得 2309 原始 notebook。
+
+因此可以把目前的差异定位为“在声明过的有限读法和代表选择下仍存在数值差异，并已排除若干简单解释”。数值约束复验与源算子交叉检查提高了可信度；把所有差异都判成作者未披露设置，仍需要双方同一输入的实际对拍。
+\source{日志 09-14 的近优面分析，09-17 18:40Z 至 09-18 12:40Z 的迭代与敏感性记录\cite{local}；PDF 第 4--6 节\cite{comparison}。}
+\newchapter{精度、复现完成标准与可提高的部分}\label{sec:accuracy}
+\subsection{六类误差不能用一个数字替代}
+一条相移曲线同时受到计算误差和理论近似的影响。表\ref{tab:errors}把它们分开，是为了决定下一次计算应改变什么，而不是把检查数量当作可信度本身。
+\begin{table}[H]\centering\small
+\begin{tabularx}{\linewidth}{P{29mm}YY}
+\toprule
+误差来源 & 含义 & 适合的检查\\
+\midrule
+算术／优化 & 浮点舍入、算子误差、求解未达精确最优 & 增加 bits、缩小 gap、独立原式复算。\\
+离散化 & 有限 \(M,L\)、配点和求积没有完整覆盖连续问题 & 同合同改变分辨率、检查额外能量与遗漏波。\\
+正则化／降基 & 密度界或丢弃弱方向改变有限可行集 & 范数及尺度对照、不降基复算。\\
+理论输入 & pQCD/OPE 截断、FF 渐近误差、输入参数与匹配尺度 & 有依据的参数区间和相关误差模型。\\
+代表解选择 & 同一可行集允许多振幅，迭代权重或初值影响结果 & 近优面范围、多初值、固定点残差。\\
+物理截断 & 两味模型、少数流、未显式包含多粒子过程 & 增加物理通道／算符后作系统比较。\\
+\bottomrule
+\end{tabularx}
+\caption{主要误差类别。它们通常相关，不应未经推导就按独立随机误差作平方和。}\label{tab:errors}
+\end{table}
+
+实验或图像数字化误差还应单独记录。尤其当用同一论文曲线选择参数后，又把这条曲线作为检验对象，不能把小偏差解释成新的预测精度。
+
+\subsection{MOSEK 与 SDPB 提供的保证范围}
+\textbf{MOSEK} 和 \textbf{SDPB} 都是求解凸优化的工具。\textbf{CVX} 则是把矩阵与范数约束翻译成优化问题的建模层。作者 2403 代码通过 CVX 调用 MOSEK，使用机器双精度变量；算子可事先用更高精度生成。SDPB 可以使用任意精度算术，适合处理本问题中尺度悬殊的矩阵。
+
+机器双精度约有 16 位十进制有效数字，病态矩阵会消耗其中许多位。高精度有助于把数值解和约束余量算清楚，无法补全未指定的物理约束。作者后续论文承认的精度限制还涉及 FF 的有限能量输入和取迭代解为代表的系统误差，不能全部归因于 MOSEK。本文没有找到一份把这些物理误差都定量归结为 MOSEK 舍入的证明。\cite{hk24,hk25,code24}
+
+本次名义 UV tip 的结果是一个具体例子：数值上下候选目标分别为
+\begin{equation}
+0.07601290785\ \lesssim\ v^*\ \lesssim\ 0.07601375550,
+\end{equation}
+候选区间宽 \(8.48\times10^{-7}\)，相对约 \(1.1\times10^{-5}\)。这里刻意使用 \(\lesssim\)：报告明确写着 \code{bound_scope = solver numerical residuals; not an interval bound}，并且 \code{independent_dual_certified = false}。它是有很小残差的数值最优性证据，尚非独立区间上、下界证书。
+
+对返回的这个 tip 解，Arb 的 1500 个幺正检查、700 个 Gram 主子式检查、4 个 FESR 盒和 14 个 FF 上限均得到严格正余量判定。\textbf{主子式}是对同一组行列选出的子矩阵行列式，Hermitian 矩阵全部主子式非负等价于半正定。这些具体检查比单独看 solver 的 optimal 标签更有说服力。程序的通用验收仍允许数值容差，而且没有独立验证完整对偶证书，因此整体 \code{certified=false}。
+
+此前把 \code{certified=false} 仅解释为“缺少连续能量证明”不够准确：\textbf{有限优化问题的独立对偶认证也尚未完成。} 这不否定当前复验结果，但决定“严格排除”和“严格最优”可使用到什么程度。
+
+\subsection{小目标间隙为什么不等于小相移误差}
+目标只看两个阈下坐标。若近优面很宽，不同完整振幅的目标几乎相同，相移却能差很多。即使优化误差归零，这种选解不确定性仍在。项目的 xref 近优面就是例子。
+
+还有一个简单的局部公式：当 \(S\neq0\) 时，微小变化满足
+\begin{equation}
+\Delta\delta\simeq\frac12\Imm\left(\frac{\Delta S}{S}\right),\qquad
+|\Delta\delta|\lesssim\frac{|\Delta S|}{2|S|},
+\end{equation}
+角度以弧度计。\(|S|\) 很小时，同样的振幅误差被放大。由有限节点插值得到的穿越能量还取决于附近相位斜率、采样密度与分支选择。因此“gap 很小，所以 \(\rho\) 质量精确到某个 MeV”缺少必要的误差传递步骤。
+
+\subsection{三种完成标准}
+\textbf{有限问题解算完成}要求同一输入的数值求解收敛、原式复验通过，必要的精度与降基对照稳定。本项目的大量运行已达到这一层；独立对偶证书可以进一步提高保证。
+
+\textbf{2309 结果复现完成}要求事先指定的物理输入、离散规则、正则化与选解流程得到对齐，并用完整振幅比较区域、相移和分辨率。当前 C2--C4 通过，C1、C5--C8 各有未通过部分。Watson 改进了弹性指标，未改变原台账裁决。复现机制成立与逐图全部完成应分别陈述。
+
+\textbf{受控的物理预测}进一步要求把理论输入、数值截断和选解散布转成可解释的观测量区间，并验证增加信息后区间如何变化。若最终只在某个经验 cap 下得到一条合实验的曲线，应报告其条件性。原论文是有限原型，完整连续证明不是复现它的前置条件；若要声称高精度 QCD 预言，控制范围需要扩大。
+
+\subsection{逐项提高精度的可行顺序}
+\begin{enumerate}
+\item 对齐一个小型共同基准。优先取得作者一组 2309 输入矩阵、完整解和迭代前后坐标，在同一约束上比较。先确定“在解哪个问题”。
+\item 选一个已有 UV tip 做精度阶梯。固定全部物理设置和矩阵，比较 192、256 bit 与更小 gap 下的 \(S,F,\rho\)、支撑值和相位，而不只看目标最后几位。当前计划允许最高 256 bit 的对照。
+\item 将原始变量、基矩阵和对偶变量纳入可重放验证。若要严格上界，必须控制对偶方程残差及其对目标的影响；单纯提高 Arb 位数不足以修复一个没有消除的对偶残差。
+\item 分开做网格和求积检查。固定物理输入改变 \(M,L\)，记录硬截止的变化；改进积分单元处理应作为具名对照，不能无声改变 2309 的有限规则。
+\item 改进物理误差预算。对 \(s_0\) 做小范围变化时，区分“仅改截止的数值诊断”和“按跑动同步更新 \(\alpha_s,m_q\)、OPE 与 FF 的物理匹配尺度变化”。两者回答不同问题。
+\item 得到相移与共振的不确定区间。将尚未确定的输入作为有来源的区间参数，比较观测量范围。\(\eChi,\eSR,\eFF\) 不应被自动压到零：应由更精确的有效理论与高能计算替换其不确定性。
+\end{enumerate}
+
+目前证据最直接支持 FF 上限、代表选择及能量离散化是需要进一步理解的方向。高精度检查可以排查数值误差是否足够小；仍应避免在尚无同模型精度阶梯前宣称所有 solver 影响已完全排除。
+\newchapter{后续工作与合作课题}\label{sec:future}
+\subsection{完成当前复现所需的最小信息}
+适合向作者请求一个可以共同运行的基准，而不是只问一个独立的 \(\epsilon\) 数字。所需内容包括：四个 FESR 目标及其归一化和误差范数；高能 FF 界实际作用于 \(F\) 还是 \(\Fcal\)，两流是否分设；密度正则化；原始网格与完整系数；Fig.9 三个点的迭代前后坐标；Watson 目标、权重与停止条件。
+
+先核对一个名义 tip，就能比较相同矩阵上的可行性、目标值和输出振幅。随后再核对一个 xref 截面，可判断 Fig.8 的不对称差异。得到这两处身份一致的基准后，再扩展三点相移和五组分辨率，所需计算比继续无目的扫描少得多。
+
+已有 TODO 中的 \(s_0\) 敏感性仍未完成。它可回答 \(\rho\) 的移动究竟受固定匹配边界多少影响。若只是将截止上下移一档，应明确它是诊断；要解释为 QCD 物理尺度不确定性，需同步处理跑动参数与理论目标。
+
+\subsection{课题一：有误差预算的 GTB 基准}
+现有项目已经提供独立算子、SDPB 求解、原式区间复验和可追溯结果，适合与作者的 MOSEK 实现对拍。研究问题是：在同一有限模型中，哪些差异来自求解器，哪些来自表示、正则化和选解？
+
+一个可交付成果可以是少数固定基准、可验证的目标上下界、完整 \(S,F,\rho\) 数据及误差来源表。用这些内容支撑的方法论文具有明确价值，是否有足够新意还需与现有独立实现比较，不能预先宣称“首个”或仅凭更高 bits 认定突破。
+
+\subsection{课题二：有限高能处的形状因子}
+已测结果显示 FF 参数对共振质量有很强影响，因此改进其物理输入可能直接提高预测能力。\textbf{分布振幅}（distribution amplitude）描述在高动量π中，价夸克和反夸克分享纵向动量的概率振幅信息；渐近 FF 公式依赖它。有限能量下还会出现高阶、幂次和非渐近修正。
+
+可以将更高阶短距离计算与格点结果结合。\textbf{格点 QCD}（lattice QCD）将时空离散成网格，通常把实时间延拓为虚时间即 Euclidean 时间，用统计抽样计算场论路径积分。路径积分是对可能的场构型加权求和的表达式；虚时间使其中的权重更适合数值抽样。这是研究非微扰 QCD 的独立方法。这里可优先引入格点的类空 FF 或流关联函数信息，而不直接输入要预测的实验 \(\rho\) 质量。
+
+若输入从“任意 order-one 放宽系数”变成具有理论来源的函数误差带，可检查 \(\rho\) 区间缩小了多少。标量与矢量流应分别处理，因为它们的归一化、渐近机制和当前知识精度不同。
+
+\subsection{课题三：更有信息的矩和更多流}
+少数幂次矩只看分布的粗特征。\textbf{Pinched 权重}指在积分上限 \(s_0\) 处变为零的权函数，例如 \(w(s)=(1-s/s_0)^2\)；它可以降低靠近时类端点区域的贡献。这是后续论文采用的方向之一。添加更多矩并非越多越好：高次矩可能增强对截断和高能端的敏感性，需要同步评估 OPE 的适用性。
+
+对同一组量子数，可以加入多个独立流及其混合两点函数。\textbf{混合关联函数}是两个不同算符的关联，如 \(\langle j_Aj_B\rangle\)。它们共同形成更大的正定矩阵，有望减少目前一个电流对应一条分波时留下的自由度。
+
+一个小计算可先询问：某个新矩或新流，是否明显缩小近优面上的 P1 观测量范围？对偶乘子也可提供线索。在适当的平滑与最优性条件下，乘子近似度量目标对约束上限的局部响应，称为影子价格；它能辅助选择优先改善的输入，但对非线性的共振极点仍需额外误差传递。
+
+\subsection{课题四：从近弹性选解到多通道动力学}
+在共振上方，四π或其他强子通道的权重会增加。真实 QCD 还可能出现 \(K\bar K\)，其中 \(K\) 是含奇异夸克的 K 介子。\textbf{耦合通道}（coupled channels）指这些末态互相转化，散射矩阵需要同时描述 \(\pi\pi\to\pi\pi\)、\(\pi\pi\to K\bar K\) 等过程。
+
+引入更多散射态和产生矩阵元后，概率守恒可以在更大的矩阵中实现。研究收益是能够计算非弹性从何而来，以及它如何影响宽共振和 S0。难点也明确：多粒子相空间、crossing 与新的 QCD 流输入会显著扩大问题。适合先选一个能区或一个附加通道作受控试验，再讨论完整方案。
+
+\subsection{课题五：复平面极点与解析表示的交叉核验}
+90°穿越便于初步比较，极点位置更直接表征共振。要从节点解延拓到复平面，需要声明一个一致的解析函数族，并检验延拓对数据和截断是否稳定。复平面延拓往往会放大实轴上很小的误差。
+
+可以借鉴 Córdoba 的离散基方案，与当前 \code{mixed-pv} 在相同物理合同下比较。对 \(\rho\) 先计算靠近实轴的极点，再考虑距实轴较远的 \(\sigma\) 极点。\textbf{留数}是极点附近 \(r/(s-s_p)\) 中的系数 \(r\)，反映该状态与通道的耦合强度；它比“出现一个峰”提供更多物理信息。
+
+这条方向已有后续工作开展，合作中的新问题应是极点的输入敏感性、严格包络或不同函数族之间的一致性，而非仅再次展示已知峰。
+
+\subsection{课题六：Watson 固定点的选择偏差与唯一性}
+当前三条 2309 适配链在给定轮数内没有汇聚成同一振幅，且两条未满足停止指标。这与 2505 在更强模型中观察到的收敛并不直接矛盾，二者的低能谱密度约束、矩和目标更新都不同。
+
+可以固定一组 UV/IR 输入，比较多初值、2403 相位目标、2505 更新及不同节点权重，观察哪些 \(S,F,\rho\) 结构稳定。\textbf{吸引域}是迭代会收敛到同一个固定点的一组初始条件。局部固定点的稳定性可研究更新映射的导数矩阵，即 Jacobian；它衡量上一轮的微小变化如何传到下一轮。
+
+更有物理内容的问题是：为什么这个固定点应接近 QCD？如果扩大 Gram 矩阵、加入新的算符之后，原固定点的可观测量稳定且允许范围缩小，这会比单一算法的数值收敛提供更强支持。零模对应物理态之间的关系，可据此设计同时控制弹性与谱饱和的目标，但仍需检查是否人为排除了真实非弹性。
+
+\subsection{课题七：改变规范理论并与格点比较}
+把 \(N_c\)、轻夸克质量或味数改变后，真实世界的实验曲线不再提供直接答案，方法的预测性更容易得到独立检验。\(N_c\) 很大时称为大颜色数极限，QCD 中许多介子宽度预计随 \(1/N_c\) 缩小，可以作为有物理依据的比较目标。
+
+改变 \(N_c\) 时，应一致改变 \(f_\pi\)、凝聚量、跑动耦合等相关尺度；改变 \(N_f\) 时，同位旋通道的简单三分解也可能失效，需要重新建立 flavor 与 crossing 结构。一个具体合作题目可以选择格点已有散射数据的非物理π质量，使用独立的低能及流输入，预测未用于匹配的相移或共振。
+
+\subsection{进一步的应用及当前优先级}
+得到可靠的散射相移后，可以计算稀薄π气体的维里系数，即低密度展开中由两体相互作用引起的热力学校正；2505 已展示这类应用。得到可靠的矢量谱密度后，也可研究强子真空极化对轻子磁矩的贡献；强子真空极化是电磁探针通过强子中间态产生的量子修正。这类精密应用需要更完整的误差控制，当前相移复现的精度不能直接迁移过去。
+
+从已知瓶颈出发，合作顺序可先选择共同基准、FF 输入和选解稳定性，得到可核验的近期成果；多流、多通道和改变规范理论适合作为随后扩展。是否能形成重大突破，取决于新约束是否带来可量化、可外部检验的预测能力，而不只是计算规模变大。
+\newchapter{面向合作者的汇报安排}\label{sec:talk}
+\subsection{一份约十五分钟的讲述顺序}
+汇报可以用六张内容页。每张页只承担一个问题，必要推导放在备用页，便于讨论时追溯。
+
+\begin{enumerate}
+\item \textbf{研究对象与问题。} 说明两味、三色 QCD 的低能π散射；低能手征理论与高能 pQCD 各自可控，中间共振区需要补充方法。定义 S0、P1、S2，说明 \(\rho\) 质量没有被作为输入。
+\item \textbf{计算原理。} 展示式\eqref{eq:gram}和信息关系图。解释三个态的内积为何半正定，FESR 如何引入 QCD 信息，以及 Watson 定理在两π主导时如何关联相位。
+\item \textbf{实际有限模型。} 给出 \(M=50,L=10\)、\(E_0=1.2\GeV\)、\(\eChi=0.002\)、原始矩盒 \(\eSR=0.002\)、逐节点 FF 参数 \(\eFF=6\times10^{-5}\)、\(\Mreg=100\)。说明后面四项的含义与出处范围，附一句“结果以实际运行配置为准”。
+\item \textbf{主线复现结果。} 展示 C2--C4 的通过结果，再展示 Fig.8 不对称、P1 弹性与 S0 偏快三个差异。报告完整范围，不只展示接近论文的 tip。
+\item \textbf{追加诊断。} 展示释放／钉住的 Watson 迭代比较，以及分流 FF 敏感性。指出前者主要改善弹性，后者对相应分波形状和共振位置有明显影响。候选配对点仍未同时恢复区域和相移。
+\item \textbf{下一项共同判断。} 请求对齐一组作者 2309 原始输入与完整解，然后依次检验 tip、xref 和迭代。把后续课题与当前差异关联，优先讨论 FF 物理误差和选解稳定性。
+\end{enumerate}
+
+\subsection{可以直接改成口头表达的一段结果说明}
+“我们按 2309 的物理输入和能量网格，独立构建了散射与电流约束，用 SDPB 求解，并对返回的完整解作原式区间复验。手征区域、阈下分波和仅手征相移已通过既定比较规则。加入 QCD 求和规则和高能形状因子限制后，P1 出现共振结构，不过论文中的区域收缩不对称、三代表点的共振位置以及 S0 高能形状还没有同时复现。”
+
+“作者确认展示曲线经过饱和改进。我们据 2403 的泛函在 2309 模型中追加了迭代，明显提高了 P1 的弹性程度，同时使振幅离开原来的二维支撑点。共振位置仍较低。对 UV 容差作对照后，形状因子上限的影响比本次测试的求和规则容差变化显著，而且标量和矢量上限主要影响各自分波。一个依据扫描提出的配对点恢复了较接近的相移，却没有同时恢复区域端点。”
+
+“因此，目前既有核心物理机制的复现，也有可定位的定量缺口。下一步希望取得一组 2309 的原始约束、完整解和迭代记录，先确认双方在解同一个有限问题。精度提升会同时检查算术、离散化和物理输入，不把 solver 位数直接当成 QCD 预测精度。”
+
+\subsection{讨论中可能被追问的细节}
+\begin{description}[style=nextline,font=\normalfont\bfseries]
+\item[为什么 \(|S|<1\) 不是违反幺正？]
+它允许两π概率进入未显式求解的其他通道。违反的是 \(|S|>1\)；饱和不足则是与近弹性物理预期不够一致。
+\item[为什么选 \(s=3\)，而不是一个真实实验能量？]
+它是低于两π阈值的解析延拓坐标，便于表达手征近似与比较区域。散射相移另在 \(s>4\) 计算。
+\item[为什么 \(f_\pi\) 已知，区域仍是一条带？]
+主要手征约束使用不含 \(f_\pi\) 的分波比值；已知 \(f_\pi\) 用于定义参考黑点及选点。原问题没有处处强制完整最低阶振幅。
+\item[是否用 \(\rho=770\MeV\) 调过主线？]
+主线未将该质量作为输入。后来的分流 cap 候选由论文输出辅助提出，已标成诊断试验，并没有替换名义主线或作为独立预测。
+\item[为什么需要密度界？]
+有限分波和节点无法控制所有双谱密度近零模。密度界稳定了表示；我们用遗漏波、分辨率和范数对照定尺度，并保留其系统误差。
+\item[高精度能保证哪个数？]
+保证范围首先是声明的有限问题的数值求解和原式约束检查。独立对偶上界、连续能量控制及物理误差需要分别处理。
+\item[既然给了上下数值，为什么还不能称严格证明？]
+solver 的残差很小不等于区间认证的对偶可行性。返回振幅通过约束复验，提供的证据强于单纯 optimal 标签；严格最优上界仍缺独立重放。
+\item[后续代码是否已经证明 2309 当年一定这样设置？]
+没有。后续代码确认了方法和实现线索，2309 的原始 notebook 尚缺。范数、FF 换算与代表选择仍需作者确认。
+\item[三条 Watson 链是否已证明不可能趋向同一解？]
+没有。tip 在筛选节点指标下停止，另外两条未充分收敛；当前只记录有限轮内的差异，不能把轮数预算当作不收敛证明。
+\item[既然配对 cap 能给出 817 MeV，是否已经基本完成？]
+它只是一个输出辅助候选；区域端点仍差 3.15\%，\(\eta\) 约为 0.75，三点与分辨率也未全部重验。应报告它说明了灵敏方向，而不报告完整成功。
+\item[我们是否否定了 2309 的机制？]
+现有结果支持其在所选振幅上的 IR→UV 机制，未恢复部分定量特征。对机制、有限实现和展示曲线应分别判断。
+\end{description}
+\clearpage
+\appendix
+\section{三个可手算的推导}\label{app:derivations}
+\subsection{最低阶分波与黑点}\label{app:chiral}
+令 \(C=1/(8\pi^2\bar f_\pi^2)\)，则 \(A(s,t,u)=C(s-1)\)。利用 \(s+t+u=4\)，
+\begin{align}
+T^0&=C[3(s-1)+(t-1)+(u-1)]=C(2s-1),\\
+T^2&=C[(t-1)+(u-1)]=C(2-s),\\
+T^1&=C(t-u)=C(s-4)z.
+\end{align}
+由 \(\int_{-1}^1\dd z=2\)、\(\int_{-1}^1z^2\dd z=2/3\)，
+\begin{equation}
+f_0^0=\frac C2(2s-1),\quad f_0^2=\frac C2(2-s),\quad
+f_1^1=\frac C6(s-4).
+\end{equation}
+在 \(s=3\)，\(f_1^1/f_0^0=-1/15\)。代入 \(\bar f_\pi=92/140\)，得到黑点 \((0.07332139,-0.00488809)\)。这个推导只用角动量投影、对称性与最低阶低能振幅。
+
+\subsection{Gram 矩阵的相位不等式}\label{app:gram}
+对式\eqref{eq:gram}，第一项为 1，可直接取 Schur 补：
+\begin{equation}
+\begin{pmatrix}
+1-|S|^2&\Fcal^*-S^*\Fcal\\
+\Fcal-S\Fcal^*&\rho-|\Fcal|^2
+\end{pmatrix}\succeq0.
+\end{equation}
+一个 \(2\times2\) Hermitian 矩阵半正定，当且仅当两个对角元素非负且行列式非负。于是得到
+\begin{equation}
+|S|\le1,\quad \rho\ge|\Fcal|^2,\quad
+(1-|S|^2)(\rho-|\Fcal|^2)\ge|\Fcal-S\Fcal^*|^2.
+\end{equation}
+令 \(\Fcal=|\Fcal|e^{\ii\alpha}\)、\(S=\eta e^{2\ii\delta}\)，则
+\begin{equation}
+\frac{|\Fcal-S\Fcal^*|^2}{|\Fcal|^2}
+=1+\eta^2-2\eta\cos[2(\delta-\alpha)].
+\end{equation}
+\(\eta=1\) 时非负左边被要求为零，得 \(\delta=\alpha\pmod\pi\)。这说明 Watson 相位关系是两体态结构与正定性共同产生的条件。
+
+\subsection{不同 Watson 更新何时等价}\label{app:iteration}
+对一个节点，设 \(h\) 在圆盘 \(|h-\ii|\le1\) 内。固定一个复数目标系数 \(t\)，优化
+\begin{equation}
+W(h)=\Ree(t^*h)-\Imm h=\Ree[(t-\ii)^*h].
+\end{equation}
+当 \(t\neq\ii\) 时，沿该方向最远的圆盘点是
+\begin{equation}\label{eq:diskargmax}
+h_{\max}=\ii+\frac{t-\ii}{|t-\ii|}.
+\end{equation}
+如果 \(t=2\sin\alpha\,e^{\ii\alpha}=-\ii(e^{2\ii\alpha}-1)\)，就有 \(|t-\ii|=1\)，所以 \(h_{\max}=t\)，也就是 \(S=e^{2\ii\alpha}\)。这正是本次 2403 相位目标适配所使用的性质。
+
+若改成 \(t=a e^{\ii\alpha}\)，但 \(a\neq2\sin\alpha\)，一般得不到同一个最大点。取 \(\alpha=45^\circ,a=1\)，式\eqref{eq:diskargmax}给出
+\begin{equation}
+h_{\max}\simeq0.92388+0.61732\ii,
+\end{equation}
+而相位目标对应 \(h=1+\ii\)。前者的 \(S\) 相位约为 \(67.5^\circ\)，散射相移约为 \(33.75^\circ\)，并非 45°。所以 2505 代码保留旧 \(|h|\) 的步骤，与 2403 的纯相位目标在一般非弹性状态下不等价。
+
+此外，对所有节点目标赋正权重，只能保证每个\emph{独立}圆盘的最大点不变。加入 crossing 等耦合约束后，权重会改变折中。没有电流时，使用旧 \(h\) 的梯度与将旧 \(S\) 径向投到圆周，也可能等效地产生不同的节点权重。对真实代码的等价性主张，应逐项说明变量缩放、目标模长及节点权重。
+
+\newchapter{符号与术语查询}\label{app:glossary}
+以下表格用于第二次阅读时查找；物理意义已在首次出现处解释。尤其需要区分三个 \(\rho\)、两个常见的 \(f\) 命名，以及饱和与幺正性。
+
+\small
+\begin{longtable}{P{34mm}P{103mm}}
+\toprule
+符号／术语 & 本讲义中的含义\\
+\midrule\endfirsthead
+\toprule 符号／术语 & 本讲义中的含义\\\midrule\endhead
+\bottomrule\endfoot
+\(\pi\)，pion & π 介子；也是圆周率的常用符号，公式中的因子 \(\pi\) 根据位置判断。\\
+\(\rho(770)\) & P1 通道的矢量共振粒子，名称中的数字是约略质量。\\
+\(\rho_a(x,y)\) & 散射振幅 Mandelstam 表示的双谱密度，是受正则化的未知函数。\\
+\(\rho_\ell^I(s)\) & 电流两点函数的谱密度，来自流产生物理态的模方和，非负。\\
+\(\widehat\rho\) & 电流谱密度除以已知运动学因子 \(k_\ell^2\)，用于改善矩阵尺度。\\
+\(f_\ell^I\) & 具有轨道角动量 \(\ell\)、总同位旋 \(I\) 的散射分波函数。\\
+\(f_\pi\) & π 衰变常数和低能有效耦合尺度；不是一个分波。\\
+\(f_0(500), f_2(1270)\) & 共振的粒子名称；前者也称 \(\sigma\)，后者总自旋为 2。\\
+S0、P1、S2 & 分别是 \((\ell,I)=(0,0),(1,1),(0,2)\)。\\
+\(S_\ell^I\) & 指定分波的两体 S 矩阵元；满足模长不大于 1。\\
+\(h\)，\(\kappa\) & \(S=1+\ii h\)，\(h=\kappa f\)，\(\kappa=\pi\sqrt{1-4/s}\)。\\
+\(\eta,\delta\) & \(S=\eta e^{2\ii\delta}\) 中的模长和相移。\\
+\(\Gamma\) & 共振宽度，近似与寿命成反比。\\
+\(s,t,u\) & 总能量平方和两种动量转移不变量；以 \(m_\pi^2\) 为单位时和为 4。\\
+\(s_0,E_0\) & 匹配能量平方和匹配能量，\(E_0=\sqrt{s_0}\)（恢复物理单位时）。\\
+\(\nu_0\) & 能量保角映射的中心参数，2309 为 0，后续代码为 \(-20\)。\\
+\(T_0,T^I\) & 前者为色散表示常数；后者为总同位旋为 \(I\) 的散射振幅。\\
+\(j_S,j_V,\Pi\) & 标量流、矢量流，以及相应两点关联函数。\\
+\(F,\Fcal,k_\ell\) & 形状因子及其带运动学归一化的版本；\(\Fcal=k_\ell F\)。\\
+\(M,L\) & 能量节点数、每个同位旋保留的分波数。\\
+\(\Mreg\) & 双谱密度的正则化尺度，与能量节点数 \(M\) 不同。\\
+\(\eChi\) & 低能手征残差范数的容差。\\
+\(\eSR\) & 求和规则残差的容差；必须同时规定归一化和打包范数。\\
+\(\eFF\) & 高能 FF 平方模上限参数。\\
+\(\ell_2,\ell_4,\ell_\infty\) & 衡量向量大小的不同范数，分别为平方和开根、四次方和开四次根、最大绝对分量。\\
+IR／UV & 相对于本问题的低能／高能端。\\
+QCD／pQCD & 量子色动力学／适用于弱耦合高能端的微扰 QCD。\\
+EFT／\(\chi\)PT & 有效场论／低能π的手征微扰论。\\
+OPE／Wilson 系数 & 短距离算符乘积展开／其中可由短距离理论计算的系数。\\
+SVZ／FESR & 结合 OPE 与凝聚量的求和规则／有限能量版本。\\
+Gram／PSD & 态内积矩阵／positive semidefinite，半正定。\\
+primal／dual & 寻找可行振幅的原优化问题／用约束组合给出上界的对偶问题。\\
+duality gap & 两个优化目标界之间的数值间隙，需同时检查双方残差。\\
+MOSEK／SDPB & 优化求解器；后者支持任意精度半正定规划。\\
+CVX／PMP & 凸优化建模工具／多项式矩阵规划输入格式。\\
+Arb／区间算术 & 跟踪运算误差上下界的数值工具／计算方式。\\
+PV／cot kernel & Cauchy 主值积分／其节点离散中出现的余切核。\\
+SVD／近零模 & 奇异值分解／矩阵作用很弱的系数方向。\\
+support／tip & 确定投影边界的线性支撑目标／指定方向的端点。\\
+near-optimal face & 目标接近最优值的一组可行振幅，本项目具体使用一个薄层。\\
+Watson 迭代 & 用上轮 FF 相位或振幅构造新线性目标，改进相位对齐和饱和。\\
+固定点／吸引域 & 更新后不再改变的解／迭代趋向该解的一组初值。\\
+RMS & 均方根差，表示一组比较点上的典型曲线偏差。\\
+bootstrap & 本文指利用物理一致性约束未知振幅；不指统计重抽样。\\
+\end{longtable}
+\normalsize
+
+\newchapter{结果追溯与阅读材料}\label{app:sources}
+\subsection{本地文件的使用顺序}
+从仓库根目录看，复现证据主要集中在下面几处。已有数据无需复制到本讲义目录；本讲义的图形直接由文内公式或已报告数字绘制。
+\begin{enumerate}
+\item \code{docs/reproduction_2309/REPRODUCTION_COMPARISON_EN.pdf}：15 页英文对照，第 5--6 节为新增迭代与敏感性。
+\item \code{REPORT_SDPB_2309_ZH.md}：中文逐项报告，第 8 节为新增结果；摘要处旧的 C1 表述应按正式收据解读。
+\item \code{results/runs/sdpb_regularised_20260913/GATE_LOG.md}：各次假设、预登记、失败和结果的时间记录。
+\item 同一结果根下的 \code{C1_RESULT.json}、\code{C2_RESULT.json}、\code{C3_RESULT.json}、\code{C4_RESULT.json}、各个 \code{C5_RESULT_*.json}、\code{C67_RESULT.json}、\code{C8_RESULT.json} 与 \code{C67_POSTWATSON.json}：项目判据和数值。
+\item 各运行叶中的 \code{report.json}、\code{solution.npz}、\code{pmp.json} 和 \code{out/}：实际设置、完整解、输入矩阵与 solver 输出。\code{npz} 是保存多个数值数组的压缩文件格式。
+\end{enumerate}
+
+名义 UV tip 是 \code{uv_SRa_tip/tip}；迭代终点依次为 \code{watson_tip_cont/round_03}、\code{watson_ref_cont/round_04}、\code{watson_mid_cont3/round_02}。目录内轮数是续算段的局部编号，总轮数分别为 8、9、9。配对测试为 \code{sens_epsFF_S0_2e-4_P1_8e-5_tip/tip}。这几个目录足以追查正文引用的关键数值。
+
+\subsection{本讲义对已有叙述的限定}
+本讲义保留所有现有运行数字与原验收裁决，只收窄以下解释：C1 未完整通过；\(\eta<1\) 仍满足两体幺正不等式；tip 达到的是筛选节点上的停止条件，其他两链尚未收敛；SR 容差影响较小而非严格为零；有限扫描尚未排除全部 cap 配对；2403 与 2505 更新一般不等价；没有独立对偶证书的数值排除仍需注明精度范围。
+
+这些限定来自原代码、运行字段和本文的代数核对，没有通过修改主线重新计算。若之后取得作者原 notebook 或完成新对照，宜更新同一份讲义中的数值与证据范围。
+
+\subsection{进一步学习的顺序}
+基础补充可先读散射与相移、角动量合成、相对论运动学，再读自由场、相互作用绘景和关联函数；随后阅读手征对称性和色散关系。第一次理解本项目无需先掌握所有圈图技术。若要亲自改进 OPE、FF 输入或多通道计算，则需要系统学习重整化、微扰 QCD 和强子有效场论。
+
+论文阅读可先读 2309 的图与第 2 节，再对照第 3 节的离散公式。2021 年论文重点读正则化与原／对偶问题；2403 重点读第 2.5 节和数值实现；2505 重点读谱密度约束、迭代与输入敏感性。读代码时，同时记录未知变量、归一化、约束作用范围和目标函数，能避免只抄参数值而改变了物理含义。
+\clearpage
+\phantomsection
+\addcontentsline{toc}{section}{参考资料}
+\renewcommand{\refname}{参考资料}
+\begin{thebibliography}{99}
+\small\raggedright
+\bibitem{hk21} Y. He and M. Kruczenski,
+\textit{S-matrix bootstrap in 3+1 dimensions: regularization and dual convex problem},
+JHEP 08 (2021) 125.
+\href{https://arxiv.org/abs/2103.11484}{arXiv:2103.11484v3}。正则化、凸对偶与四维散射方法。
+\bibitem{hk23} Y. He and M. Kruczenski,
+\textit{Bootstrapping gauge theories},
+\href{https://arxiv.org/abs/2309.12402v3}{arXiv:2309.12402v3}。
+本次复现固定版本；本地原 PDF 与 TeX 位于 \code{references/2309.12402v3.pdf} 和同名 source 目录。
+\bibitem{hk24} Y. He and M. Kruczenski,
+\textit{Gauge Theory Bootstrap: Pion amplitudes and low energy parameters},
+\href{https://arxiv.org/abs/2403.10772v4}{arXiv:2403.10772v4}。
+本讲义核对第 2.5、8 节及附录 B；版本更新不反向替代 2309 的原设置。
+\bibitem{hk25} Y. He and M. Kruczenski,
+\textit{The Gauge Theory Bootstrap: Predicting pion dynamics from QCD},
+\href{https://arxiv.org/abs/2505.19332v3}{arXiv:2505.19332v3}。
+主要参照第 2、3、5、7 节。网页动态编译日期不作为投稿版本日期。
+\bibitem{kkp} D. Karateev, S. Kuhn and J. Penedones,
+\textit{Bootstrapping Massive Quantum Field Theories},
+JHEP 07 (2020) 035,
+\href{https://arxiv.org/abs/1912.08940}{arXiv:1912.08940}。
+散射态与局部算符态的联合 Gram 正定性。
+\bibitem{cordoba} R. Cordoba,
+\textit{Discrete Basis Parameterization for the Gauge Theory Bootstrap},
+\href{https://arxiv.org/abs/2511.11513}{arXiv:2511.11513}。
+离散解析基、计算效率与复平面极点的独立实现。
+\bibitem{code24} 作者 2403 公开代码快照，
+\href{https://github.com/hyfysics/gauge-theory-bootstrap/releases/tag/arxiv-2403.10772}{GitHub: arxiv-2403.10772}。
+本地 \code{GTB_numerics.m}：37--41 行数值设置，88--109 行求和规则与初始目标，114--180 行 Watson 步骤。
+\bibitem{code25} 作者公开仓库，
+\href{https://github.com/hyfysics/gauge-theory-bootstrap/tree/801684d9ece3de2918a20145178f569459081098}{固定提交 801684d9ece3de2918a20145178f569459081098}。
+本地 \code{theories/qcd/src/matlab/gtb_qcd_02_optimize.m} 与 \code{optimize_core.m}；本讲义只读核对，未执行作者求解程序。
+\bibitem{comparison} 本项目，\textit{Reproduction of arXiv:2309.12402 with SDPB: A comparison with the figures of the paper}，2026-09-18，第 2 版。
+\href{../reproduction_2309/REPRODUCTION_COMPARISON_EN.pdf}{本地 PDF}。正文图表数字的汇总来源。
+\bibitem{local} 本项目运行根 \code{results/runs/sdpb_regularised_20260913}；
+\code{GATE_LOG.md}、逐项 claim 收据与各叶 \code{report.json}。
+代码／文档基线 \code{27f03c4}。根目录 \code{PLAN_SDPB_2309_ZH.md}、\code{TRIAGE_ZH.md}、\code{TODO_ZH.md} 提供计划、勘误与待办。
+\bibitem{tongqft} D. Tong，\textit{Quantum Field Theory} 讲义。
+\href{https://www.damtp.cam.ac.uk/user/tong/qft.html}{剑桥大学讲义入口}。
+适合补充自由场、散射和 Feynman 图；本讲义不以完成该课程为阅读前提。
+\bibitem{tonggauge} D. Tong，\textit{Gauge Theory} 讲义。
+\href{https://davidtong.org/teaching/gauge-theory/}{作者讲义入口}。
+可按主题阅读渐近自由和手征对称性破缺。
+\end{thebibliography}
+\end{document}

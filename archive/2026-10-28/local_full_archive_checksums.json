@@ -1,0 +1,87 @@
+{
+  "local_results": {
+    "sha256": "c365b12e0efcc5edb0bfc7bc0b17ae221aa3a5386c0f547892e8a38c76e10a27",
+    "parts": [
+      {
+        "file": "local_results.tar.gz.part000",
+        "size": 83886080,
+        "sha256": "473fe7ff9f9e35c131b8966a0c9e261f6842e9cf6cef4fd3b63d2b8b3ee1a073"
+      },
+      {
+        "file": "local_results.tar.gz.part001",
+        "size": 83886080,
+        "sha256": "c5b0c62aa79158523fad9d2265449fb3ba80c7f71fab1421ba1ad6dd8dae78b8"
+      },
+      {
+        "file": "local_results.tar.gz.part002",
+        "size": 83886080,
+        "sha256": "beee04ed465be570f77d33325bf38773f04f4a24401ee2d7c162cde5dab769db"
+      },
+      {
+        "file": "local_results.tar.gz.part003",
+        "size": 83886080,
+        "sha256": "1e6d136be442ffe82f771309dcd3e09b4d50b523e24195719c3c8bccd1c75bbd"
+      },
+      {
+        "file": "local_results.tar.gz.part004",
+        "size": 83886080,
+        "sha256": "54d0ec8f999eec1600e9c2e5ee2796db04b4fb5c3214d57e5fe38c7e07c38e9c"
+      },
+      {
+        "file": "local_results.tar.gz.part005",
+        "size": 83886080,
+        "sha256": "c53872c0208fb931d15b05eb8f971ad12ade99aec549c006c22de1db8e756a99"
+      },
+      {
+        "file": "local_results.tar.gz.part006",
+        "size": 52958077,
+        "sha256": "69b76cc9d1602d8b18162fcad3e66d454ec146962555a66424132f0545960ed2"
+      }
+    ]
+  },
+  "sdpb2309_regularised": {
+    "sha256": "2d764409e7e7c95815ba4735baae5f8007fe2b96a189d0271c69a00042f6cd34",
+    "parts": [
+      {
+        "file": "sdpb2309_regularised.tar.gz.part000",
+        "size": 83886080,
+        "sha256": "13f1d0ff615d6c2a3533d426bc49a99d91e8f44817ac0ad4f505a7c4269d2856"
+      },
+      {
+        "file": "sdpb2309_regularised.tar.gz.part001",
+        "size": 56439214,
+        "sha256": "183fd53d05df7ef3e0b8fe718b74a556bc49df6666a1e5d62d096c77620ee698"
+      }
+    ]
+  },
+  "sdpb2309_mainline": {
+    "sha256": "8f35bd1ae63ce899ef6d9382620cd6f8466ca324d23adcabae2f5c5ff7734dfe",
+    "parts": [
+      {
+        "file": "sdpb2309_mainline.tar.gz.part000",
+        "size": 83886080,
+        "sha256": "8a985b5a180df922b7df8ee5ba27a5ddf3466ec122323ad1160087bee7a92d6a"
+      },
+      {
+        "file": "sdpb2309_mainline.tar.gz.part001",
+        "size": 3979306,
+        "sha256": "84edb8f2edc871d358aeae81eeec7f697d7f929ccde8990b656f8ed7b9903862"
+      }
+    ]
+  },
+  "gtb2403": {
+    "sha256": "788fa07ba96bc902f6fcc2314214b0cf537744eb037c8fc51a4434c343451eae",
+    "parts": [
+      {
+        "file": "gtb2403.tar.gz.part000",
+        "size": 83886080,
+        "sha256": "fa2a0c12c718c8ae399faf0792cb5064cc4779f43e232d908b25391b0cdc42e4"
+      },
+      {
+        "file": "gtb2403.tar.gz.part001",
+        "size": 54033176,
+        "sha256": "0c8b7efc12ac357a35b4db74019c67ffdfafee06c1ad1fcb64ac9166f7e1f067"
+      }
+    ]
+  }
+}
